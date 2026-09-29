@@ -17,7 +17,7 @@ from scraper.fetch import Fetcher, RobotsBlocked  # noqa: E402
 def main(lista: str, salida: str) -> None:
     out = Path(salida)
     out.mkdir(parents=True, exist_ok=True)
-    f = Fetcher()
+    f = Fetcher(timeout=60)
     items = []
     for line in Path(lista).read_text().splitlines():
         line = line.strip()
@@ -33,7 +33,7 @@ def main(lista: str, salida: str) -> None:
         for name, url in group:
             rec = {"url": url}
             try:
-                txt = f.get(url)
+                txt = f.get(url, check_robots=not url.endswith('robots.txt'))
                 (out / f"{name}.html").write_text(txt, encoding="utf-8")
                 rec.update(ok=True, bytes=len(txt))
             except RobotsBlocked:
