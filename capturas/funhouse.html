@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<title>  Eventos</title>
+		<meta name='robots' content='max-image-preview:large' />
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel='dns-prefetch' href='//stackpath.bootstrapcdn.com' />
+<style id="wp-img-auto-sizes-contain-inline-css">
+img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
+/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
+</style>
+<style id="classic-theme-styles-inline-css">
+/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}
+/*# sourceURL=/wp-includes/css/classic-themes.min.css */
+</style>
+
+<style id="global-styles-inline-css">
+:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgb(6,147,227) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgb(252,185,0) 0%,rgb(255,105,0) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgb(255,105,0) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgb(255, 255, 255), 6px 6px rgb(0, 0, 0);--wp--preset--shadow--crisp: 6px 6px 0px rgb(0, 0, 0);}.wp-block-button{--wp--preset--dimension--25: 25%;--wp--preset--dimension--50: 50%;--wp--preset--dimension--75: 75%;--wp--preset--dimension--100: 100%;}:where(body) { margin: 0; }:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}body{padding-top: 0px;padding-right: 0px;padding-bottom: 0px;padding-left: 0px;}:root :where(.wp-element-button, .wp-block-button__link){background-color: #32373c;border-width: 0;color: #fff;font-family: inherit;font-size: inherit;font-style: inherit;font-weight: inherit;letter-spacing: inherit;line-height: inherit;padding-top: calc(0.667em + 2px);padding-right: calc(1.333em + 2px);padding-bottom: calc(0.667em + 2px);padding-left: calc(1.333em + 2px);text-decoration: none;text-transform: inherit;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+/*# sourceURL=global-styles-inline-css */
+</style>
+
+<link rel='stylesheet' id='tc-front-css' href='https://www.funhousemusicbar.com/wp-content/plugins/tickera/css/front.css?ver=3.5.1.6' media='all' />
+<link rel='stylesheet' id='tc-elementor-sc-popup-css' href='https://www.funhousemusicbar.com/wp-content/plugins/tickera/css/builders/elementor-sc-popup.css?ver=3.5.1.6' media='all' />
+<link rel='stylesheet' id='font-awesome-css' href='https://www.funhousemusicbar.com/wp-content/plugins/tickera/css/font-awesome.min.css?ver=3.5.1.6' media='all' />
+<link rel='stylesheet' id='tc-common-front-css' href='https://www.funhousemusicbar.com/wp-content/plugins/tickera/includes/addons/gutenberg/blocks-assets/blocks.css?ver=3.5.1.6' media='all' />
+<link rel='stylesheet' id='wpb-google-fonts-css' href='https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400&#038;display=swap&#038;ver=7.1.2' media='all' />
+<link rel='stylesheet' id='bootstrap-css' href='https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css?ver=7.1.2' media='all' />
+<link rel='stylesheet' id='google-fonts-css' href='https://fonts.googleapis.com/css?family=Roboto:400,700&#038;display=swap&#038;ver=7.1.2' media='all' />
+<link rel='stylesheet' id='labstrap-style-css' href='https://www.funhousemusicbar.com/wp-content/themes/labstrap/style.css?ver=7.1.2' media='all' />
+<link rel='stylesheet' id='labstrap-child-style-css' href='https://www.funhousemusicbar.com/wp-content/themes/labstrap-child/style.css?ver=1.0.0' media='all' />
+<script id="jquery-core-js" src="https://www.funhousemusicbar.com/wp-includes/js/jquery/jquery.min.js?ver=3.7.1"></script>
+<script id="jquery-migrate-js" src="https://www.funhousemusicbar.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1"></script>
+<script id="tc-cart-js-extra">
+var tc_ajax = {"ajaxUrl":"https://www.funhousemusicbar.com/wp-admin/admin-ajax.php","ajaxNonce":"389e8d7717","empty_cart_message":"Esta seguro de eliminar todos los tickets del carrito?","success_message":"Ticket agregado!","imgUrl":"https://www.funhousemusicbar.com/wp-content/plugins/tickera/images/ajax-loader.gif","addingMsg":"Agregando ticket al carrito...","outMsg":"En su carrito","cart_url":"https://www.funhousemusicbar.com/tickets-cart/","update_cart_message":"Please update your cart before to proceed.","empty_cart_confirmation":"Please confirm to remove all of the items from your cart.","tc_provide_your_details":"In order to continue you need to agree to provide your details.","tc_gateway_collection_data":"","tc_error_message":"Only customers aged 16 or older are permitted for purchase on this website","tc_show_age_check":"no","tc_field_error":"This field is required *","alphanumeric_characters_only":"Please use alphanumeric characters only."};
+//# sourceURL=tc-cart-js-extra
+</script>
+<script id="tc-cart-js" src="https://www.funhousemusicbar.com/wp-content/plugins/tickera/js/cart.js?ver=3.5.1.6"></script>
+<script id="tc-jquery-validate-js-extra">
+var tc_jquery_validate_library_translation = {"required":"This field is required.","remote":"Please fix this field.","email":"Please enter a valid email address.","url":"Please enter a valid URL.","date":"Please enter a valid date.","dateISO":"Please enter a valid date (ISO).","number":"Please enter a valid number.","digits":"Please enter only digits.","equalTo":"Please enter the same value again.","maxlength":"Please enter no more than {0} characters.","minlength":"Please enter at least {0} characters.","rangelength":"Please enter a value between {0} and {1} characters long.","range":"Please enter a value between {0} and {1}.","max":"Please enter a value less than or equal to {0}.","min":"Please enter a value greater than or equal to {0}.","step":"Please enter a multiple of {0}."};
+//# sourceURL=tc-jquery-validate-js-extra
+</script>
+<script id="tc-jquery-validate-js" src="https://www.funhousemusicbar.com/wp-content/plugins/tickera/js/jquery.validate.min.js?ver=3.5.1.6"></script>
+<link rel="icon" href="https://www.funhousemusicbar.com/wp-content/uploads/2021/03/cropped-logo-amarillo-32x32.jpg" sizes="32x32" />
+<link rel="icon" href="https://www.funhousemusicbar.com/wp-content/uploads/2021/03/cropped-logo-amarillo-192x192.jpg" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://www.funhousemusicbar.com/wp-content/uploads/2021/03/cropped-logo-amarillo-180x180.jpg" />
+<meta name="msapplication-TileImage" content="https://www.funhousemusicbar.com/wp-content/uploads/2021/03/cropped-logo-amarillo-270x270.jpg" />
+		
+		<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '400452109526829');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=400452109526829&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+		
+	</head>
+	<body class="archive post-type-archive post-type-archive-tc_events wp-theme-labstrap wp-child-theme-labstrap-child">
+		<nav class="navbar navbar-expand-lg navbar-light shadow-sm p-3">
+			<div class="container">
+				<a class="navbar-brand" href="https://www.funhousemusicbar.com/">
+					
+															<img class="brand mr-1" src="https://www.funhousemusicbar.com/wp-content/uploads/2020/07/funhousemusicbar-logo.png" alt="" />
+															
+				</a>
+				<button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+				</button>
+				<div id="navbarCollapse" class="navbar-collapse collapse"><ul id="menu-top" class="navbar-nav ml-auto"><li id="menu-item-6" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-6"><a title="Inicio" href="https://www.funhousemusicbar.com/">Inicio</a></li>
+<li id="menu-item-316" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item menu-item-316 active"><a title="Conciertos" href="/conciertos">Conciertos</a></li>
+<li id="menu-item-307" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-307"><a title="Sobre la sala" href="https://www.funhousemusicbar.com/sala-conciertos-madrid/">Sobre la sala</a></li>
+<li id="menu-item-306" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-306"><a title="Servicios" href="https://www.funhousemusicbar.com/servicios/">Servicios</a></li>
+<li id="menu-item-305" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-305"><a title="Rider" href="https://www.funhousemusicbar.com/rider/">Rider</a></li>
+<li id="menu-item-25523" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-25523"><a title="Contacto" href="https://www.funhousemusicbar.com/contacto/">Contacto</a></li>
+<li id="menu-item-729" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-729"><a title="Normativa y entradas" href="https://www.funhousemusicbar.com/normativa/">Normativa y entradas</a></li>
+</ul></div>			</div>
+		</div>
+	</nav><section class="pt-5 conciertos bg-light">
+  <div class="container">
+    <h1 class="mb-5 h2">Conciertos</h1>
+
+
+    
+<div class="row">
+  
+
+    <div class="col-md-4">
+  <div class="card border-0 shadow">
+
+<div class="mb-2">
+  <img src="https://www.funhousemusicbar.com/wp-content/uploads/2026/09/Sin-titulo-1-9.jpg">
+</div>
+
+    <div class="card-body">
+      
+            <h4 class="h6 mb-2 text-muted">29 Sep 20:30h</h4>
+
+       <h1 class="h5 mb-3"><a href="https://www.funhousemusicbar.com/conciertos/rolando-bruno-2/" class="text-dark">Rolando Bruno</a></h1>
+
+
+
+
+      <p class="mt-3"><a href="https://www.funhousemusicbar.com/conciertos/rolando-bruno-2/">Reserva</a></p>
+    </div>
+  </div>
+</div>
+    
+    <div class="col-md-4">
+  <div class="card border-0 shadow">
+
+<div class="mb-2">
+  <img src="https://www.funhousemusicbar.com/wp-content/uploads/2026/08/Sin-titulo-1-20.jpg">
+</div>
+
+    <div class="card-body">
+      
+            <h4 class="h6 mb-2 text-muted">30 Sep 21:00h</h4>
+
+       <h1 class="h5 mb-3"><a href="https://www.funhousemusicbar.com/conciertos/noel-mckay/" class="text-dark">NOEL MCKAY</a></h1>
+
+
+
+
+      <p class="mt-3"><a href="https://www.funhousemusicbar.com/conciertos/noel-mckay/">Reserva</a></p>
+    </div>
+  </div>
+</div>
+    
+    <div class="col-md-4">
+  <div class="card border-0 shadow">
+
+<div class="mb-2">
+  <img src="https://www.funhousemusicbar.com/wp-content/uploads/2026/08/Sin-titulo-1-18.jpg">
+</div>
+
+    <div class="card-body">
+      
+            <h4 class="h6 mb-2 text-muted">02 Oct 20:30h</h4>
+
+       <h1 class="h5 mb-3"><a href="https://www.funhousemusicbar.com/conciertos/artinsanos-veladura/" class="text-dark">ARTINSANOS + VELADURA</a></h1>
+
+
+
+
+      <p class="mt-3"><a href="https://www.funhousemusicbar.com/conciertos/artinsanos-veladura/">Reserva</a></p>
+    </div>
+  </div>
+</div>
+    
+    <div class="col-md-4">
+  <div class="card border-0 shadow">
+
+<div class="mb-2">
+  <img src="https://www.funhousemusicbar.com/wp-content/uploads/2026/09/Sin-titulo-1-4.jpg">
+</div>
+
+    <div class="card-body">
+      
+            <h4 class="h6 mb-2 text-muted">03 Oct 13:00h</h4>
+
+       <h1 class="h5 mb-3"><a href="https://www.funhousemusicbar.com/conciertos/scalped-leon/" class="text-dark">SCALPED + LËON</a></h1>
+
+
+
+
+      <p class="mt-3"><a href="https://www.funhousemusicbar.com/conciertos/scalped-leon/">Reserva</a></p>
+    </div>
+  </div>
+</div>
+    
+    <div class="col-md-4">
+  <div class="card border-0 shadow">
+
+<div class="mb-2">
+  <img src="https://www.funhousemusicbar.com/wp-content/uploads/2026/09/Sin-titulo-1-21.jpg">
+</div>
+
+    <div class="card-body">
+      
+            <h4 class="h6 mb-2 text-muted">03 Oct 21:00h</h4>
+
+       <h1 class="h5 mb-3"><a href="https://www.funhousemusicbar.com/conciertos/gorila-flo/" class="text-dark">GORILA FLO</a></h1>
+
+
+
+
+      <p class="mt-3"><a href="https://www.funhousemusicbar.com/conciertos/gorila-flo/">Reserva</a></p>
+    </div>
+  </div>
+</div>
+    
+    <div class="col-md-4">
+  <div class="card border-0 shadow">
+
+<div class="mb-2">
+  <img src="https://www.funhousemusicbar.com/wp-content/uploads/2026/09/Sin-titulo-1-22.jpg">
+</div>
+
+    <div class="card-body">
+      
+            <h4 class="h6 mb-2 text-muted">04 Oct 19:00h</h4>
+
+       <h1 class="h5 mb-3"><a href="https://www.funhousemusicbar.com/conciertos/mfc-chicken-2/" class="text-dark">MFC CHICKEN</a></h1>
+
+
+
+
+      <p class="mt-3"><a href="https://www.funhousemusicbar.com/conciertos/mfc-chicken-2/">Reserva</a></p>
+    </div>
+  </div>
+</div>
+    
+    <div class="col-md-4">
+  <div class="card border-0 shadow">
+
+<div class="mb-2">
+  <img src="https://www.funhousemusicbar.com/wp-content/uploads/2026/09/Sin-titulo-1-1.jpg">
+</div>
+
+    <div class="card-body">
+      
+            <h4 class="h6 mb-2 text-muted">06 Oct 20:30h</h4>
+
+       <h1 class="h5 mb-3"><a href="https://www.funhousemusicbar.com/conciertos/bryan-estepa/" class="text-dark">Bryan Estepa</a></h1>
+
+
+
+
+      <p class="mt-3"><a href="https://www.funhousemusicbar.com/conciertos/bryan-estepa/">Reserva</a></p>
+    </div>
+  </div>
+</div>
+    
+    <div class="col-md-4">
+  <div class="card border-0 shadow">
+
+<div class="mb-2">
+  <img src="https://www.funhousemusicbar.com/wp-content/uploads/2026/09/Sin-titulo-1-28.jpg">
+</div>
+
+    <div class="card-body">
+      
+            <h4 class="h6 mb-2 text-muted">07 Oct 20:30h</h4>
+
+       <h1 class="h5 mb-3"><a href="https://www.funhousemusicbar.com/conciertos/okmoniks-rnr-adventure-kids/" class="text-dark">OKMONIKS + R´N´R ADVENTURE KIDS</a></h1>
+
+
+
+
+      <p class="mt-3"><a href="https://www.funhousemusicbar.com/conciertos/okmoniks-rnr-adventure-kids/">Reserva</a></p>
+    </div>
+  </div>
+</div>
+    
+    <div class="col-md-4">
+  <div class="card border-0 shadow">
+
+<div class="mb-2">
+  <img src="https://www.funhousemusicbar.com/wp-content/uploads/2026/09/Sin-titulo-1-29.jpg">
+</div>
+
+    <div class="card-body">
+      
+            <h4 class="h6 mb-2 text-muted">09 Oct 20:30h</h4>
+
+       <h1 class="h5 mb-3"><a href="https://www.funhousemusicbar.com/conciertos/the-exbats-jibaros/" class="text-dark">The ExBats + Jíbaros</a></h1>
+
+
+
+
+      <p class="mt-3"><a href="https://www.funhousemusicbar.com/conciertos/the-exbats-jibaros/">Reserva</a></p>
+    </div>
+  </div>
+</div>
+    
+    <div class="col-md-4">
+  <div class="card border-0 shadow">
+
+<div class="mb-2">
+  <img src="https://www.funhousemusicbar.com/wp-content/uploads/2026/09/Sin-titulo-1-31.jpg">
+</div>
+
+    <div class="card-body">
+      
+            <h4 class="h6 mb-2 text-muted">10 Oct 12:30h</h4>
+
+       <h1 class="h5 mb-3"><a href="https://www.funhousemusicbar.com/conciertos/no-brakes/" class="text-dark">No Brakes</a></h1>
+
+
+
+
+      <p class="mt-3"><a href="https://www.funhousemusicbar.com/conciertos/no-brakes/">Reserva</a></p>
+    </div>
+  </div>
+</div>
+    
+    <div class="col-md-4">
+  <div class="card border-0 shadow">
+
+<div class="mb-2">
+  <img src="https://www.funhousemusicbar.com/wp-content/uploads/2026/09/Sin-titulo-1-14.jpg">
+</div>
+
+    <div class="card-body">
+      
+            <h4 class="h6 mb-2 text-muted">10 Oct 20:00h</h4>
+
+       <h1 class="h5 mb-3"><a href="https://www.funhousemusicbar.com/conciertos/analisis-miau-ranxo-relaxo/" class="text-dark">ANÁLISIS + ¡MIAU! + RANXO RELAXO</a></h1>
+
+
+
+
+      <p class="mt-3"><a href="https://www.funhousemusicbar.com/conciertos/analisis-miau-ranxo-relaxo/">Reserva</a></p>
+    </div>
+  </div>
+</div>
+    
+    <div class="col-md-4">
+  <div class="card border-0 shadow">
+
+<div class="mb-2">
+  <img src="https://www.funhousemusicbar.com/wp-content/uploads/2026/09/Sin-titulo-1-11.jpg">
+</div>
+
+    <div class="card-body">
+      
+            <h4 class="h6 mb-2 text-muted">11 Oct 20:30h</h4>
+
+       <h1 class="h5 mb-3"><a href="https://www.funhousemusicbar.com/conciertos/pat-todd-the-ranloutsiders/" class="text-dark">PAT TODD &#038; THE RANKOUTSIDERS</a></h1>
+
+
+
+
+      <p class="mt-3"><a href="https://www.funhousemusicbar.com/conciertos/pat-todd-the-ranloutsiders/">Reserva</a></p>
+    </div>
+  </div>
+</div>
+    
+    <div class="col-md-4">
+  <div class="card border-0 shadow">
+
+<div class="mb-2">
+  <img src="https://www.funhousemusicbar.com/wp-content/uploads/2026/09/Sin-titulo-1-25.jpg">
+</div>
+
+    <div class="card-body">
+      
+            <h4 class="h6 mb-2 text-muted">12 Oct 20:30h</h4>
+
+       <h1 class="h5 mb-3"><a href="https://www.funhousemusicbar.com/conciertos/the-prize/" class="text-dark">The Prize</a></h1>
+
+
+
+
+      <p class="mt-3"><a href="https://www.funhousemusicbar.com/conciertos/the-prize/">Reserva</a></p>
+    </div>
+  </div>
+</div>
+    
+    <div class="col-md-4">
+  <div class="card border-0 shadow">
+
+<div class="mb-2">
+  <img src="https://www.funhousemusicbar.com/wp-content/uploads/2026/09/Sin-titulo-1-24.jpg">
+</div>
+
+    <div class="card-body">
+      
+            <h4 class="h6 mb-2 text-muted">13 Oct 20:30h</h4>
+
+       <h1 class="h5 mb-3"><a href="https://www.funhousemusicbar.com/conciertos/mod-lang/" class="text-dark">Mod Lang</a></h1>
+
+
+
+
+      <p class="mt-3"><a href="https://www.funhousemusicbar.com/conciertos/mod-lang/">Reserva</a></p>
+    </div>
+  </div>
+</div>
+    
+    <div class="col-md-4">
+  <div class="card border-0 shadow">
+
+<div class="mb-2">
+  <img src="https://www.funhousemusicbar.com/wp-content/uploads/2026/08/Sin-titulo-1-14.jpg">
+</div>
+
+    <div class="card-body">
+      
+            <h4 class="h6 mb-2 text-muted">14 Oct 20:00h</h4>
+
+       <h1 class="h5 mb-3"><a href="https://www.funhousemusicbar.com/conciertos/pilot-on-mars-leper-colony/" class="text-dark">PILOT ON MARS + LEPER COLONY</a></h1>
+
+
+
+
+      <p class="mt-3"><a href="https://www.funhousemusicbar.com/conciertos/pilot-on-mars-leper-colony/">Reserva</a></p>
+    </div>
+  </div>
+</div>
+    
+    <div class="col-md-4">
+  <div class="card border-0 shadow">
+
+<div class="mb-2">
+  <img src="https://www.funhousemusicbar.com/wp-content/uploads/2026/05/Sin-titulo-1-31.jpg">
+</div>
+
+    <div class="card-body">
+      
+            <h4 class="h6 mb-2 text-muted">15 Oct 20:30h</h4>
+
+       <h1 class="h5 mb-3"><a href="https://www.funhousemusicbar.com/conciertos/james-oliver-band/" class="text-dark">JAMES OLIVER BAND (featuring Norman Watt-Roy)</a></h1>
+
+
+
+
+      <p class="mt-3"><a href="https://www.funhousemusicbar.com/conciertos/james-oliver-band/">Reserva</a></p>
+    </div>
+  </div>
+</div>
+    
+    <div class="col-md-4">
+  <div class="card border-0 shadow">
+
+<div class="mb-2">
+  <img src="https://www.funhousemusicbar.com/wp-content/uploads/2026/06/Sin-titulo-1-1.jpg">
+</div>
+
+    <div class="card-body">
+      
+            <h4 class="h6 mb-2 text-muted">16 Oct 20:30h</h4>
+
+       <h1 class="h5 mb-3"><a href="https://www.funhousemusicbar.com/conciertos/mallo/" class="text-dark">MALLO</a></h1>
+
+
+
+
+      <p class="mt-3"><a href="https://www.funhousemusicbar.com/conciertos/mallo/">Reserva</a></p>
+    </div>
+  </div>
+</div>
+    
+    <div class="col-md-4">
+  <div class="card border-0 shadow">
+
+<div class="mb-2">
+  <img src="https://www.funhousemusicbar.com/wp-content/uploads/2026/09/Sin-titulo-1-16.jpg">
+</div>
+
+    <div class="card-body">
+      
+            <h4 class="h6 mb-2 text-muted">17 Oct 12:00h</h4>
+
+       <h1 class="h5 mb-3"><a href="https://www.funhousemusicbar.com/conciertos/mayores-con-reparos/" class="text-dark">Mayores con Reparos</a></h1>
+
+
+
+
+      <p class="mt-3"><a href="https://www.funhousemusicbar.com/conciertos/mayores-con-reparos/">Reserva</a></p>
+    </div>
+  </div>
+</div>
+    
+    <div class="col-md-4">
+  <div class="card border-0 shadow">
+
+<div class="mb-2">
+  <img src="https://www.funhousemusicbar.com/wp-content/uploads/2026/09/Sin-titulo-1-19.jpg">
+</div>
+
+    <div class="card-body">
+      
+            <h4 class="h6 mb-2 text-muted">17 Oct 20:30h</h4>
+
+       <h1 class="h5 mb-3"><a href="https://www.funhousemusicbar.com/conciertos/melliza-betty-rizzo/" class="text-dark">Melliza + Betty Rizzo</a></h1>
+
+
+
+
+      <p class="mt-3"><a href="https://www.funhousemusicbar.com/conciertos/melliza-betty-rizzo/">Reserva</a></p>
+    </div>
+  </div>
+</div>
+    
+    <div class="col-md-4">
+  <div class="card border-0 shadow">
+
+<div class="mb-2">
+  <img src="https://www.funhousemusicbar.com/wp-content/uploads/2026/09/Sin-titulo-1-7.jpg">
+</div>
+
+    <div class="card-body">
+      
+            <h4 class="h6 mb-2 text-muted">18 Oct 12:30h</h4>
+
+       <h1 class="h5 mb-3"><a href="https://www.funhousemusicbar.com/conciertos/espino/" class="text-dark">Espino</a></h1>
+
+
+
+
+      <p class="mt-3"><a href="https://www.funhousemusicbar.com/conciertos/espino/">Reserva</a></p>
+    </div>
+  </div>
+</div>
+    
+    <div class="col-md-4">
+  <div class="card border-0 shadow">
+
+<div class="mb-2">
+  <img src="https://www.funhousemusicbar.com/wp-content/uploads/2026/09/Sin-titulo-1-5.jpg">
+</div>
+
+    <div class="card-body">
+      
+            <h4 class="h6 mb-2 text-muted">18 Oct 17:00h</h4>
+
+       <h1 class="h5 mb-3"><a href="https://www.funhousemusicbar.com/conciertos/montxika-baut-3/" class="text-dark">MONTXIKA BAUT</a></h1>
+
+
+
+
+      <p class="mt-3"><a href="https://www.funhousemusicbar.com/conciertos/montxika-baut-3/">Reserva</a></p>
+    </div>
+  </div>
+</div>
+    
+    <div class="col-md-4">
+  <div class="card border-0 shadow">
+
+<div class="mb-2">
+  <img src="https://www.funhousemusicbar.com/wp-content/uploads/2026/08/Sin-titulo-1-13.jpg">
+</div>
+
+    <div class="card-body">
+      
+            <h4 class="h6 mb-2 text-muted">18 Oct 19:00h</h4>
+
+       <h1 class="h5 mb-3"><a href="https://www.funhousemusicbar.com/conciertos/biuret/" class="text-dark">Biuret</a></h1>
+
+
+
+
+      <p class="mt-3"><a href="https://www.funhousemusicbar.com/conciertos/biuret/">Reserva</a></p>
+    </div>
+  </div>
+</div>
+    
+    <div class="col-md-4">
+  <div class="card border-0 shadow">
+
+<div class="mb-2">
+  <img src="https://www.funhousemusicbar.com/wp-content/uploads/2026/09/Sin-titulo-1-12.jpg">
+</div>
+
+    <div class="card-body">
+      
+            <h4 class="h6 mb-2 text-muted">21 Oct 20:30h</h4>
+
+       <h1 class="h5 mb-3"><a href="https://www.funhousemusicbar.com/conciertos/kim-salmons-smoked-salmon-mala-leche/" class="text-dark">KIM SALMON&#8217;S SMOKED SALMON + MALA LECHE</a></h1>
+
+
+
+
+      <p class="mt-3"><a href="https://www.funhousemusicbar.com/conciertos/kim-salmons-smoked-salmon-mala-leche/">Reserva</a></p>
+    </div>
+  </div>
+</div>
+    
+    <div class="col-md-4">
+  <div class="card border-0 shadow">
+
+<div class="mb-2">
+  <img src="https://www.funhousemusicbar.com/wp-content/uploads/2026/08/Sin-titulo-1-27.jpg">
+</div>
+
+    <div class="card-body">
+      
+            <h4 class="h6 mb-2 text-muted">23 Oct 20:30h</h4>
+
+       <h1 class="h5 mb-3"><a href="https://www.funhousemusicbar.com/conciertos/los-malinches-ian-kay/" class="text-dark">Ian Kay + Los Malinches</a></h1>
+
+
+
+
+      <p class="mt-3"><a href="https://www.funhousemusicbar.com/conciertos/los-malinches-ian-kay/">Reserva</a></p>
+    </div>
+  </div>
+</div>
+    
+    <div class="col-md-4">
+  <div class="card border-0 shadow">
+
+<div class="mb-2">
+  <img src="https://www.funhousemusicbar.com/wp-content/uploads/2026/09/Sin-titulo-1-17.jpg">
+</div>
+
+    <div class="card-body">
+      
+            <h4 class="h6 mb-2 text-muted">24 Oct 12:30h</h4>
+
+       <h1 class="h5 mb-3"><a href="https://www.funhousemusicbar.com/conciertos/sticky-cherries/" class="text-dark">Sticky Cherries</a></h1>
+
+
+
+
+      <p class="mt-3"><a href="https://www.funhousemusicbar.com/conciertos/sticky-cherries/">Reserva</a></p>
+    </div>
+  </div>
+</div>
+    
+    <div class="col-md-4">
+  <div class="card border-0 shadow">
+
+<div class="mb-2">
+  <img src="https://www.funhousemusicbar.com/wp-content/uploads/2026/09/Sin-titulo-1-26.jpg">
+</div>
+
+    <div class="card-body">
+      
+            <h4 class="h6 mb-2 text-muted">24 Oct 21:00h</h4>
+
+       <h1 class="h5 mb-3"><a href="https://www.funhousemusicbar.com/conciertos/the-laser-society-2/" class="text-dark">The Laser Society</a></h1>
+
+
+
+
+      <p class="mt-3"><a href="https://www.funhousemusicbar.com/conciertos/the-laser-society-2/">Reserva</a></p>
+    </div>
+  </div>
+</div>
+    
+    <div class="col-md-4">
+  <div class="card border-0 shadow">
+
+<div class="mb-2">
+  <img src="https://www.funhousemusicbar.com/wp-content/uploads/2026/09/Sin-titulo-1-13.jpg">
+</div>
+
+    <div class="card-body">
+      
+            <h4 class="h6 mb-2 text-muted">29 Oct 20:30h</h4>
+
+       <h1 class="h5 mb-3"><a href="https://www.funhousemusicbar.com/conciertos/yo-somos-2/" class="text-dark">Yo Somos</a></h1>
+
+
+
+
+      <p class="mt-3"><a href="https://www.funhousemusicbar.com/conciertos/yo-somos-2/">Reserva</a></p>
+    </div>
+  </div>
+</div>
+    
+    <div class="col-md-4">
+  <div class="card border-0 shadow">
+
+<div class="mb-2">
+  <img src="https://www.funhousemusicbar.com/wp-content/uploads/2026/09/Sin-titulo-1-18.jpg">
+</div>
+
+    <div class="card-body">
+      
+            <h4 class="h6 mb-2 text-muted">31 Oct 20:30h</h4>
+
+       <h1 class="h5 mb-3"><a href="https://www.funhousemusicbar.com/conciertos/halloween-fruit-tones-the-lets-gos-los-repuestos-playing-the-replacements/" class="text-dark">HALLOWEEN! FRUIT TONES + THE LET&#8217;S GO&#8217;S + LOS REPUESTOS (PLAYING THE REPLACEMENTS)</a></h1>
+
+
+
+
+      <p class="mt-3"><a href="https://www.funhousemusicbar.com/conciertos/halloween-fruit-tones-the-lets-gos-los-repuestos-playing-the-replacements/">Reserva</a></p>
+    </div>
+  </div>
+</div>
+    
+    <div class="col-md-4">
+  <div class="card border-0 shadow">
+
+<div class="mb-2">
+  <img src="https://www.funhousemusicbar.com/wp-content/uploads/2026/08/Sin-titulo-1-4.jpg">
+</div>
+
+    <div class="card-body">
+      
+            <h4 class="h6 mb-2 text-muted">03 Nov 20:30h</h4>
+
+       <h1 class="h5 mb-3"><a href="https://www.funhousemusicbar.com/conciertos/the-sensational-second-cousins/" class="text-dark">THE SENSATIONAL SECOND COUSINS</a></h1>
+
+
+
+
+      <p class="mt-3"><a href="https://www.funhousemusicbar.com/conciertos/the-sensational-second-cousins/">Reserva</a></p>
+    </div>
+  </div>
+</div>
+    
+    <div class="col-md-4">
+  <div class="card border-0 shadow">
+
+<div class="mb-2">
+  <img src="https://www.funhousemusicbar.com/wp-content/uploads/2026/08/Sin-titulo-1-15.jpg">
+</div>
+
+    <div class="card-body">
+      
+            <h4 class="h6 mb-2 text-muted">04 Nov 20:30h</h4>
+
+       <h1 class="h5 mb-3"><a href="https://www.funhousemusicbar.com/conciertos/radio-days/" class="text-dark">Radio Days</a></h1>
+
+
+
+
+      <p class="mt-3"><a href="https://www.funhousemusicbar.com/conciertos/radio-days/">Reserva</a></p>
+    </div>
+  </div>
+</div>
+    
+    <div class="col-md-4">
+  <div class="card border-0 shadow">
+
+<div class="mb-2">
+  <img src="https://www.funhousemusicbar.com/wp-content/uploads/2026/09/Sin-titulo-1-2.jpg">
+</div>
+
+    <div class="card-body">
+      
+            <h4 class="h6 mb-2 text-muted">05 Nov 20:30h</h4>
+
+       <h1 class="h5 mb-3"><a href="https://www.funhousemusicbar.com/conciertos/santi-campos-e-hijos-jj-extremera/" class="text-dark">SANTI CAMPOS E HIJOS + JJ EXTREMERA</a></h1>
+
+
+
+
+      <p class="mt-3"><a href="https://www.funhousemusicbar.com/conciertos/santi-campos-e-hijos-jj-extremera/">Reserva</a></p>
+    </div>
+  </div>
+</div>
+    
+    <div class="col-md-4">
+  <div class="card border-0 shadow">
+
+<div class="mb-2">
+  <img src="https://www.funhousemusicbar.com/wp-content/uploads/2026/09/Sin-titulo-1-30.jpg">
+</div>
+
+    <div class="card-body">
+      
+            <h4 class="h6 mb-2 text-muted">13 Nov 20:30h</h4>
+
+       <h1 class="h5 mb-3"><a href="https://www.funhousemusicbar.com/conciertos/the-gnomes/" class="text-dark">The Gnomes</a></h1>
+
+
+
+
+      <p class="mt-3"><a href="https://www.funhousemusicbar.com/conciertos/the-gnomes/">Reserva</a></p>
+    </div>
+  </div>
+</div>
+    
+    <div class="col-md-4">
+  <div class="card border-0 shadow">
+
+<div class="mb-2">
+  <img src="https://www.funhousemusicbar.com/wp-content/uploads/2026/09/Sin-titulo-1-27.jpg">
+</div>
+
+    <div class="card-body">
+      
+            <h4 class="h6 mb-2 text-muted">20 Nov 20:00h</h4>
+
+       <h1 class="h5 mb-3"><a href="https://www.funhousemusicbar.com/conciertos/lapsus-koe/" class="text-dark">Lapsus + Koe</a></h1>
+
+
+
+
+      <p class="mt-3"><a href="https://www.funhousemusicbar.com/conciertos/lapsus-koe/">Reserva</a></p>
+    </div>
+  </div>
+</div>
+    
+    <div class="col-md-4">
+  <div class="card border-0 shadow">
+
+<div class="mb-2">
+  <img src="https://www.funhousemusicbar.com/wp-content/uploads/2026/05/Sin-titulo-1-34.jpg">
+</div>
+
+    <div class="card-body">
+      
+            <h4 class="h6 mb-2 text-muted">25 Nov 20:30h</h4>
+
+       <h1 class="h5 mb-3"><a href="https://www.funhousemusicbar.com/conciertos/mojo-thunder/" class="text-dark">MOJO THUNDER</a></h1>
+
+
+
+
+      <p class="mt-3"><a href="https://www.funhousemusicbar.com/conciertos/mojo-thunder/">Reserva</a></p>
+    </div>
+  </div>
+</div>
+    
+    <div class="col-md-4">
+  <div class="card border-0 shadow">
+
+<div class="mb-2">
+  <img src="https://www.funhousemusicbar.com/wp-content/uploads/2026/07/Sin-titulo-1-1.jpg">
+</div>
+
+    <div class="card-body">
+      
+            <h4 class="h6 mb-2 text-muted">29 Nov 12:00h</h4>
+
+       <h1 class="h5 mb-3"><a href="https://www.funhousemusicbar.com/conciertos/tesouro-m-a-p-a/" class="text-dark">Tesouro + m.a.p.a</a></h1>
+
+
+
+
+      <p class="mt-3"><a href="https://www.funhousemusicbar.com/conciertos/tesouro-m-a-p-a/">Reserva</a></p>
+    </div>
+  </div>
+</div>
+    
+    <div class="col-md-4">
+  <div class="card border-0 shadow">
+
+<div class="mb-2">
+  <img src="https://www.funhousemusicbar.com/wp-content/uploads/2026/09/Sin-titulo-1-20.jpg">
+</div>
+
+    <div class="card-body">
+      
+            <h4 class="h6 mb-2 text-muted">18 Dic 12:30h</h4>
+
+       <h1 class="h5 mb-3"><a href="https://www.funhousemusicbar.com/conciertos/los-chicos-25o-aniversario-en-el-sol/" class="text-dark">LOS CHICOS 25º aniversario en El Sol</a></h1>
+
+
+
+
+      <p class="mt-3"><a href="https://www.funhousemusicbar.com/conciertos/los-chicos-25o-aniversario-en-el-sol/">Reserva</a></p>
+    </div>
+  </div>
+</div>
+    
+    <div class="col-md-4">
+  <div class="card border-0 shadow">
+
+<div class="mb-2">
+  <img src="https://www.funhousemusicbar.com/wp-content/uploads/2026/09/Sin-titulo-1-15.jpg">
+</div>
+
+    <div class="card-body">
+      
+            <h4 class="h6 mb-2 text-muted">09 Ene 13:00h</h4>
+
+       <h1 class="h5 mb-3"><a href="https://www.funhousemusicbar.com/conciertos/howlin-ramblers-2/" class="text-dark">HOWLIN&#8217; RAMBLERS</a></h1>
+
+
+
+
+      <p class="mt-3"><a href="https://www.funhousemusicbar.com/conciertos/howlin-ramblers-2/">Reserva</a></p>
+    </div>
+  </div>
+</div>
+    
+    <div class="col-md-4">
+  <div class="card border-0 shadow">
+
+<div class="mb-2">
+  <img src="https://www.funhousemusicbar.com/wp-content/uploads/2026/06/270221-Monsters-FH-1080x1350-1.jpg">
+</div>
+
+    <div class="card-body">
+      
+            <h4 class="h6 mb-2 text-muted">21 Feb 19:00h</h4>
+
+       <h1 class="h5 mb-3"><a href="https://www.funhousemusicbar.com/conciertos/the-monsters/" class="text-dark">THE MONSTERS</a></h1>
+
+
+
+
+      <p class="mt-3"><a href="https://www.funhousemusicbar.com/conciertos/the-monsters/">Reserva</a></p>
+    </div>
+  </div>
+</div>
+    
+            </div>
+
+        
+  </div>
+</section>
+<footer class="pt-4 pt-md-5 pb-4 pb-md-5 border-top" style="background-color: #000000;">
+  <div class="container">
+    
+
+    <div class="row">
+      <div class="col-md-8">
+        <ul class="list-unstyled small">
+          <li class="mb-1"><a style="color: #a1a5a8;" href="https://www.funhousemusicbar.com/sala-conciertos-madrid/">Sobre Sala Fun House</a></li>
+          <li class="mb-1"><a style="color: #a1a5a8;" href="/conciertos">Agenda de conciertos</a></li>
+          <li class="mb-1"><a style="color: #a1a5a8;" href="https://www.funhousemusicbar.com/politica-privacidad/">Política de privacidad</a></li>
+          <li class="mb-4"><a style="color: #a1a5a8;" href="https://www.funhousemusicbar.com/aviso-legal/">Aviso legal y política de cookies</a></li>
+        </ul>
+      </div>
+      <div class="col-md-4">
+          <h4 class="mb-1 h3"><a style="color: #a1a5a8;" href="https://www.instagram.com/funhousemusicbar/" target="_blank"><i class="fa fa-instagram mr-2"></i></a>
+   <a style="color: #a1a5a8;" href="https://www.facebook.com/funhousemusicbarmadrid/" target="_blank"> <i class="fa fa-facebook-official mr-2"></i></a>
+  <a style="color: #a1a5a8;" href="https://twitter.com/funhousemadrid" target="_blank"><i class="fa fa-twitter-square"></i></a></h4><div class="logoI"><img src="/wp-content/uploads/2021/05/Logo-INAEM.png" />
+  </div>
+  </div>
+    </div>
+   
+<hr>
+
+        <div class="row">
+          <div class="col-12 col-md">
+            <small class="d-block mb-3 text-muted">© Fun House Music Bar - 2026</small>
+          </div>
+        </div>
+        </div>
+  
+      </footer>
+
+<script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/labstrap-child/*","/wp-content/themes/labstrap/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+<script src='https://www.google.com/recaptcha/api.js?hl=es'></script>
+
+<script>  
+var el = document.querySelector('.navbar-toggler');
+var menu = document.querySelector('#navbarCollapse');
+el.onclick = function() {
+menu.classList.toggle('show');
+}
+</script>
+
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-C7ZKQBX7SR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+ 
+  gtag('config', 'G-C7ZKQBX7SR');
+</script>
+ 
+
+
+</body>
+</html>
