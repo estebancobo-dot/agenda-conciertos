@@ -51,3 +51,13 @@ def test_categorias():
 def test_discogs_literal():
     assert discogs(["Indie Rock, Post Punk"]) == (["Indie Rock", "Post-Punk"], ["Rock"])
     assert discogs(["Músicas negras"]) == ([], [])
+
+
+def test_relleno_no_es_invitado():
+    from scraper.normalize import es_relleno
+    from scraper.sources.base import make
+    assert all(es_relleno(x) for x in ["INVITADOS ESPECIALES", "y más", "Banda invitada", "por confirmar", "DJ",
+                                       "OFERTA ESPECIAL EN SKALLOWEEN MAD FEST"])
+    assert not any(es_relleno(x) for x in ["Los Invitados", "Más Birras", "Dj Hueka", "Komodor"])
+    e = make(date(2026, 10, 17), "SABBAT + Invitados especiales + Omission", "u")
+    assert (e.artista, e.invitados) == ("SABBAT", ["Omission"])

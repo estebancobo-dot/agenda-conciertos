@@ -12,7 +12,7 @@ from dataclasses import dataclass, field
 
 from .clasificar import categoria_de, categorias_de, discogs, en_foco, titulo_fuera_de_foco
 from .model import RawEvent, Source
-from .normalize import clean, contiene, es_generico, misma_sala, norm, parecido, parecido_flexible
+from .normalize import clean, contiene, es_generico, es_relleno, misma_sala, norm, parecido, parecido_flexible
 
 UMBRAL = 90
 
@@ -182,7 +182,7 @@ def construir(cluster: Cluster, municipio_de) -> dict:
     invitados: list[str] = []
     for it in sorted(items, key=lambda i: i.src.prioridad):
         for n in [it.ev.artista, *it.ev.invitados]:
-            if parecido_flexible(n, artista) >= UMBRAL or es_generico(n):
+            if parecido_flexible(n, artista) >= UMBRAL or es_generico(n) or es_relleno(n):
                 continue
             if any(parecido_flexible(n, x) >= UMBRAL for x in invitados):
                 continue

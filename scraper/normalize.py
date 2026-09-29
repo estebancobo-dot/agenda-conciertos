@@ -340,6 +340,20 @@ GENERICOS = {norm(x) for x in [
     "concierto", "conciertos", "candlelight", "tributo", "fiesta", "karaoke"]}
 
 
+_RELLENO = re.compile(
+    r"^(y |mas |\+ )?((artistas?|bandas?|grupos?|dj s?) )?(invitad[oa]s?|sorpresa|por (confirmar|anunciar|determinar)|tba)"
+    r"( especiales?| sorpresa| por confirmar)?$"
+    r"|^(y |\+ )?mas( artistas| bandas| grupos| invitados| sorpresas)?$"
+    r"|^(y |\+ )?(muchos|otros) mas$|^y otros$|^etc$|^djs?$|^dj set$"
+    r"|\boferta\b|\bentradas?\b|\bdescuento\b|\bpromocion\b")
+
+
+def es_relleno(nombre: str) -> bool:
+    """Textos que las fuentes ponen en el cartel pero no son artistas: 'invitados especiales', 'y más',
+    'banda invitada', 'por confirmar', 'DJ', ofertas de entradas…"""
+    return bool(_RELLENO.search(norm(nombre)))
+
+
 def es_generico(nombre: str) -> bool:
     n = norm(nombre)
     return n in GENERICOS or len(n) < 3

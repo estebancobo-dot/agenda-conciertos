@@ -11,7 +11,7 @@ from bs4 import BeautifulSoup
 
 from ..fetch import Fetcher
 from ..model import RawEvent
-from ..normalize import clean, extrae_pais, parse_fecha_texto, parse_hora, split_artistas
+from ..normalize import clean, es_relleno, extrae_pais, parse_fecha_texto, parse_hora, split_artistas
 
 
 @dataclass
@@ -49,7 +49,7 @@ def make(fecha: date, nombre: str, url: str, *, split: bool = True, **kw) -> Raw
     invitados = kw.pop("invitados", None)
     if split and invitados is None:
         nombre, invitados = split_artistas(nombre)
-    invitados = [clean(i) for i in (invitados or []) if clean(i)]
+    invitados = [clean(i) for i in (invitados or []) if clean(i) and not es_relleno(i)]
     nombre, pais = extrae_pais(nombre)
     if pais and not kw.get("nacionalidad"):
         kw["nacionalidad"] = pais
