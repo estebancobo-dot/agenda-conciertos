@@ -253,35 +253,35 @@
  "historial_fuentes": {
   "cc_buscador": {
    "ultima_ok": "2026-09-29",
-   "ultimo_conteo": 1461
+   "ultimo_conteo": 1462
   },
   "cc_portada": {
    "ultima_ok": "2026-09-29",
-   "ultimo_conteo": 549
+   "ultimo_conteo": 550
   },
   "cc_estilos": {
    "ultima_ok": "2026-09-29",
-   "ultimo_conteo": 666
+   "ultimo_conteo": 667
   },
   "laganzua": {
    "ultima_ok": "2026-09-29",
-   "ultimo_conteo": 213
+   "ultimo_conteo": 214
   },
   "cpm": {
    "ultima_ok": "2026-09-29",
-   "ultimo_conteo": 131
+   "ultimo_conteo": 132
   },
   "madridenvivo": {
    "ultima_ok": "2026-09-29",
-   "ultimo_conteo": 952
+   "ultimo_conteo": 967
   },
   "songkick": {
    "ultima_ok": "2026-09-29",
-   "ultimo_conteo": 569
+   "ultimo_conteo": 570
   },
   "rockandblog": {
    "ultima_ok": "2026-09-29",
-   "ultimo_conteo": 72
+   "ultimo_conteo": 73
   },
   "tm_blog": {
    "ultima_ok": "2026-09-29",
@@ -313,11 +313,11 @@
   },
   "rockforeveryone": {
    "ultima_ok": "2026-09-29",
-   "ultimo_conteo": 22
+   "ultimo_conteo": 23
   },
   "mariskal": {
    "ultima_ok": "2026-09-29",
-   "ultimo_conteo": 154
+   "ultimo_conteo": 155
   },
   "madness": {
    "ultima_ok": "2026-09-29",
@@ -377,7 +377,7 @@
   },
   "wagon": {
    "ultima_ok": "2026-09-29",
-   "ultimo_conteo": 21
+   "ultimo_conteo": 20
   },
   "revi": {
    "ultima_ok": "2026-09-29",
@@ -385,7 +385,7 @@
   },
   "chango": {
    "ultima_ok": "2026-09-29",
-   "ultimo_conteo": 6
+   "ultimo_conteo": 7
   },
   "salabut": {
    "ultima_ok": "2026-09-29",
@@ -452,5 +452,5 @@
    "ultimo_conteo": 0
   }
  },
- "ultima_ejecucion": "2026-09-29T10:32:26+00:00"
+ "ultima_ejecucion": "2026-09-29T11:29:44+00:00"
 }

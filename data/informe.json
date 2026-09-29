@@ -1,22 +1,22 @@
 {
  "version": "2.0.0",
- "generado": "2026-09-29T10:32:26+00:00",
+ "generado": "2026-09-29T11:29:44+00:00",
  "hoy": "2026-09-29",
  "horizonte": "2027-01-27",
- "duracion_seg": 2013,
+ "duracion_seg": 2132,
  "totales": {
-  "conciertos": 2634,
-  "en_foco": 1734,
+  "conciertos": 2651,
+  "en_foco": 1751,
   "contrastados": 669,
-  "una_fuente": 1846,
-  "conflictos": 119,
-  "posiblemente_cancelados": 0,
-  "nuevos_hoy": 2634,
+  "una_fuente": 1833,
+  "conflictos": 118,
+  "posiblemente_cancelados": 31,
+  "nuevos_hoy": 17,
   "fuentes_ok": 63,
   "fuentes_total": 77,
-  "peticiones_http": 346,
-  "fuera_de_ventana": 1011,
-  "fuera_de_ambito": 1046,
+  "peticiones_http": 288,
+  "fuera_de_ventana": 1009,
+  "fuera_de_ambito": 1049,
   "ejemplos_fuera_de_ambito": [
    "2026-10-03 Hombres G @ Palau Sant Jordi (Barcelona) [Blog de Ticketmaster (agenda rock)]",
    "2026-11-14 Hombres G @ Roig Arena (Valencia) [Blog de Ticketmaster (agenda rock)]",
@@ -58,9 +58,9 @@
    "notas": "",
    "funciono": true,
    "estado": "ok",
-   "conciertos": 1461,
-   "nuevos": 1461,
-   "solo_en_esta": 873,
+   "conciertos": 1462,
+   "nuevos": 1,
+   "solo_en_esta": 872,
    "eventos_brutos": 1468,
    "paginas": 18,
    "errores": [],
@@ -81,16 +81,16 @@
    "notas": "",
    "funciono": true,
    "estado": "ok",
-   "conciertos": 549,
-   "nuevos": 549,
-   "solo_en_esta": 241,
+   "conciertos": 550,
+   "nuevos": 1,
+   "solo_en_esta": 240,
    "eventos_brutos": 550,
    "paginas": 1,
    "errores": [],
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 8.1
+   "segundos": 4.0
   },
   {
    "id": "cc_estilos",
@@ -104,8 +104,8 @@
    "notas": "",
    "funciono": true,
    "estado": "ok",
-   "conciertos": 666,
-   "nuevos": 666,
+   "conciertos": 667,
+   "nuevos": 1,
    "solo_en_esta": 342,
    "eventos_brutos": 771,
    "paginas": 12,
@@ -113,7 +113,7 @@
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 50.8
+   "segundos": 50.6
   },
   {
    "id": "laganzua",
@@ -127,8 +127,8 @@
    "notas": "",
    "funciono": true,
    "estado": "ok",
-   "conciertos": 213,
-   "nuevos": 213,
+   "conciertos": 214,
+   "nuevos": 1,
    "solo_en_esta": 25,
    "eventos_brutos": 220,
    "paginas": 18,
@@ -136,7 +136,7 @@
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 36.4
+   "segundos": 36.6
   },
   {
    "id": "cpm",
@@ -150,8 +150,8 @@
    "notas": "",
    "funciono": true,
    "estado": "ok",
-   "conciertos": 131,
-   "nuevos": 131,
+   "conciertos": 132,
+   "nuevos": 1,
    "solo_en_esta": 2,
    "eventos_brutos": 366,
    "paginas": 5,
@@ -159,7 +159,7 @@
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 10.2
+   "segundos": 10.6
   },
   {
    "id": "ticketle",
@@ -198,18 +198,18 @@
    "notas": "",
    "funciono": true,
    "estado": "ok",
-   "conciertos": 952,
-   "nuevos": 952,
-   "solo_en_esta": 647,
-   "eventos_brutos": 980,
-   "paginas": 104,
+   "conciertos": 967,
+   "nuevos": 14,
+   "solo_en_esta": 663,
+   "eventos_brutos": 965,
+   "paginas": 102,
    "errores": [
-    "tiempo máximo alcanzado: estilo 'Flamenco Capital' leído hasta la página 15"
+    "tiempo máximo alcanzado: estilo 'Flamenco Capital' leído hasta la página 12"
    ],
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 1203.2
+   "segundos": 1200.3
   },
   {
    "id": "songkick",
@@ -223,8 +223,8 @@
    "notas": "",
    "funciono": true,
    "estado": "ok",
-   "conciertos": 569,
-   "nuevos": 569,
+   "conciertos": 570,
+   "nuevos": 1,
    "solo_en_esta": 175,
    "eventos_brutos": 650,
    "paginas": 13,
@@ -232,7 +232,7 @@
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 26.2
+   "segundos": 26.1
   },
   {
    "id": "bandsintown",
@@ -271,8 +271,8 @@
    "notas": "",
    "funciono": true,
    "estado": "ok",
-   "conciertos": 72,
-   "nuevos": 72,
+   "conciertos": 73,
+   "nuevos": 1,
    "solo_en_esta": 2,
    "eventos_brutos": 106,
    "paginas": 1,
@@ -280,7 +280,7 @@
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 3.3
+   "segundos": 2.4
   },
   {
    "id": "tm_blog",
@@ -295,7 +295,7 @@
    "funciono": true,
    "estado": "ok",
    "conciertos": 15,
-   "nuevos": 15,
+   "nuevos": 0,
    "solo_en_esta": 0,
    "eventos_brutos": 33,
    "paginas": 1,
@@ -343,15 +343,15 @@
    "funciono": true,
    "estado": "ok",
    "conciertos": 14,
-   "nuevos": 14,
+   "nuevos": 0,
    "solo_en_esta": 0,
-   "eventos_brutos": 118,
+   "eventos_brutos": 121,
    "paginas": 1,
    "errores": [],
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 3.7
+   "segundos": 3.3
   },
   {
    "id": "metallegion",
@@ -366,7 +366,7 @@
    "funciono": true,
    "estado": "ok",
    "conciertos": 40,
-   "nuevos": 40,
+   "nuevos": 0,
    "solo_en_esta": 1,
    "eventos_brutos": 196,
    "paginas": 1,
@@ -374,7 +374,7 @@
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 2.6
+   "segundos": 2.5
   },
   {
    "id": "metalcry",
@@ -389,15 +389,15 @@
    "funciono": true,
    "estado": "ok",
    "conciertos": 23,
-   "nuevos": 23,
-   "solo_en_esta": 0,
+   "nuevos": 1,
+   "solo_en_esta": 1,
    "eventos_brutos": 155,
    "paginas": 1,
    "errores": [],
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 5.6
+   "segundos": 5.5
   },
   {
    "id": "hellpress",
@@ -412,7 +412,7 @@
    "funciono": true,
    "estado": "ok",
    "conciertos": 41,
-   "nuevos": 41,
+   "nuevos": 0,
    "solo_en_esta": 2,
    "eventos_brutos": 195,
    "paginas": 1,
@@ -420,7 +420,7 @@
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 4.4
+   "segundos": 2.3
   },
   {
    "id": "hellpress_melodico",
@@ -438,12 +438,12 @@
    "nuevos": 0,
    "solo_en_esta": 0,
    "eventos_brutos": 3,
-   "paginas": 27,
+   "paginas": 1,
    "errores": [],
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 56.9
+   "segundos": 3.9
   },
   {
    "id": "metalsymphony",
@@ -458,7 +458,7 @@
    "funciono": true,
    "estado": "ok",
    "conciertos": 22,
-   "nuevos": 22,
+   "nuevos": 0,
    "solo_en_esta": 0,
    "eventos_brutos": 84,
    "paginas": 2,
@@ -466,7 +466,7 @@
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 4.3
+   "segundos": 4.4
   },
   {
    "id": "rockforeveryone",
@@ -480,8 +480,8 @@
    "notas": "",
    "funciono": true,
    "estado": "ok",
-   "conciertos": 22,
-   "nuevos": 22,
+   "conciertos": 23,
+   "nuevos": 1,
    "solo_en_esta": 3,
    "eventos_brutos": 38,
    "paginas": 5,
@@ -489,7 +489,7 @@
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 10.2
+   "segundos": 11.2
   },
   {
    "id": "mariskal",
@@ -503,16 +503,16 @@
    "notas": "Fiabilidad baja: mantiene fechas antiguas y no indica el año.",
    "funciono": true,
    "estado": "ok",
-   "conciertos": 154,
-   "nuevos": 154,
-   "solo_en_esta": 24,
+   "conciertos": 155,
+   "nuevos": 2,
+   "solo_en_esta": 25,
    "eventos_brutos": 1012,
    "paginas": 1,
    "errores": [],
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 3.1
+   "segundos": 3.4
   },
   {
    "id": "rockgle",
@@ -532,9 +532,9 @@
    "eventos_brutos": 0,
    "paginas": 1,
    "errores": [
-    "HTTPError: 429 Client Error: Too Many Requests for url: https://www.google.com/sorry/index?continue=https://www.rockgle.es/p/agenda-de-conciertos_07.html%3Fm%3D0&q=EgRA7LDIGO2X7tUGIi0xLpItGptCuVJAqWwrJNAfIVPY3WoFmlwr9uLnbCS_8AfmEMxmCeIJ8cMHdaIyAnJSWgFD"
+    "HTTPError: 429 Client Error: Too Many Requests for url: https://www.google.com/sorry/index?continue=https://www.rockgle.es/p/agenda-de-conciertos_07.html%3Fm%3D0&q=EgQE7J5SGOCx7tUGIi1AR1buE8QS-8ep0fPdXu8VUzQBS3jSaIM19Q-SMFqfPE2YQRHGqUtr08HjXWIyAnJSWgFD"
    ],
-   "robots": "sin_robots (404)",
+   "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
    "segundos": 2.3
@@ -552,7 +552,7 @@
    "funciono": true,
    "estado": "ok",
    "conciertos": 16,
-   "nuevos": 16,
+   "nuevos": 0,
    "solo_en_esta": 1,
    "eventos_brutos": 225,
    "paginas": 9,
@@ -560,7 +560,7 @@
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 22.3
+   "segundos": 21.2
   },
   {
    "id": "getrock",
@@ -575,7 +575,7 @@
    "funciono": true,
    "estado": "ok",
    "conciertos": 6,
-   "nuevos": 6,
+   "nuevos": 0,
    "solo_en_esta": 0,
    "eventos_brutos": 24,
    "paginas": 2,
@@ -583,7 +583,7 @@
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 4.8
+   "segundos": 6.0
   },
   {
    "id": "neverland",
@@ -598,7 +598,7 @@
    "funciono": true,
    "estado": "ok",
    "conciertos": 2,
-   "nuevos": 2,
+   "nuevos": 0,
    "solo_en_esta": 0,
    "eventos_brutos": 21,
    "paginas": 1,
@@ -606,7 +606,7 @@
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 0.8
+   "segundos": 0.6
   },
   {
    "id": "rockprog_agenda",
@@ -621,7 +621,7 @@
    "funciono": true,
    "estado": "ok",
    "conciertos": 5,
-   "nuevos": 5,
+   "nuevos": 0,
    "solo_en_esta": 1,
    "eventos_brutos": 10,
    "paginas": 5,
@@ -629,7 +629,7 @@
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 26.8
+   "segundos": 20.7
   },
   {
    "id": "rockprog",
@@ -647,12 +647,12 @@
    "nuevos": 0,
    "solo_en_esta": 0,
    "eventos_brutos": 0,
-   "paginas": 3,
+   "paginas": 1,
    "errores": [],
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 15.4
+   "segundos": 2.8
   },
   {
    "id": "force",
@@ -670,12 +670,12 @@
    "nuevos": 0,
    "solo_en_esta": 0,
    "eventos_brutos": 0,
-   "paginas": 9,
+   "paginas": 1,
    "errores": [],
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 18.8
+   "segundos": 32.5
   },
   {
    "id": "dirtyrock",
@@ -690,15 +690,15 @@
    "funciono": true,
    "estado": "ok",
    "conciertos": 1,
-   "nuevos": 1,
+   "nuevos": 0,
    "solo_en_esta": 1,
    "eventos_brutos": 2,
-   "paginas": 11,
+   "paginas": 1,
    "errores": [],
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 22.2
+   "segundos": 2.6
   },
   {
    "id": "viriaor",
@@ -713,15 +713,15 @@
    "funciono": true,
    "estado": "ok",
    "conciertos": 1,
-   "nuevos": 1,
+   "nuevos": 0,
    "solo_en_esta": 0,
    "eventos_brutos": 1,
-   "paginas": 11,
+   "paginas": 1,
    "errores": [],
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 22.7
+   "segundos": 2.0
   },
   {
    "id": "diariorockero",
@@ -744,7 +744,7 @@
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 5.8
+   "segundos": 3.5
   },
   {
    "id": "mutick",
@@ -759,7 +759,7 @@
    "funciono": true,
    "estado": "ok",
    "conciertos": 32,
-   "nuevos": 32,
+   "nuevos": 0,
    "solo_en_esta": 7,
    "eventos_brutos": 34,
    "paginas": 36,
@@ -782,7 +782,7 @@
    "funciono": true,
    "estado": "ok",
    "conciertos": 5,
-   "nuevos": 5,
+   "nuevos": 0,
    "solo_en_esta": 1,
    "eventos_brutos": 7,
    "paginas": 2,
@@ -805,7 +805,7 @@
    "funciono": true,
    "estado": "ok",
    "conciertos": 1,
-   "nuevos": 1,
+   "nuevos": 0,
    "solo_en_esta": 1,
    "eventos_brutos": 3,
    "paginas": 1,
@@ -813,7 +813,7 @@
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 3.6
+   "segundos": 3.5
   },
   {
    "id": "bigmama",
@@ -828,7 +828,7 @@
    "funciono": true,
    "estado": "ok",
    "conciertos": 3,
-   "nuevos": 3,
+   "nuevos": 0,
    "solo_en_esta": 0,
    "eventos_brutos": 3,
    "paginas": 1,
@@ -836,7 +836,7 @@
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 2.4
+   "segundos": 2.3
   },
   {
    "id": "gruta77",
@@ -851,7 +851,7 @@
    "funciono": true,
    "estado": "ok",
    "conciertos": 29,
-   "nuevos": 29,
+   "nuevos": 0,
    "solo_en_esta": 4,
    "eventos_brutos": 30,
    "paginas": 1,
@@ -859,7 +859,7 @@
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 2.7
+   "segundos": 2.6
   },
   {
    "id": "movistar",
@@ -874,7 +874,7 @@
    "funciono": true,
    "estado": "ok",
    "conciertos": 9,
-   "nuevos": 9,
+   "nuevos": 0,
    "solo_en_esta": 2,
    "eventos_brutos": 9,
    "paginas": 1,
@@ -882,7 +882,7 @@
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 2.6
+   "segundos": 2.7
   },
   {
    "id": "riviera",
@@ -897,7 +897,7 @@
    "funciono": true,
    "estado": "ok",
    "conciertos": 50,
-   "nuevos": 50,
+   "nuevos": 0,
    "solo_en_esta": 0,
    "eventos_brutos": 50,
    "paginas": 1,
@@ -905,7 +905,7 @@
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 2.5
+   "segundos": 2.4
   },
   {
    "id": "nazca",
@@ -920,7 +920,7 @@
    "funciono": true,
    "estado": "ok",
    "conciertos": 7,
-   "nuevos": 7,
+   "nuevos": 0,
    "solo_en_esta": 1,
    "eventos_brutos": 9,
    "paginas": 1,
@@ -928,7 +928,7 @@
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 3.5
+   "segundos": 2.8
   },
   {
    "id": "wagon",
@@ -942,16 +942,16 @@
    "notas": "",
    "funciono": true,
    "estado": "ok",
-   "conciertos": 21,
-   "nuevos": 21,
+   "conciertos": 20,
+   "nuevos": 0,
    "solo_en_esta": 4,
-   "eventos_brutos": 34,
+   "eventos_brutos": 30,
    "paginas": 1,
    "errores": [],
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 2.2
+   "segundos": 2.1
   },
   {
    "id": "revi",
@@ -966,7 +966,7 @@
    "funciono": true,
    "estado": "ok",
    "conciertos": 42,
-   "nuevos": 42,
+   "nuevos": 0,
    "solo_en_esta": 10,
    "eventos_brutos": 49,
    "paginas": 1,
@@ -974,7 +974,7 @@
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 3.3
+   "segundos": 3.2
   },
   {
    "id": "chango",
@@ -988,8 +988,8 @@
    "notas": "",
    "funciono": true,
    "estado": "ok",
-   "conciertos": 6,
-   "nuevos": 6,
+   "conciertos": 7,
+   "nuevos": 1,
    "solo_en_esta": 3,
    "eventos_brutos": 6,
    "paginas": 1,
@@ -997,7 +997,7 @@
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 2.2
+   "segundos": 2.4
   },
   {
    "id": "salabut",
@@ -1012,7 +1012,7 @@
    "funciono": true,
    "estado": "ok",
    "conciertos": 28,
-   "nuevos": 28,
+   "nuevos": 0,
    "solo_en_esta": 11,
    "eventos_brutos": 33,
    "paginas": 1,
@@ -1035,7 +1035,7 @@
    "funciono": true,
    "estado": "ok",
    "conciertos": 3,
-   "nuevos": 3,
+   "nuevos": 0,
    "solo_en_esta": 1,
    "eventos_brutos": 23,
    "paginas": 1,
@@ -1058,7 +1058,7 @@
    "funciono": true,
    "estado": "ok",
    "conciertos": 100,
-   "nuevos": 100,
+   "nuevos": 0,
    "solo_en_esta": 23,
    "eventos_brutos": 107,
    "paginas": 1,
@@ -1066,7 +1066,7 @@
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 3.2
+   "segundos": 3.4
   },
   {
    "id": "rockville",
@@ -1081,7 +1081,7 @@
    "funciono": true,
    "estado": "ok",
    "conciertos": 26,
-   "nuevos": 26,
+   "nuevos": 0,
    "solo_en_esta": 1,
    "eventos_brutos": 35,
    "paginas": 1,
@@ -1089,7 +1089,7 @@
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 2.3
+   "segundos": 2.2
   },
   {
    "id": "funhouse",
@@ -1104,7 +1104,7 @@
    "funciono": true,
    "estado": "ok",
    "conciertos": 37,
-   "nuevos": 37,
+   "nuevos": 0,
    "solo_en_esta": 6,
    "eventos_brutos": 38,
    "paginas": 1,
@@ -1112,7 +1112,7 @@
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 2.6
+   "segundos": 2.3
   },
   {
    "id": "wurlitzer",
@@ -1127,7 +1127,7 @@
    "funciono": true,
    "estado": "ok",
    "conciertos": 27,
-   "nuevos": 27,
+   "nuevos": 0,
    "solo_en_esta": 11,
    "eventos_brutos": 27,
    "paginas": 1,
@@ -1135,7 +1135,7 @@
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 3.9
+   "segundos": 3.8
   },
   {
    "id": "honky",
@@ -1150,7 +1150,7 @@
    "funciono": true,
    "estado": "ok",
    "conciertos": 3,
-   "nuevos": 3,
+   "nuevos": 0,
    "solo_en_esta": 1,
    "eventos_brutos": 30,
    "paginas": 1,
@@ -1158,7 +1158,7 @@
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 4.5
+   "segundos": 5.8
   },
   {
    "id": "silikona",
@@ -1173,7 +1173,7 @@
    "funciono": true,
    "estado": "ok",
    "conciertos": 4,
-   "nuevos": 4,
+   "nuevos": 0,
    "solo_en_esta": 0,
    "eventos_brutos": 4,
    "paginas": 1,
@@ -1181,7 +1181,7 @@
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 7.5
+   "segundos": 7.3
   },
   {
    "id": "clamores",
@@ -1196,7 +1196,7 @@
    "funciono": true,
    "estado": "ok",
    "conciertos": 1,
-   "nuevos": 1,
+   "nuevos": 0,
    "solo_en_esta": 0,
    "eventos_brutos": 4,
    "paginas": 1,
@@ -1204,7 +1204,7 @@
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 2.1
+   "segundos": 2.0
   },
   {
    "id": "galileo",
@@ -1217,17 +1217,17 @@
    "reconfirma": true,
    "notas": "",
    "funciono": true,
-   "estado": "ok",
-   "conciertos": 8,
-   "nuevos": 8,
+   "estado": "ok_sin_resultados",
+   "conciertos": 0,
+   "nuevos": 0,
    "solo_en_esta": 0,
-   "eventos_brutos": 8,
+   "eventos_brutos": 0,
    "paginas": 1,
    "errores": [],
    "robots": "ok",
    "robots_bloquea": false,
-   "aviso": null,
-   "segundos": 2.3
+   "aviso": "posible cambio en la web: antes daba 8 conciertos (último éxito 2026-09-29)",
+   "segundos": 2.1
   },
   {
    "id": "siroco",
@@ -1242,7 +1242,7 @@
    "funciono": true,
    "estado": "ok",
    "conciertos": 4,
-   "nuevos": 4,
+   "nuevos": 0,
    "solo_en_esta": 1,
    "eventos_brutos": 4,
    "paginas": 1,
@@ -1250,7 +1250,7 @@
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 2.4
+   "segundos": 3.6
   },
   {
    "id": "mobydick",
@@ -1265,7 +1265,7 @@
    "funciono": true,
    "estado": "ok",
    "conciertos": 6,
-   "nuevos": 6,
+   "nuevos": 0,
    "solo_en_esta": 1,
    "eventos_brutos": 6,
    "paginas": 1,
@@ -1273,7 +1273,7 @@
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 2.2
+   "segundos": 2.1
   },
   {
    "id": "independance",
@@ -1288,7 +1288,7 @@
    "funciono": true,
    "estado": "ok",
    "conciertos": 12,
-   "nuevos": 12,
+   "nuevos": 0,
    "solo_en_esta": 1,
    "eventos_brutos": 12,
    "paginas": 1,
@@ -1296,7 +1296,7 @@
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 2.9
+   "segundos": 2.6
   },
   {
    "id": "salab",
@@ -1311,7 +1311,7 @@
    "funciono": true,
    "estado": "ok",
    "conciertos": 3,
-   "nuevos": 3,
+   "nuevos": 0,
    "solo_en_esta": 0,
    "eventos_brutos": 3,
    "paginas": 1,
@@ -1319,7 +1319,7 @@
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 7.2
+   "segundos": 6.5
   },
   {
    "id": "nuevacubierta",
@@ -1334,7 +1334,7 @@
    "funciono": true,
    "estado": "ok",
    "conciertos": 7,
-   "nuevos": 7,
+   "nuevos": 0,
    "solo_en_esta": 3,
    "eventos_brutos": 8,
    "paginas": 1,
@@ -1342,7 +1342,7 @@
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 18.4
+   "segundos": 9.6
   },
   {
    "id": "muni_alcala_de_henares",
@@ -1355,19 +1355,19 @@
    "reconfirma": true,
    "notas": "",
    "funciono": false,
-   "estado": "bloqueado_robots",
+   "estado": "error",
    "conciertos": 0,
    "nuevos": 0,
    "solo_en_esta": 0,
    "eventos_brutos": 0,
    "paginas": 1,
    "errores": [
-    "robots.txt prohíbe https://www.ayto-alcaladehenares.es/agenda/"
+    "web inaccesible al leer robots.txt: inaccesible (SSLError)"
    ],
    "robots": "inaccesible (SSLError)",
-   "robots_bloquea": true,
+   "robots_bloquea": false,
    "aviso": null,
-   "segundos": 0.6
+   "segundos": 0.5
   },
   {
    "id": "muni_getafe",
@@ -1390,7 +1390,7 @@
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 5.4
+   "segundos": 6.7
   },
   {
    "id": "muni_leganes",
@@ -1413,7 +1413,7 @@
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 3.6
+   "segundos": 2.7
   },
   {
    "id": "muni_mostoles",
@@ -1438,7 +1438,7 @@
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 2.6
+   "segundos": 2.3
   },
   {
    "id": "muni_fuenlabrada",
@@ -1463,7 +1463,7 @@
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 3.0
+   "segundos": 2.4
   },
   {
    "id": "muni_alcorcon",
@@ -1486,7 +1486,7 @@
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 19.0
+   "segundos": 20.5
   },
   {
    "id": "muni_rivas_vaciamadrid",
@@ -1509,7 +1509,7 @@
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 2.6
+   "segundos": 2.3
   },
   {
    "id": "muni_coslada",
@@ -1522,19 +1522,19 @@
    "reconfirma": true,
    "notas": "",
    "funciono": false,
-   "estado": "bloqueado_robots",
+   "estado": "error",
    "conciertos": 0,
    "nuevos": 0,
    "solo_en_esta": 0,
    "eventos_brutos": 0,
    "paginas": 1,
    "errores": [
-    "robots.txt prohíbe https://www.ayto-coslada.es/agenda"
+    "web inaccesible al leer robots.txt: inaccesible (SSLError)"
    ],
    "robots": "inaccesible (SSLError)",
-   "robots_bloquea": true,
+   "robots_bloquea": false,
    "aviso": null,
-   "segundos": 0.3
+   "segundos": 0.2
   },
   {
    "id": "muni_torrejon_de_ardoz",
@@ -1557,7 +1557,7 @@
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 2.6
+   "segundos": 4.8
   },
   {
    "id": "muni_parla",
@@ -1580,7 +1580,7 @@
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 2.5
+   "segundos": 2.1
   },
   {
    "id": "muni_alcobendas",
@@ -1628,7 +1628,7 @@
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 4.2
+   "segundos": 2.2
   },
   {
    "id": "muni_las_rozas_de_madrid",
@@ -1653,7 +1653,7 @@
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 3.4
+   "segundos": 2.8
   },
   {
    "id": "muni_majadahonda",
@@ -1676,7 +1676,7 @@
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 3.8
+   "segundos": 19.0
   },
   {
    "id": "muni_pozuelo_de_alarcon",
@@ -1699,7 +1699,7 @@
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 3.7
+   "segundos": 3.4
   },
   {
    "id": "muni_boadilla_del_monte",
@@ -1712,19 +1712,19 @@
    "reconfirma": true,
    "notas": "",
    "funciono": false,
-   "estado": "bloqueado_robots",
+   "estado": "error",
    "conciertos": 0,
    "nuevos": 0,
    "solo_en_esta": 0,
    "eventos_brutos": 0,
    "paginas": 1,
    "errores": [
-    "robots.txt prohíbe https://www.aytoboadilla.com/agenda"
+    "web inaccesible al leer robots.txt: inaccesible (SSLError)"
    ],
    "robots": "inaccesible (SSLError)",
-   "robots_bloquea": true,
+   "robots_bloquea": false,
    "aviso": null,
-   "segundos": 0.5
+   "segundos": 0.4
   },
   {
    "id": "muni_collado_villalba",
@@ -1737,19 +1737,19 @@
    "reconfirma": true,
    "notas": "",
    "funciono": false,
-   "estado": "bloqueado_robots",
+   "estado": "error",
    "conciertos": 0,
    "nuevos": 0,
    "solo_en_esta": 0,
    "eventos_brutos": 0,
    "paginas": 1,
    "errores": [
-    "robots.txt prohíbe https://www.collado-villalba.es/agenda"
+    "web inaccesible al leer robots.txt: inaccesible (ConnectionError)"
    ],
    "robots": "inaccesible (ConnectionError)",
-   "robots_bloquea": true,
+   "robots_bloquea": false,
    "aviso": null,
-   "segundos": 0.1
+   "segundos": 0.0
   },
   {
    "id": "muni_aranjuez",
@@ -1772,7 +1772,7 @@
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 3.7
+   "segundos": 3.4
   },
   {
    "id": "muni_arganda_del_rey",
@@ -1785,19 +1785,19 @@
    "reconfirma": true,
    "notas": "",
    "funciono": false,
-   "estado": "bloqueado_robots",
+   "estado": "error",
    "conciertos": 0,
    "nuevos": 0,
    "solo_en_esta": 0,
    "eventos_brutos": 0,
    "paginas": 1,
    "errores": [
-    "robots.txt prohíbe https://www.ayto-arganda.es/agenda"
+    "web inaccesible al leer robots.txt: inaccesible (ConnectTimeout)"
    ],
    "robots": "inaccesible (ConnectTimeout)",
-   "robots_bloquea": true,
+   "robots_bloquea": false,
    "aviso": null,
-   "segundos": 30.2
+   "segundos": 30.4
   },
   {
    "id": "muni_valdemoro",
@@ -1820,7 +1820,7 @@
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 2.3
+   "segundos": 2.2
   },
   {
    "id": "muni_pinto",
@@ -1845,7 +1845,7 @@
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 2.4
+   "segundos": 18.0
   }
  ],
  "sin_agenda_legible": {
@@ -1922,42 +1922,29 @@
   ]
  },
  "musicbrainz": {
-  "consultas": 700,
-  "desde_cache": 173,
-  "asignadas": 163,
-  "sin_confirmar": 710,
-  "pendientes": 1523,
+  "consultas": 600,
+  "desde_cache": 913,
+  "asignadas": 356,
+  "sin_confirmar": 1157,
+  "pendientes": 912,
   "errores": [
-   "Martin Bruhn: HTTPError",
-   "MAD DOGS JAM: HTTPError",
-   "GIULI ROMAGNOLI: HTTPError",
-   "Levitants: HTTPError",
-   "ANTONIO CARREÑO: HTTPError",
-   "FAST EXPO AJO FERNÁNDEZ: HTTPError",
-   "NATURALLY: HTTPError",
-   "ARTURO PUEYO & GASTÓN JOYA: HTTPError",
-   "MORIR TODAVIA: HTTPError",
-   "Simuladores: HTTPError",
-   "COLMILLO: HTTPError",
-   "Ricardo Montaner: HTTPError",
-   "INERCIA SONORA / LUSSY - CESC SALSALVADÓ: HTTPError",
-   "Will Jacobs & Marcos Coll Band: HTTPError",
-   "STEREOKOKO: HTTPError",
-   "LOS STRATOVILLES: HTTPError",
-   "Diego Amador: HTTPError",
-   "ENLACE FUNK EXPERIMENT: HTTPError",
-   "THE JAM BUSTERS: HTTPError",
-   "Bass Drum of Death: HTTPError",
-   "ANIVERSARIO MADRID EN VIVO: YOLI SAA 25: HTTPError",
-   "Ona Mafalda: HTTPError",
-   "JAZZ CON SABOR A CLUB 26: AKONI ASTROBEAT (FR) (Festival JazzMadrid): HTTPError",
-   "MALA LUNA BAND: TRIBUTO CREEDENCE CLEARWATER REVIVAL: HTTPError",
-   "Me Acuerdo de Todo: HTTPError",
-   "DELAROCHA: HTTPError",
-   "Gloory Hole: HTTPError",
-   "Kat Eaton: HTTPError",
-   "Clara Peya: HTTPError",
-   "DR SURF & THE HOLYS: HTTPError"
+   "Santa Rita: HTTPError",
+   "RADAR JOVEN 2026: ESTELA GRIS: HTTPError",
+   "DÍAS ALTERNOS PRESENTA: HALLOWEEN ROCK NIGHT: HTTPError",
+   "Sagan Ummo: HTTPError",
+   "RADAR JOVEN PRESENTA: ANÁLISIS: HTTPError",
+   "Axel Boman: HTTPError",
+   "Radar Joven. Anna Nadzion: HTTPError",
+   "Laura Low: HTTPError",
+   "miaw: HTTPError",
+   "Abhir: HTTPError",
+   "No me pises que llevo chanclas: HTTPError",
+   "Pablo Und Destruktion: HTTPError",
+   "Cloudy: HTTPError",
+   "FLESHCRAWL: HTTPError",
+   "P0RN: HTTPError",
+   "Mónica Naranjo: HTTPError",
+   "Pablo y los Ciervos Dorados: HTTPError"
   ]
  },
  "estilos_sin_mapear": [

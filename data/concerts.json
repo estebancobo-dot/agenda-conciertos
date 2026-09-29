@@ -1,5 +1,5 @@
 {
- "generado": "2026-09-29T10:32:26+00:00",
+ "generado": "2026-09-29T11:29:44+00:00",
  "hoy": "2026-09-29",
  "horizonte": "2027-01-27",
  "conciertos": [
@@ -253,57 +253,6 @@
    "conflictos": [],
    "notas": [],
    "en_foco": false,
-   "primera_vez_visto": "2026-09-29",
-   "ultima_vez_visto": "2026-09-29"
-  },
-  {
-   "id": "e79b6696b1a0",
-   "fecha": "2026-09-29",
-   "hora": "20:30",
-   "artista": "En bruto – Open mic",
-   "invitados": [],
-   "sala": "Galileo Galilei",
-   "municipio": "Madrid",
-   "precio": null,
-   "estilo_fuente": [
-    {
-     "estilo": "Pop / Rock",
-     "fuente": "Madrid en Vivo (asociación de salas)"
-    }
-   ],
-   "categoria": "pop e indie",
-   "categorias": [
-    "pop e indie",
-    "rock y metal"
-   ],
-   "genero_discogs": [],
-   "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
-   "fuentes": [
-    {
-     "nombre": "Galileo Galilei (web oficial)",
-     "id": "galileo",
-     "url": "https://salagalileo.es/programacion/en-bruto-open-mic/",
-     "prioridad": 1
-    },
-    {
-     "nombre": "Madrid en Vivo (asociación de salas)",
-     "id": "madridenvivo",
-     "url": "https://madridenvivo.com/?post_type=evento&p=792359",
-     "prioridad": 3
-    },
-    {
-     "nombre": "Qconciertos (country y provincia de Madrid)",
-     "id": "qconciertos",
-     "url": "https://qconciertos.es/conciertos-en-madrid-provincia/",
-     "prioridad": 3
-    }
-   ],
-   "estado": "contrastado",
-   "conflictos": [],
-   "notas": [],
-   "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
   },
@@ -932,6 +881,51 @@
     }
    ],
    "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": true,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
+   "id": "e79b6696b1a0",
+   "fecha": "2026-09-29",
+   "hora": null,
+   "artista": "En Bruto",
+   "invitados": [],
+   "sala": "Galileo Galilei",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Pop / Rock",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "pop e indie",
+   "categorias": [
+    "pop e indie",
+    "rock y metal"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/?post_type=evento&p=792359",
+     "prioridad": 3
+    },
+    {
+     "nombre": "Qconciertos (country y provincia de Madrid)",
+     "id": "qconciertos",
+     "url": "https://qconciertos.es/conciertos-en-madrid-provincia/",
+     "prioridad": 3
+    }
+   ],
+   "estado": "contrastado",
    "conflictos": [],
    "notas": [],
    "en_foco": true,
@@ -1725,104 +1719,12 @@
    "ultima_vez_visto": "2026-09-29"
   },
   {
-   "id": "fc8bca079dc0",
-   "fecha": "2026-09-30",
-   "hora": "21:00",
-   "artista": "Grandes Canciones del Cine by Laraland",
-   "invitados": [
-    "Laraland. Concierto de Bandas Sonoras",
-    "Laraland"
-   ],
-   "sala": "Galileo Galilei",
-   "municipio": "Madrid",
-   "precio": "20€",
-   "estilo_fuente": [
-    {
-     "estilo": "Versiones/Tributos",
-     "fuente": "conciertos.club (buscador semanal)"
-    },
-    {
-     "estilo": "Versiones/Tributos",
-     "fuente": "conciertos.club (portada Madrid)"
-    },
-    {
-     "estilo": "Versiones/Tributos",
-     "fuente": "conciertos.club (por estilo)"
-    },
-    {
-     "estilo": "Pop / Rock",
-     "fuente": "Madrid en Vivo (asociación de salas)"
-    }
-   ],
-   "categoria": "tributos y versiones",
-   "categorias": [
-    "tributos y versiones",
-    "pop e indie",
-    "rock y metal"
-   ],
-   "genero_discogs": [],
-   "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
-   "fuentes": [
-    {
-     "nombre": "Galileo Galilei (web oficial)",
-     "id": "galileo",
-     "url": "https://salagalileo.es/programacion/grandes-canciones-del-cine-by-laraland/",
-     "prioridad": 1
-    },
-    {
-     "nombre": "conciertos.club (buscador semanal)",
-     "id": "cc_buscador",
-     "url": "https://conciertos.club/madrid/conciertos/124974-laraland-concierto-de-bandas-sonoras",
-     "prioridad": 3
-    },
-    {
-     "nombre": "conciertos.club (portada Madrid)",
-     "id": "cc_portada",
-     "url": "https://conciertos.club/madrid/conciertos/124974-laraland-concierto-de-bandas-sonoras",
-     "prioridad": 3
-    },
-    {
-     "nombre": "conciertos.club (por estilo)",
-     "id": "cc_estilos",
-     "url": "https://conciertos.club/madrid/conciertos/124974-laraland-concierto-de-bandas-sonoras",
-     "prioridad": 3
-    },
-    {
-     "nombre": "Madrid en Vivo (asociación de salas)",
-     "id": "madridenvivo",
-     "url": "https://madridenvivo.com/?post_type=evento&p=792366",
-     "prioridad": 3
-    },
-    {
-     "nombre": "Songkick Madrid",
-     "id": "songkick",
-     "url": "https://www.songkick.com/concerts/43349117-laraland-at-galileo-galilei",
-     "prioridad": 3
-    },
-    {
-     "nombre": "Qconciertos (country y provincia de Madrid)",
-     "id": "qconciertos",
-     "url": "https://qconciertos.es/conciertos-en-madrid-provincia/",
-     "prioridad": 3
-    }
-   ],
-   "estado": "contrastado",
-   "conflictos": [],
-   "notas": [],
-   "en_foco": true,
-   "primera_vez_visto": "2026-09-29",
-   "ultima_vez_visto": "2026-09-29"
-  },
-  {
    "id": "b7393def9093",
    "fecha": "2026-09-30",
    "hora": "21:00",
    "artista": "hubris",
    "invitados": [
-    "NUEVOS MUNDOS",
-    "Mad Psych Fest: HUBRIS y NUEVOS MUNDOS"
+    "NUEVOS MUNDOS"
    ],
    "sala": "Wurlitzer Ballroom",
    "municipio": "Madrid",
@@ -1950,6 +1852,88 @@
      "nombre": "Madrid en Vivo (asociación de salas)",
      "id": "madridenvivo",
      "url": "https://madridenvivo.com/?post_type=evento&p=790508",
+     "prioridad": 3
+    }
+   ],
+   "estado": "contrastado",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": true,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
+   "id": "fc8bca079dc0",
+   "fecha": "2026-09-30",
+   "hora": "21:00",
+   "artista": "Laraland. Concierto de Bandas Sonoras",
+   "invitados": [],
+   "sala": "Galileo Galilei",
+   "municipio": "Madrid",
+   "precio": "20€",
+   "estilo_fuente": [
+    {
+     "estilo": "Versiones/Tributos",
+     "fuente": "conciertos.club (buscador semanal)"
+    },
+    {
+     "estilo": "Versiones/Tributos",
+     "fuente": "conciertos.club (portada Madrid)"
+    },
+    {
+     "estilo": "Versiones/Tributos",
+     "fuente": "conciertos.club (por estilo)"
+    },
+    {
+     "estilo": "Pop / Rock",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "tributos y versiones",
+   "categorias": [
+    "tributos y versiones",
+    "pop e indie",
+    "rock y metal"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "conciertos.club (buscador semanal)",
+     "id": "cc_buscador",
+     "url": "https://conciertos.club/madrid/conciertos/124974-laraland-concierto-de-bandas-sonoras",
+     "prioridad": 3
+    },
+    {
+     "nombre": "conciertos.club (portada Madrid)",
+     "id": "cc_portada",
+     "url": "https://conciertos.club/madrid/conciertos/124974-laraland-concierto-de-bandas-sonoras",
+     "prioridad": 3
+    },
+    {
+     "nombre": "conciertos.club (por estilo)",
+     "id": "cc_estilos",
+     "url": "https://conciertos.club/madrid/conciertos/124974-laraland-concierto-de-bandas-sonoras",
+     "prioridad": 3
+    },
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/?post_type=evento&p=792366",
+     "prioridad": 3
+    },
+    {
+     "nombre": "Songkick Madrid",
+     "id": "songkick",
+     "url": "https://www.songkick.com/concerts/43349117-laraland-at-galileo-galilei",
+     "prioridad": 3
+    },
+    {
+     "nombre": "Qconciertos (country y provincia de Madrid)",
+     "id": "qconciertos",
+     "url": "https://qconciertos.es/conciertos-en-madrid-provincia/",
      "prioridad": 3
     }
    ],
@@ -2376,8 +2360,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "AR",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Madrid en Vivo (asociación de salas)",
@@ -3519,9 +3503,7 @@
    "fecha": "2026-10-01",
    "hora": "20:45",
    "artista": "Placebo",
-   "invitados": [
-    "Placebo – 30th Anniversary Tour | VIP Packages"
-   ],
+   "invitados": [],
    "sala": "Movistar Arena",
    "municipio": "Madrid",
    "precio": "62,50€",
@@ -5493,8 +5475,7 @@
     "Sons of Aguirre",
     "Scila",
     "Bala",
-    "Itaca Band",
-    "Pirata Madrid Non Servium"
+    "Itaca Band"
    ],
    "sala": "Auditorio Miguel Ríos",
    "municipio": "Rivas-Vaciamadrid",
@@ -6568,8 +6549,7 @@
    "hora": "21:00",
    "artista": "El Cuarto Vacío",
    "invitados": [
-    "Filtro",
-    "MAQETA: EL CUARTO VACÍO"
+    "Filtro"
    ],
    "sala": "Maravillas Club",
    "municipio": "Madrid",
@@ -6724,9 +6704,7 @@
    "fecha": "2026-10-02",
    "hora": "21:00",
    "artista": "Guitarricadelafuente",
-   "invitados": [
-    "Las Noches de Río Babel. Guitarricadelafuente"
-   ],
+   "invitados": [],
    "sala": "Movistar Arena",
    "municipio": "Madrid",
    "precio": "37€",
@@ -7153,9 +7131,7 @@
    "fecha": "2026-10-02",
    "hora": "21:00",
    "artista": "Tributo a Rolling Stones",
-   "invitados": [
-    "SUGAR STONES – Tributo a Rolling Stones"
-   ],
+   "invitados": [],
    "sala": "Moby Dick Club",
    "municipio": "Madrid",
    "precio": null,
@@ -7415,7 +7391,6 @@
    "artista": "Clarence Bekker Band",
    "invitados": [
     "Quentin Moore (Soul & Funk)",
-    "JAZZ CON SABOR A CLUB 26: CLARENCE BEKKER BAND",
     "QUENTIN MOORE (Festival JazzMadrid)"
    ],
    "sala": "Sala Clamores",
@@ -7654,9 +7629,7 @@
    "fecha": "2026-10-02",
    "hora": "22:30",
    "artista": "Red Zone",
-   "invitados": [
-    "RED ZONE \"A KING CRIMSON HOMAGE\""
-   ],
+   "invitados": [],
    "sala": "Café Berlín",
    "municipio": "Madrid",
    "precio": "12€",
@@ -8810,9 +8783,7 @@
    "fecha": "2026-10-02",
    "hora": null,
    "artista": "Levitants",
-   "invitados": [
-    "The Levitants"
-   ],
+   "invitados": [],
    "sala": "Sala El Sol",
    "municipio": "Madrid",
    "precio": "19,80€",
@@ -8850,8 +8821,8 @@
    "estilos_discogs": [
     "Post-Punk"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -9213,6 +9184,45 @@
      "nombre": "Rock for Everyone (agenda mensual Madrid)",
      "id": "rockforeveryone",
      "url": "https://rockforeveryone.es/agenda-de-conciertos-heavy-en-madrid-en-octubre-de-2026/",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": true,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
+   "id": "1316330071d1",
+   "fecha": "2026-10-02",
+   "hora": null,
+   "artista": "QATARSIX",
+   "invitados": [],
+   "sala": "Cadillac Solitario",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Pop / Rock",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "pop e indie",
+   "categorias": [
+    "pop e indie",
+    "rock y metal"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/?post_type=evento&p=796934",
      "prioridad": 3
     }
    ],
@@ -10063,9 +10073,7 @@
     "Segismundo Toxicómano",
     "Reincidentes",
     "La Élite",
-    "Periferia",
-    "Pirata Madrid Evaristo",
-    "Pirata Madrid Festival (Boikot, Evaristo, benito Kamelas, Reincidentes y más)"
+    "Periferia"
    ],
    "sala": "Auditorio Miguel Ríos",
    "municipio": "Rivas-Vaciamadrid",
@@ -10337,9 +10345,7 @@
    "fecha": "2026-10-03",
    "hora": "19:30",
    "artista": "GINEL",
-   "invitados": [
-    "GINEL: BORDE VIVO"
-   ],
+   "invitados": [],
    "sala": "Café Berlín",
    "municipio": "Madrid",
    "precio": "12,50€",
@@ -10501,9 +10507,7 @@
    "fecha": "2026-10-03",
    "hora": "20:00",
    "artista": "FLASHBLACK",
-   "invitados": [
-    "VERBENA EN LA BALLENA CON FLASHBLACK"
-   ],
+   "invitados": [],
    "sala": "Moby Dick Club",
    "municipio": "Madrid",
    "precio": null,
@@ -11453,9 +11457,7 @@
    "fecha": "2026-10-03",
    "hora": "21:00",
    "artista": "LOS VINAGRES",
-   "invitados": [
-    "Las Noches de Río Babel. Los Vinagres"
-   ],
+   "invitados": [],
    "sala": "Sala Villanos",
    "municipio": "Madrid",
    "precio": null,
@@ -11541,9 +11543,7 @@
    "hora": "21:00",
    "artista": "MötorHits",
    "invitados": [
-    "Master of Extinction",
-    "Motörhits. Tributo a Motörhead",
-    "Master of extiction. Tributo a Metallica y Megadeth"
+    "Master of Extinction"
    ],
    "sala": "Revi Live",
    "municipio": "Madrid",
@@ -13878,12 +13878,6 @@
    "nacionalidad_fuente": null,
    "fuentes": [
     {
-     "nombre": "Galileo Galilei (web oficial)",
-     "id": "galileo",
-     "url": "https://salagalileo.es/programacion/kids-rock-family/",
-     "prioridad": 1
-    },
-    {
      "nombre": "conciertos.club (buscador semanal)",
      "id": "cc_buscador",
      "url": "https://conciertos.club/madrid/conciertos/124971-kids-rock-family",
@@ -14139,50 +14133,6 @@
    "ultima_vez_visto": "2026-09-29"
   },
   {
-   "id": "34f9568583d5",
-   "fecha": "2026-10-04",
-   "hora": "17:30",
-   "artista": "Fran Doblas",
-   "invitados": [],
-   "sala": "Galileo Galilei",
-   "municipio": "Madrid",
-   "precio": null,
-   "estilo_fuente": [
-    {
-     "estilo": "Flamenco Capital",
-     "fuente": "Madrid en Vivo (asociación de salas)"
-    }
-   ],
-   "categoria": "fuera de foco",
-   "categorias": [
-    "fuera de foco"
-   ],
-   "genero_discogs": [],
-   "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
-   "fuentes": [
-    {
-     "nombre": "Galileo Galilei (web oficial)",
-     "id": "galileo",
-     "url": "https://salagalileo.es/programacion/fran-doblas/",
-     "prioridad": 1
-    },
-    {
-     "nombre": "Madrid en Vivo (asociación de salas)",
-     "id": "madridenvivo",
-     "url": "https://madridenvivo.com/?post_type=evento&p=795876",
-     "prioridad": 3
-    }
-   ],
-   "estado": "contrastado",
-   "conflictos": [],
-   "notas": [],
-   "en_foco": false,
-   "primera_vez_visto": "2026-09-29",
-   "ultima_vez_visto": "2026-09-29"
-  },
-  {
    "id": "149d23f3419f",
    "fecha": "2026-10-04",
    "hora": "18:00",
@@ -14402,9 +14352,7 @@
    "fecha": "2026-10-04",
    "hora": "19:00",
    "artista": "Noches de Piano Jazz",
-   "invitados": [
-    "Piano Jazz"
-   ],
+   "invitados": [],
    "sala": "El Café de la Ópera",
    "municipio": "Madrid",
    "precio": "20€",
@@ -15485,13 +15433,49 @@
    "ultima_vez_visto": "2026-09-29"
   },
   {
+   "id": "34f9568583d5",
+   "fecha": "2026-10-04",
+   "hora": null,
+   "artista": "FRAN DOBLAS",
+   "invitados": [],
+   "sala": "Galileo Galilei",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Flamenco Capital",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "fuera de foco",
+   "categorias": [
+    "fuera de foco"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/?post_type=evento&p=795876",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": false,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
    "id": "6a511c89c46d",
    "fecha": "2026-10-04",
    "hora": null,
    "artista": "HISPANIDAD 2026: FEDE COMÍN",
-   "invitados": [
-    "HISPANIDAD 2026: JULIO HERNÁNDEZ"
-   ],
+   "invitados": [],
    "sala": "Jazzville",
    "municipio": "Madrid",
    "precio": null,
@@ -16141,10 +16125,8 @@
    "id": "d687e8281ec8",
    "fecha": "2026-10-05",
    "hora": "21:00",
-   "artista": "Aciz – Soul Castizo",
-   "invitados": [
-    "Aciz"
-   ],
+   "artista": "Aciz",
+   "invitados": [],
    "sala": "Galileo Galilei",
    "municipio": "Madrid",
    "precio": "15,50€",
@@ -16167,12 +16149,6 @@
    "nacionalidad": null,
    "nacionalidad_fuente": null,
    "fuentes": [
-    {
-     "nombre": "Galileo Galilei (web oficial)",
-     "id": "galileo",
-     "url": "https://salagalileo.es/programacion/aciz-soul-castizo/",
-     "prioridad": 1
-    },
     {
      "nombre": "conciertos.club (buscador semanal)",
      "id": "cc_buscador",
@@ -16262,9 +16238,7 @@
    "fecha": "2026-10-05",
    "hora": "21:00",
    "artista": "JOSH MEADER TRIO",
-   "invitados": [
-    "Mad Psych Fest: JOSH MEADER TRIO"
-   ],
+   "invitados": [],
    "sala": "Rockville",
    "municipio": "Madrid",
    "precio": "Entrada 16 € anticipada – 18 € taquilla",
@@ -16711,11 +16685,7 @@
    "fecha": "2026-10-06",
    "hora": "20:00",
    "artista": "Gondwana & Quique Neira",
-   "invitados": [
-    "Las Noches de Río Babel. GONDWANA Y QUIQUE NEIRA",
-    "GONDWANA",
-    "Quique Neira"
-   ],
+   "invitados": [],
    "sala": "La Riviera",
    "municipio": "Madrid",
    "precio": "44,88€",
@@ -17108,86 +17078,6 @@
    "ultima_vez_visto": "2026-09-29"
   },
   {
-   "id": "457d88fd51a0",
-   "fecha": "2026-10-06",
-   "hora": "20:30",
-   "artista": "Inercia Sonora/ Gon Abril & Luzía",
-   "invitados": [
-    "Gon Abril"
-   ],
-   "sala": "Galileo Galilei",
-   "municipio": "Madrid",
-   "precio": null,
-   "estilo_fuente": [
-    {
-     "estilo": "Cantautores",
-     "fuente": "conciertos.club (buscador semanal)"
-    },
-    {
-     "estilo": "Cantautores",
-     "fuente": "conciertos.club (portada Madrid)"
-    },
-    {
-     "estilo": "Cantautores",
-     "fuente": "conciertos.club (por estilo)"
-    },
-    {
-     "estilo": "Pop / Rock",
-     "fuente": "Madrid en Vivo (asociación de salas)"
-    }
-   ],
-   "categoria": "cantautor",
-   "categorias": [
-    "cantautor",
-    "pop e indie",
-    "rock y metal"
-   ],
-   "genero_discogs": [],
-   "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
-   "fuentes": [
-    {
-     "nombre": "Galileo Galilei (web oficial)",
-     "id": "galileo",
-     "url": "https://salagalileo.es/programacion/inercia-sonora/",
-     "prioridad": 1
-    },
-    {
-     "nombre": "conciertos.club (buscador semanal)",
-     "id": "cc_buscador",
-     "url": "https://conciertos.club/madrid/conciertos/127708-gon-abril",
-     "prioridad": 3
-    },
-    {
-     "nombre": "conciertos.club (portada Madrid)",
-     "id": "cc_portada",
-     "url": "https://conciertos.club/madrid/conciertos/127708-gon-abril",
-     "prioridad": 3
-    },
-    {
-     "nombre": "conciertos.club (por estilo)",
-     "id": "cc_estilos",
-     "url": "https://conciertos.club/madrid/conciertos/127708-gon-abril",
-     "prioridad": 3
-    },
-    {
-     "nombre": "Madrid en Vivo (asociación de salas)",
-     "id": "madridenvivo",
-     "url": "https://madridenvivo.com/?post_type=evento&p=795861",
-     "prioridad": 3
-    }
-   ],
-   "estado": "contrastado",
-   "conflictos": [],
-   "notas": [
-    "Hora: 20:30 según Galileo Galilei (web oficial); 21:00 según conciertos.club (buscador semanal), conciertos.club (por estilo), conciertos.club (portada Madrid). Resuelto por prioridad de fuente (la fuente de mayor prioridad confirma 20:30)."
-   ],
-   "en_foco": true,
-   "primera_vez_visto": "2026-09-29",
-   "ultima_vez_visto": "2026-09-29"
-  },
-  {
    "id": "48eb064348ed",
    "fecha": "2026-10-06",
    "hora": "21:00",
@@ -17352,6 +17242,76 @@
    "ultima_vez_visto": "2026-09-29"
   },
   {
+   "id": "457d88fd51a0",
+   "fecha": "2026-10-06",
+   "hora": "21:00",
+   "artista": "Gon Abril",
+   "invitados": [],
+   "sala": "Galileo Galilei",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Cantautores",
+     "fuente": "conciertos.club (buscador semanal)"
+    },
+    {
+     "estilo": "Cantautores",
+     "fuente": "conciertos.club (portada Madrid)"
+    },
+    {
+     "estilo": "Cantautores",
+     "fuente": "conciertos.club (por estilo)"
+    },
+    {
+     "estilo": "Pop / Rock",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "cantautor",
+   "categorias": [
+    "cantautor",
+    "pop e indie",
+    "rock y metal"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "conciertos.club (buscador semanal)",
+     "id": "cc_buscador",
+     "url": "https://conciertos.club/madrid/conciertos/127708-gon-abril",
+     "prioridad": 3
+    },
+    {
+     "nombre": "conciertos.club (portada Madrid)",
+     "id": "cc_portada",
+     "url": "https://conciertos.club/madrid/conciertos/127708-gon-abril",
+     "prioridad": 3
+    },
+    {
+     "nombre": "conciertos.club (por estilo)",
+     "id": "cc_estilos",
+     "url": "https://conciertos.club/madrid/conciertos/127708-gon-abril",
+     "prioridad": 3
+    },
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/?post_type=evento&p=795861",
+     "prioridad": 3
+    }
+   ],
+   "estado": "contrastado",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": true,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
    "id": "fc0b51af169e",
    "fecha": "2026-10-06",
    "hora": "21:00",
@@ -17463,9 +17423,7 @@
    "fecha": "2026-10-06",
    "hora": "23:30",
    "artista": "Acid Jam",
-   "invitados": [
-    "INTRUSO ACID JAM"
-   ],
+   "invitados": [],
    "sala": "Intruso Bar",
    "municipio": "Madrid",
    "precio": null,
@@ -18235,6 +18193,126 @@
    "ultima_vez_visto": "2026-09-29"
   },
   {
+   "id": "293afc945fb9",
+   "fecha": "2026-10-07",
+   "hora": "21:00",
+   "artista": "Mercury Rev",
+   "invitados": [
+    "Sandy Bell"
+   ],
+   "sala": "Sala Changó",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "indie_alternative, rock, folk_blues, hip_hop, pop",
+     "fuente": "Songkick Madrid"
+    },
+    {
+     "estilo": "Pop-rock/Indie",
+     "fuente": "conciertos.club (buscador semanal)"
+    },
+    {
+     "estilo": "Pop-rock/Indie",
+     "fuente": "conciertos.club (portada Madrid)"
+    },
+    {
+     "estilo": "Pop-rock/Indie",
+     "fuente": "conciertos.club (por estilo)"
+    },
+    {
+     "estilo": "Rock, Indie Rock",
+     "fuente": "La Ganzúa"
+    }
+   ],
+   "categoria": "pop e indie",
+   "categorias": [
+    "pop e indie",
+    "rock y metal",
+    "americana/country/folk",
+    "fuera de foco"
+   ],
+   "genero_discogs": [
+    "Rock"
+   ],
+   "estilos_discogs": [
+    "Pop Rock",
+    "Indie Rock"
+   ],
+   "nacionalidad": "US",
+   "nacionalidad_fuente": "MusicBrainz",
+   "fuentes": [
+    {
+     "nombre": "Sala Changó (web oficial)",
+     "id": "chango",
+     "url": "https://www.salachango.es/",
+     "prioridad": 1
+    },
+    {
+     "nombre": "Conciertos por Madrid",
+     "id": "cpm",
+     "url": "https://conciertospormadrid.com/conciertos/mercury-rev-madrid-2026/",
+     "prioridad": 3
+    },
+    {
+     "nombre": "Songkick Madrid",
+     "id": "songkick",
+     "url": "https://www.songkick.com/concerts/43160411-mercury-rev-at-sala-chango",
+     "prioridad": 3
+    },
+    {
+     "nombre": "conciertos.club (buscador semanal)",
+     "id": "cc_buscador",
+     "url": "https://conciertos.club/madrid/conciertos/121964-mercury-rev-sandy-bell",
+     "prioridad": 3
+    },
+    {
+     "nombre": "conciertos.club (portada Madrid)",
+     "id": "cc_portada",
+     "url": "https://conciertos.club/madrid/conciertos/121964-mercury-rev-sandy-bell",
+     "prioridad": 3
+    },
+    {
+     "nombre": "conciertos.club (por estilo)",
+     "id": "cc_estilos",
+     "url": "https://conciertos.club/madrid/conciertos/121964-mercury-rev-sandy-bell",
+     "prioridad": 3
+    },
+    {
+     "nombre": "La Ganzúa",
+     "id": "laganzua",
+     "url": "https://www.laganzua.net/conciertos/mercury-rev-madrid-1015740",
+     "prioridad": 3
+    },
+    {
+     "nombre": "Rock for Everyone (agenda mensual Madrid)",
+     "id": "rockforeveryone",
+     "url": "https://rockforeveryone.es/agenda-de-conciertos-heavy-en-madrid-en-octubre-de-2026/",
+     "prioridad": 3
+    },
+    {
+     "nombre": "Rock and Blog",
+     "id": "rockandblog",
+     "url": "https://rockandblog.net/agenda-conciertos-rock/#b607aa5b2fd58dd860bfb55619389982",
+     "prioridad": 4
+    },
+    {
+     "nombre": "MariskalRock (guía)",
+     "id": "mariskal",
+     "url": "https://mariskalrock.com/guia-de-conciertos/",
+     "prioridad": 4
+    }
+   ],
+   "estado": "contrastado",
+   "conflictos": [],
+   "notas": [
+    "Sala: Sala Changó según Conciertos por Madrid, Sala Changó (web oficial), Songkick Madrid; Sala Wagon según La Ganzúa, MariskalRock (guía), Rock and Blog, Rock for Everyone (agenda mensual Madrid), conciertos.club (buscador semanal), conciertos.club (por estilo), conciertos.club (portada Madrid). Resuelto por prioridad de fuente (la de mayor prioridad confirma Sala Changó)."
+   ],
+   "en_foco": true,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
    "id": "6a72c33f2e42",
    "fecha": "2026-10-07",
    "hora": "21:00",
@@ -18351,7 +18429,7 @@
      "prioridad": 3
     }
    ],
-   "estado": "conflicto",
+   "estado": "posiblemente cancelado",
    "conflictos": [
     {
      "campo": "sala",
@@ -18381,7 +18459,8 @@
     }
    ],
    "notas": [
-    "Conflicto de sala: Sala Wagon según La Ganzúa, MariskalRock (guía), Rock and Blog, Rock for Everyone (agenda mensual Madrid), Sala Wagon (web oficial), conciertos.club (buscador semanal), conciertos.club (por estilo), conciertos.club (portada Madrid); Sala Changó según Conciertos por Madrid, Sala Changó (web oficial), Songkick Madrid."
+    "Conflicto de sala: Sala Wagon según La Ganzúa, MariskalRock (guía), Rock and Blog, Rock for Everyone (agenda mensual Madrid), Sala Wagon (web oficial), conciertos.club (buscador semanal), conciertos.club (por estilo), conciertos.club (portada Madrid); Sala Changó según Conciertos por Madrid, Sala Changó (web oficial), Songkick Madrid.",
+    "Ya no aparece en ninguna de sus fuentes (comprobado el 2026-09-29); visto por última vez el 2026-09-29."
    ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
@@ -18391,7 +18470,7 @@
    "id": "a771296396f3",
    "fecha": "2026-10-07",
    "hora": "21:00",
-   "artista": "Track Dogs 20º Aniversario",
+   "artista": "Track Dogs",
    "invitados": [],
    "sala": "Galileo Galilei",
    "municipio": "Madrid",
@@ -18428,12 +18507,6 @@
    "nacionalidad": null,
    "nacionalidad_fuente": null,
    "fuentes": [
-    {
-     "nombre": "Galileo Galilei (web oficial)",
-     "id": "galileo",
-     "url": "https://salagalileo.es/programacion/track-dogs-20o-aniversario/",
-     "prioridad": 1
-    },
     {
      "nombre": "conciertos.club (buscador semanal)",
      "id": "cc_buscador",
@@ -19402,9 +19475,7 @@
    "fecha": "2026-10-08",
    "hora": "19:00",
    "artista": "Noches de Piano Jazz",
-   "invitados": [
-    "Piano Jazz"
-   ],
+   "invitados": [],
    "sala": "El Café de la Ópera",
    "municipio": "Madrid",
    "precio": "20€",
@@ -19601,9 +19672,7 @@
    "fecha": "2026-10-08",
    "hora": "20:00",
    "artista": "El Tri",
-   "invitados": [
-    "Las Noches de Río Babel. El Tri"
-   ],
+   "invitados": [],
    "sala": "La Riviera",
    "municipio": "Madrid",
    "precio": "44,90€",
@@ -22108,51 +22177,6 @@
    "ultima_vez_visto": "2026-09-29"
   },
   {
-   "id": "20a215bd174a",
-   "fecha": "2026-10-09",
-   "hora": "19:00",
-   "artista": "MYGUEL en acústico – Club 77",
-   "invitados": [],
-   "sala": "Galileo Galilei",
-   "municipio": "Madrid",
-   "precio": null,
-   "estilo_fuente": [
-    {
-     "estilo": "Pop / Rock",
-     "fuente": "Madrid en Vivo (asociación de salas)"
-    }
-   ],
-   "categoria": "pop e indie",
-   "categorias": [
-    "pop e indie",
-    "rock y metal"
-   ],
-   "genero_discogs": [],
-   "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
-   "fuentes": [
-    {
-     "nombre": "Galileo Galilei (web oficial)",
-     "id": "galileo",
-     "url": "https://salagalileo.es/programacion/myguel-en-acustico-club-77/",
-     "prioridad": 1
-    },
-    {
-     "nombre": "Madrid en Vivo (asociación de salas)",
-     "id": "madridenvivo",
-     "url": "https://madridenvivo.com/?post_type=evento&p=795881",
-     "prioridad": 3
-    }
-   ],
-   "estado": "contrastado",
-   "conflictos": [],
-   "notas": [],
-   "en_foco": true,
-   "primera_vez_visto": "2026-09-29",
-   "ultima_vez_visto": "2026-09-29"
-  },
-  {
    "id": "da853a033533",
    "fecha": "2026-10-09",
    "hora": "19:00",
@@ -22725,9 +22749,7 @@
    "fecha": "2026-10-09",
    "hora": "21:00",
    "artista": "Chiquita Movida",
-   "invitados": [
-    "Las Noches de Río Babel. Chiquita Movida"
-   ],
+   "invitados": [],
    "sala": "La Riviera",
    "municipio": "Madrid",
    "precio": "20€",
@@ -22806,10 +22828,16 @@
    "sala": "Cadillac Solitario",
    "municipio": "Madrid",
    "precio": "8€",
-   "estilo_fuente": [],
-   "categoria": "sin clasificar",
+   "estilo_fuente": [
+    {
+     "estilo": "Pop / Rock",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "pop e indie",
    "categorias": [
-    "sin clasificar"
+    "pop e indie",
+    "rock y metal"
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
@@ -22827,9 +22855,15 @@
      "id": "cc_portada",
      "url": "https://conciertos.club/madrid/conciertos/124922-combo-cayena",
      "prioridad": 3
+    },
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/?post_type=evento&p=796935",
+     "prioridad": 3
     }
    ],
-   "estado": "1_fuente",
+   "estado": "contrastado",
    "conflictos": [],
    "notas": [],
    "en_foco": true,
@@ -22841,9 +22875,7 @@
    "fecha": "2026-10-09",
    "hora": "21:00",
    "artista": "Compro Oro",
-   "invitados": [
-    "MAZO: COMPRO ORO"
-   ],
+   "invitados": [],
    "sala": "Maravillas Club",
    "municipio": "Madrid",
    "precio": "16,51€",
@@ -23018,7 +23050,7 @@
    "ultima_vez_visto": "2026-09-29"
   },
   {
-   "id": "73c3f7b55ed8",
+   "id": "73c3f7b55eb5",
    "fecha": "2026-10-09",
    "hora": "21:00",
    "artista": "Devin Townsend",
@@ -24295,7 +24327,7 @@
    "ultima_vez_visto": "2026-09-29"
   },
   {
-   "id": "73c3f7b55eb5",
+   "id": "73c3f7b55ed8",
    "fecha": "2026-10-09",
    "hora": null,
    "artista": "Devin Townsend",
@@ -24860,9 +24892,7 @@
    "fecha": "2026-10-09",
    "hora": null,
    "artista": "INVERFEST 2026: MARGARITA QUEBRADA",
-   "invitados": [
-    "MARGARITA QUEBRADA"
-   ],
+   "invitados": [],
    "sala": "Sala But",
    "municipio": "Madrid",
    "precio": null,
@@ -24931,6 +24961,45 @@
      "nombre": "Madrid en Vivo (asociación de salas)",
      "id": "madridenvivo",
      "url": "https://madridenvivo.com/?post_type=evento&p=796466",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": true,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
+   "id": "cc5aad49e15e",
+   "fecha": "2026-10-09",
+   "hora": null,
+   "artista": "MATASUEGRAS",
+   "invitados": [],
+   "sala": "Cadillac Solitario",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Pop / Rock",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "pop e indie",
+   "categorias": [
+    "pop e indie",
+    "rock y metal"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/?post_type=evento&p=796936",
      "prioridad": 3
     }
    ],
@@ -25127,6 +25196,45 @@
      "nombre": "Madrid en Vivo (asociación de salas)",
      "id": "madridenvivo",
      "url": "https://madridenvivo.com/?post_type=evento&p=794200",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": true,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
+   "id": "20a215bd174a",
+   "fecha": "2026-10-09",
+   "hora": null,
+   "artista": "MYGUEL EN ACÚSTICO - CLUB 77",
+   "invitados": [],
+   "sala": "Galileo Galilei",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Pop / Rock",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "pop e indie",
+   "categorias": [
+    "pop e indie",
+    "rock y metal"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/?post_type=evento&p=795881",
      "prioridad": 3
     }
    ],
@@ -25933,7 +26041,6 @@
    "hora": "19:30",
    "artista": "EUROPE 40 ANIVERSARIO",
    "invitados": [
-    "EUROPE",
     "The Damn Truth"
    ],
    "sala": "La Nueva Cubierta",
@@ -26042,19 +26149,12 @@
      "id": "mariskal",
      "url": "https://mariskalrock.com/guia-de-conciertos/",
      "prioridad": 4
-    },
-    {
-     "nombre": "Metalcry",
-     "id": "metalcry",
-     "url": "https://metalcry.com/vuelve-europe-gira-historica-por-el-40o-aniversario-de-the-final-countdown/",
-     "prioridad": 3
     }
    ],
    "estado": "contrastado",
    "conflictos": [],
    "notas": [
-    "Hora: 19:30 según Get Rock (promotora); 21:00 según La Ganzúa, conciertos.club (buscador semanal), conciertos.club (por estilo), conciertos.club (portada Madrid). Resuelto por prioridad de fuente (la fuente de mayor prioridad confirma 19:30).",
-    "Sala: La Nueva Cubierta según Conciertos por Madrid, Get Rock (promotora), Hellpress (agenda), La Ganzúa, La Nueva Cubierta, Leganés (web oficial), MariskalRock (guía), Metal Legion, Metal Symphony (agenda de temporada), Rock and Blog, conciertos.club (buscador semanal), conciertos.club (por estilo), conciertos.club (portada Madrid); Plaza de Toros La Nueva Cubierta según Metalcry. Resuelto por prioridad de fuente (la de mayor prioridad confirma La Nueva Cubierta)."
+    "Hora: 19:30 según Get Rock (promotora); 21:00 según La Ganzúa, conciertos.club (buscador semanal), conciertos.club (por estilo), conciertos.club (portada Madrid). Resuelto por prioridad de fuente (la fuente de mayor prioridad confirma 19:30)."
    ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
@@ -26264,9 +26364,7 @@
    "fecha": "2026-10-10",
    "hora": "20:00",
    "artista": "Las Noches de Río Babel. La Bomba de Tiempo",
-   "invitados": [
-    "La Bomba De Tiempo"
-   ],
+   "invitados": [],
    "sala": "Sala Mon Live",
    "municipio": "Madrid",
    "precio": "22,04€",
@@ -26368,9 +26466,7 @@
    "fecha": "2026-10-10",
    "hora": "20:30",
    "artista": "Festival de Hispanoamerica",
-   "invitados": [
-    "SEGUNDO FESTIVAL DE HISPANOAMÉRICA"
-   ],
+   "invitados": [],
    "sala": "Galileo Galilei",
    "municipio": "Madrid",
    "precio": "20€",
@@ -26622,9 +26718,7 @@
    "fecha": "2026-10-10",
    "hora": "21:00",
    "artista": "Fiestas de Leganés. Mägo de Oz",
-   "invitados": [
-    "MÄGO DE OZ"
-   ],
+   "invitados": [],
    "sala": "Recinto Ferial",
    "municipio": "Leganés",
    "precio": null,
@@ -26802,9 +26896,7 @@
    "fecha": "2026-10-10",
    "hora": "21:00",
    "artista": "Las Noches de Río Babel. SobreZero",
-   "invitados": [
-    "Sobrezero"
-   ],
+   "invitados": [],
    "sala": "Teatro Eslava",
    "municipio": "Madrid",
    "precio": "18€",
@@ -26954,9 +27046,7 @@
    "fecha": "2026-10-10",
    "hora": "21:00",
    "artista": "RECUERDOS LOCOS",
-   "invitados": [
-    "Recuerdos Locos. Tributo a El Canto del Loco & Dani Martín"
-   ],
+   "invitados": [],
    "sala": "Sala Nazca",
    "municipio": "Madrid",
    "precio": null,
@@ -28327,6 +28417,39 @@
    "ultima_vez_visto": "2026-09-29"
   },
   {
+   "id": "a6bece4df5f3",
+   "fecha": "2026-10-10",
+   "hora": null,
+   "artista": "EUROPE",
+   "invitados": [],
+   "sala": "Plaza de Toros La Nueva Cubierta",
+   "municipio": "Leganés",
+   "precio": null,
+   "estilo_fuente": [],
+   "categoria": "sin clasificar",
+   "categorias": [
+    "sin clasificar"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Metalcry",
+     "id": "metalcry",
+     "url": "https://metalcry.com/vuelve-europe-gira-historica-por-el-40o-aniversario-de-the-final-countdown/",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": true,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
    "id": "928d954eac37",
    "fecha": "2026-10-10",
    "hora": null,
@@ -28565,9 +28688,7 @@
    "fecha": "2026-10-10",
    "hora": null,
    "artista": "HISPANIDAD 2026: RODA DAS MINAS",
-   "invitados": [
-    "HISPANIDAD 2026: BOSSA PARA VOCÊ"
-   ],
+   "invitados": [],
    "sala": "Rincón del Arte Nuevo",
    "municipio": "Madrid",
    "precio": null,
@@ -28763,8 +28884,7 @@
    "artista": "Orly",
    "invitados": [
     "Alta Rossa",
-    "Counteractt",
-    "MOLDED IN BLACKNESS: ORLY"
+    "Counteractt"
    ],
    "sala": "Revi Live",
    "municipio": "Madrid",
@@ -28794,7 +28914,9 @@
    ],
    "estado": "contrastado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Evento: MOLDED IN BLACKNESS"
+   ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -29124,6 +29246,84 @@
      "nombre": "Madrid en Vivo (asociación de salas)",
      "id": "madridenvivo",
      "url": "https://madridenvivo.com/?post_type=evento&p=794315",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": true,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
+   "id": "866ebc82d829",
+   "fecha": "2026-10-10",
+   "hora": null,
+   "artista": "THE BESTERS",
+   "invitados": [],
+   "sala": "Cadillac Solitario",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Pop / Rock",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "pop e indie",
+   "categorias": [
+    "pop e indie",
+    "rock y metal"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/?post_type=evento&p=796937",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": true,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
+   "id": "7d7cd4594cf0",
+   "fecha": "2026-10-10",
+   "hora": null,
+   "artista": "THE TARGETS",
+   "invitados": [],
+   "sala": "Cadillac Solitario",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Pop / Rock",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "pop e indie",
+   "categorias": [
+    "pop e indie",
+    "rock y metal"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/?post_type=evento&p=796938",
      "prioridad": 3
     }
    ],
@@ -29763,9 +29963,7 @@
    "fecha": "2026-10-11",
    "hora": "19:00",
    "artista": "Noches de Piano Jazz",
-   "invitados": [
-    "Piano Jazz"
-   ],
+   "invitados": [],
    "sala": "El Café de la Ópera",
    "municipio": "Madrid",
    "precio": "20€",
@@ -30422,8 +30620,7 @@
    "hora": "21:00",
    "artista": "Kaleidobort",
    "invitados": [
-    "Axiom9",
-    "Mad Psych Fest: KALEIDOBOLT y AXIOM9"
+    "Axiom9"
    ],
    "sala": "Wurlitzer Ballroom",
    "municipio": "Madrid",
@@ -30643,8 +30840,7 @@
    "hora": "21:00",
    "artista": "SOUL LATINO – LUIS ALFONSO & JEAN CARLOS CENTENO",
    "invitados": [
-    "INVITADOS",
-    "SOUL LATINO"
+    "INVITADOS"
    ],
    "sala": "La Nueva Cubierta",
    "municipio": "Leganés",
@@ -30751,9 +30947,7 @@
    "fecha": "2026-10-11",
    "hora": "22:00",
    "artista": "El Cebri",
-   "invitados": [
-    "HISPANIDAD 2026: EL CEBRI"
-   ],
+   "invitados": [],
    "sala": "Tempo Audiophile Club",
    "municipio": "Madrid",
    "precio": null,
@@ -32028,9 +32222,7 @@
    "fecha": "2026-10-12",
    "hora": "21:00",
    "artista": "Caco Senante y Mariella Kohn: Chavela. El último trago",
-   "invitados": [
-    "CHAVELA - EL ÚLTIMO TRAGO"
-   ],
+   "invitados": [],
    "sala": "Galileo Galilei",
    "municipio": "Madrid",
    "precio": "18,50€",
@@ -32844,7 +33036,7 @@
    "hora": "20:00",
    "artista": "Destinados Ayudar: Entre Amigos",
    "invitados": [
-    "Entre amigos"
+    "ENTRE AMIGOS (CONCIERTO BENÉFICO)"
    ],
    "sala": "La Riviera",
    "municipio": "Madrid",
@@ -33903,8 +34095,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "VE",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -35050,7 +35242,7 @@
    "ultima_vez_visto": "2026-09-29"
   },
   {
-   "id": "ec67ca95b0fc",
+   "id": "97a2ae2ad30b",
    "fecha": "2026-10-14",
    "hora": null,
    "artista": "Far East Groove",
@@ -35469,7 +35661,7 @@
    "ultima_vez_visto": "2026-09-29"
   },
   {
-   "id": "97a2ae2ad30b",
+   "id": "ec67ca95b0fc",
    "fecha": "2026-10-14",
    "hora": null,
    "artista": "Yasuharu Takanashi’s",
@@ -35804,9 +35996,7 @@
    "fecha": "2026-10-15",
    "hora": "20:00",
    "artista": "Kid Mount",
-   "invitados": [
-    "MAZO: KID MOUNT"
-   ],
+   "invitados": [],
    "sala": "Maravillas Club",
    "municipio": "Madrid",
    "precio": "16,51€",
@@ -35934,9 +36124,7 @@
    "hora": "20:00",
    "artista": "Toldos Verdes",
    "invitados": [
-    "Garbí",
-    "Radar Joven Toldos Verdes",
-    "Toldos Verdes + garbí - Radar Joven 2026 2026"
+    "Garbí"
    ],
    "sala": "Shoko",
    "municipio": "Madrid",
@@ -36157,9 +36345,7 @@
    "fecha": "2026-10-15",
    "hora": "20:30",
    "artista": "Montedapena",
-   "invitados": [
-    "AIEnRuta Artistas: MONTEDAPENA"
-   ],
+   "invitados": [],
    "sala": "Cadavra",
    "municipio": "Madrid",
    "precio": "13€",
@@ -36773,7 +36959,6 @@
    "invitados": [
     "ELENA AMORES & THE WILD BOOTS",
     "D.J. HUEKA EN FIESTA X ANIVERSARIO ROCKET CARABANCHEL",
-    "FIESTA X ANIVERSARIO ROCKET CARABANCHEL: JOSE INSACIABLE",
     "DJ. HUEKA"
    ],
    "sala": "Gruta 77",
@@ -36904,9 +37089,7 @@
    "fecha": "2026-10-15",
    "hora": "21:00",
    "artista": "Shabaka",
-   "invitados": [
-    "IMPULSO - SHABAKA"
-   ],
+   "invitados": [],
    "sala": "Sala Changó",
    "municipio": "Madrid",
    "precio": "38.0000 EUR",
@@ -39238,10 +39421,7 @@
    "fecha": "2026-10-16",
    "hora": "21:00",
    "artista": "‘Las noches de Río Babel’ presenta: ALAMEDADOSOULNA",
-   "invitados": [
-    "Las Noches de Río Babel. Alamedadosoulna",
-    "ALAMEDADOSOULNA"
-   ],
+   "invitados": [],
    "sala": "Sala Villanos",
    "municipio": "Madrid",
    "precio": "18€",
@@ -39785,9 +39965,7 @@
    "fecha": "2026-10-16",
    "hora": "22:00",
    "artista": "LORDS OF LOUNGE",
-   "invitados": [
-    "JAZZ CON SABOR A CLUB 26: LORDS OF LOUNGE (BERLÍN) (Festival JazzMadrid)"
-   ],
+   "invitados": [],
    "sala": "Tempo Audiophile Club",
    "municipio": "Madrid",
    "precio": null,
@@ -39991,8 +40169,7 @@
    "hora": null,
    "artista": "BACKSTAGE B2B BELARTE & EL ZOCO LE PETIT",
    "invitados": [
-    "TRUFFLEMAYO",
-    "BELARTE & EL ZOCO"
+    "TRUFFLEMAYO"
    ],
    "sala": "Café La Palma",
    "municipio": "Madrid",
@@ -40333,8 +40510,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Songkick Madrid",
@@ -40418,6 +40595,45 @@
    "notas": [
     "Conflicto de hora: 21:00 según conciertos.club (buscador semanal), conciertos.club (portada Madrid); 20:00 según Songkick Madrid."
    ],
+   "en_foco": true,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
+   "id": "e62820b8804b",
+   "fecha": "2026-10-16",
+   "hora": null,
+   "artista": "DREI",
+   "invitados": [],
+   "sala": "Cadillac Solitario",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Pop / Rock",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "pop e indie",
+   "categorias": [
+    "pop e indie",
+    "rock y metal"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/?post_type=evento&p=796939",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -41029,6 +41245,45 @@
      "nombre": "Madrid en Vivo (asociación de salas)",
      "id": "madridenvivo",
      "url": "https://madridenvivo.com/evento/concierto-siroco-19/",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": true,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
+   "id": "f0887a260dc1",
+   "fecha": "2026-10-16",
+   "hora": null,
+   "artista": "NESTOR RUSSEL Y LOS IMPOSTORES",
+   "invitados": [],
+   "sala": "Cadillac Solitario",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Pop / Rock",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "pop e indie",
+   "categorias": [
+    "pop e indie",
+    "rock y metal"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/?post_type=evento&p=796940",
      "prioridad": 3
     }
    ],
@@ -42200,7 +42455,6 @@
    "hora": "20:00",
    "artista": "Sabbat",
    "invitados": [
-    "SABBAT – BLACK FIRE OVER SPAIN TOUR 2026 DESDE NAGOYA, JAPÓN",
     "INVITADOS ESPECIALES",
     "Omission",
     "sepulchral"
@@ -43930,6 +44184,47 @@
      "nombre": "Madrid en Vivo (asociación de salas)",
      "id": "madridenvivo",
      "url": "https://madridenvivo.com/?post_type=evento&p=796470",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": true,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
+   "id": "7f21e828fdb9",
+   "fecha": "2026-10-17",
+   "hora": null,
+   "artista": "CRAZY GIRLS ROCK’N’ROLL CLUB: DOMINIC MÖWS",
+   "invitados": [
+    "CAROL DEE AND THE D-VILS"
+   ],
+   "sala": "Cadillac Solitario",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Pop / Rock",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "pop e indie",
+   "categorias": [
+    "pop e indie",
+    "rock y metal"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/?post_type=evento&p=796941",
      "prioridad": 3
     }
    ],
@@ -45911,9 +46206,7 @@
    "fecha": "2026-10-18",
    "hora": "18:00",
    "artista": "Tributo a Frank Sinatra y Louis Armstrong. The Jazz Room",
-   "invitados": [
-    "THE JAZZ ROOM: TRIBUTO A FRANK SINATRA Y LOUIS ARMSTRONG"
-   ],
+   "invitados": [],
    "sala": "Café Berlín",
    "municipio": "Madrid",
    "precio": "25€",
@@ -46087,9 +46380,7 @@
    "fecha": "2026-10-18",
    "hora": "19:00",
    "artista": "Noches de Piano Jazz",
-   "invitados": [
-    "Piano Jazz"
-   ],
+   "invitados": [],
    "sala": "El Café de la Ópera",
    "municipio": "Madrid",
    "precio": "20€",
@@ -46326,8 +46617,7 @@
    "invitados": [
     "Lana Rootikal",
     "Alex B",
-    "Militant Korso",
-    "MADRIZ ROOTS #1: ARES KIDA & THE JEMPER"
+    "Militant Korso"
    ],
    "sala": "Silikona",
    "municipio": "Madrid",
@@ -46614,7 +46904,6 @@
    "hora": "21:00",
    "artista": "DJTONER Q4RTET & ERIK TRUFFAZ",
    "invitados": [
-    "Erik Truffaz",
     "DJ Toner"
    ],
    "sala": "Sala Villanos",
@@ -47294,8 +47583,6 @@
    "hora": null,
    "artista": "Las Pelotas y Cruzando el Charco",
    "invitados": [
-    "Las Pelotas",
-    "Cruzando el charco",
     "Las Noches de Río Babel Las Pelotas"
    ],
    "sala": "Sala Wagon",
@@ -47506,9 +47793,7 @@
    "fecha": "2026-10-18",
    "hora": null,
    "artista": "THE BAUSA",
-   "invitados": [
-    "Bausa"
-   ],
+   "invitados": [],
    "sala": "Sala Changó",
    "municipio": "Madrid",
    "precio": "20€",
@@ -47687,6 +47972,45 @@
      "nombre": "Madrid en Vivo (asociación de salas)",
      "id": "madridenvivo",
      "url": "https://madridenvivo.com/?post_type=evento&p=796746",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": true,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
+   "id": "2ecfb591228b",
+   "fecha": "2026-10-18",
+   "hora": null,
+   "artista": "XIV CONCIERTO “JAVI MARTÍN” A FAVOR DEL BANCO DE ALIMENTOS",
+   "invitados": [],
+   "sala": "Cadillac Solitario",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Pop / Rock",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "pop e indie",
+   "categorias": [
+    "pop e indie",
+    "rock y metal"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/?post_type=evento&p=796942",
      "prioridad": 3
     }
    ],
@@ -48411,8 +48735,8 @@
     "Garage Rock",
     "Punk"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "US",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Wurlitzer Ballroom (web oficial)",
@@ -49892,9 +50216,7 @@
    "fecha": "2026-10-21",
    "hora": "21:00",
    "artista": "Las Noches de Río Babel. Trueno",
-   "invitados": [
-    "Trueno"
-   ],
+   "invitados": [],
    "sala": "Movistar Arena",
    "municipio": "Madrid",
    "precio": "36-80€",
@@ -51329,8 +51651,8 @@
    "estilos_discogs": [
     "Pop Rock"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "La Ganzúa",
@@ -51447,7 +51769,7 @@
    "ultima_vez_visto": "2026-09-29"
   },
   {
-   "id": "2ec0e3bd1729",
+   "id": "2ec0e3bd17ce",
    "fecha": "2026-10-22",
    "hora": "20:00",
    "artista": "Synthony",
@@ -51489,9 +51811,7 @@
    "fecha": "2026-10-22",
    "hora": "20:30",
    "artista": "Band Of Horses",
-   "invitados": [
-    "Band of Horses – Celebrating 20 Years of Everything All The Time"
-   ],
+   "invitados": [],
    "sala": "La Riviera",
    "municipio": "Madrid",
    "precio": "56,50€",
@@ -52490,8 +52810,7 @@
    "hora": "21:00",
    "artista": "Radar Joven. Nico",
    "invitados": [
-    "natxo",
-    "RADAR JOVEN 2026: NICO"
+    "natxo"
    ],
    "sala": "Sala El Sol",
    "municipio": "Madrid",
@@ -54054,13 +54373,11 @@
    "ultima_vez_visto": "2026-09-29"
   },
   {
-   "id": "2ec0e3bd17ce",
+   "id": "2ec0e3bd1729",
    "fecha": "2026-10-22",
    "hora": null,
    "artista": "Synthony",
-   "invitados": [
-    "The Synthony"
-   ],
+   "invitados": [],
    "sala": "Palacio Vistalegre",
    "municipio": "Madrid",
    "precio": "39€",
@@ -54921,9 +55238,7 @@
    "hora": "20:15",
    "artista": "Jordana B",
    "invitados": [
-    "A Mares",
-    "Radar Joven Jordana B",
-    "RADAR JOVEN 2026: JORDANA B"
+    "A Mares"
    ],
    "sala": "Independance Club",
    "municipio": "Madrid",
@@ -55505,9 +55820,7 @@
    "fecha": "2026-10-23",
    "hora": "21:00",
    "artista": "De Fem",
-   "invitados": [
-    "MAZO: DE FEM"
-   ],
+   "invitados": [],
    "sala": "Maravillas Club",
    "municipio": "Madrid",
    "precio": "16,51€",
@@ -56332,8 +56645,7 @@
    "hora": "22:00",
    "artista": "Radar Joven. Dharmacide",
    "invitados": [
-    "Seasunday",
-    "RADAR JOVEN 2026: DHARMACIDE"
+    "Seasunday"
    ],
    "sala": "Sala Clamores",
    "municipio": "Madrid",
@@ -57624,6 +57936,45 @@
    "ultima_vez_visto": "2026-09-29"
   },
   {
+   "id": "264a58ceb128",
+   "fecha": "2026-10-23",
+   "hora": null,
+   "artista": "OK MCKEY",
+   "invitados": [],
+   "sala": "Cadillac Solitario",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Pop / Rock",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "pop e indie",
+   "categorias": [
+    "pop e indie",
+    "rock y metal"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/?post_type=evento&p=796943",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": true,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
    "id": "53ee1f686070",
    "fecha": "2026-10-23",
    "hora": null,
@@ -58255,8 +58606,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "GB",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Sala Villanos (web oficial)",
@@ -58854,8 +59205,7 @@
     "Trapa y los Turboexit",
     "Grapeshot",
     "Lujuria",
-    "Trapa & the Turboexits",
-    "MADRID DOMINATION FEST Eskóbula"
+    "Trapa & the Turboexits"
    ],
    "sala": "Revi Space",
    "municipio": "Madrid",
@@ -59027,9 +59377,7 @@
    "fecha": "2026-10-24",
    "hora": "21:00",
    "artista": "Radar Joven. Cupido",
-   "invitados": [
-    "RADAR JOVEN 2026 - MADRID EN VIVO 25 AÑOS: CUPIDO"
-   ],
+   "invitados": [],
    "sala": "Sala El Sol",
    "municipio": "Madrid",
    "precio": null,
@@ -59272,8 +59620,7 @@
    "invitados": [
     "GTO'S",
     "PLAN C",
-    "The GTO's",
-    "ESCENARIOS MAHOU: F.A.N.T.A"
+    "The GTO's"
    ],
    "sala": "Gruta 77",
    "municipio": "Madrid",
@@ -59472,9 +59819,7 @@
    "fecha": "2026-10-24",
    "hora": "21:30",
    "artista": "Twanguero",
-   "invitados": [
-    "El Twanguero"
-   ],
+   "invitados": [],
    "sala": "Sala Villanos",
    "municipio": "Madrid",
    "precio": "22€",
@@ -59614,9 +59959,7 @@
    "fecha": "2026-10-24",
    "hora": "22:30",
    "artista": "Radar Joven. Carmen Lancho",
-   "invitados": [
-    "CARMEN LANCHO"
-   ],
+   "invitados": [],
    "sala": "Tempo Audiophile Club",
    "municipio": "Madrid",
    "precio": "7€",
@@ -59770,6 +60113,45 @@
    "conflictos": [],
    "notas": [],
    "en_foco": false,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
+   "id": "ce3c5b15985f",
+   "fecha": "2026-10-24",
+   "hora": null,
+   "artista": "4J´S",
+   "invitados": [],
+   "sala": "Cadillac Solitario",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Pop / Rock",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "pop e indie",
+   "categorias": [
+    "pop e indie",
+    "rock y metal"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/?post_type=evento&p=796962",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
   },
@@ -60172,9 +60554,11 @@
      "prioridad": 3
     }
    ],
-   "estado": "1_fuente",
+   "estado": "posiblemente cancelado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Ya no aparece en ninguna de sus fuentes (comprobado el 2026-09-29); visto por última vez el 2026-09-29."
+   ],
    "en_foco": false,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -60253,9 +60637,11 @@
      "prioridad": 3
     }
    ],
-   "estado": "1_fuente",
+   "estado": "posiblemente cancelado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Ya no aparece en ninguna de sus fuentes (comprobado el 2026-09-29); visto por última vez el 2026-09-29."
+   ],
    "en_foco": false,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -60703,6 +61089,45 @@
    "ultima_vez_visto": "2026-09-29"
   },
   {
+   "id": "629c77e6c581",
+   "fecha": "2026-10-24",
+   "hora": null,
+   "artista": "NIKA REVOLT",
+   "invitados": [],
+   "sala": "Cadillac Solitario",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Pop / Rock",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "pop e indie",
+   "categorias": [
+    "pop e indie",
+    "rock y metal"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/?post_type=evento&p=796957",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": true,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
    "id": "37420bff5fae",
    "fecha": "2026-10-24",
    "hora": null,
@@ -60785,9 +61210,7 @@
    "fecha": "2026-10-24",
    "hora": null,
    "artista": "RADAR JOVEN 2026: DURA CALÁ",
-   "invitados": [
-    "Dura Calá - Radar Joven 2026 2026"
-   ],
+   "invitados": [],
    "sala": "Silikona",
    "municipio": "Madrid",
    "precio": null,
@@ -60832,9 +61255,7 @@
    "fecha": "2026-10-24",
    "hora": null,
    "artista": "RADAR JOVEN 2026: TERE!",
-   "invitados": [
-    "Tere! - Radar Joven 2026 2026"
-   ],
+   "invitados": [],
    "sala": "Sala Vesta",
    "municipio": "Madrid",
    "precio": null,
@@ -61406,9 +61827,7 @@
    "fecha": "2026-10-25",
    "hora": "13:00",
    "artista": "Sabîl – concierto solidario por Palestina",
-   "invitados": [
-    "Sabîl"
-   ],
+   "invitados": [],
    "sala": "Sala Villanos",
    "municipio": "Madrid",
    "precio": "20 EUR",
@@ -61792,8 +62211,7 @@
    "artista": "Aérokorda",
    "invitados": [
     "IrishTreble",
-    "Folqué",
-    "SAMHAIN Irish Treble - Aérokorda - Folqué?"
+    "Folqué"
    ],
    "sala": "Galileo Galilei",
    "municipio": "Madrid",
@@ -61820,8 +62238,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "BE",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -62077,9 +62495,7 @@
    "fecha": "2026-10-25",
    "hora": "20:00",
    "artista": "TARQUIM Y LOS METALES PRECIOSOS",
-   "invitados": [
-    "TARQUIM"
-   ],
+   "invitados": [],
    "sala": "Sala Villanos",
    "municipio": "Madrid",
    "precio": "19,80€",
@@ -62170,8 +62586,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "CO",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -62333,8 +62749,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "CL",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -62533,10 +62949,7 @@
    "hora": "21:30",
    "artista": "Ashleys",
    "invitados": [
-    "Nenazas",
-    "Radar Joven Ashleys",
-    "RADAR JOVEN 2026: ASHLEYS",
-    "Ashleys + Nenazas - Radar Joven 2026 2026"
+    "Nenazas"
    ],
    "sala": "Maravillas Club",
    "municipio": "Madrid",
@@ -62570,8 +62983,8 @@
    "estilos_discogs": [
     "Pop Rock"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -62622,10 +63035,7 @@
    "fecha": "2026-10-25",
    "hora": "21:30",
    "artista": "Radar Joven. West SRK",
-   "invitados": [
-    "RADAR JOVEN 2026: WEST SRK",
-    "West SRK - Radar Joven 2026 2026"
-   ],
+   "invitados": [],
    "sala": "Sala B",
    "municipio": "Madrid",
    "precio": "7€",
@@ -62699,8 +63109,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "MX",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -62852,9 +63262,11 @@
      "prioridad": 3
     }
    ],
-   "estado": "1_fuente",
+   "estado": "posiblemente cancelado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Ya no aparece en ninguna de sus fuentes (comprobado el 2026-09-29); visto por última vez el 2026-09-29."
+   ],
    "en_foco": false,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -62890,9 +63302,11 @@
      "prioridad": 3
     }
    ],
-   "estado": "1_fuente",
+   "estado": "posiblemente cancelado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Ya no aparece en ninguna de sus fuentes (comprobado el 2026-09-29); visto por última vez el 2026-09-29."
+   ],
    "en_foco": false,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -62930,9 +63344,11 @@
      "prioridad": 3
     }
    ],
-   "estado": "1_fuente",
+   "estado": "posiblemente cancelado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Ya no aparece en ninguna de sus fuentes (comprobado el 2026-09-29); visto por última vez el 2026-09-29."
+   ],
    "en_foco": false,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -62971,9 +63387,11 @@
      "prioridad": 3
     }
    ],
-   "estado": "1_fuente",
+   "estado": "posiblemente cancelado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Ya no aparece en ninguna de sus fuentes (comprobado el 2026-09-29); visto por última vez el 2026-09-29."
+   ],
    "en_foco": false,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -63012,9 +63430,11 @@
      "prioridad": 3
     }
    ],
-   "estado": "1_fuente",
+   "estado": "posiblemente cancelado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Ya no aparece en ninguna de sus fuentes (comprobado el 2026-09-29); visto por última vez el 2026-09-29."
+   ],
    "en_foco": false,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -63149,8 +63569,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Songkick Madrid",
@@ -63399,8 +63819,8 @@
    "estilos_discogs": [
     "Pop Rock"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "US",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -63520,8 +63940,8 @@
    "estilos_discogs": [
     "Pop Rock"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "AR",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -63827,9 +64247,11 @@
      "prioridad": 3
     }
    ],
-   "estado": "1_fuente",
+   "estado": "posiblemente cancelado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Ya no aparece en ninguna de sus fuentes (comprobado el 2026-09-29); visto por última vez el 2026-09-29."
+   ],
    "en_foco": false,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -63868,9 +64290,11 @@
      "prioridad": 3
     }
    ],
-   "estado": "1_fuente",
+   "estado": "posiblemente cancelado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Ya no aparece en ninguna de sus fuentes (comprobado el 2026-09-29); visto por última vez el 2026-09-29."
+   ],
    "en_foco": false,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -63908,9 +64332,11 @@
      "prioridad": 3
     }
    ],
-   "estado": "1_fuente",
+   "estado": "posiblemente cancelado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Ya no aparece en ninguna de sus fuentes (comprobado el 2026-09-29); visto por última vez el 2026-09-29."
+   ],
    "en_foco": false,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -63946,9 +64372,11 @@
      "prioridad": 3
     }
    ],
-   "estado": "1_fuente",
+   "estado": "posiblemente cancelado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Ya no aparece en ninguna de sus fuentes (comprobado el 2026-09-29); visto por última vez el 2026-09-29."
+   ],
    "en_foco": false,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -64117,9 +64545,7 @@
    "fecha": "2026-10-27",
    "hora": "20:00",
    "artista": "ANAKENA EN ÍNTIMO: SHOW 10MO ANIVERSARIO",
-   "invitados": [
-    "Anakena"
-   ],
+   "invitados": [],
    "sala": "Café Berlín",
    "municipio": "Madrid",
    "precio": null,
@@ -64240,8 +64666,8 @@
    "estilos_discogs": [
     "Pop Rock"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "CO",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -64331,7 +64757,7 @@
    "hora": "20:30",
    "artista": "DEPEDRO presentando su nuevo disco Furia y Calma",
    "invitados": [
-    "Las Noches de Río Babel. Depedro"
+    "Las Noches de Río Babel Depedro"
    ],
    "sala": "Sala Villanos",
    "municipio": "Madrid",
@@ -64700,8 +65126,8 @@
     "Alternative Rock",
     "Pop Punk"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "CA",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -64912,8 +65338,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "CL",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Madrid en Vivo (asociación de salas)",
@@ -65002,9 +65428,11 @@
      "prioridad": 3
     }
    ],
-   "estado": "1_fuente",
+   "estado": "posiblemente cancelado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Ya no aparece en ninguna de sus fuentes (comprobado el 2026-09-29); visto por última vez el 2026-09-29."
+   ],
    "en_foco": false,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -65043,9 +65471,11 @@
      "prioridad": 3
     }
    ],
-   "estado": "1_fuente",
+   "estado": "posiblemente cancelado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Ya no aparece en ninguna de sus fuentes (comprobado el 2026-09-29); visto por última vez el 2026-09-29."
+   ],
    "en_foco": false,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -65083,9 +65513,11 @@
      "prioridad": 3
     }
    ],
-   "estado": "1_fuente",
+   "estado": "posiblemente cancelado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Ya no aparece en ninguna de sus fuentes (comprobado el 2026-09-29); visto por última vez el 2026-09-29."
+   ],
    "en_foco": false,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -65121,9 +65553,11 @@
      "prioridad": 3
     }
    ],
-   "estado": "1_fuente",
+   "estado": "posiblemente cancelado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Ya no aparece en ninguna de sus fuentes (comprobado el 2026-09-29); visto por última vez el 2026-09-29."
+   ],
    "en_foco": false,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -65261,8 +65695,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "DE",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Madrid en Vivo (asociación de salas)",
@@ -65479,8 +65913,8 @@
    "estilos_discogs": [
     "Pop Rock"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "CO",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -65675,7 +66109,7 @@
    "hora": "20:30",
    "artista": "DEPEDRO presentando su nuevo disco Furia y Calma",
    "invitados": [
-    "Las Noches de Río Babel. Depedro"
+    "Las Noches de Río Babel Depedro"
    ],
    "sala": "Sala Villanos",
    "municipio": "Madrid",
@@ -65839,8 +66273,8 @@
    "estilos_discogs": [
     "Pop Rock"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "AU",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -66338,9 +66772,11 @@
      "prioridad": 3
     }
    ],
-   "estado": "1_fuente",
+   "estado": "posiblemente cancelado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Ya no aparece en ninguna de sus fuentes (comprobado el 2026-09-29); visto por última vez el 2026-09-29."
+   ],
    "en_foco": false,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -66379,9 +66815,11 @@
      "prioridad": 3
     }
    ],
-   "estado": "1_fuente",
+   "estado": "posiblemente cancelado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Ya no aparece en ninguna de sus fuentes (comprobado el 2026-09-29); visto por última vez el 2026-09-29."
+   ],
    "en_foco": false,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -66419,9 +66857,11 @@
      "prioridad": 3
     }
    ],
-   "estado": "1_fuente",
+   "estado": "posiblemente cancelado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Ya no aparece en ninguna de sus fuentes (comprobado el 2026-09-29); visto por última vez el 2026-09-29."
+   ],
    "en_foco": false,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -66457,9 +66897,11 @@
      "prioridad": 3
     }
    ],
-   "estado": "1_fuente",
+   "estado": "posiblemente cancelado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Ya no aparece en ninguna de sus fuentes (comprobado el 2026-09-29); visto por última vez el 2026-09-29."
+   ],
    "en_foco": false,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -66725,9 +67167,11 @@
      "prioridad": 3
     }
    ],
-   "estado": "1_fuente",
+   "estado": "posiblemente cancelado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Ya no aparece en ninguna de sus fuentes (comprobado el 2026-09-29); visto por última vez el 2026-09-29."
+   ],
    "en_foco": false,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -66737,9 +67181,7 @@
    "fecha": "2026-10-28",
    "hora": null,
    "artista": "SHERYL YOUNGBLOOD BAND FEAT. JOSÉ LUIS PARDO Y TOTA",
-   "invitados": [
-    "Jose Luis Pardo"
-   ],
+   "invitados": [],
    "sala": "Sala Clamores",
    "municipio": "Madrid",
    "precio": null,
@@ -66965,9 +67407,7 @@
    "fecha": "2026-10-29",
    "hora": "19:00",
    "artista": "Noches de Piano Jazz",
-   "invitados": [
-    "Piano Jazz"
-   ],
+   "invitados": [],
    "sala": "El Café de la Ópera",
    "municipio": "Madrid",
    "precio": "20€",
@@ -67052,8 +67492,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "DE",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Independance Club (web oficial)",
@@ -67335,7 +67775,7 @@
    "hora": "20:30",
    "artista": "DEPEDRO presentando su nuevo disco Furia y Calma",
    "invitados": [
-    "Las Noches de Río Babel. Depedro"
+    "Las Noches de Río Babel Depedro"
    ],
    "sala": "Sala Villanos",
    "municipio": "Madrid",
@@ -67514,9 +67954,7 @@
    "fecha": "2026-10-29",
    "hora": "20:30",
    "artista": "Ibrahim Maalouf & The Trumpest of Michel-Ange",
-   "invitados": [
-    "Ibrahim Maalouf"
-   ],
+   "invitados": [],
    "sala": "La Riviera",
    "municipio": "Madrid",
    "precio": null,
@@ -67771,10 +68209,7 @@
    "hora": "21:00",
    "artista": "mariagrep",
    "invitados": [
-    "Mundo Prestigio",
-    "Radar Joven mariagrep",
-    "RADAR JOVEN 2026: MARIAGREP & MUNDO PRESTIGIO",
-    "MARIAGREP & MUNDO PRESTIGIO (RADAR JOVEN)"
+    "Mundo Prestigio"
    ],
    "sala": "Cadavra",
    "municipio": "Madrid",
@@ -67814,8 +68249,8 @@
    "estilos_discogs": [
     "Pop Rock"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -67877,8 +68312,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "AR",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Madrid en Vivo (asociación de salas)",
@@ -67905,9 +68340,7 @@
    "fecha": "2026-10-29",
    "hora": "21:00",
    "artista": "Radar Joven. Kris Tena",
-   "invitados": [
-    "RADAR JOVEN 2026: KRIS TENA"
-   ],
+   "invitados": [],
    "sala": "Intruso Bar",
    "municipio": "Madrid",
    "precio": "7€",
@@ -68039,8 +68472,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ML",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -68080,9 +68513,7 @@
    "hora": "21:30",
    "artista": "La Niña Paracaídas",
    "invitados": [
-    "Joaquín Fénix",
-    "Radar Joven La Niña Paracaídas",
-    "RADAR JOVEN 2026: JOAQUÍN FÉNIX"
+    "Joaquín Fénix"
    ],
    "sala": "Café La Palma",
    "municipio": "Madrid",
@@ -68475,9 +68906,7 @@
    "fecha": "2026-10-29",
    "hora": null,
    "artista": "CIRCO PARAISO: LINE UP DJ",
-   "invitados": [
-    "LINE UP DJ2"
-   ],
+   "invitados": [],
    "sala": "Café La Palma",
    "municipio": "Madrid",
    "precio": null,
@@ -68582,9 +69011,11 @@
      "prioridad": 3
     }
    ],
-   "estado": "1_fuente",
+   "estado": "posiblemente cancelado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Ya no aparece en ninguna de sus fuentes (comprobado el 2026-09-29); visto por última vez el 2026-09-29."
+   ],
    "en_foco": false,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -68623,9 +69054,11 @@
      "prioridad": 3
     }
    ],
-   "estado": "1_fuente",
+   "estado": "posiblemente cancelado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Ya no aparece en ninguna de sus fuentes (comprobado el 2026-09-29); visto por última vez el 2026-09-29."
+   ],
    "en_foco": false,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -68663,9 +69096,11 @@
      "prioridad": 3
     }
    ],
-   "estado": "1_fuente",
+   "estado": "posiblemente cancelado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Ya no aparece en ninguna de sus fuentes (comprobado el 2026-09-29); visto por última vez el 2026-09-29."
+   ],
    "en_foco": false,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -68701,9 +69136,11 @@
      "prioridad": 3
     }
    ],
-   "estado": "1_fuente",
+   "estado": "posiblemente cancelado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Ya no aparece en ninguna de sus fuentes (comprobado el 2026-09-29); visto por última vez el 2026-09-29."
+   ],
    "en_foco": false,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -68769,8 +69206,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "SI",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Madrid en Vivo (asociación de salas)",
@@ -69701,9 +70138,7 @@
    "fecha": "2026-10-30",
    "hora": "20:00",
    "artista": "Dimash Qudaibergen",
-   "invitados": [
-    "Dimash"
-   ],
+   "invitados": [],
    "sala": "Palacio Vistalegre",
    "municipio": "Madrid",
    "precio": "125€",
@@ -69737,8 +70172,8 @@
    "estilos_discogs": [
     "Folk"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "KZ",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -69821,8 +70256,8 @@
    "estilos_discogs": [
     "Pop Rock"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "CO",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -69931,8 +70366,8 @@
    "estilos_discogs": [
     "Post-Punk"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "La Ganzúa",
@@ -69983,8 +70418,8 @@
    "estilos_discogs": [
     "Alternative Rock"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -70067,9 +70502,7 @@
    "fecha": "2026-10-30",
    "hora": "21:00",
    "artista": "Carlangas",
-   "invitados": [
-    "Inverfest. Carlangas"
-   ],
+   "invitados": [],
    "sala": "La Riviera",
    "municipio": "Madrid",
    "precio": "25,50€",
@@ -70103,8 +70536,8 @@
     "Pop Rock",
     "Indie Rock"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "La Riviera (web oficial)",
@@ -70262,7 +70695,7 @@
    "hora": "21:00",
    "artista": "DEPEDRO presentando su nuevo disco Furia y Calma",
    "invitados": [
-    "Las Noches de Río Babel. Depedro"
+    "Las Noches de Río Babel Depedro"
    ],
    "sala": "Sala Villanos",
    "municipio": "Madrid",
@@ -70385,8 +70818,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "DE",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Sala Wagon (web oficial)",
@@ -70508,9 +70941,7 @@
    "fecha": "2026-10-30",
    "hora": "21:00",
    "artista": "PANTERA BLUE",
-   "invitados": [
-    "MAZO: PANTERA BLUE"
-   ],
+   "invitados": [],
    "sala": "Maravillas Club",
    "municipio": "Madrid",
    "precio": "14,45€",
@@ -70527,8 +70958,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -70706,8 +71137,7 @@
    "hora": "21:30",
    "artista": "Interrogación Amor",
    "invitados": [
-    "Amante Laffón",
-    "Radar Joven Interrogación Amor"
+    "Amante Laffón"
    ],
    "sala": "El Sótano",
    "municipio": "Madrid",
@@ -70742,8 +71172,8 @@
    "estilos_discogs": [
     "Post-Punk"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -70832,8 +71262,7 @@
    "artista": "Manolo UVI",
    "invitados": [
     "ANTI IDOLS",
-    "KLOBBER",
-    "MANOLO UVI CON ÚNETE AL COMMANDO 9MM"
+    "KLOBBER"
    ],
    "sala": "Gruta 77",
    "municipio": "Madrid",
@@ -70919,9 +71348,7 @@
    "fecha": "2026-10-30",
    "hora": "21:30",
    "artista": "Radar Joven. Comic Sans",
-   "invitados": [
-    "RADAR JOVEN 2026: COMIC SANS"
-   ],
+   "invitados": [],
    "sala": "Moby Dick Club",
    "municipio": "Madrid",
    "precio": "7€",
@@ -71438,9 +71865,11 @@
      "prioridad": 3
     }
    ],
-   "estado": "1_fuente",
+   "estado": "posiblemente cancelado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Ya no aparece en ninguna de sus fuentes (comprobado el 2026-09-29); visto por última vez el 2026-09-29."
+   ],
    "en_foco": false,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -71479,9 +71908,11 @@
      "prioridad": 3
     }
    ],
-   "estado": "1_fuente",
+   "estado": "posiblemente cancelado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Ya no aparece en ninguna de sus fuentes (comprobado el 2026-09-29); visto por última vez el 2026-09-29."
+   ],
    "en_foco": false,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -71519,9 +71950,11 @@
      "prioridad": 3
     }
    ],
-   "estado": "1_fuente",
+   "estado": "posiblemente cancelado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Ya no aparece en ninguna de sus fuentes (comprobado el 2026-09-29); visto por última vez el 2026-09-29."
+   ],
    "en_foco": false,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -71557,9 +71990,11 @@
      "prioridad": 3
     }
    ],
-   "estado": "1_fuente",
+   "estado": "posiblemente cancelado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Ya no aparece en ninguna de sus fuentes (comprobado el 2026-09-29); visto por última vez el 2026-09-29."
+   ],
    "en_foco": false,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -71671,6 +72106,45 @@
      "nombre": "Madrid en Vivo (asociación de salas)",
      "id": "madridenvivo",
      "url": "https://madridenvivo.com/?post_type=evento&p=796724",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": true,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
+   "id": "8152d495b0cb",
+   "fecha": "2026-10-30",
+   "hora": null,
+   "artista": "INTERLUDIO - TRIBUTO A ROBE",
+   "invitados": [],
+   "sala": "Cadillac Solitario",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Pop / Rock",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "pop e indie",
+   "categorias": [
+    "pop e indie",
+    "rock y metal"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/?post_type=evento&p=796959",
      "prioridad": 3
     }
    ],
@@ -72172,6 +72646,45 @@
    "ultima_vez_visto": "2026-09-29"
   },
   {
+   "id": "b91f0e0693f8",
+   "fecha": "2026-10-30",
+   "hora": null,
+   "artista": "PAGANDO EL PATO",
+   "invitados": [],
+   "sala": "Cadillac Solitario",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Pop / Rock",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "pop e indie",
+   "categorias": [
+    "pop e indie",
+    "rock y metal"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/?post_type=evento&p=796958",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": true,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
    "id": "a590aed0efe2",
    "fecha": "2026-10-30",
    "hora": null,
@@ -72463,8 +72976,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "CL",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Madrid en Vivo (asociación de salas)",
@@ -72603,8 +73116,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "GB",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Songkick Madrid",
@@ -72814,8 +73327,7 @@
    "invitados": [
     "Predicador",
     "Fungi",
-    "Zaidan",
-    "Hallows Burning Night: Wardogs"
+    "Zaidan"
    ],
    "sala": "Revi Space",
    "municipio": "Madrid",
@@ -72870,7 +73382,9 @@
    ],
    "estado": "contrastado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Evento: HALLOW BURNING NIGHT"
+   ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -72906,8 +73420,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -73026,8 +73540,8 @@
    "estilos_discogs": [
     "Pop Rock"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "CO",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -73089,8 +73603,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Songkick Madrid",
@@ -73352,7 +73866,7 @@
    "hora": "21:00",
    "artista": "DEPEDRO presentando su nuevo disco Furia y Calma",
    "invitados": [
-    "Las Noches de Río Babel. Depedro"
+    "Las Noches de Río Babel Depedro"
    ],
    "sala": "Sala Villanos",
    "municipio": "Madrid",
@@ -73548,9 +74062,7 @@
    "fecha": "2026-10-31",
    "hora": "21:00",
    "artista": "KARAOKE CANALLA",
-   "invitados": [
-    "KARAOKE CANALLA (BY GRUPO SALVAJE): ESPECIAL HALLOWEEN"
-   ],
+   "invitados": [],
    "sala": "Rockville",
    "municipio": "Madrid",
    "precio": "Entrada 15 € anticipada – 20 € taquilla",
@@ -73647,7 +74159,6 @@
    "hora": "21:00",
    "artista": "The Sentimental Gentlemen",
    "invitados": [
-    "JAZZ CON SABOR A CLUB 26: FIEBRE SWING con THE SENTIMENTAL GENTLEMEN (Festival JazzMadrid)",
     "FIEBRE SWING - HALLOWEEN"
    ],
    "sala": "Big Mama Ballroom",
@@ -73795,8 +74306,7 @@
    "hora": "21:30",
    "artista": "WISECRÄCKER",
    "invitados": [
-    "OFERTA ESPECIAL EN SKALLOWEEN MAD FEST",
-    "SKALLOWEEN MAD FEST: WISECRÄCKER"
+    "OFERTA ESPECIAL EN SKALLOWEEN MAD FEST"
    ],
    "sala": "Gruta 77",
    "municipio": "Madrid",
@@ -74008,13 +74518,52 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/?post_type=evento&p=794334",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": true,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
+   "id": "8a2485e55731",
+   "fecha": "2026-10-31",
+   "hora": null,
+   "artista": "ASOCIACIÓN ARTISTAS EL CHATÓ: INÉS GARCÍA - BELIDE - AKIBEL 888 - DANIEL MUTANTE",
+   "invitados": [],
+   "sala": "Cadillac Solitario",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Pop / Rock",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "pop e indie",
+   "categorias": [
+    "pop e indie",
+    "rock y metal"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
    "nacionalidad": null,
    "nacionalidad_fuente": null,
    "fuentes": [
     {
      "nombre": "Madrid en Vivo (asociación de salas)",
      "id": "madridenvivo",
-     "url": "https://madridenvivo.com/?post_type=evento&p=794334",
+     "url": "https://madridenvivo.com/?post_type=evento&p=796960",
      "prioridad": 3
     }
    ],
@@ -74463,9 +75012,11 @@
      "prioridad": 3
     }
    ],
-   "estado": "1_fuente",
+   "estado": "posiblemente cancelado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Ya no aparece en ninguna de sus fuentes (comprobado el 2026-09-29); visto por última vez el 2026-09-29."
+   ],
    "en_foco": false,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -74503,9 +75054,11 @@
      "prioridad": 3
     }
    ],
-   "estado": "1_fuente",
+   "estado": "posiblemente cancelado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Ya no aparece en ninguna de sus fuentes (comprobado el 2026-09-29); visto por última vez el 2026-09-29."
+   ],
    "en_foco": false,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -74786,8 +75339,8 @@
     "Rock & Roll",
     "Garage Rock"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "US",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -75719,8 +76272,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Songkick Madrid",
@@ -76175,9 +76728,7 @@
    "fecha": "2026-11-01",
    "hora": "20:00",
    "artista": "Las Noches de Río Babel. No te va gustar",
-   "invitados": [
-    "No Te Va Gustar"
-   ],
+   "invitados": [],
    "sala": "Live Las Ventas",
    "municipio": "Madrid",
    "precio": "27,54€",
@@ -77003,9 +77554,7 @@
    "fecha": "2026-11-01",
    "hora": null,
    "artista": "RADAR JOVEN 2026: CARLA DELGADO",
-   "invitados": [
-    "Carla Delgado - Radar Joven 2026 2026"
-   ],
+   "invitados": [],
    "sala": "Café Berlín",
    "municipio": "Madrid",
    "precio": null,
@@ -77050,9 +77599,7 @@
    "fecha": "2026-11-01",
    "hora": null,
    "artista": "RADAR JOVEN 2026: IRENEGARRY",
-   "invitados": [
-    "Irenegarry - Radar Joven 2026 2026"
-   ],
+   "invitados": [],
    "sala": "Galileo Galilei",
    "municipio": "Madrid",
    "precio": null,
@@ -77098,8 +77645,7 @@
    "hora": null,
    "artista": "RADAR JOVEN 2026: NUEVOS VICIOS",
    "invitados": [
-    "WET IGUANAS",
-    "Nuevos Vicios + Wet Iguanas - Radar Joven 2026 2026"
+    "WET IGUANAS"
    ],
    "sala": "Sala El Sol",
    "municipio": "Madrid",
@@ -77145,9 +77691,7 @@
    "fecha": "2026-11-01",
    "hora": null,
    "artista": "RADAR JOVEN 2026: PORTOSANTO",
-   "invitados": [
-    "Portosanto - Radar Joven 2026 2026"
-   ],
+   "invitados": [],
    "sala": "Sala Clamores",
    "municipio": "Madrid",
    "precio": null,
@@ -77354,15 +77898,9 @@
    "estilos_discogs": [
     "Rhythm & Blues"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "MA",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
-    {
-     "nombre": "Sala Wagon (web oficial)",
-     "id": "wagon",
-     "url": "https://www.wagon.live/",
-     "prioridad": 1
-    },
     {
      "nombre": "conciertos.club (buscador semanal)",
      "id": "cc_buscador",
@@ -77417,8 +77955,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "GB",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -77700,8 +78238,8 @@
     "Rock & Roll",
     "Garage Rock"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "NL",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Fun House (web oficial)",
@@ -77846,9 +78384,7 @@
    "fecha": "2026-11-03",
    "hora": "21:00",
    "artista": "Lido Pimienta",
-   "invitados": [
-    "Las Noches de Río Babel. Lido Pimienta"
-   ],
+   "invitados": [],
    "sala": "Sala Villanos",
    "municipio": "Madrid",
    "precio": "29,10€",
@@ -77887,8 +78423,8 @@
    "estilos_discogs": [
     "Indie Pop"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "CA",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Sala Villanos (web oficial)",
@@ -77979,8 +78515,8 @@
    "estilos_discogs": [
     "Post-Punk"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "US",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -78146,8 +78682,8 @@
    "estilos_discogs": [
     "Indie Pop"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "CL",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "La Ganzúa",
@@ -78542,9 +79078,7 @@
    "fecha": "2026-11-04",
    "hora": "20:00",
    "artista": "Julieta Rada",
-   "invitados": [
-    "JAZZ CON SABOR A CLUB 26: JULIETA RADA (Festival JazzMadrid)"
-   ],
+   "invitados": [],
    "sala": "Café Berlín",
    "municipio": "Madrid",
    "precio": "18€",
@@ -78565,8 +79099,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "UY",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -78774,8 +79308,7 @@
    "hora": "20:30",
    "artista": "Radar Joven. Mala Gestión",
    "invitados": [
-    "Marx ha muerto",
-    "RADAR JOVEN 2026 - MADRID EN VIVO 25 AÑOS: MALA GESTIÓN"
+    "Marx ha muerto"
    ],
    "sala": "Sala But",
    "municipio": "Madrid",
@@ -78864,8 +79397,8 @@
     "Rock & Roll",
     "Garage Rock"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "IT",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Fun House (web oficial)",
@@ -78932,8 +79465,8 @@
    "estilos_discogs": [
     "Pop Rock"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "La Riviera (web oficial)",
@@ -79091,8 +79624,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "CH",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Songkick Madrid",
@@ -79672,8 +80205,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Songkick Madrid",
@@ -79843,8 +80376,7 @@
    "hora": "20:15",
    "artista": "Radar Joven. Salma",
    "invitados": [
-    "Ali Abellán",
-    "RADAR JOVEN 2026: SALMA"
+    "Ali Abellán"
    ],
    "sala": "Independance Club",
    "municipio": "Madrid",
@@ -79906,8 +80438,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "FR",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Songkick Madrid",
@@ -79952,8 +80484,8 @@
    "estilos_discogs": [
     "Pop Rock"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -80623,8 +81155,7 @@
    "hora": "21:30",
    "artista": "Radar Joven. Kiliki",
    "invitados": [
-    "Los Mangos",
-    "RADAR JOVEN 2026: KILIKI"
+    "Los Mangos"
    ],
    "sala": "Sala B",
    "municipio": "Madrid",
@@ -80837,8 +81368,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "CA",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Revi Live / Revi Space (web oficial)",
@@ -81285,8 +81816,8 @@
    "estilos_discogs": [
     "Pop Rock"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -81382,8 +81913,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Songkick Madrid",
@@ -81649,8 +82180,8 @@
    "estilos_discogs": [
     "Pop Rock"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -81896,8 +82427,8 @@
    "estilos_discogs": [
     "Folk"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "La Riviera (web oficial)",
@@ -82118,8 +82649,8 @@
     "Rock & Roll",
     "Garage Rock"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Gruta 77 (web oficial)",
@@ -82160,9 +82691,7 @@
    "fecha": "2026-11-06",
    "hora": "21:30",
    "artista": "Radar Joven. Cryymm",
-   "invitados": [
-    "RADAR JOVEN 2026: CRYYMM"
-   ],
+   "invitados": [],
    "sala": "Cadillac Solitario",
    "municipio": "Madrid",
    "precio": "7€",
@@ -82396,8 +82925,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "FR",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Revi Live / Revi Space (web oficial)",
@@ -82489,8 +83018,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "AR",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Revi Live / Revi Space (web oficial)",
@@ -82524,8 +83053,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "IS",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Metal Legion",
@@ -83557,8 +84086,8 @@
    "estilos_discogs": [
     "Alternative Rock"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "US",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -83851,9 +84380,7 @@
    "hora": "21:30",
    "artista": "RADAR JOVEN PRESENTA: ANÁLISIS",
    "invitados": [
-    "ESCARLATA",
-    "Radar Joven. Análisis",
-    "RADAR JOVEN 2026: ANÁLISIS"
+    "ESCARLATA"
    ],
    "sala": "Gruta 77",
    "municipio": "Madrid",
@@ -84043,8 +84570,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Songkick Madrid",
@@ -84194,8 +84721,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "PR",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Conciertos por Madrid",
@@ -84331,9 +84858,7 @@
    "fecha": "2026-11-07",
    "hora": null,
    "artista": "The Chameleons",
-   "invitados": [
-    "Chameleons"
-   ],
+   "invitados": [],
    "sala": "Sala Mon Live",
    "municipio": "Madrid",
    "precio": "33,13€",
@@ -84852,8 +85377,8 @@
     "Alternative Rock",
     "Blues Rock"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "US",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -84972,9 +85497,7 @@
    "fecha": "2026-11-08",
    "hora": "20:00",
    "artista": "Radar Joven. PatataOnStereo",
-   "invitados": [
-    "PatataOnStereo - Radar Joven 2026 2026"
-   ],
+   "invitados": [],
    "sala": "Sala Siroco",
    "municipio": "Madrid",
    "precio": "7€",
@@ -85062,8 +85585,8 @@
     "Indie Rock",
     "Post Rock"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "US",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Sala But (web oficial)",
@@ -85473,8 +85996,7 @@
    "hora": "21:30",
    "artista": "Radar Joven. Construimos Escaleras",
    "invitados": [
-    "Palomo Palomo",
-    "Construimos Escaleras + Palomo Palomo - Radar Joven 2026 2026"
+    "Palomo Palomo"
    ],
    "sala": "Café La Palma",
    "municipio": "Madrid",
@@ -85574,8 +86096,8 @@
    "estilos_discogs": [
     "Alternative Rock"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Gruta 77 (web oficial)",
@@ -85636,8 +86158,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "US",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -86016,8 +86538,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "US",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "La Riviera (web oficial)",
@@ -86101,8 +86623,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "PR",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "La Ganzúa",
@@ -86338,8 +86860,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "US",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Songkick Madrid",
@@ -86509,8 +87031,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "GB",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "La Riviera (web oficial)",
@@ -86771,8 +87293,8 @@
    "estilos_discogs": [
     "Pop Rock"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "CA",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -87037,9 +87559,7 @@
    "fecha": "2026-11-11",
    "hora": "20:30",
    "artista": "Las Pastillas del Abuelo",
-   "invitados": [
-    "Las Noches de Río Babel. Las Pastillas del Abuelo"
-   ],
+   "invitados": [],
    "sala": "La Riviera",
    "municipio": "Madrid",
    "precio": "38,50€",
@@ -87067,8 +87587,8 @@
    "estilos_discogs": [
     "Alternative Rock"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "AR",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "La Riviera (web oficial)",
@@ -87195,8 +87715,8 @@
     "Alternative Rock",
     "Garage Rock"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "US",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -87295,9 +87815,7 @@
    "fecha": "2026-11-11",
    "hora": "21:00",
    "artista": "Las Noches de Río Babel. Miranda!",
-   "invitados": [
-    "MIRANDA!"
-   ],
+   "invitados": [],
    "sala": "Movistar Arena",
    "municipio": "Madrid",
    "precio": "49,50€",
@@ -87388,8 +87906,8 @@
     "Blues Rock",
     "Hard Rock"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "US",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Wurlitzer Ballroom (web oficial)",
@@ -87532,8 +88050,7 @@
    "artista": "Beast In Black",
    "invitados": [
     "Sonata Arctica",
-    "Frozen Crown",
-    "Beast In Black, Sonata Arctica, Frozen Crown"
+    "Frozen Crown"
    ],
    "sala": "La Riviera",
    "municipio": "Madrid",
@@ -87554,8 +88071,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "FI",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "La Riviera (web oficial)",
@@ -87668,9 +88185,7 @@
    "fecha": "2026-11-12",
    "hora": "19:00",
    "artista": "Noches de Piano Jazz",
-   "invitados": [
-    "Piano Jazz"
-   ],
+   "invitados": [],
    "sala": "El Café de la Ópera",
    "municipio": "Madrid",
    "precio": "20€",
@@ -88218,8 +88733,8 @@
    "estilos_discogs": [
     "Pop Rock"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -88409,8 +88924,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Songkick Madrid",
@@ -88581,9 +89096,7 @@
    "fecha": "2026-11-12",
    "hora": null,
    "artista": "Las Noches de Río Babel. La Bien Querida",
-   "invitados": [
-    "La Bien Querida"
-   ],
+   "invitados": [],
    "sala": "Lula Club",
    "municipio": "Madrid",
    "precio": "33€",
@@ -89222,8 +89735,8 @@
     "Folk",
     "Country"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "CA",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Sala Villanos (web oficial)",
@@ -89369,8 +89882,8 @@
    "estilos_discogs": [
     "Pop Rock"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -89436,9 +89949,7 @@
    "fecha": "2026-11-13",
    "hora": "21:00",
    "artista": "Las Noches de Río Babel. Gilipojazz",
-   "invitados": [
-    "GILIPOJAZZ"
-   ],
+   "invitados": [],
    "sala": "Teatro Eslava",
    "municipio": "Madrid",
    "precio": "21€",
@@ -89508,8 +90019,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "UY",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -89560,8 +90071,8 @@
    "estilos_discogs": [
     "Pop Rock"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -89620,8 +90131,8 @@
     "Folk Rock",
     "Country"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "La Riviera (web oficial)",
@@ -89693,8 +90204,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "PR",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -89928,8 +90439,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "IT",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Songkick Madrid",
@@ -90151,8 +90662,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Sala But (web oficial)",
@@ -90205,8 +90716,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Sala Villanos (web oficial)",
@@ -90532,8 +91043,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "DE",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Songkick Madrid",
@@ -90613,8 +91124,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "BO",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Songkick Madrid",
@@ -90659,8 +91170,8 @@
    "estilos_discogs": [
     "Pop Rock"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -90776,8 +91287,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "NL",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Sala Villanos (web oficial)",
@@ -90838,8 +91349,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -91090,8 +91601,7 @@
     "Leviathan A.C",
     "Hrigz",
     "Innominatam",
-    "Termogaunt",
-    "NOX AETERNA: Sarkrista"
+    "Termogaunt"
    ],
    "sala": "Revi Space",
    "municipio": "Madrid",
@@ -91112,8 +91622,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "DE",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Revi Live / Revi Space (web oficial)",
@@ -91283,8 +91793,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "PR",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -91352,8 +91862,8 @@
     "Rock & Roll",
     "Garage Rock"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "GB",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Gruta 77 (web oficial)",
@@ -91553,9 +92063,7 @@
    "fecha": "2026-11-14",
    "hora": null,
    "artista": "AGAINST THE WAVES",
-   "invitados": [
-    "THE WAVES"
-   ],
+   "invitados": [],
    "sala": "Sala UNI",
    "municipio": "Madrid",
    "precio": null,
@@ -91572,8 +92080,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Madrid en Vivo (asociación de salas)",
@@ -91635,8 +92143,8 @@
    "estilos_discogs": [
     "Hard Rock"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "SE",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -91852,8 +92360,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "DE",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Songkick Madrid",
@@ -92205,8 +92713,8 @@
    "estilos_discogs": [
     "Indie Pop"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "La Ganzúa",
@@ -92309,9 +92817,7 @@
    "fecha": "2026-11-15",
    "hora": "19:00",
    "artista": "Noches de Piano Jazz",
-   "invitados": [
-    "Piano Jazz"
-   ],
+   "invitados": [],
    "sala": "El Café de la Ópera",
    "municipio": "Madrid",
    "precio": "20€",
@@ -92375,8 +92881,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -92578,8 +93084,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "NO",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Sala Wagon (web oficial)",
@@ -92734,8 +93240,8 @@
    "estilos_discogs": [
     "Pop Rock"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "MX",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "La Riviera (web oficial)",
@@ -92991,8 +93497,8 @@
    "estilos_discogs": [
     "Pop Rock"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "US",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -93082,8 +93588,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Songkick Madrid",
@@ -93157,8 +93663,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -93567,8 +94073,8 @@
    "estilos_discogs": [
     "Pop Rock"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "NO",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -94324,8 +94830,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "CO",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Songkick Madrid",
@@ -94377,8 +94883,8 @@
    "estilos_discogs": [
     "Pop Rock"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "US",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -94527,8 +95033,8 @@
    "estilos_discogs": [
     "Pop Rock"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "DE",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -94898,8 +95404,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Sala But (web oficial)",
@@ -94958,9 +95464,7 @@
    "fecha": "2026-11-19",
    "hora": "19:00",
    "artista": "Noches de Piano Jazz",
-   "invitados": [
-    "Piano Jazz"
-   ],
+   "invitados": [],
    "sala": "El Café de la Ópera",
    "municipio": "Madrid",
    "precio": "20€",
@@ -95062,8 +95566,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "SE",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -95101,8 +95605,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Songkick Madrid",
@@ -95143,8 +95647,8 @@
    "estilos_discogs": [
     "Indie Pop"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "La Ganzúa",
@@ -95222,8 +95726,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "La Riviera (web oficial)",
@@ -95695,8 +96199,8 @@
    "estilos_discogs": [
     "Pop Rock"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -95787,9 +96291,7 @@
    "fecha": "2026-11-19",
    "hora": "22:00",
    "artista": "The Sleeves",
-   "invitados": [
-    "Sleeves"
-   ],
+   "invitados": [],
    "sala": "ContraClub",
    "municipio": "Madrid",
    "precio": "17,54€",
@@ -95924,8 +96426,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "US",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Revi Live / Revi Space (web oficial)",
@@ -96099,8 +96601,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Sala But (web oficial)",
@@ -96132,8 +96634,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "US",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Sala Wagon (web oficial)",
@@ -96360,8 +96862,8 @@
    "estilos_discogs": [
     "Post-Punk"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -96511,8 +97013,8 @@
    "estilos_discogs": [
     "Folk"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "MX",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -96753,8 +97255,8 @@
    "estilos_discogs": [
     "Pop Rock"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -96859,8 +97361,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "La Riviera (web oficial)",
@@ -96939,8 +97441,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -97014,8 +97516,8 @@
    "estilos_discogs": [
     "Hard Rock"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -97165,8 +97667,8 @@
    "estilos_discogs": [
     "Pop Rock"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -97201,8 +97703,7 @@
    "artista": "Hammond York",
    "invitados": [
     "SALLY BROWN",
-    "MAJAICANS EN MAD SKA LAST SESSION",
-    "Majaicans"
+    "MAJAICANS EN MAD SKA LAST SESSION"
    ],
    "sala": "Gruta 77",
    "municipio": "Madrid",
@@ -97256,9 +97757,7 @@
    "fecha": "2026-11-20",
    "hora": "21:30",
    "artista": "JAZZ CON SABOR A CLUB 26: CANDELEROS (Festival JazzMadrid)",
-   "invitados": [
-    "Candeleros"
-   ],
+   "invitados": [],
    "sala": "El Sótano",
    "municipio": "Madrid",
    "precio": null,
@@ -97518,8 +98017,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Sala But (web oficial)",
@@ -98257,8 +98756,8 @@
    "estilos_discogs": [
     "Indie Pop"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -98429,8 +98928,8 @@
     "Folk Rock",
     "Country"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ZA",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Wurlitzer Ballroom (web oficial)",
@@ -98498,8 +98997,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -98642,8 +99141,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -98700,8 +99199,8 @@
     "Pop Rock",
     "Indie Pop"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -98853,9 +99352,7 @@
    "fecha": "2026-11-21",
    "hora": "22:00",
    "artista": "Entre amigos Jazz Band",
-   "invitados": [
-    "JAZZ CON SABOR A CLUB 26: ENTRE AMIGOS JAZZ BAND (Festival JazzMadrid)"
-   ],
+   "invitados": [],
    "sala": "Big Mama Ballroom",
    "municipio": "Madrid",
    "precio": null,
@@ -99356,9 +99853,7 @@
    "fecha": "2026-11-21",
    "hora": null,
    "artista": "JAZZ CON SABOR A CLUB 26: THE SWINGIN’ POTT (Festival JazzMadrid)",
-   "invitados": [
-    "The Swingin' Pott"
-   ],
+   "invitados": [],
    "sala": "Sala Vesta",
    "municipio": "Madrid",
    "precio": null,
@@ -99435,8 +99930,8 @@
    "estilos_discogs": [
     "Alternative Rock"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "US",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -99533,9 +100028,7 @@
    "fecha": "2026-11-21",
    "hora": null,
    "artista": "Marco Mezquida",
-   "invitados": [
-    "Moisés P. Sánchez y Marco Mezquida «Va y Ven»"
-   ],
+   "invitados": [],
    "sala": "Teatro Fernán Gómez",
    "municipio": "Madrid",
    "precio": null,
@@ -99546,8 +100039,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Songkick Madrid",
@@ -99846,8 +100339,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "AR",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Songkick Madrid",
@@ -99997,9 +100490,7 @@
    "fecha": "2026-11-22",
    "hora": "19:00",
    "artista": "Noches de Piano Jazz",
-   "invitados": [
-    "Piano Jazz"
-   ],
+   "invitados": [],
    "sala": "El Café de la Ópera",
    "municipio": "Madrid",
    "precio": "20€",
@@ -100140,8 +100631,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "GB",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -100546,8 +101037,8 @@
    "estilos_discogs": [
     "Indie Pop"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "La Ganzúa",
@@ -100732,8 +101223,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "US",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Songkick Madrid",
@@ -100756,8 +101247,7 @@
    "artista": "Polyphia",
    "invitados": [
     "Perturbator",
-    "RJ Pasin",
-    "Polyphia: BE NOT AFRAID World Tour"
+    "RJ Pasin"
    ],
    "sala": "La Riviera",
    "municipio": "Madrid",
@@ -100782,8 +101272,8 @@
    "estilos_discogs": [
     "Prog Rock"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "US",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "La Riviera (web oficial)",
@@ -100896,8 +101386,8 @@
     "Emo",
     "Pop Punk"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "DE",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -101131,8 +101621,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Songkick Madrid",
@@ -101247,8 +101737,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "US",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "La Ganzúa",
@@ -101512,8 +102002,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "IT",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "La Riviera (web oficial)",
@@ -101832,8 +102322,8 @@
     "Folk",
     "Indie Pop"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "IE",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Sala Wagon (web oficial)",
@@ -102068,8 +102558,8 @@
     "Grunge",
     "Hard Rock"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "GB",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Wurlitzer Ballroom (web oficial)",
@@ -102615,8 +103105,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Songkick Madrid",
@@ -102675,9 +103165,7 @@
    "fecha": "2026-11-26",
    "hora": "19:00",
    "artista": "Noches de Piano Jazz",
-   "invitados": [
-    "Piano Jazz"
-   ],
+   "invitados": [],
    "sala": "El Café de la Ópera",
    "municipio": "Madrid",
    "precio": "20€",
@@ -103025,9 +103513,7 @@
    "fecha": "2026-11-26",
    "hora": "21:00",
    "artista": "Arde Bogotá",
-   "invitados": [
-    "Hervideros. Arde Bogotá"
-   ],
+   "invitados": [],
    "sala": "La Riviera",
    "municipio": "Madrid",
    "precio": null,
@@ -103051,8 +103537,8 @@
    "estilos_discogs": [
     "Pop Rock"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "La Riviera (web oficial)",
@@ -103297,8 +103783,8 @@
    "estilos_discogs": [
     "Alternative Rock"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -103846,8 +104332,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Songkick Madrid",
@@ -103955,8 +104441,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "US",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Songkick Madrid",
@@ -104136,9 +104622,7 @@
    "fecha": "2026-11-27",
    "hora": "21:00",
    "artista": "Arde Bogotá",
-   "invitados": [
-    "Hervideros. Arde Bogotá"
-   ],
+   "invitados": [],
    "sala": "La Riviera",
    "municipio": "Madrid",
    "precio": null,
@@ -104162,8 +104646,8 @@
    "estilos_discogs": [
     "Pop Rock"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "La Riviera (web oficial)",
@@ -104257,8 +104741,8 @@
    "estilos_discogs": [
     "Alternative Rock"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "AR",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -104437,9 +104921,7 @@
    "fecha": "2026-11-27",
    "hora": "21:00",
    "artista": "FLORE BENGUIGUI & The Sensible Notes",
-   "invitados": [
-    "The Sensible Notes"
-   ],
+   "invitados": [],
    "sala": "Sala Villanos",
    "municipio": "Madrid",
    "precio": "24,20€",
@@ -104779,8 +105261,7 @@
    "hora": "21:30",
    "artista": "3ª FIESTA HOMENAJE A SHANE MACGOWAN -THE POGUES-: THE TREBOLMAKERS",
    "invitados": [
-    "RADIO CLASH",
-    "The Trebolmakers. Homenaje a The Pogues"
+    "RADIO CLASH"
    ],
    "sala": "Gruta 77",
    "municipio": "Madrid",
@@ -104926,8 +105407,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "IT",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Sala But (web oficial)",
@@ -104971,8 +105452,8 @@
    "estilos_discogs": [
     "Pop Rock"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "GB",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -105501,7 +105982,6 @@
    "hora": "18:00",
    "artista": "ACCEPT 50º ANIVERSARIO",
    "invitados": [
-    "ACCEPT",
     "TAILGUNNER",
     "DYNAZTY"
    ],
@@ -105876,8 +106356,8 @@
     "Hard Rock",
     "Heavy Metal"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "La Riviera (web oficial)",
@@ -106001,8 +106481,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Songkick Madrid",
@@ -106034,8 +106514,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "BE",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -106177,8 +106657,8 @@
     "Power Pop",
     "Indie Rock"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -106242,8 +106722,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "GB",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Songkick Madrid",
@@ -107076,8 +107556,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "NO",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Revi Live / Revi Space (web oficial)",
@@ -107395,9 +107875,7 @@
    "fecha": "2026-11-29",
    "hora": "19:00",
    "artista": "Inverfest. Víctor Manuel",
-   "invitados": [
-    "Víctor Manuel"
-   ],
+   "invitados": [],
    "sala": "Movistar Arena",
    "municipio": "Madrid",
    "precio": "53€",
@@ -107461,9 +107939,7 @@
    "fecha": "2026-11-29",
    "hora": "19:00",
    "artista": "Noches de Piano Jazz",
-   "invitados": [
-    "Piano Jazz"
-   ],
+   "invitados": [],
    "sala": "El Café de la Ópera",
    "municipio": "Madrid",
    "precio": "20€",
@@ -107698,9 +108174,7 @@
    "fecha": "2026-11-29",
    "hora": "20:30",
    "artista": "L'Haine",
-   "invitados": [
-    "L´HAINE – El Odio Siempre Gana Tour"
-   ],
+   "invitados": [],
    "sala": "La Riviera",
    "municipio": "Madrid",
    "precio": "31,50€",
@@ -107725,8 +108199,8 @@
    "estilos_discogs": [
     "Rhythm & Blues"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "La Riviera (web oficial)",
@@ -107807,8 +108281,8 @@
    "estilos_discogs": [
     "Ska"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "AR",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -107955,8 +108429,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "US",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -108226,8 +108700,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "MA",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -108357,8 +108831,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Songkick Madrid",
@@ -108435,8 +108909,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "CH",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "La Riviera (web oficial)",
@@ -108520,8 +108994,8 @@
    "estilos_discogs": [
     "Rhythm & Blues"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "FR",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Sala But (web oficial)",
@@ -108920,8 +109394,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Songkick Madrid",
@@ -109185,8 +109659,8 @@
    "estilos_discogs": [
     "Pop Rock"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -109325,8 +109799,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "La Riviera (web oficial)",
@@ -109525,8 +109999,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "FR",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Songkick Madrid",
@@ -109677,7 +110151,7 @@
    "ultima_vez_visto": "2026-09-29"
   },
   {
-   "id": "28a040442bbe",
+   "id": "ade93c78940e",
    "fecha": "2026-12-03",
    "hora": "20:00",
    "artista": "MIkkey Dee & Friends",
@@ -109753,8 +110227,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Songkick Madrid",
@@ -109818,8 +110292,8 @@
     "Psychedelic Rock",
     "Rockabilly"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "CA",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Sala Villanos (web oficial)",
@@ -110152,8 +110626,8 @@
    "estilos_discogs": [
     "Alternative Rock"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "US",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -110203,7 +110677,7 @@
    "ultima_vez_visto": "2026-09-29"
   },
   {
-   "id": "ade93c78940e",
+   "id": "28a040442bbe",
    "fecha": "2026-12-03",
    "hora": null,
    "artista": "Mikky Dee",
@@ -110661,8 +111135,8 @@
    "estilos_discogs": [
     "Hard Rock"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "US",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -110830,8 +111304,8 @@
     "Bluegrass",
     "Country Rock"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "La Ganzúa",
@@ -110897,8 +111371,8 @@
    "estilos_discogs": [
     "Pop Rock"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -111252,8 +111726,8 @@
    "estilos_discogs": [
     "Flamenco"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Sala Villanos (web oficial)",
@@ -111315,9 +111789,7 @@
    "fecha": "2026-12-05",
    "hora": "19:00",
    "artista": "Las Cuatro Estaciones de Vivaldi. Candlelight",
-   "invitados": [
-    "Rèquiem de Mozart. Candlelight"
-   ],
+   "invitados": [],
    "sala": "Basílica Pontificia de San Miguel",
    "municipio": "Madrid",
    "precio": "16-41€",
@@ -111770,8 +112242,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "TodoHeavyMetal",
@@ -112062,8 +112534,8 @@
    "estilos_discogs": [
     "Pop Rock"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "IE",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -112456,9 +112928,7 @@
    "fecha": "2026-12-06",
    "hora": "19:30",
    "artista": "Roberto Quintero & Falcon Spirit",
-   "invitados": [
-    "Falcon Spirit"
-   ],
+   "invitados": [],
    "sala": "Sala Villanos",
    "municipio": "Madrid",
    "precio": "17,60€",
@@ -112659,9 +113129,7 @@
    "fecha": "2026-12-06",
    "hora": "20:30",
    "artista": "The Sheepdogs",
-   "invitados": [
-    "The Sheepdogs en su Out All Night Tour"
-   ],
+   "invitados": [],
    "sala": "Sala But",
    "municipio": "Madrid",
    "precio": "28.5 EUR",
@@ -113131,8 +113599,8 @@
    "estilos_discogs": [
     "Pop Rock"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Revi Live / Revi Space (web oficial)",
@@ -113214,8 +113682,8 @@
    "estilos_discogs": [
     "Pop Rock"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -113359,9 +113827,7 @@
    "fecha": "2026-12-08",
    "hora": "19:30",
    "artista": "Inverfest. Miguel Ríos",
-   "invitados": [
-    "Miguel Ríos"
-   ],
+   "invitados": [],
    "sala": "Movistar Arena",
    "municipio": "Madrid",
    "precio": "72€",
@@ -113810,8 +114276,8 @@
    "estilos_discogs": [
     "Psychedelic Rock"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "JP",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "La Ganzúa",
@@ -114052,8 +114518,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "KR",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Revi Live / Revi Space (web oficial)",
@@ -114343,9 +114809,7 @@
    "fecha": "2026-12-10",
    "hora": "21:00",
    "artista": "Lizzy and The Banshees. Tributo a Siouxsie & The Banshees",
-   "invitados": [
-    "LIZZIE & THE BANSHEES"
-   ],
+   "invitados": [],
    "sala": "Sala El Sol",
    "municipio": "Madrid",
    "precio": "24,64€",
@@ -114458,9 +114922,7 @@
    "fecha": "2026-12-10",
    "hora": "21:30",
    "artista": "MomentaZos - Aniversario Houston Party - LITTLE BARRIE",
-   "invitados": [
-    "Little Barrie"
-   ],
+   "invitados": [],
    "sala": "Hotel Canopy by Hilton Madrid Castellana",
    "municipio": "Madrid",
    "precio": "18.0000 EUR",
@@ -114510,20 +114972,11 @@
      "id": "songkick",
      "url": "https://www.songkick.com/concerts/43267806-little-barrie-at-canopy-by-hotel-hilton-madrid-castellana",
      "prioridad": 3
-    },
-    {
-     "nombre": "MariskalRock (guía)",
-     "id": "mariskal",
-     "url": "https://mariskalrock.com/guia-de-conciertos/",
-     "prioridad": 4
     }
    ],
    "estado": "contrastado",
    "conflictos": [],
-   "notas": [
-    "Fuente de fiabilidad baja (mantiene fechas antiguas); año deducido: la fuente no indica año.",
-    "Sala: Hotel Canopy by Hilton Madrid Castellana según Mutick / The Flying Pig (MomentaZos), Songkick Madrid, conciertos.club (buscador semanal), conciertos.club (por estilo); Canopy según MariskalRock (guía). Resuelto por prioridad de fuente (la de mayor prioridad confirma Hotel Canopy by Hilton Madrid Castellana)."
-   ],
+   "notas": [],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -114605,6 +115058,41 @@
    "ultima_vez_visto": "2026-09-29"
   },
   {
+   "id": "2560b36dbdb2",
+   "fecha": "2026-12-10",
+   "hora": null,
+   "artista": "LITTLE BARRIE",
+   "invitados": [],
+   "sala": "Canopy",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [],
+   "categoria": "sin clasificar",
+   "categorias": [
+    "sin clasificar"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "MariskalRock (guía)",
+     "id": "mariskal",
+     "url": "https://mariskalrock.com/guia-de-conciertos/",
+     "prioridad": 4
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [
+    "Fuente de fiabilidad baja (mantiene fechas antiguas); año deducido: la fuente no indica año."
+   ],
+   "en_foco": true,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
    "id": "38c254ee5ec7",
    "fecha": "2026-12-10",
    "hora": null,
@@ -114620,8 +115108,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Songkick Madrid",
@@ -114966,8 +115454,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -115076,8 +115564,8 @@
    "estilos_discogs": [
     "Pop Rock"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -115287,8 +115775,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "DE",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Sala Villanos (web oficial)",
@@ -115429,7 +115917,6 @@
    "hora": "17:00",
    "artista": "SAUROM JUGLAR FEST MADRID",
    "invitados": [
-    "Saurom",
     "Alestorm",
     "Saurom Juglar Festival 2026",
     "SAUROM JUGLAR FEST: SAUROM",
@@ -115514,9 +116001,7 @@
    "fecha": "2026-12-12",
    "hora": "18:00",
    "artista": "Juan Magán",
-   "invitados": [
-    "Electrolatino By Juan Magán Madrid"
-   ],
+   "invitados": [],
    "sala": "Autocine Madrid",
    "municipio": "Madrid",
    "precio": "22.0 EUR",
@@ -116089,8 +116574,8 @@
    "estilos_discogs": [
     "Pop Rock"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -116681,9 +117166,7 @@
    "artista": "Dark Christmas Festival: Diorama",
    "invitados": [
     "Bragolin",
-    "Carrellee",
-    "Diorama",
-    "Diorama – Bragolin – Carrellee | Dark Christmas Festival"
+    "Carrellee"
    ],
    "sala": "Sala Nazca",
    "municipio": "Madrid",
@@ -117786,8 +118269,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Songkick Madrid",
@@ -119821,9 +120304,7 @@
    "fecha": "2026-12-19",
    "hora": "21:00",
    "artista": "Porretas",
-   "invitados": [
-    "PORRETAS (35º Aniversario)"
-   ],
+   "invitados": [],
    "sala": "La Riviera",
    "municipio": "Madrid",
    "precio": null,
@@ -122083,10 +122564,7 @@
    "fecha": "2026-12-26",
    "hora": "21:00",
    "artista": "LOU MARINI & RED HOUSE REVIVAL",
-   "invitados": [
-    "Lou Marini",
-    "Red House Revival"
-   ],
+   "invitados": [],
    "sala": "Sala Villanos",
    "municipio": "Madrid",
    "precio": "17,60€",
@@ -122878,9 +123356,7 @@
    "fecha": "2026-12-30",
    "hora": "20:45",
    "artista": "Pedro Pastor",
-   "invitados": [
-    "Reprogramado Pedro Pastor"
-   ],
+   "invitados": [],
    "sala": "Sala But",
    "municipio": "Madrid",
    "precio": null,
@@ -124049,7 +124525,6 @@
    "hora": "20:00",
    "artista": "Adrian Vandenberg",
    "invitados": [
-    "Vandenberg",
     "TABÜ"
    ],
    "sala": "Revi Live",
@@ -124123,9 +124598,7 @@
    "fecha": "2027-01-08",
    "hora": "20:00",
    "artista": "Inverfest. Sienna",
-   "invitados": [
-    "SIENNA"
-   ],
+   "invitados": [],
    "sala": "La Riviera",
    "municipio": "Madrid",
    "precio": "22€",
@@ -125321,9 +125794,7 @@
    "fecha": "2027-01-10",
    "hora": "20:00",
    "artista": "Inverfest. Sho-Hai",
-   "invitados": [
-    "SHO-HAI"
-   ],
+   "invitados": [],
    "sala": "La Riviera",
    "municipio": "Madrid",
    "precio": "28,50€",
@@ -125938,9 +126409,7 @@
    "fecha": "2027-01-15",
    "hora": "20:30",
    "artista": "Inverfest. O'Funk'illo",
-   "invitados": [
-    "O’FUNK’ILLO"
-   ],
+   "invitados": [],
    "sala": "La Sala del Movistar Arena",
    "municipio": "Madrid",
    "precio": "27,50€",
@@ -126050,9 +126519,7 @@
    "fecha": "2027-01-15",
    "hora": "21:00",
    "artista": "Inverfest. Drugos",
-   "invitados": [
-    "DRUGOS"
-   ],
+   "invitados": [],
    "sala": "La Riviera",
    "municipio": "Madrid",
    "precio": "20€",
@@ -126106,9 +126573,7 @@
    "fecha": "2027-01-15",
    "hora": "21:00",
    "artista": "Inverfest. Niña Polaca",
-   "invitados": [
-    "NIÑA POLACA"
-   ],
+   "invitados": [],
    "sala": "Movistar Arena",
    "municipio": "Madrid",
    "precio": "35,50€",
@@ -126166,9 +126631,7 @@
    "fecha": "2027-01-15",
    "hora": "21:00",
    "artista": "Inverfest. Rubén Pozo",
-   "invitados": [
-    "RUBÉN POZO"
-   ],
+   "invitados": [],
    "sala": "Teatro Eslava",
    "municipio": "Madrid",
    "precio": null,
@@ -126563,7 +127026,6 @@
    "hora": "20:00",
    "artista": "Inverfest. Mikel Erentxun",
    "invitados": [
-    "MIKEL ERENTXUN",
     "DD40 MIKEL ERENTXUN - DUNCAN DHU"
    ],
    "sala": "Movistar Arena",
@@ -126747,9 +127209,7 @@
    "fecha": "2027-01-16",
    "hora": "21:00",
    "artista": "Inverfest. Vera Fauna",
-   "invitados": [
-    "VERA FAUNA"
-   ],
+   "invitados": [],
    "sala": "La Riviera",
    "municipio": "Madrid",
    "precio": "25,50€",
@@ -127312,9 +127772,7 @@
    "fecha": "2027-01-17",
    "hora": "20:00",
    "artista": "Inverfest. La Cabra Mecánica",
-   "invitados": [
-    "LA CABRA MECÁNICA"
-   ],
+   "invitados": [],
    "sala": "La Riviera",
    "municipio": "Madrid",
    "precio": "27,50€",
@@ -128001,9 +128459,7 @@
    "fecha": "2027-01-22",
    "hora": "20:00",
    "artista": "Inverfest. Puño Dragón",
-   "invitados": [
-    "PUÑO DRAGÓN"
-   ],
+   "invitados": [],
    "sala": "La Riviera",
    "municipio": "Madrid",
    "precio": null,
@@ -128316,9 +128772,7 @@
    "fecha": "2027-01-22",
    "hora": "21:00",
    "artista": "Inverfest. Rufus T. Firefly",
-   "invitados": [
-    "RUFUS T. FIREFLY"
-   ],
+   "invitados": [],
    "sala": "Teatro Circo Price",
    "municipio": "Madrid",
    "precio": null,
@@ -128719,9 +129173,7 @@
    "fecha": "2027-01-23",
    "hora": "20:00",
    "artista": "Inverfest. Carlos Núñez",
-   "invitados": [
-    "CARLOS NÚÑEZ"
-   ],
+   "invitados": [],
    "sala": "Teatro Circo Price",
    "municipio": "Madrid",
    "precio": null,
@@ -128779,9 +129231,7 @@
    "fecha": "2027-01-23",
    "hora": "20:00",
    "artista": "Inverfest. Los Enemigos",
-   "invitados": [
-    "LOS ENEMIGOS"
-   ],
+   "invitados": [],
    "sala": "La Riviera",
    "municipio": "Madrid",
    "precio": "33€",
@@ -128897,9 +129347,7 @@
    "fecha": "2027-01-23",
    "hora": "20:30",
    "artista": "Inverfest. Barry B",
-   "invitados": [
-    "BARRY B"
-   ],
+   "invitados": [],
    "sala": "Movistar Arena",
    "municipio": "Madrid",
    "precio": "32€",
