@@ -100,8 +100,10 @@ def conciertospormadrid(ctx: Ctx):
 
 # ------------------------------------------------------------------ Madrid en Vivo
 MEV_AJAX = "https://madridenvivo.com/wp-content/themes/base/codigo/includes/ajax/buscar-eventos-avanzado.php"
-MEV_ESTILOS = {"779": "Pop / Rock", "778": "Músicas negras", "770": "Artes escénicas", "772": "Clubbing",
-               "774": "Flamenco Capital", "822": "Musicales", "": None}
+# Se consulta por estilo (así el estilo lo da la propia web). Primero los estilos en foco.
+MEV_ESTILOS = {"779": "Pop / Rock", "778": "Músicas negras", "772": "Clubbing", "774": "Flamenco Capital",
+               "822": "Musicales", "770": "Artes escénicas"}
+MEV_PRESUPUESTO_SEG = 1200  # su servidor responde lento (~10 s por página)
 
 
 def mev_parse(html: str, page_url: str, today: date, estilo: str | None) -> list:
@@ -125,9 +127,14 @@ def mev_parse(html: str, page_url: str, today: date, estilo: str | None) -> list
 def madridenvivo(ctx: Ctx):
     """Consulta el buscador avanzado por cada estilo (el estilo sale del filtro de la propia web)
     y paginando la misma petición POST que hace la web al hacer scroll."""
+    import time
+    t0 = time.monotonic()
     seen: dict[str, object] = {}
     for eid, ename in MEV_ESTILOS.items():
         for page in range(1, 200):
+            if time.monotonic() - t0 > MEV_PRESUPUESTO_SEG:
+                ctx.errors.append(f"tiempo máximo alcanzado: estilo '{ename}' leído hasta la página {page - 1}")
+                return
             payload = {"salas": "", "estilos": eid, "fecha-desde": ctx.today.isoformat(),
                        "fecha-hasta": ctx.horizon.isoformat(), "buscar": "", "pagina": page}
             raw = ctx.get(MEV_AJAX, method="POST", data=json.dumps(payload),
@@ -147,13 +154,11 @@ def madridenvivo(ctx: Ctx):
             for e in evs:
                 k = f"{e.url}|{e.fecha}"
                 if k in seen:
-                    if ename is None:
-                        continue  # ya salió con su estilo
                     continue
                 seen[k] = e
                 nuevos += 1
                 yield e
-            if nuevos == 0 and ename is not None:
+            if nuevos == 0:
                 break
 
 

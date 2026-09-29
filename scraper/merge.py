@@ -172,7 +172,8 @@ def construir(cluster: Cluster, municipio_de) -> dict:
     conflictos: list[dict] = []
     # artista principal: el de la fuente de mayor prioridad, con mejor grafía
     top = min(items, key=lambda i: i.src.prioridad)
-    variantes = [(i.ev.artista, i.src.prioridad) for i in items if parecido(i.ev.artista, top.ev.artista) >= UMBRAL]
+    variantes = [(top.ev.artista, top.src.prioridad)] + [
+        (i.ev.artista, i.src.prioridad) for i in items if i is not top and parecido(i.ev.artista, top.ev.artista) >= UMBRAL]
     artista = _mejor_grafia(variantes)
     if artista.isupper() and len(artista) > 4:
         alt = [(n, p) for n, p in variantes if not n.isupper()]

@@ -120,7 +120,11 @@ def unificar(items: list[Item]) -> list[dict]:
     recs = []
     for f in sorted(por_fecha):
         for cl in agrupar(por_fecha[f]):
-            recs.append(construir(cl, municipio_item))
+            try:
+                recs.append(construir(cl, municipio_item))
+            except Exception:  # noqa: BLE001 - un registro raro no debe tumbar toda la ejecución
+                log.error("No se pudo construir %s %s:\n%s", f, [i.ev.artista for i in cl.items],
+                          traceback.format_exc())
     recs = fusionar_conflictos_sala(recs)
     marcar_conflictos_cartel(recs)
     return recs
