@@ -1,134 +1,80 @@
 {
- "bandsintown_madrid": {
-  "error": "HTTPError: 403 Client Error: Forbidden for url: https://www.bandsintown.com/c/madrid-spain",
+ "cc_madrid_p2": {
+  "error": "HTTPError: 404 Client Error: Not Found for url: https://conciertos.club/madrid/2",
   "ok": false,
-  "robots": "sin_robots (403)",
-  "url": "https://www.bandsintown.com/c/madrid-spain"
+  "robots": "ok",
+  "url": "https://conciertos.club/madrid/2"
  },
- "bigmama": {
-  "bytes": 288789,
+ "diariorockero_agenda": {
+  "error": "HTTPError: 404 Client Error: Not Found for url: https://www.diariodeunrockero.es/category/agenda/",
+  "ok": false,
+  "robots": "ok",
+  "url": "https://www.diariodeunrockero.es/category/agenda/"
+ },
+ "force_noticias": {
+  "bytes": 535222,
   "ok": true,
   "robots": "ok",
-  "url": "https://bigmamaballroom.com/conciertos-blues/"
+  "url": "https://forcemagazine.es/noticias-force/"
  },
- "cc_evento": {
-  "bytes": 59332,
-  "ok": true,
-  "robots": "ok",
-  "url": "https://conciertos.club/madrid/conciertos/125042-ana-popovic"
- },
- "copernico": {
-  "bytes": 13993,
-  "ok": true,
-  "robots": "sin_robots (404)",
-  "url": "https://salacopernico.es/"
- },
- "diariorockero_conc": {
-  "bytes": 238615,
-  "ok": true,
-  "robots": "ok",
-  "url": "https://www.diariodeunrockero.es/category/conciertos/"
- },
- "force": {
-  "bytes": 372940,
-  "ok": true,
-  "robots": "ok",
-  "url": "https://forcemagazine.es/"
- },
- "galileo": {
+ "galileo_es": {
   "bytes": 306020,
   "ok": true,
   "robots": "ok",
-  "url": "https://www.salagalileogalilei.com/"
+  "url": "https://salagalileo.es/"
  },
- "gruta77_nov": {
-  "bytes": 627274,
+ "metalsymphony_art": {
+  "bytes": 77475,
   "ok": true,
   "robots": "ok",
-  "url": "https://gruta77.com/events/?mes=11-2026"
+  "url": "https://www.metalsymphony.com/conciertos-de-rock-y-metal-en-espana-otono-2026/"
  },
- "mb_test": {
-  "ok": false,
-  "robots": "ok",
-  "robots_blocked": true,
-  "url": "https://musicbrainz.org/ws/2/artist/?query=artist:%22H%C3%A4llas%22&fmt=json&limit=10"
- },
- "metalcry": {
-  "bytes": 748004,
+ "mutick_e1": {
+  "bytes": 35079,
   "ok": true,
   "robots": "ok",
-  "url": "https://metalcry.com/conciertos/"
+  "url": "https://mutick.com/e/entradas-the-screamin-cheetah-wheelies-madrid-2026"
  },
- "metalsymphony_agenda": {
-  "bytes": 83547,
+ "mutick_o": {
+  "bytes": 42307,
   "ok": true,
   "robots": "ok",
-  "url": "https://www.metalsymphony.com/agenda/"
+  "url": "https://mutick.com/o/the-flying-pig"
  },
- "mev_ajax_p1": {
-  "bytes": 18917,
+ "rfe_bcn_oct": {
+  "bytes": 115815,
   "ok": true,
   "robots": "ok",
-  "url": "https://madridenvivo.com/wp-content/themes/base/codigo/includes/ajax/buscar-eventos-avanzado.php"
+  "url": "https://rockforeveryone.es/agenda-de-conciertos-heavy-en-barcelona-en-octubre-de-2026/"
  },
- "mev_ajax_p2": {
-  "bytes": 19674,
+ "rfe_madrid_oct": {
+  "bytes": 114441,
   "ok": true,
   "robots": "ok",
-  "url": "https://madridenvivo.com/wp-content/themes/base/codigo/includes/ajax/buscar-eventos-avanzado.php"
+  "url": "https://rockforeveryone.es/agenda-de-conciertos-heavy-en-madrid-en-octubre-de-2026/"
  },
- "monlive": {
-  "bytes": 14449,
+ "rfe_search": {
+  "bytes": 114187,
   "ok": true,
   "robots": "ok",
-  "url": "https://www.monmadrid.es/"
+  "url": "https://rockforeveryone.es/?s=agenda+de+conciertos+heavy+en+madrid"
  },
- "neverland": {
-  "bytes": 90853,
+ "rockprog_agenda": {
+  "bytes": 79298,
   "ok": true,
   "robots": "ok",
-  "url": "https://www.metalsymphony.com/neverland-concerts-agenda-rock-progresivo-2026-2027/"
+  "url": "https://www.rock-progresivo.com/agenda-de-conciertos-de-rock-progresivo/"
  },
- "qconciertos_madrid": {
-  "bytes": 129586,
+ "rockprog_art": {
+  "bytes": 88988,
   "ok": true,
   "robots": "ok",
-  "url": "https://qconciertos.es/conciertos-en-madrid-provincia/"
+  "url": "https://www.rock-progresivo.com/the-pineapple-thief-gira-2027-conciertos-espana-madrid-barcelona-bilbao/2026/09/"
  },
- "rfe_home": {
-  "bytes": 125932,
+ "tempo_eventos": {
+  "bytes": 91581,
   "ok": true,
   "robots": "ok",
-  "url": "https://rockforeveryone.es/"
- },
- "rockgle": {
-  "error": "HTTPError: 429 Client Error: Too Many Requests for url: https://www.google.com/sorry/index?continue=https://www.rockgle.es/p/agenda-de-conciertos_07.html%3Fm%3D0&q=EgSst1ulGJz67dUGIi0yedGsir8CIAtZGBze5TpBF-IOyCG-jN7W3r6C5Mk2h5_WxOpc1R6V0QDWlYMyAnJSWgFD",
-  "ok": false,
-  "robots": "ok",
-  "url": "https://www.rockgle.es/p/agenda-de-conciertos_07.html?m=0"
- },
- "rockprog": {
-  "bytes": 104983,
-  "ok": true,
-  "robots": "ok",
-  "url": "https://www.rock-progresivo.com/seccion/cronicas-conciertos/previas-de-conciertos/"
- },
- "sbm_agenda": {
-  "error": "HTTPError: 404 Client Error: Not Found for url: https://www.sociedaddebluesdemadrid.com/agenda/",
-  "ok": false,
-  "robots": "ok",
-  "url": "https://www.sociedaddebluesdemadrid.com/agenda/"
- },
- "thm_agenda": {
-  "bytes": 51697,
-  "ok": true,
-  "robots": "ok",
-  "url": "https://www.todoheavymetal.com/index.php/agenda/amp"
- },
- "wagon_home": {
-  "bytes": 452846,
-  "ok": true,
-  "robots": "ok",
-  "url": "https://www.wagon.live/"
+  "url": "https://tempoclub.es/eventos/"
  }
 }
