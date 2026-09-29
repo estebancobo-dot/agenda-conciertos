@@ -1,5 +1,17 @@
 # Versiones
 
+## 2.4.0 — 2026-09-29
+
+- **Ritmo según cada plataforma** en lugar de una pausa fija de 2 s por web:
+  - Webs de agendas y salas: 1 s de pausa desde que termina cada respuesta, o el Crawl-delay de su robots.txt si es mayor. Un servidor lento recibe así menos peticiones.
+  - Discogs a su límite publicado: 60 peticiones/min con clave, 25 sin ella. Además vigila la cabecera `X-Discogs-Ratelimit-Remaining`.
+  - MusicBrainz a 1 petición/s, que es su norma.
+  - Last.fm a 4 peticiones/s (su máximo es 5).
+  - Wikipedia y Wikidata de una en una, sin pausa fija, como pide Wikimedia.
+  - Ante 429 o 503 se respeta `Retry-After` (o se esperan 10 s, 20 s…), se reintenta hasta 3 veces y se duplica la pausa con esa web.
+- **Fichas en paralelo con las agendas**: en la ejecución diaria las fichas de artista (otras webs) se buscan mientras se leen las agendas, empezando por los artistas del día anterior. Al terminar las agendas se completan los artistas nuevos. Tope total: 40 minutos.
+- Las ejecuciones de "solo fichas" sin nada pendiente no modifican datos ni vuelven a publicar la web.
+
 ## 2.3.0 — 2026-09-29
 
 - **Fichas de artista cada 2 horas**: además de la actualización diaria, cada 2 horas se completan durante un máximo de 50 minutos las fichas pendientes, sin volver a leer las agendas. Cuando no quedan pendientes, termina en segundos.

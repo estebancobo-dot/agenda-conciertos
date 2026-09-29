@@ -4,6 +4,7 @@ from __future__ import annotations
 import csv
 import json
 import logging
+import threading
 import time
 import traceback
 from concurrent.futures import ThreadPoolExecutor
@@ -282,6 +283,9 @@ def informe_fuentes(fuentes: list[Source], resultados: dict, recs: list[dict], a
     return out
 
 
+PRESUPUESTO_FICHAS = 2400  # tope de la ejecución diaria para fichas (los pendientes siguen cada 2 horas)
+
+
 def ejecutar(hoy: date | None = None, solo: list[str] | None = None, fetcher: Fetcher | None = None,
              musicbrainz: bool = True, max_mb: int = 700) -> dict:
     hoy = hoy or datetime.now(timezone.utc).astimezone().date()
@@ -292,6 +296,16 @@ def ejecutar(hoy: date | None = None, solo: list[str] | None = None, fetcher: Fe
     anteriores = _read("concerts.json", {}).get("conciertos", [])
     anteriores_ids = {p["id"] for p in anteriores}
     t0 = time.monotonic()
+    # Las fichas de artista usan otras webs (Discogs, Wikipedia…): se buscan mientras se leen las agendas,
+    # empezando por los artistas de la ejecución anterior; al terminar se completan los nuevos.
+    cache_art = _read("artistas.json", {})
+    parar, hilo, previas = threading.Event(), None, {}
+    if musicbrainz and anteriores:
+        from .artistas import enriquecer
+        hilo = threading.Thread(target=lambda: previas.update(
+            enriquecer([p for p in anteriores if p["fecha"] >= hoy.isoformat()], cache_art, hoy,
+                       presupuesto_seg=PRESUPUESTO_FICHAS, parar=parar)), daemon=True)
+        hilo.start()
     items, resultados = rastrear(fuentes, fetcher, hoy, horizonte, estado.setdefault("fuentes", {}))
     items, fuera = preparar(items, hoy, horizonte)
     recs = unificar(items)
@@ -302,12 +316,16 @@ def ejecutar(hoy: date | None = None, solo: list[str] | None = None, fetcher: Fe
     for r in recs:
         recalcular_categorias(r)
         recalcular_estado(r, lambda i: grupo.get(i, i))
-    # ficha musical del artista principal (Wikipedia y Discogs)
+    # ficha musical del artista principal (Wikidata, Discogs, Wikipedia, Last.fm)
     art_stats = {"desactivado": True}
-    cache_art = _read("artistas.json", {})
     if musicbrainz:  # misma bandera: sin red externa en pruebas
         from .artistas import enriquecer
-        art_stats = enriquecer(recs, cache_art, hoy, presupuesto_seg=1800)
+        if hilo:
+            parar.set()
+            hilo.join()
+        resto = max(PRESUPUESTO_FICHAS - (time.monotonic() - t0), 300)
+        art_stats = enriquecer(recs, cache_art, hoy, presupuesto_seg=resto)
+        art_stats["durante_agendas"] = {k: previas.get(k, 0) for k in ("consultados", "completados")}
         _write("artistas.json", cache_art)
     from .artistas import ficha
     for r in recs:
@@ -372,6 +390,8 @@ def ejecutar_fichas(hoy: date | None = None, presupuesto_seg: float = 3000) -> d
     recs = datos.get("conciertos", [])
     cache_art = _read("artistas.json", {})
     stats = enriquecer(recs, cache_art, hoy, presupuesto_seg=presupuesto_seg)
+    if not stats["consultados"] and not stats["completados"]:
+        return stats  # nada pendiente: no se toca ningún archivo (ni commit ni nueva publicación)
     _write("artistas.json", cache_art)
     for r in recs:
         aplicar_ficha(r, ficha(cache_art.get(norm(r["artista"]))))

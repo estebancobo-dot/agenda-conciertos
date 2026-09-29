@@ -1,4 +1,10 @@
-"""Descargador educado: respeta robots.txt, 1 petición cada 2 s por web y User-Agent identificable."""
+"""Descargador educado: respeta robots.txt y el ritmo que admite cada web, con User-Agent identificable.
+
+Ritmo por web (las peticiones a una misma web van siempre de una en una):
+- entre el final de una respuesta y la siguiente petición, `min_interval` (1 s para webs, el límite publicado
+  para las API) o el Crawl-delay de su robots.txt si es mayor; un servidor lento recibe así menos peticiones;
+- ante 429 o 503 se espera lo que diga Retry-After (o 10 s, 20 s…), se reintenta y se duplica la pausa de esa web.
+"""
 from __future__ import annotations
 
 import re
@@ -15,7 +21,8 @@ USER_AGENT = (
     "AgendaConciertosMadridBot/2.0 (+https://github.com/estebancobo-dot/agenda-conciertos; "
     "agenda personal sin animo de lucro)"
 )
-MIN_INTERVAL = 2.0  # segundos entre peticiones a la misma web
+MIN_INTERVAL = 1.0  # segundos mínimos entre peticiones a la misma web (webs sin límite publicado)
+REINTENTOS = 3      # ante 429/503
 
 
 class RobotsBlocked(Exception):
@@ -34,6 +41,14 @@ def es_antibot(text: str) -> bool:
     return len(text) < 20000 and bool(_ANTIBOT.search(text))
 
 
+def retry_after(valor: str | None, defecto: float) -> float:
+    """Segundos de la cabecera Retry-After (solo el formato numérico), entre 1 y 120."""
+    try:
+        return min(max(float(valor), 1.0), 120.0)
+    except (TypeError, ValueError):
+        return defecto
+
+
 class RobotsUnreachable(Exception):
     """No se pudo leer robots.txt (error de red o 5xx): por norma no se rastrea la web."""
 
@@ -45,7 +60,9 @@ class HostState:
     robots: Robots | None = None
     robots_checked: bool = False
     robots_status: str = ""
-    delay: float = 0.0
+    delay: float = 0.0       # Crawl-delay de robots.txt
+    latencia: float = 0.0    # lo que tardó la última respuesta
+    freno: float = 0.0       # pausa extra tras un 429/503
 
 
 class Fetcher:
@@ -71,7 +88,7 @@ class Fetcher:
             return self._hosts.setdefault(host, HostState())
 
     def _wait(self, st: HostState) -> None:
-        interval = max(self.min_interval, st.delay)
+        interval = max(self.min_interval, st.delay, st.freno)
         delta = time.monotonic() - st.last
         if delta < interval:
             time.sleep(interval - delta)
@@ -122,9 +139,19 @@ class Fetcher:
             raise RobotsBlocked(url)
         st = self._host(url)
         with st.lock:
-            self._wait(st)
-            self.requests_count += 1
-            r = self.session.request(method, url, timeout=self.timeout, **kw)
+            for intento in range(REINTENTOS + 1):
+                self._wait(st)
+                self.requests_count += 1
+                t0 = time.monotonic()
+                r = self.session.request(method, url, timeout=self.timeout, **kw)
+                st.latencia = time.monotonic() - t0
+                st.last = time.monotonic()  # la pausa cuenta desde que termina la respuesta
+                if r.status_code not in (429, 503) or intento == REINTENTOS:
+                    break
+                espera = retry_after(r.headers.get("Retry-After"), 10.0 * (intento + 1))
+                st.freno = min(max(st.freno * 2, self.min_interval * 2), 30.0)
+                time.sleep(espera)
+            self.after_response(r)
         self.last_headers[url] = {"status": r.status_code, **{k: v for k, v in r.headers.items()
                                                              if k.lower().startswith(("x-", "retry", "ratelimit"))}}
         r.raise_for_status()
@@ -136,6 +163,9 @@ class Fetcher:
         if use_cache:
             self._cache[key] = text
         return text
+
+    def after_response(self, r) -> None:
+        """Gancho para ajustar el ritmo según las cabeceras de la API (p. ej. Discogs)."""
 
     def get_json(self, url: str, **kw):
         import json

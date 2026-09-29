@@ -69,4 +69,4 @@ def completar(recs: list[dict], cache: dict, hoy: date, fetcher: Fetcher | None,
 
 
 def fetcher_musicbrainz() -> Fetcher:
-    return Fetcher(min_interval=1.5)  # la API admite 1/s de media; margen para evitar 503
+    return Fetcher(min_interval=1.0)  # norma de MusicBrainz: 1 petición/s; ante 503 el Fetcher frena y reintenta

@@ -7,7 +7,11 @@ Agenda automática y gratuita de los conciertos de los próximos 120 días en Ma
 ## Qué hace
 
 1. Cada día a las 05:00 UTC (7:00 en Madrid en verano, 6:00 en invierno) GitHub Actions visita unas 77 webs: agregadores, webs de metal y rock, blogs de giras, webs oficiales de salas y agendas municipales.
-2. Respeta el `robots.txt` de cada web, hace como mucho 1 petición cada 2 segundos por web y se identifica con un User-Agent propio. Si una web lo prohíbe, no se lee y el informe lo dice.
+2. Respeta el `robots.txt` de cada web y se identifica con un User-Agent propio. Si una web lo prohíbe, no se lee y el informe lo dice. Va al ritmo que admite cada plataforma, y a cada web le pide las cosas de una en una:
+   - **Webs de agendas y salas**: 1 s de pausa tras cada respuesta, o más si su robots.txt lo pide.
+   - **API con límite publicado**: se usa ese límite. Discogs admite 60 peticiones/min con clave (25 sin ella), MusicBrainz 1 por segundo y Last.fm 5 por segundo.
+   - **Wikipedia y Wikidata**: no publican límite y piden peticiones de una en una; se hacen así.
+   - Si una web responde "demasiadas peticiones" (429) o "servicio no disponible" (503), se espera lo que indique, se reintenta y se va más despacio con ella.
 3. Junta todo sin duplicados: el mismo concierto (misma fecha, misma sala, mismo artista) aparece una sola vez con todas sus fuentes.
 4. **No inventa nada.** Cada dato tiene su fuente con enlace:
    - **Estilo**: lo da una web de música, no la agenda ni la sala: **Discogs** (estilos de sus discos) o, si no, **Wikipedia** (traducido a los estilos de Discogs). Solo si el artista se identifica sin ambigüedad. Si no tiene ficha, se muestra la etiqueta de la agenda marcada como tal; si tampoco hay: "sin clasificar". Wikidata aporta los identificadores exactos del artista en Discogs, AllMusic, Spotify, MusicBrainz y Last.fm, lo que evita confundir homónimos. AllMusic no permite el acceso automático: solo se enlaza.
@@ -27,14 +31,14 @@ Agenda automática y gratuita de los conciertos de los próximos 120 días en Ma
 ### Cuándo se actualiza
 
 - **Conciertos**: una vez al día, a las 05:00 UTC. Se vuelven a leer todas las agendas, porque es la única forma de detectar cambios de hora o cancelaciones.
-- **Fichas de artista** (estilo, origen, foto): cada artista se consulta una sola vez y se guarda en `data/artistas.json`. Cada 2 horas se completan los pendientes durante un máximo de 50 minutos, sin tocar las agendas. Cuando ya no quedan pendientes, esa ejecución termina en segundos.
+- **Fichas de artista** (estilo, origen, foto): cada artista se consulta una sola vez y se guarda en `data/artistas.json`. En la ejecución diaria se buscan a la vez que se leen las agendas. Además, cada 2 horas se completan los pendientes durante un máximo de 50 minutos, sin tocar las agendas. Cuando ya no quedan pendientes, esa ejecución termina en segundos y no vuelve a publicar la web.
 
 ### Lanzar la actualización a mano
 
 1. Abre el repositorio en GitHub (en el navegador del móvil, mejor en "vista de escritorio" si no ves la pestaña).
 2. Pestaña **Actions** → en la lista de la izquierda, **"Actualizar agenda y publicar web"**.
 3. Botón **"Run workflow"** → deja la rama `main` → **"Run workflow"**. Si marcas **"Solo fichas de artista"**, no se leen las agendas y solo se completan fichas.
-4. Tarda entre 20 y 45 minutos. Cuando el círculo se ponga verde, la web ya está actualizada.
+4. Tarda unos 30-45 minutos (la lectura de Madrid en Vivo marca el tiempo porque su servidor es lento). Cuando el círculo se ponga verde, la web ya está actualizada.
 
 ### Añadir una sala al diccionario de alias
 

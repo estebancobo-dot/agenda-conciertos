@@ -135,14 +135,36 @@ def buscar_discogs(f: Fetcher, nombre: str, discogs_id: str | None = None) -> di
     return discogs_ficha(f, art, nombre, "única coincidencia exacta del nombre en Discogs")
 
 
+class _FetcherDiscogs(Fetcher):
+    """Discogs indica en cada respuesta cuántas peticiones quedan en el minuto: si se acaban, se espera."""
+
+    def after_response(self, r) -> None:
+        try:
+            quedan = int(r.headers.get("X-Discogs-Ratelimit-Remaining", "99"))
+        except ValueError:
+            return
+        if quedan <= 2:
+            time.sleep(10)
+
+
 def fetcher_discogs() -> Fetcher:
-    """Con DISCOGS_TOKEN (gratuito, opcional) Discogs admite 60 peticiones/min; sin él, 25."""
+    """Límite publicado por Discogs: 60 peticiones/min con DISCOGS_TOKEN (gratuito), 25 sin él."""
     import os
     token = os.environ.get("DISCOGS_TOKEN", "").strip()
-    f = Fetcher(min_interval=1.1 if token else 2.6)
+    f = _FetcherDiscogs(min_interval=1.0 if token else 2.4)
     if token:
         f.session.headers["Authorization"] = f"Discogs token={token}"
     return f
+
+
+def fetcher_wikimedia() -> Fetcher:
+    """Wikipedia y Wikidata no publican un límite de lectura: piden User-Agent identificable y peticiones
+    en serie (una tras otra), que es como van siempre las de una misma web."""
+    return Fetcher(min_interval=0.2)
+
+
+def fetcher_lastfm() -> Fetcher:
+    return Fetcher(min_interval=0.25)  # Last.fm: máximo 5 peticiones/s
 
 
 # ------------------------------------------------------------------ Wikidata (Special:EntityData, permitido por robots.txt)
@@ -329,15 +351,15 @@ def _encontrado(ent: dict) -> bool:
 
 def enriquecer(recs: list[dict], cache: dict, hoy: date, presupuesto_seg: float = 1200,
                fetcher_dc: Fetcher | None = None, fetcher_wp: Fetcher | None = None,
-               fetcher_lf: Fetcher | None = None, clave_lastfm: str | None = None) -> dict:
+               fetcher_lf: Fetcher | None = None, clave_lastfm: str | None = None, parar=None) -> dict:
     """Completa cache[norm(artista)] para los artistas principales, priorizando los conciertos en foco y próximos.
 
     Cada artista se consulta una vez; la ficha se renueva a los 180 días (30 si no se encontró). Si una ficha
     antigua no tiene un paso añadido después (Wikidata, Last.fm), solo se completa ese paso."""
     fetcher_dc = fetcher_dc or fetcher_discogs()
-    fetcher_wp = fetcher_wp or Fetcher()
+    fetcher_wp = fetcher_wp or fetcher_wikimedia()
     clave_lastfm = lastfm_key() if clave_lastfm is None else clave_lastfm
-    fetcher_lf = fetcher_lf or Fetcher()
+    fetcher_lf = fetcher_lf or fetcher_lastfm()
     stats = {"consultados": 0, "completados": 0, "desde_cache": 0, "discogs": 0, "wikipedia": 0, "wikidata": 0,
              "lastfm": 0, "sin_ficha": 0, "pendientes": 0, "errores": [],
              "discogs_con_token": "Authorization" in fetcher_dc.session.headers, "lastfm_activo": bool(clave_lastfm)}
@@ -363,7 +385,7 @@ def enriquecer(recs: list[dict], cache: dict, hoy: date, presupuesto_seg: float 
 
     def consultar(par):
         k, nombre, previa = par
-        if time.monotonic() - inicio > presupuesto_seg:
+        if time.monotonic() - inicio > presupuesto_seg or (parar is not None and parar.is_set()):
             return k, None
         ent = dict(previa) if previa else {"nombre": nombre, "fecha": hoy.isoformat()}
 

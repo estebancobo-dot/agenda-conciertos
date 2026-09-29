@@ -69,3 +69,9 @@ def test_detecta_captcha_antibots():
     fix = Path(__file__).parent / "fixtures"
     assert es_antibot((fix / "galileo_captcha.html").read_text())  # SiteGround sgcaptcha (29-09-2026)
     assert not es_antibot((fix / "galileo.html").read_text())
+
+
+def test_retry_after():
+    from scraper.fetch import retry_after
+    assert retry_after("30", 10) == 30 and retry_after(None, 10) == 10
+    assert retry_after("Wed, 21 Oct 2026 07:28:00 GMT", 10) == 10 and retry_after("9999", 10) == 120
