@@ -10,9 +10,15 @@ class FakeFetcher:
     def __init__(self, mapping: dict[str, Path | str]):
         self.mapping = mapping
         self.requests_count = 0
+        self.urls = []
+
+        class _S:
+            headers = {}
+        self.session = _S()
 
     def get(self, url, **kw):
         self.requests_count += 1
+        self.urls.append(url)
         key = url
         if kw.get("method") == "POST":
             key = url + "#" + str(kw.get("data"))

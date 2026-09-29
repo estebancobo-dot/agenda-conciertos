@@ -98,3 +98,49 @@ def test_ficha_con_wikidata():
     nombres = [e["nombre"] for e in f["enlaces"]]
     assert "AllMusic" in nombres and "MusicBrainz" in nombres
     assert "Wikidata" in f["identidad"]
+
+
+# Respuesta de artist.gettoptags con la estructura documentada por Last.fm (construida para la prueba).
+LF = {"toptags": {"tag": [{"name": "stoner rock", "count": 100}, {"name": "seen live", "count": 60},
+                          {"name": "spanish", "count": 40}, {"name": "hard rock", "count": 30},
+                          {"name": "doom metal", "count": 5}], "@attr": {"artist": "Grupo Pequeño"}}}
+
+
+def test_lastfm_etiquetas_a_discogs():
+    r = A.lastfm_parse(LF, "Grupo Pequeño", por_mbid=False)
+    assert r["encontrado"] and r["estilos"] == ["Stoner Rock", "Hard Rock"]  # 'doom' no llega al 25 %
+    assert r["identificado_por"] == "coincidencia por nombre"
+    assert not A.lastfm_parse(LF, "Otro Grupo", por_mbid=False)["encontrado"]
+    assert not A.lastfm_parse({"error": 6, "message": "not found"}, "x", False)["encontrado"]
+    f = A.ficha({"lastfm": r, "discogs": {"encontrado": False}, "wikipedia": {"encontrado": False}})
+    assert f["estilos"] == ["Stoner Rock", "Hard Rock"] and "coincidencia por nombre" in f["fuente_estilo"]
+
+
+def test_ficha_discogs_tiene_prioridad_sobre_lastfm():
+    dc = {"encontrado": True, "estilos": ["Garage Rock"], "generos": ["Rock"], "url": "/artist/1"}
+    f = A.ficha({"discogs": dc, "lastfm": A.lastfm_parse(LF, "Grupo Pequeño", False)})
+    assert f["estilos"] == ["Garage Rock"] and f["fuente_estilo"] == "Discogs"
+
+
+def test_wikipedia_no_prueba_sufijos_si_no_existe():
+    from tests.fakefetch import FakeFetcher
+    ff = FakeFetcher({})
+    r = A.buscar_wikipedia(ff, "Grupo Desconocido")
+    assert not r["encontrado"] and len(ff.urls) == 2  # es y en, sin '(banda)' ni '(band)'
+
+
+def test_enriquecer_solo_completa_lo_que_falta():
+    from datetime import date
+    from tests.fakefetch import FakeFetcher
+    cache = {"grupo pequeno": {"nombre": "Grupo Pequeño", "fecha": "2026-09-01",
+                               "wikipedia": {"encontrado": False}, "discogs": {"encontrado": False}}}
+    lf = FakeFetcher({"https://ws.audioscrobbler.com/*": lambda u, kw: json.dumps(LF)})
+    recs = [{"artista": "Grupo Pequeño", "en_foco": True, "fecha": "2026-10-17"}]
+    st = A.enriquecer(recs, cache, date(2026, 9, 29), fetcher_dc=FakeFetcher({}), fetcher_wp=FakeFetcher({}),
+                      fetcher_lf=lf, clave_lastfm="CLAVE")
+    assert st["completados"] == 1 and st["lastfm"] == 1 and len(lf.urls) == 1
+    assert cache["grupo pequeno"]["lastfm"]["estilos"] == ["Stoner Rock", "Hard Rock"]
+    # la segunda vez ya no consulta nada
+    st = A.enriquecer(recs, cache, date(2026, 9, 29), fetcher_dc=FakeFetcher({}), fetcher_wp=FakeFetcher({}),
+                      fetcher_lf=lf, clave_lastfm="CLAVE")
+    assert st["desde_cache"] == 1 and len(lf.urls) == 1

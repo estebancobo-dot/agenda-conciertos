@@ -2,9 +2,14 @@ name: Actualizar agenda y publicar web
 
 on:
   schedule:
-    - cron: "0 5 * * *"   # todos los días a las 05:00 UTC
+    - cron: "0 5 * * *"      # todos los días a las 05:00 UTC: agendas + fichas
+    - cron: "40 */2 * * *"   # cada 2 horas: solo fichas de artista pendientes (termina enseguida si no hay)
   workflow_dispatch:
     inputs:
+      fichas:
+        description: "Solo fichas de artista (no lee las agendas)"
+        type: boolean
+        default: false
       solo:
         description: "Solo estas fuentes (ids separados por comas; vacío = todas)"
         required: false
@@ -40,7 +45,9 @@ jobs:
           LASTFM_KEY: ${{ secrets.LASTFM_KEY }}
           TICKETMASTER_KEY: ${{ secrets.TICKETMASTER_KEY }}
         run: |
-          if [ -n "${{ github.event.inputs.solo }}" ]; then
+          if [ "${{ github.event.schedule }}" = "40 */2 * * *" ] || [ "${{ github.event.inputs.fichas }}" = "true" ]; then
+            python -m scraper --fichas --minutos 50
+          elif [ -n "${{ github.event.inputs.solo }}" ]; then
             python -m scraper --solo "${{ github.event.inputs.solo }}"
           else
             python -m scraper

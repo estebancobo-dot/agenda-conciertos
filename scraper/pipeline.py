@@ -159,7 +159,8 @@ def aplicar_ficha(r: dict, f: dict | None) -> None:
     r["en_foco"] = en_foco(cats)
     r["estilos_discogs"] = f["estilos"] if f else []
     r["genero_discogs"] = f["generos"] if f else []
-    if not r.get("nacionalidad") and f and f.get("pais"):
+    if f and f.get("pais") and (not r.get("nacionalidad") or
+                                str(r.get("nacionalidad_fuente", "")).startswith("MusicBrainz")):
         r["nacionalidad"], r["nacionalidad_fuente"] = f["pais"], f["fuente_pais"]
     r["imagen"] = (f or {}).get("imagen") or r.get("imagen_evento")
 
@@ -360,3 +361,24 @@ def ejecutar(hoy: date | None = None, solo: list[str] | None = None, fetcher: Fe
     estado["ultima_ejecucion"] = ahora
     _write("estado.json", estado)
     return informe
+
+
+def ejecutar_fichas(hoy: date | None = None, presupuesto_seg: float = 3000) -> dict:
+    """Solo fichas de artista: no vuelve a leer las agendas. Completa los artistas pendientes de
+    data/concerts.json y actualiza concerts.json, concerts.csv y el bloque 'artistas' del informe."""
+    from .artistas import enriquecer, ficha
+    hoy = hoy or datetime.now(timezone.utc).astimezone().date()
+    datos = _read("concerts.json", {})
+    recs = datos.get("conciertos", [])
+    cache_art = _read("artistas.json", {})
+    stats = enriquecer(recs, cache_art, hoy, presupuesto_seg=presupuesto_seg)
+    _write("artistas.json", cache_art)
+    for r in recs:
+        aplicar_ficha(r, ficha(cache_art.get(norm(r["artista"]))))
+    _write("concerts.json", datos)
+    escribir_csv(recs, DATA / "concerts.csv")
+    informe = _read("informe.json", {})
+    stats["ultima_carga_fichas"] = datetime.now(timezone.utc).isoformat(timespec="seconds")
+    informe["artistas"] = stats
+    _write("informe.json", informe)
+    return stats

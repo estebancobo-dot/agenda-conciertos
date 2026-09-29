@@ -11,6 +11,7 @@ Agenda automática y gratuita de los conciertos de los próximos 120 días en Ma
 3. Junta todo sin duplicados: el mismo concierto (misma fecha, misma sala, mismo artista) aparece una sola vez con todas sus fuentes.
 4. **No inventa nada.** Cada dato tiene su fuente con enlace:
    - **Estilo**: lo da una web de música, no la agenda ni la sala: **Discogs** (estilos de sus discos) o, si no, **Wikipedia** (traducido a los estilos de Discogs). Solo si el artista se identifica sin ambigüedad. Si no tiene ficha, se muestra la etiqueta de la agenda marcada como tal; si tampoco hay: "sin clasificar". Wikidata aporta los identificadores exactos del artista en Discogs, AllMusic, Spotify, MusicBrainz y Last.fm, lo que evita confundir homónimos. AllMusic no permite el acceso automático: solo se enlaza.
+   - Si un artista no tiene estilo ni en Discogs ni en Wikipedia y está guardada `LASTFM_KEY`, se usan las etiquetas de los oyentes de **Last.fm** que tienen equivalencia en Discogs. Se marcan como tales.
    - **Nacionalidad**: la de la fuente del concierto; si no, la de Wikidata, Wikipedia o Discogs; como último recurso MusicBrainz (única coincidencia exacta, marcada como "coincidencia por nombre"). Si no, "sin confirmar".
    - **Foto**: de Wikimedia Commons (vía Wikipedia) o Discogs, con su crédito; si no hay, la imagen del anuncio del concierto.
    - **Conflictos**: si dos webs no coinciden en hora, sala o cartel, se guardan ambas versiones y se marca "conflicto" con la explicación. Si la fuente de más prioridad confirma uno de los datos (1 web oficial de la sala · 2 promotora o ticketera · 3 agregador · 4 blog o foro), se da por resuelto y se anota.
@@ -23,11 +24,16 @@ Agenda automática y gratuita de los conciertos de los próximos 120 días en Ma
 - **Ver la agenda**: abre la web. Pestañas: *Mes* (toca un día para verlo), *Semana*, *Día*, *Estilos*, *Fuentes*, *Informe* y *Versiones*. Toca un concierto para abrir su ficha (foto, estilo, origen, precio, sala y de dónde sale cada dato). El botón **Géneros** abre el panel de filtros ("Mi foco" oculta lo que está fuera de foco); también se filtra por origen (españoles/extranjeros) y con el buscador.
 - **Descargar para Excel**: botón "⬇ CSV" arriba a la derecha.
 
+### Cuándo se actualiza
+
+- **Conciertos**: una vez al día, a las 05:00 UTC. Se vuelven a leer todas las agendas, porque es la única forma de detectar cambios de hora o cancelaciones.
+- **Fichas de artista** (estilo, origen, foto): cada artista se consulta una sola vez y se guarda en `data/artistas.json`. Cada 2 horas se completan los pendientes durante un máximo de 50 minutos, sin tocar las agendas. Cuando ya no quedan pendientes, esa ejecución termina en segundos.
+
 ### Lanzar la actualización a mano
 
 1. Abre el repositorio en GitHub (en el navegador del móvil, mejor en "vista de escritorio" si no ves la pestaña).
 2. Pestaña **Actions** → en la lista de la izquierda, **"Actualizar agenda y publicar web"**.
-3. Botón **"Run workflow"** → deja la rama `main` → **"Run workflow"**.
+3. Botón **"Run workflow"** → deja la rama `main` → **"Run workflow"**. Si marcas **"Solo fichas de artista"**, no se leen las agendas y solo se completan fichas.
 4. Tarda entre 20 y 45 minutos. Cuando el círculo se ponga verde, la web ya está actualizada.
 
 ### Añadir una sala al diccionario de alias
@@ -82,7 +88,7 @@ Todo funciona sin claves. Con ellas, algunas webs dejan hacer más consultas o d
 3. Pulsa **Generate new token** y copia el texto que aparece.
 4. Guárdalo en GitHub con el nombre `DISCOGS_TOKEN`.
 
-**2. `LASTFM_KEY` (preparada para una próxima versión).** Last.fm da etiquetas de estilo votadas por los oyentes y una lista de artistas similares. Es útil sobre todo para grupos pequeños que no están en Discogs ni en Wikipedia.
+**2. `LASTFM_KEY` (recomendada).** Last.fm da etiquetas de estilo votadas por los oyentes y una lista de artistas similares. Es útil sobre todo para grupos pequeños que no están en Discogs ni en Wikipedia.
 1. Crea una cuenta gratuita en https://www.last.fm/join.
 2. Ve a https://www.last.fm/api/account/create y rellena el formulario:
    - *Application name*: "Agenda conciertos Madrid".

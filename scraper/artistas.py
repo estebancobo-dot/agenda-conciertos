@@ -244,6 +244,10 @@ def buscar_wikipedia(f: Fetcher, nombre: str) -> dict:
                 html = f.get(url)
             except Exception as e:  # noqa: BLE001 - 404 = no existe esa página
                 intentos.append(f"{lang}{suf or ''}: {'no existe' if '404' in str(e) else type(e).__name__}")
+                if suf == "" and "404" in str(e):
+                    # si ni siquiera existe la página con el nombre, no hay homónimo que obligue a usar
+                    # "(banda)"; se ahorran 3 peticiones por artista desconocido
+                    break
                 continue
             r = wikipedia_parse(html, url)
             # el título de la página debe corresponder al nombre (evita redirecciones a otra cosa)
@@ -260,6 +264,52 @@ def buscar_wikipedia(f: Fetcher, nombre: str) -> dict:
     return {"encontrado": False, "motivo": "; ".join(intentos[:4])}
 
 
+# ------------------------------------------------------------------ Last.fm (clave gratuita LASTFM_KEY, opcional)
+LASTFM = "https://ws.audioscrobbler.com/2.0/"
+
+
+def lastfm_key() -> str:
+    import os
+    return os.environ.get("LASTFM_KEY", "").strip()
+
+
+def lastfm_parse(data: dict, nombre: str, por_mbid: bool) -> dict:
+    """Etiquetas de los oyentes traducidas a estilos de Discogs (solo equivalencias declaradas en taxonomia.json)."""
+    if "error" in data:
+        return {"encontrado": False, "motivo": data.get("message", "no encontrado")}
+    tt = data.get("toptags", {})
+    artista = tt.get("@attr", {}).get("artist", "")
+    if not por_mbid and artista.casefold() != nombre.casefold():
+        return {"encontrado": False, "motivo": f"Last.fm devuelve otro nombre ({artista})"}
+    etiquetas = [t["name"] for t in tt.get("tag", []) if int(t.get("count", 0)) >= 25][:10]
+    from .clasificar import discogs, generos_de_texto
+    estilos, generos = discogs(etiquetas)
+    for g in generos_de_texto(etiquetas):
+        if g not in generos:
+            generos.append(g)
+    return {"encontrado": True, "nombre": artista, "etiquetas": etiquetas, "estilos": estilos[:5],
+            "generos": generos[:3], "url": f"https://www.last.fm/music/{quote(artista.replace(' ', '+'))}",
+            "identificado_por": "identificador de MusicBrainz en Wikidata" if por_mbid else "coincidencia por nombre"}
+
+
+def buscar_lastfm(f: Fetcher, nombre: str, mbid: str | None, key: str) -> dict:
+    import requests
+    q = f"mbid={mbid}" if mbid else f"artist={quote(nombre)}&autocorrect=0"
+    try:
+        txt = f.get(f"{LASTFM}?method=artist.gettoptags&{q}&api_key={key}&format=json")
+    except requests.HTTPError as e:
+        if e.response is not None and e.response.status_code in (400, 404):
+            try:
+                return lastfm_parse(e.response.json(), nombre, bool(mbid))
+            except ValueError:
+                pass
+        raise
+    r = lastfm_parse(json.loads(txt), nombre, bool(mbid))
+    if not r["encontrado"] and mbid:  # Last.fm no siempre conoce el identificador: se prueba por nombre
+        return buscar_lastfm(f, nombre, None, key)
+    return r
+
+
 # ------------------------------------------------------------------ orquestación
 def nombre_consultable(nombre: str) -> bool:
     n = norm(nombre)
@@ -268,13 +318,29 @@ def nombre_consultable(nombre: str) -> bool:
                           r"sesi[oó]n|open mic|karaoke|homenaje|aniversario|fiesta|party|noche de", nombre)
 
 
+def _tiene_estilo(ent: dict) -> bool:
+    return bool((ent.get("discogs", {}).get("encontrado") and ent["discogs"].get("estilos")) or
+                (ent.get("wikipedia", {}).get("encontrado") and _estilos_discogs_de_wikipedia(ent["wikipedia"].get("generos") or [])))
+
+
+def _encontrado(ent: dict) -> bool:
+    return any((ent.get(k) or {}).get("encontrado") for k in ("discogs", "wikipedia", "lastfm"))
+
+
 def enriquecer(recs: list[dict], cache: dict, hoy: date, presupuesto_seg: float = 1200,
-               fetcher_dc: Fetcher | None = None, fetcher_wp: Fetcher | None = None) -> dict:
-    """Completa cache[norm(artista)] para los artistas principales, priorizando los conciertos en foco y próximos."""
+               fetcher_dc: Fetcher | None = None, fetcher_wp: Fetcher | None = None,
+               fetcher_lf: Fetcher | None = None, clave_lastfm: str | None = None) -> dict:
+    """Completa cache[norm(artista)] para los artistas principales, priorizando los conciertos en foco y próximos.
+
+    Cada artista se consulta una vez; la ficha se renueva a los 180 días (30 si no se encontró). Si una ficha
+    antigua no tiene un paso añadido después (Wikidata, Last.fm), solo se completa ese paso."""
     fetcher_dc = fetcher_dc or fetcher_discogs()
     fetcher_wp = fetcher_wp or Fetcher()
-    stats = {"consultados": 0, "desde_cache": 0, "discogs": 0, "wikipedia": 0, "wikidata": 0, "sin_ficha": 0,
-             "pendientes": 0, "errores": [], "discogs_con_token": "Authorization" in fetcher_dc.session.headers}
+    clave_lastfm = lastfm_key() if clave_lastfm is None else clave_lastfm
+    fetcher_lf = fetcher_lf or Fetcher()
+    stats = {"consultados": 0, "completados": 0, "desde_cache": 0, "discogs": 0, "wikipedia": 0, "wikidata": 0,
+             "lastfm": 0, "sin_ficha": 0, "pendientes": 0, "errores": [],
+             "discogs_con_token": "Authorization" in fetcher_dc.session.headers, "lastfm_activo": bool(clave_lastfm)}
     inicio = time.monotonic()
     vistos, pendientes = set(), []
     for r in sorted(recs, key=lambda r: (not r["en_foco"], r["fecha"])):
@@ -284,55 +350,65 @@ def enriquecer(recs: list[dict], cache: dict, hoy: date, presupuesto_seg: float 
             continue
         vistos.add(k)
         ent = cache.get(k)
-        cad = CADUCIDAD_OK if ent and (ent.get("discogs", {}).get("encontrado") or
-                                       ent.get("wikipedia", {}).get("encontrado")) else CADUCIDAD_NO
-        # fichas de Wikipedia anteriores a la integración de Wikidata: se completan
-        falta_wd = ent and ent.get("wikipedia", {}).get("wikidata") and "wikidata" not in ent
-        if ent and not falta_wd and ent.get("fecha", "") >= (hoy - timedelta(days=cad)).isoformat():
-            stats["desde_cache"] += 1
+        cad = CADUCIDAD_OK if ent and _encontrado(ent) else CADUCIDAD_NO
+        if not ent or ent.get("fecha", "") < (hoy - timedelta(days=cad)).isoformat():
+            pendientes.append((k, nombre, None))
             continue
-        pendientes.append((k, nombre))
+        falta_wd = ent.get("wikipedia", {}).get("wikidata") and "wikidata" not in ent
+        falta_lf = clave_lastfm and "lastfm" not in ent and not _tiene_estilo(ent)
+        if falta_wd or falta_lf:
+            pendientes.append((k, nombre, ent))
+        else:
+            stats["desde_cache"] += 1
 
     def consultar(par):
-        k, nombre = par
+        k, nombre, previa = par
         if time.monotonic() - inicio > presupuesto_seg:
             return k, None
-        ent = {"nombre": nombre, "fecha": hoy.isoformat()}
+        ent = dict(previa) if previa else {"nombre": nombre, "fecha": hoy.isoformat()}
 
         def paso(clave, fn, *args):
             try:
                 ent[clave] = fn(*args)
             except Exception as e:  # noqa: BLE001
                 ent[clave] = {"encontrado": False, "motivo": f"error: {type(e).__name__}"}
+                msg = str(e)[:120].replace(clave_lastfm, "***") if clave_lastfm else str(e)[:120]
                 if len(stats["errores"]) < 20:
-                    stats["errores"].append(f"{nombre} ({clave}): {type(e).__name__}: {str(e)[:80]}")
+                    stats["errores"].append(f"{nombre} ({clave}): {type(e).__name__}: {msg}")
 
-        paso("wikipedia", buscar_wikipedia, fetcher_wp, nombre)
+        if "wikipedia" not in ent:
+            paso("wikipedia", buscar_wikipedia, fetcher_wp, nombre)
         qid = ent["wikipedia"].get("wikidata") if ent["wikipedia"].get("encontrado") else None
-        if qid:
+        if qid and "wikidata" not in ent:
             paso("wikidata", buscar_wikidata, fetcher_wp, qid)
-        dc_id = (ent.get("wikidata") or {}).get("ids", {}).get("discogs")
-        paso("discogs", buscar_discogs, fetcher_dc, nombre, dc_id)
+            dc = ent.get("discogs") or {}
+            dc_id = (ent.get("wikidata") or {}).get("ids", {}).get("discogs")
+            if previa and dc_id and str(dc.get("id")) != str(dc_id):
+                ent.pop("discogs", None)  # Wikidata identifica otro artista de Discogs (homónimo): se corrige
+        if "discogs" not in ent:
+            dc_id = (ent.get("wikidata") or {}).get("ids", {}).get("discogs")
+            paso("discogs", buscar_discogs, fetcher_dc, nombre, dc_id)
+        if clave_lastfm and "lastfm" not in ent and not _tiene_estilo(ent):
+            mbid = (ent.get("wikidata") or {}).get("ids", {}).get("musicbrainz")
+            paso("lastfm", buscar_lastfm, fetcher_lf, nombre, mbid, clave_lastfm)
         return k, ent
 
     from concurrent.futures import ThreadPoolExecutor
     with ThreadPoolExecutor(max_workers=4) as ex:
-        for k, ent in ex.map(consultar, pendientes):
+        for (k, ent), (_, _, previa) in zip(ex.map(consultar, pendientes), pendientes):
             if ent is None:
                 stats["pendientes"] += 1
             else:
                 cache[k] = ent
-                stats["consultados"] += 1
+                stats["completados" if previa else "consultados"] += 1
     for k in vistos:
         ent = cache.get(k) or {}
-        if ent.get("discogs", {}).get("encontrado"):
-            stats["discogs"] += 1
-        if ent.get("wikipedia", {}).get("encontrado"):
-            stats["wikipedia"] += 1
-        if ent.get("wikidata", {}).get("encontrado"):
-            stats["wikidata"] += 1
-        if ent and not ent.get("discogs", {}).get("encontrado") and not ent.get("wikipedia", {}).get("encontrado"):
+        for fuente in ("discogs", "wikipedia", "wikidata", "lastfm"):
+            if ent.get(fuente, {}).get("encontrado"):
+                stats[fuente] += 1
+        if ent and not _encontrado(ent):
             stats["sin_ficha"] += 1
+    stats["duracion_seg"] = round(time.monotonic() - inicio)
     return stats
 
 
@@ -349,7 +425,10 @@ def ficha(ent: dict | None) -> dict | None:
     if not ent:
         return None
     dc, wp, wd = ent.get("discogs") or {}, ent.get("wikipedia") or {}, ent.get("wikidata") or {}
-    if not dc.get("encontrado") and not wp.get("encontrado"):
+    lf = ent.get("lastfm") or {}
+    if not lf.get("encontrado") or not (lf.get("estilos") or lf.get("generos")):
+        lf = {}
+    if not dc.get("encontrado") and not wp.get("encontrado") and not lf:
         return None
     from .clasificar import genero_de_estilo
     estilos = list(dc.get("estilos") or []) if dc.get("encontrado") else []
@@ -361,10 +440,21 @@ def ficha(ent: dict | None) -> dict | None:
         fuente_estilo = "Discogs"
     if not fuente_estilo and wp.get("encontrado") and wp.get("generos"):
         fuente_estilo = "Wikipedia"
+    lf_usado = False
+    if not estilos and lf.get("estilos"):
+        estilos, fuente_estilo, lf_usado = list(lf["estilos"]), "Last.fm", True
+    elif not fuente_estilo and lf.get("generos"):
+        fuente_estilo, lf_usado = "Last.fm", True
+    if lf_usado and lf.get("identificado_por") == "coincidencia por nombre":
+        fuente_estilo = "Last.fm (etiquetas de oyentes, coincidencia por nombre)"
+    elif lf_usado:
+        fuente_estilo = "Last.fm (etiquetas de oyentes)"
     from .clasificar import generos_de_texto
     generos = list(dc.get("generos") or []) if dc.get("encontrado") else []
     if not generos and wp.get("encontrado"):
         generos = generos_de_texto(wp.get("generos") or [])
+    if not generos and lf_usado:
+        generos = list(lf.get("generos") or [])
     for e in estilos:
         g = genero_de_estilo(e)
         if g and g not in generos:
@@ -397,11 +487,15 @@ def ficha(ent: dict | None) -> dict | None:
         enlaces.append({"nombre": "MusicBrainz", "url": f"https://musicbrainz.org/artist/{ids['musicbrainz']}"})
     if ids.get("lastfm"):
         enlaces.append({"nombre": "Last.fm", "url": f"https://www.last.fm/music/{ids['lastfm']}"})
+    elif lf:
+        enlaces.append({"nombre": "Last.fm", "url": lf["url"]})
     if imagen is None and wd.get("imagen_commons"):
         nom = quote(wd["imagen_commons"].replace(" ", "_"))
         imagen = {"url": f"https://commons.wikimedia.org/wiki/Special:FilePath/{nom}?width=640",
                   "credito": "Wikimedia Commons", "enlace": f"https://commons.wikimedia.org/wiki/File:{nom}"}
     identidad = dc.get("identificado_por") if dc.get("encontrado") else None
+    if identidad is None and lf_usado:
+        identidad = f"Last.fm por {lf.get('identificado_por')}"
     if wp.get("encontrado"):
         identidad = "página de Wikipedia del grupo" + (" y Wikidata" if wd.get("encontrado") else "")
         if dc.get("encontrado"):

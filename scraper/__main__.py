@@ -1,4 +1,4 @@
-"""Uso: python -m scraper [--solo id1,id2] [--sin-musicbrainz] [--hoy AAAA-MM-DD]"""
+"""Uso: python -m scraper [--solo id1,id2] [--sin-musicbrainz] [--hoy AAAA-MM-DD] | --fichas [--minutos N]"""
 import argparse
 import logging
 from datetime import date
@@ -12,8 +12,18 @@ def main() -> None:
     ap.add_argument("--sin-musicbrainz", action="store_true")
     ap.add_argument("--max-musicbrainz", type=int, default=600)
     ap.add_argument("--hoy", help="fecha de referencia AAAA-MM-DD (pruebas)")
+    ap.add_argument("--fichas", action="store_true",
+                    help="solo completar fichas de artista pendientes (no lee las agendas)")
+    ap.add_argument("--minutos", type=int, default=50, help="tope de tiempo para --fichas")
     a = ap.parse_args()
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(message)s")
+    if a.fichas:
+        from .pipeline import ejecutar_fichas
+        st = ejecutar_fichas(hoy=date.fromisoformat(a.hoy) if a.hoy else None, presupuesto_seg=a.minutos * 60)
+        print({k: v for k, v in st.items() if k != "errores"})
+        for e in st["errores"]:
+            print("  error:", e)
+        return
     inf = ejecutar(hoy=date.fromisoformat(a.hoy) if a.hoy else None,
                    solo=a.solo.split(",") if a.solo else None,
                    musicbrainz=not a.sin_musicbrainz, max_mb=a.max_musicbrainz)
