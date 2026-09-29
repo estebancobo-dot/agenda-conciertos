@@ -1,5 +1,10 @@
 # Versiones
 
+## 2.5.1 — 2026-09-29
+
+- Si el identificador de Discogs que da Wikidata apunta a una ficha borrada o fusionada (le pasaba a Los Deltonos), se busca en Discogs por el nombre, con la regla de siempre: una única coincidencia exacta.
+- Si un paso de la ficha de artista falla por un error (de red o de la web consultada), ya no se guarda durante 180 días: en la siguiente ejecución se repite solo ese paso.
+
 ## 2.5.0 — 2026-09-29
 
 Revisión de la web en el móvil.

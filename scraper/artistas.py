@@ -124,8 +124,14 @@ def discogs_ficha(f: Fetcher, art: dict, nombre: str, via: str) -> dict:
 def buscar_discogs(f: Fetcher, nombre: str, discogs_id: str | None = None) -> dict:
     """Con el identificador de Wikidata no hay ambigüedad; sin él, única coincidencia exacta del nombre."""
     if discogs_id:
-        art = json.loads(f.get(f"{DISCOGS}/artists/{discogs_id}"))
-        return discogs_ficha(f, art, nombre, "identificador de Discogs en Wikidata")
+        import requests
+        try:
+            art = json.loads(f.get(f"{DISCOGS}/artists/{discogs_id}"))
+            return discogs_ficha(f, art, nombre, "identificador de Discogs en Wikidata")
+        except requests.HTTPError as e:
+            # Wikidata puede apuntar a una ficha de Discogs borrada o fusionada: se busca por nombre
+            if e.response is None or e.response.status_code != 404:
+                raise
     q = quote(nombre)
     res = json.loads(f.get(f"{DISCOGS}/database/search?q={q}&type=artist&per_page=50"))
     cand, n = discogs_identificar(res.get("results", []), nombre)
@@ -345,6 +351,11 @@ def _tiene_estilo(ent: dict) -> bool:
                 (ent.get("wikipedia", {}).get("encontrado") and _estilos_discogs_de_wikipedia(ent["wikipedia"].get("generos") or [])))
 
 
+def _pasos_con_error(ent: dict) -> list[str]:
+    return [k for k in ("wikipedia", "wikidata", "discogs", "lastfm")
+            if str((ent.get(k) or {}).get("motivo", "")).startswith("error")]
+
+
 def _encontrado(ent: dict) -> bool:
     return any((ent.get(k) or {}).get("encontrado") for k in ("discogs", "wikipedia", "lastfm"))
 
@@ -378,7 +389,7 @@ def enriquecer(recs: list[dict], cache: dict, hoy: date, presupuesto_seg: float 
             continue
         falta_wd = ent.get("wikipedia", {}).get("wikidata") and "wikidata" not in ent
         falta_lf = clave_lastfm and "lastfm" not in ent and not _tiene_estilo(ent)
-        if falta_wd or falta_lf:
+        if falta_wd or falta_lf or _pasos_con_error(ent):
             pendientes.append((k, nombre, ent))
         else:
             stats["desde_cache"] += 1
@@ -388,6 +399,8 @@ def enriquecer(recs: list[dict], cache: dict, hoy: date, presupuesto_seg: float 
         if time.monotonic() - inicio > presupuesto_seg or (parar is not None and parar.is_set()):
             return k, None
         ent = dict(previa) if previa else {"nombre": nombre, "fecha": hoy.isoformat()}
+        for clave in _pasos_con_error(ent):  # un error (red, ficha borrada…) no se guarda 180 días: se repite
+            ent.pop(clave)
 
         def paso(clave, fn, *args):
             try:

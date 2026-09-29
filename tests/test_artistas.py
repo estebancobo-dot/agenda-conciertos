@@ -144,3 +144,29 @@ def test_enriquecer_solo_completa_lo_que_falta():
     st = A.enriquecer(recs, cache, date(2026, 9, 29), fetcher_dc=FakeFetcher({}), fetcher_wp=FakeFetcher({}),
                       fetcher_lf=lf, clave_lastfm="CLAVE")
     assert st["desde_cache"] == 1 and len(lf.urls) == 1
+
+
+def test_discogs_id_de_wikidata_borrado_busca_por_nombre():
+    import requests
+    from datetime import date
+    from tests.fakefetch import FakeFetcher
+
+    class R404:
+        status_code = 404
+
+    def borrado(url, kw):
+        raise requests.HTTPError("404 Client Error", response=R404())
+
+    dc = FakeFetcher({"https://api.discogs.com/artists/9340201": borrado,
+                      "https://api.discogs.com/database/search?q=*": lambda u, kw: json.dumps({"results": []})})
+    r = A.buscar_discogs(dc, "Los Deltonos", "9340201")
+    assert not r["encontrado"] and any("search?q=" in u for u in dc.urls)
+    # una ficha guardada con error se vuelve a consultar en la siguiente ejecución (solo ese paso)
+    cache = {"los deltonos": {"nombre": "Los Deltonos", "fecha": "2026-09-29", "wikipedia": {"encontrado": False},
+                              "discogs": {"encontrado": False, "motivo": "error: HTTPError"}}}
+    dc2 = FakeFetcher({"https://api.discogs.com/*": lambda u, kw: json.dumps({"results": []})})
+    wp = FakeFetcher({})
+    st = A.enriquecer([{"artista": "Los Deltonos", "en_foco": True, "fecha": "2026-10-10"}], cache, date(2026, 9, 29),
+                      fetcher_dc=dc2, fetcher_wp=wp, fetcher_lf=FakeFetcher({}), clave_lastfm="")
+    assert st["completados"] == 1 and dc2.urls and not wp.urls
+    assert cache["los deltonos"]["discogs"]["motivo"] == "sin coincidencia exacta"
