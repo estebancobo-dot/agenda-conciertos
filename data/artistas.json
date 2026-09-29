@@ -1,0 +1,3887 @@
+{
+ "landa": {
+  "nombre": "LANDA",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "2 artistas homónimos"
+  }
+ },
+ "isabel van gelder": {
+  "nombre": "Isabel van Gelder",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": true,
+   "url": "https://en.wikipedia.org/wiki/Isabel_van_Gelder",
+   "generos": [
+    "pop music"
+   ],
+   "origen": null,
+   "pais": null,
+   "imagen": null,
+   "imagen_pagina": null,
+   "idioma": "en"
+  },
+  "discogs": {
+   "encontrado": true,
+   "id": 17144290,
+   "nombre": "Isabel van Gelder",
+   "url": "https://www.discogs.com/artist/17144290-Isabel-van-Gelder",
+   "generos": [
+    "Pop"
+   ],
+   "estilos": [],
+   "discos_analizados": 1,
+   "pais": null,
+   "imagen": "https://i.discogs.com/kqKSkd5KDKCM8gr2qfIkLmkp7I4e9htOKVAwJ7Y_eoM/rs:fit/g:sm/q:90/h:640/w:532/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTE3MTQ0/MjkwLTE3Njc3OTYy/NTYtMjU1NS5qcGVn.jpeg",
+   "perfil": "Singer and songwriter, born in 2003 in Amsterdam, The Netherlands"
+  }
+ },
+ "rolando bruno": {
+  "nombre": "Rolando Bruno",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": true,
+   "id": 2204393,
+   "nombre": "Rolando Bruno",
+   "url": "https://www.discogs.com/artist/2204393-Rolando-Bruno",
+   "generos": [
+    "Latin",
+    "Rock"
+   ],
+   "estilos": [
+    "Cumbia",
+    "Psychedelic Rock",
+    "Garage Rock"
+   ],
+   "discos_analizados": 1,
+   "pais": "AR",
+   "imagen": "https://i.discogs.com/wx8aPjOX5RqB0onrWsdZqscDgcFErIAo2RrOWNGcYYo/rs:fit/g:sm/q:90/h:604/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTIyMDQz/OTMtMTU0MzM2MzU1/NS0zMDk4LmpwZWc.jpeg",
+   "perfil": "Guitar Player from Buenos Aires (Argentina)"
+  }
+ },
+ "big martes": {
+  "nombre": "Big Martes",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "rosa leon": {
+  "nombre": "Rosa León",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: redirige a otra página; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": true,
+   "id": 854114,
+   "nombre": "Rosa León",
+   "url": "https://www.discogs.com/artist/854114-Rosa-León",
+   "generos": [
+    "Pop",
+    "Folk, World, & Country",
+    "Children's"
+   ],
+   "estilos": [
+    "Ballad",
+    "Vocal"
+   ],
+   "discos_analizados": 19,
+   "pais": null,
+   "imagen": "https://i.discogs.com/sZERcHaBNr027eJ3vrHI77fb-sK9auwa4rkuKZNMeEA/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTg1NDEx/NC0xNjIzMDg2NDQz/LTcyNTYuanBlZw.jpeg",
+   "perfil": "Spanish songwriter and singer (b. Madrid, 1951). She started his career in the first 70's as \"Rosa y Jorge\", with [a1916289] ([a656294]'s brother). Her first single was \"Las cuatro y diez (from [a672512]), in 1972. She has also composed and"
+  }
+ },
+ "perota chingo": {
+  "nombre": "Perotá Chingó",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: redirige a otra página; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": true,
+   "id": 5104048,
+   "nombre": "Perotá Chingó",
+   "url": "https://www.discogs.com/artist/5104048-Perotá-Chingó",
+   "generos": [],
+   "estilos": [],
+   "discos_analizados": 0,
+   "pais": "AR",
+   "imagen": "https://i.discogs.com/Z2dL5xoFMbd9cliJCeR8gDt3tDBX8mRBWxduTs7nFK0/rs:fit/g:sm/q:90/h:399/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTUxMDQw/NDgtMTUwMTIzNjc1/OS0xNDAyLmpwZWc.jpeg",
+   "perfil": "Members:"
+  }
+ },
+ "leiva": {
+  "nombre": "Leiva",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": true,
+   "url": "https://es.wikipedia.org/wiki/Leiva_(cantante)",
+   "generos": [
+    "Rock en español",
+    "Rock alternativo",
+    "Rock and roll",
+    "Pop rock",
+    "Indie rock"
+   ],
+   "origen": "30 de abril de 1980 (46, años), Madrid, (, España, )",
+   "pais": "ES",
+   "imagen": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/11/Premios_Goya_2026_-_Leyva_%28cropped%29.jpg/330px-Premios_Goya_2026_-_Leyva_%28cropped%29.jpg",
+   "imagen_pagina": "https://es.wikipedia.org/wiki/Archivo:Premios_Goya_2026_-_Leyva_(cropped).jpg",
+   "idioma": "es"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "3 artistas homónimos"
+  }
+ },
+ "enamor al arte": {
+  "nombre": "ENAMOR AL ARTE",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "en bruto": {
+  "nombre": "En Bruto",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "vikxie": {
+  "nombre": "VIKXIE",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": true,
+   "id": 3656933,
+   "nombre": "Vikxie",
+   "url": "https://www.discogs.com/artist/3656933-Vikxie",
+   "generos": [],
+   "estilos": [],
+   "discos_analizados": 0,
+   "pais": null,
+   "imagen": null,
+   "perfil": ""
+  }
+ },
+ "let them cook by thenomadzone": {
+  "nombre": "LET THEM COOK BY THENOMADZONE",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "de estraperlo de jesus maneru": {
+  "nombre": "DE ESTRAPERLO DE JESÚS MAÑERU",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "pitu": {
+  "nombre": "Pitú",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "12 artistas homónimos"
+  }
+ },
+ "blues and roots jam": {
+  "nombre": "BLUES & ROOTS JAM",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "lucia fernandez": {
+  "nombre": "LUCÍA FERNÁNDEZ",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "2 artistas homónimos"
+  }
+ },
+ "sara hebe": {
+  "nombre": "SARA HEBE",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": true,
+   "id": 4027031,
+   "nombre": "Sara Hebe",
+   "url": "https://www.discogs.com/artist/4027031-Sara-Hebe",
+   "generos": [],
+   "estilos": [],
+   "discos_analizados": 0,
+   "pais": "AR",
+   "imagen": "https://i.discogs.com/yDIYQMoeCJ8vkXr1dploH1JKpg8pQgTR5c28aTB7Z4M/rs:fit/g:sm/q:90/h:288/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTQwMjcw/MzEtMTU5ODI3OTg5/MS01ODM2LmpwZWc.jpeg",
+   "perfil": "Hip hop artist from Buenos Aires, Argentina, active since 2009"
+  }
+ },
+ "noel mckay": {
+  "nombre": "Noel McKay",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "2 artistas homónimos"
+  }
+ },
+ "hubris": {
+  "nombre": "hubris",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no es la página de un grupo o músico; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "19 artistas homónimos"
+  }
+ },
+ "gorg and benzol": {
+  "nombre": "GORG & BENZOL",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "80 rednecks": {
+  "nombre": "80 REDNECKS",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "dr rayo": {
+  "nombre": "Dr Rayo",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "maya ongaku": {
+  "nombre": "Maya Ongaku",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": true,
+   "id": 13048440,
+   "nombre": "Maya Ongaku",
+   "url": "https://www.discogs.com/artist/13048440-Maya-Ongaku",
+   "generos": [
+    "Electronic",
+    "Folk, World, & Country",
+    "Rock"
+   ],
+   "estilos": [
+    "Ambient",
+    "Folk",
+    "Downtempo",
+    "Krautrock"
+   ],
+   "discos_analizados": 3,
+   "pais": null,
+   "imagen": "https://i.discogs.com/STZJyDL303EMxOShiMMHv2S9K3JnHFE6wM1frXPo2bk/rs:fit/g:sm/q:90/h:405/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTEzMDQ4/NDQwLTE2ODgwNTMz/NzItNTYzNi5qcGVn.jpeg",
+   "perfil": "Maya Ongaku hail from the seaside communities surrounding Enoshima, a small island located 50 km southwest of Tokyo. It is here that Maya Ongaku finds its origins, the culmination of what Sonoda describes as 自然発生 (shizen hassei), meaning sp"
+  }
+ },
+ "on fire jam": {
+  "nombre": "On Fire Jam!",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "lera lynn": {
+  "nombre": "Lera Lynn",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": true,
+   "url": "https://es.wikipedia.org/wiki/Lera_Lynn",
+   "generos": [
+    "Indie",
+    "Indie rock",
+    "Americana",
+    "Country"
+   ],
+   "origen": "5 de diciembre de 1984, Houston, ,, Texas",
+   "pais": "US",
+   "imagen": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6d/Lera_Lynn_2015.jpg/250px-Lera_Lynn_2015.jpg",
+   "imagen_pagina": "https://es.wikipedia.org/wiki/Archivo:Lera_Lynn_2015.jpg",
+   "idioma": "es"
+  },
+  "discogs": {
+   "encontrado": true,
+   "id": 2719782,
+   "nombre": "Lera Lynn",
+   "url": "https://www.discogs.com/artist/2719782-Lera-Lynn",
+   "generos": [
+    "Folk, World, & Country",
+    "Rock"
+   ],
+   "estilos": [],
+   "discos_analizados": 9,
+   "pais": null,
+   "imagen": "https://i.discogs.com/uIdM0KdFTfHoy0IsRBEcnTy-r2MAJzTRcpoOxDDP3ow/rs:fit/g:sm/q:90/h:313/w:313/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTI3MTk3/ODItMTQ3NTU4MTg0/Mi0yMDg3LmpwZWc.jpeg",
+   "perfil": "Lera Lynn (born December 5, 1984, Houston, Texas, USA) is an American singer, songwriter, musician, and actress"
+  }
+ },
+ "dimitri papanikas cuenta violeta parra": {
+  "nombre": "DIMITRI PAPANIKAS CUENTA: VIOLETA PARRA",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "naked jams": {
+  "nombre": "NAKED JAMS",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "marzians": {
+  "nombre": "MARZIANS",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "flow madrid vii": {
+  "nombre": "FLOW MADRID VII",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "martin bruhn": {
+  "nombre": "Martin Bruhn",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": true,
+   "id": 1303788,
+   "nombre": "Martín Bruhn",
+   "url": "https://www.discogs.com/artist/1303788-Martín-Bruhn",
+   "generos": [
+    "Latin",
+    "Folk, World, & Country"
+   ],
+   "estilos": [],
+   "discos_analizados": 1,
+   "pais": null,
+   "imagen": "https://i.discogs.com/73A2fkuOqmYWAyMqm8a-IU0e7LYfvrdrS40VNlQ15DM/rs:fit/g:sm/q:90/h:398/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTEzMDM3/ODgtMTM2NTg4MDM5/OS04Njg5LmpwZWc.jpeg",
+   "perfil": "Argentinian born drummer and percussionist (jazz, folk), born in 1976 in Cordoba, moved to Madrid in 2001"
+  }
+ },
+ "felipe arce cuarteto": {
+  "nombre": "FELIPE ARCE CUARTETO",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "los amados": {
+  "nombre": "Los Amados",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "2 artistas homónimos"
+  }
+ },
+ "lady pepa": {
+  "nombre": "Lady Pepa",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no es la página de un grupo o músico; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": true,
+   "id": 16754218,
+   "nombre": "Lady Pepa",
+   "url": "https://www.discogs.com/artist/16754218-Lady-Pepa",
+   "generos": [],
+   "estilos": [],
+   "discos_analizados": 0,
+   "pais": null,
+   "imagen": null,
+   "perfil": ""
+  }
+ },
+ "placebo": {
+  "nombre": "Placebo",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": true,
+   "url": "https://es.wikipedia.org/wiki/Placebo_(banda)",
+   "generos": [
+    "Rock alternativo",
+    "Pop punk",
+    "Rock industrial",
+    "Glam rock",
+    "Britpop",
+    "Rock gótico"
+   ],
+   "origen": "Londres, Reino Unido, Reino Unido, Reino Unido",
+   "pais": "GB",
+   "imagen": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a9/PlaceboBologna2009.jpg/250px-PlaceboBologna2009.jpg",
+   "imagen_pagina": "https://es.wikipedia.org/wiki/Archivo:PlaceboBologna2009.jpg",
+   "idioma": "es"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "7 artistas homónimos"
+  }
+ },
+ "gillem roma": {
+  "nombre": "GILLEM ROMA",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "donde antes bailaban": {
+  "nombre": "Donde Antes Bailaban",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "baloncesto": {
+  "nombre": "Baloncesto",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no es la página de un grupo o músico; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": true,
+   "id": 14488106,
+   "nombre": "Baloncesto",
+   "url": "https://www.discogs.com/artist/14488106-Baloncesto",
+   "generos": [],
+   "estilos": [],
+   "discos_analizados": 0,
+   "pais": "ES",
+   "imagen": "https://i.discogs.com/25E9HZhgKC8hoIZlg-hCoRRMGTILB0E8mm3KEb6GZ3k/rs:fit/g:sm/q:90/h:395/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTE0NDg4/MTA2LTE3Mjk2OTg4/MTYtMTMwMi5qcGVn.jpeg",
+   "perfil": "Spanish indie noise pop from Madrid"
+  }
+ },
+ "blood red shoes": {
+  "nombre": "Blood Red Shoes",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": true,
+   "url": "https://es.wikipedia.org/wiki/Blood_Red_Shoes",
+   "generos": [
+    "Indie rock",
+    "Punk rock",
+    "Post-punk",
+    "Noise pop",
+    "Stoner rock",
+    "Shoegazing"
+   ],
+   "origen": "Brighton, ,, Inglaterra, ,, GBR, Reino Unido",
+   "pais": "GB",
+   "imagen": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b9/Blood_Red_Shoes.jpg/250px-Blood_Red_Shoes.jpg",
+   "imagen_pagina": "https://es.wikipedia.org/wiki/Archivo:Blood_Red_Shoes.jpg",
+   "idioma": "es"
+  },
+  "discogs": {
+   "encontrado": true,
+   "id": 534920,
+   "nombre": "Blood Red Shoes",
+   "url": "https://www.discogs.com/artist/534920-Blood-Red-Shoes",
+   "generos": [
+    "Rock"
+   ],
+   "estilos": [
+    "Indie Rock",
+    "Alternative Rock"
+   ],
+   "discos_analizados": 25,
+   "pais": null,
+   "imagen": "https://i.discogs.com/uXQlT5R4Yw3-G7glUukJQAnH1ZLyJSDCXF9YtRc_Sk0/rs:fit/g:sm/q:90/h:350/w:350/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTUzNDky/MC0xNjI0MDI3NzA2/LTIxNTYuanBlZw.jpeg",
+   "perfil": "British indie rock duo founded in 2004 in Brighton"
+  }
+ },
+ "jamming en madrid turkana": {
+  "nombre": "JAMMING en Madrid - Turkana",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "ocelot jam": {
+  "nombre": "Ocelot Jam",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "jackzebra": {
+  "nombre": "jackzebra",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": true,
+   "url": "https://en.wikipedia.org/wiki/Jackzebra",
+   "generos": [
+    "Cloud rap",
+    "plugg",
+    "trap"
+   ],
+   "origen": "Zhang Zhengkai, 2002 (age, 23, –, 24), Shanghai, , China",
+   "pais": null,
+   "imagen": null,
+   "imagen_pagina": null,
+   "idioma": "en"
+  },
+  "discogs": {
+   "encontrado": true,
+   "id": 11981813,
+   "nombre": "jackzebra",
+   "url": "https://www.discogs.com/artist/11981813-jackzebra",
+   "generos": [
+    "Hip Hop"
+   ],
+   "estilos": [
+    "Trap",
+    "Cloud Rap"
+   ],
+   "discos_analizados": 3,
+   "pais": null,
+   "imagen": "https://i.discogs.com/jLpnzpowhJeVG5QDPexeQo0yLfT5JnM88tUApzGArbQ/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTExOTgx/ODEzLTE2ODI4MTUx/NjUtMzIyNS5qcGVn.jpeg",
+   "perfil": "Jackzebra is a rapper born in Shandong, China"
+  }
+ },
+ "amanda gris": {
+  "nombre": "AMANDA GRIS",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "saturna": {
+  "nombre": "Saturna",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "3 artistas homónimos"
+  }
+ },
+ "sr chinarro": {
+  "nombre": "Sr. Chinarro",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": true,
+   "url": "https://es.wikipedia.org/wiki/Sr._Chinarro",
+   "generos": [
+    "Indie pop",
+    "pop rock"
+   ],
+   "origen": "Sevilla, (Andalucía),, España",
+   "pais": "ES",
+   "imagen": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/78/Sr_Chinarro.jpg/250px-Sr_Chinarro.jpg",
+   "imagen_pagina": "https://es.wikipedia.org/wiki/Archivo:Sr_Chinarro.jpg",
+   "idioma": "es"
+  },
+  "discogs": {
+   "encontrado": true,
+   "id": 323038,
+   "nombre": "Sr. Chinarro",
+   "url": "https://www.discogs.com/artist/323038-Sr-Chinarro",
+   "generos": [
+    "Rock",
+    "Pop"
+   ],
+   "estilos": [
+    "Indie Rock"
+   ],
+   "discos_analizados": 21,
+   "pais": null,
+   "imagen": "https://i.discogs.com/bxz-qFvdf8wRt3UY7a_jAhwnmFh0lgSS0UpweVeyCAw/rs:fit/g:sm/q:90/h:190/w:207/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTMyMzAz/OC0xMTYxMjU3MDk0/LmpwZWc.jpeg",
+   "perfil": ""
+  }
+ },
+ "gumbo jam": {
+  "nombre": "Gumbo Jam",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "hermanos munoz": {
+  "nombre": "HERMANOS MUÑÓZ",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "mad dogs jam": {
+  "nombre": "MAD DOGS JAM",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "giuli romagnoli": {
+  "nombre": "GIULI ROMAGNOLI",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "giselle jara": {
+  "nombre": "GISELLE JARA",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "la banda del cien": {
+  "nombre": "LA BANDA DEL CIEN",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "farid project dj": {
+  "nombre": "FARID PROJECT DJ",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "gavina": {
+  "nombre": "GAVINA",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": true,
+   "id": 7992110,
+   "nombre": "Gavina",
+   "url": "https://www.discogs.com/artist/7992110-Gavina",
+   "generos": [],
+   "estilos": [],
+   "discos_analizados": 0,
+   "pais": null,
+   "imagen": null,
+   "perfil": ""
+  }
+ },
+ "sonidos caros": {
+  "nombre": "SONIDOS CAROS",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "micro abierto": {
+  "nombre": "MICRO ABIERTO",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "jazzaben latin jazz": {
+  "nombre": "JAZZABEN LATIN JAZZ",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "nico mir": {
+  "nombre": "NICO MIR",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "lady days night": {
+  "nombre": "LADY DAY'S NIGHT",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "hnos munoz": {
+  "nombre": "hnos munoz",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "pat burgener": {
+  "nombre": "Pat Burgener",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": true,
+   "id": 7882114,
+   "nombre": "Pat Burgener",
+   "url": "https://www.discogs.com/artist/7882114-Pat-Burgener",
+   "generos": [],
+   "estilos": [],
+   "discos_analizados": 0,
+   "pais": null,
+   "imagen": "https://i.discogs.com/zYKZjwKb3f5eTtjtF22q1-GseNzh4c5nHJmNR12KYCg/rs:fit/g:sm/q:90/h:400/w:400/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTc4ODIx/MTQtMTc1Mjc4MzMy/Ny02NjIwLmpwZWc.jpeg",
+   "perfil": "Swiss snowboarder and musician"
+  }
+ },
+ "nori": {
+  "nombre": "Nori",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: página de desambiguación; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "18 artistas homónimos"
+  }
+ },
+ "gas drummers": {
+  "nombre": "Gas Drummers",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "guitarricadelafuente": {
+  "nombre": "Guitarricadelafuente",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": true,
+   "url": "https://es.wikipedia.org/wiki/Guitarricadelafuente",
+   "generos": [
+    "Música folk"
+   ],
+   "origen": "27 de agosto de 1997, (29 años), Benicasim, (, España, )",
+   "pais": "ES",
+   "imagen": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bd/Goyas_2023_-_Sin_nombre_027_%28cropped%29.jpg/250px-Goyas_2023_-_Sin_nombre_027_%28cropped%29.jpg",
+   "imagen_pagina": "https://es.wikipedia.org/wiki/Archivo:Goyas_2023_-_Sin_nombre_027_(cropped).jpg",
+   "idioma": "es"
+  },
+  "discogs": {
+   "encontrado": true,
+   "id": 7214852,
+   "nombre": "Guitarricadelafuente",
+   "url": "https://www.discogs.com/artist/7214852-Guitarricadelafuente",
+   "generos": [
+    "Pop",
+    "Folk, World, & Country"
+   ],
+   "estilos": [
+    "Flamenco",
+    "Indie Pop"
+   ],
+   "discos_analizados": 2,
+   "pais": null,
+   "imagen": "https://i.discogs.com/YvO9V3MebNC7rwzlW1utij0yIv9HQyL1MR5p_MwDmMw/rs:fit/g:sm/q:90/h:449/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTcyMTQ4/NTItMTU2NzI1NDUw/NS03MTkyLmpwZWc.jpeg",
+   "perfil": "Álvaro Lafuente Calvo aka Guitarricadelafuente is a Spanish artist born in Benicassim but living in Zaragoza (Aragón). Nowadays based in Valencia"
+  }
+ },
+ "valeria lynch": {
+  "nombre": "Valeria Lynch",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": true,
+   "url": "https://es.wikipedia.org/wiki/Valeria_Lynch",
+   "generos": [
+    "Pop",
+    "Balada",
+    "Rock",
+    "Tango"
+   ],
+   "origen": "7 de enero de 1952 (74, años), Buenos Aires, ,, Argentina",
+   "pais": "AR",
+   "imagen": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a6/Valeria_Lynch_Telet%C3%B3n_2023_01.jpg/250px-Valeria_Lynch_Telet%C3%B3n_2023_01.jpg",
+   "imagen_pagina": "https://es.wikipedia.org/wiki/Archivo:Valeria_Lynch_Teletón_2023_01.jpg",
+   "idioma": "es"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "2 artistas homónimos"
+  }
+ },
+ "hitten": {
+  "nombre": "Hitten",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "3 artistas homónimos"
+  }
+ },
+ "lucia gil": {
+  "nombre": "LUCÍA GIL",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": true,
+   "id": 5917558,
+   "nombre": "Lucia Gil",
+   "url": "https://www.discogs.com/artist/5917558-Lucia-Gil",
+   "generos": [],
+   "estilos": [],
+   "discos_analizados": 0,
+   "pais": null,
+   "imagen": "https://i.discogs.com/EEEsUTcGuF-F-9P1F82Ih9IH1i5aIUaq1qgWqlfLT2U/rs:fit/g:sm/q:90/h:500/w:500/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTU5MTc1/NTgtMTY0MTgzNTA1/NS03MTQ0LmpwZWc.jpeg",
+   "perfil": ""
+  }
+ },
+ "alvaro garcia": {
+  "nombre": "ALVARO GARCIA",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": true,
+   "id": 8306829,
+   "nombre": "Alvaro Garcia (2)",
+   "url": "https://www.discogs.com/artist/8306829-Alvaro-Garcia-2",
+   "generos": [],
+   "estilos": [],
+   "discos_analizados": 0,
+   "pais": null,
+   "imagen": null,
+   "perfil": ""
+  }
+ },
+ "artinsanos": {
+  "nombre": "ARTINSANOS",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "los largos": {
+  "nombre": "los largos",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": true,
+   "id": 7319000,
+   "nombre": "Los Largos",
+   "url": "https://www.discogs.com/artist/7319000-Los-Largos",
+   "generos": [],
+   "estilos": [],
+   "discos_analizados": 0,
+   "pais": "ES",
+   "imagen": "https://i.discogs.com/OTXfkxATC52K6qdcaqzO3RucOLKbXDZWDQUd6wwgeC0/rs:fit/g:sm/q:90/h:230/w:283/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTczMTkw/MDAtMTU5MTUxNjMz/Mi02MDc1LmpwZWc.jpeg",
+   "perfil": "Spanish psychedelic rock band from Alicante"
+  }
+ },
+ "clarence bekker band": {
+  "nombre": "Clarence Bekker Band",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": true,
+   "id": 7543156,
+   "nombre": "Clarence Bekker Band",
+   "url": "https://www.discogs.com/artist/7543156-Clarence-Bekker-Band",
+   "generos": [],
+   "estilos": [],
+   "discos_analizados": 0,
+   "pais": null,
+   "imagen": null,
+   "perfil": ""
+  }
+ },
+ "kinky bwoy": {
+  "nombre": "Kinky Bwoy",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": true,
+   "id": 5226154,
+   "nombre": "Kinky Bwoy",
+   "url": "https://www.discogs.com/artist/5226154-Kinky-Bwoy",
+   "generos": [],
+   "estilos": [],
+   "discos_analizados": 0,
+   "pais": null,
+   "imagen": null,
+   "perfil": ""
+  }
+ },
+ "puertafalsa": {
+  "nombre": "PUERTAFALSA",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "jf sebastian": {
+  "nombre": "JF SEBASTIAN",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "3 artistas homónimos"
+  }
+ },
+ "non servium": {
+  "nombre": "Non Servium",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": true,
+   "url": "https://es.wikipedia.org/wiki/Non_Servium",
+   "generos": [
+    "Hardcore punk",
+    "Street punk",
+    "Oi!",
+    "Rock proletario"
+   ],
+   "origen": "Móstoles, ,, Comunidad de Madrid, ,, España, España",
+   "pais": "ES",
+   "imagen": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ae/Non_Servium_a_Lleida.jpg/250px-Non_Servium_a_Lleida.jpg",
+   "imagen_pagina": "https://es.wikipedia.org/wiki/Archivo:Non_Servium_a_Lleida.jpg",
+   "idioma": "es"
+  },
+  "discogs": {
+   "encontrado": true,
+   "id": 2408271,
+   "nombre": "Non Servium",
+   "url": "https://www.discogs.com/artist/2408271-Non-Servium",
+   "generos": [
+    "Rock"
+   ],
+   "estilos": [
+    "Oi",
+    "Punk",
+    "Hardcore"
+   ],
+   "discos_analizados": 7,
+   "pais": "ES",
+   "imagen": "https://i.discogs.com/9FakvlUnCa53Rl77Y5yv4MVTOIgwP6Bm6VmpZtOietQ/rs:fit/g:sm/q:90/h:400/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTI0MDgy/NzEtMTM0MzczMjIz/My04MTQ4LmpwZWc.jpeg",
+   "perfil": "Street punk band from Móstoles, Madrid (Spain)"
+  }
+ },
+ "rest in filth": {
+  "nombre": "Rest in Filth",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "leroy se meurt": {
+  "nombre": "Leroy Se Meurt",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": true,
+   "id": 7024111,
+   "nombre": "Leroy Se Meurt",
+   "url": "https://www.discogs.com/artist/7024111-Leroy-Se-Meurt",
+   "generos": [
+    "Electronic",
+    "Rock"
+   ],
+   "estilos": [
+    "EBM",
+    "Electro",
+    "Post-Punk",
+    "Punk"
+   ],
+   "discos_analizados": 4,
+   "pais": null,
+   "imagen": "https://i.discogs.com/ECP-1csUpmzkmkiVchfUzir5xZlxq5QxsEZ-H1TimOw/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTcwMjQx/MTEtMTY2NjY0NzAx/Ny01NDc0LmpwZWc.jpeg",
+   "perfil": "Electronic duo from Paris"
+  }
+ },
+ "riveiro": {
+  "nombre": "Riveiro",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "aliens corporation": {
+  "nombre": "Aliens Corporation",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "shakira": {
+  "nombre": "Shakira",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": true,
+   "url": "https://en.wikipedia.org/wiki/Shakira",
+   "generos": [
+    "Latin",
+    "pop",
+    "dance",
+    "rock"
+   ],
+   "origen": "Bogotá, , Colombia",
+   "pais": "CO",
+   "imagen": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b8/2023-11-16_Gala_de_los_Latin_Grammy%2C_03_%28cropped%2902.jpg/250px-2023-11-16_Gala_de_los_Latin_Grammy%2C_03_%28cropped%2902.jpg",
+   "imagen_pagina": "https://en.wikipedia.org/wiki/File:2023-11-16_Gala_de_los_Latin_Grammy,_03_(cropped)02.jpg",
+   "idioma": "en"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "9 artistas homónimos"
+  }
+ },
+ "martin": {
+  "nombre": "Martín",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: página de desambiguación; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": true,
+   "id": 562228,
+   "nombre": "Martin (14)",
+   "url": "https://www.discogs.com/artist/562228-Martin-14",
+   "generos": [
+    "Electronic",
+    "Funk / Soul",
+    "Pop"
+   ],
+   "estilos": [
+    "Trip Hop",
+    "Big Beat"
+   ],
+   "discos_analizados": 8,
+   "pais": null,
+   "imagen": null,
+   "perfil": "Otherwise unidentified photographer used by Johnny Rivers and other US pop releases in 1970's and 1980's"
+  }
+ },
+ "evanescence": {
+  "nombre": "Evanescence",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": true,
+   "url": "https://es.wikipedia.org/wiki/Evanescence",
+   "generos": [
+    "Metal alternativo",
+    "Metal gótico",
+    "Nu metal",
+    "Rock alternativo",
+    "Post-grunge",
+    "Rock oscuro"
+   ],
+   "origen": "Little Rock, ,, Arkansas, ,, Estados Unidos",
+   "pais": "US",
+   "imagen": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2d/Evanescence_wordmark.svg/250px-Evanescence_wordmark.svg.png",
+   "imagen_pagina": "https://es.wikipedia.org/wiki/Archivo:Evanescence_wordmark.svg",
+   "idioma": "es"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "2 artistas homónimos"
+  }
+ },
+ "el cuarto vacio": {
+  "nombre": "El Cuarto Vacío",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "neon collective tributes": {
+  "nombre": "Neon Collective Tributes",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "the crazy nineties": {
+  "nombre": "The Crazy Nineties",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "levitants": {
+  "nombre": "Levitants",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "red zone": {
+  "nombre": "Red Zone",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no es la página de un grupo o músico; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "15 artistas homónimos"
+  }
+ },
+ "pancho cespedes": {
+  "nombre": "Pancho Céspedes",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: redirige a otra página; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "sofia comas": {
+  "nombre": "SOFÍA COMAS",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": true,
+   "id": 12641447,
+   "nombre": "Sofía Comas",
+   "url": "https://www.discogs.com/artist/12641447-Sofía-Comas",
+   "generos": [],
+   "estilos": [],
+   "discos_analizados": 0,
+   "pais": null,
+   "imagen": null,
+   "perfil": ""
+  }
+ },
+ "henkore": {
+  "nombre": "HENKORE",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "engendro": {
+  "nombre": "ENGENDRO",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "5 artistas homónimos"
+  }
+ },
+ "the hot tubes": {
+  "nombre": "THE HOT TUBES",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "antonio carreno": {
+  "nombre": "ANTONIO CARREÑO",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "the good deal": {
+  "nombre": "THE GOOD DEAL",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "reposados": {
+  "nombre": "REPOSADOS",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "thundercat conciertos": {
+  "nombre": "THUNDERCAT CONCIERTOS",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "tres hermanos": {
+  "nombre": "TRES HERMANOS",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "nyto dj": {
+  "nombre": "NYTO DJ",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "the bang": {
+  "nombre": "THE BANG",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "2 artistas homónimos"
+  }
+ },
+ "fun house conciertos": {
+  "nombre": "FUN HOUSE CONCIERTOS",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "la banda en obras and mc clan": {
+  "nombre": "LA BANDA EN OBRAS & MC CLAN",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "pintura espejo": {
+  "nombre": "PINTURA ESPEJO",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "brutal": {
+  "nombre": "BRUTAL",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "9 artistas homónimos"
+  }
+ },
+ "pablo rios 10 anos concierto en madrid": {
+  "nombre": "PABLO RÍOS 10 AÑOS CONCIERTO EN MADRID",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "ii international mod collective weekend": {
+  "nombre": "II INTERNATIONAL MOD COLLECTIVE WEEKEND",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "arcos and friends": {
+  "nombre": "ARCOS & FRIENDS",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "qatarsix": {
+  "nombre": "QATARSIX",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "trapiche": {
+  "nombre": "TRAPICHE",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": true,
+   "id": 6263460,
+   "nombre": "Trapiche",
+   "url": "https://www.discogs.com/artist/6263460-Trapiche",
+   "generos": [],
+   "estilos": [],
+   "discos_analizados": 0,
+   "pais": null,
+   "imagen": null,
+   "perfil": ""
+  }
+ },
+ "la chica la jose": {
+  "nombre": "LA CHICA LA JOSE",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "tazelaar and artved quartet": {
+  "nombre": "TAZELAAR & ARTVED QUARTET",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "jazztik": {
+  "nombre": "JAZZTIK",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "muchachos brass": {
+  "nombre": "MUCHACHOS BRASS",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "themba": {
+  "nombre": "Themba",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "6 artistas homónimos"
+  }
+ },
+ "samm": {
+  "nombre": "Samm",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "7 artistas homónimos"
+  }
+ },
+ "wet cactus": {
+  "nombre": "Wet Cactus",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": true,
+   "id": 4616310,
+   "nombre": "Wet Cactus",
+   "url": "https://www.discogs.com/artist/4616310-Wet-Cactus",
+   "generos": [
+    "Rock"
+   ],
+   "estilos": [
+    "Stoner Rock",
+    "Psychedelic Rock"
+   ],
+   "discos_analizados": 3,
+   "pais": "ES",
+   "imagen": "https://i.discogs.com/3x6QSHJO4rB3P3nYHofGRbvsdZpelkswc3SlP3StPmA/rs:fit/g:sm/q:90/h:400/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTQ2MTYz/MTAtMTYwNTIzNTM3/Ni01MzQ1LmpwZWc.jpeg",
+   "perfil": "Stoner rock and psychedelia band from Cantabria, Spain"
+  }
+ },
+ "concierto ricon del arte pop rock": {
+  "nombre": "CONCIERTO RICÓN DEL ARTE POP ROCK",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "fine and mellow blues night": {
+  "nombre": "Fine and Mellow Blues Night",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "senor no": {
+  "nombre": "Señor No",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no es la página de un grupo o músico; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": true,
+   "id": 1858301,
+   "nombre": "Señor No",
+   "url": "https://www.discogs.com/artist/1858301-Señor-No",
+   "generos": [
+    "Rock"
+   ],
+   "estilos": [
+    "Punk",
+    "Rock & Roll"
+   ],
+   "discos_analizados": 9,
+   "pais": null,
+   "imagen": "https://i.discogs.com/ki3IwwC8vvSqji96QIRK5EJeqcn5UuzixJz46gmTQpk/rs:fit/g:sm/q:90/h:641/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTE4NTgz/MDEtMTUyOTQ5MjY0/Ny02NTc5LmpwZWc.jpeg",
+   "perfil": "Spanish punk-rock band based in San Sebastian (Donostia) since 1993. Some band members came from [a1868814]"
+  }
+ },
+ "ivan herzog": {
+  "nombre": "Iván Herzog",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": true,
+   "id": 7226392,
+   "nombre": "Iván Herzog",
+   "url": "https://www.discogs.com/artist/7226392-Iván-Herzog",
+   "generos": [],
+   "estilos": [],
+   "discos_analizados": 0,
+   "pais": null,
+   "imagen": null,
+   "perfil": ""
+  }
+ },
+ "fyahbwoy": {
+  "nombre": "Fyahbwoy",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: redirige a otra página; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "stop stop": {
+  "nombre": "Stop Stop",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": true,
+   "id": 4845418,
+   "nombre": "Stop, Stop!",
+   "url": "https://www.discogs.com/artist/4845418-Stop-Stop!",
+   "generos": [
+    "Electronic"
+   ],
+   "estilos": [
+    "Country"
+   ],
+   "discos_analizados": 25,
+   "pais": "ES",
+   "imagen": "https://i.discogs.com/FEZPfFz4EYY5PJV2vop9znZQISX4nBgW5PeTZ9C_bvU/rs:fit/g:sm/q:90/h:300/w:328/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTQ4NDU0/MTgtMTQ1MzgyMzE4/OS04ODkzLmpwZWc.jpeg",
+   "perfil": "Hard Rock / Glam/ Metal band from Barcelona, Spain"
+  }
+ },
+ "m ctorhits": {
+  "nombre": "M├ČtorHits",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "los vinagres": {
+  "nombre": "LOS VINAGRES",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": true,
+   "id": 4629354,
+   "nombre": "Los Vinagres",
+   "url": "https://www.discogs.com/artist/4629354-Los-Vinagres",
+   "generos": [
+    "Folk, World, & Country",
+    "Rock",
+    "Pop"
+   ],
+   "estilos": [
+    "Garage Rock",
+    "Indie Pop"
+   ],
+   "discos_analizados": 2,
+   "pais": "ES",
+   "imagen": "https://i.discogs.com/l0xwKVD8FKCwBSjlOE_EFRUqvjDR71_j-kDX4caOUeA/rs:fit/g:sm/q:90/h:337/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTQ2Mjkz/NTQtMTUwMTM0NTgy/NS0yNjg1LmpwZWc.jpeg",
+   "perfil": "Spanish garage-blues rock band from La Palma (Canarias) based in Madrid"
+  }
+ },
+ "soul beats": {
+  "nombre": "SOUL BEATS",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "3 artistas homónimos"
+  }
+ },
+ "scalped": {
+  "nombre": "SCALPED",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "4 artistas homónimos"
+  }
+ },
+ "gorila flo": {
+  "nombre": "GORILA FLO",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": true,
+   "id": 17459215,
+   "nombre": "Gorila Flo",
+   "url": "https://www.discogs.com/artist/17459215-Gorila-Flo",
+   "generos": [],
+   "estilos": [],
+   "discos_analizados": 0,
+   "pais": null,
+   "imagen": null,
+   "perfil": ""
+  }
+ },
+ "fantasmage": {
+  "nombre": "FANTASMAGE",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": true,
+   "id": 2936500,
+   "nombre": "Fantasmage",
+   "url": "https://www.discogs.com/artist/2936500-Fantasmage",
+   "generos": [
+    "Rock"
+   ],
+   "estilos": [
+    "Garage Rock",
+    "Post-Punk",
+    "Indie Rock"
+   ],
+   "discos_analizados": 2,
+   "pais": "ES",
+   "imagen": "https://i.discogs.com/mC-273yM4zJC1bz9SJ_AvOKX5Mu__nkl5dOSlt627oU/rs:fit/g:sm/q:90/h:287/w:390/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTI5MzY1/MDAtMTM0ODQ4Mjcx/Ny02MzU0LmpwZWc.jpeg",
+   "perfil": "Spanish garage punk duo from Vigo"
+  }
+ },
+ "the song and me": {
+  "nombre": "THE SONG & ME",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "flashblack": {
+  "nombre": "FLASHBLACK",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "adornos sentimentales": {
+  "nombre": "ADORNOS SENTIMENTALES",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "the midnite brawlers": {
+  "nombre": "The MIDNITE BRAWLERS",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "melo": {
+  "nombre": "Melo",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no es la página de un grupo o músico; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "7 artistas homónimos"
+  }
+ },
+ "evaristo": {
+  "nombre": "Evaristo",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no es la página de un grupo o músico; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): redirige a otra página"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "3 artistas homónimos"
+  }
+ },
+ "raffa": {
+  "nombre": "RAFFA",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "8 artistas homónimos"
+  }
+ },
+ "ginel": {
+  "nombre": "GINEL",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "el diablo de shanghai": {
+  "nombre": "El Diablo de Shanghai",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": true,
+   "id": 14637807,
+   "nombre": "el diablo de shanghai",
+   "url": "https://www.discogs.com/artist/14637807-el-diablo-de-shanghai",
+   "generos": [
+    "Rock"
+   ],
+   "estilos": [
+    "Alternative Rock"
+   ],
+   "discos_analizados": 1,
+   "pais": null,
+   "imagen": "https://i.discogs.com/DzF-N2cO22PheePtWhGe29xlHYH1sDVBZYE-uOi4vvI/rs:fit/g:sm/q:90/h:460/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTE0NjM3/ODA3LTE3ODkxMzY1/MTUtNzUwNy5qcGVn.jpeg",
+   "perfil": "Spanish El Diablo de Shanghai is a group from Poblenou of Barcelona founded in lare 2019. Acronym is EDDSH"
+  }
+ },
+ "apartamentos acapulco": {
+  "nombre": "Apartamentos Acapulco",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": true,
+   "id": 5103239,
+   "nombre": "Apartamentos Acapulco",
+   "url": "https://www.discogs.com/artist/5103239-Apartamentos-Acapulco",
+   "generos": [
+    "Rock",
+    "Pop"
+   ],
+   "estilos": [
+    "Shoegaze",
+    "Indie Rock",
+    "Indie Pop"
+   ],
+   "discos_analizados": 8,
+   "pais": "ES",
+   "imagen": "https://i.discogs.com/XbFrnDGJpbreooJbpnD7YapuPofawSRovCyZAf6UcNs/rs:fit/g:sm/q:90/h:450/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTUxMDMy/MzktMTQ5NDQ4OTA3/Mi00NjQ5LmpwZWc.jpeg",
+   "perfil": "Apartamentos Acapulco is a indie rock band from Granada, Spain. Their members are Angelina & Ismael"
+  }
+ },
+ "la kermesse redonda": {
+  "nombre": "LA KERMESSE REDONDA",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "asere": {
+  "nombre": "Asere",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": true,
+   "id": 1189157,
+   "nombre": "Asere",
+   "url": "https://www.discogs.com/artist/1189157-Asere",
+   "generos": [
+    "Latin",
+    "Folk, World, & Country"
+   ],
+   "estilos": [
+    "Afro-Cuban",
+    "Son"
+   ],
+   "discos_analizados": 1,
+   "pais": null,
+   "imagen": "https://i.discogs.com/c2qC0Ii4St06VxzIMHvyLZfIYZTIkOt1_DemCepqTPw/rs:fit/g:sm/q:90/h:472/w:514/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTExODkx/NTctMTYwODExMzky/Ny00Mzg0LmpwZWc.jpeg",
+   "perfil": "Cuban son group"
+  }
+ },
+ "the hateful three": {
+  "nombre": "The Hateful Three",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "los blody": {
+  "nombre": "Los Blody",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "adios caballos": {
+  "nombre": "ADIOS CABALLOS",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": true,
+   "id": 9207538,
+   "nombre": "Adios Caballos",
+   "url": "https://www.discogs.com/artist/9207538-Adios-Caballos",
+   "generos": [],
+   "estilos": [],
+   "discos_analizados": 0,
+   "pais": "ES",
+   "imagen": "https://i.discogs.com/TyMZqfSIONM197in9qiZHtwBTXbnVPJWGgJeYCyH0TU/rs:fit/g:sm/q:90/h:393/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTkyMDc1/MzgtMTYyMDYyNDc1/Mi01Mzg3LmdpZg.jpeg",
+   "perfil": "Post-hardcore / Screamo band from Almería, Spain"
+  }
+ },
+ "esmee": {
+  "nombre": "ESMEE",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": true,
+   "id": 5395868,
+   "nombre": "Esmee",
+   "url": "https://www.discogs.com/artist/5395868-Esmee",
+   "generos": [
+    "Pop"
+   ],
+   "estilos": [
+    "Chanson"
+   ],
+   "discos_analizados": 1,
+   "pais": null,
+   "imagen": null,
+   "perfil": ""
+  }
+ },
+ "miguel company": {
+  "nombre": "MIGUEL COMPANY",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "the woops": {
+  "nombre": "THE WOOPS",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": true,
+   "id": 9620404,
+   "nombre": "The Woops",
+   "url": "https://www.discogs.com/artist/9620404-The-Woops",
+   "generos": [],
+   "estilos": [],
+   "discos_analizados": 0,
+   "pais": null,
+   "imagen": null,
+   "perfil": ""
+  }
+ },
+ "el pequeno de los dalton": {
+  "nombre": "EL PEQUEÑO DE LOS DALTON",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "aviador dro": {
+  "nombre": "AVIADOR DRO",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": true,
+   "id": 111497,
+   "nombre": "Aviador Dro",
+   "url": "https://www.discogs.com/artist/111497-Aviador-Dro",
+   "generos": [
+    "Electronic",
+    "Pop"
+   ],
+   "estilos": [
+    "Synth-pop",
+    "Minimal"
+   ],
+   "discos_analizados": 12,
+   "pais": null,
+   "imagen": "https://i.discogs.com/y-b8erEp9WtjOZxbLTz1uA0t7SnlFJDnXday8YtQESQ/rs:fit/g:sm/q:90/h:311/w:380/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTExMTQ5/Ny0xMjU2MzcxNjAy/LmdpZg.jpeg",
+   "perfil": "In the late 70's, a group of friends leaded by Servando Carballar were writing fanzines in the post-dictatorial Franco regime in Madrid, Spain. They were enthusiasts of science, technology, futurism, films, board games and of the music from"
+  }
+ },
+ "furi dj": {
+  "nombre": "FURI DJ",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "ricos y famosos": {
+  "nombre": "RICOS Y FAMOSOS",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "undercover": {
+  "nombre": "UNDERCOVER",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "12 artistas homónimos"
+  }
+ },
+ "memorable wallaceb and rockin vibes": {
+  "nombre": "MEMORABLE WALLACEB & ROCKIN 'VIBES",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "sonia nawri": {
+  "nombre": "SONIA NAWRI",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "leone": {
+  "nombre": "LEONE",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "3 artistas homónimos"
+  }
+ },
+ "el pequeno conejo blanco": {
+  "nombre": "EL PEQUEÑO CONEJO BLANCO",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "sweet adu": {
+  "nombre": "SWEET ADÚ",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "profecia": {
+  "nombre": "PROFECÍA",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "12 artistas homónimos"
+  }
+ },
+ "fast expo ajo fernandez": {
+  "nombre": "FAST EXPO AJO FERNÁNDEZ",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "alex perea": {
+  "nombre": "ALEX PEREA",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": true,
+   "id": 14071147,
+   "nombre": "Álex Perea",
+   "url": "https://www.discogs.com/artist/14071147-Álex-Perea",
+   "generos": [],
+   "estilos": [],
+   "discos_analizados": 0,
+   "pais": null,
+   "imagen": null,
+   "perfil": ""
+  }
+ },
+ "tangenine fl avour": {
+  "nombre": "TANGENINE FL¡AVOUR",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "kike martin paraiso": {
+  "nombre": "KIKE MARTIN PARAISO",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "juan zelada": {
+  "nombre": "JUAN ZELADA",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "2 artistas homónimos"
+  }
+ },
+ "sofia": {
+  "nombre": "SOFÍA",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "3 artistas homónimos"
+  }
+ },
+ "the clams mujeres del soul": {
+  "nombre": "THE CLAMS: MUJERES DEL SOUL",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "inoidel gonzalez quartet": {
+  "nombre": "INOIDEL GONZÁLEZ QUARTET",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "manu miguez": {
+  "nombre": "MANU MÍGUEZ",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "parkineos": {
+  "nombre": "Parkineos",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": true,
+   "id": 11225213,
+   "nombre": "Parkineos",
+   "url": "https://www.discogs.com/artist/11225213-Parkineos",
+   "generos": [],
+   "estilos": [],
+   "discos_analizados": 0,
+   "pais": null,
+   "imagen": "https://i.discogs.com/J0-7ADjxxMj0INlprBUGYFbp4zPnqrpD8-rvXdzUeSg/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTExMjI1/MjEzLTE2Njg5NDc1/MjMtMTY2Ni5qcGVn.jpeg",
+   "perfil": ""
+  }
+ },
+ "wah": {
+  "nombre": "Wah!",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "3 artistas homónimos"
+  }
+ },
+ "silvio rodriguez": {
+  "nombre": "Silvio Rodríguez",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no es la página de un grupo o músico; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "6 artistas homónimos"
+  }
+ },
+ "jamie duffy": {
+  "nombre": "Jamie Duffy",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "3 artistas homónimos"
+  }
+ },
+ "toxic raviolis": {
+  "nombre": "TOXIC RAVIOLIS",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "mfc chicken": {
+  "nombre": "MFC CHICKEN",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": true,
+   "id": 2896985,
+   "nombre": "MFC Chicken",
+   "url": "https://www.discogs.com/artist/2896985-MFC-Chicken",
+   "generos": [
+    "Rock"
+   ],
+   "estilos": [
+    "Garage Rock",
+    "Rock & Roll",
+    "Surf"
+   ],
+   "discos_analizados": 6,
+   "pais": "GB",
+   "imagen": "https://i.discogs.com/MFaj_tXcpsaU1jIqGvD__VYH3fnfuvbOA_lzn7qFVTI/rs:fit/g:sm/q:90/h:334/w:500/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTI4OTY5/ODUtMTU0Nzk4MTIz/NC0xMTMxLmpwZWc.jpeg",
+   "perfil": "rock 'n' roll vegas grind band from London, UK"
+  }
+ },
+ "yawning man": {
+  "nombre": "YAWNING MAN",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": true,
+   "id": 1169798,
+   "nombre": "Yawning Man",
+   "url": "https://www.discogs.com/artist/1169798-Yawning-Man",
+   "generos": [
+    "Rock"
+   ],
+   "estilos": [
+    "Stoner Rock",
+    "Psychedelic Rock",
+    "Space Rock"
+   ],
+   "discos_analizados": 11,
+   "pais": null,
+   "imagen": "https://i.discogs.com/yQw0p3WuuSMA8i32gpkxwDNi429gyNKpObO06aJA0o0/rs:fit/g:sm/q:90/h:478/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTExNjk3/OTgtMTcwMTM4MzU0/NS01NjA3LnBuZw.jpeg",
+   "perfil": "Experimental rock band from the Palm Desert, CA, USA, formed in 1986"
+  }
+ },
+ "las musas de amparo": {
+  "nombre": "Las Musas de Amparo",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "la otra jam": {
+  "nombre": "La Otra Jam",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "kids rock family": {
+  "nombre": "Kids Rock Family",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "no way out": {
+  "nombre": "NO WAY OUT",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "38 artistas homónimos"
+  }
+ },
+ "hispanidad 2026 fede comin": {
+  "nombre": "HISPANIDAD 2026: FEDE COMÍN",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "mammy blue and cabareteras rockeras": {
+  "nombre": "MAMMY BLUE & CABARETERAS ROCKERAS",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "tango milonga orquesta tipica la argenta": {
+  "nombre": "TANGO - MILONGA · ORQUESTA TÍPICA LA ARGENTA",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "kike m fin de gira cantares de arcilla en madrid": {
+  "nombre": "KIKE M. FIN DE GIRA 'CANTARES DE ARCILLA' EN MADRID",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "band name": {
+  "nombre": "BAND NAME",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "edras boyajian": {
+  "nombre": "EDRAS BOYAJIAN",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "pa piratas nosotros cadiz en madrid": {
+  "nombre": "PA’ PIRATAS NOSOTROS (Cádiz en Madrid)",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "el chato": {
+  "nombre": "EL CHATÓ",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": true,
+   "id": 14663,
+   "nombre": "El Chato",
+   "url": "https://www.discogs.com/artist/14663-El-Chato",
+   "generos": [
+    "Pop",
+    "Latin",
+    "Folk, World, & Country"
+   ],
+   "estilos": [
+    "Chanson",
+    "Flamenco"
+   ],
+   "discos_analizados": 18,
+   "pais": null,
+   "imagen": "https://i.discogs.com/4W4FMMLc2xPXOKhebnAkY1pi_l7etJ3QH98dbj2IijU/rs:fit/g:sm/q:90/h:422/w:383/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTE0NjYz/LTExNDY0MTExOTcu/anBlZw.jpeg",
+   "perfil": "French artist of Spanish origin, born in Marseille on 5 April 1961"
+  }
+ },
+ "joshua edelman tribute to chet": {
+  "nombre": "JOSHUA EDELMAN TRIBUTE TO CHET",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "naturally": {
+  "nombre": "NATURALLY",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "3 artistas homónimos"
+  }
+ },
+ "oney1": {
+  "nombre": "ONEY1",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "la pachanga": {
+  "nombre": "LA PACHANGA",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "2 artistas homónimos"
+  }
+ },
+ "blue garden": {
+  "nombre": "BLUE GARDEN",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "3 artistas homónimos"
+  }
+ },
+ "pape diouf et la generation consciente": {
+  "nombre": "PAPE DIOUF ET LA GÉNÉRATION CONSCIENTE",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "dinamarca": {
+  "nombre": "Dinamarca",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no es la página de un grupo o músico; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": true,
+   "id": 4738917,
+   "nombre": "Dinamarca",
+   "url": "https://www.discogs.com/artist/4738917-Dinamarca",
+   "generos": [],
+   "estilos": [],
+   "discos_analizados": 0,
+   "pais": null,
+   "imagen": "https://i.discogs.com/Wr7SnsrjkDMf9iGsteTOMUKTLhXg7uiaMeLGApT9laQ/rs:fit/g:sm/q:90/h:415/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTQ3Mzg5/MTctMTQ4MTY3OTEz/MC0xNzkyLmpwZWc.jpeg",
+   "perfil": "Stockholm, Sweden"
+  }
+ },
+ "the cloverhearts": {
+  "nombre": "The Cloverhearts",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": true,
+   "id": 7708469,
+   "nombre": "The Cloverhearts",
+   "url": "https://www.discogs.com/artist/7708469-The-Cloverhearts",
+   "generos": [
+    "Folk, World, & Country",
+    "Rock"
+   ],
+   "estilos": [
+    "Punk",
+    "Celtic"
+   ],
+   "discos_analizados": 1,
+   "pais": "AU",
+   "imagen": "https://i.discogs.com/AP3N5X-4WTC495G2qVT8LtW_ynOWvYZYMUQIeYl5Mkk/rs:fit/g:sm/q:90/h:400/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTc3MDg0/NjktMTc3MDgzOTMz/Mi05MTEyLmpwZWc.jpeg",
+   "perfil": "Celtic Punk group from Sydney, Australia"
+  }
+ },
+ "cantajuego": {
+  "nombre": "CantaJuego",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": true,
+   "id": 7478183,
+   "nombre": "Cantajuego",
+   "url": "https://www.discogs.com/artist/7478183-Cantajuego",
+   "generos": [
+    "Children's"
+   ],
+   "estilos": [
+    "Educational",
+    "Nursery Rhymes",
+    "Story"
+   ],
+   "discos_analizados": 8,
+   "pais": null,
+   "imagen": "https://i.discogs.com/v7DiZfCVyJq-Ir14kZSmZKpUWIHXurtx0IA1y8VIc84/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTc0Nzgx/ODMtMTcxODE0Mzk0/NC04NTM2LnBuZw.jpeg",
+   "perfil": "Cantajuego es un grupo de música español, formado en 2004, dirigido a un público infantil de entre 0 y 6 años. Calificado cono auténtico fenómeno infantil en España"
+  }
+ },
+ "bewitched": {
+  "nombre": "Bewitched",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no es la página de un grupo o músico; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "8 artistas homónimos"
+  }
+ },
+ "pez mago": {
+  "nombre": "Pez Mago",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": true,
+   "id": 13344975,
+   "nombre": "Pez Mago",
+   "url": "https://www.discogs.com/artist/13344975-Pez-Mago",
+   "generos": [],
+   "estilos": [],
+   "discos_analizados": 0,
+   "pais": null,
+   "imagen": null,
+   "perfil": ""
+  }
+ },
+ "teenage fanclub": {
+  "nombre": "TEENAGE FANCLUB",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": true,
+   "id": 107075,
+   "nombre": "Teenage Fanclub",
+   "url": "https://www.discogs.com/artist/107075-Teenage-Fanclub",
+   "generos": [
+    "Rock"
+   ],
+   "estilos": [
+    "Indie Rock",
+    "Alternative Rock",
+    "Power Pop"
+   ],
+   "discos_analizados": 25,
+   "pais": null,
+   "imagen": "https://i.discogs.com/ORitHmCv1r5F3VFPo3WGnLx47xDc8klyZgT_avekEoc/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTEwNzA3/NS0xNjYzODkwMTIw/LTg5MTAuanBlZw.jpeg",
+   "perfil": "Scottish indie rock band formed in 1989"
+  }
+ },
+ "josh meader trio": {
+  "nombre": "JOSH MEADER TRIO",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "blues and roots": {
+  "nombre": "Blues & Roots",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": true,
+   "id": 1753137,
+   "nombre": "Blues & Roots",
+   "url": "https://www.discogs.com/artist/1753137-Blues-Roots",
+   "generos": [],
+   "estilos": [],
+   "discos_analizados": 0,
+   "pais": null,
+   "imagen": "https://i.discogs.com/WmLCaG8lP6usRk6Toq6t4ewJPmL1sWjwM8OcNlX22us/rs:fit/g:sm/q:90/h:500/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTE3NTMx/MzctMTI2ODY3MjUz/MC5qcGVn.jpeg",
+   "perfil": ""
+  }
+ },
+ "chico herrera": {
+  "nombre": "Chico Herrera",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "2 artistas homónimos"
+  }
+ },
+ "lady and the tramps": {
+  "nombre": "LADY & THE TRAMPS",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "2 artistas homónimos"
+  }
+ },
+ "big big train": {
+  "nombre": "Big Big Train",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": true,
+   "url": "https://es.wikipedia.org/wiki/Big_Big_Train",
+   "generos": [
+    "Rock progresivo",
+    "Rock sinfónico",
+    "Crossover Prog"
+   ],
+   "origen": "Bournemouth, Reino Unido, Reino Unido",
+   "pais": "GB",
+   "imagen": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5f/Big_Big_Train_live_at_The_Stables%2C_Milton_Keynes%2C_UK_24th_September_2024_%2854020837639%29.jpg/3840px-Big_Big_Train_live_at_The_Stables%2C_Milton_Keynes%2C_UK_24th_September_2024_%2854020837639%29.jpg",
+   "imagen_pagina": "https://es.wikipedia.org/wiki/Archivo:Big_Big_Train_live_at_The_Stables,_Milton_Keynes,_UK_24th_September_2024_(54020837639).jpg",
+   "idioma": "es"
+  },
+  "discogs": {
+   "encontrado": true,
+   "id": 1208309,
+   "nombre": "Big Big Train",
+   "url": "https://www.discogs.com/artist/1208309-Big-Big-Train",
+   "generos": [
+    "Rock"
+   ],
+   "estilos": [
+    "Prog Rock",
+    "Symphonic Rock"
+   ],
+   "discos_analizados": 25,
+   "pais": null,
+   "imagen": "https://i.discogs.com/IUTwxZ2NzqBUhgPvSuw7fByDOGXc-_8KsmMgpCVg-wk/rs:fit/g:sm/q:90/h:399/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTEyMDgz/MDktMTY1MTM4MTU5/MC04NzM2LmpwZWc.jpeg",
+   "perfil": "Big Big Train is an independent progressive rock band founded in 1990. Based in Bournemouth, England, the band is driven by songwriter and last remaining founding member [a=Greg Spawton]"
+  }
+ },
+ "gondwana and quique neira": {
+  "nombre": "Gondwana & Quique Neira",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "agnes nunes": {
+  "nombre": "Agnes Nunes",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": true,
+   "id": 9886609,
+   "nombre": "Agnes Nunes",
+   "url": "https://www.discogs.com/artist/9886609-Agnes-Nunes",
+   "generos": [],
+   "estilos": [],
+   "discos_analizados": 0,
+   "pais": null,
+   "imagen": "https://i.discogs.com/MEQ9mbcufmCt4drumkSoN4GOpsTRNc5WfxZncxZSewA/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTk4ODY2/MDktMTY0ODE5ODI1/OC03MTQxLmpwZWc.jpeg",
+   "perfil": "Brazilian singer and songwriter (born 5 April. 2002)"
+  }
+ },
+ "bryan estepa": {
+  "nombre": "Bryan Estepa",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": true,
+   "id": 930721,
+   "nombre": "Bryan Estepa",
+   "url": "https://www.discogs.com/artist/930721-Bryan-Estepa",
+   "generos": [
+    "Pop",
+    "Rock",
+    "Folk, World, & Country"
+   ],
+   "estilos": [
+    "Indie Pop",
+    "Indie Rock",
+    "AOR"
+   ],
+   "discos_analizados": 6,
+   "pais": null,
+   "imagen": "https://i.discogs.com/qxdHpaw4P_wAXz5o8FFZEp-ZMloFcxY6CnSPHOwWPls/rs:fit/g:sm/q:90/h:428/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTkzMDcy/MS0xNTYxODk1NDM5/LTcwMjkuanBlZw.jpeg",
+   "perfil": "Australian singer-songwriter, born in Cubao, Quezon City, Philippines, moved to Sydney, Australia in 1987"
+  }
+ },
+ "flippeur": {
+  "nombre": "Flippeur",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": true,
+   "id": 16989352,
+   "nombre": "Flippeur",
+   "url": "https://www.discogs.com/artist/16989352-Flippeur",
+   "generos": [
+    "Rock"
+   ],
+   "estilos": [
+    "Punk",
+    "Garage Rock"
+   ],
+   "discos_analizados": 1,
+   "pais": null,
+   "imagen": null,
+   "perfil": ""
+  }
+ },
+ "rosalie cunningham": {
+  "nombre": "Rosalie Cunningham",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": true,
+   "url": "https://en.wikipedia.org/wiki/Rosalie_Cunningham",
+   "generos": [],
+   "origen": "Rosalie Jo Cunningham, (, 1990-04-25, ), 25 April 1990, (age, 36), Southend-on-Sea, , England",
+   "pais": "GB",
+   "imagen": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/ff/Rosalie_Cunnigham_Konzert_2026_a.jpg/250px-Rosalie_Cunnigham_Konzert_2026_a.jpg",
+   "imagen_pagina": "https://en.wikipedia.org/wiki/File:Rosalie_Cunnigham_Konzert_2026_a.jpg",
+   "idioma": "en"
+  },
+  "discogs": {
+   "encontrado": true,
+   "id": 972340,
+   "nombre": "Rosalie Cunningham",
+   "url": "https://www.discogs.com/artist/972340-Rosalie-Cunningham",
+   "generos": [
+    "Rock",
+    "Pop"
+   ],
+   "estilos": [
+    "Psychedelic Rock"
+   ],
+   "discos_analizados": 4,
+   "pais": null,
+   "imagen": "https://i.discogs.com/V4KHFRrXE23AmJ_N8C1AosbYgv7uibT2XYk7f_0kjGU/rs:fit/g:sm/q:90/h:901/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTk3MjM0/MC0xNDIyOTk4NTk3/LTUzNTkuanBlZw.jpeg",
+   "perfil": ""
+  }
+ },
+ "acid jam": {
+  "nombre": "Acid Jam",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "duran duran": {
+  "nombre": "Duran Duran",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": true,
+   "url": "https://es.wikipedia.org/wiki/Duran_Duran",
+   "generos": [
+    "New romantic",
+    "Synthpop",
+    "New wave",
+    "Dance-rock",
+    "Pop rock"
+   ],
+   "origen": "Birmingham, ,, Inglaterra, Reino Unido",
+   "pais": "GB",
+   "imagen": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f1/Duran_Duran_2011.jpg/330px-Duran_Duran_2011.jpg",
+   "imagen_pagina": "https://es.wikipedia.org/wiki/Archivo:Duran_Duran_2011.jpg",
+   "idioma": "es"
+  },
+  "discogs": {
+   "encontrado": true,
+   "id": 10262,
+   "nombre": "Duran Duran",
+   "url": "https://www.discogs.com/artist/10262-Duran-Duran",
+   "generos": [
+    "Rock",
+    "Pop",
+    "Electronic"
+   ],
+   "estilos": [
+    "Synth-pop",
+    "Pop Rock",
+    "New Wave"
+   ],
+   "discos_analizados": 21,
+   "pais": null,
+   "imagen": "https://i.discogs.com/HkXJFqmCGrV3p3nJwPNeffmk8USqrnFxrg0NlEZplQ4/rs:fit/g:sm/q:90/h:337/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTEwMjYy/LTE3MzAwNTM5NzUt/NzYxOS5qcGVn.jpeg",
+   "perfil": "UK pop, new wave, and synth pop group founded in Birmingham, England in 1978. They have sold over 100 million records"
+  }
+ },
+ "gon abril": {
+  "nombre": "Gon Abril",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "c mari": {
+  "nombre": "C Marí",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "mercury rev": {
+  "nombre": "Mercury Rev",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": true,
+   "url": "https://es.wikipedia.org/wiki/Mercury_Rev",
+   "generos": [
+    "Dream pop",
+    "Neo-psicodelia",
+    "Rock alternativo",
+    "Rock psicodélico"
+   ],
+   "origen": "Búfalo, ,, Nueva York, ,, USA, Estados Unidos",
+   "pais": "US",
+   "imagen": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e0/Mercury_rev.jpg/250px-Mercury_rev.jpg",
+   "imagen_pagina": "https://es.wikipedia.org/wiki/Archivo:Mercury_rev.jpg",
+   "idioma": "es"
+  },
+  "discogs": {
+   "encontrado": true,
+   "id": 9658,
+   "nombre": "Mercury Rev",
+   "url": "https://www.discogs.com/artist/9658-Mercury-Rev",
+   "generos": [
+    "Rock"
+   ],
+   "estilos": [
+    "Alternative Rock",
+    "Indie Rock",
+    "Psychedelic Rock"
+   ],
+   "discos_analizados": 25,
+   "pais": null,
+   "imagen": "https://i.discogs.com/TYJKluxnIMkvfzFuPRZQ0vIC7B87cbcYXEu8yWk1wuI/rs:fit/g:sm/q:90/h:466/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTk2NTgt/MTcxMzA5ODQyOS0y/MDI3LmpwZWc.jpeg",
+   "perfil": "Alternative rock band from Buffalo, New York, formed in 1989"
+  }
+ },
+ "okmoniks": {
+  "nombre": "OKMONIKS",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "algora": {
+  "nombre": "Algora",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": true,
+   "url": "https://es.wikipedia.org/wiki/Algora_(m%C3%BAsico)",
+   "generos": [],
+   "origen": "1984, Madrid, (, España, )",
+   "pais": "ES",
+   "imagen": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8a/Victor_Algora_%28cropped%29.jpg/250px-Victor_Algora_%28cropped%29.jpg",
+   "imagen_pagina": "https://es.wikipedia.org/wiki/Archivo:Victor_Algora_(cropped).jpg",
+   "idioma": "es"
+  },
+  "discogs": {
+   "encontrado": true,
+   "id": 1202180,
+   "nombre": "Algora",
+   "url": "https://www.discogs.com/artist/1202180-Algora",
+   "generos": [
+    "Pop",
+    "Electronic"
+   ],
+   "estilos": [
+    "Indie Pop",
+    "Synth-pop",
+    "Electro House",
+    "Italo-Disco",
+    "Electro"
+   ],
+   "discos_analizados": 5,
+   "pais": null,
+   "imagen": "https://i.discogs.com/OEo8bA5O81q_KA4rcVpZNFp2rTP7Kq6Dm-4TYTzharM/rs:fit/g:sm/q:90/h:800/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTEyMDIx/ODAtMTI5NDIzMzYw/MS5qcGVn.jpeg",
+   "perfil": ""
+  }
+ },
+ "kike m": {
+  "nombre": "Kike M",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": true,
+   "id": 8015756,
+   "nombre": "Kike M.",
+   "url": "https://www.discogs.com/artist/8015756-Kike-M",
+   "generos": [],
+   "estilos": [],
+   "discos_analizados": 0,
+   "pais": null,
+   "imagen": null,
+   "perfil": ""
+  }
+ },
+ "track dogs": {
+  "nombre": "Track Dogs",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": true,
+   "id": 3161118,
+   "nombre": "Track Dogs",
+   "url": "https://www.discogs.com/artist/3161118-Track-Dogs",
+   "generos": [
+    "Folk, World, & Country"
+   ],
+   "estilos": [],
+   "discos_analizados": 2,
+   "pais": null,
+   "imagen": "https://i.discogs.com/ozVhy2lvS50YElO6HqA_yXZqy1ptnefQSN69V-B3Onw/rs:fit/g:sm/q:90/h:292/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTMxNjEx/MTgtMTU0MzI0MzMx/OS0xNTU1LnBuZw.jpeg",
+   "perfil": "Four piece acoustic act based in Madrid, Spain, with of two Irishmen; Garrett Wall (Vocals/Guitar/Ukelele/Piano) & Dave Mooney (Bass/Ukelele/Vocals), Englishman Howard Brown (Trumpet/Vocals/Percussion) and Cleveland, Ohio native Robbie K Jo"
+  }
+ },
+ "blaya": {
+  "nombre": "Blaya",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": true,
+   "url": "https://es.wikipedia.org/wiki/Blaya",
+   "generos": [
+    "Kuduro",
+    "funk carioca",
+    "R&B",
+    "bass music",
+    "pop",
+    "trap"
+   ],
+   "origen": "27 de mayo de 1987, (39 años), Fortaleza, (, Brasil, )",
+   "pais": "BR",
+   "imagen": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f1/Nashdoeswork--6.jpg/250px-Nashdoeswork--6.jpg",
+   "imagen_pagina": "https://es.wikipedia.org/wiki/Archivo:Nashdoeswork--6.jpg",
+   "idioma": "es"
+  },
+  "discogs": {
+   "encontrado": true,
+   "id": 1996426,
+   "nombre": "Blaya",
+   "url": "https://www.discogs.com/artist/1996426-Blaya",
+   "generos": [
+    "Electronic"
+   ],
+   "estilos": [
+    "UK Garage"
+   ],
+   "discos_analizados": 1,
+   "pais": null,
+   "imagen": "https://i.discogs.com/cWxuf2cPou8hi-6qffJP15j1bv2ze7rheLar8dm57SQ/rs:fit/g:sm/q:90/h:399/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTE5OTY0/MjYtMTUwNTkyMjQ2/MS01MTc2LmpwZWc.jpeg",
+   "perfil": ""
+  }
+ },
+ "alber solo and firebird blues": {
+  "nombre": "ALBER SOLO & FIREBIRD BLUES",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "santi santos": {
+  "nombre": "SANTI SANTOS",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": true,
+   "id": 1116177,
+   "nombre": "Santi Santos",
+   "url": "https://www.discogs.com/artist/1116177-Santi-Santos",
+   "generos": [],
+   "estilos": [],
+   "discos_analizados": 0,
+   "pais": null,
+   "imagen": null,
+   "perfil": ""
+  }
+ },
+ "thunder blues": {
+  "nombre": "THUNDER BLUES",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "poetry slam madrid": {
+  "nombre": "POETRY SLAM MADRID",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "mancebo azor": {
+  "nombre": "MANCEBO AZOR",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": true,
+   "id": 6900721,
+   "nombre": "Mancebo Azor",
+   "url": "https://www.discogs.com/artist/6900721-Mancebo-Azor",
+   "generos": [],
+   "estilos": [],
+   "discos_analizados": 0,
+   "pais": null,
+   "imagen": "https://i.discogs.com/7X4BC5sjA1_vy6HsGACjEcxiKspEW_n2yHtHzSHKSjM/rs:fit/g:sm/q:90/h:900/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTY5MDA3/MjEtMTc4Mzg3OTk0/MC0yNjI2LmpwZWc.jpeg",
+   "perfil": ""
+  }
+ },
+ "the velvet serenades": {
+  "nombre": "THE VELVET SERENADES",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "los mambo jambo": {
+  "nombre": "Los Mambo Jambo",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": true,
+   "id": 2873576,
+   "nombre": "Los Mambo Jambo",
+   "url": "https://www.discogs.com/artist/2873576-Los-Mambo-Jambo",
+   "generos": [
+    "Rock"
+   ],
+   "estilos": [
+    "Rock & Roll",
+    "Rockabilly"
+   ],
+   "discos_analizados": 8,
+   "pais": null,
+   "imagen": "https://i.discogs.com/Ris4iRzSwJARhT6yoe68kDx8Fx0w8w2fJWS-HbewS3A/rs:fit/g:sm/q:90/h:480/w:480/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTI4NzM1/NzYtMTQ2NjY3NjMw/NS03NjIyLmpwZWc.jpeg",
+   "perfil": "Spanish instrumental rock&roll and rhythm&blues band focused on sax, based in Barcelona"
+  }
+ },
+ "real madrid vs": {
+  "nombre": "Real Madrid vs",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "el tri": {
+  "nombre": "El Tri",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": true,
+   "url": "https://es.wikipedia.org/wiki/El_Tri_(banda)",
+   "generos": [
+    "Rock and roll",
+    "blues rock",
+    "rock urbano",
+    "Rock mexicano",
+    "rock latino"
+   ],
+   "origen": "Ciudad de México, ,, MEX, México",
+   "pais": "MX",
+   "imagen": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/42/Alex_Lora.jpg/330px-Alex_Lora.jpg",
+   "imagen_pagina": "https://es.wikipedia.org/wiki/Archivo:Alex_Lora.jpg",
+   "idioma": "es"
+  },
+  "discogs": {
+   "encontrado": true,
+   "id": 1343516,
+   "nombre": "El Tri",
+   "url": "https://www.discogs.com/artist/1343516-El-Tri",
+   "generos": [
+    "Rock",
+    "Latin"
+   ],
+   "estilos": [
+    "Rock & Roll",
+    "Blues Rock"
+   ],
+   "discos_analizados": 25,
+   "pais": "MX",
+   "imagen": "https://i.discogs.com/HuH5_RK8TEsuckhxXX5NSyTuHmeDDjnNUq5RPkW92Qs/rs:fit/g:sm/q:90/h:449/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTEzNDM1/MTYtMTU3NDA0NjUx/NC00Njk0LmpwZWc.jpeg",
+   "perfil": "Rock Band from Mexico City, Mexico"
+  }
+ },
+ "ea the sound of 90s": {
+  "nombre": "EA THE SOUND OF 90's",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "primal fear": {
+  "nombre": "Primal Fear",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": true,
+   "url": "https://es.wikipedia.org/wiki/Primal_Fear",
+   "generos": [
+    "Power metal",
+    "Heavy metal"
+   ],
+   "origen": "Esslingen, ,, Baden-Württemberg, (, Alemania, )",
+   "pais": "DE",
+   "imagen": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/44/Primal_Fear_Rockharz_2018_33_%28cropped%29.jpg/250px-Primal_Fear_Rockharz_2018_33_%28cropped%29.jpg",
+   "imagen_pagina": "https://es.wikipedia.org/wiki/Archivo:Primal_Fear_Rockharz_2018_33_(cropped).jpg",
+   "idioma": "es"
+  },
+  "discogs": {
+   "encontrado": true,
+   "id": 291160,
+   "nombre": "Primal Fear",
+   "url": "https://www.discogs.com/artist/291160-Primal-Fear",
+   "generos": [
+    "Rock"
+   ],
+   "estilos": [
+    "Heavy Metal",
+    "Power Metal"
+   ],
+   "discos_analizados": 25,
+   "pais": "DE",
+   "imagen": "https://i.discogs.com/usJcnVlxmUH22drq9MLRmM7Zn8Huh9Kte2hk_oTrnQU/rs:fit/g:sm/q:90/h:378/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTI5MTE2/MC0xNzU3MTQ4NjQ1/LTI3OTkuanBlZw.jpeg",
+   "perfil": "Heavy Metal band from Esslingen, Baden-Württemberg (Germany)"
+  }
+ },
+ "mcenroe presenta la vida libre": {
+  "nombre": "McEnroe presenta «La vida libre»",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "electric fence": {
+  "nombre": "ELECTRIC FENCE",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "4 artistas homónimos"
+  }
+ },
+ "dark thoughts": {
+  "nombre": "dark thoughts",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "2 artistas homónimos"
+  }
+ },
+ "pablo hinchey": {
+  "nombre": "Pablo Hinchey",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "for your information": {
+  "nombre": "For Your Information",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": true,
+   "id": 15322584,
+   "nombre": "For Your Information",
+   "url": "https://www.discogs.com/artist/15322584-For-Your-Information",
+   "generos": [],
+   "estilos": [],
+   "discos_analizados": 0,
+   "pais": null,
+   "imagen": null,
+   "perfil": ""
+  }
+ },
+ "moliy": {
+  "nombre": "MOLIY",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": true,
+   "id": 10439209,
+   "nombre": "Moliy",
+   "url": "https://www.discogs.com/artist/10439209-Moliy",
+   "generos": [
+    "Pop",
+    "Folk, World, & Country",
+    "Electronic"
+   ],
+   "estilos": [
+    "Afrobeat",
+    "African",
+    "Dancehall",
+    "Contemporary R&B"
+   ],
+   "discos_analizados": 3,
+   "pais": null,
+   "imagen": "https://i.discogs.com/pQ-2D1kE8utiyPI6TV2qKPfaLMg0_OCQU6qaOIK8DGI/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTEwNDM5/MjA5LTE2NDkyMzYx/MzItMTU5OS5qcGVn.jpeg",
+   "perfil": "Molly Ama Montgomery, professionally known as Moliy, is a singer and songwriter of Ghanaian and American descent. Deeply influenced by her rich Ghanaian ancestry, Moliy’s childhood fluctuated between Accra and Orlando, Florida where the mus"
+  }
+ },
+ "paula caveira": {
+  "nombre": "PAULA CAVEIRA",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "dani flow": {
+  "nombre": "Dani Flow",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": true,
+   "url": "https://es.wikipedia.org/wiki/Dani_Flow",
+   "generos": [
+    "Reguetón mexa",
+    "reguetón alternativo",
+    "freestyle rap"
+   ],
+   "origen": "15 de enero de 1996 (30, años), Irapuato, ,, Guanajuato, ,, México",
+   "pais": "MX",
+   "imagen": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a9/Dani_Flow_-_Al_Volante_by_Escorpi%C3%B3n_Dorado.jpg/250px-Dani_Flow_-_Al_Volante_by_Escorpi%C3%B3n_Dorado.jpg",
+   "imagen_pagina": "https://es.wikipedia.org/wiki/Archivo:Dani_Flow_-_Al_Volante_by_Escorpión_Dorado.jpg",
+   "idioma": "es"
+  },
+  "discogs": {
+   "encontrado": true,
+   "id": 16408414,
+   "nombre": "Dani Flow",
+   "url": "https://www.discogs.com/artist/16408414-Dani-Flow",
+   "generos": [],
+   "estilos": [],
+   "discos_analizados": 0,
+   "pais": "MX",
+   "imagen": null,
+   "perfil": "Reggaeton / Trap singer and producer from Irapuato, Guanajuato, Mexico"
+  }
+ },
+ "p h a t": {
+  "nombre": "P.H.A.T",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": true,
+   "id": 660707,
+   "nombre": "P.H.A.T.",
+   "url": "https://www.discogs.com/artist/660707-PHAT",
+   "generos": [
+    "Hip Hop"
+   ],
+   "estilos": [],
+   "discos_analizados": 1,
+   "pais": null,
+   "imagen": "https://i.discogs.com/vHuWFe-rF6m4h-DWOF4oIu0DNtxRvb6FqnClg928SlY/rs:fit/g:sm/q:90/h:312/w:460/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTY2MDcw/Ny0xMjk4OTExNjk0/LmpwZWc.jpeg",
+   "perfil": "Czech rapper from Prague and member of [l=Bigg Boss] label"
+  }
+ },
+ "el buho": {
+  "nombre": "El Búho",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no es la página de un grupo o músico; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "5 artistas homónimos"
+  }
+ },
+ "h lls": {
+  "nombre": "H.LLS",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  }
+ },
+ "christina rosenvinge": {
+  "nombre": "CHRISTINA ROSENVINGE",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": true,
+   "id": 402227,
+   "nombre": "Christina Rosenvinge",
+   "url": "https://www.discogs.com/artist/402227-Christina-Rosenvinge",
+   "generos": [
+    "Rock",
+    "Pop"
+   ],
+   "estilos": [
+    "Indie Pop",
+    "Indie Rock",
+    "Pop Rock"
+   ],
+   "discos_analizados": 15,
+   "pais": null,
+   "imagen": "https://i.discogs.com/QWc6WZXKgu4eOtKebl70zzoW2D-2HcChcgATn4cJBiQ/rs:fit/g:sm/q:90/h:347/w:350/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTQwMjIy/Ny0xMTUzMTcxMzYy/LmpwZWc.jpeg",
+   "perfil": "Spanish singer and songwriter of pop-rock music ((Madrid, May 29, 1964). She started in Ella Y Los Neumáticos in 1980, and later with [a=Magia Blanca] in 1985, where she met [a619385] with whom she formed [a=Alex & Christina] in 1988. In 19"
+  }
+ }
+}
