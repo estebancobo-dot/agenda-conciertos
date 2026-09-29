@@ -21,3 +21,4 @@ mb_test https://musicbrainz.org/ws/2/artist/?query=artist:%22H%C3%A4llas%22&fmt=
 qconciertos_madrid https://qconciertos.es/conciertos-en-madrid-provincia/
 sbm_agenda https://www.sociedaddebluesdemadrid.com/agenda/
 diariorockero_conc https://www.diariodeunrockero.es/category/conciertos/
+# r3b
