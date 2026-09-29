@@ -170,3 +170,15 @@ def test_discogs_id_de_wikidata_borrado_busca_por_nombre():
                       fetcher_dc=dc2, fetcher_wp=wp, fetcher_lf=FakeFetcher({}), clave_lastfm="")
     assert st["completados"] == 1 and dc2.urls and not wp.urls
     assert cache["los deltonos"]["discogs"]["motivo"] == "sin coincidencia exacta"
+
+
+def test_unir_caches_de_dos_ejecuciones():
+    import importlib.util
+    from pathlib import Path
+    spec = importlib.util.spec_from_file_location("gd", Path(__file__).parent.parent / "tools" / "guardar_datos.py")
+    gd = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(gd)
+    nuestra = {"a": {"fecha": "2026-09-29", "v": 1}, "c": {"fecha": "2026-09-28", "v": "nuestra"}}
+    suya = {"b": {"fecha": "2026-09-29", "v": 2}, "c": {"fecha": "2026-09-29", "v": "suya"}}
+    u = gd.unir_caches(nuestra, suya)
+    assert set(u) == {"a", "b", "c"} and u["c"]["v"] == "suya"  # gana la consulta más reciente

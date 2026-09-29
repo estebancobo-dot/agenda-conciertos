@@ -408,3 +408,17 @@ def ejecutar_fichas(hoy: date | None = None, presupuesto_seg: float = 3000) -> d
     informe["artistas"] = stats
     _write("informe.json", informe)
     return stats
+
+
+def reaplicar_fichas() -> None:
+    """Aplica a data/concerts.json las fichas de data/artistas.json (tras unir datos de dos ejecuciones)."""
+    from .artistas import ficha
+    datos = _read("concerts.json", {})
+    recs = datos.get("conciertos", [])
+    if not recs:
+        return
+    cache = _read("artistas.json", {})
+    for r in recs:
+        aplicar_ficha(r, ficha(cache.get(norm(r["artista"]))))
+    _write("concerts.json", datos)
+    escribir_csv(recs, DATA / "concerts.csv")

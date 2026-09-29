@@ -1,5 +1,14 @@
 # Versiones
 
+## 2.6.1 — 2026-09-29
+
+- **Ejecuciones solapadas.** Si la ejecución de fichas y la de agendas coincidían, la segunda en terminar chocaba al guardar y perdía todo su trabajo. Le pasó a la primera ejecución completa de la 2.6.0: se perdieron 42 minutos de rastreo. Ahora `tools/guardar_datos.py`:
+  - parte del último `main`;
+  - une las fichas de artista de ambas ejecuciones, quedándose con la consulta más reciente de cada artista;
+  - conserva los conciertos de la ejecución que ha leído las agendas;
+  - vuelve a aplicar las fichas y reintenta la subida si otra se adelanta.
+- Cada ejecución arranca con el último `main`, no con el código del momento en que se lanzó.
+
 ## 2.6.0 — 2026-09-29
 
 - **Agendas municipales rehechas.** Las 21 direcciones anteriores no daban ningún concierto: unas habían cambiado (404) y otras no se leían bien. Se han comprobado una a una desde GitHub.
