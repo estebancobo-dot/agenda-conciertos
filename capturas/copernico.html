@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copérnico The Club</title>
+    <link rel="icon" href="img/favicon.jpg" type="image/jpeg" sizes="any">
+    <link rel="apple-touch-icon" href="img/apple-touch-icon.png" sizes="180x180">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syncopate:wght@400;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+    <script src="js/page-nav-transition.js" defer></script>
+    <script src="js/page-loader.js" defer></script>
+    <script src="js/cookie-banner.js" defer></script>
+    <script src="js/hero-bg-video.js" defer></script>
+</head>
+
+<body>
+    <script>document.body.classList.add('is-loading');</script>
+    <div id="page-loader" class="page-loader" role="status" aria-live="polite" aria-label="Cargando sitio">
+        <div class="page-loader__grid" aria-hidden="true"></div>
+        <div class="page-loader__vignette" aria-hidden="true"></div>
+        <div class="page-loader__content">
+            <div class="page-loader__sweep" aria-hidden="true"></div>
+            <div class="page-loader__card corners-decorator">
+                <div class="cd-inner"></div>
+                <img src="img/25_years.svg" alt="" class="page-loader__logo" width="200" height="86">
+                <p class="page-loader__tag">[ CARGANDO ]</p>
+            </div>
+        </div>
+    </div>
+
+    <a class="skip-link" href="#inicio">Ir al contenido</a>
+
+    <header class="site-header">
+        <a href="#inicio" class="header-brand" aria-label="Copérnico The Club — inicio">
+            <img src="img/25_years.svg" alt="" class="header-logo" width="170" height="73">
+        </a>
+        <input type="checkbox" id="nav-toggle" class="nav-toggle">
+        <label for="nav-toggle" class="menu-toggle" aria-label="Abrir o cerrar menú">
+            <span></span><span></span><span></span>
+        </label>
+        <label for="nav-toggle" class="nav-backdrop" aria-hidden="true"></label>
+        <nav class="site-nav" aria-label="Principal">
+            <a href="/">HOME</a>
+            <a href="/nightclub">NIGHTCLUB</a>
+            <a href="/lasala">LA SALA</a>
+            <a href="/eventos">EVENTOS</a>
+            <a href="/contacto">CONTACTO</a>
+            <a href="/tickets" class="nav-btn">TICKETS & VIP</a>
+        </nav>
+    </header>
+
+    <section class="hero" id="inicio">
+        <video class="hero__bg-video" id="hero-bg-video" muted loop playsinline preload="none"
+            poster="img/Recurso_1.jpg" aria-hidden="true"></video>
+        <div class="hero-categories">
+            <a href="/nightclub" class="hero-cat corners-decorator">
+                <div class="cd-inner"></div>
+                <h3>NIGHTCLUB</h3>
+                <p>[Copérnico The Club]</p>
+            </a>
+            <a href="/eventos" class="hero-cat corners-decorator">
+                <div class="cd-inner"></div>
+                <h3>EVENTOS</h3>
+                <p>[Un espacio único]</p>
+            </a>
+            <a href="https://conciertoscopernico.com/" class="hero-cat corners-decorator" target="_blank" rel="noopener noreferrer">
+                <div class="cd-inner"></div>
+                <h3>CONCIERTOS</h3>
+                <p>[Copérnico Live]</p>
+            </a>
+        </div>
+    </section>
+
+    <section class="section-block section-nightclub" id="nightclub" style="display: none;">
+        <div class="section-inner">
+            <h2 class="section-heading corners-decorator">
+                <span class="cd-inner"></span>
+                <span class="section-heading-label">NIGHTCLUB</span>
+            </h2>
+            <p class="section-lead">Noches con sesiones especiales, sonido envolvente e iluminación LED en pleno Chamberí–Moncloa.</p>
+            <ul class="section-list">
+                <li><span class="section-list-tag">[01]</span> Pista principal y zona VIP reservados</li>
+                <li><span class="section-list-tag">[02]</span> Tres barras y atención prioritaria en reservas</li>
+                <li><span class="section-list-tag">[03]</span> Calendario semanal de DJs y formatos especiales</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="about" id="la-sala">
+        <img src="img/main_slogan.svg" alt="Copérnico" class="main-slogan">
+        <p>Conocida en Madrid por su ambiente único y dinamismo nocturno, con sesiones especiales de éxito.<br>
+            Con una ubicación inmejorable Chamberí Moncloa, y parking frente a la entrada principal.<br>
+            Lugar emblemático en la capital con amplia cartelera de artistas de todos los estilos para las tardes de
+            concierto.<br>
+            Un espacio versátil, idóneo para la celebración de eventos.</p>
+    </section>
+
+    <section class="section-block section-eventos" id="eventos" style="display: none;">
+        <div class="section-inner section-inner--wide">
+            <h2 class="section-heading corners-decorator">
+                <span class="cd-inner"></span>
+                <span class="section-heading-label">PRÓXIMOS EVENTOS</span>
+            </h2>
+            <p class="section-kicker">[Cartelera orientativa — sustituir fechas reales cuando las tengáis]</p>
+            <div class="event-grid">
+                <article class="event-card corners-decorator">
+                    <span class="cd-inner"></span>
+                    <time class="event-date" datetime="2026-04-12">12 ABR 2026</time>
+                    <h3 class="event-title">Copérnico Live · Sesión acústica</h3>
+                    <p class="event-meta">Puertas 19:00 · Sala principal</p>
+                    <a href="/tickets" class="event-cta">Entradas</a>
+                </article>
+                <article class="event-card corners-decorator">
+                    <span class="cd-inner"></span>
+                    <time class="event-date" datetime="2026-04-19">19 ABR 2026</time>
+                    <h3 class="event-title">Night Session · Invitado especial</h3>
+                    <p class="event-meta">23:30 · Pista + VIP</p>
+                    <a href="/tickets" class="event-cta">Lista &amp; VIP</a>
+                </article>
+                <article class="event-card corners-decorator">
+                    <span class="cd-inner"></span>
+                    <time class="event-date" datetime="2026-05-03">03 MAY 2026</time>
+                    <h3 class="event-title">Private Event · Espacio completo</h3>
+                    <p class="event-meta">Corporativo / brand day</p>
+                    <a href="/contacto" class="event-cta">Solicitar info</a>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="grid-container" id="instalaciones" aria-label="Instalaciones">
+        <div class="grid-item pista">
+            <div class="grid-item-visual grid-item-visual--pista" aria-hidden="true"></div>
+            <div class="grid-item-content corners-decorator cornered">
+                <div class="cd-inner"></div>
+                PISTA
+            </div>
+        </div>
+        <div class="grid-item tres-barras">
+            <div class="grid-item-visual grid-item-visual--barras" aria-hidden="true"></div>
+            <div class="grid-item-content corners-decorator cornered">
+                <div class="cd-inner"></div>
+                3 BARRAS
+            </div>
+        </div>
+        <div class="grid-item escenario">
+            <div class="grid-item-visual grid-item-visual--escenario" aria-hidden="true"></div>
+            <div class="grid-item-content corners-decorator cornered">
+                <div class="cd-inner"></div>
+                ESCENARIO
+            </div>
+        </div>
+        <div class="grid-item camerino">
+            <div class="grid-item-content corners-decorator cornered">
+                <div class="cd-inner"></div>
+                CAMERINO
+            </div>
+        </div>
+        <div class="grid-item acceso">
+            <div class="grid-item-content corners-decorator cornered">
+                <div class="cd-inner"></div>
+                ACCESO<br>ADAPTADO
+            </div>
+        </div>
+        <div class="grid-item red-block">
+            <img src="img/main_slogan.svg" alt="Copérnico The Club" class="grid-item-logo">
+        </div>
+        <div class="grid-item iluminacion">
+            <div class="grid-item-visual grid-item-visual--iluminacion" aria-hidden="true"></div>
+            <div class="grid-item-content corners-decorator cornered">
+                <div class="cd-inner"></div>
+                ILUMINACIÓN<br>LED
+            </div>
+        </div>
+        <div class="grid-item sonido">
+            <div class="grid-item-content corners-decorator cornered">
+                <div class="cd-inner"></div>
+                SONIDO<br>ENVOLVENTE
+            </div>
+        </div>
+        <div class="grid-item zona-vip">
+            <div class="grid-item-visual grid-item-visual--vip" aria-hidden="true"></div>
+            <div class="grid-item-content corners-decorator cornered">
+                <div class="cd-inner"></div>
+                ZONA VIP<br>RESERVADOS
+            </div>
+        </div>
+        <div class="grid-item pantalla">
+            <div class="grid-item-visual grid-item-visual--pantalla" aria-hidden="true"></div>
+            <div class="grid-item-content corners-decorator cornered">
+                <div class="cd-inner"></div>
+                PANTALLA<br>CENTRAL
+            </div>
+        </div>
+        <div class="grid-item y-mucho">
+            <div class="grid-item-content corners-decorator cornered">
+                <div class="cd-inner"></div>
+                Y MUCHO<br>MÁS
+            </div>
+        </div>
+    </section>
+
+    <section class="section-block section-tickets" id="tickets" style="display: none;">
+        <div class="section-inner section-inner--split">
+            <div class="tickets-copy corners-decorator">
+                <span class="cd-inner"></span>
+                <h2 class="section-heading-inline">TICKETS &amp; VIP</h2>
+                <p class="section-lead">Reserva mesas VIP, listas de invitados o entradas para conciertos. El equipo comercial confirma disponibilidad y condiciones.</p>
+                <a href="/contacto" class="btn-outline">Contactar reservas</a>
+            </div>
+            <div class="tickets-aside">
+                <p class="mono-note">[Incluir aquí enlace a taquilla o plataforma cuando esté activa]</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-block section-contacto" id="contacto" style="display: none;">
+        <div class="section-inner section-inner--wide">
+            <h2 class="section-heading corners-decorator">
+                <span class="cd-inner"></span>
+                <span class="section-heading-label">CONTACTO</span>
+            </h2>
+            <div class="contact-layout">
+                <div class="contact-panel corners-decorator">
+                    <span class="cd-inner"></span>
+                    <p class="contact-line"><span class="contact-key">Dirección</span><br>Calle de Galileo, Madrid · Chamberí–Moncloa</p>
+                    <p class="contact-line"><span class="contact-key">Parking</span><br>Frente a la entrada principal</p>
+                    <p class="contact-line"><span class="contact-key">Reservas</span><br><a href="mailto:info@copernicotheclub.com">info@copernicotheclub.com</a></p>
+                    <p class="contact-line"><span class="contact-key">Redes</span><br><a href="https://www.instagram.com/copernicotheclub/?hl=es" class="social-handle" target="_blank" rel="noopener noreferrer">@copernicotheclub</a></p>
+                </div>
+                <div class="contact-map" role="img" aria-label="Mapa ilustrativo de ubicación">
+                    <span class="contact-map-grid" aria-hidden="true"></span>
+                    <span class="contact-map-pin">+</span>
+                    <span class="contact-map-caption">[MAPA]</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-decorator">
+            <div class="cd-inner"></div>
+        </div>
+        <div class="footer-left">
+            <div class="footer-social">
+                Síguenos en redes<br>
+                <a href="https://www.instagram.com/copernicotheclub/?hl=es" class="social-handle" target="_blank" rel="noopener noreferrer">@copernicotheclub</a>
+            </div>
+            <img src="img/25_years.svg" alt="CPR 25 Years" class="footer-logo">
+            <div class="footer-credits">
+                2026 Copérnico The Club<br>
+                <a href="https://www.bellybottom.es/" target="_blank" rel="noopener noreferrer">with ♡ by BellyBotton</a>
+            </div>
+        </div>
+        <div class="footer-right">
+            <a href="/legal/Politica-Cookies.pdf" target="_blank" rel="noopener noreferrer">Política de cookies</a>
+            <a href="/legal/Politica-Privacidad.pdf" target="_blank" rel="noopener noreferrer">Política de privacidad</a>
+            <a href="https://api.whatsapp.com/send/?phone=%2B34665530478&text&amp;type=phone_number&amp;app_absent=0" target="_blank" rel="noopener noreferrer">Trabaja con nosotros</a>
+            <a href="/legal/Aviso-Legal.pdf" target="_blank" rel="noopener noreferrer">Aviso legal</a>
+            <a href="/contacto">Contacto</a>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelectorAll('.site-nav a[href^="#"]').forEach(function (link) {
+            link.addEventListener('click', function () {
+                var toggle = document.getElementById('nav-toggle');
+                if (toggle) toggle.checked = false;
+            });
+        });
+    </script>
+</body>
+
+</html>
