@@ -231,7 +231,17 @@ def split_artistas(texto: str) -> tuple[str, list[str]]:
     return parts[0], parts[1:]
 
 
-COUNTRY_TAG = re.compile(r"\s*\(([A-Za-z]{2,3})\)\s*$")
+COUNTRY_TAG = re.compile(r"\s*\(([A-Za-zÁÉÍÓÚáéíóúñÑ .]{2,20})\)\s*$")
+PAISES_ES = {"eeuu": "US", "ee uu": "US", "usa": "US", "estados unidos": "US", "reino unido": "GB", "uk": "GB",
+             "inglaterra": "GB", "escocia": "GB", "gales": "GB", "irlanda": "IE", "suecia": "SE", "noruega": "NO",
+             "finlandia": "FI", "dinamarca": "DK", "alemania": "DE", "francia": "FR", "italia": "IT",
+             "paises bajos": "NL", "holanda": "NL", "belgica": "BE", "suiza": "CH", "austria": "AT",
+             "portugal": "PT", "grecia": "GR", "polonia": "PL", "japon": "JP", "canada": "CA", "australia": "AU",
+             "nueva zelanda": "NZ", "argentina": "AR", "mexico": "MX", "chile": "CL", "colombia": "CO",
+             "brasil": "BR", "uruguay": "UY", "cuba": "CU", "islandia": "IS", "rusia": "RU", "ucrania": "UA",
+             "hungria": "HU", "republica checa": "CZ", "chequia": "CZ", "israel": "IL", "turquia": "TR",
+             "sudafrica": "ZA", "corea del sur": "KR", "estonia": "EE", "letonia": "LV", "lituania": "LT",
+             "eslovenia": "SI", "croacia": "HR", "serbia": "RS", "rumania": "RO", "bulgaria": "BG", "espana": "ES"}
 ISO_FIX = {"UK": "GB", "USA": "US", "EEUU": "US", "ENG": "GB", "ING": "GB", "SUE": "SE", "ALE": "DE", "FRA": "FR",
            "ITA": "IT", "HOL": "NL", "BEL": "BE", "SUI": "CH", "NOR": "NO", "DIN": "DK", "FIN": "FI", "AUS": "AU",
            "CAN": "CA", "ARG": "AR", "MEX": "MX", "ESP": "ES", "POR": "PT", "IRL": "IE", "JPN": "JP", "JAP": "JP",
@@ -244,8 +254,10 @@ def extrae_pais(nombre: str) -> tuple[str, str | None]:
     m = COUNTRY_TAG.search(nombre or "")
     if not m:
         return nombre, None
-    code = m.group(1).upper()
-    code = ISO_FIX.get(code, code)
+    raw = m.group(1)
+    code = PAISES_ES.get(norm(raw))
+    if not code and len(raw) <= 3:
+        code = ISO_FIX.get(raw.upper(), raw.upper())
     if code in ISO2:
         return clean(nombre[: m.start()]), code
     return nombre, None

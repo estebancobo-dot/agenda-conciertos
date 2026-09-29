@@ -91,12 +91,12 @@ def _first(x):
 def ld_to_raw(ev: dict, today: date, page_url: str, *, use_performers: bool = True, split: bool = True,
               estilo: str | None = None) -> RawEvent | None:
     start = ev.get("startDate") or ""
-    m = re.match(r"(\d{4})-(\d{2})-(\d{2})", start)
+    m = re.match(r"(\d{4})-(\d{1,2})-(\d{1,2})", start)
     if not m:
         return None
     fecha = date(int(m.group(1)), int(m.group(2)), int(m.group(3)))
     hora = None
-    mt = re.search(r"T(\d{2}):(\d{2})", start)
+    mt = re.search(r"T(\d{1,2}):(\d{2})", start)
     if mt and not (mt.group(1) == "00" and mt.group(2) == "00"):
         hora = f"{mt.group(1)}:{mt.group(2)}"
     loc = _first(ev.get("location")) or {}
