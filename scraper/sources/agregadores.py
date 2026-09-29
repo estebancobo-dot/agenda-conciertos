@@ -101,9 +101,12 @@ def conciertospormadrid(ctx: Ctx):
 # ------------------------------------------------------------------ Madrid en Vivo
 MEV_AJAX = "https://madridenvivo.com/wp-content/themes/base/codigo/includes/ajax/buscar-eventos-avanzado.php"
 # Se consulta por estilo (así el estilo lo da la propia web). Primero los estilos en foco.
-MEV_ESTILOS = {"779": "Pop / Rock", "778": "Músicas negras", "772": "Clubbing", "774": "Flamenco Capital",
-               "822": "Musicales", "770": "Artes escénicas"}
-MEV_PRESUPUESTO_SEG = 2400  # su servidor responde lento (~10 s por página)
+# Solo los estilos de conciertos. Se dejan fuera "Artes escénicas" (teatro, monólogos), "Musicales" y
+# "Clubbing" (sesiones de DJ): no son conciertos (~10 % de sus actos). Su robots.txt pide 10 s entre
+# peticiones (Crawl-delay) y cada página (10 actos) tarda ~9 s más: cada página que se ahorra son ~20 s.
+MEV_ESTILOS = {"779": "Pop / Rock", "778": "Músicas negras", "774": "Flamenco Capital"}
+MEV_EXCLUIDOS = {"Artes escénicas", "Musicales", "Clubbing"}
+MEV_PRESUPUESTO_SEG = 2400
 
 
 def mev_parse(html: str, page_url: str, today: date, estilo: str | None) -> list:

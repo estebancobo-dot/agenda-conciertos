@@ -50,7 +50,9 @@ jobs:
           TICKETMASTER_KEY: ${{ secrets.TICKETMASTER_KEY }}
         run: |
           if [ "${{ github.event.schedule }}" = "40 */2 * * *" ] || [ "${{ github.event.inputs.fichas }}" = "true" ]; then
-            python -m scraper --fichas --minutos 50
+            # cada 2 horas: reintenta las fuentes que fallaron en la última lectura y completa fichas pendientes
+            python -m scraper --reintentar || echo "El reintento de fuentes falló; se sigue con las fichas"
+            python -m scraper --fichas --minutos 45
           elif [ -n "${{ github.event.inputs.solo }}" ]; then
             python -m scraper --solo "${{ github.event.inputs.solo }}"
           else
@@ -62,11 +64,7 @@ jobs:
         if: always()
         run: |
           # une sus datos con los que otra ejecución haya subido mientras tanto (ver tools/guardar_datos.py)
-          if [ "${{ github.event.schedule }}" = "40 */2 * * *" ] || [ "${{ github.event.inputs.fichas }}" = "true" ]; then
-            python tools/guardar_datos.py --fichas
-          else
-            python tools/guardar_datos.py
-          fi
+          python tools/guardar_datos.py
       - name: Preparar web
         run: |
           mkdir -p _site/data

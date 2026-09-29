@@ -26,6 +26,13 @@ class RawEvent:
         d["fecha"] = self.fecha.isoformat()
         return d
 
+    @classmethod
+    def from_dict(cls, d: dict) -> "RawEvent":
+        from datetime import date as _date
+        campos = {k: v for k, v in d.items() if k in cls.__dataclass_fields__}
+        campos["fecha"] = _date.fromisoformat(d["fecha"])
+        return cls(**campos)
+
 
 @dataclass
 class Source:

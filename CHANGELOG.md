@@ -1,5 +1,23 @@
 # Versiones
 
+## 2.7.0 — 2026-09-29
+
+Primera versión después de la baseline (2.6.1, etiqueta `baseline-2.6.1`).
+
+- **Ya no se pierde lo que aporta una web que no se puede leer.**
+  - Antes, si una fuente fallaba, sus conciertos se conservaban, pero los que compartía con otras webs perdían lo que ella aportaba: su nombre entre las fuentes, el contraste, el precio o la confirmación de la sala. El 29-09 eso bajó los contrastados de 686 a 661.
+  - Ahora se guarda la última lectura completa de cada fuente (`data/fuentes_cache.json`). Si hoy falla, o solo se lee en parte, entran sus conciertos de esa lectura, con el aviso "Dato de la última lectura completa de X (fecha)".
+  - Esa lectura se usa durante 14 días como máximo.
+- **Reintentos:**
+  - Dentro de la ejecución, las webs que fallan (403, antirobots, sin respuesta, error) se vuelven a leer una vez, tras 90 segundos.
+  - Cada 2 horas, la ejecución de fichas vuelve a leer las que siguen fallando. Suele tocar otra máquina de GitHub, y los bloqueos del 29-09 dependían de la máquina: en una nueva captura, las mismas webs respondieron bien. Si alguna responde, se rehace la agenda con ella y con la última lectura del resto.
+- **Ritmo por servidor, no por web.** Varias webs pequeñas alojadas en el mismo servidor compartido cuentan como una sola, para que su cortafuegos no vea ráfagas desde GitHub.
+- **Lectura más rápida:**
+  - 16 fuentes a la vez, empezando por las más lentas.
+  - Madrid en Vivo, que marca la duración de toda la ejecución porque su robots.txt pide 10 segundos entre peticiones, ya no lee "Artes escénicas", "Musicales" ni "Clubbing": no son conciertos. Sus actos anteriores de esos estilos se retiran sin marcarse como cancelados.
+- **Un `--solo` o un reintento ya no vacía la agenda:** las fuentes no leídas entran con su última lectura.
+- El informe indica, por fuente, si funcionó al reintentar y cuántos conciertos se mantienen de su última lectura.
+
 ## 2.6.1 — 2026-09-29
 
 - **Ejecuciones solapadas.** Si la ejecución de fichas y la de agendas coincidían, la segunda en terminar chocaba al guardar y perdía todo su trabajo. Le pasó a la primera ejecución completa de la 2.6.0: se perdieron 42 minutos de rastreo. Ahora `tools/guardar_datos.py`:

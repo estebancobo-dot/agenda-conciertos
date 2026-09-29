@@ -1,6 +1,8 @@
 """Descargador educado: respeta robots.txt y el ritmo que admite cada web, con User-Agent identificable.
 
-Ritmo por web (las peticiones a una misma web van siempre de una en una):
+Ritmo por servidor (las peticiones a un mismo servidor van siempre de una en una). Se agrupan por dirección IP:
+varias webs pequeñas alojadas en el mismo servidor compartido cuentan como un solo servidor, para que su
+cortafuegos no vea ráfagas desde GitHub.
 - entre el final de una respuesta y la siguiente petición, `min_interval` (1 s para webs, el límite publicado
   para las API) o el Crawl-delay de su robots.txt si es mayor; un servidor lento recibe así menos peticiones;
 - ante 429 o 503 se espera lo que diga Retry-After (o 10 s, 20 s…), se reintenta y se duplica la pausa de esa web.
@@ -65,6 +67,14 @@ class HostState:
     freno: float = 0.0       # pausa extra tras un 429/503
 
 
+@dataclass
+class Ritmo:
+    """Ritmo de peticiones a un servidor (una IP)."""
+    lock: threading.Lock = field(default_factory=threading.Lock)
+    last: float = 0.0
+    freno: float = 0.0       # pausa extra tras un 429/503
+
+
 class Fetcher:
     def __init__(self, user_agent: str = USER_AGENT, min_interval: float = MIN_INTERVAL, timeout: int = 30):
         self.user_agent = user_agent
@@ -77,6 +87,8 @@ class Fetcher:
             "Accept-Language": "es-ES,es;q=0.9,en;q=0.5",
         })
         self._hosts: dict[str, HostState] = {}
+        self._ritmos: dict[str, Ritmo] = {}
+        self._ips: dict[str, str] = {}
         self._hosts_lock = threading.Lock()
         self._cache: dict[str, str] = {}
         self.requests_count = 0
@@ -87,12 +99,34 @@ class Fetcher:
         with self._hosts_lock:
             return self._hosts.setdefault(host, HostState())
 
-    def _wait(self, st: HostState) -> None:
-        interval = max(self.min_interval, st.delay, st.freno)
-        delta = time.monotonic() - st.last
+    def _ritmo(self, url: str) -> Ritmo:
+        host = urlsplit(url).hostname or ""
+        ip = self._ips.get(host)
+        if ip is None:
+            try:
+                import socket
+                ip = socket.getaddrinfo(host, 443, proto=socket.IPPROTO_TCP)[0][4][0]
+            except Exception:  # noqa: BLE001 - sin DNS (pruebas) o error: se agrupa por nombre
+                ip = host
+            self._ips[host] = ip
+        with self._hosts_lock:
+            return self._ritmos.setdefault(ip, Ritmo())
+
+    def _wait(self, rt: Ritmo, st: HostState) -> None:
+        interval = max(self.min_interval, st.delay, rt.freno)
+        delta = time.monotonic() - rt.last
         if delta < interval:
             time.sleep(interval - delta)
-        st.last = time.monotonic()
+        rt.last = time.monotonic()
+
+    def olvidar(self, url: str) -> None:
+        """Para reintentar una web: se olvida su robots.txt, su freno y lo descargado de ella."""
+        host = urlsplit(url).netloc.lower()
+        with self._hosts_lock:
+            self._hosts.pop(host, None)
+        self._ritmo(url).freno = 0.0
+        for k in [k for k in self._cache if urlsplit(k.split("[")[0]).netloc.lower() == host]:
+            self._cache.pop(k, None)
 
     def robots_status(self, url: str) -> str:
         """Estado del robots.txt de la web: 'ok', 'sin_robots' (4xx) o 'inaccesible' (5xx / error de red)."""
@@ -108,8 +142,11 @@ class Fetcher:
                 robots_url = f"{parts.scheme}://{parts.netloc}/robots.txt"
                 rp = Robots()
                 try:
-                    self._wait(st)
-                    r = self.session.get(robots_url, timeout=self.timeout)
+                    rt = self._ritmo(url)
+                    with rt.lock:
+                        self._wait(rt, st)
+                        r = self.session.get(robots_url, timeout=self.timeout)
+                        rt.last = time.monotonic()
                     if 400 <= r.status_code < 500:
                         rp.allow_all = True
                         st.robots_status = f"sin_robots ({r.status_code})"
@@ -138,18 +175,19 @@ class Fetcher:
                 raise RobotsUnreachable(f"web inaccesible al leer robots.txt: {self._host(url).robots_status}")
             raise RobotsBlocked(url)
         st = self._host(url)
-        with st.lock:
+        rt = self._ritmo(url)
+        with rt.lock:
             for intento in range(REINTENTOS + 1):
-                self._wait(st)
+                self._wait(rt, st)
                 self.requests_count += 1
                 t0 = time.monotonic()
                 r = self.session.request(method, url, timeout=self.timeout, **kw)
                 st.latencia = time.monotonic() - t0
-                st.last = time.monotonic()  # la pausa cuenta desde que termina la respuesta
+                rt.last = time.monotonic()  # la pausa cuenta desde que termina la respuesta
                 if r.status_code not in (429, 503) or intento == REINTENTOS:
                     break
                 espera = retry_after(r.headers.get("Retry-After"), 10.0 * (intento + 1))
-                st.freno = min(max(st.freno * 2, self.min_interval * 2), 30.0)
+                rt.freno = min(max(rt.freno * 2, self.min_interval * 2), 30.0)
                 time.sleep(espera)
             self.after_response(r)
         self.last_headers[url] = {"status": r.status_code, **{k: v for k, v in r.headers.items()

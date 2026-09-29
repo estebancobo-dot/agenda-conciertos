@@ -19,7 +19,7 @@ from .merge import (Item, agrupar, artistas_coinciden, coinciden_flexible, const
                     hacer_id, marcar_conflictos_cartel, nombres_rec, recalcular_categorias, recalcular_estado,
                     separar_ciclo)
 from .model import RawEvent, Source
-from .normalize import DATA, canon_sala, load_json, misma_sala, municipio, norm, sala_municipio
+from .normalize import DATA, canon_sala, clean, load_json, misma_sala, municipio, norm, sala_municipio
 from .registry import FUENTES, NO_USAR, SIN_AGENDA_LEGIBLE
 from .sources.base import Ctx
 
@@ -46,55 +46,117 @@ def _write(name: str, obj) -> None:
 
 
 # ---------------------------------------------------------------- rastreo
+# Fallos que merece la pena reintentar: la web no respondió, bloqueó (403, antirobots) o dio error.
+# Un "robots.txt lo prohíbe" no se reintenta: es una decisión de la web.
+REINTENTABLES = {"error", "bloqueado_403", "bloqueado_antibots"}
+PAUSA_REINTENTO_SEG = 90
+
+
+def leer_fuente(src: Source, fetcher: Fetcher, hoy: date, horizonte: date, estado: dict) -> tuple[list, dict]:
+    ctx = Ctx(fetcher=fetcher, today=hoy, horizon=horizonte, estado=estado.setdefault(src.id, {}))
+    t0 = time.monotonic()
+    evs: list[RawEvent] = []
+    res = {"funciono": False, "estado": "", "brutos": 0, "paginas": 0, "errores": [], "robots": ""}
+    try:
+        for e in src.parser(ctx):
+            e.fuente = src.id
+            evs.append(e)
+        res["funciono"] = True
+        res["estado"] = "ok" if evs else "ok_sin_resultados"
+    except AntiBotBlocked as e:
+        res["estado"] = "bloqueado_antibots"
+        res["errores"].append(str(e))
+    except RobotsUnreachable as e:
+        res["estado"] = "error"
+        res["errores"].append(str(e))
+    except RobotsBlocked as e:
+        res["estado"] = "bloqueado_robots"
+        res["errores"].append(f"robots.txt prohíbe {e}")
+    except Exception as e:  # noqa: BLE001
+        msg = f"{type(e).__name__}: {e}"
+        res["estado"] = "bloqueado_403" if "403" in msg else "error"
+        res["errores"].append(msg[:400])
+        log.debug(traceback.format_exc())
+    res["errores"] += ctx.errors[:20]
+    # lectura completa: funcionó, dio resultados y sin errores parciales (páginas caídas, tope de tiempo…)
+    res["completa"] = res["funciono"] and bool(evs) and not ctx.errors
+    res["paginas"] = ctx.pages
+    res["brutos"] = len(evs)
+    res["segundos"] = round(time.monotonic() - t0, 1)
+    try:
+        res["robots"] = fetcher.robots_status(src.url)
+    except Exception:  # noqa: BLE001
+        res["robots"] = ""
+    log.info("%-22s %-18s %4d eventos %3d páginas %5.1fs", src.id, res["estado"], len(evs), ctx.pages,
+             res["segundos"])
+    return evs, res
+
+
 def rastrear(fuentes: list[Source], fetcher: Fetcher, hoy: date, horizonte: date, estado: dict,
-             max_workers: int = 10) -> tuple[list[Item], dict]:
+             max_workers: int = 16, pausa_reintento: float = PAUSA_REINTENTO_SEG) -> tuple[dict, dict]:
+    """Lee todas las fuentes en paralelo (una petición a la vez por servidor) y reintenta una vez, tras una
+    pausa, las que fallaron. Devuelve los eventos y el resultado de cada fuente."""
     resultados: dict[str, dict] = {}
-    items: list[Item] = []
-
-    def run(src: Source):
-        ctx = Ctx(fetcher=fetcher, today=hoy, horizon=horizonte, estado=estado.setdefault(src.id, {}))
-        t0 = time.monotonic()
-        evs: list[RawEvent] = []
-        res = {"funciono": False, "estado": "", "brutos": 0, "paginas": 0, "errores": [], "robots": ""}
-        try:
-            for e in src.parser(ctx):
-                e.fuente = src.id
-                evs.append(e)
-            res["funciono"] = True
-            res["estado"] = "ok" if evs else "ok_sin_resultados"
-        except AntiBotBlocked as e:
-            res["estado"] = "bloqueado_antibots"
-            res["errores"].append(str(e))
-        except RobotsUnreachable as e:
-            res["estado"] = "error"
-            res["errores"].append(str(e))
-        except RobotsBlocked as e:
-            res["estado"] = "bloqueado_robots"
-            res["errores"].append(f"robots.txt prohíbe {e}")
-        except Exception as e:  # noqa: BLE001
-            msg = f"{type(e).__name__}: {e}"
-            res["estado"] = "bloqueado_403" if "403" in msg else "error"
-            res["errores"].append(msg[:400])
-            log.debug(traceback.format_exc())
-        res["errores"] += ctx.errors[:20]
-        # lectura completa: funcionó, dio resultados y sin errores parciales (páginas caídas, tope de tiempo…)
-        res["completa"] = res["funciono"] and bool(evs) and not ctx.errors
-        res["paginas"] = ctx.pages
-        res["brutos"] = len(evs)
-        res["segundos"] = round(time.monotonic() - t0, 1)
-        try:
-            res["robots"] = fetcher.robots_status(src.url)
-        except Exception:  # noqa: BLE001
-            res["robots"] = ""
-        log.info("%-22s %-18s %4d eventos %3d páginas %5.1fs", src.id, res["estado"], len(evs), ctx.pages,
-                 res["segundos"])
-        return src, evs, res
-
+    eventos: dict[str, list] = {}
+    # primero las lentas (Madrid en Vivo, conciertos.club…): así el resto se lee mientras tanto
+    orden = sorted(fuentes, key=lambda s: -float((estado.get("_duracion") or {}).get(s.id, 0)))
     with ThreadPoolExecutor(max_workers=max_workers) as ex:
-        for src, evs, res in ex.map(run, fuentes):
-            resultados[src.id] = res
-            items.extend(Item(e, src) for e in evs)
-    return items, resultados
+        for src, (evs, res) in zip(orden, ex.map(lambda s: leer_fuente(s, fetcher, hoy, horizonte, estado), orden)):
+            eventos[src.id], resultados[src.id] = evs, res
+    fallidas = [s for s in fuentes if resultados[s.id]["estado"] in REINTENTABLES]
+    if fallidas:
+        log.info("Reintento de %d fuentes dentro de %d s: %s", len(fallidas), pausa_reintento,
+                 ", ".join(s.id for s in fallidas))
+        time.sleep(pausa_reintento)
+        for s in fallidas:
+            fetcher.olvidar(s.url)
+        with ThreadPoolExecutor(max_workers=max_workers) as ex:
+            for src, (evs, res) in zip(fallidas, ex.map(lambda s: leer_fuente(s, fetcher, hoy, horizonte, estado),
+                                                        fallidas)):
+                if res["funciono"]:
+                    res["reintento"] = "funcionó en el 2.º intento"
+                    eventos[src.id], resultados[src.id] = evs, res
+                else:
+                    resultados[src.id]["reintento"] = "falló también en el 2.º intento"
+    estado["_duracion"] = {s: r.get("segundos", 0) for s, r in resultados.items()}
+    return eventos, resultados
+
+
+# ---------------------------------------------------------------- caché de la última lectura buena de cada fuente
+CACHE_FUENTES = "fuentes_cache.json"
+CACHE_MAX_DIAS = 14  # más antigua no se usa: la fuente puede haber cambiado o desaparecido
+
+
+def completar_con_cache(fuentes: list[Source], eventos: dict, resultados: dict, hoy: date, horizonte: date,
+                        cache: dict, no_leidas: set[str] = frozenset()) -> None:
+    """Si una fuente no se ha podido leer entera, se completan sus conciertos con los de su última lectura
+    completa (máx. 14 días): así no se pierden ni sus conciertos ni lo que aporta a los que comparte con otras.
+    Las fuentes leídas por completo actualizan la caché. `no_leidas`: fuentes que esta ejecución no intentó
+    leer (reintento parcial); sus conciertos de la caché entran sin aviso."""
+    hoy_s = hoy.isoformat()
+    for s in fuentes:
+        res = resultados.setdefault(s.id, {})
+        evs = eventos.setdefault(s.id, [])
+        if s.id not in no_leidas and res.get("completa"):
+            cache[s.id] = {"fecha": hoy_s, "eventos": [e.to_dict() for e in evs if e.fecha >= hoy]}
+            continue
+        c = cache.get(s.id)
+        if not c or c.get("fecha", "") < (hoy - timedelta(days=CACHE_MAX_DIAS)).isoformat():
+            continue
+        ya = {(e.fecha, norm(e.artista)) for e in evs}
+        anadidos = []
+        for d in c.get("eventos", []):
+            e = RawEvent.from_dict(d)
+            if not (hoy <= e.fecha <= horizonte) or (e.fecha, norm(e.artista)) in ya:
+                continue
+            if s.id not in no_leidas:
+                e.nota = clean(f"{e.nota or ''} Dato de la última lectura completa de {s.nombre} ({c['fecha']}): "
+                               f"hoy no se pudo leer.")
+            anadidos.append(e)
+        evs.extend(anadidos)
+        if s.id not in no_leidas and anadidos:
+            res["desde_cache"] = len(anadidos)
+            res["cache_fecha"] = c["fecha"]
 
 
 # ---------------------------------------------------------------- normalización y ámbito
@@ -181,6 +243,15 @@ def _match_prev(r: dict, prev: list[dict]) -> dict | None:
     return None
 
 
+def _fuera_de_cobertura(p: dict, srcs: list[str]) -> bool:
+    """Registro que solo venía de Madrid en Vivo y en estilos que ya no se leen (teatro, musicales, DJ)."""
+    from .sources.agregadores import MEV_EXCLUIDOS
+    if not srcs or set(srcs) != {"madridenvivo"}:
+        return False
+    est = [e["estilo"] for e in p.get("estilo_fuente", []) if "Madrid en Vivo" in e.get("fuente", "")]
+    return bool(est) and all(e in MEV_EXCLUIDOS for e in est)
+
+
 def conciliar(recs: list[dict], anteriores: list[dict], hoy: date, resultados: dict, fuentes: dict[str, Source]):
     """Asigna ids estables, fechas de primera/última vez y marca 'posiblemente cancelado'."""
     hoy_s = hoy.isoformat()
@@ -219,6 +290,8 @@ def conciliar(recs: list[dict], anteriores: list[dict], hoy: date, resultados: d
                and coinciden_flexible([p["artista"]], nombres_rec(r)) for r in recs):
             continue
         srcs = [f["id"] for f in p["fuentes"] if f["id"] in fuentes]
+        if _fuera_de_cobertura(p, srcs):
+            continue  # la fuente ya no lee ese tipo de actos (p. ej. teatro en Madrid en Vivo): no es una cancelación
         reconf = [s for s in srcs if fuentes[s].reconfirma]
         if not reconf:
             arrastrados.append(p)
@@ -280,8 +353,10 @@ def informe_fuentes(fuentes: list[Source], resultados: dict, recs: list[dict], a
                     "eventos_brutos": res.get("brutos", 0), "paginas": res.get("paginas", 0),
                     "errores": res.get("errores", []), "robots": res.get("robots", ""),
                     "robots_bloquea": res.get("estado") == "bloqueado_robots", "aviso": aviso,
-                    "segundos": res.get("segundos")})
-        if res.get("funciono") and res.get("brutos", 0) > 0:
+                    "segundos": res.get("segundos"), "reintento": res.get("reintento"),
+                    "desde_cache": res.get("desde_cache", 0), "cache_fecha": res.get("cache_fecha"),
+                    "no_leida": res.get("no_leida", False)})
+        if res.get("funciono") and res.get("brutos", 0) > 0 and not res.get("no_leida"):
             historial[s.id] = {"ultima_ok": hoy.isoformat(), "ultimo_conteo": len(mios)}
     return out
 
@@ -290,12 +365,23 @@ PRESUPUESTO_FICHAS = 2400  # tope de la ejecución diaria para fichas (los pendi
 
 
 def ejecutar(hoy: date | None = None, solo: list[str] | None = None, fetcher: Fetcher | None = None,
-             musicbrainz: bool = True, max_mb: int = 700) -> dict:
+             musicbrainz: bool = True, max_mb: int = 700, reintentar: bool = False,
+             pausa_reintento: float = PAUSA_REINTENTO_SEG) -> dict | None:
+    """Ejecución completa. Con `solo` o `reintentar`, se leen solo algunas fuentes y las demás entran con su
+    última lectura completa (caché), así que la agenda publicada nunca pierde conciertos de las no leídas.
+    `reintentar`: vuelve a leer las fuentes que fallaron en la última ejecución; si ninguna responde, no
+    cambia nada y devuelve None."""
     hoy = hoy or datetime.now(timezone.utc).astimezone().date()
     horizonte = hoy + timedelta(days=HORIZONTE_DIAS)
     fetcher = fetcher or Fetcher()
-    fuentes = [s for s in FUENTES if not solo or s.id in solo]
     estado = _read("estado.json", {})
+    if reintentar:
+        solo = estado.get("fuentes_fallidas") or []
+        if not solo:
+            log.info("Reintento: ninguna fuente falló en la última ejecución")
+            return None
+    fuentes = [s for s in FUENTES if not solo or s.id in solo]
+    no_leidas = {s.id for s in FUENTES} - {s.id for s in fuentes}
     anteriores = _read("concerts.json", {}).get("conciertos", [])
     anteriores_ids = {p["id"] for p in anteriores}
     t0 = time.monotonic()
@@ -303,14 +389,27 @@ def ejecutar(hoy: date | None = None, solo: list[str] | None = None, fetcher: Fe
     # empezando por los artistas de la ejecución anterior; al terminar se completan los nuevos.
     cache_art = _read("artistas.json", {})
     parar, hilo, previas = threading.Event(), None, {}
-    if musicbrainz and anteriores:
+    if musicbrainz and anteriores and not no_leidas:
         from .artistas import enriquecer
         hilo = threading.Thread(target=lambda: previas.update(
             enriquecer([p for p in anteriores if p["fecha"] >= hoy.isoformat()], cache_art, hoy,
                        presupuesto_seg=PRESUPUESTO_FICHAS, parar=parar,
                        guardar=lambda: _write("artistas.json", cache_art))), daemon=True)
         hilo.start()
-    items, resultados = rastrear(fuentes, fetcher, hoy, horizonte, estado.setdefault("fuentes", {}))
+    eventos, resultados = rastrear(fuentes, fetcher, hoy, horizonte, estado.setdefault("fuentes", {}),
+                                   pausa_reintento=pausa_reintento)
+    if reintentar and not any(r["funciono"] for r in resultados.values()):
+        log.info("Reintento: ninguna de las fuentes fallidas ha respondido; no se cambia nada")
+        if hilo:
+            parar.set()
+        return None
+    previos = estado.get("resultados", {})
+    for sid in no_leidas:  # su estado es el de la última vez que se leyeron
+        resultados[sid] = {**previos.get(sid, {}), "no_leida": True}
+    cache_fuentes = _read(CACHE_FUENTES, {})
+    completar_con_cache(FUENTES, eventos, resultados, hoy, horizonte, cache_fuentes, no_leidas)
+    por_id = {s.id: s for s in FUENTES}
+    items = [Item(e, por_id[sid]) for sid, evs in eventos.items() if sid in por_id for e in evs]
     items, fuera = preparar(items, hoy, horizonte)
     recs = unificar(items)
     recs = conciliar(recs, anteriores, hoy, resultados, {s.id: s for s in FUENTES})
@@ -347,12 +446,13 @@ def ejecutar(hoy: date | None = None, solo: list[str] | None = None, fetcher: Fe
     sin_mapear = sorted({e["estilo"] + " (" + e["fuente"] + ")" for r in recs for e in r["estilo_fuente"]
                          if categoria_de(e["estilo"]) is None})
     historial = estado.setdefault("historial_fuentes", {})
-    inf_fuentes = informe_fuentes(fuentes, resultados, recs, anteriores_ids, historial, hoy)
+    inf_fuentes = informe_fuentes(FUENTES, resultados, recs, anteriores_ids, historial, hoy)
     futuros = [r for r in recs if r["fecha"] >= hoy.isoformat()]
     ahora = datetime.now(timezone.utc).isoformat(timespec="seconds")
     informe = {
         "version": __version__,
         "generado": ahora,
+        "modo": ("reintento de " + ", ".join(sorted(s.id for s in fuentes))) if no_leidas else "completa",
         "hoy": hoy.isoformat(),
         "horizonte": horizonte.isoformat(),
         "duracion_seg": round(time.monotonic() - t0),
@@ -381,6 +481,11 @@ def ejecutar(hoy: date | None = None, solo: list[str] | None = None, fetcher: Fe
                              "conciertos": recs})
     escribir_csv(recs, DATA / "concerts.csv")
     _write("informe.json", informe)
+    _write(CACHE_FUENTES, cache_fuentes)
+    estado["fuentes_fallidas"] = sorted(sid for sid, r in resultados.items() if r.get("estado") in REINTENTABLES)
+    estado["resultados"] = {sid: {k: r.get(k) for k in ("estado", "funciono", "completa", "brutos", "paginas",
+                                                        "errores", "robots", "segundos")}
+                            for sid, r in resultados.items()}
     estado["ultima_ejecucion"] = ahora
     _write("estado.json", estado)
     return informe

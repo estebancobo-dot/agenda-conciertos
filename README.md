@@ -37,6 +37,7 @@ Agenda automática y gratuita de los conciertos de los próximos 120 días en Ma
 ### Cuándo se actualiza
 
 - **Conciertos**: una vez al día, a las 05:00 UTC. Se vuelven a leer todas las agendas, porque es la única forma de detectar cambios de hora o cancelaciones.
+- **Si una web falla** (bloqueo, caída), se reintenta a los 90 segundos y otra vez cada 2 horas. Mientras tanto se usan sus conciertos de la última lectura completa (hasta 14 días), avisando en la ficha: no se pierde nada de lo que aporta.
 - **Fichas de artista** (estilo, origen, foto): cada artista se consulta una sola vez y se guarda en `data/artistas.json`. En la ejecución diaria se buscan a la vez que se leen las agendas. Además, cada 2 horas se completan los pendientes durante un máximo de 50 minutos, sin tocar las agendas. Cuando ya no quedan pendientes, esa ejecución termina en segundos y no vuelve a publicar la web.
 
 ### Lanzar la actualización a mano

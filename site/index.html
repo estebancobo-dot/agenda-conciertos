@@ -550,10 +550,15 @@ function viewEstilos(){
       return `<a class="style${cnt[s]?" has":""}" href="https://duckduckgo.com/?q=${q}" target="_blank" rel="noopener">${esc(s)}${cnt[s]?` · ${cnt[s]}`:""}</a>`}).join("")}</div></section>`).join("");
   return `<p class="muted">Jerarquía de Discogs (género → estilos). En verde, los estilos de los artistas con conciertos próximos, según su ficha en Discogs o Wikipedia. AllMusic no permite el acceso automático, por eso la referencia es Discogs.</p>`+g;
 }
+function extraFuente(f){
+  return (f.reintento?`<div class="muted">${esc(f.reintento)}</div>`:"")+
+    (f.desde_cache?`<div class="s-warn">Se mantienen ${f.desde_cache} conciertos de su última lectura completa (${esc(f.cache_fecha)})</div>`:"")+
+    (f.no_leida?`<div class="muted">No se volvió a leer en el reintento: datos de la última ejecución completa</div>`:"");
+}
 function sClass(e){return e==="ok"?"s-ok":/error|bloq/.test(e)?"s-err":"s-warn"}
 function viewFuentes(){
   if(!INFORME) return `<p class="empty">Sin informe.</p>`;
-  const rows=INFORME.fuentes.map(f=>`<tr><td><a href="${esc(f.url)}" target="_blank" rel="noopener">${esc(f.nombre)}</a>${f.notas?`<div class="muted">${esc(f.notas)}</div>`:""}</td><td>${esc(f.tipo)}<div class="muted">prioridad ${f.prioridad}</div></td><td>${esc(f.fiabilidad)}</td><td class="${sClass(f.estado)}">${esc(f.estado)}${f.aviso?`<div class="s-warn">${esc(f.aviso)}</div>`:""}</td></tr>`).join("");
+  const rows=INFORME.fuentes.map(f=>`<tr><td><a href="${esc(f.url)}" target="_blank" rel="noopener">${esc(f.nombre)}</a>${f.notas?`<div class="muted">${esc(f.notas)}</div>`:""}</td><td>${esc(f.tipo)}<div class="muted">prioridad ${f.prioridad}</div></td><td>${esc(f.fiabilidad)}</td><td class="${sClass(f.estado)}">${esc(f.estado)}${f.aviso?`<div class="s-warn">${esc(f.aviso)}</div>`:""}${extraFuente(f)}</td></tr>`).join("");
   const sin=Object.entries(INFORME.sin_agenda_legible||{}).map(([k,v])=>`<li><b>${esc(k)}</b>: ${esc(v)}</li>`).join("");
   const no=Object.entries(INFORME.no_usar||{}).map(([k,v])=>`<li><b>${esc(k)}</b>: ${esc(v)}</li>`).join("");
   return `<p class="muted">Agendas: prioridad para resolver conflictos 1 web oficial de sala · 2 promotora o ticketera · 3 agregador · 4 blog o foro. Ficha del artista (estilo, origen y foto): Discogs y Wikipedia; nacionalidad como último recurso en MusicBrainz.</p>
@@ -564,9 +569,9 @@ function viewInforme(){
   if(!INFORME) return `<p class="empty">Sin informe.</p>`;
   const t=INFORME.totales, a=INFORME.artistas||{};
   const k=(n,l)=>`<div class="kpi"><b>${esc(n)}</b><span>${esc(l)}</span></div>`;
-  const rows=INFORME.fuentes.map(f=>`<tr><td>${esc(f.nombre)}</td><td class="${sClass(f.estado)}">${f.funciono?"sí":"no"}</td><td>${f.conciertos}</td><td>${f.nuevos}</td><td>${f.solo_en_esta}</td><td>${f.paginas}</td><td>${f.robots_bloquea?"<b>sí</b>":"no"}</td><td>${esc((f.errores||[]).join(" · ").slice(0,220))}${f.aviso?`<div class="s-warn">${esc(f.aviso)}</div>`:""}</td></tr>`).join("");
+  const rows=INFORME.fuentes.map(f=>`<tr><td>${esc(f.nombre)}</td><td class="${sClass(f.estado)}">${f.funciono?"sí":"no"}</td><td>${f.conciertos}</td><td>${f.nuevos}</td><td>${f.solo_en_esta}</td><td>${f.paginas}</td><td>${f.robots_bloquea?"<b>sí</b>":"no"}</td><td>${esc((f.errores||[]).join(" · ").slice(0,220))}${f.aviso?`<div class="s-warn">${esc(f.aviso)}</div>`:""}${extraFuente(f)}</td></tr>`).join("");
   const c=INFORME.correcciones||{};
-  return `<p>Última actualización: <b>${esc(new Date(INFORME.generado).toLocaleString("es-ES",{dateStyle:"full",timeStyle:"short"}))}</b> · ventana ${esc(INFORME.hoy)} → ${esc(INFORME.horizonte)} · versión ${esc(INFORME.version)}</p>
+  return `<p>Última actualización: <b>${esc(new Date(INFORME.generado).toLocaleString("es-ES",{dateStyle:"full",timeStyle:"short"}))}</b>${INFORME.modo&&INFORME.modo!=="completa"?` (${esc(INFORME.modo)})`:""} · ventana ${esc(INFORME.hoy)} → ${esc(INFORME.horizonte)} · versión ${esc(INFORME.version)}</p>
    <div class="kpis">${k(t.conciertos,"conciertos próximos")}${k(t.en_foco,"en foco")}${k(t.contrastados,"contrastados (2+ webs)")}${k(t.una_fuente,"de 1 web")}${k(t.conflictos,"con conflicto")}${k(t.posiblemente_cancelados,"posiblemente cancelados")}${k(t.nuevos_hoy,"nuevos hoy")}${k(`${t.fuentes_ok}/${t.fuentes_total}`,"fuentes que funcionaron")}</div>
    ${a.consultados!==undefined?`<h3>Fichas de artista</h3><div class="kpis">${k(a.discogs,"con ficha en Discogs")}${k(a.wikipedia,"con ficha en Wikipedia")}${a.wikidata!==undefined?k(a.wikidata,"con Wikidata"):""}${a.lastfm!==undefined?k(a.lastfm,"con etiquetas de Last.fm"):""}${k(a.sin_ficha,"sin ficha")}${k(a.pendientes,"pendientes (próximas ejecuciones)")}</div>`:""}
    <div class="scroll"><table><thead><tr><th>Fuente</th><th>Funcionó</th><th>Conciertos</th><th>Nuevos</th><th>Solo aquí</th><th>Páginas</th><th>robots.txt bloquea</th><th>Errores / avisos</th></tr></thead><tbody>${rows}</tbody></table></div>

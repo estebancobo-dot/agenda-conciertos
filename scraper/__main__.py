@@ -15,6 +15,8 @@ def main() -> None:
     ap.add_argument("--fichas", action="store_true",
                     help="solo completar fichas de artista pendientes (no lee las agendas)")
     ap.add_argument("--minutos", type=int, default=50, help="tope de tiempo para --fichas")
+    ap.add_argument("--reintentar", action="store_true",
+                    help="volver a leer solo las fuentes que fallaron en la última ejecución")
     a = ap.parse_args()
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(message)s")
     if a.fichas:
@@ -26,7 +28,10 @@ def main() -> None:
         return
     inf = ejecutar(hoy=date.fromisoformat(a.hoy) if a.hoy else None,
                    solo=a.solo.split(",") if a.solo else None,
-                   musicbrainz=not a.sin_musicbrainz, max_mb=a.max_musicbrainz)
+                   musicbrainz=not a.sin_musicbrainz, max_mb=a.max_musicbrainz, reintentar=a.reintentar)
+    if inf is None:
+        print("Reintento: nada que cambiar (ninguna fuente pendiente o ninguna ha respondido)")
+        return
     t = inf["totales"]
     print(f"Conciertos: {t['conciertos']} (en foco {t['en_foco']}, contrastados {t['contrastados']}, "
           f"1 fuente {t['una_fuente']}, conflictos {t['conflictos']}, posiblemente cancelados "

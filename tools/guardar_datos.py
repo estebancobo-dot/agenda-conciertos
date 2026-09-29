@@ -27,7 +27,7 @@ DATA = RAIZ / "data"
 sys.path.insert(0, str(RAIZ))
 
 CACHES = ("artistas.json", "musicbrainz_cache.json")
-PROPIOS = ("concerts.json", "concerts.csv", "informe.json", "estado.json")
+PROPIOS = ("concerts.json", "concerts.csv", "informe.json", "estado.json", "fuentes_cache.json")
 
 
 def git(*args: str, check: bool = True) -> subprocess.CompletedProcess:
@@ -80,7 +80,8 @@ def main() -> int:
     solo_fichas = "--fichas" in sys.argv
     git("config", "user.name", "github-actions[bot]")
     git("config", "user.email", "41898282+github-actions[bot]@users.noreply.github.com")
-    regenerados = {n for n in PROPIOS if git("diff", "--quiet", "HEAD", "--", f"data/{n}", check=False).returncode != 0}
+    # los que esta ejecución ha escrito (modificados o nuevos, como la caché de fuentes la primera vez)
+    regenerados = {n for n in PROPIOS if git("status", "--porcelain", "--", f"data/{n}").stdout.strip()}
     apartado = Path(tempfile.mkdtemp())
     for p in DATA.glob("*"):
         if p.is_file() and not p.name.endswith(".tmp"):
