@@ -1,0 +1,536 @@
+{
+ "_descripcion": "Diccionario de salas. 'alias' se comparan tras normalizar (minúsculas, sin tildes ni signos). Para añadir una sala copia un bloque y cambia nombre, municipio y alias. 'distintas' son pares que NUNCA se fusionan aunque se parezcan.",
+ "salas": [
+  {
+   "nombre": "Sala Wagon",
+   "municipio": "Madrid",
+   "alias": [
+    "lab wagon",
+    "sala lab",
+    "sala wagon",
+    "wagon",
+    "sala lab wagon",
+    "lab/wagon",
+    "sala lab/wagon",
+    "lab madrid",
+    "wagon madrid",
+    "sala lab & wagon"
+   ],
+   "web": "https://salawagon.com/"
+  },
+  {
+   "nombre": "Sala Mon Live",
+   "municipio": "Madrid",
+   "alias": [
+    "mon",
+    "mon live",
+    "sala mon",
+    "sala mon live",
+    "mon madrid",
+    "sala mon madrid",
+    "mon live madrid"
+   ],
+   "web": "https://www.monmadrid.es/"
+  },
+  {
+   "nombre": "Sala But",
+   "municipio": "Madrid",
+   "alias": [
+    "la paqui",
+    "sala but",
+    "but",
+    "but madrid",
+    "sala but madrid"
+   ],
+   "web": "https://www.salabut.es/"
+  },
+  {
+   "nombre": "Revi Live",
+   "municipio": "Madrid",
+   "alias": [
+    "revi live",
+    "revilive",
+    "sala revi live",
+    "sala revilive",
+    "revi.live",
+    "sala revi"
+   ],
+   "web": "https://revi.live/"
+  },
+  {
+   "nombre": "Revi Space",
+   "municipio": "Madrid",
+   "alias": [
+    "revi space",
+    "sala revi space",
+    "revispace"
+   ]
+  },
+  {
+   "nombre": "La Sala del Movistar Arena",
+   "municipio": "Madrid",
+   "alias": [
+    "la sala del movistar arena",
+    "sala del movistar arena",
+    "la sala movistar arena"
+   ]
+  },
+  {
+   "nombre": "Movistar Arena",
+   "municipio": "Madrid",
+   "alias": [
+    "movistar arena",
+    "wizink center",
+    "wizink",
+    "palacio de los deportes de madrid",
+    "palacio de deportes de la comunidad de madrid",
+    "palacio de los deportes de la comunidad de madrid",
+    "movistar arena madrid"
+   ],
+   "web": "https://www.movistararena.es/"
+  },
+  {
+   "nombre": "Tempo Audiophile Club",
+   "municipio": "Madrid",
+   "alias": [
+    "tempo club",
+    "tempo",
+    "tempo audiophile club",
+    "sala tempo",
+    "tempo audiophile",
+    "sala tempo audiophile club"
+   ],
+   "web": "https://tempoclub.es/"
+  },
+  {
+   "nombre": "Sala Nazca",
+   "municipio": "Madrid",
+   "alias": [
+    "nazca",
+    "sala nazca",
+    "nazca live",
+    "sala nazca live"
+   ],
+   "web": "https://www.salanazcaconciertos.com/"
+  },
+  {
+   "nombre": "Sala Copérnico",
+   "municipio": "Madrid",
+   "alias": [
+    "copernico",
+    "sala copernico",
+    "copernico the club",
+    "conciertos copernico"
+   ],
+   "web": "https://salacopernico.es/"
+  },
+  {
+   "nombre": "Sala Changó",
+   "municipio": "Madrid",
+   "alias": [
+    "chango",
+    "sala chango",
+    "chango club"
+   ]
+  },
+  {
+   "nombre": "Sala El Sol",
+   "municipio": "Madrid",
+   "alias": [
+    "el sol",
+    "sala el sol",
+    "sala sol"
+   ],
+   "web": "https://salaelsol.com/"
+  },
+  {
+   "nombre": "Sala Villanos",
+   "municipio": "Madrid",
+   "alias": [
+    "villanos",
+    "sala villanos"
+   ],
+   "web": "https://salavillanos.es/"
+  },
+  {
+   "nombre": "Rockville",
+   "municipio": "Madrid",
+   "alias": [
+    "rockville",
+    "sala rockville",
+    "rock ville"
+   ],
+   "web": "https://rockville.es/"
+  },
+  {
+   "nombre": "Fun House",
+   "municipio": "Madrid",
+   "alias": [
+    "fun house",
+    "funhouse",
+    "fun house music bar",
+    "sala fun house"
+   ],
+   "web": "https://www.funhousemusicbar.com/"
+  },
+  {
+   "nombre": "Wurlitzer Ballroom",
+   "municipio": "Madrid",
+   "alias": [
+    "wurlitzer",
+    "wurlitzer ballroom",
+    "sala wurlitzer",
+    "wurlitzer ballroom madrid"
+   ],
+   "web": "https://wurlitzerballroom.com/"
+  },
+  {
+   "nombre": "Honky Tonk",
+   "municipio": "Madrid",
+   "alias": [
+    "honky tonk",
+    "sala honky tonk",
+    "club honky",
+    "honky tonk madrid"
+   ],
+   "web": "https://clubhonky.com/"
+  },
+  {
+   "nombre": "Silikona",
+   "municipio": "Madrid",
+   "alias": [
+    "silikona",
+    "sala silikona"
+   ],
+   "web": "https://silikona.es/"
+  },
+  {
+   "nombre": "Sala Clamores",
+   "municipio": "Madrid",
+   "alias": [
+    "clamores",
+    "sala clamores",
+    "clamores live"
+   ],
+   "web": "https://www.salaclamores.es/"
+  },
+  {
+   "nombre": "Café Berlín",
+   "municipio": "Madrid",
+   "alias": [
+    "cafe berlin",
+    "berlin cafe",
+    "cafe berlin old location",
+    "cafe berlin madrid",
+    "sala cafe berlin"
+   ]
+  },
+  {
+   "nombre": "Galileo Galilei",
+   "municipio": "Madrid",
+   "alias": [
+    "galileo galilei",
+    "sala galileo galilei",
+    "galileo"
+   ]
+  },
+  {
+   "nombre": "Sala Siroco",
+   "municipio": "Madrid",
+   "alias": [
+    "siroco",
+    "sala siroco"
+   ],
+   "web": "https://siroco.es/"
+  },
+  {
+   "nombre": "Moby Dick Club",
+   "municipio": "Madrid",
+   "alias": [
+    "moby dick",
+    "moby dick club",
+    "sala moby dick"
+   ],
+   "web": "https://www.mobydickclub.com/"
+  },
+  {
+   "nombre": "Independance Club",
+   "municipio": "Madrid",
+   "alias": [
+    "independance",
+    "independance club",
+    "sala independance",
+    "independence club"
+   ],
+   "web": "https://independanceclub.com/"
+  },
+  {
+   "nombre": "Sala B",
+   "municipio": "Madrid",
+   "alias": [
+    "sala b"
+   ]
+  },
+  {
+   "nombre": "Cadavra",
+   "municipio": "Madrid",
+   "alias": [
+    "cadavra",
+    "sala cadavra"
+   ]
+  },
+  {
+   "nombre": "Maravillas Club",
+   "municipio": "Madrid",
+   "alias": [
+    "maravillas",
+    "maravillas club",
+    "sala maravillas"
+   ]
+  },
+  {
+   "nombre": "Sala La Trinchera",
+   "municipio": "Madrid",
+   "alias": [
+    "la trinchera",
+    "sala la trinchera",
+    "trinchera"
+   ]
+  },
+  {
+   "nombre": "Sala The Godfather",
+   "municipio": "Madrid",
+   "alias": [
+    "the godfather",
+    "godfather",
+    "sala godfather",
+    "sala the godfather"
+   ]
+  },
+  {
+   "nombre": "Lula Club",
+   "municipio": "Madrid",
+   "alias": [
+    "lula",
+    "lula club",
+    "sala lula"
+   ]
+  },
+  {
+   "nombre": "Gruta 77",
+   "municipio": "Madrid",
+   "alias": [
+    "gruta 77",
+    "gruta77",
+    "sala gruta 77",
+    "la gruta 77"
+   ],
+   "web": "https://gruta77.com/"
+  },
+  {
+   "nombre": "La Riviera",
+   "municipio": "Madrid",
+   "alias": [
+    "la riviera",
+    "riviera",
+    "sala la riviera",
+    "sala riviera"
+   ],
+   "web": "https://salariviera.com/"
+  },
+  {
+   "nombre": "Big Mama Ballroom",
+   "municipio": "Madrid",
+   "alias": [
+    "big mama",
+    "big mama ballroom",
+    "sala big mama"
+   ]
+  },
+  {
+   "nombre": "La Coquette",
+   "municipio": "Madrid",
+   "alias": [
+    "la coquette",
+    "la coquette blues bar",
+    "coquette"
+   ]
+  },
+  {
+   "nombre": "Palacio Vistalegre",
+   "municipio": "Madrid",
+   "alias": [
+    "palacio vistalegre",
+    "vistalegre",
+    "palacio de vistalegre",
+    "vistalegre arena"
+   ]
+  },
+  {
+   "nombre": "Teatro Eslava",
+   "municipio": "Madrid",
+   "alias": [
+    "teatro eslava",
+    "eslava"
+   ]
+  },
+  {
+   "nombre": "Sala Cool",
+   "municipio": "Madrid",
+   "alias": [
+    "sala cool",
+    "cool"
+   ]
+  },
+  {
+   "nombre": "Live Las Ventas",
+   "municipio": "Madrid",
+   "alias": [
+    "live las ventas",
+    "las ventas"
+   ]
+  },
+  {
+   "nombre": "Iberdrola Music",
+   "municipio": "Madrid",
+   "alias": [
+    "iberdrola music",
+    "recinto iberdrola music",
+    "estadio shakira"
+   ]
+  },
+  {
+   "nombre": "Riyadh Air Metropolitano",
+   "municipio": "Madrid",
+   "alias": [
+    "riyadh air metropolitano",
+    "estadio riyadh air metropolitano",
+    "metropolitano",
+    "civitas metropolitano",
+    "estadio metropolitano"
+   ]
+  },
+  {
+   "nombre": "La Nueva Cubierta",
+   "municipio": "Leganés",
+   "alias": [
+    "la nueva cubierta",
+    "la cubierta",
+    "la cubierta de leganes",
+    "la nueva cubierta de leganes",
+    "nueva cubierta"
+   ],
+   "web": "https://lanuevacubierta.com/"
+  },
+  {
+   "nombre": "Sala Venom",
+   "municipio": "Coslada",
+   "alias": [
+    "venom",
+    "sala venom",
+    "sala venom coslada"
+   ]
+  },
+  {
+   "nombre": "The RockLab",
+   "municipio": "Coslada",
+   "alias": [
+    "the rocklab",
+    "rocklab",
+    "the rock lab",
+    "sala rocklab"
+   ]
+  },
+  {
+   "nombre": "Auditorio Miguel Ríos",
+   "municipio": "Rivas-Vaciamadrid",
+   "alias": [
+    "auditorio miguel rios",
+    "auditorio municipal miguel rios"
+   ]
+  },
+  {
+   "nombre": "Sala Groove",
+   "municipio": "Pinto",
+   "alias": [
+    "groove",
+    "sala groove",
+    "groove pinto"
+   ]
+  },
+  {
+   "nombre": "New Restón",
+   "municipio": "Valdemoro",
+   "alias": [
+    "new reston",
+    "sala new reston",
+    "reston"
+   ]
+  },
+  {
+   "nombre": "Dime que me Quieres",
+   "municipio": "Madrid",
+   "alias": [
+    "dime que me quieres",
+    "sala dime que me quieres"
+   ]
+  },
+  {
+   "nombre": "Teatro Lope de Vega",
+   "municipio": "Madrid",
+   "alias": [
+    "teatro lope de vega",
+    "lope de vega"
+   ]
+  },
+  {
+   "nombre": "Círculo de Bellas Artes",
+   "municipio": "Madrid",
+   "alias": [
+    "circulo de bellas artes"
+   ]
+  },
+  {
+   "nombre": "Sala Vesta",
+   "municipio": "Madrid",
+   "alias": [
+    "sala vesta",
+    "vesta"
+   ]
+  },
+  {
+   "nombre": "Café La Palma",
+   "municipio": "Madrid",
+   "alias": [
+    "cafe la palma",
+    "la palma"
+   ]
+  },
+  {
+   "nombre": "Intruso Bar",
+   "municipio": "Madrid",
+   "alias": [
+    "intruso",
+    "intruso bar"
+   ]
+  }
+ ],
+ "distintas": [
+  [
+   "Revi Live",
+   "Revi Space"
+  ],
+  [
+   "La Sala del Movistar Arena",
+   "Movistar Arena"
+  ],
+  [
+   "Sala El Sol",
+   "Sala Sol Club"
+  ],
+  [
+   "Sala B",
+   "Sala But"
+  ]
+ ]
+}

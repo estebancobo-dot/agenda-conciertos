@@ -1,0 +1,14 @@
+{
+ "_descripcion": "Correcciones manuales ya verificadas. Se aplican SIEMPRE después del rastreo. Tipos: 'descarte' (se elimina el concierto), 'conflicto' (se marca conflicto con la nota; si hay varios registros que coinciden se fusionan en uno solo guardando todas las versiones) y 'nota' (solo añade una nota informativa). Campos para localizar el concierto: 'fecha' (obligatoria, AAAA-MM-DD) y opcionalmente 'artistas' (lista: basta con que coincida uno, comparando también invitados), 'salas' (lista: basta con que coincida una), 'hora' y 'municipio'. 'verificado' es la fecha en que se comprobó a mano.",
+ "correcciones": [
+  {"tipo": "descarte", "fecha": "2026-10-17", "artistas": ["Threats", "It Came From The Void", "Kenpark"], "salas": ["Silikona"], "nota": "Fue el 17/01/2026, no en octubre.", "verificado": "2026-09-29"},
+  {"tipo": "descarte", "fecha": "2026-10-17", "artistas": ["Loquillo"], "nota": "Toca en el Palacio de los Deportes de Granada, no en Madrid.", "verificado": "2026-09-29"},
+  {"tipo": "descarte", "fecha": "2026-10-17", "artistas": ["Mägo de Oz"], "municipio": "Madrid", "nota": "No confirmado; su gira de octubre es Las Palmas, Nerja, Leganés el 10/10 y Londres.", "verificado": "2026-09-29"},
+  {"tipo": "conflicto", "fecha": "2026-10-17", "salas": ["Gruta 77"], "hora": "21:30", "nota": "Cartel en conflicto: la web de la sala da La Pestilencia; conciertos.club da Larsen + Klobber.", "verificado": "2026-09-29"},
+  {"tipo": "conflicto", "fecha": "2026-10-17", "artistas": ["Hällas"], "salas": ["Sala Nazca"], "nota": "Hora en conflicto: 20:00 según La Ganzúa, 21:00 según conciertos.club.", "verificado": "2026-09-29"},
+  {"tipo": "conflicto", "fecha": "2026-10-17", "artistas": ["Amann & the Wayward Sons"], "salas": ["Tempo Audiophile Club"], "nota": "Hora en conflicto: 22:00 según conciertos.club, 23:30 según Bandsintown.", "verificado": "2026-09-29"},
+  {"tipo": "conflicto", "fecha": "2026-10-18", "artistas": ["Gloryhammer"], "nota": "Sala en conflicto: Sala But según Hellpress y Metal Legion; Sala Mon según Songkick.", "verificado": "2026-09-29"},
+  {"tipo": "conflicto", "fecha": "2026-10-29", "artistas": ["Tankard"], "nota": "Sala en conflicto: Nazca según TodoHeavyMetal; Independance Club según Metal Legion.", "verificado": "2026-09-29"},
+  {"tipo": "nota", "fecha": "2026-10-20", "artistas": ["Laura Cox"], "salas": ["Sala Villanos"], "nota": "Mismo día que Deep Purple en el Movistar Arena (no es conflicto, solo nota informativa).", "verificado": "2026-09-29"}
+ ]
+}

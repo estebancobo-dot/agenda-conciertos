@@ -1,0 +1,494 @@
+{
+ "_descripcion": "Traduce el estilo que da cada fuente a una categoría. 'exacto' se compara tras normalizar; si no hay coincidencia exacta se aplican las 'palabras_clave' en orden (la primera que aparezca como palabra gana). Si la fuente no da estilo: 'sin clasificar'. 'titulo_fuera_de_foco': palabras en el título del evento que lo marcan fuera de foco (p. ej. Candlelight, musicales). Si un estilo no encaja en nada se queda 'sin clasificar' y aparece en el informe para añadirlo aquí.",
+ "categorias": [
+  "rock y metal",
+  "pop e indie",
+  "americana/country/folk",
+  "blues",
+  "punk y garage",
+  "cantautor",
+  "tributos y versiones",
+  "fuera de foco",
+  "sin clasificar"
+ ],
+ "en_foco": [
+  "rock y metal",
+  "pop e indie",
+  "americana/country/folk",
+  "blues",
+  "punk y garage",
+  "cantautor",
+  "tributos y versiones",
+  "sin clasificar"
+ ],
+ "exacto": {
+  "Americana/Folk Rock/Country": "americana/country/folk",
+  "Blues/RNB": "blues",
+  "Folk": "americana/country/folk",
+  "Pop-rock/Indie": "pop e indie",
+  "Pop": "pop e indie",
+  "Post-Punk": "punk y garage",
+  "Rock/Rock Alternativo": "rock y metal",
+  "Rock and Roll/Garage": "punk y garage",
+  "Rock & Roll/Garage": "punk y garage",
+  "Punk/Hardcore": "punk y garage",
+  "Metal/Rock duro": "rock y metal",
+  "Cantautores": "cantautor",
+  "Versiones/Tributos": "tributos y versiones",
+  "Jazz/Swing": "fuera de foco",
+  "Soul/Funk": "fuera de foco",
+  "Mestizaje/Fusión": "fuera de foco",
+  "World Music/Música Étnica": "fuera de foco",
+  "Urbana/Reggaeton/Trap": "fuera de foco",
+  "Musicales/Teatro musical": "fuera de foco",
+  "Electrónica": "fuera de foco",
+  "Electrónica/Dance": "fuera de foco",
+  "Flamenco": "fuera de foco",
+  "Clásica": "fuera de foco",
+  "Música Clásica": "fuera de foco",
+  "Latina": "fuera de foco",
+  "Latino": "fuera de foco",
+  "Hip Hop/Rap": "fuera de foco",
+  "Reggae/Ska": "fuera de foco",
+  "Copla": "fuera de foco",
+  "Rumba": "fuera de foco",
+  "Infantil": "fuera de foco",
+  "Varios": "sin clasificar",
+  "folk_blues": "americana/country/folk",
+  "indie_alternative": "pop e indie",
+  "funk_soul": "fuera de foco",
+  "hip_hop": "fuera de foco",
+  "r_and_b": "fuera de foco",
+  "classical": "fuera de foco",
+  "country": "americana/country/folk",
+  "world": "fuera de foco",
+  "reggae": "fuera de foco",
+  "electronic": "fuera de foco",
+  "latin": "fuera de foco",
+  "jazz": "fuera de foco",
+  "metal": "rock y metal",
+  "punk": "punk y garage",
+  "rock": "rock y metal",
+  "pop": "pop e indie",
+  "blues": "blues",
+  "folk": "americana/country/folk"
+ },
+ "palabras_clave": [
+  [
+   "candlelight",
+   "fuera de foco"
+  ],
+  [
+   "tributo",
+   "tributos y versiones"
+  ],
+  [
+   "tribute",
+   "tributos y versiones"
+  ],
+  [
+   "versiones",
+   "tributos y versiones"
+  ],
+  [
+   "covers",
+   "tributos y versiones"
+  ],
+  [
+   "americana",
+   "americana/country/folk"
+  ],
+  [
+   "country",
+   "americana/country/folk"
+  ],
+  [
+   "bluegrass",
+   "americana/country/folk"
+  ],
+  [
+   "folk",
+   "americana/country/folk"
+  ],
+  [
+   "roots",
+   "americana/country/folk"
+  ],
+  [
+   "honky tonk",
+   "americana/country/folk"
+  ],
+  [
+   "blues",
+   "blues"
+  ],
+  [
+   "rhythm and blues",
+   "blues"
+  ],
+  [
+   "rnb",
+   "blues"
+  ],
+  [
+   "post punk",
+   "punk y garage"
+  ],
+  [
+   "punk",
+   "punk y garage"
+  ],
+  [
+   "garage",
+   "punk y garage"
+  ],
+  [
+   "hardcore",
+   "punk y garage"
+  ],
+  [
+   "rockabilly",
+   "punk y garage"
+  ],
+  [
+   "psychobilly",
+   "punk y garage"
+  ],
+  [
+   "rock and roll",
+   "punk y garage"
+  ],
+  [
+   "rock n roll",
+   "punk y garage"
+  ],
+  [
+   "rock n",
+   "punk y garage"
+  ],
+  [
+   "surf",
+   "punk y garage"
+  ],
+  [
+   "oi",
+   "punk y garage"
+  ],
+  [
+   "ska",
+   "punk y garage"
+  ],
+  [
+   "metal",
+   "rock y metal"
+  ],
+  [
+   "heavy",
+   "rock y metal"
+  ],
+  [
+   "hard rock",
+   "rock y metal"
+  ],
+  [
+   "rock duro",
+   "rock y metal"
+  ],
+  [
+   "aor",
+   "rock y metal"
+  ],
+  [
+   "rock melodico",
+   "rock y metal"
+  ],
+  [
+   "melodic rock",
+   "rock y metal"
+  ],
+  [
+   "prog",
+   "rock y metal"
+  ],
+  [
+   "progresivo",
+   "rock y metal"
+  ],
+  [
+   "stoner",
+   "rock y metal"
+  ],
+  [
+   "desert rock",
+   "rock y metal"
+  ],
+  [
+   "psych",
+   "rock y metal"
+  ],
+  [
+   "psicodel",
+   "rock y metal"
+  ],
+  [
+   "grunge",
+   "rock y metal"
+  ],
+  [
+   "doom",
+   "rock y metal"
+  ],
+  [
+   "thrash",
+   "rock y metal"
+  ],
+  [
+   "sludge",
+   "rock y metal"
+  ],
+  [
+   "krautrock",
+   "rock y metal"
+  ],
+  [
+   "glam",
+   "rock y metal"
+  ],
+  [
+   "southern rock",
+   "rock y metal"
+  ],
+  [
+   "post rock",
+   "rock y metal"
+  ],
+  [
+   "hard n heavy",
+   "rock y metal"
+  ],
+  [
+   "cantautor",
+   "cantautor"
+  ],
+  [
+   "singer songwriter",
+   "cantautor"
+  ],
+  [
+   "indie",
+   "pop e indie"
+  ],
+  [
+   "pop rock",
+   "pop e indie"
+  ],
+  [
+   "power pop",
+   "pop e indie"
+  ],
+  [
+   "shoegaze",
+   "pop e indie"
+  ],
+  [
+   "dream pop",
+   "pop e indie"
+  ],
+  [
+   "new wave",
+   "pop e indie"
+  ],
+  [
+   "rock",
+   "rock y metal"
+  ],
+  [
+   "pop",
+   "pop e indie"
+  ],
+  [
+   "flamenco",
+   "fuera de foco"
+  ],
+  [
+   "jazz",
+   "fuera de foco"
+  ],
+  [
+   "swing",
+   "fuera de foco"
+  ],
+  [
+   "electronic",
+   "fuera de foco"
+  ],
+  [
+   "electronica",
+   "fuera de foco"
+  ],
+  [
+   "techno",
+   "fuera de foco"
+  ],
+  [
+   "house",
+   "fuera de foco"
+  ],
+  [
+   "dj",
+   "fuera de foco"
+  ],
+  [
+   "clubbing",
+   "fuera de foco"
+  ],
+  [
+   "club",
+   "fuera de foco"
+  ],
+  [
+   "trap",
+   "fuera de foco"
+  ],
+  [
+   "reggaeton",
+   "fuera de foco"
+  ],
+  [
+   "urban",
+   "fuera de foco"
+  ],
+  [
+   "urbana",
+   "fuera de foco"
+  ],
+  [
+   "hip hop",
+   "fuera de foco"
+  ],
+  [
+   "rap",
+   "fuera de foco"
+  ],
+  [
+   "clasica",
+   "fuera de foco"
+  ],
+  [
+   "classical",
+   "fuera de foco"
+  ],
+  [
+   "musical",
+   "fuera de foco"
+  ],
+  [
+   "teatro",
+   "fuera de foco"
+  ],
+  [
+   "world",
+   "fuera de foco"
+  ],
+  [
+   "latin",
+   "fuera de foco"
+  ],
+  [
+   "latina",
+   "fuera de foco"
+  ],
+  [
+   "salsa",
+   "fuera de foco"
+  ],
+  [
+   "cumbia",
+   "fuera de foco"
+  ],
+  [
+   "bachata",
+   "fuera de foco"
+  ],
+  [
+   "soul",
+   "fuera de foco"
+  ],
+  [
+   "funk",
+   "fuera de foco"
+  ],
+  [
+   "reggae",
+   "fuera de foco"
+  ],
+  [
+   "afro",
+   "fuera de foco"
+  ],
+  [
+   "copla",
+   "fuera de foco"
+  ],
+  [
+   "rumba",
+   "fuera de foco"
+  ],
+  [
+   "opera",
+   "fuera de foco"
+  ],
+  [
+   "zarzuela",
+   "fuera de foco"
+  ],
+  [
+   "infantil",
+   "fuera de foco"
+  ],
+  [
+   "comedia",
+   "fuera de foco"
+  ],
+  [
+   "monologo",
+   "fuera de foco"
+  ],
+  [
+   "bandas sonoras",
+   "fuera de foco"
+  ],
+  [
+   "gospel",
+   "fuera de foco"
+  ],
+  [
+   "k pop",
+   "fuera de foco"
+  ],
+  [
+   "mestizaje",
+   "fuera de foco"
+  ],
+  [
+   "fusion",
+   "fuera de foco"
+  ],
+  [
+   "jam",
+   "fuera de foco"
+  ]
+ ],
+ "titulo_fuera_de_foco": [
+  "candlelight",
+  "el musical",
+  "musical",
+  "monologo",
+  "stand up",
+  "espectaculo flamenco",
+  "dj set",
+  "sesion dj",
+  "tardeo",
+  "karaoke"
+ ]
+}

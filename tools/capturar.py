@@ -22,24 +22,28 @@ def main(lista: str, salida: str) -> None:
     for line in Path(lista).read_text().splitlines():
         line = line.strip()
         if line and not line.startswith("#"):
-            name, url = line.split(None, 1)
-            items.append((name, url))
+            parts = line.split(None, 2)
+            items.append((parts[0], parts[1], parts[2] if len(parts) > 2 else None))
     by_host = defaultdict(list)
-    for name, url in items:
-        by_host[urlsplit(url).netloc].append((name, url))
+    for name, url, post in items:
+        by_host[urlsplit(url).netloc].append((name, url, post))
     index = {}
 
     def run(group):
-        for name, url in group:
+        for name, url, post in group:
             rec = {"url": url}
             try:
-                txt = f.get(url, check_robots=not url.endswith('robots.txt'))
+                if post:
+                    txt = f.get(url, method="POST", data=post, headers={"Content-Type": "application/json"})
+                else:
+                    txt = f.get(url, check_robots=not url.endswith('robots.txt'))
                 (out / f"{name}.html").write_text(txt, encoding="utf-8")
                 rec.update(ok=True, bytes=len(txt))
             except RobotsBlocked:
                 rec.update(ok=False, robots_blocked=True)
             except Exception as e:  # noqa: BLE001
                 rec.update(ok=False, error=f"{type(e).__name__}: {e}"[:300])
+            rec["robots"] = f._host(url).robots_status
             index[name] = rec
             print(name, rec, flush=True)
 

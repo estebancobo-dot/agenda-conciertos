@@ -26,6 +26,8 @@ class HostState:
     last: float = 0.0
     robots: urllib.robotparser.RobotFileParser | None = None
     robots_checked: bool = False
+    robots_status: str = ""
+    delay: float = 0.0
 
 
 class Fetcher:
@@ -42,6 +44,7 @@ class Fetcher:
         self._hosts: dict[str, HostState] = {}
         self._hosts_lock = threading.Lock()
         self._cache: dict[str, str] = {}
+        self.requests_count = 0
 
     def _host(self, url: str) -> HostState:
         host = urlsplit(url).netloc.lower()
@@ -49,12 +52,19 @@ class Fetcher:
             return self._hosts.setdefault(host, HostState())
 
     def _wait(self, st: HostState) -> None:
+        interval = max(self.min_interval, st.delay)
         delta = time.monotonic() - st.last
-        if delta < self.min_interval:
-            time.sleep(self.min_interval - delta)
+        if delta < interval:
+            time.sleep(interval - delta)
         st.last = time.monotonic()
 
+    def robots_status(self, url: str) -> str:
+        """Estado del robots.txt de la web: 'ok', 'sin_robots' (4xx) o 'inaccesible' (5xx / error de red)."""
+        self.robots_allows(url)
+        return self._host(url).robots_status
+
     def robots_allows(self, url: str) -> bool:
+        """Aplica robots.txt según RFC 9309: 4xx = sin restricciones; 5xx o error de red = no rastrear."""
         st = self._host(url)
         with st.lock:
             if not st.robots_checked:
@@ -64,34 +74,42 @@ class Fetcher:
                 try:
                     self._wait(st)
                     r = self.session.get(robots_url, timeout=self.timeout)
-                    if r.status_code in (401, 403):
-                        rp.disallow_all = True
-                    elif r.status_code >= 400:
+                    if 400 <= r.status_code < 500:
                         rp.allow_all = True
+                        st.robots_status = f"sin_robots ({r.status_code})"
+                    elif r.status_code >= 500:
+                        rp.disallow_all = True
+                        st.robots_status = f"inaccesible ({r.status_code})"
                     else:
                         rp.parse(r.text.splitlines())
-                except requests.RequestException:
-                    # Sin robots.txt accesible: se asume permitido (norma habitual de los rastreadores)
-                    rp.allow_all = True
+                        st.robots_status = "ok"
+                        delay = rp.crawl_delay(self.user_agent)
+                        if delay:
+                            st.delay = max(self.min_interval, float(delay))
+                except requests.RequestException as e:
+                    rp.disallow_all = True
+                    st.robots_status = f"inaccesible ({type(e).__name__})"
                 st.robots = rp
                 st.robots_checked = True
             return st.robots.can_fetch(self.user_agent, url)
 
-    def get(self, url: str, *, check_robots: bool = True, use_cache: bool = True, **kw) -> str:
-        if use_cache and url in self._cache:
-            return self._cache[url]
+    def get(self, url: str, *, check_robots: bool = True, use_cache: bool = True, method: str = "GET", **kw) -> str:
+        key = url + repr(sorted(kw.items())) if kw else url
+        if use_cache and key in self._cache:
+            return self._cache[key]
         if check_robots and not self.robots_allows(url):
             raise RobotsBlocked(url)
         st = self._host(url)
         with st.lock:
             self._wait(st)
-            r = self.session.get(url, timeout=self.timeout, **kw)
+            self.requests_count += 1
+            r = self.session.request(method, url, timeout=self.timeout, **kw)
         r.raise_for_status()
         if not r.encoding or r.encoding.lower() == "iso-8859-1":
             r.encoding = r.apparent_encoding or "utf-8"
         text = r.text
         if use_cache:
-            self._cache[url] = text
+            self._cache[key] = text
         return text
 
     def get_json(self, url: str, **kw):
