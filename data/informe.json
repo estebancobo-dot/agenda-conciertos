@@ -1,22 +1,23 @@
 {
- "version": "2.6.1",
- "generado": "2026-09-29T19:28:35+00:00",
+ "version": "2.7.0",
+ "generado": "2026-09-29T20:48:59+00:00",
+ "modo": "completa",
  "hoy": "2026-09-29",
  "horizonte": "2027-01-27",
- "duracion_seg": 2448,
+ "duracion_seg": 2349,
  "totales": {
-  "conciertos": 2751,
-  "en_foco": 1706,
-  "contrastados": 661,
-  "una_fuente": 1973,
-  "conflictos": 115,
+  "conciertos": 2659,
+  "en_foco": 1712,
+  "contrastados": 643,
+  "una_fuente": 1891,
+  "conflictos": 123,
   "posiblemente_cancelados": 2,
-  "nuevos_hoy": 16,
-  "fuentes_ok": 51,
+  "nuevos_hoy": 22,
+  "fuentes_ok": 63,
   "fuentes_total": 73,
-  "peticiones_http": 314,
-  "fuera_de_ventana": 876,
-  "fuera_de_ambito": 785,
+  "peticiones_http": 338,
+  "fuera_de_ventana": 1225,
+  "fuera_de_ambito": 1159,
   "ejemplos_fuera_de_ambito": [
    "2026-10-03 Hombres G @ Palau Sant Jordi (Barcelona) [Blog de Ticketmaster (agenda rock)]",
    "2026-11-14 Hombres G @ Roig Arena (Valencia) [Blog de Ticketmaster (agenda rock)]",
@@ -35,14 +36,14 @@
    "2026-11-12 Frazey Ford @ La Nau (Barcelona) [Blog de Ticketmaster (agenda rock)]",
    "2026-11-21 Clan of Xymox @ Sala Jerusalem (Valencia) [Blog de Ticketmaster (agenda rock)]",
    "2026-12-05 The Sheepdogs en su Out All Night Tour @ La 2 de Apolo (Barcelona) [Blog de Ticketmaster (agenda rock)]",
-   "2026-09-29 THE RIVEN @ Louie Louie Live Estepona (Estepona) [Hellpress (agenda)]",
-   "2026-09-30 THE RIVEN @ La Guarida Del Ángel (Jerez de la Frontera) [Hellpress (agenda)]",
-   "2026-10-01 THE RIVEN @ Sala Even (Sevilla) [Hellpress (agenda)]",
-   "2026-10-02 THE RIVEN @ Sala Spectrum (Murcia) [Hellpress (agenda)]",
-   "2026-10-03 THE RIVEN @ Sala Creedence (Zaragoza) [Hellpress (agenda)]",
-   "2026-10-04 THE RIVEN @ Razzmatazz 3 (Barcelona) [Hellpress (agenda)]",
-   "2026-10-01 EVANESCENCE @ Olimpic Arena (Badalona, Barcelona) [Hellpress (agenda)]",
-   "2026-10-01 HITTEN @ Garaje Beat Club (Murcia) [Hellpress (agenda)]"
+   "2026-11-27 ACCEPT @ Auditorio Roig Arena (Valencia) [TodoHeavyMetal]",
+   "2026-11-13 AMON AMARTH @ Sant Jordi Club (Barcelona) [TodoHeavyMetal]",
+   "2026-10-31 AZRAEL @ Sala El Tren (Granada) [TodoHeavyMetal]",
+   "2026-11-11 BEAST IN BLACK @ Sala Razzmatazz 1 (Barcelona) [TodoHeavyMetal]",
+   "2026-11-13 BEAST IN BLACK @ Sala Santana 27 (Bilbao) [TodoHeavyMetal]",
+   "2027-01-16 BLOODHUNTER @ Sala Z (Zaragoza) [TodoHeavyMetal]",
+   "2026-12-19 EASY RIDER @ Sala Bóveda (Barcelona +HAPAX) [TodoHeavyMetal]",
+   "2026-11-19 FLOTSAM AND JETSAM @ RCA Club (Lisboa) [TodoHeavyMetal]"
   ]
  },
  "fuentes": [
@@ -59,15 +60,19 @@
    "funciono": true,
    "estado": "ok",
    "conciertos": 1461,
-   "nuevos": 5,
-   "solo_en_esta": 884,
+   "nuevos": 10,
+   "solo_en_esta": 893,
    "eventos_brutos": 1468,
    "paginas": 18,
    "errores": [],
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 41.4
+   "segundos": 50.2,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
   },
   {
    "id": "cc_portada",
@@ -82,15 +87,19 @@
    "funciono": true,
    "estado": "ok",
    "conciertos": 549,
-   "nuevos": 4,
-   "solo_en_esta": 240,
+   "nuevos": 7,
+   "solo_en_esta": 242,
    "eventos_brutos": 550,
    "paginas": 1,
    "errores": [],
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 5.8
+   "segundos": 8.1,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
   },
   {
    "id": "cc_estilos",
@@ -105,15 +114,19 @@
    "funciono": true,
    "estado": "ok",
    "conciertos": 666,
-   "nuevos": 2,
-   "solo_en_esta": 352,
+   "nuevos": 4,
+   "solo_en_esta": 342,
    "eventos_brutos": 771,
    "paginas": 12,
    "errores": [],
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 33.7
+   "segundos": 42.0,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
   },
   {
    "id": "laganzua",
@@ -128,15 +141,19 @@
    "funciono": true,
    "estado": "ok",
    "conciertos": 214,
-   "nuevos": 0,
-   "solo_en_esta": 26,
+   "nuevos": 1,
+   "solo_en_esta": 27,
    "eventos_brutos": 221,
    "paginas": 18,
    "errores": [],
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 25.0
+   "segundos": 27.6,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
   },
   {
    "id": "cpm",
@@ -159,7 +176,11 @@
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 9.3
+   "segundos": 11.2,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
   },
   {
    "id": "ticketle",
@@ -184,7 +205,11 @@
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 1.1
+   "segundos": 1.7,
+   "reintento": "falló también en el 2.º intento",
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
   },
   {
    "id": "madridenvivo",
@@ -198,16 +223,20 @@
    "notas": "",
    "funciono": true,
    "estado": "ok",
-   "conciertos": 1060,
-   "nuevos": 4,
-   "solo_en_esta": 749,
-   "eventos_brutos": 1107,
-   "paginas": 121,
+   "conciertos": 955,
+   "nuevos": 7,
+   "solo_en_esta": 650,
+   "eventos_brutos": 974,
+   "paginas": 103,
    "errores": [],
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 2385.9
+   "segundos": 2144.9,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
   },
   {
    "id": "songkick",
@@ -222,15 +251,19 @@
    "funciono": true,
    "estado": "ok",
    "conciertos": 571,
-   "nuevos": 1,
-   "solo_en_esta": 176,
+   "nuevos": 3,
+   "solo_en_esta": 179,
    "eventos_brutos": 650,
    "paginas": 13,
    "errores": [],
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 13.8
+   "segundos": 15.1,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
   },
   {
    "id": "bandsintown",
@@ -255,7 +288,11 @@
    "robots": "sin_robots (403)",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 1.0
+   "segundos": 1.2,
+   "reintento": "falló también en el 2.º intento",
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
   },
   {
    "id": "rockandblog",
@@ -267,20 +304,22 @@
    "grupo": "rockandblog",
    "reconfirma": true,
    "notas": "",
-   "funciono": false,
-   "estado": "error",
-   "conciertos": 3,
+   "funciono": true,
+   "estado": "ok",
+   "conciertos": 72,
    "nuevos": 0,
    "solo_en_esta": 2,
-   "eventos_brutos": 0,
+   "eventos_brutos": 106,
    "paginas": 1,
-   "errores": [
-    "web inaccesible al leer robots.txt: inaccesible (ConnectTimeout)"
-   ],
-   "robots": "inaccesible (ConnectTimeout)",
+   "errores": [],
+   "robots": "ok",
    "robots_bloquea": false,
-   "aviso": "posible cambio en la web: antes daba 72 conciertos (último éxito 2026-09-29)",
-   "segundos": 30.1
+   "aviso": null,
+   "segundos": 3.5,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
   },
   {
    "id": "tm_blog",
@@ -303,7 +342,11 @@
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 1.3
+   "segundos": 1.5,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
   },
   {
    "id": "radar_joven",
@@ -328,7 +371,11 @@
    "robots": "sin_robots (404)",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 1.0
+   "segundos": 1.2,
+   "reintento": "falló también en el 2.º intento",
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
   },
   {
    "id": "radar_cpm",
@@ -351,7 +398,11 @@
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 2.3
+   "segundos": 4.7,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
   },
   {
    "id": "thm",
@@ -363,20 +414,22 @@
    "grupo": "thm",
    "reconfirma": true,
    "notas": "",
-   "funciono": false,
-   "estado": "bloqueado_403",
-   "conciertos": 1,
+   "funciono": true,
+   "estado": "ok",
+   "conciertos": 14,
    "nuevos": 0,
    "solo_en_esta": 0,
-   "eventos_brutos": 0,
+   "eventos_brutos": 121,
    "paginas": 1,
-   "errores": [
-    "HTTPError: 403 Client Error: Forbidden for url: https://www.todoheavymetal.com/index.php/agenda/amp"
-   ],
-   "robots": "sin_robots (403)",
+   "errores": [],
+   "robots": "ok",
    "robots_bloquea": false,
-   "aviso": "posible cambio en la web: antes daba 14 conciertos (último éxito 2026-09-29)",
-   "segundos": 1.1
+   "aviso": null,
+   "segundos": 12.0,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
   },
   {
    "id": "metallegion",
@@ -388,20 +441,22 @@
    "grupo": "metallegion",
    "reconfirma": true,
    "notas": "",
-   "funciono": false,
-   "estado": "bloqueado_403",
-   "conciertos": 2,
+   "funciono": true,
+   "estado": "ok",
+   "conciertos": 40,
    "nuevos": 0,
    "solo_en_esta": 1,
-   "eventos_brutos": 0,
+   "eventos_brutos": 196,
    "paginas": 1,
-   "errores": [
-    "HTTPError: 403 Client Error: Forbidden for url: https://metallegion.es/conciertos/"
-   ],
-   "robots": "sin_robots (403)",
+   "errores": [],
+   "robots": "ok",
    "robots_bloquea": false,
-   "aviso": "posible cambio en la web: antes daba 40 conciertos (último éxito 2026-09-29)",
-   "segundos": 1.1
+   "aviso": null,
+   "segundos": 3.2,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
   },
   {
    "id": "metalcry",
@@ -413,20 +468,22 @@
    "grupo": "metalcry",
    "reconfirma": true,
    "notas": "Su hora es 20:00 por defecto: se ignora.",
-   "funciono": false,
-   "estado": "bloqueado_403",
-   "conciertos": 1,
+   "funciono": true,
+   "estado": "ok",
+   "conciertos": 23,
    "nuevos": 0,
    "solo_en_esta": 1,
-   "eventos_brutos": 0,
+   "eventos_brutos": 155,
    "paginas": 1,
-   "errores": [
-    "HTTPError: 403 Client Error: Forbidden for url: https://metalcry.com/conciertos/"
-   ],
-   "robots": "sin_robots (403)",
+   "errores": [],
+   "robots": "ok",
    "robots_bloquea": false,
-   "aviso": "posible cambio en la web: antes daba 23 conciertos (último éxito 2026-09-29)",
-   "segundos": 1.1
+   "aviso": null,
+   "segundos": 7.5,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
   },
   {
    "id": "hellpress",
@@ -442,14 +499,18 @@
    "estado": "ok",
    "conciertos": 41,
    "nuevos": 0,
-   "solo_en_esta": 3,
+   "solo_en_esta": 2,
    "eventos_brutos": 195,
    "paginas": 1,
    "errores": [],
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 2.6
+   "segundos": 2.3,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
   },
   {
    "id": "hellpress_melodico",
@@ -467,12 +528,16 @@
    "nuevos": 0,
    "solo_en_esta": 0,
    "eventos_brutos": 3,
-   "paginas": 3,
+   "paginas": 1,
    "errores": [],
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 4.8
+   "segundos": 3.2,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
   },
   {
    "id": "metalsymphony",
@@ -484,20 +549,22 @@
    "grupo": "metalsymphony",
    "reconfirma": true,
    "notas": "",
-   "funciono": false,
-   "estado": "bloqueado_403",
-   "conciertos": 0,
+   "funciono": true,
+   "estado": "ok",
+   "conciertos": 22,
    "nuevos": 0,
    "solo_en_esta": 0,
-   "eventos_brutos": 0,
-   "paginas": 1,
-   "errores": [
-    "HTTPError: 403 Client Error: Forbidden for url: https://www.metalsymphony.com/agenda/"
-   ],
-   "robots": "sin_robots (403)",
+   "eventos_brutos": 84,
+   "paginas": 2,
+   "errores": [],
+   "robots": "ok",
    "robots_bloquea": false,
-   "aviso": "posible cambio en la web: antes daba 22 conciertos (último éxito 2026-09-29)",
-   "segundos": 1.0
+   "aviso": null,
+   "segundos": 2.9,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
   },
   {
    "id": "rockforeveryone",
@@ -509,20 +576,22 @@
    "grupo": "rockforeveryone",
    "reconfirma": true,
    "notas": "",
-   "funciono": false,
-   "estado": "bloqueado_403",
-   "conciertos": 2,
-   "nuevos": 0,
+   "funciono": true,
+   "estado": "ok",
+   "conciertos": 22,
+   "nuevos": 2,
    "solo_en_esta": 2,
-   "eventos_brutos": 0,
-   "paginas": 1,
-   "errores": [
-    "HTTPError: 403 Client Error: Forbidden for url: https://rockforeveryone.es/agenda-de-conciertos-heavy-en-madrid-en-septiembre-de-2026/"
-   ],
-   "robots": "sin_robots (403)",
+   "eventos_brutos": 38,
+   "paginas": 5,
+   "errores": [],
+   "robots": "ok",
    "robots_bloquea": false,
-   "aviso": "posible cambio en la web: antes daba 22 conciertos (último éxito 2026-09-29)",
-   "segundos": 1.1
+   "aviso": null,
+   "segundos": 11.9,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
   },
   {
    "id": "mariskal",
@@ -545,7 +614,11 @@
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 2.0
+   "segundos": 3.6,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
   },
   {
    "id": "rockgle",
@@ -560,15 +633,19 @@
    "funciono": true,
    "estado": "ok",
    "conciertos": 26,
-   "nuevos": 4,
-   "solo_en_esta": 4,
+   "nuevos": 1,
+   "solo_en_esta": 2,
    "eventos_brutos": 155,
    "paginas": 1,
    "errores": [],
-   "robots": "sin_robots (404)",
+   "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 32.0
+   "segundos": 1.7,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
   },
   {
    "id": "madness",
@@ -591,7 +668,11 @@
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 25.0
+   "segundos": 28.2,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
   },
   {
    "id": "getrock",
@@ -614,7 +695,11 @@
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 4.9
+   "segundos": 6.2,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
   },
   {
    "id": "neverland",
@@ -626,20 +711,22 @@
    "grupo": "metalsymphony",
    "reconfirma": true,
    "notas": "",
-   "funciono": false,
-   "estado": "bloqueado_403",
-   "conciertos": 0,
+   "funciono": true,
+   "estado": "ok",
+   "conciertos": 2,
    "nuevos": 0,
    "solo_en_esta": 0,
-   "eventos_brutos": 0,
+   "eventos_brutos": 21,
    "paginas": 1,
-   "errores": [
-    "HTTPError: 403 Client Error: Forbidden for url: https://www.metalsymphony.com/neverland-concerts-agenda-rock-progresivo-2026-2027/"
-   ],
-   "robots": "sin_robots (403)",
+   "errores": [],
+   "robots": "ok",
    "robots_bloquea": false,
-   "aviso": "posible cambio en la web: antes daba 2 conciertos (último éxito 2026-09-29)",
-   "segundos": 0.2
+   "aviso": null,
+   "segundos": 1.3,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
   },
   {
    "id": "rockprog_agenda",
@@ -651,20 +738,22 @@
    "grupo": "rockprog",
    "reconfirma": true,
    "notas": "",
-   "funciono": false,
-   "estado": "bloqueado_403",
-   "conciertos": 1,
+   "funciono": true,
+   "estado": "ok",
+   "conciertos": 5,
    "nuevos": 0,
    "solo_en_esta": 1,
-   "eventos_brutos": 0,
-   "paginas": 1,
-   "errores": [
-    "HTTPError: 403 Client Error: Forbidden for url: https://www.rock-progresivo.com/agenda-de-conciertos-de-rock-progresivo/?calendar_month=sep&calendar_yr=2026"
-   ],
-   "robots": "sin_robots (403)",
+   "eventos_brutos": 10,
+   "paginas": 5,
+   "errores": [],
+   "robots": "ok",
    "robots_bloquea": false,
-   "aviso": "posible cambio en la web: antes daba 5 conciertos (último éxito 2026-09-29)",
-   "segundos": 1.1
+   "aviso": null,
+   "segundos": 32.1,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
   },
   {
    "id": "rockprog",
@@ -676,20 +765,22 @@
    "grupo": "rockprog",
    "reconfirma": false,
    "notas": "",
-   "funciono": false,
-   "estado": "bloqueado_403",
-   "conciertos": 0,
+   "funciono": true,
+   "estado": "ok",
+   "conciertos": 1,
    "nuevos": 0,
    "solo_en_esta": 0,
-   "eventos_brutos": 0,
-   "paginas": 1,
-   "errores": [
-    "HTTPError: 403 Client Error: Forbidden for url: https://www.rock-progresivo.com/seccion/cronicas-conciertos/previas-de-conciertos/"
-   ],
-   "robots": "sin_robots (403)",
+   "eventos_brutos": 2,
+   "paginas": 44,
+   "errores": [],
+   "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 1.1
+   "segundos": 159.8,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
   },
   {
    "id": "force",
@@ -701,20 +792,22 @@
    "grupo": "force",
    "reconfirma": false,
    "notas": "",
-   "funciono": false,
-   "estado": "error",
+   "funciono": true,
+   "estado": "ok_sin_resultados",
    "conciertos": 0,
    "nuevos": 0,
    "solo_en_esta": 0,
    "eventos_brutos": 0,
    "paginas": 1,
-   "errores": [
-    "web inaccesible al leer robots.txt: inaccesible (ConnectTimeout)"
-   ],
-   "robots": "inaccesible (ConnectTimeout)",
+   "errores": [],
+   "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 30.4
+   "segundos": 8.8,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
   },
   {
    "id": "dirtyrock",
@@ -737,7 +830,11 @@
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 1.6
+   "segundos": 2.2,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
   },
   {
    "id": "viriaor",
@@ -760,7 +857,11 @@
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 1.0
+   "segundos": 1.2,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
   },
   {
    "id": "diariorockero",
@@ -775,15 +876,19 @@
    "funciono": true,
    "estado": "ok",
    "conciertos": 3,
-   "nuevos": 1,
+   "nuevos": 0,
    "solo_en_esta": 1,
    "eventos_brutos": 4,
-   "paginas": 16,
+   "paginas": 1,
    "errores": [],
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 26.3
+   "segundos": 9.1,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
   },
   {
    "id": "mutick",
@@ -806,7 +911,11 @@
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 43.0
+   "segundos": 47.2,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
   },
   {
    "id": "qconciertos",
@@ -829,7 +938,11 @@
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 3.7
+   "segundos": 4.5,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
   },
   {
    "id": "sbm",
@@ -852,7 +965,11 @@
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 3.0
+   "segundos": 3.2,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
   },
   {
    "id": "bigmama",
@@ -864,20 +981,22 @@
    "grupo": "bigmama",
    "reconfirma": true,
    "notas": "",
-   "funciono": false,
-   "estado": "bloqueado_403",
-   "conciertos": 0,
+   "funciono": true,
+   "estado": "ok",
+   "conciertos": 3,
    "nuevos": 0,
    "solo_en_esta": 0,
-   "eventos_brutos": 0,
+   "eventos_brutos": 3,
    "paginas": 1,
-   "errores": [
-    "HTTPError: 403 Client Error: Forbidden for url: https://bigmamaballroom.com/conciertos-blues/"
-   ],
-   "robots": "sin_robots (403)",
+   "errores": [],
+   "robots": "ok",
    "robots_bloquea": false,
-   "aviso": "posible cambio en la web: antes daba 3 conciertos (último éxito 2026-09-29)",
-   "segundos": 1.1
+   "aviso": null,
+   "segundos": 5.5,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
   },
   {
    "id": "gruta77",
@@ -889,20 +1008,22 @@
    "grupo": "gruta77",
    "reconfirma": true,
    "notas": "",
-   "funciono": false,
-   "estado": "bloqueado_403",
-   "conciertos": 4,
-   "nuevos": 0,
+   "funciono": true,
+   "estado": "ok",
+   "conciertos": 29,
+   "nuevos": 4,
    "solo_en_esta": 4,
-   "eventos_brutos": 0,
+   "eventos_brutos": 30,
    "paginas": 1,
-   "errores": [
-    "HTTPError: 403 Client Error: Forbidden for url: https://gruta77.com/events/"
-   ],
-   "robots": "sin_robots (403)",
+   "errores": [],
+   "robots": "ok",
    "robots_bloquea": false,
-   "aviso": "posible cambio en la web: antes daba 29 conciertos (último éxito 2026-09-29)",
-   "segundos": 1.1
+   "aviso": null,
+   "segundos": 2.5,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
   },
   {
    "id": "movistar",
@@ -925,7 +1046,11 @@
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 1.6
+   "segundos": 3.6,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
   },
   {
    "id": "riviera",
@@ -948,7 +1073,11 @@
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 1.5
+   "segundos": 2.6,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
   },
   {
    "id": "nazca",
@@ -971,7 +1100,11 @@
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 2.1
+   "segundos": 2.6,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
   },
   {
    "id": "wagon",
@@ -994,7 +1127,11 @@
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 1.2
+   "segundos": 1.6,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
   },
   {
    "id": "revi",
@@ -1010,14 +1147,18 @@
    "estado": "ok",
    "conciertos": 43,
    "nuevos": 0,
-   "solo_en_esta": 14,
+   "solo_en_esta": 13,
    "eventos_brutos": 49,
    "paginas": 1,
    "errores": [],
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 4.7
+   "segundos": 5.9,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
   },
   {
    "id": "chango",
@@ -1040,7 +1181,11 @@
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 1.1
+   "segundos": 2.5,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
   },
   {
    "id": "salabut",
@@ -1063,7 +1208,11 @@
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 1.1
+   "segundos": 1.4,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
   },
   {
    "id": "elsol",
@@ -1086,7 +1235,11 @@
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 2.0
+   "segundos": 3.9,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
   },
   {
    "id": "villanos",
@@ -1098,18 +1251,24 @@
    "grupo": "villanos",
    "reconfirma": true,
    "notas": "",
-   "funciono": true,
-   "estado": "ok",
-   "conciertos": 101,
+   "funciono": false,
+   "estado": "error",
+   "conciertos": 29,
    "nuevos": 0,
-   "solo_en_esta": 24,
-   "eventos_brutos": 108,
+   "solo_en_esta": 23,
+   "eventos_brutos": 0,
    "paginas": 1,
-   "errores": [],
-   "robots": "ok",
+   "errores": [
+    "web inaccesible al leer robots.txt: inaccesible (ConnectTimeout)"
+   ],
+   "robots": "inaccesible (ConnectTimeout)",
    "robots_bloquea": false,
-   "aviso": null,
-   "segundos": 2.2
+   "aviso": "posible cambio en la web: antes daba 101 conciertos (último éxito 2026-09-29)",
+   "segundos": 30.1,
+   "reintento": "falló también en el 2.º intento",
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
   },
   {
    "id": "rockville",
@@ -1132,7 +1291,11 @@
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 1.2
+   "segundos": 2.7,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
   },
   {
    "id": "funhouse",
@@ -1155,7 +1318,11 @@
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 1.3
+   "segundos": 2.4,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
   },
   {
    "id": "wurlitzer",
@@ -1178,7 +1345,11 @@
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 2.4
+   "segundos": 5.6,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
   },
   {
    "id": "honky",
@@ -1201,7 +1372,11 @@
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 4.8
+   "segundos": 5.0,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
   },
   {
    "id": "silikona",
@@ -1213,20 +1388,22 @@
    "grupo": "silikona",
    "reconfirma": true,
    "notas": "",
-   "funciono": false,
-   "estado": "bloqueado_403",
-   "conciertos": 0,
-   "nuevos": 0,
+   "funciono": true,
+   "estado": "ok",
+   "conciertos": 4,
+   "nuevos": 1,
    "solo_en_esta": 0,
-   "eventos_brutos": 0,
+   "eventos_brutos": 4,
    "paginas": 1,
-   "errores": [
-    "HTTPError: 403 Client Error: Forbidden for url: https://silikona.es/"
-   ],
-   "robots": "sin_robots (403)",
+   "errores": [],
+   "robots": "ok",
    "robots_bloquea": false,
-   "aviso": "posible cambio en la web: antes daba 4 conciertos (último éxito 2026-09-29)",
-   "segundos": 1.1
+   "aviso": null,
+   "segundos": 7.8,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
   },
   {
    "id": "clamores",
@@ -1249,7 +1426,11 @@
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 2.5
+   "segundos": 1.4,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
   },
   {
    "id": "galileo",
@@ -1261,18 +1442,24 @@
    "grupo": "galileo",
    "reconfirma": true,
    "notas": "Su hosting a veces responde con un captcha anti-bots; sus conciertos llegan también por Madrid en Vivo y conciertos.club.",
-   "funciono": true,
-   "estado": "ok",
-   "conciertos": 8,
-   "nuevos": 2,
+   "funciono": false,
+   "estado": "bloqueado_antibots",
+   "conciertos": 0,
+   "nuevos": 0,
    "solo_en_esta": 0,
-   "eventos_brutos": 8,
+   "eventos_brutos": 0,
    "paginas": 1,
-   "errores": [],
+   "errores": [
+    "https://salagalileo.es/: la web responde con un captcha/verificación anti-bots"
+   ],
    "robots": "ok",
    "robots_bloquea": false,
-   "aviso": null,
-   "segundos": 1.2
+   "aviso": "posible cambio en la web: antes daba 8 conciertos (último éxito 2026-09-29)",
+   "segundos": 1.7,
+   "reintento": "falló también en el 2.º intento",
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
   },
   {
    "id": "siroco",
@@ -1288,14 +1475,18 @@
    "estado": "ok",
    "conciertos": 4,
    "nuevos": 0,
-   "solo_en_esta": 0,
+   "solo_en_esta": 1,
    "eventos_brutos": 4,
    "paginas": 1,
    "errores": [],
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 1.9
+   "segundos": 3.9,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
   },
   {
    "id": "mobydick",
@@ -1318,7 +1509,11 @@
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 1.6
+   "segundos": 2.1,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
   },
   {
    "id": "independance",
@@ -1341,7 +1536,11 @@
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 1.5
+   "segundos": 2.2,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
   },
   {
    "id": "salab",
@@ -1364,7 +1563,11 @@
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 7.1
+   "segundos": 8.3,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
   },
   {
    "id": "nuevacubierta",
@@ -1387,7 +1590,11 @@
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 6.2
+   "segundos": 8.8,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
   },
   {
    "id": "muni_alcala_de_henares",
@@ -1402,7 +1609,7 @@
    "funciono": true,
    "estado": "ok",
    "conciertos": 1,
-   "nuevos": 1,
+   "nuevos": 0,
    "solo_en_esta": 1,
    "eventos_brutos": 1,
    "paginas": 1,
@@ -1410,7 +1617,11 @@
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 1.2
+   "segundos": 2.3,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
   },
   {
    "id": "muni_aranjuez",
@@ -1433,7 +1644,11 @@
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 2.3
+   "segundos": 3.8,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
   },
   {
    "id": "muni_collado_villalba",
@@ -1448,7 +1663,7 @@
    "funciono": true,
    "estado": "ok",
    "conciertos": 1,
-   "nuevos": 1,
+   "nuevos": 0,
    "solo_en_esta": 1,
    "eventos_brutos": 1,
    "paginas": 1,
@@ -1456,7 +1671,11 @@
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 1.5
+   "segundos": 2.3,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
   },
   {
    "id": "muni_las_rozas_de_madrid",
@@ -1468,20 +1687,22 @@
    "grupo": "muni_las rozas de madrid",
    "reconfirma": true,
    "notas": "",
-   "funciono": false,
-   "estado": "bloqueado_403",
-   "conciertos": 0,
-   "nuevos": 0,
-   "solo_en_esta": 0,
-   "eventos_brutos": 0,
+   "funciono": true,
+   "estado": "ok",
+   "conciertos": 8,
+   "nuevos": 8,
+   "solo_en_esta": 8,
+   "eventos_brutos": 225,
    "paginas": 1,
-   "errores": [
-    "HTTPError: 403 Client Error: Forbidden for url: https://www.lasrozas.es/calendario-de-eventos"
-   ],
-   "robots": "sin_robots (403)",
+   "errores": [],
+   "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 1.1
+   "segundos": 3.7,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
   },
   {
    "id": "muni_leganes",
@@ -1504,7 +1725,11 @@
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 1.4
+   "segundos": 4.6,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
   },
   {
    "id": "muni_alcorcon",
@@ -1527,7 +1752,11 @@
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 2.6
+   "segundos": 3.3,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
   },
   {
    "id": "muni_boadilla_del_monte",
@@ -1550,7 +1779,11 @@
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 10.5
+   "segundos": 12.0,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
   },
   {
    "id": "muni_torrejon_de_ardoz",
@@ -1565,7 +1798,7 @@
    "funciono": true,
    "estado": "ok",
    "conciertos": 1,
-   "nuevos": 1,
+   "nuevos": 0,
    "solo_en_esta": 1,
    "eventos_brutos": 1,
    "paginas": 1,
@@ -1573,7 +1806,11 @@
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 1.2
+   "segundos": 2.2,
+   "reintento": "funcionó en el 2.º intento",
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
   },
   {
    "id": "muni_valdemoro",
@@ -1596,7 +1833,11 @@
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 1.7
+   "segundos": 2.1,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
   },
   {
    "id": "muni_pinto",
@@ -1619,7 +1860,11 @@
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 39.9
+   "segundos": 28.3,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
   },
   {
    "id": "muni_mostoles",
@@ -1642,7 +1887,11 @@
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 1.5
+   "segundos": 2.4,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
   },
   {
    "id": "muni_getafe",
@@ -1667,7 +1916,11 @@
    "robots": "inaccesible (ConnectTimeout)",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 30.1
+   "segundos": 32.4,
+   "reintento": "falló también en el 2.º intento",
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
   },
   {
    "id": "muni_alcobendas",
@@ -1692,7 +1945,11 @@
    "robots": "sin_robots (403)",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 1.1
+   "segundos": 1.3,
+   "reintento": "falló también en el 2.º intento",
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
   },
   {
    "id": "muni_arganda_del_rey",
@@ -1717,7 +1974,11 @@
    "robots": "sin_robots (403)",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 1.1
+   "segundos": 1.4,
+   "reintento": "falló también en el 2.º intento",
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
   },
   {
    "id": "muni_san_sebastian_de_los_reyes",
@@ -1742,7 +2003,11 @@
    "robots": "ok",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 1.2
+   "segundos": 2.8,
+   "reintento": "falló también en el 2.º intento",
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
   },
   {
    "id": "muni_coslada",
@@ -1767,7 +2032,11 @@
    "robots": "inaccesible (SSLError)",
    "robots_bloquea": false,
    "aviso": null,
-   "segundos": 0.2
+   "segundos": 0.3,
+   "reintento": "falló también en el 2.º intento",
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
   }
  ],
  "sin_agenda_legible": {
@@ -1810,7 +2079,7 @@
    },
    {
     "correccion": "conflicto 2026-10-17 Gruta 77",
-    "registros": 2
+    "registros": 3
    },
    {
     "correccion": "conflicto 2026-10-17 Hällas",
@@ -1857,29 +2126,32 @@
   ]
  },
  "musicbrainz": {
-  "consultas": 14,
-  "desde_cache": 2151,
-  "asignadas": 263,
-  "sin_confirmar": 1902,
+  "consultas": 18,
+  "desde_cache": 2045,
+  "asignadas": 262,
+  "sin_confirmar": 1801,
   "pendientes": 0
  },
  "artistas": {
-  "consultados": 0,
+  "consultados": 15,
   "completados": 1,
-  "desde_cache": 1553,
-  "discogs": 680,
-  "wikipedia": 283,
-  "wikidata": 262,
-  "lastfm": 668,
-  "sin_ficha": 426,
+  "desde_cache": 1468,
+  "discogs": 689,
+  "wikipedia": 286,
+  "wikidata": 265,
+  "lastfm": 666,
+  "sin_ficha": 351,
   "pendientes": 0,
   "errores": [
    "Los Deltonos (discogs): HTTPError: 404 Client Error: Not Found for url: https://api.discogs.com/artists/9340201"
   ],
   "discogs_con_token": true,
   "lastfm_activo": true,
-  "duracion_seg": 2,
-  "ultima_carga_fichas": "2026-09-29T19:29:26+00:00"
+  "duracion_seg": 43,
+  "durante_agendas": {
+   "consultados": 0,
+   "completados": 1
+  }
  },
  "estilos_sin_mapear": [
   "BY GRUPO SALVAJE): ESPECIAL HALLOWEEN (Karaoke (RockVille (web oficial))",
@@ -1887,7 +2159,6 @@
   "Canción De Autor (RockVille (web oficial))",
   "Danza/Ballet (conciertos.club (buscador semanal))",
   "Danza/Ballet (conciertos.club (portada Madrid))",
-  "Momentos Alhambra (Sala Villanos (web oficial))",
   "Música Cubana, Nueva Trova Cubana, Música de Autor (La Ganzúa)",
   "Música de Autor (La Ganzúa)",
   "Música de Autor, Bolero, Balada (La Ganzúa)",

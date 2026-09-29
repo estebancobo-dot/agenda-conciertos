@@ -43800,5 +43800,484 @@
    "encontrado": false,
    "motivo": "The artist you supplied could not be found"
   }
+ },
+ "violeta garcia": {
+  "nombre": "Violeta Garcia",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; en: no existe"
+  },
+  "discogs": {
+   "encontrado": true,
+   "id": 5714107,
+   "nombre": "Violeta García",
+   "url": "https://www.discogs.com/artist/5714107-Violeta-García",
+   "generos": [
+    "Rock",
+    "Electronic",
+    "Jazz"
+   ],
+   "estilos": [
+    "Dark Ambient",
+    "Drone",
+    "Free Improvisation"
+   ],
+   "discos_analizados": 2,
+   "pais": null,
+   "imagen": "https://i.discogs.com/uTRNdvRIucY_hCvSPm5H9IfrGRJVcw5NJQ4ZmoNRvl4/rs:fit/g:sm/q:90/h:200/w:300/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTU3MTQx/MDctMTYyMjUwMjA2/Mi05MDU0LmpwZWc.jpeg",
+   "identificado_por": "única coincidencia exacta del nombre en Discogs",
+   "perfil": "Violeta García (1990) is a cellist, improviser and composer born in Buenos Aires, Argentina. She is a performer in many art forms, including free improvisation, contemporary and experimental repertoire and collaborations with dancers and ot"
+  }
+ },
+ "mcenroe": {
+  "nombre": "McENROE",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; en: no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "4 artistas homónimos"
+  },
+  "lastfm": {
+   "encontrado": true,
+   "nombre": "McEnroe",
+   "etiquetas": [
+    "indie",
+    "spanish indie pop",
+    "indie pop",
+    "spanish"
+   ],
+   "estilos": [
+    "Indie Pop"
+   ],
+   "generos": [
+    "Pop",
+    "Rock"
+   ],
+   "url": "https://www.last.fm/music/McEnroe",
+   "identificado_por": "coincidencia por nombre"
+  }
+ },
+ "alamedadosoulna": {
+  "nombre": "Alamedadosoulna",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; en: no existe"
+  },
+  "discogs": {
+   "encontrado": true,
+   "id": 2055470,
+   "nombre": "Alamedadosoulna",
+   "url": "https://www.discogs.com/artist/2055470-Alamedadosoulna",
+   "generos": [
+    "Rock"
+   ],
+   "estilos": [
+    "Ska"
+   ],
+   "discos_analizados": 1,
+   "pais": "ES",
+   "imagen": "https://i.discogs.com/9Pqj2ppOMQVz-V0N4c2VVmdhxC0BVTMh4KCmU7L4ieU/rs:fit/g:sm/q:90/h:362/w:236/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTIwNTU0/NzAtMTI5Mjg4Njgx/Ny5qcGVn.jpeg",
+   "identificado_por": "única coincidencia exacta del nombre en Discogs",
+   "perfil": "Ska-Jazz band from Spain"
+  }
+ },
+ "erik truffaz": {
+  "nombre": "Erik Truffaz",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": true,
+   "url": "https://es.wikipedia.org/wiki/Erik_Truffaz",
+   "generos": [
+    "Jazz",
+    "Nu jazz",
+    "Jazz fusion",
+    "Acid jazz",
+    "Post bop"
+   ],
+   "wikidata": "Q981213",
+   "origen": "1960, Chêne-Bougeries, , Suiza",
+   "pais": "CH",
+   "imagen": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/36/Erik_TRUFFAZ-25072007.jpg/250px-Erik_TRUFFAZ-25072007.jpg",
+   "imagen_pagina": "https://es.wikipedia.org/wiki/Archivo:Erik_TRUFFAZ-25072007.jpg",
+   "idioma": "es"
+  },
+  "wikidata": {
+   "encontrado": true,
+   "id": "Q981213",
+   "ids": {
+    "discogs": "12631",
+    "allmusic": "mn0000203351",
+    "musicbrainz": "aecd2d93-082b-4d5a-b519-521f2e18f796"
+   },
+   "pais": "FR",
+   "imagen_commons": "Erik Truffaz 120609.jpg"
+  },
+  "discogs": {
+   "encontrado": true,
+   "id": 12631,
+   "nombre": "Erik Truffaz",
+   "url": "https://www.discogs.com/artist/12631-Erik-Truffaz",
+   "generos": [
+    "Jazz",
+    "Electronic"
+   ],
+   "estilos": [
+    "Contemporary Jazz",
+    "Future Jazz"
+   ],
+   "discos_analizados": 7,
+   "pais": null,
+   "imagen": "https://i.discogs.com/amKcQprD05GZpBxqeLqhWY_w0xiSSosetWLLZZUkckw/rs:fit/g:sm/q:90/h:300/w:300/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTEyNjMx/LTE2NjY3MzA1MzUt/NjY4MS5qcGVn.jpeg",
+   "identificado_por": "identificador de Discogs en Wikidata",
+   "perfil": "French jazz trumpeter, born 1960 in Switzerland"
+  }
+ },
+ "el twanguero": {
+  "nombre": "El Twanguero",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; en: no existe"
+  },
+  "discogs": {
+   "encontrado": true,
+   "id": 5319554,
+   "nombre": "El Twanguero",
+   "url": "https://www.discogs.com/artist/5319554-El-Twanguero",
+   "generos": [
+    "Folk, World, & Country",
+    "Rock",
+    "Blues"
+   ],
+   "estilos": [
+    "Bluegrass",
+    "Folk",
+    "Country"
+   ],
+   "discos_analizados": 4,
+   "pais": null,
+   "imagen": "https://i.discogs.com/IB3pl3BOfPPDFQ1lND4_B4JN16-1jtrNg2ztwOsnFAk/rs:fit/g:sm/q:90/h:563/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTUzMTk1/NTQtMTQ5NjM3NDgy/My0zMjQ3LmpwZWc.jpeg",
+   "identificado_por": "única coincidencia exacta del nombre en Discogs",
+   "perfil": "Spanish guitar player. Focused in fingerpicking tecnique"
+  }
+ },
+ "swing for kids": {
+  "nombre": "Swing For Kids",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; en: no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  },
+  "lastfm": {
+   "encontrado": true,
+   "nombre": "Swing For Kids",
+   "etiquetas": [],
+   "estilos": [],
+   "generos": [],
+   "url": "https://www.last.fm/music/Swing%2BFor%2BKids",
+   "identificado_por": "coincidencia por nombre"
+  }
+ },
+ "depedro": {
+  "nombre": "Depedro",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": true,
+   "url": "https://es.wikipedia.org/wiki/Depedro",
+   "generos": [],
+   "wikidata": "Q56401486",
+   "origen": "1973, Madrid, (, España, )",
+   "pais": "ES",
+   "imagen": null,
+   "imagen_pagina": null,
+   "idioma": "es"
+  },
+  "wikidata": {
+   "encontrado": true,
+   "id": "Q56401486",
+   "ids": {
+    "discogs": "1533104",
+    "allmusic": "mn0001081320",
+    "spotify": "3wpNKcE7grYUIRKCMpmBOb",
+    "musicbrainz": "208ba498-398a-4bb4-8e84-11bf28af616a"
+   },
+   "pais": "ES",
+   "imagen_commons": null
+  },
+  "discogs": {
+   "encontrado": true,
+   "id": 1533104,
+   "nombre": "DePedro",
+   "url": "https://www.discogs.com/artist/1533104-DePedro",
+   "generos": [
+    "Pop",
+    "Rock",
+    "Folk, World, & Country"
+   ],
+   "estilos": [],
+   "discos_analizados": 10,
+   "pais": null,
+   "imagen": "https://i.discogs.com/mjgeyxi_VTybwZP17YpVw4h0_rfKBKF5QjlRAUt6A5I/rs:fit/g:sm/q:90/h:399/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTE1MzMx/MDQtMTYyMjU3MTQ5/My0xMDU4LmpwZWc.jpeg",
+   "identificado_por": "identificador de Discogs en Wikidata",
+   "perfil": "[a1533104] is the pseudonym that the Spanish (born in 1973 in Madrid) singer/songwriter/guitarist [b][a1050179][/b] used in the late 2000s after accumulating an impressive arsenal of solo material during his stints with [a9856], [a2217113] "
+  },
+  "lastfm": {
+   "encontrado": true,
+   "nombre": "DePedro",
+   "etiquetas": [
+    "Need to Rate",
+    "indie",
+    "spanish",
+    "rock"
+   ],
+   "estilos": [],
+   "generos": [
+    "Rock"
+   ],
+   "url": "https://www.last.fm/music/DePedro",
+   "identificado_por": "identificador de MusicBrainz en Wikidata"
+  }
+ },
+ "concierto especial halloween banda ateneo noroeste": {
+  "nombre": "Concierto Especial Halloween - Banda Ateneo Noroeste",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; en: no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  },
+  "lastfm": {
+   "encontrado": false,
+   "motivo": "The artist you supplied could not be found"
+  }
+ },
+ "manu masaedo": {
+  "nombre": "MANU MASAEDO",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; en: no existe"
+  },
+  "discogs": {
+   "encontrado": true,
+   "id": 15889049,
+   "nombre": "Manu Masaedo",
+   "url": "https://www.discogs.com/artist/15889049-Manu-Masaedo",
+   "generos": [],
+   "estilos": [],
+   "discos_analizados": 0,
+   "pais": null,
+   "imagen": null,
+   "identificado_por": "única coincidencia exacta del nombre en Discogs",
+   "perfil": ""
+  },
+  "lastfm": {
+   "encontrado": true,
+   "nombre": "Manu Masaedo",
+   "etiquetas": [],
+   "estilos": [],
+   "generos": [],
+   "url": "https://www.last.fm/music/Manu%2BMasaedo",
+   "identificado_por": "coincidencia por nombre"
+  }
+ },
+ "sabil": {
+  "nombre": "Sabîl",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; en: no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "2 artistas homónimos"
+  },
+  "lastfm": {
+   "encontrado": true,
+   "nombre": "Sabîl",
+   "etiquetas": [
+    "french",
+    "jazz",
+    "bass",
+    "instrumental",
+    "arabic",
+    "traditional",
+    "oud"
+   ],
+   "estilos": [
+    "Instrumental"
+   ],
+   "generos": [
+    "Rock",
+    "Jazz"
+   ],
+   "url": "https://www.last.fm/music/Sab%C3%AEl",
+   "identificado_por": "coincidencia por nombre"
+  }
+ },
+ "hoss and swet": {
+  "nombre": "HOSS & SWET",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; en: no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  },
+  "lastfm": {
+   "encontrado": false,
+   "motivo": "The artist you supplied could not be found"
+  }
+ },
+ "flore benguigui": {
+  "nombre": "FLORE BENGUIGUI",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; en: no existe"
+  },
+  "discogs": {
+   "encontrado": true,
+   "id": 4624764,
+   "nombre": "Flore Benguigui",
+   "url": "https://www.discogs.com/artist/4624764-Flore-Benguigui",
+   "generos": [
+    "Jazz"
+   ],
+   "estilos": [
+    "Cool Jazz"
+   ],
+   "discos_analizados": 1,
+   "pais": null,
+   "imagen": "https://i.discogs.com/IGtlHYrIG_SQcznglBrebGl_h5T0T3RBcv8KJHlAlSM/rs:fit/g:sm/q:90/h:513/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTQ2MjQ3/NjQtMTU0MDIxNDM0/NC0yOTk5LmpwZWc.jpeg",
+   "identificado_por": "única coincidencia exacta del nombre en Discogs",
+   "perfil": ""
+  }
+ },
+ "roberto quintero": {
+  "nombre": "Roberto Quintero",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; en: no es la página de un grupo o músico; en_(band): no existe"
+  },
+  "discogs": {
+   "encontrado": true,
+   "id": 803963,
+   "nombre": "Roberto Quintero",
+   "url": "https://www.discogs.com/artist/803963-Roberto-Quintero",
+   "generos": [],
+   "estilos": [],
+   "discos_analizados": 0,
+   "pais": null,
+   "imagen": "https://i.discogs.com/dpcQjuYG0sUKSZmXeZiAbKnA-AZzuCSGYd6icKTRvgk/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTgwMzk2/My0xNjE4OTQwMzEw/LTE5NjQucG5n.jpeg",
+   "identificado_por": "única coincidencia exacta del nombre en Discogs",
+   "perfil": "Venezuelan Grammy Award winning percussionist. Born in Caracas, now residing in the US"
+  },
+  "lastfm": {
+   "encontrado": true,
+   "nombre": "ROBERTO QUINTERO",
+   "etiquetas": [],
+   "estilos": [],
+   "generos": [],
+   "url": "https://www.last.fm/music/ROBERTO%2BQUINTERO",
+   "identificado_por": "coincidencia por nombre"
+  }
+ },
+ "javi cantero": {
+  "nombre": "Javi Cantero",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; en: no es la página de un grupo o músico; en_(band): no existe"
+  },
+  "discogs": {
+   "encontrado": true,
+   "id": 1227595,
+   "nombre": "Javi Cantero",
+   "url": "https://www.discogs.com/artist/1227595-Javi-Cantero",
+   "generos": [
+    "Latin",
+    "Pop"
+   ],
+   "estilos": [
+    "Rumba"
+   ],
+   "discos_analizados": 4,
+   "pais": null,
+   "imagen": "https://i.discogs.com/A-i7Te0BaPRio0rbYWaSXemRSXSbr0kJ-788fi2lNHE/rs:fit/g:sm/q:90/h:377/w:349/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTEyMjc1/OTUtMTI4ODQ1ODcz/My5qcGVn.jpeg",
+   "identificado_por": "única coincidencia exacta del nombre en Discogs",
+   "perfil": "Javi Cantero (Madrid, 1983), is a spanish singer-songwriter, son of the late singer [url=http://www.discogs.com/artist/El+Fary]El Fary[/url] (1937-2007). He had considerable success in the summer of 2001 when he managed to sell over 100,000"
+  }
+ },
+ "lou marini": {
+  "nombre": "Lou Marini",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": true,
+   "url": "https://es.wikipedia.org/wiki/Lou_Marini",
+   "generos": [
+    "Jazz",
+    "jazz rock",
+    "rock"
+   ],
+   "wikidata": "Q633103",
+   "origen": "13 de mayo de 1945, (81 años), Charleston, (, Carolina del Sur, ,, Estados Unidos, )",
+   "pais": "US",
+   "imagen": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ed/Lou_Marini.JPG/250px-Lou_Marini.JPG",
+   "imagen_pagina": "https://es.wikipedia.org/wiki/Archivo:Lou_Marini.JPG",
+   "idioma": "es"
+  },
+  "wikidata": {
+   "encontrado": true,
+   "id": "Q633103",
+   "ids": {
+    "discogs": "292813",
+    "allmusic": "mn0000829069",
+    "musicbrainz": "fbd921a4-c4a7-41be-8e79-0976ee83bf4d",
+    "lastfm": "Lou"
+   },
+   "pais": "US",
+   "imagen_commons": "Lou Marini.JPG"
+  },
+  "discogs": {
+   "encontrado": true,
+   "id": 292813,
+   "nombre": "Lou Marini",
+   "url": "https://www.discogs.com/artist/292813-Lou-Marini",
+   "generos": [
+    "Funk / Soul",
+    "Blues"
+   ],
+   "estilos": [],
+   "discos_analizados": 1,
+   "pais": null,
+   "imagen": "https://i.discogs.com/qM9-a6z1VGRWfJQW8nhdB-4eRmI7t-pJC2H-zTku37I/rs:fit/g:sm/q:90/h:320/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTI5Mjgx/My0xNTkwOTIyMjA2/LTc1NjUuanBlZw.jpeg",
+   "identificado_por": "identificador de Discogs en Wikidata",
+   "perfil": "Lou Marini aka Blue Lou is an American saxophonist (primarily), but also flutist and clarinetist, arranger, composer and clinician ... very active as a session musician"
+  },
+  "lastfm": {
+   "encontrado": true,
+   "nombre": "Lou Marini",
+   "etiquetas": [],
+   "estilos": [],
+   "generos": [],
+   "url": "https://www.last.fm/music/Lou%2BMarini",
+   "identificado_por": "identificador de MusicBrainz en Wikidata"
+  }
  }
 }
