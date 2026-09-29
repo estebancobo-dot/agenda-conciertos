@@ -1,122 +1,74 @@
 {
- "am_artist": {
-  "error": "HTTPError: 403 Client Error: Forbidden for url: https://www.allmusic.com/artist/deep-purple-mn0000235357",
-  "ok": false,
-  "robots": "sin_robots (403)",
-  "url": "https://www.allmusic.com/artist/deep-purple-mn0000235357"
- },
- "am_genre_poprock": {
-  "error": "HTTPError: 403 Client Error: Forbidden for url: https://www.allmusic.com/genre/pop-rock-ma0000002613",
-  "ok": false,
-  "robots": "sin_robots (403)",
-  "url": "https://www.allmusic.com/genre/pop-rock-ma0000002613"
- },
- "am_genres": {
-  "error": "HTTPError: 403 Client Error: Forbidden for url: https://www.allmusic.com/genres",
-  "ok": false,
-  "robots": "sin_robots (403)",
-  "url": "https://www.allmusic.com/genres"
- },
- "am_robots": {
-  "error": "HTTPError: 403 Client Error: Forbidden for url: https://www.allmusic.com/robots.txt",
-  "ok": false,
-  "robots": "",
-  "url": "https://www.allmusic.com/robots.txt"
- },
- "am_search": {
-  "error": "HTTPError: 403 Client Error: Forbidden for url: https://www.allmusic.com/search/artists/deep%20purple",
-  "ok": false,
-  "robots": "sin_robots (403)",
-  "url": "https://www.allmusic.com/search/artists/deep%20purple"
- },
- "am_search2": {
-  "error": "HTTPError: 403 Client Error: Forbidden for url: https://www.allmusic.com/search/artists/hallas",
-  "ok": false,
-  "robots": "sin_robots (403)",
-  "url": "https://www.allmusic.com/search/artists/hallas"
- },
- "bc_robots": {
-  "bytes": 1053,
-  "ok": true,
-  "robots": "",
-  "url": "https://bandcamp.com/robots.txt"
- },
- "bc_search": {
-  "ok": false,
-  "robots": "ok",
-  "robots_blocked": true,
-  "url": "https://bandcamp.com/search?q=toldos%20verdes&item_type=b"
- },
- "dc_artist": {
-  "error": "HTTPError: 404 Client Error: Not Found for url: https://api.discogs.com/artists/118953",
-  "ok": false,
-  "robots": "ok",
-  "url": "https://api.discogs.com/artists/118953"
- },
- "dc_robots": {
-  "bytes": 3426,
+ "dc_art": {
+  "bytes": 29677,
   "ok": true,
   "robots": "ok",
-  "url": "https://api.discogs.com/robots.txt"
+  "url": "https://api.discogs.com/artists/170355"
  },
- "dc_search": {
-  "bytes": 11185,
+ "dc_rel": {
+  "bytes": 2561,
   "ok": true,
   "robots": "ok",
-  "url": "https://api.discogs.com/database/search?q=Deep+Purple&type=artist"
+  "url": "https://api.discogs.com/artists/170355/releases?sort=year&sort_order=desc&per_page=8"
  },
- "eswiki": {
-  "ok": false,
-  "robots": "ok",
-  "robots_blocked": true,
-  "url": "https://es.wikipedia.org/w/api.php?action=parse&page=Los_Vinagres&prop=wikitext&format=json"
- },
- "eswiki_robots": {
-  "bytes": 19467,
+ "dc_s_europe": {
+  "bytes": 11278,
   "ok": true,
   "robots": "ok",
-  "url": "https://es.wikipedia.org/robots.txt"
+  "url": "https://api.discogs.com/database/search?q=Europe&type=artist"
  },
- "fono_grupo": {
-  "error": "HTTPError: 403 Client Error: Forbidden for url: https://lafonoteca.net/grupos/los-vinagres/",
-  "ok": false,
-  "robots": "ok",
-  "url": "https://lafonoteca.net/grupos/los-vinagres/"
- },
- "fono_robots": {
-  "bytes": 320,
+ "dc_s_hallas": {
+  "bytes": 10959,
   "ok": true,
-  "robots": "",
-  "url": "https://lafonoteca.net/robots.txt"
- },
- "fono_search": {
-  "error": "HTTPError: 403 Client Error: Forbidden for url: https://lafonoteca.net/?s=los+vinagres",
-  "ok": false,
   "robots": "ok",
-  "url": "https://lafonoteca.net/?s=los+vinagres"
+  "url": "https://api.discogs.com/database/search?q=H%C3%A4llas&type=artist"
  },
- "mb_robots": {
-  "bytes": 1009,
+ "dc_s_master": {
+  "bytes": 9168,
   "ok": true,
-  "robots": "",
-  "url": "https://musicbrainz.org/robots.txt"
- },
- "wd_dp": {
-  "ok": false,
   "robots": "ok",
-  "robots_blocked": true,
-  "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&sites=enwiki&titles=Deep_Purple&props=claims|labels&languages=es|en&format=json"
+  "url": "https://api.discogs.com/database/search?artist=Deep+Purple&type=master&per_page=10"
  },
- "wd_search": {
-  "ok": false,
+ "dc_s_toldos": {
+  "bytes": 297,
+  "ok": true,
   "robots": "ok",
-  "robots_blocked": true,
-  "url": "https://www.wikidata.org/w/api.php?action=wbsearchentities&search=H%C3%A4llas&language=en&type=item&limit=10&format=json"
+  "url": "https://api.discogs.com/database/search?q=Toldos+Verdes&type=artist"
  },
- "wd_search_es": {
-  "ok": false,
+ "dc_s_vinagres": {
+  "bytes": 942,
+  "ok": true,
   "robots": "ok",
-  "robots_blocked": true,
-  "url": "https://www.wikidata.org/w/api.php?action=wbsearchentities&search=Los%20Vinagres&language=es&type=item&limit=10&format=json"
+  "url": "https://api.discogs.com/database/search?q=Los+Vinagres&type=artist"
+ },
+ "wp_en_hallas": {
+  "bytes": 142434,
+  "ok": true,
+  "robots": "ok",
+  "url": "https://en.wikipedia.org/wiki/H%C3%A4llas"
+ },
+ "wp_es_dp": {
+  "bytes": 441344,
+  "ok": true,
+  "robots": "ok",
+  "url": "https://es.wikipedia.org/wiki/Deep_Purple"
+ },
+ "wp_es_leiva": {
+  "bytes": 186016,
+  "ok": true,
+  "robots": "ok",
+  "url": "https://es.wikipedia.org/wiki/Leiva_(cantante)"
+ },
+ "wp_es_search": {
+  "bytes": 88918,
+  "ok": true,
+  "robots": "ok",
+  "url": "https://es.wikipedia.org/wiki/Especial:Buscar?search=Toldos+Verdes"
+ },
+ "wp_es_vinagres": {
+  "bytes": 129786,
+  "ok": true,
+  "robots": "ok",
+  "url": "https://es.wikipedia.org/wiki/Los_Vinagres"
  }
 }
