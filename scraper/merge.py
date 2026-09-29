@@ -182,9 +182,9 @@ def construir(cluster: Cluster, municipio_de) -> dict:
     invitados: list[str] = []
     for it in sorted(items, key=lambda i: i.src.prioridad):
         for n in [it.ev.artista, *it.ev.invitados]:
-            if parecido(n, artista) >= UMBRAL or es_generico(n):
+            if parecido_flexible(n, artista) >= UMBRAL or es_generico(n):
                 continue
-            if any(parecido(n, x) >= UMBRAL for x in invitados):
+            if any(parecido_flexible(n, x) >= UMBRAL for x in invitados):
                 continue
             invitados.append(n)
     # sala
