@@ -1,5 +1,9 @@
 # Versiones
 
+## 2.7.1 — 2026-09-29
+
+- Discogs: su buscador aún lista algunas fichas borradas; al abrirlas daban 404 y se reintentaban en cada ejecución (Los Deltonos). Ahora se registran como "sin ficha en Discogs" con el motivo, y el estilo sigue viniendo de Last.fm.
+
 ## 2.7.0 — 2026-09-29
 
 Primera versión después de la baseline: versión 2.6.1, commit `c2b68d0` (datos de la ejecución del 29-09-2026 a las 19:28 UTC).

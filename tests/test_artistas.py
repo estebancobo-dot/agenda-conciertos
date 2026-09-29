@@ -182,3 +182,20 @@ def test_unir_caches_de_dos_ejecuciones():
     suya = {"b": {"fecha": "2026-09-29", "v": 2}, "c": {"fecha": "2026-09-29", "v": "suya"}}
     u = gd.unir_caches(nuestra, suya)
     assert set(u) == {"a", "b", "c"} and u["c"]["v"] == "suya"  # gana la consulta más reciente
+
+
+def test_discogs_buscador_enlaza_ficha_borrada():
+    import requests
+    from tests.fakefetch import FakeFetcher
+
+    class R404:
+        status_code = 404
+
+    def borrada(url, kw):
+        raise requests.HTTPError("404 Client Error", response=R404())
+
+    res = {"results": [{"title": "Los Deltonos", "type": "artist", "resource_url": "https://api.discogs.com/artists/9340201"}]}
+    dc = FakeFetcher({"https://api.discogs.com/database/search?q=*": lambda u, kw: json.dumps(res),
+                      "https://api.discogs.com/artists/9340201": borrada})
+    r = A.buscar_discogs(dc, "Los Deltonos")
+    assert r == {"encontrado": False, "motivo": "el buscador de Discogs enlaza una ficha que ya no existe"}

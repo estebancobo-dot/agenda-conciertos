@@ -139,7 +139,14 @@ def buscar_discogs(f: Fetcher, nombre: str, discogs_id: str | None = None) -> di
     cand, n = discogs_identificar(res.get("results", []), nombre)
     if not cand:
         return {"encontrado": False, "motivo": "sin coincidencia exacta" if n == 0 else f"{n} artistas homónimos"}
-    art = json.loads(f.get(cand["resource_url"]))
+    import requests
+    try:
+        art = json.loads(f.get(cand["resource_url"]))
+    except requests.HTTPError as e:
+        # el buscador de Discogs aún lista fichas borradas (le pasa a Los Deltonos): no es un error pasajero
+        if e.response is not None and e.response.status_code == 404:
+            return {"encontrado": False, "motivo": "el buscador de Discogs enlaza una ficha que ya no existe"}
+        raise
     return discogs_ficha(f, art, nombre, "única coincidencia exacta del nombre en Discogs")
 
 
