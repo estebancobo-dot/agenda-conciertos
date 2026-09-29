@@ -1,0 +1,56 @@
+{
+ "galileo_es": {
+  "bytes": 169,
+  "ok": true,
+  "robots": "ok",
+  "url": "https://salagalileo.es/"
+ },
+ "galileo_prog": {
+  "bytes": 184,
+  "ok": true,
+  "robots": "ok",
+  "url": "https://salagalileo.es/programacion/"
+ },
+ "galileo_robots": {
+  "bytes": 179,
+  "ok": true,
+  "robots": "ok",
+  "url": "https://salagalileo.es/robots.txt"
+ },
+ "mev_radar": {
+  "bytes": 134180,
+  "ok": true,
+  "robots": "ok",
+  "url": "https://madridenvivo.com/radar-joven/"
+ },
+ "radar_a": {
+  "error": "HTTPError: 404 Client Error: Not Found for url: https://www.comunidad.madrid/actividades/2026/radar-joven-2026",
+  "ok": false,
+  "robots": "sin_robots (404)",
+  "url": "https://www.comunidad.madrid/actividades/2026/radar-joven-2026"
+ },
+ "radar_b": {
+  "error": "HTTPError: 404 Client Error: Not Found for url: https://www.comunidad.madrid/actividades/2026/radar-joven-2026/",
+  "ok": false,
+  "robots": "sin_robots (404)",
+  "url": "https://www.comunidad.madrid/actividades/2026/radar-joven-2026/"
+ },
+ "radar_cultura": {
+  "error": "HTTPError: 404 Client Error: Not Found for url: https://www.comunidad.madrid/cultura/conciertos-radar-joven",
+  "ok": false,
+  "robots": "sin_robots (404)",
+  "url": "https://www.comunidad.madrid/cultura/conciertos-radar-joven"
+ },
+ "radar_noticia": {
+  "error": "HTTPError: 404 Client Error: Not Found for url: https://www.comunidad.madrid/noticias/2026/09/18/comunidad-madrid-celebra-cinco-anos-radar-joven-nueva-edicion-conciertos-protagonizados-64-bandas-artistas",
+  "ok": false,
+  "robots": "sin_robots (404)",
+  "url": "https://www.comunidad.madrid/noticias/2026/09/18/comunidad-madrid-celebra-cinco-anos-radar-joven-nueva-edicion-conciertos-protagonizados-64-bandas-artistas"
+ },
+ "radar_robots": {
+  "error": "HTTPError: 404 Client Error: Not Found for url: https://www.comunidad.madrid/robots.txt",
+  "ok": false,
+  "robots": "sin_robots (404)",
+  "url": "https://www.comunidad.madrid/robots.txt"
+ }
+}
