@@ -1,5 +1,5 @@
 {
- "_descripcion": "Traduce el estilo que da cada fuente a una categoría. 'exacto' se compara tras normalizar; si no hay coincidencia exacta se aplican las 'palabras_clave' en orden (la primera que aparezca como palabra gana). Si la fuente no da estilo: 'sin clasificar'. 'titulo_fuera_de_foco': palabras en el título del evento que lo marcan fuera de foco (p. ej. Candlelight, musicales). Si un estilo no encaja en nada se queda 'sin clasificar' y aparece en el informe para añadirlo aquí.",
+ "_descripcion": "Traduce el estilo que da cada fuente a una categoría. 'exacto' se compara tras normalizar; si no hay coincidencia exacta se aplican las 'palabras_clave' en orden (la primera que aparezca como palabra gana). Si la fuente no da estilo: 'sin clasificar'. 'titulo_fuera_de_foco': palabras en el título del evento que lo marcan fuera de foco (p. ej. Candlelight, musicales). Si un estilo no encaja en nada se queda 'sin clasificar' y aparece en el informe para añadirlo aquí. Un valor puede ser una lista de categorías cuando el estilo de la fuente abarca varias (p. ej. 'Pop / Rock').",
  "categorias": [
   "rock y metal",
   "pop e indie",
@@ -71,7 +71,21 @@
   "rock": "rock y metal",
   "pop": "pop e indie",
   "blues": "blues",
-  "folk": "americana/country/folk"
+  "folk": "americana/country/folk",
+  "Pop / Rock": [
+   "pop e indie",
+   "rock y metal"
+  ],
+  "Músicas negras": [
+   "blues",
+   "fuera de foco"
+  ],
+  "Artes escénicas": "fuera de foco",
+  "Clubbing": "fuera de foco",
+  "Flamenco Capital": "fuera de foco",
+  "Musicales": "fuera de foco",
+  "Conciertos": "sin clasificar",
+  "Concierto": "sin clasificar"
  },
  "palabras_clave": [
   [

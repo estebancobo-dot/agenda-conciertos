@@ -114,7 +114,18 @@ def misma_sala(a: str, b: str) -> bool:
     ka, kb = _sala_key(norm(a)), _sala_key(norm(b))
     if not ka or not kb:
         return False
-    return ka == kb or fuzz.ratio(ka, kb) >= 90
+    if ka == kb or fuzz.ratio(ka, kb) >= 90 or ka.replace(" ", "") == kb.replace(" ", ""):
+        return True
+    ta, tb = _tokens_sala(ka), _tokens_sala(kb)
+    return bool(ta) and bool(tb) and fuzz.token_sort_ratio(ta, tb) >= 92
+
+
+_GENERICAS_SALA = {"sala", "club", "teatro", "recinto", "madrid", "de", "del", "la", "el", "the", "espacio", "and",
+                   "y", "hall"}
+
+
+def _tokens_sala(k: str) -> str:
+    return " ".join(w for w in k.split() if w not in _GENERICAS_SALA)
 
 
 # ---------------------------------------------------------------- municipios
@@ -266,8 +277,46 @@ def extrae_pais(nombre: str) -> tuple[str, str | None]:
 def cabeza(nombre: str) -> str:
     """Parte principal del nombre para comparar ('Hällas - Gira 2026' → 'hallas')."""
     n = norm(nombre)
-    n = re.split(r"\b(presenta|presentan|en concierto|tour|gira|live in|en madrid|world tour)\b", n)[0]
+    n = re.split(r"\b(presenta|presentan|presentando|en concierto|tour|gira|live in|en madrid|world tour)\b", n)[0]
     return n.strip()
+
+
+_CORTES = re.compile(r"\s*(?:[.:|–—]|\s-\s|\bby\b|\bpresenta(?:n|ndo)?\b|\bcon\b|\ben concierto\b|\+)\s*", re.I)
+
+
+def variantes(nombre: str) -> set[str]:
+    """Formas del nombre para comparar: completo, cabeza y trozos separados por '.', ':', '–', 'by'..."""
+    out = {norm(nombre), cabeza(nombre)}
+    for p in _CORTES.split(nombre or ""):
+        n = norm(p)
+        if len(n) >= 4:
+            out.add(n)
+    return {x for x in out if x}
+
+
+def contiene(corto: str, largo: str) -> bool:
+    """True si la secuencia de palabras 'corto' aparece completa dentro de 'largo'."""
+    if len(corto) < 4 or corto == largo:
+        return corto == largo and bool(corto)
+    return f" {corto} " in f" {largo} "
+
+
+def parecido_flexible(a: str, b: str) -> float:
+    """Para comparar dentro de la misma fecha y sala: admite prefijos de ciclo y subtítulos
+    ('Las Noches de Río Babel. Los Vinagres' ~ 'LOS VINAGRES', 'Aciz – Soul Castizo' ~ 'Aciz')."""
+    r = parecido(a, b)
+    if r >= 90:
+        return r
+    va, vb = variantes(a), variantes(b)
+    for x in va:
+        for y in vb:
+            if len(x) >= 4 and len(y) >= 4 and fuzz.ratio(x, y) >= 90:
+                return 90.0
+    na, nb = norm(a), norm(b)
+    corto, largo = sorted((na, nb), key=len)
+    if contiene(corto, largo) and len(corto.replace(" ", "")) >= 5:
+        return 90.0
+    return r
 
 
 def parecido(a: str, b: str) -> float:

@@ -1,0 +1,310 @@
+"""Orquestador: rastrea las fuentes, unifica, aplica correcciones y escribe los datos."""
+from __future__ import annotations
+
+import csv
+import json
+import logging
+import time
+import traceback
+from concurrent.futures import ThreadPoolExecutor
+from datetime import date, datetime, timedelta, timezone
+from pathlib import Path
+
+from . import __version__
+from .clasificar import categoria_de
+from .correcciones import aplicar as aplicar_correcciones
+from .fetch import Fetcher, RobotsBlocked
+from .merge import (Item, agrupar, artistas_coinciden, coinciden_flexible, construir, fusionar_conflictos_sala,
+                    hacer_id, marcar_conflictos_cartel, nombres_rec, recalcular_categorias, recalcular_estado)
+from .model import RawEvent, Source
+from .normalize import DATA, canon_sala, load_json, misma_sala, municipio, norm, sala_municipio
+from .registry import FUENTES, NO_USAR, SIN_AGENDA_LEGIBLE
+from .sources.base import Ctx
+
+log = logging.getLogger("agenda")
+HORIZONTE_DIAS = 120
+HISTORIA_DIAS = 31
+
+
+def _read(name: str, default):
+    p = DATA / name
+    if p.exists():
+        try:
+            return json.loads(p.read_text(encoding="utf-8"))
+        except ValueError:
+            return default
+    return default
+
+
+def _write(name: str, obj) -> None:
+    (DATA / name).write_text(json.dumps(obj, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+
+
+# ---------------------------------------------------------------- rastreo
+def rastrear(fuentes: list[Source], fetcher: Fetcher, hoy: date, horizonte: date, estado: dict,
+             max_workers: int = 10) -> tuple[list[Item], dict]:
+    resultados: dict[str, dict] = {}
+    items: list[Item] = []
+
+    def run(src: Source):
+        ctx = Ctx(fetcher=fetcher, today=hoy, horizon=horizonte, estado=estado.setdefault(src.id, {}))
+        t0 = time.monotonic()
+        evs: list[RawEvent] = []
+        res = {"funciono": False, "estado": "", "brutos": 0, "paginas": 0, "errores": [], "robots": ""}
+        try:
+            for e in src.parser(ctx):
+                e.fuente = src.id
+                evs.append(e)
+            res["funciono"] = True
+            res["estado"] = "ok" if evs else "ok_sin_resultados"
+        except RobotsBlocked as e:
+            res["estado"] = "bloqueado_robots"
+            res["errores"].append(f"robots.txt prohíbe {e}")
+        except Exception as e:  # noqa: BLE001
+            msg = f"{type(e).__name__}: {e}"
+            res["estado"] = "bloqueado_403" if "403" in msg else "error"
+            res["errores"].append(msg[:400])
+            log.debug(traceback.format_exc())
+        res["errores"] += ctx.errors[:20]
+        res["paginas"] = ctx.pages
+        res["brutos"] = len(evs)
+        res["segundos"] = round(time.monotonic() - t0, 1)
+        try:
+            res["robots"] = fetcher.robots_status(src.url)
+        except Exception:  # noqa: BLE001
+            res["robots"] = ""
+        log.info("%-22s %-18s %4d eventos %3d páginas %5.1fs", src.id, res["estado"], len(evs), ctx.pages,
+                 res["segundos"])
+        return src, evs, res
+
+    with ThreadPoolExecutor(max_workers=max_workers) as ex:
+        for src, evs, res in ex.map(run, fuentes):
+            resultados[src.id] = res
+            items.extend(Item(e, src) for e in evs)
+    return items, resultados
+
+
+# ---------------------------------------------------------------- normalización y ámbito
+def municipio_item(it: Item) -> str | None:
+    ev = it.ev
+    ciudad_m = municipio(ev.ciudad) if ev.ciudad else None
+    if ev.ciudad and not ciudad_m:
+        return None  # la fuente da una ciudad fuera de la Comunidad de Madrid (p. ej. Granada)
+    return sala_municipio(ev.sala) or ciudad_m or it.src.municipio_defecto
+
+
+def preparar(items: list[Item], hoy: date, horizonte: date) -> tuple[list[Item], dict]:
+    fuera = {"fuera_de_ventana": 0, "fuera_de_ambito": 0, "ejemplos_fuera_de_ambito": []}
+    ok = []
+    for it in items:
+        ev = it.ev
+        if not ev.artista or not (hoy <= ev.fecha <= horizonte):
+            fuera["fuera_de_ventana"] += 1
+            continue
+        ev.sala = canon_sala(ev.sala)
+        if not municipio_item(it):
+            fuera["fuera_de_ambito"] += 1
+            if len(fuera["ejemplos_fuera_de_ambito"]) < 25:
+                fuera["ejemplos_fuera_de_ambito"].append(
+                    f"{ev.fecha} {ev.artista} @ {ev.sala or '?'} ({ev.ciudad or 'sin ciudad'}) [{it.src.nombre}]")
+            continue
+        ok.append(it)
+    return ok, fuera
+
+
+# ---------------------------------------------------------------- unificación
+def unificar(items: list[Item]) -> list[dict]:
+    por_fecha: dict[date, list[Item]] = {}
+    for it in items:
+        por_fecha.setdefault(it.ev.fecha, []).append(it)
+    recs = []
+    for f in sorted(por_fecha):
+        for cl in agrupar(por_fecha[f]):
+            recs.append(construir(cl, municipio_item))
+    recs = fusionar_conflictos_sala(recs)
+    marcar_conflictos_cartel(recs)
+    return recs
+
+
+def _match_prev(r: dict, prev: list[dict]) -> dict | None:
+    for p in prev:
+        if p["fecha"] != r["fecha"]:
+            continue
+        sa, sb = r["sala"].split(" / ")[0], p["sala"].split(" / ")[0]
+        if sa and sb and not misma_sala(sa, sb):
+            continue
+        if artistas_coinciden([r["artista"]], nombres_rec(p)) or artistas_coinciden([p["artista"]], nombres_rec(r)):
+            return p
+    return None
+
+
+def conciliar(recs: list[dict], anteriores: list[dict], hoy: date, resultados: dict, fuentes: dict[str, Source]):
+    """Asigna ids estables, fechas de primera/última vez y marca 'posiblemente cancelado'."""
+    hoy_s = hoy.isoformat()
+    prev_por_fecha: dict[str, list[dict]] = {}
+    for p in anteriores:
+        prev_por_fecha.setdefault(p["fecha"], []).append(p)
+    usados = set()
+    ids = set()
+    for r in recs:
+        p = _match_prev(r, [x for x in prev_por_fecha.get(r["fecha"], []) if x["id"] not in usados])
+        if p:
+            usados.add(p["id"])
+            r["id"] = p["id"]
+            r["primera_vez_visto"] = p.get("primera_vez_visto") or hoy_s
+        else:
+            r["id"] = hacer_id(r)
+            r["primera_vez_visto"] = hoy_s
+        while r["id"] in ids:
+            r["id"] = r["id"][:10] + format(len(ids) % 256, "02x")
+        ids.add(r["id"])
+        r["ultima_vez_visto"] = hoy_s
+    limite_hist = (hoy - timedelta(days=HISTORIA_DIAS)).isoformat()
+    arrastrados = []
+    for p in anteriores:
+        if p["id"] in usados or p["id"] in ids:
+            continue
+        if p["fecha"] < limite_hist:
+            continue
+        if p["fecha"] < hoy_s:
+            arrastrados.append(p)  # ya pasó: se conserva como histórico del mes
+            continue
+        # absorbido por un registro actual (mismo día y sala, nombre equivalente): no es una cancelación
+        if any(r["fecha"] == p["fecha"] and (not r["sala"] or not p["sala"] or
+                                             misma_sala(r["sala"].split(" / ")[0], p["sala"].split(" / ")[0]))
+               and coinciden_flexible([p["artista"]], nombres_rec(r)) for r in recs):
+            continue
+        srcs = [f["id"] for f in p["fuentes"] if f["id"] in fuentes]
+        reconf = [s for s in srcs if fuentes[s].reconfirma]
+        if not reconf:
+            arrastrados.append(p)
+            continue
+        caidas = [s for s in reconf if not (resultados.get(s, {}).get("funciono") and
+                                              resultados.get(s, {}).get("brutos", 0) > 0)]
+        if caidas:
+            nota = ("No se pudo reconfirmar hoy: no respondió " +
+                    ", ".join(fuentes[s].nombre for s in caidas) + ". Se mantiene el dato anterior.")
+            p["notas"] = [n for n in p["notas"] if not n.startswith("No se pudo reconfirmar hoy")] + [nota]
+        else:
+            if p["estado"] != "posiblemente cancelado":
+                p["estado"] = "posiblemente cancelado"
+                p["notas"].append(f"Ya no aparece en ninguna de sus fuentes (comprobado el {hoy_s}); "
+                                  f"visto por última vez el {p.get('ultima_vez_visto')}.")
+        arrastrados.append(p)
+    return recs + arrastrados
+
+
+# ---------------------------------------------------------------- salidas
+CSV_COLS = ["id", "fecha", "hora", "artista", "invitados", "sala", "municipio", "precio", "categoria",
+            "estilo_fuente", "genero_discogs", "estilos_discogs", "nacionalidad", "nacionalidad_fuente", "estado",
+            "en_foco", "fuentes", "urls", "notas", "primera_vez_visto", "ultima_vez_visto"]
+
+
+def escribir_csv(recs: list[dict], path: Path) -> None:
+    with path.open("w", encoding="utf-8-sig", newline="") as fh:
+        w = csv.writer(fh, delimiter=";")
+        w.writerow(CSV_COLS)
+        for r in recs:
+            w.writerow([
+                r["id"], r["fecha"], r["hora"] or "", r["artista"], " + ".join(r["invitados"]), r["sala"],
+                r["municipio"] or "", r["precio"] or "", r["categoria"],
+                " | ".join(f"{e['estilo']} ({e['fuente']})" for e in r["estilo_fuente"]),
+                ", ".join(r["genero_discogs"]), ", ".join(r["estilos_discogs"]),
+                r["nacionalidad"] or "sin confirmar", r["nacionalidad_fuente"] or "", r["estado"],
+                "sí" if r["en_foco"] else "no", " | ".join(f["nombre"] for f in r["fuentes"]),
+                " | ".join(f["url"] for f in r["fuentes"]), " | ".join(r["notas"]),
+                r["primera_vez_visto"] or "", r["ultima_vez_visto"] or ""])
+
+
+def informe_fuentes(fuentes: list[Source], resultados: dict, recs: list[dict], anteriores_ids: set,
+                    historial: dict, hoy: date) -> list[dict]:
+    grupo = {s.id: s.grupo for s in fuentes}
+    out = []
+    for s in fuentes:
+        res = resultados.get(s.id, {})
+        mios = [r for r in recs if r["fecha"] >= hoy.isoformat() and any(f["id"] == s.id for f in r["fuentes"])]
+        solo = [r for r in mios if {grupo.get(f["id"], f["id"]) for f in r["fuentes"]} == {s.grupo}]
+        nuevos = [r for r in mios if r["id"] not in anteriores_ids]
+        h = historial.get(s.id, {})
+        aviso = None
+        if res and (not res.get("funciono") or res.get("brutos", 0) == 0) and h.get("ultimo_conteo", 0) > 0:
+            aviso = f"posible cambio en la web: antes daba {h['ultimo_conteo']} conciertos (último éxito {h.get('ultima_ok')})"
+        out.append({**s.meta(), "funciono": res.get("funciono", False), "estado": res.get("estado", "no ejecutada"),
+                    "conciertos": len(mios), "nuevos": len(nuevos), "solo_en_esta": len(solo),
+                    "eventos_brutos": res.get("brutos", 0), "paginas": res.get("paginas", 0),
+                    "errores": res.get("errores", []), "robots": res.get("robots", ""),
+                    "robots_bloquea": res.get("estado") == "bloqueado_robots", "aviso": aviso,
+                    "segundos": res.get("segundos")})
+        if res.get("funciono") and res.get("brutos", 0) > 0:
+            historial[s.id] = {"ultima_ok": hoy.isoformat(), "ultimo_conteo": len(mios)}
+    return out
+
+
+def ejecutar(hoy: date | None = None, solo: list[str] | None = None, fetcher: Fetcher | None = None,
+             musicbrainz: bool = True, max_mb: int = 700) -> dict:
+    hoy = hoy or datetime.now(timezone.utc).astimezone().date()
+    horizonte = hoy + timedelta(days=HORIZONTE_DIAS)
+    fetcher = fetcher or Fetcher()
+    fuentes = [s for s in FUENTES if not solo or s.id in solo]
+    estado = _read("estado.json", {})
+    anteriores = _read("concerts.json", {}).get("conciertos", [])
+    anteriores_ids = {p["id"] for p in anteriores}
+    t0 = time.monotonic()
+    items, resultados = rastrear(fuentes, fetcher, hoy, horizonte, estado.setdefault("fuentes", {}))
+    items, fuera = preparar(items, hoy, horizonte)
+    recs = unificar(items)
+    recs = conciliar(recs, anteriores, hoy, resultados, {s.id: s for s in FUENTES})
+    correcciones = load_json("correcciones.json")["correcciones"]
+    recs, res_corr = aplicar_correcciones(recs, correcciones, hoy.isoformat())
+    grupo = {s.id: s.grupo for s in FUENTES}
+    for r in recs:
+        recalcular_categorias(r)
+        recalcular_estado(r, lambda i: grupo.get(i, i))
+    # MusicBrainz
+    mb_stats = {"desactivado": True}
+    if musicbrainz:
+        from .musicbrainz import completar, fetcher_musicbrainz
+        cache = _read("musicbrainz_cache.json", {})
+        mb_stats = completar(recs, cache, hoy, fetcher_musicbrainz(), max_consultas=max_mb)
+        _write("musicbrainz_cache.json", cache)
+    recs.sort(key=lambda r: (r["fecha"], r["hora"] or "99", norm(r["artista"])))
+    # estilos que no se han podido traducir a categoría
+    sin_mapear = sorted({e["estilo"] + " (" + e["fuente"] + ")" for r in recs for e in r["estilo_fuente"]
+                         if categoria_de(e["estilo"]) is None})
+    historial = estado.setdefault("historial_fuentes", {})
+    inf_fuentes = informe_fuentes(fuentes, resultados, recs, anteriores_ids, historial, hoy)
+    futuros = [r for r in recs if r["fecha"] >= hoy.isoformat()]
+    ahora = datetime.now(timezone.utc).isoformat(timespec="seconds")
+    informe = {
+        "version": __version__,
+        "generado": ahora,
+        "hoy": hoy.isoformat(),
+        "horizonte": horizonte.isoformat(),
+        "duracion_seg": round(time.monotonic() - t0),
+        "totales": {
+            "conciertos": len(futuros),
+            "en_foco": sum(r["en_foco"] for r in futuros),
+            "contrastados": sum(r["estado"] == "contrastado" for r in futuros),
+            "una_fuente": sum(r["estado"] == "1_fuente" for r in futuros),
+            "conflictos": sum(r["estado"] == "conflicto" for r in futuros),
+            "posiblemente_cancelados": sum(r["estado"] == "posiblemente cancelado" for r in futuros),
+            "nuevos_hoy": sum(r["id"] not in anteriores_ids for r in futuros),
+            "fuentes_ok": sum(f["funciono"] for f in inf_fuentes),
+            "fuentes_total": len(inf_fuentes),
+            "peticiones_http": fetcher.requests_count,
+            **fuera,
+        },
+        "fuentes": inf_fuentes,
+        "sin_agenda_legible": SIN_AGENDA_LEGIBLE,
+        "no_usar": NO_USAR,
+        "correcciones": res_corr,
+        "musicbrainz": mb_stats,
+        "estilos_sin_mapear": sin_mapear[:300],
+    }
+    _write("concerts.json", {"generado": ahora, "hoy": hoy.isoformat(), "horizonte": horizonte.isoformat(),
+                             "conciertos": recs})
+    escribir_csv(recs, DATA / "concerts.csv")
+    _write("informe.json", informe)
+    estado["ultima_ejecucion"] = ahora
+    _write("estado.json", estado)
+    return informe

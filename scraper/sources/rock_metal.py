@@ -75,6 +75,10 @@ def split_lista(nombre: str) -> tuple[str, list[str]]:
     nombre = clean(nombre)
     if "+" in nombre:
         parts = [clean(p) for p in nombre.split("+") if clean(p)]
+        if parts and len(parts) > 1:
+            last = re.match(r"^(.+?)\s+y\s+(.+)$", parts[-1])
+            if last and last.group(1).upper() == last.group(1) and last.group(2).upper() == last.group(2):
+                parts = parts[:-1] + [clean(last.group(1)), clean(last.group(2))]
         return parts[0], parts[1:]
     m = re.match(r"^(.+?)((?:,\s*[^,]+)+)\s+y\s+(.+)$", nombre)
     if m:
