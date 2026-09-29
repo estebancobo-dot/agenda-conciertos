@@ -33,99 +33,146 @@ html{-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;padding-bottom:env(safe-area-inset-bottom)}
 a{color:var(--info)}
 button,input,select{font:inherit;color:inherit}
-header{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
-.top{display:flex;align-items:center;gap:10px;padding:10px 16px 6px;max-width:960px;margin:0 auto}
-.top h1{font-size:1rem;margin:0;flex:1;min-width:0;line-height:1.25}
-.top h1 small{display:block;font-weight:400;color:var(--muted);font-size:.75rem}
-.iconbtn{border:1px solid var(--line);background:var(--panel);border-radius:10px;min-width:40px;height:40px;padding:0 10px;cursor:pointer}
-nav.tabs{display:flex;gap:4px;overflow-x:auto;padding:0 12px 8px;max-width:960px;margin:0 auto;scrollbar-width:none}
-nav.tabs::-webkit-scrollbar{display:none}
-nav.tabs button{flex:0 0 auto;border:0;background:transparent;padding:8px 12px;border-radius:999px;color:var(--muted);cursor:pointer;font-weight:600;font-size:.92rem}
-nav.tabs button[aria-selected="true"]{background:var(--ink);color:var(--bg)}
-main{max-width:960px;margin:0 auto;padding:12px 16px 40px}
-.bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:10px}
-.search{flex:1 1 200px;min-width:0;height:42px;border:1px solid var(--line);border-radius:12px;padding:0 12px;background:var(--panel)}
-.fbtn{height:42px;border:1px solid var(--line);background:var(--panel);border-radius:12px;padding:0 12px;cursor:pointer;display:inline-flex;align-items:center;gap:6px;max-width:100%}
-.fbtn b{font-weight:700}
-.fbtn .sum{color:var(--muted);font-size:.85rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-select.fbtn{appearance:auto}
-.nav{display:flex;align-items:center;gap:8px;margin:6px 0 12px}
-.nav .title{flex:1;font-weight:700;text-align:center}
+button{cursor:pointer}
+/* cabecera */
+header{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top{display:flex;align-items:center;gap:8px;padding:8px 16px 6px;max-width:960px;margin:0 auto}
+.top h1{font-size:1.05rem;margin:0;flex:1;min-width:0;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.top h1 small{display:block;font-weight:400;color:var(--muted);font-size:.74rem}
+.iconbtn{border:1px solid var(--line);background:var(--panel);border-radius:10px;min-width:40px;height:40px;padding:0 10px;display:inline-flex;align-items:center;justify-content:center;gap:4px}
+.seg{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;padding:2px 16px 8px;max-width:960px;margin:0 auto}
+.seg button{border:0;background:var(--panel2);padding:7px 0;border-radius:10px;color:var(--muted);font-weight:700;font-size:.92rem}
+.seg button[aria-selected="true"]{background:var(--ink);color:var(--bg)}
+.menu{position:absolute;right:16px;top:52px;background:var(--panel);border:1px solid var(--line);border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.18);z-index:30;min-width:220px;padding:6px}
+.menu a,.menu button{display:flex;width:100%;align-items:center;gap:10px;padding:10px 12px;border:0;background:none;text-decoration:none;color:var(--ink);border-radius:8px;text-align:left}
+.menu a:hover,.menu button:hover{background:var(--panel2)}
+.menu hr{border:0;border-top:1px solid var(--line);margin:4px 0}
+main{max-width:960px;margin:0 auto;padding:10px 16px 48px}
+/* filtros */
+.bar{display:flex;gap:8px;align-items:center}
+.sbox{position:relative;flex:1;min-width:0}
+.search{width:100%;height:42px;border:1px solid var(--line);border-radius:12px;padding:0 36px 0 12px;background:var(--panel)}
+input[type=search]::-webkit-search-cancel-button{display:none}
+.sclear{position:absolute;right:4px;top:4px;width:34px;height:34px;border:0;background:none;color:var(--muted);font-size:1.1rem}
+.fbtn{height:42px;border:1px solid var(--line);background:var(--panel);border-radius:12px;padding:0 12px;display:inline-flex;align-items:center;gap:6px;flex:0 0 auto;font-weight:600}
+.badge{background:var(--accent);color:#fff;border-radius:999px;font-size:.72rem;min-width:18px;height:18px;padding:0 5px;display:inline-flex;align-items:center;justify-content:center}
+.chips{display:flex;gap:6px;overflow-x:auto;padding:8px 0 2px;scrollbar-width:none;margin:0 -16px;padding-left:16px;padding-right:16px}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:0 0 auto;display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--panel);border-radius:999px;padding:5px 11px;font-size:.85rem;color:var(--muted)}
+.chip i{width:9px;height:9px;border-radius:50%;display:inline-block}
+.chip[aria-pressed="true"]{border-color:var(--ink);color:var(--ink);font-weight:700;background:color-mix(in srgb,var(--ink) 7%,var(--panel))}
+.chip[aria-pressed="false"] i{opacity:.35}
+.active{font-size:.8rem;color:var(--muted);margin:6px 0 0}
+.active button{border:0;background:none;color:var(--info);padding:0;font-size:.8rem;text-decoration:underline}
+/* navegación de fechas */
+.nav{display:flex;align-items:center;gap:8px;margin:12px 0 8px}
+.nav .title{flex:1;font-weight:800;text-align:center;font-size:1.02rem}
 .nav .title::first-letter,.dayhead::first-letter{text-transform:uppercase}
-.nav input[type=date]{height:40px;border:1px solid var(--line);border-radius:10px;background:var(--panel);padding:0 8px;max-width:150px}
+.hoy{border:1px solid var(--line);background:var(--panel);border-radius:10px;height:40px;padding:0 12px;font-weight:600}
+.strip{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin:0 0 6px}
+.strip button{border:1px solid var(--line);background:var(--panel);border-radius:12px;padding:5px 0;display:flex;flex-direction:column;align-items:center;line-height:1.15}
+.strip .d{font-size:.7rem;color:var(--muted);font-weight:700;text-transform:uppercase}
+.strip .n{font-size:1.05rem;font-weight:800}
+.strip .c{font-size:.7rem;color:var(--muted)}
+.strip button.sel{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.strip button.sel .d,.strip button.sel .c{color:var(--bg);opacity:.8}
+.strip button.hoyd{outline:2px solid var(--accent);outline-offset:-2px}
+.strip button.past{opacity:.5}
+.stickystrip{position:sticky;top:var(--hh,96px);z-index:3;background:var(--bg);padding:6px 0 2px}
+/* mes */
 .cal{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
-.cal .dow{font-size:.72rem;color:var(--muted);text-align:center;padding:2px 0;font-weight:600}
-.day{background:var(--panel);border:1px solid var(--line);border-radius:10px;min-height:62px;padding:4px;display:flex;flex-direction:column;cursor:pointer;text-align:left}
-.day.out,.day.past{opacity:.4}
+.cal .dow{font-size:.72rem;color:var(--muted);text-align:center;padding:2px 0;font-weight:700}
+.day{background:var(--panel);border:1px solid var(--line);border-radius:10px;min-height:58px;padding:4px 5px;display:flex;flex-direction:column;text-align:left}
+.day.out{visibility:hidden}
+.day.past{opacity:.45}
 .day.today{outline:2px solid var(--accent);outline-offset:-2px;opacity:1}
-.day .n{font-size:.78rem;color:var(--muted)}
+.day .n{font-size:.75rem;color:var(--muted);font-weight:600}
 .day .cnt{font-size:1.05rem;font-weight:800;margin-top:auto}
 .day .cnt:empty{display:none}
-.day .stack{display:flex;height:6px;border-radius:3px;overflow:hidden;margin-top:3px;background:var(--panel2)}
-.legend{display:flex;flex-wrap:wrap;gap:10px;font-size:.78rem;color:var(--muted);margin-top:10px}
+.day .stack{display:flex;height:5px;border-radius:3px;overflow:hidden;margin-top:3px;background:var(--panel2)}
+.day.zero{background:transparent}
+.legend{display:flex;flex-wrap:wrap;gap:6px 12px;font-size:.76rem;color:var(--muted);margin-top:10px}
 .legend span{display:inline-flex;align-items:center;gap:5px}
 .legend i{width:10px;height:10px;border-radius:2px;display:inline-block}
-.dayhead{margin:18px 0 8px;font-weight:800;display:block}
-.dayhead small{color:var(--muted);font-weight:500;margin-left:8px}
+.dayhead{margin:18px 0 6px;font-weight:800;display:flex;align-items:baseline;gap:8px;scroll-margin-top:170px}
+.dayhead small{color:var(--muted);font-weight:500}
 /* tarjeta */
-.card{display:flex;gap:12px;align-items:flex-start;background:var(--panel);border:1px solid var(--line);border-left:5px solid var(--c-sin);border-radius:var(--radius);padding:10px;margin:8px 0;box-shadow:var(--shadow);text-decoration:none;color:inherit}
-.thumb{flex:0 0 56px;width:56px;height:56px;border-radius:10px;object-fit:cover;background:var(--panel2);display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--muted);font-size:1.1rem;overflow:hidden}
+.card{display:flex;gap:12px;align-items:center;background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:10px;margin:8px 0;box-shadow:var(--shadow);text-decoration:none;color:inherit;position:relative;overflow:hidden}
+.card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--gc,var(--c-sin))}
+.thumb{flex:0 0 60px;width:60px;height:60px;border-radius:10px;object-fit:cover;background:var(--panel2);display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--muted);font-size:1.1rem;overflow:hidden}
 .cbody{flex:1;min-width:0}
-.cl1{display:flex;gap:8px;align-items:baseline}
-.hora{font-variant-numeric:tabular-nums;font-weight:800;white-space:nowrap}
-.art{font-weight:800;font-size:1.02rem;word-break:break-word}
-.sub{color:var(--muted);font-size:.86rem;margin-top:1px}
+.art{font-weight:800;font-size:1.02rem;line-height:1.25;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.sub{color:var(--muted);font-size:.86rem;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sub b{color:var(--ink);font-variant-numeric:tabular-nums}
 .tags{display:flex;flex-wrap:wrap;gap:4px 6px;margin-top:5px;align-items:center}
-.tag{font-size:.75rem;border-radius:6px;padding:1px 6px;background:var(--panel2);color:var(--ink)}
+.tag{font-size:.74rem;border-radius:6px;padding:1px 6px;background:var(--panel2);color:var(--ink)}
 .tag.ag{background:transparent;border:1px dashed var(--line);color:var(--muted)}
 .flag{font-size:1rem;line-height:1}
-.st{font-size:.74rem;font-weight:700;border-radius:999px;padding:1px 8px;border:1px solid currentColor}
-.st-conf{color:var(--bad)} .st-canc{color:var(--warn)} .st-ok{color:var(--ok)}
+.st{font-size:.72rem;font-weight:700;border-radius:999px;padding:1px 8px;border:1px solid currentColor}
+.st-conf{color:var(--bad)} .st-canc{color:var(--warn)}
+.chev{color:var(--muted);font-size:1.3rem}
 /* ficha */
-.back{display:inline-flex;align-items:center;gap:6px;margin:0 0 10px;text-decoration:none}
-.hero{position:relative;border-radius:16px;overflow:hidden;background:var(--panel2);aspect-ratio:16/10;max-height:380px;width:100%}
-.hero img{width:100%;height:100%;object-fit:cover;display:block}
-.hero .ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:3rem;font-weight:800;color:var(--muted)}
+.back{display:inline-flex;align-items:center;gap:6px;margin:4px 0 10px;text-decoration:none;font-weight:600}
+.hero{position:relative;border-radius:16px;overflow:hidden;background:var(--panel2);aspect-ratio:4/3;max-height:420px;width:100%}
+.hero .blur{position:absolute;inset:-20px;background-size:cover;background-position:center;filter:blur(22px) brightness(.8);transform:scale(1.1)}
+.hero img{position:relative;z-index:1;width:100%;height:100%;object-fit:contain;display:block}
+.hero .ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:3.4rem;font-weight:800;color:#fff;background:linear-gradient(135deg,var(--gc,var(--c-sin)),color-mix(in srgb,var(--gc,var(--c-sin)) 45%,#000))}
 .credit{font-size:.72rem;color:var(--muted);margin-top:4px}
-.dt h2{font-size:1.5rem;margin:12px 0 2px;line-height:1.2}
+.dt h2{font-size:1.55rem;margin:12px 0 2px;line-height:1.15}
 .dt .ciclo{color:var(--muted);font-size:.9rem}
 .dt .inv{color:var(--muted);margin-top:2px}
-.facts{display:grid;grid-template-columns:1fr;gap:10px;margin:14px 0}
-@media (min-width:600px){.facts{grid-template-columns:1fr 1fr}}
-.fact{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:10px 12px}
-.fact .k{font-size:.74rem;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;font-weight:700}
-.fact .v{font-size:1.02rem;font-weight:600;margin-top:2px}
-.fact .s{font-size:.8rem;color:var(--muted);margin-top:2px}
+.rows{background:var(--panel);border:1px solid var(--line);border-radius:14px;margin:12px 0;overflow:hidden}
+.row{display:flex;gap:12px;padding:11px 14px;border-top:1px solid var(--line)}
+.row:first-child{border-top:0}
+.row .ic{flex:0 0 24px;font-size:1.15rem;line-height:1.4;text-align:center}
+.row .k{font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;font-weight:700}
+.row .v{font-weight:650}
+.row .s{font-size:.8rem;color:var(--muted);margin-top:1px}
 .box{border-radius:12px;padding:10px 12px;margin:10px 0;border:1px solid}
 .box-ok{border-color:color-mix(in srgb,var(--ok) 40%,var(--line));background:color-mix(in srgb,var(--ok) 8%,var(--panel))}
 .box-bad{border-color:color-mix(in srgb,var(--bad) 45%,var(--line));background:color-mix(in srgb,var(--bad) 8%,var(--panel))}
 .box-warn{border-color:color-mix(in srgb,var(--warn) 45%,var(--line));background:color-mix(in srgb,var(--warn) 8%,var(--panel))}
 .box ul{margin:6px 0 0;padding-left:20px}
-.links{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
-.lbtn{display:inline-flex;align-items:center;height:36px;padding:0 12px;border:1px solid var(--line);border-radius:10px;background:var(--panel);text-decoration:none;color:var(--ink);font-size:.9rem}
+.vers{display:flex;flex-direction:column;gap:4px;margin-top:6px}
+.vers div{display:flex;gap:8px;align-items:baseline}
+.vers b{font-variant-numeric:tabular-nums;min-width:52px}
+.actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0}
+.actions .primary{grid-column:1/-1}
+.lbtn{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:42px;padding:0 12px;border:1px solid var(--line);border-radius:12px;background:var(--panel);text-decoration:none;color:var(--ink);font-size:.92rem;font-weight:600}
 .lbtn.primary{background:var(--ink);color:var(--bg);border-color:var(--ink)}
-details.more{margin-top:12px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:8px 12px}
+.links{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0}
+.links .lbtn{min-height:36px;font-weight:500}
+h3.sec{font-size:.8rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin:18px 0 4px}
+details.more{margin-top:14px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:10px 12px}
 details.more summary{cursor:pointer;font-weight:600}
 details.more ul{padding-left:20px;margin:8px 0}
-/* panel de géneros */
+/* panel de filtros */
 .sheet-bg{position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:20}
-.sheet{position:fixed;left:0;right:0;bottom:0;max-height:88vh;overflow:auto;background:var(--bg);z-index:21;border-radius:18px 18px 0 0;padding:14px 16px 24px;max-width:720px;margin:0 auto}
+.sheet{position:fixed;left:0;right:0;bottom:0;max-height:90vh;display:flex;flex-direction:column;background:var(--bg);z-index:21;border-radius:18px 18px 0 0;max-width:720px;margin:0 auto}
+.sheet .sc{overflow:auto;padding:14px 16px 8px}
+.sheet .ft{padding:10px 16px calc(12px + env(safe-area-inset-bottom));border-top:1px solid var(--line);display:flex;gap:8px}
+.sheet .ft button{flex:1;height:46px;border-radius:12px;border:1px solid var(--line);background:var(--panel);font-weight:700}
+.sheet .ft .go{background:var(--ink);color:var(--bg);border-color:var(--ink);flex:2}
 .sheet h3{margin:0 0 4px}
-.presets{display:flex;gap:6px;margin:8px 0 12px;flex-wrap:wrap}
-.presets button{border:1px solid var(--line);background:var(--panel);border-radius:999px;padding:6px 12px;cursor:pointer}
+.sheet h4{margin:16px 0 6px;font-size:.8rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.opts button{border:1px solid var(--line);background:var(--panel);border-radius:10px;padding:9px 8px;text-align:left}
+.opts button[aria-pressed="true"]{border-color:var(--ink);font-weight:700;background:color-mix(in srgb,var(--ink) 7%,var(--panel))}
 .grp{background:var(--panel);border:1px solid var(--line);border-radius:12px;margin:6px 0}
 .grp label{display:flex;align-items:center;gap:10px;padding:10px 12px;cursor:pointer}
-.grp input{width:20px;height:20px}
+.grp input{width:20px;height:20px;accent-color:var(--ink)}
 .grp .dot{width:12px;height:12px;border-radius:50%;flex:0 0 12px}
 .grp .nm{flex:1;font-weight:600}
+.grp .nm small{display:block;font-weight:400;color:var(--muted);font-size:.78rem}
 .grp .ct{color:var(--muted);font-size:.85rem}
 .grp details{padding:0 12px 10px}
-.grp summary{cursor:pointer;color:var(--info);font-size:.85rem}
+.grp summary{cursor:pointer;color:var(--info);font-size:.82rem}
 .grp .inc{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px}
 .grp .inc span{font-size:.75rem;background:var(--panel2);border-radius:6px;padding:1px 6px}
 .grp .inc span.has{outline:1px solid var(--ok)}
 .hint{color:var(--muted);font-size:.82rem}
 .empty{color:var(--muted);text-align:center;padding:30px 0}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:12px;z-index:40;font-size:.9rem}
 table{width:100%;border-collapse:collapse;font-size:.88rem}
 th,td{text-align:left;padding:6px 6px;border-bottom:1px solid var(--line);vertical-align:top}
 th{color:var(--muted);font-weight:600}
@@ -143,20 +190,18 @@ th{color:var(--muted);font-weight:600}
 .md h1,.md h2{font-size:1.1rem;margin:18px 0 6px} .md h3{font-size:1rem;margin:14px 0 4px}
 .md ul{padding-left:20px} .md code{background:var(--panel2);padding:1px 4px;border-radius:4px}
 .muted{color:var(--muted)}
-.dl{display:inline-flex;align-items:center;gap:6px;text-decoration:none;border:1px solid var(--line);background:var(--panel);border-radius:10px;padding:0 12px;height:40px;color:var(--ink)}
-@media (min-width:700px){.day{min-height:78px}}
-@media (max-width:420px){.dl{padding:0 8px}.nav input[type=date]{max-width:120px}}
+@media (min-width:700px){.day{min-height:78px}.actions{grid-template-columns:repeat(3,1fr)}.actions .primary{grid-column:auto}}
 </style>
 </head>
 <body>
-<header>
+<header id="hdr">
   <div class="top">
-    <h1>Conciertos · Comunidad de Madrid<small id="upd">Cargando…</small></h1>
-    <a class="dl" href="data/concerts.csv" download title="Descargar concerts.csv para Excel">⬇ CSV</a>
-    <button class="iconbtn" id="theme" title="Cambiar modo claro/oscuro" aria-label="Cambiar modo claro u oscuro">◐</button>
+    <h1>Conciertos Madrid<small id="upd">Cargando…</small></h1>
+    <button class="iconbtn" id="menubtn" aria-haspopup="menu" aria-label="Más opciones">☰</button>
   </div>
-  <nav class="tabs" role="tablist" id="tabs"></nav>
+  <nav class="seg" role="tablist" id="tabs"></nav>
 </header>
+<div id="menu"></div>
 <main id="main"><p class="empty">Cargando datos…</p></main>
 <div id="sheet"></div>
 <script>
@@ -166,21 +211,24 @@ const GRUPOS = [
   {id:"rock y metal", nombre:"Rock y metal", v:"--c-rock", desc:"Hard rock, heavy metal, AOR, prog, stoner, psicodelia, grunge, rock clásico y alternativo…"},
   {id:"punk y garage", nombre:"Punk y garage", v:"--c-punk", desc:"Punk, hardcore, garage, post-punk, rock & roll, rockabilly, surf…"},
   {id:"pop e indie", nombre:"Pop e indie", v:"--c-pop", desc:"Indie rock, indie pop, pop rock, power pop, shoegaze, new wave…"},
-  {id:"americana/country/folk", nombre:"Americana, country y folk", v:"--c-amer", desc:"Country, country rock, folk, folk rock, southern rock, bluegrass…"},
+  {id:"americana/country/folk", nombre:"Americana y folk", v:"--c-amer", desc:"Country, country rock, folk, folk rock, southern rock, bluegrass…"},
   {id:"blues", nombre:"Blues", v:"--c-blues", desc:"Todos los estilos de blues y el blues rock."},
   {id:"cantautor", nombre:"Cantautores", v:"--c-cant", desc:"Solo por la etiqueta de la agenda (Discogs no tiene este estilo)."},
-  {id:"tributos y versiones", nombre:"Tributos y versiones", v:"--c-trib", desc:"Bandas tributo y de versiones (por la agenda o el título)."},
-  {id:"sin clasificar", nombre:"Sin clasificar", v:"--c-sin", desc:"Ni Discogs, ni Wikipedia, ni la agenda dan estilo. Se muestran para no perder conciertos."},
-  {id:"fuera de foco", nombre:"Fuera de foco", v:"--c-fuera", desc:"Electrónica, hip hop, jazz, latina, flamenco, clásica, musicales, Candlelight…"}];
+  {id:"tributos y versiones", nombre:"Tributos", v:"--c-trib", desc:"Bandas tributo y de versiones (por la agenda o el título)."},
+  {id:"sin clasificar", nombre:"Sin clasificar", v:"--c-sin", desc:"Ni las webs de música ni la agenda dan estilo. Se muestran para no perder conciertos."},
+  {id:"fuera de foco", nombre:"Otros géneros", v:"--c-fuera", desc:"Electrónica, hip hop, jazz, latina, flamenco, clásica, musicales, Candlelight…"}];
 const GV = Object.fromEntries(GRUPOS.map(g=>[g.id,g.v]));
-const FOCO = GRUPOS.filter(g=>g.id!=="fuera de foco").map(g=>g.id);
-const TABS = ["Mes","Semana","Día","Estilos","Fuentes","Informe","Versiones"];
+const DEF_GRUPOS = GRUPOS.filter(g=>g.id!=="fuera de foco").map(g=>g.id);
+const VISTAS = ["Mes","Semana","Día"];
+const INFO = ["Estilos","Fuentes","Informe","Versiones"];
+const TABS = [...VISTAS,...INFO];
+const ORIGENES = [["todos","Todos"],["es","🇪🇸 Españoles"],["ext","Extranjeros"],["nc","Origen sin confirmar"]];
 const store = {
   get(k,d){try{const v=localStorage.getItem("agenda:"+k);return v===null?d:JSON.parse(v)}catch(e){return d}},
   set(k,v){try{localStorage.setItem("agenda:"+k,JSON.stringify(v))}catch(e){}}
 };
 let DATA=[], BYID={}, INFORME=null, TAXO=null, SALAS={}, MAP=null, HOY=null;
-let state = {tab:"Mes", date:null, id:null, q:store.get("q",""), grupos:store.get("grupos2",FOCO), origen:store.get("origen","todos")};
+let state = {tab:"Mes", date:null, id:null, q:"", grupos:store.get("grupos2",DEF_GRUPOS), origen:store.get("origen","todos"), from:null};
 let regionNames=null; try{regionNames=new Intl.DisplayNames(["es"],{type:"region"})}catch(e){}
 
 const pad=n=>String(n).padStart(2,"0");
@@ -197,50 +245,80 @@ const iniciales=n=>esc(String(n||"?").replace(/^(the|los|las|la|el)\s+/i,"").spl
 const grupos=r=>(r.grupos&&r.grupos.length?r.grupos:[r.categoria]);
 const color=r=>GV[grupos(r)[0]]||"--c-sin";
 const img=r=>r.imagen&&r.imagen.url?r.imagen:null;
+const precioTxt=p=>String(p||"").replace(/(\d+)[.,]0+(?!\d)/g,"$1").replace(/\s*EUR\b/gi," €").replace(/\s+€/g," €").trim();
+const plural=(n,s,p)=>`${n} ${n===1?s:(p||s+"s")}`;
 
 function applyTheme(t){ if(t) document.documentElement.setAttribute("data-theme",t); else document.documentElement.removeAttribute("data-theme"); }
 applyTheme(store.get("theme",null));
-document.getElementById("theme").onclick=()=>{
+function toggleTheme(){
   const cur=document.documentElement.getAttribute("data-theme");
   const dark=cur?cur==="dark":matchMedia("(prefers-color-scheme: dark)").matches;
   const next=dark?"light":"dark"; applyTheme(next); store.set("theme",next);
-};
+}
+function toast(t){const d=document.createElement("div");d.className="toast";d.textContent=t;document.body.appendChild(d);setTimeout(()=>d.remove(),2200);}
+
+// ---------------------------------------------------------------- menú (secciones de información)
+function openMenu(){
+  const m=document.getElementById("menu");
+  if(m.innerHTML){m.innerHTML="";return;}
+  m.innerHTML=`<div class="sheet-bg" style="background:transparent" id="mbg"></div><div class="menu" role="menu">
+    ${INFO.map(t=>`<button role="menuitem" data-go="${t}">${{Estilos:"🎼",Fuentes:"🔗",Informe:"📊",Versiones:"🕘"}[t]} ${t}</button>`).join("")}
+    <hr><a role="menuitem" href="data/concerts.csv" download>⬇ Descargar CSV (Excel)</a>
+    <button role="menuitem" id="mtheme">◐ Modo claro / oscuro</button></div>`;
+  const close=()=>m.innerHTML="";
+  document.getElementById("mbg").onclick=close;
+  document.getElementById("mtheme").onclick=()=>{toggleTheme();close();};
+  m.querySelectorAll("[data-go]").forEach(b=>b.onclick=()=>{close(); state.tab=b.dataset.go; render(); scrollTo(0,0);});
+}
+document.getElementById("menubtn").onclick=openMenu;
 
 // ---------------------------------------------------------------- filtros
+function textoDe(r){return norm([r.artista,(r.invitados||[]).join(" "),r.sala,r.municipio,r.ciclo,(r.estilos_discogs||[]).join(" "),(r.genero_discogs||[]).join(" ")].join(" "));}
 function pasaTexto(r){
-  if(!state.q) return true;
-  const hay=norm([r.artista,(r.invitados||[]).join(" "),r.sala,r.municipio,r.ciclo,(r.estilos_discogs||[]).join(" ")].join(" "));
-  return norm(state.q).split(/\s+/).every(w=>hay.includes(w));
+  if(!state.q.trim()) return true;
+  const hay=r._t||(r._t=textoDe(r));
+  return norm(state.q).split(/\s+/).filter(Boolean).every(w=>hay.includes(w));
 }
 function pasaOrigen(r){
   if(state.origen==="es") return r.nacionalidad==="ES";
-  if(state.origen==="ext") return r.nacionalidad && r.nacionalidad!=="ES";
+  if(state.origen==="ext") return !!r.nacionalidad && r.nacionalidad!=="ES";
   if(state.origen==="nc") return !r.nacionalidad;
   return true;
 }
-function visible(r){ return grupos(r).some(c=>state.grupos.includes(c)) && pasaTexto(r) && pasaOrigen(r); }
+const pasaGrupo=r=>grupos(r).some(c=>state.grupos.includes(c));
+function visible(r){ return pasaGrupo(r) && pasaTexto(r) && pasaOrigen(r); }
 function byDate(){const m={}; for(const r of DATA){ if(!visible(r)) continue; (m[r.fecha]=m[r.fecha]||[]).push(r);} return m;}
-function resumenGrupos(){
-  const s=state.grupos;
-  if(FOCO.every(g=>s.includes(g))&&!s.includes("fuera de foco")) return "Mi foco";
-  if(GRUPOS.every(g=>s.includes(g.id))) return "Todos";
-  if(!s.length) return "Ninguno";
-  return GRUPOS.filter(g=>s.includes(g.id)).map(g=>g.nombre).join(", ");
+const esDefecto=()=>DEF_GRUPOS.every(g=>state.grupos.includes(g))&&!state.grupos.includes("fuera de foco");
+function nFiltros(){ return (esDefecto()?0:1)+(state.origen!=="todos"?1:0); }
+function resumenFiltros(){
+  const p=[];
+  if(!esDefecto()){
+    if(GRUPOS.every(g=>state.grupos.includes(g.id))) p.push("todos los géneros");
+    else if(!state.grupos.length) p.push("ningún género");
+    else p.push(GRUPOS.filter(g=>state.grupos.includes(g.id)).map(g=>g.nombre).join(", "));
+  }
+  if(state.origen!=="todos") p.push(ORIGENES.find(o=>o[0]===state.origen)[1].replace("🇪🇸 ",""));
+  return p.join(" · ");
 }
 function filtersHTML(){
-  return `<div class="bar"><input class="search" id="q" type="search" placeholder="Buscar artista, sala, municipio o estilo" value="${esc(state.q)}" aria-label="Buscar">
-   <button class="fbtn" id="fgen" aria-haspopup="dialog"><b>Géneros:</b> <span class="sum">${esc(resumenGrupos())}</span> ▾</button>
-   <select class="fbtn" id="forig" aria-label="Origen del artista">
-     <option value="todos"${state.origen==="todos"?" selected":""}>Origen: todos</option>
-     <option value="es"${state.origen==="es"?" selected":""}>🇪🇸 Españoles</option>
-     <option value="ext"${state.origen==="ext"?" selected":""}>🌐 Extranjeros</option>
-     <option value="nc"${state.origen==="nc"?" selected":""}>Origen sin confirmar</option></select></div>`;
+  const n=nFiltros();
+  const chips=GRUPOS.map(g=>`<button class="chip" data-chip="${esc(g.id)}" aria-pressed="${state.grupos.includes(g.id)}"><i style="background:var(${g.v})"></i>${esc(g.nombre)}</button>`).join("");
+  return `<div class="bar"><div class="sbox"><input class="search" id="q" type="search" enterkeyhint="search" placeholder="Buscar artista, sala o estilo" value="${esc(state.q)}" aria-label="Buscar en todas las fechas">${state.q?`<button class="sclear" id="qx" aria-label="Borrar búsqueda">✕</button>`:""}</div>
+   <button class="fbtn" id="fgen" aria-haspopup="dialog">Filtros${n?` <span class="badge">${n}</span>`:""}</button></div>
+   <div class="chips" role="group" aria-label="Géneros">${chips}</div>
+   ${n?`<div class="active">Filtrando: ${esc(resumenFiltros())} · <button id="freset">Quitar filtros</button></div>`:""}`;
 }
+function setGrupos(g){ state.grupos=g; store.set("grupos2",g); }
 function bindFilters(){
   const q=document.getElementById("q");
-  if(q) q.oninput=()=>{state.q=q.value; store.set("q",state.q); renderBody(true);};
-  const o=document.getElementById("forig"); if(o) o.onchange=()=>{state.origen=o.value; store.set("origen",state.origen); renderBody(true);};
+  if(q) q.oninput=()=>{const had=!!state.q; state.q=q.value; if(!!state.q!==had){renderBody(false); const nq=document.getElementById("q"); nq.focus(); nq.setSelectionRange(nq.value.length,nq.value.length);} else renderBody(true);};
+  const qx=document.getElementById("qx"); if(qx) qx.onclick=()=>{state.q=""; renderBody(false);};
   const g=document.getElementById("fgen"); if(g) g.onclick=openSheet;
+  const fr=document.getElementById("freset"); if(fr) fr.onclick=()=>{setGrupos([...DEF_GRUPOS]); state.origen="todos"; store.set("origen","todos"); renderBody(false);};
+  document.querySelectorAll("[data-chip]").forEach(c=>c.onclick=()=>{
+    const id=c.dataset.chip, on=state.grupos.includes(id);
+    setGrupos(on?state.grupos.filter(x=>x!==id):[...state.grupos,id]); renderBody(false);
+  });
 }
 function grupoDeEstilo(s){
   if(!MAP||!TAXO) return null;
@@ -258,52 +336,112 @@ function openSheet(){
     if(g==="rock y metal") return (TAXO?TAXO.generos.Rock:[]).filter(s=>!Object.values(MAP.discogs_a_categoria).some(l=>Array.isArray(l)&&l.includes(s)));
     const l=MAP.discogs_a_categoria[g]; return Array.isArray(l)?l:[];
   };
+  let sel=[...state.grupos], ori=state.origen;
   const el=document.getElementById("sheet");
-  el.innerHTML=`<div class="sheet-bg" id="sbg"></div><div class="sheet" role="dialog" aria-label="Filtrar por géneros">
-   <h3>Géneros</h3>
-   <p class="hint">Cada grupo reúne estilos de <b>Discogs</b> (o de Wikipedia traducidos a Discogs). Si el artista no tiene ficha en ninguna de las dos, se usa la etiqueta de la agenda y se indica.</p>
-   <div class="presets"><button data-p="foco">Mi foco</button><button data-p="todo">Todo</button><button data-p="nada">Ninguno</button></div>
-   ${GRUPOS.map(g=>{const e=est[g.id]||{}; const inc=incluye(g.id); const extra=Object.keys(e).filter(s=>!inc.includes(s));
-     return `<div class="grp"><label><input type="checkbox" data-g="${esc(g.id)}" ${state.grupos.includes(g.id)?"checked":""}><span class="dot" style="background:var(${g.v})"></span><span class="nm">${esc(g.nombre)}</span><span class="ct">${cnt[g.id]||0}</span></label>
-     <details><summary>Qué incluye${ag[g.id]?` · ${ag[g.id]} solo por etiqueta de agenda`:""}</summary><div class="hint">${esc(g.desc)}</div>
-     <div class="inc">${[...inc,...extra].map(s=>`<span class="${e[s]?"has":""}">${esc(s)}${e[s]?` · ${e[s]}`:""}</span>`).join("")}</div></details></div>`}).join("")}
-   <div class="presets"><button id="sclose" style="flex:1">Ver ${""}conciertos</button></div></div>`;
-  const close=()=>{el.innerHTML=""; renderBody(false);};
-  document.getElementById("sbg").onclick=close; document.getElementById("sclose").onclick=close;
-  el.querySelectorAll("[data-g]").forEach(c=>c.onchange=()=>{const g=c.dataset.g; state.grupos=c.checked?[...new Set([...state.grupos,g])]:state.grupos.filter(x=>x!==g); store.set("grupos2",state.grupos);});
-  el.querySelectorAll("[data-p]").forEach(b=>b.onclick=()=>{const p=b.dataset.p; state.grupos=p==="foco"?[...FOCO]:p==="todo"?GRUPOS.map(g=>g.id):[]; store.set("grupos2",state.grupos); el.querySelectorAll("[data-g]").forEach(c=>c.checked=state.grupos.includes(c.dataset.g));});
+  const draw=()=>{
+    const total=fut.filter(r=>grupos(r).some(c=>sel.includes(c))&&(ori==="todos"||(ori==="es"?r.nacionalidad==="ES":ori==="ext"?r.nacionalidad&&r.nacionalidad!=="ES":!r.nacionalidad))).length;
+    el.innerHTML=`<div class="sheet-bg" id="sbg"></div><div class="sheet" role="dialog" aria-label="Filtros"><div class="sc">
+     <h3>Filtros</h3>
+     <h4>Origen del artista</h4>
+     <div class="opts">${ORIGENES.map(([v,t])=>`<button data-o="${v}" aria-pressed="${ori===v}">${esc(t)}</button>`).join("")}</div>
+     <h4>Géneros</h4>
+     <p class="hint">Cada género agrupa estilos de <b>Discogs</b>. Si el artista no tiene ficha en una web de música, se usa la etiqueta de la agenda. Por defecto se ocultan los <b>otros géneros</b> (electrónica, hip hop, jazz, latina, flamenco…).</p>
+     ${GRUPOS.map(g=>{const e=est[g.id]||{}; const inc=incluye(g.id); const extra=Object.keys(e).filter(s=>!inc.includes(s));
+       return `<div class="grp"><label><input type="checkbox" data-g="${esc(g.id)}" ${sel.includes(g.id)?"checked":""}><span class="dot" style="background:var(${g.v})"></span><span class="nm">${esc(g.nombre)}<small>${esc(g.desc)}</small></span><span class="ct">${cnt[g.id]||0}</span></label>
+       ${inc.length||extra.length||ag[g.id]?`<details><summary>Estilos que incluye${ag[g.id]?` · ${ag[g.id]} por etiqueta de agenda`:""}</summary>
+       <div class="inc">${[...inc,...extra].map(s=>`<span class="${e[s]?"has":""}">${esc(s)}${e[s]?` · ${e[s]}`:""}</span>`).join("")}</div></details>`:""}</div>`}).join("")}
+     </div><div class="ft"><button id="sdef">Restablecer</button><button class="go" id="sclose">Ver ${plural(total,"concierto")}</button></div></div>`;
+    document.getElementById("sbg").onclick=()=>{el.innerHTML="";};
+    document.getElementById("sdef").onclick=()=>{sel=[...DEF_GRUPOS]; ori="todos"; draw();};
+    document.getElementById("sclose").onclick=()=>{setGrupos(sel); state.origen=ori; store.set("origen",ori); el.innerHTML=""; renderBody(false);};
+    el.querySelectorAll("[data-g]").forEach(c=>c.onchange=()=>{const g=c.dataset.g; sel=c.checked?[...new Set([...sel,g])]:sel.filter(x=>x!==g); draw();});
+    el.querySelectorAll("[data-o]").forEach(b=>b.onclick=()=>{ori=b.dataset.o; draw();});
+  };
+  draw();
 }
 
 // ---------------------------------------------------------------- tarjeta (lista)
-function horaTxt(r){ return r.hora||(r.conflictos||[]).filter(c=>c.campo==="hora").map(c=>c.versiones.map(v=>v.valor).join(" ó ")).join("")||"—"; }
+function horaCard(r){
+  if(r.hora) return r.hora;
+  const c=(r.conflictos||[]).find(c=>c.campo==="hora"&&c.versiones&&c.versiones.length);
+  return c?[...c.versiones].sort((a,b)=>b.fuentes.length-a.fuentes.length)[0].valor+" ?":"";
+}
+function horaTxt(r){ return r.hora||(r.conflictos||[]).filter(c=>c.campo==="hora").map(c=>c.versiones.map(v=>v.valor).join(" ó ")).join("")||""; }
+function etiquetaAgenda(r){
+  // la etiqueta de la agenda a veces es el nombre de un ciclo o de la sala ("Villanos del Jazz"): no es un estilo
+  const salaTok=norm(r.sala).split(/[^a-z0-9]+/).filter(t=>t.length>=4&&!["sala","club","teatro","madrid"].includes(t));
+  return (r.estilo_fuente||[]).map(e=>e.estilo).find(e=>{const n=norm(e); return !(r.ciclo&&n.includes(norm(r.ciclo)))&&!salaTok.some(t=>n.includes(t))&&!/^otros?$/.test(n);});
+}
 function estiloTags(r,n){
   const e=(r.estilos_discogs||[]).slice(0,n);
   if(e.length) return e.map(s=>`<span class="tag">${esc(s)}</span>`).join("");
   if((r.genero_discogs||[]).length) return r.genero_discogs.slice(0,n).map(s=>`<span class="tag">${esc(s)}</span>`).join("");
-  const a=(r.estilo_fuente||[])[0];
-  return a?`<span class="tag ag" title="Etiqueta de la agenda, no de una web de música">${esc(a.estilo)}</span>`:"";
+  const a=(etiquetaAgenda(r)||"").replace(/_/g," ");
+  return a?`<span class="tag ag" title="Etiqueta de la agenda, no de una web de música">${esc(a)}</span>`:"";
 }
 function estadoMini(r){
-  if(r.estado==="conflicto") return `<span class="st st-conf">⚠ conflicto</span>`;
+  if(r.estado==="conflicto") return `<span class="st st-conf">⚠ datos distintos</span>`;
   if(r.estado==="posiblemente cancelado") return `<span class="st st-canc">¿cancelado?</span>`;
   return "";
 }
 function card(r){
-  const im=img(r);
-  return `<a class="card" href="#concierto/${esc(r.id)}" style="border-left-color:var(${color(r)})">
+  const im=img(r), h=horaCard(r);
+  return `<a class="card" href="#concierto/${esc(r.id)}" style="--gc:var(${color(r)})">
    ${im?`<img class="thumb" src="${esc(im.url)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.outerHTML='<span class=&quot;thumb&quot;>${iniciales(r.artista)}</span>'">`:`<span class="thumb">${iniciales(r.artista)}</span>`}
-   <div class="cbody"><div class="cl1"><span class="hora">${esc(horaTxt(r))}</span><span class="art">${esc(r.artista)}</span></div>
+   <div class="cbody"><div class="art">${esc(r.artista)}</div>
    ${r.invitados&&r.invitados.length?`<div class="sub">+ ${r.invitados.map(esc).join(" + ")}</div>`:""}
-   <div class="sub">${esc(r.sala||"sala sin indicar")}${r.municipio&&r.municipio!=="Madrid"?` · <b>${esc(r.municipio)}</b>`:""}${r.ciclo?` · ${esc(r.ciclo)}`:""}</div>
-   <div class="tags">${r.nacionalidad?`<span class="flag" title="${esc(pais(r.nacionalidad))}">${flag(r.nacionalidad)}</span>`:""}${estiloTags(r,2)}${estadoMini(r)}</div></div></a>`;
+   <div class="sub">${h?`<b>${esc(h)}</b> · `:""}${esc(r.sala||"sala sin indicar")}${r.municipio&&r.municipio!=="Madrid"?` · ${esc(r.municipio)}`:""}</div>
+   <div class="tags">${r.nacionalidad?`<span class="flag" title="${esc(pais(r.nacionalidad))}">${flag(r.nacionalidad)}</span>`:""}${estiloTags(r,2)}${estadoMini(r)}</div></div><span class="chev" aria-hidden="true">›</span></a>`;
 }
-function dayList(fecha,list){
-  return `<div class="dayhead">${esc(fmt(fecha,{weekday:"long",day:"numeric",month:"long"}))}<small>${list.length} concierto${list.length===1?"":"s"}</small></div>`+
-    (list.length?list.map(card).join(""):`<p class="empty">No hay conciertos con estos filtros.</p>`);
+function dayList(fecha,list,opts={}){
+  return (opts.cab===false?"":`<div class="dayhead" id="d-${fecha}">${esc(fmt(fecha,{weekday:"long",day:"numeric",month:"long"}))}<small>${plural(list.length,"concierto")}</small></div>`)+
+    (list.length?list.map(card).join(""):(opts.vacio===false?"":`<p class="empty">No hay conciertos con estos filtros.</p>`));
 }
 
 // ---------------------------------------------------------------- ficha detallada
-function nombreSegun(x){return x?` <span class="s">según ${esc(x)}</span>`:"";}
+function icsDe(r){
+  const d=r.fecha.replace(/-/g,""), h=(r.hora||"").replace(":","");
+  const ini=h?`DTSTART;TZID=Europe/Madrid:${d}T${h}00`:`DTSTART;VALUE=DATE:${d}`;
+  const fin=h?`DURATION:PT3H`:`DTEND;VALUE=DATE:${addDays(r.fecha,1).replace(/-/g,"")}`;
+  const t=s=>String(s||"").replace(/[\\;,]/g,m=>"\\"+m).replace(/\n/g," ");
+  return ["BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//agenda-conciertos//ES","BEGIN:VEVENT",`UID:${r.id}@agenda-conciertos`,
+    `DTSTAMP:${new Date().toISOString().replace(/[-:]/g,"").slice(0,15)}Z`,ini,fin,`SUMMARY:${t(r.artista)}`,
+    `LOCATION:${t((r.sala||"")+", "+(r.municipio||"Madrid"))}`,`URL:${location.href.split("#")[0]}#concierto/${r.id}`,"END:VEVENT","END:VCALENDAR"].join("\r\n");
+}
+function descargarIcs(r){
+  const a=document.createElement("a");
+  a.href=URL.createObjectURL(new Blob([icsDe(r)],{type:"text/calendar"}));
+  a.download=`${norm(r.artista).replace(/[^a-z0-9]+/g,"-").slice(0,40)||"concierto"}.ics`;
+  document.body.appendChild(a); a.click(); a.remove();
+}
+async function compartir(r){
+  const url=`${location.href.split("#")[0]}#concierto/${r.id}`;
+  const text=`${r.artista} · ${fmt(r.fecha,{weekday:"short",day:"numeric",month:"short"})}${r.hora?" "+r.hora:""} · ${r.sala}`;
+  try{ if(navigator.share){ await navigator.share({title:r.artista,text,url}); return; } }catch(e){ return; }
+  try{ await navigator.clipboard.writeText(`${text}\n${url}`); toast("Enlace copiado"); }catch(e){ prompt("Copia el enlace:",url); }
+}
+function estadoBox(r){
+  const conflictos=(r.conflictos||[]).filter(c=>c.versiones&&c.versiones.length);
+  if(r.estado==="conflicto"){
+    const nom={hora:"Hora",sala:"Sala",cartel:"Cartel"};
+    const items=conflictos.map(c=>{
+      const vs=[...c.versiones].sort((a,b)=>b.fuentes.length-a.fuentes.length);
+      const horas=c.campo==="hora"?vs.map(v=>v.valor).sort():[];
+      return `<div><b>${esc(nom[c.campo]||c.campo)}</b></div><div class="vers">${vs.map(v=>`<div><b>${esc(v.valor)}</b><span class="muted">${plural(v.fuentes.length,"web")}: ${esc(v.fuentes.map(x=>x.split(" (")[0]).filter((x,i,a)=>a.indexOf(x)===i).join(", "))}</span></div>`).join("")}</div>
+        ${c.campo==="hora"&&horas.length>1?`<div class="hint" style="margin-top:4px">Si una hora es bastante anterior, suele ser la apertura de puertas. Confírmalo en la web de la sala o de las entradas.</div>`:""}`;
+    }).join("");
+    const man=(r.notas||[]).filter(n=>/Corrección manual/.test(n)).map(n=>`<div class="hint">${esc(n)}</div>`).join("");
+    return `<div class="box box-bad"><b>⚠ Las webs no coinciden</b>${items}${man}</div>`;
+  }
+  if(r.estado==="posiblemente cancelado")
+    return `<div class="box box-warn"><b>¿Cancelado?</b> Ya no aparece en ninguna de las webs donde se anunciaba. Visto por última vez el ${esc(r.ultima_vez_visto||"—")}.</div>`;
+  if(r.confirmado_sala)
+    return `<div class="box box-ok">✓ Confirmado en la web oficial de la sala${r.fuentes.length>1?` y en ${plural(r.fuentes.length-1,"web")} más`:""}.</div>`;
+  const n=new Set(r.fuentes.map(x=>x.nombre.split(" (")[0])).size;
+  if(n>1) return `<div class="box box-ok">✓ Anunciado en ${n} webs distintas.</div>`;
+  const baja=(r.notas||[]).some(n=>/fiabilidad baja/i.test(n));
+  return `<div class="box ${baja?"box-warn":"box-ok"}">${baja?"Solo aparece en una web poco fiable: conviene confirmarlo.":`Anunciado solo en ${esc(r.fuentes[0].nombre.split(" (")[0])}.`}</div>`;
+}
 function viewConcierto(){
   const r=BYID[state.id];
   if(!r) return `<a class="back" href="#dia/${state.date||HOY}">‹ Volver</a><p class="empty">No se encontró el concierto.</p>`;
@@ -311,79 +449,98 @@ function viewConcierto(){
   const sala=SALAS[norm(r.sala)];
   const mapa=`https://www.google.com/maps/search/${encodeURIComponent((r.sala||"")+" "+(r.municipio||"Madrid"))}`;
   const entradas=(r.confirmado_sala&&r.confirmado_sala.url)||(r.fuentes[0]||{}).url;
-  const conflictos=(r.conflictos||[]);
-  let estado;
-  if(r.estado==="conflicto"){
-    estado=`<div class="box box-bad"><b>⚠ Las fuentes no coinciden</b><ul>${conflictos.filter(c=>c.versiones&&c.versiones.length).map(c=>`<li><b>${esc(c.campo)}:</b> ${c.versiones.map(v=>`${esc(v.valor)} <span class="muted">(${esc(v.fuentes.join(", "))})</span>`).join(" · ")}</li>`).join("")}${(r.notas||[]).filter(n=>/Corrección manual/.test(n)).map(n=>`<li>${esc(n)}</li>`).join("")}</ul></div>`;
-  } else if(r.estado==="posiblemente cancelado"){
-    estado=`<div class="box box-warn"><b>¿Cancelado?</b> Ya no aparece en ninguna de las webs donde se anunciaba. Visto por última vez el ${esc(r.ultima_vez_visto||"—")}.</div>`;
-  } else if(r.confirmado_sala){
-    estado=`<div class="box box-ok">✓ Confirmado por la web oficial de la sala${r.fuentes.length>1?` y ${r.fuentes.length-1} web${r.fuentes.length>2?"s":""} más`:""}.</div>`;
-  } else if(r.estado==="contrastado"){
-    estado=`<div class="box box-ok">✓ Anunciado en ${new Set(r.fuentes.map(x=>x.nombre.split(" (")[0])).size} webs distintas.</div>`;
-  } else {
-    const baja=(r.notas||[]).some(n=>/fiabilidad baja/i.test(n));
-    estado=`<div class="box ${baja?"box-warn":"box-ok"}">${baja?"Solo aparece en una web de fiabilidad baja: conviene confirmarlo.":`Anunciado en ${esc(r.fuentes[0].nombre)}.`}</div>`;
-  }
   const estilos=(f&&f.estilos&&f.estilos.length)?f.estilos:[];
   const generos=(f&&f.generos)||[];
+  const tieneDiscogs=f&&(f.enlaces||[]).some(e=>e.nombre==="Discogs");
+  const ag=etiquetaAgenda(r);
   const estiloHTML=estilos.length||generos.length
-    ? `<div class="v">${esc((estilos.length?estilos:generos).join(", "))}</div><div class="s">${estilos.length&&generos.length?`Género: ${esc(generos.join(", "))} · `:""}según ${esc(f.fuente_estilo||"Discogs")}</div>`
-    : `<div class="v muted">Sin ficha en Discogs ni en Wikipedia</div>${(r.estilo_fuente||[]).length?`<div class="s">La agenda lo etiqueta como: ${esc(r.estilo_fuente.map(e=>e.estilo).join(" · "))}</div>`:""}`;
+    ? `<div class="v">${esc((estilos.length?estilos:generos).join(", "))}</div><div class="s">${estilos.length&&generos.length?`${esc(generos.join(", "))} · `:""}según ${esc(f.fuente_estilo||"Discogs")}</div>`
+    : `<div class="v muted">${tieneDiscogs?"Discogs no indica su estilo":"Sin ficha en las webs de música"}</div>${ag?`<div class="s">La agenda lo etiqueta como «${esc(ag.replace(/_/g," "))}»</div>`:""}`;
+  const h=horaTxt(r);
   const q=encodeURIComponent(r.artista);
   const enlaces=[...((f&&f.enlaces)||[]), ...(f&&f.tiene_allmusic?[]:[{nombre:"Buscar en AllMusic", url:`https://www.allmusic.com/search/artists/${q}`}])];
+  const orden=["Spotify","Discogs","Wikipedia","AllMusic","Last.fm","MusicBrainz"];
+  enlaces.sort((a,b)=>orden.findIndex(o=>a.nombre.startsWith(o))-orden.findIndex(o=>b.nombre.startsWith(o)));
   const avisos=(r.notas||[]).filter(n=>!/Corrección manual|Conflicto de|fiabilidad baja|Resuelto por prioridad/.test(n));
   const resueltos=(r.notas||[]).filter(n=>/Resuelto por prioridad/.test(n));
-  return `<a class="back" href="#dia/${esc(r.fecha)}">‹ ${esc(fmt(r.fecha,{weekday:"long",day:"numeric",month:"long"}))}</a>
+  const volver=state.from||`#dia/${r.fecha}`;
+  return `<a class="back" href="${esc(volver)}">‹ Volver</a>
    <div class="dt">
-    <div class="hero">${im?`<img src="${esc(im.url)}" alt="Foto de ${esc(r.artista)}" referrerpolicy="no-referrer" onerror="this.remove()">`:""}<div class="ph" ${im?'style="z-index:-1"':""}>${iniciales(r.artista)}</div></div>
-    ${im?`<div class="credit">Foto: <a href="${esc(im.enlace||im.url)}" target="_blank" rel="noopener">${esc(im.credito)}</a>${f&&f.imagen?"":" (imagen del anuncio del concierto)"}</div>`:""}
+    <div class="hero" style="--gc:var(${color(r)})"><div class="ph">${iniciales(r.artista)}</div>${im?`<div class="blur" style="background-image:url('${esc(im.url)}')"></div><img src="${esc(im.url)}" alt="Foto de ${esc(r.artista)}" referrerpolicy="no-referrer" onerror="this.previousElementSibling.remove();this.remove()">`:""}</div>
+    ${im?`<div class="credit">Foto: <a href="${esc(im.enlace||im.url)}" target="_blank" rel="noopener">${esc(im.credito)}</a>${f&&f.imagen?"":" (imagen del anuncio)"}</div>`:""}
     <h2>${esc(r.artista)}</h2>
     ${r.ciclo?`<div class="ciclo">${esc(r.ciclo)}</div>`:""}
     ${r.invitados&&r.invitados.length?`<div class="inv">con ${r.invitados.map(esc).join(", ")}</div>`:""}
-    ${estado}
-    <div class="facts">
-     <div class="fact"><div class="k">Cuándo</div><div class="v">${esc(fmt(r.fecha,{weekday:"long",day:"numeric",month:"long",year:"numeric"}))}</div><div class="s">${r.hora?`a las ${esc(r.hora)}`:`hora ${esc(horaTxt(r)==="—"?"sin indicar":horaTxt(r))}`}</div></div>
-     <div class="fact"><div class="k">Dónde</div><div class="v">${esc(r.sala||"Sala sin indicar")}</div><div class="s">${esc(r.municipio||"")} · <a href="${esc(mapa)}" target="_blank" rel="noopener">Cómo llegar</a>${sala&&sala.web?` · <a href="${esc(sala.web)}" target="_blank" rel="noopener">Web de la sala</a>`:""}</div></div>
-     <div class="fact"><div class="k">Estilo</div>${estiloHTML}</div>
-     <div class="fact"><div class="k">Origen</div>${r.nacionalidad?`<div class="v">${flag(r.nacionalidad)} ${esc(pais(r.nacionalidad))}</div><div class="s">según ${esc(r.nacionalidad_fuente||"la fuente")}</div>`:`<div class="v muted">Sin confirmar</div><div class="s">Ninguna fuente fiable indica su origen</div>`}</div>
-     <div class="fact"><div class="k">Precio</div>${r.precio?`<div class="v">${esc(r.precio)}</div><div class="s">según ${r.precio_fuente?`<a href="${esc(r.precio_fuente.url)}" target="_blank" rel="noopener">${esc(r.precio_fuente.nombre)}</a>`:"la fuente"} · puede no incluir gastos</div>`:`<div class="v muted">Sin indicar</div>`}</div>
+    ${estadoBox(r)}
+    <div class="rows">
+     <div class="row"><span class="ic">📅</span><div><div class="v">${esc(fmt(r.fecha,{weekday:"long",day:"numeric",month:"long"}))}</div><div class="s">${r.hora?`${esc(r.hora)} h`:h?"Hora por confirmar: las webs no coinciden":"Hora sin indicar"}</div></div></div>
+     <div class="row"><span class="ic">📍</span><div><div class="v">${esc(r.sala||"Sala sin indicar")}</div><div class="s">${esc(r.municipio||"")} · <a href="${esc(mapa)}" target="_blank" rel="noopener">Cómo llegar</a>${sala&&sala.web?` · <a href="${esc(sala.web)}" target="_blank" rel="noopener">Web de la sala</a>`:""}</div></div></div>
+     <div class="row"><span class="ic">🎸</span><div>${estiloHTML}</div></div>
+     <div class="row"><span class="ic">${r.nacionalidad?flag(r.nacionalidad):"🏳️"}</span><div>${r.nacionalidad?`<div class="v">${esc(pais(r.nacionalidad))}</div><div class="s">según ${esc(r.nacionalidad_fuente||"la fuente")}</div>`:`<div class="v muted">Origen sin confirmar</div><div class="s">Ninguna fuente fiable lo indica</div>`}</div></div>
+     <div class="row"><span class="ic">🎟️</span><div>${r.precio?`<div class="v">${esc(precioTxt(r.precio))}</div><div class="s">según ${r.precio_fuente?`<a href="${esc(r.precio_fuente.url)}" target="_blank" rel="noopener">${esc(r.precio_fuente.nombre.split(" (")[0])}</a>`:"la web"} · puede no incluir gastos</div>`:`<div class="v muted">Precio sin indicar</div>`}</div></div>
     </div>
-    <div class="links">${entradas?`<a class="lbtn primary" href="${esc(entradas)}" target="_blank" rel="noopener">${r.confirmado_sala?"Ver en la web de la sala":"Ver anuncio y entradas"}</a>`:""}${enlaces.map(e=>`<a class="lbtn" href="${esc(e.url)}" target="_blank" rel="noopener">${esc(e.nombre)}</a>`).join("")}</div>
-    ${f&&f.perfil?`<p class="muted">${esc(f.perfil)} <span class="s">(Discogs)</span></p>`:""}
-    <details class="more"${r.estado==="conflicto"?" open":""}><summary>De dónde sale este concierto (${r.fuentes.length} web${r.fuentes.length===1?"":"s"})</summary>
+    <div class="actions">
+     ${entradas?`<a class="lbtn primary" href="${esc(entradas)}" target="_blank" rel="noopener">${r.confirmado_sala?"Ver en la web de la sala":"Ver anuncio y entradas"} ↗</a>`:""}
+     <button class="lbtn" id="ics">📅 Al calendario</button><button class="lbtn" id="share">↗ Compartir</button>
+    </div>
+    <h3 class="sec">Escuchar y saber más</h3>
+    <div class="links">${enlaces.map(e=>`<a class="lbtn" href="${esc(e.url)}" target="_blank" rel="noopener">${esc(e.nombre)}</a>`).join("")}</div>
+    ${f&&f.perfil?`<p class="muted">${esc(f.perfil)} <span class="hint">(Discogs)</span></p>`:""}
+    <details class="more"${r.estado==="conflicto"?" open":""}><summary>De dónde salen los datos (${plural(r.fuentes.length,"web")})</summary>
       <ul>${r.fuentes.map(x=>`<li><a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.nombre)}</a></li>`).join("")}</ul>
+      ${f&&f.identidad?`<div class="hint">Artista identificado por: ${esc(f.identidad)}</div>`:""}
       ${resueltos.length?`<div class="hint">${resueltos.map(esc).join("<br>")}</div>`:""}
       ${avisos.length?`<div class="hint">${avisos.map(esc).join("<br>")}</div>`:""}
-      ${(r.estilo_fuente||[]).length?`<div class="hint">Etiquetas de las agendas: ${esc(r.estilo_fuente.map(e=>`${e.estilo} (${e.fuente})`).join(" · "))}</div>`:""}
+      ${(r.estilo_fuente||[]).length?`<div class="hint">Etiquetas de las agendas: ${esc(r.estilo_fuente.map(e=>`${e.estilo} (${e.fuente.split(" (")[0]})`).filter((x,i,a)=>a.indexOf(x)===i).join(" · "))}</div>`:""}
       <div class="hint">Visto por primera vez el ${esc(r.primera_vez_visto||"—")} · última comprobación ${esc(r.ultima_vez_visto||"—")}</div>
     </details>
    </div>`;
 }
 
 // ---------------------------------------------------------------- vistas de calendario
+function navHTML(prev,next,title,lblPrev,lblNext,esHoy){
+  return `<div class="nav"><button class="iconbtn" data-nav="${prev}" aria-label="${lblPrev}">‹</button><div class="title">${title}</div>${esHoy?"":`<button class="hoy" id="hoy">Hoy</button>`}<button class="iconbtn" data-nav="${next}" aria-label="${lblNext}">›</button></div>`;
+}
+function stripHTML(mon,bd,modo){
+  return `<div class="strip">${[0,1,2,3,4,5,6].map(i=>{const f=addDays(mon,i), n=(bd[f]||[]).length;
+    return `<button data-${modo}="${f}" class="${f===state.date&&modo==="sel"?"sel":""}${f===HOY?" hoyd":""}${f<HOY?" past":""}" aria-label="${esc(fmt(f,{weekday:"long",day:"numeric"}))}: ${plural(n,"concierto")}"><span class="d">${esc(fmt(f,{weekday:"short"}).slice(0,2))}</span><span class="n">${parse(f).getDate()}</span><span class="c">${n||"–"}</span></button>`}).join("")}</div>`;
+}
 function viewMes(){
   const d=parse(state.date); const y=d.getFullYear(), m=d.getMonth();
   const first=iso(new Date(y,m,1)); const start=mondayOf(first);
-  const bd=byDate(); let cells="";
+  const bd=byDate(); let cells="", total=0;
   for(let i=0;i<42;i++){
     const f=addDays(start,i); const fd=parse(f); if(i>=35&&fd.getMonth()!==m) break;
-    const list=bd[f]||[]; const counts={}; list.forEach(r=>{const g=grupos(r)[0]; counts[g]=(counts[g]||0)+1;});
-    const stack=GRUPOS.filter(g=>counts[g.id]).map(g=>`<i style="flex:${counts[g.id]};background:var(${g.v})" title="${esc(g.nombre)}: ${counts[g.id]}"></i>`).join("");
-    cells+=`<button class="day${fd.getMonth()!==m?" out":""}${f<HOY?" past":""}${f===HOY?" today":""}" data-day="${f}" aria-label="${esc(fmt(f,{weekday:"long",day:"numeric",month:"long"}))}: ${list.length} conciertos"><span class="n">${fd.getDate()}</span><span class="cnt">${list.length||""}</span><span class="stack">${stack}</span></button>`;
+    const fuera=fd.getMonth()!==m;
+    const list=fuera?[]:(bd[f]||[]); total+=list.length; const counts={}; list.forEach(r=>{const g=grupos(r)[0]; counts[g]=(counts[g]||0)+1;});
+    const stack=GRUPOS.filter(g=>counts[g.id]).map(g=>`<i style="flex:${counts[g.id]};background:var(${g.v})"></i>`).join("");
+    cells+=`<button class="day${fuera?" out":""}${f<HOY?" past":""}${f===HOY?" today":""}${list.length?"":" zero"}" data-day="${f}" ${fuera?'tabindex="-1" aria-hidden="true"':""} aria-label="${esc(fmt(f,{weekday:"long",day:"numeric",month:"long"}))}: ${plural(list.length,"concierto")}"><span class="n">${fd.getDate()}</span><span class="cnt">${list.length||""}</span>${list.length?`<span class="stack">${stack}</span>`:""}</button>`;
   }
-  return `<div class="nav"><button class="iconbtn" data-nav="-1" aria-label="Mes anterior">‹</button><div class="title">${esc(fmt(first,{month:"long",year:"numeric"}))}</div><button class="iconbtn" data-nav="1" aria-label="Mes siguiente">›</button></div>
-   <div class="cal">${["L","M","X","J","V","S","D"].map(x=>`<div class="dow">${x}</div>`).join("")}${cells}</div>
-   <div class="legend">${GRUPOS.map(g=>`<span><i style="background:var(${g.v})"></i>${esc(g.nombre)}</span>`).join("")}</div>`;
+  const mesHoy=HOY.slice(0,7)===first.slice(0,7);
+  return navHTML(-1,1,`${esc(fmt(first,{month:"long",year:"numeric"}))}<div class="hint" style="font-weight:500">${plural(total,"concierto")}</div>`,"Mes anterior","Mes siguiente",mesHoy)+
+   `<div class="cal">${["L","M","X","J","V","S","D"].map(x=>`<div class="dow">${x}</div>`).join("")}${cells}</div>
+   <div class="legend">${GRUPOS.filter(g=>state.grupos.includes(g.id)).map(g=>`<span><i style="background:var(${g.v})"></i>${esc(g.nombre)}</span>`).join("")}</div>
+   <p class="hint">Toca un día para ver sus conciertos. La barra de colores indica el reparto por géneros.</p>`;
 }
 function viewSemana(){
-  const mon=mondayOf(state.date); const bd=byDate(); let out="";
-  for(let i=0;i<7;i++){const f=addDays(mon,i); out+=dayList(f,bd[f]||[]);}
-  return `<div class="nav"><button class="iconbtn" data-nav="-7" aria-label="Semana anterior">‹</button><div class="title">Semana del ${esc(fmt(mon,{day:"numeric",month:"short"}))} al ${esc(fmt(addDays(mon,6),{day:"numeric",month:"short"}))}</div><input type="date" id="pick" value="${state.date}" aria-label="Elegir fecha"><button class="iconbtn" data-nav="7" aria-label="Semana siguiente">›</button></div>`+out;
+  const mon=mondayOf(state.date); const bd=byDate(); let out="", total=0;
+  for(let i=0;i<7;i++){const f=addDays(mon,i); const l=bd[f]||[]; total+=l.length; if(l.length) out+=dayList(f,l);}
+  const esHoy=mon===mondayOf(HOY);
+  return navHTML(-7,7,`${esc(fmt(mon,{day:"numeric",month:"short"}))} – ${esc(fmt(addDays(mon,6),{day:"numeric",month:"short"}))}<div class="hint" style="font-weight:500">${plural(total,"concierto")}</div>`,"Semana anterior","Semana siguiente",esHoy)+
+    `<div class="stickystrip">${stripHTML(mon,bd,"jump")}</div>`+(out||`<p class="empty">No hay conciertos esta semana con estos filtros.</p>`);
 }
 function viewDia(){
-  const bd=byDate();
-  return `<div class="nav"><button class="iconbtn" data-nav="-1" aria-label="Día anterior">‹</button><div class="title">${esc(fmt(state.date,{weekday:"short",day:"numeric",month:"short"}))}</div><input type="date" id="pick" value="${state.date}" aria-label="Elegir fecha"><button class="iconbtn" data-nav="1" aria-label="Día siguiente">›</button></div>`+dayList(state.date,bd[state.date]||[]);
+  const bd=byDate(), mon=mondayOf(state.date);
+  return navHTML(-1,1,`${esc(fmt(state.date,{weekday:"long",day:"numeric",month:"long"}))}<div class="hint" style="font-weight:500">${plural((bd[state.date]||[]).length,"concierto")}</div>`,"Día anterior","Día siguiente",state.date===HOY)+
+    stripHTML(mon,bd,"sel")+
+    `<div id="swipe">${dayList(state.date,bd[state.date]||[],{cab:false})}</div>`;
+}
+function viewBusqueda(){
+  const res=DATA.filter(r=>r.fecha>=HOY&&visible(r));
+  const m={}; res.forEach(r=>(m[r.fecha]=m[r.fecha]||[]).push(r));
+  const ocultos=DATA.filter(r=>r.fecha>=HOY&&pasaTexto(r)&&!visible(r)).length;
+  return `<p class="hint" style="margin-top:12px">${plural(res.length,"resultado")} para «${esc(state.q.trim())}» en todas las fechas${ocultos?` · <button class="sclear" style="position:static;width:auto;height:auto;color:var(--info);font-size:.82rem;text-decoration:underline" id="vertodo">ver ${ocultos} más ocultos por los filtros</button>`:""}</p>`+
+    (Object.keys(m).sort().map(f=>dayList(f,m[f])).join("")||`<p class="empty">Nada encontrado.</p>`);
 }
 function viewEstilos(){
   if(!TAXO) return `<p class="empty">No se pudo cargar la taxonomía.</p>`;
@@ -432,44 +589,71 @@ async function viewVersiones(){
   catch(e){return `<p class="empty">No se pudo leer CHANGELOG.md</p>`;}
 }
 
+
 // ---------------------------------------------------------------- navegación
+let lastHash="";
 function setHash(){
-  const h=state.tab==="Concierto"?`#concierto/${state.id}`:`#${norm(state.tab)}${["Mes","Semana","Día"].includes(state.tab)?"/"+state.date:""}`;
+  const h=state.tab==="Concierto"?`#concierto/${state.id}`:`#${norm(state.tab)}${VISTAS.includes(state.tab)?"/"+state.date:""}`;
   if(location.hash!==h) history.replaceState(null,"",h);
+  lastHash=h;
 }
 function readHash(){
   const m=location.hash.slice(1).split("/");
-  if(m[0]==="concierto"&&m[1]){ state.tab="Concierto"; state.id=decodeURIComponent(m[1]); const r=BYID[state.id]; if(r) state.date=r.fecha; return; }
+  if(m[0]==="concierto"&&m[1]){
+    if(!lastHash.startsWith("#concierto")) state.from=lastHash||null;
+    state.tab="Concierto"; state.id=decodeURIComponent(m[1]); const r=BYID[state.id]; if(r) state.date=r.fecha; return;
+  }
   const t=TABS.find(x=>norm(x)===m[0]); if(t) state.tab=t;
   if(m[1]&&/^\d{4}-\d{2}-\d{2}$/.test(m[1])) state.date=m[1];
 }
 function renderTabs(){
-  const act=state.tab==="Concierto"?"Día":state.tab;
-  document.getElementById("tabs").innerHTML=TABS.map(t=>`<button role="tab" aria-selected="${t===act}" data-tab="${t}">${t}</button>`).join("");
-  document.querySelectorAll("[data-tab]").forEach(b=>b.onclick=()=>{state.tab=b.dataset.tab; store.set("tab",state.tab); render();});
+  const act=state.tab==="Concierto"?null:state.tab;
+  document.getElementById("tabs").innerHTML=VISTAS.map(t=>`<button role="tab" aria-selected="${t===act}" data-tab="${t}">${t}</button>`).join("");
+  document.querySelectorAll("[data-tab]").forEach(b=>b.onclick=()=>{state.tab=b.dataset.tab; store.set("tab",state.tab); render(); scrollTo(0,0);});
+  const hh=document.getElementById("hdr").offsetHeight; document.documentElement.style.setProperty("--hh",hh+"px");
 }
 async function renderBody(keepFocus){
   const main=document.getElementById("main");
-  const withFilters=["Mes","Semana","Día"].includes(state.tab);
+  const withFilters=VISTAS.includes(state.tab);
   let body="";
-  if(state.tab==="Mes") body=viewMes(); else if(state.tab==="Semana") body=viewSemana(); else if(state.tab==="Día") body=viewDia();
+  if(withFilters&&state.q.trim()) body=viewBusqueda();
+  else if(state.tab==="Mes") body=viewMes(); else if(state.tab==="Semana") body=viewSemana(); else if(state.tab==="Día") body=viewDia();
   else if(state.tab==="Concierto") body=viewConcierto();
-  else if(state.tab==="Estilos") body=viewEstilos(); else if(state.tab==="Fuentes") body=viewFuentes();
-  else if(state.tab==="Informe") body=viewInforme(); else body=await viewVersiones();
+  else {
+    const back=`<a class="back" href="#mes/${state.date||HOY}">‹ Agenda</a><h2 style="margin:4px 0 10px">${esc(state.tab)}</h2>`;
+    if(state.tab==="Estilos") body=back+viewEstilos(); else if(state.tab==="Fuentes") body=back+viewFuentes();
+    else if(state.tab==="Informe") body=back+viewInforme(); else body=back+await viewVersiones();
+  }
   if(withFilters&&keepFocus&&document.getElementById("fbody")) document.getElementById("fbody").innerHTML=body;
   else { main.innerHTML=withFilters?filtersHTML()+`<div id="fbody">${body}</div>`:body; if(withFilters) bindFilters(); }
-  const sum=document.querySelector("#fgen .sum"); if(sum) sum.textContent=resumenGrupos();
+  bindBody();
+  setHash();
+}
+function bindBody(){
   document.querySelectorAll("[data-day]").forEach(b=>b.onclick=()=>{state.date=b.dataset.day; state.tab="Día"; render(); scrollTo(0,0);});
+  document.querySelectorAll("[data-sel]").forEach(b=>b.onclick=()=>{state.date=b.dataset.sel; renderBody(true);});
+  document.querySelectorAll("[data-jump]").forEach(b=>b.onclick=()=>{const el=document.getElementById("d-"+b.dataset.jump); if(el) el.scrollIntoView({behavior:"smooth"}); else toast("Ese día no hay conciertos con estos filtros");});
   document.querySelectorAll("[data-nav]").forEach(b=>b.onclick=()=>{
     const n=Number(b.dataset.nav);
     if(state.tab==="Mes"){const d=parse(state.date); state.date=iso(new Date(d.getFullYear(),d.getMonth()+n,1));}
     else state.date=addDays(state.date,n);
-    renderBody(true); setHash();
+    renderBody(true);
   });
-  const pick=document.getElementById("pick"); if(pick) pick.onchange=()=>{ if(pick.value){state.date=pick.value; renderBody(true); setHash();} };
-  setHash();
+  const hoy=document.getElementById("hoy"); if(hoy) hoy.onclick=()=>{state.date=HOY; renderBody(true);};
+  const vt=document.getElementById("vertodo"); if(vt) vt.onclick=()=>{setGrupos(GRUPOS.map(g=>g.id)); state.origen="todos"; store.set("origen","todos"); renderBody(false);};
+  const r=BYID[state.id];
+  if(state.tab==="Concierto"&&r){
+    const i=document.getElementById("ics"); if(i) i.onclick=()=>descargarIcs(r);
+    const s=document.getElementById("share"); if(s) s.onclick=()=>compartir(r);
+  }
+  const sw=document.getElementById("swipe");
+  if(sw){ let x0=null,y0=null;
+    sw.ontouchstart=e=>{x0=e.touches[0].clientX; y0=e.touches[0].clientY;};
+    sw.ontouchend=e=>{ if(x0===null) return; const dx=e.changedTouches[0].clientX-x0, dy=e.changedTouches[0].clientY-y0; x0=null;
+      if(Math.abs(dx)>70&&Math.abs(dx)>2*Math.abs(dy)){ state.date=addDays(state.date,dx<0?1:-1); renderBody(true); } };
+  }
 }
-function render(){ renderTabs(); renderBody(false); }
+function render(){ document.getElementById("sheet").innerHTML=""; document.getElementById("menu").innerHTML=""; renderTabs(); renderBody(false); }
 
 async function load(){
   const j=async u=>{const r=await fetch(u,{cache:"no-cache"}); if(!r.ok) throw new Error(u); return r.json();};
@@ -478,11 +662,12 @@ async function load(){
     DATA=c.conciertos||[]; INFORME=inf; TAXO=tax; MAP=map; HOY=iso(new Date());
     DATA.forEach(r=>BYID[r.id]=r);
     if(sal) sal.salas.forEach(s=>{SALAS[norm(s.nombre)]=s;});
-    document.getElementById("upd").textContent=`Actualizado ${new Date(c.generado).toLocaleString("es-ES",{day:"numeric",month:"short",hour:"2-digit",minute:"2-digit"})} · ${DATA.filter(r=>r.fecha>=HOY).length} conciertos`;
+    document.getElementById("upd").textContent=`${DATA.filter(r=>r.fecha>=HOY).length} conciertos · actualizado ${new Date(c.generado).toLocaleString("es-ES",{day:"numeric",month:"short",hour:"2-digit",minute:"2-digit"})}`;
   }catch(e){ document.getElementById("main").innerHTML=`<p class="empty">No se pudieron cargar los datos (${esc(e.message)}).</p>`; return; }
-  state.tab=store.get("tab","Mes"); if(state.tab==="Concierto") state.tab="Mes"; state.date=HOY; readHash(); render();
+  state.tab=store.get("tab","Mes"); if(!VISTAS.includes(state.tab)) state.tab="Mes"; state.date=HOY; readHash(); render();
 }
 addEventListener("hashchange",()=>{readHash(); render(); if(state.tab==="Concierto") scrollTo(0,0);});
+addEventListener("resize",()=>{const h=document.getElementById("hdr"); if(h) document.documentElement.style.setProperty("--hh",h.offsetHeight+"px");});
 load();
 </script>
 </body>

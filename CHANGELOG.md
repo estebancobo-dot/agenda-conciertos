@@ -1,5 +1,32 @@
 # Versiones
 
+## 2.5.0 — 2026-09-29
+
+Revisión de la web en el móvil.
+
+- **Errores corregidos**:
+  - La foto de la ficha salía recortada: ahora se ve entera, sobre un fondo difuminado de la misma foto.
+  - Si la foto no cargaba quedaba un hueco gris: ahora se ven las iniciales del artista.
+  - El buscador solo buscaba en el día, la semana o el mes que tenías abierto: ahora busca en todas las fechas y avisa si los filtros ocultan resultados.
+  - "Sin ficha en Discogs" aparecía aunque hubiera ficha de Discogs sin estilo.
+  - Nombres de ciclos o de salas ("Villanos del Jazz") aparecían como si fueran estilos.
+  - Los precios se mostraban como "50.0 EUR".
+  - El selector de fecha de *Semana* salía cortado.
+  - El botón para aplicar los filtros quedaba fuera de la pantalla.
+- **Filtros**: los géneros aparecen como botones bajo el buscador y se activan con un toque. "Mi foco" desaparece: por defecto se ven todos los géneros salvo los **otros géneros** (electrónica, hip hop, jazz, latina…). El panel **Filtros** reúne el origen y los géneros, con el número de conciertos antes de aplicar. Cuando hay filtros activos se indica y se pueden quitar de un toque.
+- **Vistas**: la cabecera es más compacta, con *Mes*, *Semana* y *Día* siempre a mano; Estilos, Fuentes, Informe, Versiones, CSV y el tema pasan al menú ☰.
+  - Botón **Hoy** en las tres vistas.
+  - *Mes* muestra el total del mes y oculta los días de otros meses.
+  - *Semana* y *Día* tienen una tira de días con su número de conciertos.
+  - En *Día* se puede deslizar a los lados para cambiar de día.
+- **Tarjetas**: artista en grande, luego hora y sala. Si las webs no coinciden en la hora, se muestra la más repetida con "?".
+- **Ficha**:
+  - Datos en una lista con iconos: cuándo, dónde, estilo, origen y precio.
+  - Si las webs no coinciden, cada versión aparece con cuántas webs la dan.
+  - Botones para **añadir al calendario** del móvil y **compartir**.
+  - Enlaces al artista en Spotify, Discogs, Wikipedia, AllMusic, Last.fm y MusicBrainz, y cómo se identificó al artista.
+  - "Volver" regresa a la vista de la que vienes.
+
 ## 2.4.0 — 2026-09-29
 
 - **Ritmo según cada plataforma** en lugar de una pausa fija de 2 s por web:

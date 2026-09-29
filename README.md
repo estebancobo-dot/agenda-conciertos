@@ -25,8 +25,14 @@ Agenda automática y gratuita de los conciertos de los próximos 120 días en Ma
 
 ## Usarlo desde el móvil
 
-- **Ver la agenda**: abre la web. Pestañas: *Mes* (toca un día para verlo), *Semana*, *Día*, *Estilos*, *Fuentes*, *Informe* y *Versiones*. Toca un concierto para abrir su ficha (foto, estilo, origen, precio, sala y de dónde sale cada dato). El botón **Géneros** abre el panel de filtros ("Mi foco" oculta lo que está fuera de foco); también se filtra por origen (españoles/extranjeros) y con el buscador.
-- **Descargar para Excel**: botón "⬇ CSV" arriba a la derecha.
+- **Ver la agenda**: abre la web. Arriba eliges *Mes*, *Semana* o *Día*.
+  - En *Mes*, toca un día para ver sus conciertos.
+  - En *Semana* y *Día*, la tira de días lleva a cada fecha; en *Día* también puedes deslizar a los lados.
+  - El botón **Hoy** vuelve a la fecha actual.
+- **Buscar**: el buscador busca en **todas las fechas** (artista, sala, pueblo o estilo).
+- **Filtrar**: toca los géneros bajo el buscador para activarlos o quitarlos. **Filtros** abre el panel completo: origen del artista y qué estilos de Discogs incluye cada género. Por defecto se ocultan los **otros géneros** (electrónica, hip hop, jazz, latina, flamenco…).
+- **Ficha del concierto**: toca un concierto. Muestra foto, fecha, sala con cómo llegar, estilo, origen y precio, cada dato con su fuente. Desde ahí puedes añadirlo al calendario del móvil, compartirlo y abrir el artista en Spotify, Discogs, Wikipedia o AllMusic.
+- **Menú ☰**: *Estilos* (taxonomía de Discogs), *Fuentes*, *Informe* de la última ejecución, *Versiones*, descarga del CSV y modo claro/oscuro.
 
 ### Cuándo se actualiza
 
