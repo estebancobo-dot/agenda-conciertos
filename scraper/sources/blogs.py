@@ -141,12 +141,12 @@ def viriaor(ctx: Ctx):
 
 def diariorockero(ctx: Ctx):
     yield from blog_incremental(ctx, "https://www.diariodeunrockero.es/category/conciertos/",
-                                r"diariodeunrockero\.es/(?!category|tag|author|page|politica|publicidad)[a-z0-9-]{15,}/?$")
+                                r"diariodeunrockero\.es/conciertos/[a-z0-9-]{10,}/?$")  # anuncios: /conciertos/<entrada>/
 
 
 def rockprog(ctx: Ctx):
     yield from blog_incremental(ctx, "https://www.rock-progresivo.com/seccion/cronicas-conciertos/previas-de-conciertos/",
-                                r"rock-progresivo\.com/(?!seccion)[a-z0-9-]{12,}/?$")
+                                r"rock-progresivo\.com/[a-z0-9-]{12,}/20\d\d/\d\d/?$")  # entradas: /<entrada>/AAAA/MM/
 
 
 def force(ctx: Ctx):

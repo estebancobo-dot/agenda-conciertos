@@ -52,7 +52,7 @@ FUENTES: list[Source] = [
       "media", "rockforeveryone", otras.rockforeveryone),
     S("mariskal", "MariskalRock (guía)", "https://mariskalrock.com/guia-de-conciertos/", "agregador", 4, "baja",
       "mariskalrock", rm.mariskal, notas="Fiabilidad baja: mantiene fechas antiguas y no indica el año."),
-    S("rockgle", "Rockgle", "https://www.rockgle.es/p/agenda-de-conciertos_07.html?m=0", "agregador", 4, "baja",
+    S("rockgle", "Rockgle", "https://www.rockgle.es/p/agenda-de-conciertos_07.html", "agregador", 4, "baja",
       "rockgle", rm.rockgle, notas="Fiabilidad baja."),
     S("madness", "Madness Live (promotora)", "https://www.madnesslive.es/es/14-conciertos-en-madrid", "promotora", 2,
       "alta", "madnesslive", rm.madness),
@@ -165,9 +165,10 @@ def por_id() -> dict[str, Source]:
 def _municipales():
     from .normalize import norm
     from .sources import municipios as mu
-    for muni, url in mu.AGENDAS.items():
+    for muni, (url, lector) in mu.AGENDAS.items():
         FUENTES.append(S(f"muni_{norm(muni).replace(' ', '_')}", f"Agenda municipal de {muni}", url, "institucional", 2,
-                         "media", f"muni_{norm(muni)}", mu.hacer(muni, url), municipio_defecto=muni))
+                         "media", f"muni_{norm(muni)}", mu.hacer(muni, url, lector), municipio_defecto=muni))
+    SIN_AGENDA_LEGIBLE.update(mu.SIN_AGENDA)
 
 
 _municipales()

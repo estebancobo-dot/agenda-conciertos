@@ -288,3 +288,64 @@ def test_radar_joven_cpm():
     e = uno(evs, "2026-10-15", "Toldos Verdes")
     assert (e.invitados, e.sala) == (["Garbí"], "Shoko")
     assert uno(evs, "2026-11-04", "Mala Gestión").sala == "Sala But"
+
+
+# ---------------------------------------------------------------- agendas municipales (capturas del 29-09-2026)
+def _muni(nombre, fixture):
+    from scraper.sources.municipios import AGENDAS, municipal_parse
+    url, lector = AGENDAS[nombre]
+    return [e for e in municipal_parse(html(fixture), url, HOY, nombre, lector) if e.fecha >= HOY]
+
+
+def test_municipal_fullcalendar_las_rozas():
+    evs = _muni("Las Rozas de Madrid", "m_lasrozas_cal")
+    t = {e.artista: e for e in evs}
+    assert "Flamenco - José Mercé" in t and t["Flamenco - José Mercé"].hora == "20:00"
+    assert not any("Película" in a for a in t)  # cine y otros actos no musicales se descartan
+    assert all("&amp;" not in a for a in t)
+
+
+def test_municipal_microdatos_y_jsonld():
+    e = _muni("Alcalá de Henares", "m_alcala")
+    assert [(x.artista, x.hora, x.sala) for x in e] == [("ETERNAL", "19:00", "CORRAL DE COMEDIAS")]
+    v = _muni("Collado Villalba", "m_villalba")
+    assert v and v[0].fecha.isoformat() == "2026-10-17" and "CORAL" in v[0].artista
+
+
+def test_municipal_lectores_propios():
+    t = _muni("Torrejón de Ardoz", "m_torrejon")
+    assert [x.artista[:36] for x in t] == ["CONCIERTO INAUGURAL DE LA ORQUESTA S"]  # el teatro que habla de música no
+    assert t[0].sala == "Teatro Municipal José María Rodero" and t[0].hora == "20:00"
+    assert _muni("Valdemoro", "m_valdemoro") == []   # zarzuela, musicales y comedias: no son conciertos
+    assert _muni("Leganés", "m_leganes") == []       # solo teatro y humor en esas fechas
+    assert _muni("Pinto", "m_pinto_act") == []       # talleres, rutas y ferias
+    assert _muni("Boadilla del Monte", "m_boadilla") == []  # exposiciones de varias semanas
+    from scraper.sources.municipios import leganes
+    assert len(leganes(html("m_leganes"), "u", HOY, "Leganés")) == 0
+
+
+def test_municipal_antibots_detectado():
+    from scraper.fetch import es_antibot
+    assert es_antibot(html("m_ssreyes"))
+
+
+def test_rockgle_sin_parametro_movil():
+    from scraper.sources.rock_metal import rockgle_parse
+    evs = rockgle_parse(html("rockgle_2"), "u", HOY)
+    assert len(evs) >= 100
+    t = {(e.artista, e.fecha.isoformat()): e for e in evs}
+    assert t[("TANKARD", "2026-10-29")].ciudad == "Madrid" and t[("TANKARD", "2026-10-29")].sala == "Nazca"
+    assert t[("EUROPE", "2026-10-10")].sala == "La Nueva Cubierta"          # sin el nombre de la gira
+    assert t[("MIGUEL RÍOS", "2026-12-08")].sala == "Movistar Arena"         # sin "FIN DE GIRA"
+    assert t[("AZRAEL", "2026-11-21")].ciudad == "Coslada"
+
+
+def test_blogs_enlaces_de_entradas():
+    import re
+    from bs4 import BeautifulSoup
+    pat_rp = r"rock-progresivo\.com/[a-z0-9-]{12,}/20\d\d/\d\d/?$"
+    pat_dr = r"diariodeunrockero\.es/conciertos/[a-z0-9-]{10,}/?$"
+    s = BeautifulSoup(html("rockprog_previas"), "lxml")
+    assert len({a["href"] for a in s.find_all("a", href=True) if re.search(pat_rp, a["href"])}) >= 15
+    s = BeautifulSoup(html("diariorockero_conc"), "lxml")
+    assert len({a["href"] for a in s.find_all("a", href=True) if re.search(pat_dr, a["href"])}) >= 10

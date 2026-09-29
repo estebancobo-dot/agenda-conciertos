@@ -39,7 +39,10 @@ def _read(name: str, default):
 
 
 def _write(name: str, obj) -> None:
-    (DATA / name).write_text(json.dumps(obj, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+    # escritura atómica: si el proceso se corta a mitad, el archivo anterior queda intacto
+    tmp = DATA / (name + ".tmp")
+    tmp.write_text(json.dumps(obj, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+    tmp.replace(DATA / name)
 
 
 # ---------------------------------------------------------------- rastreo
@@ -304,7 +307,8 @@ def ejecutar(hoy: date | None = None, solo: list[str] | None = None, fetcher: Fe
         from .artistas import enriquecer
         hilo = threading.Thread(target=lambda: previas.update(
             enriquecer([p for p in anteriores if p["fecha"] >= hoy.isoformat()], cache_art, hoy,
-                       presupuesto_seg=PRESUPUESTO_FICHAS, parar=parar)), daemon=True)
+                       presupuesto_seg=PRESUPUESTO_FICHAS, parar=parar,
+                       guardar=lambda: _write("artistas.json", cache_art))), daemon=True)
         hilo.start()
     items, resultados = rastrear(fuentes, fetcher, hoy, horizonte, estado.setdefault("fuentes", {}))
     items, fuera = preparar(items, hoy, horizonte)
@@ -324,7 +328,8 @@ def ejecutar(hoy: date | None = None, solo: list[str] | None = None, fetcher: Fe
             parar.set()
             hilo.join()
         resto = max(PRESUPUESTO_FICHAS - (time.monotonic() - t0), 300)
-        art_stats = enriquecer(recs, cache_art, hoy, presupuesto_seg=resto)
+        art_stats = enriquecer(recs, cache_art, hoy, presupuesto_seg=resto,
+                               guardar=lambda: _write("artistas.json", cache_art))
         art_stats["durante_agendas"] = {k: previas.get(k, 0) for k in ("consultados", "completados")}
         _write("artistas.json", cache_art)
     from .artistas import ficha
@@ -389,7 +394,8 @@ def ejecutar_fichas(hoy: date | None = None, presupuesto_seg: float = 3000) -> d
     datos = _read("concerts.json", {})
     recs = datos.get("conciertos", [])
     cache_art = _read("artistas.json", {})
-    stats = enriquecer(recs, cache_art, hoy, presupuesto_seg=presupuesto_seg)
+    stats = enriquecer(recs, cache_art, hoy, presupuesto_seg=presupuesto_seg,
+                       guardar=lambda: _write("artistas.json", cache_art))
     if not stats["consultados"] and not stats["completados"]:
         return stats  # nada pendiente: no se toca ningún archivo (ni commit ni nueva publicación)
     _write("artistas.json", cache_art)

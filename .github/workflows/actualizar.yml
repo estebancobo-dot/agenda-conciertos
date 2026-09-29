@@ -38,6 +38,8 @@ jobs:
       - name: Tests
         run: python -m pytest -q
       - name: Rastrear fuentes
+        # deja margen dentro de las 2 horas del trabajo para guardar lo hecho aunque se corte
+        timeout-minutes: 100
         env:
           TZ: Europe/Madrid
           # Claves gratuitas opcionales (Settings → Secrets and variables → Actions). Sin ellas funciona igual.
@@ -54,6 +56,8 @@ jobs:
           fi
       - name: Guardar datos en el repositorio
         id: guardar
+        # también si el rastreo falla o se corta: así no se pierden las fichas de artista ya guardadas
+        if: always()
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"

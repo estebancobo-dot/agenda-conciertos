@@ -13,6 +13,7 @@ del nombre en Discogs; una página de Wikipedia con ese título que sea de un gr
 from __future__ import annotations
 
 import json
+import logging
 import re
 import time
 from collections import Counter
@@ -24,6 +25,7 @@ from bs4 import BeautifulSoup
 from .fetch import Fetcher
 from .normalize import clean, es_generico, es_relleno, load_json, norm
 
+log = logging.getLogger(__name__)
 DISCOGS = "https://api.discogs.com"
 CADUCIDAD_OK = 180      # días que se conserva una ficha encontrada
 CADUCIDAD_NO = 30       # días hasta reintentar un artista no encontrado
@@ -362,7 +364,8 @@ def _encontrado(ent: dict) -> bool:
 
 def enriquecer(recs: list[dict], cache: dict, hoy: date, presupuesto_seg: float = 1200,
                fetcher_dc: Fetcher | None = None, fetcher_wp: Fetcher | None = None,
-               fetcher_lf: Fetcher | None = None, clave_lastfm: str | None = None, parar=None) -> dict:
+               fetcher_lf: Fetcher | None = None, clave_lastfm: str | None = None, parar=None,
+               guardar=None) -> dict:
     """Completa cache[norm(artista)] para los artistas principales, priorizando los conciertos en foco y próximos.
 
     Cada artista se consulta una vez; la ficha se renueva a los 180 días (30 si no se encontró). Si una ficha
@@ -436,6 +439,12 @@ def enriquecer(recs: list[dict], cache: dict, hoy: date, presupuesto_seg: float 
             else:
                 cache[k] = ent
                 stats["completados" if previa else "consultados"] += 1
+                # se guarda cada 50 fichas: si la ejecución se corta (tiempo máximo, caída), no se pierde lo hecho
+                if guardar and (stats["consultados"] + stats["completados"]) % 50 == 0:
+                    try:
+                        guardar()
+                    except Exception as e:  # noqa: BLE001
+                        log.warning("no se pudo guardar artistas.json: %s", e)
     for k in vistos:
         ent = cache.get(k) or {}
         for fuente in ("discogs", "wikipedia", "wikidata", "lastfm"):

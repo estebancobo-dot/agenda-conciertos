@@ -1,5 +1,20 @@
 # Versiones
 
+## 2.6.0 — 2026-09-29
+
+- **Agendas municipales rehechas.** Las 21 direcciones anteriores no daban ningún concierto: unas habían cambiado (404) y otras no se leían bien. Se han comprobado una a una desde GitHub.
+  - **Se leen 11 agendas:** Alcalá de Henares (CulturAlcalá), Aranjuez, Collado Villalba, Las Rozas, Leganés, Alcorcón, Boadilla, Torrejón (Teatro J. M. Rodero), Valdemoro (Teatro Juan Prado), Pinto y Móstoles. Lectores nuevos para microdatos schema.org/Event, calendarios FullCalendar de Drupal y 6 formatos propios.
+  - **Se siguen intentando a diario:** Getafe (no responde a GitHub), Alcobendas y Arganda (403), San Sebastián de los Reyes (verificación antirobots, ahora detectada) y Coslada (error de certificado).
+  - **Sin agenda legible** (explicado en el informe): Fuenlabrada, Majadahonda, Parla, Pozuelo y Rivas.
+  - Filtro de música más estricto:
+    - Cuenta el título o una expresión inequívoca en la descripción ("concierto", "recital", "tributo a"…), no cualquier mención a la música.
+    - Se descartan talleres, exposiciones, inscripciones y plenos.
+- **Rockgle:** ha cambiado de formato (bloques con 🎸 📅 📍) y se ha rehecho su lector. Se quita el parámetro `?m=0`, que desde GitHub acababa en una verificación de Google (429).
+- **Rock-Progresivo (previas) y Diario de un Rockero:** no reconocían los enlaces a sus artículos (nuevas estructuras `/entrada/AAAA/MM/` y `/conciertos/entrada/`).
+- **Tolerancia a fallos en las fichas de artista:**
+  - Se guardan cada 50 artistas y con escritura atómica: un corte a mitad nunca deja el archivo roto.
+  - El paso de guardar en el repositorio se ejecuta aunque el rastreo falle o se corte, porque el rastreo tiene su propio límite de 100 minutos.
+
 ## 2.5.1 — 2026-09-29
 
 - Si el identificador de Discogs que da Wikidata apunta a una ficha borrada o fusionada (le pasaba a Los Deltonos), se busca en Discogs por el nombre, con la regla de siempre: una única coincidencia exacta.

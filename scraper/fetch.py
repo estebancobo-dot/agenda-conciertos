@@ -34,7 +34,7 @@ class AntiBotBlocked(Exception):
 
 
 _ANTIBOT = re.compile(r"sgcaptcha|imunify-bot-check|cf-chl-|challenge-platform|Just a moment\.\.\.|"
-                      r"captcha-delivery|Attention Required! \| Cloudflare", re.I)
+                      r"captcha-delivery|Attention Required! \| Cloudflare|Verificando navegador", re.I)
 
 
 def es_antibot(text: str) -> bool:

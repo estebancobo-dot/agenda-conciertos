@@ -216,22 +216,51 @@ def mariskal(ctx: Ctx):
 
 
 # ------------------------------------------------------------------ Rockgle (fiabilidad baja)
+def _rockgle_lugar(t: str) -> tuple[str, str]:
+    """'Madrid. Nazca' | 'Madrid, Revilive' | 'Sala Venom, Coslada (Madrid)' → (ciudad, sala)."""
+    t = clean(re.sub(r"\((?:gratuito|gratis)[^)]*\)", "", t, flags=re.I))
+    partes = [clean(p) for p in re.split(r"\s*[.,]\s+|\s+[-–—]\s+", t) if clean(p)]
+    for i, p in enumerate(partes):
+        base = re.sub(r"\s*\(([^)]*)\)\s*$", "", p)
+        if municipio(base) or municipio(p):
+            # fuera los añadidos en mayúsculas ("FIN DE GIRA", "CON X + Y"): no forman parte del nombre de la sala
+            resto = [x for j, x in enumerate(partes) if j != i and not (x.upper() == x and re.search(r"[A-Z]{3}", x))]
+            return base, ", ".join(resto)
+    return (partes[-1] if partes else ""), ", ".join(partes[:-1])
+
+
 def rockgle_parse(html: str, page_url: str, today: date) -> list:
+    """Bloques '🎸 GRUPO' seguidos de '📅 fecha — 📍 Ciudad. Sala' (fecha y lugar en la misma línea o en varias)."""
     s = soup_of(html)
     content = s.select_one(".post-body") or s.body
-    lines = [clean(x) for x in content.get_text("\n").split("\n") if clean(x)]
-    evs, cur = [], None
-    for ln in lines:
-        f, ciudad, sala, _ = parse_linea(ln, today)
-        if f and cur:
-            evs.append(make(f, cur, page_url, sala=sala, ciudad=ciudad, nota=NOTA_BAJA))
-        elif not f and len(ln) < 120 and ln.upper() == ln and re.search(r"[A-Z]", ln):
-            cur = ln
+    texto = "\n".join(clean(x) for x in content.get_text("\n").split("\n") if clean(x))
+    evs = []
+    for bloque in re.split(r"[🎸🎤]\ufe0f?", texto)[1:]:
+        lineas = bloque.split("\n")
+        artista = clean(lineas[0].split(" — ")[0])  # 'EUROPE — THE FINAL COUNTDOWN 40TH…' → nombre de la gira fuera
+        artista = clean(re.sub(r"\s*\((?:gratuito|gratis)\)", "", artista, flags=re.I))
+        if not artista or len(artista) > 120:
+            continue
+        for entrada in re.split(r"📅\ufe0f?", "\n".join(lineas[1:]))[1:]:
+            entrada = clean(entrada.replace("\n", " "))
+            if "📍" in entrada:
+                fecha_txt, lugar = re.split(r"\s*📍\ufe0f?\s*", entrada, maxsplit=1)
+            elif " — " in entrada:
+                fecha_txt, _, lugar = entrada.partition(" — ")
+            else:  # '24–25 octubre 2026 – Begíjar (Jaén)'
+                partes = re.split(r"(?<=20\d\d)\s*[–—-]\s*", entrada, maxsplit=1)
+                fecha_txt, lugar = partes[0], (partes[1] if len(partes) > 1 else "")
+            f = parse_fecha_texto(fecha_txt, today)
+            if not f:
+                continue
+            ciudad, sala = _rockgle_lugar(lugar.strip(" —–-"))
+            evs.append(make(f, artista, page_url, sala=sala, ciudad=ciudad, nota=NOTA_BAJA))
     return evs
 
 
 def rockgle(ctx: Ctx):
-    url = "https://www.rockgle.es/p/agenda-de-conciertos_07.html?m=0"
+    # sin "?m=0": con ese parámetro Blogger redirige a una verificación de Google (429) desde GitHub
+    url = "https://www.rockgle.es/p/agenda-de-conciertos_07.html"
     yield from rockgle_parse(ctx.get(url), url, ctx.today)
 
 
