@@ -1,5 +1,10 @@
 # Versiones
 
+## 2.1.1 — 2026-09-29
+
+- **robots.txt**: nuevo intérprete conforme a RFC 9309 con comodines `*` y `$`. El módulo estándar de Python no los entiende y, por ejemplo, habría permitido la API de Deezer, cuyo robots.txt dice `Disallow: /*`. Comprobado con los robots.txt reales: todas las URL que ya se usaban siguen permitidas.
+- La herramienta de captura guarda también el código de respuesta, las cabeceras de límite de peticiones y el cuerpo de los errores.
+
 ## 2.1.0 — 2026-09-29
 
 **Ficha musical del artista (estilo, origen y foto) desde webs de música, no desde la agenda o la sala.**

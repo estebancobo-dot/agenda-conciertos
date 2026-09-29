@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /robots.txt
+Allow: /status.txt
+Disallow: /*

@@ -4,9 +4,10 @@ from __future__ import annotations
 import re
 import threading
 import time
-import urllib.robotparser
 from dataclasses import dataclass, field
 from urllib.parse import urlsplit
+
+from .robots import Robots
 
 import requests
 
@@ -41,7 +42,7 @@ class RobotsUnreachable(Exception):
 class HostState:
     lock: threading.Lock = field(default_factory=threading.Lock)
     last: float = 0.0
-    robots: urllib.robotparser.RobotFileParser | None = None
+    robots: Robots | None = None
     robots_checked: bool = False
     robots_status: str = ""
     delay: float = 0.0
@@ -88,7 +89,7 @@ class Fetcher:
             if not st.robots_checked:
                 parts = urlsplit(url)
                 robots_url = f"{parts.scheme}://{parts.netloc}/robots.txt"
-                rp = urllib.robotparser.RobotFileParser()
+                rp = Robots()
                 try:
                     self._wait(st)
                     r = self.session.get(robots_url, timeout=self.timeout)
@@ -99,7 +100,7 @@ class Fetcher:
                         rp.disallow_all = True
                         st.robots_status = f"inaccesible ({r.status_code})"
                     else:
-                        rp.parse(r.text.splitlines())
+                        rp = Robots(r.text)
                         st.robots_status = "ok"
                         delay = rp.crawl_delay(self.user_agent)
                         if delay:
