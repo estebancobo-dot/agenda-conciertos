@@ -1,5 +1,5 @@
 {
- "generado": "2026-09-29T12:06:18+00:00",
+ "generado": "2026-09-29T13:25:37+00:00",
  "hoy": "2026-09-29",
  "horizonte": "2027-01-27",
  "conciertos": [
@@ -253,68 +253,6 @@
    "conflictos": [],
    "notas": [],
    "en_foco": false,
-   "primera_vez_visto": "2026-09-29",
-   "ultima_vez_visto": "2026-09-29"
-  },
-  {
-   "id": "e79b6696b1a0",
-   "fecha": "2026-09-29",
-   "hora": "20:30",
-   "artista": "En bruto – Open mic",
-   "invitados": [],
-   "sala": "Galileo Galilei",
-   "municipio": "Madrid",
-   "precio": null,
-   "estilo_fuente": [
-    {
-     "estilo": "Pop / Rock",
-     "fuente": "Madrid en Vivo (asociación de salas)"
-    },
-    {
-     "estilo": "Artes escénicas",
-     "fuente": "Madrid en Vivo (asociación de salas)"
-    }
-   ],
-   "categoria": "pop e indie",
-   "categorias": [
-    "pop e indie",
-    "rock y metal",
-    "fuera de foco"
-   ],
-   "genero_discogs": [],
-   "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
-   "fuentes": [
-    {
-     "nombre": "Galileo Galilei (web oficial)",
-     "id": "galileo",
-     "url": "https://salagalileo.es/programacion/en-bruto-open-mic/",
-     "prioridad": 1
-    },
-    {
-     "nombre": "Madrid en Vivo (asociación de salas)",
-     "id": "madridenvivo",
-     "url": "https://madridenvivo.com/?post_type=evento&p=792359",
-     "prioridad": 3
-    },
-    {
-     "nombre": "Madrid en Vivo (asociación de salas)",
-     "id": "madridenvivo",
-     "url": "https://madridenvivo.com/?post_type=evento&p=792961",
-     "prioridad": 3
-    },
-    {
-     "nombre": "Qconciertos (country y provincia de Madrid)",
-     "id": "qconciertos",
-     "url": "https://qconciertos.es/conciertos-en-madrid-provincia/",
-     "prioridad": 3
-    }
-   ],
-   "estado": "contrastado",
-   "conflictos": [],
-   "notas": [],
-   "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
   },
@@ -943,6 +881,62 @@
     }
    ],
    "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": true,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
+   "id": "e79b6696b1a0",
+   "fecha": "2026-09-29",
+   "hora": null,
+   "artista": "En Bruto",
+   "invitados": [],
+   "sala": "Galileo Galilei",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Pop / Rock",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    },
+    {
+     "estilo": "Artes escénicas",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "pop e indie",
+   "categorias": [
+    "pop e indie",
+    "rock y metal",
+    "fuera de foco"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/?post_type=evento&p=792359",
+     "prioridad": 3
+    },
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/?post_type=evento&p=792961",
+     "prioridad": 3
+    },
+    {
+     "nombre": "Qconciertos (country y provincia de Madrid)",
+     "id": "qconciertos",
+     "url": "https://qconciertos.es/conciertos-en-madrid-provincia/",
+     "prioridad": 3
+    }
+   ],
+   "estado": "contrastado",
    "conflictos": [],
    "notas": [],
    "en_foco": true,
@@ -1736,96 +1730,6 @@
    "ultima_vez_visto": "2026-09-29"
   },
   {
-   "id": "fc8bca079dc0",
-   "fecha": "2026-09-30",
-   "hora": "21:00",
-   "artista": "Grandes Canciones del Cine by Laraland",
-   "invitados": [
-    "Laraland Concierto de Bandas Sonoras"
-   ],
-   "sala": "Galileo Galilei",
-   "municipio": "Madrid",
-   "precio": "20€",
-   "estilo_fuente": [
-    {
-     "estilo": "Versiones/Tributos",
-     "fuente": "conciertos.club (buscador semanal)"
-    },
-    {
-     "estilo": "Versiones/Tributos",
-     "fuente": "conciertos.club (portada Madrid)"
-    },
-    {
-     "estilo": "Versiones/Tributos",
-     "fuente": "conciertos.club (por estilo)"
-    },
-    {
-     "estilo": "Pop / Rock",
-     "fuente": "Madrid en Vivo (asociación de salas)"
-    }
-   ],
-   "categoria": "tributos y versiones",
-   "categorias": [
-    "tributos y versiones",
-    "pop e indie",
-    "rock y metal"
-   ],
-   "genero_discogs": [],
-   "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
-   "fuentes": [
-    {
-     "nombre": "Galileo Galilei (web oficial)",
-     "id": "galileo",
-     "url": "https://salagalileo.es/programacion/grandes-canciones-del-cine-by-laraland/",
-     "prioridad": 1
-    },
-    {
-     "nombre": "conciertos.club (buscador semanal)",
-     "id": "cc_buscador",
-     "url": "https://conciertos.club/madrid/conciertos/124974-laraland-concierto-de-bandas-sonoras",
-     "prioridad": 3
-    },
-    {
-     "nombre": "conciertos.club (portada Madrid)",
-     "id": "cc_portada",
-     "url": "https://conciertos.club/madrid/conciertos/124974-laraland-concierto-de-bandas-sonoras",
-     "prioridad": 3
-    },
-    {
-     "nombre": "conciertos.club (por estilo)",
-     "id": "cc_estilos",
-     "url": "https://conciertos.club/madrid/conciertos/124974-laraland-concierto-de-bandas-sonoras",
-     "prioridad": 3
-    },
-    {
-     "nombre": "Madrid en Vivo (asociación de salas)",
-     "id": "madridenvivo",
-     "url": "https://madridenvivo.com/?post_type=evento&p=792366",
-     "prioridad": 3
-    },
-    {
-     "nombre": "Songkick Madrid",
-     "id": "songkick",
-     "url": "https://www.songkick.com/concerts/43349117-laraland-at-galileo-galilei",
-     "prioridad": 3
-    },
-    {
-     "nombre": "Qconciertos (country y provincia de Madrid)",
-     "id": "qconciertos",
-     "url": "https://qconciertos.es/conciertos-en-madrid-provincia/",
-     "prioridad": 3
-    }
-   ],
-   "estado": "contrastado",
-   "conflictos": [],
-   "notas": [],
-   "en_foco": true,
-   "primera_vez_visto": "2026-09-29",
-   "ultima_vez_visto": "2026-09-29"
-  },
-  {
    "id": "b7393def9093",
    "fecha": "2026-09-30",
    "hora": "21:00",
@@ -1959,6 +1863,88 @@
      "nombre": "Madrid en Vivo (asociación de salas)",
      "id": "madridenvivo",
      "url": "https://madridenvivo.com/?post_type=evento&p=790508",
+     "prioridad": 3
+    }
+   ],
+   "estado": "contrastado",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": true,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
+   "id": "fc8bca079dc0",
+   "fecha": "2026-09-30",
+   "hora": "21:00",
+   "artista": "Laraland. Concierto de Bandas Sonoras",
+   "invitados": [],
+   "sala": "Galileo Galilei",
+   "municipio": "Madrid",
+   "precio": "20€",
+   "estilo_fuente": [
+    {
+     "estilo": "Versiones/Tributos",
+     "fuente": "conciertos.club (buscador semanal)"
+    },
+    {
+     "estilo": "Versiones/Tributos",
+     "fuente": "conciertos.club (portada Madrid)"
+    },
+    {
+     "estilo": "Versiones/Tributos",
+     "fuente": "conciertos.club (por estilo)"
+    },
+    {
+     "estilo": "Pop / Rock",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "tributos y versiones",
+   "categorias": [
+    "tributos y versiones",
+    "pop e indie",
+    "rock y metal"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "conciertos.club (buscador semanal)",
+     "id": "cc_buscador",
+     "url": "https://conciertos.club/madrid/conciertos/124974-laraland-concierto-de-bandas-sonoras",
+     "prioridad": 3
+    },
+    {
+     "nombre": "conciertos.club (portada Madrid)",
+     "id": "cc_portada",
+     "url": "https://conciertos.club/madrid/conciertos/124974-laraland-concierto-de-bandas-sonoras",
+     "prioridad": 3
+    },
+    {
+     "nombre": "conciertos.club (por estilo)",
+     "id": "cc_estilos",
+     "url": "https://conciertos.club/madrid/conciertos/124974-laraland-concierto-de-bandas-sonoras",
+     "prioridad": 3
+    },
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/?post_type=evento&p=792366",
+     "prioridad": 3
+    },
+    {
+     "nombre": "Songkick Madrid",
+     "id": "songkick",
+     "url": "https://www.songkick.com/concerts/43349117-laraland-at-galileo-galilei",
+     "prioridad": 3
+    },
+    {
+     "nombre": "Qconciertos (country y provincia de Madrid)",
+     "id": "qconciertos",
+     "url": "https://qconciertos.es/conciertos-en-madrid-provincia/",
      "prioridad": 3
     }
    ],
@@ -8293,9 +8279,11 @@
      "prioridad": 3
     }
    ],
-   "estado": "1_fuente",
+   "estado": "posiblemente cancelado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Ya no aparece en ninguna de sus fuentes (comprobado el 2026-09-29); visto por última vez el 2026-09-29."
+   ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -9794,6 +9782,44 @@
    "ultima_vez_visto": "2026-09-29"
   },
   {
+   "id": "43cd57d037be",
+   "fecha": "2026-10-02",
+   "hora": null,
+   "artista": "SOLO ROBER BODEGAS",
+   "invitados": [],
+   "sala": "Beer Station",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Artes escénicas",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "fuera de foco",
+   "categorias": [
+    "fuera de foco"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/evento/beer-station-monologos-20/",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": false,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
    "id": "4646cf092872",
    "fecha": "2026-10-02",
    "hora": null,
@@ -10218,10 +10244,16 @@
    "sala": "Fun House",
    "municipio": "Madrid",
    "precio": null,
-   "estilo_fuente": [],
-   "categoria": "sin clasificar",
+   "estilo_fuente": [
+    {
+     "estilo": "Pop / Rock",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "pop e indie",
    "categorias": [
-    "sin clasificar"
+    "pop e indie",
+    "rock y metal"
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
@@ -10233,9 +10265,15 @@
      "id": "funhouse",
      "url": "https://www.funhousemusicbar.com/conciertos/scalped-leon/",
      "prioridad": 1
+    },
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/evento/fun-house-conciertos-13/",
+     "prioridad": 3
     }
    ],
-   "estado": "1_fuente",
+   "estado": "contrastado",
    "conflictos": [],
    "notas": [],
    "en_foco": true,
@@ -11867,12 +11905,12 @@
    "ultima_vez_visto": "2026-09-29"
   },
   {
-   "id": "b3c87612581f",
+   "id": "86420f626833",
    "fecha": "2026-10-03",
    "hora": "21:00",
-   "artista": "MötorHits",
+   "artista": "Motörhits. Tributo a Motörhead",
    "invitados": [
-    "Master of Extinction"
+    "Master of extiction. Tributo a Metallica y Megadeth"
    ],
    "sala": "Revi Live",
    "municipio": "Madrid",
@@ -11901,12 +11939,6 @@
    "nacionalidad_fuente": null,
    "fuentes": [
     {
-     "nombre": "Revi Live / Revi Space (web oficial)",
-     "id": "revi",
-     "url": "https://mutick.com/e/metal-on-metal-tribute-festival-en-madrid",
-     "prioridad": 1
-    },
-    {
      "nombre": "conciertos.club (buscador semanal)",
      "id": "cc_buscador",
      "url": "https://conciertos.club/madrid/conciertos/124849-motorhits-tributo-a-motorhead-master-of-extiction-tributo-a-metallica-y-megadeth",
@@ -11925,11 +11957,9 @@
      "prioridad": 3
     }
    ],
-   "estado": "contrastado",
+   "estado": "1_fuente",
    "conflictos": [],
-   "notas": [
-    "Evento: METAL ON METAL"
-   ],
+   "notas": [],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -12857,6 +12887,44 @@
    "ultima_vez_visto": "2026-09-29"
   },
   {
+   "id": "8e28cc313b72",
+   "fecha": "2026-10-03",
+   "hora": null,
+   "artista": "DANI ALÉS - TABÚ - UN MONÓLOGO INADECUADO",
+   "invitados": [],
+   "sala": "Beer Station",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Artes escénicas",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "fuera de foco",
+   "categorias": [
+    "fuera de foco"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/evento/beer-station-monologos-10/",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": false,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
    "id": "4853642d1efa",
    "fecha": "2026-10-03",
    "hora": null,
@@ -13327,6 +13395,44 @@
    "ultima_vez_visto": "2026-09-29"
   },
   {
+   "id": "ac881060e508",
+   "fecha": "2026-10-03",
+   "hora": null,
+   "artista": "KALDERAS - STAND UP COMEDY",
+   "invitados": [],
+   "sala": "Beer Station",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Artes escénicas",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "fuera de foco",
+   "categorias": [
+    "fuera de foco"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/evento/beer-station-monologos-21/",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": false,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
    "id": "adb0a8650565",
    "fecha": "2026-10-03",
    "hora": null,
@@ -13402,6 +13508,43 @@
    "estado": "1_fuente",
    "conflictos": [],
    "notas": [],
+   "en_foco": true,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
+   "id": "45716eb5d4e3",
+   "fecha": "2026-10-03",
+   "hora": null,
+   "artista": "M├ČtorHits",
+   "invitados": [
+    "Master of Extinction"
+   ],
+   "sala": "Revi Live",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [],
+   "categoria": "sin clasificar",
+   "categorias": [
+    "sin clasificar"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Revi Live / Revi Space (web oficial)",
+     "id": "revi",
+     "url": "https://mutick.com/e/metal-on-metal-tribute-festival-en-madrid",
+     "prioridad": 1
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [
+    "Evento: ┬Ā CANCELADO"
+   ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -13644,6 +13787,44 @@
    "conflictos": [],
    "notas": [],
    "en_foco": true,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
+   "id": "013a349309d2",
+   "fecha": "2026-10-03",
+   "hora": null,
+   "artista": "ROBERTO CHAPU - SR. MANGA POR HOMBRO",
+   "invitados": [],
+   "sala": "Beer Station",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Artes escénicas",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "fuera de foco",
+   "categorias": [
+    "fuera de foco"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/evento/beer-station-monologos-31/",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": false,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
   },
@@ -14294,12 +14475,6 @@
    "nacionalidad_fuente": null,
    "fuentes": [
     {
-     "nombre": "Galileo Galilei (web oficial)",
-     "id": "galileo",
-     "url": "https://salagalileo.es/programacion/kids-rock-family/",
-     "prioridad": 1
-    },
-    {
      "nombre": "conciertos.club (buscador semanal)",
      "id": "cc_buscador",
      "url": "https://conciertos.club/madrid/conciertos/124971-kids-rock-family",
@@ -14548,50 +14723,6 @@
     }
    ],
    "estado": "1_fuente",
-   "conflictos": [],
-   "notas": [],
-   "en_foco": false,
-   "primera_vez_visto": "2026-09-29",
-   "ultima_vez_visto": "2026-09-29"
-  },
-  {
-   "id": "34f9568583d5",
-   "fecha": "2026-10-04",
-   "hora": "17:30",
-   "artista": "Fran Doblas",
-   "invitados": [],
-   "sala": "Galileo Galilei",
-   "municipio": "Madrid",
-   "precio": null,
-   "estilo_fuente": [
-    {
-     "estilo": "Flamenco Capital",
-     "fuente": "Madrid en Vivo (asociación de salas)"
-    }
-   ],
-   "categoria": "fuera de foco",
-   "categorias": [
-    "fuera de foco"
-   ],
-   "genero_discogs": [],
-   "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
-   "fuentes": [
-    {
-     "nombre": "Galileo Galilei (web oficial)",
-     "id": "galileo",
-     "url": "https://salagalileo.es/programacion/fran-doblas/",
-     "prioridad": 1
-    },
-    {
-     "nombre": "Madrid en Vivo (asociación de salas)",
-     "id": "madridenvivo",
-     "url": "https://madridenvivo.com/?post_type=evento&p=795876",
-     "prioridad": 3
-    }
-   ],
-   "estado": "contrastado",
    "conflictos": [],
    "notas": [],
    "en_foco": false,
@@ -15500,9 +15631,15 @@
      "id": "wurlitzer",
      "url": "https://wurlitzerballroom.com/concierto/yawning-man-2026-10-04",
      "prioridad": 1
+    },
+    {
+     "nombre": "Conciertos por Madrid",
+     "id": "cpm",
+     "url": "https://conciertospormadrid.com/conciertos/yawning-man-madrid-2026/",
+     "prioridad": 3
     }
    ],
-   "estado": "1_fuente",
+   "estado": "contrastado",
    "conflictos": [],
    "notas": [],
    "en_foco": true,
@@ -15937,6 +16074,44 @@
      "nombre": "Madrid en Vivo (asociación de salas)",
      "id": "madridenvivo",
      "url": "https://madridenvivo.com/evento/espectaculo-flamenco-paula-moreno-y-bartolo-al-baile-04-10-2026/",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": false,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
+   "id": "34f9568583d5",
+   "fecha": "2026-10-04",
+   "hora": null,
+   "artista": "FRAN DOBLAS",
+   "invitados": [],
+   "sala": "Galileo Galilei",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Flamenco Capital",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "fuera de foco",
+   "categorias": [
+    "fuera de foco"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/?post_type=evento&p=795876",
      "prioridad": 3
     }
    ],
@@ -16599,10 +16774,10 @@
    "ultima_vez_visto": "2026-09-29"
   },
   {
-   "id": "d687e8281ec8",
+   "id": "b01f05de4266",
    "fecha": "2026-10-05",
    "hora": "21:00",
-   "artista": "Aciz – Soul Castizo",
+   "artista": "Aciz",
    "invitados": [],
    "sala": "Galileo Galilei",
    "municipio": "Madrid",
@@ -16626,12 +16801,6 @@
    "nacionalidad": null,
    "nacionalidad_fuente": null,
    "fuentes": [
-    {
-     "nombre": "Galileo Galilei (web oficial)",
-     "id": "galileo",
-     "url": "https://salagalileo.es/programacion/aciz-soul-castizo/",
-     "prioridad": 1
-    },
     {
      "nombre": "conciertos.club (buscador semanal)",
      "id": "cc_buscador",
@@ -16841,6 +17010,44 @@
    "ultima_vez_visto": "2026-09-29"
   },
   {
+   "id": "36cbb27b75c1",
+   "fecha": "2026-10-05",
+   "hora": null,
+   "artista": "EL SHOW DE IGNATIUS FARRAY",
+   "invitados": [],
+   "sala": "Beer Station",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Artes escénicas",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "fuera de foco",
+   "categorias": [
+    "fuera de foco"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/evento/beer-station-monologos-22/",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": false,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
    "id": "443feb1ca274",
    "fecha": "2026-10-05",
    "hora": null,
@@ -17032,6 +17239,44 @@
    "conflictos": [],
    "notas": [],
    "en_foco": true,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
+   "id": "52bcf91e4cc7",
+   "fecha": "2026-10-05",
+   "hora": null,
+   "artista": "UNA ESTRELLA PODCAST",
+   "invitados": [],
+   "sala": "Beer Station",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Artes escénicas",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "fuera de foco",
+   "categorias": [
+    "fuera de foco"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/evento/beer-station-monologos-9/",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": false,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
   },
@@ -17561,84 +17806,6 @@
    "ultima_vez_visto": "2026-09-29"
   },
   {
-   "id": "457d88fd51a0",
-   "fecha": "2026-10-06",
-   "hora": "20:30",
-   "artista": "Inercia Sonora/ Gon Abril & Luzía",
-   "invitados": [],
-   "sala": "Galileo Galilei",
-   "municipio": "Madrid",
-   "precio": null,
-   "estilo_fuente": [
-    {
-     "estilo": "Cantautores",
-     "fuente": "conciertos.club (buscador semanal)"
-    },
-    {
-     "estilo": "Cantautores",
-     "fuente": "conciertos.club (portada Madrid)"
-    },
-    {
-     "estilo": "Cantautores",
-     "fuente": "conciertos.club (por estilo)"
-    },
-    {
-     "estilo": "Pop / Rock",
-     "fuente": "Madrid en Vivo (asociación de salas)"
-    }
-   ],
-   "categoria": "cantautor",
-   "categorias": [
-    "cantautor",
-    "pop e indie",
-    "rock y metal"
-   ],
-   "genero_discogs": [],
-   "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
-   "fuentes": [
-    {
-     "nombre": "Galileo Galilei (web oficial)",
-     "id": "galileo",
-     "url": "https://salagalileo.es/programacion/inercia-sonora/",
-     "prioridad": 1
-    },
-    {
-     "nombre": "conciertos.club (buscador semanal)",
-     "id": "cc_buscador",
-     "url": "https://conciertos.club/madrid/conciertos/127708-gon-abril",
-     "prioridad": 3
-    },
-    {
-     "nombre": "conciertos.club (portada Madrid)",
-     "id": "cc_portada",
-     "url": "https://conciertos.club/madrid/conciertos/127708-gon-abril",
-     "prioridad": 3
-    },
-    {
-     "nombre": "conciertos.club (por estilo)",
-     "id": "cc_estilos",
-     "url": "https://conciertos.club/madrid/conciertos/127708-gon-abril",
-     "prioridad": 3
-    },
-    {
-     "nombre": "Madrid en Vivo (asociación de salas)",
-     "id": "madridenvivo",
-     "url": "https://madridenvivo.com/?post_type=evento&p=795861",
-     "prioridad": 3
-    }
-   ],
-   "estado": "contrastado",
-   "conflictos": [],
-   "notas": [
-    "Hora: 20:30 según Galileo Galilei (web oficial); 21:00 según conciertos.club (buscador semanal), conciertos.club (por estilo), conciertos.club (portada Madrid). Resuelto por prioridad de fuente (la fuente de mayor prioridad confirma 20:30)."
-   ],
-   "en_foco": true,
-   "primera_vez_visto": "2026-09-29",
-   "ultima_vez_visto": "2026-09-29"
-  },
-  {
    "id": "48eb064348ed",
    "fecha": "2026-10-06",
    "hora": "21:00",
@@ -17796,6 +17963,76 @@
     }
    ],
    "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": true,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
+   "id": "30160cf03cc1",
+   "fecha": "2026-10-06",
+   "hora": "21:00",
+   "artista": "Gon Abril",
+   "invitados": [],
+   "sala": "Galileo Galilei",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Cantautores",
+     "fuente": "conciertos.club (buscador semanal)"
+    },
+    {
+     "estilo": "Cantautores",
+     "fuente": "conciertos.club (portada Madrid)"
+    },
+    {
+     "estilo": "Cantautores",
+     "fuente": "conciertos.club (por estilo)"
+    },
+    {
+     "estilo": "Pop / Rock",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "cantautor",
+   "categorias": [
+    "cantautor",
+    "pop e indie",
+    "rock y metal"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "conciertos.club (buscador semanal)",
+     "id": "cc_buscador",
+     "url": "https://conciertos.club/madrid/conciertos/127708-gon-abril",
+     "prioridad": 3
+    },
+    {
+     "nombre": "conciertos.club (portada Madrid)",
+     "id": "cc_portada",
+     "url": "https://conciertos.club/madrid/conciertos/127708-gon-abril",
+     "prioridad": 3
+    },
+    {
+     "nombre": "conciertos.club (por estilo)",
+     "id": "cc_estilos",
+     "url": "https://conciertos.club/madrid/conciertos/127708-gon-abril",
+     "prioridad": 3
+    },
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/?post_type=evento&p=795861",
+     "prioridad": 3
+    }
+   ],
+   "estado": "contrastado",
    "conflictos": [],
    "notas": [],
    "en_foco": true,
@@ -18082,6 +18319,44 @@
    "conflictos": [],
    "notas": [],
    "en_foco": true,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
+   "id": "f909385e489a",
+   "fecha": "2026-10-06",
+   "hora": null,
+   "artista": "COMEDIA O MUERTE OPEN MIC",
+   "invitados": [],
+   "sala": "Beer Station",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Artes escénicas",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "fuera de foco",
+   "categorias": [
+    "fuera de foco"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/?post_type=evento&p=797040",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": false,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
   },
@@ -18807,7 +19082,7 @@
    "id": "a771296396f3",
    "fecha": "2026-10-07",
    "hora": "21:00",
-   "artista": "Track Dogs 20º Aniversario",
+   "artista": "Track Dogs",
    "invitados": [],
    "sala": "Galileo Galilei",
    "municipio": "Madrid",
@@ -18844,12 +19119,6 @@
    "nacionalidad": null,
    "nacionalidad_fuente": null,
    "fuentes": [
-    {
-     "nombre": "Galileo Galilei (web oficial)",
-     "id": "galileo",
-     "url": "https://salagalileo.es/programacion/track-dogs-20o-aniversario/",
-     "prioridad": 1
-    },
     {
      "nombre": "conciertos.club (buscador semanal)",
      "id": "cc_buscador",
@@ -19583,6 +19852,44 @@
    "conflictos": [],
    "notas": [],
    "en_foco": true,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
+   "id": "b0b39dfe3dea",
+   "fecha": "2026-10-07",
+   "hora": null,
+   "artista": "OPEN BEER - CÓMICOS PROBANDO SUS MIERDAS",
+   "invitados": [],
+   "sala": "Beer Station",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Artes escénicas",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "fuera de foco",
+   "categorias": [
+    "fuera de foco"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/evento/beer-station-monologos-12/",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": false,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
   },
@@ -21304,11 +21611,9 @@
      "prioridad": 3
     }
    ],
-   "estado": "posiblemente cancelado",
+   "estado": "1_fuente",
    "conflictos": [],
-   "notas": [
-    "Ya no aparece en ninguna de sus fuentes (comprobado el 2026-09-29); visto por última vez el 2026-09-29."
-   ],
+   "notas": [],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -22560,51 +22865,6 @@
    "ultima_vez_visto": "2026-09-29"
   },
   {
-   "id": "20a215bd174a",
-   "fecha": "2026-10-09",
-   "hora": "19:00",
-   "artista": "MYGUEL en acústico – Club 77",
-   "invitados": [],
-   "sala": "Galileo Galilei",
-   "municipio": "Madrid",
-   "precio": null,
-   "estilo_fuente": [
-    {
-     "estilo": "Pop / Rock",
-     "fuente": "Madrid en Vivo (asociación de salas)"
-    }
-   ],
-   "categoria": "pop e indie",
-   "categorias": [
-    "pop e indie",
-    "rock y metal"
-   ],
-   "genero_discogs": [],
-   "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
-   "fuentes": [
-    {
-     "nombre": "Galileo Galilei (web oficial)",
-     "id": "galileo",
-     "url": "https://salagalileo.es/programacion/myguel-en-acustico-club-77/",
-     "prioridad": 1
-    },
-    {
-     "nombre": "Madrid en Vivo (asociación de salas)",
-     "id": "madridenvivo",
-     "url": "https://madridenvivo.com/?post_type=evento&p=795881",
-     "prioridad": 3
-    }
-   ],
-   "estado": "contrastado",
-   "conflictos": [],
-   "notas": [],
-   "en_foco": true,
-   "primera_vez_visto": "2026-09-29",
-   "ultima_vez_visto": "2026-09-29"
-  },
-  {
    "id": "da853a033533",
    "fecha": "2026-10-09",
    "hora": "19:00",
@@ -23478,7 +23738,7 @@
    "ultima_vez_visto": "2026-09-29"
   },
   {
-   "id": "73c3f7b55ed8",
+   "id": "73c3f7b55eb5",
    "fecha": "2026-10-09",
    "hora": "21:00",
    "artista": "Devin Townsend",
@@ -24451,11 +24711,9 @@
      "prioridad": 3
     }
    ],
-   "estado": "posiblemente cancelado",
+   "estado": "1_fuente",
    "conflictos": [],
-   "notas": [
-    "Ya no aparece en ninguna de sus fuentes (comprobado el 2026-09-29); visto por última vez el 2026-09-29."
-   ],
+   "notas": [],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -24796,7 +25054,7 @@
    "ultima_vez_visto": "2026-09-29"
   },
   {
-   "id": "73c3f7b55eb5",
+   "id": "73c3f7b55ed8",
    "fecha": "2026-10-09",
    "hora": null,
    "artista": "Devin Townsend",
@@ -25157,11 +25415,9 @@
      "prioridad": 3
     }
    ],
-   "estado": "posiblemente cancelado",
+   "estado": "1_fuente",
    "conflictos": [],
-   "notas": [
-    "Ya no aparece en ninguna de sus fuentes (comprobado el 2026-09-29); visto por última vez el 2026-09-29."
-   ],
+   "notas": [],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -25443,6 +25699,44 @@
    "ultima_vez_visto": "2026-09-29"
   },
   {
+   "id": "c3fa5e9c46f1",
+   "fecha": "2026-10-09",
+   "hora": null,
+   "artista": "LA HORA MAGICA, UN SHOW DE HELENA POZUELO",
+   "invitados": [],
+   "sala": "Beer Station",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Artes escénicas",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "fuera de foco",
+   "categorias": [
+    "fuera de foco"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/evento/beer-station-monologos-23/",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": false,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
    "id": "cc5aad49e15e",
    "fecha": "2026-10-09",
    "hora": null,
@@ -25667,6 +25961,45 @@
      "nombre": "Madrid en Vivo (asociación de salas)",
      "id": "madridenvivo",
      "url": "https://madridenvivo.com/?post_type=evento&p=794200",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": true,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
+   "id": "20a215bd174a",
+   "fecha": "2026-10-09",
+   "hora": null,
+   "artista": "MYGUEL EN ACÚSTICO - CLUB 77",
+   "invitados": [],
+   "sala": "Galileo Galilei",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Pop / Rock",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "pop e indie",
+   "categorias": [
+    "pop e indie",
+    "rock y metal"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/?post_type=evento&p=795881",
      "prioridad": 3
     }
    ],
@@ -25984,6 +26317,44 @@
    "conflictos": [],
    "notas": [],
    "en_foco": true,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
+   "id": "5b828a379161",
+   "fecha": "2026-10-09",
+   "hora": null,
+   "artista": "SOLO ROBER BODEGAS",
+   "invitados": [],
+   "sala": "Beer Station",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Artes escénicas",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "fuera de foco",
+   "categorias": [
+    "fuera de foco"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/evento/beer-station-monologos-2/",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": false,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
   },
@@ -27779,8 +28150,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "PR",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -28245,7 +28616,7 @@
    "hora": null,
    "artista": "Adgar",
    "invitados": [
-    "Edén"
+    "Ed├®n"
    ],
    "sala": "Revi Space",
    "municipio": "Madrid",
@@ -28276,7 +28647,7 @@
    "estado": "contrastado",
    "conflictos": [],
    "notas": [
-    "Evento: FESTIVAL «DESDE EL NORTE»"
+    "Evento: FESTIVAL ┬½DESDE EL NORTE┬╗"
    ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
@@ -28648,6 +29019,44 @@
    "conflictos": [],
    "notas": [],
    "en_foco": true,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
+   "id": "f2f4e03b26ba",
+   "fecha": "2026-10-10",
+   "hora": null,
+   "artista": "DANI ALÉS - TABÚ - UN MONÓLOGO INADECUADO",
+   "invitados": [],
+   "sala": "Beer Station",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Artes escénicas",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "fuera de foco",
+   "categorias": [
+    "fuera de foco"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/evento/beer-station-monologos-24/",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": false,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
   },
@@ -29799,6 +30208,44 @@
    "conflictos": [],
    "notas": [],
    "en_foco": true,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
+   "id": "7c6db676f556",
+   "fecha": "2026-10-10",
+   "hora": null,
+   "artista": "SPARKS EL SHOW DE HUMOR NEGRO - SILVIA SPARKS",
+   "invitados": [],
+   "sala": "Beer Station",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Artes escénicas",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "fuera de foco",
+   "categorias": [
+    "fuera de foco"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/evento/beer-station-monologos-13/",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": false,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
   },
@@ -31424,9 +31871,7 @@
    "fecha": "2026-10-11",
    "hora": "21:00",
    "artista": "SOUL LATINO – LUIS ALFONSO & JEAN CARLOS CENTENO",
-   "invitados": [
-    "INVITADOS"
-   ],
+   "invitados": [],
    "sala": "La Nueva Cubierta",
    "municipio": "Leganés",
    "precio": null,
@@ -34330,6 +34775,44 @@
    "ultima_vez_visto": "2026-09-29"
   },
   {
+   "id": "5dcf35487034",
+   "fecha": "2026-10-13",
+   "hora": null,
+   "artista": "COMEDIA O MUERTE OPEN MIC",
+   "invitados": [],
+   "sala": "Beer Station",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Artes escénicas",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "fuera de foco",
+   "categorias": [
+    "fuera de foco"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/evento/beer-station-monologos-3/",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": false,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
    "id": "724d3a11088c",
    "fecha": "2026-10-13",
    "hora": null,
@@ -35773,11 +36256,9 @@
      "prioridad": 3
     }
    ],
-   "estado": "posiblemente cancelado",
+   "estado": "1_fuente",
    "conflictos": [],
-   "notas": [
-    "Ya no aparece en ninguna de sus fuentes (comprobado el 2026-09-29); visto por última vez el 2026-09-29."
-   ],
+   "notas": [],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -35943,7 +36424,7 @@
    "ultima_vez_visto": "2026-09-29"
   },
   {
-   "id": "ec67ca95b0fc",
+   "id": "97a2ae2ad30b",
    "fecha": "2026-10-14",
    "hora": null,
    "artista": "Far East Groove",
@@ -36275,6 +36756,44 @@
    "ultima_vez_visto": "2026-09-29"
   },
   {
+   "id": "0aba974b4d18",
+   "fecha": "2026-10-14",
+   "hora": null,
+   "artista": "OPEN BEER - CÓMICOS PROBANDO SUS MIERDAS",
+   "invitados": [],
+   "sala": "Beer Station",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Artes escénicas",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "fuera de foco",
+   "categorias": [
+    "fuera de foco"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/evento/beer-station-monologos-14/",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": false,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
    "id": "26b992b21143",
    "fecha": "2026-10-14",
    "hora": null,
@@ -36400,7 +36919,7 @@
    "ultima_vez_visto": "2026-09-29"
   },
   {
-   "id": "97a2ae2ad30b",
+   "id": "ec67ca95b0fc",
    "fecha": "2026-10-14",
    "hora": null,
    "artista": "Yasuharu Takanashi’s",
@@ -36880,11 +37399,16 @@
     {
      "estilo": "Pop-rock/Indie",
      "fuente": "conciertos.club (por estilo)"
+    },
+    {
+     "estilo": "Pop / Rock",
+     "fuente": "Madrid en Vivo (asociación de salas)"
     }
    ],
    "categoria": "pop e indie",
    "categorias": [
-    "pop e indie"
+    "pop e indie",
+    "rock y metal"
    ],
    "genero_discogs": [
     "Rock"
@@ -36914,15 +37438,29 @@
      "prioridad": 3
     },
     {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/?post_type=evento&p=794729",
+     "prioridad": 3
+    },
+    {
      "nombre": "Songkick Madrid",
      "id": "songkick",
      "url": "https://www.songkick.com/festivals/3806084-toldos-verdes-garbi-radar-joven-2026/id/43423783-toldos-verdes--garb--radar-joven-2026-2026",
+     "prioridad": 3
+    },
+    {
+     "nombre": "Radar Joven (programación en Conciertos por Madrid)",
+     "id": "radar_cpm",
+     "url": "https://conciertospormadrid.com/festivales/radar-joven-2026-ciclo-conciertos-madrid/",
      "prioridad": 3
     }
    ],
    "estado": "contrastado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Ciclo Radar Joven 2026 (Comunidad de Madrid y Madrid en Vivo)."
+   ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -38858,47 +39396,6 @@
    "ultima_vez_visto": "2026-09-29"
   },
   {
-   "id": "18e29dc50d1f",
-   "fecha": "2026-10-15",
-   "hora": null,
-   "artista": "RADAR JOVEN 2026 - MADRID EN VIVO 25 AÑOS: TOLDOS VERDES",
-   "invitados": [
-    "GARBÍ"
-   ],
-   "sala": "Shoko Live",
-   "municipio": "Madrid",
-   "precio": null,
-   "estilo_fuente": [
-    {
-     "estilo": "Pop / Rock",
-     "fuente": "Madrid en Vivo (asociación de salas)"
-    }
-   ],
-   "categoria": "pop e indie",
-   "categorias": [
-    "pop e indie",
-    "rock y metal"
-   ],
-   "genero_discogs": [],
-   "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
-   "fuentes": [
-    {
-     "nombre": "Madrid en Vivo (asociación de salas)",
-     "id": "madridenvivo",
-     "url": "https://madridenvivo.com/?post_type=evento&p=794729",
-     "prioridad": 3
-    }
-   ],
-   "estado": "1_fuente",
-   "conflictos": [],
-   "notas": [],
-   "en_foco": true,
-   "primera_vez_visto": "2026-09-29",
-   "ultima_vez_visto": "2026-09-29"
-  },
-  {
    "id": "88aca27fc647",
    "fecha": "2026-10-15",
    "hora": null,
@@ -39504,6 +40001,51 @@
     }
    ],
    "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": true,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
+   "id": "8843cd028016",
+   "fecha": "2026-10-16",
+   "hora": "20:00",
+   "artista": "Dropkick",
+   "invitados": [],
+   "sala": "Fotomatón",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Pop / Rock",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "pop e indie",
+   "categorias": [
+    "pop e indie",
+    "rock y metal"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/?post_type=evento&p=795393",
+     "prioridad": 3
+    },
+    {
+     "nombre": "Songkick Madrid",
+     "id": "songkick",
+     "url": "https://www.songkick.com/concerts/43350014-dropkick-at-fotomaton-bar",
+     "prioridad": 3
+    }
+   ],
+   "estado": "contrastado",
    "conflictos": [],
    "notas": [],
    "en_foco": true,
@@ -40265,6 +40807,10 @@
     {
      "estilo": "Mestizaje/Fusión",
      "fuente": "conciertos.club (portada Madrid)"
+    },
+    {
+     "estilo": "Pop / Rock",
+     "fuente": "Madrid en Vivo (asociación de salas)"
     }
    ],
    "categoria": "fuera de foco",
@@ -40294,6 +40840,12 @@
      "nombre": "conciertos.club (portada Madrid)",
      "id": "cc_portada",
      "url": "https://conciertos.club/madrid/conciertos/118863-las-noches-de-rio-babel-alamedadosoulna",
+     "prioridad": 3
+    },
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/?post_type=evento&p=795808",
      "prioridad": 3
     },
     {
@@ -41457,71 +42009,6 @@
    "ultima_vez_visto": "2026-09-29"
   },
   {
-   "id": "8843cd028016",
-   "fecha": "2026-10-16",
-   "hora": null,
-   "artista": "DROPKICK",
-   "invitados": [],
-   "sala": "Fotomatón / Fotomatón Bar",
-   "municipio": "Madrid",
-   "precio": null,
-   "estilo_fuente": [
-    {
-     "estilo": "Pop / Rock",
-     "fuente": "Madrid en Vivo (asociación de salas)"
-    }
-   ],
-   "categoria": "pop e indie",
-   "categorias": [
-    "pop e indie",
-    "rock y metal"
-   ],
-   "genero_discogs": [],
-   "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
-   "fuentes": [
-    {
-     "nombre": "Madrid en Vivo (asociación de salas)",
-     "id": "madridenvivo",
-     "url": "https://madridenvivo.com/?post_type=evento&p=795393",
-     "prioridad": 3
-    },
-    {
-     "nombre": "Songkick Madrid",
-     "id": "songkick",
-     "url": "https://www.songkick.com/concerts/43350014-dropkick-at-fotomaton-bar",
-     "prioridad": 3
-    }
-   ],
-   "estado": "conflicto",
-   "conflictos": [
-    {
-     "campo": "sala",
-     "versiones": [
-      {
-       "valor": "Fotomatón",
-       "fuentes": [
-        "Madrid en Vivo (asociación de salas)"
-       ]
-      },
-      {
-       "valor": "Fotomatón Bar",
-       "fuentes": [
-        "Songkick Madrid"
-       ]
-      }
-     ]
-    }
-   ],
-   "notas": [
-    "Conflicto de sala: Fotomatón según Madrid en Vivo (asociación de salas); Fotomatón Bar según Songkick Madrid."
-   ],
-   "en_foco": true,
-   "primera_vez_visto": "2026-09-29",
-   "ultima_vez_visto": "2026-09-29"
-  },
-  {
    "id": "01da5dea4845",
    "fecha": "2026-10-16",
    "hora": null,
@@ -41953,6 +42440,44 @@
    "conflictos": [],
    "notas": [],
    "en_foco": true,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
+   "id": "5ef4a6361800",
+   "fecha": "2026-10-16",
+   "hora": null,
+   "artista": "LOS DEL SÓTANO - GRABACIÓN PODCAST",
+   "invitados": [],
+   "sala": "Beer Station",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Artes escénicas",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "fuera de foco",
+   "categorias": [
+    "fuera de foco"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/evento/beer-station-monologos-5/",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": false,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
   },
@@ -42414,6 +42939,44 @@
    "ultima_vez_visto": "2026-09-29"
   },
   {
+   "id": "f0f99d37015c",
+   "fecha": "2026-10-16",
+   "hora": null,
+   "artista": "SOLO ROBER BODEGAS",
+   "invitados": [],
+   "sala": "Beer Station",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Artes escénicas",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "fuera de foco",
+   "categorias": [
+    "fuera de foco"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/evento/beer-station-monologos-25/",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": false,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
    "id": "bce336f5946c",
    "fecha": "2026-10-16",
    "hora": null,
@@ -42680,11 +43243,9 @@
      "prioridad": 3
     }
    ],
-   "estado": "posiblemente cancelado",
+   "estado": "1_fuente",
    "conflictos": [],
-   "notas": [
-    "Ya no aparece en ninguna de sus fuentes (comprobado el 2026-09-29); visto por última vez el 2026-09-29."
-   ],
+   "notas": [],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -43352,7 +43913,6 @@
    "hora": "20:00",
    "artista": "Sabbat",
    "invitados": [
-    "INVITADOS ESPECIALES",
     "Omission",
     "sepulchral"
    ],
@@ -43867,7 +44427,8 @@
    "hora": "21:00",
    "artista": "Leyenda",
    "invitados": [
-    "RegresióN"
+    "Regresi├│N",
+    "Regresión"
    ],
    "sala": "Revi Space",
    "municipio": "Madrid",
@@ -45590,6 +46151,44 @@
    "ultima_vez_visto": "2026-09-29"
   },
   {
+   "id": "02ffa2e3f503",
+   "fecha": "2026-10-17",
+   "hora": null,
+   "artista": "FANTASTILLOSO, UN MONÓLOGO DE FRAN EL CHAVO",
+   "invitados": [],
+   "sala": "Beer Station",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Artes escénicas",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "fuera de foco",
+   "categorias": [
+    "fuera de foco"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/evento/beer-station-monologos-4/",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": false,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
    "id": "da7d3d228a0b",
    "fecha": "2026-10-17",
    "hora": null,
@@ -45933,11 +46532,9 @@
      "prioridad": 3
     }
    ],
-   "estado": "posiblemente cancelado",
+   "estado": "1_fuente",
    "conflictos": [],
-   "notas": [
-    "Ya no aparece en ninguna de sus fuentes (comprobado el 2026-09-29); visto por última vez el 2026-09-29."
-   ],
+   "notas": [],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -46091,6 +46688,50 @@
    "conflictos": [],
    "notas": [],
    "en_foco": true,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
+   "id": "6cd13e0356ba",
+   "fecha": "2026-10-17",
+   "hora": null,
+   "artista": "PACO CALAVERA - SIMPLEMENTE YO",
+   "invitados": [],
+   "sala": "Beer Station",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Artes escénicas",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "fuera de foco",
+   "categorias": [
+    "fuera de foco"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/evento/beer-station-monologos-6/",
+     "prioridad": 3
+    },
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/evento/beer-station-monologos-26/",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": false,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
   },
@@ -46644,9 +47285,7 @@
    "fecha": "2026-10-18",
    "hora": "13:00",
    "artista": "EL NAÁN TRIO",
-   "invitados": [
-    "INVITADOS"
-   ],
+   "invitados": [],
    "sala": "Sala Villanos",
    "municipio": "Madrid",
    "precio": null,
@@ -48362,6 +49001,44 @@
    "ultima_vez_visto": "2026-09-29"
   },
   {
+   "id": "8ce58d9e557d",
+   "fecha": "2026-10-18",
+   "hora": null,
+   "artista": "EL SHOW DE IGNATIUS FARRAY",
+   "invitados": [],
+   "sala": "Beer Station",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Artes escénicas",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "fuera de foco",
+   "categorias": [
+    "fuera de foco"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/evento/beer-station-monologos-27/",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": false,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
    "id": "489719f69185",
    "fecha": "2026-10-18",
    "hora": null,
@@ -48990,11 +49667,9 @@
      "prioridad": 3
     }
    ],
-   "estado": "posiblemente cancelado",
+   "estado": "1_fuente",
    "conflictos": [],
-   "notas": [
-    "Ya no aparece en ninguna de sus fuentes (comprobado el 2026-09-29); visto por última vez el 2026-09-29."
-   ],
+   "notas": [],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -49370,6 +50045,44 @@
    "conflictos": [],
    "notas": [],
    "en_foco": true,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
+   "id": "1ecab6b62504",
+   "fecha": "2026-10-19",
+   "hora": null,
+   "artista": "EL SHOW DE IGNATIUS FARRAY",
+   "invitados": [],
+   "sala": "Beer Station",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Artes escénicas",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "fuera de foco",
+   "categorias": [
+    "fuera de foco"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/evento/beer-station-monologos-7/",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": false,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
   },
@@ -50332,12 +51045,48 @@
      "prioridad": 3
     }
    ],
-   "estado": "posiblemente cancelado",
+   "estado": "1_fuente",
    "conflictos": [],
-   "notas": [
-    "Ya no aparece en ninguna de sus fuentes (comprobado el 2026-09-29); visto por última vez el 2026-09-29."
-   ],
+   "notas": [],
    "en_foco": true,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
+   "id": "c247739ec4a8",
+   "fecha": "2026-10-20",
+   "hora": null,
+   "artista": "COMEDIA O MUERTE OPEN MIC",
+   "invitados": [],
+   "sala": "Beer Station",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Artes escénicas",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "fuera de foco",
+   "categorias": [
+    "fuera de foco"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/evento/beer-station-monologos-28/",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": false,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
   },
@@ -51566,6 +52315,45 @@
    "ultima_vez_visto": "2026-09-29"
   },
   {
+   "id": "b620c9814630",
+   "fecha": "2026-10-21",
+   "hora": null,
+   "artista": "DANIEL ROVALHER",
+   "invitados": [],
+   "sala": "Rincón del Arte Nuevo",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Pop / Rock",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "pop e indie",
+   "categorias": [
+    "pop e indie",
+    "rock y metal"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/evento/concierto-ricon-del-arte-pop-rock-8/",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": true,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
    "id": "3120fd6df5f6",
    "fecha": "2026-10-21",
    "hora": null,
@@ -52191,6 +52979,44 @@
    "ultima_vez_visto": "2026-09-29"
   },
   {
+   "id": "62698d788821",
+   "fecha": "2026-10-21",
+   "hora": null,
+   "artista": "OPEN BEER - CÓMICOS PROBANDO SUS MIERDAS",
+   "invitados": [],
+   "sala": "Beer Station",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Artes escénicas",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "fuera de foco",
+   "categorias": [
+    "fuera de foco"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/evento/beer-station-monologos-8/",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": false,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
    "id": "5a3e8a9755e0",
    "fecha": "2026-10-21",
    "hora": null,
@@ -52757,11 +53583,17 @@
     {
      "estilo": "Urbana/Reggaeton/Trap",
      "fuente": "conciertos.club (portada Madrid)"
+    },
+    {
+     "estilo": "Pop / Rock",
+     "fuente": "Madrid en Vivo (asociación de salas)"
     }
    ],
    "categoria": "fuera de foco",
    "categorias": [
-    "fuera de foco"
+    "fuera de foco",
+    "pop e indie",
+    "rock y metal"
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
@@ -52779,12 +53611,26 @@
      "id": "cc_portada",
      "url": "https://conciertos.club/madrid/conciertos/127634-radar-joven-vera-grv-sabah",
      "prioridad": 3
+    },
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/?post_type=evento&p=794713",
+     "prioridad": 3
+    },
+    {
+     "nombre": "Radar Joven (programación en Conciertos por Madrid)",
+     "id": "radar_cpm",
+     "url": "https://conciertospormadrid.com/festivales/radar-joven-2026-ciclo-conciertos-madrid/",
+     "prioridad": 3
     }
    ],
-   "estado": "1_fuente",
+   "estado": "contrastado",
    "conflictos": [],
-   "notas": [],
-   "en_foco": false,
+   "notas": [
+    "Ciclo Radar Joven 2026 (Comunidad de Madrid y Madrid en Vivo)."
+   ],
+   "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
   },
@@ -52827,7 +53673,7 @@
    "ultima_vez_visto": "2026-09-29"
   },
   {
-   "id": "2ec0e3bd1729",
+   "id": "2ec0e3bd17ce",
    "fecha": "2026-10-22",
    "hora": "20:00",
    "artista": "Synthony",
@@ -53906,11 +54752,19 @@
      "id": "madridenvivo",
      "url": "https://madridenvivo.com/?post_type=evento&p=794687",
      "prioridad": 3
+    },
+    {
+     "nombre": "Radar Joven (programación en Conciertos por Madrid)",
+     "id": "radar_cpm",
+     "url": "https://conciertospormadrid.com/festivales/radar-joven-2026-ciclo-conciertos-madrid/",
+     "prioridad": 3
     }
    ],
    "estado": "contrastado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Ciclo Radar Joven 2026 (Comunidad de Madrid y Madrid en Vivo)."
+   ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -53921,7 +54775,7 @@
    "hora": "21:00",
    "artista": "Radar Joven. Que te jodan Pablo",
    "invitados": [],
-   "sala": "Fotomatón Bar / Fotomatón",
+   "sala": "Fotomatón Bar",
    "municipio": "Madrid",
    "precio": "7€",
    "estilo_fuente": [
@@ -53979,32 +54833,18 @@
      "id": "madridenvivo",
      "url": "https://madridenvivo.com/?post_type=evento&p=794712",
      "prioridad": 3
-    }
-   ],
-   "estado": "conflicto",
-   "conflictos": [
+    },
     {
-     "campo": "sala",
-     "versiones": [
-      {
-       "valor": "Fotomatón Bar",
-       "fuentes": [
-        "conciertos.club (buscador semanal)",
-        "conciertos.club (por estilo)",
-        "conciertos.club (portada Madrid)"
-       ]
-      },
-      {
-       "valor": "Fotomatón",
-       "fuentes": [
-        "Madrid en Vivo (asociación de salas)"
-       ]
-      }
-     ]
+     "nombre": "Radar Joven (programación en Conciertos por Madrid)",
+     "id": "radar_cpm",
+     "url": "https://conciertospormadrid.com/festivales/radar-joven-2026-ciclo-conciertos-madrid/",
+     "prioridad": 3
     }
    ],
+   "estado": "contrastado",
+   "conflictos": [],
    "notas": [
-    "Conflicto de sala: Fotomatón Bar según conciertos.club (buscador semanal), conciertos.club (por estilo), conciertos.club (portada Madrid); Fotomatón según Madrid en Vivo (asociación de salas)."
+    "Ciclo Radar Joven 2026 (Comunidad de Madrid y Madrid en Vivo)."
    ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
@@ -55252,47 +56092,6 @@
    "ultima_vez_visto": "2026-09-29"
   },
   {
-   "id": "de2688265b86",
-   "fecha": "2026-10-22",
-   "hora": null,
-   "artista": "RADAR JOVEN 2026 - MADRID EN VIVO 25 AÑOS: VERA GRV",
-   "invitados": [
-    "SABAH"
-   ],
-   "sala": "Shoko Live",
-   "municipio": "Madrid",
-   "precio": null,
-   "estilo_fuente": [
-    {
-     "estilo": "Pop / Rock",
-     "fuente": "Madrid en Vivo (asociación de salas)"
-    }
-   ],
-   "categoria": "pop e indie",
-   "categorias": [
-    "pop e indie",
-    "rock y metal"
-   ],
-   "genero_discogs": [],
-   "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
-   "fuentes": [
-    {
-     "nombre": "Madrid en Vivo (asociación de salas)",
-     "id": "madridenvivo",
-     "url": "https://madridenvivo.com/?post_type=evento&p=794713",
-     "prioridad": 3
-    }
-   ],
-   "estado": "1_fuente",
-   "conflictos": [],
-   "notas": [],
-   "en_foco": true,
-   "primera_vez_visto": "2026-09-29",
-   "ultima_vez_visto": "2026-09-29"
-  },
-  {
    "id": "496c7005658f",
    "fecha": "2026-10-22",
    "hora": null,
@@ -55508,7 +56307,7 @@
    "ultima_vez_visto": "2026-09-29"
   },
   {
-   "id": "2ec0e3bd17ce",
+   "id": "2ec0e3bd1729",
    "fecha": "2026-10-22",
    "hora": null,
    "artista": "Synthony",
@@ -56433,11 +57232,19 @@
      "id": "madridenvivo",
      "url": "https://madridenvivo.com/?post_type=evento&p=794678",
      "prioridad": 3
+    },
+    {
+     "nombre": "Radar Joven (programación en Conciertos por Madrid)",
+     "id": "radar_cpm",
+     "url": "https://conciertospormadrid.com/festivales/radar-joven-2026-ciclo-conciertos-madrid/",
+     "prioridad": 3
     }
    ],
    "estado": "contrastado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Ciclo Radar Joven 2026 (Comunidad de Madrid y Madrid en Vivo)."
+   ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -56777,11 +57584,19 @@
      "id": "madridenvivo",
      "url": "https://madridenvivo.com/?post_type=evento&p=794679",
      "prioridad": 3
+    },
+    {
+     "nombre": "Radar Joven (programación en Conciertos por Madrid)",
+     "id": "radar_cpm",
+     "url": "https://conciertospormadrid.com/festivales/radar-joven-2026-ciclo-conciertos-madrid/",
+     "prioridad": 3
     }
    ],
    "estado": "contrastado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Ciclo Radar Joven 2026 (Comunidad de Madrid y Madrid en Vivo)."
+   ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -57417,7 +58232,7 @@
    "estado": "contrastado",
    "conflictos": [],
    "notas": [
-    "Evento: 1º Kamikaze Sonoro Festival"
+    "Evento: 1┬║ Kamikaze Sonoro Festival"
    ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
@@ -57841,11 +58656,19 @@
      "id": "madridenvivo",
      "url": "https://madridenvivo.com/?post_type=evento&p=794725",
      "prioridad": 3
+    },
+    {
+     "nombre": "Radar Joven (programación en Conciertos por Madrid)",
+     "id": "radar_cpm",
+     "url": "https://conciertospormadrid.com/festivales/radar-joven-2026-ciclo-conciertos-madrid/",
+     "prioridad": 3
     }
    ],
    "estado": "contrastado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Ciclo Radar Joven 2026 (Comunidad de Madrid y Madrid en Vivo)."
+   ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -57986,11 +58809,9 @@
      "prioridad": 3
     }
    ],
-   "estado": "posiblemente cancelado",
+   "estado": "1_fuente",
    "conflictos": [],
-   "notas": [
-    "Ya no aparece en ninguna de sus fuentes (comprobado el 2026-09-29); visto por última vez el 2026-09-29."
-   ],
+   "notas": [],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -58437,11 +59258,9 @@
      "prioridad": 3
     }
    ],
-   "estado": "posiblemente cancelado",
+   "estado": "1_fuente",
    "conflictos": [],
-   "notas": [
-    "Ya no aparece en ninguna de sus fuentes (comprobado el 2026-09-29); visto por última vez el 2026-09-29."
-   ],
+   "notas": [],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -58994,11 +59813,9 @@
      "prioridad": 3
     }
    ],
-   "estado": "posiblemente cancelado",
+   "estado": "1_fuente",
    "conflictos": [],
-   "notas": [
-    "Ya no aparece en ninguna de sus fuentes (comprobado el 2026-09-29); visto por última vez el 2026-09-29."
-   ],
+   "notas": [],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -59300,11 +60117,19 @@
      "id": "madridenvivo",
      "url": "https://madridenvivo.com/?post_type=evento&p=794683",
      "prioridad": 3
+    },
+    {
+     "nombre": "Radar Joven (programación en Conciertos por Madrid)",
+     "id": "radar_cpm",
+     "url": "https://conciertospormadrid.com/festivales/radar-joven-2026-ciclo-conciertos-madrid/",
+     "prioridad": 3
     }
    ],
-   "estado": "1_fuente",
+   "estado": "contrastado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Ciclo Radar Joven 2026 (Comunidad de Madrid y Madrid en Vivo)."
+   ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -59382,6 +60207,44 @@
      "nombre": "Madrid en Vivo (asociación de salas)",
      "id": "madridenvivo",
      "url": "https://madridenvivo.com/evento/clubbing-cadavra-club-14/",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": false,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
+   "id": "299158ad7503",
+   "fecha": "2026-10-23",
+   "hora": null,
+   "artista": "SINACIO - TOCA REÍR",
+   "invitados": [],
+   "sala": "Beer Station",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Artes escénicas",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "fuera de foco",
+   "categorias": [
+    "fuera de foco"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/evento/beer-station-monologos-29/",
      "prioridad": 3
     }
    ],
@@ -60496,8 +61359,6 @@
    "hora": "21:00",
    "artista": "Eskóbula",
    "invitados": [
-    "Trapa y los Turboexit",
-    "Grapeshot",
     "Lujuria",
     "Trapa & the Turboexits"
    ],
@@ -60528,12 +61389,6 @@
    "nacionalidad_fuente": null,
    "fuentes": [
     {
-     "nombre": "Revi Live / Revi Space (web oficial)",
-     "id": "revi",
-     "url": "https://revi.live/sala-revi-space/",
-     "prioridad": 1
-    },
-    {
      "nombre": "conciertos.club (buscador semanal)",
      "id": "cc_buscador",
      "url": "https://conciertos.club/madrid/conciertos/124860-madrid-domination-fest-eskobula-lujuria-trapa-the-turboexits",
@@ -60561,9 +61416,8 @@
    "estado": "contrastado",
    "conflictos": [],
    "notas": [
-    "Evento: MADRID DOMINATION FEST IV",
     "Fuente de fiabilidad baja (mantiene fechas antiguas); año deducido: la fuente no indica año.",
-    "Sala: Revi Space según Revi Live / Revi Space (web oficial), conciertos.club (buscador semanal), conciertos.club (por estilo), conciertos.club (portada Madrid); IV Madrid Domination Fest, Revi Live según MariskalRock (guía). Resuelto por prioridad de fuente (la de mayor prioridad confirma Revi Space)."
+    "Sala: Revi Space según conciertos.club (buscador semanal), conciertos.club (por estilo), conciertos.club (portada Madrid); IV Madrid Domination Fest, Revi Live según MariskalRock (guía). Resuelto por prioridad de fuente (la de mayor prioridad confirma Revi Space)."
    ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
@@ -60730,11 +61584,19 @@
      "id": "madridenvivo",
      "url": "https://madridenvivo.com/?post_type=evento&p=795529",
      "prioridad": 3
+    },
+    {
+     "nombre": "Radar Joven (programación en Conciertos por Madrid)",
+     "id": "radar_cpm",
+     "url": "https://conciertospormadrid.com/festivales/radar-joven-2026-ciclo-conciertos-madrid/",
+     "prioridad": 3
     }
    ],
    "estado": "contrastado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Ciclo Radar Joven 2026 (Comunidad de Madrid y Madrid en Vivo)."
+   ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -61302,11 +62164,19 @@
      "id": "songkick",
      "url": "https://www.songkick.com/festivals/3806094-carmen-lancho-radar-joven-2026/id/43423826-carmen-lancho--radar-joven-2026-2026",
      "prioridad": 3
+    },
+    {
+     "nombre": "Radar Joven (programación en Conciertos por Madrid)",
+     "id": "radar_cpm",
+     "url": "https://conciertospormadrid.com/festivales/radar-joven-2026-ciclo-conciertos-madrid/",
+     "prioridad": 3
     }
    ],
    "estado": "contrastado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Ciclo Radar Joven 2026 (Comunidad de Madrid y Madrid en Vivo)."
+   ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -61779,6 +62649,44 @@
    "ultima_vez_visto": "2026-09-29"
   },
   {
+   "id": "42f32a2f7164",
+   "fecha": "2026-10-24",
+   "hora": null,
+   "artista": "DANI ALÉS - TABÚ - UN MONÓLOGO INADECUADO",
+   "invitados": [],
+   "sala": "Beer Station",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Artes escénicas",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "fuera de foco",
+   "categorias": [
+    "fuera de foco"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/evento/beer-station-monologos-11/",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": false,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
    "id": "471cc2d7b5b5",
    "fecha": "2026-10-24",
    "hora": null,
@@ -61852,6 +62760,44 @@
    "estado": "1_fuente",
    "conflictos": [],
    "notas": [],
+   "en_foco": true,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
+   "id": "7f94670e374f",
+   "fecha": "2026-10-24",
+   "hora": null,
+   "artista": "Esk├│bula",
+   "invitados": [
+    "Trapa y los Turboexit",
+    "Grapeshot"
+   ],
+   "sala": "Revi Space",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [],
+   "categoria": "sin clasificar",
+   "categorias": [
+    "sin clasificar"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Revi Live / Revi Space (web oficial)",
+     "id": "revi",
+     "url": "https://revi.live/sala-revi-space/",
+     "prioridad": 1
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [
+    "Evento: MADRID DOMINATION FEST IV"
+   ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -62609,11 +63555,19 @@
      "id": "songkick",
      "url": "https://www.songkick.com/festivals/3806093-dura-cala-radar-joven-2026/id/43423825-dura-cal--radar-joven-2026-2026",
      "prioridad": 3
+    },
+    {
+     "nombre": "Radar Joven (programación en Conciertos por Madrid)",
+     "id": "radar_cpm",
+     "url": "https://conciertospormadrid.com/festivales/radar-joven-2026-ciclo-conciertos-madrid/",
+     "prioridad": 3
     }
    ],
    "estado": "contrastado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Ciclo Radar Joven 2026 (Comunidad de Madrid y Madrid en Vivo)."
+   ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -62654,11 +63608,19 @@
      "id": "songkick",
      "url": "https://www.songkick.com/festivals/3806092-tere-radar-joven-2026/id/43423824-tere--radar-joven-2026-2026",
      "prioridad": 3
+    },
+    {
+     "nombre": "Radar Joven (programación en Conciertos por Madrid)",
+     "id": "radar_cpm",
+     "url": "https://conciertospormadrid.com/festivales/radar-joven-2026-ciclo-conciertos-madrid/",
+     "prioridad": 3
     }
    ],
    "estado": "contrastado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Ciclo Radar Joven 2026 (Comunidad de Madrid y Madrid en Vivo)."
+   ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -62852,6 +63814,44 @@
    "conflictos": [],
    "notas": [],
    "en_foco": true,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
+   "id": "2d2e8953c0cd",
+   "fecha": "2026-10-24",
+   "hora": null,
+   "artista": "SOLO ROBER BODEGAS",
+   "invitados": [],
+   "sala": "Beer Station",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Artes escénicas",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "fuera de foco",
+   "categorias": [
+    "fuera de foco"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/evento/beer-station-monologos-30/",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": false,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
   },
@@ -64389,11 +65389,19 @@
      "id": "songkick",
      "url": "https://www.songkick.com/festivals/3806096-ashleys-nenazas-radar-joven-2026/id/43423828-ashleys--nenazas--radar-joven-2026-2026",
      "prioridad": 3
+    },
+    {
+     "nombre": "Radar Joven (programación en Conciertos por Madrid)",
+     "id": "radar_cpm",
+     "url": "https://conciertospormadrid.com/festivales/radar-joven-2026-ciclo-conciertos-madrid/",
+     "prioridad": 3
     }
    ],
    "estado": "contrastado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Ciclo Radar Joven 2026 (Comunidad de Madrid y Madrid en Vivo)."
+   ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -64446,11 +65454,19 @@
      "id": "songkick",
      "url": "https://www.songkick.com/festivals/3806095-west-srk-radar-joven-2026/id/43423827-west-srk--radar-joven-2026-2026",
      "prioridad": 3
+    },
+    {
+     "nombre": "Radar Joven (programación en Conciertos por Madrid)",
+     "id": "radar_cpm",
+     "url": "https://conciertospormadrid.com/festivales/radar-joven-2026-ciclo-conciertos-madrid/",
+     "prioridad": 3
     }
    ],
    "estado": "contrastado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Ciclo Radar Joven 2026 (Comunidad de Madrid y Madrid en Vivo)."
+   ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -64596,6 +65612,44 @@
    "conflictos": [],
    "notas": [],
    "en_foco": true,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
+   "id": "63028fd283c6",
+   "fecha": "2026-10-25",
+   "hora": null,
+   "artista": "EL SHOW DE IGNATIUS FARRAY",
+   "invitados": [],
+   "sala": "Beer Station",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Artes escénicas",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "fuera de foco",
+   "categorias": [
+    "fuera de foco"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/evento/beer-station-monologos-15/",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": false,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
   },
@@ -65263,7 +66317,7 @@
    "hora": null,
    "artista": "Sananda Maitreya",
    "invitados": [],
-   "sala": "Sala Changó / Changó Live",
+   "sala": "Sala Changó",
    "municipio": "Madrid",
    "precio": "47.5 EUR",
    "estilo_fuente": [
@@ -65315,16 +66369,16 @@
      "prioridad": 3
     },
     {
-     "nombre": "MariskalRock (guía)",
-     "id": "mariskal",
-     "url": "https://mariskalrock.com/guia-de-conciertos/",
-     "prioridad": 4
-    },
-    {
      "nombre": "Songkick Madrid",
      "id": "songkick",
      "url": "https://www.songkick.com/concerts/43345989-sananda-maitreya-at-chango-live",
      "prioridad": 3
+    },
+    {
+     "nombre": "MariskalRock (guía)",
+     "id": "mariskal",
+     "url": "https://mariskalrock.com/guia-de-conciertos/",
+     "prioridad": 4
     }
    ],
    "estado": "conflicto",
@@ -65346,31 +66400,10 @@
        ]
       }
      ]
-    },
-    {
-     "campo": "sala",
-     "versiones": [
-      {
-       "valor": "Sala Changó",
-       "fuentes": [
-        "La Ganzúa",
-        "MariskalRock (guía)",
-        "conciertos.club (buscador semanal)",
-        "conciertos.club (portada Madrid)"
-       ]
-      },
-      {
-       "valor": "Changó Live",
-       "fuentes": [
-        "Songkick Madrid"
-       ]
-      }
-     ]
     }
    ],
    "notas": [
-    "Conflicto de hora: 20:00 según conciertos.club (buscador semanal), conciertos.club (portada Madrid); 21:00 según La Ganzúa.",
-    "Conflicto de sala: Sala Changó según La Ganzúa, MariskalRock (guía), conciertos.club (buscador semanal), conciertos.club (portada Madrid); Changó Live según Songkick Madrid."
+    "Conflicto de hora: 20:00 según conciertos.club (buscador semanal), conciertos.club (portada Madrid); 21:00 según La Ganzúa."
    ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
@@ -65684,6 +66717,44 @@
    "conflictos": [],
    "notas": [],
    "en_foco": true,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
+   "id": "949a10558de0",
+   "fecha": "2026-10-26",
+   "hora": null,
+   "artista": "EL SHOW DE IGNATIUS FARRAY",
+   "invitados": [],
+   "sala": "Beer Station",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Artes escénicas",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "fuera de foco",
+   "categorias": [
+    "fuera de foco"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/evento/beer-station-monologos-16/",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": false,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
   },
@@ -66818,6 +67889,44 @@
    "conflictos": [],
    "notas": [],
    "en_foco": true,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
+   "id": "12f376965343",
+   "fecha": "2026-10-27",
+   "hora": null,
+   "artista": "COMEDIA O MUERTE OPEN MIC",
+   "invitados": [],
+   "sala": "Beer Station",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Artes escénicas",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "fuera de foco",
+   "categorias": [
+    "fuera de foco"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/evento/beer-station-monologos-17/",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": false,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
   },
@@ -68585,6 +69694,44 @@
    "ultima_vez_visto": "2026-09-29"
   },
   {
+   "id": "23e318d0333c",
+   "fecha": "2026-10-28",
+   "hora": null,
+   "artista": "OPEN BEER - CÓMICOS PROBANDO SUS MIERDAS",
+   "invitados": [],
+   "sala": "Beer Station",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Artes escénicas",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "fuera de foco",
+   "categorias": [
+    "fuera de foco"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/evento/beer-station-monologos-32/",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": false,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
    "id": "737cff392884",
    "fecha": "2026-10-28",
    "hora": null,
@@ -69767,11 +70914,19 @@
      "id": "madridenvivo",
      "url": "https://madridenvivo.com/?post_type=evento&p=794332",
      "prioridad": 3
+    },
+    {
+     "nombre": "Radar Joven (programación en Conciertos por Madrid)",
+     "id": "radar_cpm",
+     "url": "https://conciertospormadrid.com/festivales/radar-joven-2026-ciclo-conciertos-madrid/",
+     "prioridad": 3
     }
    ],
    "estado": "contrastado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Ciclo Radar Joven 2026 (Comunidad de Madrid y Madrid en Vivo)."
+   ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -69863,11 +71018,19 @@
      "id": "madridenvivo",
      "url": "https://madridenvivo.com/?post_type=evento&p=794743",
      "prioridad": 3
+    },
+    {
+     "nombre": "Radar Joven (programación en Conciertos por Madrid)",
+     "id": "radar_cpm",
+     "url": "https://conciertospormadrid.com/festivales/radar-joven-2026-ciclo-conciertos-madrid/",
+     "prioridad": 3
     }
    ],
    "estado": "contrastado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Ciclo Radar Joven 2026 (Comunidad de Madrid y Madrid en Vivo)."
+   ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -70059,11 +71222,19 @@
      "id": "madridenvivo",
      "url": "https://madridenvivo.com/?post_type=evento&p=794731",
      "prioridad": 3
+    },
+    {
+     "nombre": "Radar Joven (programación en Conciertos por Madrid)",
+     "id": "radar_cpm",
+     "url": "https://conciertospormadrid.com/festivales/radar-joven-2026-ciclo-conciertos-madrid/",
+     "prioridad": 3
     }
    ],
    "estado": "contrastado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Ciclo Radar Joven 2026 (Comunidad de Madrid y Madrid en Vivo)."
+   ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -70073,7 +71244,9 @@
    "fecha": "2026-10-29",
    "hora": "21:30",
    "artista": "Radar Joven",
-   "invitados": [],
+   "invitados": [
+    "Los Galgos"
+   ],
    "sala": "Moe",
    "municipio": "Madrid",
    "precio": "7€",
@@ -70132,11 +71305,19 @@
      "id": "madridenvivo",
      "url": "https://madridenvivo.com/?post_type=evento&p=794745",
      "prioridad": 3
+    },
+    {
+     "nombre": "Radar Joven (programación en Conciertos por Madrid)",
+     "id": "radar_cpm",
+     "url": "https://conciertospormadrid.com/festivales/radar-joven-2026-ciclo-conciertos-madrid/",
+     "prioridad": 3
     }
    ],
    "estado": "contrastado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Ciclo Radar Joven 2026 (Comunidad de Madrid y Madrid en Vivo)."
+   ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -71271,6 +72452,44 @@
    "conflictos": [],
    "notas": [],
    "en_foco": true,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
+   "id": "7eecb5c75e84",
+   "fecha": "2026-10-29",
+   "hora": null,
+   "artista": "SOLO ROBER BODEGAS",
+   "invitados": [],
+   "sala": "Beer Station",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Artes escénicas",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "fuera de foco",
+   "categorias": [
+    "fuera de foco"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/evento/beer-station-monologos-33/",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": false,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
   },
@@ -72676,11 +73895,19 @@
      "id": "madridenvivo",
      "url": "https://madridenvivo.com/?post_type=evento&p=794684",
      "prioridad": 3
+    },
+    {
+     "nombre": "Radar Joven (programación en Conciertos por Madrid)",
+     "id": "radar_cpm",
+     "url": "https://conciertospormadrid.com/festivales/radar-joven-2026-ciclo-conciertos-madrid/",
+     "prioridad": 3
     }
    ],
    "estado": "contrastado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Ciclo Radar Joven 2026 (Comunidad de Madrid y Madrid en Vivo)."
+   ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -72885,11 +74112,19 @@
      "id": "madridenvivo",
      "url": "https://madridenvivo.com/?post_type=evento&p=795531",
      "prioridad": 3
+    },
+    {
+     "nombre": "Radar Joven (programación en Conciertos por Madrid)",
+     "id": "radar_cpm",
+     "url": "https://conciertospormadrid.com/festivales/radar-joven-2026-ciclo-conciertos-madrid/",
+     "prioridad": 3
     }
    ],
    "estado": "contrastado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Ciclo Radar Joven 2026 (Comunidad de Madrid y Madrid en Vivo)."
+   ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -73702,6 +74937,44 @@
    "ultima_vez_visto": "2026-09-29"
   },
   {
+   "id": "27c922dc8d54",
+   "fecha": "2026-10-30",
+   "hora": null,
+   "artista": "HOY SALIMOS DE TRANQUIS",
+   "invitados": [],
+   "sala": "Beer Station",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Artes escénicas",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "fuera de foco",
+   "categorias": [
+    "fuera de foco"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/evento/beer-station-monologos-34/",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": false,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
    "id": "8152d495b0cb",
    "fecha": "2026-10-30",
    "hora": null,
@@ -74412,11 +75685,19 @@
      "id": "madridenvivo",
      "url": "https://madridenvivo.com/?post_type=evento&p=794727",
      "prioridad": 3
+    },
+    {
+     "nombre": "Radar Joven (programación en Conciertos por Madrid)",
+     "id": "radar_cpm",
+     "url": "https://conciertospormadrid.com/festivales/radar-joven-2026-ciclo-conciertos-madrid/",
+     "prioridad": 3
     }
    ],
-   "estado": "1_fuente",
+   "estado": "contrastado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Ciclo Radar Joven 2026 (Comunidad de Madrid y Madrid en Vivo)."
+   ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -74451,11 +75732,19 @@
      "id": "madridenvivo",
      "url": "https://madridenvivo.com/?post_type=evento&p=794749",
      "prioridad": 3
+    },
+    {
+     "nombre": "Radar Joven (programación en Conciertos por Madrid)",
+     "id": "radar_cpm",
+     "url": "https://conciertospormadrid.com/festivales/radar-joven-2026-ciclo-conciertos-madrid/",
+     "prioridad": 3
     }
    ],
-   "estado": "1_fuente",
+   "estado": "contrastado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Ciclo Radar Joven 2026 (Comunidad de Madrid y Madrid en Vivo)."
+   ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -75929,9 +77218,7 @@
    "fecha": "2026-10-31",
    "hora": "21:30",
    "artista": "WISECRÄCKER",
-   "invitados": [
-    "OFERTA ESPECIAL EN SKALLOWEEN MAD FEST"
-   ],
+   "invitados": [],
    "sala": "Gruta 77",
    "municipio": "Madrid",
    "precio": "10€: las primeras 50 entradas. 15€/20€ Entradas a la venta en movingtickets Bio/enlaces bandas: Wisecräcker_facebook +Wisecräcker_intagram Oferta Especial_facebook + Oferta Especial_twitter + Oferta Especial_instagram Más información: Skalloween Mad Fest celebra",
@@ -76518,7 +77805,7 @@
    "estado": "1_fuente",
    "conflictos": [],
    "notas": [
-    "Evento: 40 ANIVERSARIO LEGÍTIMA DEFENSA"
+    "Evento: 40 ANIVERSARIO LEG├ŹTIMA DEFENSA"
    ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
@@ -76560,6 +77847,44 @@
    "conflictos": [],
    "notas": [],
    "en_foco": true,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
+   "id": "92b825165b84",
+   "fecha": "2026-10-31",
+   "hora": null,
+   "artista": "DANI ALÉS - TABÚ - UN MONÓLOGO INADECUADO",
+   "invitados": [],
+   "sala": "Beer Station",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Artes escénicas",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "fuera de foco",
+   "categorias": [
+    "fuera de foco"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/evento/beer-station-monologos-19/",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": false,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
   },
@@ -76793,6 +78118,44 @@
      "nombre": "Madrid en Vivo (asociación de salas)",
      "id": "madridenvivo",
      "url": "https://madridenvivo.com/evento/espectaculo-flamenco-isaac-de-los-reyes-y-noelia-ruiz-al-baile-31-10-2026/",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": false,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
+   "id": "a45e6f49a609",
+   "fecha": "2026-10-31",
+   "hora": null,
+   "artista": "FANTASTILLOSO, UN MONÓLOGO DE FRAN EL CHAVO",
+   "invitados": [],
+   "sala": "Beer Station",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Artes escénicas",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "fuera de foco",
+   "categorias": [
+    "fuera de foco"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/evento/beer-station-monologos-18/",
      "prioridad": 3
     }
    ],
@@ -77600,11 +78963,19 @@
      "id": "madridenvivo",
      "url": "https://madridenvivo.com/?post_type=evento&p=794728",
      "prioridad": 3
+    },
+    {
+     "nombre": "Radar Joven (programación en Conciertos por Madrid)",
+     "id": "radar_cpm",
+     "url": "https://conciertospormadrid.com/festivales/radar-joven-2026-ciclo-conciertos-madrid/",
+     "prioridad": 3
     }
    ],
-   "estado": "1_fuente",
+   "estado": "contrastado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Ciclo Radar Joven 2026 (Comunidad de Madrid y Madrid en Vivo)."
+   ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -77639,11 +79010,19 @@
      "id": "madridenvivo",
      "url": "https://madridenvivo.com/?post_type=evento&p=794742",
      "prioridad": 3
+    },
+    {
+     "nombre": "Radar Joven (programación en Conciertos por Madrid)",
+     "id": "radar_cpm",
+     "url": "https://conciertospormadrid.com/festivales/radar-joven-2026-ciclo-conciertos-madrid/",
+     "prioridad": 3
     }
    ],
-   "estado": "1_fuente",
+   "estado": "contrastado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Ciclo Radar Joven 2026 (Comunidad de Madrid y Madrid en Vivo)."
+   ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -77678,11 +79057,19 @@
      "id": "madridenvivo",
      "url": "https://madridenvivo.com/?post_type=evento&p=794744",
      "prioridad": 3
+    },
+    {
+     "nombre": "Radar Joven (programación en Conciertos por Madrid)",
+     "id": "radar_cpm",
+     "url": "https://conciertospormadrid.com/festivales/radar-joven-2026-ciclo-conciertos-madrid/",
+     "prioridad": 3
     }
    ],
-   "estado": "1_fuente",
+   "estado": "contrastado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Ciclo Radar Joven 2026 (Comunidad de Madrid y Madrid en Vivo)."
+   ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -77717,11 +79104,19 @@
      "id": "madridenvivo",
      "url": "https://madridenvivo.com/?post_type=evento&p=794748",
      "prioridad": 3
+    },
+    {
+     "nombre": "Radar Joven (programación en Conciertos por Madrid)",
+     "id": "radar_cpm",
+     "url": "https://conciertospormadrid.com/festivales/radar-joven-2026-ciclo-conciertos-madrid/",
+     "prioridad": 3
     }
    ],
-   "estado": "1_fuente",
+   "estado": "contrastado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Ciclo Radar Joven 2026 (Comunidad de Madrid y Madrid en Vivo)."
+   ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -79156,6 +80551,39 @@
    "ultima_vez_visto": "2026-09-29"
   },
   {
+   "id": "b6a210bf1203",
+   "fecha": "2026-11-01",
+   "hora": "23:59",
+   "artista": "AFROJAM HALLOWEEN PARTY",
+   "invitados": [],
+   "sala": "Sala Villanos",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [],
+   "categoria": "sin clasificar",
+   "categorias": [
+    "sin clasificar"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Sala Villanos (web oficial)",
+     "id": "villanos",
+     "url": "https://salavillanos.es/evento/afrojam-halloween-party/",
+     "prioridad": 1
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": true,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
    "id": "a92cf8a5def3",
    "fecha": "2026-11-01",
    "hora": null,
@@ -79403,11 +80831,19 @@
      "id": "songkick",
      "url": "https://www.songkick.com/festivals/3806111-carla-delgado-radar-joven-2026/id/43423844-carla-delgado--radar-joven-2026-2026",
      "prioridad": 3
+    },
+    {
+     "nombre": "Radar Joven (programación en Conciertos por Madrid)",
+     "id": "radar_cpm",
+     "url": "https://conciertospormadrid.com/festivales/radar-joven-2026-ciclo-conciertos-madrid/",
+     "prioridad": 3
     }
    ],
    "estado": "contrastado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Ciclo Radar Joven 2026 (Comunidad de Madrid y Madrid en Vivo)."
+   ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -79448,11 +80884,19 @@
      "id": "songkick",
      "url": "https://www.songkick.com/festivals/3806097-irenegarry-radar-joven-2026/id/43423829-irenegarry--radar-joven-2026-2026",
      "prioridad": 3
+    },
+    {
+     "nombre": "Radar Joven (programación en Conciertos por Madrid)",
+     "id": "radar_cpm",
+     "url": "https://conciertospormadrid.com/festivales/radar-joven-2026-ciclo-conciertos-madrid/",
+     "prioridad": 3
     }
    ],
    "estado": "contrastado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Ciclo Radar Joven 2026 (Comunidad de Madrid y Madrid en Vivo)."
+   ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -79495,11 +80939,19 @@
      "id": "songkick",
      "url": "https://www.songkick.com/festivals/3806110-nuevos-vicios-wet-iguanas-radar-joven-2026/id/43423843-nuevos-vicios--wet-iguanas--radar-joven-2026-2026",
      "prioridad": 3
+    },
+    {
+     "nombre": "Radar Joven (programación en Conciertos por Madrid)",
+     "id": "radar_cpm",
+     "url": "https://conciertospormadrid.com/festivales/radar-joven-2026-ciclo-conciertos-madrid/",
+     "prioridad": 3
     }
    ],
    "estado": "contrastado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Ciclo Radar Joven 2026 (Comunidad de Madrid y Madrid en Vivo)."
+   ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -79540,11 +80992,19 @@
      "id": "songkick",
      "url": "https://www.songkick.com/festivals/3806109-portosanto-radar-joven-2026/id/43423841-portosanto--radar-joven-2026-2026",
      "prioridad": 3
+    },
+    {
+     "nombre": "Radar Joven (programación en Conciertos por Madrid)",
+     "id": "radar_cpm",
+     "url": "https://conciertospormadrid.com/festivales/radar-joven-2026-ciclo-conciertos-madrid/",
+     "prioridad": 3
     }
    ],
    "estado": "contrastado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Ciclo Radar Joven 2026 (Comunidad de Madrid y Madrid en Vivo)."
+   ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -81214,11 +82674,19 @@
      "id": "madridenvivo",
      "url": "https://madridenvivo.com/?post_type=evento&p=794746",
      "prioridad": 3
+    },
+    {
+     "nombre": "Radar Joven (programación en Conciertos por Madrid)",
+     "id": "radar_cpm",
+     "url": "https://conciertospormadrid.com/festivales/radar-joven-2026-ciclo-conciertos-madrid/",
+     "prioridad": 3
     }
    ],
    "estado": "contrastado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Ciclo Radar Joven 2026 (Comunidad de Madrid y Madrid en Vivo)."
+   ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -82269,11 +83737,19 @@
      "id": "madridenvivo",
      "url": "https://madridenvivo.com/?post_type=evento&p=794681",
      "prioridad": 3
+    },
+    {
+     "nombre": "Radar Joven (programación en Conciertos por Madrid)",
+     "id": "radar_cpm",
+     "url": "https://conciertospormadrid.com/festivales/radar-joven-2026-ciclo-conciertos-madrid/",
+     "prioridad": 3
     }
    ],
    "estado": "contrastado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Ciclo Radar Joven 2026 (Comunidad de Madrid y Madrid en Vivo)."
+   ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -82753,11 +84229,19 @@
      "id": "madridenvivo",
      "url": "https://madridenvivo.com/?post_type=evento&p=794715",
      "prioridad": 3
+    },
+    {
+     "nombre": "Radar Joven (programación en Conciertos por Madrid)",
+     "id": "radar_cpm",
+     "url": "https://conciertospormadrid.com/festivales/radar-joven-2026-ciclo-conciertos-madrid/",
+     "prioridad": 3
     }
    ],
    "estado": "contrastado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Ciclo Radar Joven 2026 (Comunidad de Madrid y Madrid en Vivo)."
+   ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -82815,11 +84299,19 @@
      "id": "madridenvivo",
      "url": "https://madridenvivo.com/?post_type=evento&p=794714",
      "prioridad": 3
+    },
+    {
+     "nombre": "Radar Joven (programación en Conciertos por Madrid)",
+     "id": "radar_cpm",
+     "url": "https://conciertospormadrid.com/festivales/radar-joven-2026-ciclo-conciertos-madrid/",
+     "prioridad": 3
     }
    ],
    "estado": "contrastado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Ciclo Radar Joven 2026 (Comunidad de Madrid y Madrid en Vivo)."
+   ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -82996,11 +84488,19 @@
      "id": "madridenvivo",
      "url": "https://madridenvivo.com/?post_type=evento&p=794732",
      "prioridad": 3
+    },
+    {
+     "nombre": "Radar Joven (programación en Conciertos por Madrid)",
+     "id": "radar_cpm",
+     "url": "https://conciertospormadrid.com/festivales/radar-joven-2026-ciclo-conciertos-madrid/",
+     "prioridad": 3
     }
    ],
    "estado": "contrastado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Ciclo Radar Joven 2026 (Comunidad de Madrid y Madrid en Vivo)."
+   ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -83061,11 +84561,19 @@
      "id": "madridenvivo",
      "url": "https://madridenvivo.com/?post_type=evento&p=794741",
      "prioridad": 3
+    },
+    {
+     "nombre": "Radar Joven (programación en Conciertos por Madrid)",
+     "id": "radar_cpm",
+     "url": "https://conciertospormadrid.com/festivales/radar-joven-2026-ciclo-conciertos-madrid/",
+     "prioridad": 3
     }
    ],
    "estado": "contrastado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Ciclo Radar Joven 2026 (Comunidad de Madrid y Madrid en Vivo)."
+   ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -84368,11 +85876,19 @@
      "id": "madridenvivo",
      "url": "https://madridenvivo.com/?post_type=evento&p=794680",
      "prioridad": 3
+    },
+    {
+     "nombre": "Radar Joven (programación en Conciertos por Madrid)",
+     "id": "radar_cpm",
+     "url": "https://conciertospormadrid.com/festivales/radar-joven-2026-ciclo-conciertos-madrid/",
+     "prioridad": 3
     }
    ],
    "estado": "contrastado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Ciclo Radar Joven 2026 (Comunidad de Madrid y Madrid en Vivo)."
+   ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -84578,11 +86094,19 @@
      "id": "madridenvivo",
      "url": "https://madridenvivo.com/?post_type=evento&p=795533",
      "prioridad": 3
+    },
+    {
+     "nombre": "Radar Joven (programación en Conciertos por Madrid)",
+     "id": "radar_cpm",
+     "url": "https://conciertospormadrid.com/festivales/radar-joven-2026-ciclo-conciertos-madrid/",
+     "prioridad": 3
     }
    ],
    "estado": "contrastado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Ciclo Radar Joven 2026 (Comunidad de Madrid y Madrid en Vivo)."
+   ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -85438,11 +86962,19 @@
      "id": "madridenvivo",
      "url": "https://madridenvivo.com/?post_type=evento&p=794682",
      "prioridad": 3
+    },
+    {
+     "nombre": "Radar Joven (programación en Conciertos por Madrid)",
+     "id": "radar_cpm",
+     "url": "https://conciertospormadrid.com/festivales/radar-joven-2026-ciclo-conciertos-madrid/",
+     "prioridad": 3
     }
    ],
    "estado": "contrastado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Ciclo Radar Joven 2026 (Comunidad de Madrid y Madrid en Vivo)."
+   ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -86221,11 +87753,19 @@
      "id": "cc_estilos",
      "url": "https://conciertos.club/madrid/conciertos/127671-radar-joven-grumpys-petricor",
      "prioridad": 3
+    },
+    {
+     "nombre": "Radar Joven (programación en Conciertos por Madrid)",
+     "id": "radar_cpm",
+     "url": "https://conciertospormadrid.com/festivales/radar-joven-2026-ciclo-conciertos-madrid/",
+     "prioridad": 3
     }
    ],
-   "estado": "1_fuente",
+   "estado": "contrastado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Ciclo Radar Joven 2026 (Comunidad de Madrid y Madrid en Vivo)."
+   ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -86274,12 +87814,19 @@
      "id": "madridenvivo",
      "url": "https://madridenvivo.com/?post_type=evento&p=794685",
      "prioridad": 3
+    },
+    {
+     "nombre": "Radar Joven (programación en Conciertos por Madrid)",
+     "id": "radar_cpm",
+     "url": "https://conciertospormadrid.com/festivales/radar-joven-2026-ciclo-conciertos-madrid/",
+     "prioridad": 3
     }
    ],
    "estado": "contrastado",
    "conflictos": [],
    "notas": [
-    "Hora: 21:30 según Gruta 77 (web oficial); 22:00 según conciertos.club (buscador semanal). Resuelto por prioridad de fuente (la fuente de mayor prioridad confirma 21:30)."
+    "Hora: 21:30 según Gruta 77 (web oficial); 22:00 según conciertos.club (buscador semanal). Resuelto por prioridad de fuente (la fuente de mayor prioridad confirma 21:30).",
+    "Ciclo Radar Joven 2026 (Comunidad de Madrid y Madrid en Vivo)."
    ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
@@ -86483,6 +88030,50 @@
    "ultima_vez_visto": "2026-09-29"
   },
   {
+   "id": "7fb1da256a24",
+   "fecha": "2026-11-07",
+   "hora": null,
+   "artista": "ItineruM",
+   "invitados": [
+    "Domina Noctis",
+    "In Verse"
+   ],
+   "sala": "Revi Live",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [],
+   "categoria": "sin clasificar",
+   "categorias": [
+    "sin clasificar"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Revi Live / Revi Space (web oficial)",
+     "id": "revi",
+     "url": "https://bipbipticket.com/home/lilith-s-daughters-fest",
+     "prioridad": 1
+    },
+    {
+     "nombre": "MariskalRock (guía)",
+     "id": "mariskal",
+     "url": "https://mariskalrock.com/guia-de-conciertos/",
+     "prioridad": 4
+    }
+   ],
+   "estado": "contrastado",
+   "conflictos": [],
+   "notas": [
+    "Evento: LILITHŌĆÖS DAUGHTERS FEST"
+   ],
+   "en_foco": true,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
    "id": "e7864a6218b8",
    "fecha": "2026-11-07",
    "hora": null,
@@ -86517,12 +88108,13 @@
      "prioridad": 4
     }
    ],
-   "estado": "contrastado",
+   "estado": "posiblemente cancelado",
    "conflictos": [],
    "notas": [
     "Evento: LILITH’S DAUGHTERS FEST",
     "Fuente de fiabilidad baja (mantiene fechas antiguas); año deducido: la fuente no indica año.",
-    "Sala: Revi Space según Revi Live / Revi Space (web oficial); Revi Live según MariskalRock (guía). Resuelto por prioridad de fuente (la de mayor prioridad confirma Revi Space)."
+    "Sala: Revi Space según Revi Live / Revi Space (web oficial); Revi Live según MariskalRock (guía). Resuelto por prioridad de fuente (la de mayor prioridad confirma Revi Space).",
+    "Ya no aparece en ninguna de sus fuentes (comprobado el 2026-09-29); visto por última vez el 2026-09-29."
    ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
@@ -87390,11 +88982,19 @@
      "id": "songkick",
      "url": "https://www.songkick.com/festivals/3806119-patataonstereo-radar-joven-2026/id/43423852-patataonstereo--radar-joven-2026-2026",
      "prioridad": 3
+    },
+    {
+     "nombre": "Radar Joven (programación en Conciertos por Madrid)",
+     "id": "radar_cpm",
+     "url": "https://conciertospormadrid.com/festivales/radar-joven-2026-ciclo-conciertos-madrid/",
+     "prioridad": 3
     }
    ],
    "estado": "contrastado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Ciclo Radar Joven 2026 (Comunidad de Madrid y Madrid en Vivo)."
+   ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -87908,11 +89508,19 @@
      "id": "songkick",
      "url": "https://www.songkick.com/festivals/3806120-construimos-escaleras-palomo-palomo-radar-joven-2026/id/43423854-construimos-escaleras--palomo-palomo--radar-joven-2026-2026",
      "prioridad": 3
+    },
+    {
+     "nombre": "Radar Joven (programación en Conciertos por Madrid)",
+     "id": "radar_cpm",
+     "url": "https://conciertospormadrid.com/festivales/radar-joven-2026-ciclo-conciertos-madrid/",
+     "prioridad": 3
     }
    ],
    "estado": "contrastado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Ciclo Radar Joven 2026 (Comunidad de Madrid y Madrid en Vivo)."
+   ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -92349,7 +93957,7 @@
    "estado": "1_fuente",
    "conflictos": [],
    "notas": [
-    "Evento: PRESENTACIÓN HIERRO Y SANGRE"
+    "Evento: PRESENTACI├ōN HIERRO Y SANGRE"
    ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
@@ -93186,6 +94794,67 @@
    "ultima_vez_visto": "2026-09-29"
   },
   {
+   "id": "46640d91d6ff",
+   "fecha": "2026-11-14",
+   "hora": "21:00",
+   "artista": "┬ĀSarkrista",
+   "invitados": [
+    "Leviathan A.C",
+    "Hrigz",
+    "Innominatam",
+    "Termogaunt"
+   ],
+   "sala": "Revi Space",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Metal/Rock duro",
+     "fuente": "conciertos.club (buscador semanal)"
+    },
+    {
+     "estilo": "Metal/Rock duro",
+     "fuente": "conciertos.club (por estilo)"
+    }
+   ],
+   "categoria": "rock y metal",
+   "categorias": [
+    "rock y metal"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Revi Live / Revi Space (web oficial)",
+     "id": "revi",
+     "url": "https://www.quintessencemetalclub.es/product/23486678/14-11-2026-nox-aeterna-ii",
+     "prioridad": 1
+    },
+    {
+     "nombre": "conciertos.club (buscador semanal)",
+     "id": "cc_buscador",
+     "url": "https://conciertos.club/madrid/conciertos/124874-nox-aeterna-sarkrista-leviathan-a-c-hrigz-innominatam-termogaunt",
+     "prioridad": 3
+    },
+    {
+     "nombre": "conciertos.club (por estilo)",
+     "id": "cc_estilos",
+     "url": "https://conciertos.club/madrid/conciertos/124874-nox-aeterna-sarkrista-leviathan-a-c-hrigz-innominatam-termogaunt",
+     "prioridad": 3
+    }
+   ],
+   "estado": "contrastado",
+   "conflictos": [],
+   "notas": [
+    "Evento: NOX AETERNA II"
+   ],
+   "en_foco": true,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
    "id": "6c110e443011",
    "fecha": "2026-11-14",
    "hora": "21:00",
@@ -93521,67 +95190,6 @@
    "conflictos": [],
    "notas": [],
    "en_foco": false,
-   "primera_vez_visto": "2026-09-29",
-   "ultima_vez_visto": "2026-09-29"
-  },
-  {
-   "id": "46640d91d6ff",
-   "fecha": "2026-11-14",
-   "hora": "21:00",
-   "artista": "Sarkrista",
-   "invitados": [
-    "Leviathan A.C",
-    "Hrigz",
-    "Innominatam",
-    "Termogaunt"
-   ],
-   "sala": "Revi Space",
-   "municipio": "Madrid",
-   "precio": null,
-   "estilo_fuente": [
-    {
-     "estilo": "Metal/Rock duro",
-     "fuente": "conciertos.club (buscador semanal)"
-    },
-    {
-     "estilo": "Metal/Rock duro",
-     "fuente": "conciertos.club (por estilo)"
-    }
-   ],
-   "categoria": "rock y metal",
-   "categorias": [
-    "rock y metal"
-   ],
-   "genero_discogs": [],
-   "estilos_discogs": [],
-   "nacionalidad": "DE",
-   "nacionalidad_fuente": "MusicBrainz",
-   "fuentes": [
-    {
-     "nombre": "Revi Live / Revi Space (web oficial)",
-     "id": "revi",
-     "url": "https://www.quintessencemetalclub.es/product/23486678/14-11-2026-nox-aeterna-ii",
-     "prioridad": 1
-    },
-    {
-     "nombre": "conciertos.club (buscador semanal)",
-     "id": "cc_buscador",
-     "url": "https://conciertos.club/madrid/conciertos/124874-nox-aeterna-sarkrista-leviathan-a-c-hrigz-innominatam-termogaunt",
-     "prioridad": 3
-    },
-    {
-     "nombre": "conciertos.club (por estilo)",
-     "id": "cc_estilos",
-     "url": "https://conciertos.club/madrid/conciertos/124874-nox-aeterna-sarkrista-leviathan-a-c-hrigz-innominatam-termogaunt",
-     "prioridad": 3
-    }
-   ],
-   "estado": "contrastado",
-   "conflictos": [],
-   "notas": [
-    "Evento: NOX AETERNA II"
-   ],
-   "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
   },
@@ -98427,10 +100035,45 @@
    "ultima_vez_visto": "2026-09-29"
   },
   {
+   "id": "d818235bb24f",
+   "fecha": "2026-11-19",
+   "hora": null,
+   "artista": "Brujer├Ła",
+   "invitados": [],
+   "sala": "Revi Live",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [],
+   "categoria": "sin clasificar",
+   "categorias": [
+    "sin clasificar"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Revi Live / Revi Space (web oficial)",
+     "id": "revi",
+     "url": "https://www.madnesslive.es/es/conciertos-en-madrid/1963-comprar-entrada-brujeria-madrid.html",
+     "prioridad": 1
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [
+    "Evento: ESTAMOS CHINGADOS 2026"
+   ],
+   "en_foco": true,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
    "id": "df70867b4c8c",
    "fecha": "2026-11-19",
    "hora": null,
-   "artista": "Brujería",
+   "artista": "Brujeria",
    "invitados": [],
    "sala": "Revi Live",
    "municipio": "Madrid",
@@ -98454,12 +100097,6 @@
    "nacionalidad": "US",
    "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
-    {
-     "nombre": "Revi Live / Revi Space (web oficial)",
-     "id": "revi",
-     "url": "https://www.madnesslive.es/es/conciertos-en-madrid/1963-comprar-entrada-brujeria-madrid.html",
-     "prioridad": 1
-    },
     {
      "nombre": "Madness Live (promotora)",
      "id": "madness",
@@ -98531,8 +100168,7 @@
     }
    ],
    "notas": [
-    "Conflicto de hora: 21:00 según conciertos.club (buscador semanal), conciertos.club (por estilo); 19:00 según Songkick Madrid.",
-    "Evento: ESTAMOS CHINGADOS 2026"
+    "Conflicto de hora: 21:00 según conciertos.club (buscador semanal), conciertos.club (por estilo); 19:00 según Songkick Madrid."
    ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
@@ -112187,7 +113823,7 @@
    "ultima_vez_visto": "2026-09-29"
   },
   {
-   "id": "28a040442bbe",
+   "id": "ade93c78940e",
    "fecha": "2026-12-03",
    "hora": "20:00",
    "artista": "MIkkey Dee & Friends",
@@ -112270,6 +113906,50 @@
      "nombre": "Songkick Madrid",
      "id": "songkick",
      "url": "https://www.songkick.com/concerts/43418423-ramona-flores-at-cadavra",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": true,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
+   "id": "b7642a54240f",
+   "fecha": "2026-12-03",
+   "hora": "20:30",
+   "artista": "Taemin",
+   "invitados": [],
+   "sala": "Palacio Vistalegre",
+   "municipio": "Madrid",
+   "precio": "76.0 EUR",
+   "estilo_fuente": [
+    {
+     "estilo": "K-pop, Pop Rock",
+     "fuente": "La Ganzúa"
+    }
+   ],
+   "categoria": "pop e indie",
+   "categorias": [
+    "pop e indie"
+   ],
+   "genero_discogs": [
+    "Pop",
+    "Rock"
+   ],
+   "estilos_discogs": [
+    "K-pop",
+    "Pop Rock"
+   ],
+   "nacionalidad": "KR",
+   "nacionalidad_fuente": "MusicBrainz",
+   "fuentes": [
+    {
+     "nombre": "La Ganzúa",
+     "id": "laganzua",
+     "url": "https://www.laganzua.net/conciertos/taemin-madrid-1017462",
      "prioridad": 3
     }
    ],
@@ -112713,7 +114393,7 @@
    "ultima_vez_visto": "2026-09-29"
   },
   {
-   "id": "ade93c78940e",
+   "id": "28a040442bbe",
    "fecha": "2026-12-03",
    "hora": null,
    "artista": "Mikky Dee",
@@ -120078,7 +121758,7 @@
    "id": "6b254410f676",
    "fecha": "2026-12-13",
    "hora": null,
-   "artista": "PRIMER TRIMESTRAL – ESCUELA DE MÚSICA CACHE",
+   "artista": "PRIMER TRIMESTRAL – ESCUELA DE M├ÜSICA CACHE",
    "invitados": [],
    "sala": "Revi Space",
    "municipio": "Madrid",
@@ -128796,8 +130476,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "DE",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Songkick Madrid",

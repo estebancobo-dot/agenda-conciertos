@@ -248,7 +248,8 @@
   "muni_aranjuez": {},
   "muni_arganda_del_rey": {},
   "muni_valdemoro": {},
-  "muni_pinto": {}
+  "muni_pinto": {},
+  "radar_cpm": {}
  },
  "historial_fuentes": {
   "cc_buscador": {
@@ -265,15 +266,15 @@
   },
   "laganzua": {
    "ultima_ok": "2026-09-29",
-   "ultimo_conteo": 213
+   "ultimo_conteo": 214
   },
   "cpm": {
    "ultima_ok": "2026-09-29",
-   "ultimo_conteo": 131
+   "ultimo_conteo": 132
   },
   "madridenvivo": {
    "ultima_ok": "2026-09-29",
-   "ultimo_conteo": 1024
+   "ultimo_conteo": 1060
   },
   "songkick": {
    "ultima_ok": "2026-09-29",
@@ -317,7 +318,7 @@
   },
   "mariskal": {
    "ultima_ok": "2026-09-29",
-   "ultimo_conteo": 154
+   "ultimo_conteo": 155
   },
   "madness": {
    "ultima_ok": "2026-09-29",
@@ -381,7 +382,7 @@
   },
   "revi": {
    "ultima_ok": "2026-09-29",
-   "ultimo_conteo": 42
+   "ultimo_conteo": 43
   },
   "chango": {
    "ultima_ok": "2026-09-29",
@@ -397,7 +398,7 @@
   },
   "villanos": {
    "ultima_ok": "2026-09-29",
-   "ultimo_conteo": 100
+   "ultimo_conteo": 101
   },
   "rockville": {
    "ultima_ok": "2026-09-29",
@@ -450,7 +451,15 @@
   "muni_aranjuez": {
    "ultima_ok": "2026-09-29",
    "ultimo_conteo": 0
+  },
+  "radar_cpm": {
+   "ultima_ok": "2026-09-29",
+   "ultimo_conteo": 43
+  },
+  "rockgle": {
+   "ultima_ok": "2026-09-29",
+   "ultimo_conteo": 0
   }
  },
- "ultima_ejecucion": "2026-09-29T12:06:18+00:00"
+ "ultima_ejecucion": "2026-09-29T13:25:37+00:00"
 }
