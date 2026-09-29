@@ -16097,7 +16097,7 @@
   },
   "discogs": {
    "encontrado": false,
-   "motivo": "error: HTTPError"
+   "motivo": "el buscador de Discogs enlaza una ficha que ya no existe"
   }
  },
  "momentos de escandalo daisy jones live": {
