@@ -10,7 +10,7 @@ def main() -> None:
     ap = argparse.ArgumentParser(description="Agenda de conciertos de la Comunidad de Madrid")
     ap.add_argument("--solo", help="ids de fuentes separados por comas (por defecto, todas)")
     ap.add_argument("--sin-musicbrainz", action="store_true")
-    ap.add_argument("--max-musicbrainz", type=int, default=700)
+    ap.add_argument("--max-musicbrainz", type=int, default=600)
     ap.add_argument("--hoy", help="fecha de referencia AAAA-MM-DD (pruebas)")
     a = ap.parse_args()
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(message)s")

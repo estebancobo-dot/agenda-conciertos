@@ -20,6 +20,10 @@ class RobotsBlocked(Exception):
     """robots.txt prohíbe rastrear esta URL."""
 
 
+class RobotsUnreachable(Exception):
+    """No se pudo leer robots.txt (error de red o 5xx): por norma no se rastrea la web."""
+
+
 @dataclass
 class HostState:
     lock: threading.Lock = field(default_factory=threading.Lock)
@@ -98,6 +102,8 @@ class Fetcher:
         if use_cache and key in self._cache:
             return self._cache[key]
         if check_robots and not self.robots_allows(url):
+            if self._host(url).robots_status.startswith("inaccesible"):
+                raise RobotsUnreachable(f"web inaccesible al leer robots.txt: {self._host(url).robots_status}")
             raise RobotsBlocked(url)
         st = self._host(url)
         with st.lock:

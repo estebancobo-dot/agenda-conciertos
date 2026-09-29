@@ -30,7 +30,7 @@ def buscar(fetcher: Fetcher, nombre: str) -> dict:
     return {"pais": pais, "coincidencias_exactas": 1, "mbid": a.get("id")}
 
 
-def completar(recs: list[dict], cache: dict, hoy: date, fetcher: Fetcher | None, max_consultas: int = 700,
+def completar(recs: list[dict], cache: dict, hoy: date, fetcher: Fetcher | None, max_consultas: int = 600,
               presupuesto_seg: float = 1500) -> dict:
     """Rellena nacionalidad en los registros que no la traen de la fuente. Devuelve estadísticas."""
     stats = {"consultas": 0, "desde_cache": 0, "asignadas": 0, "sin_confirmar": 0, "pendientes": 0}
@@ -69,4 +69,4 @@ def completar(recs: list[dict], cache: dict, hoy: date, fetcher: Fetcher | None,
 
 
 def fetcher_musicbrainz() -> Fetcher:
-    return Fetcher(min_interval=1.1)
+    return Fetcher(min_interval=1.5)  # la API admite 1/s de media; margen para evitar 503

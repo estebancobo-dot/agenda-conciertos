@@ -3,9 +3,6 @@ name: Actualizar agenda y publicar web
 on:
   schedule:
     - cron: "0 5 * * *"   # todos los días a las 05:00 UTC
-  push:
-    branches: ["ccr-55b6b757-e5v63j"]   # TEMPORAL: primera ejecución desde la rama de desarrollo
-    paths: [".github/workflows/actualizar.yml", "scraper/**", "site/**"]
   workflow_dispatch:
     inputs:
       solo:
