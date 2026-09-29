@@ -1,24 +1,14 @@
-# Ronda 3
-metalcry https://metalcry.com/conciertos/
-thm_agenda https://www.todoheavymetal.com/index.php/agenda/amp
-metalsymphony_agenda https://www.metalsymphony.com/agenda/
-neverland https://www.metalsymphony.com/neverland-concerts-agenda-rock-progresivo-2026-2027/
-rfe_home https://rockforeveryone.es/
-rockprog https://www.rock-progresivo.com/seccion/cronicas-conciertos/previas-de-conciertos/
-bigmama https://bigmamaballroom.com/conciertos-blues/
-copernico https://salacopernico.es/
-galileo https://www.salagalileogalilei.com/
-monlive https://www.monmadrid.es/
-bandsintown_madrid https://www.bandsintown.com/c/madrid-spain
-force https://forcemagazine.es/
-rockgle https://www.rockgle.es/p/agenda-de-conciertos_07.html?m=0
-wagon_home https://www.wagon.live/
-mev_ajax_p1 https://madridenvivo.com/wp-content/themes/base/codigo/includes/ajax/buscar-eventos-avanzado.php {"salas":"","estilos":"779","fecha-desde":"2026-10-12","fecha-hasta":"2026-10-18","buscar":"","pagina":1}
-mev_ajax_p2 https://madridenvivo.com/wp-content/themes/base/codigo/includes/ajax/buscar-eventos-avanzado.php {"salas":"","estilos":"779","fecha-desde":"2026-10-12","fecha-hasta":"2026-10-18","buscar":"","pagina":2}
-cc_evento https://conciertos.club/madrid/conciertos/125042-ana-popovic
-gruta77_nov https://gruta77.com/events/?mes=11-2026
-mb_test https://musicbrainz.org/ws/2/artist/?query=artist:%22H%C3%A4llas%22&fmt=json&limit=10
-qconciertos_madrid https://qconciertos.es/conciertos-en-madrid-provincia/
-sbm_agenda https://www.sociedaddebluesdemadrid.com/agenda/
-diariorockero_conc https://www.diariodeunrockero.es/category/conciertos/
-# r3b
+# Ronda 4
+metalsymphony_art https://www.metalsymphony.com/conciertos-de-rock-y-metal-en-espana-otono-2026/
+rfe_madrid_oct https://rockforeveryone.es/agenda-de-conciertos-heavy-en-madrid-en-octubre-de-2026/
+rfe_bcn_oct https://rockforeveryone.es/agenda-de-conciertos-heavy-en-barcelona-en-octubre-de-2026/
+rfe_search https://rockforeveryone.es/?s=agenda+de+conciertos+heavy+en+madrid
+rockprog_agenda https://www.rock-progresivo.com/agenda-de-conciertos-de-rock-progresivo/
+rockprog_art https://www.rock-progresivo.com/the-pineapple-thief-gira-2027-conciertos-espana-madrid-barcelona-bilbao/2026/09/
+force_noticias https://forcemagazine.es/noticias-force/
+diariorockero_agenda https://www.diariodeunrockero.es/category/agenda/
+galileo_es https://salagalileo.es/
+mutick_e1 https://mutick.com/e/entradas-the-screamin-cheetah-wheelies-madrid-2026
+mutick_o https://mutick.com/o/the-flying-pig
+tempo_eventos https://tempoclub.es/eventos/
+cc_madrid_p2 https://conciertos.club/madrid/2
