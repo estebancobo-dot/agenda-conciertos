@@ -537,13 +537,15 @@ def ficha(ent: dict | None) -> dict | None:
         nom = quote(wd["imagen_commons"].replace(" ", "_"))
         imagen = {"url": f"https://commons.wikimedia.org/wiki/Special:FilePath/{nom}?width=640",
                   "credito": "Wikimedia Commons", "enlace": f"https://commons.wikimedia.org/wiki/File:{nom}"}
-    identidad = dc.get("identificado_por") if dc.get("encontrado") else None
+    # las fichas de Discogs de la 2.1.0 no guardaban cómo se identificó: entonces la única regla era esta
+    dc_via = dc.get("identificado_por") or "única coincidencia exacta del nombre en Discogs"
+    identidad = dc_via if dc.get("encontrado") else None
     if identidad is None and lf_usado:
         identidad = f"Last.fm por {lf.get('identificado_por')}"
     if wp.get("encontrado"):
         identidad = "página de Wikipedia del grupo" + (" y Wikidata" if wd.get("encontrado") else "")
         if dc.get("encontrado"):
-            identidad += f"; Discogs por {dc.get('identificado_por', 'coincidencia exacta')}"
+            identidad += f"; Discogs por {dc_via}"
     return {"identidad": identidad,"generos": generos, "estilos": estilos, "fuente_estilo": fuente_estilo,
             "generos_wikipedia": wp.get("generos") or [], "pais": pais, "fuente_pais": fuente_pais,
             "imagen": imagen, "enlaces": enlaces, "perfil": dc.get("perfil") if dc.get("encontrado") else None,
