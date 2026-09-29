@@ -331,7 +331,7 @@ function viewConcierto(){
     ? `<div class="v">${esc((estilos.length?estilos:generos).join(", "))}</div><div class="s">${estilos.length&&generos.length?`Género: ${esc(generos.join(", "))} · `:""}según ${esc(f.fuente_estilo||"Discogs")}</div>`
     : `<div class="v muted">Sin ficha en Discogs ni en Wikipedia</div>${(r.estilo_fuente||[]).length?`<div class="s">La agenda lo etiqueta como: ${esc(r.estilo_fuente.map(e=>e.estilo).join(" · "))}</div>`:""}`;
   const q=encodeURIComponent(r.artista);
-  const enlaces=[...((f&&f.enlaces)||[]), {nombre:"Buscar en AllMusic", url:`https://www.allmusic.com/search/artists/${q}`}];
+  const enlaces=[...((f&&f.enlaces)||[]), ...(f&&f.tiene_allmusic?[]:[{nombre:"Buscar en AllMusic", url:`https://www.allmusic.com/search/artists/${q}`}])];
   const avisos=(r.notas||[]).filter(n=>!/Corrección manual|Conflicto de|fiabilidad baja|Resuelto por prioridad/.test(n));
   const resueltos=(r.notas||[]).filter(n=>/Resuelto por prioridad/.test(n));
   return `<a class="back" href="#dia/${esc(r.fecha)}">‹ ${esc(fmt(r.fecha,{weekday:"long",day:"numeric",month:"long"}))}</a>
@@ -411,7 +411,7 @@ function viewInforme(){
   const c=INFORME.correcciones||{};
   return `<p>Última actualización: <b>${esc(new Date(INFORME.generado).toLocaleString("es-ES",{dateStyle:"full",timeStyle:"short"}))}</b> · ventana ${esc(INFORME.hoy)} → ${esc(INFORME.horizonte)} · versión ${esc(INFORME.version)}</p>
    <div class="kpis">${k(t.conciertos,"conciertos próximos")}${k(t.en_foco,"en foco")}${k(t.contrastados,"contrastados (2+ webs)")}${k(t.una_fuente,"de 1 web")}${k(t.conflictos,"con conflicto")}${k(t.posiblemente_cancelados,"posiblemente cancelados")}${k(t.nuevos_hoy,"nuevos hoy")}${k(`${t.fuentes_ok}/${t.fuentes_total}`,"fuentes que funcionaron")}</div>
-   ${a.consultados!==undefined?`<h3>Fichas de artista</h3><div class="kpis">${k(a.discogs,"con ficha en Discogs")}${k(a.wikipedia,"con ficha en Wikipedia")}${k(a.sin_ficha,"sin ficha")}${k(a.pendientes,"pendientes (próximas ejecuciones)")}</div>`:""}
+   ${a.consultados!==undefined?`<h3>Fichas de artista</h3><div class="kpis">${k(a.discogs,"con ficha en Discogs")}${k(a.wikipedia,"con ficha en Wikipedia")}${a.wikidata!==undefined?k(a.wikidata,"con Wikidata"):""}${k(a.sin_ficha,"sin ficha")}${k(a.pendientes,"pendientes (próximas ejecuciones)")}</div>`:""}
    <div class="scroll"><table><thead><tr><th>Fuente</th><th>Funcionó</th><th>Conciertos</th><th>Nuevos</th><th>Solo aquí</th><th>Páginas</th><th>robots.txt bloquea</th><th>Errores / avisos</th></tr></thead><tbody>${rows}</tbody></table></div>
    <h3>Correcciones manuales</h3><ul>${(c.aplicadas||[]).map(x=>`<li>${esc(x.correccion)}: aplicada a ${x.registros}</li>`).join("")}${(c.sin_coincidencia||[]).map(x=>`<li class="muted">${esc(x.correccion)}: sin concierto que coincida (${esc(x.nota)})</li>`).join("")}</ul>
    <h3>Fuera de ámbito (otras provincias)</h3><p class="muted">${esc(t.fuera_de_ambito)} eventos descartados. Ejemplos:</p><ul class="muted">${(t.ejemplos_fuera_de_ambito||[]).slice(0,10).map(x=>`<li>${esc(x)}</li>`).join("")}</ul>`;

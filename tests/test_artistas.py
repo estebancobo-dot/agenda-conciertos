@@ -79,3 +79,22 @@ def test_no_se_consultan_titulos_de_evento():
     for n in ["Concierto de Blues", "Tributo a Queen. Candlelight", "Jam Session", "Festival Grunge XXL"]:
         assert not A.nombre_consultable(n)
     assert A.nombre_consultable("Los Vinagres")
+
+
+def test_wikidata_ids_y_pais():
+    assert A.wikipedia_parse(w("wp_es_vinagres"), "u")["wikidata"] == "Q136447247"
+    v = A.wikidata_parse(j("wd_vinagres"))
+    assert v["pais"] == "ES" and v["ids"]["discogs"] == "4629354" and "spotify" in v["ids"]
+    dp = A.wikidata_parse(j("wd_dp"))
+    assert dp["pais"] == "GB" and dp["ids"]["discogs"] == "170355" and dp["ids"]["allmusic"] == "mn0000192382"
+    ha = A.wikidata_parse(j("wd_hallas"))
+    assert "discogs" not in ha["ids"] and "musicbrainz" in ha["ids"]
+
+
+def test_ficha_con_wikidata():
+    wp = A.wikipedia_parse(w("wp_es_dp"), "https://es.wikipedia.org/wiki/Deep_Purple")
+    f = A.ficha({"wikipedia": wp, "wikidata": A.wikidata_parse(j("wd_dp")), "discogs": {"encontrado": False}})
+    assert f["pais"] == "GB" and f["fuente_pais"] == "Wikidata" and f["tiene_allmusic"]
+    nombres = [e["nombre"] for e in f["enlaces"]]
+    assert "AllMusic" in nombres and "MusicBrainz" in nombres
+    assert "Wikidata" in f["identidad"]

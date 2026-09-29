@@ -1,5 +1,18 @@
 # Versiones
 
+## 2.2.0 — 2026-09-29
+
+- **Wikidata**: se lee su página `Special:EntityData`, que es la única vía que permite su robots.txt. A partir de la página de Wikipedia del artista se obtienen:
+  - sus identificadores exactos en Discogs, AllMusic, Spotify, MusicBrainz y Last.fm;
+  - el país de origen;
+  - la foto de Commons.
+- Con el identificador de Discogs que da Wikidata, la ficha de Discogs ya no depende del nombre y se resuelven homónimos como "Europe". Si Wikidata no lo da, se sigue exigiendo una única coincidencia exacta.
+- Origen: Wikidata pasa por delante de Wikipedia y Discogs (país de origen o nacionalidad, solo si Wikidata da uno solo).
+- La ficha del concierto enlaza directamente a AllMusic, Spotify, MusicBrainz y Last.fm cuando Wikidata los da, y explica cómo se identificó al artista.
+- Claves gratuitas opcionales, guardadas como *secrets* de GitHub:
+  - `DISCOGS_TOKEN`: 60 peticiones/min en vez de 25, así que las fichas se completan en menos días.
+  - `LASTFM_KEY` y `TICKETMASTER_KEY`: quedan preparadas para próximas versiones.
+
 ## 2.1.1 — 2026-09-29
 
 - **robots.txt**: nuevo intérprete conforme a RFC 9309 con comodines `*` y `$`. El módulo estándar de Python no los entiende y, por ejemplo, habría permitido la API de Deezer, cuyo robots.txt dice `Disallow: /*`. Comprobado con los robots.txt reales: todas las URL que ya se usaban siguen permitidas.

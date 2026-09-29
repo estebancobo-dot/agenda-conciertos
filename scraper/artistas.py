@@ -107,13 +107,7 @@ def discogs_estilos(masters: list[dict]) -> tuple[list[str], list[str]]:
     return generos, estilos
 
 
-def buscar_discogs(f: Fetcher, nombre: str) -> dict:
-    q = quote(nombre)
-    res = json.loads(f.get(f"{DISCOGS}/database/search?q={q}&type=artist&per_page=50"))
-    cand, n = discogs_identificar(res.get("results", []), nombre)
-    if not cand:
-        return {"encontrado": False, "motivo": "sin coincidencia exacta" if n == 0 else f"{n} artistas homónimos"}
-    art = json.loads(f.get(cand["resource_url"]))
+def discogs_ficha(f: Fetcher, art: dict, nombre: str, via: str) -> dict:
     masters = json.loads(f.get(f"{DISCOGS}/database/search?artist={quote(_sin_sufijo(art.get('name')))}"
                                f"&type=master&per_page=25")).get("results", [])
     # solo discos de este artista exacto (la búsqueda por 'artist' también devuelve colaboraciones)
@@ -123,8 +117,70 @@ def buscar_discogs(f: Fetcher, nombre: str) -> dict:
         next((i.get("uri") for i in art.get("images", [])), None)
     return {"encontrado": True, "id": art.get("id"), "nombre": art.get("name"), "url": art.get("uri"),
             "generos": generos, "estilos": estilos, "discos_analizados": len(masters),
-            "pais": discogs_pais(art.get("profile")), "imagen": img,
+            "pais": discogs_pais(art.get("profile")), "imagen": img, "identificado_por": via,
             "perfil": clean((art.get("profile") or "").split("\n")[0])[:240]}
+
+
+def buscar_discogs(f: Fetcher, nombre: str, discogs_id: str | None = None) -> dict:
+    """Con el identificador de Wikidata no hay ambigüedad; sin él, única coincidencia exacta del nombre."""
+    if discogs_id:
+        art = json.loads(f.get(f"{DISCOGS}/artists/{discogs_id}"))
+        return discogs_ficha(f, art, nombre, "identificador de Discogs en Wikidata")
+    q = quote(nombre)
+    res = json.loads(f.get(f"{DISCOGS}/database/search?q={q}&type=artist&per_page=50"))
+    cand, n = discogs_identificar(res.get("results", []), nombre)
+    if not cand:
+        return {"encontrado": False, "motivo": "sin coincidencia exacta" if n == 0 else f"{n} artistas homónimos"}
+    art = json.loads(f.get(cand["resource_url"]))
+    return discogs_ficha(f, art, nombre, "única coincidencia exacta del nombre en Discogs")
+
+
+def fetcher_discogs() -> Fetcher:
+    """Con DISCOGS_TOKEN (gratuito, opcional) Discogs admite 60 peticiones/min; sin él, 25."""
+    import os
+    token = os.environ.get("DISCOGS_TOKEN", "").strip()
+    f = Fetcher(min_interval=1.1 if token else 2.6)
+    if token:
+        f.session.headers["Authorization"] = f"Discogs token={token}"
+    return f
+
+
+# ------------------------------------------------------------------ Wikidata (Special:EntityData, permitido por robots.txt)
+WIKIDATA = "https://www.wikidata.org/wiki/Special:EntityData/{q}.json"
+Q_PAIS = {"Q29": "ES", "Q145": "GB", "Q21": "GB", "Q22": "GB", "Q25": "GB", "Q26": "GB", "Q30": "US", "Q34": "SE",
+          "Q183": "DE", "Q142": "FR", "Q38": "IT", "Q55": "NL", "Q29999": "NL", "Q31": "BE", "Q39": "CH", "Q40": "AT",
+          "Q45": "PT", "Q20": "NO", "Q33": "FI", "Q35": "DK", "Q27": "IE", "Q16": "CA", "Q408": "AU", "Q17": "JP",
+          "Q414": "AR", "Q96": "MX", "Q298": "CL", "Q739": "CO", "Q155": "BR", "Q36": "PL", "Q41": "GR", "Q159": "RU",
+          "Q212": "UA", "Q189": "IS", "Q213": "CZ", "Q28": "HU", "Q664": "NZ", "Q801": "IL", "Q43": "TR", "Q258": "ZA",
+          "Q884": "KR", "Q77": "UY", "Q241": "CU", "Q419": "PE", "Q717": "VE", "Q218": "RO", "Q219": "BG", "Q224": "HR",
+          "Q403": "RS", "Q215": "SI", "Q191": "EE", "Q211": "LV", "Q37": "LT", "Q32": "LU", "Q233": "MT", "Q1183": "PR"}
+WD_IDS = {"P1953": "discogs", "P1728": "allmusic", "P1902": "spotify", "P434": "musicbrainz", "P3192": "lastfm"}
+
+
+def wikidata_parse(data: dict) -> dict:
+    ent = next(iter(data.get("entities", {}).values()), {})
+    claims = ent.get("claims", {})
+
+    def valores(p):
+        out = []
+        for c in claims.get(p, []):
+            v = c.get("mainsnak", {}).get("datavalue", {}).get("value")
+            if isinstance(v, dict) and "id" in v:
+                v = v["id"]
+            if v and c.get("rank") != "deprecated":
+                out.append(v)
+        return out
+
+    ids = {n: valores(p)[0] for p, n in WD_IDS.items() if valores(p)}
+    paises = [Q_PAIS[q] for q in valores("P495") + valores("P27") if q in Q_PAIS]
+    img = valores("P18")
+    return {"encontrado": True, "id": ent.get("id"), "ids": ids,
+            "pais": paises[0] if paises and len(set(paises)) == 1 else None,
+            "imagen_commons": img[0] if img else None}
+
+
+def buscar_wikidata(f: Fetcher, qid: str) -> dict:
+    return wikidata_parse(json.loads(f.get(WIKIDATA.format(q=qid))))
 
 
 # ------------------------------------------------------------------ Wikipedia
@@ -170,7 +226,9 @@ def wikipedia_parse(html: str, url: str) -> dict:
         imagen_pagina = ("https://" + url.split("/")[2] + a["href"]) if a and a.get("href", "").startswith("/") \
             else (a.get("href") if a else None)
     canon = s.find("link", rel="canonical")
+    mq = re.search(r'"wgWikibaseItemId":"(Q\d+)"', html)
     return {"encontrado": True, "url": canon["href"] if canon else url, "generos": datos.get("generos", [])[:6],
+            "wikidata": mq.group(1) if mq else None,
             "origen": datos.get("origen") or datos.get("nacimiento"), "pais": pais, "imagen": imagen,
             "imagen_pagina": imagen_pagina}
 
@@ -213,10 +271,10 @@ def nombre_consultable(nombre: str) -> bool:
 def enriquecer(recs: list[dict], cache: dict, hoy: date, presupuesto_seg: float = 1200,
                fetcher_dc: Fetcher | None = None, fetcher_wp: Fetcher | None = None) -> dict:
     """Completa cache[norm(artista)] para los artistas principales, priorizando los conciertos en foco y próximos."""
-    fetcher_dc = fetcher_dc or Fetcher(min_interval=2.6)   # 25 peticiones/min sin clave
+    fetcher_dc = fetcher_dc or fetcher_discogs()
     fetcher_wp = fetcher_wp or Fetcher()
-    stats = {"consultados": 0, "desde_cache": 0, "discogs": 0, "wikipedia": 0, "sin_ficha": 0, "pendientes": 0,
-             "errores": []}
+    stats = {"consultados": 0, "desde_cache": 0, "discogs": 0, "wikipedia": 0, "wikidata": 0, "sin_ficha": 0,
+             "pendientes": 0, "errores": [], "discogs_con_token": "Authorization" in fetcher_dc.session.headers}
     inicio = time.monotonic()
     vistos, pendientes = set(), []
     for r in sorted(recs, key=lambda r: (not r["en_foco"], r["fecha"])):
@@ -228,7 +286,9 @@ def enriquecer(recs: list[dict], cache: dict, hoy: date, presupuesto_seg: float 
         ent = cache.get(k)
         cad = CADUCIDAD_OK if ent and (ent.get("discogs", {}).get("encontrado") or
                                        ent.get("wikipedia", {}).get("encontrado")) else CADUCIDAD_NO
-        if ent and ent.get("fecha", "") >= (hoy - timedelta(days=cad)).isoformat():
+        # fichas de Wikipedia anteriores a la integración de Wikidata: se completan
+        falta_wd = ent and ent.get("wikipedia", {}).get("wikidata") and "wikidata" not in ent
+        if ent and not falta_wd and ent.get("fecha", "") >= (hoy - timedelta(days=cad)).isoformat():
             stats["desde_cache"] += 1
             continue
         pendientes.append((k, nombre))
@@ -238,13 +298,21 @@ def enriquecer(recs: list[dict], cache: dict, hoy: date, presupuesto_seg: float 
         if time.monotonic() - inicio > presupuesto_seg:
             return k, None
         ent = {"nombre": nombre, "fecha": hoy.isoformat()}
-        for clave, fn, fx in (("wikipedia", buscar_wikipedia, fetcher_wp), ("discogs", buscar_discogs, fetcher_dc)):
+
+        def paso(clave, fn, *args):
             try:
-                ent[clave] = fn(fx, nombre)
+                ent[clave] = fn(*args)
             except Exception as e:  # noqa: BLE001
                 ent[clave] = {"encontrado": False, "motivo": f"error: {type(e).__name__}"}
                 if len(stats["errores"]) < 20:
                     stats["errores"].append(f"{nombre} ({clave}): {type(e).__name__}: {str(e)[:80]}")
+
+        paso("wikipedia", buscar_wikipedia, fetcher_wp, nombre)
+        qid = ent["wikipedia"].get("wikidata") if ent["wikipedia"].get("encontrado") else None
+        if qid:
+            paso("wikidata", buscar_wikidata, fetcher_wp, qid)
+        dc_id = (ent.get("wikidata") or {}).get("ids", {}).get("discogs")
+        paso("discogs", buscar_discogs, fetcher_dc, nombre, dc_id)
         return k, ent
 
     from concurrent.futures import ThreadPoolExecutor
@@ -261,6 +329,8 @@ def enriquecer(recs: list[dict], cache: dict, hoy: date, presupuesto_seg: float 
             stats["discogs"] += 1
         if ent.get("wikipedia", {}).get("encontrado"):
             stats["wikipedia"] += 1
+        if ent.get("wikidata", {}).get("encontrado"):
+            stats["wikidata"] += 1
         if ent and not ent.get("discogs", {}).get("encontrado") and not ent.get("wikipedia", {}).get("encontrado"):
             stats["sin_ficha"] += 1
     return stats
@@ -278,7 +348,7 @@ def ficha(ent: dict | None) -> dict | None:
     """Resumen de la ficha musical para la web y para los filtros."""
     if not ent:
         return None
-    dc, wp = ent.get("discogs") or {}, ent.get("wikipedia") or {}
+    dc, wp, wd = ent.get("discogs") or {}, ent.get("wikipedia") or {}, ent.get("wikidata") or {}
     if not dc.get("encontrado") and not wp.get("encontrado"):
         return None
     from .clasificar import genero_de_estilo
@@ -300,7 +370,9 @@ def ficha(ent: dict | None) -> dict | None:
         if g and g not in generos:
             generos.append(g)
     pais, fuente_pais = None, None
-    if wp.get("encontrado") and wp.get("pais"):
+    if wd.get("encontrado") and wd.get("pais"):
+        pais, fuente_pais = wd["pais"], "Wikidata"
+    elif wp.get("encontrado") and wp.get("pais"):
         pais, fuente_pais = wp["pais"], "Wikipedia"
     elif dc.get("encontrado") and dc.get("pais"):
         pais, fuente_pais = dc["pais"], "Discogs"
@@ -316,6 +388,25 @@ def ficha(ent: dict | None) -> dict | None:
         enlaces.append({"nombre": "Discogs", "url": u})
     if wp.get("encontrado"):
         enlaces.append({"nombre": f"Wikipedia ({wp.get('idioma', 'es')})", "url": wp["url"]})
-    return {"generos": generos, "estilos": estilos, "fuente_estilo": fuente_estilo,
+    ids = wd.get("ids", {}) if wd.get("encontrado") else {}
+    if ids.get("allmusic"):
+        enlaces.append({"nombre": "AllMusic", "url": f"https://www.allmusic.com/artist/{ids['allmusic']}"})
+    if ids.get("spotify"):
+        enlaces.append({"nombre": "Spotify", "url": f"https://open.spotify.com/artist/{ids['spotify']}"})
+    if ids.get("musicbrainz"):
+        enlaces.append({"nombre": "MusicBrainz", "url": f"https://musicbrainz.org/artist/{ids['musicbrainz']}"})
+    if ids.get("lastfm"):
+        enlaces.append({"nombre": "Last.fm", "url": f"https://www.last.fm/music/{ids['lastfm']}"})
+    if imagen is None and wd.get("imagen_commons"):
+        nom = quote(wd["imagen_commons"].replace(" ", "_"))
+        imagen = {"url": f"https://commons.wikimedia.org/wiki/Special:FilePath/{nom}?width=640",
+                  "credito": "Wikimedia Commons", "enlace": f"https://commons.wikimedia.org/wiki/File:{nom}"}
+    identidad = dc.get("identificado_por") if dc.get("encontrado") else None
+    if wp.get("encontrado"):
+        identidad = "página de Wikipedia del grupo" + (" y Wikidata" if wd.get("encontrado") else "")
+        if dc.get("encontrado"):
+            identidad += f"; Discogs por {dc.get('identificado_por', 'coincidencia exacta')}"
+    return {"identidad": identidad,"generos": generos, "estilos": estilos, "fuente_estilo": fuente_estilo,
             "generos_wikipedia": wp.get("generos") or [], "pais": pais, "fuente_pais": fuente_pais,
-            "imagen": imagen, "enlaces": enlaces, "perfil": dc.get("perfil") if dc.get("encontrado") else None}
+            "imagen": imagen, "enlaces": enlaces, "perfil": dc.get("perfil") if dc.get("encontrado") else None,
+            "tiene_allmusic": bool(ids.get("allmusic"))}

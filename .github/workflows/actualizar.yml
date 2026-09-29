@@ -35,6 +35,10 @@ jobs:
       - name: Rastrear fuentes
         env:
           TZ: Europe/Madrid
+          # Claves gratuitas opcionales (Settings → Secrets and variables → Actions). Sin ellas funciona igual.
+          DISCOGS_TOKEN: ${{ secrets.DISCOGS_TOKEN }}
+          LASTFM_KEY: ${{ secrets.LASTFM_KEY }}
+          TICKETMASTER_KEY: ${{ secrets.TICKETMASTER_KEY }}
         run: |
           if [ -n "${{ github.event.inputs.solo }}" ]; then
             python -m scraper --solo "${{ github.event.inputs.solo }}"

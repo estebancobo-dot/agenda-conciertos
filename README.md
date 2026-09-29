@@ -10,8 +10,8 @@ Agenda automática y gratuita de los conciertos de los próximos 120 días en Ma
 2. Respeta el `robots.txt` de cada web, hace como mucho 1 petición cada 2 segundos por web y se identifica con un User-Agent propio. Si una web lo prohíbe, no se lee y el informe lo dice.
 3. Junta todo sin duplicados: el mismo concierto (misma fecha, misma sala, mismo artista) aparece una sola vez con todas sus fuentes.
 4. **No inventa nada.** Cada dato tiene su fuente con enlace:
-   - **Estilo**: lo da una web de música, no la agenda ni la sala: **Discogs** (estilos de sus discos) o, si no, **Wikipedia** (traducido a los estilos de Discogs). Solo si el artista se identifica sin ambigüedad. Si no tiene ficha, se muestra la etiqueta de la agenda marcada como tal; si tampoco hay: "sin clasificar". AllMusic no permite el acceso automático: solo se enlaza.
-   - **Nacionalidad**: la de la fuente del concierto; si no, la de Wikipedia o Discogs; como último recurso MusicBrainz (única coincidencia exacta, marcada como "coincidencia por nombre"). Si no, "sin confirmar".
+   - **Estilo**: lo da una web de música, no la agenda ni la sala: **Discogs** (estilos de sus discos) o, si no, **Wikipedia** (traducido a los estilos de Discogs). Solo si el artista se identifica sin ambigüedad. Si no tiene ficha, se muestra la etiqueta de la agenda marcada como tal; si tampoco hay: "sin clasificar". Wikidata aporta los identificadores exactos del artista en Discogs, AllMusic, Spotify, MusicBrainz y Last.fm, lo que evita confundir homónimos. AllMusic no permite el acceso automático: solo se enlaza.
+   - **Nacionalidad**: la de la fuente del concierto; si no, la de Wikidata, Wikipedia o Discogs; como último recurso MusicBrainz (única coincidencia exacta, marcada como "coincidencia por nombre"). Si no, "sin confirmar".
    - **Foto**: de Wikimedia Commons (vía Wikipedia) o Discogs, con su crédito; si no hay, la imagen del anuncio del concierto.
    - **Conflictos**: si dos webs no coinciden en hora, sala o cartel, se guardan ambas versiones y se marca "conflicto" con la explicación. Si la fuente de más prioridad confirma uno de los datos (1 web oficial de la sala · 2 promotora o ticketera · 3 agregador · 4 blog o foro), se da por resuelto y se anota.
 5. Estados de cada concierto: **contrastado** (2 o más webs distintas), **1 fuente**, **conflicto** y **posiblemente cancelado** (ha dejado de aparecer en todas sus fuentes; no se borra hasta que pasa su fecha).
@@ -65,6 +65,36 @@ Sirve para que "Lab Wagon", "Sala Lab" y "Wagon" cuenten como la misma sala.
 3. Regístrala en `scraper/registry.py` con su tipo y prioridad (1 sala oficial, 2 promotora/ticketera, 3 agregador, 4 blog/foro).
 4. Añade un test en `tests/test_parsers.py` con el HTML guardado en `tests/fixtures/`.
 5. Actualiza `CHANGELOG.md` con una nueva versión.
+
+## Claves gratuitas (opcionales)
+
+Todo funciona sin claves. Con ellas, algunas webs dejan hacer más consultas o dan más datos. Cada clave se guarda en GitHub como *secret*, así que nunca aparece en el código ni en la web.
+
+**Cómo guardar una clave en GitHub (desde el móvil):**
+1. Abre el repositorio en el navegador en "vista de escritorio".
+2. Ve a **Settings** → **Secrets and variables** → **Actions** → **New repository secret**.
+3. En *Name* escribe el nombre exacto (por ejemplo `DISCOGS_TOKEN`) y en *Secret* pega la clave. Pulsa **Add secret**.
+4. Se usará en la siguiente actualización.
+
+**1. `DISCOGS_TOKEN` (recomendada, 2 minutos).** Con ella Discogs admite 60 consultas/min en vez de 25, así que las fichas de todos los artistas se completan en menos días.
+1. Crea una cuenta gratuita en https://www.discogs.com, o entra con la tuya.
+2. Ve a https://www.discogs.com/settings/developers.
+3. Pulsa **Generate new token** y copia el texto que aparece.
+4. Guárdalo en GitHub con el nombre `DISCOGS_TOKEN`.
+
+**2. `LASTFM_KEY` (preparada para una próxima versión).** Last.fm da etiquetas de estilo votadas por los oyentes y una lista de artistas similares. Es útil sobre todo para grupos pequeños que no están en Discogs ni en Wikipedia.
+1. Crea una cuenta gratuita en https://www.last.fm/join.
+2. Ve a https://www.last.fm/api/account/create y rellena el formulario:
+   - *Application name*: "Agenda conciertos Madrid".
+   - Descripción: puede ser la misma.
+   - *Callback URL*: déjalo vacío.
+3. Copia la **API key**. No hace falta el *Shared secret*.
+4. Guárdala en GitHub con el nombre `LASTFM_KEY`.
+
+**3. `TICKETMASTER_KEY` (baja prioridad).** Solo en torno al 4 % de los conciertos que publican las agendas enlazan a Ticketmaster. Casi todos son en salas grandes (La Riviera, Movistar Arena, But, Wagon), que ya se leen desde sus webs oficiales. Serviría para confirmar horas y precios en esas salas.
+1. Crea una cuenta en https://developer-acct.ticketmaster.com/user/register.
+2. En **My Apps** abre la app que se crea automáticamente y copia la **Consumer Key**.
+3. Guárdala en GitHub con el nombre `TICKETMASTER_KEY`.
 
 ## Fuentes
 
