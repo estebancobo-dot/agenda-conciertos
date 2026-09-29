@@ -1,195 +1,65 @@
 {
- "dc_rl": {
-  "bytes": 297,
-  "cabeceras": {
-   "status": 200,
-   "x-content-type-options": "nosniff",
-   "x-discogs-media-type": "discogs.v2",
-   "x-discogs-ratelimit": "25",
-   "x-discogs-ratelimit-remaining": "24",
-   "x-discogs-ratelimit-used": "1",
-   "x-frame-options": "SAMEORIGIN",
-   "x-xss-protection": "1; mode=block"
-  },
-  "ok": true,
-  "robots": "ok",
-  "url": "https://api.discogs.com/database/search?q=Toldos+Verdes&type=artist"
- },
- "dz_berbiki": {
-  "bytes": 19371,
-  "cabeceras": {
-   "status": 200,
-   "x-content-type-options": "nosniff",
-   "x-host": "dzr-web-188",
-   "x-org": "FR"
-  },
-  "ok": true,
-  "robots": "ok",
-  "url": "https://api.deezer.com/search/artist?q=Berbik%C3%AD"
- },
- "dz_hallas": {
-  "bytes": 18478,
-  "cabeceras": {
-   "status": 200,
-   "x-content-type-options": "nosniff",
-   "x-host": "dzr-web-144",
-   "x-org": "FR"
-  },
-  "ok": true,
-  "robots": "ok",
-  "url": "https://api.deezer.com/search/artist?q=H%C3%A4llas"
- },
- "dz_toldos": {
-  "bytes": 1470,
-  "cabeceras": {
-   "status": 200,
-   "x-content-type-options": "nosniff",
-   "x-host": "dzr-web-172",
-   "x-org": "FR"
-  },
-  "ok": true,
-  "robots": "ok",
-  "url": "https://api.deezer.com/search/artist?q=Toldos%20Verdes"
- },
- "dz_vinagres": {
-  "bytes": 3026,
-  "cabeceras": {
-   "status": 200,
-   "x-content-type-options": "nosniff",
-   "x-host": "blm-web-48",
-   "x-org": "FR"
-  },
-  "ok": true,
-  "robots": "ok",
-  "url": "https://api.deezer.com/search/artist?q=Los%20Vinagres"
- },
- "lf_tags": {
-  "cabeceras": {
-   "status": 400
-  },
-  "error": "HTTPError: 400 Client Error: Bad Request for url: https://ws.audioscrobbler.com/2.0/?method=artist.gettoptags&artist=Toldos%20Verdes&format=json",
-  "ok": false,
-  "robots": "sin_robots (404)",
-  "url": "https://ws.audioscrobbler.com/2.0/?method=artist.gettoptags&artist=Toldos%20Verdes&format=json"
- },
- "rb_deezer": {
-  "bytes": 69,
-  "cabeceras": {
-   "status": 200,
-   "x-content-type-options": "nosniff",
-   "x-host": "blm-web-45",
-   "x-org": "FR"
-  },
-  "ok": true,
-  "robots": "",
-  "url": "https://api.deezer.com/robots.txt"
- },
- "rb_itunes": {
-  "bytes": 447,
-  "cabeceras": {
-   "X-Apple-Jingle-Correlation-Key": "H773G7JS3VWMV5JY6LBRUEDQ2A",
-   "X-Apple-Partner": "origin.0",
-   "X-Cache": "TCP_REFRESH_HIT from a23-216-148-140.deploy.akamaitechnologies.com (AkamaiGHost/22.6.3-da071da6976b6d633b0b37bcfe65c0fc) (S)",
-   "X-Cache-Remote": "TCP_IMS_HIT from a23-216-148-150.deploy.akamaitechnologies.com (AkamaiGHost/22.6.3-da071da6976b6d633b0b37bcfe65c0fc) (A)",
-   "X-Content-Type-Options": "nosniff",
-   "X-Frame-Options": "SAMEORIGIN",
-   "X-Server": "(null)",
-   "X-True-Cache-Key": "/L/itunes.apple.com/robots.txt vcd=2897",
-   "X-XSS-Protection": "1; mode=block",
-   "status": 200,
-   "x-daiquiri-debug-worker-pid": "3703",
-   "x-daiquiri-instance": "daiquiri:42282004:st53p00it-qujn12050502:7987:26RELEASE153:daiquiri-amp-store-l7shared-ext-001-st"
-  },
-  "ok": true,
-  "robots": "",
-  "url": "https://itunes.apple.com/robots.txt"
- },
- "rb_lastfm": {
-  "cabeceras": {
-   "status": 404
-  },
-  "error": "HTTPError: 404 Client Error: Not Found for url: https://ws.audioscrobbler.com/robots.txt",
-  "ok": false,
-  "robots": "",
-  "url": "https://ws.audioscrobbler.com/robots.txt"
- },
- "rb_ticketmaster": {
-  "cabeceras": {
-   "X-Cache": "MISS, MISS",
-   "X-Cache-Hits": "0, 0",
-   "X-Content-Type-Options": "nosniff",
-   "X-Frame-Options": "DENY",
-   "X-Served-By": "cache-hhr-khhr2060032-HHR, cache-hhr-khhr2060032-HHR",
-   "X-XSS-Protection": "1",
-   "status": 404
-  },
-  "error": "HTTPError: 404 Client Error: Not Found for url: https://app.ticketmaster.com/robots.txt",
-  "ok": false,
-  "robots": "",
-  "url": "https://app.ticketmaster.com/robots.txt"
- },
- "rb_wdqs": {
-  "bytes": 95,
+ "wd_q_dp": {
+  "bytes": 125957,
   "cabeceras": {
    "status": 200,
    "x-analytics": "",
-   "x-cache": "cp4039 hit, cp4039 miss",
-   "x-cache-status": "hit-local",
-   "x-client-ip": "4.242.193.228",
-   "x-request-id": "83cbb4f7-3fc4-48a4-8555-b0a87c5b2695"
+   "x-cache": "cp4037 miss, cp4037 pass",
+   "x-cache-status": "pass",
+   "x-client-ip": "128.24.163.105",
+   "x-content-type-options": "nosniff",
+   "x-frame-options": "DENY",
+   "x-request-id": "b6e31965-9e73-4a43-8e28-983dfc6a99c4"
   },
   "ok": true,
-  "robots": "",
-  "url": "https://query.wikidata.org/robots.txt"
+  "robots": "ok",
+  "url": "https://www.wikidata.org/wiki/Special:EntityData/Q101505.json"
  },
- "rb_wikidata": {
-  "bytes": 15649,
+ "wd_q_hallas": {
+  "bytes": 4750,
   "cabeceras": {
    "status": 200,
    "x-analytics": "",
-   "x-article-id": "16264857",
-   "x-cache": "cp4039 hit, cp4039 miss",
-   "x-cache-status": "hit-local",
-   "x-client-ip": "4.242.193.228",
+   "x-cache": "cp4037 miss, cp4037 pass",
+   "x-cache-status": "pass",
+   "x-client-ip": "128.24.163.105",
    "x-content-type-options": "nosniff",
-   "x-request-id": "9fe59f9d-e89d-4d3a-ba26-7e27328eb2f4",
-   "x-wiki-id": "wikidatawiki"
+   "x-frame-options": "DENY",
+   "x-request-id": "904380ae-ddd1-4920-8ef5-fa6dbe6c5e55"
   },
   "ok": true,
-  "robots": "",
-  "url": "https://www.wikidata.org/robots.txt"
+  "robots": "ok",
+  "url": "https://www.wikidata.org/wiki/Special:EntityData/Q107414207.json"
  },
- "tm_events": {
+ "wd_q_vinagres": {
+  "bytes": 5288,
   "cabeceras": {
-   "X-Cache": "MISS, MISS",
-   "X-Cache-Hits": "0, 0",
-   "X-Served-By": "cache-hhr-khhr2060032-HHR, cache-hhr-khhr2060032-HHR",
-   "status": 401
+   "status": 200,
+   "x-analytics": "",
+   "x-cache": "cp4037 miss, cp4037 pass",
+   "x-cache-status": "pass",
+   "x-client-ip": "128.24.163.105",
+   "x-content-type-options": "nosniff",
+   "x-frame-options": "DENY",
+   "x-request-id": "6cf8b54c-c6da-4913-81b6-99ded13fbce8"
   },
-  "error": "HTTPError: 401 Client Error: Unauthorized for url: https://app.ticketmaster.com/discovery/v2/events.json?city=Madrid&classificationName=music",
-  "ok": false,
-  "robots": "sin_robots (404)",
-  "url": "https://app.ticketmaster.com/discovery/v2/events.json?city=Madrid&classificationName=music"
- },
- "wd_dp": {
-  "cabeceras": {},
-  "ok": false,
+  "ok": true,
   "robots": "ok",
-  "robots_blocked": true,
-  "url": "https://query.wikidata.org/sparql?format=json&query=SELECT%20%3Fitem%20%3FitemLabel%20%3Fdiscogs%20%3Fallmusic%20%3Fspotify%20%3Fmb%20%3FcountryLabel%20%3FgenreLabel%20WHERE%20%7B%20%3Fitem%20rdfs%3Alabel%20%22Deep%20Purple%22%40en.%20OPTIONAL%7B%3Fitem%20wdt%3AP1953%20%3Fdiscogs%7D%20OPTIONAL%7B%3Fitem%20wdt%3AP1728%20%3Fallmusic%7D%20OPTIONAL%7B%3Fitem%20wdt%3AP1902%20%3Fspotify%7D%20OPTIONAL%7B%3Fitem%20wdt%3AP434%20%3Fmb%7D%20OPTIONAL%7B%3Fitem%20wdt%3AP495%20%3Fcountry%7D%20OPTIONAL%7B%3Fitem%20wdt%3AP136%20%3Fgenre%7D%20SERVICE%20wikibase%3Alabel%20%7B%20bd%3AserviceParam%20wikibase%3Alanguage%20%22es%2Cen%22.%20%7D%20%7D"
+  "url": "https://www.wikidata.org/wiki/Special:EntityData/Q136447247.json"
  },
- "wd_europe": {
-  "cabeceras": {},
-  "ok": false,
+ "wp_en_europe": {
+  "bytes": 410719,
+  "cabeceras": {
+   "status": 200,
+   "x-analytics": "",
+   "x-cache": "cp4037 miss, cp4037 hit/4",
+   "x-cache-status": "hit-front",
+   "x-client-ip": "128.24.163.105",
+   "x-content-type-options": "nosniff",
+   "x-request-id": "52657bc5-3dc4-40fd-b718-06ed74b3e859"
+  },
+  "ok": true,
   "robots": "ok",
-  "robots_blocked": true,
-  "url": "https://query.wikidata.org/sparql?format=json&query=SELECT%20%3Fitem%20%3FitemLabel%20%3Fdiscogs%20%3Fallmusic%20%3Fspotify%20%3Fmb%20%3FcountryLabel%20%3FgenreLabel%20WHERE%20%7B%20%3Fitem%20rdfs%3Alabel%20%22Europe%22%40en.%20OPTIONAL%7B%3Fitem%20wdt%3AP1953%20%3Fdiscogs%7D%20OPTIONAL%7B%3Fitem%20wdt%3AP1728%20%3Fallmusic%7D%20OPTIONAL%7B%3Fitem%20wdt%3AP1902%20%3Fspotify%7D%20OPTIONAL%7B%3Fitem%20wdt%3AP434%20%3Fmb%7D%20OPTIONAL%7B%3Fitem%20wdt%3AP495%20%3Fcountry%7D%20OPTIONAL%7B%3Fitem%20wdt%3AP136%20%3Fgenre%7D%20SERVICE%20wikibase%3Alabel%20%7B%20bd%3AserviceParam%20wikibase%3Alanguage%20%22es%2Cen%22.%20%7D%20%7D"
- },
- "wd_vinagres": {
-  "cabeceras": {},
-  "ok": false,
-  "robots": "ok",
-  "robots_blocked": true,
-  "url": "https://query.wikidata.org/sparql?format=json&query=SELECT%20%3Fitem%20%3FitemLabel%20%3Fdiscogs%20%3Fallmusic%20%3Fspotify%20%3Fmb%20%3FcountryLabel%20%3FgenreLabel%20WHERE%20%7B%20%3Fitem%20rdfs%3Alabel%20%22Los%20Vinagres%22%40es.%20OPTIONAL%7B%3Fitem%20wdt%3AP1953%20%3Fdiscogs%7D%20OPTIONAL%7B%3Fitem%20wdt%3AP1728%20%3Fallmusic%7D%20OPTIONAL%7B%3Fitem%20wdt%3AP1902%20%3Fspotify%7D%20OPTIONAL%7B%3Fitem%20wdt%3AP434%20%3Fmb%7D%20OPTIONAL%7B%3Fitem%20wdt%3AP495%20%3Fcountry%7D%20OPTIONAL%7B%3Fitem%20wdt%3AP136%20%3Fgenre%7D%20SERVICE%20wikibase%3Alabel%20%7B%20bd%3AserviceParam%20wikibase%3Alanguage%20%22es%2Cen%22.%20%7D%20%7D"
+  "url": "https://en.wikipedia.org/wiki/Europe_(band)"
  }
 }
