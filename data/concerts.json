@@ -1,5 +1,5 @@
 {
- "generado": "2026-09-29T11:29:44+00:00",
+ "generado": "2026-09-29T12:06:18+00:00",
  "hoy": "2026-09-29",
  "horizonte": "2027-01-27",
  "conciertos": [
@@ -163,8 +163,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "CL",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -253,6 +253,68 @@
    "conflictos": [],
    "notas": [],
    "en_foco": false,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
+   "id": "e79b6696b1a0",
+   "fecha": "2026-09-29",
+   "hora": "20:30",
+   "artista": "En bruto – Open mic",
+   "invitados": [],
+   "sala": "Galileo Galilei",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Pop / Rock",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    },
+    {
+     "estilo": "Artes escénicas",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "pop e indie",
+   "categorias": [
+    "pop e indie",
+    "rock y metal",
+    "fuera de foco"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Galileo Galilei (web oficial)",
+     "id": "galileo",
+     "url": "https://salagalileo.es/programacion/en-bruto-open-mic/",
+     "prioridad": 1
+    },
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/?post_type=evento&p=792359",
+     "prioridad": 3
+    },
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/?post_type=evento&p=792961",
+     "prioridad": 3
+    },
+    {
+     "nombre": "Qconciertos (country y provincia de Madrid)",
+     "id": "qconciertos",
+     "url": "https://qconciertos.es/conciertos-en-madrid-provincia/",
+     "prioridad": 3
+    }
+   ],
+   "estado": "contrastado",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
   },
@@ -888,51 +950,6 @@
    "ultima_vez_visto": "2026-09-29"
   },
   {
-   "id": "e79b6696b1a0",
-   "fecha": "2026-09-29",
-   "hora": null,
-   "artista": "En Bruto",
-   "invitados": [],
-   "sala": "Galileo Galilei",
-   "municipio": "Madrid",
-   "precio": null,
-   "estilo_fuente": [
-    {
-     "estilo": "Pop / Rock",
-     "fuente": "Madrid en Vivo (asociación de salas)"
-    }
-   ],
-   "categoria": "pop e indie",
-   "categorias": [
-    "pop e indie",
-    "rock y metal"
-   ],
-   "genero_discogs": [],
-   "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
-   "fuentes": [
-    {
-     "nombre": "Madrid en Vivo (asociación de salas)",
-     "id": "madridenvivo",
-     "url": "https://madridenvivo.com/?post_type=evento&p=792359",
-     "prioridad": 3
-    },
-    {
-     "nombre": "Qconciertos (country y provincia de Madrid)",
-     "id": "qconciertos",
-     "url": "https://qconciertos.es/conciertos-en-madrid-provincia/",
-     "prioridad": 3
-    }
-   ],
-   "estado": "contrastado",
-   "conflictos": [],
-   "notas": [],
-   "en_foco": true,
-   "primera_vez_visto": "2026-09-29",
-   "ultima_vez_visto": "2026-09-29"
-  },
-  {
    "id": "1c3f69526867",
    "fecha": "2026-09-29",
    "hora": null,
@@ -1273,8 +1290,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "CL",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -1315,8 +1332,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -1567,8 +1584,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -1719,6 +1736,96 @@
    "ultima_vez_visto": "2026-09-29"
   },
   {
+   "id": "fc8bca079dc0",
+   "fecha": "2026-09-30",
+   "hora": "21:00",
+   "artista": "Grandes Canciones del Cine by Laraland",
+   "invitados": [
+    "Laraland Concierto de Bandas Sonoras"
+   ],
+   "sala": "Galileo Galilei",
+   "municipio": "Madrid",
+   "precio": "20€",
+   "estilo_fuente": [
+    {
+     "estilo": "Versiones/Tributos",
+     "fuente": "conciertos.club (buscador semanal)"
+    },
+    {
+     "estilo": "Versiones/Tributos",
+     "fuente": "conciertos.club (portada Madrid)"
+    },
+    {
+     "estilo": "Versiones/Tributos",
+     "fuente": "conciertos.club (por estilo)"
+    },
+    {
+     "estilo": "Pop / Rock",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "tributos y versiones",
+   "categorias": [
+    "tributos y versiones",
+    "pop e indie",
+    "rock y metal"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Galileo Galilei (web oficial)",
+     "id": "galileo",
+     "url": "https://salagalileo.es/programacion/grandes-canciones-del-cine-by-laraland/",
+     "prioridad": 1
+    },
+    {
+     "nombre": "conciertos.club (buscador semanal)",
+     "id": "cc_buscador",
+     "url": "https://conciertos.club/madrid/conciertos/124974-laraland-concierto-de-bandas-sonoras",
+     "prioridad": 3
+    },
+    {
+     "nombre": "conciertos.club (portada Madrid)",
+     "id": "cc_portada",
+     "url": "https://conciertos.club/madrid/conciertos/124974-laraland-concierto-de-bandas-sonoras",
+     "prioridad": 3
+    },
+    {
+     "nombre": "conciertos.club (por estilo)",
+     "id": "cc_estilos",
+     "url": "https://conciertos.club/madrid/conciertos/124974-laraland-concierto-de-bandas-sonoras",
+     "prioridad": 3
+    },
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/?post_type=evento&p=792366",
+     "prioridad": 3
+    },
+    {
+     "nombre": "Songkick Madrid",
+     "id": "songkick",
+     "url": "https://www.songkick.com/concerts/43349117-laraland-at-galileo-galilei",
+     "prioridad": 3
+    },
+    {
+     "nombre": "Qconciertos (country y provincia de Madrid)",
+     "id": "qconciertos",
+     "url": "https://qconciertos.es/conciertos-en-madrid-provincia/",
+     "prioridad": 3
+    }
+   ],
+   "estado": "contrastado",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": true,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
    "id": "b7393def9093",
    "fecha": "2026-09-30",
    "hora": "21:00",
@@ -1852,88 +1959,6 @@
      "nombre": "Madrid en Vivo (asociación de salas)",
      "id": "madridenvivo",
      "url": "https://madridenvivo.com/?post_type=evento&p=790508",
-     "prioridad": 3
-    }
-   ],
-   "estado": "contrastado",
-   "conflictos": [],
-   "notas": [],
-   "en_foco": true,
-   "primera_vez_visto": "2026-09-29",
-   "ultima_vez_visto": "2026-09-29"
-  },
-  {
-   "id": "fc8bca079dc0",
-   "fecha": "2026-09-30",
-   "hora": "21:00",
-   "artista": "Laraland. Concierto de Bandas Sonoras",
-   "invitados": [],
-   "sala": "Galileo Galilei",
-   "municipio": "Madrid",
-   "precio": "20€",
-   "estilo_fuente": [
-    {
-     "estilo": "Versiones/Tributos",
-     "fuente": "conciertos.club (buscador semanal)"
-    },
-    {
-     "estilo": "Versiones/Tributos",
-     "fuente": "conciertos.club (portada Madrid)"
-    },
-    {
-     "estilo": "Versiones/Tributos",
-     "fuente": "conciertos.club (por estilo)"
-    },
-    {
-     "estilo": "Pop / Rock",
-     "fuente": "Madrid en Vivo (asociación de salas)"
-    }
-   ],
-   "categoria": "tributos y versiones",
-   "categorias": [
-    "tributos y versiones",
-    "pop e indie",
-    "rock y metal"
-   ],
-   "genero_discogs": [],
-   "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
-   "fuentes": [
-    {
-     "nombre": "conciertos.club (buscador semanal)",
-     "id": "cc_buscador",
-     "url": "https://conciertos.club/madrid/conciertos/124974-laraland-concierto-de-bandas-sonoras",
-     "prioridad": 3
-    },
-    {
-     "nombre": "conciertos.club (portada Madrid)",
-     "id": "cc_portada",
-     "url": "https://conciertos.club/madrid/conciertos/124974-laraland-concierto-de-bandas-sonoras",
-     "prioridad": 3
-    },
-    {
-     "nombre": "conciertos.club (por estilo)",
-     "id": "cc_estilos",
-     "url": "https://conciertos.club/madrid/conciertos/124974-laraland-concierto-de-bandas-sonoras",
-     "prioridad": 3
-    },
-    {
-     "nombre": "Madrid en Vivo (asociación de salas)",
-     "id": "madridenvivo",
-     "url": "https://madridenvivo.com/?post_type=evento&p=792366",
-     "prioridad": 3
-    },
-    {
-     "nombre": "Songkick Madrid",
-     "id": "songkick",
-     "url": "https://www.songkick.com/concerts/43349117-laraland-at-galileo-galilei",
-     "prioridad": 3
-    },
-    {
-     "nombre": "Qconciertos (country y provincia de Madrid)",
-     "id": "qconciertos",
-     "url": "https://qconciertos.es/conciertos-en-madrid-provincia/",
      "prioridad": 3
     }
    ],
@@ -3291,8 +3316,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "CL",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -3333,8 +3358,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -3976,8 +4001,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "CO",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -4032,8 +4057,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "AR",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "La Ganzúa",
@@ -4760,6 +4785,44 @@
    "ultima_vez_visto": "2026-09-29"
   },
   {
+   "id": "5b0ca2dae715",
+   "fecha": "2026-10-01",
+   "hora": null,
+   "artista": "FAST EXPO GUILLERMO LOVENTO",
+   "invitados": [],
+   "sala": "Sala Siroco",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Artes escénicas",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "fuera de foco",
+   "categorias": [
+    "fuera de foco"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/evento/concierto-siroco-9/",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": false,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
    "id": "c4bddde0c2cf",
    "fecha": "2026-10-01",
    "hora": null,
@@ -5190,6 +5253,45 @@
    "ultima_vez_visto": "2026-09-29"
   },
   {
+   "id": "5087173076cb",
+   "fecha": "2026-10-01",
+   "hora": null,
+   "artista": "MICRO ABIERTO",
+   "invitados": [],
+   "sala": "Rincón del Arte Nuevo",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Pop / Rock",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "pop e indie",
+   "categorias": [
+    "pop e indie",
+    "rock y metal"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/evento/micro-abierto-71/",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": true,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
    "id": "a4eba3ca4592",
    "fecha": "2026-10-01",
    "hora": null,
@@ -5285,8 +5387,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "FR",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Madrid en Vivo (asociación de salas)",
@@ -5447,8 +5549,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "CL",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -5908,8 +6010,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -6627,10 +6729,15 @@
    "sala": "Sala Siroco",
    "municipio": "Madrid",
    "precio": null,
-   "estilo_fuente": [],
-   "categoria": "sin clasificar",
+   "estilo_fuente": [
+    {
+     "estilo": "Artes escénicas",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "fuera de foco",
    "categorias": [
-    "sin clasificar"
+    "fuera de foco"
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
@@ -6642,12 +6749,18 @@
      "id": "siroco",
      "url": "https://siroco.es/",
      "prioridad": 1
+    },
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/?post_type=evento&p=796240",
+     "prioridad": 3
     }
    ],
-   "estado": "1_fuente",
+   "estado": "contrastado",
    "conflictos": [],
    "notas": [],
-   "en_foco": true,
+   "en_foco": false,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
   },
@@ -6676,8 +6789,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ML",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -8077,6 +8190,117 @@
    "ultima_vez_visto": "2026-09-29"
   },
   {
+   "id": "2eb3189115a7",
+   "fecha": "2026-10-02",
+   "hora": null,
+   "artista": "CONCIERTO RICÓN DEL ARTE POP ROCK",
+   "invitados": [],
+   "sala": "Rincón del Arte Nuevo",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Pop / Rock",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "pop e indie",
+   "categorias": [
+    "pop e indie",
+    "rock y metal"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/evento/concierto-ricon-del-arte-pop-rock-7/",
+     "prioridad": 3
+    },
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/evento/concierto-ricon-del-arte-pop-rock-9/",
+     "prioridad": 3
+    },
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/evento/concierto-ricon-del-arte-pop-rock-10/",
+     "prioridad": 3
+    },
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/evento/concierto-ricon-del-arte-pop-rock-11/",
+     "prioridad": 3
+    },
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/evento/concierto-ricon-del-arte-pop-rock-18/",
+     "prioridad": 3
+    },
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/evento/concierto-ricon-del-arte-pop-rock/",
+     "prioridad": 3
+    },
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/evento/concierto-ricon-del-arte-pop-rock-2/",
+     "prioridad": 3
+    },
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/evento/concierto-ricon-del-arte-pop-rock-3/",
+     "prioridad": 3
+    },
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/evento/concierto-ricon-del-arte-pop-rock-5/",
+     "prioridad": 3
+    },
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/evento/concierto-ricon-del-arte-pop-rock-13/",
+     "prioridad": 3
+    },
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/evento/concierto-ricon-del-arte-pop-rock-14/",
+     "prioridad": 3
+    },
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/evento/concierto-ricon-del-arte-pop-rock-15/",
+     "prioridad": 3
+    },
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/evento/concierto-ricon-del-arte-pop-rock-16/",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": true,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
    "id": "8ccb0fe3ac8b",
    "fecha": "2026-10-02",
    "hora": null,
@@ -8779,6 +9003,45 @@
    "ultima_vez_visto": "2026-09-29"
   },
   {
+   "id": "bd1cf7604301",
+   "fecha": "2026-10-02",
+   "hora": null,
+   "artista": "LA CHICA LA JOSE",
+   "invitados": [],
+   "sala": "Rincón del Arte Nuevo",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Pop / Rock",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "pop e indie",
+   "categorias": [
+    "pop e indie",
+    "rock y metal"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/evento/concierto-ricon-del-arte-pop-rock-12/",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": true,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
    "id": "b54012ef0f47",
    "fecha": "2026-10-02",
    "hora": null,
@@ -9032,6 +9295,45 @@
      "nombre": "Madrid en Vivo (asociación de salas)",
      "id": "madridenvivo",
      "url": "https://madridenvivo.com/?post_type=evento&p=795449",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": true,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
+   "id": "693fe0895eb4",
+   "fecha": "2026-10-02",
+   "hora": null,
+   "artista": "NOCHE DE VERSIONES",
+   "invitados": [],
+   "sala": "Rincón del Arte Nuevo",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Pop / Rock",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "pop e indie",
+   "categorias": [
+    "pop e indie",
+    "rock y metal"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/evento/noche-de-versiones-61/",
      "prioridad": 3
     }
    ],
@@ -9717,6 +10019,45 @@
    "ultima_vez_visto": "2026-09-29"
   },
   {
+   "id": "02689dab0c71",
+   "fecha": "2026-10-02",
+   "hora": null,
+   "artista": "TRAPICHE",
+   "invitados": [],
+   "sala": "Rincón del Arte Nuevo",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Pop / Rock",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "pop e indie",
+   "categorias": [
+    "pop e indie",
+    "rock y metal"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/?post_type=evento&p=796973",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": true,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
    "id": "ded40e59661e",
    "fecha": "2026-10-02",
    "hora": null,
@@ -9877,16 +10218,10 @@
    "sala": "Fun House",
    "municipio": "Madrid",
    "precio": null,
-   "estilo_fuente": [
-    {
-     "estilo": "Pop / Rock",
-     "fuente": "Madrid en Vivo (asociación de salas)"
-    }
-   ],
-   "categoria": "pop e indie",
+   "estilo_fuente": [],
+   "categoria": "sin clasificar",
    "categorias": [
-    "pop e indie",
-    "rock y metal"
+    "sin clasificar"
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
@@ -9898,15 +10233,9 @@
      "id": "funhouse",
      "url": "https://www.funhousemusicbar.com/conciertos/scalped-leon/",
      "prioridad": 1
-    },
-    {
-     "nombre": "Madrid en Vivo (asociación de salas)",
-     "id": "madridenvivo",
-     "url": "https://madridenvivo.com/evento/fun-house-conciertos-13/",
-     "prioridad": 3
     }
    ],
-   "estado": "contrastado",
+   "estado": "1_fuente",
    "conflictos": [],
    "notas": [],
    "en_foco": true,
@@ -10012,8 +10341,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "CL",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -10910,8 +11239,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "PR",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Movistar Arena (web oficial)",
@@ -12998,6 +13327,45 @@
    "ultima_vez_visto": "2026-09-29"
   },
   {
+   "id": "adb0a8650565",
+   "fecha": "2026-10-03",
+   "hora": null,
+   "artista": "KIKE MARTIN PARAISO",
+   "invitados": [],
+   "sala": "Rincón del Arte Nuevo",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Pop / Rock",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "pop e indie",
+   "categorias": [
+    "pop e indie",
+    "rock y metal"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/evento/concierto-ricon-del-arte-pop-rock-13/",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": true,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
    "id": "a75fab5d248c",
    "fecha": "2026-10-03",
    "hora": null,
@@ -13511,15 +13879,21 @@
    "id": "c480aa319e81",
    "fecha": "2026-10-03",
    "hora": null,
-   "artista": "TANGERINE FLAVOUR",
+   "artista": "TANGENINE FL¡AVOUR",
    "invitados": [],
    "sala": "Rincón del Arte Nuevo",
    "municipio": "Madrid",
    "precio": null,
-   "estilo_fuente": [],
-   "categoria": "sin clasificar",
+   "estilo_fuente": [
+    {
+     "estilo": "Pop / Rock",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "pop e indie",
    "categorias": [
-    "sin clasificar"
+    "pop e indie",
+    "rock y metal"
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
@@ -13527,17 +13901,21 @@
    "nacionalidad_fuente": null,
    "fuentes": [
     {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/evento/concierto-ricon-del-arte-pop-rock-2/",
+     "prioridad": 3
+    },
+    {
      "nombre": "MariskalRock (guía)",
      "id": "mariskal",
      "url": "https://mariskalrock.com/guia-de-conciertos/",
      "prioridad": 4
     }
    ],
-   "estado": "1_fuente",
+   "estado": "contrastado",
    "conflictos": [],
-   "notas": [
-    "Fuente de fiabilidad baja (mantiene fechas antiguas); año deducido: la fuente no indica año."
-   ],
+   "notas": [],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -13776,6 +14154,44 @@
    "ultima_vez_visto": "2026-09-29"
   },
   {
+   "id": "2de7a391d430",
+   "fecha": "2026-10-03",
+   "hora": null,
+   "artista": "TWISTED TAROT",
+   "invitados": [],
+   "sala": "Galileo Galilei",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Artes escénicas",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "fuera de foco",
+   "categorias": [
+    "fuera de foco"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/?post_type=evento&p=795874",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": false,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
    "id": "93276a213287",
    "fecha": "2026-10-03",
    "hora": null,
@@ -13877,6 +14293,12 @@
    "nacionalidad": null,
    "nacionalidad_fuente": null,
    "fuentes": [
+    {
+     "nombre": "Galileo Galilei (web oficial)",
+     "id": "galileo",
+     "url": "https://salagalileo.es/programacion/kids-rock-family/",
+     "prioridad": 1
+    },
     {
      "nombre": "conciertos.club (buscador semanal)",
      "id": "cc_buscador",
@@ -14077,8 +14499,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "CL",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -14133,6 +14555,50 @@
    "ultima_vez_visto": "2026-09-29"
   },
   {
+   "id": "34f9568583d5",
+   "fecha": "2026-10-04",
+   "hora": "17:30",
+   "artista": "Fran Doblas",
+   "invitados": [],
+   "sala": "Galileo Galilei",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Flamenco Capital",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "fuera de foco",
+   "categorias": [
+    "fuera de foco"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Galileo Galilei (web oficial)",
+     "id": "galileo",
+     "url": "https://salagalileo.es/programacion/fran-doblas/",
+     "prioridad": 1
+    },
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/?post_type=evento&p=795876",
+     "prioridad": 3
+    }
+   ],
+   "estado": "contrastado",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": false,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
    "id": "149d23f3419f",
    "fecha": "2026-10-04",
    "hora": "18:00",
@@ -14141,10 +14607,15 @@
    "sala": "Café Berlín",
    "municipio": "Madrid",
    "precio": "18€",
-   "estilo_fuente": [],
-   "categoria": "sin clasificar",
+   "estilo_fuente": [
+    {
+     "estilo": "Artes escénicas",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "fuera de foco",
    "categorias": [
-    "sin clasificar"
+    "fuera de foco"
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
@@ -14162,12 +14633,18 @@
      "id": "cc_portada",
      "url": "https://conciertos.club/madrid/conciertos/124912-lolita",
      "prioridad": 3
+    },
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/?post_type=evento&p=794491",
+     "prioridad": 3
     }
    ],
-   "estado": "1_fuente",
+   "estado": "contrastado",
    "conflictos": [],
    "notas": [],
-   "en_foco": true,
+   "en_foco": false,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
   },
@@ -15235,6 +15712,44 @@
    "ultima_vez_visto": "2026-09-29"
   },
   {
+   "id": "5109f708d088",
+   "fecha": "2026-10-04",
+   "hora": null,
+   "artista": "DRAGALADA",
+   "invitados": [],
+   "sala": "Sala Vesta",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Artes escénicas",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "fuera de foco",
+   "categorias": [
+    "fuera de foco"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/?post_type=evento&p=796163",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": false,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
    "id": "dc885def0b1c",
    "fecha": "2026-10-04",
    "hora": null,
@@ -15422,44 +15937,6 @@
      "nombre": "Madrid en Vivo (asociación de salas)",
      "id": "madridenvivo",
      "url": "https://madridenvivo.com/evento/espectaculo-flamenco-paula-moreno-y-bartolo-al-baile-04-10-2026/",
-     "prioridad": 3
-    }
-   ],
-   "estado": "1_fuente",
-   "conflictos": [],
-   "notas": [],
-   "en_foco": false,
-   "primera_vez_visto": "2026-09-29",
-   "ultima_vez_visto": "2026-09-29"
-  },
-  {
-   "id": "34f9568583d5",
-   "fecha": "2026-10-04",
-   "hora": null,
-   "artista": "FRAN DOBLAS",
-   "invitados": [],
-   "sala": "Galileo Galilei",
-   "municipio": "Madrid",
-   "precio": null,
-   "estilo_fuente": [
-    {
-     "estilo": "Flamenco Capital",
-     "fuente": "Madrid en Vivo (asociación de salas)"
-    }
-   ],
-   "categoria": "fuera de foco",
-   "categorias": [
-    "fuera de foco"
-   ],
-   "genero_discogs": [],
-   "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
-   "fuentes": [
-    {
-     "nombre": "Madrid en Vivo (asociación de salas)",
-     "id": "madridenvivo",
-     "url": "https://madridenvivo.com/?post_type=evento&p=795876",
      "prioridad": 3
     }
    ],
@@ -16125,7 +16602,7 @@
    "id": "d687e8281ec8",
    "fecha": "2026-10-05",
    "hora": "21:00",
-   "artista": "Aciz",
+   "artista": "Aciz – Soul Castizo",
    "invitados": [],
    "sala": "Galileo Galilei",
    "municipio": "Madrid",
@@ -16149,6 +16626,12 @@
    "nacionalidad": null,
    "nacionalidad_fuente": null,
    "fuentes": [
+    {
+     "nombre": "Galileo Galilei (web oficial)",
+     "id": "galileo",
+     "url": "https://salagalileo.es/programacion/aciz-soul-castizo/",
+     "prioridad": 1
+    },
     {
      "nombre": "conciertos.club (buscador semanal)",
      "id": "cc_buscador",
@@ -16779,8 +17262,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "CL",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -17078,6 +17561,84 @@
    "ultima_vez_visto": "2026-09-29"
   },
   {
+   "id": "457d88fd51a0",
+   "fecha": "2026-10-06",
+   "hora": "20:30",
+   "artista": "Inercia Sonora/ Gon Abril & Luzía",
+   "invitados": [],
+   "sala": "Galileo Galilei",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Cantautores",
+     "fuente": "conciertos.club (buscador semanal)"
+    },
+    {
+     "estilo": "Cantautores",
+     "fuente": "conciertos.club (portada Madrid)"
+    },
+    {
+     "estilo": "Cantautores",
+     "fuente": "conciertos.club (por estilo)"
+    },
+    {
+     "estilo": "Pop / Rock",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "cantautor",
+   "categorias": [
+    "cantautor",
+    "pop e indie",
+    "rock y metal"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Galileo Galilei (web oficial)",
+     "id": "galileo",
+     "url": "https://salagalileo.es/programacion/inercia-sonora/",
+     "prioridad": 1
+    },
+    {
+     "nombre": "conciertos.club (buscador semanal)",
+     "id": "cc_buscador",
+     "url": "https://conciertos.club/madrid/conciertos/127708-gon-abril",
+     "prioridad": 3
+    },
+    {
+     "nombre": "conciertos.club (portada Madrid)",
+     "id": "cc_portada",
+     "url": "https://conciertos.club/madrid/conciertos/127708-gon-abril",
+     "prioridad": 3
+    },
+    {
+     "nombre": "conciertos.club (por estilo)",
+     "id": "cc_estilos",
+     "url": "https://conciertos.club/madrid/conciertos/127708-gon-abril",
+     "prioridad": 3
+    },
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/?post_type=evento&p=795861",
+     "prioridad": 3
+    }
+   ],
+   "estado": "contrastado",
+   "conflictos": [],
+   "notas": [
+    "Hora: 20:30 según Galileo Galilei (web oficial); 21:00 según conciertos.club (buscador semanal), conciertos.club (por estilo), conciertos.club (portada Madrid). Resuelto por prioridad de fuente (la fuente de mayor prioridad confirma 20:30)."
+   ],
+   "en_foco": true,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
    "id": "48eb064348ed",
    "fecha": "2026-10-06",
    "hora": "21:00",
@@ -17235,76 +17796,6 @@
     }
    ],
    "estado": "1_fuente",
-   "conflictos": [],
-   "notas": [],
-   "en_foco": true,
-   "primera_vez_visto": "2026-09-29",
-   "ultima_vez_visto": "2026-09-29"
-  },
-  {
-   "id": "457d88fd51a0",
-   "fecha": "2026-10-06",
-   "hora": "21:00",
-   "artista": "Gon Abril",
-   "invitados": [],
-   "sala": "Galileo Galilei",
-   "municipio": "Madrid",
-   "precio": null,
-   "estilo_fuente": [
-    {
-     "estilo": "Cantautores",
-     "fuente": "conciertos.club (buscador semanal)"
-    },
-    {
-     "estilo": "Cantautores",
-     "fuente": "conciertos.club (portada Madrid)"
-    },
-    {
-     "estilo": "Cantautores",
-     "fuente": "conciertos.club (por estilo)"
-    },
-    {
-     "estilo": "Pop / Rock",
-     "fuente": "Madrid en Vivo (asociación de salas)"
-    }
-   ],
-   "categoria": "cantautor",
-   "categorias": [
-    "cantautor",
-    "pop e indie",
-    "rock y metal"
-   ],
-   "genero_discogs": [],
-   "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
-   "fuentes": [
-    {
-     "nombre": "conciertos.club (buscador semanal)",
-     "id": "cc_buscador",
-     "url": "https://conciertos.club/madrid/conciertos/127708-gon-abril",
-     "prioridad": 3
-    },
-    {
-     "nombre": "conciertos.club (portada Madrid)",
-     "id": "cc_portada",
-     "url": "https://conciertos.club/madrid/conciertos/127708-gon-abril",
-     "prioridad": 3
-    },
-    {
-     "nombre": "conciertos.club (por estilo)",
-     "id": "cc_estilos",
-     "url": "https://conciertos.club/madrid/conciertos/127708-gon-abril",
-     "prioridad": 3
-    },
-    {
-     "nombre": "Madrid en Vivo (asociación de salas)",
-     "id": "madridenvivo",
-     "url": "https://madridenvivo.com/?post_type=evento&p=795861",
-     "prioridad": 3
-    }
-   ],
-   "estado": "contrastado",
    "conflictos": [],
    "notas": [],
    "en_foco": true,
@@ -17912,8 +18403,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "CL",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -18313,164 +18804,10 @@
    "ultima_vez_visto": "2026-09-29"
   },
   {
-   "id": "6a72c33f2e42",
-   "fecha": "2026-10-07",
-   "hora": "21:00",
-   "artista": "Mercury Rev",
-   "invitados": [
-    "Sandy Bell"
-   ],
-   "sala": "Sala Wagon / Sala Changó",
-   "municipio": "Madrid",
-   "precio": "33,50€",
-   "estilo_fuente": [
-    {
-     "estilo": "Pop-rock/Indie",
-     "fuente": "conciertos.club (buscador semanal)"
-    },
-    {
-     "estilo": "Pop-rock/Indie",
-     "fuente": "conciertos.club (portada Madrid)"
-    },
-    {
-     "estilo": "Pop-rock/Indie",
-     "fuente": "conciertos.club (por estilo)"
-    },
-    {
-     "estilo": "Rock, Indie Rock",
-     "fuente": "La Ganzúa"
-    },
-    {
-     "estilo": "indie_alternative, rock, folk_blues, hip_hop, pop",
-     "fuente": "Songkick Madrid"
-    }
-   ],
-   "categoria": "pop e indie",
-   "categorias": [
-    "pop e indie",
-    "rock y metal",
-    "americana/country/folk",
-    "fuera de foco"
-   ],
-   "genero_discogs": [
-    "Rock"
-   ],
-   "estilos_discogs": [
-    "Pop Rock",
-    "Indie Rock"
-   ],
-   "nacionalidad": "US",
-   "nacionalidad_fuente": "MusicBrainz",
-   "fuentes": [
-    {
-     "nombre": "Sala Wagon (web oficial)",
-     "id": "wagon",
-     "url": "https://www.wagon.live/",
-     "prioridad": 1
-    },
-    {
-     "nombre": "conciertos.club (buscador semanal)",
-     "id": "cc_buscador",
-     "url": "https://conciertos.club/madrid/conciertos/121964-mercury-rev-sandy-bell",
-     "prioridad": 3
-    },
-    {
-     "nombre": "conciertos.club (portada Madrid)",
-     "id": "cc_portada",
-     "url": "https://conciertos.club/madrid/conciertos/121964-mercury-rev-sandy-bell",
-     "prioridad": 3
-    },
-    {
-     "nombre": "conciertos.club (por estilo)",
-     "id": "cc_estilos",
-     "url": "https://conciertos.club/madrid/conciertos/121964-mercury-rev-sandy-bell",
-     "prioridad": 3
-    },
-    {
-     "nombre": "La Ganzúa",
-     "id": "laganzua",
-     "url": "https://www.laganzua.net/conciertos/mercury-rev-madrid-1015740",
-     "prioridad": 3
-    },
-    {
-     "nombre": "Rock for Everyone (agenda mensual Madrid)",
-     "id": "rockforeveryone",
-     "url": "https://rockforeveryone.es/agenda-de-conciertos-heavy-en-madrid-en-octubre-de-2026/",
-     "prioridad": 3
-    },
-    {
-     "nombre": "Rock and Blog",
-     "id": "rockandblog",
-     "url": "https://rockandblog.net/agenda-conciertos-rock/#b607aa5b2fd58dd860bfb55619389982",
-     "prioridad": 4
-    },
-    {
-     "nombre": "MariskalRock (guía)",
-     "id": "mariskal",
-     "url": "https://mariskalrock.com/guia-de-conciertos/",
-     "prioridad": 4
-    },
-    {
-     "nombre": "Sala Changó (web oficial)",
-     "id": "chango",
-     "url": "https://www.salachango.es/",
-     "prioridad": 1
-    },
-    {
-     "nombre": "Conciertos por Madrid",
-     "id": "cpm",
-     "url": "https://conciertospormadrid.com/conciertos/mercury-rev-madrid-2026/",
-     "prioridad": 3
-    },
-    {
-     "nombre": "Songkick Madrid",
-     "id": "songkick",
-     "url": "https://www.songkick.com/concerts/43160411-mercury-rev-at-sala-chango",
-     "prioridad": 3
-    }
-   ],
-   "estado": "posiblemente cancelado",
-   "conflictos": [
-    {
-     "campo": "sala",
-     "versiones": [
-      {
-       "valor": "Sala Wagon",
-       "fuentes": [
-        "La Ganzúa",
-        "MariskalRock (guía)",
-        "Rock and Blog",
-        "Rock for Everyone (agenda mensual Madrid)",
-        "Sala Wagon (web oficial)",
-        "conciertos.club (buscador semanal)",
-        "conciertos.club (por estilo)",
-        "conciertos.club (portada Madrid)"
-       ]
-      },
-      {
-       "valor": "Sala Changó",
-       "fuentes": [
-        "Conciertos por Madrid",
-        "Sala Changó (web oficial)",
-        "Songkick Madrid"
-       ]
-      }
-     ]
-    }
-   ],
-   "notas": [
-    "Conflicto de sala: Sala Wagon según La Ganzúa, MariskalRock (guía), Rock and Blog, Rock for Everyone (agenda mensual Madrid), Sala Wagon (web oficial), conciertos.club (buscador semanal), conciertos.club (por estilo), conciertos.club (portada Madrid); Sala Changó según Conciertos por Madrid, Sala Changó (web oficial), Songkick Madrid.",
-    "Ya no aparece en ninguna de sus fuentes (comprobado el 2026-09-29); visto por última vez el 2026-09-29."
-   ],
-   "en_foco": true,
-   "primera_vez_visto": "2026-09-29",
-   "ultima_vez_visto": "2026-09-29"
-  },
-  {
    "id": "a771296396f3",
    "fecha": "2026-10-07",
    "hora": "21:00",
-   "artista": "Track Dogs",
+   "artista": "Track Dogs 20º Aniversario",
    "invitados": [],
    "sala": "Galileo Galilei",
    "municipio": "Madrid",
@@ -18507,6 +18844,12 @@
    "nacionalidad": null,
    "nacionalidad_fuente": null,
    "fuentes": [
+    {
+     "nombre": "Galileo Galilei (web oficial)",
+     "id": "galileo",
+     "url": "https://salagalileo.es/programacion/track-dogs-20o-aniversario/",
+     "prioridad": 1
+    },
     {
      "nombre": "conciertos.club (buscador semanal)",
      "id": "cc_buscador",
@@ -19187,8 +19530,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "RU",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Songkick Madrid",
@@ -19803,8 +20146,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "CL",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -20961,9 +21304,11 @@
      "prioridad": 3
     }
    ],
-   "estado": "1_fuente",
+   "estado": "posiblemente cancelado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Ya no aparece en ninguna de sus fuentes (comprobado el 2026-09-29); visto por última vez el 2026-09-29."
+   ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -21117,6 +21462,44 @@
      "nombre": "Madrid en Vivo (asociación de salas)",
      "id": "madridenvivo",
      "url": "https://madridenvivo.com/evento/espectaculo-flamenco-noemi-ferrer-paula-rodriguez-el-yiyo-08-10-2026/",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": false,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
+   "id": "ab89ba65468c",
+   "fecha": "2026-10-08",
+   "hora": null,
+   "artista": "FAST EXPO DANIEL RABAL DAVIDOV",
+   "invitados": [],
+   "sala": "Sala Siroco",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Artes escénicas",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "fuera de foco",
+   "categorias": [
+    "fuera de foco"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/evento/concierto-siroco-2/",
      "prioridad": 3
     }
    ],
@@ -22040,8 +22423,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "CL",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -22170,6 +22553,51 @@
     }
    ],
    "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": true,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
+   "id": "20a215bd174a",
+   "fecha": "2026-10-09",
+   "hora": "19:00",
+   "artista": "MYGUEL en acústico – Club 77",
+   "invitados": [],
+   "sala": "Galileo Galilei",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Pop / Rock",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "pop e indie",
+   "categorias": [
+    "pop e indie",
+    "rock y metal"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Galileo Galilei (web oficial)",
+     "id": "galileo",
+     "url": "https://salagalileo.es/programacion/myguel-en-acustico-club-77/",
+     "prioridad": 1
+    },
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/?post_type=evento&p=795881",
+     "prioridad": 3
+    }
+   ],
+   "estado": "contrastado",
    "conflictos": [],
    "notas": [],
    "en_foco": true,
@@ -23050,7 +23478,7 @@
    "ultima_vez_visto": "2026-09-29"
   },
   {
-   "id": "73c3f7b55eb5",
+   "id": "73c3f7b55ed8",
    "fecha": "2026-10-09",
    "hora": "21:00",
    "artista": "Devin Townsend",
@@ -24023,9 +24451,11 @@
      "prioridad": 3
     }
    ],
-   "estado": "1_fuente",
+   "estado": "posiblemente cancelado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Ya no aparece en ninguna de sus fuentes (comprobado el 2026-09-29); visto por última vez el 2026-09-29."
+   ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -24327,7 +24757,46 @@
    "ultima_vez_visto": "2026-09-29"
   },
   {
-   "id": "73c3f7b55ed8",
+   "id": "121888d35d33",
+   "fecha": "2026-10-09",
+   "hora": null,
+   "artista": "DANI CABEZAS",
+   "invitados": [],
+   "sala": "Rincón del Arte Nuevo",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Pop / Rock",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "pop e indie",
+   "categorias": [
+    "pop e indie",
+    "rock y metal"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/evento/concierto-ricon-del-arte-pop-rock-3/",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": true,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
+   "id": "73c3f7b55eb5",
    "fecha": "2026-10-09",
    "hora": null,
    "artista": "Devin Townsend",
@@ -24688,9 +25157,11 @@
      "prioridad": 3
     }
    ],
-   "estado": "1_fuente",
+   "estado": "posiblemente cancelado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Ya no aparece en ninguna de sus fuentes (comprobado el 2026-09-29); visto por última vez el 2026-09-29."
+   ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -25207,45 +25678,6 @@
    "ultima_vez_visto": "2026-09-29"
   },
   {
-   "id": "20a215bd174a",
-   "fecha": "2026-10-09",
-   "hora": null,
-   "artista": "MYGUEL EN ACÚSTICO - CLUB 77",
-   "invitados": [],
-   "sala": "Galileo Galilei",
-   "municipio": "Madrid",
-   "precio": null,
-   "estilo_fuente": [
-    {
-     "estilo": "Pop / Rock",
-     "fuente": "Madrid en Vivo (asociación de salas)"
-    }
-   ],
-   "categoria": "pop e indie",
-   "categorias": [
-    "pop e indie",
-    "rock y metal"
-   ],
-   "genero_discogs": [],
-   "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
-   "fuentes": [
-    {
-     "nombre": "Madrid en Vivo (asociación de salas)",
-     "id": "madridenvivo",
-     "url": "https://madridenvivo.com/?post_type=evento&p=795881",
-     "prioridad": 3
-    }
-   ],
-   "estado": "1_fuente",
-   "conflictos": [],
-   "notas": [],
-   "en_foco": true,
-   "primera_vez_visto": "2026-09-29",
-   "ultima_vez_visto": "2026-09-29"
-  },
-  {
    "id": "d32832e00665",
    "fecha": "2026-10-09",
    "hora": null,
@@ -25556,6 +25988,45 @@
    "ultima_vez_visto": "2026-09-29"
   },
   {
+   "id": "3a1f5109d94d",
+   "fecha": "2026-10-09",
+   "hora": null,
+   "artista": "SOLODOS",
+   "invitados": [],
+   "sala": "Rincón del Arte Nuevo",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Pop / Rock",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "pop e indie",
+   "categorias": [
+    "pop e indie",
+    "rock y metal"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/evento/concierto-ricon-del-arte-pop-rock-14/",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": true,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
    "id": "d535bc5d0d39",
    "fecha": "2026-10-09",
    "hora": null,
@@ -25726,8 +26197,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "CL",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -28297,6 +28768,44 @@
    "ultima_vez_visto": "2026-09-29"
   },
   {
+   "id": "9940656bb7e6",
+   "fecha": "2026-10-10",
+   "hora": null,
+   "artista": "ENRIQUE RAMIL",
+   "invitados": [],
+   "sala": "Babylon",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Artes escénicas",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "fuera de foco",
+   "categorias": [
+    "fuera de foco"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/?post_type=evento&p=795966",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": false,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
    "id": "d6d3d0c2401a",
    "fecha": "2026-10-10",
    "hora": null,
@@ -28485,6 +28994,44 @@
    "conflictos": [],
    "notas": [],
    "en_foco": true,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
+   "id": "812124b0ab65",
+   "fecha": "2026-10-10",
+   "hora": null,
+   "artista": "FAST EXPO CATALINA",
+   "invitados": [],
+   "sala": "Sala Siroco",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Artes escénicas",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "fuera de foco",
+   "categorias": [
+    "fuera de foco"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/evento/concierto-siroco-4/",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": false,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
   },
@@ -28725,6 +29272,44 @@
    "conflictos": [],
    "notas": [],
    "en_foco": true,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
+   "id": "887755c3f472",
+   "fecha": "2026-10-10",
+   "hora": null,
+   "artista": "LA CUOTA COMEDY",
+   "invitados": [],
+   "sala": "Galileo Galilei",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Artes escénicas",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "fuera de foco",
+   "categorias": [
+    "fuera de foco"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/?post_type=evento&p=795883",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": false,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
   },
@@ -29712,8 +30297,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "CL",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -29941,8 +30526,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "NL",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Songkick Madrid",
@@ -31156,6 +31741,44 @@
    "ultima_vez_visto": "2026-09-29"
   },
   {
+   "id": "ebc382f2fd36",
+   "fecha": "2026-10-11",
+   "hora": null,
+   "artista": "¿DE QUÉ COLOR ES UN BESO?",
+   "invitados": [],
+   "sala": "Galileo Galilei",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Artes escénicas",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "fuera de foco",
+   "categorias": [
+    "fuera de foco"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/?post_type=evento&p=795885",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": false,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
    "id": "2f292d966324",
    "fecha": "2026-10-11",
    "hora": null,
@@ -31265,6 +31888,44 @@
      "nombre": "Madrid en Vivo (asociación de salas)",
      "id": "madridenvivo",
      "url": "https://madridenvivo.com/evento/espectaculo-flamenco-noemi-ferrer-paula-rodriguez-el-yiyo-11-10-2026/",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": false,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
+   "id": "b96f9cc599a0",
+   "fecha": "2026-10-11",
+   "hora": null,
+   "artista": "ESTO NO ES UN TRÍO",
+   "invitados": [],
+   "sala": "Sala Clamores",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Artes escénicas",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "fuera de foco",
+   "categorias": [
+    "fuera de foco"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/?post_type=evento&p=796682",
      "prioridad": 3
     }
    ],
@@ -32312,8 +32973,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "AR",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -33127,8 +33788,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "CL",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -34445,8 +35106,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "CL",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -35004,6 +35665,44 @@
    "ultima_vez_visto": "2026-09-29"
   },
   {
+   "id": "52644520eb51",
+   "fecha": "2026-10-14",
+   "hora": null,
+   "artista": "CLAMORES COMEDY CLUB",
+   "invitados": [],
+   "sala": "Sala Clamores",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Artes escénicas",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "fuera de foco",
+   "categorias": [
+    "fuera de foco"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/?post_type=evento&p=796704",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": false,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
    "id": "0b1b0d8e7344",
    "fecha": "2026-10-14",
    "hora": null,
@@ -35074,9 +35773,11 @@
      "prioridad": 3
     }
    ],
-   "estado": "1_fuente",
+   "estado": "posiblemente cancelado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Ya no aparece en ninguna de sus fuentes (comprobado el 2026-09-29); visto por última vez el 2026-09-29."
+   ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -35242,7 +35943,7 @@
    "ultima_vez_visto": "2026-09-29"
   },
   {
-   "id": "97a2ae2ad30b",
+   "id": "ec67ca95b0fc",
    "fecha": "2026-10-14",
    "hora": null,
    "artista": "Far East Groove",
@@ -35351,6 +36052,44 @@
    "conflictos": [],
    "notas": [],
    "en_foco": true,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
+   "id": "2b092129b062",
+   "fecha": "2026-10-14",
+   "hora": null,
+   "artista": "LA CHISTOTECA LIVE",
+   "invitados": [],
+   "sala": "Galileo Galilei",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Artes escénicas",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "fuera de foco",
+   "categorias": [
+    "fuera de foco"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/?post_type=evento&p=795907",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": false,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
   },
@@ -35661,7 +36400,7 @@
    "ultima_vez_visto": "2026-09-29"
   },
   {
-   "id": "ec67ca95b0fc",
+   "id": "97a2ae2ad30b",
    "fecha": "2026-10-14",
    "hora": null,
    "artista": "Yasuharu Takanashi’s",
@@ -36063,8 +36802,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "CL",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -37437,6 +38176,45 @@
    "ultima_vez_visto": "2026-09-29"
   },
   {
+   "id": "62f620f19472",
+   "fecha": "2026-10-15",
+   "hora": null,
+   "artista": "ALBAY MARIA",
+   "invitados": [],
+   "sala": "Rincón del Arte Nuevo",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Pop / Rock",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "pop e indie",
+   "categorias": [
+    "pop e indie",
+    "rock y metal"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/evento/concierto-ricon-del-arte-pop-rock-4/",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": true,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
    "id": "991123037c8c",
    "fecha": "2026-10-15",
    "hora": null,
@@ -38042,6 +38820,44 @@
    "ultima_vez_visto": "2026-09-29"
   },
   {
+   "id": "bcadbe74633a",
+   "fecha": "2026-10-15",
+   "hora": null,
+   "artista": "MOMENTS 2026: FAST EXPO RUANGO",
+   "invitados": [],
+   "sala": "Sala Siroco",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Artes escénicas",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "fuera de foco",
+   "categorias": [
+    "fuera de foco"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/evento/concierto-siroco-14/",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": false,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
    "id": "18e29dc50d1f",
    "fecha": "2026-10-15",
    "hora": null,
@@ -38325,8 +39141,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "CL",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -38748,10 +39564,16 @@
    "sala": "Rincón del Arte Nuevo",
    "municipio": "Madrid",
    "precio": "10€",
-   "estilo_fuente": [],
-   "categoria": "sin clasificar",
+   "estilo_fuente": [
+    {
+     "estilo": "Pop / Rock",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "pop e indie",
    "categorias": [
-    "sin clasificar"
+    "pop e indie",
+    "rock y metal"
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
@@ -38769,9 +39591,15 @@
      "id": "cc_portada",
      "url": "https://conciertos.club/madrid/conciertos/119612-jesus-lorenzo",
      "prioridad": 3
+    },
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/evento/concierto-ricon-del-arte-pop-rock-5/",
+     "prioridad": 3
     }
    ],
-   "estado": "1_fuente",
+   "estado": "contrastado",
    "conflictos": [],
    "notas": [],
    "en_foco": true,
@@ -39125,39 +39953,6 @@
    "ultima_vez_visto": "2026-09-29"
   },
   {
-   "id": "e9d86817db50",
-   "fecha": "2026-10-16",
-   "hora": "21:00",
-   "artista": "ANTI-KARAOKE",
-   "invitados": [],
-   "sala": "Moby Dick Club",
-   "municipio": "Madrid",
-   "precio": null,
-   "estilo_fuente": [],
-   "categoria": "fuera de foco",
-   "categorias": [
-    "fuera de foco"
-   ],
-   "genero_discogs": [],
-   "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
-   "fuentes": [
-    {
-     "nombre": "Moby Dick Club (web oficial)",
-     "id": "mobydick",
-     "url": "https://www.mobydickclub.com/",
-     "prioridad": 1
-    }
-   ],
-   "estado": "1_fuente",
-   "conflictos": [],
-   "notas": [],
-   "en_foco": false,
-   "primera_vez_visto": "2026-09-29",
-   "ultima_vez_visto": "2026-09-29"
-  },
-  {
    "id": "267b24166a3d",
    "fecha": "2026-10-16",
    "hora": "21:00",
@@ -39393,8 +40188,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "La Ganzúa",
@@ -39413,6 +40208,39 @@
    "conflictos": [],
    "notas": [],
    "en_foco": false,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
+   "id": "7ded1d273999",
+   "fecha": "2026-10-16",
+   "hora": "21:00",
+   "artista": "ESPECIAL JALOGÜIN",
+   "invitados": [],
+   "sala": "Moby Dick Club",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [],
+   "categoria": "sin clasificar",
+   "categorias": [
+    "sin clasificar"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Moby Dick Club (web oficial)",
+     "id": "mobydick",
+     "url": "https://www.mobydickclub.com/",
+     "prioridad": 1
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
   },
@@ -39437,10 +40265,6 @@
     {
      "estilo": "Mestizaje/Fusión",
      "fuente": "conciertos.club (portada Madrid)"
-    },
-    {
-     "estilo": "Pop / Rock",
-     "fuente": "Madrid en Vivo (asociación de salas)"
     }
    ],
    "categoria": "fuera de foco",
@@ -39470,12 +40294,6 @@
      "nombre": "conciertos.club (portada Madrid)",
      "id": "cc_portada",
      "url": "https://conciertos.club/madrid/conciertos/118863-las-noches-de-rio-babel-alamedadosoulna",
-     "prioridad": 3
-    },
-    {
-     "nombre": "Madrid en Vivo (asociación de salas)",
-     "id": "madridenvivo",
-     "url": "https://madridenvivo.com/?post_type=evento&p=795808",
      "prioridad": 3
     },
     {
@@ -40903,6 +41721,45 @@
    "ultima_vez_visto": "2026-09-29"
   },
   {
+   "id": "9384ff6b5007",
+   "fecha": "2026-10-16",
+   "hora": null,
+   "artista": "GUSTAVI ARDUNI",
+   "invitados": [],
+   "sala": "Rincón del Arte Nuevo",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Pop / Rock",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "pop e indie",
+   "categorias": [
+    "pop e indie",
+    "rock y metal"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/evento/concierto-ricon-del-arte-pop-rock-15/",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": true,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
    "id": "f216d4c37ea1",
    "fecha": "2026-10-16",
    "hora": null,
@@ -41519,6 +42376,44 @@
    "ultima_vez_visto": "2026-09-29"
   },
   {
+   "id": "10396985a5cb",
+   "fecha": "2026-10-16",
+   "hora": null,
+   "artista": "RACHEL ARIEFF PRESENTA ANTI-KARAOKE",
+   "invitados": [],
+   "sala": "Moby Dick Club",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Artes escénicas",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "fuera de foco",
+   "categorias": [
+    "fuera de foco"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/?post_type=evento&p=796120",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": false,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
    "id": "bce336f5946c",
    "fecha": "2026-10-16",
    "hora": null,
@@ -41785,9 +42680,11 @@
      "prioridad": 3
     }
    ],
-   "estado": "1_fuente",
+   "estado": "posiblemente cancelado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Ya no aparece en ninguna de sus fuentes (comprobado el 2026-09-29); visto por última vez el 2026-09-29."
+   ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -41958,8 +42855,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "CL",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -42620,8 +43517,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Independance Club (web oficial)",
@@ -43193,8 +44090,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -44275,6 +45172,45 @@
    "ultima_vez_visto": "2026-09-29"
   },
   {
+   "id": "27cc135fd0b8",
+   "fecha": "2026-10-17",
+   "hora": null,
+   "artista": "CUESTION DE GUSTOS",
+   "invitados": [],
+   "sala": "Rincón del Arte Nuevo",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Pop / Rock",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "pop e indie",
+   "categorias": [
+    "pop e indie",
+    "rock y metal"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/evento/concierto-ricon-del-arte-pop-rock-6/",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": true,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
    "id": "e68b510b8699",
    "fecha": "2026-10-17",
    "hora": null,
@@ -44765,6 +45701,45 @@
    "ultima_vez_visto": "2026-09-29"
   },
   {
+   "id": "93ba1e92d2e9",
+   "fecha": "2026-10-17",
+   "hora": null,
+   "artista": "GERMAN GARCIA",
+   "invitados": [],
+   "sala": "Rincón del Arte Nuevo",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Pop / Rock",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "pop e indie",
+   "categorias": [
+    "pop e indie",
+    "rock y metal"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/evento/concierto-ricon-del-arte-pop-rock-16/",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": true,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
    "id": "9c30ca9d6ca0",
    "fecha": "2026-10-17",
    "hora": null,
@@ -44958,9 +45933,11 @@
      "prioridad": 3
     }
    ],
-   "estado": "1_fuente",
+   "estado": "posiblemente cancelado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Ya no aparece en ninguna de sus fuentes (comprobado el 2026-09-29); visto por última vez el 2026-09-29."
+   ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -45799,8 +46776,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "CL",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -47191,6 +48168,44 @@
    "ultima_vez_visto": "2026-09-29"
   },
   {
+   "id": "1a0663f955e4",
+   "fecha": "2026-10-18",
+   "hora": null,
+   "artista": "ALL NIGHT LONG BIG BAND",
+   "invitados": [],
+   "sala": "Intruso Bar",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Artes escénicas",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "fuera de foco",
+   "categorias": [
+    "fuera de foco"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/?post_type=evento&p=795473",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": false,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
    "id": "d6de514c6092",
    "fecha": "2026-10-18",
    "hora": null,
@@ -47258,6 +48273,45 @@
      "nombre": "Madrid en Vivo (asociación de salas)",
      "id": "madridenvivo",
      "url": "https://madridenvivo.com/?post_type=evento&p=795114",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": true,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
+   "id": "0fa5b796c2b2",
+   "fecha": "2026-10-18",
+   "hora": null,
+   "artista": "CHENCHO FERNANDEZ",
+   "invitados": [],
+   "sala": "Rincón del Arte Nuevo",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Pop / Rock",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "pop e indie",
+   "categorias": [
+    "pop e indie",
+    "rock y metal"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/evento/concierto-ricon-del-arte-pop-rock-17/",
      "prioridad": 3
     }
    ],
@@ -47817,8 +48871,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "NO",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -47936,9 +48990,11 @@
      "prioridad": 3
     }
    ],
-   "estado": "1_fuente",
+   "estado": "posiblemente cancelado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Ya no aparece en ninguna de sus fuentes (comprobado el 2026-09-29); visto por última vez el 2026-09-29."
+   ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -48611,8 +49667,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "CL",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -49276,9 +50332,11 @@
      "prioridad": 3
     }
    ],
-   "estado": "1_fuente",
+   "estado": "posiblemente cancelado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Ya no aparece en ninguna de sus fuentes (comprobado el 2026-09-29); visto por última vez el 2026-09-29."
+   ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -49775,8 +50833,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "CL",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -51552,8 +52610,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "CL",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -51769,7 +52827,7 @@
    "ultima_vez_visto": "2026-09-29"
   },
   {
-   "id": "2ec0e3bd17ce",
+   "id": "2ec0e3bd1729",
    "fecha": "2026-10-22",
    "hora": "20:00",
    "artista": "Synthony",
@@ -51789,8 +52847,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "NZ",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "La Ganzúa",
@@ -52418,8 +53476,8 @@
    "estilos_discogs": [
     "Flamenco"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Sala Villanos (web oficial)",
@@ -53336,6 +54394,45 @@
    "ultima_vez_visto": "2026-09-29"
   },
   {
+   "id": "896976bf74d6",
+   "fecha": "2026-10-22",
+   "hora": null,
+   "artista": "DAVID MIGUILLON",
+   "invitados": [],
+   "sala": "Rincón del Arte Nuevo",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Pop / Rock",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "pop e indie",
+   "categorias": [
+    "pop e indie",
+    "rock y metal"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/evento/concierto-ricon-del-arte-pop-rock-19/",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": true,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
    "id": "bc5bfdbe3d32",
    "fecha": "2026-10-22",
    "hora": null,
@@ -54117,6 +55214,44 @@
    "ultima_vez_visto": "2026-09-29"
   },
   {
+   "id": "b5e2692d8962",
+   "fecha": "2026-10-22",
+   "hora": null,
+   "artista": "MOMENTS 2026: FAST EXPO PRECARIADA",
+   "invitados": [],
+   "sala": "Sala Siroco",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Artes escénicas",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "fuera de foco",
+   "categorias": [
+    "fuera de foco"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/evento/concierto-siroco-7/",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": false,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
    "id": "de2688265b86",
    "fecha": "2026-10-22",
    "hora": null,
@@ -54373,7 +55508,7 @@
    "ultima_vez_visto": "2026-09-29"
   },
   {
-   "id": "2ec0e3bd1729",
+   "id": "2ec0e3bd17ce",
    "fecha": "2026-10-22",
    "hora": null,
    "artista": "Synthony",
@@ -54401,8 +55536,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "NZ",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -54683,8 +55818,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "CL",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -56851,9 +57986,11 @@
      "prioridad": 3
     }
    ],
-   "estado": "1_fuente",
+   "estado": "posiblemente cancelado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Ya no aparece en ninguna de sus fuentes (comprobado el 2026-09-29); visto por última vez el 2026-09-29."
+   ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -57015,6 +58152,44 @@
    "conflictos": [],
    "notas": [],
    "en_foco": true,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
+   "id": "eacab5a0c6b9",
+   "fecha": "2026-10-23",
+   "hora": null,
+   "artista": "CARLOS GONZALEZ",
+   "invitados": [],
+   "sala": "Rincón del Arte Nuevo",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Artes escénicas",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "fuera de foco",
+   "categorias": [
+    "fuera de foco"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/evento/concierto-ricon-del-arte-pop-rock-9/",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": false,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
   },
@@ -57193,6 +58368,44 @@
    "ultima_vez_visto": "2026-09-29"
   },
   {
+   "id": "f0a824d56bee",
+   "fecha": "2026-10-23",
+   "hora": null,
+   "artista": "DEAR EVAN HANSEN",
+   "invitados": [],
+   "sala": "Teatro Rialto",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Artes escénicas",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "fuera de foco",
+   "categorias": [
+    "fuera de foco"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/?post_type=evento&p=780340",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": false,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
    "id": "82429204a6cd",
    "fecha": "2026-10-23",
    "hora": null,
@@ -57224,9 +58437,11 @@
      "prioridad": 3
     }
    ],
-   "estado": "1_fuente",
+   "estado": "posiblemente cancelado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Ya no aparece en ninguna de sus fuentes (comprobado el 2026-09-29); visto por última vez el 2026-09-29."
+   ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -57779,9 +58994,11 @@
      "prioridad": 3
     }
    ],
-   "estado": "1_fuente",
+   "estado": "posiblemente cancelado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Ya no aparece en ninguna de sus fuentes (comprobado el 2026-09-29); visto por última vez el 2026-09-29."
+   ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -57855,6 +59072,44 @@
    "conflictos": [],
    "notas": [],
    "en_foco": true,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
+   "id": "674c7b25998b",
+   "fecha": "2026-10-23",
+   "hora": null,
+   "artista": "MOMENTS 2026:FAST EXPO EL AVERIGUA",
+   "invitados": [],
+   "sala": "Sala Siroco",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Artes escénicas",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "fuera de foco",
+   "categorias": [
+    "fuera de foco"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/evento/concierto-siroco/",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": false,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
   },
@@ -58295,6 +59550,45 @@
    "ultima_vez_visto": "2026-09-29"
   },
   {
+   "id": "eb13bde4aba3",
+   "fecha": "2026-10-23",
+   "hora": null,
+   "artista": "UMAI SESSION",
+   "invitados": [],
+   "sala": "Rincón del Arte Nuevo",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Pop / Rock",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "pop e indie",
+   "categorias": [
+    "pop e indie",
+    "rock y metal"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/evento/concierto-ricon-del-arte-pop-rock/",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": true,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
    "id": "70c44f885845",
    "fecha": "2026-10-24",
    "hora": "12:30",
@@ -58446,8 +59740,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "CL",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -60485,6 +61779,45 @@
    "ultima_vez_visto": "2026-09-29"
   },
   {
+   "id": "471cc2d7b5b5",
+   "fecha": "2026-10-24",
+   "hora": null,
+   "artista": "DESAULMADOS",
+   "invitados": [],
+   "sala": "Rincón del Arte Nuevo",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Pop / Rock",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "pop e indie",
+   "categorias": [
+    "pop e indie",
+    "rock y metal"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/evento/concierto-ricon-del-arte-pop-rock-10/",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": true,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
    "id": "2eaf2c3bb957",
    "fecha": "2026-10-24",
    "hora": null,
@@ -60554,11 +61887,9 @@
      "prioridad": 3
     }
    ],
-   "estado": "posiblemente cancelado",
+   "estado": "1_fuente",
    "conflictos": [],
-   "notas": [
-    "Ya no aparece en ninguna de sus fuentes (comprobado el 2026-09-29); visto por última vez el 2026-09-29."
-   ],
+   "notas": [],
    "en_foco": false,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -60637,11 +61968,9 @@
      "prioridad": 3
     }
    ],
-   "estado": "posiblemente cancelado",
+   "estado": "1_fuente",
    "conflictos": [],
-   "notas": [
-    "Ya no aparece en ninguna de sus fuentes (comprobado el 2026-09-29); visto por última vez el 2026-09-29."
-   ],
+   "notas": [],
    "en_foco": false,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -61156,6 +62485,45 @@
      "nombre": "Madrid en Vivo (asociación de salas)",
      "id": "madridenvivo",
      "url": "https://madridenvivo.com/?post_type=evento&p=794885",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": true,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
+   "id": "7c2dba06e464",
+   "fecha": "2026-10-24",
+   "hora": null,
+   "artista": "PATRI SUAREZ Y GERARD TOAL",
+   "invitados": [],
+   "sala": "Rincón del Arte Nuevo",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Pop / Rock",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "pop e indie",
+   "categorias": [
+    "pop e indie",
+    "rock y metal"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/evento/concierto-ricon-del-arte-pop-rock-2/",
      "prioridad": 3
     }
    ],
@@ -61972,8 +63340,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "CL",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -63262,11 +64630,9 @@
      "prioridad": 3
     }
    ],
-   "estado": "posiblemente cancelado",
+   "estado": "1_fuente",
    "conflictos": [],
-   "notas": [
-    "Ya no aparece en ninguna de sus fuentes (comprobado el 2026-09-29); visto por última vez el 2026-09-29."
-   ],
+   "notas": [],
    "en_foco": false,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -63302,11 +64668,9 @@
      "prioridad": 3
     }
    ],
-   "estado": "posiblemente cancelado",
+   "estado": "1_fuente",
    "conflictos": [],
-   "notas": [
-    "Ya no aparece en ninguna de sus fuentes (comprobado el 2026-09-29); visto por última vez el 2026-09-29."
-   ],
+   "notas": [],
    "en_foco": false,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -63344,11 +64708,9 @@
      "prioridad": 3
     }
    ],
-   "estado": "posiblemente cancelado",
+   "estado": "1_fuente",
    "conflictos": [],
-   "notas": [
-    "Ya no aparece en ninguna de sus fuentes (comprobado el 2026-09-29); visto por última vez el 2026-09-29."
-   ],
+   "notas": [],
    "en_foco": false,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -63387,11 +64749,9 @@
      "prioridad": 3
     }
    ],
-   "estado": "posiblemente cancelado",
+   "estado": "1_fuente",
    "conflictos": [],
-   "notas": [
-    "Ya no aparece en ninguna de sus fuentes (comprobado el 2026-09-29); visto por última vez el 2026-09-29."
-   ],
+   "notas": [],
    "en_foco": false,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -63430,11 +64790,9 @@
      "prioridad": 3
     }
    ],
-   "estado": "posiblemente cancelado",
+   "estado": "1_fuente",
    "conflictos": [],
-   "notas": [
-    "Ya no aparece en ninguna de sus fuentes (comprobado el 2026-09-29); visto por última vez el 2026-09-29."
-   ],
+   "notas": [],
    "en_foco": false,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -63503,8 +64861,8 @@
    "estilos_discogs": [
     "Rhythm & Blues"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "US",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -63587,6 +64945,45 @@
    "ultima_vez_visto": "2026-09-29"
   },
   {
+   "id": "ba80fe86ae93",
+   "fecha": "2026-10-25",
+   "hora": null,
+   "artista": "LA SONRISA DE JAVAS",
+   "invitados": [],
+   "sala": "Rincón del Arte Nuevo",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Pop / Rock",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "pop e indie",
+   "categorias": [
+    "pop e indie",
+    "rock y metal"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/evento/concierto-ricon-del-arte-pop-rock-3/",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": true,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
    "id": "d4c5a2ae9e2b",
    "fecha": "2026-10-25",
    "hora": null,
@@ -63624,6 +65021,44 @@
    "conflictos": [],
    "notas": [],
    "en_foco": true,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
+   "id": "3aec037d13c2",
+   "fecha": "2026-10-25",
+   "hora": null,
+   "artista": "LOS GANDULES",
+   "invitados": [],
+   "sala": "Galileo Galilei",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Artes escénicas",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "fuera de foco",
+   "categorias": [
+    "fuera de foco"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/?post_type=evento&p=795912",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": false,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
   },
@@ -63695,6 +65130,45 @@
      "nombre": "Madrid en Vivo (asociación de salas)",
      "id": "madridenvivo",
      "url": "https://madridenvivo.com/?post_type=evento&p=794294",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": true,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
+   "id": "25503e231388",
+   "fecha": "2026-10-25",
+   "hora": null,
+   "artista": "POLSKIE KLASYKI",
+   "invitados": [],
+   "sala": "Rincón del Arte Nuevo",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Pop / Rock",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "pop e indie",
+   "categorias": [
+    "pop e indie",
+    "rock y metal"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/evento/concierto-ricon-del-arte-pop-rock-11/",
      "prioridad": 3
     }
    ],
@@ -64247,11 +65721,9 @@
      "prioridad": 3
     }
    ],
-   "estado": "posiblemente cancelado",
+   "estado": "1_fuente",
    "conflictos": [],
-   "notas": [
-    "Ya no aparece en ninguna de sus fuentes (comprobado el 2026-09-29); visto por última vez el 2026-09-29."
-   ],
+   "notas": [],
    "en_foco": false,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -64290,11 +65762,9 @@
      "prioridad": 3
     }
    ],
-   "estado": "posiblemente cancelado",
+   "estado": "1_fuente",
    "conflictos": [],
-   "notas": [
-    "Ya no aparece en ninguna de sus fuentes (comprobado el 2026-09-29); visto por última vez el 2026-09-29."
-   ],
+   "notas": [],
    "en_foco": false,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -64332,11 +65802,9 @@
      "prioridad": 3
     }
    ],
-   "estado": "posiblemente cancelado",
+   "estado": "1_fuente",
    "conflictos": [],
-   "notas": [
-    "Ya no aparece en ninguna de sus fuentes (comprobado el 2026-09-29); visto por última vez el 2026-09-29."
-   ],
+   "notas": [],
    "en_foco": false,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -64372,11 +65840,9 @@
      "prioridad": 3
     }
    ],
-   "estado": "posiblemente cancelado",
+   "estado": "1_fuente",
    "conflictos": [],
-   "notas": [
-    "Ya no aparece en ninguna de sus fuentes (comprobado el 2026-09-29); visto por última vez el 2026-09-29."
-   ],
+   "notas": [],
    "en_foco": false,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -64606,8 +66072,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "CL",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -65428,11 +66894,9 @@
      "prioridad": 3
     }
    ],
-   "estado": "posiblemente cancelado",
+   "estado": "1_fuente",
    "conflictos": [],
-   "notas": [
-    "Ya no aparece en ninguna de sus fuentes (comprobado el 2026-09-29); visto por última vez el 2026-09-29."
-   ],
+   "notas": [],
    "en_foco": false,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -65471,11 +66935,9 @@
      "prioridad": 3
     }
    ],
-   "estado": "posiblemente cancelado",
+   "estado": "1_fuente",
    "conflictos": [],
-   "notas": [
-    "Ya no aparece en ninguna de sus fuentes (comprobado el 2026-09-29); visto por última vez el 2026-09-29."
-   ],
+   "notas": [],
    "en_foco": false,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -65513,11 +66975,9 @@
      "prioridad": 3
     }
    ],
-   "estado": "posiblemente cancelado",
+   "estado": "1_fuente",
    "conflictos": [],
-   "notas": [
-    "Ya no aparece en ninguna de sus fuentes (comprobado el 2026-09-29); visto por última vez el 2026-09-29."
-   ],
+   "notas": [],
    "en_foco": false,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -65553,11 +67013,9 @@
      "prioridad": 3
     }
    ],
-   "estado": "posiblemente cancelado",
+   "estado": "1_fuente",
    "conflictos": [],
-   "notas": [
-    "Ya no aparece en ninguna de sus fuentes (comprobado el 2026-09-29); visto por última vez el 2026-09-29."
-   ],
+   "notas": [],
    "en_foco": false,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -65777,8 +67235,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "US",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Songkick Madrid",
@@ -65853,8 +67311,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "CL",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -66772,11 +68230,9 @@
      "prioridad": 3
     }
    ],
-   "estado": "posiblemente cancelado",
+   "estado": "1_fuente",
    "conflictos": [],
-   "notas": [
-    "Ya no aparece en ninguna de sus fuentes (comprobado el 2026-09-29); visto por última vez el 2026-09-29."
-   ],
+   "notas": [],
    "en_foco": false,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -66815,11 +68271,9 @@
      "prioridad": 3
     }
    ],
-   "estado": "posiblemente cancelado",
+   "estado": "1_fuente",
    "conflictos": [],
-   "notas": [
-    "Ya no aparece en ninguna de sus fuentes (comprobado el 2026-09-29); visto por última vez el 2026-09-29."
-   ],
+   "notas": [],
    "en_foco": false,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -66857,11 +68311,9 @@
      "prioridad": 3
     }
    ],
-   "estado": "posiblemente cancelado",
+   "estado": "1_fuente",
    "conflictos": [],
-   "notas": [
-    "Ya no aparece en ninguna de sus fuentes (comprobado el 2026-09-29); visto por última vez el 2026-09-29."
-   ],
+   "notas": [],
    "en_foco": false,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -66897,11 +68349,9 @@
      "prioridad": 3
     }
    ],
-   "estado": "posiblemente cancelado",
+   "estado": "1_fuente",
    "conflictos": [],
-   "notas": [
-    "Ya no aparece en ninguna de sus fuentes (comprobado el 2026-09-29); visto por última vez el 2026-09-29."
-   ],
+   "notas": [],
    "en_foco": false,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -67167,11 +68617,47 @@
      "prioridad": 3
     }
    ],
-   "estado": "posiblemente cancelado",
+   "estado": "1_fuente",
    "conflictos": [],
-   "notas": [
-    "Ya no aparece en ninguna de sus fuentes (comprobado el 2026-09-29); visto por última vez el 2026-09-29."
+   "notas": [],
+   "en_foco": false,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
+   "id": "19de0a2e1be8",
+   "fecha": "2026-10-28",
+   "hora": null,
+   "artista": "¿QUIERES PECAR CONMIGO?",
+   "invitados": [],
+   "sala": "Nuevo Teatro Alcalá",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Artes escénicas",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
    ],
+   "categoria": "fuera de foco",
+   "categorias": [
+    "fuera de foco"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/?post_type=evento&p=780471",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
    "en_foco": false,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -67626,8 +69112,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "FR",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Madrid en Vivo (asociación de salas)",
@@ -67714,8 +69200,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "CL",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -68744,8 +70230,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -69011,11 +70497,9 @@
      "prioridad": 3
     }
    ],
-   "estado": "posiblemente cancelado",
+   "estado": "1_fuente",
    "conflictos": [],
-   "notas": [
-    "Ya no aparece en ninguna de sus fuentes (comprobado el 2026-09-29); visto por última vez el 2026-09-29."
-   ],
+   "notas": [],
    "en_foco": false,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -69054,11 +70538,9 @@
      "prioridad": 3
     }
    ],
-   "estado": "posiblemente cancelado",
+   "estado": "1_fuente",
    "conflictos": [],
-   "notas": [
-    "Ya no aparece en ninguna de sus fuentes (comprobado el 2026-09-29); visto por última vez el 2026-09-29."
-   ],
+   "notas": [],
    "en_foco": false,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -69096,11 +70578,9 @@
      "prioridad": 3
     }
    ],
-   "estado": "posiblemente cancelado",
+   "estado": "1_fuente",
    "conflictos": [],
-   "notas": [
-    "Ya no aparece en ninguna de sus fuentes (comprobado el 2026-09-29); visto por última vez el 2026-09-29."
-   ],
+   "notas": [],
    "en_foco": false,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -69136,11 +70616,9 @@
      "prioridad": 3
     }
    ],
-   "estado": "posiblemente cancelado",
+   "estado": "1_fuente",
    "conflictos": [],
-   "notas": [
-    "Ya no aparece en ninguna de sus fuentes (comprobado el 2026-09-29); visto por última vez el 2026-09-29."
-   ],
+   "notas": [],
    "en_foco": false,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -69855,8 +71333,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "CL",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -71232,8 +72710,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "US",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -71710,6 +73188,44 @@
    "ultima_vez_visto": "2026-09-29"
   },
   {
+   "id": "2bae9eaade9c",
+   "fecha": "2026-10-30",
+   "hora": null,
+   "artista": "EL SENTIDO DE LA BIRRA LIVE",
+   "invitados": [],
+   "sala": "Galileo Galilei",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Artes escénicas",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "fuera de foco",
+   "categorias": [
+    "fuera de foco"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/?post_type=evento&p=795915",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": false,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
    "id": "d334d5800d95",
    "fecha": "2026-10-30",
    "hora": null,
@@ -71781,8 +73297,8 @@
    "estilos_discogs": [
     "Rhythm & Blues"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "US",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -71865,11 +73381,9 @@
      "prioridad": 3
     }
    ],
-   "estado": "posiblemente cancelado",
+   "estado": "1_fuente",
    "conflictos": [],
-   "notas": [
-    "Ya no aparece en ninguna de sus fuentes (comprobado el 2026-09-29); visto por última vez el 2026-09-29."
-   ],
+   "notas": [],
    "en_foco": false,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -71908,11 +73422,9 @@
      "prioridad": 3
     }
    ],
-   "estado": "posiblemente cancelado",
+   "estado": "1_fuente",
    "conflictos": [],
-   "notas": [
-    "Ya no aparece en ninguna de sus fuentes (comprobado el 2026-09-29); visto por última vez el 2026-09-29."
-   ],
+   "notas": [],
    "en_foco": false,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -71950,11 +73462,9 @@
      "prioridad": 3
     }
    ],
-   "estado": "posiblemente cancelado",
+   "estado": "1_fuente",
    "conflictos": [],
-   "notas": [
-    "Ya no aparece en ninguna de sus fuentes (comprobado el 2026-09-29); visto por última vez el 2026-09-29."
-   ],
+   "notas": [],
    "en_foco": false,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -71990,11 +73500,9 @@
      "prioridad": 3
     }
    ],
-   "estado": "posiblemente cancelado",
+   "estado": "1_fuente",
    "conflictos": [],
-   "notas": [
-    "Ya no aparece en ninguna de sus fuentes (comprobado el 2026-09-29); visto por última vez el 2026-09-29."
-   ],
+   "notas": [],
    "en_foco": false,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -72039,6 +73547,44 @@
    "ultima_vez_visto": "2026-09-29"
   },
   {
+   "id": "f4b9006847ab",
+   "fecha": "2026-10-30",
+   "hora": null,
+   "artista": "FAST EXPO CRONO SAPIENS",
+   "invitados": [],
+   "sala": "Sala Siroco",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Artes escénicas",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "fuera de foco",
+   "categorias": [
+    "fuera de foco"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/?post_type=evento&p=796332",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": false,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
    "id": "1cf2d6f4b694",
    "fecha": "2026-10-30",
    "hora": null,
@@ -72067,6 +73613,45 @@
      "nombre": "Madrid en Vivo (asociación de salas)",
      "id": "madridenvivo",
      "url": "https://madridenvivo.com/?post_type=evento&p=796489",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": true,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
+   "id": "54f0bac30334",
+   "fecha": "2026-10-30",
+   "hora": null,
+   "artista": "GRACI RODRIGUEZ",
+   "invitados": [],
+   "sala": "Rincón del Arte Nuevo",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Pop / Rock",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "pop e indie",
+   "categorias": [
+    "pop e indie",
+    "rock y metal"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/evento/concierto-ricon-del-arte-pop-rock-12/",
      "prioridad": 3
     }
    ],
@@ -72270,6 +73855,45 @@
      "nombre": "Madrid en Vivo (asociación de salas)",
      "id": "madridenvivo",
      "url": "https://madridenvivo.com/?post_type=evento&p=794915",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": true,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
+   "id": "e6e7a6dce87b",
+   "fecha": "2026-10-30",
+   "hora": null,
+   "artista": "LLANOS",
+   "invitados": [],
+   "sala": "Rincón del Arte Nuevo",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Pop / Rock",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "pop e indie",
+   "categorias": [
+    "pop e indie",
+    "rock y metal"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/evento/concierto-ricon-del-arte-pop-rock-5/",
      "prioridad": 3
     }
    ],
@@ -73052,8 +74676,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "CL",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -74022,8 +75646,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -74250,8 +75874,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "GB",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -74653,6 +76277,47 @@
    "ultima_vez_visto": "2026-09-29"
   },
   {
+   "id": "449eb325af0a",
+   "fecha": "2026-10-31",
+   "hora": null,
+   "artista": "BRASILIDADES",
+   "invitados": [
+    "LUGA MALUF"
+   ],
+   "sala": "Rincón del Arte Nuevo",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Pop / Rock",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "pop e indie",
+   "categorias": [
+    "pop e indie",
+    "rock y metal"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/evento/concierto-ricon-del-arte-pop-rock-13/",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": true,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
    "id": "bd14e2fc2497",
    "fecha": "2026-10-31",
    "hora": null,
@@ -75012,11 +76677,50 @@
      "prioridad": 3
     }
    ],
-   "estado": "posiblemente cancelado",
+   "estado": "1_fuente",
    "conflictos": [],
-   "notas": [
-    "Ya no aparece en ninguna de sus fuentes (comprobado el 2026-09-29); visto por última vez el 2026-09-29."
+   "notas": [],
+   "en_foco": false,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
+   "id": "659567b7484d",
+   "fecha": "2026-10-31",
+   "hora": null,
+   "artista": "ESPECTÁCULO FLAMENCO: CLAUDIA CRUZ",
+   "invitados": [
+    "PAULA RODRIGUEZ",
+    "CHORO MOLINA"
    ],
+   "sala": "Tablao Flamenco 1911",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Flamenco Capital",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "fuera de foco",
+   "categorias": [
+    "fuera de foco"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/evento/espectaculo-flamenco-claudia-cruz-paula-rodriguez-choro-molina-31-10-2026/",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
    "en_foco": false,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -75054,11 +76758,47 @@
      "prioridad": 3
     }
    ],
-   "estado": "posiblemente cancelado",
+   "estado": "1_fuente",
    "conflictos": [],
-   "notas": [
-    "Ya no aparece en ninguna de sus fuentes (comprobado el 2026-09-29); visto por última vez el 2026-09-29."
+   "notas": [],
+   "en_foco": false,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
+   "id": "a045bc96f027",
+   "fecha": "2026-10-31",
+   "hora": null,
+   "artista": "ESPECTÁCULO FLAMENCO: ISAAC DE LOS REYES Y NOELIA RUIZ AL BAILE",
+   "invitados": [],
+   "sala": "Tablao de la Villa",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Flamenco Capital",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
    ],
+   "categoria": "fuera de foco",
+   "categorias": [
+    "fuera de foco"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/evento/espectaculo-flamenco-isaac-de-los-reyes-y-noelia-ruiz-al-baile-31-10-2026/",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
    "en_foco": false,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -75134,6 +76874,45 @@
      "nombre": "Madrid en Vivo (asociación de salas)",
      "id": "madridenvivo",
      "url": "https://madridenvivo.com/?post_type=evento&p=795756",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": true,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
+   "id": "dd0e68590dc3",
+   "fecha": "2026-10-31",
+   "hora": null,
+   "artista": "GRACI RODRIGUEZ",
+   "invitados": [],
+   "sala": "Rincón del Arte Nuevo",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Pop / Rock",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "pop e indie",
+   "categorias": [
+    "pop e indie",
+    "rock y metal"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/evento/concierto-ricon-del-arte-pop-rock-14/",
      "prioridad": 3
     }
    ],
@@ -75668,6 +77447,45 @@
    "notas": [
     "Conflicto de hora: 21:00 según conciertos.club (buscador semanal), conciertos.club (portada Madrid); 19:00 según Songkick Madrid."
    ],
+   "en_foco": true,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
+   "id": "cd4c0b382db5",
+   "fecha": "2026-10-31",
+   "hora": null,
+   "artista": "NOCHE DE HALLOWEN dela mano de ANDRES DUENDE",
+   "invitados": [],
+   "sala": "Rincón del Arte Nuevo",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Pop / Rock",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "pop e indie",
+   "categorias": [
+    "pop e indie",
+    "rock y metal"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/evento/concierto-ricon-del-arte-pop-rock-15/",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -76239,8 +78057,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "CL",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -77219,8 +79037,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "CM",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -78130,6 +79948,44 @@
    "conflictos": [],
    "notas": [],
    "en_foco": true,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
+   "id": "e6387b7983d3",
+   "fecha": "2026-11-02",
+   "hora": null,
+   "artista": "SABINA, EL MEJOR HOMENAJE",
+   "invitados": [],
+   "sala": "Teatro Rialto",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Artes escénicas",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "fuera de foco",
+   "categorias": [
+    "fuera de foco"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/?post_type=evento&p=780343",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": false,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
   },
@@ -79147,8 +81003,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "US",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Sala Villanos (web oficial)",
@@ -80739,8 +82595,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "La Riviera (web oficial)",
@@ -82596,8 +84452,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "US",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -83299,8 +85155,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "La Ganzúa",
@@ -84489,8 +86345,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "SE",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Sala Villanos (web oficial)",
@@ -85653,8 +87509,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "GB",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Sala Villanos (web oficial)",
@@ -85973,8 +87829,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "US",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -86344,8 +88200,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Sala Villanos (web oficial)",
@@ -86734,6 +88590,44 @@
    "ultima_vez_visto": "2026-09-29"
   },
   {
+   "id": "7a6ba714e474",
+   "fecha": "2026-11-09",
+   "hora": null,
+   "artista": "IM-PULSE PINK FLOYD TRIBUTE LIVE SHOW",
+   "invitados": [],
+   "sala": "Teatro Rialto",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Musicales",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "fuera de foco",
+   "categorias": [
+    "fuera de foco"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/?post_type=evento&p=780346",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": false,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
    "id": "f7857cb14570",
    "fecha": "2026-11-09",
    "hora": null,
@@ -86902,8 +88796,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "GB",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Sala Villanos (web oficial)",
@@ -88524,8 +90418,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "UY",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "La Ganzúa",
@@ -88975,6 +90869,44 @@
    "ultima_vez_visto": "2026-09-29"
   },
   {
+   "id": "d0387b733e2f",
+   "fecha": "2026-11-12",
+   "hora": null,
+   "artista": "JAZZ CON SABOR A CLUB 26: JAZZ CON BATIO , JOSÉ MARÍA PEDRAZA, ALEJANDRO ESCALERA Y KIKE TERRÓN (Festival JazzMadrid)",
+   "invitados": [],
+   "sala": "Tablao Flamenco Torero",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Flamenco Capital",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "fuera de foco",
+   "categorias": [
+    "fuera de foco"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/?post_type=evento&p=793486",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": false,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
    "id": "c2ca6ce34d74",
    "fecha": "2026-11-12",
    "hora": null,
@@ -89236,8 +91168,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "AU",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Songkick Madrid",
@@ -90629,8 +92561,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "US",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Songkick Madrid",
@@ -91678,8 +93610,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "US",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Sala Wagon (web oficial)",
@@ -92005,8 +93937,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "US",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -92647,6 +94579,44 @@
    "conflictos": [],
    "notas": [],
    "en_foco": true,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
+   "id": "381d11edbfa6",
+   "fecha": "2026-11-14",
+   "hora": null,
+   "artista": "XXVII HOMENAJE ENRIQUE URQUIJO",
+   "invitados": [],
+   "sala": "Nuevo Teatro Alcalá",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Artes escénicas",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "fuera de foco",
+   "categorias": [
+    "fuera de foco"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/?post_type=evento&p=780474",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": false,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
   },
@@ -93639,12 +95609,56 @@
    "ultima_vez_visto": "2026-09-29"
   },
   {
+   "id": "b534af3f5552",
+   "fecha": "2026-11-16",
+   "hora": "20:00",
+   "artista": "JULIO IGLESIAS EXPERIENCE POR JULIO IGLESIAS JR",
+   "invitados": [],
+   "sala": "Nuevo Teatro Alcalá",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Musicales",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "fuera de foco",
+   "categorias": [
+    "fuera de foco"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/?post_type=evento&p=763482",
+     "prioridad": 3
+    },
+    {
+     "nombre": "Songkick Madrid",
+     "id": "songkick",
+     "url": "https://www.songkick.com/concerts/42921890-julio-iglesias-jr-at-nuevo-teatro-alcala",
+     "prioridad": 3
+    }
+   ],
+   "estado": "contrastado",
+   "conflictos": [],
+   "notas": [],
+   "en_foco": false,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
    "id": "d7d395a78446",
    "fecha": "2026-11-16",
    "hora": "20:00",
    "artista": "Julio Iglesias Jr",
    "invitados": [],
-   "sala": "Teatro Alcalá / Nuevo Teatro Alcalá",
+   "sala": "Teatro Alcalá",
    "municipio": "Madrid",
    "precio": "59,40€",
    "estilo_fuente": [
@@ -93677,38 +95691,11 @@
      "id": "cc_estilos",
      "url": "https://conciertos.club/madrid/conciertos/122726-julio-iglesias-jr",
      "prioridad": 3
-    },
-    {
-     "nombre": "Songkick Madrid",
-     "id": "songkick",
-     "url": "https://www.songkick.com/concerts/42921890-julio-iglesias-jr-at-nuevo-teatro-alcala",
-     "prioridad": 3
     }
    ],
-   "estado": "conflicto",
-   "conflictos": [
-    {
-     "campo": "sala",
-     "versiones": [
-      {
-       "valor": "Teatro Alcalá",
-       "fuentes": [
-        "conciertos.club (buscador semanal)",
-        "conciertos.club (por estilo)"
-       ]
-      },
-      {
-       "valor": "Nuevo Teatro Alcalá",
-       "fuentes": [
-        "Songkick Madrid"
-       ]
-      }
-     ]
-    }
-   ],
-   "notas": [
-    "Conflicto de sala: Teatro Alcalá según conciertos.club (buscador semanal), conciertos.club (por estilo); Nuevo Teatro Alcalá según Songkick Madrid."
-   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -93795,8 +95782,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "AR",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "La Ganzúa",
@@ -94131,8 +96118,8 @@
    "estilos_discogs": [
     "Flamenco"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "La Ganzúa",
@@ -95384,6 +97371,44 @@
    "notas": [
     "Conflicto de hora: 21:00 según conciertos.club (buscador semanal); 19:00 según Songkick Madrid."
    ],
+   "en_foco": false,
+   "primera_vez_visto": "2026-09-29",
+   "ultima_vez_visto": "2026-09-29"
+  },
+  {
+   "id": "5b6a9e014590",
+   "fecha": "2026-11-18",
+   "hora": null,
+   "artista": "JAZZ CON SABOR A CLUB 26: CARLES BENAVENT TRÍO (Festival JazzMadrid)",
+   "invitados": [],
+   "sala": "El Perro Club",
+   "municipio": "Madrid",
+   "precio": null,
+   "estilo_fuente": [
+    {
+     "estilo": "Flamenco Capital",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "fuera de foco",
+   "categorias": [
+    "fuera de foco"
+   ],
+   "genero_discogs": [],
+   "estilos_discogs": [],
+   "nacionalidad": null,
+   "nacionalidad_fuente": null,
+   "fuentes": [
+    {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/?post_type=evento&p=793515",
+     "prioridad": 3
+    }
+   ],
+   "estado": "1_fuente",
+   "conflictos": [],
+   "notas": [],
    "en_foco": false,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
@@ -97818,8 +99843,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -99330,8 +101355,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "BE",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Songkick Madrid",
@@ -101182,8 +103207,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "US",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Sala Villanos (web oficial)",
@@ -101614,10 +103639,15 @@
    "sala": "Teatro Rialto",
    "municipio": "Madrid",
    "precio": null,
-   "estilo_fuente": [],
-   "categoria": "sin clasificar",
+   "estilo_fuente": [
+    {
+     "estilo": "Musicales",
+     "fuente": "Madrid en Vivo (asociación de salas)"
+    }
+   ],
+   "categoria": "fuera de foco",
    "categorias": [
-    "sin clasificar"
+    "fuera de foco"
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
@@ -101625,16 +103655,22 @@
    "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
+     "nombre": "Madrid en Vivo (asociación de salas)",
+     "id": "madridenvivo",
+     "url": "https://madridenvivo.com/?post_type=evento&p=780349",
+     "prioridad": 3
+    },
+    {
      "nombre": "Songkick Madrid",
      "id": "songkick",
      "url": "https://www.songkick.com/concerts/43151472-la-decada-prodigiosa-at-teatro-rialto",
      "prioridad": 3
     }
    ],
-   "estado": "1_fuente",
+   "estado": "contrastado",
    "conflictos": [],
    "notas": [],
-   "en_foco": true,
+   "en_foco": false,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-29"
   },
@@ -101805,8 +103841,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "CU",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Sala Villanos (web oficial)",
@@ -102450,8 +104486,8 @@
    "estilos_discogs": [
     "Rhythm & Blues"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "AR",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -102814,8 +104850,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Sala Villanos (web oficial)",
@@ -103601,8 +105637,8 @@
    "estilos_discogs": [
     "Rhythm & Blues"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "AR",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -105120,8 +107156,8 @@
    "estilos_discogs": [
     "Pop Rock"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -107150,8 +109186,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "AR",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -107194,8 +109230,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "MX",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Sala Villanos (web oficial)",
@@ -108581,8 +110617,8 @@
    "estilos_discogs": [
     "Emo"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "AR",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Sala But (web oficial)",
@@ -110151,7 +112187,7 @@
    "ultima_vez_visto": "2026-09-29"
   },
   {
-   "id": "ade93c78940e",
+   "id": "28a040442bbe",
    "fecha": "2026-12-03",
    "hora": "20:00",
    "artista": "MIkkey Dee & Friends",
@@ -110677,7 +112713,7 @@
    "ultima_vez_visto": "2026-09-29"
   },
   {
-   "id": "28a040442bbe",
+   "id": "ade93c78940e",
    "fecha": "2026-12-03",
    "hora": null,
    "artista": "Mikky Dee",
@@ -110917,8 +112953,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -111079,8 +113115,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "La Riviera (web oficial)",
@@ -111635,8 +113671,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "AT",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Songkick Madrid",
@@ -111945,8 +113981,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -112487,8 +114523,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "DE",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Hellpress (agenda)",
@@ -113468,8 +115504,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "FR",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -113759,8 +115795,8 @@
    "estilos_discogs": [
     "Pop Rock"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -115856,8 +117892,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Songkick Madrid",
@@ -116021,8 +118057,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -116293,8 +118329,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -116708,8 +118744,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -116750,8 +118786,8 @@
    "estilos_discogs": [
     "Indie Pop"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "La Riviera (web oficial)",
@@ -117708,8 +119744,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "La Riviera (web oficial)",
@@ -117759,8 +119795,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "BR",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -118087,8 +120123,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Sala But (web oficial)",
@@ -118135,8 +120171,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "US",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Sala Villanos (web oficial)",
@@ -118302,8 +120338,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "US",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Sala But (web oficial)",
@@ -119021,8 +121057,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -119252,8 +121288,8 @@
    "estilos_discogs": [
     "Flamenco"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -119494,8 +121530,8 @@
    "estilos_discogs": [
     "Post-Punk"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -119544,8 +121580,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "La Ganzúa",
@@ -119596,8 +121632,8 @@
    "estilos_discogs": [
     "Pop Rock"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -119671,8 +121707,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "GB",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Sala Villanos (web oficial)",
@@ -119867,8 +121903,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "GB",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Songkick Madrid",
@@ -120315,8 +122351,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "La Riviera (web oficial)",
@@ -120401,8 +122437,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "US",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "MariskalRock (guía)",
@@ -120493,8 +122529,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -121046,8 +123082,8 @@
    "estilos_discogs": [
     "Pop Rock"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "La Ganzúa",
@@ -121129,8 +123165,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -121319,8 +123355,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -121655,8 +123691,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -122690,8 +124726,8 @@
    "estilos_discogs": [
     "Pop Rock"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -123606,8 +125642,8 @@
    "estilos_discogs": [
     "Pop Rock"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "La Ganzúa",
@@ -123794,8 +125830,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "IT",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Songkick Madrid",
@@ -123874,8 +125910,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "GB",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -124302,8 +126338,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -124546,8 +126582,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "NL",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Revi Live / Revi Space (web oficial)",
@@ -124680,8 +126716,8 @@
    "estilos_discogs": [
     "Pop Rock"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -124725,8 +126761,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -124858,8 +126894,8 @@
     "Rock & Roll",
     "Garage Rock"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -125239,8 +127275,8 @@
    "estilos_discogs": [
     "Pop Rock"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -125867,8 +127903,8 @@
    "estilos_discogs": [
     "Pop Rock"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -126008,8 +128044,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Songkick Madrid",
@@ -126079,8 +128115,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Songkick Madrid",
@@ -126126,8 +128162,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "MX",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -126793,8 +128829,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Songkick Madrid",
@@ -127278,8 +129314,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Songkick Madrid",
@@ -127412,8 +129448,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "BE",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Songkick Madrid",
@@ -127493,8 +129529,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "MariskalRock (guía)",
@@ -127528,8 +129564,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "IT",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "MariskalRock (guía)",
@@ -127893,8 +129929,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "IT",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Revi Live / Revi Space (web oficial)",
@@ -128137,8 +130173,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "US",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Songkick Madrid",
@@ -128246,8 +130282,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "NO",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Songkick Madrid",
@@ -128289,8 +130325,8 @@
    "estilos_discogs": [
     "Country"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "US",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Songkick Madrid",
@@ -128404,8 +130440,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Songkick Madrid",
@@ -128437,8 +130473,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "US",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Songkick Madrid",
@@ -128539,8 +130575,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "DE",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -128686,8 +130722,8 @@
    "estilos_discogs": [
     "Alternative Rock"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "US",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -129013,8 +131049,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Rock and Blog",
@@ -129054,8 +131090,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "GB",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Conciertos por Madrid",
@@ -129453,8 +131489,8 @@
    "estilos_discogs": [
     "Alternative Rock"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "US",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -129549,8 +131585,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "ES",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Revi Live / Revi Space (web oficial)",
@@ -129867,8 +131903,8 @@
    "estilos_discogs": [
     "Alternative Rock"
    ],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "US",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "conciertos.club (buscador semanal)",
@@ -129975,8 +132011,8 @@
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
-   "nacionalidad": null,
-   "nacionalidad_fuente": null,
+   "nacionalidad": "DE",
+   "nacionalidad_fuente": "MusicBrainz",
    "fuentes": [
     {
      "nombre": "Revi Live / Revi Space (web oficial)",
