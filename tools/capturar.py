@@ -43,7 +43,11 @@ def main(lista: str, salida: str) -> None:
                 rec.update(ok=False, robots_blocked=True)
             except Exception as e:  # noqa: BLE001
                 rec.update(ok=False, error=f"{type(e).__name__}: {e}"[:300])
+                resp = getattr(e, "response", None)
+                if resp is not None:  # guarda el cuerpo del error (p. ej. 'falta la clave de API')
+                    (out / f"{name}.html").write_text(resp.text[:20000], encoding="utf-8")
             rec["robots"] = f._host(url).robots_status
+            rec["cabeceras"] = f.last_headers.get(url, {})
             index[name] = rec
             print(name, rec, flush=True)
 

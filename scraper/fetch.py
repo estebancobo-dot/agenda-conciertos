@@ -62,6 +62,7 @@ class Fetcher:
         self._hosts_lock = threading.Lock()
         self._cache: dict[str, str] = {}
         self.requests_count = 0
+        self.last_headers: dict[str, dict] = {}  # cabeceras de la última respuesta por URL (diagnóstico)
 
     def _host(self, url: str) -> HostState:
         host = urlsplit(url).netloc.lower()
@@ -123,6 +124,8 @@ class Fetcher:
             self._wait(st)
             self.requests_count += 1
             r = self.session.request(method, url, timeout=self.timeout, **kw)
+        self.last_headers[url] = {"status": r.status_code, **{k: v for k, v in r.headers.items()
+                                                             if k.lower().startswith(("x-", "retry", "ratelimit"))}}
         r.raise_for_status()
         if not r.encoding or r.encoding.lower() == "iso-8859-1":
             r.encoding = r.apparent_encoding or "utf-8"
