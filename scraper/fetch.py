@@ -1,6 +1,7 @@
 """Descargador educado: respeta robots.txt, 1 petición cada 2 s por web y User-Agent identificable."""
 from __future__ import annotations
 
+import re
 import threading
 import time
 import urllib.robotparser
@@ -18,6 +19,18 @@ MIN_INTERVAL = 2.0  # segundos entre peticiones a la misma web
 
 class RobotsBlocked(Exception):
     """robots.txt prohíbe rastrear esta URL."""
+
+
+class AntiBotBlocked(Exception):
+    """La web responde con una página de captcha o verificación anti-bots en lugar del contenido."""
+
+
+_ANTIBOT = re.compile(r"sgcaptcha|imunify-bot-check|cf-chl-|challenge-platform|Just a moment\.\.\.|"
+                      r"captcha-delivery|Attention Required! \| Cloudflare", re.I)
+
+
+def es_antibot(text: str) -> bool:
+    return len(text) < 20000 and bool(_ANTIBOT.search(text))
 
 
 class RobotsUnreachable(Exception):
@@ -114,6 +127,8 @@ class Fetcher:
         if not r.encoding or r.encoding.lower() == "iso-8859-1":
             r.encoding = r.apparent_encoding or "utf-8"
         text = r.text
+        if es_antibot(text):
+            raise AntiBotBlocked(f"{url}: la web responde con un captcha/verificación anti-bots")
         if use_cache:
             self._cache[key] = text
         return text

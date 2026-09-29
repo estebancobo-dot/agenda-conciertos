@@ -159,3 +159,14 @@ def test_cancelacion_solo_con_lectura_completa():
     assert out[0]["estado"] != "posiblemente cancelado"
     out = conciliar([], prev, HOY, {"mev": {"funciono": True, "brutos": 5, "completa": True}}, {"mev": s})
     assert out[0]["estado"] == "posiblemente cancelado"
+
+
+def test_variantes_de_nombre_de_sala():
+    from scraper.normalize import canon_sala
+    assert misma_sala(canon_sala("Shoko"), canon_sala("Shoko Live"))
+    assert misma_sala(canon_sala("Fotomatón Bar"), canon_sala("Fotomatón"))
+    assert not misma_sala(canon_sala("Revi Live"), canon_sala("Revi Space"))
+    assert not misma_sala(canon_sala("Sala B"), canon_sala("Sala But"))
+    recs = run((ev("Toldos Verdes", "Shoko", invitados=["Garbí"]), src("cc")),
+               (ev("RADAR JOVEN 2026 - MADRID EN VIVO 25 AÑOS: TOLDOS VERDES", "Shoko Live"), src("mev")))
+    assert len(recs) == 1

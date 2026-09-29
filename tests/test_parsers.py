@@ -281,3 +281,10 @@ def test_honky_mes_por_dia_semana():
 def test_municipal_solo_musica():
     evs = municipal_parse(html("m_aranjuez"), "u", HOY, "Aranjuez")
     assert evs and all(municipio(e.ciudad) == "Aranjuez" for e in evs)
+
+
+def test_radar_joven_cpm():
+    evs = ag.radar_cpm_parse(html("radar_cpm"), "u", HOY)
+    e = uno(evs, "2026-10-15", "Toldos Verdes")
+    assert (e.invitados, e.sala) == (["Garbí"], "Shoko")
+    assert uno(evs, "2026-11-04", "Mala Gestión").sala == "Sala But"

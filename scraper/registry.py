@@ -31,7 +31,10 @@ FUENTES: list[Source] = [
     S("tm_blog", "Blog de Ticketmaster (agenda rock)", "https://blog.ticketmaster.es/post/agenda-rock-2026-38621/",
       "agregador", 3, "media", "ticketmaster", ag.tm_blog),
     S("radar_joven", "Radar Joven (Comunidad de Madrid)", "https://www.comunidad.madrid/actividades/2026/radar-joven-2026",
-      "institucional", 2, "alta", "comunidad.madrid", ag.radar_joven),
+      "institucional", 2, "alta", "comunidad.madrid", ag.radar_joven,
+      notas="comunidad.madrid responde 404 a las peticiones desde GitHub (incluido robots.txt)."),
+    S("radar_cpm", "Radar Joven (programación en Conciertos por Madrid)", ag.RADAR_CPM, "agregador", 3, "media",
+      "conciertospormadrid", ag.radar_cpm),
     # ---------------------------------------------------------------- B. rock, metal, AOR, prog
     S("thm", "TodoHeavyMetal", "https://www.todoheavymetal.com/index.php/agenda/amp", "agregador", 3, "media", "thm",
       otras.thm),
@@ -114,7 +117,8 @@ FUENTES: list[Source] = [
     S("clamores", "Sala Clamores (web oficial)", "https://www.salaclamores.es/", "sala", 1, "alta", "clamores",
       salas.PARSERS["clamores"]),
     S("galileo", "Galileo Galilei (web oficial)", "https://salagalileo.es/", "sala", 1, "alta", "galileo",
-      otras.galileo),
+      otras.galileo, notas="Su hosting a veces responde con un captcha anti-bots; sus conciertos llegan también por "
+                           "Madrid en Vivo y conciertos.club."),
     S("siroco", "Sala Siroco (web oficial)", "https://siroco.es/", "sala", 1, "alta", "siroco", salas.PARSERS["siroco"]),
     S("mobydick", "Moby Dick Club (web oficial)", "https://www.mobydickclub.com/", "sala", 1, "alta", "mobydick",
       salas.PARSERS["mobydick"]),

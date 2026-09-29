@@ -306,3 +306,26 @@ def radar_parse(html: str, page_url: str, today: date) -> list:
         if f:
             out.append(make(f, m.group(5), page_url, sala=m.group(4), ciudad="Madrid", estilo=None))
     return out
+
+
+# ------------------------------------------------------------------ Radar Joven (programación en Conciertos por Madrid)
+RADAR_CPM = "https://conciertospormadrid.com/festivales/radar-joven-2026-ciclo-conciertos-madrid/"
+
+
+def radar_cpm_parse(html: str, page_url: str, today: date) -> list:
+    """Líneas 'DD/MM/AAAA: Artista + Artista (Sala)'."""
+    s = soup_of(html)
+    out = []
+    texto = (s.find("article") or s.body).get_text("\n", strip=True)
+    for m in re.finditer(r"(\d{2})/(\d{2})/(20\d\d):\s*(.+?)\s*\(([^()]+)\)\s*$", texto, re.M):
+        try:
+            f = date(int(m.group(3)), int(m.group(2)), int(m.group(1)))
+        except ValueError:
+            continue
+        out.append(make(f, m.group(4), page_url, sala=clean(m.group(5)), ciudad="Madrid",
+                        nota="Ciclo Radar Joven 2026 (Comunidad de Madrid y Madrid en Vivo)."))
+    return out
+
+
+def radar_cpm(ctx: Ctx):
+    yield from radar_cpm_parse(ctx.get(RADAR_CPM), RADAR_CPM, ctx.today)

@@ -13,7 +13,7 @@ from pathlib import Path
 from . import __version__
 from .clasificar import categoria_de
 from .correcciones import aplicar as aplicar_correcciones
-from .fetch import Fetcher, RobotsBlocked, RobotsUnreachable
+from .fetch import AntiBotBlocked, Fetcher, RobotsBlocked, RobotsUnreachable
 from .merge import (Item, agrupar, artistas_coinciden, coinciden_flexible, construir, fusionar_conflictos_sala,
                     hacer_id, marcar_conflictos_cartel, nombres_rec, recalcular_categorias, recalcular_estado)
 from .model import RawEvent, Source
@@ -57,6 +57,9 @@ def rastrear(fuentes: list[Source], fetcher: Fetcher, hoy: date, horizonte: date
                 evs.append(e)
             res["funciono"] = True
             res["estado"] = "ok" if evs else "ok_sin_resultados"
+        except AntiBotBlocked as e:
+            res["estado"] = "bloqueado_antibots"
+            res["errores"].append(str(e))
         except RobotsUnreachable as e:
             res["estado"] = "error"
             res["errores"].append(str(e))

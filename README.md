@@ -71,6 +71,8 @@ La lista completa, con su tipo, fiabilidad y cómo fue la última ejecución, es
 
 - **MariskalRock** y **Rockgle** tienen fiabilidad baja (mantienen fechas antiguas y no indican el año): si un concierto solo aparece ahí va como "1 fuente" con nota.
 - **Metalcry** pone 20:00 por defecto: su hora se ignora.
+- **Radar Joven**: la web de la Comunidad de Madrid no responde a GitHub; la programación se toma de Conciertos por Madrid.
+- **Galileo Galilei** a veces responde con un captcha anti-bots (el informe lo indica); sus conciertos llegan igualmente por Madrid en Vivo y conciertos.club.
 - **No se usan** porque bloquean el acceso automático o fallan: IndyRock, JacksOnLive, La Hora del Blues.
 - **Foros (solo consulta manual, no se rastrean)**: Foro Azkena y Zona-Zero — útiles para confirmar a mano rumores o cambios de sala.
 

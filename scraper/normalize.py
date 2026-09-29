@@ -121,7 +121,7 @@ def misma_sala(a: str, b: str) -> bool:
 
 
 _GENERICAS_SALA = {"sala", "club", "teatro", "recinto", "madrid", "de", "del", "la", "el", "the", "espacio", "and",
-                   "y", "hall"}
+                   "y", "hall", "live", "bar"}
 
 
 def _tokens_sala(k: str) -> str:

@@ -61,3 +61,11 @@ def test_relleno_no_es_invitado():
     assert not any(es_relleno(x) for x in ["Los Invitados", "Más Birras", "Dj Hueka", "Komodor"])
     e = make(date(2026, 10, 17), "SABBAT + Invitados especiales + Omission", "u")
     assert (e.artista, e.invitados) == ("SABBAT", ["Omission"])
+
+
+def test_detecta_captcha_antibots():
+    from pathlib import Path
+    from scraper.fetch import es_antibot
+    fix = Path(__file__).parent / "fixtures"
+    assert es_antibot((fix / "galileo_captcha.html").read_text())  # SiteGround sgcaptcha (29-09-2026)
+    assert not es_antibot((fix / "galileo.html").read_text())
