@@ -1,432 +1,134 @@
 {
- "berlin2": {
-  "bytes": 85078,
-  "ok": true,
-  "url": "https://www.berlincafe.es/"
- },
- "cadavra2": {
-  "error": "ConnectionError: HTTPSConnectionPool(host='cadavra.es', port=443): Max retries exceeded with url: / (Caused by NameResolutionError(\"HTTPSConnection(host='cadavra.es', port=443): Failed to resolve 'cadavra.es' ([Errno -2] Name or service not known)\"))",
+ "bandsintown_madrid": {
+  "error": "HTTPError: 403 Client Error: Forbidden for url: https://www.bandsintown.com/c/madrid-spain",
   "ok": false,
-  "url": "https://cadavra.es/"
+  "robots": "sin_robots (403)",
+  "url": "https://www.bandsintown.com/c/madrid-spain"
  },
- "cc_s_americana": {
-  "bytes": 56255,
+ "bigmama": {
+  "bytes": 288789,
   "ok": true,
-  "url": "https://conciertos.club/madrid/conciertos/estilos/americana-folk-rock-country"
+  "robots": "ok",
+  "url": "https://bigmamaballroom.com/conciertos-blues/"
  },
- "cc_s_cantautores": {
-  "bytes": 80696,
+ "cc_evento": {
+  "bytes": 59332,
   "ok": true,
-  "url": "https://conciertos.club/madrid/conciertos/estilos/cantautores"
+  "robots": "ok",
+  "url": "https://conciertos.club/madrid/conciertos/125042-ana-popovic"
  },
- "cc_s_folk": {
-  "bytes": 39888,
+ "copernico": {
+  "bytes": 13993,
   "ok": true,
-  "url": "https://conciertos.club/madrid/conciertos/estilos/folk"
+  "robots": "sin_robots (404)",
+  "url": "https://salacopernico.es/"
  },
- "cc_s_garage": {
-  "bytes": 91083,
+ "diariorockero_conc": {
+  "bytes": 238615,
   "ok": true,
-  "url": "https://conciertos.club/madrid/conciertos/estilos/rock-and-roll-garage"
+  "robots": "ok",
+  "url": "https://www.diariodeunrockero.es/category/conciertos/"
  },
- "cc_s_pop": {
-  "bytes": 72835,
+ "force": {
+  "bytes": 372940,
   "ok": true,
-  "url": "https://conciertos.club/madrid/conciertos/estilos/pop"
+  "robots": "ok",
+  "url": "https://forcemagazine.es/"
  },
- "cc_s_postpunk": {
-  "bytes": 68873,
+ "galileo": {
+  "bytes": 306020,
   "ok": true,
-  "url": "https://conciertos.club/madrid/conciertos/estilos/post-punk"
+  "robots": "ok",
+  "url": "https://www.salagalileogalilei.com/"
  },
- "cc_s_punk": {
-  "bytes": 62230,
+ "gruta77_nov": {
+  "bytes": 627274,
   "ok": true,
-  "url": "https://conciertos.club/madrid/conciertos/estilos/punk-hardcore"
+  "robots": "ok",
+  "url": "https://gruta77.com/events/?mes=11-2026"
  },
- "cc_s_rock": {
-  "bytes": 192016,
-  "ok": true,
-  "url": "https://conciertos.club/madrid/conciertos/estilos/rock-rock-alternativo"
- },
- "cc_s_versiones": {
-  "bytes": 467221,
-  "ok": true,
-  "url": "https://conciertos.club/madrid/conciertos/estilos/versiones-tributos"
- },
- "chango2": {
-  "bytes": 66557,
-  "ok": true,
-  "url": "https://www.salachango.es/"
- },
- "cpm_agenda": {
-  "bytes": 290673,
-  "ok": true,
-  "url": "https://conciertospormadrid.com/agenda-conciertos/"
- },
- "dirtyrock_art": {
-  "bytes": 90929,
-  "ok": true,
-  "url": "https://www.dirtyrock.info/2026/09/dirty-honey-presentan-catch-my-butterfly-en-madrid-y-pamplona/"
- },
- "force_agenda": {
-  "error": "ConnectionError: HTTPSConnectionPool(host='forcemagazine.es', port=443): Max retries exceeded with url: /agenda-force/ (Caused by NameResolutionError(\"HTTPSConnection(host='forcemagazine.es', port=443): Failed to resolve 'forcemagazine.es' ([Errno -3] Temporary failure in name resolution)\"))",
+ "mb_test": {
   "ok": false,
-  "url": "https://forcemagazine.es/agenda-force/"
- },
- "force_calendario": {
-  "error": "ConnectionError: HTTPSConnectionPool(host='forcemagazine.es', port=443): Max retries exceeded with url: /calendario/ (Caused by NameResolutionError(\"HTTPSConnection(host='forcemagazine.es', port=443): Failed to resolve 'forcemagazine.es' ([Errno -3] Temporary failure in name resolution)\"))",
-  "ok": false,
-  "url": "https://forcemagazine.es/calendario/"
- },
- "godfather2": {
-  "error": "ConnectionError: HTTPSConnectionPool(host='www.thegodfather.es', port=443): Max retries exceeded with url: / (Caused by NameResolutionError(\"HTTPSConnection(host='www.thegodfather.es', port=443): Failed to resolve 'www.thegodfather.es' ([Errno -2] Name or service not known)\"))",
-  "ok": false,
-  "url": "https://www.thegodfather.es/"
- },
- "groove2": {
-  "error": "ConnectionError: HTTPSConnectionPool(host='www.salagroove.com', port=443): Max retries exceeded with url: / (Caused by NewConnectionError(\"HTTPSConnection(host='www.salagroove.com', port=443): Failed to establish a new connection: [Errno 111] Connection refused\"))",
-  "ok": false,
-  "url": "https://www.salagroove.com/"
- },
- "gruta77": {
-  "bytes": 632135,
-  "ok": true,
-  "url": "https://gruta77.com/events/"
- },
- "lacoquette": {
-  "error": "ConnectionError: HTTPSConnectionPool(host='www.lacoquetteblues.com', port=443): Max retries exceeded with url: / (Caused by NameResolutionError(\"HTTPSConnection(host='www.lacoquetteblues.com', port=443): Failed to resolve 'www.lacoquetteblues.com' ([Errno -2] Name or service not known)\"))",
-  "ok": false,
-  "url": "https://www.lacoquetteblues.com/"
- },
- "laganzua_nov": {
-  "bytes": 118813,
-  "ok": true,
-  "url": "https://www.laganzua.net/conciertos/madrid/noviembre-2026"
- },
- "laganzua_oct_p9": {
-  "error": "HTTPError: 404 Client Error: Not Found for url: https://www.laganzua.net/conciertos/madrid/octubre-2026/pagina-9",
-  "ok": false,
-  "url": "https://www.laganzua.net/conciertos/madrid/octubre-2026/pagina-9"
- },
- "lula2": {
-  "error": "ConnectTimeout: HTTPSConnectionPool(host='lulaclub.es', port=443): Max retries exceeded with url: / (Caused by ConnectTimeoutError(<HTTPSConnection(host='lulaclub.es', port=443) at 0x7f5f0ee83390>, 'Connection to lulaclub.es timed out. (connect timeout=60)'))",
-  "ok": false,
-  "url": "https://lulaclub.es/"
- },
- "m_alcala": {
-  "error": "SSLError: HTTPSConnectionPool(host='www.ayto-alcaladehenares.es', port=443): Max retries exceeded with url: /agenda/ (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1016)')))",
-  "ok": false,
-  "url": "https://www.ayto-alcaladehenares.es/agenda/"
- },
- "m_alcobendas": {
-  "ok": false,
+  "robots": "ok",
   "robots_blocked": true,
-  "url": "https://www.alcobendas.org/es/agenda"
+  "url": "https://musicbrainz.org/ws/2/artist/?query=artist:%22H%C3%A4llas%22&fmt=json&limit=10"
  },
- "m_alcorcon": {
-  "bytes": 668219,
+ "metalcry": {
+  "bytes": 748004,
   "ok": true,
-  "url": "https://www.ayto-alcorcon.es/agenda"
+  "robots": "ok",
+  "url": "https://metalcry.com/conciertos/"
  },
- "m_aranjuez": {
-  "bytes": 259850,
+ "metalsymphony_agenda": {
+  "bytes": 83547,
   "ok": true,
-  "url": "https://www.aranjuez.es/agenda"
+  "robots": "ok",
+  "url": "https://www.metalsymphony.com/agenda/"
  },
- "m_arganda": {
-  "error": "ConnectTimeout: HTTPSConnectionPool(host='www.ayto-arganda.es', port=443): Max retries exceeded with url: /agenda (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.ayto-arganda.es', port=443) at 0x7f5f0ca8f210>, 'Connection to www.ayto-arganda.es timed out. (connect timeout=60)'))",
-  "ok": false,
-  "url": "https://www.ayto-arganda.es/agenda"
- },
- "m_boadilla": {
-  "error": "SSLError: HTTPSConnectionPool(host='www.aytoboadilla.com', port=443): Max retries exceeded with url: /agenda (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self-signed certificate (_ssl.c:1016)')))",
-  "ok": false,
-  "url": "https://www.aytoboadilla.com/agenda"
- },
- "m_coslada": {
-  "error": "SSLError: HTTPSConnectionPool(host='www.ayto-coslada.es', port=443): Max retries exceeded with url: /agenda (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1016)')))",
-  "ok": false,
-  "url": "https://www.ayto-coslada.es/agenda"
- },
- "m_fuenlabrada": {
-  "error": "HTTPError: 404 Client Error: 404 for url: https://www.ayto-fuenlabrada.es/agenda",
-  "ok": false,
-  "url": "https://www.ayto-fuenlabrada.es/agenda"
- },
- "m_getafe": {
-  "bytes": 109366,
+ "mev_ajax_p1": {
+  "bytes": 18917,
   "ok": true,
-  "url": "https://www.getafe.es/agenda/"
+  "robots": "ok",
+  "url": "https://madridenvivo.com/wp-content/themes/base/codigo/includes/ajax/buscar-eventos-avanzado.php"
  },
- "m_lasrozas": {
-  "error": "HTTPError: 404 Client Error: Not Found for url: https://www.lasrozas.es/agenda",
-  "ok": false,
-  "url": "https://www.lasrozas.es/agenda"
- },
- "m_leganes": {
-  "bytes": 139630,
+ "mev_ajax_p2": {
+  "bytes": 19674,
   "ok": true,
-  "url": "https://www.leganes.org/agenda"
+  "robots": "ok",
+  "url": "https://madridenvivo.com/wp-content/themes/base/codigo/includes/ajax/buscar-eventos-avanzado.php"
  },
- "m_majadahonda": {
-  "bytes": 52776,
+ "monlive": {
+  "bytes": 14449,
   "ok": true,
-  "url": "https://www.majadahonda.org/agenda"
+  "robots": "ok",
+  "url": "https://www.monmadrid.es/"
  },
- "m_mostoles": {
-  "error": "HTTPError: 404 Client Error: 404 for url: https://www.mostoles.es/es/agenda",
-  "ok": false,
-  "url": "https://www.mostoles.es/es/agenda"
- },
- "m_parla": {
-  "bytes": 228,
+ "neverland": {
+  "bytes": 90853,
   "ok": true,
-  "url": "https://www.ayuntamientoparla.es/agenda"
+  "robots": "ok",
+  "url": "https://www.metalsymphony.com/neverland-concerts-agenda-rock-progresivo-2026-2027/"
  },
- "m_pinto": {
-  "error": "HTTPError: 404 Client Error: 404 for url: https://www.ayto-pinto.es/agenda",
-  "ok": false,
-  "url": "https://www.ayto-pinto.es/agenda"
- },
- "m_pozuelo": {
-  "bytes": 95293,
+ "qconciertos_madrid": {
+  "bytes": 129586,
   "ok": true,
-  "url": "https://www.pozuelodealarcon.org/agenda"
+  "robots": "ok",
+  "url": "https://qconciertos.es/conciertos-en-madrid-provincia/"
  },
- "m_rivas": {
-  "bytes": 75793,
+ "rfe_home": {
+  "bytes": 125932,
   "ok": true,
-  "url": "https://www.rivasciudad.es/agenda/"
- },
- "m_ssreyes": {
-  "bytes": 1790,
-  "ok": true,
-  "url": "https://www.ssreyes.org/es/agenda"
- },
- "m_torrejon": {
-  "bytes": 71810,
-  "ok": true,
-  "url": "https://www.ayto-torrejon.es/agenda"
- },
- "m_valdemoro": {
-  "bytes": 93943,
-  "ok": true,
-  "url": "https://www.valdemoro.es/agenda"
- },
- "m_villalba": {
-  "error": "ConnectionError: HTTPSConnectionPool(host='www.collado-villalba.es', port=443): Max retries exceeded with url: /agenda (Caused by NameResolutionError(\"HTTPSConnection(host='www.collado-villalba.es', port=443): Failed to resolve 'www.collado-villalba.es' ([Errno -2] Name or service not known)\"))",
-  "ok": false,
-  "url": "https://www.collado-villalba.es/agenda"
- },
- "maravillas2": {
-  "bytes": 7762,
-  "ok": true,
-  "url": "http://www.maravillasclub.es/"
- },
- "metallegion": {
-  "bytes": 182830,
-  "ok": true,
-  "url": "https://metallegion.es/conciertos/"
- },
- "mev_agenda": {
-  "bytes": 200573,
-  "ok": true,
-  "url": "https://madridenvivo.com/agenda-de-conciertos-y-espectaculo/"
- },
- "mev_configjs": {
-  "bytes": 338,
-  "ok": true,
-  "url": "https://madridenvivo.com/wp-content/themes/base/assets/js/config.js.php?ver=7.1.2"
- },
- "mev_evento": {
-  "bytes": 118184,
-  "ok": true,
-  "url": "https://madridenvivo.com/evento/noel-mckay/"
- },
- "mev_scriptjs": {
-  "bytes": 29002,
-  "ok": true,
-  "url": "https://madridenvivo.com/wp-content/themes/base/assets/js/script.js?ver=7.1.2"
- },
- "mev_types": {
-  "bytes": 31359,
-  "ok": true,
-  "url": "https://madridenvivo.com/wp-json/wp/v2/types"
- },
- "miguelrios2": {
-  "bytes": 94394,
-  "ok": true,
-  "url": "https://www.rivasciudad.es/cultura/"
- },
- "movistar_eventos": {
-  "error": "HTTPError: 404 Client Error: Not Found for url: https://www.movistararena.es/eventos",
-  "ok": false,
-  "url": "https://www.movistararena.es/eventos"
- },
- "mutick_evento": {
-  "bytes": 35945,
-  "ok": true,
-  "url": "https://mutick.com/e/momentazos-steve-wynn-chris-cacavas-en-madrid"
- },
- "mutick_madrid": {
-  "bytes": 37664,
-  "ok": true,
-  "url": "https://mutick.com/e/entradas-conciertos-madrid"
- },
- "nazca_home": {
-  "bytes": 782231,
-  "ok": true,
-  "url": "https://www.salanazcaconciertos.com/"
- },
- "newreston2": {
-  "error": "SSLError: HTTPSConnectionPool(host='www.vivareston.com', port=443): Max retries exceeded with url: / (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self-signed certificate (_ssl.c:1016)')))",
-  "ok": false,
-  "url": "https://www.newreston.com/"
- },
- "radar1": {
-  "error": "HTTPError: 404 Client Error: Not Found for url: https://www.comunidad.madrid/actividades/2026/radar-joven-2026",
-  "ok": false,
-  "url": "https://www.comunidad.madrid/actividades/2026/radar-joven-2026"
- },
- "radar2": {
-  "error": "HTTPError: 404 Client Error: Not Found for url: https://www.comunidad.madrid/cultura/conciertos-radar-joven",
-  "ok": false,
-  "url": "https://www.comunidad.madrid/cultura/conciertos-radar-joven"
- },
- "radar_cpm": {
-  "bytes": 171756,
-  "ok": true,
-  "url": "https://conciertospormadrid.com/festivales/radar-joven-2026-ciclo-conciertos-madrid/"
- },
- "revi_eventos": {
-  "bytes": 280217,
-  "ok": true,
-  "url": "https://revi.live/eventos/"
- },
- "riviera_conciertos": {
-  "bytes": 395891,
-  "ok": true,
-  "url": "https://salariviera.com/conciertos/"
- },
- "robots_bandsintown": {
-  "error": "HTTPError: 403 Client Error: Forbidden for url: https://www.bandsintown.com/robots.txt",
-  "ok": false,
-  "url": "https://www.bandsintown.com/robots.txt"
- },
- "robots_bigmama": {
-  "bytes": 177,
-  "ok": true,
-  "url": "https://bigmamaballroom.com/robots.txt"
- },
- "robots_cc": {
-  "bytes": 127,
-  "ok": true,
-  "url": "https://conciertos.club/robots.txt"
- },
- "robots_copernico": {
-  "error": "HTTPError: 404 Client Error: Not Found for url: https://salacopernico.es/robots.txt",
-  "ok": false,
-  "url": "https://salacopernico.es/robots.txt"
- },
- "robots_galileo": {
-  "bytes": 162,
-  "ok": true,
-  "url": "https://www.salagalileogalilei.com/robots.txt"
- },
- "robots_laganzua": {
-  "bytes": 794,
-  "ok": true,
-  "url": "https://www.laganzua.net/robots.txt"
- },
- "robots_metalcry": {
-  "bytes": 112,
-  "ok": true,
-  "url": "https://metalcry.com/robots.txt"
- },
- "robots_metalsymphony": {
-  "bytes": 1361,
-  "ok": true,
-  "url": "https://www.metalsymphony.com/robots.txt"
- },
- "robots_monlive": {
-  "bytes": 67,
-  "ok": true,
-  "url": "https://www.monmadrid.es/robots.txt"
- },
- "robots_rfe": {
-  "bytes": 176,
-  "ok": true,
-  "url": "https://rockforeveryone.es/robots.txt"
- },
- "robots_rockprog": {
-  "bytes": 88,
-  "ok": true,
-  "url": "https://www.rock-progresivo.com/robots.txt"
- },
- "robots_songkick": {
-  "bytes": 5665,
-  "ok": true,
-  "url": "https://www.songkick.com/robots.txt"
- },
- "robots_thm": {
-  "bytes": 638,
-  "ok": true,
-  "url": "https://www.todoheavymetal.com/robots.txt"
- },
- "robots_ticketle": {
-  "bytes": 1132,
-  "ok": true,
-  "url": "https://www.ticketle.es/robots.txt"
+  "robots": "ok",
+  "url": "https://rockforeveryone.es/"
  },
  "rockgle": {
-  "error": "HTTPError: 429 Client Error: Too Many Requests for url: https://www.google.com/sorry/index?continue=https://www.rockgle.es/p/agenda-de-conciertos_07.html%3Fm%3D0&q=EgQUrG_WGID17dUGIi19mI92yE-mRx2p4PQLES8SLZ8i-m51aAQ9-ee48bcxAouWKbNVxW-nuHs5WU4yAnJSWgFD",
+  "error": "HTTPError: 429 Client Error: Too Many Requests for url: https://www.google.com/sorry/index?continue=https://www.rockgle.es/p/agenda-de-conciertos_07.html%3Fm%3D0&q=EgSst1ulGJz67dUGIi0yedGsir8CIAtZGBze5TpBF-IOyCG-jN7W3r6C5Mk2h5_WxOpc1R6V0QDWlYMyAnJSWgFD",
   "ok": false,
+  "robots": "ok",
   "url": "https://www.rockgle.es/p/agenda-de-conciertos_07.html?m=0"
  },
- "salab2": {
-  "bytes": 329877,
+ "rockprog": {
+  "bytes": 104983,
   "ok": true,
-  "url": "https://www.salabmadrid.com/"
+  "robots": "ok",
+  "url": "https://www.rock-progresivo.com/seccion/cronicas-conciertos/previas-de-conciertos/"
  },
- "silikona": {
-  "bytes": 85976,
+ "sbm_agenda": {
+  "error": "HTTPError: 404 Client Error: Not Found for url: https://www.sociedaddebluesdemadrid.com/agenda/",
+  "ok": false,
+  "robots": "ok",
+  "url": "https://www.sociedaddebluesdemadrid.com/agenda/"
+ },
+ "thm_agenda": {
+  "bytes": 51697,
   "ok": true,
-  "url": "https://silikona.es/"
+  "robots": "ok",
+  "url": "https://www.todoheavymetal.com/index.php/agenda/amp"
  },
- "songkick_p2": {
-  "bytes": 218307,
+ "wagon_home": {
+  "bytes": 452846,
   "ok": true,
-  "url": "https://www.songkick.com/metro-areas/28755-spain-madrid?page=2"
- },
- "tempo_agenda": {
-  "error": "HTTPError: 404 Client Error: Not Found for url: https://tempoclub.es/agenda/",
-  "ok": false,
-  "url": "https://tempoclub.es/agenda/"
- },
- "ticketle_home": {
-  "error": "HTTPError: 403 Client Error: Forbidden for url: https://www.ticketle.es/madrid",
-  "ok": false,
-  "url": "https://www.ticketle.es/madrid"
- },
- "trinchera2": {
-  "error": "ConnectionError: HTTPSConnectionPool(host='salalatrinchera.com', port=443): Max retries exceeded with url: / (Caused by NameResolutionError(\"HTTPSConnection(host='salalatrinchera.com', port=443): Failed to resolve 'salalatrinchera.com' ([Errno -2] Name or service not known)\"))",
-  "ok": false,
-  "url": "https://salalatrinchera.com/"
- },
- "venom2": {
-  "error": "ConnectionError: HTTPSConnectionPool(host='www.salavenom.es', port=443): Max retries exceeded with url: / (Caused by NameResolutionError(\"HTTPSConnection(host='www.salavenom.es', port=443): Failed to resolve 'www.salavenom.es' ([Errno -2] Name or service not known)\"))",
-  "ok": false,
-  "url": "https://www.salavenom.es/"
- },
- "viriaor_art": {
-  "bytes": 248393,
-  "ok": true,
-  "url": "https://viriaor.wordpress.com/2026/09/07/the-volcanics-llegan-desde-australia-con-too-late-to-run-y-10-fechas-en-espana/"
- },
- "wagon_agenda": {
-  "error": "HTTPError: 404 Client Error: Not Found for url: https://www.wagon.live/agenda/",
-  "ok": false,
-  "url": "https://salawagon.com/agenda/"
+  "robots": "ok",
+  "url": "https://www.wagon.live/"
  }
 }
