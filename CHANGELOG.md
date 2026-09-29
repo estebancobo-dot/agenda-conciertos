@@ -2,7 +2,7 @@
 
 ## 2.7.0 — 2026-09-29
 
-Primera versión después de la baseline (2.6.1, etiqueta `baseline-2.6.1`).
+Primera versión después de la baseline: versión 2.6.1, commit `c2b68d0` (datos de la ejecución del 29-09-2026 a las 19:28 UTC).
 
 - **Ya no se pierde lo que aporta una web que no se puede leer.**
   - Antes, si una fuente fallaba, sus conciertos se conservaban, pero los que compartía con otras webs perdían lo que ella aportaba: su nombre entre las fuentes, el contraste, el precio o la confirmación de la sala. El 29-09 eso bajó los contrastados de 686 a 661.
