@@ -42,7 +42,15 @@ def parse_linea(linea: str, today: date) -> tuple[date | None, str, str, list[st
         resto = resto[: mx.start() + 1]
     resto = re.sub(r"\s*\|[^()]*\)", ")", resto)  # '(sala X | Nueva sala)' → '(sala X)'
     ciudad, sala = "", ""
-    parts = [clean(p) for p in re.split(r"\s+[-–—|]\s+|\s*[–—]\s*|\s+-$", resto) if clean(p)]
+    parts = [clean(p) for p in re.split(r"\s+[-–—|]\s+|\s*[–—|]\s*|\s+-$", resto) if clean(p)]
+    parts = [p for p in parts if not re.match(r"(?i)(anticipada|taquilla|precio|entradas?)\b", p)]
+    # 'Sala X – Ciudad' o 'Sala X, Ciudad': si la primera parte no es municipio y la segunda sí, se invierten
+    if len(parts) >= 2 and not municipio(parts[0]) and not re.search(r"\(", parts[0]) and municipio(parts[1]):
+        parts = [parts[1], parts[0]] + parts[2:]
+    if len(parts) == 1 and "," in parts[0] and "(" not in parts[0]:
+        a_, b_ = [clean(x) for x in parts[0].rsplit(",", 1)]
+        if municipio(b_) and not municipio(a_):
+            parts = [b_, a_]
     if parts:
         first = parts[0]
         mp = re.match(r"(.*?)\s*\(([^)]*)\)\s*$", first)
@@ -52,6 +60,8 @@ def parse_linea(linea: str, today: date) -> tuple[date | None, str, str, list[st
                 ciudad, sala = dentro, antes  # 'Nazca (Madrid)' raro; se prefiere ciudad conocida
             if "," in dentro and municipio(dentro.split(",")[0]):
                 ciudad, sala = dentro.split(",")[0], clean(dentro.split(",", 1)[1])  # Madrid (Leganés, La Cubierta)
+            elif municipio(dentro) and not municipio(antes):
+                ciudad, sala = dentro, antes  # 'Nazca (Madrid)', 'La Riviera (Madrid)'
             elif municipio(antes) and (dentro.lower() in ("madrid",) or not municipio(dentro)):
                 ciudad = antes
                 sala = dentro if not municipio(dentro) else (parts[1] if len(parts) > 1 else "")

@@ -1,10 +1,11 @@
-name: Capturar HTML de fuentes (desarrollo)
+name: Capturar HTML de una fuente (para desarrollar parsers)
 
 on:
   workflow_dispatch:
-  push:
-    branches: ["ccr-**"]
-    paths: ["tools/capturar_urls.txt", "tools/capturar_mev.py"]
+    inputs:
+      urls:
+        description: "Líneas 'nombre URL' separadas por ';' (p. ej. 'misala https://misala.es/agenda')"
+        required: true
 
 permissions:
   contents: write
@@ -17,14 +18,16 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - run: pip install requests playwright && python -m playwright install --with-deps chromium && echo ok
-      - run: python tools/capturar.py tools/capturar_urls.txt capturas/
-      - run: python tools/capturar_mev.py capturas/ || true
-      - name: Commit capturas
+      - run: pip install requests
+      - name: Descargar (respetando robots.txt)
+        run: |
+          echo "${{ github.event.inputs.urls }}" | tr ';' '\n' > /tmp/urls.txt
+          python tools/capturar.py /tmp/urls.txt capturas/
+      - name: Guardar capturas
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add capturas
-          git commit -m "Capturas HTML de fuentes" || exit 0
+          git commit -m "Capturas HTML" || exit 0
           git pull --rebase --autostash
           git push

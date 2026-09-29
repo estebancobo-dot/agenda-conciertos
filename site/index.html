@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Conciertos Madrid</title>
+<meta name="description" content="Agenda automática de conciertos en la Comunidad de Madrid: rock, metal, blues, americana, folk, punk, pop e indie. Datos trazables a sus fuentes.">
+<meta name="theme-color" content="#14161a" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f6f5f2" media="(prefers-color-scheme: light)">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23c2410c'/%3E%3Cpath d='M40 12v26a8 8 0 1 1-4-6.9V18l-12 3v21a8 8 0 1 1-4-6.9V16z' fill='%23fff'/%3E%3C/svg%3E">
+<style>
+:root{
+  --bg:#f6f5f2; --panel:#ffffff; --panel2:#efede8; --ink:#1b1c1f; --muted:#5d6066; --line:#dcd9d2;
+  --accent:#c2410c; --accent-ink:#fff; --ok:#15803d; --warn:#b45309; --bad:#b91c1c; --info:#1d4ed8;
+  --c-rock:#b91c1c; --c-pop:#7c3aed; --c-amer:#a16207; --c-blues:#1d4ed8; --c-punk:#be185d; --c-cant:#0f766e;
+  --c-trib:#c2410c; --c-fuera:#6b7280; --c-sin:#334155;
+  --radius:14px; --shadow:0 1px 2px rgba(0,0,0,.06),0 4px 14px rgba(0,0,0,.05);
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#14161a; --panel:#1d2025; --panel2:#262a30; --ink:#ecebe8; --muted:#a2a6ad; --line:#33383f;
+  --accent:#fb923c; --accent-ink:#1b1c1f; --ok:#4ade80; --warn:#fbbf24; --bad:#f87171; --info:#93c5fd;
+  --c-rock:#f87171; --c-pop:#c4b5fd; --c-amer:#facc15; --c-blues:#60a5fa; --c-punk:#f472b6; --c-cant:#2dd4bf;
+  --c-trib:#fb923c; --c-fuera:#9ca3af; --c-sin:#cbd5e1; --shadow:none;
+}}
+:root[data-theme="dark"]{
+  --bg:#14161a; --panel:#1d2025; --panel2:#262a30; --ink:#ecebe8; --muted:#a2a6ad; --line:#33383f;
+  --accent:#fb923c; --accent-ink:#1b1c1f; --ok:#4ade80; --warn:#fbbf24; --bad:#f87171; --info:#93c5fd;
+  --c-rock:#f87171; --c-pop:#c4b5fd; --c-amer:#facc15; --c-blues:#60a5fa; --c-punk:#f472b6; --c-cant:#2dd4bf;
+  --c-trib:#fb923c; --c-fuera:#9ca3af; --c-sin:#cbd5e1; --shadow:none;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;padding-bottom:env(safe-area-inset-bottom)}
+a{color:var(--info)}
+button,input,select{font:inherit;color:inherit}
+header{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+.top{display:flex;align-items:center;gap:10px;padding:10px 16px 6px;max-width:960px;margin:0 auto}
+.top h1{font-size:1rem;margin:0;flex:1;min-width:0;letter-spacing:.2px;line-height:1.25}
+.top h1 small{display:block;font-weight:400;color:var(--muted);font-size:.75rem}
+.iconbtn{border:1px solid var(--line);background:var(--panel);border-radius:10px;min-width:40px;height:40px;padding:0 10px;cursor:pointer}
+nav.tabs{display:flex;gap:4px;overflow-x:auto;padding:0 12px 8px;max-width:960px;margin:0 auto;scrollbar-width:none}
+nav.tabs::-webkit-scrollbar{display:none}
+nav.tabs button{flex:0 0 auto;border:0;background:transparent;padding:8px 12px;border-radius:999px;color:var(--muted);cursor:pointer;font-weight:600;font-size:.92rem}
+nav.tabs button[aria-selected="true"]{background:var(--ink);color:var(--bg)}
+main{max-width:960px;margin:0 auto;padding:12px 16px 40px}
+.bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:10px}
+.search{flex:1 1 200px;min-width:0;height:42px;border:1px solid var(--line);border-radius:12px;padding:0 12px;background:var(--panel)}
+.chips{display:flex;gap:6px;overflow-x:auto;padding:2px 0 8px;scrollbar-width:thin}
+.chip{flex:0 0 auto;display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--panel);border-radius:999px;padding:6px 10px;font-size:.85rem;cursor:pointer;user-select:none}
+.chip .dot{width:10px;height:10px;border-radius:50%}
+.chip[aria-pressed="false"]{opacity:.45;text-decoration:line-through}
+.nav{display:flex;align-items:center;gap:8px;margin:6px 0 12px}
+.nav .title{flex:1;font-weight:700;text-align:center}
+.nav .title::first-letter,.dayhead::first-letter{text-transform:uppercase}
+.nav input[type=date]{height:40px;border:1px solid var(--line);border-radius:10px;background:var(--panel);padding:0 8px;max-width:150px}
+.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
+.cal .dow{font-size:.72rem;color:var(--muted);text-align:center;padding:2px 0;font-weight:600}
+.day{background:var(--panel);border:1px solid var(--line);border-radius:10px;min-height:62px;padding:4px;display:flex;flex-direction:column;cursor:pointer;text-align:left;position:relative}
+.day.out{opacity:.35}
+.day.today{outline:2px solid var(--accent);outline-offset:-2px}
+.day .n{font-size:.78rem;color:var(--muted)}
+.day .cnt{font-size:1.05rem;font-weight:800;margin-top:auto}
+.day .cnt:empty{display:none}
+.day .stack{display:flex;height:6px;border-radius:3px;overflow:hidden;margin-top:3px;background:var(--panel2)}
+.legend{display:flex;flex-wrap:wrap;gap:10px;font-size:.78rem;color:var(--muted);margin-top:10px}
+.legend span{display:inline-flex;align-items:center;gap:5px}
+.legend i{width:10px;height:10px;border-radius:2px;display:inline-block}
+.dayhead{margin:18px 0 8px;font-weight:800;display:block}
+.dayhead small{margin-left:8px}
+.dayhead small{color:var(--muted);font-weight:500}
+@media (max-width:420px){.dl{padding:0 8px}.nav input[type=date]{max-width:120px}}
+.card{background:var(--panel);border:1px solid var(--line);border-left:5px solid var(--c-sin);border-radius:var(--radius);padding:10px 12px;margin:8px 0;box-shadow:var(--shadow)}
+.card .row1{display:flex;gap:10px;align-items:baseline}
+.card .hora{font-variant-numeric:tabular-nums;font-weight:800;min-width:3.2em}
+.card .art{font-weight:800;font-size:1.03rem;word-break:break-word}
+.card .inv{color:var(--muted);font-size:.9rem}
+.meta{display:flex;flex-wrap:wrap;gap:4px 12px;font-size:.88rem;color:var(--muted);margin-top:4px}
+.badges{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.badge{font-size:.74rem;font-weight:700;border-radius:999px;padding:2px 8px;border:1px solid currentColor}
+.b-contrastado{color:var(--ok)} .b-1_fuente{color:var(--muted)} .b-conflicto{color:var(--bad)} .b-cancelado{color:var(--warn)}
+.cat{color:var(--ink);border-color:var(--line);background:var(--panel2)}
+details{margin-top:6px;font-size:.88rem}
+details summary{cursor:pointer;color:var(--info)}
+.notes{margin:6px 0 0;padding-left:18px}
+.src{margin:6px 0 0;padding-left:18px}
+.empty{color:var(--muted);text-align:center;padding:30px 0}
+table{width:100%;border-collapse:collapse;font-size:.88rem}
+th,td{text-align:left;padding:6px 6px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--muted);font-weight:600}
+.scroll{overflow-x:auto}
+.kpis{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px;margin:8px 0 14px}
+.kpi{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:10px}
+.kpi b{display:block;font-size:1.4rem}
+.kpi span{color:var(--muted);font-size:.8rem}
+.st-ok{color:var(--ok);font-weight:700} .st-err{color:var(--bad);font-weight:700} .st-warn{color:var(--warn);font-weight:700}
+.genre{margin:14px 0}
+.genre h3{margin:0 0 6px}
+.styles{display:flex;flex-wrap:wrap;gap:6px}
+.style{font-size:.84rem;border:1px solid var(--line);border-radius:8px;padding:3px 8px;text-decoration:none;color:var(--muted);background:var(--panel)}
+.style.has{border-color:var(--ok);color:var(--ok);font-weight:700;background:color-mix(in srgb,var(--ok) 10%,var(--panel))}
+.md h1,.md h2{font-size:1.1rem;margin:18px 0 6px} .md h3{font-size:1rem;margin:14px 0 4px}
+.md ul{padding-left:20px} .md code{background:var(--panel2);padding:1px 4px;border-radius:4px}
+.muted{color:var(--muted)}
+.dl{display:inline-flex;align-items:center;gap:6px;text-decoration:none;border:1px solid var(--line);background:var(--panel);border-radius:10px;padding:0 12px;height:40px;color:var(--ink)}
+@media (min-width:700px){.day{min-height:78px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="top">
+    <h1>Conciertos · Comunidad de Madrid<small id="upd">Cargando…</small></h1>
+    <a class="dl" id="csv" href="data/concerts.csv" download title="Descargar concerts.csv para Excel">⬇ CSV</a>
+    <button class="iconbtn" id="theme" title="Cambiar modo claro/oscuro" aria-label="Cambiar modo claro u oscuro">◐</button>
+  </div>
+  <nav class="tabs" role="tablist" id="tabs"></nav>
+</header>
+<main id="main"><p class="empty">Cargando datos…</p></main>
+<script>
+"use strict";
+const CATS = [
+  ["rock y metal","--c-rock"],["pop e indie","--c-pop"],["americana/country/folk","--c-amer"],["blues","--c-blues"],
+  ["punk y garage","--c-punk"],["cantautor","--c-cant"],["tributos y versiones","--c-trib"],
+  ["sin clasificar","--c-sin"],["fuera de foco","--c-fuera"]];
+const CATVAR = Object.fromEntries(CATS);
+const TABS = ["Mes","Semana","Día","Estilos","Fuentes","Informe","Versiones"];
+const ESTADO = {"contrastado":"contrastado","1_fuente":"1 fuente","conflicto":"conflicto","posiblemente cancelado":"posiblemente cancelado"};
+const store = {
+  get(k,d){try{const v=localStorage.getItem("agenda:"+k);return v===null?d:JSON.parse(v)}catch(e){return d}},
+  set(k,v){try{localStorage.setItem("agenda:"+k,JSON.stringify(v))}catch(e){}}
+};
+let DATA=[], INFORME=null, TAXO=null, HOY=null;
+let state = {tab:"Mes", date:null, q:store.get("q",""), cats:store.get("cats",CATS.filter(c=>c[0]!=="fuera de foco").map(c=>c[0]))};
+let regionNames=null; try{regionNames=new Intl.DisplayNames(["es"],{type:"region"})}catch(e){}
+
+// ---------------------------------------------------------------- fechas (sin zonas horarias: AAAA-MM-DD)
+const pad=n=>String(n).padStart(2,"0");
+const iso=d=>`${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
+const parse=s=>{const [y,m,d]=s.split("-").map(Number);return new Date(y,m-1,d)};
+const addDays=(s,n)=>{const d=parse(s);d.setDate(d.getDate()+n);return iso(d)};
+const fmt=(s,o)=>parse(s).toLocaleDateString("es-ES",o);
+const mondayOf=s=>{const d=parse(s);const w=(d.getDay()+6)%7;d.setDate(d.getDate()-w);return iso(d)};
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const norm=s=>String(s||"").normalize("NFD").replace(/[̀-ͯ]/g,"").toLowerCase();
+
+// ---------------------------------------------------------------- tema
+function applyTheme(t){ if(t) document.documentElement.setAttribute("data-theme",t); else document.documentElement.removeAttribute("data-theme"); }
+applyTheme(store.get("theme",null));
+document.getElementById("theme").onclick=()=>{
+  const cur=document.documentElement.getAttribute("data-theme");
+  const dark=cur?cur==="dark":matchMedia("(prefers-color-scheme: dark)").matches;
+  const next=dark?"light":"dark"; applyTheme(next); store.set("theme",next);
+};
+
+// ---------------------------------------------------------------- filtros
+function visible(r){
+  const cats=r.categorias&&r.categorias.length?r.categorias:[r.categoria];
+  if(!cats.some(c=>state.cats.includes(c))) return false;
+  if(state.q){const q=norm(state.q); const hay=norm([r.artista,(r.invitados||[]).join(" "),r.sala,r.municipio].join(" "));
+    if(!q.split(/\s+/).every(w=>hay.includes(w))) return false;}
+  return true;
+}
+function byDate(){const m={}; for(const r of DATA){ if(!visible(r)) continue; (m[r.fecha]=m[r.fecha]||[]).push(r);} return m;}
+function filtersHTML(){
+  return `<div class="bar"><input class="search" id="q" type="search" placeholder="Buscar artista, sala o municipio" value="${esc(state.q)}" aria-label="Buscar"></div>
+  <div class="chips" role="group" aria-label="Filtrar por categoría">${CATS.map(([c,v])=>`<button class="chip" data-cat="${esc(c)}" aria-pressed="${state.cats.includes(c)}"><span class="dot" style="background:var(${v})"></span>${esc(c)}</button>`).join("")}</div>`;
+}
+function bindFilters(){
+  const q=document.getElementById("q");
+  if(q) q.oninput=()=>{state.q=q.value; store.set("q",state.q); renderBody(true);};
+  document.querySelectorAll(".chip[data-cat]").forEach(b=>b.onclick=()=>{
+    const c=b.dataset.cat; state.cats=state.cats.includes(c)?state.cats.filter(x=>x!==c):[...state.cats,c];
+    store.set("cats",state.cats); renderBody(true);
+  });
+}
+
+// ---------------------------------------------------------------- tarjeta de concierto
+function nac(r){
+  if(!r.nacionalidad) return "nacionalidad sin confirmar";
+  let n=r.nacionalidad; if(/^[A-Z]{2}$/.test(n)&&regionNames){try{n=regionNames.of(n)}catch(e){}}
+  return `${esc(n)} <span class="muted">(${esc(r.nacionalidad_fuente||"fuente")})</span>`;
+}
+function card(r){
+  const col=CATVAR[r.categoria]||"--c-sin";
+  const estado=r.estado==="posiblemente cancelado"?"cancelado":r.estado;
+  const hora=r.hora||(r.conflictos||[]).filter(c=>c.campo==="hora").map(c=>c.versiones.map(v=>v.valor).join(" ó ")).join("")||"—";
+  const estilos=(r.estilo_fuente||[]).map(e=>`${esc(e.estilo)} <span class="muted">(${esc(e.fuente)})</span>`).join("; ")||"sin clasificar";
+  return `<article class="card" style="border-left-color:var(${col})">
+   <div class="row1"><span class="hora">${esc(hora)}</span><div><div class="art">${esc(r.artista)}</div>${r.invitados&&r.invitados.length?`<div class="inv">+ ${r.invitados.map(esc).join(" + ")}</div>`:""}</div></div>
+   <div class="meta"><span>📍 ${esc(r.sala||"sala sin indicar")}${r.municipio&&r.municipio!=="Madrid"?` · <b>${esc(r.municipio)}</b>`:r.municipio?` · Madrid`:""}</span>${r.precio?`<span>💶 ${esc(r.precio)}</span>`:""}<span>🌍 ${nac(r)}</span></div>
+   <div class="badges"><span class="badge b-${esc(estado)}">${esc(ESTADO[r.estado]||r.estado)}</span><span class="badge cat">${esc(r.categoria)}</span></div>
+   <details><summary>Estilo, notas y fuentes (${(r.fuentes||[]).length})</summary>
+     <div><b>Estilo según la fuente:</b> ${estilos}</div>
+     ${r.estilos_discogs&&r.estilos_discogs.length?`<div><b>Discogs:</b> ${esc(r.genero_discogs.join(", "))} › ${esc(r.estilos_discogs.join(", "))}</div>`:""}
+     ${r.notas&&r.notas.length?`<ul class="notes">${r.notas.map(n=>`<li>${esc(n)}</li>`).join("")}</ul>`:""}
+     <ul class="src">${(r.fuentes||[]).map(f=>`<li><a href="${esc(f.url)}" target="_blank" rel="noopener">${esc(f.nombre)}</a> <span class="muted">(prioridad ${f.prioridad})</span></li>`).join("")}</ul>
+     <div class="muted">Visto por primera vez: ${esc(r.primera_vez_visto||"—")} · última: ${esc(r.ultima_vez_visto||"—")}</div>
+   </details></article>`;
+}
+function dayList(fecha,list){
+  return `<div class="dayhead">${esc(fmt(fecha,{weekday:"long",day:"numeric",month:"long"}))}<small>${list.length} concierto${list.length===1?"":"s"}</small></div>`+
+    (list.length?list.map(card).join(""):`<p class="empty">No hay conciertos con estos filtros.</p>`);
+}
+
+// ---------------------------------------------------------------- vistas
+function viewMes(){
+  const d=parse(state.date); const y=d.getFullYear(), m=d.getMonth();
+  const first=iso(new Date(y,m,1)); const start=mondayOf(first);
+  const bd=byDate(); let cells="";
+  for(let i=0;i<42;i++){
+    const f=addDays(start,i); const fd=parse(f); if(i>=35&&fd.getMonth()!==m) break;
+    const list=bd[f]||[]; const counts={}; list.forEach(r=>counts[r.categoria]=(counts[r.categoria]||0)+1);
+    const stack=CATS.filter(([c])=>counts[c]).map(([c,v])=>`<i style="flex:${counts[c]};background:var(${v})" title="${esc(c)}: ${counts[c]}"></i>`).join("");
+    cells+=`<button class="day${fd.getMonth()!==m?" out":""}${f===HOY?" today":""}" data-day="${f}" aria-label="${esc(fmt(f,{weekday:"long",day:"numeric",month:"long"}))}: ${list.length} conciertos"><span class="n">${fd.getDate()}</span><span class="cnt">${list.length||""}</span><span class="stack">${stack}</span></button>`;
+  }
+  return `<div class="nav"><button class="iconbtn" data-nav="-1" aria-label="Mes anterior">‹</button><div class="title">${esc(fmt(first,{month:"long",year:"numeric"}))}</div><button class="iconbtn" data-nav="1" aria-label="Mes siguiente">›</button></div>
+   <div class="cal">${["L","M","X","J","V","S","D"].map(x=>`<div class="dow">${x}</div>`).join("")}${cells}</div>
+   <div class="legend">${CATS.map(([c,v])=>`<span><i style="background:var(${v})"></i>${esc(c)}</span>`).join("")}</div>`;
+}
+function viewSemana(){
+  const mon=mondayOf(state.date); const bd=byDate(); let out="";
+  for(let i=0;i<7;i++){const f=addDays(mon,i); out+=dayList(f,bd[f]||[]);}
+  return `<div class="nav"><button class="iconbtn" data-nav="-7" aria-label="Semana anterior">‹</button><div class="title">Semana del ${esc(fmt(mon,{day:"numeric",month:"short"}))} al ${esc(fmt(addDays(mon,6),{day:"numeric",month:"short"}))}</div><input type="date" id="pick" value="${state.date}" aria-label="Elegir fecha"><button class="iconbtn" data-nav="7" aria-label="Semana siguiente">›</button></div>`+out;
+}
+function viewDia(){
+  const bd=byDate();
+  return `<div class="nav"><button class="iconbtn" data-nav="-1" aria-label="Día anterior">‹</button><div class="title">${esc(fmt(state.date,{weekday:"short",day:"numeric",month:"short"}))}</div><input type="date" id="pick" value="${state.date}" aria-label="Elegir fecha"><button class="iconbtn" data-nav="1" aria-label="Día siguiente">›</button></div>`+dayList(state.date,bd[state.date]||[]);
+}
+function viewEstilos(){
+  if(!TAXO) return `<p class="empty">No se pudo cargar la taxonomía.</p>`;
+  const cnt={}; DATA.filter(r=>r.fecha>=HOY).forEach(r=>(r.estilos_discogs||[]).forEach(s=>cnt[s]=(cnt[s]||0)+1));
+  const g=Object.entries(TAXO.generos).map(([gen,st])=>`<section class="genre"><h3>${esc(gen)}</h3><div class="styles">${st.map(s=>{
+      const q=encodeURIComponent(`conciertos ${s} Madrid`);
+      return `<a class="style${cnt[s]?" has":""}" href="https://duckduckgo.com/?q=${q}" target="_blank" rel="noopener" title="Buscar conciertos de ${esc(s)} en Madrid">${esc(s)}${cnt[s]?` · ${cnt[s]}`:""}</a>`}).join("")}</div></section>`).join("");
+  return `<p class="muted">Jerarquía de Discogs (género → estilos). En verde, los estilos que alguna fuente atribuye a conciertos próximos, con su número. Solo se marcan cuando la fuente usa ese nombre de estilo (o un sinónimo literal); nunca se deduce. Americana se cubre con ${esc((TAXO.americana||[]).join(", "))}. Cada estilo abre una búsqueda web de conciertos de ese estilo en Madrid.</p>`+g;
+}
+function stClass(e){return e==="ok"?"st-ok":/error|bloq/.test(e)?"st-err":"st-warn"}
+function viewFuentes(){
+  if(!INFORME) return `<p class="empty">Sin informe.</p>`;
+  const rows=INFORME.fuentes.map(f=>`<tr><td><a href="${esc(f.url)}" target="_blank" rel="noopener">${esc(f.nombre)}</a>${f.notas?`<div class="muted">${esc(f.notas)}</div>`:""}</td><td>${esc(f.tipo)}<div class="muted">prioridad ${f.prioridad}</div></td><td>${esc(f.fiabilidad)}</td><td class="${stClass(f.estado)}">${esc(f.estado)}${f.aviso?`<div class="st-warn">${esc(f.aviso)}</div>`:""}</td></tr>`).join("");
+  const sin=Object.entries(INFORME.sin_agenda_legible||{}).map(([k,v])=>`<li><b>${esc(k)}</b>: ${esc(v)}</li>`).join("");
+  const no=Object.entries(INFORME.no_usar||{}).map(([k,v])=>`<li><b>${esc(k)}</b>: ${esc(v)}</li>`).join("");
+  return `<p class="muted">Prioridad para resolver conflictos: 1 web oficial de sala/recinto · 2 promotora o ticketera · 3 agregador · 4 blog o foro.</p>
+   <div class="scroll"><table><thead><tr><th>Fuente</th><th>Tipo</th><th>Fiabilidad</th><th>Última ejecución</th></tr></thead><tbody>${rows}</tbody></table></div>
+   <h3>Salas sin agenda legible</h3><ul>${sin}</ul><h3>No se usan</h3><ul>${no}</ul>`;
+}
+function viewInforme(){
+  if(!INFORME) return `<p class="empty">Sin informe.</p>`;
+  const t=INFORME.totales;
+  const k=(n,l)=>`<div class="kpi"><b>${esc(n)}</b><span>${esc(l)}</span></div>`;
+  const rows=INFORME.fuentes.map(f=>`<tr><td>${esc(f.nombre)}</td><td class="${stClass(f.estado)}">${f.funciono?"sí":"no"}</td><td>${f.conciertos}</td><td>${f.nuevos}</td><td>${f.solo_en_esta}</td><td>${f.paginas}</td><td>${f.robots_bloquea?"<b>sí</b>":"no"}</td><td>${esc((f.errores||[]).join(" · ").slice(0,220))}${f.aviso?`<div class="st-warn">${esc(f.aviso)}</div>`:""}</td></tr>`).join("");
+  const c=INFORME.correcciones||{};
+  return `<p>Última actualización: <b>${esc(new Date(INFORME.generado).toLocaleString("es-ES",{dateStyle:"full",timeStyle:"short"}))}</b> · ventana ${esc(INFORME.hoy)} → ${esc(INFORME.horizonte)} · versión ${esc(INFORME.version)}</p>
+   <div class="kpis">${k(t.conciertos,"conciertos próximos")}${k(t.en_foco,"en foco")}${k(t.contrastados,"contrastados (2+ fuentes)")}${k(t.una_fuente,"de 1 fuente")}${k(t.conflictos,"con conflicto")}${k(t.posiblemente_cancelados,"posiblemente cancelados")}${k(t.nuevos_hoy,"nuevos hoy")}${k(`${t.fuentes_ok}/${t.fuentes_total}`,"fuentes que funcionaron")}</div>
+   <div class="scroll"><table><thead><tr><th>Fuente</th><th>Funcionó</th><th>Conciertos</th><th>Nuevos</th><th>Solo aquí</th><th>Páginas</th><th>robots.txt bloquea</th><th>Errores / avisos</th></tr></thead><tbody>${rows}</tbody></table></div>
+   <h3>Correcciones manuales</h3><ul>${(c.aplicadas||[]).map(a=>`<li>${esc(a.correccion)}: aplicada a ${a.registros}</li>`).join("")}${(c.sin_coincidencia||[]).map(a=>`<li class="muted">${esc(a.correccion)}: sin concierto que coincida (${esc(a.nota)})</li>`).join("")}</ul>
+   <h3>MusicBrainz</h3><p class="muted">${esc(JSON.stringify(INFORME.musicbrainz))}</p>
+   <h3>Fuera de ámbito (otras provincias)</h3><p class="muted">${esc(t.fuera_de_ambito)} eventos descartados. Ejemplos:</p><ul class="muted">${(t.ejemplos_fuera_de_ambito||[]).slice(0,10).map(x=>`<li>${esc(x)}</li>`).join("")}</ul>
+   <h3>Estilos sin categoría</h3><p class="muted">${esc((INFORME.estilos_sin_mapear||[]).join(" · ")||"ninguno")}</p>`;
+}
+function mdToHtml(md){
+  const lines=md.split("\n"); let out="", inList=false;
+  const inline=s=>esc(s).replace(/`([^`]+)`/g,"<code>$1</code>").replace(/\*\*([^*]+)\*\*/g,"<b>$1</b>").replace(/\[([^\]]+)\]\((https?:[^)]+)\)/g,'<a href="$2">$1</a>');
+  for(const l of lines){
+    if(/^\s*[-*] /.test(l)){ if(!inList){out+="<ul>";inList=true;} out+=`<li>${inline(l.replace(/^\s*[-*] /,""))}</li>`; continue; }
+    if(inList){out+="</ul>";inList=false;}
+    const h=l.match(/^(#{1,3}) (.*)/); if(h){out+=`<h${h[1].length}>${inline(h[2])}</h${h[1].length}>`;continue;}
+    if(l.trim()) out+=`<p>${inline(l)}</p>`;
+  }
+  return out+(inList?"</ul>":"");
+}
+async function viewVersiones(){
+  try{const r=await fetch("CHANGELOG.md",{cache:"no-cache"}); return `<div class="md">${mdToHtml(await r.text())}</div>`;}
+  catch(e){return `<p class="empty">No se pudo leer CHANGELOG.md</p>`;}
+}
+
+// ---------------------------------------------------------------- navegación
+function setHash(){ const h=`#${norm(state.tab)}${["Mes","Semana","Día"].includes(state.tab)?"/"+state.date:""}`; if(location.hash!==h) history.replaceState(null,"",h); }
+function readHash(){
+  const m=location.hash.slice(1).split("/"); const t=TABS.find(x=>norm(x)===m[0]); if(t) state.tab=t;
+  if(m[1]&&/^\d{4}-\d{2}-\d{2}$/.test(m[1])) state.date=m[1];
+}
+function renderTabs(){
+  document.getElementById("tabs").innerHTML=TABS.map(t=>`<button role="tab" aria-selected="${t===state.tab}" data-tab="${t}">${t}</button>`).join("");
+  document.querySelectorAll("[data-tab]").forEach(b=>b.onclick=()=>{state.tab=b.dataset.tab; store.set("tab",state.tab); render();});
+}
+async function renderBody(keepFocus){
+  const main=document.getElementById("main");
+  const withFilters=["Mes","Semana","Día"].includes(state.tab);
+  let body="";
+  if(state.tab==="Mes") body=viewMes(); else if(state.tab==="Semana") body=viewSemana(); else if(state.tab==="Día") body=viewDia();
+  else if(state.tab==="Estilos") body=viewEstilos(); else if(state.tab==="Fuentes") body=viewFuentes();
+  else if(state.tab==="Informe") body=viewInforme(); else body=await viewVersiones();
+  if(withFilters&&keepFocus&&document.getElementById("fbody")){ document.getElementById("fbody").innerHTML=body; document.querySelectorAll(".chip[data-cat]").forEach(b=>b.setAttribute("aria-pressed",state.cats.includes(b.dataset.cat))); }
+  else main.innerHTML=withFilters?filtersHTML()+`<div id="fbody">${body}</div>`:body;
+  if(withFilters&&!keepFocus) bindFilters();
+  document.querySelectorAll("[data-day]").forEach(b=>b.onclick=()=>{state.date=b.dataset.day; state.tab="Día"; render(); scrollTo(0,0);});
+  document.querySelectorAll("[data-nav]").forEach(b=>b.onclick=()=>{
+    const n=Number(b.dataset.nav);
+    if(state.tab==="Mes"){const d=parse(state.date); state.date=iso(new Date(d.getFullYear(),d.getMonth()+n,1));}
+    else state.date=addDays(state.date,n);
+    renderBody(true); setHash();
+  });
+  const pick=document.getElementById("pick"); if(pick) pick.onchange=()=>{ if(pick.value){state.date=pick.value; renderBody(true); setHash();} };
+  setHash();
+}
+function render(){ renderTabs(); renderBody(false); }
+
+async function load(){
+  const j=async u=>{const r=await fetch(u,{cache:"no-cache"}); if(!r.ok) throw new Error(u); return r.json();};
+  try{
+    const [c,inf,tax]=await Promise.all([j("data/concerts.json"),j("data/informe.json").catch(()=>null),j("data/taxonomia.json").catch(()=>null)]);
+    DATA=c.conciertos||[]; INFORME=inf; TAXO=tax; HOY=iso(new Date());
+    document.getElementById("upd").textContent=`Actualizado ${new Date(c.generado).toLocaleString("es-ES",{day:"numeric",month:"short",hour:"2-digit",minute:"2-digit"})} · ${DATA.filter(r=>r.fecha>=HOY).length} conciertos`;
+  }catch(e){ document.getElementById("main").innerHTML=`<p class="empty">No se pudieron cargar los datos (${esc(e.message)}).</p>`; return; }
+  state.tab=store.get("tab","Mes"); state.date=HOY; readHash(); render();
+}
+addEventListener("hashchange",()=>{readHash(); render();});
+load();
+</script>
+</body>
+</html>

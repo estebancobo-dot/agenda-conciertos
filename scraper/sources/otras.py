@@ -172,6 +172,38 @@ def neverland(ctx: Ctx):
     yield from articulo_agenda_parse(ctx.get(url), url, ctx.today)
 
 
+def rfe_parse(html: str, page_url: str, today: date) -> list:
+    """Líneas '17 de octubre. La Pestilencia (gira despedida). Sala Gruta 77 a las 21:30. Precio: 40 euros.'"""
+    s = soup_of(html)
+    content = s.select_one(".entry-content") or s.find("article") or s.body
+    out = []
+    for li in content.find_all("li"):
+        t = text(li)
+        m = re.match(r"(\d{1,2})(?:\s*y\s*(\d{1,2}))?\s+de\s+([a-záéíóú]+)\.\s*(.+)$", t)
+        if not m or not MESES.get(m.group(3).lower()):
+            continue
+        resto = re.sub(r"\.\s+ala\s+", ". Sala ", m.group(4))  # errata frecuente: 'ala Wagon'
+        precio = None
+        mp = re.search(r"\.?\s*Precio[^:]*:\s*(.+)$", resto)
+        if mp:
+            precio, resto = clean(mp.group(1)).rstrip("."), resto[: mp.start()]
+        partes = [clean(x) for x in re.split(r"\.\s+(?=[A-ZÁÉÍÓÚ])", resto) if clean(x)]
+        if not partes:
+            continue
+        artistas = re.sub(r"\s*\((?:gira|tour)[^)]*\)", "", partes[0])
+        lugar = partes[1] if len(partes) > 1 else ""
+        mh = re.search(r"\s+a las\s+(\d{1,2}[:.]\d{2})", lugar)
+        hora = parse_hora(mh.group(1)) if mh else None
+        sala = clean(lugar[: mh.start()] if mh else lugar)
+        if re.search(r"(?i)precio|abono", sala):
+            sala = ""
+        for dd in filter(None, [m.group(1), m.group(2)]):
+            f = parse_fecha_texto(f"{dd} de {m.group(3)}", today)
+            if f:
+                out.append(make(f, artistas, page_url, sala=sala, ciudad="Madrid", hora=hora, precio=precio))
+    return out
+
+
 def rockforeveryone(ctx: Ctx):
     """Artículo mensual 'agenda de conciertos heavy en Madrid en <mes> de <año>'."""
     for y, m in _meses(ctx):
@@ -182,10 +214,7 @@ def rockforeveryone(ctx: Ctx):
             if "404" in str(e):
                 continue
             raise
-        for e in articulo_agenda_parse(html, url, ctx.today):
-            if not e.ciudad:
-                e.ciudad = "Madrid"
-            yield e
+        yield from rfe_parse(html, url, ctx.today)
 
 
 def _meses(ctx: Ctx):
@@ -193,9 +222,37 @@ def _meses(ctx: Ctx):
     return months_in_window(ctx.today, ctx.horizon)
 
 
+_MES_EN = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"]
+
+
+def rockprog_cal_parse(html: str, page_url: str, today: date, y: int, m: int) -> list:
+    """Calendario mensual: celdas td.day-with-date con 'Título (Ciudad)'. Sin ciudad no se puede ubicar y se omite."""
+    s = soup_of(html)
+    out = []
+    for td in s.select("td.day-with-date"):
+        dia = td.find("span")
+        if not dia or not text(dia).isdigit():
+            continue
+        for a in td.select(".calnk a"):
+            t = text(a.select_one(".event-title")) or text(a)
+            mc = re.match(r"(.+?)\s*\(([^)]+)\)\s*$", t)
+            if not mc:
+                continue
+            try:
+                f = date(y, m, int(text(dia)))
+            except ValueError:
+                continue
+            nombre = mc.group(1).replace("/", " / ")
+            out.append(make(f, nombre, a.get("href") or page_url, ciudad=mc.group(2),
+                            nota="Del calendario de Rock-Progresivo.com (no indica sala)."))
+    return out
+
+
 def rockprog_agenda(ctx: Ctx):
-    url = "https://www.rock-progresivo.com/agenda-de-conciertos-de-rock-progresivo/"
-    yield from articulo_agenda_parse(ctx.get(url), url, ctx.today)
+    base = "https://www.rock-progresivo.com/agenda-de-conciertos-de-rock-progresivo/"
+    for y, m in _meses(ctx):
+        url = f"{base}?calendar_month={_MES_EN[m - 1]}&calendar_yr={y}"
+        yield from rockprog_cal_parse(ctx.get(url), url, ctx.today, y, m)
 
 
 # ------------------------------------------------------------------ Galileo Galilei (Modern Events Calendar)
