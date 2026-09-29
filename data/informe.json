@@ -1957,13 +1957,22 @@
   ]
  },
  "artistas": {
-  "consultados": 236,
-  "desde_cache": 0,
-  "discogs": 73,
-  "wikipedia": 21,
-  "sin_ficha": 158,
-  "pendientes": 1315,
-  "errores": []
+  "consultados": 1002,
+  "completados": 192,
+  "desde_cache": 43,
+  "discogs": 524,
+  "wikipedia": 214,
+  "wikidata": 193,
+  "lastfm": 570,
+  "sin_ficha": 312,
+  "pendientes": 314,
+  "errores": [
+   "Los Deltonos (discogs): HTTPError: 404 Client Error: Not Found for url: https://api.discogs.com/artists/9340201"
+  ],
+  "discogs_con_token": true,
+  "lastfm_activo": true,
+  "duracion_seg": 3012,
+  "ultima_carga_fichas": "2026-09-29T16:33:24+00:00"
  },
  "estilos_sin_mapear": [
   "BY GRUPO SALVAJE): ESPECIAL HALLOWEEN (Karaoke (RockVille (web oficial))",
