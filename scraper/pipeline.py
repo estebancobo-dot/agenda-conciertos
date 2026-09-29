@@ -69,6 +69,8 @@ def rastrear(fuentes: list[Source], fetcher: Fetcher, hoy: date, horizonte: date
             res["errores"].append(msg[:400])
             log.debug(traceback.format_exc())
         res["errores"] += ctx.errors[:20]
+        # lectura completa: funcionó, dio resultados y sin errores parciales (páginas caídas, tope de tiempo…)
+        res["completa"] = res["funciono"] and bool(evs) and not ctx.errors
         res["paginas"] = ctx.pages
         res["brutos"] = len(evs)
         res["segundos"] = round(time.monotonic() - t0, 1)
@@ -137,8 +139,8 @@ def _match_prev(r: dict, prev: list[dict]) -> dict | None:
     for p in prev:
         if p["fecha"] != r["fecha"]:
             continue
-        sa, sb = r["sala"].split(" / ")[0], p["sala"].split(" / ")[0]
-        if sa and sb and not misma_sala(sa, sb):
+        sa, sb = [x for x in r["sala"].split(" / ") if x], [x for x in p["sala"].split(" / ") if x]
+        if sa and sb and not any(misma_sala(x, y) for x in sa for y in sb):
             continue
         if artistas_coinciden([r["artista"]], nombres_rec(p)) or artistas_coinciden([p["artista"]], nombres_rec(r)):
             return p
@@ -178,7 +180,8 @@ def conciliar(recs: list[dict], anteriores: list[dict], hoy: date, resultados: d
             continue
         # absorbido por un registro actual (mismo día y sala, nombre equivalente): no es una cancelación
         if any(r["fecha"] == p["fecha"] and (not r["sala"] or not p["sala"] or
-                                             misma_sala(r["sala"].split(" / ")[0], p["sala"].split(" / ")[0]))
+                                             any(misma_sala(x, y) for x in r["sala"].split(" / ")
+                                                 for y in p["sala"].split(" / ")))
                and coinciden_flexible([p["artista"]], nombres_rec(r)) for r in recs):
             continue
         srcs = [f["id"] for f in p["fuentes"] if f["id"] in fuentes]
@@ -186,10 +189,9 @@ def conciliar(recs: list[dict], anteriores: list[dict], hoy: date, resultados: d
         if not reconf:
             arrastrados.append(p)
             continue
-        caidas = [s for s in reconf if not (resultados.get(s, {}).get("funciono") and
-                                              resultados.get(s, {}).get("brutos", 0) > 0)]
+        caidas = [s for s in reconf if not resultados.get(s, {}).get("completa")]
         if caidas:
-            nota = ("No se pudo reconfirmar hoy: no respondió " +
+            nota = ("No se pudo reconfirmar hoy: no se leyó por completo " +
                     ", ".join(fuentes[s].nombre for s in caidas) + ". Se mantiene el dato anterior.")
             p["notas"] = [n for n in p["notas"] if not n.startswith("No se pudo reconfirmar hoy")] + [nota]
         else:

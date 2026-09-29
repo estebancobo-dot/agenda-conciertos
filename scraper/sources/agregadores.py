@@ -103,7 +103,7 @@ MEV_AJAX = "https://madridenvivo.com/wp-content/themes/base/codigo/includes/ajax
 # Se consulta por estilo (así el estilo lo da la propia web). Primero los estilos en foco.
 MEV_ESTILOS = {"779": "Pop / Rock", "778": "Músicas negras", "772": "Clubbing", "774": "Flamenco Capital",
                "822": "Musicales", "770": "Artes escénicas"}
-MEV_PRESUPUESTO_SEG = 1200  # su servidor responde lento (~10 s por página)
+MEV_PRESUPUESTO_SEG = 2400  # su servidor responde lento (~10 s por página)
 
 
 def mev_parse(html: str, page_url: str, today: date, estilo: str | None) -> list:

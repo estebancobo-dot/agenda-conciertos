@@ -147,3 +147,15 @@ def test_nacionalidad_solo_si_la_da_la_fuente():
 def test_una_sola_fuente_de_fiabilidad_baja():
     r = run((ev("Laura DSK", "Sala Mon"), src("mariskal", prioridad=4, fiab="baja")))[0]
     assert r["estado"] == "1_fuente" and any("fiabilidad baja" in n for n in r["notas"])
+
+
+def test_cancelacion_solo_con_lectura_completa():
+    from scraper.pipeline import conciliar
+    s = src("mev")
+    prev = run((ev("Grupo Q", "Sala El Sol"), s))
+    prev[0]["id"] = "p1"
+    # la fuente funcionó pero se cortó (tope de tiempo): no se marca como cancelado
+    out = conciliar([], prev, HOY, {"mev": {"funciono": True, "brutos": 5, "completa": False}}, {"mev": s})
+    assert out[0]["estado"] != "posiblemente cancelado"
+    out = conciliar([], prev, HOY, {"mev": {"funciono": True, "brutos": 5, "completa": True}}, {"mev": s})
+    assert out[0]["estado"] == "posiblemente cancelado"

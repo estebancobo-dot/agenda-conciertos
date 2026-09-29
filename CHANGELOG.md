@@ -1,5 +1,14 @@
 # Versiones
 
+## 2.0.1 — 2026-09-29
+
+- Una fuente leída solo en parte (páginas caídas o tope de tiempo) ya no provoca "posiblemente cancelado" en sus conciertos (en la primera ejecución Madrid en Vivo se cortó por tiempo y marcó 30 por error).
+- La comparación con la ejecución anterior tiene en cuenta todas las salas de un registro en conflicto de sala.
+- Madrid en Vivo: tope de tiempo ampliado a 40 minutos (su servidor responde lento).
+- El informe distingue "web inaccesible" de "robots.txt lo prohíbe".
+- MusicBrainz: pausa de 1,5 s entre consultas para evitar errores 503.
+- No se repite como invitado el título largo del propio artista.
+
 ## 2.0.0 — 2026-09-29
 
 Primera versión automática (la 1.x fue la agenda manual hecha en el chat).
