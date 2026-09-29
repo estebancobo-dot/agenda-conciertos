@@ -1,74 +1,195 @@
 {
- "dc_art": {
-  "bytes": 29677,
-  "ok": true,
-  "robots": "ok",
-  "url": "https://api.discogs.com/artists/170355"
- },
- "dc_rel": {
-  "bytes": 2561,
-  "ok": true,
-  "robots": "ok",
-  "url": "https://api.discogs.com/artists/170355/releases?sort=year&sort_order=desc&per_page=8"
- },
- "dc_s_europe": {
-  "bytes": 11278,
-  "ok": true,
-  "robots": "ok",
-  "url": "https://api.discogs.com/database/search?q=Europe&type=artist"
- },
- "dc_s_hallas": {
-  "bytes": 10959,
-  "ok": true,
-  "robots": "ok",
-  "url": "https://api.discogs.com/database/search?q=H%C3%A4llas&type=artist"
- },
- "dc_s_master": {
-  "bytes": 9168,
-  "ok": true,
-  "robots": "ok",
-  "url": "https://api.discogs.com/database/search?artist=Deep+Purple&type=master&per_page=10"
- },
- "dc_s_toldos": {
+ "dc_rl": {
   "bytes": 297,
+  "cabeceras": {
+   "status": 200,
+   "x-content-type-options": "nosniff",
+   "x-discogs-media-type": "discogs.v2",
+   "x-discogs-ratelimit": "25",
+   "x-discogs-ratelimit-remaining": "24",
+   "x-discogs-ratelimit-used": "1",
+   "x-frame-options": "SAMEORIGIN",
+   "x-xss-protection": "1; mode=block"
+  },
   "ok": true,
   "robots": "ok",
   "url": "https://api.discogs.com/database/search?q=Toldos+Verdes&type=artist"
  },
- "dc_s_vinagres": {
-  "bytes": 942,
+ "dz_berbiki": {
+  "bytes": 19371,
+  "cabeceras": {
+   "status": 200,
+   "x-content-type-options": "nosniff",
+   "x-host": "dzr-web-188",
+   "x-org": "FR"
+  },
   "ok": true,
   "robots": "ok",
-  "url": "https://api.discogs.com/database/search?q=Los+Vinagres&type=artist"
+  "url": "https://api.deezer.com/search/artist?q=Berbik%C3%AD"
  },
- "wp_en_hallas": {
-  "bytes": 142434,
+ "dz_hallas": {
+  "bytes": 18478,
+  "cabeceras": {
+   "status": 200,
+   "x-content-type-options": "nosniff",
+   "x-host": "dzr-web-144",
+   "x-org": "FR"
+  },
   "ok": true,
   "robots": "ok",
-  "url": "https://en.wikipedia.org/wiki/H%C3%A4llas"
+  "url": "https://api.deezer.com/search/artist?q=H%C3%A4llas"
  },
- "wp_es_dp": {
-  "bytes": 441344,
+ "dz_toldos": {
+  "bytes": 1470,
+  "cabeceras": {
+   "status": 200,
+   "x-content-type-options": "nosniff",
+   "x-host": "dzr-web-172",
+   "x-org": "FR"
+  },
   "ok": true,
   "robots": "ok",
-  "url": "https://es.wikipedia.org/wiki/Deep_Purple"
+  "url": "https://api.deezer.com/search/artist?q=Toldos%20Verdes"
  },
- "wp_es_leiva": {
-  "bytes": 186016,
+ "dz_vinagres": {
+  "bytes": 3026,
+  "cabeceras": {
+   "status": 200,
+   "x-content-type-options": "nosniff",
+   "x-host": "blm-web-48",
+   "x-org": "FR"
+  },
   "ok": true,
   "robots": "ok",
-  "url": "https://es.wikipedia.org/wiki/Leiva_(cantante)"
+  "url": "https://api.deezer.com/search/artist?q=Los%20Vinagres"
  },
- "wp_es_search": {
-  "bytes": 88918,
-  "ok": true,
-  "robots": "ok",
-  "url": "https://es.wikipedia.org/wiki/Especial:Buscar?search=Toldos+Verdes"
+ "lf_tags": {
+  "cabeceras": {
+   "status": 400
+  },
+  "error": "HTTPError: 400 Client Error: Bad Request for url: https://ws.audioscrobbler.com/2.0/?method=artist.gettoptags&artist=Toldos%20Verdes&format=json",
+  "ok": false,
+  "robots": "sin_robots (404)",
+  "url": "https://ws.audioscrobbler.com/2.0/?method=artist.gettoptags&artist=Toldos%20Verdes&format=json"
  },
- "wp_es_vinagres": {
-  "bytes": 129786,
+ "rb_deezer": {
+  "bytes": 69,
+  "cabeceras": {
+   "status": 200,
+   "x-content-type-options": "nosniff",
+   "x-host": "blm-web-45",
+   "x-org": "FR"
+  },
   "ok": true,
+  "robots": "",
+  "url": "https://api.deezer.com/robots.txt"
+ },
+ "rb_itunes": {
+  "bytes": 447,
+  "cabeceras": {
+   "X-Apple-Jingle-Correlation-Key": "H773G7JS3VWMV5JY6LBRUEDQ2A",
+   "X-Apple-Partner": "origin.0",
+   "X-Cache": "TCP_REFRESH_HIT from a23-216-148-140.deploy.akamaitechnologies.com (AkamaiGHost/22.6.3-da071da6976b6d633b0b37bcfe65c0fc) (S)",
+   "X-Cache-Remote": "TCP_IMS_HIT from a23-216-148-150.deploy.akamaitechnologies.com (AkamaiGHost/22.6.3-da071da6976b6d633b0b37bcfe65c0fc) (A)",
+   "X-Content-Type-Options": "nosniff",
+   "X-Frame-Options": "SAMEORIGIN",
+   "X-Server": "(null)",
+   "X-True-Cache-Key": "/L/itunes.apple.com/robots.txt vcd=2897",
+   "X-XSS-Protection": "1; mode=block",
+   "status": 200,
+   "x-daiquiri-debug-worker-pid": "3703",
+   "x-daiquiri-instance": "daiquiri:42282004:st53p00it-qujn12050502:7987:26RELEASE153:daiquiri-amp-store-l7shared-ext-001-st"
+  },
+  "ok": true,
+  "robots": "",
+  "url": "https://itunes.apple.com/robots.txt"
+ },
+ "rb_lastfm": {
+  "cabeceras": {
+   "status": 404
+  },
+  "error": "HTTPError: 404 Client Error: Not Found for url: https://ws.audioscrobbler.com/robots.txt",
+  "ok": false,
+  "robots": "",
+  "url": "https://ws.audioscrobbler.com/robots.txt"
+ },
+ "rb_ticketmaster": {
+  "cabeceras": {
+   "X-Cache": "MISS, MISS",
+   "X-Cache-Hits": "0, 0",
+   "X-Content-Type-Options": "nosniff",
+   "X-Frame-Options": "DENY",
+   "X-Served-By": "cache-hhr-khhr2060032-HHR, cache-hhr-khhr2060032-HHR",
+   "X-XSS-Protection": "1",
+   "status": 404
+  },
+  "error": "HTTPError: 404 Client Error: Not Found for url: https://app.ticketmaster.com/robots.txt",
+  "ok": false,
+  "robots": "",
+  "url": "https://app.ticketmaster.com/robots.txt"
+ },
+ "rb_wdqs": {
+  "bytes": 95,
+  "cabeceras": {
+   "status": 200,
+   "x-analytics": "",
+   "x-cache": "cp4039 hit, cp4039 miss",
+   "x-cache-status": "hit-local",
+   "x-client-ip": "4.242.193.228",
+   "x-request-id": "83cbb4f7-3fc4-48a4-8555-b0a87c5b2695"
+  },
+  "ok": true,
+  "robots": "",
+  "url": "https://query.wikidata.org/robots.txt"
+ },
+ "rb_wikidata": {
+  "bytes": 15649,
+  "cabeceras": {
+   "status": 200,
+   "x-analytics": "",
+   "x-article-id": "16264857",
+   "x-cache": "cp4039 hit, cp4039 miss",
+   "x-cache-status": "hit-local",
+   "x-client-ip": "4.242.193.228",
+   "x-content-type-options": "nosniff",
+   "x-request-id": "9fe59f9d-e89d-4d3a-ba26-7e27328eb2f4",
+   "x-wiki-id": "wikidatawiki"
+  },
+  "ok": true,
+  "robots": "",
+  "url": "https://www.wikidata.org/robots.txt"
+ },
+ "tm_events": {
+  "cabeceras": {
+   "X-Cache": "MISS, MISS",
+   "X-Cache-Hits": "0, 0",
+   "X-Served-By": "cache-hhr-khhr2060032-HHR, cache-hhr-khhr2060032-HHR",
+   "status": 401
+  },
+  "error": "HTTPError: 401 Client Error: Unauthorized for url: https://app.ticketmaster.com/discovery/v2/events.json?city=Madrid&classificationName=music",
+  "ok": false,
+  "robots": "sin_robots (404)",
+  "url": "https://app.ticketmaster.com/discovery/v2/events.json?city=Madrid&classificationName=music"
+ },
+ "wd_dp": {
+  "cabeceras": {},
+  "ok": false,
   "robots": "ok",
-  "url": "https://es.wikipedia.org/wiki/Los_Vinagres"
+  "robots_blocked": true,
+  "url": "https://query.wikidata.org/sparql?format=json&query=SELECT%20%3Fitem%20%3FitemLabel%20%3Fdiscogs%20%3Fallmusic%20%3Fspotify%20%3Fmb%20%3FcountryLabel%20%3FgenreLabel%20WHERE%20%7B%20%3Fitem%20rdfs%3Alabel%20%22Deep%20Purple%22%40en.%20OPTIONAL%7B%3Fitem%20wdt%3AP1953%20%3Fdiscogs%7D%20OPTIONAL%7B%3Fitem%20wdt%3AP1728%20%3Fallmusic%7D%20OPTIONAL%7B%3Fitem%20wdt%3AP1902%20%3Fspotify%7D%20OPTIONAL%7B%3Fitem%20wdt%3AP434%20%3Fmb%7D%20OPTIONAL%7B%3Fitem%20wdt%3AP495%20%3Fcountry%7D%20OPTIONAL%7B%3Fitem%20wdt%3AP136%20%3Fgenre%7D%20SERVICE%20wikibase%3Alabel%20%7B%20bd%3AserviceParam%20wikibase%3Alanguage%20%22es%2Cen%22.%20%7D%20%7D"
+ },
+ "wd_europe": {
+  "cabeceras": {},
+  "ok": false,
+  "robots": "ok",
+  "robots_blocked": true,
+  "url": "https://query.wikidata.org/sparql?format=json&query=SELECT%20%3Fitem%20%3FitemLabel%20%3Fdiscogs%20%3Fallmusic%20%3Fspotify%20%3Fmb%20%3FcountryLabel%20%3FgenreLabel%20WHERE%20%7B%20%3Fitem%20rdfs%3Alabel%20%22Europe%22%40en.%20OPTIONAL%7B%3Fitem%20wdt%3AP1953%20%3Fdiscogs%7D%20OPTIONAL%7B%3Fitem%20wdt%3AP1728%20%3Fallmusic%7D%20OPTIONAL%7B%3Fitem%20wdt%3AP1902%20%3Fspotify%7D%20OPTIONAL%7B%3Fitem%20wdt%3AP434%20%3Fmb%7D%20OPTIONAL%7B%3Fitem%20wdt%3AP495%20%3Fcountry%7D%20OPTIONAL%7B%3Fitem%20wdt%3AP136%20%3Fgenre%7D%20SERVICE%20wikibase%3Alabel%20%7B%20bd%3AserviceParam%20wikibase%3Alanguage%20%22es%2Cen%22.%20%7D%20%7D"
+ },
+ "wd_vinagres": {
+  "cabeceras": {},
+  "ok": false,
+  "robots": "ok",
+  "robots_blocked": true,
+  "url": "https://query.wikidata.org/sparql?format=json&query=SELECT%20%3Fitem%20%3FitemLabel%20%3Fdiscogs%20%3Fallmusic%20%3Fspotify%20%3Fmb%20%3FcountryLabel%20%3FgenreLabel%20WHERE%20%7B%20%3Fitem%20rdfs%3Alabel%20%22Los%20Vinagres%22%40es.%20OPTIONAL%7B%3Fitem%20wdt%3AP1953%20%3Fdiscogs%7D%20OPTIONAL%7B%3Fitem%20wdt%3AP1728%20%3Fallmusic%7D%20OPTIONAL%7B%3Fitem%20wdt%3AP1902%20%3Fspotify%7D%20OPTIONAL%7B%3Fitem%20wdt%3AP434%20%3Fmb%7D%20OPTIONAL%7B%3Fitem%20wdt%3AP495%20%3Fcountry%7D%20OPTIONAL%7B%3Fitem%20wdt%3AP136%20%3Fgenre%7D%20SERVICE%20wikibase%3Alabel%20%7B%20bd%3AserviceParam%20wikibase%3Alanguage%20%22es%2Cen%22.%20%7D%20%7D"
  }
 }
