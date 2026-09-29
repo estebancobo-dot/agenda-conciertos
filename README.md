@@ -10,8 +10,9 @@ Agenda automática y gratuita de los conciertos de los próximos 120 días en Ma
 2. Respeta el `robots.txt` de cada web, hace como mucho 1 petición cada 2 segundos por web y se identifica con un User-Agent propio. Si una web lo prohíbe, no se lee y el informe lo dice.
 3. Junta todo sin duplicados: el mismo concierto (misma fecha, misma sala, mismo artista) aparece una sola vez con todas sus fuentes.
 4. **No inventa nada.** Cada dato tiene su fuente con enlace:
-   - **Estilo**: solo el que da la fuente. Si ninguna lo da: "sin clasificar" (visible, con su propio filtro).
-   - **Nacionalidad**: la de la fuente o, si no la da, la de MusicBrainz solo cuando hay una única coincidencia exacta del artista. Si no, "sin confirmar".
+   - **Estilo**: lo da una web de música, no la agenda ni la sala: **Discogs** (estilos de sus discos) o, si no, **Wikipedia** (traducido a los estilos de Discogs). Solo si el artista se identifica sin ambigüedad. Si no tiene ficha, se muestra la etiqueta de la agenda marcada como tal; si tampoco hay: "sin clasificar". AllMusic no permite el acceso automático: solo se enlaza.
+   - **Nacionalidad**: la de la fuente del concierto; si no, la de Wikipedia o Discogs; como último recurso MusicBrainz (única coincidencia exacta, marcada como "coincidencia por nombre"). Si no, "sin confirmar".
+   - **Foto**: de Wikimedia Commons (vía Wikipedia) o Discogs, con su crédito; si no hay, la imagen del anuncio del concierto.
    - **Conflictos**: si dos webs no coinciden en hora, sala o cartel, se guardan ambas versiones y se marca "conflicto" con la explicación. Si la fuente de más prioridad confirma uno de los datos (1 web oficial de la sala · 2 promotora o ticketera · 3 agregador · 4 blog o foro), se da por resuelto y se anota.
 5. Estados de cada concierto: **contrastado** (2 o más webs distintas), **1 fuente**, **conflicto** y **posiblemente cancelado** (ha dejado de aparecer en todas sus fuentes; no se borra hasta que pasa su fecha).
 6. Publica la web y guarda los datos en `data/`:
@@ -19,7 +20,7 @@ Agenda automática y gratuita de los conciertos de los próximos 120 días en Ma
 
 ## Usarlo desde el móvil
 
-- **Ver la agenda**: abre la web. Pestañas: *Mes* (toca un día para verlo), *Semana*, *Día*, *Estilos*, *Fuentes*, *Informe* y *Versiones*. Los chips de colores filtran por categoría ("fuera de foco" está oculto por defecto) y el buscador filtra por artista, sala o municipio. Toca "Estilo, notas y fuentes" en un concierto para ver de dónde sale cada dato.
+- **Ver la agenda**: abre la web. Pestañas: *Mes* (toca un día para verlo), *Semana*, *Día*, *Estilos*, *Fuentes*, *Informe* y *Versiones*. Toca un concierto para abrir su ficha (foto, estilo, origen, precio, sala y de dónde sale cada dato). El botón **Géneros** abre el panel de filtros ("Mi foco" oculta lo que está fuera de foco); también se filtra por origen (españoles/extranjeros) y con el buscador.
 - **Descargar para Excel**: botón "⬇ CSV" arriba a la derecha.
 
 ### Lanzar la actualización a mano

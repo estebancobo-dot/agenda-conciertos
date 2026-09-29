@@ -60,8 +60,13 @@ def parse_list(html: str, page_url: str) -> list:
         precio_el = li.select_one(".precio")
         precio = text(precio_el) or None
         url = urljoin(BASE, a.get("href") or "") or page_url
+        img = li.select_one("meta[itemprop=image]")
+        imagen = img["content"] if img and img.get("content", "").startswith("http") else None
+        if not imagen:
+            im = li.select_one(".img img[data-src]")
+            imagen = urljoin(BASE, im["data-src"]) if im else None
         out.append(make(fecha, nombre, url, invitados=invitados, sala=sala, ciudad=ciudad, hora=hora,
-                        precio=precio, estilo=estilo))
+                        precio=precio, estilo=estilo, imagen=imagen))
     return out
 
 

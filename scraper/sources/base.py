@@ -120,8 +120,12 @@ def ld_to_raw(ev: dict, today: date, page_url: str, *, use_performers: bool = Tr
     if isinstance(offers, dict) and offers.get("price") not in (None, "", 0, "0"):
         precio = f"{offers.get('price')} {offers.get('priceCurrency') or ''}".strip()
     url = ev.get("url") or ev.get("@id") or page_url
+    img = _first(ev.get("image"))
+    if isinstance(img, dict):
+        img = img.get("url") or img.get("contentUrl")
+    img = img if isinstance(img, str) and img.startswith("http") else None
     return make(fecha, nombre, url, split=split, invitados=invitados, sala=sala, ciudad=ciudad, hora=hora,
-                precio=precio, estilo=estilo)
+                precio=precio, estilo=estilo, imagen=img)
 
 
 def months_in_window(today: date, horizon: date) -> Iterable[tuple[int, int]]:

@@ -106,3 +106,65 @@ def discogs(estilos_fuente: list[str]) -> tuple[list[str], list[str]]:
                 if g not in generos:
                     generos.append(g)
     return estilos, generos
+
+
+# ------------------------------------------------------------------ ficha musical (Discogs / Wikipedia) → grupos de filtro
+@lru_cache(maxsize=1)
+def _discogs_cat():
+    d = load_json("estilos_map.json")
+    est = {}
+    for cat, lista in d["discogs_a_categoria"].items():
+        if cat.startswith("_"):
+            continue
+        for e in lista:
+            est[norm(e)] = cat
+    return est, d["genero_a_categoria"]
+
+
+@lru_cache(maxsize=1)
+def _generos_sin():
+    t = load_json("taxonomia.json")
+    g = {norm(k): v for k, v in t.get("sinonimos_genero", {}).items()}
+    for gen in list(t["generos"]) + t.get("otros_generos", []):
+        g[norm(gen)] = gen
+    return g
+
+
+def genero_de_estilo(estilo: str) -> str | None:
+    estilo_genero, sin = _taxo()
+    n = norm(estilo)
+    if n in estilo_genero:
+        return estilo_genero[n][1]
+    if n in sin and norm(sin[n]) in estilo_genero:
+        return estilo_genero[norm(sin[n])][1]
+    return None
+
+
+def generos_de_texto(textos: list[str]) -> list[str]:
+    """Géneros de Discogs para textos como 'Rock', 'Hip hop', 'Música latina' (traducción literal declarada)."""
+    g = _generos_sin()
+    out = []
+    for t in textos:
+        x = g.get(norm(t))
+        if x and x not in out:
+            out.append(x)
+    return out
+
+
+def categorias_de_ficha(generos: list[str], estilos: list[str]) -> list[str]:
+    """Grupos de filtro a partir del género y los estilos de Discogs (o traducidos desde Wikipedia)."""
+    por_estilo, por_genero = _discogs_cat()
+    cats = []
+    for e in estilos:
+        c = por_estilo.get(norm(e)) or por_genero.get(genero_de_estilo(e) or "", None)
+        if c is None and genero_de_estilo(e) is None:
+            continue
+        c = c or "fuera de foco"
+        if c not in cats:
+            cats.append(c)
+    for g in generos:
+        c = por_genero.get(g, "fuera de foco")
+        if c not in cats and (not estilos or c == "fuera de foco" and not any(
+                por_genero.get(genero_de_estilo(e) or "") for e in estilos)):
+            cats.append(c)
+    return cats

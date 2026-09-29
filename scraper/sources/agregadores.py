@@ -120,7 +120,10 @@ def mev_parse(html: str, page_url: str, today: date, estilo: str | None) -> list
         sala = text(spans[0].find("a")) or re.sub(r"^Sala\s+", "", text(spans[0]))
         a = h2.find_parent("a") or div.find("a", href=True)
         url = urljoin("https://madridenvivo.com/", a["href"]) if a else page_url
-        out.append(make(fecha, text(h2), url, sala=sala, ciudad="Madrid", estilo=estilo))
+        ic = div.select_one(".img-container[style]")
+        mi = re.search(r"url\('([^']+)'\)", ic["style"]) if ic else None
+        out.append(make(fecha, text(h2), url, sala=sala, ciudad="Madrid", estilo=estilo,
+                        imagen=mi.group(1) if mi else None))
     return out
 
 

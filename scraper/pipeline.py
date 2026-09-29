@@ -15,7 +15,8 @@ from .clasificar import categoria_de
 from .correcciones import aplicar as aplicar_correcciones
 from .fetch import AntiBotBlocked, Fetcher, RobotsBlocked, RobotsUnreachable
 from .merge import (Item, agrupar, artistas_coinciden, coinciden_flexible, construir, fusionar_conflictos_sala,
-                    hacer_id, marcar_conflictos_cartel, nombres_rec, recalcular_categorias, recalcular_estado)
+                    hacer_id, marcar_conflictos_cartel, nombres_rec, recalcular_categorias, recalcular_estado,
+                    separar_ciclo)
 from .model import RawEvent, Source
 from .normalize import DATA, canon_sala, load_json, misma_sala, municipio, norm, sala_municipio
 from .registry import FUENTES, NO_USAR, SIN_AGENDA_LEGIBLE
@@ -135,7 +136,32 @@ def unificar(items: list[Item]) -> list[dict]:
                           traceback.format_exc())
     recs = fusionar_conflictos_sala(recs)
     marcar_conflictos_cartel(recs)
+    for r in recs:
+        separar_ciclo(r)
     return recs
+
+
+def aplicar_ficha(r: dict, f: dict | None) -> None:
+    """Estilo, grupos de filtro, nacionalidad y foto a partir de la ficha musical (Discogs / Wikipedia)."""
+    from .clasificar import categorias_de_ficha, en_foco, titulo_fuera_de_foco
+    r["ficha"] = f
+    cats = categorias_de_ficha(f["generos"], f["estilos"]) if f and (f["estilos"] or f["generos"]) else []
+    if cats:
+        if "tributos y versiones" in r["categorias"] and "tributos y versiones" not in cats:
+            cats.append("tributos y versiones")
+        origen = f["fuente_estilo"]
+    else:
+        cats, origen = list(r["categorias"]), "agenda"
+    if titulo_fuera_de_foco(r["artista"]):
+        cats = ["fuera de foco"]
+    r["grupos"], r["grupos_origen"] = cats, origen
+    r["categoria"] = cats[0]
+    r["en_foco"] = en_foco(cats)
+    r["estilos_discogs"] = f["estilos"] if f else []
+    r["genero_discogs"] = f["generos"] if f else []
+    if not r.get("nacionalidad") and f and f.get("pais"):
+        r["nacionalidad"], r["nacionalidad_fuente"] = f["pais"], f["fuente_pais"]
+    r["imagen"] = (f or {}).get("imagen") or r.get("imagen_evento")
 
 
 def _match_prev(r: dict, prev: list[dict]) -> dict | None:
@@ -207,9 +233,10 @@ def conciliar(recs: list[dict], anteriores: list[dict], hoy: date, resultados: d
 
 
 # ---------------------------------------------------------------- salidas
-CSV_COLS = ["id", "fecha", "hora", "artista", "invitados", "sala", "municipio", "precio", "categoria",
-            "estilo_fuente", "genero_discogs", "estilos_discogs", "nacionalidad", "nacionalidad_fuente", "estado",
-            "en_foco", "fuentes", "urls", "notas", "primera_vez_visto", "ultima_vez_visto"]
+CSV_COLS = ["id", "fecha", "hora", "artista", "invitados", "ciclo", "sala", "municipio", "precio", "precio_segun",
+            "grupo", "estilos", "generos", "estilo_segun", "etiqueta_agenda", "nacionalidad", "nacionalidad_segun",
+            "estado", "confirmado_por_la_sala", "en_foco", "fuentes", "urls", "notas", "primera_vez_visto",
+            "ultima_vez_visto"]
 
 
 def escribir_csv(recs: list[dict], path: Path) -> None:
@@ -218,11 +245,13 @@ def escribir_csv(recs: list[dict], path: Path) -> None:
         w.writerow(CSV_COLS)
         for r in recs:
             w.writerow([
-                r["id"], r["fecha"], r["hora"] or "", r["artista"], " + ".join(r["invitados"]), r["sala"],
-                r["municipio"] or "", r["precio"] or "", r["categoria"],
+                r["id"], r["fecha"], r["hora"] or "", r["artista"], " + ".join(r["invitados"]), r.get("ciclo") or "",
+                r["sala"], r["municipio"] or "", r["precio"] or "", (r.get("precio_fuente") or {}).get("nombre", ""),
+                r["categoria"], ", ".join(r.get("estilos_discogs") or []), ", ".join(r.get("genero_discogs") or []),
+                r.get("grupos_origen") or "",
                 " | ".join(f"{e['estilo']} ({e['fuente']})" for e in r["estilo_fuente"]),
-                ", ".join(r["genero_discogs"]), ", ".join(r["estilos_discogs"]),
                 r["nacionalidad"] or "sin confirmar", r["nacionalidad_fuente"] or "", r["estado"],
+                "sí" if r.get("confirmado_sala") else "no",
                 "sí" if r["en_foco"] else "no", " | ".join(f["nombre"] for f in r["fuentes"]),
                 " | ".join(f["url"] for f in r["fuentes"]), " | ".join(r["notas"]),
                 r["primera_vez_visto"] or "", r["ultima_vez_visto"] or ""])
@@ -272,7 +301,17 @@ def ejecutar(hoy: date | None = None, solo: list[str] | None = None, fetcher: Fe
     for r in recs:
         recalcular_categorias(r)
         recalcular_estado(r, lambda i: grupo.get(i, i))
-    # MusicBrainz
+    # ficha musical del artista principal (Wikipedia y Discogs)
+    art_stats = {"desactivado": True}
+    cache_art = _read("artistas.json", {})
+    if musicbrainz:  # misma bandera: sin red externa en pruebas
+        from .artistas import enriquecer
+        art_stats = enriquecer(recs, cache_art, hoy, presupuesto_seg=1800)
+        _write("artistas.json", cache_art)
+    from .artistas import ficha
+    for r in recs:
+        aplicar_ficha(r, ficha(cache_art.get(norm(r["artista"]))))
+    # MusicBrainz (solo para los que siguen sin nacionalidad)
     mb_stats = {"desactivado": True}
     if musicbrainz:
         from .musicbrainz import completar, fetcher_musicbrainz
@@ -311,6 +350,7 @@ def ejecutar(hoy: date | None = None, solo: list[str] | None = None, fetcher: Fe
         "no_usar": NO_USAR,
         "correcciones": res_corr,
         "musicbrainz": mb_stats,
+        "artistas": art_stats,
         "estilos_sin_mapear": sin_mapear[:300],
     }
     _write("concerts.json", {"generado": ahora, "hoy": hoy.isoformat(), "horizonte": horizonte.isoformat(),

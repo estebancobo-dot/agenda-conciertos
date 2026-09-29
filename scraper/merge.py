@@ -198,8 +198,13 @@ def construir(cluster: Cluster, municipio_de) -> dict:
     # municipio
     munis = [m for m in (municipio_de(i) for i in items) if m]
     municipio = munis[0] if munis else None
-    # precio: el de la fuente de mayor prioridad que lo dé
-    precio = next((i.ev.precio for i in sorted(items, key=lambda i: i.src.prioridad) if i.ev.precio), None)
+    # precio: el de la fuente de mayor prioridad que lo dé (y se guarda cuál es)
+    it_precio = next((i for i in sorted(items, key=lambda i: i.src.prioridad) if i.ev.precio), None)
+    precio = it_precio.ev.precio if it_precio else None
+    precio_fuente = {"nombre": it_precio.src.nombre, "url": it_precio.ev.url} if it_precio else None
+    it_img = next((i for i in sorted(items, key=lambda i: i.src.prioridad) if i.ev.imagen), None)
+    imagen_evento = {"url": it_img.ev.imagen, "credito": it_img.src.nombre, "enlace": it_img.ev.url} if it_img else None
+    oficial = next((i for i in items if i.src.tipo == "sala"), None)
     # estilos tal como los dan las fuentes
     estilos, cats = [], []
     for it in sorted(items, key=lambda i: i.src.prioridad):
@@ -245,6 +250,10 @@ def construir(cluster: Cluster, municipio_de) -> dict:
         "sala": sala_txt,
         "municipio": municipio,
         "precio": precio,
+        "precio_fuente": precio_fuente,
+        "imagen_evento": imagen_evento,
+        "confirmado_sala": {"nombre": oficial.src.nombre, "url": oficial.ev.url} if oficial else None,
+        "ciclo": None,
         "estilo_fuente": estilos,
         "categoria": categoria,
         "categorias": cats,
@@ -383,3 +392,24 @@ def recalcular_categorias(r: dict) -> None:
         r["categoria"] = cats[0]
     r["en_foco"] = en_foco(cats)
     r["estilos_discogs"], r["genero_discogs"] = discogs([e["estilo"] for e in r["estilo_fuente"]])
+
+
+_CICLO = re.compile(r"(?i)^\s*((?:radar joven|las noches de r[ií]o babel|villanos del jazz|momentazos|jazzmadrid|"
+                    r"festival [^:.]{2,40}|ciclo [^:.]{2,40}|madrid en vivo[^:]*|club 77)[^:.]*?)\s*[:.\-–]\s+(.{2,})$")
+
+
+def separar_ciclo(r: dict) -> None:
+    """'Radar Joven. Kris Tena' → artista 'Kris Tena', ciclo 'Radar Joven'. El texto original se conserva en notas."""
+    m = _CICLO.match(r["artista"])
+    if m and len(m.group(2)) >= 2:
+        ciclo, resto = clean(m.group(1)), clean(m.group(2))
+        # 'RADAR JOVEN 2026 - MADRID EN VIVO 25 AÑOS: TOLDOS VERDES' tiene dos niveles de ciclo
+        m2 = _CICLO.match(resto)
+        if m2:
+            ciclo, resto = f"{ciclo} · {clean(m2.group(1))}", clean(m2.group(2))
+        r["ciclo"] = ciclo
+        r["artista"] = resto
+    else:
+        mt = re.search(r"(?i)\s*[-–(]\s*club 77\)?\s*$", r["artista"])
+        if mt:
+            r["ciclo"], r["artista"] = "Club 77", r["artista"][: mt.start()].strip()

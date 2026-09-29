@@ -61,7 +61,7 @@ def completar(recs: list[dict], cache: dict, hoy: date, fetcher: Fetcher | None,
             stats["desde_cache"] += 1
         if ent.get("pais"):
             r["nacionalidad"] = ent["pais"]
-            r["nacionalidad_fuente"] = "MusicBrainz"
+            r["nacionalidad_fuente"] = "MusicBrainz (coincidencia por nombre)"
             stats["asignadas"] += 1
         else:
             stats["sin_confirmar"] += 1
