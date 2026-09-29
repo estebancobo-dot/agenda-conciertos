@@ -1,0 +1,44 @@
+# Bloqueo específico para Googlebot-Image en carpetas anteriores a 2020
+User-agent: Googlebot-Image
+Disallow: /wp-content/uploads/2003/
+Disallow: /wp-content/uploads/2004/
+Disallow: /wp-content/uploads/2005/
+Disallow: /wp-content/uploads/2006/
+Disallow: /wp-content/uploads/2007/
+Disallow: /wp-content/uploads/2008/
+Disallow: /wp-content/uploads/2009/
+Disallow: /wp-content/uploads/2010/
+Disallow: /wp-content/uploads/2011/
+Disallow: /wp-content/uploads/2012/
+Disallow: /wp-content/uploads/2013/
+Disallow: /wp-content/uploads/2014/
+Disallow: /wp-content/uploads/2015/
+Disallow: /wp-content/uploads/2016/
+Disallow: /wp-content/uploads/2017/
+Disallow: /wp-content/uploads/2018/
+Disallow: /wp-content/uploads/2019/
+
+Allow: /wp-content/uploads/2020/
+Allow: /wp-content/uploads/2021/
+Allow: /wp-content/uploads/2022/
+Allow: /wp-content/uploads/2023/
+Allow: /wp-content/uploads/2024/
+Allow: /wp-content/uploads/2025/
+
+# Bloqueo general para todos los bots al directorio wp-includes
+User-agent: *
+Disallow: /wp-includes/
+
+# Permitir el resto del sitio a bots estándar (excepto lo bloqueado arriba)
+# (Este bloque no es necesario si no hay más restricciones)
+# User-agent: *
+# Disallow:
+
+# Opcional: bloquear bots abusivos o no deseados (ejemplos)
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+# Puedes seguir añadiendo bots problemáticos aquí

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Verificando navegador…</title>
+  <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <script>
+    // Obtener la URL original desde la query string
+    const urlParams = new URLSearchParams(window.location.search);
+    const redirectURL = urlParams.get('redirect') || '/';
+
+    // Crear la cookie con duración de 1h
+	document.cookie = "browser_verified=1; path=/; max-age=28800; SameSite=None; Secure";
+
+    // Redirigir tras 500ms
+    setTimeout(() => {
+      window.location.href = redirectURL;
+    }, 100);
+  </script>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      padding: 5rem 1rem;
+      background: #f4f4f4;
+    }
+    .spinner {
+      margin: 2rem auto;
+      width: 40px;
+      height: 40px;
+      border: 4px solid #ccc;
+      border-top-color: #007BFF;
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    .no-js {
+      display: none;
+      margin-top: 2rem;
+      padding: 1rem 2rem;
+      background-color: #fff3cd;
+      color: #856404;
+      border: 1px solid #ffeeba;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Verificando navegador…</h1>
+  <p>Un momento por favor, estamos comprobando que no eres un robot.</p>
+  <div class="spinner"></div>
+
+  <noscript>
+    <style>.spinner, h1, p { display: none; }</style>
+    <div class="no-js">
+      <h1>⚠️ JavaScript deshabilitado</h1>
+      <p>Para acceder a este sitio web necesitas tener JavaScript activado en tu navegador.</p>
+    </div>
+  </noscript>
+</body>
+</html>
+
+

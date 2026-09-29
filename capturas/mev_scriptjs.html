@@ -1,0 +1,965 @@
+new WOW({
+	callback: afterRevealGeneric
+}).init();
+
+var players = [];
+let HOY;
+
+let dias = ['domingo','lunes','martes','miércoles','jueves','viernes','sábado'];
+let meses = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+
+
+/* Scripts de la Plantilla */
+$('document').ready(function(){
+
+	// Scripts propios del Calendario
+	$(document).on('click', '.agenda__calendario__dias__columna > span > span', function(){
+		if(!$(this).hasClass('current') && !$(this).parent().parent().hasClass('cabecera')){
+			$('.agenda__calendario__dias__columna > span > span.current').removeClass('current');
+			$(this).addClass('current');
+			$('.agenda__filtros__fecha').val($(this).data('time')).trigger('change');
+		}
+	})
+
+	let originalAnos = $('.agenda__calendario__anos__carrusel').html();
+	let anoElegido;
+	let mesElegido;
+	$('.agenda__calendario__info button').click(function(e){
+		e.preventDefault();
+		let padre = $(this).parent().parent();
+		let anos = padre.find('.agenda__calendario__anos').first();
+		let meses = padre.find('.agenda__calendario__meses').first();
+
+		if(anos.hasClass('activo') || meses.hasClass('activo')){
+			anos.removeClass('activo');
+			meses.removeClass('activo');
+			anos.find('.agenda__calendario__anos__carrusel').first().html(originalAnos);
+		} else {
+			anos.addClass('activo');
+		}
+	})
+
+	$('.agenda__calendario__anos__carrusel__prev').click(function(){
+		let carrusel = $(this).parent().find('.agenda__calendario__anos__carrusel').first();
+
+		carrusel.find('span > span').each(function(){
+			let newAno = parseInt($(this).data('ano')) - 15;
+			$(this).text(newAno);
+			$(this).data('ano', newAno);
+		})
+	})
+
+	$('.agenda__calendario__anos__carrusel__next').click(function(){
+		let carrusel = $(this).parent().find('.agenda__calendario__anos__carrusel').first();
+
+		carrusel.find('span > span').each(function(){
+			let newAno = parseInt($(this).data('ano')) + 15;
+			$(this).text(newAno);
+			$(this).data('ano', newAno);
+		})
+	})
+
+	$(document).on('click', '.agenda__calendario__anos__carrusel > span > span', function(){
+		anoElegido = $(this).data('ano');
+		let padre = $(this).parent().parent().parent();
+		padre.removeClass('activo');
+		padre.parent().find('.agenda__calendario__meses').first().addClass('activo');
+	})
+
+	$('.agenda__calendario__meses > span > span').click(function(){
+		mesElegido = $(this).data('mes');
+		let padre = $(this).parent().parent();
+		padre.removeClass('activo');
+
+		cambiarCalendario(mesElegido, anoElegido);
+	})
+
+	// Agenda
+	$('.agenda__dias__carrusel').owlCarousel({
+		items: 7,
+		nav: false,
+		dots: false,
+		//margin: 10,
+		mouseDrag: false,
+		touchDrag: false,
+		pullDrag: false,
+		freeDrag: false
+	})
+
+	// Carrusel de imágenes Single Sala
+	$('.salas-carrusel').owlCarousel({
+		items: 3,
+		nav: false,
+		dots: false,
+		margin: 25,
+		loop: true,
+		center: true,
+		lazyLoad: true,
+		autoHeight: true,
+		responsive:{
+			0:{
+				items:1
+			},
+			768:{
+				items:2
+			},
+			1024:{
+				items:3
+			}
+	}})
+
+	$('.carrusel-evento').owlCarousel({
+		items: 3,
+		nav: false,
+		dots: false,
+		margin: 25,
+		loop: true,
+		center: true,
+		lazyLoad: true,
+		responsive:{
+			0:{
+				items:1
+			},
+			768:{
+				items:2
+			},
+			1024:{
+				items:3
+			}
+	}})
+
+	$('.next-imagenes').click(function() {
+		let carrusel_videos = $(this).parent().prev();
+		carrusel_videos.trigger('next.owl.carousel');
+	});
+	$('.prev-imagenes').click(function() {
+		let carrusel_videos = $(this).parent().prev();
+		carrusel_videos.trigger('prev.owl.carousel');
+	});
+
+
+
+
+
+    $('.agenda__dias__carrusel__prev').click(function(){
+        let padre = $(this).parent();
+        let carrusel = padre.find('.agenda__dias__carrusel').first();
+
+		carrusel.find('.owl-item:first-child').each(function(){
+			if($(this).hasClass('active')){
+				let fecha = new Date($(this).find('.agenda__dias__dia').data('time'));
+				fecha.setDate(fecha.getDate() - 1)
+				let ano = fecha.getFullYear();
+				let mes = ("0" + (fecha.getMonth()+1)).slice(-2);
+				let dia = ("0" + fecha.getDate()).slice(-2);
+				let nombreDia = dias[fecha.getDay()];				
+				let nuevoItem = '<div class="agenda__dias__dia" data-time="' + ano + '-' + mes + '-' + dia + '"><span>' + nombreDia + '</span><span>' + dia + '</span></div>';
+
+				carrusel.owlCarousel('add', nuevoItem, 0);
+				carrusel.owlCarousel('to', 1);
+				carrusel.owlCarousel('update');
+			} 
+			carrusel.owlCarousel('prev');
+		})
+
+    });
+
+    $('.agenda__dias__carrusel__next').click(function(){
+        let padre = $(this).parent();
+        let carrusel = padre.find('.agenda__dias__carrusel').first();
+
+		carrusel.find('.owl-item:last-child').each(function(){
+			if($(this).hasClass('active')){
+				let fecha = new Date($(this).find('.agenda__dias__dia').data('time'));
+				fecha.setDate(fecha.getDate() + 1);
+				let ano = fecha.getFullYear();
+				let mes = ("0" + (fecha.getMonth()+1)).slice(-2);
+				let dia = ("0" + fecha.getDate()).slice(-2);
+				let nombreDia = dias[fecha.getDay()];				
+				let nuevoItem = '<div class="agenda__dias__dia" data-time="' + ano + '-' + mes + '-' + dia + '"><span>' + nombreDia + '</span><span>' + dia + '</span></div>';
+
+				carrusel.owlCarousel('add', nuevoItem);
+				carrusel.owlCarousel('update');
+			}
+			
+			carrusel.owlCarousel('next');
+		})
+        
+    });
+
+	// activar dia elegido al clicar "Ver mas agenda"
+
+	let url = window.location.href;
+
+	let dateSpans = document.querySelectorAll('.span-dia');
+	dateSpans.forEach(span => {
+		if(url.substring(67, 69) == span.innerHTML) {
+			span.parentNode.classList.add('activo');
+		} else if (span.innerHTML == new Date().getDate().toString()) {
+			span.parentNode.classList.add('activo');
+		}
+	});
+	
+
+	$(document).on('click', '.agenda__dias__dia', function(){
+		if(!$(this).hasClass('activo')){
+			$('.agenda__dias__dia.activo').removeClass('activo');
+			$(this).addClass('activo');
+
+			let fecha = new Date($(this).data('time'));
+			let ano = fecha.getFullYear();
+			let mes = ("0" + (fecha.getMonth()+1)).slice(-2);
+			let dia = ("0" + fecha.getDate()).slice(-2);
+			let nombreDia = dias[fecha.getDay()];
+			let nombreMes = meses[fecha.getMonth()];
+
+			$('.agenda__dia__elegido').html('<span>' + nombreDia + '</span> ' + dia + ' de ' + nombreMes + ' de ' + ano);
+			$('.agenda__filtros__fecha').val(ano + '-' + mes + '-' + dia);
+
+			cambiarDia(dia, mes, ano);
+			cambiarCalendario(mes, ano);
+
+			if($('.agenda').hasClass('todos'))
+				cambiarUrlAgenda();
+
+			// modificar href botón "Ver más agenda (Home)"
+
+			$('.agenda__enlace').attr("href", `${window.location.href}agenda-de-conciertos-y-espectaculo/?fecha=${dia}-${mes}-${ano}`);
+		}
+	})
+
+	$('.agenda__filtros__fecha').change(function(){
+		let fecha = new Date($(this).val());
+		let carrusel = $(this).parent().parent().parent().find('.agenda__dias__carrusel').first();
+
+		// Limpiamos todo el carrusel
+        let i = 0;
+        carrusel.find('.owl-item').each(function(){
+            carrusel.owlCarousel('remove', i);
+            i++
+        });
+
+		// modificar href botón "Ver más agenda (Home)"
+		let diaMostrar = ("0" + fecha.getDate()).slice(-2);
+		let mesMostrar = ("0" + (fecha.getMonth()+1)).slice(-2);
+		let anoMostrar = fecha.getFullYear();
+
+
+		$('.agenda__enlace').attr("href", `${window.location.href}agenda-de-conciertos-y-espectaculo/?fecha=${diaMostrar}-${mesMostrar}-${anoMostrar}`);
+
+		// Agregamos las nuevas fechas
+		let primero = true;
+		for(let i = 0; i < 7; i++){
+			let ano = fecha.getFullYear();
+			let mes = ("0" + (fecha.getMonth()+1)).slice(-2);
+			let dia = ("0" + fecha.getDate()).slice(-2);
+			let nombreDia = dias[fecha.getDay()];				
+			let nuevoItem = '<div class="agenda__dias__dia' + (i==0 ? ' activo' : '' ) + '" data-time="' + ano + '-' + mes + '-' + dia + '"><span>' + nombreDia + '</span><span>' + dia + '</span></div>';
+			let nombreMes = meses[fecha.getMonth()];
+
+			if(primero){
+				$('.agenda__dia__elegido').html('<span>' + nombreDia + '</span> ' + dia + ' de ' + nombreMes + ' de ' + ano);
+				primero = false;
+
+				cambiarDia(dia, mes, ano);
+				$('.agenda__calendario__dias__columna > span > span.current').removeClass('current');
+				$('.agenda__calendario__dias__columna > span > span[data-time=' + ano + '-' + mes + '-' + dia + ']').addClass('current');
+			}
+
+			carrusel.owlCarousel('add', nuevoItem);
+			fecha.setDate(fecha.getDate() + 1);
+		}
+		
+		carrusel.owlCarousel('update');
+
+		if($('.agenda').hasClass('todos'))
+			cambiarUrlAgenda();
+
+		
+	})
+
+	/* Menú responsive */
+
+	$('#activador-menu').click(function(){
+		$(this).toggleClass('activo');
+
+		if( $(this).hasClass('activo') ) {
+            $('#textoLogo span').css('color', '#fff');
+            $('#textoLogo span').css('border-color', '#fff');
+            $('#logo a img').css('filter', 'brightness(0) invert(1)' );
+        } else {
+            $('#textoLogo span').css('color', '#AF0541');
+            $('#textoLogo span').css('border-color', '#AF0541');
+            $('#logo a img').css('filter', 'none' );
+        }
+	})
+
+	////////////// Alex /////////////////
+
+	// Modificar imágenes de banners de los estilos
+	const bannerEstilos = document.querySelector('.titulos-agenda-por-estilos');
+
+	if (window.location.href.includes('pop-rock')) {
+		bannerEstilos.style.backgroundImage = "url('https://madridenvivo.com/wp-content/uploads/2022/09/POP-ROCK-1-scaled.jpg')";
+	} else if (window.location.href.includes('pop-rock')) {
+		bannerEstilos.style.backgroundImage = "url('https://madridenvivo.com/wp-content/uploads/2022/09/POP-ROCK-1-scaled.jpg')";
+	} else if (window.location.href.includes('artes-escenicas')) {
+		bannerEstilos.style.backgroundImage = "url('https://madridenvivo.com/wp-content/uploads/2022/09/ARTES-ESCENICAS-scaled.jpg')";
+	} else if (window.location.href.includes('clubbing')) {
+		bannerEstilos.style.backgroundImage = "url('https://madridenvivo.com/wp-content/uploads/2022/09/CLUBBING.jpg')";
+	} else if (window.location.href.includes('flamencocapital')) {
+		bannerEstilos.style.backgroundImage = "url('https://madridenvivo.com/wp-content/uploads/2022/09/FLAMENCO.jpg')";
+	} else if (window.location.href.includes('musicales')) {
+		bannerEstilos.style.backgroundImage = "url('https://madridenvivo.com/wp-content/uploads/2022/10/MUSICALES-1-scaled.jpg')";
+	} else if (window.location.href.includes('musicas-negras')) {
+		bannerEstilos.style.backgroundImage = "url('https://madridenvivo.com/wp-content/uploads/2022/09/MUSICAS-NEGRAS.jpg')";
+	}
+
+	////// Lógica de recuperación de eventos en buscador avanzado ///////
+
+	// Elemento del contenedor de resultados
+	const contenedorResultadosBuscador = document.querySelector('.contenedor-resultados-buscador');
+
+	// Efecto de loading
+	const loading = () => {
+		const contenedorBuscadorAvanzado = document.querySelector('.buscador-avanzado-principal');
+		contenedorBuscadorAvanzado ? contenedorBuscadorAvanzado.insertAdjacentHTML('beforeend', '<div class="cargando"><div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div><span>Buscando eventos...</span></div>') : null;
+	}
+
+	// Recuperamos el HTML del localStorage y lo mostramos en la página "buscador/avanzado"
+	if(window.location.href.includes('buscador-avanzado')) {
+
+		setTimeout(() => {
+
+			const params = new URLSearchParams(window.location.search);
+			const data = {};
+
+			for (const [clave, param] of params.entries()) {
+				data[clave] = param;
+			}
+
+			localStorage.setItem('data', JSON.stringify(data));
+			localStorage.setItem('pagina', 2);
+			let html = contenedorResultadosBuscador ? contenedorResultadosBuscador.innerHTML : '';
+			localStorage.setItem('html', html);
+			
+		}, 2000);
+
+	}
+
+	// Envio del formulario del buscador de eventos avanzados
+	$('.buscador-form').submit(function(e) {
+
+		e.preventDefault();
+
+		// Recopila los datos del formulario
+		let datosFormulario = $(this).serializeArray();
+		let data = {};
+		$.each(datosFormulario, function(index, campo) {		
+			data[campo.name] = campo.value;
+		});
+
+		// Abre una nueva pestaña con la URL que incluye los parámetros
+		const params = new URLSearchParams(data).toString();
+		const nuevaVentana = window.open(`/buscador-avanzado?${params}`, '_blank');					
+		nuevaVentana.location.href = `/buscador-avanzado?${params}`;						
+
+	})
+
+	// Buscar eventos avanzado
+	const buscarEventosScroll = () => {
+
+		// Si ya se está cargando, no hacer nada
+		if (controlCarga) return;
+
+		// Recuperamos los datos del localStorage
+		let data = localStorage.getItem('data') !== null ? JSON.parse(localStorage.getItem('data')) : {};
+		let paginaLocalStorageActual = localStorage.getItem('pagina') !== null ? localStorage.getItem('pagina') : 1;
+		data['pagina'] = parseInt(paginaLocalStorageActual);
+
+		// Efecto de loading
+		loading();
+
+		// Bloqueamos el evento de carga
+		controlCarga = true;
+
+		try {
+			$.ajax({
+				url: THEME_URL + '/codigo/includes/ajax/buscar-eventos-avanzado.php',
+				type: 'POST',
+				dataType: 'json',
+				contentType: 'application/json; charset=UTF-8',
+				data: JSON.stringify(data),
+				success: (data) => {
+					
+					let response = data;
+											
+					if (response.status === 200) {
+						// Recuperamos el HTML actual y lo actualizamos con los nuevos resultados para insertarlos en la página
+						let localStorageActual = localStorage.getItem('html') !== null ? localStorage.getItem('html') : '';
+						let localStorageFinal = localStorageActual += response.html;
+
+						localStorage.setItem('html', localStorageFinal);						
+						let htmlEventoFinal = localStorage.getItem('html');
+						contenedorResultadosBuscador.innerHTML = htmlEventoFinal;
+
+						// Incrementamos la página en localStorage
+						paginaLocalStorageActual++;
+						localStorage.setItem('pagina', paginaLocalStorageActual);
+
+						// Desbloqueamos el evento de carga
+						controlCarga = false;
+
+						// Eliminamos el efecto de loading
+						const cargando = document.querySelector('.cargando');
+						cargando.remove();
+
+						// Volvemos a activar el evento de scroll	
+						$(window).on('scroll', scrollHandler);	
+					} else {
+						// Desbloqueamos el evento de carga
+						controlCarga = true;
+
+						// Eliminamos el efecto de loading
+						const cargando = document.querySelector('.cargando');
+						cargando.remove();
+
+						localStorage.clear();
+					}
+
+				},
+				error: (error) => {
+					throw new Error("Error al buscar eventos: " + error);
+				}
+			});
+		} catch (error) {
+			throw new Error("Error al buscar eventos: " + error);
+		}
+	} 
+
+
+	// Cargar eventos de 10 en 10 según scroll del usuario
+	let controlCarga = false;
+	function scrollHandler() {
+		if (contenedorResultadosBuscador) {
+			let rect = contenedorResultadosBuscador.getBoundingClientRect();
+			if (rect.bottom <= window.innerHeight) {
+				$(window).off('scroll', scrollHandler);
+				buscarEventosScroll();
+			}
+		}
+	}
+
+	$(window).on('scroll', scrollHandler);	
+
+
+
+	/////////////////////////////////////////////////////////////////////////
+	
+
+	scrollHead();
+	$(document).scroll(function() {
+		scrollHead();
+	});
+
+	$('.proximamente a').click(function(e){
+		e.preventDefault();
+	})
+
+	// Falsos Checkbox
+	$('.pseudo-checkbox .fa').click(function(e){
+		var padre = $(this).parent();
+		padre.removeClass('errores');
+
+		if(padre.hasClass('activo'))
+			padre.removeClass('activo');
+		else
+			padre.addClass('activo');
+
+		padre.children('input[type=checkbox]').click();
+	});
+
+
+	/* Selector listados */
+	$('.archive .filtro-listado span').click(function(){
+		if(!$(this).hasClass('activo')){
+			var selector = $(this).parent().parent().parent().find('.selector-listado');
+			selector.text($(this).text());
+			selector.removeClass('activo');
+
+			var elegido = $.trim($(this).attr('class'));
+			$('.filtro-listado span.activo').removeClass('activo');
+			$(this).addClass('activo');
+
+			$('.elementos-filtro').fadeOut('slow', function(){
+				$('.elementos-filtro a').each(function(){
+					$(this).css('display','none');
+				});	
+				$('.elementos-filtro a.'+elegido).each(function(){
+					$(this).css('display','block');
+				});
+				$('.elementos-filtro').fadeIn('slow');
+			})
+		}		
+	})
+
+	$('.archive .selector-listado').click(function(){
+		if($(this).hasClass('activo')){
+			$(this).removeClass('activo');
+		}else{
+			$(this).addClass('activo');
+		}
+	})
+
+	// Fancybox
+	$('[data-fancybox]').fancybox({
+		afterClose: function(){
+			$.each(players, function(key, value){
+				var player = new Vimeo.Player(value.bloque, value.options);
+				player.play();
+			});
+		}
+	});
+
+	// Arreglo galería de Kadence
+	$(document).on('click', '.slick-cloned figure a', function(e){
+		e.preventDefault();
+
+		var elemento = $(this).parent().parent().parent().parent();
+		var indice = elemento.data('slick-index');
+		var padre = elemento.parent();
+		var apuntado;
+
+		var listado = padre.children('.slick-slide:not(.slick-cloned)');
+
+		if(indice < 0){
+			listado.each(function(){
+				if($(this).data('slick-index') == (listado.length + indice))
+					apuntado = $(this);
+			})			
+		} else {
+			listado.each(function(){
+				if($(this).data('slick-index') == (indice - listado.length))
+					apuntado = $(this);
+			})
+		}
+
+		apuntado.find('figure a').click();
+	})
+
+	// Scroll to Head
+	$('.scrollToHead').click(function(e){
+		e.preventDefault();
+		$(document).scrollTo(0, 'slow');
+	})
+
+	// Mostrar más categorías
+	let cont = 0;
+	$('.bloque-categorias a').each(function(){
+		if(cont > 4)
+			$(this).hide();
+		cont++;
+	})
+	$('#mostrar-categorias').click( function() {
+
+		let toogle = $(this).hasClass('activo');
+
+		if(toogle){
+			$(this).removeClass('activo');
+			$(this).html('<i class="fa-solid fa-arrow-down"></i> Mostrar todas');
+		}else{	
+			$(this).addClass('activo');
+			$(this).html('<i class="fa-solid fa-arrow-up"></i> Mostrar menos');
+		}
+
+		let cont = 0;
+		$('.bloque-categorias a').each(function(){
+			if(cont > 4){
+				if(toogle)
+					$(this).slideUp('slow');
+				else
+					$(this).slideDown('slow');
+			}
+			cont++;
+		})
+			if(toogle){
+				$('html, body').animate({
+					scrollTop: $('.bloque-categorias').offset().top - $('header').outerHeight() - 20
+				}, 350);
+			}
+	});
+
+	$('.nav-menu a').click(function(e) {
+		if($(this).attr('href').indexOf('http') == -1){
+			e.preventDefault();
+			$('html, body').animate({
+				scrollTop: $( $(this).attr('href') ).offset().top - $('header').outerHeight()
+			}, 350);
+		}
+	})
+
+	// Listado de Salas
+	$('.buscador-salas #select-salas').change(function(){
+		if($(this).val() != '')
+			window.location.href = $(this).val();
+	})
+
+	$('.buscador-salas #select-estilos').change(function(){
+		if($(this).val() != '') {
+			if( $(this).val() === 'ver-todos') {
+				window.location.href = WEB_URL + '/salas/';
+			} else {
+				window.location.href = WEB_URL + '/salas/estilo/' + $(this).val();
+			}
+		}
+	})
+
+	
+	// Agenda en la Portada (Acceder a Agenda)
+	$('.agenda.solo-destacados .agenda__filtros__categoria, .agenda.solo-destacados .agenda__filtros__salas').change(function(){
+		irAAgenda();
+	})
+
+	$('.agenda.solo-destacados .agenda__filtros__buscador input').keypress(function(e){
+		var keycode = (e.keyCode ? e.keyCode : e.which);
+		if(keycode == '13'){
+			irAAgenda();
+		}
+	})
+
+	$('.agenda.solo-destacados .agenda__filtros__buscador__boton').click(function(){
+		irAAgenda();
+	})
+
+	// Agenda Interior
+	$('.agenda.todos .agenda__filtros__categoria, .agenda.todos .agenda__filtros__salas').change(function(){
+		filtrarAgenda();
+	})
+
+	$('.agenda.todos .agenda__filtros__buscador input').keypress(function(e){
+		var keycode = (e.keyCode ? e.keyCode : e.which);
+		if(keycode == '13'){
+			filtrarAgenda();
+		}
+	})
+
+	$('.agenda.todos .agenda__filtros__buscador__boton').click(function(){
+		filtrarAgenda();
+	})
+
+	$('.buscador a').fancybox();
+	$('.agenda__dias__dia.activar-elemento').click();
+
+	// Agenda para las Salas
+	$('.salas-eventos-agenda').each(function(){
+		let salaID = $(this).data('sala');
+		$.post(
+			THEME_URL + '/codigo/includes/ajax/load-eventos-sala.php',
+			{
+				sala: salaID
+			},
+			function(data){
+				let response = JSON.parse(data);
+				switch(response.status){
+					case 200:
+						$('.salas-eventos-agenda').html(response.content);
+				}
+			}
+		);
+	})
+
+
+	$('.select-categorias-noticias').click( function() {
+
+		if($(this).is(':focus') && !$(this).hasClass('activo')) {
+			$(this).addClass('activo')
+		} else if($(this).hasClass('activo') && !$(this).is(':focus')) {
+			$(this).removeClass('activo')
+		} else if($(this).is(':focus') && $(this).hasClass('activo')) {
+			$(this).removeClass('activo')
+		}
+		
+	})
+
+	$('.select-categorias-noticias').focusout( function () {
+		$(this).removeClass('activo')
+	}) 
+
+	$('#activador-proyectos').click(function() {
+		$('.nav-menu').toggleClass('activo');
+
+		if($('.nav-menu').hasClass('activo')) {
+			$('#activador-proyectos').html('Ocultar menú');
+		} else {
+			$('#activador-proyectos').html('Mostrar menú');
+		}
+	})
+
+
+	// Forzamos cambio de texto placeholder de nuevo buscador
+
+	$('.searchandfilter > div ul li input[type="text"]').attr('placeholder', 'Buscar eventos...')
+
+});
+
+// Manejador de links de select de single noticias
+function manejadorSelect(opcion)
+{
+	window.location = opcion.value;
+}
+
+// Cambiar el día
+function cambiarDia(dia, mes, ano){	
+	$('.agenda__listado').html('<div class="cargando"><div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div><span>Buscando eventos...</span></div>');
+	$.post(
+		THEME_URL + '/codigo/includes/ajax/load-eventos.php',
+		{
+			buscar: $('.agenda__filtros__buscador input').val(),
+			sala: $('.agenda__filtros__salas').val(),
+			estilo: $('.agenda_estilo').val(),
+			dia: dia,
+			mes: mes,
+			ano: ano,
+			destacados: $('.agenda').hasClass('solo-destacados') ? 1 : 0
+		},
+		function(data){
+			let response = JSON.parse(data);
+			if(response.status == 200){			
+				$('.agenda__listado').html(response.content);
+			}
+		}
+	)
+}
+
+function cambiarCalendario(chosenMes, chosenAno){
+	let fechaElegida = new Date($('.agenda__filtros__fecha').val());
+	let fechaCalendario = new Date(Date.UTC(chosenAno, chosenMes-1, 1, 0, 0, 0));
+
+	let ret = '<div class="agenda__calendario__dias__columna cabecera"><span><span>L</span></span><span><span>M</span></span><span><span>X</span></span><span><span>J</span></span><span><span>V</span></span><span><span>S</span></span><span><span>D</span></span></div>';
+
+	let curMes = fechaCalendario.getMonth()+1;
+	let primero = true;
+	let contador = fechaCalendario.getDay();
+	if(contador == 0)	contador = 7;
+	contador = contador -1;
+	
+	while(curMes == chosenMes){
+		let ano = fechaCalendario.getFullYear();
+		let mes = ("0" + (fechaCalendario.getMonth()+1)).slice(-2);
+		let dia = ("0" + fechaCalendario.getDate()).slice(-2);
+
+		if(primero){
+			ret += '<div class="agenda__calendario__dias__columna">';
+			for(let i = 0; i < contador; i++){
+				ret += '<span></span>';
+			}
+			primero = false;
+		}
+
+		ret += '<span><span data-time="' + ano + '-' + mes + '-' + dia + '" ' + (fechaElegida.getTime() == fechaCalendario.getTime() ? 'class="current"' : '') + '>' + dia + '</span></span>';
+
+		contador++;
+		fechaCalendario.setDate(fechaCalendario.getDate() + 1);
+		curMes = fechaCalendario.getMonth()+1;
+
+		if(contador%7 == 0)
+			ret += '</div><div class="agenda__calendario__dias__columna">';
+	}
+	ret += '</div>';
+
+	$('.agenda__calendario__dias').html(ret);
+	let nombreMes = meses[chosenMes-1];
+	nombreMes = nombreMes.charAt(0).toUpperCase() + nombreMes.slice(1);
+	$('.agenda__calendario__info span').text(nombreMes + ' ' + chosenAno);
+}
+
+function irAAgenda(){
+	// Obtenemos los valores
+	let estilo  = $('.agenda__filtros__categoria').val() != '' && $('.agenda__filtros__categoria').val() != 'Categoría' ? $('.agenda__filtros__categoria').val() : false;
+	let sala  = $('.agenda__filtros__salas').val() != '' && $('.agenda__filtros__salas').val() != 'Salas' ? $('.agenda__filtros__salas').val() : false;
+	let buscar = $('.agenda__filtros__buscador input').val() != '' ? $('.agenda__filtros__buscador input').val() : false;
+
+	// Comprobamos la Fecha
+	let fecha  = new Date($('.agenda__filtros__fecha').val());
+	fecha.setHours(0,0,0,0);
+	let hoy = new Date(Date.now());
+	hoy.setHours(0,0,0,0);
+
+	if(fecha.getTime() == hoy.getTime())
+		fecha = false;
+
+	// Generamos la URL
+	let primero = true;
+	let url = AGENDA_URL;
+	if(estilo)		url += '_sft_estilo_evento=' + estilo + '/';
+	if(sala){
+		if(primero)		url += '?';
+		else			url += '&';
+		url += 'idsala=' + sala;
+		primero = false;
+	}
+	if(buscar){
+		if(primero)		url += '?';
+		else			url += '&';
+		url += 'buscar=' + buscar;
+		primero = false;
+	}
+	if(fecha){
+		if(primero)		url += '?';
+		else			url += '&';
+
+		let ano = fecha.getFullYear();
+		let mes = ("0" + (fecha.getMonth()+1)).slice(-2);
+		let dia = ("0" + fecha.getDate()).slice(-2);
+		url += 'fecha=' + dia + '-' + mes + '-' + ano;
+		primero = false;
+	}
+	
+	window.location.href = url;
+}
+
+function cambiarUrlAgenda(){
+	// Obtenemos los valores
+	// let estilo  = $('.agenda__filtros__categoria').val() != '' && $('.agenda__filtros__categoria').val() != 'Categoría' ? $('.agenda__filtros__categoria').val() : false;
+	let estilo  = $('.agenda_estilo').val();
+	let sala  = $('.agenda__filtros__salas').val() != '' && $('.agenda__filtros__salas').val() != 'Salas' ? $('.agenda__filtros__salas').val() : false;
+	let buscar = $('.agenda__filtros__buscador input').val() != '' ? $('.agenda__filtros__buscador input').val() : false;
+
+	// Comprobamos la Fecha
+	let fecha  = new Date($('.agenda__filtros__fecha').val());
+	fecha.setHours(0,0,0,0);
+	let hoy = new Date(Date.now());
+	hoy.setHours(0,0,0,0);
+	let ano = fecha.getFullYear();
+	let mes = ("0" + (fecha.getMonth()+1)).slice(-2);
+	let dia = ("0" + fecha.getDate()).slice(-2);
+
+	// Generamos la URL
+	let primero = true;
+	let url = AGENDA_URL;
+	if(estilo)		url += estilo + '/';
+	if(sala){
+		if(primero)		url += '?';
+		else			url += '&';
+		url += 'idsala=' + sala;
+		primero = false;
+	}
+	if(buscar){
+		if(primero)		url += '?';
+		else			url += '&';
+		url += 'buscar=' + buscar;
+		primero = false;
+	}
+	if(fecha.getTime() != hoy.getTime()){
+		if(primero)		url += '?';
+		else			url += '&';
+
+		url += 'fecha=' + dia + '-' + mes + '-' + ano;
+		primero = false;
+	}
+
+	// Cambiamos la URL sin refrescar
+	window.history.pushState({ path: url }, '', url);
+
+
+}
+
+function filtrarAgenda(){
+	cambiarUrlAgenda();
+
+	// Filtramos la info de la agenda
+	let fecha  = new Date($('.agenda__filtros__fecha').val());
+	let ano = fecha.getFullYear();
+	let mes = ("0" + (fecha.getMonth()+1)).slice(-2);
+	let dia = ("0" + fecha.getDate()).slice(-2);
+	cambiarDia(dia, mes, ano);
+}
+
+// Adaptación clicks a móvil (especialmente ios)
+jQuery(function ($) {
+    if ('ontouchstart' in document.documentElement) {
+        $(".scrollToHead").on('touchstart', function() {
+            $(".scrollToHead").click();
+        });
+    };
+});
+
+function scrollHead(){
+	if($(this).scrollTop() > ($('body').position().top + 37)){
+		$('header').addClass('scrolled');
+	} else {
+		$('header').removeClass('scrolled');
+	}
+
+	if($(this).scrollTop() > ($('body').position().top + 987)){
+		$('.scrollToHead').addClass('scrolled');
+	} else {
+		$('.scrollToHead').removeClass('scrolled');
+	}
+}
+
+function isValidEmailAddress(emailAddress) {
+    var pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
+    return pattern.test(emailAddress);
+}
+
+function afterRevealGeneric(el){
+	el.addEventListener('animationend', function () {
+		$(this).find('.numero-animado').each(function(){
+			if(!$(this).hasClass('activo')){
+				var valor = $(this).data('value');
+				
+				$(this).animateNumber({
+					number: valor,
+					numberStep: function(now, tween) {
+						var floored_number = Math.floor(now),
+						target = $(tween.elem);
+						target.text($.number(floored_number, 0, ',', '.'));
+					}
+				});
+
+				$(this).addClass('activo');
+			}
+			
+	  	})
+	})
+}
+
+/*Toggle del buscador avanzado*/
+
+function toggleBuscador() {
+	// let i_buscador = document.getElementById("buscador_avanzado");
+	let i_buscador = $(".buscador_avanzado");
+	let div1 = document.getElementById("buscador_shortcode");
+	let inputFecha = document.querySelector(".agenda__filtros__fecha");
+	if (div1.style.display === "none") {
+	  div1.style.display = "flex";
+	  i_buscador.text("BUSCADOR AVANZADO ▲");
+	  inputFecha.style.visibility = "hidden";
+	} else {
+	  div1.style.display = "none";
+	  i_buscador.text("BUSCADOR AVANZADO ▼");
+	  inputFecha.style.visibility = "visible";
+	}
+
+	if (div1.style.display === "flex") {
+		div3.style.justifyContent = 'end !important';
+	}
+  }
+
+/*//Selector fila de dias de eventos
+$(document).ready(function(){
+	$('.fila_dias').click(function(){
+		$('.fila_dias').removeClass('active');
+		console.log('hola');
+		if($(this).hasClass('active')){
+			$(this).removeClass('active').fadeOut('slow');
+		}else{
+			$(this).addClass('active').fadeIn('slow');
+		}
+	})
+})*/
+
+//Cargar más categorías
+
+
