@@ -43590,5 +43590,215 @@
    "identificado_por": "identificador de Discogs en Wikidata",
    "perfil": "Belgian electro-industrial music act formed in 1986 by Johan Van Roy. For live shows, it consists of Van Roy on vocals, Torben Schmidt on keyboards, and Mario Vaerewijck on drums"
   }
+ },
+ "grandes canciones del cine by laraland": {
+  "nombre": "Grandes Canciones del Cine by Laraland",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; en: no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  },
+  "lastfm": {
+   "encontrado": false,
+   "motivo": "The artist you supplied could not be found"
+  }
+ },
+ "eternal": {
+  "nombre": "ETERNAL",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; en: no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "11 artistas homónimos"
+  },
+  "lastfm": {
+   "encontrado": true,
+   "nombre": "Eternal",
+   "etiquetas": [
+    "doom metal",
+    "rnb",
+    "soul",
+    "90s"
+   ],
+   "estilos": [
+    "Doom Metal"
+   ],
+   "generos": [
+    "Rock",
+    "Funk / Soul"
+   ],
+   "url": "https://www.last.fm/music/Eternal",
+   "identificado_por": "coincidencia por nombre"
+  }
+ },
+ "benito kamelas": {
+  "nombre": "BENITO KAMELAS",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; en: no existe"
+  },
+  "discogs": {
+   "encontrado": true,
+   "id": 5075865,
+   "nombre": "Benito Kamelas",
+   "url": "https://www.discogs.com/artist/5075865-Benito-Kamelas",
+   "generos": [
+    "Rock"
+   ],
+   "estilos": [],
+   "discos_analizados": 1,
+   "pais": "ES",
+   "imagen": "https://i.discogs.com/5zNsGUQ8mGTlF1VW_F3IJKI4iQNYvqRS0x_JLFTvQd4/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTUwNzU4/NjUtMTYyNjExMDM3/MS00OTQ0LmpwZWc.jpeg",
+   "identificado_por": "única coincidencia exacta del nombre en Discogs",
+   "perfil": "Rock and roll band from Valencia, Spain since 1997"
+  },
+  "lastfm": {
+   "encontrado": true,
+   "nombre": "Benito Kamelas",
+   "etiquetas": [
+    "rock",
+    "Spanish Rock"
+   ],
+   "estilos": [],
+   "generos": [
+    "Rock"
+   ],
+   "url": "https://www.last.fm/music/Benito%2BKamelas",
+   "identificado_por": "coincidencia por nombre"
+  }
+ },
+ "the song and me en concierto": {
+  "nombre": "THE SONG & ME EN CONCIERTO",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; en: no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  },
+  "lastfm": {
+   "encontrado": false,
+   "motivo": "The artist you supplied could not be found"
+  }
+ },
+ "inercia sonora gon abril and luzia": {
+  "nombre": "Inercia Sonora/ Gon Abril & Luzía",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; en: no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  },
+  "lastfm": {
+   "encontrado": false,
+   "motivo": "The artist you supplied could not be found"
+  }
+ },
+ "encuentro coral internacional iberoamericano": {
+  "nombre": "ENCUENTRO CORAL INTERNACIONAL IBEROAMERICANO",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; en: no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  },
+  "lastfm": {
+   "encontrado": false,
+   "motivo": "The artist you supplied could not be found"
+  }
+ },
+ "larsen": {
+  "nombre": "Larsen",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no es la página de un grupo o músico; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "3 artistas homónimos"
+  },
+  "lastfm": {
+   "encontrado": true,
+   "nombre": "Larsen",
+   "etiquetas": [
+    "post-rock",
+    "experimental",
+    "ambient"
+   ],
+   "estilos": [
+    "Post Rock",
+    "Experimental"
+   ],
+   "generos": [
+    "Rock"
+   ],
+   "url": "https://www.last.fm/music/Larsen",
+   "identificado_por": "coincidencia por nombre"
+  }
+ },
+ "madriz roots 1 ares kida and the jemper": {
+  "nombre": "MADRIZ ROOTS #1: ARES KIDA & THE JEMPER",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; en: no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  },
+  "lastfm": {
+   "encontrado": false,
+   "motivo": "The artist you supplied could not be found"
+  }
+ },
+ "hora zulu presenta nueva gira": {
+  "nombre": "HORA ZULU PRESENTA NUEVA GIRA",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; en: no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  },
+  "lastfm": {
+   "encontrado": false,
+   "motivo": "The artist you supplied could not be found"
+  }
+ },
+ "mikkey dee motorhead with friends": {
+  "nombre": "MIKKEY DEE ( Mötorhead ) WITH FRIENDS",
+  "fecha": "2026-09-29",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; en: no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  },
+  "lastfm": {
+   "encontrado": false,
+   "motivo": "The artist you supplied could not be found"
+  }
  }
 }

@@ -43,7 +43,9 @@
     "https://www.hellpress.com/noticias/crowne-wonderland/",
     "https://www.hellpress.com/noticias/nestor-in-the-name-of-rock-n-roll/",
     "https://www.hellpress.com/noticias/wet-apex/",
-    "https://www.hellpress.com/noticias/lion-rock-fest-2025-segundo-grupo/"
+    "https://www.hellpress.com/noticias/lion-rock-fest-2025-segundo-grupo/",
+    "https://www.hellpress.com/noticias/disfear-the-last-nail-disco-postumo-ultimas-grabaciones-tomas-lindberg-marcus-andersson-ultimas-grabaciones/",
+    "https://www.hellpress.com/noticias/leo-jimenez-presenta-inquebrantable-primer-adelanto-nuevo-disco/"
    ],
    "eventos": [
     {
@@ -89,7 +91,7 @@
      "fuente": ""
     }
    ],
-   "ultima_entrada": "https://www.hellpress.com/noticias/scanner-regresara-espana-2027-conciertos-celebrar-40-anos/"
+   "ultima_entrada": "https://www.hellpress.com/noticias/disfear-the-last-nail-disco-postumo-ultimas-grabaciones-tomas-lindberg-marcus-andersson-ultimas-grabaciones/"
   },
   "metalsymphony": {},
   "rockforeveryone": {},
@@ -198,9 +200,86 @@
    "ultima_entrada": "https://viriaor.wordpress.com/2026/09/09/yasuharu-takanashis-far-east-groove-llega-a-espana-junto-a-strangers/"
   },
   "diariorockero": {
-   "vistos": [],
-   "eventos": [],
-   "ultima_entrada": null
+   "vistos": [
+    "https://www.diariodeunrockero.es/conciertos/hora-zulu-presenta-nueva-gira/",
+    "https://www.diariodeunrockero.es/conciertos/rodrigo-mercado-y-gran-aparato-electrico-en-madrid/",
+    "https://www.diariodeunrockero.es/conciertos/maldito-metal-fest-2026/",
+    "https://www.diariodeunrockero.es/conciertos/rosalie-cunningham-visita-espana/",
+    "https://www.diariodeunrockero.es/conciertos/the-damned-anuncia-gira-por-su-50-aniversario/",
+    "https://www.diariodeunrockero.es/conciertos/mikkey-dee-anuncia-concierto-en-madrid/",
+    "https://www.diariodeunrockero.es/conciertos/iv-madrid-dominations-fest/",
+    "https://www.diariodeunrockero.es/conciertos/chicos-de-nazca-y-camera-confirmados-en-el-mazo/",
+    "https://www.diariodeunrockero.es/conciertos/the-mothercrow-y-electic-fence-en-madrid/",
+    "https://www.diariodeunrockero.es/conciertos/profecia-y-mitago-en-concierto-en-madrid/",
+    "https://www.diariodeunrockero.es/conciertos/senor-no-en-concierto-en-madrid/",
+    "https://www.diariodeunrockero.es/conciertos/calva-louise-visita-espana/",
+    "https://www.diariodeunrockero.es/conciertos/depedro-ofrecera-cinco-conciertos-en-madrid-en-octubre/",
+    "https://www.diariodeunrockero.es/conciertos/lagwagon-anuncia-gira-para-2027/",
+    "https://www.diariodeunrockero.es/conciertos/arde-bogota-presenta-la-gira-hervideros/"
+   ],
+   "eventos": [
+    {
+     "fecha": "2026-10-23",
+     "artista": "HORA ZULU PRESENTA NUEVA GIRA",
+     "url": "https://www.diariodeunrockero.es/conciertos/hora-zulu-presenta-nueva-gira/",
+     "sala": "Sala Copérnico",
+     "ciudad": "Madrid",
+     "hora": null,
+     "invitados": [],
+     "precio": null,
+     "estilo": null,
+     "nacionalidad": null,
+     "nota": "Artista tomado del titular de la entrada del blog.",
+     "imagen": null,
+     "fuente": ""
+    },
+    {
+     "fecha": "2026-10-06",
+     "artista": "ROSALIE CUNNINGHAM VISITA ESPAÑA",
+     "url": "https://www.diariodeunrockero.es/conciertos/rosalie-cunningham-visita-espana/",
+     "sala": "Sala Moby Dick",
+     "ciudad": "Madrid",
+     "hora": null,
+     "invitados": [],
+     "precio": null,
+     "estilo": null,
+     "nacionalidad": null,
+     "nota": "Artista tomado del titular de la entrada del blog.",
+     "imagen": null,
+     "fuente": ""
+    },
+    {
+     "fecha": "2026-11-01",
+     "artista": "CALVA LOUISE VISITA ESPAÑA",
+     "url": "https://www.diariodeunrockero.es/conciertos/calva-louise-visita-espana/",
+     "sala": "Sala Mon Live",
+     "ciudad": "Madrid",
+     "hora": null,
+     "invitados": [],
+     "precio": null,
+     "estilo": null,
+     "nacionalidad": null,
+     "nota": "Artista tomado del titular de la entrada del blog.",
+     "imagen": null,
+     "fuente": ""
+    },
+    {
+     "fecha": "2027-02-20",
+     "artista": "LAGWAGON ANUNCIA GIRA PARA 2027",
+     "url": "https://www.diariodeunrockero.es/conciertos/lagwagon-anuncia-gira-para-2027/",
+     "sala": "Sala LAB",
+     "ciudad": "Madrid",
+     "hora": null,
+     "invitados": [],
+     "precio": null,
+     "estilo": null,
+     "nacionalidad": null,
+     "nota": "Artista tomado del titular de la entrada del blog.",
+     "imagen": null,
+     "fuente": ""
+    }
+   ],
+   "ultima_entrada": "https://www.diariodeunrockero.es/conciertos/hora-zulu-presenta-nueva-gira/"
   },
   "mutick": {},
   "qconciertos": {},
@@ -270,7 +349,7 @@
   },
   "cpm": {
    "ultima_ok": "2026-09-29",
-   "ultimo_conteo": 132
+   "ultimo_conteo": 133
   },
   "madridenvivo": {
    "ultima_ok": "2026-09-29",
@@ -458,8 +537,24 @@
   },
   "rockgle": {
    "ultima_ok": "2026-09-29",
-   "ultimo_conteo": 0
+   "ultimo_conteo": 26
+  },
+  "diariorockero": {
+   "ultima_ok": "2026-09-29",
+   "ultimo_conteo": 3
+  },
+  "muni_alcala_de_henares": {
+   "ultima_ok": "2026-09-29",
+   "ultimo_conteo": 1
+  },
+  "muni_collado_villalba": {
+   "ultima_ok": "2026-09-29",
+   "ultimo_conteo": 1
+  },
+  "muni_torrejon_de_ardoz": {
+   "ultima_ok": "2026-09-29",
+   "ultimo_conteo": 1
   }
  },
- "ultima_ejecucion": "2026-09-29T15:14:45+00:00"
+ "ultima_ejecucion": "2026-09-29T19:28:35+00:00"
 }
