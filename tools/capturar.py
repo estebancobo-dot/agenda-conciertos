@@ -1,0 +1,52 @@
+"""Captura el HTML real de las fuentes para escribir y verificar parsers (se ejecuta en GitHub Actions).
+
+Uso: python tools/capturar.py tools/capturar_urls.txt capturas/
+Cada línea del fichero: <nombre> <url>
+"""
+import json
+import sys
+from collections import defaultdict
+from concurrent.futures import ThreadPoolExecutor
+from pathlib import Path
+from urllib.parse import urlsplit
+
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from scraper.fetch import Fetcher, RobotsBlocked  # noqa: E402
+
+
+def main(lista: str, salida: str) -> None:
+    out = Path(salida)
+    out.mkdir(parents=True, exist_ok=True)
+    f = Fetcher()
+    items = []
+    for line in Path(lista).read_text().splitlines():
+        line = line.strip()
+        if line and not line.startswith("#"):
+            name, url = line.split(None, 1)
+            items.append((name, url))
+    by_host = defaultdict(list)
+    for name, url in items:
+        by_host[urlsplit(url).netloc].append((name, url))
+    index = {}
+
+    def run(group):
+        for name, url in group:
+            rec = {"url": url}
+            try:
+                txt = f.get(url)
+                (out / f"{name}.html").write_text(txt, encoding="utf-8")
+                rec.update(ok=True, bytes=len(txt))
+            except RobotsBlocked:
+                rec.update(ok=False, robots_blocked=True)
+            except Exception as e:  # noqa: BLE001
+                rec.update(ok=False, error=f"{type(e).__name__}: {e}"[:300])
+            index[name] = rec
+            print(name, rec, flush=True)
+
+    with ThreadPoolExecutor(max_workers=16) as ex:
+        list(ex.map(run, by_host.values()))
+    (out / "_index.json").write_text(json.dumps(index, indent=1, ensure_ascii=False, sort_keys=True))
+
+
+if __name__ == "__main__":
+    main(sys.argv[1], sys.argv[2])

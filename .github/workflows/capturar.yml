@@ -1,0 +1,28 @@
+name: Capturar HTML de fuentes (desarrollo)
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ["ccr-**"]
+    paths: ["tools/capturar_urls.txt"]
+
+permissions:
+  contents: write
+
+jobs:
+  capturar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install requests
+      - run: python tools/capturar.py tools/capturar_urls.txt capturas/
+      - name: Commit capturas
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add capturas
+          git commit -m "Capturas HTML de fuentes" || exit 0
+          git push
