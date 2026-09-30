@@ -430,8 +430,15 @@ def buscar_lastfm_bio(f: Fetcher, nombre: str, mbid: str | None, key: str) -> di
 def buscar_en_agenda(f: Fetcher, nombre: str, urls: list[str]) -> dict:
     """País que la propia agenda dice del artista en la página del concierto ("la banda madrileña X")."""
     from .origen import pais_en_texto
+    import requests
     for u in urls[:2]:
-        s = BeautifulSoup(f.get(u), "html.parser")
+        try:
+            html = f.get(u)
+        except requests.HTTPError as e:
+            if e.response is not None and e.response.status_code in (404, 410):
+                continue  # la agenda ha quitado la página: no es un error que haya que repetir
+            raise
+        s = BeautifulSoup(html, "html.parser")
         for t in s(["script", "style", "nav", "header", "footer", "form", "aside", "noscript"]):
             t.decompose()
         pais, frase = pais_en_texto(s.get_text("\n"), nombre)
