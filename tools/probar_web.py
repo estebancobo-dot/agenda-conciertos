@@ -222,6 +222,31 @@ def recorrido(b):
     pg.evaluate(f"location.hash='#semana/{lunes.isoformat()}'")
     pg.wait_for_selector("#fgen")
 
+    # 3c. uso normal: bajas la lista, te paras a leer 2 s y tocas un concierto con foto que estás viendo
+    uso = []
+    for vuelta in range(4):
+        pg.mouse.wheel(0, 1400)
+        pg.wait_for_timeout(2000)
+        cid = pg.evaluate("""()=>{for(const c of document.querySelectorAll('#main .card')){const b=c.getBoundingClientRect();
+            const r=BYID[c.dataset.id]; if(b.top>60&&b.bottom<innerHeight&&r&&r.img) return c.dataset.id;} return null}""")
+        if not cid:
+            continue
+        t0 = time.monotonic()
+        pg.locator(f'.card[data-id="{cid}"]').first.click()
+        pg.wait_for_selector(".dt h2", timeout=30000)
+        try:
+            pg.wait_for_function("(()=>{const i=document.querySelector('.hero img');return !i||(i.complete&&i.naturalWidth>0)})()",
+                                 timeout=20000)
+            f = ms(t0)
+        except Exception:
+            f = "más de 20 s"
+        ya = pg.evaluate("(()=>{const i=document.querySelector('.hero img');return !!i&&i.classList.contains('ya')})()")
+        uso.append({"foto_ms": f, "ya_descargada_al_abrir": ya})
+        pg.go_back()
+        pg.wait_for_selector("#fgen")
+        pg.wait_for_timeout(500)
+    paso("3c_ficha_tras_ver_la_lista", fichas=uso)
+
     # 4. filtros
     pg.evaluate("scrollTo(0,0)")
     t0 = time.monotonic()
