@@ -22,7 +22,7 @@ from urllib.parse import quote
 
 from bs4 import BeautifulSoup
 
-from .fetch import Fetcher
+from .fetch import AntiBotBlocked, Fetcher, RobotsBlocked
 from .normalize import clean, es_generico, es_relleno, load_json, norm
 
 log = logging.getLogger(__name__)
@@ -438,6 +438,8 @@ def buscar_en_agenda(f: Fetcher, nombre: str, urls: list[str]) -> dict:
             if e.response is not None and e.response.status_code in (404, 410):
                 continue  # la agenda ha quitado la página: no es un error que haya que repetir
             raise
+        except (RobotsBlocked, AntiBotBlocked):
+            continue  # robots.txt no deja leerla (Instagram, calendarios…) o pide captcha: no se insiste
         s = BeautifulSoup(html, "html.parser")
         for t in s(["script", "style", "nav", "header", "footer", "form", "aside", "noscript"]):
             t.decompose()
