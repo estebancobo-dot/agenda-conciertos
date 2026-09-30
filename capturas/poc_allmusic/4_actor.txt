@@ -1,0 +1,120 @@
+{
+  "data": {
+    "id": "qj6ocHnX5owZKf3uD",
+    "userId": "DevbkY3adMTBuoECt",
+    "name": "allmusic-scraper",
+    "username": "lexis-solutions",
+    "description": "AllMusic scraper for structured artist, album and song data from AllMusic.com, perfect for music metadata, catalogues and research; ideal for USA music data, streaming and analytics niches.",
+    "isPublic": true,
+    "createdAt": "2026-03-30T06:54:44.971Z",
+    "modifiedAt": "2026-04-20T16:31:24.278Z",
+    "taggedBuilds": {
+      "latest": {
+        "buildId": "otWuQIdywd4if2eAN",
+        "finishedAt": "2026-04-13T23:45:08.102Z",
+        "buildNumberInt": 10000002,
+        "buildNumber": "1.0.2"
+      }
+    },
+    "stats": {
+      "totalBuilds": 2,
+      "totalRuns": 265,
+      "totalUsers": 18,
+      "totalUsers7Days": 1,
+      "totalUsers30Days": 1,
+      "totalUsers90Days": 2,
+      "lastRunStartedAt": "2026-09-29T11:54:57.808Z",
+      "actorReviewCount": 0,
+      "actorReviewRating": 0,
+      "bookmarkCount": 0,
+      "publicActorRunStats30Days": {
+        "ABORTED": 0,
+        "FAILED": 1,
+        "SUCCEEDED": 27,
+        "TIMED-OUT": 0,
+        "TOTAL": 28
+      }
+    },
+    "versions": [
+      {
+        "versionNumber": "1.0",
+        "sourceType": "SOURCE_FILES",
+        "buildTag": "latest"
+      }
+    ],
+    "defaultRunOptions": {
+      "build": "latest",
+      "memoryMbytes": 4096,
+      "timeoutSecs": 3600
+    },
+    "exampleRunInput": {
+      "body": "{ \"helloWorld\": 123 }",
+      "contentType": "application/json; charset=utf-8"
+    },
+    "categories": [
+      "AI",
+      "AGENTS",
+      "JOBS"
+    ],
+    "isDeprecated": false,
+    "title": "AllMusic Scraper",
+    "pictureUrl": "https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/DevbkY3adMTBuoECt-actor-qj6ocHnX5owZKf3uD-OWVWdtkRbb-idpE1Tc_jM_1774858353390.png",
+    "seoTitle": null,
+    "seoDescription": null,
+    "pricingInfos": [
+      {
+        "minimalMaxTotalChargeUsd": null,
+        "pricingModel": "PAY_PER_EVENT",
+        "isPriceChangeNotificationSuppressed": false,
+        "pricingPerEvent": {
+          "actorChargeEvents": {
+            "apify-actor-start": {
+              "eventTitle": "Actor Start",
+              "eventDescription": "Charged when the Actor starts running. Number of events charged depends on Actor memory (one event per GB, minimum one event).",
+              "isOneTimeEvent": true,
+              "eventPriceUsd": 0.00005
+            },
+            "apify-default-dataset-item": {
+              "eventTitle": "Item",
+              "eventDescription": "Single result in the default dataset.",
+              "isOneTimeEvent": false,
+              "eventTieredPricingUsd": {
+                "FREE": {
+                  "tieredEventPriceUsd": 0.0049
+                },
+                "BRONZE": {
+                  "tieredEventPriceUsd": 0.0039
+                },
+                "SILVER": {
+                  "tieredEventPriceUsd": 0.0029
+                },
+                "GOLD": {
+                  "tieredEventPriceUsd": 0.0019
+                },
+                "PLATINUM": {
+                  "tieredEventPriceUsd": 0.0019
+                },
+                "DIAMOND": {
+                  "tieredEventPriceUsd": 0.0019
+                }
+              },
+              "isPrimaryEvent": true
+            }
+          }
+        },
+        "startedAt": "2026-04-20T16:31:16.632Z",
+        "createdAt": "2026-04-20T16:31:16.812Z",
+        "apifyMarginPercentage": 0.2
+      }
+    ],
+    "notice": "NONE",
+    "isCritical": false,
+    "isGeneric": false,
+    "hasNoDataset": false,
+    "isSourceCodeHidden": true,
+    "standbyUrl": null,
+    "actorPermissionLevel": "LIMITED_PERMISSIONS",
+    "readmeSummary": "## ALLMUSIC Scraper\n\nALLMUSIC Scraper is a web-scraping Actor that extracts music metadata and structured content from AllMusic by crawling artist, album, and song pages and parsing page content into structured records. It captures artist bios and active/birth dates, genres, styles, moods, themes, related artists, album metadata (titles, covers, release dates, durations, genres, styles, editorial reviews, track listings and contributor credits), song metadata (composers, release years, genres, styles, moods, themes), composition and track durations, images, and links between entities to enable cataloging, discography aggregation, metadata analysis, music discovery, and dataset creation for applications, APIs, research, and market analysis.\n\n## Use cases\n\n- Discover artists, albums, and songs across genres and categories  \n- Collect structured metadata such as release dates, genres, ratings, and descriptions  \n- Analyze musical styles, trends, and discographies  \n- Build datasets of music entities for applications, APIs, or research  \n- Identify relationships between artists, albums, and songs  \n- Conduct music market research and content analysis",
+    "deploymentKey": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC0aTUnTLyetBWEf+LIa5eFmOP4nI6ROSLyV5iCB0G4efnQyZVDIalQ8W7USeTjsZpfBk1n95IqJFljAcSAisPLdiKnYxqMcyur5hYCRkD7TdnjooZg2k1rxkAn4Res/Y6OlkdLeEhY0vuuid1i1o+3amigD4njtU44LoHEBfc3o5ydH0+A68ShahdauGEMPxDKUeroMTJGkpulc8hjPO9bmobjVpz32xcwAjxLnfaOfPm0LHBMHpeeKlCIu5LPJrh5h3Rn8rBMJG0gtbJaaiZ+dFmosBwWxHGyoYWAyUQrItP9ZloguzSx6+JBEB/+MuMSj9cmAQS/D6zDZQ7gt1SV \n"
+  }
+}

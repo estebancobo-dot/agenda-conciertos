@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/home/runner/work/agenda-conciertos/agenda-conciertos/tools/poc_allmusic.py", line 33, in deco
+    res = fn()
+          ^^^^
+  File "/home/runner/work/agenda-conciertos/agenda-conciertos/tools/poc_allmusic.py", line 66, in _
+    import allmusic as am  # noqa: E402
+    ^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/allmusic_python/allmusic.py", line 1, in <module>
+    from pyquery import PyQuery as pq
+ModuleNotFoundError: No module named 'pyquery'

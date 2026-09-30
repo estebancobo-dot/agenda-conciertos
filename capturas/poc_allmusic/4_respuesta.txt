@@ -1,0 +1,6 @@
+{
+  "error": {
+    "type": "x402-payment-required",
+    "message": "x402 payment header missing. Add your PAYMENT-SIGNATURE or Apify token to proceed."
+  }
+}
