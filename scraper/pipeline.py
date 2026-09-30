@@ -430,6 +430,14 @@ def informe_fuentes(fuentes: list[Source], resultados: dict, recs: list[dict], a
         aviso = None
         if res and (not res.get("funciono") or res.get("brutos", 0) == 0) and h.get("ultimo_conteo", 0) > 0:
             aviso = f"posible cambio en la web: antes daba {h['ultimo_conteo']} conciertos (último éxito {h.get('ultima_ok')})"
+            if h.get("ultima_ok"):
+                dias = (hoy - date.fromisoformat(h["ultima_ok"])).days
+                if dias >= DIAS_ALERTA:
+                    aviso = f"lleva {dias} días sin leerse bien (último éxito {h['ultima_ok']}, daba {h['ultimo_conteo']})"
+        elif (res.get("funciono") and not res.get("no_leida") and h.get("ultimo_conteo", 0) >= 10
+              and len(mios) < 0.3 * h["ultimo_conteo"]):
+            # lee algo, pero muchos menos de lo habitual: suele ser un cambio de diseño que el lector no entiende
+            aviso = f"da muchos menos conciertos de lo habitual ({len(mios)} frente a {h['ultimo_conteo']}): posible cambio en la web"
         out.append({**s.meta(), "funciono": res.get("funciono", False), "estado": res.get("estado", "no ejecutada"),
                     "conciertos": len(mios), "nuevos": len(nuevos), "solo_en_esta": len(solo),
                     "eventos_brutos": res.get("brutos", 0), "paginas": res.get("paginas", 0),
@@ -443,6 +451,7 @@ def informe_fuentes(fuentes: list[Source], resultados: dict, recs: list[dict], a
     return out
 
 
+DIAS_ALERTA = 3  # días seguidos sin leer bien una fuente para avisar
 PRESUPUESTO_FICHAS = 2400  # tope de la ejecución diaria para fichas (los pendientes siguen cada 2 horas)
 
 
@@ -567,6 +576,8 @@ def ejecutar(hoy: date | None = None, solo: list[str] | None = None, fetcher: Fe
         "artistas": art_stats,
         "estilos_sin_mapear": sin_mapear[:300],
         "grupos": cambios_grupos(grupos_previos, recs, hoy.isoformat()),
+        # lo que requiere mirar a mano (se abre también un issue en GitHub, ver .github/workflows)
+        "alertas": [f"{f['nombre']}: {f['aviso']}" for f in inf_fuentes if f.get("aviso")],
     }
     # la ejecución completa del día queda registrada aunque luego los reintentos rehagan el informe
     if no_leidas:

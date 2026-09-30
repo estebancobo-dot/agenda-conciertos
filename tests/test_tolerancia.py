@@ -78,3 +78,20 @@ def test_fuentes_no_leidas_en_un_reintento_entran_sin_aviso():
     P.completar_con_cache([fuente("ok", None)], eventos, res, HOY, HOR, cache, no_leidas={"ok"})
     assert [e.artista for e in eventos["ok"]] == ["Sabbat"] and not eventos["ok"][0].nota
     assert cache["ok"]["fecha"] == "2026-09-29"  # no se reescribe con datos no leídos hoy
+
+
+def test_avisos_de_fuentes():
+    from datetime import date as d
+    from scraper.pipeline import informe_fuentes
+    s = fuente("mev", None)
+    recs = [{"id": str(i), "fecha": "2026-10-01", "fuentes": [{"id": "mev"}]} for i in range(5)]
+    hist = {"mev": {"ultima_ok": "2026-09-25", "ultimo_conteo": 40}}
+    # lee, pero muchos menos de lo habitual
+    f = informe_fuentes([s], {"mev": {"funciono": True, "brutos": 5}}, recs, set(), dict(hist), d(2026, 9, 30))[0]
+    assert "muchos menos" in f["aviso"]
+    # varios días sin leerse
+    f = informe_fuentes([s], {"mev": {"funciono": False}}, [], set(), dict(hist), d(2026, 9, 30))[0]
+    assert "5 días" in f["aviso"]
+    # normal: sin aviso
+    f = informe_fuentes([s], {"mev": {"funciono": True, "brutos": 40}}, recs * 8, set(), dict(hist), d(2026, 9, 30))[0]
+    assert f["aviso"] is None

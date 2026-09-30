@@ -170,3 +170,29 @@ def test_variantes_de_nombre_de_sala():
     recs = run((ev("Toldos Verdes", "Shoko", invitados=["Garbí"]), src("cc")),
                (ev("RADAR JOVEN 2026 - MADRID EN VIVO 25 AÑOS: TOLDOS VERDES", "Shoko Live"), src("mev")))
     assert len(recs) == 1
+
+
+def test_concierto_anunciado_dos_veces_en_la_misma_web_es_uno():
+    # conciertos.club tenía a Devin Townsend a las 20:30 y a las 21:00 (dos fichas): es el mismo concierto
+    recs = run((ev("Devin Townsend", "Revi Live"), src("revi", 1)),
+               (ev("Devin Townsend", "Revi Live", "20:30"), src("cc")),
+               (RawEvent(fecha=F, artista="Devin Townsend", url="https://x/otra", sala="Revi Live", ciudad="Madrid",
+                         hora="21:00"), src("cc")))
+    assert len(recs) == 1 and recs[0]["estado"] == "conflicto"
+
+
+def test_sesiones_de_un_espectaculo_siguen_separadas():
+    recs = run((ev("Tributo a Coldplay. Candlelight", "Ateneo de Madrid", "17:00"), src("cc")),
+               (RawEvent(fecha=F, artista="Tributo a Coldplay. Candlelight", url="https://x/2", sala="Ateneo de Madrid",
+                         ciudad="Madrid", hora="21:00"), src("cc")))
+    assert len(recs) == 2
+
+
+def test_variantes_de_nombre_en_la_misma_sala():
+    recs = run((ev("Mikky Dee", "Revi Live"), src("revi", 1)), (ev("MIkkey Dee & Friends", "Revi Live", "20:00"), src("cc")))
+    assert len(recs) == 1
+    recs = run((ev("P.H.A.T", "Tempo Club", "21:00"), src("cc")),
+               (ev("JAZZ CON SABOR A CLUB 26: P.H.A.T. (ITALIA) (Festival JazzMadrid)", "Tempo Club"), src("mev")))
+    assert len(recs) == 1
+    # nombres distintos con una palabra en común no se juntan
+    assert len(run((ev("Tom & Jerry", "Sala El Sol", "21:00"), src("a")), (ev("Tom Waits", "Sala El Sol"), src("b")))) == 2

@@ -78,6 +78,15 @@ def principal_coincide(a: Item | Cluster, b: list[str]) -> bool:
     return coinciden_flexible([first], b) or coinciden_flexible(b[:1], a.nombres)
 
 
+_SESIONES = re.compile(r"\b(tributo|homenaje|candlelight|ballet|musical|espectaculo|sesion|matinal|infantil|"
+                       r"familiar|cabaret|opera|zarzuela|orquesta|sinfonic[oa])\b")
+
+
+def _con_sesiones(nombre: str) -> bool:
+    """Espectáculos que se repiten el mismo día (varias sesiones)."""
+    return titulo_fuera_de_foco(nombre) or bool(_SESIONES.search(norm(nombre)))
+
+
 def agrupar(items: list[Item]) -> list[Cluster]:
     """Agrupa eventos de un mismo día en conciertos."""
     clusters: list[Cluster] = []
@@ -88,8 +97,11 @@ def agrupar(items: list[Item]) -> list[Cluster]:
             salas_c = c.salas
             if it.ev.sala and salas_c and not any(misma_sala(it.ev.sala, s) for s in salas_c):
                 continue
-            # dos sesiones del mismo espectáculo el mismo día (misma fuente, distinta hora) no se fusionan
-            if it.ev.hora and any(o.src.id == it.src.id and o.ev.hora and o.ev.hora != it.ev.hora for o in c.items):
+            # dos sesiones del mismo espectáculo el mismo día (misma fuente, distinta hora) no se fusionan. Solo en
+            # espectáculos (Candlelight, tributos, ballet…): un concierto anunciado dos veces con horas distintas
+            # en la misma web (Devin Townsend a las 20:30 y a las 21:00) es uno solo con la hora en conflicto
+            if it.ev.hora and _con_sesiones(it.ev.artista) and any(
+                    o.src.id == it.src.id and o.ev.hora and o.ev.hora != it.ev.hora for o in c.items):
                 continue
             if principal_coincide(it, c.nombres):
                 destino = c

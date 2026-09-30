@@ -1,5 +1,15 @@
 # Versiones
 
+## 2.13.0 — 2026-09-30
+
+Fase 3 de mejoras (duplicados y vigilancia de las fuentes):
+
+- **Menos conciertos duplicados.** Con los datos de hoy se juntan 9 que salían dos veces:
+  - Un concierto que la misma web anuncia dos veces con horas distintas es uno solo, con la hora en conflicto: Devin Townsend (20:30 y 21:00), Accept, Parquesvr, Avulsed, Nate Smith. Las sesiones de un mismo espectáculo (Candlelight, tributos, ballet, musicales…) siguen separadas.
+  - Nombres con "& Friends", "feat.", "&"… y siglas con puntos: Mikky Dee y "MIkkey Dee & Friends"; P.H.A.T y "Jazz con sabor a Club 26: P.H.A.T. (Italia)".
+- **Avisos de fuentes.** El informe marca las que llevan 3 días o más sin leerse bien y las que de repente dan muchos menos conciertos de lo habitual (menos del 30 %), que suele ser un cambio de diseño de la web.
+  - Si hay alguna, se abre un issue en GitHub ("Fuentes de la agenda con problemas"), que llega por correo. Se actualiza solo y se cierra cuando todas vuelven a leerse bien.
+
 ## 2.12.0 — 2026-09-30
 
 Fase 2 de mejoras (web más rápida y a prueba de fallos):

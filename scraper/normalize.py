@@ -281,7 +281,8 @@ def cabeza(nombre: str) -> str:
     return n.strip()
 
 
-_CORTES = re.compile(r"\s*(?:[.:|–—]|\s-\s|\bby\b|\bpresenta(?:n|ndo)?\b|\bcon\b|\ben concierto\b|\+)\s*", re.I)
+_CORTES = re.compile(r"\s*(?:[.:|–—&]|\s-\s|\bby\b|\bpresenta(?:n|ndo)?\b|\bcon\b|\ben concierto\b|\+|\band friends\b|"
+                     r"\bfeat\.?|\bft\.)\s*", re.I)
 
 
 def variantes(nombre: str) -> set[str]:
@@ -315,6 +316,9 @@ def parecido_flexible(a: str, b: str) -> float:
     na, nb = norm(a), norm(b)
     corto, largo = sorted((na, nb), key=len)
     if contiene(corto, largo) and len(corto.replace(" ", "")) >= 5:
+        return 90.0
+    # siglas con puntos ("P.H.A.T" dentro de "Jazz con sabor a Club 26: P.H.A.T. (Italia)")
+    if re.fullmatch(r"(?:[a-z0-9] ){2,}[a-z0-9]", corto) and f" {corto} " in f" {largo} ":
         return 90.0
     return r
 

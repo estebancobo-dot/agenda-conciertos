@@ -21,6 +21,7 @@ on:
 
 permissions:
   contents: write
+  issues: write   # un issue de aviso cuando alguna fuente lleva días fallando (tools/alertas.py)
   pages: write
   id-token: write
 
@@ -72,6 +73,11 @@ jobs:
         run: |
           # une sus datos con los que otra ejecución haya subido mientras tanto (ver tools/guardar_datos.py)
           python tools/guardar_datos.py
+      - name: Avisar de fuentes con problemas
+        if: always() && steps.guardar.outcome == 'success'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python tools/alertas.py
       - name: Preparar web
         run: |
           mkdir -p _site/data
