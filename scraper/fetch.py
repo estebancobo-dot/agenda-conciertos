@@ -166,7 +166,12 @@ class Fetcher:
                 st.robots_checked = True
             return st.robots.can_fetch(self.user_agent, url)
 
-    def get(self, url: str, *, check_robots: bool = True, use_cache: bool = True, method: str = "GET", **kw) -> str:
+    def get_bytes(self, url: str, **kw) -> bytes:
+        """Como get (robots.txt, ritmo por servidor, reintentos), pero devuelve el contenido sin descodificar."""
+        return self.get(url, use_cache=False, _bytes=True, **kw)
+
+    def get(self, url: str, *, check_robots: bool = True, use_cache: bool = True, method: str = "GET",
+            _bytes: bool = False, **kw):
         key = url + repr(sorted(kw.items())) if kw else url
         if use_cache and key in self._cache:
             return self._cache[key]
@@ -193,6 +198,8 @@ class Fetcher:
         self.last_headers[url] = {"status": r.status_code, **{k: v for k, v in r.headers.items()
                                                              if k.lower().startswith(("x-", "retry", "ratelimit"))}}
         r.raise_for_status()
+        if _bytes:
+            return r.content
         if not r.encoding or r.encoding.lower() == "iso-8859-1":
             # sin juego de caracteres declarado: si el contenido es UTF-8 válido, lo es (casi todas las webs).
             # Adivinarlo (apparent_encoding) falló con Revi el 29/09: "Brujería" salió "Brujer├Ła"

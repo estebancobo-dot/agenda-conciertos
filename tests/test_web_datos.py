@@ -29,3 +29,32 @@ def test_agenda_ligera_y_detalle(tmp_path):
     assert x["estilo_fuente"] == [{"estilo": "Metal"}]
     det = json.loads((tmp_path / "detalles" / "2026-10-09.json").read_text())
     assert det["a1"] == REC  # el detalle es el registro completo
+
+
+def test_imagen_generica_fuera(tmp_path):
+    g = "https://madridenvivo.com/fondo-privado.jpg"
+    recs = [dict(REC, id=str(i), artista=f"Artista {i}", imagen={"url": g}) for i in range(5)]
+    preparar({"conciertos": recs}, tmp_path)
+    ag = json.loads((tmp_path / "agenda.json").read_text())
+    assert all("img" not in x for x in ag["conciertos"])  # la misma foto para 5 artistas distintos no es de ninguno
+
+
+def test_miniaturas_propias(tmp_path):
+    import io
+
+    import pytest
+    Image = pytest.importorskip("PIL.Image")
+    import web_datos
+    from miniaturas import nombre, pendientes, reducir
+    buf = io.BytesIO()
+    Image.new("RGB", (800, 1100), (200, 30, 30)).save(buf, "JPEG")
+    mini = reducir(buf.getvalue())
+    assert Image.open(io.BytesIO(mini)).size == (160, 160) and len(mini) < 20000
+    u = "https://doc.conciertos.club/doc/c/2026/x.jpg"
+    recs = [{"imagen": {"url": u}}, {"imagen": {"url": "https://thumb.wikimedia.org/a/250px-b.jpg"}}]
+    assert pendientes({"conciertos": recs}) == [u]  # solo los servidores que no se pueden reducir de otra forma
+    (tmp_path / nombre(u)).write_bytes(mini)
+    web_datos.MINIATURAS.clear()
+    web_datos.cargar_miniaturas(recs, tmp_path)
+    assert web_datos.ligero({"id": "1", "fecha": "2026-10-01", "imagen": {"url": u}})["mini"] == f"miniaturas/{nombre(u)}"
+    web_datos.MINIATURAS.clear()

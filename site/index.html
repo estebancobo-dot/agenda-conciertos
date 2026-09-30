@@ -286,6 +286,10 @@ function fotoUrl(u,w,cuadrada){
   const m=u.match(/^(https:\/\/(?:thumb|upload)\.wikimedia\.org\/.+\/)(\d+)px-([^/]+)$/);
   if(m) return m[1]+(w<=120?120:w<=250?250:500)+"px-"+m[3];
   if(/commons\.wikimedia\.org\/wiki\/Special:FilePath/.test(u)) return u.replace(/width=\d+/,"width="+w);
+  // Fever redimensiona en su propia CDN; conciertos.club y Discogs no dejan pasar a wsrv.nl (comprobado en la
+  // prueba en vivo): se piden tal cual (conciertos.club tiene miniatura propia, ver tools/miniaturas.py)
+  if(/feverup\.com\/image\/upload\//.test(u)) return u.replace(/w_\d+,h_\d+/,`w_${w},h_${w}`);
+  if(/^https:\/\/([a-z]+\.)?(conciertos\.club|discogs\.com)\//.test(u)) return u;
   return `https://wsrv.nl/?url=${encodeURIComponent(u)}&w=${w}${cuadrada?`&h=${w}&fit=cover&a=attention`:""}&output=webp&q=${cuadrada?70:78}&we`;
 }
 function fotoError(el){ const o=el.dataset.o; if(o&&el.src!==o){ el.src=o; el.dataset.o=""; return; } el.outerHTML=`<span class="thumb">${el.dataset.i||""}</span>`; }
@@ -482,8 +486,9 @@ function card(r){
   if(!r._card){
     const im=img(r), h=horaCard(r);
     r._conImg=!!im;
+    const mini=r.mini||(im&&fotoUrl(im.url,160,true));
     r._card=`<a class="card" href="#concierto/${esc(r.id)}" data-id="${esc(r.id)}" style="--gc:var(${color(r)})">
-   ${im?`<img class="thumb" src="${esc(fotoUrl(im.url,160,true))}" data-o="${esc(im.url)}" data-i="${iniciales(r.artista)}" alt="" width="60" height="60" %CARGA% decoding="async" referrerpolicy="no-referrer" onerror="fotoError(this)">`:`<span class="thumb">${iniciales(r.artista)}</span>`}
+   ${im?`<img class="thumb" src="${esc(mini)}" data-o="${esc(im.url)}" data-i="${iniciales(r.artista)}" alt="" width="60" height="60" %CARGA% decoding="async" referrerpolicy="no-referrer" onerror="fotoError(this)">`:`<span class="thumb">${iniciales(r.artista)}</span>`}
    <div class="cbody"><div class="art">${esc(r.artista)}</div>
    ${r.invitados&&r.invitados.length?`<div class="sub">+ ${r.invitados.map(esc).join(" + ")}</div>`:""}
    <div class="sub">${h?`<b>${esc(h)}</b> · `:""}${esc(r.sala||"sala sin indicar")}${r.municipio&&r.municipio!=="Madrid"?` · ${esc(r.municipio)}`:""}</div>
@@ -581,7 +586,7 @@ function viewConcierto(){
   const volver=state.from||`#dia/${r.fecha}`;
   return `<a class="back" href="${esc(volver)}">‹ Volver</a>
    <div class="dt">
-    <div class="hero" style="--gc:var(${color(r)})"><div class="ph">${iniciales(r.artista)}</div>${im?`<div class="blur" style="background-image:url('${esc(fotoUrl(im.url,160,true))}')"></div><img src="${esc(fotoUrl(im.url,720,false))}" data-o="${esc(im.url)}" alt="Foto de ${esc(r.artista)}" fetchpriority="high" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.o&&this.src!==this.dataset.o){this.src=this.dataset.o;this.dataset.o=''}else{this.previousElementSibling.remove();this.remove()}">`:""}</div>
+    <div class="hero" style="--gc:var(${color(r)})"><div class="ph">${iniciales(r.artista)}</div>${im?`<div class="blur" style="background-image:url('${esc(r.mini||fotoUrl(im.url,160,true))}')"></div><img src="${esc(fotoUrl(im.url,720,false))}" data-o="${esc(im.url)}" alt="Foto de ${esc(r.artista)}" fetchpriority="high" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.o&&this.src!==this.dataset.o){this.src=this.dataset.o;this.dataset.o=''}else{this.previousElementSibling.remove();this.remove()}">`:""}</div>
     ${im?`<div class="credit">Foto: <a href="${esc(im.enlace||im.url)}" target="_blank" rel="noopener">${esc(im.credito)}</a>${f&&f.imagen?"":" (imagen del anuncio)"}</div>`:""}
     <h2>${esc(r.artista)}</h2>
     ${r.ciclo?`<div class="ciclo">${esc(r.ciclo)}</div>`:""}

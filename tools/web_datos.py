@@ -35,6 +35,7 @@ def genericas(recs: list[dict]) -> set[str]:
 
 
 MAX_ARTISTAS_IMAGEN = 4
+MINIATURAS: dict[str, str] = {}  # url original → ruta de la miniatura propia (tools/miniaturas.py)
 
 
 def ligero(r: dict) -> dict:
@@ -49,7 +50,19 @@ def ligero(r: dict) -> dict:
     im = r.get("imagen") or {}
     if im.get("url"):
         out["img"] = im["url"]
+        if MINIATURAS and im["url"] in MINIATURAS:
+            out["mini"] = MINIATURAS[im["url"]]
     return out
+
+
+def cargar_miniaturas(recs: list[dict], carpeta: Path) -> None:
+    """Anota qué imágenes tienen miniatura propia hecha (tools/miniaturas.py)."""
+    from miniaturas import nombre
+    hechas = {p.name for p in carpeta.glob("*.webp")} if carpeta.exists() else set()
+    for r in recs:
+        u = (r.get("imagen") or {}).get("url")
+        if u and nombre(u) in hechas:
+            MINIATURAS[u] = f"miniaturas/{nombre(u)}"
 
 
 def preparar(concerts: dict, destino: Path) -> dict:
@@ -77,9 +90,17 @@ def preparar(concerts: dict, destino: Path) -> dict:
 
 
 def main() -> int:
-    destino = Path(sys.argv[1]) / "data" if len(sys.argv) > 1 else RAIZ / "_site" / "data"
+    sitio = Path(sys.argv[1]) if len(sys.argv) > 1 else RAIZ / "_site"
+    destino = sitio / "data"
     concerts = json.loads((RAIZ / "data" / "concerts.json").read_text(encoding="utf-8"))
-    print(preparar(concerts, destino))
+    carpeta = RAIZ / "miniaturas"
+    cargar_miniaturas(concerts.get("conciertos", []), carpeta)
+    if MINIATURAS:
+        import shutil
+        (sitio / "miniaturas").mkdir(parents=True, exist_ok=True)
+        for ruta in set(MINIATURAS.values()):
+            shutil.copy(carpeta / ruta.split("/")[1], sitio / ruta)
+    print(preparar(concerts, destino), "miniaturas propias:", len(set(MINIATURAS.values())))
     return 0
 
 

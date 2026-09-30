@@ -78,6 +78,23 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: python tools/alertas.py
+      - name: Miniaturas guardadas de otros días
+        uses: actions/cache/restore@v4
+        with:
+          path: miniaturas
+          key: miniaturas-${{ github.run_id }}
+          restore-keys: miniaturas-
+      - name: Miniaturas propias (carteles de conciertos.club)
+        # solo las nuevas; con tope de tiempo (lo que falte, mañana). Nunca impide publicar la web
+        continue-on-error: true
+        timeout-minutes: 12
+        run: python tools/miniaturas.py --minutos ${{ github.event.schedule == '10 3 * * *' && '10' || '4' }}
+      - name: Guardar miniaturas para otros días
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: miniaturas
+          key: miniaturas-${{ github.run_id }}
       - name: Preparar web
         run: |
           mkdir -p _site/data
