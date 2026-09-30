@@ -1875,23 +1875,21 @@
   "pendientes": 0
  },
  "artistas": {
-  "consultados": 17,
-  "completados": 0,
-  "desde_cache": 1466,
+  "consultados": 0,
+  "completados": 1483,
+  "desde_cache": 0,
   "discogs": 676,
   "wikipedia": 282,
   "wikidata": 261,
   "lastfm": 654,
-  "sin_ficha": 370,
+  "musicbrainz": 721,
+  "sin_ficha": 368,
   "pendientes": 0,
   "errores": [],
   "discogs_con_token": true,
   "lastfm_activo": true,
-  "duracion_seg": 23,
-  "durante_agendas": {
-   "consultados": 0,
-   "completados": 1
-  }
+  "duracion_seg": 909,
+  "ultima_carga_fichas": "2026-09-30T07:10:20+00:00"
  },
  "estilos_sin_mapear": [
   "BY GRUPO SALVAJE): ESPECIAL HALLOWEEN (Karaoke (RockVille (web oficial))",
