@@ -75,9 +75,11 @@ jobs:
       - name: Preparar web
         run: |
           mkdir -p _site/data
-          cp site/index.html _site/
+          cp site/index.html site/sw.js _site/
           cp CHANGELOG.md _site/
           cp data/concerts.json data/informe.json data/taxonomia.json data/estilos_map.json data/salas_alias.json data/concerts.csv _site/data/
+          # agenda ligera + detalle por días (lo que descarga la web; concerts.json sigue publicándose)
+          python tools/web_datos.py _site
           touch _site/.nojekyll
       - uses: actions/configure-pages@v5
         with:

@@ -176,6 +176,12 @@ details.more ul{padding-left:20px;margin:8px 0}
 .grp .inc .est.on{background:var(--ink);color:var(--bg);border-color:var(--ink);font-weight:700}
 .hint{color:var(--muted);font-size:.82rem}
 .empty{color:var(--muted);text-align:center;padding:30px 0}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.viejo{color:var(--c-trib);font-weight:600}
+.skel{background:linear-gradient(90deg,var(--panel2) 25%,var(--panel) 50%,var(--panel2) 75%);background-size:200% 100%;animation:sk 1.2s infinite linear;border-radius:10px;margin:10px 0}
+.skel-bar{height:40px}.skel-card{height:72px}.skel-hero{height:200px}.skel-l{height:28px;width:70%}.skel-m{height:48px}
+@keyframes sk{from{background-position:200% 0}to{background-position:-200% 0}}
+@media (prefers-reduced-motion:reduce){.skel{animation:none}}
 .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:12px;z-index:40;font-size:.9rem}
 table{width:100%;border-collapse:collapse;font-size:.88rem}
 th,td{text-align:left;padding:6px 6px;border-bottom:1px solid var(--line);vertical-align:top}
@@ -206,7 +212,7 @@ th{color:var(--muted);font-weight:600}
   <nav class="seg" role="tablist" id="tabs"></nav>
 </header>
 <div id="menu"></div>
-<main id="main"><p class="empty">Cargando datos…</p></main>
+<main id="main" aria-busy="true"><div class="skel skel-bar"></div><div class="skel skel-card"></div><div class="skel skel-card"></div><div class="skel skel-card"></div><div class="skel skel-card"></div><span class="sr">Cargando datos…</span></main>
 <div id="sheet"></div>
 <script>
 "use strict";
@@ -232,7 +238,7 @@ const store = {
   get(k,d){try{const v=localStorage.getItem("agenda:"+k);return v===null?d:JSON.parse(v)}catch(e){return d}},
   set(k,v){try{localStorage.setItem("agenda:"+k,JSON.stringify(v))}catch(e){}}
 };
-let DATA=[], BYID={}, INFORME=null, TAXO=null, SALAS={}, MAP=null, HOY=null;
+let DATA=[], BYID={}, INFORME=null, TAXO=null, SALAS={}, MAP=null, HOY=null, DETALLES=null;
 // selección guardada con la lista de grupos anterior: se conserva y se añaden los grupos nuevos
 const gruposGuardados=()=>{const g3=store.get("grupos3",null); if(g3) return g3;
   const g2=store.get("grupos2",null); return g2?[...g2,...DEF_GRUPOS.filter(g=>!["rock y metal","punk y garage","pop e indie","americana/country/folk","blues","cantautor","tributos y versiones","sin clasificar"].includes(g))]:DEF_GRUPOS;};
@@ -253,7 +259,7 @@ const pais=c=>{if(!c)return "";try{return regionNames?regionNames.of(c):c}catch(
 const iniciales=n=>esc(String(n||"?").replace(/^(the|los|las|la|el)\s+/i,"").split(/\s+/).slice(0,2).map(w=>w[0]||"").join("").toUpperCase());
 const grupos=r=>(r.grupos&&r.grupos.length?r.grupos:[r.categoria]);
 const color=r=>GV[grupos(r)[0]]||"--c-sin";
-const img=r=>r.imagen&&r.imagen.url?r.imagen:null;
+const img=r=>r.imagen&&r.imagen.url?r.imagen:(r.img?{url:r.img}:null);
 const precioTxt=p=>String(p||"").replace(/(\d+)[.,]0+(?!\d)/g,"$1").replace(/\s*EUR\b/gi," €").replace(/\s+€/g," €").trim();
 const plural=(n,s,p)=>`${n} ${n===1?s:(p||s+"s")}`;
 
@@ -421,7 +427,7 @@ function estadoMini(r){
 function card(r){
   const im=img(r), h=horaCard(r);
   return `<a class="card" href="#concierto/${esc(r.id)}" style="--gc:var(${color(r)})">
-   ${im?`<img class="thumb" src="${esc(im.url)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.outerHTML='<span class=&quot;thumb&quot;>${iniciales(r.artista)}</span>'">`:`<span class="thumb">${iniciales(r.artista)}</span>`}
+   ${im?`<img class="thumb" src="${esc(im.url)}" alt="" width="60" height="60" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.outerHTML='<span class=&quot;thumb&quot;>${iniciales(r.artista)}</span>'">`:`<span class="thumb">${iniciales(r.artista)}</span>`}
    <div class="cbody"><div class="art">${esc(r.artista)}</div>
    ${r.invitados&&r.invitados.length?`<div class="sub">+ ${r.invitados.map(esc).join(" + ")}</div>`:""}
    <div class="sub">${h?`<b>${esc(h)}</b> · `:""}${esc(r.sala||"sala sin indicar")}${r.municipio&&r.municipio!=="Madrid"?` · ${esc(r.municipio)}`:""}</div>
@@ -663,8 +669,23 @@ function renderTabs(){
   document.querySelectorAll("[data-tab]").forEach(b=>b.onclick=()=>{state.tab=b.dataset.tab; store.set("tab",state.tab); render(); scrollTo(0,0);});
   const hh=document.getElementById("hdr").offsetHeight; document.documentElement.style.setProperty("--hh",hh+"px");
 }
+// ---------------------------------------------------------------- detalle bajo demanda
+// La agenda ligera (data/agenda.json) no trae fuentes, ficha, precio ni notas: se piden por días al abrir un
+// concierto (data/detalles/AAAA-MM-DD.json, unos pocos KB).
+const pedidos={};
+async function asegurarDetalle(id){
+  const r=BYID[id]; if(!r||r._full||!DETALLES) return true;
+  const f=r.fecha;
+  pedidos[f]=pedidos[f]||fetch("data/"+DETALLES.replace("{fecha}",f),{cache:"no-cache"}).then(x=>{if(!x.ok) throw new Error(x.status); return x.json();});
+  try{ const d=await pedidos[f]; Object.entries(d).forEach(([k,v])=>{const x=BYID[k]; if(x){Object.assign(x,v); x._full=true;}}); return true; }
+  catch(e){ delete pedidos[f]; return false; }
+}
 async function renderBody(keepFocus){
   const main=document.getElementById("main");
+  if(state.tab==="Concierto"&&BYID[state.id]&&!BYID[state.id]._full&&DETALLES){
+    main.innerHTML=`<div class="dt"><div class="skel skel-hero"></div><div class="skel skel-l"></div><div class="skel skel-m"></div><div class="skel skel-m"></div></div>`;
+    if(!await asegurarDetalle(state.id)){ main.innerHTML=`<a class="back" href="#dia/${state.date||HOY}">‹ Volver</a><p class="empty">No se pudo cargar el detalle del concierto. Comprueba la conexión y vuelve a intentarlo.</p>`; return; }
+  }
   const withFilters=VISTAS.includes(state.tab);
   let body="";
   if(withFilters&&state.q.trim()) body=viewBusqueda();
@@ -708,18 +729,26 @@ function render(){ document.getElementById("sheet").innerHTML=""; document.getEl
 
 async function load(){
   const j=async u=>{const r=await fetch(u,{cache:"no-cache"}); if(!r.ok) throw new Error(u); return r.json();};
+  // agenda ligera; si no está (copia antigua de la web), el archivo completo
+  const agenda=()=>j("data/agenda.json").catch(()=>j("data/concerts.json"));
   try{
-    const [c,inf,tax,sal,map]=await Promise.all([j("data/concerts.json"),j("data/informe.json").catch(()=>null),j("data/taxonomia.json").catch(()=>null),j("data/salas_alias.json").catch(()=>null),j("data/estilos_map.json").catch(()=>null)]);
-    DATA=c.conciertos||[]; INFORME=inf; TAXO=tax; MAP=map; HOY=iso(new Date());
-    DATA.forEach(r=>BYID[r.id]=r);
+    const [c,inf,tax,sal,map]=await Promise.all([agenda(),j("data/informe.json").catch(()=>null),j("data/taxonomia.json").catch(()=>null),j("data/salas_alias.json").catch(()=>null),j("data/estilos_map.json").catch(()=>null)]);
+    DATA=c.conciertos||[]; DETALLES=c.detalles||null; INFORME=inf; TAXO=tax; MAP=map; HOY=iso(new Date());
+    DATA.forEach(r=>{BYID[r.id]=r; if(!DETALLES) r._full=true;});
     if(sal) sal.salas.forEach(s=>{SALAS[norm(s.nombre)]=s;});
-    document.getElementById("upd").textContent=`${DATA.filter(r=>r.fecha>=HOY).length} conciertos · actualizado ${new Date(c.generado).toLocaleString("es-ES",{day:"numeric",month:"short",hour:"2-digit",minute:"2-digit"})}`;
-  }catch(e){ document.getElementById("main").innerHTML=`<p class="empty">No se pudieron cargar los datos (${esc(e.message)}).</p>`; return; }
+    const horas=(Date.now()-new Date(c.generado))/36e5;
+    const u=document.getElementById("upd");
+    u.textContent=`${DATA.filter(r=>r.fecha>=HOY).length} conciertos · actualizado ${new Date(c.generado).toLocaleString("es-ES",{day:"numeric",month:"short",hour:"2-digit",minute:"2-digit"})}`;
+    // la actualización diaria no ha llegado (fallo de GitHub, sin conexión y datos guardados…): se avisa
+    if(horas>30){ u.textContent+=` · ⚠ datos de hace ${horas<48?Math.round(horas)+" h":Math.round(horas/24)+" días"}`; u.classList.add("viejo"); }
+  }catch(e){ document.getElementById("main").innerHTML=`<p class="empty">No se pudieron cargar los datos (${esc(e.message)}). Comprueba la conexión y recarga la página.</p>`; return; }
   state.tab=store.get("tab","Mes"); if(!VISTAS.includes(state.tab)) state.tab="Mes"; state.date=HOY; readHash(); render();
 }
 addEventListener("hashchange",()=>{readHash(); render(); if(state.tab==="Concierto") scrollTo(0,0);});
 addEventListener("resize",()=>{const h=document.getElementById("hdr"); if(h) document.documentElement.style.setProperty("--hh",h.offsetHeight+"px");});
 load();
+// copia local de la web y de los últimos datos: si la red o GitHub Pages fallan, se sigue viendo la agenda
+if("serviceWorker" in navigator&&location.protocol==="https:") addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(()=>{}));
 </script>
 </body>
 </html>

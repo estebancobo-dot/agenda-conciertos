@@ -1,5 +1,15 @@
 # Versiones
 
+## 2.12.0 — 2026-09-30
+
+Fase 2 de mejoras (web más rápida y a prueba de fallos):
+
+- **La web descarga 4 veces menos al abrir.** Antes bajaba `concerts.json` entero (6,8 MB; 600 KB comprimido). Ahora baja una agenda ligera (1 MB; 150 KB comprimido) con lo que necesitan el calendario, las listas, los filtros y la búsqueda. Las fuentes, la ficha, el precio y las notas se piden al abrir un concierto, solo los de ese día (unos 6 KB de media).
+  - `concerts.json` se sigue publicando igual. Si la agenda ligera faltara, la web usa `concerts.json` como antes.
+- **Funciona sin conexión o si GitHub Pages falla**: guarda una copia de la web y de los últimos datos vistos, y la usa si la red no responde en 6 segundos.
+- **Aviso de datos viejos**: si la última actualización tiene más de 30 horas, la cabecera lo indica.
+- **Carga más agradable**: esqueletos en lugar de "Cargando…" (también al abrir un concierto) y miniaturas con tamaño fijo, para que la página no salte al cargar las fotos.
+
 ## 2.11.0 — 2026-09-30
 
 Fase 1 de mejoras (tolerancia a fallos y horarios):
