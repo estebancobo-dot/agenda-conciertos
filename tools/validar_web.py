@@ -635,6 +635,134 @@ def en_frio(b, datos):
           ok=len(ajenas) <= 3, detalle="; ".join(sorted({u.split('/')[2] for u in ajenas})), unidad="")
 
 
+@escenario("Rendimiento", "Peor caso: la semana, el día y el mes con más conciertos, con todos cargados")
+def peor_caso(b, datos):
+    """La semana, el día y el mes con más conciertos, con el filtro 'Todos' (todos los grupos, también fuera de
+    foco): el listado más largo que puede ver alguien. Navegador sin caché, móvil lento, bajando entero."""
+    hoy = date.today()
+    fut = [r for r in datos if r.get("fecha", "") >= hoy.isoformat()]
+    sem, dia, mes_ = {}, {}, {}
+    for r in fut:
+        f = date.fromisoformat(r["fecha"])
+        sem[lunes_de(f)] = sem.get(lunes_de(f), 0) + 1
+        dia[f] = dia.get(f, 0) + 1
+        mes_[(f.year, f.month)] = mes_.get((f.year, f.month), 0) + 1
+    lunes = max(sem, key=sem.get)
+    dmax = max(dia, key=dia.get)
+    ym = max(mes_, key=mes_.get)
+
+    def abrir_con_todos(pg, hash_):
+        pg.goto(URL + hash_, wait_until="commit")
+        esperar_datos(pg)
+        pg.wait_for_selector("#fgen")
+        pg.click("#fgen")
+        pg.wait_for_selector(".sheet")
+        pg.click("[data-rap='todos']")
+        t0 = time.monotonic()
+        pg.click("#sclose")
+        pg.wait_for_function("!document.querySelector('.sheet')")
+        pg.wait_for_selector("#main .card", timeout=30000)
+        return ms(t0)
+
+    # semana
+    ctx = contexto(b)
+    pg = pagina(ctx)
+    ajenas = []
+    pg.on("request", lambda q: q.resource_type == "image" and not q.url.startswith(("data:", URL)) and ajenas.append(q.url))
+    aplicar = abrir_con_todos(pg, f"#semana/{lunes.isoformat()}")
+    nombre = f"semana del {lunes.strftime('%d/%m')} ({sem[lunes]} conciertos)"
+    check("Rendimiento", f"Peor caso {nombre}: pintar con 'Todos'", aplicar, aviso=700, fallo=1500)
+    check("Rendimiento", f"Peor caso {nombre}: miniaturas de la primera pantalla", esperar_miniaturas(pg),
+          aviso=1000, fallo=2500)
+    pg.evaluate("window.__lt=[]")
+    faltan, t_total = [], time.monotonic()
+    for _ in range(400):
+        antes = pg.evaluate("scrollY")
+        pg.mouse.wheel(0, 700)
+        pg.wait_for_timeout(400)
+        m = miniaturas(pg)
+        faltan.append(m["visibles"] - m["cargadas"])
+        if pg.evaluate("scrollY") == antes and not pg.evaluate("document.querySelectorAll('[data-dif]').length"):
+            break
+    r = pg.evaluate("""(l)=>{const fin=new Date(new Date(l).getTime()+6*864e5).toISOString().slice(0,10);
+        return {vistos:document.querySelectorAll('#main .card').length,
+                esperados:DATA.filter(r=>r.fecha>=l&&r.fecha<=fin&&visible(r)).length,
+                pendientes:document.querySelectorAll('[data-dif]').length}}""", lunes.isoformat())
+    lt = pg.evaluate("window.__lt||[]")
+    medida("peor_caso_semana", semana=lunes.isoformat(), conciertos=sem[lunes], sin_cargar_por_pantalla=faltan,
+           recorrer_ms=ms(t_total), bloqueos=sorted(lt, key=lambda x: -x[1])[:8])
+    check("Funcional", f"Peor caso {nombre}: con 'Todos' salen todos", f"{r['vistos']} de {r['esperados']}",
+          ok=r["vistos"] == r["esperados"] and r["pendientes"] == 0)
+    peores = sorted(faltan)[-3:]
+    check("Rendimiento", f"Peor caso {nombre}: bajando despacio, miniaturas sin cargar a los 0,4 s (peor pantalla)",
+          max(faltan or [0]), aviso=1, fallo=3, unidad="miniaturas",
+          detalle=f"{len(faltan)} pantallas; peores {peores}; pantallas con alguna sin cargar: {sum(1 for x in faltan if x)}")
+    check("Rendimiento", f"Peor caso {nombre}: bloqueo de JavaScript más largo al bajar", max((d for _, d in lt), default=0),
+          aviso=300, fallo=1000)
+    pg.evaluate("scrollTo(0,0)")
+    pg.wait_for_timeout(500)
+    for _ in range(40):
+        pg.mouse.wheel(0, 1200)
+        pg.wait_for_timeout(100)
+    check("Rendimiento", f"Peor caso {nombre}: bajando deprisa, al parar miniaturas visibles cargadas en",
+          esperar_miniaturas(pg), aviso=1000, fallo=2500)
+    # abrir una ficha del final de la lista y volver
+    cards = pg.locator("#main .card")
+    c = cards.nth(cards.count() - 3)
+    c.scroll_into_view_if_needed()
+    pg.wait_for_timeout(2000)
+    cid = c.get_attribute("data-id")
+    t0 = time.monotonic()
+    c.click()
+    pg.wait_for_selector(".dt h2", timeout=30000)
+    check("Rendimiento", f"Peor caso {nombre}: foto de una ficha del final de la lista", ficha_con_foto(pg, t0),
+          aviso=800, fallo=2000)
+    pg.go_back()
+    pg.wait_for_selector("#main .card")
+    pg.wait_for_timeout(800)
+    se_ve = pg.evaluate("""(a)=>{const c=document.querySelector(`.card[data-id="${a}"]`);
+       if(!c) return false; const b=c.getBoundingClientRect(); return b.top>-10&&b.top<innerHeight-40}""", cid)
+    check("UX", f"Peor caso {nombre}: volver deja la lista en el concierto", ok=se_ve)
+    check("Rendimiento", f"Peor caso {nombre}: imágenes pedidas fuera de la web", len(ajenas), ok=len(ajenas) <= 3,
+          detalle="; ".join(sorted({u.split('/')[2] for u in ajenas})), unidad="")
+    ctx.close()
+
+    # día con más conciertos
+    ctx = contexto(b)
+    pg = pagina(ctx)
+    aplicar = abrir_con_todos(pg, f"#dia/{dmax.isoformat()}")
+    nombre = f"día {dmax.strftime('%d/%m')} ({dia[dmax]} conciertos)"
+    check("Rendimiento", f"Peor caso {nombre}: miniaturas de la primera pantalla", esperar_miniaturas(pg),
+          aviso=1000, fallo=2500)
+    faltan = []
+    for _ in range(200):
+        antes = pg.evaluate("scrollY")
+        pg.mouse.wheel(0, 700)
+        pg.wait_for_timeout(400)
+        m = miniaturas(pg)
+        faltan.append(m["visibles"] - m["cargadas"])
+        if pg.evaluate("scrollY") == antes:
+            break
+    check("Rendimiento", f"Peor caso {nombre}: bajando despacio, miniaturas sin cargar a los 0,4 s (peor pantalla)",
+          max(faltan or [0]), aviso=1, fallo=3, unidad="miniaturas", detalle=f"{len(faltan)} pantallas")
+    ctx.close()
+
+    # mes con más conciertos: tocar el día con más conciertos de ese mes
+    ctx = contexto(b)
+    pg = pagina(ctx)
+    d_mes = max((d for d in dia if (d.year, d.month) == ym), key=dia.get)
+    abrir_con_todos(pg, f"#mes/{d_mes.isoformat()}")
+    otro = next((d for d in sorted(dia, key=dia.get, reverse=True) if (d.year, d.month) == ym and d != d_mes), d_mes)
+    t0 = time.monotonic()
+    pg.click(f"[data-mdia='{otro.isoformat()}']")
+    pg.wait_for_timeout(700)
+    t = esperar_miniaturas(pg)
+    nombre = f"mes {ym[1]:02d}/{ym[0]} ({mes_[ym]} conciertos), día {otro.strftime('%d/%m')}"
+    check("Rendimiento", f"Peor caso {nombre}: al tocar el día, miniaturas visibles cargadas", t, aviso=1000,
+          fallo=2500, detalle=f"desde el toque: {ms(t0)} ms")
+    ctx.close()
+
+
 def mes(pg):
     t0 = time.monotonic()
     pg.evaluate(f"location.hash='#mes/{(date.today() + timedelta(days=10)).isoformat()}'")
@@ -908,6 +1036,7 @@ def main() -> int:
             averias(b, datos)
             proxy_imagenes(b, datos)
             en_frio(b, datos)
+            peor_caso(b, datos)
         sin_conexion(b)
         pantallas(b)
         b.close()
