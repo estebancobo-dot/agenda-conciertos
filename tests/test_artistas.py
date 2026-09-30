@@ -199,3 +199,57 @@ def test_discogs_buscador_enlaza_ficha_borrada():
                       "https://api.discogs.com/artists/9340201": borrada})
     r = A.buscar_discogs(dc, "Los Deltonos")
     assert r == {"encontrado": False, "motivo": "el buscador de Discogs enlaza una ficha que ya no existe"}
+
+
+# ---------------------------------------------------------------- clasificación por consenso (casos reales del 30-09-2026)
+def _rec(artista, etiquetas, **kw):
+    r = {"artista": artista, "estilo_fuente": [{"estilo": e, "fuente": f} for e, f in etiquetas], "categorias": [],
+         "nacionalidad": None, "nacionalidad_fuente": None, "imagen_evento": None}
+    r.update(kw)
+    return r
+
+
+def test_musical_no_se_confunde_con_un_grupo():
+    from scraper.pipeline import aplicar_ficha
+    ent = {"discogs": {"encontrado": True, "estilos": ["Punk", "Ska"], "generos": ["Rock"], "url": "/a/1"},
+           "wikidata": {"encontrado": True, "pais": "CL", "ids": {}}}
+    r = _rec("Los Miserables", [("Musicales/Teatro musical", "conciertos.club (buscador semanal)")],
+             nacionalidad="CL", nacionalidad_fuente="Wikidata")
+    aplicar_ficha(r, A.ficha(ent))
+    assert r["grupos"] == ["fuera de foco"] and r["ficha"] is None and r["nacionalidad"] is None
+
+
+def test_consenso_no_mete_en_rock_a_quien_solo_lo_menciona():
+    from scraper.pipeline import aplicar_ficha
+    ent = {"wikipedia": {"encontrado": True, "generos": ["Latin", "pop", "dance", "rock"], "url": "u"},
+           "lastfm": {"encontrado": True, "etiquetas": ["pop", "latin", "female vocalists"], "estilos": [],
+                      "generos": ["Pop", "Latin"], "identificado_por": "coincidencia por nombre", "url": "u"}}
+    r = _rec("Shakira", [("Pop Latino", "conciertos.club (buscador semanal)")])
+    aplicar_ficha(r, A.ficha(ent))
+    assert "rock y metal" not in r["grupos"] and "pop e indie" in r["grupos"]
+    assert "Rock" not in r["genero_discogs"]
+
+
+def test_lastfm_por_nombre_sin_apoyo_de_la_agenda_no_clasifica():
+    from scraper.pipeline import aplicar_ficha
+    ent = {"lastfm": {"encontrado": True, "etiquetas": ["doom metal", "funk"], "estilos": ["Doom Metal"],
+                      "generos": ["Rock"], "identificado_por": "coincidencia por nombre", "url": "u"}}
+    r = _rec("ETERNAL", [])
+    aplicar_ficha(r, A.ficha(ent))
+    assert r["grupos"] == ["sin clasificar"] and r["estilos_discogs"] == [] and r["estilo_descartado"]
+
+
+def test_etiqueta_paraguas_de_agenda_es_generica():
+    from scraper.pipeline import aplicar_ficha
+    r = _rec("Grupo X", [("Pop / Rock", "Madrid en Vivo (asociación de salas)")])
+    aplicar_ficha(r, None)
+    assert set(r["grupos"]) == {"pop e indie", "rock y metal"} and r["grupos_generico"]
+    r = _rec("Grupo Y", [("Pop / Rock", "Madrid en Vivo (asociación de salas)"),
+                         ("Metal/Rock duro", "conciertos.club (buscador semanal)")])
+    aplicar_ficha(r, None)
+    assert r["grupos"] == ["rock y metal"] and not r["grupos_generico"]  # la etiqueta concreta manda
+
+
+def test_rnb_moderno_no_es_blues():
+    from scraper.clasificar import generos_de_texto, discogs
+    assert discogs(["R&B"])[0] == [] and generos_de_texto(["R&B"]) == ["Funk / Soul"]

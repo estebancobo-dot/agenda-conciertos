@@ -207,24 +207,68 @@ def unificar(items: list[Item]) -> list[dict]:
     return recs
 
 
+def etiquetas_por_fuente(r: dict) -> list[list[str]]:
+    por: dict[str, list[str]] = {}
+    for e in r.get("estilo_fuente", []):
+        grupo = e["fuente"].split(" (")[0]  # las variantes de una misma web cuentan una vez
+        if e["estilo"] not in por.setdefault(grupo, []):
+            por[grupo].append(e["estilo"])
+    return list(por.values())
+
+
 def aplicar_ficha(r: dict, f: dict | None) -> None:
-    """Estilo, grupos de filtro, nacionalidad y foto a partir de la ficha musical (Discogs / Wikipedia)."""
-    from .clasificar import categorias_de_ficha, en_foco, titulo_fuera_de_foco
-    r["ficha"] = f
-    cats = categorias_de_ficha(f["generos"], f["estilos"]) if f and (f["estilos"] or f["generos"]) else []
-    if cats:
-        if "tributos y versiones" in r["categorias"] and "tributos y versiones" not in cats:
-            cats.append("tributos y versiones")
-        origen = f["fuente_estilo"]
+    """Grupos de filtro, estilos, nacionalidad y foto.
+
+    1. Si la agenda lo presenta como teatro, musical, danza… no es un concierto: no se usa la ficha de ningún
+       "artista" (evita homónimos como el musical "Los Miserables" y el grupo punk chileno).
+    2. Si hay ficha de webs de música, los grupos salen del consenso ponderado de todas (Discogs, Last.fm,
+       Wikipedia): el principal y los que tengan un peso comparable, no todos los que aparezcan.
+    3. Si no, de las etiquetas de las agendas. Las genéricas ("Pop / Rock") se marcan como tales."""
+    from .clasificar import (en_foco, es_espectaculo, grupos_de_agenda, grupos_de_evidencias,
+                             titulo_fuera_de_foco)
+    etiquetas = etiquetas_por_fuente(r)
+    generico, estilos, segun = False, [], []
+    r.pop("estilo_descartado", None)
+    if es_espectaculo([e for es in etiquetas for e in es]):
+        f, cats, origen = None, ["fuera de foco"], "agenda (espectáculo, no concierto)"
+        # el origen que viniera de buscar el título como artista (Wikidata, MusicBrainz…) tampoco vale
+        if str(r.get("nacionalidad_fuente") or "").startswith(("Wikidata", "Wikipedia", "Discogs", "MusicBrainz")):
+            r["nacionalidad"], r["nacionalidad_fuente"] = None, None
     else:
-        cats, origen = list(r["categorias"]), "agenda"
+        cats, origen = [], "agenda"
+        grupos_agenda, generico_agenda = grupos_de_agenda(etiquetas)
+        if f and f.get("evidencias"):
+            cats, estilos = grupos_de_evidencias(f["evidencias"], grupos_agenda)
+            if cats:
+                pesos: dict[str, float] = {}
+                for e in f["evidencias"]:
+                    pesos[e["fuente"]] = pesos.get(e["fuente"], 0) + e["peso"]
+                segun = [x for x, _ in sorted(pesos.items(), key=lambda x: -x[1])]
+                origen = segun[0]
+        if not cats:
+            if f and f.get("evidencias"):
+                # la única web de música que lo nombra es Last.fm por coincidencia de nombre y no concuerda
+                # con lo que dice la agenda: puede ser otro artista con el mismo nombre
+                r["estilo_descartado"] = [e["nombre"] for e in f["evidencias"] if e.get("debil")][:3]
+            cats, generico = grupos_de_agenda(etiquetas)
+            origen = "agenda"
+            estilos = []
+        if not cats:
+            cats = ["sin clasificar"]
+    if "tributos y versiones" in r.get("categorias", []) and "tributos y versiones" not in cats:
+        cats.append("tributos y versiones")
     if titulo_fuera_de_foco(r["artista"]):
-        cats = ["fuera de foco"]
-    r["grupos"], r["grupos_origen"] = cats, origen
+        cats, generico = ["fuera de foco"], False
+    r["ficha"] = f
+    r["grupos"], r["grupos_origen"], r["grupos_generico"], r["grupos_segun"] = cats, origen, generico, segun
     r["categoria"] = cats[0]
     r["en_foco"] = en_foco(cats)
-    r["estilos_discogs"] = f["estilos"] if f else []
-    r["genero_discogs"] = f["generos"] if f else []
+    r["estilos_discogs"] = estilos[:5]
+    from .clasificar import grupo_de
+    r["genero_discogs"] = [g for g in ((f or {}).get("generos") or []) if grupo_de(g, "genero") in cats] \
+        if not origen.startswith("agenda") else []
+    if origen != "agenda":
+        r.pop("estilo_descartado", None)
     if f and f.get("pais") and (not r.get("nacionalidad") or
                                 str(r.get("nacionalidad_fuente", "")).startswith("MusicBrainz")):
         r["nacionalidad"], r["nacionalidad_fuente"] = f["pais"], f["fuente_pais"]

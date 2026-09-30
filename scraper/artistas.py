@@ -386,11 +386,14 @@ def enriquecer(recs: list[dict], cache: dict, hoy: date, presupuesto_seg: float 
              "discogs_con_token": "Authorization" in fetcher_dc.session.headers, "lastfm_activo": bool(clave_lastfm)}
     inicio = time.monotonic()
     vistos, pendientes = set(), []
+    from .clasificar import es_espectaculo
     for r in sorted(recs, key=lambda r: (not r["en_foco"], r["fecha"])):
         nombre = r["artista"]
         k = norm(nombre)
         if k in vistos or not nombre_consultable(nombre):
             continue
+        if es_espectaculo([e["estilo"] for e in r.get("estilo_fuente", [])]):
+            continue  # teatro, musical…: el título no es un artista
         vistos.add(k)
         ent = cache.get(k)
         cad = CADUCIDAD_OK if ent and _encontrado(ent) else CADUCIDAD_NO
@@ -469,6 +472,56 @@ def _estilos_discogs_de_wikipedia(generos: list[str]) -> list[str]:
     from .clasificar import discogs
     est, _ = discogs(generos)
     return est
+
+
+PESO_FUENTE = {"Discogs": 1.0, "Last.fm": 0.8, "Wikipedia": 0.6}
+PESO_RANGO = [1.0, 0.75, 0.55, 0.45, 0.35, 0.3]
+
+
+def evidencias(ent: dict) -> list[dict]:
+    """Todos los estilos y géneros que dan las webs de música, con un peso según la fuente y su posición
+    (la web pone primero el principal). Sirven para decidir los grupos por consenso, no por la primera fuente."""
+    from .clasificar import discogs, generos_de_texto
+    out = []
+
+    lf_debil = (ent.get("lastfm") or {}).get("identificado_por") == "coincidencia por nombre"
+
+    def add(nombre, tipo, fuente, i):
+        e = {"nombre": nombre, "tipo": tipo, "fuente": fuente,
+             "peso": round(PESO_FUENTE[fuente] * PESO_RANGO[min(i, len(PESO_RANGO) - 1)], 3)}
+        if fuente == "Last.fm" and lf_debil:
+            e["debil"] = True  # identificado solo por el nombre: puede ser otro artista con el mismo nombre
+        out.append(e)
+
+    dc, wp, lf = ent.get("discogs") or {}, ent.get("wikipedia") or {}, ent.get("lastfm") or {}
+    if dc.get("encontrado"):
+        if dc.get("estilos"):
+            for i, e in enumerate(dc["estilos"]):
+                add(e, "estilo", "Discogs", i)
+        else:
+            for i, g in enumerate(dc.get("generos") or []):
+                add(g, "genero", "Discogs", i)
+    if lf.get("encontrado"):
+        i = 0
+        for t in lf.get("etiquetas") or []:  # en orden de votos
+            est, _ = discogs([t])
+            gen = [] if est else generos_de_texto([t])
+            for x in est:
+                add(x, "estilo", "Last.fm", i)
+            for x in gen:
+                add(x, "genero", "Last.fm", i)
+            i += 1 if (est or gen) else 0
+    if wp.get("encontrado"):
+        i = 0
+        for t in wp.get("generos") or []:  # en el orden de la ficha de Wikipedia
+            est, _ = discogs([t])
+            gen = [] if est else generos_de_texto([t])
+            for x in est:
+                add(x, "estilo", "Wikipedia", i)
+            for x in gen:
+                add(x, "genero", "Wikipedia", i)
+            i += 1 if (est or gen) else 0
+    return out
 
 
 def ficha(ent: dict | None) -> dict | None:
@@ -553,7 +606,8 @@ def ficha(ent: dict | None) -> dict | None:
         identidad = "página de Wikipedia del grupo" + (" y Wikidata" if wd.get("encontrado") else "")
         if dc.get("encontrado"):
             identidad += f"; Discogs por {dc_via}"
-    return {"identidad": identidad,"generos": generos, "estilos": estilos, "fuente_estilo": fuente_estilo,
+    return {"identidad": identidad, "evidencias": evidencias(ent), "generos": generos, "estilos": estilos,
+            "fuente_estilo": fuente_estilo,
             "generos_wikipedia": wp.get("generos") or [], "pais": pais, "fuente_pais": fuente_pais,
             "imagen": imagen, "enlaces": enlaces, "perfil": dc.get("perfil") if dc.get("encontrado") else None,
             "tiene_allmusic": bool(ids.get("allmusic"))}

@@ -19,20 +19,14 @@ FUENTES: list[Source] = [
       ag.laganzua),
     S("cpm", "Conciertos por Madrid", "https://conciertospormadrid.com/", "agregador", 3, "media", "conciertospormadrid",
       ag.conciertospormadrid),
-    S("ticketle", "Ticketle", "https://www.ticketle.es/madrid", "ticketera", 2, "media", "ticketle", ag.ticketle),
     S("madridenvivo", "Madrid en Vivo (asociación de salas)", "https://madridenvivo.com/buscador-avanzado/", "agregador",
       3, "alta", "madridenvivo", ag.madridenvivo),
     S("songkick", "Songkick Madrid", "https://www.songkick.com/metro-areas/28755-spain-madrid", "agregador", 3, "media",
       "songkick", ag.songkick),
-    S("bandsintown", "Bandsintown Madrid", "https://www.bandsintown.com/c/madrid-spain", "agregador", 3, "media",
-      "bandsintown", ag.bandsintown),
     S("rockandblog", "Rock and Blog", "https://rockandblog.net/conciertos-rock-madrid/", "blog", 4, "media",
       "rockandblog", ag.rockandblog),
     S("tm_blog", "Blog de Ticketmaster (agenda rock)", "https://blog.ticketmaster.es/post/agenda-rock-2026-38621/",
       "agregador", 3, "media", "ticketmaster", ag.tm_blog),
-    S("radar_joven", "Radar Joven (Comunidad de Madrid)", "https://www.comunidad.madrid/actividades/2026/radar-joven-2026",
-      "institucional", 2, "alta", "comunidad.madrid", ag.radar_joven,
-      notas="comunidad.madrid responde 404 a las peticiones desde GitHub (incluido robots.txt)."),
     S("radar_cpm", "Radar Joven (programación en Conciertos por Madrid)", ag.RADAR_CPM, "agregador", 3, "media",
       "conciertospormadrid", ag.radar_cpm),
     # ---------------------------------------------------------------- B. rock, metal, AOR, prog
@@ -66,9 +60,6 @@ FUENTES: list[Source] = [
     S("rockprog", "Rock-Progresivo.com (previas)",
       "https://www.rock-progresivo.com/seccion/cronicas-conciertos/previas-de-conciertos/", "blog", 4, "media",
       "rockprog", blogs.rockprog, reconfirma=False),
-    S("force", "FORCE Magazine", "https://forcemagazine.es/", "blog", 4, "media", "force", blogs.force,
-      reconfirma=False),
-    # ---------------------------------------------------------------- C. blogs de giras (incrementales)
     S("dirtyrock", "Dirty Rock Magazine (giras)", "https://www.dirtyrock.info/category/giras/", "blog", 4, "media",
       "dirtyrock", blogs.dirtyrock, reconfirma=False),
     S("viriaor", "viriAOR (agenda)", "https://viriaor.wordpress.com/category/agenda-de-conciertos/", "blog", 4, "media",
@@ -150,6 +141,13 @@ SIN_AGENDA_LEGIBLE = {
 SIN_AGENDA_LEGIBLE.pop("Sala Changó")
 
 NO_USAR = {
+    # Quitadas el 30-09-2026: fallaron en todas las ejecuciones desde que existen (nunca dieron conciertos)
+    "Ticketle": "Responde 403 (acceso prohibido) a todas las peticiones desde GitHub.",
+    "Bandsintown": "Responde 403 (acceso prohibido) a todas las peticiones desde GitHub.",
+    "Radar Joven (comunidad.madrid)": "Responde 404 a todas las peticiones desde GitHub; su programación se lee de Conciertos por Madrid.",
+    "FORCE Magazine": "No responde o no publica conciertos legibles en ninguna de las ejecuciones.",
+    "Agendas municipales de Getafe, Alcobendas, Arganda del Rey, San Sebastián de los Reyes y Coslada":
+        "Bloqueo (403 o verificación antirobots), error de certificado o sin respuesta en todas las ejecuciones.",
     "IndyRock": "Bloquea el acceso automático.",
     "JacksOnLive": "Bloquea el acceso automático.",
     "La Hora del Blues": "Bloquea el acceso automático.",

@@ -1,5 +1,38 @@
 # Versiones
 
+## 2.8.0 — 2026-09-30
+
+**Clasificación por géneros sin falsos positivos**
+
+- **No se busca como artista lo que no es un concierto.** Si la agenda lo presenta como teatro, musical, danza, humor, infantil, magia, circo o cine, el título no se busca en las webs de música.
+  - Ejemplo: el musical "Los Miserables" (Teatro Apolo) salía como el grupo punk chileno del mismo nombre, con su estilo y su origen.
+  - Esos espectáculos van a "Otros géneros" y se retira el origen que venía de ese homónimo.
+- **Consenso ponderado de las webs de música** en lugar de "todos los géneros que aparezcan".
+  - Cada estilo cuenta según su fuente (Discogs 1, Last.fm 0,8, Wikipedia 0,6) y su posición en la lista (el principal va primero).
+  - Un género secundario solo cuenta si pesa al menos el 60 % del principal y el 25 % del total.
+  - Ejemplo: Shakira ya no aparece en "Rock y metal"; queda en "Otros géneros" (latina) y "Pop e indie".
+  - Con este cambio, los conciertos en 3 o 4 géneros bajan de 115 a 12.
+- **Last.fm por coincidencia de nombre es una evidencia débil:**
+  - Vale la mitad.
+  - Si es la única, solo cuenta donde coincide con la agenda.
+  - Ejemplo: un título genérico como "Eternal" ya no se convierte en un grupo de doom metal. La ficha explica por qué se descarta.
+- **Etiquetas genéricas de las agendas** ("Pop / Rock", "Músicas negras"):
+  - Ya no se tratan como si el concierto fuera de los dos géneros a la vez: se marcan como genéricas y solo cuentan si no hay otra etiqueta más concreta.
+  - En el panel de filtros se pueden excluir.
+- **"R&B" moderno** (Blaya y similares) ya no se clasifica como blues, sino como Funk / Soul.
+- **Filtros por estilo:**
+  - Cada género muestra su árbol completo de estilos de Discogs (antes solo algunos), indicando cuántos conciertos hay de cada uno.
+  - Se pueden elegir estilos concretos, por ejemplo solo "Hard Rock" y "Stoner Rock" dentro de "Rock y metal".
+- **Ficha del concierto:** muestra el género y de qué webs sale, e indica si es por consenso, si la etiqueta es genérica o si se descartó una coincidencia dudosa.
+
+**Fuentes**
+
+- **Quitadas 9 fuentes** que fallaron en todas las ejecuciones desde que existen, y quedan listadas en "No se usan":
+  - Ticketle y Bandsintown (403).
+  - Radar Joven en comunidad.madrid (404). Su programación sigue llegando por Conciertos por Madrid.
+  - FORCE Magazine.
+  - Las agendas municipales de Getafe, Alcobendas, Arganda, San Sebastián de los Reyes y Coslada.
+
 ## 2.7.1 — 2026-09-29
 
 - Discogs: su buscador aún lista algunas fichas borradas; al abrirlas daban 404 y se reintentaban en cada ejecución (Los Deltonos). Ahora se registran como "sin ficha en Discogs" con el motivo, y el estilo sigue viniendo de Last.fm.

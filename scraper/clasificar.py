@@ -168,3 +168,93 @@ def categorias_de_ficha(generos: list[str], estilos: list[str]) -> list[str]:
                 por_genero.get(genero_de_estilo(e) or "") for e in estilos)):
             cats.append(c)
     return cats
+
+
+# ------------------------------------------------------------------ clasificación por consenso
+# Umbral para que un grupo secundario cuente: al menos la mitad de la puntuación del principal y una quinta
+# parte del total. Así un artista de pop latino con "rock" al final de su lista no aparece en "Rock y metal".
+UMBRAL_PRINCIPAL, UMBRAL_TOTAL = 0.6, 0.25
+
+# Etiquetas de agenda que indican que no es un concierto (obra de teatro, musical…): no se busca al "artista"
+# en las webs de música, porque un título como "Los Miserables" coincide con un grupo real (punk chileno).
+NO_CONCIERTO = re.compile(r"\b(teatro|musicales?|artes escenicas|danza|ballet|humor|monologos?|comedia|infantil|"
+                          r"familiar|magia|circo|cine|zarzuela)\b")
+
+
+def grupo_de(nombre: str, tipo: str) -> str | None:
+    cats = categorias_de_ficha([nombre], []) if tipo == "genero" else categorias_de_ficha([], [nombre])
+    return cats[0] if cats else None
+
+
+def por_consenso(pesos: dict[str, float]) -> list[str]:
+    if not pesos:
+        return []
+    total, maximo = sum(pesos.values()), max(pesos.values())
+    return [g for g, p in sorted(pesos.items(), key=lambda x: -x[1])
+            if p >= UMBRAL_PRINCIPAL * maximo and p >= UMBRAL_TOTAL * total]
+
+
+def grupos_de_evidencias(evs: list[dict], grupos_agenda: list[str] | None = None) -> tuple[list[str], list[str]]:
+    """Grupos por consenso ponderado y los estilos que los sostienen, ordenados por peso.
+
+    Las evidencias débiles (Last.fm identificado solo por el nombre) valen la mitad; si son las únicas, solo
+    cuentan los grupos en los que coinciden con la agenda (si la agenda no dice nada, no se usan): así un
+    título genérico como "Eternal" no se convierte en un grupo de doom metal."""
+    fuertes = [e for e in evs if not e.get("debil")]
+    debiles = [e for e in evs if e.get("debil")]
+
+    def puntuar(lista, factor_debil):
+        pesos: dict[str, float] = {}
+        por_estilo: dict[str, float] = {}
+        for e in lista:
+            g = grupo_de(e["nombre"], e["tipo"])
+            if not g:
+                continue
+            p = e["peso"] * (factor_debil if e.get("debil") else 1.0)
+            pesos[g] = pesos.get(g, 0) + p
+            if e["tipo"] == "estilo":
+                por_estilo[e["nombre"]] = por_estilo.get(e["nombre"], 0) + p
+        return pesos, por_estilo
+
+    if fuertes:
+        pesos, por_estilo = puntuar(fuertes + debiles, 0.5)
+        grupos = por_consenso(pesos)
+    else:
+        pesos, por_estilo = puntuar(debiles, 1.0)
+        grupos = [g for g in por_consenso(pesos) if g in (grupos_agenda or [])]
+    estilos = [x for x, _ in sorted(por_estilo.items(), key=lambda x: -x[1]) if grupo_de(x, "estilo") in grupos]
+    return grupos, estilos
+
+
+def es_espectaculo(etiquetas: list[str]) -> bool:
+    """La agenda lo presenta como teatro, musical, danza, humor… y ninguna etiqueta indica un concierto."""
+    if not etiquetas:
+        return False
+    no = [e for e in etiquetas if NO_CONCIERTO.search(norm(e))]
+    si = [e for e in etiquetas if e not in no and any(c not in ("fuera de foco", "sin clasificar")
+                                                     for c in categorias_de(e))]
+    return bool(no) and not si
+
+
+def grupos_de_agenda(etiquetas_por_fuente: list[list[str]]) -> tuple[list[str], bool]:
+    """Grupos a partir de las etiquetas de las agendas. Las etiquetas "paraguas" ("Pop / Rock", "Músicas negras")
+    no dicen cuál de los dos es: solo cuentan si no hay otra más concreta, y entonces el resultado es genérico."""
+    exacto = _mapa()[0]
+    pesos: dict[str, float] = {}
+    paraguas: list[str] = []
+    for etiquetas in etiquetas_por_fuente:
+        for e in etiquetas:
+            if isinstance(exacto.get(norm(e)), list):
+                paraguas += [c for c in exacto[norm(e)] if c not in paraguas]
+                continue
+            for i, c in enumerate(categorias_de(e)):
+                if c != "sin clasificar":
+                    pesos[c] = pesos.get(c, 0) + PESO_RANGO_AGENDA[min(i, 3)]
+    if pesos:
+        return por_consenso(pesos), False
+    if paraguas:
+        return paraguas, True
+    return [], False
+
+
+PESO_RANGO_AGENDA = [1.0, 0.75, 0.55, 0.45]

@@ -215,7 +215,6 @@
   "folk rock": "Folk Rock",
   "blues rock": "Blues Rock",
   "rhythm and blues": "Rhythm & Blues",
-  "r&b": "Rhythm & Blues",
   "rockabilly": "Rockabilly",
   "psychobilly": "Psychobilly",
   "surf": "Surf",
@@ -332,6 +331,8 @@
   "metal": "Rock",
   "heavy metal": "Rock",
   "punk": "Rock",
-  "indie": "Rock"
+  "indie": "Rock",
+  "rnb": "Funk / Soul",
+  "contemporary r&b": "Funk / Soul"
  }
 }

@@ -36,12 +36,6 @@ AGENDAS = {
     "Valdemoro": ("https://www.valdemoro.es/teatro", "valdemoro"),
     "Pinto": ("https://www.ayto-pinto.es/agenda-de-actividades", "pinto"),
     "Móstoles": ("https://www.mostoles.es/culturaenmostoles/es/agenda-actividades", "generico"),
-    # Se siguen intentando a diario: hoy bloquean el acceso automático o no responden a GitHub
-    "Getafe": ("https://cultura.getafe.es/mec_calendars/upcoming-events-list/", "generico"),
-    "Alcobendas": ("https://www.alcobendas.org/es/temas/cultura/programacion-cultural", "generico"),
-    "Arganda del Rey": ("https://www.argandadelrey.es/eventos/agenda-cultural-2/", "generico"),
-    "San Sebastián de los Reyes": ("https://www.ssreyes.org/agenda-cultural", "generico"),
-    "Coslada": ("https://coslada.es/cultura-y-fiestas/cultura/", "generico"),
 }
 
 # Municipios cuya web no tiene una agenda legible (se listan en el informe)

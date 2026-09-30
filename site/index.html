@@ -170,6 +170,10 @@ details.more ul{padding-left:20px;margin:8px 0}
 .grp .inc{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px}
 .grp .inc span{font-size:.75rem;background:var(--panel2);border-radius:6px;padding:1px 6px}
 .grp .inc span.has{outline:1px solid var(--ok)}
+.grp .inc .est{font-size:.78rem;border:1px solid var(--line);background:var(--panel2);border-radius:999px;padding:3px 9px;color:var(--ink)}
+.grp .inc .est:disabled{opacity:.45}
+.grp .inc .est.has{border-color:color-mix(in srgb,var(--ok) 50%,var(--line))}
+.grp .inc .est.on{background:var(--ink);color:var(--bg);border-color:var(--ink);font-weight:700}
 .hint{color:var(--muted);font-size:.82rem}
 .empty{color:var(--muted);text-align:center;padding:30px 0}
 .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:12px;z-index:40;font-size:.9rem}
@@ -228,7 +232,8 @@ const store = {
   set(k,v){try{localStorage.setItem("agenda:"+k,JSON.stringify(v))}catch(e){}}
 };
 let DATA=[], BYID={}, INFORME=null, TAXO=null, SALAS={}, MAP=null, HOY=null;
-let state = {tab:"Mes", date:null, id:null, q:"", grupos:store.get("grupos2",DEF_GRUPOS), origen:store.get("origen","todos"), from:null};
+let state = {tab:"Mes", date:null, id:null, q:"", grupos:store.get("grupos2",DEF_GRUPOS), origen:store.get("origen","todos"), from:null,
+  estilos:store.get("estilos",{}), genericos:store.get("genericos",true)};
 let regionNames=null; try{regionNames=new Intl.DisplayNames(["es"],{type:"region"})}catch(e){}
 
 const pad=n=>String(n).padStart(2,"0");
@@ -285,17 +290,26 @@ function pasaOrigen(r){
   if(state.origen==="nc") return !r.nacionalidad;
   return true;
 }
-const pasaGrupo=r=>grupos(r).some(c=>state.grupos.includes(c));
+// Un concierto pasa si está en un género elegido; si en ese género se han elegido estilos concretos, además
+// tiene que tener alguno (según las webs de música). Los clasificados solo por una etiqueta genérica de la
+// agenda ("Pop / Rock") se pueden excluir.
+function pasaGrupo(r){
+  if(r.grupos_generico&&!state.genericos) return false;
+  const gs=grupos(r), est=r.estilos_discogs||[];
+  return state.grupos.some(g=>gs.includes(g)&&(!(state.estilos[g]||[]).length||est.some(s=>state.estilos[g].includes(s))));
+}
 function visible(r){ return pasaGrupo(r) && pasaTexto(r) && pasaOrigen(r); }
 function byDate(){const m={}; for(const r of DATA){ if(!visible(r)) continue; (m[r.fecha]=m[r.fecha]||[]).push(r);} return m;}
-const esDefecto=()=>DEF_GRUPOS.every(g=>state.grupos.includes(g))&&!state.grupos.includes("fuera de foco");
+const nEstilos=()=>Object.values(state.estilos).reduce((n,l)=>n+(l||[]).length,0);
+const esDefecto=()=>DEF_GRUPOS.every(g=>state.grupos.includes(g))&&!state.grupos.includes("fuera de foco")&&!nEstilos()&&state.genericos;
 function nFiltros(){ return (esDefecto()?0:1)+(state.origen!=="todos"?1:0); }
 function resumenFiltros(){
   const p=[];
   if(!esDefecto()){
     if(GRUPOS.every(g=>state.grupos.includes(g.id))) p.push("todos los géneros");
     else if(!state.grupos.length) p.push("ningún género");
-    else p.push(GRUPOS.filter(g=>state.grupos.includes(g.id)).map(g=>g.nombre).join(", "));
+    else p.push(GRUPOS.filter(g=>state.grupos.includes(g.id)).map(g=>g.nombre+((state.estilos[g.id]||[]).length?` (${state.estilos[g.id].join(", ")})`:"")).join(", "));
+    if(!state.genericos) p.push("sin etiquetas genéricas");
   }
   if(state.origen!=="todos") p.push(ORIGENES.find(o=>o[0]===state.origen)[1].replace("🇪🇸 ",""));
   return p.join(" · ");
@@ -314,7 +328,7 @@ function bindFilters(){
   if(q) q.oninput=()=>{const had=!!state.q; state.q=q.value; if(!!state.q!==had){renderBody(false); const nq=document.getElementById("q"); nq.focus(); nq.setSelectionRange(nq.value.length,nq.value.length);} else renderBody(true);};
   const qx=document.getElementById("qx"); if(qx) qx.onclick=()=>{state.q=""; renderBody(false);};
   const g=document.getElementById("fgen"); if(g) g.onclick=openSheet;
-  const fr=document.getElementById("freset"); if(fr) fr.onclick=()=>{setGrupos([...DEF_GRUPOS]); state.origen="todos"; store.set("origen","todos"); renderBody(false);};
+  const fr=document.getElementById("freset"); if(fr) fr.onclick=()=>{setGrupos([...DEF_GRUPOS]); state.origen="todos"; store.set("origen","todos"); state.estilos={}; store.set("estilos",{}); state.genericos=true; store.set("genericos",true); renderBody(false);};
   document.querySelectorAll("[data-chip]").forEach(c=>c.onclick=()=>{
     const id=c.dataset.chip, on=state.grupos.includes(id);
     setGrupos(on?state.grupos.filter(x=>x!==id):[...state.grupos,id]); renderBody(false);
@@ -326,35 +340,50 @@ function grupoDeEstilo(s){
   for(const [gen,l] of Object.entries(TAXO.generos)) if(l.includes(s)) return MAP.genero_a_categoria[gen]||"fuera de foco";
   return "fuera de foco";
 }
+function todosLosEstilos(){
+  if(!TAXO||!MAP) return [];
+  const out=new Set();
+  Object.values(TAXO.generos).forEach(l=>l.forEach(x=>out.add(x)));
+  Object.values(MAP.discogs_a_categoria).forEach(l=>Array.isArray(l)&&l.forEach(x=>out.add(x)));
+  return [...out];
+}
 function openSheet(){
   const fut=DATA.filter(r=>r.fecha>=HOY&&pasaTexto(r)&&pasaOrigen(r));
-  const cnt={}, est={}, ag={};
-  fut.forEach(r=>{grupos(r).forEach(g=>{cnt[g]=(cnt[g]||0)+1; if(r.grupos_origen==="agenda") ag[g]=(ag[g]||0)+1;});
+  const cnt={}, est={}, gen={};
+  fut.forEach(r=>{grupos(r).forEach(g=>{cnt[g]=(cnt[g]||0)+1; if(r.grupos_generico) gen[g]=(gen[g]||0)+1;});
     (r.estilos_discogs||[]).forEach(s=>{const g=grupoDeEstilo(s); if(!g) return; est[g]=est[g]||{}; est[g][s]=(est[g][s]||0)+1;});});
-  const incluye=g=>{
-    if(!MAP) return [];
-    if(g==="rock y metal") return (TAXO?TAXO.generos.Rock:[]).filter(s=>!Object.values(MAP.discogs_a_categoria).some(l=>Array.isArray(l)&&l.includes(s)));
-    const l=MAP.discogs_a_categoria[g]; return Array.isArray(l)?l:[];
-  };
-  let sel=[...state.grupos], ori=state.origen;
+  const ARBOL={}; todosLosEstilos().forEach(s=>{const g=grupoDeEstilo(s); (ARBOL[g]=ARBOL[g]||[]).push(s);});
+  let sel=[...state.grupos], ori=state.origen, selEst=JSON.parse(JSON.stringify(state.estilos||{})), genOk=state.genericos;
+  const abiertos=new Set();
   const el=document.getElementById("sheet");
+  const pasa=r=>{ if(r.grupos_generico&&!genOk) return false; const gs=grupos(r), e=r.estilos_discogs||[];
+    return sel.some(g=>gs.includes(g)&&(!(selEst[g]||[]).length||e.some(s=>selEst[g].includes(s))))&&
+      (ori==="todos"||(ori==="es"?r.nacionalidad==="ES":ori==="ext"?r.nacionalidad&&r.nacionalidad!=="ES":!r.nacionalidad)); };
   const draw=()=>{
-    const total=fut.filter(r=>grupos(r).some(c=>sel.includes(c))&&(ori==="todos"||(ori==="es"?r.nacionalidad==="ES":ori==="ext"?r.nacionalidad&&r.nacionalidad!=="ES":!r.nacionalidad))).length;
+    const total=fut.filter(pasa).length;
+    const sc=el.querySelector(".sc"); const top=sc?sc.scrollTop:0;
     el.innerHTML=`<div class="sheet-bg" id="sbg"></div><div class="sheet" role="dialog" aria-label="Filtros"><div class="sc">
      <h3>Filtros</h3>
      <h4>Origen del artista</h4>
      <div class="opts">${ORIGENES.map(([v,t])=>`<button data-o="${v}" aria-pressed="${ori===v}">${esc(t)}</button>`).join("")}</div>
-     <h4>Géneros</h4>
-     <p class="hint">Cada género agrupa estilos de <b>Discogs</b>. Si el artista no tiene ficha en una web de música, se usa la etiqueta de la agenda. Por defecto se ocultan los <b>otros géneros</b> (electrónica, hip hop, jazz, latina, flamenco…).</p>
-     ${GRUPOS.map(g=>{const e=est[g.id]||{}; const inc=incluye(g.id); const extra=Object.keys(e).filter(s=>!inc.includes(s));
+     <h4>Géneros y estilos</h4>
+     <p class="hint">Cada género reúne los estilos de <b>Discogs</b> que ves al abrirlo. El género de cada artista sale del consenso de las webs de música (Discogs, Last.fm, Wikipedia): el principal y los que pesan casi tanto, no todos los que se mencionan. Toca estilos para quedarte solo con esos dentro de su género.</p>
+     <label class="grp" style="display:flex;gap:10px;align-items:flex-start;padding:10px 12px"><input type="checkbox" id="fgenok" ${genOk?"checked":""} style="margin-top:3px"><span><b>Incluir etiquetas genéricas de la agenda</b><br><span class="hint">Conciertos de artistas sin ficha que la agenda solo etiqueta como "Pop / Rock", "Músicas negras"… Aparecen en todos esos géneros porque no se sabe cuál es.</span></span></label>
+     ${GRUPOS.map(g=>{const e=est[g.id]||{}; const arbol=(ARBOL[g.id]||[]).slice().sort((a,b)=>(e[b]||0)-(e[a]||0)||a.localeCompare(b));
+       const elegidos=selEst[g.id]||[]; const conc=arbol.filter(x=>e[x]);
        return `<div class="grp"><label><input type="checkbox" data-g="${esc(g.id)}" ${sel.includes(g.id)?"checked":""}><span class="dot" style="background:var(${g.v})"></span><span class="nm">${esc(g.nombre)}<small>${esc(g.desc)}</small></span><span class="ct">${cnt[g.id]||0}</span></label>
-       ${inc.length||extra.length||ag[g.id]?`<details><summary>Estilos que incluye${ag[g.id]?` · ${ag[g.id]} por etiqueta de agenda`:""}</summary>
-       <div class="inc">${[...inc,...extra].map(s=>`<span class="${e[s]?"has":""}">${esc(s)}${e[s]?` · ${e[s]}`:""}</span>`).join("")}</div></details>`:""}</div>`}).join("")}
+       ${arbol.length?`<details data-det="${esc(g.id)}" ${abiertos.has(g.id)||elegidos.length?"open":""}><summary>${elegidos.length?`${elegidos.length} estilo${elegidos.length>1?"s":""} elegido${elegidos.length>1?"s":""}`:`Filtrar por estilo (${conc.length} con conciertos de ${arbol.length})`}${gen[g.id]?` · ${gen[g.id]} por etiqueta genérica`:""}</summary>
+       <div class="inc">${arbol.map(x=>`<button type="button" class="est${elegidos.includes(x)?" on":""}${e[x]?" has":""}" data-es="${esc(g.id)}|${esc(x)}" ${e[x]?"":"disabled"}>${esc(x)}${e[x]?` · ${e[x]}`:""}</button>`).join("")}</div></details>`:""}</div>`}).join("")}
      </div><div class="ft"><button id="sdef">Restablecer</button><button class="go" id="sclose">Ver ${plural(total,"concierto")}</button></div></div>`;
+    el.querySelector(".sc").scrollTop=top;
     document.getElementById("sbg").onclick=()=>{el.innerHTML="";};
-    document.getElementById("sdef").onclick=()=>{sel=[...DEF_GRUPOS]; ori="todos"; draw();};
-    document.getElementById("sclose").onclick=()=>{setGrupos(sel); state.origen=ori; store.set("origen",ori); el.innerHTML=""; renderBody(false);};
+    document.getElementById("sdef").onclick=()=>{sel=[...DEF_GRUPOS]; ori="todos"; selEst={}; genOk=true; draw();};
+    document.getElementById("sclose").onclick=()=>{setGrupos(sel); state.origen=ori; store.set("origen",ori); state.estilos=selEst; store.set("estilos",selEst); state.genericos=genOk; store.set("genericos",genOk); el.innerHTML=""; renderBody(false);};
+    document.getElementById("fgenok").onchange=e=>{genOk=e.target.checked; draw();};
+    el.querySelectorAll("[data-det]").forEach(d=>d.ontoggle=()=>{d.open?abiertos.add(d.dataset.det):abiertos.delete(d.dataset.det);});
     el.querySelectorAll("[data-g]").forEach(c=>c.onchange=()=>{const g=c.dataset.g; sel=c.checked?[...new Set([...sel,g])]:sel.filter(x=>x!==g); draw();});
+    el.querySelectorAll("[data-es]").forEach(b=>b.onclick=()=>{const [g,x]=b.dataset.es.split("|"); const l=selEst[g]||[];
+      selEst[g]=l.includes(x)?l.filter(y=>y!==x):[...l,x]; if(!sel.includes(g)) sel.push(g); abiertos.add(g); draw();});
     el.querySelectorAll("[data-o]").forEach(b=>b.onclick=()=>{ori=b.dataset.o; draw();});
   };
   draw();
@@ -377,6 +406,7 @@ function estiloTags(r,n){
   if(e.length) return e.map(s=>`<span class="tag">${esc(s)}</span>`).join("");
   if((r.genero_discogs||[]).length) return r.genero_discogs.slice(0,n).map(s=>`<span class="tag">${esc(s)}</span>`).join("");
   const a=(etiquetaAgenda(r)||"").replace(/_/g," ");
+  if(a&&r.grupos_generico) return `<span class="tag ag" title="Etiqueta genérica de la agenda: no se sabe el estilo concreto">${esc(a)} · genérico</span>`;
   return a?`<span class="tag ag" title="Etiqueta de la agenda, no de una web de música">${esc(a)}</span>`:"";
 }
 function estadoMini(r){
@@ -449,13 +479,22 @@ function viewConcierto(){
   const sala=SALAS[norm(r.sala)];
   const mapa=`https://www.google.com/maps/search/${encodeURIComponent((r.sala||"")+" "+(r.municipio||"Madrid"))}`;
   const entradas=(r.confirmado_sala&&r.confirmado_sala.url)||(r.fuentes[0]||{}).url;
-  const estilos=(f&&f.estilos&&f.estilos.length)?f.estilos:[];
-  const generos=(f&&f.generos)||[];
+  const estilos=r.estilos_discogs||[];
+  const generos=r.genero_discogs||[];
   const tieneDiscogs=f&&(f.enlaces||[]).some(e=>e.nombre==="Discogs");
   const ag=etiquetaAgenda(r);
-  const estiloHTML=estilos.length||generos.length
-    ? `<div class="v">${esc((estilos.length?estilos:generos).join(", "))}</div><div class="s">${estilos.length&&generos.length?`${esc(generos.join(", "))} · `:""}según ${esc(f.fuente_estilo||"Discogs")}</div>`
-    : `<div class="v muted">${tieneDiscogs?"Discogs no indica su estilo":"Sin ficha en las webs de música"}</div>${ag?`<div class="s">La agenda lo etiqueta como «${esc(ag.replace(/_/g," "))}»</div>`:""}`;
+  const nomG=id=>(GRUPOS.find(g=>g.id===id)||{nombre:id}).nombre;
+  const gruposTxt=grupos(r).map(nomG).join(", ");
+  let estiloHTML;
+  if((r.grupos_origen||"").startsWith("agenda (espect")){
+    estiloHTML=`<div class="v muted">No es un concierto</div><div class="s">La agenda lo presenta como ${esc((ag||"espectáculo").replace(/_/g," "))}: no se busca como grupo musical (evita confundirlo con un artista del mismo nombre). Género: ${esc(gruposTxt)}</div>`;
+  } else if(estilos.length||(generos.length&&r.grupos_origen!=="agenda")){
+    estiloHTML=`<div class="v">${esc((estilos.length?estilos:generos).join(", "))}</div><div class="s">Género: <b>${esc(gruposTxt)}</b> · según ${esc((r.grupos_segun||[]).join(", ")||r.grupos_origen||"Discogs")}${(r.grupos_segun||[]).length>1?" (por consenso)":""}</div>`;
+  } else {
+    estiloHTML=`<div class="v muted">${tieneDiscogs?"Discogs no indica su estilo":"Sin ficha en las webs de música"}</div>`+
+      (ag?`<div class="s">La agenda lo etiqueta como «${esc(ag.replace(/_/g," "))}»${r.grupos_generico?" (etiqueta genérica: puede ser cualquiera de estos géneros)":""} → ${esc(gruposTxt)}</div>`:`<div class="s">Género: ${esc(gruposTxt)}</div>`)+
+      ((r.estilo_descartado||[]).length?`<div class="s">Last.fm tiene un artista con este nombre (${esc(r.estilo_descartado.join(", "))}), pero no concuerda con la agenda: puede ser otro artista y no se usa.</div>`:"");
+  }
   const h=horaTxt(r);
   const q=encodeURIComponent(r.artista);
   const enlaces=[...((f&&f.enlaces)||[]), ...(f&&f.tiene_allmusic?[]:[{nombre:"Buscar en AllMusic", url:`https://www.allmusic.com/search/artists/${q}`}])];

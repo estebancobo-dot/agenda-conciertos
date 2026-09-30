@@ -40,7 +40,7 @@ def completar(recs: list[dict], cache: dict, hoy: date, fetcher: Fetcher | None,
     orden = sorted([r for r in recs if not r.get("nacionalidad")], key=lambda r: (not r["en_foco"], r["fecha"]))
     for r in orden:
         nombre = r["artista"]
-        if es_generico(nombre) or len(norm(nombre)) < 2:
+        if es_generico(nombre) or len(norm(nombre)) < 2 or str(r.get("grupos_origen") or "").startswith("agenda (esp"):
             r["nacionalidad_fuente"] = None
             continue
         k = norm(nombre)
