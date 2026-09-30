@@ -1,0 +1,42 @@
+name: Probar la web en vivo
+
+# Recorre la web publicada con un navegador real que imita un móvil con 4G lenta (tools/probar_web.py) y guarda
+# tiempos y capturas en la rama `pruebas-web` (un único commit que se reemplaza).
+on:
+  workflow_dispatch:
+    inputs:
+      url:
+        description: "Web a probar"
+        default: "https://estebancobo-dot.github.io/agenda-conciertos/"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: probar-web
+  cancel-in-progress: true
+
+jobs:
+  probar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install playwright && python -m playwright install --with-deps chromium
+      - name: Recorrer la web
+        run: python tools/probar_web.py "${{ github.event.inputs.url || 'https://estebancobo-dot.github.io/agenda-conciertos/' }}" pruebas
+      - name: Guardar resultados (rama pruebas-web)
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          cd pruebas
+          git init -q -b pruebas-web
+          git add -A
+          git commit -qm "Prueba de la web $(date -u +%Y-%m-%dT%H:%MZ)"
+          git push -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" pruebas-web
