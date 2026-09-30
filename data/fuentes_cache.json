@@ -67715,21 +67715,6 @@
    },
    {
     "fecha": "2026-10-25",
-    "artista": "Juan Pérez Floristán",
-    "url": "https://www.songkick.com/concerts/43410226-juan-perez-floristan-at-sala-sinfonica-auditorio-nacional-de-musica",
-    "sala": "Sala Sinfónica, Auditorio Nacional de Música",
-    "ciudad": "Madrid",
-    "hora": null,
-    "invitados": [],
-    "precio": null,
-    "estilo": null,
-    "nacionalidad": null,
-    "nota": null,
-    "imagen": "https://images.sk-static.com/images/media/profile_images/artists/8956059/huge_avatar",
-    "fuente": "songkick"
-   },
-   {
-    "fecha": "2026-10-25",
     "artista": "Point Of No Return",
     "url": "https://www.songkick.com/concerts/43428357-point-of-no-return-at-wurlitzer-ballroom",
     "sala": "Wurlitzer Ballroom",
@@ -67744,6 +67729,21 @@
     "nacionalidad": null,
     "nota": null,
     "imagen": "https://images.sk-static.com/images/media/profile_images/artists/10346625/huge_avatar",
+    "fuente": "songkick"
+   },
+   {
+    "fecha": "2026-10-25",
+    "artista": "Juan Pérez Floristán",
+    "url": "https://www.songkick.com/concerts/43410226-juan-perez-floristan-at-sala-sinfonica-auditorio-nacional-de-musica",
+    "sala": "Sala Sinfónica, Auditorio Nacional de Música",
+    "ciudad": "Madrid",
+    "hora": null,
+    "invitados": [],
+    "precio": null,
+    "estilo": null,
+    "nacionalidad": null,
+    "nota": null,
+    "imagen": "https://images.sk-static.com/images/media/profile_images/artists/8956059/huge_avatar",
     "fuente": "songkick"
    },
    {
@@ -69109,6 +69109,23 @@
    },
    {
     "fecha": "2026-11-06",
+    "artista": "Aiko",
+    "url": "https://www.songkick.com/concerts/43420117-aiko-at-sala-vesta",
+    "sala": "Sala Vesta",
+    "ciudad": "Madrid",
+    "hora": null,
+    "invitados": [
+     "Suena Jaleo"
+    ],
+    "precio": null,
+    "estilo": null,
+    "nacionalidad": null,
+    "nota": null,
+    "imagen": "https://images.sk-static.com/images/media/profile_images/artists/276244/huge_avatar",
+    "fuente": "songkick"
+   },
+   {
+    "fecha": "2026-11-06",
     "artista": "Error 97",
     "url": "https://www.songkick.com/concerts/42688130-error-97-at-copernico",
     "sala": "Copérnico",
@@ -69180,21 +69197,6 @@
     "nacionalidad": null,
     "nota": null,
     "imagen": "https://images.sk-static.com/images/media/profile_images/artists/10231790/huge_avatar",
-    "fuente": "songkick"
-   },
-   {
-    "fecha": "2026-11-06",
-    "artista": "Toro",
-    "url": "https://www.songkick.com/concerts/43327175-toro-at-independance",
-    "sala": "Independance",
-    "ciudad": "Madrid",
-    "hora": null,
-    "invitados": [],
-    "precio": null,
-    "estilo": null,
-    "nacionalidad": null,
-    "nota": null,
-    "imagen": "https://images.sk-static.com/images/media/profile_images/artists/302413/huge_avatar",
     "fuente": "songkick"
    },
    {

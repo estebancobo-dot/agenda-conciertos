@@ -1,5 +1,5 @@
 {
- "generado": "2026-09-30T06:39:28+00:00",
+ "generado": "2026-09-30T08:28:50+00:00",
  "hoy": "2026-09-30",
  "horizonte": "2027-01-28",
  "conciertos": [
@@ -5644,15 +5644,15 @@
      "prioridad": 3
     },
     {
-     "nombre": "Rock for Everyone (agenda mensual Madrid)",
-     "id": "rockforeveryone",
-     "url": "https://rockforeveryone.es/agenda-de-conciertos-heavy-en-madrid-en-octubre-de-2026/",
-     "prioridad": 3
-    },
-    {
      "nombre": "Conciertos por Madrid",
      "id": "cpm",
      "url": "https://conciertospormadrid.com/conciertos/blood-red-shoes-madrid-2026/",
+     "prioridad": 3
+    },
+    {
+     "nombre": "Rock for Everyone (agenda mensual Madrid)",
+     "id": "rockforeveryone",
+     "url": "https://rockforeveryone.es/agenda-de-conciertos-heavy-en-madrid-en-octubre-de-2026/",
      "prioridad": 3
     },
     {
@@ -5683,7 +5683,8 @@
    "estado": "contrastado",
    "conflictos": [],
    "notas": [
-    "Hora: 19:30 según Moby Dick Club (web oficial); 21:00 según La Ganzúa, Rock for Everyone (agenda mensual Madrid), Songkick Madrid, conciertos.club (buscador semanal), conciertos.club (por estilo), conciertos.club (portada Madrid). Resuelto por prioridad de fuente (la fuente de mayor prioridad confirma 19:30)."
+    "Hora: 19:30 según Moby Dick Club (web oficial); 21:00 según La Ganzúa, Rock for Everyone (agenda mensual Madrid), Songkick Madrid, conciertos.club (buscador semanal), conciertos.club (por estilo), conciertos.club (portada Madrid). Resuelto por prioridad de fuente (la fuente de mayor prioridad confirma 19:30).",
+    "Dato de la última lectura completa de Rock and Blog (2026-09-30): hoy no se pudo leer"
    ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
@@ -6599,7 +6600,8 @@
    "estado": "contrastado",
    "conflictos": [],
    "notas": [
-    "Hora: 20:45 según Movistar Arena (web oficial), Songkick Madrid; 21:00 según conciertos.club (buscador semanal), conciertos.club (por estilo), conciertos.club (portada Madrid); 20:00 según La Ganzúa. Resuelto por prioridad de fuente (la fuente de mayor prioridad confirma 20:45)."
+    "Hora: 20:45 según Movistar Arena (web oficial), Songkick Madrid; 21:00 según conciertos.club (buscador semanal), conciertos.club (por estilo), conciertos.club (portada Madrid); 20:00 según La Ganzúa. Resuelto por prioridad de fuente (la fuente de mayor prioridad confirma 20:45).",
+    "Dato de la última lectura completa de Rock and Blog (2026-09-30): hoy no se pudo leer"
    ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
@@ -12497,7 +12499,7 @@
    ],
    "categoria": "fuera de foco",
    "categorias": [
-    "sin clasificar"
+    "fuera de foco"
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
@@ -14404,15 +14406,15 @@
      "prioridad": 3
     },
     {
-     "nombre": "Rock for Everyone (agenda mensual Madrid)",
-     "id": "rockforeveryone",
-     "url": "https://rockforeveryone.es/agenda-de-conciertos-heavy-en-madrid-en-octubre-de-2026/",
-     "prioridad": 3
-    },
-    {
      "nombre": "Conciertos por Madrid",
      "id": "cpm",
      "url": "https://conciertospormadrid.com/conciertos/evanescence-madrid-02-10-2026/",
+     "prioridad": 3
+    },
+    {
+     "nombre": "Rock for Everyone (agenda mensual Madrid)",
+     "id": "rockforeveryone",
+     "url": "https://rockforeveryone.es/agenda-de-conciertos-heavy-en-madrid-en-octubre-de-2026/",
      "prioridad": 3
     },
     {
@@ -14482,7 +14484,8 @@
     }
    ],
    "notas": [
-    "Conflicto de hora: 21:00 según conciertos.club (buscador semanal), conciertos.club (por estilo), conciertos.club (portada Madrid); 21:30 según La Ganzúa; 19:00 según Rock for Everyone (agenda mensual Madrid), Songkick Madrid."
+    "Conflicto de hora: 21:00 según conciertos.club (buscador semanal), conciertos.club (por estilo), conciertos.club (portada Madrid); 21:30 según La Ganzúa; 19:00 según Rock for Everyone (agenda mensual Madrid), Songkick Madrid.",
+    "Dato de la última lectura completa de Rock and Blog (2026-09-30): hoy no se pudo leer"
    ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
@@ -14888,15 +14891,15 @@
      "prioridad": 3
     },
     {
-     "nombre": "TodoHeavyMetal",
-     "id": "thm",
-     "url": "https://www.todoheavymetal.com/index.php/agenda/amp",
-     "prioridad": 3
-    },
-    {
      "nombre": "conciertos.club (portada Madrid)",
      "id": "cc_portada",
      "url": "https://conciertos.club/madrid/conciertos/124851-hitten",
+     "prioridad": 3
+    },
+    {
+     "nombre": "TodoHeavyMetal",
+     "id": "thm",
+     "url": "https://www.todoheavymetal.com/index.php/agenda/amp",
      "prioridad": 3
     },
     {
@@ -14929,6 +14932,7 @@
    "notas": [
     "Evento: PASSION IS NOT OVER… YET!",
     "Conflicto de hora: 21:00 según conciertos.club (buscador semanal), conciertos.club (por estilo), conciertos.club (portada Madrid); 19:00 según Rock for Everyone (agenda mensual Madrid).",
+    "Dato de la última lectura completa de Rock and Blog (2026-09-30): hoy no se pudo leer",
     "Sala: Revi Space según Revi Live / Revi Space (web oficial); Revi Live según Hellpress (agenda), Madness Live (promotora), MariskalRock (guía), Metal Legion, Rock and Blog, Rock for Everyone (agenda mensual Madrid), TodoHeavyMetal, conciertos.club (buscador semanal), conciertos.club (por estilo), conciertos.club (portada Madrid). Resuelto por prioridad de fuente (la de mayor prioridad confirma Revi Space)."
    ],
    "en_foco": true,
@@ -16160,8 +16164,8 @@
    ],
    "categoria": "fuera de foco",
    "categorias": [
-    "pop e indie",
     "fuera de foco",
+    "pop e indie",
     "rock y metal"
    ],
    "genero_discogs": [
@@ -17798,7 +17802,8 @@
    ],
    "categoria": "pop e indie",
    "categorias": [
-    "pop e indie"
+    "pop e indie",
+    "fuera de foco"
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
@@ -23286,8 +23291,8 @@
    ],
    "categoria": "fuera de foco",
    "categorias": [
-    "pop e indie",
     "fuera de foco",
+    "pop e indie",
     "rock y metal"
    ],
    "genero_discogs": [
@@ -26632,7 +26637,7 @@
    "estilo_fuente": [],
    "categoria": "fuera de foco",
    "categorias": [
-    "sin clasificar"
+    "fuera de foco"
    ],
    "genero_discogs": [
     "Children's"
@@ -28019,8 +28024,8 @@
    ],
    "categoria": "fuera de foco",
    "categorias": [
-    "pop e indie",
     "fuera de foco",
+    "pop e indie",
     "rock y metal"
    ],
    "genero_discogs": [
@@ -29667,15 +29672,15 @@
      "prioridad": 3
     },
     {
-     "nombre": "conciertos.club (portada Madrid)",
-     "id": "cc_portada",
-     "url": "https://conciertos.club/madrid/conciertos/120862-rosalie-cunningham",
-     "prioridad": 3
-    },
-    {
      "nombre": "Metalcry",
      "id": "metalcry",
      "url": "https://metalcry.com/rosalie-cunningham-regresa-a-espana-con-diez-fechas-de-presentacion-de-rosalies-fourth/",
+     "prioridad": 3
+    },
+    {
+     "nombre": "conciertos.club (portada Madrid)",
+     "id": "cc_portada",
+     "url": "https://conciertos.club/madrid/conciertos/120862-rosalie-cunningham",
      "prioridad": 3
     },
     {
@@ -32190,6 +32195,7 @@
    "estado": "contrastado",
    "conflictos": [],
    "notas": [
+    "Dato de la última lectura completa de Rock and Blog (2026-09-30): hoy no se pudo leer",
     "Sala: Sala Changó según Conciertos por Madrid, Sala Changó (web oficial), Songkick Madrid; Sala Wagon según La Ganzúa, MariskalRock (guía), Rock and Blog, Rock for Everyone (agenda mensual Madrid), conciertos.club (buscador semanal), conciertos.club (por estilo), conciertos.club (portada Madrid). Resuelto por prioridad de fuente (la de mayor prioridad confirma Sala Changó)."
    ],
    "en_foco": true,
@@ -34309,27 +34315,9 @@
      "prioridad": 3
     },
     {
-     "nombre": "Rock for Everyone (agenda mensual Madrid)",
-     "id": "rockforeveryone",
-     "url": "https://rockforeveryone.es/agenda-de-conciertos-heavy-en-madrid-en-octubre-de-2026/",
-     "prioridad": 3
-    },
-    {
      "nombre": "Conciertos por Madrid",
      "id": "cpm",
      "url": "https://conciertospormadrid.com/conciertos/primal-fear-madrid-08-10-2026/",
-     "prioridad": 3
-    },
-    {
-     "nombre": "TodoHeavyMetal",
-     "id": "thm",
-     "url": "https://www.todoheavymetal.com/index.php/agenda/amp",
-     "prioridad": 3
-    },
-    {
-     "nombre": "conciertos.club (portada Madrid)",
-     "id": "cc_portada",
-     "url": "https://conciertos.club/madrid/conciertos/115145-primal-fear-ankhara",
      "prioridad": 3
     },
     {
@@ -34339,15 +34327,33 @@
      "prioridad": 3
     },
     {
-     "nombre": "Metal Symphony (agenda de temporada)",
-     "id": "metalsymphony",
-     "url": "https://www.metalsymphony.com/conciertos-de-rock-y-metal-en-espana-otono-2026/",
+     "nombre": "Rock for Everyone (agenda mensual Madrid)",
+     "id": "rockforeveryone",
+     "url": "https://rockforeveryone.es/agenda-de-conciertos-heavy-en-madrid-en-octubre-de-2026/",
+     "prioridad": 3
+    },
+    {
+     "nombre": "conciertos.club (portada Madrid)",
+     "id": "cc_portada",
+     "url": "https://conciertos.club/madrid/conciertos/115145-primal-fear-ankhara",
+     "prioridad": 3
+    },
+    {
+     "nombre": "TodoHeavyMetal",
+     "id": "thm",
+     "url": "https://www.todoheavymetal.com/index.php/agenda/amp",
      "prioridad": 3
     },
     {
      "nombre": "Metal Legion",
      "id": "metallegion",
      "url": "https://metallegion.es/conciertos/",
+     "prioridad": 3
+    },
+    {
+     "nombre": "Metal Symphony (agenda de temporada)",
+     "id": "metalsymphony",
+     "url": "https://www.metalsymphony.com/conciertos-de-rock-y-metal-en-espana-otono-2026/",
      "prioridad": 3
     },
     {
@@ -34378,7 +34384,8 @@
    "estado": "contrastado",
    "conflictos": [],
    "notas": [
-    "Hora: 19:00 según Get Rock (promotora), Rock for Everyone (agenda mensual Madrid); 21:00 según La Ganzúa, conciertos.club (buscador semanal), conciertos.club (por estilo), conciertos.club (portada Madrid). Resuelto por prioridad de fuente (la fuente de mayor prioridad confirma 19:00)."
+    "Hora: 19:00 según Get Rock (promotora), Rock for Everyone (agenda mensual Madrid); 21:00 según La Ganzúa, conciertos.club (buscador semanal), conciertos.club (por estilo), conciertos.club (portada Madrid). Resuelto por prioridad de fuente (la fuente de mayor prioridad confirma 19:00).",
+    "Dato de la última lectura completa de Rock and Blog (2026-09-30): hoy no se pudo leer"
    ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
@@ -34610,7 +34617,8 @@
    "estado": "contrastado",
    "conflictos": [],
    "notas": [
-    "Hora: 20:00 según La Ganzúa, La Riviera (web oficial), Songkick Madrid; 21:00 según conciertos.club (buscador semanal), conciertos.club (por estilo), conciertos.club (portada Madrid). Resuelto por prioridad de fuente (la fuente de mayor prioridad confirma 20:00)."
+    "Hora: 20:00 según La Ganzúa, La Riviera (web oficial), Songkick Madrid; 21:00 según conciertos.club (buscador semanal), conciertos.club (por estilo), conciertos.club (portada Madrid). Resuelto por prioridad de fuente (la fuente de mayor prioridad confirma 20:00).",
+    "Dato de la última lectura completa de Rock and Blog (2026-09-30): hoy no se pudo leer"
    ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
@@ -40467,7 +40475,7 @@
    }
   },
   {
-   "id": "73c3f7b55eb5",
+   "id": "73c3f7b55ed8",
    "fecha": "2026-10-09",
    "hora": "21:00",
    "artista": "Devin Townsend",
@@ -42863,7 +42871,7 @@
    }
   },
   {
-   "id": "73c3f7b55ed8",
+   "id": "73c3f7b55eb5",
    "fecha": "2026-10-09",
    "hora": null,
    "artista": "Devin Townsend",
@@ -43008,7 +43016,8 @@
     }
    ],
    "notas": [
-    "Conflicto de hora: 20:30 según conciertos.club (buscador semanal), conciertos.club (por estilo), conciertos.club (portada Madrid); 19:00 según Songkick Madrid."
+    "Conflicto de hora: 20:30 según conciertos.club (buscador semanal), conciertos.club (por estilo), conciertos.club (portada Madrid); 19:00 según Songkick Madrid.",
+    "Dato de la última lectura completa de Rock and Blog (2026-09-30): hoy no se pudo leer"
    ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
@@ -44610,8 +44619,8 @@
    ],
    "categoria": "fuera de foco",
    "categorias": [
-    "pop e indie",
     "fuera de foco",
+    "pop e indie",
     "rock y metal"
    ],
    "genero_discogs": [
@@ -45843,7 +45852,8 @@
    "estado": "contrastado",
    "conflictos": [],
    "notas": [
-    "Hora: 19:30 según Get Rock (promotora); 21:00 según La Ganzúa, conciertos.club (buscador semanal), conciertos.club (por estilo), conciertos.club (portada Madrid). Resuelto por prioridad de fuente (la fuente de mayor prioridad confirma 19:30)."
+    "Hora: 19:30 según Get Rock (promotora); 21:00 según La Ganzúa, conciertos.club (buscador semanal), conciertos.club (por estilo), conciertos.club (portada Madrid). Resuelto por prioridad de fuente (la fuente de mayor prioridad confirma 19:30).",
+    "Dato de la última lectura completa de Rock and Blog (2026-09-30): hoy no se pudo leer"
    ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
@@ -46597,7 +46607,7 @@
    ],
    "categoria": "fuera de foco",
    "categorias": [
-    "pop e indie"
+    "fuera de foco"
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
@@ -47147,7 +47157,8 @@
    "categoria": "fuera de foco",
    "categorias": [
     "pop e indie",
-    "rock y metal"
+    "rock y metal",
+    "fuera de foco"
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
@@ -47546,7 +47557,8 @@
    ],
    "categoria": "fuera de foco",
    "categorias": [
-    "pop e indie"
+    "pop e indie",
+    "fuera de foco"
    ],
    "genero_discogs": [
     "Latin",
@@ -50458,7 +50470,8 @@
     }
    ],
    "notas": [
-    "Conflicto de hora: 19:30 según conciertos.club (buscador semanal), conciertos.club (por estilo), conciertos.club (portada Madrid); 21:00 según La Ganzúa."
+    "Conflicto de hora: 19:30 según conciertos.club (buscador semanal), conciertos.club (por estilo), conciertos.club (portada Madrid); 21:00 según La Ganzúa.",
+    "Dato de la última lectura completa de Rock and Blog (2026-09-30): hoy no se pudo leer"
    ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
@@ -51104,8 +51117,8 @@
    ],
    "categoria": "fuera de foco",
    "categorias": [
-    "pop e indie",
     "fuera de foco",
+    "pop e indie",
     "rock y metal"
    ],
    "genero_discogs": [
@@ -53180,7 +53193,8 @@
    "estado": "contrastado",
    "conflictos": [],
    "notas": [
-    "Hora: 20:30 según La Ganzúa, Sala Changó (web oficial), Songkick Madrid; 21:00 según conciertos.club (buscador semanal), conciertos.club (por estilo), conciertos.club (portada Madrid). Resuelto por prioridad de fuente (la fuente de mayor prioridad confirma 20:30)."
+    "Hora: 20:30 según La Ganzúa, Sala Changó (web oficial), Songkick Madrid; 21:00 según conciertos.club (buscador semanal), conciertos.club (por estilo), conciertos.club (portada Madrid). Resuelto por prioridad de fuente (la fuente de mayor prioridad confirma 20:30).",
+    "Dato de la última lectura completa de Rock and Blog (2026-09-30): hoy no se pudo leer"
    ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
@@ -53886,7 +53900,8 @@
    ],
    "categoria": "fuera de foco",
    "categorias": [
-    "pop e indie"
+    "pop e indie",
+    "fuera de foco"
    ],
    "genero_discogs": [
     "Pop",
@@ -54375,7 +54390,7 @@
    "estilo_fuente": [],
    "categoria": "fuera de foco",
    "categorias": [
-    "sin clasificar"
+    "fuera de foco"
    ],
    "genero_discogs": [
     "Children's"
@@ -55532,8 +55547,8 @@
    ],
    "categoria": "fuera de foco",
    "categorias": [
-    "pop e indie",
     "fuera de foco",
+    "pop e indie",
     "rock y metal"
    ],
    "genero_discogs": [
@@ -57574,7 +57589,8 @@
     }
    ],
    "notas": [
-    "Conflicto de hora: 21:00 según conciertos.club (buscador semanal), conciertos.club (por estilo), conciertos.club (portada Madrid); 20:30 según La Ganzúa."
+    "Conflicto de hora: 21:00 según conciertos.club (buscador semanal), conciertos.club (por estilo), conciertos.club (portada Madrid); 20:30 según La Ganzúa.",
+    "Dato de la última lectura completa de Rock and Blog (2026-09-30): hoy no se pudo leer"
    ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
@@ -58822,6 +58838,7 @@
    "estado": "contrastado",
    "conflictos": [],
    "notas": [
+    "Dato de la última lectura completa de Rock and Blog (2026-09-30): hoy no se pudo leer",
     "Sala: Sala Nazca según Conciertos por Madrid, Madness Live (promotora), Sala Nazca (web oficial), conciertos.club (buscador semanal), conciertos.club (portada Madrid); Rockville según MariskalRock (guía), Rock and Blog, Songkick Madrid. Resuelto por prioridad de fuente (la de mayor prioridad confirma Sala Nazca)."
    ],
    "en_foco": true,
@@ -59678,8 +59695,8 @@
    "categoria": "fuera de foco",
    "categorias": [
     "cantautor",
-    "pop e indie",
-    "fuera de foco"
+    "fuera de foco",
+    "pop e indie"
    ],
    "genero_discogs": [
     "Latin",
@@ -60076,7 +60093,8 @@
    "estado": "contrastado",
    "conflictos": [],
    "notas": [
-    "Hora: 19:30 según RockVille (web oficial); 21:00 según conciertos.club (buscador semanal), conciertos.club (por estilo), conciertos.club (portada Madrid); 19:00 según Songkick Madrid. Resuelto por prioridad de fuente (la fuente de mayor prioridad confirma 19:30)."
+    "Hora: 19:30 según RockVille (web oficial); 21:00 según conciertos.club (buscador semanal), conciertos.club (por estilo), conciertos.club (portada Madrid); 19:00 según Songkick Madrid. Resuelto por prioridad de fuente (la fuente de mayor prioridad confirma 19:30).",
+    "Dato de la última lectura completa de Rock and Blog (2026-09-30): hoy no se pudo leer"
    ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
@@ -60645,6 +60663,7 @@
    "categoria": "pop e indie",
    "categorias": [
     "pop e indie",
+    "fuera de foco",
     "rock y metal"
    ],
    "genero_discogs": [],
@@ -61016,7 +61035,8 @@
    ],
    "categoria": "pop e indie",
    "categorias": [
-    "pop e indie"
+    "pop e indie",
+    "fuera de foco"
    ],
    "genero_discogs": [],
    "estilos_discogs": [
@@ -61791,7 +61811,7 @@
    }
   },
   {
-   "id": "97a2ae2ad30b",
+   "id": "ec67ca95b0fc",
    "fecha": "2026-10-14",
    "hora": null,
    "artista": "Far East Groove",
@@ -62700,7 +62720,7 @@
    }
   },
   {
-   "id": "ec67ca95b0fc",
+   "id": "97a2ae2ad30b",
    "fecha": "2026-10-14",
    "hora": null,
    "artista": "Yasuharu Takanashi’s",
@@ -62803,6 +62823,7 @@
    ],
    "notas": [
     "Conflicto de hora: 21:00 según conciertos.club (buscador semanal), conciertos.club (portada Madrid); 19:30 según Songkick Madrid.",
+    "Dato de la última lectura completa de Rock and Blog (2026-09-30): hoy no se pudo leer",
     "Artista tomado del titular de la entrada del blog."
    ],
    "en_foco": true,
@@ -65246,7 +65267,9 @@
    ],
    "estado": "contrastado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Dato de la última lectura completa de Rock and Blog (2026-09-30): hoy no se pudo leer"
+   ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-30",
@@ -74907,15 +74930,15 @@
      "prioridad": 3
     },
     {
-     "nombre": "TodoHeavyMetal",
-     "id": "thm",
-     "url": "https://www.todoheavymetal.com/index.php/agenda/amp",
-     "prioridad": 3
-    },
-    {
      "nombre": "conciertos.club (portada Madrid)",
      "id": "cc_portada",
      "url": "https://conciertos.club/madrid/conciertos/109607-sabbat",
+     "prioridad": 3
+    },
+    {
+     "nombre": "TodoHeavyMetal",
+     "id": "thm",
+     "url": "https://www.todoheavymetal.com/index.php/agenda/amp",
      "prioridad": 3
     },
     {
@@ -78782,27 +78805,27 @@
      "prioridad": 3
     },
     {
-     "nombre": "conciertos.club (portada Madrid)",
-     "id": "cc_portada",
-     "url": "https://conciertos.club/madrid/conciertos/123693-hallas",
-     "prioridad": 3
-    },
-    {
      "nombre": "Metalcry",
      "id": "metalcry",
      "url": "https://metalcry.com/el-adventure-rock-de-hallas-volvera-a-espana-tras-su-paso-por-azkena-rock-festival/",
      "prioridad": 3
     },
     {
-     "nombre": "Metal Symphony (agenda de temporada)",
-     "id": "metalsymphony",
-     "url": "https://www.metalsymphony.com/conciertos-de-rock-y-metal-en-espana-otono-2026/",
+     "nombre": "conciertos.club (portada Madrid)",
+     "id": "cc_portada",
+     "url": "https://conciertos.club/madrid/conciertos/123693-hallas",
      "prioridad": 3
     },
     {
      "nombre": "Metal Legion",
      "id": "metallegion",
      "url": "https://metallegion.es/conciertos/",
+     "prioridad": 3
+    },
+    {
+     "nombre": "Metal Symphony (agenda de temporada)",
+     "id": "metalsymphony",
+     "url": "https://www.metalsymphony.com/conciertos-de-rock-y-metal-en-espana-otono-2026/",
      "prioridad": 3
     },
     {
@@ -81132,6 +81155,7 @@
    "notas": [
     "Corrección manual verificada (2026-09-29): Sala en conflicto: Sala But según Hellpress y Metal Legion; Sala Mon según Songkick.",
     "Hora: 18:00 según Get Rock (promotora), Rock for Everyone (agenda mensual Madrid); 19:00 según conciertos.club (buscador semanal), conciertos.club (por estilo), conciertos.club (portada Madrid). Resuelto por prioridad de fuente (la fuente de mayor prioridad confirma 18:00).",
+    "Dato de la última lectura completa de Rock and Blog (2026-09-30): hoy no se pudo leer",
     "Sala: Sala But según Get Rock (promotora), Hellpress (agenda), MariskalRock (guía), Metal Legion, Rock for Everyone (agenda mensual Madrid), Rockgle, Sala But (web oficial), conciertos.club (buscador semanal), conciertos.club (por estilo), conciertos.club (portada Madrid); Sala Mon Live según Rock and Blog, Songkick Madrid. Resuelto por prioridad de fuente (la de mayor prioridad confirma Sala But)."
    ],
    "en_foco": true,
@@ -83512,15 +83536,15 @@
      "prioridad": 3
     },
     {
-     "nombre": "conciertos.club (portada Madrid)",
-     "id": "cc_portada",
-     "url": "https://conciertos.club/madrid/conciertos/108931-gutalax",
-     "prioridad": 3
-    },
-    {
      "nombre": "Metalcry",
      "id": "metalcry",
      "url": "https://metalcry.com/recordamos-los-conciertos-de-gutalax-para-octubre/",
+     "prioridad": 3
+    },
+    {
+     "nombre": "conciertos.club (portada Madrid)",
+     "id": "cc_portada",
+     "url": "https://conciertos.club/madrid/conciertos/108931-gutalax",
      "prioridad": 3
     },
     {
@@ -84782,7 +84806,7 @@
    ],
    "categoria": "fuera de foco",
    "categorias": [
-    "pop e indie"
+    "fuera de foco"
    ],
    "genero_discogs": [
     "Latin",
@@ -85513,15 +85537,15 @@
      "prioridad": 3
     },
     {
-     "nombre": "Rock for Everyone (agenda mensual Madrid)",
-     "id": "rockforeveryone",
-     "url": "https://rockforeveryone.es/agenda-de-conciertos-heavy-en-madrid-en-octubre-de-2026/",
-     "prioridad": 3
-    },
-    {
      "nombre": "Conciertos por Madrid",
      "id": "cpm",
      "url": "https://conciertospormadrid.com/conciertos/deep-purple-madrid-20-10-2026/",
+     "prioridad": 3
+    },
+    {
+     "nombre": "Rock for Everyone (agenda mensual Madrid)",
+     "id": "rockforeveryone",
+     "url": "https://rockforeveryone.es/agenda-de-conciertos-heavy-en-madrid-en-octubre-de-2026/",
      "prioridad": 3
     },
     {
@@ -85531,15 +85555,15 @@
      "prioridad": 3
     },
     {
-     "nombre": "Metal Symphony (agenda de temporada)",
-     "id": "metalsymphony",
-     "url": "https://www.metalsymphony.com/conciertos-de-rock-y-metal-en-espana-otono-2026/",
-     "prioridad": 3
-    },
-    {
      "nombre": "Metal Legion",
      "id": "metallegion",
      "url": "https://metallegion.es/conciertos/",
+     "prioridad": 3
+    },
+    {
+     "nombre": "Metal Symphony (agenda de temporada)",
+     "id": "metalsymphony",
+     "url": "https://www.metalsymphony.com/conciertos-de-rock-y-metal-en-espana-otono-2026/",
      "prioridad": 3
     },
     {
@@ -85565,7 +85589,8 @@
    "conflictos": [],
    "notas": [
     "Hora: 18:30 según Get Rock (promotora), Rock for Everyone (agenda mensual Madrid); 21:00 según conciertos.club (buscador semanal), conciertos.club (por estilo), conciertos.club (portada Madrid). Resuelto por prioridad de fuente (la fuente de mayor prioridad confirma 18:30).",
-    "Del calendario de Rock-Progresivo.com (no indica sala)."
+    "Del calendario de Rock-Progresivo.com (no indica sala).",
+    "Dato de la última lectura completa de Rock and Blog (2026-09-30): hoy no se pudo leer"
    ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
@@ -85961,7 +85986,9 @@
    ],
    "estado": "contrastado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Dato de la última lectura completa de Rock and Blog (2026-09-30): hoy no se pudo leer"
+   ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-30",
@@ -87349,6 +87376,7 @@
    "categoria": "pop e indie",
    "categorias": [
     "pop e indie",
+    "synth y dark wave",
     "rock y metal",
     "americana/country/folk"
    ],
@@ -90103,15 +90131,15 @@
      "prioridad": 3
     },
     {
-     "nombre": "Metal Symphony (agenda de temporada)",
-     "id": "metalsymphony",
-     "url": "https://www.metalsymphony.com/conciertos-de-rock-y-metal-en-espana-otono-2026/",
-     "prioridad": 3
-    },
-    {
      "nombre": "Metal Legion",
      "id": "metallegion",
      "url": "https://metallegion.es/conciertos/",
+     "prioridad": 3
+    },
+    {
+     "nombre": "Metal Symphony (agenda de temporada)",
+     "id": "metalsymphony",
+     "url": "https://www.metalsymphony.com/conciertos-de-rock-y-metal-en-espana-otono-2026/",
      "prioridad": 3
     },
     {
@@ -90162,7 +90190,8 @@
     }
    ],
    "notas": [
-    "Conflicto de hora: 21:00 según conciertos.club (buscador semanal), conciertos.club (por estilo), conciertos.club (portada Madrid); 19:00 según Rock for Everyone (agenda mensual Madrid)."
+    "Conflicto de hora: 21:00 según conciertos.club (buscador semanal), conciertos.club (por estilo), conciertos.club (portada Madrid); 19:00 según Rock for Everyone (agenda mensual Madrid).",
+    "Dato de la última lectura completa de Rock and Blog (2026-09-30): hoy no se pudo leer"
    ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
@@ -91364,7 +91393,7 @@
    }
   },
   {
-   "id": "2ec0e3bd17ce",
+   "id": "2ec0e3bd1729",
    "fecha": "2026-10-22",
    "hora": "20:00",
    "artista": "Synthony",
@@ -91639,15 +91668,15 @@
      "prioridad": 3
     },
     {
-     "nombre": "Rock for Everyone (agenda mensual Madrid)",
-     "id": "rockforeveryone",
-     "url": "https://rockforeveryone.es/agenda-de-conciertos-heavy-en-madrid-en-octubre-de-2026/",
-     "prioridad": 3
-    },
-    {
      "nombre": "Conciertos por Madrid",
      "id": "cpm",
      "url": "https://conciertospormadrid.com/conciertos/band-of-horses-madrid-22-10-2026/",
+     "prioridad": 3
+    },
+    {
+     "nombre": "Rock for Everyone (agenda mensual Madrid)",
+     "id": "rockforeveryone",
+     "url": "https://rockforeveryone.es/agenda-de-conciertos-heavy-en-madrid-en-octubre-de-2026/",
      "prioridad": 3
     },
     {
@@ -91671,7 +91700,9 @@
    ],
    "estado": "contrastado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Dato de la última lectura completa de Rock and Blog (2026-09-30): hoy no se pudo leer"
+   ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-30",
@@ -95033,7 +95064,8 @@
     }
    ],
    "notas": [
-    "Conflicto de hora: 21:00 según conciertos.club (buscador semanal), conciertos.club (por estilo), conciertos.club (portada Madrid); 20:45 según La Ganzúa, Songkick Madrid."
+    "Conflicto de hora: 21:00 según conciertos.club (buscador semanal), conciertos.club (por estilo), conciertos.club (portada Madrid); 20:45 según La Ganzúa, Songkick Madrid.",
+    "Dato de la última lectura completa de Rock and Blog (2026-09-30): hoy no se pudo leer"
    ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
@@ -95530,8 +95562,8 @@
    "categoria": "fuera de foco",
    "categorias": [
     "pop e indie",
-    "blues",
-    "fuera de foco"
+    "fuera de foco",
+    "blues"
    ],
    "genero_discogs": [
     "Electronic",
@@ -96071,7 +96103,8 @@
     }
    ],
    "notas": [
-    "Conflicto de hora: 20:00 según conciertos.club (buscador semanal), conciertos.club (por estilo), conciertos.club (portada Madrid); 18:00 según Rock for Everyone (agenda mensual Madrid), Songkick Madrid."
+    "Conflicto de hora: 20:00 según conciertos.club (buscador semanal), conciertos.club (por estilo), conciertos.club (portada Madrid); 18:00 según Rock for Everyone (agenda mensual Madrid), Songkick Madrid.",
+    "Dato de la última lectura completa de Rock and Blog (2026-09-30): hoy no se pudo leer"
    ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
@@ -96180,7 +96213,7 @@
    }
   },
   {
-   "id": "2ec0e3bd1729",
+   "id": "2ec0e3bd17ce",
    "fecha": "2026-10-22",
    "hora": null,
    "artista": "Synthony",
@@ -98958,7 +98991,8 @@
    ],
    "categoria": "pop e indie",
    "categorias": [
-    "pop e indie"
+    "pop e indie",
+    "fuera de foco"
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
@@ -100552,7 +100586,8 @@
     }
    ],
    "notas": [
-    "Conflicto de hora: 20:00 según conciertos.club (buscador semanal), conciertos.club (por estilo), conciertos.club (portada Madrid); 19:00 según La Ganzúa, Songkick Madrid."
+    "Conflicto de hora: 20:00 según conciertos.club (buscador semanal), conciertos.club (por estilo), conciertos.club (portada Madrid); 19:00 según La Ganzúa, Songkick Madrid.",
+    "Dato de la última lectura completa de Rock and Blog (2026-09-30): hoy no se pudo leer"
    ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
@@ -105818,6 +105853,7 @@
    "categoria": "fuera de foco",
    "categorias": [
     "pop e indie",
+    "fuera de foco",
     "rock y metal"
    ],
    "genero_discogs": [
@@ -109660,7 +109696,7 @@
    ],
    "categoria": "fuera de foco",
    "categorias": [
-    "tributos y versiones"
+    "fuera de foco"
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
@@ -110837,7 +110873,7 @@
    ],
    "categoria": "fuera de foco",
    "categorias": [
-    "pop e indie"
+    "fuera de foco"
    ],
    "genero_discogs": [
     "Pop",
@@ -115667,7 +115703,9 @@
    ],
    "estado": "contrastado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Dato de la última lectura completa de Rock and Blog (2026-09-30): hoy no se pudo leer"
+   ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-30",
@@ -119545,15 +119583,15 @@
      "prioridad": 3
     },
     {
-     "nombre": "Rock for Everyone (agenda mensual Madrid)",
-     "id": "rockforeveryone",
-     "url": "https://rockforeveryone.es/agenda-de-conciertos-heavy-en-madrid-en-octubre-de-2026/",
-     "prioridad": 3
-    },
-    {
      "nombre": "Conciertos por Madrid",
      "id": "cpm",
      "url": "https://conciertospormadrid.com/conciertos/messa-madrid-29-10-2026/",
+     "prioridad": 3
+    },
+    {
+     "nombre": "Rock for Everyone (agenda mensual Madrid)",
+     "id": "rockforeveryone",
+     "url": "https://rockforeveryone.es/agenda-de-conciertos-heavy-en-madrid-en-octubre-de-2026/",
      "prioridad": 3
     },
     {
@@ -119590,7 +119628,8 @@
    "estado": "contrastado",
    "conflictos": [],
    "notas": [
-    "Hora: 19:00 según Get Rock (promotora), Rock for Everyone (agenda mensual Madrid); 21:00 según conciertos.club (buscador semanal), conciertos.club (por estilo), conciertos.club (portada Madrid). Resuelto por prioridad de fuente (la fuente de mayor prioridad confirma 19:00)."
+    "Hora: 19:00 según Get Rock (promotora), Rock for Everyone (agenda mensual Madrid); 21:00 según conciertos.club (buscador semanal), conciertos.club (por estilo), conciertos.club (portada Madrid). Resuelto por prioridad de fuente (la fuente de mayor prioridad confirma 19:00).",
+    "Dato de la última lectura completa de Rock and Blog (2026-09-30): hoy no se pudo leer"
    ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
@@ -119844,6 +119883,7 @@
    ],
    "notas": [
     "Corrección manual verificada (2026-09-29): Sala en conflicto: Nazca según TodoHeavyMetal; Independance Club según Metal Legion.",
+    "Dato de la última lectura completa de Rock and Blog (2026-09-30): hoy no se pudo leer",
     "Sala: Independance Club según Independance Club (web oficial), Metal Legion, Metalcry; Sala Nazca según Rock and Blog, Rockgle, Songkick Madrid, conciertos.club (buscador semanal), conciertos.club (por estilo), conciertos.club (portada Madrid). Resuelto por prioridad de fuente (la de mayor prioridad confirma Independance Club).",
     "Sala: Independance Club según Independance Club (web oficial), Metal Legion, Metalcry, Rock and Blog, Rockgle, Songkick Madrid, conciertos.club (buscador semanal), conciertos.club (por estilo), conciertos.club (portada Madrid); Sala Independence según Hellpress (agenda). Resuelto por prioridad de fuente (la de mayor prioridad confirma Independance Club)."
    ],
@@ -120540,7 +120580,8 @@
    ],
    "categoria": "fuera de foco",
    "categorias": [
-    "pop e indie"
+    "pop e indie",
+    "fuera de foco"
    ],
    "genero_discogs": [
     "Pop"
@@ -122736,7 +122777,8 @@
    ],
    "categoria": "pop e indie",
    "categorias": [
-    "pop e indie"
+    "pop e indie",
+    "fuera de foco"
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
@@ -122901,15 +122943,15 @@
      "prioridad": 3
     },
     {
-     "nombre": "Rock for Everyone (agenda mensual Madrid)",
-     "id": "rockforeveryone",
-     "url": "https://rockforeveryone.es/agenda-de-conciertos-heavy-en-madrid-en-octubre-de-2026/",
-     "prioridad": 3
-    },
-    {
      "nombre": "Conciertos por Madrid",
      "id": "cpm",
      "url": "https://conciertospormadrid.com/conciertos/michael-monroe-madrid-2026/",
+     "prioridad": 3
+    },
+    {
+     "nombre": "Rock for Everyone (agenda mensual Madrid)",
+     "id": "rockforeveryone",
+     "url": "https://rockforeveryone.es/agenda-de-conciertos-heavy-en-madrid-en-octubre-de-2026/",
      "prioridad": 3
     },
     {
@@ -122965,7 +123007,8 @@
     }
    ],
    "notas": [
-    "Conflicto de hora: 21:00 según conciertos.club (buscador semanal), conciertos.club (portada Madrid); 19:00 según Songkick Madrid."
+    "Conflicto de hora: 21:00 según conciertos.club (buscador semanal), conciertos.club (portada Madrid); 19:00 según Songkick Madrid.",
+    "Dato de la última lectura completa de Rock and Blog (2026-09-30): hoy no se pudo leer"
    ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
@@ -123289,7 +123332,8 @@
    "categoria": "fuera de foco",
    "categorias": [
     "pop e indie",
-    "rock y metal"
+    "rock y metal",
+    "fuera de foco"
    ],
    "genero_discogs": [
     "Electronic"
@@ -124217,8 +124261,8 @@
    "categoria": "fuera de foco",
    "categorias": [
     "pop e indie",
-    "americana/country/folk",
-    "fuera de foco"
+    "fuera de foco",
+    "americana/country/folk"
    ],
    "genero_discogs": [
     "Pop"
@@ -134989,7 +135033,7 @@
    ],
    "categoria": "fuera de foco",
    "categorias": [
-    "sin clasificar"
+    "fuera de foco"
    ],
    "genero_discogs": [
     "Latin"
@@ -136997,7 +137041,9 @@
    ],
    "estado": "contrastado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Dato de la última lectura completa de Rock and Blog (2026-09-30): hoy no se pudo leer"
+   ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-30",
@@ -140180,7 +140226,8 @@
     "americana/country/folk",
     "fuera de foco",
     "cantautor",
-    "pop e indie"
+    "pop e indie",
+    "synth y dark wave"
    ],
    "genero_discogs": [
     "Latin",
@@ -140243,7 +140290,9 @@
    ],
    "estado": "contrastado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Dato de la última lectura completa de Rock and Blog (2026-09-30): hoy no se pudo leer"
+   ],
    "en_foco": false,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-30",
@@ -141236,15 +141285,15 @@
      "prioridad": 3
     },
     {
-     "nombre": "conciertos.club (portada Madrid)",
-     "id": "cc_portada",
-     "url": "https://conciertos.club/madrid/conciertos/125224-the-browning-within-destruction-abbie-falls",
-     "prioridad": 3
-    },
-    {
      "nombre": "Metalcry",
      "id": "metalcry",
      "url": "https://metalcry.com/the-browning-encabeza-una-gira-brutal-en-noviembre-de-2026/",
+     "prioridad": 3
+    },
+    {
+     "nombre": "conciertos.club (portada Madrid)",
+     "id": "cc_portada",
+     "url": "https://conciertos.club/madrid/conciertos/125224-the-browning-within-destruction-abbie-falls",
      "prioridad": 3
     },
     {
@@ -143374,7 +143423,8 @@
    "estado": "contrastado",
    "conflictos": [],
    "notas": [
-    "Hora: 21:00 según Wurlitzer Ballroom (web oficial); 20:00 según Songkick Madrid. Resuelto por prioridad de fuente (la fuente de mayor prioridad confirma 21:00)."
+    "Hora: 21:00 según Wurlitzer Ballroom (web oficial); 20:00 según Songkick Madrid. Resuelto por prioridad de fuente (la fuente de mayor prioridad confirma 21:00).",
+    "Dato de la última lectura completa de Rock and Blog (2026-09-30): hoy no se pudo leer"
    ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
@@ -145109,7 +145159,7 @@
    ],
    "categoria": "fuera de foco",
    "categorias": [
-    "pop e indie"
+    "fuera de foco"
    ],
    "genero_discogs": [
     "Pop"
@@ -145537,7 +145587,8 @@
    ],
    "categoria": "pop e indie",
    "categorias": [
-    "pop e indie"
+    "pop e indie",
+    "fuera de foco"
    ],
    "genero_discogs": [],
    "estilos_discogs": [
@@ -146751,6 +146802,7 @@
    "notas": [
     "Evento: EUROPEAN VACATION",
     "Conflicto de hora: 21:00 según conciertos.club (buscador semanal), conciertos.club (por estilo); 17:30 según Songkick Madrid.",
+    "Dato de la última lectura completa de Rock and Blog (2026-09-30): hoy no se pudo leer",
     "Sala: Revi Space según Hellpress (agenda), Revi Live / Revi Space (web oficial); Revi Live según Madness Live (promotora), MariskalRock (guía), Rock and Blog, Songkick Madrid, conciertos.club (buscador semanal), conciertos.club (por estilo). Resuelto por prioridad de fuente (la de mayor prioridad confirma Revi Space)."
    ],
    "en_foco": true,
@@ -147527,9 +147579,15 @@
      "id": "cc_estilos",
      "url": "https://conciertos.club/madrid/conciertos/124724-aiko-suena-jaleo",
      "prioridad": 3
+    },
+    {
+     "nombre": "Songkick Madrid",
+     "id": "songkick",
+     "url": "https://www.songkick.com/concerts/43420117-aiko-at-sala-vesta",
+     "prioridad": 3
     }
    ],
-   "estado": "1_fuente",
+   "estado": "contrastado",
    "conflictos": [],
    "notas": [],
    "en_foco": false,
@@ -148280,12 +148338,6 @@
      "id": "cc_buscador",
      "url": "https://conciertos.club/madrid/conciertos/124661-toro",
      "prioridad": 3
-    },
-    {
-     "nombre": "Songkick Madrid",
-     "id": "songkick",
-     "url": "https://www.songkick.com/concerts/43327175-toro-at-independance",
-     "prioridad": 3
     }
    ],
    "estado": "contrastado",
@@ -149020,6 +149072,7 @@
    "categoria": "pop e indie",
    "categorias": [
     "pop e indie",
+    "synth y dark wave",
     "rock y metal"
    ],
    "genero_discogs": [],
@@ -150546,15 +150599,15 @@
    "nacionalidad_fuente": "Wikidata",
    "fuentes": [
     {
-     "nombre": "Metal Symphony (agenda de temporada)",
-     "id": "metalsymphony",
-     "url": "https://www.metalsymphony.com/conciertos-de-rock-y-metal-en-espana-otono-2026/",
-     "prioridad": 3
-    },
-    {
      "nombre": "Metal Legion",
      "id": "metallegion",
      "url": "https://metallegion.es/conciertos/",
+     "prioridad": 3
+    },
+    {
+     "nombre": "Metal Symphony (agenda de temporada)",
+     "id": "metalsymphony",
+     "url": "https://www.metalsymphony.com/conciertos-de-rock-y-metal-en-espana-otono-2026/",
      "prioridad": 3
     },
     {
@@ -151522,7 +151575,9 @@
    ],
    "estado": "contrastado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Dato de la última lectura completa de Rock and Blog (2026-09-30): hoy no se pudo leer"
+   ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-30",
@@ -151952,7 +152007,6 @@
    ],
    "categoria": "fuera de foco",
    "categorias": [
-    "pop e indie",
     "fuera de foco"
    ],
    "genero_discogs": [
@@ -152941,7 +152995,8 @@
    ],
    "categoria": "pop e indie",
    "categorias": [
-    "pop e indie"
+    "pop e indie",
+    "fuera de foco"
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
@@ -154573,7 +154628,8 @@
     }
    ],
    "notas": [
-    "Conflicto de hora: 21:00 según conciertos.club (buscador semanal), conciertos.club (por estilo); 21:15 según La Ganzúa, Songkick Madrid."
+    "Conflicto de hora: 21:00 según conciertos.club (buscador semanal), conciertos.club (por estilo); 21:15 según La Ganzúa, Songkick Madrid.",
+    "Dato de la última lectura completa de Rock and Blog (2026-09-30): hoy no se pudo leer"
    ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
@@ -155868,7 +155924,9 @@
    ],
    "estado": "contrastado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Dato de la última lectura completa de Rock and Blog (2026-09-30): hoy no se pudo leer"
+   ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-30",
@@ -157150,7 +157208,8 @@
    ],
    "categoria": "synth y dark wave",
    "categorias": [
-    "pop e indie"
+    "pop e indie",
+    "fuera de foco"
    ],
    "genero_discogs": [],
    "estilos_discogs": [
@@ -158213,7 +158272,9 @@
    ],
    "estado": "contrastado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Dato de la última lectura completa de Rock and Blog (2026-09-30): hoy no se pudo leer"
+   ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-30",
@@ -159473,7 +159534,8 @@
    "estado": "contrastado",
    "conflictos": [],
    "notas": [
-    "Hora: 21:00 según La Ganzúa, La Riviera (web oficial), conciertos.club (buscador semanal), conciertos.club (por estilo); 20:30 según Songkick Madrid. Resuelto por prioridad de fuente (la fuente de mayor prioridad confirma 21:00)."
+    "Hora: 21:00 según La Ganzúa, La Riviera (web oficial), conciertos.club (buscador semanal), conciertos.club (por estilo); 20:30 según Songkick Madrid. Resuelto por prioridad de fuente (la fuente de mayor prioridad confirma 21:00).",
+    "Dato de la última lectura completa de Rock and Blog (2026-09-30): hoy no se pudo leer"
    ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
@@ -159987,7 +160049,8 @@
     }
    ],
    "notas": [
-    "Conflicto de hora: 19:30 según conciertos.club (buscador semanal), conciertos.club (por estilo); 21:00 según La Ganzúa."
+    "Conflicto de hora: 19:30 según conciertos.club (buscador semanal), conciertos.club (por estilo); 21:00 según La Ganzúa.",
+    "Dato de la última lectura completa de Rock and Blog (2026-09-30): hoy no se pudo leer"
    ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
@@ -161021,7 +161084,8 @@
    ],
    "categoria": "pop e indie",
    "categorias": [
-    "pop e indie"
+    "pop e indie",
+    "fuera de foco"
    ],
    "genero_discogs": [],
    "estilos_discogs": [
@@ -161625,15 +161689,15 @@
      "prioridad": 3
     },
     {
-     "nombre": "Metal Symphony (agenda de temporada)",
-     "id": "metalsymphony",
-     "url": "https://www.metalsymphony.com/conciertos-de-rock-y-metal-en-espana-otono-2026/",
-     "prioridad": 3
-    },
-    {
      "nombre": "Metal Legion",
      "id": "metallegion",
      "url": "https://metallegion.es/conciertos/",
+     "prioridad": 3
+    },
+    {
+     "nombre": "Metal Symphony (agenda de temporada)",
+     "id": "metalsymphony",
+     "url": "https://www.metalsymphony.com/conciertos-de-rock-y-metal-en-espana-otono-2026/",
      "prioridad": 3
     },
     {
@@ -161657,7 +161721,9 @@
    ],
    "estado": "contrastado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Dato de la última lectura completa de Rock and Blog (2026-09-30): hoy no se pudo leer"
+   ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-30",
@@ -165337,7 +165403,9 @@
    ],
    "estado": "contrastado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Dato de la última lectura completa de Rock and Blog (2026-09-30): hoy no se pudo leer"
+   ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-30",
@@ -170558,15 +170626,15 @@
      "prioridad": 3
     },
     {
-     "nombre": "Metal Symphony (agenda de temporada)",
-     "id": "metalsymphony",
-     "url": "https://www.metalsymphony.com/conciertos-de-rock-y-metal-en-espana-otono-2026/",
-     "prioridad": 3
-    },
-    {
      "nombre": "Metal Legion",
      "id": "metallegion",
      "url": "https://metallegion.es/conciertos/",
+     "prioridad": 3
+    },
+    {
+     "nombre": "Metal Symphony (agenda de temporada)",
+     "id": "metalsymphony",
+     "url": "https://www.metalsymphony.com/conciertos-de-rock-y-metal-en-espana-otono-2026/",
      "prioridad": 3
     },
     {
@@ -170622,7 +170690,8 @@
     }
    ],
    "notas": [
-    "Conflicto de hora: 21:00 según conciertos.club (buscador semanal), conciertos.club (por estilo); 20:00 según La Ganzúa; 19:00 según Songkick Madrid."
+    "Conflicto de hora: 21:00 según conciertos.club (buscador semanal), conciertos.club (por estilo); 20:00 según La Ganzúa; 19:00 según Songkick Madrid.",
+    "Dato de la última lectura completa de Rock and Blog (2026-09-30): hoy no se pudo leer"
    ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
@@ -173676,7 +173745,8 @@
    ],
    "categoria": "fuera de foco",
    "categorias": [
-    "pop e indie"
+    "pop e indie",
+    "fuera de foco"
    ],
    "genero_discogs": [
     "Pop",
@@ -173874,8 +173944,8 @@
    "categoria": "americana/country/folk",
    "categorias": [
     "pop e indie",
-    "americana/country/folk",
     "fuera de foco",
+    "americana/country/folk",
     "rock y metal"
    ],
    "genero_discogs": [
@@ -174229,7 +174299,8 @@
    "categoria": "fuera de foco",
    "categorias": [
     "pop e indie",
-    "rock y metal"
+    "rock y metal",
+    "fuera de foco"
    ],
    "genero_discogs": [
     "Latin",
@@ -175182,6 +175253,7 @@
    ],
    "categoria": "fuera de foco",
    "categorias": [
+    "fuera de foco",
     "pop e indie",
     "rock y metal"
    ],
@@ -175622,7 +175694,9 @@
    ],
    "estado": "contrastado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Dato de la última lectura completa de Rock and Blog (2026-09-30): hoy no se pudo leer"
+   ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-30",
@@ -175976,7 +176050,8 @@
    ],
    "categoria": "fuera de foco",
    "categorias": [
-    "pop e indie"
+    "pop e indie",
+    "fuera de foco"
    ],
    "genero_discogs": [
     "Pop"
@@ -176398,7 +176473,9 @@
    ],
    "estado": "contrastado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Dato de la última lectura completa de Rock and Blog (2026-09-30): hoy no se pudo leer"
+   ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-30",
@@ -178540,7 +178617,8 @@
    ],
    "categoria": "pop e indie",
    "categorias": [
-    "pop e indie"
+    "pop e indie",
+    "fuera de foco"
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
@@ -178703,7 +178781,9 @@
    ],
    "estado": "contrastado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Dato de la última lectura completa de Rock and Blog (2026-09-30): hoy no se pudo leer"
+   ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-30",
@@ -180144,7 +180224,8 @@
     }
    ],
    "notas": [
-    "Conflicto de hora: 21:00 según conciertos.club (buscador semanal), conciertos.club (por estilo); 19:00 según Songkick Madrid."
+    "Conflicto de hora: 21:00 según conciertos.club (buscador semanal), conciertos.club (por estilo); 19:00 según Songkick Madrid.",
+    "Dato de la última lectura completa de Rock and Blog (2026-09-30): hoy no se pudo leer"
    ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
@@ -180299,7 +180380,9 @@
    ],
    "estado": "1_fuente",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Dato de la última lectura completa de Rock and Blog (2026-09-30): hoy no se pudo leer"
+   ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-30",
@@ -181448,15 +181531,15 @@
      "prioridad": 3
     },
     {
-     "nombre": "Metal Symphony (agenda de temporada)",
-     "id": "metalsymphony",
-     "url": "https://www.metalsymphony.com/conciertos-de-rock-y-metal-en-espana-otono-2026/",
-     "prioridad": 3
-    },
-    {
      "nombre": "Metal Legion",
      "id": "metallegion",
      "url": "https://metallegion.es/conciertos/",
+     "prioridad": 3
+    },
+    {
+     "nombre": "Metal Symphony (agenda de temporada)",
+     "id": "metalsymphony",
+     "url": "https://www.metalsymphony.com/conciertos-de-rock-y-metal-en-espana-otono-2026/",
      "prioridad": 3
     },
     {
@@ -181973,7 +182056,8 @@
    ],
    "categoria": "pop e indie",
    "categorias": [
-    "pop e indie"
+    "pop e indie",
+    "fuera de foco"
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
@@ -182127,7 +182211,8 @@
    ],
    "categoria": "pop e indie",
    "categorias": [
-    "pop e indie"
+    "pop e indie",
+    "fuera de foco"
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
@@ -184408,7 +184493,8 @@
    ],
    "categoria": "americana/country/folk",
    "categorias": [
-    "pop e indie"
+    "pop e indie",
+    "fuera de foco"
    ],
    "genero_discogs": [
     "Folk, World, & Country"
@@ -187506,15 +187592,15 @@
      "prioridad": 3
     },
     {
-     "nombre": "Metal Symphony (agenda de temporada)",
-     "id": "metalsymphony",
-     "url": "https://www.metalsymphony.com/conciertos-de-rock-y-metal-en-espana-otono-2026/",
-     "prioridad": 3
-    },
-    {
      "nombre": "Metal Legion",
      "id": "metallegion",
      "url": "https://metallegion.es/conciertos/",
+     "prioridad": 3
+    },
+    {
+     "nombre": "Metal Symphony (agenda de temporada)",
+     "id": "metalsymphony",
+     "url": "https://www.metalsymphony.com/conciertos-de-rock-y-metal-en-espana-otono-2026/",
      "prioridad": 3
     },
     {
@@ -187559,7 +187645,8 @@
     }
    ],
    "notas": [
-    "Conflicto de hora: 21:00 según conciertos.club (buscador semanal), conciertos.club (por estilo); 20:00 según La Ganzúa, Songkick Madrid."
+    "Conflicto de hora: 21:00 según conciertos.club (buscador semanal), conciertos.club (por estilo); 20:00 según La Ganzúa, Songkick Madrid.",
+    "Dato de la última lectura completa de Rock and Blog (2026-09-30): hoy no se pudo leer"
    ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
@@ -188001,7 +188088,7 @@
    ],
    "categoria": "fuera de foco",
    "categorias": [
-    "sin clasificar"
+    "fuera de foco"
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
@@ -188430,27 +188517,27 @@
      "prioridad": 3
     },
     {
-     "nombre": "TodoHeavyMetal",
-     "id": "thm",
-     "url": "https://www.todoheavymetal.com/index.php/agenda/amp",
-     "prioridad": 3
-    },
-    {
      "nombre": "Metalcry",
      "id": "metalcry",
      "url": "https://metalcry.com/kamelot-desembarcara-en-barcelona-y-madrid-con-su-ambicioso-dark-asylum-world-tour/",
      "prioridad": 3
     },
     {
-     "nombre": "Metal Symphony (agenda de temporada)",
-     "id": "metalsymphony",
-     "url": "https://www.metalsymphony.com/conciertos-de-rock-y-metal-en-espana-otono-2026/",
+     "nombre": "TodoHeavyMetal",
+     "id": "thm",
+     "url": "https://www.todoheavymetal.com/index.php/agenda/amp",
      "prioridad": 3
     },
     {
      "nombre": "Metal Legion",
      "id": "metallegion",
      "url": "https://metallegion.es/conciertos/",
+     "prioridad": 3
+    },
+    {
+     "nombre": "Metal Symphony (agenda de temporada)",
+     "id": "metalsymphony",
+     "url": "https://www.metalsymphony.com/conciertos-de-rock-y-metal-en-espana-otono-2026/",
      "prioridad": 3
     },
     {
@@ -188474,7 +188561,9 @@
    ],
    "estado": "contrastado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Dato de la última lectura completa de Rock and Blog (2026-09-30): hoy no se pudo leer"
+   ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-30",
@@ -189447,8 +189536,8 @@
    ],
    "categoria": "fuera de foco",
    "categorias": [
-    "pop e indie",
-    "fuera de foco"
+    "fuera de foco",
+    "pop e indie"
    ],
    "genero_discogs": [
     "Latin",
@@ -190470,7 +190559,8 @@
    "estado": "contrastado",
    "conflictos": [],
    "notas": [
-    "Hora: 20:30 según La Ganzúa, La Riviera (web oficial), Songkick Madrid; 21:00 según conciertos.club (buscador semanal). Resuelto por prioridad de fuente (la fuente de mayor prioridad confirma 20:30)."
+    "Hora: 20:30 según La Ganzúa, La Riviera (web oficial), Songkick Madrid; 21:00 según conciertos.club (buscador semanal). Resuelto por prioridad de fuente (la fuente de mayor prioridad confirma 20:30).",
+    "Dato de la última lectura completa de Rock and Blog (2026-09-30): hoy no se pudo leer"
    ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
@@ -193415,7 +193505,9 @@
    ],
    "estado": "contrastado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Dato de la última lectura completa de Rock and Blog (2026-09-30): hoy no se pudo leer"
+   ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-30",
@@ -193613,15 +193705,15 @@
      "prioridad": 3
     },
     {
-     "nombre": "Metal Symphony (agenda de temporada)",
-     "id": "metalsymphony",
-     "url": "https://www.metalsymphony.com/conciertos-de-rock-y-metal-en-espana-otono-2026/",
-     "prioridad": 3
-    },
-    {
      "nombre": "Metal Legion",
      "id": "metallegion",
      "url": "https://metallegion.es/conciertos/",
+     "prioridad": 3
+    },
+    {
+     "nombre": "Metal Symphony (agenda de temporada)",
+     "id": "metalsymphony",
+     "url": "https://www.metalsymphony.com/conciertos-de-rock-y-metal-en-espana-otono-2026/",
      "prioridad": 3
     },
     {
@@ -194988,7 +195080,7 @@
    ],
    "categoria": "fuera de foco",
    "categorias": [
-    "pop e indie"
+    "fuera de foco"
    ],
    "genero_discogs": [],
    "estilos_discogs": [],
@@ -198287,6 +198379,7 @@
    ],
    "categoria": "fuera de foco",
    "categorias": [
+    "fuera de foco",
     "pop e indie"
    ],
    "genero_discogs": [
@@ -200589,15 +200682,15 @@
      "prioridad": 3
     },
     {
-     "nombre": "Metal Symphony (agenda de temporada)",
-     "id": "metalsymphony",
-     "url": "https://www.metalsymphony.com/conciertos-de-rock-y-metal-en-espana-otono-2026/",
-     "prioridad": 3
-    },
-    {
      "nombre": "Metal Legion",
      "id": "metallegion",
      "url": "https://metallegion.es/conciertos/",
+     "prioridad": 3
+    },
+    {
+     "nombre": "Metal Symphony (agenda de temporada)",
+     "id": "metalsymphony",
+     "url": "https://www.metalsymphony.com/conciertos-de-rock-y-metal-en-espana-otono-2026/",
      "prioridad": 3
     },
     {
@@ -200628,7 +200721,8 @@
    "estado": "contrastado",
    "conflictos": [],
    "notas": [
-    "Hora: 18:00 según Get Rock (promotora); 19:00 según conciertos.club (buscador semanal), conciertos.club (por estilo). Resuelto por prioridad de fuente (la fuente de mayor prioridad confirma 18:00)."
+    "Hora: 18:00 según Get Rock (promotora); 19:00 según conciertos.club (buscador semanal), conciertos.club (por estilo). Resuelto por prioridad de fuente (la fuente de mayor prioridad confirma 18:00).",
+    "Dato de la última lectura completa de Rock and Blog (2026-09-30): hoy no se pudo leer"
    ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
@@ -201095,7 +201189,8 @@
    "estado": "contrastado",
    "conflictos": [],
    "notas": [
-    "Hora: 20:00 según La Riviera (web oficial); 21:00 según conciertos.club (buscador semanal), conciertos.club (por estilo); 19:00 según La Ganzúa, Songkick Madrid. Resuelto por prioridad de fuente (la fuente de mayor prioridad confirma 20:00)."
+    "Hora: 20:00 según La Riviera (web oficial); 21:00 según conciertos.club (buscador semanal), conciertos.club (por estilo); 19:00 según La Ganzúa, Songkick Madrid. Resuelto por prioridad de fuente (la fuente de mayor prioridad confirma 20:00).",
+    "Dato de la última lectura completa de Rock and Blog (2026-09-30): hoy no se pudo leer"
    ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
@@ -201958,7 +202053,9 @@
    ],
    "estado": "contrastado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Dato de la última lectura completa de Rock and Blog (2026-09-30): hoy no se pudo leer"
+   ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-30",
@@ -205064,7 +205161,9 @@
    ],
    "estado": "contrastado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Dato de la última lectura completa de Rock and Blog (2026-09-30): hoy no se pudo leer"
+   ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-30",
@@ -206562,15 +206661,15 @@
      "prioridad": 3
     },
     {
-     "nombre": "Metal Symphony (agenda de temporada)",
-     "id": "metalsymphony",
-     "url": "https://www.metalsymphony.com/conciertos-de-rock-y-metal-en-espana-otono-2026/",
-     "prioridad": 3
-    },
-    {
      "nombre": "Metal Legion",
      "id": "metallegion",
      "url": "https://metallegion.es/conciertos/",
+     "prioridad": 3
+    },
+    {
+     "nombre": "Metal Symphony (agenda de temporada)",
+     "id": "metalsymphony",
+     "url": "https://www.metalsymphony.com/conciertos-de-rock-y-metal-en-espana-otono-2026/",
      "prioridad": 3
     },
     {
@@ -207743,6 +207842,7 @@
    "estado": "contrastado",
    "conflictos": [],
    "notas": [
+    "Dato de la última lectura completa de Rock and Blog (2026-09-30): hoy no se pudo leer",
     "Sala: Sala Wagon según Madness Live (promotora), Metal Legion, Rock and Blog, Sala Wagon (web oficial), Songkick Madrid; Sala But según Hellpress (agenda), MariskalRock (guía). Resuelto por prioridad de fuente (la de mayor prioridad confirma Sala Wagon)."
    ],
    "en_foco": true,
@@ -209090,7 +209190,7 @@
    }
   },
   {
-   "id": "28a040442bbe",
+   "id": "28a040442ba0",
    "fecha": "2026-12-03",
    "hora": "20:00",
    "artista": "MIkkey Dee & Friends",
@@ -209561,7 +209661,8 @@
    "estado": "contrastado",
    "conflictos": [],
    "notas": [
-    "Hora: 20:30 según Sala Villanos (web oficial); 21:00 según La Ganzúa, conciertos.club (buscador semanal), conciertos.club (por estilo); 20:00 según Songkick Madrid. Resuelto por prioridad de fuente (la fuente de mayor prioridad confirma 20:30)."
+    "Hora: 20:30 según Sala Villanos (web oficial); 21:00 según La Ganzúa, conciertos.club (buscador semanal), conciertos.club (por estilo); 20:00 según Songkick Madrid. Resuelto por prioridad de fuente (la fuente de mayor prioridad confirma 20:30).",
+    "Dato de la última lectura completa de Rock and Blog (2026-09-30): hoy no se pudo leer"
    ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
@@ -210259,7 +210360,7 @@
    }
   },
   {
-   "id": "28a040442ba0",
+   "id": "28a040442bbe",
    "fecha": "2026-12-03",
    "hora": null,
    "artista": "Mikky Dee",
@@ -211212,7 +211313,9 @@
    ],
    "estado": "contrastado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Dato de la última lectura completa de Rock and Blog (2026-09-30): hoy no se pudo leer"
+   ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-30",
@@ -211815,7 +211918,8 @@
     }
    ],
    "notas": [
-    "Conflicto de hora: 21:00 según conciertos.club (buscador semanal), conciertos.club (por estilo); 20:30 según La Ganzúa, Songkick Madrid."
+    "Conflicto de hora: 21:00 según conciertos.club (buscador semanal), conciertos.club (por estilo); 20:30 según La Ganzúa, Songkick Madrid.",
+    "Dato de la última lectura completa de Rock and Blog (2026-09-30): hoy no se pudo leer"
    ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
@@ -213466,6 +213570,7 @@
     }
    ],
    "notas": [
+    "Dato de la última lectura completa de Rock and Blog (2026-09-30): hoy no se pudo leer",
     "Conflicto de sala: Sala Uni según Rock and Blog, TodoHeavyMetal; Sala Nazca según Metal Legion."
    ],
    "en_foco": true,
@@ -213540,7 +213645,7 @@
    "estilo_fuente": [],
    "categoria": "fuera de foco",
    "categorias": [
-    "sin clasificar"
+    "fuera de foco"
    ],
    "genero_discogs": [
     "Children's"
@@ -213669,7 +213774,8 @@
    "categoria": "synth y dark wave",
    "categorias": [
     "fuera de foco",
-    "rock y metal"
+    "rock y metal",
+    "synth y dark wave"
    ],
    "genero_discogs": [],
    "estilos_discogs": [
@@ -213731,7 +213837,8 @@
     }
    ],
    "notas": [
-    "Conflicto de hora: 21:00 según conciertos.club (buscador semanal); 20:00 según La Ganzúa, Songkick Madrid."
+    "Conflicto de hora: 21:00 según conciertos.club (buscador semanal); 20:00 según La Ganzúa, Songkick Madrid.",
+    "Dato de la última lectura completa de Rock and Blog (2026-09-30): hoy no se pudo leer"
    ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
@@ -215158,7 +215265,9 @@
    ],
    "estado": "contrastado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Dato de la última lectura completa de Rock and Blog (2026-09-30): hoy no se pudo leer"
+   ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-30",
@@ -216282,6 +216391,7 @@
    "categoria": "fuera de foco",
    "categorias": [
     "pop e indie",
+    "fuera de foco",
     "rock y metal"
    ],
    "genero_discogs": [
@@ -216964,7 +217074,9 @@
    ],
    "estado": "contrastado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Dato de la última lectura completa de Rock and Blog (2026-09-30): hoy no se pudo leer"
+   ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-30",
@@ -217323,7 +217435,9 @@
    ],
    "estado": "contrastado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Dato de la última lectura completa de Rock and Blog (2026-09-30): hoy no se pudo leer"
+   ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-30",
@@ -219425,7 +219539,8 @@
    ],
    "categoria": "pop e indie",
    "categorias": [
-    "pop e indie"
+    "pop e indie",
+    "fuera de foco"
    ],
    "genero_discogs": [
     "Pop",
@@ -221223,7 +221338,7 @@
    ],
    "categoria": "synth y dark wave",
    "categorias": [
-    "pop e indie",
+    "synth y dark wave",
     "punk y garage"
    ],
    "genero_discogs": [],
@@ -221321,7 +221436,9 @@
    ],
    "estado": "contrastado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Dato de la última lectura completa de Rock and Blog (2026-09-30): hoy no se pudo leer"
+   ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-30",
@@ -221559,7 +221676,7 @@
    ],
    "categoria": "fuera de foco",
    "categorias": [
-    "sin clasificar"
+    "fuera de foco"
    ],
    "genero_discogs": [
     "Pop",
@@ -222439,7 +222556,7 @@
    ],
    "categoria": "fuera de foco",
    "categorias": [
-    "sin clasificar"
+    "fuera de foco"
    ],
    "genero_discogs": [
     "Pop"
@@ -223426,7 +223543,8 @@
     }
    ],
    "notas": [
-    "Conflicto de hora: 21:00 según conciertos.club (buscador semanal), conciertos.club (por estilo); 19:30 según Songkick Madrid."
+    "Conflicto de hora: 21:00 según conciertos.club (buscador semanal), conciertos.club (por estilo); 19:30 según Songkick Madrid.",
+    "Dato de la última lectura completa de Rock and Blog (2026-09-30): hoy no se pudo leer"
    ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
@@ -224134,7 +224252,8 @@
    "categoria": "fuera de foco",
    "categorias": [
     "pop e indie",
-    "rock y metal"
+    "rock y metal",
+    "fuera de foco"
    ],
    "genero_discogs": [
     "Pop"
@@ -225042,7 +225161,8 @@
    "estado": "contrastado",
    "conflictos": [],
    "notas": [
-    "Hora: 20:30 según Sala Villanos (web oficial); 21:30 según conciertos.club (buscador semanal). Resuelto por prioridad de fuente (la fuente de mayor prioridad confirma 20:30)."
+    "Hora: 20:30 según Sala Villanos (web oficial); 21:30 según conciertos.club (buscador semanal). Resuelto por prioridad de fuente (la fuente de mayor prioridad confirma 20:30).",
+    "Dato de la última lectura completa de Rock and Blog (2026-09-30): hoy no se pudo leer"
    ],
    "en_foco": false,
    "primera_vez_visto": "2026-09-29",
@@ -226685,7 +226805,8 @@
    ],
    "categoria": "fuera de foco",
    "categorias": [
-    "pop e indie"
+    "pop e indie",
+    "fuera de foco"
    ],
    "genero_discogs": [
     "Pop",
@@ -231157,9 +231278,9 @@
    ],
    "categoria": "fuera de foco",
    "categorias": [
+    "fuera de foco",
     "rock y metal",
-    "pop e indie",
-    "fuera de foco"
+    "pop e indie"
    ],
    "genero_discogs": [
     "Pop",
@@ -231583,9 +231704,9 @@
    ],
    "categoria": "fuera de foco",
    "categorias": [
+    "fuera de foco",
     "rock y metal",
-    "pop e indie",
-    "fuera de foco"
+    "pop e indie"
    ],
    "genero_discogs": [
     "Pop",
@@ -232284,9 +232405,9 @@
    ],
    "categoria": "fuera de foco",
    "categorias": [
+    "fuera de foco",
     "rock y metal",
-    "pop e indie",
-    "fuera de foco"
+    "pop e indie"
    ],
    "genero_discogs": [
     "Pop",
@@ -234035,7 +234156,8 @@
    ],
    "categoria": "pop e indie",
    "categorias": [
-    "pop e indie"
+    "pop e indie",
+    "fuera de foco"
    ],
    "genero_discogs": [],
    "estilos_discogs": [
@@ -239239,15 +239361,15 @@
      "prioridad": 3
     },
     {
-     "nombre": "TodoHeavyMetal",
-     "id": "thm",
-     "url": "https://www.todoheavymetal.com/index.php/agenda/amp",
-     "prioridad": 3
-    },
-    {
      "nombre": "Metalcry",
      "id": "metalcry",
      "url": "https://metalcry.com/warcry-celebra-25-anos-con-gira-historica-y-concierto-exclusivo-en-madrid/",
+     "prioridad": 3
+    },
+    {
+     "nombre": "TodoHeavyMetal",
+     "id": "thm",
+     "url": "https://www.todoheavymetal.com/index.php/agenda/amp",
      "prioridad": 3
     },
     {
@@ -239291,7 +239413,8 @@
     }
    ],
    "notas": [
-    "Conflicto de hora: 21:00 según conciertos.club (buscador semanal), conciertos.club (por estilo); 20:30 según Songkick Madrid."
+    "Conflicto de hora: 21:00 según conciertos.club (buscador semanal), conciertos.club (por estilo); 20:30 según Songkick Madrid.",
+    "Dato de la última lectura completa de Rock and Blog (2026-09-30): hoy no se pudo leer"
    ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
@@ -243907,6 +244030,7 @@
    "notas": [
     "Evento: MOTOCULTOR FESTIVAL – ACROSS EUROPE TOUR 2027",
     "Conflicto de hora: 21:00 según conciertos.club (buscador semanal), conciertos.club (por estilo); 17:00 según Songkick Madrid.",
+    "Dato de la última lectura completa de Rock and Blog (2026-09-30): hoy no se pudo leer",
     "Sala: Revi Space según Revi Live / Revi Space (web oficial); Revi Live según Madness Live (promotora), Metal Legion, Rock and Blog, Songkick Madrid, conciertos.club (buscador semanal), conciertos.club (por estilo). Resuelto por prioridad de fuente (la de mayor prioridad confirma Revi Space)."
    ],
    "en_foco": true,
@@ -245304,15 +245428,15 @@
      "prioridad": 3
     },
     {
-     "nombre": "Metal Symphony (agenda de temporada)",
-     "id": "metalsymphony",
-     "url": "https://www.metalsymphony.com/conciertos-de-rock-y-metal-en-espana-otono-2026/",
-     "prioridad": 3
-    },
-    {
      "nombre": "Metal Legion",
      "id": "metallegion",
      "url": "https://metallegion.es/conciertos/",
+     "prioridad": 3
+    },
+    {
+     "nombre": "Metal Symphony (agenda de temporada)",
+     "id": "metalsymphony",
+     "url": "https://www.metalsymphony.com/conciertos-de-rock-y-metal-en-espana-otono-2026/",
      "prioridad": 3
     },
     {
@@ -245330,7 +245454,9 @@
    ],
    "estado": "contrastado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Dato de la última lectura completa de Rock and Blog (2026-09-30): hoy no se pudo leer"
+   ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-30",
@@ -246240,7 +246366,9 @@
    ],
    "estado": "1_fuente",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Dato de la última lectura completa de Rock and Blog (2026-09-30): hoy no se pudo leer"
+   ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-30",
@@ -246933,7 +247061,9 @@
    ],
    "estado": "contrastado",
    "conflictos": [],
-   "notas": [],
+   "notas": [
+    "Dato de la última lectura completa de Rock and Blog (2026-09-30): hoy no se pudo leer"
+   ],
    "en_foco": true,
    "primera_vez_visto": "2026-09-29",
    "ultima_vez_visto": "2026-09-30",
@@ -248380,6 +248510,7 @@
    "notas": [
     "Evento: U.D.O. – TRIPLE ANNIVERSARY TOUR",
     "Conflicto de hora: 21:00 según conciertos.club (buscador semanal), conciertos.club (por estilo); 19:00 según Songkick Madrid.",
+    "Dato de la última lectura completa de Rock and Blog (2026-09-30): hoy no se pudo leer",
     "Sala: Revi Space según Revi Live / Revi Space (web oficial); Revi Live según Conciertos por Madrid, Madness Live (promotora), MariskalRock (guía), Metal Legion, Rock and Blog, Songkick Madrid, TodoHeavyMetal, conciertos.club (buscador semanal), conciertos.club (por estilo). Resuelto por prioridad de fuente (la de mayor prioridad confirma Revi Space).",
     "Sala: Revi Space según Conciertos por Madrid, Madness Live (promotora), MariskalRock (guía), Metal Legion, Revi Live / Revi Space (web oficial), Rock and Blog, Songkick Madrid, TodoHeavyMetal, conciertos.club (buscador semanal), conciertos.club (por estilo); Sala Revirock según Metalcry. Resuelto por prioridad de fuente (la de mayor prioridad confirma Revi Space)."
    ],
@@ -248586,7 +248717,8 @@
    ],
    "categoria": "fuera de foco",
    "categorias": [
-    "pop e indie"
+    "pop e indie",
+    "fuera de foco"
    ],
    "genero_discogs": [
     "Pop"
@@ -248995,7 +249127,8 @@
    ],
    "categoria": "fuera de foco",
    "categorias": [
-    "pop e indie"
+    "pop e indie",
+    "fuera de foco"
    ],
    "genero_discogs": [
     "Pop"
@@ -249237,7 +249370,8 @@
    ],
    "categoria": "fuera de foco",
    "categorias": [
-    "pop e indie"
+    "pop e indie",
+    "fuera de foco"
    ],
    "genero_discogs": [
     "Pop"
