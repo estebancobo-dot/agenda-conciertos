@@ -1,5 +1,17 @@
 # Versiones
 
+## 2.9.1 — 2026-09-30
+
+Más falsos géneros corregidos:
+
+- **"Pop e indie" pasa a llamarse "Indie y pop-rock"** y solo incluye estilos concretos:
+  - Entran indie rock, indie pop, pop rock, power pop, shoegaze, new wave…
+  - El pop comercial y latino (género Pop sin uno de esos estilos: baladas, Europop, "Pop Latino"…) va a "Otros géneros".
+  - Shakira, Ruth Lorenzo o Sofía Ellar ya no salen en ese filtro.
+  - La etiqueta "Pop" a secas de una agenda se trata como genérica.
+- **Estilos ambiguos de Discogs.** "Instrumental", "Experimental", "Lounge", "Ambient", "Fusion"… existen en varios géneros, y la taxonomía los tenía bajo Rock. Por eso un pianista neoclásico (Martin Kohlstedt), un productor electrónico (Sabiwa) o Zenet salían en "Rock y metal". Ahora su grupo lo deciden los géneros del artista en Discogs, que también entran en el consenso.
+- **Espectáculos con holograma y los infantiles** (CantaJuego…) van a "Otros géneros".
+
 ## 2.9.0 — 2026-09-30
 
 - **MusicBrainz entra en el consenso de géneros** (peso 0,9, entre Discogs y Last.fm).

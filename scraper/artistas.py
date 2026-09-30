@@ -542,12 +542,14 @@ def evidencias(ent: dict) -> list[dict]:
 
     dc, wp, lf = ent.get("discogs") or {}, ent.get("wikipedia") or {}, ent.get("lastfm") or {}
     if dc.get("encontrado"):
-        if dc.get("estilos"):
-            for i, e in enumerate(dc["estilos"]):
-                add(e, "estilo", "Discogs", i)
-        else:
-            for i, g in enumerate(dc.get("generos") or []):
-                add(g, "genero", "Discogs", i)
+        for i, e in enumerate(dc.get("estilos") or []):
+            add(e, "estilo", "Discogs", i)
+        # los géneros de Discogs también cuentan (con menos peso si hay estilos): deciden los estilos ambiguos
+        # ("Instrumental", "Experimental") y evitan que un estilo compartido arrastre a un género equivocado
+        for i, g in enumerate(dc.get("generos") or []):
+            add(g, "genero", "Discogs", i)
+            if dc.get("estilos"):
+                out[-1]["peso"] = round(out[-1]["peso"] * 0.6, 3)
     if lf.get("encontrado"):
         i = 0
         for t in lf.get("etiquetas") or []:  # en orden de votos

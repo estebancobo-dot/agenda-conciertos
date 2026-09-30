@@ -26,7 +26,10 @@
   "Blues/RNB": "blues",
   "Folk": "americana/country/folk",
   "Pop-rock/Indie": "pop e indie",
-  "Pop": "pop e indie",
+  "Pop": [
+   "pop e indie",
+   "fuera de foco"
+  ],
   "Post-Punk": "punk y garage",
   "Rock/Rock Alternativo": "rock y metal",
   "Rock and Roll/Garage": "punk y garage",
@@ -69,7 +72,10 @@
   "metal": "rock y metal",
   "punk": "punk y garage",
   "rock": "rock y metal",
-  "pop": "pop e indie",
+  "pop": [
+   "pop e indie",
+   "fuera de foco"
+  ],
   "blues": "blues",
   "folk": "americana/country/folk",
   "Pop / Rock": [
@@ -88,6 +94,18 @@
   "Concierto": "sin clasificar"
  },
  "palabras_clave": [
+  [
+   "pop latino",
+   "fuera de foco"
+  ],
+  [
+   "latino",
+   "fuera de foco"
+  ],
+  [
+   "urbano",
+   "fuera de foco"
+  ],
   [
    "candlelight",
    "fuera de foco"
@@ -503,10 +521,17 @@
   "dj set",
   "sesion dj",
   "tardeo",
-  "karaoke"
+  "karaoke",
+  "holograma",
+  "hologram",
+  "cantajuego",
+  "cantajuegos",
+  "infantil",
+  "para ninos",
+  "para familias"
  ],
  "discogs_a_categoria": {
-  "_descripcion": "Cómo se agrupan los estilos de Discogs en los filtros. Un estilo no listado va al grupo de su género: Rock → rock y metal, Pop → pop e indie, Blues → blues, Folk/World/Country → americana/country/folk, resto de géneros → fuera de foco.",
+  "_descripcion": "Cómo se agrupan los estilos de Discogs en los filtros. Un estilo no listado va al grupo de su género: Rock → rock y metal, Pop comercial (sin un estilo indie o pop-rock) → fuera de foco, Blues → blues, Folk/World/Country → americana/country/folk, resto de géneros → fuera de foco.",
   "punk y garage": [
    "Punk",
    "Hardcore",
@@ -594,7 +619,7 @@
  },
  "genero_a_categoria": {
   "Rock": "rock y metal",
-  "Pop": "pop e indie",
+  "Pop": "fuera de foco",
   "Blues": "blues",
   "Folk, World, & Country": "americana/country/folk"
  }

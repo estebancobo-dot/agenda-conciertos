@@ -181,7 +181,17 @@ NO_CONCIERTO = re.compile(r"\b(teatro|musicales?|artes escenicas|danza|ballet|hu
                           r"familiar|magia|circo|cine|zarzuela)\b")
 
 
+# Estilos que Discogs usa en varios géneros (Electronic, Jazz, Classical, Rock…): por sí solos no dicen el
+# grupo. En la taxonomía figuran bajo Rock, y por eso un pianista neoclásico ("Instrumental") o un productor
+# electrónico ("Experimental") acababan en "Rock y metal". Su grupo lo deciden los géneros del artista.
+AMBIGUOS = {"experimental", "instrumental", "lounge", "avantgarde", "noise", "ambient", "abstract", "fusion",
+            "contemporary", "neo-classical", "industrial", "ethereal", "parody", "novelty", "soundtrack", "score",
+            "spoken word", "vocal", "easy listening", "downtempo"}
+
+
 def grupo_de(nombre: str, tipo: str) -> str | None:
+    if tipo == "estilo" and norm(nombre) in AMBIGUOS:
+        return None
     cats = categorias_de_ficha([nombre], []) if tipo == "genero" else categorias_de_ficha([], [nombre])
     return cats[0] if cats else None
 

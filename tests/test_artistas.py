@@ -235,7 +235,7 @@ def test_consenso_no_mete_en_rock_a_quien_solo_lo_menciona():
                       "generos": ["Pop", "Latin"], "identificado_por": "coincidencia por nombre", "url": "u"}}
     r = _rec("Shakira", [("Pop Latino", "conciertos.club (buscador semanal)")])
     aplicar_ficha(r, A.ficha(ent))
-    assert "rock y metal" not in r["grupos"] and "pop e indie" in r["grupos"]
+    assert r["grupos"] == ["fuera de foco"]  # pop latino/comercial: ni rock ni "indie y pop-rock"
     assert "Rock" not in r["genero_discogs"]
 
 
@@ -294,3 +294,30 @@ def test_buscar_musicbrainz_usa_la_cache_de_nacionalidad():
     assert r["encontrado"] and r["identificado_por"].startswith("única coincidencia") and len(mb.urls) == 1
     r = A.buscar_musicbrainz(MB_VACIO, "Grupo Nuevo", None, cache, date(2026, 9, 30))
     assert not r["encontrado"] and cache["grupo nuevo"]["coincidencias_exactas"] == 0
+
+
+def test_indie_y_pop_rock_no_incluye_pop_comercial():
+    from scraper.pipeline import aplicar_ficha
+    ent = {"discogs": {"encontrado": True, "estilos": ["Ballad", "Europop", "Pop Rock"], "generos": ["Pop"], "url": "/a/1"}}
+    r = _rec("Cantante Pop", [("Pop", "Songkick Madrid")])
+    aplicar_ficha(r, A.ficha(ent))
+    assert r["grupos"] == ["fuera de foco"]
+    ent = {"discogs": {"encontrado": True, "estilos": ["Indie Rock", "Pop Rock", "Indie Pop"], "generos": ["Rock", "Pop"], "url": "/a/2"}}
+    r = _rec("Grupo Indie", [])
+    aplicar_ficha(r, A.ficha(ent))
+    assert r["grupos"] == ["pop e indie"]
+    r = _rec("Sin ficha", [("Pop Latino", "conciertos.club (buscador semanal)")])
+    aplicar_ficha(r, None)
+    assert r["grupos"] == ["fuera de foco"]
+
+
+def test_estilos_ambiguos_de_discogs_no_son_rock():
+    from scraper.pipeline import aplicar_ficha
+    ent = {"discogs": {"encontrado": True, "estilos": ["Neo-Classical", "Contemporary", "Instrumental"],
+                       "generos": ["Classical", "Electronic"], "url": "/a/1"}}
+    r = _rec("Martin Kohlstedt", [])
+    aplicar_ficha(r, A.ficha(ent))
+    assert r["grupos"] == ["fuera de foco"]
+    r = _rec("Callas en concierto - En holograma", [("Versiones/Tributos", "conciertos.club (buscador semanal)")])
+    aplicar_ficha(r, None)
+    assert r["grupos"] == ["fuera de foco"]

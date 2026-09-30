@@ -214,13 +214,13 @@ th{color:var(--muted);font-weight:600}
 const GRUPOS = [
   {id:"rock y metal", nombre:"Rock y metal", v:"--c-rock", desc:"Hard rock, heavy metal, AOR, prog, stoner, psicodelia, grunge, rock clásico y alternativo…"},
   {id:"punk y garage", nombre:"Punk y garage", v:"--c-punk", desc:"Punk, hardcore, garage, post-punk, rock & roll, rockabilly, surf…"},
-  {id:"pop e indie", nombre:"Pop e indie", v:"--c-pop", desc:"Indie rock, indie pop, pop rock, power pop, shoegaze, new wave…"},
+  {id:"pop e indie", nombre:"Indie y pop-rock", v:"--c-pop", desc:"Indie rock, indie pop, pop rock, power pop, shoegaze, new wave… (el pop comercial y latino va a Otros géneros)"},
   {id:"americana/country/folk", nombre:"Americana y folk", v:"--c-amer", desc:"Country, country rock, folk, folk rock, southern rock, bluegrass…"},
   {id:"blues", nombre:"Blues", v:"--c-blues", desc:"Todos los estilos de blues y el blues rock."},
   {id:"cantautor", nombre:"Cantautores", v:"--c-cant", desc:"Solo por la etiqueta de la agenda (Discogs no tiene este estilo)."},
   {id:"tributos y versiones", nombre:"Tributos", v:"--c-trib", desc:"Bandas tributo y de versiones (por la agenda o el título)."},
   {id:"sin clasificar", nombre:"Sin clasificar", v:"--c-sin", desc:"Ni las webs de música ni la agenda dan estilo. Se muestran para no perder conciertos."},
-  {id:"fuera de foco", nombre:"Otros géneros", v:"--c-fuera", desc:"Electrónica, hip hop, jazz, latina, flamenco, clásica, musicales, Candlelight…"}];
+  {id:"fuera de foco", nombre:"Otros géneros", v:"--c-fuera", desc:"Pop comercial y latino, electrónica, hip hop, jazz, flamenco, clásica, teatro y musicales, Candlelight…"}];
 const GV = Object.fromEntries(GRUPOS.map(g=>[g.id,g.v]));
 const DEF_GRUPOS = GRUPOS.filter(g=>g.id!=="fuera de foco").map(g=>g.id);
 const VISTAS = ["Mes","Semana","Día"];
