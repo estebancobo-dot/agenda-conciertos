@@ -22,6 +22,8 @@ def test_conjunto_de_control(caso):
         assert g in r["grupos"], f"{caso['artista']}: falta {g} en {r['grupos']}"
     for g in caso["no_debe"]:
         assert g not in r["grupos"], f"{caso['artista']}: sobra {g} en {r['grupos']}"
+    if caso.get("homonimo"):
+        assert r.get("homonimo_descartado"), f"{caso['artista']}: no se detecta el homónimo de Discogs"
 
 
 @pytest.mark.parametrize("etiqueta,estilo", [
@@ -75,3 +77,19 @@ def test_cambios_por_grupo():
     assert c["pop e indie"]["ejemplos_salen"] == ["B"]
     assert c["fuera de foco"]["entran"] == 1
     assert c["rock y metal"] == {"total": 1, "entran": 0, "salen": 0, "ejemplos_entran": [], "ejemplos_salen": []}
+
+
+def test_homonimo_de_discogs_que_contradice_a_todo():
+    from scraper.clasificar import revisar_homonimos
+    evs = [{"nombre": "Death Metal", "tipo": "estilo", "fuente": "Discogs", "peso": 1.0, "verificar": "The Hate",
+            "muy_dudosa": True}]
+    evs2, nombre = revisar_homonimos(evs, {"fuera de foco": 0.5})
+    assert nombre == "The Hate" and evs2[0]["debil"]
+    # mismo nombre: una sola agenda en contra no basta (a un DJ de techno lo etiquetan "rock"); dos agendas, sí
+    igual = [dict(evs[0], verificar="Mardom", muy_dudosa=False)]
+    assert revisar_homonimos(igual, {"fuera de foco": 0.5})[1] is None
+    assert revisar_homonimos(igual, {"fuera de foco": 1.0})[1] == "Mardom"
+    # grupos vecinos (rock frente a punk) no son contradicción: no se descarta
+    assert revisar_homonimos(evs, {"punk y garage": 0.5})[1] is None
+    # identificado por Wikidata con el mismo nombre: no se revisa
+    assert revisar_homonimos([dict(evs[0], verificar=None)], {"fuera de foco": 0.5})[1] is None

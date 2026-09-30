@@ -226,10 +226,11 @@ def aplicar_ficha(r: dict, f: dict | None) -> None:
        comparable, no todos los que aparezcan.
     3. Si no, de las etiquetas de las agendas. Las genéricas ("Pop / Rock") se marcan como tales."""
     from .clasificar import (contexto_de_fuentes, en_foco, es_espectaculo, grupos_de_agenda, grupos_de_evidencias,
-                             pesos_de_agenda, titulo_fuera_de_foco)
+                             pesos_de_agenda, revisar_homonimos, titulo_fuera_de_foco)
     etiquetas = etiquetas_por_fuente(r)
     generico, estilos, segun = False, [], []
     r.pop("estilo_descartado", None)
+    r.pop("homonimo_descartado", None)
     if es_espectaculo([e for es in etiquetas for e in es]):
         f, cats, origen = None, ["fuera de foco"], "agenda (espectáculo, no concierto)"
         # el origen que viniera de buscar el título como artista (Wikidata, MusicBrainz…) tampoco vale
@@ -241,6 +242,9 @@ def aplicar_ficha(r: dict, f: dict | None) -> None:
         if f and f.get("evidencias"):
             contexto = contexto_de_fuentes([x.get("id") for x in r.get("fuentes", [])])
             p_agenda = pesos_de_agenda(etiquetas)
+            _, homonimo = revisar_homonimos(f["evidencias"], p_agenda)
+            if homonimo:
+                r["homonimo_descartado"] = homonimo
             cats, estilos = grupos_de_evidencias(f["evidencias"], grupos_agenda, p_agenda, contexto)
             if cats:
                 pesos: dict[str, float] = {}
@@ -254,7 +258,10 @@ def aplicar_ficha(r: dict, f: dict | None) -> None:
             if f and f.get("evidencias"):
                 # la única web de música que lo nombra es Last.fm por coincidencia de nombre y no concuerda
                 # con lo que dice la agenda: puede ser otro artista con el mismo nombre
-                r["estilo_descartado"] = [e["nombre"] for e in f["evidencias"] if e.get("debil")][:3]
+                r["estilo_descartado"] = [e["nombre"] for e in f["evidencias"]
+                                          if e.get("debil") and e["fuente"] == "Last.fm"][:3] or None
+                if not r["estilo_descartado"]:
+                    r.pop("estilo_descartado")
             cats, generico = grupos_de_agenda(etiquetas)
             origen = "agenda"
             estilos = []

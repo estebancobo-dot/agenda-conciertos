@@ -495,10 +495,11 @@ function viewConcierto(){
   } else if(estilos.length||(generos.length&&r.grupos_origen!=="agenda")){
     estiloHTML=`<div class="v">${esc((estilos.length?estilos:generos).join(", "))}</div><div class="s">Género: <b>${esc(gruposTxt)}</b> · según ${esc((r.grupos_segun||[]).join(", ")||r.grupos_origen||"Discogs")}${(r.grupos_segun||[]).length>1?" (por consenso)":""}</div>`;
   } else {
-    estiloHTML=`<div class="v muted">${tieneDiscogs?"Discogs no indica su estilo":"Sin ficha en las webs de música"}</div>`+
+    estiloHTML=`<div class="v muted">${r.homonimo_descartado?"Sin ficha fiable en las webs de música":tieneDiscogs?"Discogs no indica su estilo":"Sin ficha en las webs de música"}</div>`+
       (ag?`<div class="s">La agenda lo etiqueta como «${esc(ag.replace(/_/g," "))}»${r.grupos_generico?" (etiqueta genérica: puede ser cualquiera de estos géneros)":""} → ${esc(gruposTxt)}</div>`:`<div class="s">Género: ${esc(gruposTxt)}</div>`)+
       ((r.estilo_descartado||[]).length?`<div class="s">Last.fm tiene un artista con este nombre (${esc(r.estilo_descartado.join(", "))}), pero no concuerda con la agenda: puede ser otro artista y no se usa.</div>`:"");
   }
+  if(r.homonimo_descartado) estiloHTML+=`<div class="s">La ficha de Discogs enlazada («${esc(r.homonimo_descartado)}») no concuerda con la agenda ni con las demás webs: puede ser otro artista con el mismo nombre y no se usa para el género.</div>`;
   const h=horaTxt(r);
   const q=encodeURIComponent(r.artista);
   const enlaces=[...((f&&f.enlaces)||[]), ...(f&&f.tiene_allmusic?[]:[{nombre:"Buscar en AllMusic", url:`https://www.allmusic.com/search/artists/${q}`}])];

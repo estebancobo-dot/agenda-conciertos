@@ -4529,6 +4529,297 @@
     "blues"
    ],
    "no_debe": []
+  },
+  {
+   "artista": "SHO-HAI",
+   "concierto": {
+    "id": "0ef6d6de7ad0",
+    "fecha": "2027-01-10",
+    "artista": "SHO-HAI",
+    "estilo_fuente": [
+     {
+      "estilo": "Músicas negras",
+      "fuente": "Madrid en Vivo (asociación de salas)"
+     },
+     {
+      "estilo": "Hip-Hop",
+      "fuente": "conciertos.club (buscador semanal)"
+     }
+    ],
+    "fuentes": [
+     {
+      "nombre": "Madrid en Vivo (asociación de salas)",
+      "id": "madridenvivo",
+      "url": "https://madridenvivo.com/?post_type=evento&p=784283",
+      "prioridad": 3
+     },
+     {
+      "nombre": "conciertos.club (buscador semanal)",
+      "id": "cc_buscador",
+      "url": "https://conciertos.club/madrid/conciertos/124617-inverfest-sho-hai",
+      "prioridad": 3
+     }
+    ],
+    "nacionalidad": "ES",
+    "nacionalidad_fuente": "Wikidata",
+    "imagen_evento": {
+     "url": "https://madridenvivo.com/wp-content/uploads/2026/05/unnamed-1.png",
+     "credito": "Madrid en Vivo (asociación de salas)",
+     "enlace": "https://madridenvivo.com/?post_type=evento&p=784283"
+    },
+    "categorias": [
+     "blues",
+     "fuera de foco"
+    ]
+   },
+   "ficha": {
+    "nombre": "SHO-HAI",
+    "fecha": "2026-09-30",
+    "wikipedia": {
+     "encontrado": true,
+     "url": "https://es.wikipedia.org/wiki/SHO-HAI",
+     "generos": [],
+     "wikidata": "Q9002234",
+     "origen": "19 de febrero de 1976 (50, años), Zaragoza, ,, España, Zaragoza, (, España, )",
+     "pais": "ES",
+     "imagen": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a0/Hate_Sno.JPG/250px-Hate_Sno.JPG",
+     "imagen_pagina": "https://es.wikipedia.org/wiki/Archivo:Hate_Sno.JPG",
+     "idioma": "es"
+    },
+    "wikidata": {
+     "encontrado": true,
+     "id": "Q9002234",
+     "ids": {
+      "discogs": "5588463",
+      "musicbrainz": "49b9b10d-6795-4d54-8f43-a277210f4d2b"
+     },
+     "pais": "ES",
+     "imagen_commons": "Hate Sno.JPG"
+    },
+    "discogs": {
+     "encontrado": true,
+     "id": 5588463,
+     "nombre": "The Hate",
+     "url": "https://www.discogs.com/artist/5588463-The-Hate",
+     "generos": [
+      "Rock"
+     ],
+     "estilos": [
+      "Death Metal",
+      "Industrial",
+      "Garage Rock"
+     ],
+     "discos_analizados": 25,
+     "pais": null,
+     "imagen": null,
+     "identificado_por": "identificador de Discogs en Wikidata",
+     "perfil": ""
+    },
+    "musicbrainz": {
+     "encontrado": true,
+     "mbid": "49b9b10d-6795-4d54-8f43-a277210f4d2b",
+     "nombre": "Sho-Hai",
+     "generos": [],
+     "pais": "ES",
+     "identificado_por": "identificador de MusicBrainz en Wikidata"
+    }
+   },
+   "debe": [
+    "fuera de foco"
+   ],
+   "no_debe": [
+    "rock y metal"
+   ],
+   "homonimo": true
+  },
+  {
+   "artista": "Martín",
+   "concierto": {
+    "id": "f9b38188e67c",
+    "fecha": "2026-10-02",
+    "artista": "Martín",
+    "estilo_fuente": [
+     {
+      "estilo": "Versiones/Tributos",
+      "fuente": "conciertos.club (buscador semanal)"
+     },
+     {
+      "estilo": "Versiones/Tributos",
+      "fuente": "conciertos.club (por estilo)"
+     },
+     {
+      "estilo": "Versiones/Tributos",
+      "fuente": "conciertos.club (portada Madrid)"
+     }
+    ],
+    "fuentes": [
+     {
+      "nombre": "conciertos.club (buscador semanal)",
+      "id": "cc_buscador",
+      "url": "https://conciertos.club/madrid/conciertos/121609-martin",
+      "prioridad": 3
+     },
+     {
+      "nombre": "conciertos.club (por estilo)",
+      "id": "cc_estilos",
+      "url": "https://conciertos.club/madrid/conciertos/121609-martin",
+      "prioridad": 3
+     },
+     {
+      "nombre": "conciertos.club (portada Madrid)",
+      "id": "cc_portada",
+      "url": "https://conciertos.club/madrid/conciertos/121609-martin",
+      "prioridad": 3
+     }
+    ],
+    "nacionalidad": null,
+    "nacionalidad_fuente": null,
+    "imagen_evento": {
+     "url": "https://doc.conciertos.club/doc/c/2026/directospl_20261002.jpg",
+     "credito": "conciertos.club (buscador semanal)",
+     "enlace": "https://conciertos.club/madrid/conciertos/121609-martin"
+    },
+    "categorias": [
+     "tributos y versiones"
+    ]
+   },
+   "ficha": {
+    "nombre": "Martín",
+    "fecha": "2026-09-29",
+    "wikipedia": {
+     "encontrado": false,
+     "motivo": "es: página de desambiguación; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+    },
+    "discogs": {
+     "encontrado": true,
+     "id": 562228,
+     "nombre": "Martin (14)",
+     "url": "https://www.discogs.com/artist/562228-Martin-14",
+     "generos": [
+      "Electronic",
+      "Funk / Soul",
+      "Pop"
+     ],
+     "estilos": [
+      "Trip Hop",
+      "Big Beat"
+     ],
+     "discos_analizados": 8,
+     "pais": null,
+     "imagen": null,
+     "perfil": "Otherwise unidentified photographer used by Johnny Rivers and other US pop releases in 1970's and 1980's"
+    },
+    "musicbrainz": {
+     "encontrado": false,
+     "motivo": "sin coincidencia exacta"
+    }
+   },
+   "debe": [
+    "tributos y versiones"
+   ],
+   "no_debe": [
+    "fuera de foco"
+   ],
+   "homonimo": true
+  },
+  {
+   "artista": "Pitbul",
+   "concierto": {
+    "id": "9fce2f34f255",
+    "fecha": "2026-11-05",
+    "artista": "Pitbul",
+    "estilo_fuente": [
+     {
+      "estilo": "Hip-Hop",
+      "fuente": "conciertos.club (buscador semanal)"
+     },
+     {
+      "estilo": "Pop Latino, Electrohouse, Reguetón",
+      "fuente": "La Ganzúa"
+     },
+     {
+      "estilo": "pop, hip_hop, latin",
+      "fuente": "Songkick Madrid"
+     }
+    ],
+    "fuentes": [
+     {
+      "nombre": "conciertos.club (buscador semanal)",
+      "id": "cc_buscador",
+      "url": "https://conciertos.club/madrid/conciertos/115404-pitbul",
+      "prioridad": 3
+     },
+     {
+      "nombre": "La Ganzúa",
+      "id": "laganzua",
+      "url": "https://www.laganzua.net/conciertos/pitbull-madrid-1015372",
+      "prioridad": 3
+     },
+     {
+      "nombre": "Songkick Madrid",
+      "id": "songkick",
+      "url": "https://www.songkick.com/concerts/43085613-pitbull-at-movistar-arena",
+      "prioridad": 3
+     },
+     {
+      "nombre": "Conciertos por Madrid",
+      "id": "cpm",
+      "url": "https://conciertospormadrid.com/conciertos/pitbull-madrid-2026/",
+      "prioridad": 3
+     }
+    ],
+    "nacionalidad": null,
+    "nacionalidad_fuente": null,
+    "imagen_evento": {
+     "url": "https://conciertos.club/doc/lp/I_WizinkCenter_Mad_pp.jpg",
+     "credito": "conciertos.club (buscador semanal)",
+     "enlace": "https://conciertos.club/madrid/conciertos/115404-pitbul"
+    },
+    "categorias": [
+     "fuera de foco",
+     "pop e indie"
+    ]
+   },
+   "ficha": {
+    "nombre": "Pitbul",
+    "fecha": "2026-09-29",
+    "wikipedia": {
+     "encontrado": false,
+     "motivo": "es: no existe; en: no es la página de un grupo o músico; en_(band): no existe"
+    },
+    "discogs": {
+     "encontrado": true,
+     "id": 8208367,
+     "nombre": "Pitbul",
+     "url": "https://www.discogs.com/artist/8208367-Pitbul",
+     "generos": [
+      "Rock"
+     ],
+     "estilos": [
+      "Hardcore"
+     ],
+     "discos_analizados": 1,
+     "pais": null,
+     "imagen": null,
+     "identificado_por": "única coincidencia exacta del nombre en Discogs",
+     "perfil": "Seattle Washington pissed off hardcore shit"
+    },
+    "musicbrainz": {
+     "encontrado": true,
+     "mbid": "6549846d-d8e2-40b9-95ca-5a4344cac284",
+     "nombre": "Pitbul",
+     "generos": [],
+     "pais": "US",
+     "identificado_por": "única coincidencia exacta del nombre en MusicBrainz"
+    }
+   },
+   "debe": [
+    "fuera de foco"
+   ],
+   "no_debe": [
+    "punk y garage"
+   ],
+   "homonimo": true
   }
  ]
 }

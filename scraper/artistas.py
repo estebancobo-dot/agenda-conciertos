@@ -525,6 +525,15 @@ PESO_FUENTE = {"Discogs": 1.0, "MusicBrainz": 0.9, "Last.fm": 0.8, "Wikipedia": 
 PESO_RANGO = [1.0, 0.75, 0.55, 0.45, 0.35, 0.3]
 
 
+def _mismo_nombre(a: str, b: str) -> bool:
+    """Mismo artista por el nombre, sin el sufijo de homónimos de Discogs ("Europe (2)") ni artículos."""
+    def n(x):
+        x = norm(re.sub(r"\s*\(\d+\)$", "", x or ""))
+        return re.sub(r"^(the|los|las|la|el) ", "", x).replace(" ", "")
+    x, y = n(a), n(b)
+    return bool(x and y) and (x == y or x in y or y in x)
+
+
 def evidencias(ent: dict) -> list[dict]:
     """Todos los estilos y géneros que dan las webs de música, con un peso según la fuente y su posición
     (la web pone primero el principal). Sirven para decidir los grupos por consenso, no por la primera fuente."""
@@ -541,6 +550,12 @@ def evidencias(ent: dict) -> list[dict]:
         out.append(e)
 
     dc, wp, lf = ent.get("discogs") or {}, ent.get("wikipedia") or {}, ent.get("lastfm") or {}
+    # Discogs sin identidad segura: encontrado solo por el nombre, o su ficha tiene otro nombre (el identificador
+    # de Wikidata puede estar mal: el de Sho-Hai apunta a "The Hate", un grupo de death metal). Si contradice a
+    # todo lo demás, se trata como posible homónimo (ver clasificar.revisar_homonimos).
+    dc_verificar = dc.get("encontrado") and (
+        "Wikidata" not in (dc.get("identificado_por") or "") or not _mismo_nombre(ent.get("nombre") or "",
+                                                                               dc.get("nombre") or ""))
     if dc.get("encontrado"):
         for i, e in enumerate(dc.get("estilos") or []):
             add(e, "estilo", "Discogs", i)
@@ -551,6 +566,14 @@ def evidencias(ent: dict) -> list[dict]:
             add(g, "genero", "Discogs", i)
             if conocidos:  # si ningún estilo está en la taxonomía (Techno, House…), el género decide solo
                 out[-1]["peso"] = round(out[-1]["peso"] * 0.6, 3)
+        if dc_verificar:
+            # ficha con otro nombre o con el sufijo de homónimos de Discogs ("Martin (14)"): identidad aún más dudosa
+            muy_dudosa = bool(re.search(r"\(\d+\)$", dc.get("nombre") or "")) or not _mismo_nombre(
+                ent.get("nombre") or "", dc.get("nombre") or "")
+            for e in out:
+                e["verificar"] = dc.get("nombre")
+                if muy_dudosa:
+                    e["muy_dudosa"] = True
     if lf.get("encontrado"):
         i = 0
         for t in lf.get("etiquetas") or []:  # en orden de votos

@@ -1,5 +1,14 @@
 # Versiones
 
+## 2.10.1 — 2026-09-30
+
+- **Homónimos en Discogs.** Si la ficha de Discogs no tiene una identidad segura (encontrada solo por el nombre, con otro nombre o con el sufijo de homónimos de Discogs, "Martin (14)") y contradice a todo lo demás (la pone solo fuera de foco y la agenda y las otras webs solo en foco, o al revés), se trata como posible homónimo: no decide el género y la ficha del concierto lo explica.
+  - Sho-Hai: el identificador de Discogs de su Wikidata apunta a "The Hate", un grupo de death metal. Vuelve a hip hop ("Otros géneros").
+  - También Martín (tributo), Pitbul, Hammond York…
+  - Con el mismo nombre hace falta la contradicción de dos agendas o de otra web de música: una sola agenda también se equivoca (a Efdemin, DJ de techno, Songkick lo etiqueta "rock").
+- **Informe por grupo:** los grupos anteriores se copian al empezar (antes "entran/salen" salía casi todo a 0).
+- El conjunto de control pasa a 49 artistas (con los homónimos).
+
 ## 2.10.0 — 2026-09-30
 
 Clasificación más consistente y grupo nuevo:
@@ -15,7 +24,6 @@ Clasificación más consistente y grupo nuevo:
 - "Música ligera", "Balada" y "Pop melódico" van a "Otros géneros". "Pop electrónico" y "Electropop" se tratan como etiquetas genéricas.
 - **Conjunto de control:** 46 artistas reales con su grupo correcto (y los que no deben tener) congelados en los tests. Cualquier cambio que los rompa falla antes de publicarse.
 - **Informe: conciertos por grupo**, con cuántos entran y salen de cada grupo respecto a la ejecución anterior y ejemplos.
-  - Corrección tras la primera publicación: los grupos anteriores se copian al empezar. Antes se leían al final, cuando los registros reutilizados ya tenían los grupos nuevos, y casi todo salía a 0.
 
 ## 2.9.1 — 2026-09-30
 

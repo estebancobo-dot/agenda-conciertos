@@ -212,6 +212,41 @@ def sin_generos_cubiertos(evs: list[dict]) -> list[dict]:
     return [e for e in evs if not (e["tipo"] == "genero" and e["nombre"] in cubiertos)]
 
 
+def revisar_homonimos(evs: list[dict], pesos_agenda: dict[str, float] | None = None) -> tuple[list[dict], str | None]:
+    """Discogs sin identidad segura (solo por el nombre, o su ficha lleva otro nombre) que contradice a todo lo
+    demás —las otras webs de música y lo que dice la agenda— es probablemente otro artista: sus evidencias pasan
+    a ser débiles (como Last.fm por el nombre). Contradecir es que uno lo pone solo fuera de foco y el otro solo
+    en foco (p. ej. el rapero Sho-Hai frente al grupo de death metal "The Hate"); entre grupos vecinos (rock y
+    punk) no se descarta nada. Devuelve las evidencias y el nombre de la ficha descartada."""
+    dudosas = [e for e in evs if e.get("verificar") and not e.get("debil")]
+    if not dudosas:
+        return evs, None
+
+    def grupos(lista, extra=None):
+        pesos: dict[str, float] = dict(extra or {})
+        for e in lista:
+            g = grupo_de(e["nombre"], e["tipo"])
+            if g:
+                pesos[g] = pesos.get(g, 0) + e["peso"]
+        return set(por_consenso(pesos))
+
+    def lado(gs):
+        if not gs:
+            return None
+        return "fuera" if gs == {"fuera de foco"} else ("foco" if "fuera de foco" not in gs else "mixto")
+
+    otras = [e for e in evs if not e.get("verificar") and not e.get("debil")]
+    a, b = lado(grupos(dudosas)), lado(grupos(otras, pesos_agenda))
+    if {a, b} != {"fuera", "foco"}:
+        return evs, None
+    # una sola agenda en contra no basta si la ficha lleva el mismo nombre (las agendas también se equivocan: a
+    # un DJ de techno lo etiquetan de "rock"); hacen falta dos agendas u otra web de música, salvo que la ficha
+    # tenga otro nombre o el sufijo de homónimos de Discogs
+    if not any(e.get("muy_dudosa") for e in dudosas) and not otras and sum((pesos_agenda or {}).values()) < TOPE_AGENDA:
+        return evs, None
+    return [dict(e, debil=True) if e in dudosas else e for e in evs], dudosas[0]["verificar"]
+
+
 def grupos_de_evidencias(evs: list[dict], grupos_agenda: list[str] | None = None,
                          pesos_agenda: dict[str, float] | None = None,
                          contexto: list[str] | None = None) -> tuple[list[str], list[str]]:
@@ -223,6 +258,7 @@ def grupos_de_evidencias(evs: list[dict], grupos_agenda: list[str] | None = None
       cuentan los grupos en los que coinciden con la agenda o con la especialidad de la web que publica el
       concierto (contexto): así un título genérico como "Eternal" no se convierte en un grupo de doom metal,
       pero EUROPE en una agenda de metal sí es el grupo de hard rock."""
+    evs, _ = revisar_homonimos(evs, pesos_agenda)
     evs = sin_generos_cubiertos(evs)
     fuertes = [e for e in evs if not e.get("debil")]
     debiles = [e for e in evs if e.get("debil")]
