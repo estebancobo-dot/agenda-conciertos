@@ -97,7 +97,9 @@ input[type=search]::-webkit-search-cancel-button{display:none}
 .day.finde:not(.zero){background:color-mix(in srgb,var(--accent) 6%,var(--panel))}
 .dow.finde{color:var(--accent)}
 .day.sel{outline:3px solid var(--ink);outline-offset:-3px;opacity:1}
-.mhead{margin-top:14px}
+.mhead{margin-top:14px;scroll-margin-top:calc(var(--hh,120px) + 8px)}
+.mhead.flash{animation:flash 1.2s ease}
+@keyframes flash{0%{background:color-mix(in srgb,var(--accent) 35%,var(--panel))}100%{background:transparent}}
 .legend{display:flex;flex-wrap:wrap;gap:6px 12px;font-size:.76rem;color:var(--muted);margin-top:10px}
 .legend span{display:inline-flex;align-items:center;gap:5px}
 .legend i{width:10px;height:10px;border-radius:2px;display:inline-block}
@@ -123,6 +125,9 @@ input[type=search]::-webkit-search-cancel-button{display:none}
 .hero{position:relative;border-radius:16px;overflow:hidden;background:var(--panel2);aspect-ratio:4/3;max-height:420px;width:100%}
 .hero .blur{position:absolute;inset:-20px;background-size:cover;background-position:center;filter:blur(22px) brightness(.8);transform:scale(1.1)}
 .hero img{position:relative;z-index:1;width:100%;height:100%;object-fit:contain;display:block}
+.hero img.provisional{position:absolute;inset:0;z-index:1;object-fit:contain;filter:blur(2px)}
+.hero img.grande{position:absolute;inset:0;z-index:2;opacity:0;transition:opacity .25s}
+.hero img.grande.ok{opacity:1}
 .hero .ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:3.4rem;font-weight:800;color:#fff;background:linear-gradient(135deg,var(--gc,var(--c-sin)),color-mix(in srgb,var(--gc,var(--c-sin)) 45%,#000))}
 .credit{font-size:.72rem;color:var(--muted);margin-top:4px}
 .dt h2{font-size:1.55rem;margin:12px 0 2px;line-height:1.15}
@@ -506,14 +511,15 @@ function card(r){
     r._conImg=!!im;
     const mini=r.mini||(im&&fotoUrl(im.url,160,true));
     r._card=`<a class="card" href="#concierto/${esc(r.id)}" data-id="${esc(r.id)}" style="--gc:var(${color(r)})">
-   ${im?`<img class="thumb" src="${esc(mini)}" data-o="${esc(im.url)}" data-i="${iniciales(r.artista)}" alt="" width="60" height="60" %CARGA% decoding="async" referrerpolicy="no-referrer" onerror="fotoError(this)">`:`<span class="thumb">${iniciales(r.artista)}</span>`}
+   ${im?`<img class="thumb" %SRC%="${esc(mini)}" data-o="${esc(im.url)}" data-i="${iniciales(r.artista)}" alt="" width="60" height="60" decoding="async" referrerpolicy="no-referrer" onerror="fotoError(this)">`:`<span class="thumb">${iniciales(r.artista)}</span>`}
    <div class="cbody"><div class="art">${esc(r.artista)}</div>
    ${r.invitados&&r.invitados.length?`<div class="sub">+ ${r.invitados.map(esc).join(" + ")}</div>`:""}
    <div class="sub">${h?`<b>${esc(h)}</b> · `:""}${esc(r.sala||"sala sin indicar")}${r.municipio&&r.municipio!=="Madrid"?` · ${esc(r.municipio)}`:""}</div>
    <div class="tags">${r.nacionalidad?`<span class="flag" title="${esc(pais(r.nacionalidad))}">${flag(r.nacionalidad)}</span>`:""}${estiloTags(r,2)}${estadoMini(r)}</div></div><span class="chev" aria-hidden="true">›</span></a>`;
   }
   // las primeras miniaturas de la vista se piden ya y con prioridad; el resto, al acercarse
-  return r._conImg?r._card.replace("%CARGA%",nImg++<8?'fetchpriority="high"':'loading="lazy"'):r._card;
+  // las primeras de la vista se piden ya; el resto, por la cola (primero las que están en pantalla)
+  return r._conImg?r._card.replace("%SRC%",nImg++<6?'fetchpriority="high" src':`src="${PIXEL}" data-src`):r._card;
 }
 // estado vacío que dice por qué: sin conciertos anunciados, o todos ocultos por los filtros (con un botón)
 function vacioHTML(ocultos,cuando){
@@ -549,6 +555,7 @@ async function compartir(r){
   try{ await navigator.clipboard.writeText(`${text}\n${url}`); toast("Enlace copiado"); }catch(e){ prompt("Copia el enlace:",url); }
 }
 function estadoBox(r){
+  if(!r._full) return `<div class="box" id="cargando">Cargando fuentes, precio y enlaces…</div>`;
   const conflictos=(r.conflictos||[]).filter(c=>c.versiones&&c.versiones.length);
   if(r.estado==="conflicto"){
     const nom={hora:"Hora",sala:"Sala",cartel:"Cartel"};
@@ -576,7 +583,8 @@ function viewConcierto(){
   const f=r.ficha||null, im=img(r);
   const sala=SALAS[norm(r.sala)];
   const mapa=`https://www.google.com/maps/search/${encodeURIComponent((r.sala||"")+" "+(r.municipio||"Madrid"))}`;
-  const entradas=(r.confirmado_sala&&r.confirmado_sala.url)||(r.fuentes[0]||{}).url;
+  const fuentes=r.fuentes||[];
+  const entradas=(r.confirmado_sala&&r.confirmado_sala.url)||(fuentes[0]||{}).url;
   const estilos=r.estilos_discogs||[];
   const generos=r.genero_discogs||[];
   const tieneDiscogs=f&&(f.enlaces||[]).some(e=>e.nombre==="Discogs");
@@ -604,7 +612,7 @@ function viewConcierto(){
   const volver=state.from||`#dia/${r.fecha}`;
   return `<a class="back" href="${esc(volver)}">‹ Volver</a>
    <div class="dt">
-    <div class="hero" style="--gc:var(${color(r)})"><div class="ph">${iniciales(r.artista)}</div>${im?`<div class="blur" style="background-image:url('${esc(r.mini||fotoUrl(im.url,160,true))}')"></div><img src="${esc(r.foto||fotoUrl(im.url,720,false))}" data-o="${esc(im.url)}" alt="Foto de ${esc(r.artista)}" fetchpriority="high" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.o&&this.src!==this.dataset.o){this.src=this.dataset.o;this.dataset.o=''}else{this.previousElementSibling.remove();this.remove()}">`:""}</div>
+    <div class="hero" style="--gc:var(${color(r)})"><div class="ph">${iniciales(r.artista)}</div>${im?`<div class="blur" style="background-image:url('${esc(r.mini||fotoUrl(im.url,160,true))}')"></div><img class="provisional" src="${esc(r.mini||fotoUrl(im.url,160,true))}" alt="" aria-hidden="true" referrerpolicy="no-referrer"><img class="grande" src="${esc(r.foto||fotoUrl(im.url,720,false))}" data-o="${esc(im.url)}" alt="Foto de ${esc(r.artista)}" fetchpriority="high" decoding="async" referrerpolicy="no-referrer" onload="this.classList.add('ok');fotoGrande(this)" onerror="if(this.dataset.o&&this.src!==this.dataset.o){this.src=this.dataset.o;this.dataset.o=''}else{this.previousElementSibling.remove();this.remove()}">`:""}</div>
     ${im?`<div class="credit">Foto: <a href="${esc(im.enlace||im.url)}" target="_blank" rel="noopener">${esc(im.credito)}</a>${f&&f.imagen?"":" (imagen del anuncio)"}</div>`:""}
     <h2>${esc(r.artista)}</h2>
     ${r.ciclo?`<div class="ciclo">${esc(r.ciclo)}</div>`:""}
@@ -615,7 +623,7 @@ function viewConcierto(){
      <div class="row"><span class="ic">📍</span><div><div class="v">${esc(r.sala||"Sala sin indicar")}</div><div class="s">${esc(r.municipio||"")} · <a href="${esc(mapa)}" target="_blank" rel="noopener">Cómo llegar</a>${sala&&sala.web?` · <a href="${esc(sala.web)}" target="_blank" rel="noopener">Web de la sala</a>`:""}</div></div></div>
      <div class="row"><span class="ic">🎸</span><div>${estiloHTML}</div></div>
      <div class="row"><span class="ic">${r.nacionalidad?flag(r.nacionalidad):"🏳️"}</span><div>${r.nacionalidad?`<div class="v">${esc(pais(r.nacionalidad))}</div><div class="s">según ${esc(r.nacionalidad_fuente||"la fuente")}</div>`:(r.origen_no_aplica?`<div class="v muted">No aplica</div><div class="s">Es un espectáculo (teatro, musical, danza…), no un artista</div>`:`<div class="v muted">Origen sin confirmar</div><div class="s">Ninguna fuente fiable lo indica</div>`)}</div></div>
-     <div class="row"><span class="ic">🎟️</span><div>${r.precio?`<div class="v">${esc(precioTxt(r.precio))}</div><div class="s">según ${r.precio_fuente?`<a href="${esc(r.precio_fuente.url)}" target="_blank" rel="noopener">${esc(r.precio_fuente.nombre.split(" (")[0])}</a>`:"la web"} · puede no incluir gastos</div>`:`<div class="v muted">Precio sin indicar</div>`}</div></div>
+     <div class="row"><span class="ic">🎟️</span><div>${r.precio?`<div class="v">${esc(precioTxt(r.precio))}</div><div class="s">según ${r.precio_fuente?`<a href="${esc(r.precio_fuente.url)}" target="_blank" rel="noopener">${esc(r.precio_fuente.nombre.split(" (")[0])}</a>`:"la web"} · puede no incluir gastos</div>`:(r._full?`<div class="v muted">Precio sin indicar</div>`:`<div class="v muted">Cargando…</div>`)}</div></div>
     </div>
     <div class="actions">
      ${entradas?`<a class="lbtn primary" href="${esc(entradas)}" target="_blank" rel="noopener">${r.confirmado_sala?"Ver en la web de la sala":"Ver anuncio y entradas"} ↗</a>`:""}
@@ -624,12 +632,12 @@ function viewConcierto(){
     <h3 class="sec">Escuchar y saber más</h3>
     <div class="links">${enlaces.map(e=>`<a class="lbtn" href="${esc(e.url)}" target="_blank" rel="noopener">${esc(e.nombre)}</a>`).join("")}</div>
     ${f&&f.perfil?`<p class="muted">${esc(f.perfil)} <span class="hint">(Discogs)</span></p>`:""}
-    <details class="more"${r.estado==="conflicto"?" open":""}><summary>De dónde salen los datos (${plural(r.fuentes.length,"web")})</summary>
-      <ul>${r.fuentes.map(x=>`<li><a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.nombre)}</a></li>`).join("")}</ul>
+    <details class="more"${r.estado==="conflicto"?" open":""}><summary>De dónde salen los datos (${plural(fuentes.length,"web")})</summary>
+      <ul>${fuentes.map(x=>`<li><a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.nombre)}</a></li>`).join("")}</ul>
       ${f&&f.identidad?`<div class="hint">Artista identificado por: ${esc(f.identidad)}</div>`:""}
       ${resueltos.length?`<div class="hint">${resueltos.map(esc).join("<br>")}</div>`:""}
       ${avisos.length?`<div class="hint">${avisos.map(esc).join("<br>")}</div>`:""}
-      ${(r.estilo_fuente||[]).length?`<div class="hint">Etiquetas de las agendas: ${esc(r.estilo_fuente.map(e=>`${e.estilo} (${e.fuente.split(" (")[0]})`).filter((x,i,a)=>a.indexOf(x)===i).join(" · "))}</div>`:""}
+      ${r._full&&(r.estilo_fuente||[]).length?`<div class="hint">Etiquetas de las agendas: ${esc(r.estilo_fuente.map(e=>`${e.estilo} (${String(e.fuente||"").split(" (")[0]})`).filter((x,i,a)=>a.indexOf(x)===i).join(" · "))}</div>`:""}
       <div class="hint">Visto por primera vez el ${esc(r.primera_vez_visto||"—")} · última comprobación ${esc(r.ultima_vez_visto||"—")}</div>
     </details>
    </div>`;
@@ -669,10 +677,14 @@ function listaMes(bd){
 }
 function elegirDiaMes(f){
   if(parse(f).getMonth()!==parse(state.date).getMonth()) return;
+  const t0=performance.now();
   state.date=f; nImg=0;
   document.querySelectorAll("[data-mdia]").forEach(b=>{const on=b.dataset.mdia===f; b.classList.toggle("sel",on); b.setAttribute("aria-pressed",on);});
-  document.getElementById("mlista").innerHTML=listaMes(byDate());
-  setHash(); precargar();
+  const ml=document.getElementById("mlista"); ml.innerHTML=listaMes(byDate());
+  observarImagenes(ml); setHash(); precargar();
+  const h=ml.querySelector(".mhead"); h.classList.remove("flash"); void h.offsetWidth; h.classList.add("flash");
+  if(h.getBoundingClientRect().top>innerHeight*0.55) h.scrollIntoView({behavior:"smooth",block:"start"});
+  medir("mes-dia",t0); rum("lista",performance.now()-t0);
   document.querySelectorAll("#mlista [data-quitar]").forEach(b=>b.onclick=()=>{setGrupos(GRUPOS.map(g=>g.id)); state.origen="todos"; store.set("origen","todos"); state.estilos={}; store.set("estilos",{}); state.genericos=true; store.set("genericos",true); renderBody(false);});
 }
 // Las semanas tienen hasta 200+ conciertos: se pintan ya los ~30 primeros y el resto de días justo después, para
@@ -734,6 +746,9 @@ function viewInforme(){
    <div class="kpis">${k(t.conciertos,"conciertos próximos")}${k(t.en_foco,"en foco")}${k(t.contrastados,"contrastados (2+ webs)")}${k(t.una_fuente,"de 1 web")}${k(t.conflictos,"con conflicto")}${k(t.posiblemente_cancelados,"posiblemente cancelados")}${k(t.nuevos_hoy,"nuevos hoy")}${k(`${t.fuentes_ok}/${t.fuentes_total}`,"fuentes que funcionaron")}</div>
    ${a.consultados!==undefined?`<h3>Fichas de artista</h3><div class="kpis">${k(a.discogs,"con ficha en Discogs")}${k(a.wikipedia,"con ficha en Wikipedia")}${a.wikidata!==undefined?k(a.wikidata,"con Wikidata"):""}${a.lastfm!==undefined?k(a.lastfm,"con etiquetas de Last.fm"):""}${a.musicbrainz!==undefined?k(a.musicbrainz,"con géneros de MusicBrainz"):""}${k(a.sin_ficha,"sin ficha")}${k(a.pendientes,"pendientes (próximas ejecuciones)")}</div>`:""}
    ${INFORME.grupos?`<h3>Conciertos por grupo</h3><p class="muted">Entran / salen: conciertos que ya estaban y han cambiado de grupo desde la ejecución anterior (por fichas nuevas o por cambios en la clasificación).</p><div class="scroll"><table><thead><tr><th>Grupo</th><th>Conciertos</th><th>Entran</th><th>Salen</th></tr></thead><tbody>${GRUPOS.filter(g=>INFORME.grupos[g.id]).map(g=>{const x=INFORME.grupos[g.id]; const ej=l=>l&&l.length?`<div class="muted">${esc(l.join(", "))}</div>`:""; return `<tr><td>${esc(g.nombre)}</td><td>${x.total}</td><td>${x.entran}${ej(x.ejemplos_entran)}</td><td>${x.salen}${ej(x.ejemplos_salen)}</td></tr>`;}).join("")}</tbody></table></div>`:""}
+   ${(()=>{const r=resumenRum(); if(!r.length) return ""; const txt=JSON.stringify({version:INFORME.version,ua:navigator.userAgent,conexion:(navigator.connection||{}).effectiveType,medidas:r});
+     return `<h3>Rendimiento en este móvil</h3><p class="muted">Tiempos reales medidos en este dispositivo (no se envían a ningún sitio). En milisegundos.</p><div class="scroll"><table><thead><tr><th>Qué</th><th>Veces</th><th>Mediana</th><th>9 de cada 10, menos de</th><th>Peor</th><th>Fallos</th></tr></thead><tbody>${r.map(x=>`<tr><td>${esc(x.n)}</td><td>${x.veces}</td><td>${x.mediana}</td><td>${x.p90}</td><td>${x.max}</td><td>${x.fallos}</td></tr>`).join("")}</tbody></table></div>
+     <p><button class="lbtn" id="copiarRum" data-t="${esc(txt)}">Copiar estos datos</button> <button class="lbtn" id="borrarRum">Empezar de cero</button></p>`;})()}
    <h3>Fuentes</h3><div class="scroll"><table><thead><tr><th>Fuente</th><th>Funcionó</th><th>Conciertos</th><th>Nuevos</th><th>Solo aquí</th><th>Páginas</th><th>robots.txt bloquea</th><th>Errores / avisos</th></tr></thead><tbody>${rows}</tbody></table></div>
    <h3>Correcciones manuales</h3><ul>${(c.aplicadas||[]).map(x=>`<li>${esc(x.correccion)}: aplicada a ${x.registros}</li>`).join("")}${(c.sin_coincidencia||[]).map(x=>`<li class="muted">${esc(x.correccion)}: sin concierto que coincida (${esc(x.nota)})</li>`).join("")}</ul>
    <h3>Fuera de ámbito (otras provincias)</h3><p class="muted">${esc(t.fuera_de_ambito)} eventos descartados. Ejemplos:</p><ul class="muted">${(t.ejemplos_fuera_de_ambito||[]).slice(0,10).map(x=>`<li>${esc(x)}</li>`).join("")}</ul>`;
@@ -788,14 +803,34 @@ async function asegurarDetalle(id){
   try{ const d=await pedidos[f]; Object.entries(d).forEach(([k,v])=>{const x=BYID[k]; if(x){Object.assign(x,v); x._full=true; delete x._card;}}); return true; }
   catch(e){ delete pedidos[f]; return false; }
 }
+// ---------------------------------------------------------------- rendimiento en este móvil
+// La web apunta sus propios tiempos en el dispositivo de quien la usa (sin enviar nada a ningún sitio): cuánto
+// tarda cada miniatura desde que aparece en pantalla, cada ficha y cada lista, y los bloqueos. Se ven en Informe.
+const RUM=(()=>{try{return JSON.parse(localStorage.getItem("agenda:rum")||"{}")}catch(e){return {}}})();
+let rumPend=false;
+function rum(tipo,ms,ok=true){
+  (RUM[tipo]=RUM[tipo]||[]).push([Math.round(ms),ok?1:0,Date.now()]); if(RUM[tipo].length>300) RUM[tipo].shift();
+  if(!rumPend){ rumPend=true; setTimeout(()=>{rumPend=false; try{localStorage.setItem("agenda:rum",JSON.stringify(RUM));}catch(e){}},2000); }
+}
+function fotoGrande(el){ if(el._t0) rum("ficha_foto",performance.now()-el._t0); }
+try{ new PerformanceObserver(l=>l.getEntries().forEach(e=>{ if(e.duration>100) rum("bloqueo",e.duration); })).observe({type:"longtask",buffered:true}); }catch(e){}
+function resumenRum(){
+  const q=(l,p)=>{const v=l.map(x=>x[0]).sort((a,b)=>a-b); return v.length?v[Math.min(v.length-1,Math.floor(p*v.length))]:null;};
+  const nombres={img:"Miniatura (desde que aparece en pantalla)",ficha_datos:"Ficha: fuentes y precio",ficha_foto:"Ficha: foto grande",lista:"Pintar una lista",bloqueo:"Bloqueos de la página"};
+  return Object.entries(nombres).filter(([k])=>(RUM[k]||[]).length).map(([k,n])=>{const l=RUM[k]; const fallos=l.filter(x=>!x[1]).length;
+    return {n,veces:l.length,mediana:q(l,.5),p90:q(l,.9),max:q(l,1),fallos};});
+}
 // tiempos de pintado (los lee la prueba en vivo, tools/probar_web.py)
 const medir=(q,t0)=>{(window.__tiempos=window.__tiempos||[]).push([q,Math.round(performance.now()-t0)]);};
 async function renderBody(keepFocus){
   const t0=performance.now();
   const main=document.getElementById("main"); nImg=0;
   if(state.tab==="Concierto"&&BYID[state.id]&&!BYID[state.id]._full&&DETALLES){
-    main.innerHTML=`<div class="dt"><div class="skel skel-hero"></div><div class="skel skel-l"></div><div class="skel skel-m"></div><div class="skel skel-m"></div></div>`;
-    if(!await asegurarDetalle(state.id)){ main.innerHTML=`<a class="back" href="#dia/${state.date||HOY}">‹ Volver</a><p class="empty">No se pudo cargar el detalle del concierto. Comprueba la conexión y vuelve a intentarlo.</p>`; return; }
+    // se pinta ya con los datos de la lista (artista, fecha, sala, estilo, foto) y se completa cuando llega el resto
+    const id=state.id, t1=performance.now();
+    asegurarDetalle(id).then(ok=>{ rum("ficha_datos",performance.now()-t1,ok);
+      if(state.tab!=="Concierto"||state.id!==id) return;
+      if(ok) renderBody(false); else { const b=document.getElementById("cargando"); if(b) b.textContent="No se pudieron cargar las fuentes y el precio: comprueba la conexión."; } });
   }
   const withFilters=VISTAS.includes(state.tab);
   let body="";
@@ -815,7 +850,8 @@ async function renderBody(keepFocus){
   else { main.innerHTML=withFilters?filtersHTML()+`<div id="fbody">${body}</div>`:body; if(withFilters) bindFilters(); }
   bindBody();
   setHash();
-  if(state.tab!=="Concierto"){ completarDiferidos(); precargar(); }
+  if(state.tab!=="Concierto"){ completarDiferidos(); observarImagenes(document.getElementById("main")); precargar(); rum("lista",performance.now()-t0); }
+  else { const g=document.querySelector(".hero img.grande"); if(g&&!g.complete) g._t0=performance.now(); }
   medir(state.tab,t0);
 }
 // al ver una lista se piden en segundo plano los detalles de sus primeros días; al tocar un concierto, el suyo y su
@@ -833,18 +869,54 @@ function tocar(e){
   asegurarDetalle(r.id);
   const im=img(r); if(im){ const p=new Image(); p.referrerPolicy="no-referrer"; p.src=r.foto||fotoUrl(im.url,720,false); }
 }
+// ---------------------------------------------------------------- carga de imágenes y días según el scroll
+// Con 200 conciertos en una semana, el navegador pedía decenas de fotos a la vez (compitiendo por la red) y
+// pintaba el resto de días justo cuando empezabas a bajar. Ahora:
+//  - las fotos entran en una cola en cuanto están cerca de la pantalla y se piden de 4 en 4, siempre primero las
+//    que estás viendo;
+//  - cada día de la lista se pinta cuando te acercas a él.
+const PIXEL="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
+const COLA=[]; let enVuelo=0; const MAX_IMG=4;
+const distancia=i=>{const b=i.getBoundingClientRect(); return b.bottom<0?-b.bottom:Math.max(0,b.top-innerHeight);};
+function bombear(){
+  while(enVuelo<MAX_IMG&&COLA.length){
+    COLA.sort((a,b)=>distancia(a)-distancia(b));
+    const i=COLA.shift(); if(!i.isConnected||!i.dataset.src) continue;
+    enVuelo++; const t0=i._visto||performance.now();
+    const fin=ok=>{enVuelo--; rum("img",performance.now()-t0,ok); bombear();};
+    i.addEventListener("load",()=>fin(true),{once:true}); i.addEventListener("error",()=>fin(false),{once:true});
+    i.src=i.dataset.src; delete i.dataset.src;
+  }
+}
+const obsImg=("IntersectionObserver" in window)?new IntersectionObserver(es=>{
+  for(const e of es) if(e.isIntersecting){ obsImg.unobserve(e.target); e.target._visto=performance.now(); COLA.push(e.target); }
+  bombear();
+},{rootMargin:"150px 0px"}):null;
+function observarImagenes(raiz){
+  (raiz||document).querySelectorAll("img[data-src]").forEach(i=>{ if(obsImg) obsImg.observe(i); else { i.src=i.dataset.src; delete i.dataset.src; } });
+  (raiz||document).querySelectorAll("img.thumb[fetchpriority]").forEach(i=>{ if(i.complete) return; const t0=performance.now();
+    i.addEventListener("load",()=>rum("img",performance.now()-t0,true),{once:true}); });
+}
+let obsDias=null;
 function completarDiferidos(){
   if(!DIFERIDOS||!DIFERIDOS.dias.length) return;
-  const {bd,dias}=DIFERIDOS; DIFERIDOS=null;
-  const paso=()=>{ const f=dias.shift(); if(!f) return; const el=document.querySelector(`[data-dif="${f}"]`);
-    if(el){ el.outerHTML=dayList(f,bd[f]); } if(dias.length) requestAnimationFrame(paso); };
-  requestAnimationFrame(paso);
+  const {bd}=DIFERIDOS; DIFERIDOS=null;
+  const pintarDia=el=>{ if(!el.isConnected) return; const f=el.dataset.dif; const tmp=document.createElement("div");
+    tmp.innerHTML=dayList(f,bd[f]); const nuevos=[...tmp.childNodes]; el.replaceWith(...nuevos);
+    nuevos.forEach(n=>n.nodeType===1&&observarImagenes(n)); };
+  if(obsDias) obsDias.disconnect();
+  const ph=[...document.querySelectorAll("[data-dif]")];
+  if(!("IntersectionObserver" in window)){ ph.forEach(pintarDia); return; }
+  obsDias=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ obsDias.unobserve(e.target); pintarDia(e.target); } }),{rootMargin:"900px 0px"});
+  ph.forEach(el=>{ el._pintar=()=>{obsDias.unobserve(el); pintarDia(el);}; obsDias.observe(el); });
 }
 function bindBody(){
   document.querySelectorAll("[data-day]").forEach(b=>b.onclick=()=>{state.date=b.dataset.day; state.tab="Día"; render(); scrollTo(0,0);});
   document.querySelectorAll("[data-mdia]").forEach(b=>b.onclick=()=>elegirDiaMes(b.dataset.mdia));
   document.querySelectorAll("[data-sel]").forEach(b=>b.onclick=()=>{state.date=b.dataset.sel; renderBody(true);});
-  document.querySelectorAll("[data-jump]").forEach(b=>b.onclick=()=>{const el=document.getElementById("d-"+b.dataset.jump); if(el) el.scrollIntoView({behavior:"smooth"}); else toast("Ese día no hay conciertos con estos filtros");});
+  document.querySelectorAll("[data-jump]").forEach(b=>b.onclick=()=>{let el=document.getElementById("d-"+b.dataset.jump);
+    if(el&&el._pintar){ el._pintar(); el=document.getElementById("d-"+b.dataset.jump); }
+    if(el) el.scrollIntoView({behavior:"smooth"}); else toast("Ese día no hay conciertos con estos filtros");});
   document.querySelectorAll("[data-nav]").forEach(b=>b.onclick=()=>{
     const n=Number(b.dataset.nav);
     if(state.tab==="Mes"){const d=parse(state.date); const f=iso(new Date(d.getFullYear(),d.getMonth()+n,1)); state.date=f.slice(0,7)===HOY.slice(0,7)?HOY:f;}
@@ -853,6 +925,8 @@ function bindBody(){
   });
   const hoy=document.getElementById("hoy"); if(hoy) hoy.onclick=()=>{state.date=HOY; renderBody(true);};
   document.querySelectorAll("[data-quitar]").forEach(b=>b.onclick=()=>{setGrupos(GRUPOS.map(g=>g.id)); state.origen="todos"; store.set("origen","todos"); state.estilos={}; store.set("estilos",{}); state.genericos=true; store.set("genericos",true); renderBody(false);});
+  const cr=document.getElementById("copiarRum"); if(cr) cr.onclick=async()=>{try{await navigator.clipboard.writeText(cr.dataset.t); toast("Copiado");}catch(e){prompt("Copia estos datos:",cr.dataset.t);}};
+  const br=document.getElementById("borrarRum"); if(br) br.onclick=()=>{for(const k in RUM) delete RUM[k]; try{localStorage.removeItem("agenda:rum");}catch(e){} renderBody(false);};
   const vt=document.getElementById("vertodo"); if(vt) vt.onclick=()=>{setGrupos(GRUPOS.map(g=>g.id)); state.origen="todos"; store.set("origen","todos"); renderBody(false);};
   const r=BYID[state.id];
   if(state.tab==="Concierto"&&r){

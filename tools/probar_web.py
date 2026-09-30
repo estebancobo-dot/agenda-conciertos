@@ -73,7 +73,7 @@ def lento(pg):
     cdp = pg.context.new_cdp_session(pg)
     cdp.send("Network.enable")
     cdp.send("Network.emulateNetworkConditions", RED)
-    cdp.send("Emulation.setCPUThrottlingRate", {"rate": 4})
+    cdp.send("Emulation.setCPUThrottlingRate", {"rate": 6})  # móvil de gama media-baja
     return cdp
 
 
@@ -118,6 +118,26 @@ def recorrido(b):
         m = miniaturas(pg)
         faltan.append(m["visibles"] - m["cargadas"])
     paso("2_semana_scroll", pantallas=len(faltan), miniaturas_sin_cargar_por_pantalla=faltan)
+    # scroll rápido y seguido, como con el dedo: sin pausas; al parar, cuánto tardan en verse las de la pantalla
+    pg.evaluate("scrollTo(0,0)")
+    pg.wait_for_timeout(300)
+    vacias = []
+    for _ in range(25):
+        pg.mouse.wheel(0, 900)
+        pg.wait_for_timeout(120)
+        m = miniaturas(pg)
+        vacias.append(m["visibles"] - m["cargadas"])
+    t0 = time.monotonic()
+    espera = None
+    for _ in range(100):
+        m = miniaturas(pg)
+        if m["visibles"] == m["cargadas"]:
+            espera = ms(t0)
+            break
+        pg.wait_for_timeout(100)
+    paso("2_scroll_rapido", sin_cargar_mientras_baja=vacias, al_parar_todas_visibles_en_ms=espera or "más de 10 s",
+         dias_pintados=pg.evaluate("document.querySelectorAll('.dayhead').length"),
+         dias_pendientes=pg.evaluate("document.querySelectorAll('[data-dif]').length"))
     # semana siguiente (x3)
     tiempos = []
     for _ in range(3):
@@ -276,7 +296,10 @@ def recorrido(b):
     dia.click()
     pg.wait_for_function("document.querySelector('#mlista')!==null")
     pg.wait_for_timeout(30)
-    paso("5_mes", ms=mes_ms, elegir_dia_ms=ms(t0), lista_debajo=pg.locator("#mlista .card").count())
+    pg.wait_for_timeout(900)
+    se_ve = pg.evaluate("(()=>{const h=document.querySelector('#mlista .mhead');const b=h.getBoundingClientRect();return b.top>=0&&b.top<innerHeight})()")
+    paso("5_mes", ms=mes_ms, elegir_dia_ms=ms(t0), lista_debajo=pg.locator("#mlista .card").count(),
+         lista_del_dia_a_la_vista=se_ve)
     pg.screenshot(path=str(OUT / "5_mes.png"), full_page=True)
 
     tiempos = pg.evaluate("window.__tiempos||[]")
@@ -284,6 +307,10 @@ def recorrido(b):
     for q, t in tiempos:
         por.setdefault(q, []).append(t)
     paso("6_pintado_interno_ms", **{q: {"n": len(v), "mediana": sorted(v)[len(v) // 2], "max": max(v)} for q, v in por.items()})
+    try:
+        paso("6_rendimiento_en_el_dispositivo", medidas=pg.evaluate("resumenRum()"))
+    except Exception:  # noqa: BLE001 - versiones anteriores de la web no lo tienen
+        pass
     lt = pg.evaluate("window.__lt||[]")
     paso("6_bloqueos_js", tareas_largas=len(lt), total_ms=sum(d for _, d in lt), peores=sorted(lt, key=lambda x: -x[1])[:8])
     dur = [i["ms"] for i in imgs if isinstance(i.get("ms"), (int, float)) and i["ms"] > 0]

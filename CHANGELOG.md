@@ -1,5 +1,16 @@
 # Versiones
 
+## 2.17.0 — 2026-09-30
+
+Scroll, fichas y vista mes en móviles reales (las pruebas anteriores no reproducían bien el uso real: bajaban la lista con pausas y sobre cachés ya calientes):
+
+- **Fotos por orden de llegada a la pantalla.** Antes, en una semana con 200 conciertos, el navegador pedía decenas de fotos a la vez y competían entre sí por la red: las que tenías delante esperaban a las de más abajo. Ahora entran en una cola cuando están cerca de la pantalla y se piden de 4 en 4, siempre primero las que estás viendo.
+- **Los días de la lista se pintan cuando te acercas a ellos**, no todos de golpe justo cuando empiezas a bajar (eso trababa el scroll).
+- **La ficha se abre al instante** con lo que ya se sabe (artista, fecha, sala, estilo, foto pequeña); las fuentes, el precio y los enlaces se rellenan al llegar ("Cargando…"). La foto pequeña se ve nítida enseguida y la grande la sustituye cuando se ha descargado.
+- **Vista mes**: al tocar un día, la pantalla baja hasta su lista y la resalta, para que se vea que ha cambiado.
+- **Rendimiento medido en tu propio móvil** (Informe → "Rendimiento en este móvil"): cuánto tarda cada miniatura desde que aparece, cada ficha, cada lista y los bloqueos. No se envía a ningún sitio; con "Copiar estos datos" se pueden pasar para analizarlos.
+- Prueba en vivo más dura: CPU 6 veces más lenta y scroll seguido, sin pausas.
+
 ## 2.16.0 — 2026-09-30
 
 **Origen de los artistas: muchos menos "sin confirmar"** (antes, 1.925 de 2.643):
