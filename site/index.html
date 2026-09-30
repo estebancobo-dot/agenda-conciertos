@@ -182,6 +182,8 @@ details.more ul{padding-left:20px;margin:8px 0}
 .shd{display:flex;align-items:center;justify-content:space-between}
 .sx{border:0;background:none;font-size:1.3rem;min-width:44px;min-height:44px;color:var(--muted)}
 .rapidos{display:flex;gap:6px;margin:0 0 4px}
+.qact{display:flex;gap:10px;align-items:center;justify-content:space-between;background:color-mix(in srgb,var(--c-trib) 12%,var(--panel));border:1px solid color-mix(in srgb,var(--c-trib) 40%,var(--line));border-radius:12px;padding:10px 12px;margin:8px 0;font-size:.88rem}
+.qact button{flex:0 0 auto;min-height:38px;border:1px solid var(--line);border-radius:10px;background:var(--panel);font-weight:700;padding:0 10px}
 .rapidos button{flex:1;min-height:38px;border:1px solid var(--line);border-radius:10px;background:var(--panel);font-size:.85rem}
 .grp .inc{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px}
 .grp .inc span{font-size:.75rem;background:var(--panel2);border-radius:6px;padding:1px 6px}
@@ -323,10 +325,15 @@ document.getElementById("menubtn").onclick=openMenu;
 
 // ---------------------------------------------------------------- filtros
 function textoDe(r){return norm([r.artista,(r.invitados||[]).join(" "),r.sala,r.municipio,r.ciclo,(r.estilos_discogs||[]).join(" "),(r.genero_discogs||[]).join(" ")].join(" "));}
-function pasaTexto(r){
-  if(!state.q.trim()) return true;
+function pasaTexto(r,q=state.q){
+  if(!q.trim()) return true;
   const hay=r._t||(r._t=textoDe(r));
-  return norm(state.q).split(/\s+/).filter(Boolean).every(w=>hay.includes(w));
+  return norm(q).split(/\s+/).filter(Boolean).every(w=>hay.includes(w));
+}
+// "Borrar filtros" deja todo como al entrar: géneros de siempre, cualquier origen, sin estilos y sin búsqueda
+function borrarFiltros(){
+  setGrupos([...DEF_GRUPOS]); state.origen="todos"; store.set("origen","todos"); state.estilos={}; store.set("estilos",{});
+  state.genericos=true; store.set("genericos",true); state.q=""; renderBody(false);
 }
 function pasaOrigen(r){
   if(state.origen==="es") return r.nacionalidad==="ES";
@@ -346,7 +353,7 @@ function visible(r){ return pasaGrupo(r) && pasaTexto(r) && pasaOrigen(r); }
 function byDate(){const m={}; for(const r of DATA){ if(!visible(r)) continue; (m[r.fecha]=m[r.fecha]||[]).push(r);} return m;}
 const nEstilos=()=>Object.values(state.estilos).reduce((n,l)=>n+(l||[]).length,0);
 const esDefecto=()=>DEF_GRUPOS.every(g=>state.grupos.includes(g))&&!state.grupos.includes("fuera de foco")&&!nEstilos()&&state.genericos;
-function nFiltros(){ return (esDefecto()?0:1)+(state.origen!=="todos"?1:0); }
+function nFiltros(){ return (esDefecto()?0:1)+(state.origen!=="todos"?1:0)+(state.q.trim()?1:0); }
 function resumenFiltros(){
   const p=[];
   if(!esDefecto()){
@@ -356,15 +363,21 @@ function resumenFiltros(){
     if(!state.genericos) p.push("sin etiquetas genéricas");
   }
   if(state.origen!=="todos") p.push(ORIGENES.find(o=>o[0]===state.origen)[1].replace("🇪🇸 ",""));
+  if(state.q.trim()) p.unshift(`búsqueda «${state.q.trim()}»`);
   return p.join(" · ");
 }
 function filtersHTML(){
   const n=nFiltros();
+  return `<div class="bar"><div class="sbox"><input class="search" id="q" type="search" enterkeyhint="search" placeholder="Buscar artista, sala o estilo" value="${esc(state.q)}" aria-label="Buscar en todas las fechas">${state.q?`<button class="sclear" id="qx" aria-label="Borrar búsqueda">✕</button>`:""}</div>
+   <button class="fbtn" id="fgen" aria-haspopup="dialog">Filtros<span id="fbadge">${n?` <span class="badge">${n}</span>`:""}</span></button></div>
+   <div id="fextra">${extraHTML()}</div>`;
+}
+// pastillas de género y resumen de filtros: se rehacen en cada tecla de la búsqueda (sin tocar el cuadro de texto)
+function extraHTML(){
+  const n=nFiltros();
   const cn={}; for(const r of DATA){ if(r.fecha<HOY||!pasaTexto(r)||!pasaOrigen(r)) continue; for(const g of grupos(r)) cn[g]=(cn[g]||0)+1; }
   const chips=GRUPOS.map(g=>`<button class="chip" data-chip="${esc(g.id)}" aria-pressed="${state.grupos.includes(g.id)}"><i style="background:var(${g.v})"></i>${esc(g.nombre)}<small class="cc">${cn[g.id]||0}</small></button>`).join("");
-  return `<div class="bar"><div class="sbox"><input class="search" id="q" type="search" enterkeyhint="search" placeholder="Buscar artista, sala o estilo" value="${esc(state.q)}" aria-label="Buscar en todas las fechas">${state.q?`<button class="sclear" id="qx" aria-label="Borrar búsqueda">✕</button>`:""}</div>
-   <button class="fbtn" id="fgen" aria-haspopup="dialog">Filtros${n?` <span class="badge">${n}</span>`:""}</button></div>
-   <div class="chips" role="group" aria-label="Géneros">${chips}</div>
+  return `<div class="chips" role="group" aria-label="Géneros">${chips}</div>
    ${n?`<div class="active">Filtrando: ${esc(resumenFiltros())} · <button id="freset">Borrar filtros</button></div>`:""}`;
 }
 function setGrupos(g){ state.grupos=g; store.set("grupos3",g); }
@@ -373,7 +386,10 @@ function bindFilters(){
   if(q) q.oninput=()=>{const had=!!state.q; state.q=q.value; if(!!state.q!==had){renderBody(false); const nq=document.getElementById("q"); nq.focus(); nq.setSelectionRange(nq.value.length,nq.value.length);} else renderBody(true);};
   const qx=document.getElementById("qx"); if(qx) qx.onclick=()=>{state.q=""; renderBody(false);};
   const g=document.getElementById("fgen"); if(g) g.onclick=openSheet;
-  const fr=document.getElementById("freset"); if(fr) fr.onclick=()=>{setGrupos([...DEF_GRUPOS]); state.origen="todos"; store.set("origen","todos"); state.estilos={}; store.set("estilos",{}); state.genericos=true; store.set("genericos",true); renderBody(false);};
+  bindExtra();
+}
+function bindExtra(){
+  const fr=document.getElementById("freset"); if(fr) fr.onclick=borrarFiltros;
   document.querySelectorAll("[data-chip]").forEach(c=>c.onclick=()=>{
     const id=c.dataset.chip, on=state.grupos.includes(id);
     setGrupos(on?state.grupos.filter(x=>x!==id):[...state.grupos,id]); renderBody(false);
@@ -396,11 +412,11 @@ function openSheet(){
   // Hoja de filtros. Se pinta una vez; cada toque solo cambia lo que toca (casilla, estilo, contador), sin volver a
   // construir la hoja entera. Los grupos y estilos de cada concierto están precalculados (r._g, r._e).
   const ARBOL={}; todosLosEstilos().forEach(s=>{const g=grupoDeEstilo(s); (ARBOL[g]=ARBOL[g]||[]).push(s);});
-  let sel=[...state.grupos], ori=state.origen, selEst=JSON.parse(JSON.stringify(state.estilos||{})), genOk=state.genericos;
+  let sel=[...state.grupos], ori=state.origen, selEst=JSON.parse(JSON.stringify(state.estilos||{})), genOk=state.genericos, q=state.q;
   const el=document.getElementById("sheet");
   const pasaOri=r=>ori==="todos"||(ori==="es"?r.nacionalidad==="ES":ori==="ext"?r.nacionalidad&&r.nacionalidad!=="ES":!r.nacionalidad);
   let fut=[], cnt={}, est={}, gen={};
-  const contar=()=>{ fut=DATA.filter(r=>r.fecha>=HOY&&pasaTexto(r)&&pasaOri(r)); cnt={}; est={}; gen={};
+  const contar=()=>{ fut=DATA.filter(r=>r.fecha>=HOY&&pasaTexto(r,q)&&pasaOri(r)); cnt={}; est={}; gen={};
     for(const r of fut){ for(const g of grupos(r)){cnt[g]=(cnt[g]||0)+1; if(r.grupos_generico) gen[g]=(gen[g]||0)+1;}
       for(const s of r.estilos_discogs||[]){const g=grupoDeEstilo(s); if(!g) continue; (est[g]=est[g]||{})[s]=(est[g][s]||0)+1;}} };
   const pasa=r=>{ if(r.grupos_generico&&!genOk) return false; const gs=grupos(r);
@@ -418,6 +434,7 @@ function openSheet(){
     contar();
     el.innerHTML=`<div class="sheet-bg" id="sbg"></div><div class="sheet" role="dialog" aria-modal="true" aria-label="Filtros"><div class="sc">
      <div class="shd"><h3>Filtros</h3><button class="sx" id="sx" aria-label="Cerrar sin aplicar">✕</button></div>
+     ${q.trim()?`<div class="qact"><span>🔎 Buscando <b>«${esc(q.trim())}»</b>: solo cuentan los conciertos que coinciden con la búsqueda.</span><button id="sq">Quitar búsqueda</button></div>`:""}
      <h4>Géneros</h4>
      <div class="rapidos"><button data-rap="def">Los de siempre</button><button data-rap="todos">Todos</button><button data-rap="ninguno">Ninguno</button></div>
      ${GRUPOS.map(fila).join("")}
@@ -440,8 +457,9 @@ function openSheet(){
   const enlazar=()=>{
     document.getElementById("sbg").onclick=cerrar; document.getElementById("sx").onclick=cerrar;
     document.addEventListener("keydown",esc_);
-    document.getElementById("sdef").onclick=()=>{sel=[...DEF_GRUPOS]; selEst={}; genOk=true; const o=ori; ori="todos"; if(o!=="todos") pintar(); else refrescar();};
-    document.getElementById("sclose").onclick=()=>{setGrupos(sel); state.origen=ori; store.set("origen",ori); state.estilos=selEst; store.set("estilos",selEst); state.genericos=genOk; store.set("genericos",genOk); cerrar(); renderBody(false);};
+    document.getElementById("sdef").onclick=()=>{sel=[...DEF_GRUPOS]; selEst={}; genOk=true; const cambia=ori!=="todos"||q; ori="todos"; q=""; if(cambia) pintar(); else refrescar();};
+    const sq=document.getElementById("sq"); if(sq) sq.onclick=()=>{q=""; const sc=el.querySelector(".sc").scrollTop; pintar(); el.querySelector(".sc").scrollTop=sc;};
+    document.getElementById("sclose").onclick=()=>{state.q=q; setGrupos(sel); state.origen=ori; store.set("origen",ori); state.estilos=selEst; store.set("estilos",selEst); state.genericos=genOk; store.set("genericos",genOk); cerrar(); renderBody(false);};
     document.getElementById("fgenok").onchange=e=>{genOk=e.target.checked; refrescar();};
     el.querySelectorAll("[data-rap]").forEach(b=>b.onclick=()=>{const k=b.dataset.rap; sel=k==="def"?[...DEF_GRUPOS]:k==="todos"?GRUPOS.map(g=>g.id):[]; if(k!=="todos") selEst={}; refrescar();});
     el.querySelectorAll("[data-g]").forEach(c=>c.onchange=()=>{const g=c.dataset.g; sel=c.checked?[...new Set([...sel,g])]:sel.filter(x=>x!==g); if(!c.checked) delete selEst[g]; refrescar();});
@@ -789,7 +807,11 @@ async function renderBody(keepFocus){
     if(state.tab==="Estilos") body=back+viewEstilos(); else if(state.tab==="Fuentes") body=back+viewFuentes();
     else if(state.tab==="Informe") body=back+viewInforme(); else body=back+await viewVersiones();
   }
-  if(withFilters&&keepFocus&&document.getElementById("fbody")) document.getElementById("fbody").innerHTML=body;
+  if(withFilters&&keepFocus&&document.getElementById("fbody")){
+    document.getElementById("fbody").innerHTML=body;
+    document.getElementById("fextra").innerHTML=extraHTML(); bindExtra();
+    const n=nFiltros(); document.getElementById("fbadge").innerHTML=n?` <span class="badge">${n}</span>`:"";
+  }
   else { main.innerHTML=withFilters?filtersHTML()+`<div id="fbody">${body}</div>`:body; if(withFilters) bindFilters(); }
   bindBody();
   setHash();

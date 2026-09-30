@@ -199,6 +199,8 @@ def recorrido(b):
                 f = "más de 20 s"
         fichas[t] = {"datos_ms": d, "foto_ms": f}
     paso("3b_fichas_por_origen_de_foto", **fichas)
+    pg.evaluate(f"location.hash='#semana/{lunes.isoformat()}'")
+    pg.wait_for_selector("#fgen")
 
     # 4. filtros
     pg.evaluate("scrollTo(0,0)")
@@ -241,6 +243,28 @@ def recorrido(b):
     pg.locator("[data-chip='blues']").click()
     paso("4_filtros", abrir_ms=abrir, marcar_genero_ms=marcar, elegir_estilo_ms=estilo, estilo=est_nombre,
          aplicar_ms=aplicar, quitar_filtros_ms=quitar, restablecer_ms=restablecer, chip_ms=chip)
+
+    # 4b. búsqueda + filtros: la búsqueda se ve en la hoja, "Todos" no la quita, "Borrar filtros" sí
+    pg.evaluate(f"location.hash='#semana/{lunes.isoformat()}'")
+    pg.wait_for_selector("#q")
+    pg.fill("#q", "Leiva")
+    pg.wait_for_timeout(400)
+    resumen = pg.locator(".active").inner_text() if pg.locator(".active").count() else ""
+    pg.click("#fgen")
+    pg.wait_for_selector(".sheet")
+    en_hoja = pg.locator(".qact").count() > 0
+    pg.click("[data-rap='todos']")
+    sigue_tras_todos = pg.locator(".qact").count() > 0
+    boton_con_busqueda = pg.locator("#sclose").inner_text()
+    pg.click("#sdef")
+    quitada = pg.locator(".qact").count() == 0
+    boton_sin_busqueda = pg.locator("#sclose").inner_text()
+    pg.click("#sclose")
+    pg.wait_for_function("!document.querySelector('.sheet')")
+    paso("4b_busqueda_y_filtros", resumen_barra=resumen, busqueda_visible_en_hoja=en_hoja,
+         sigue_tras_pulsar_todos=sigue_tras_todos, boton_con_busqueda=boton_con_busqueda,
+         borrar_filtros_quita_busqueda=quitada, boton_sin_busqueda=boton_sin_busqueda,
+         cuadro_vacio_al_aplicar=pg.input_value("#q") == "")
 
     # 5. mes
     t0 = time.monotonic()

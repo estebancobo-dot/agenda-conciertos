@@ -2,6 +2,10 @@
 
 ## 2.15.1 — 2026-09-30
 
+- **La búsqueda es un filtro más, y se ve.** Antes, con un nombre escrito en "Buscar", la hoja de filtros no lo mostraba: al pulsar "Todos" seguían saliendo solo los resultados de la búsqueda y los recuentos no cuadraban.
+  - La hoja avisa arriba de que hay una búsqueda activa y tiene un botón "Quitar búsqueda".
+  - "Borrar filtros", tanto en la hoja como en la barra, también borra la búsqueda.
+  - El resumen "Filtrando: búsqueda «…» · …" y el número del botón Filtros se actualizan a cada letra.
 - **Fichas con tiempo de carga estable.** Antes dependía de dónde viniera la foto y de si sus datos estaban precargados:
   - La foto grande de conciertos.club y Discogs también se genera al publicar (720 px, unos 40 KB) y se sirve desde la web; antes se pedía el original, de 4 a 9 s con 4G.
   - Se precargan los datos de todos los días de la lista, no solo los primeros.
