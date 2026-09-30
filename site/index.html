@@ -3,6 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="preconnect" href="https://wsrv.nl" crossorigin>
+<link rel="preconnect" href="https://thumb.wikimedia.org">
 <title>Conciertos Madrid</title>
 <meta name="description" content="Agenda automática de conciertos en la Comunidad de Madrid: rock, metal, blues, americana, folk, punk, indie, synthwave y dark wave. Datos trazables a sus fuentes.">
 <meta name="theme-color" content="#14161a" media="(prefers-color-scheme: dark)">
@@ -60,6 +62,7 @@ input[type=search]::-webkit-search-cancel-button{display:none}
 .chips::-webkit-scrollbar{display:none}
 .chip{flex:0 0 auto;display:inline-flex;align-items:center;gap:6px;min-height:36px;border:1px solid var(--line);background:var(--panel);border-radius:999px;padding:5px 12px;font-size:.85rem;color:var(--muted)}
 .chip i{width:9px;height:9px;border-radius:50%;display:inline-block}
+.chip .cc{font-size:.72rem;opacity:.7;font-weight:500}
 .chip[aria-pressed="true"]{border-color:var(--ink);color:var(--ink);font-weight:700;background:color-mix(in srgb,var(--ink) 7%,var(--panel))}
 .chip[aria-pressed="false"] i{opacity:.35}
 .active{font-size:.8rem;color:var(--muted);margin:6px 0 0}
@@ -91,13 +94,17 @@ input[type=search]::-webkit-search-cancel-button{display:none}
 .day .cnt:empty{display:none}
 .day .stack{display:flex;height:5px;border-radius:3px;overflow:hidden;margin-top:3px;background:var(--panel2)}
 .day.zero{background:transparent}
+.day.finde:not(.zero){background:color-mix(in srgb,var(--accent) 6%,var(--panel))}
+.dow.finde{color:var(--accent)}
+.day.sel{outline:3px solid var(--ink);outline-offset:-3px;opacity:1}
+.mhead{margin-top:14px}
 .legend{display:flex;flex-wrap:wrap;gap:6px 12px;font-size:.76rem;color:var(--muted);margin-top:10px}
 .legend span{display:inline-flex;align-items:center;gap:5px}
 .legend i{width:10px;height:10px;border-radius:2px;display:inline-block}
 .dayhead{margin:18px 0 6px;font-weight:800;display:flex;align-items:baseline;gap:8px;scroll-margin-top:170px}
 .dayhead small{color:var(--muted);font-weight:500}
 /* tarjeta */
-.card{display:flex;gap:12px;align-items:center;background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:10px;margin:8px 0;box-shadow:var(--shadow);text-decoration:none;color:inherit;position:relative;overflow:hidden}
+.card{content-visibility:auto;contain-intrinsic-size:auto 82px;display:flex;gap:12px;align-items:center;background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:10px;margin:8px 0;box-shadow:var(--shadow);text-decoration:none;color:inherit;position:relative;overflow:hidden}
 .card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--gc,var(--c-sin))}
 .thumb{flex:0 0 60px;width:60px;height:60px;border-radius:10px;object-fit:cover;background:var(--panel2);display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--muted);font-size:1.1rem;overflow:hidden}
 .cbody{flex:1;min-width:0}
@@ -168,10 +175,19 @@ details.more ul{padding-left:20px;margin:8px 0}
 .grp .ct{color:var(--muted);font-size:.85rem}
 .grp details{padding:0 12px 10px}
 .grp summary{cursor:pointer;color:var(--info);font-size:.82rem}
+.estw{padding:0 12px 10px}
+.vest{border:0;background:none;color:var(--info);padding:4px 0;font-size:.85rem;min-height:32px}
+.vest[aria-expanded="true"]{font-weight:700}
+.solo{font-size:.8rem;color:var(--ink);font-weight:600;margin-left:8px}
+.shd{display:flex;align-items:center;justify-content:space-between}
+.sx{border:0;background:none;font-size:1.3rem;min-width:44px;min-height:44px;color:var(--muted)}
+.rapidos{display:flex;gap:6px;margin:0 0 4px}
+.rapidos button{flex:1;min-height:38px;border:1px solid var(--line);border-radius:10px;background:var(--panel);font-size:.85rem}
 .grp .inc{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px}
 .grp .inc span{font-size:.75rem;background:var(--panel2);border-radius:6px;padding:1px 6px}
 .grp .inc span.has{outline:1px solid var(--ok)}
-.grp .inc .est{font-size:.78rem;border:1px solid var(--line);background:var(--panel2);border-radius:999px;padding:3px 9px;color:var(--ink)}
+.grp .inc[hidden]{display:none}
+.grp .inc .est{min-height:32px;font-size:.8rem;border:1px solid var(--line);background:var(--panel2);border-radius:999px;padding:3px 9px;color:var(--ink)}
 .grp .inc .est:disabled{opacity:.45}
 .grp .inc .est.has{border-color:color-mix(in srgb,var(--ok) 50%,var(--line))}
 .grp .inc .est.on{background:var(--ink);color:var(--bg);border-color:var(--ink);font-weight:700}
@@ -258,9 +274,22 @@ const norm=s=>String(s||"").normalize("NFD").replace(/[̀-ͯ]/g,"").toLowerCase(
 const flag=c=>/^[A-Z]{2}$/.test(c||"")?String.fromCodePoint(...[...c].map(x=>127397+x.charCodeAt(0))):"";
 const pais=c=>{if(!c)return "";try{return regionNames?regionNames.of(c):c}catch(e){return c}};
 const iniciales=n=>esc(String(n||"?").replace(/^(the|los|las|la|el)\s+/i,"").split(/\s+/).slice(0,2).map(w=>w[0]||"").join("").toUpperCase());
-const grupos=r=>(r.grupos&&r.grupos.length?r.grupos:[r.categoria]);
+const grupos=r=>r._g||(r._g=(r.grupos&&r.grupos.length?r.grupos:[r.categoria]));
+const estilosDe=r=>r._e||(r._e=new Set(r.estilos_discogs||[]));
 const color=r=>GV[grupos(r)[0]]||"--c-sin";
 const img=r=>r.imagen&&r.imagen.url?r.imagen:(r.img?{url:r.img}:null);
+// Las fotos de las agendas son carteles a tamaño completo (hasta 1-2 MB) en servidores lentos: para una miniatura
+// de 60 px se pide una copia reducida. Wikimedia ya da tamaños fijos; el resto pasa por wsrv.nl (CDN gratuita
+// que redimensiona y guarda la copia). Si falla, se usa la original y, si no, las iniciales.
+function fotoUrl(u,w,cuadrada){
+  if(!u) return "";
+  const m=u.match(/^(https:\/\/(?:thumb|upload)\.wikimedia\.org\/.+\/)(\d+)px-([^/]+)$/);
+  if(m) return m[1]+(w<=120?120:w<=250?250:500)+"px-"+m[3];
+  if(/commons\.wikimedia\.org\/wiki\/Special:FilePath/.test(u)) return u.replace(/width=\d+/,"width="+w);
+  return `https://wsrv.nl/?url=${encodeURIComponent(u)}&w=${w}${cuadrada?`&h=${w}&fit=cover&a=attention`:""}&output=webp&q=${cuadrada?70:78}&we`;
+}
+function fotoError(el){ const o=el.dataset.o; if(o&&el.src!==o){ el.src=o; el.dataset.o=""; return; } el.outerHTML=`<span class="thumb">${el.dataset.i||""}</span>`; }
+let nImg=0; // miniaturas pintadas en esta vista: las primeras se piden ya, el resto al acercarse
 const precioTxt=p=>String(p||"").replace(/(\d+)[.,]0+(?!\d)/g,"$1").replace(/\s*EUR\b/gi," €").replace(/\s+€/g," €").trim();
 const plural=(n,s,p)=>`${n} ${n===1?s:(p||s+"s")}`;
 
@@ -306,8 +335,8 @@ function pasaOrigen(r){
 // agenda ("Pop / Rock") se pueden excluir.
 function pasaGrupo(r){
   if(r.grupos_generico&&!state.genericos) return false;
-  const gs=grupos(r), est=r.estilos_discogs||[];
-  return state.grupos.some(g=>gs.includes(g)&&(!(state.estilos[g]||[]).length||est.some(s=>state.estilos[g].includes(s))));
+  const gs=grupos(r);
+  return state.grupos.some(g=>gs.includes(g)&&(!(state.estilos[g]||[]).length||state.estilos[g].some(s=>estilosDe(r).has(s))));
 }
 function visible(r){ return pasaGrupo(r) && pasaTexto(r) && pasaOrigen(r); }
 function byDate(){const m={}; for(const r of DATA){ if(!visible(r)) continue; (m[r.fecha]=m[r.fecha]||[]).push(r);} return m;}
@@ -327,11 +356,12 @@ function resumenFiltros(){
 }
 function filtersHTML(){
   const n=nFiltros();
-  const chips=GRUPOS.map(g=>`<button class="chip" data-chip="${esc(g.id)}" aria-pressed="${state.grupos.includes(g.id)}"><i style="background:var(${g.v})"></i>${esc(g.nombre)}</button>`).join("");
+  const cn={}; for(const r of DATA){ if(r.fecha<HOY||!pasaTexto(r)||!pasaOrigen(r)) continue; for(const g of grupos(r)) cn[g]=(cn[g]||0)+1; }
+  const chips=GRUPOS.map(g=>`<button class="chip" data-chip="${esc(g.id)}" aria-pressed="${state.grupos.includes(g.id)}"><i style="background:var(${g.v})"></i>${esc(g.nombre)}<small class="cc">${cn[g.id]||0}</small></button>`).join("");
   return `<div class="bar"><div class="sbox"><input class="search" id="q" type="search" enterkeyhint="search" placeholder="Buscar artista, sala o estilo" value="${esc(state.q)}" aria-label="Buscar en todas las fechas">${state.q?`<button class="sclear" id="qx" aria-label="Borrar búsqueda">✕</button>`:""}</div>
    <button class="fbtn" id="fgen" aria-haspopup="dialog">Filtros${n?` <span class="badge">${n}</span>`:""}</button></div>
    <div class="chips" role="group" aria-label="Géneros">${chips}</div>
-   ${n?`<div class="active">Filtrando: ${esc(resumenFiltros())} · <button id="freset">Quitar filtros</button></div>`:""}`;
+   ${n?`<div class="active">Filtrando: ${esc(resumenFiltros())} · <button id="freset">Borrar filtros</button></div>`:""}`;
 }
 function setGrupos(g){ state.grupos=g; store.set("grupos3",g); }
 function bindFilters(){
@@ -359,45 +389,64 @@ function todosLosEstilos(){
   return [...out];
 }
 function openSheet(){
-  const fut=DATA.filter(r=>r.fecha>=HOY&&pasaTexto(r)&&pasaOrigen(r));
-  const cnt={}, est={}, gen={};
-  fut.forEach(r=>{grupos(r).forEach(g=>{cnt[g]=(cnt[g]||0)+1; if(r.grupos_generico) gen[g]=(gen[g]||0)+1;});
-    (r.estilos_discogs||[]).forEach(s=>{const g=grupoDeEstilo(s); if(!g) return; est[g]=est[g]||{}; est[g][s]=(est[g][s]||0)+1;});});
+  // Hoja de filtros. Se pinta una vez; cada toque solo cambia lo que toca (casilla, estilo, contador), sin volver a
+  // construir la hoja entera. Los grupos y estilos de cada concierto están precalculados (r._g, r._e).
   const ARBOL={}; todosLosEstilos().forEach(s=>{const g=grupoDeEstilo(s); (ARBOL[g]=ARBOL[g]||[]).push(s);});
   let sel=[...state.grupos], ori=state.origen, selEst=JSON.parse(JSON.stringify(state.estilos||{})), genOk=state.genericos;
-  const abiertos=new Set();
   const el=document.getElementById("sheet");
-  const pasa=r=>{ if(r.grupos_generico&&!genOk) return false; const gs=grupos(r), e=r.estilos_discogs||[];
-    return sel.some(g=>gs.includes(g)&&(!(selEst[g]||[]).length||e.some(s=>selEst[g].includes(s))))&&
-      (ori==="todos"||(ori==="es"?r.nacionalidad==="ES":ori==="ext"?r.nacionalidad&&r.nacionalidad!=="ES":!r.nacionalidad)); };
-  const draw=()=>{
-    const total=fut.filter(pasa).length;
-    const sc=el.querySelector(".sc"); const top=sc?sc.scrollTop:0;
-    el.innerHTML=`<div class="sheet-bg" id="sbg"></div><div class="sheet" role="dialog" aria-label="Filtros"><div class="sc">
-     <h3>Filtros</h3>
+  const pasaOri=r=>ori==="todos"||(ori==="es"?r.nacionalidad==="ES":ori==="ext"?r.nacionalidad&&r.nacionalidad!=="ES":!r.nacionalidad);
+  let fut=[], cnt={}, est={}, gen={};
+  const contar=()=>{ fut=DATA.filter(r=>r.fecha>=HOY&&pasaTexto(r)&&pasaOri(r)); cnt={}; est={}; gen={};
+    for(const r of fut){ for(const g of grupos(r)){cnt[g]=(cnt[g]||0)+1; if(r.grupos_generico) gen[g]=(gen[g]||0)+1;}
+      for(const s of r.estilos_discogs||[]){const g=grupoDeEstilo(s); if(!g) continue; (est[g]=est[g]||{})[s]=(est[g][s]||0)+1;}} };
+  const pasa=r=>{ if(r.grupos_generico&&!genOk) return false; const gs=grupos(r);
+    for(const g of sel){ if(!gs.includes(g)) continue; const l=selEst[g]; if(!l||!l.length) return true; const e=estilosDe(r); if(l.some(x=>e.has(x))) return true; }
+    return false; };
+  const total=()=>fut.reduce((n,r)=>n+(pasa(r)?1:0),0);
+  const resumenEst=g=>{const l=selEst[g]||[]; return l.length?`Solo: ${l.join(", ")}`:"";};
+  const fila=g=>{const e=est[g.id]||{}; const arbol=(ARBOL[g.id]||[]).filter(x=>e[x]).sort((a,b)=>e[b]-e[a]||a.localeCompare(b));
+    const l=selEst[g.id]||[];
+    return `<div class="grp" data-fila="${esc(g.id)}"><label><input type="checkbox" data-g="${esc(g.id)}" ${sel.includes(g.id)?"checked":""}><span class="dot" style="background:var(${g.v})"></span><span class="nm">${esc(g.nombre)}<small>${esc(g.desc)}</small></span><span class="ct" data-ct="${esc(g.id)}">${cnt[g.id]||0}</span></label>
+      ${arbol.length?`<div class="estw"><button type="button" class="vest" data-ver="${esc(g.id)}" aria-expanded="${l.length?"true":"false"}">${l.length?"Estilos elegidos":"Elegir estilos"} (${arbol.length})</button><span class="solo" data-solo="${esc(g.id)}">${esc(resumenEst(g.id))}</span>
+      <div class="inc" data-inc="${esc(g.id)}" ${l.length?"":"hidden"}>${arbol.map(x=>`<button type="button" class="est${l.includes(x)?" on":""} has" data-es="${esc(g.id)}|${esc(x)}" aria-pressed="${l.includes(x)}">${esc(x)} · ${e[x]}</button>`).join("")}</div></div>`:""}</div>`;};
+  const pintar=()=>{
+    const t0=performance.now();
+    contar();
+    el.innerHTML=`<div class="sheet-bg" id="sbg"></div><div class="sheet" role="dialog" aria-modal="true" aria-label="Filtros"><div class="sc">
+     <div class="shd"><h3>Filtros</h3><button class="sx" id="sx" aria-label="Cerrar sin aplicar">✕</button></div>
+     <h4>Géneros</h4>
+     <div class="rapidos"><button data-rap="def">Los de siempre</button><button data-rap="todos">Todos</button><button data-rap="ninguno">Ninguno</button></div>
+     ${GRUPOS.map(fila).join("")}
+     <p class="hint">Dentro de un género puedes quedarte solo con algunos estilos (los de Discogs; el número es de conciertos próximos).</p>
      <h4>Origen del artista</h4>
      <div class="opts">${ORIGENES.map(([v,t])=>`<button data-o="${v}" aria-pressed="${ori===v}">${esc(t)}</button>`).join("")}</div>
-     <h4>Géneros y estilos</h4>
-     <p class="hint">Cada género reúne los estilos de <b>Discogs</b> que ves al abrirlo. El género de cada artista sale del consenso de las webs de música (Discogs, Last.fm, Wikipedia): el principal y los que pesan casi tanto, no todos los que se mencionan. Toca estilos para quedarte solo con esos dentro de su género.</p>
-     <label class="grp" style="display:flex;gap:10px;align-items:flex-start;padding:10px 12px"><input type="checkbox" id="fgenok" ${genOk?"checked":""} style="margin-top:3px"><span><b>Incluir etiquetas genéricas de la agenda</b><br><span class="hint">Conciertos de artistas sin ficha que la agenda solo etiqueta como "Pop / Rock", "Músicas negras"… Aparecen en todos esos géneros porque no se sabe cuál es.</span></span></label>
-     ${GRUPOS.map(g=>{const e=est[g.id]||{}; const arbol=(ARBOL[g.id]||[]).slice().sort((a,b)=>(e[b]||0)-(e[a]||0)||a.localeCompare(b));
-       const elegidos=selEst[g.id]||[]; const conc=arbol.filter(x=>e[x]);
-       return `<div class="grp"><label><input type="checkbox" data-g="${esc(g.id)}" ${sel.includes(g.id)?"checked":""}><span class="dot" style="background:var(${g.v})"></span><span class="nm">${esc(g.nombre)}<small>${esc(g.desc)}</small></span><span class="ct">${cnt[g.id]||0}</span></label>
-       ${arbol.length?`<details data-det="${esc(g.id)}" ${abiertos.has(g.id)||elegidos.length?"open":""}><summary>${elegidos.length?`${elegidos.length} estilo${elegidos.length>1?"s":""} elegido${elegidos.length>1?"s":""}`:`Filtrar por estilo (${conc.length} con conciertos de ${arbol.length})`}${gen[g.id]?` · ${gen[g.id]} por etiqueta genérica`:""}</summary>
-       <div class="inc">${arbol.map(x=>`<button type="button" class="est${elegidos.includes(x)?" on":""}${e[x]?" has":""}" data-es="${esc(g.id)}|${esc(x)}" ${e[x]?"":"disabled"}>${esc(x)}${e[x]?` · ${e[x]}`:""}</button>`).join("")}</div></details>`:""}</div>`}).join("")}
-     </div><div class="ft"><button id="sdef">Restablecer</button><button class="go" id="sclose">Ver ${plural(total,"concierto")}</button></div></div>`;
-    el.querySelector(".sc").scrollTop=top;
-    document.getElementById("sbg").onclick=()=>{el.innerHTML="";};
-    document.getElementById("sdef").onclick=()=>{sel=[...DEF_GRUPOS]; ori="todos"; selEst={}; genOk=true; draw();};
-    document.getElementById("sclose").onclick=()=>{setGrupos(sel); state.origen=ori; store.set("origen",ori); state.estilos=selEst; store.set("estilos",selEst); state.genericos=genOk; store.set("genericos",genOk); el.innerHTML=""; renderBody(false);};
-    document.getElementById("fgenok").onchange=e=>{genOk=e.target.checked; draw();};
-    el.querySelectorAll("[data-det]").forEach(d=>d.ontoggle=()=>{d.open?abiertos.add(d.dataset.det):abiertos.delete(d.dataset.det);});
-    el.querySelectorAll("[data-g]").forEach(c=>c.onchange=()=>{const g=c.dataset.g; sel=c.checked?[...new Set([...sel,g])]:sel.filter(x=>x!==g); draw();});
-    el.querySelectorAll("[data-es]").forEach(b=>b.onclick=()=>{const [g,x]=b.dataset.es.split("|"); const l=selEst[g]||[];
-      selEst[g]=l.includes(x)?l.filter(y=>y!==x):[...l,x]; if(!sel.includes(g)) sel.push(g); abiertos.add(g); draw();});
-    el.querySelectorAll("[data-o]").forEach(b=>b.onclick=()=>{ori=b.dataset.o; draw();});
+     <h4>Más opciones</h4>
+     <label class="grp" style="display:flex;gap:10px;align-items:flex-start;padding:10px 12px"><input type="checkbox" id="fgenok" ${genOk?"checked":""} style="margin-top:3px"><span><b>Incluir los de etiqueta genérica</b><br><span class="hint">Artistas sin ficha que la agenda solo etiqueta como "Pop / Rock", "Músicas negras"…: salen en todos esos géneros porque no se sabe cuál es.</span></span></label>
+     </div><div class="ft"><button id="sdef">Borrar filtros</button><button class="go" id="sclose">Ver ${plural(total(),"concierto")}</button></div></div>`;
+    enlazar(); medir("hoja-abrir",t0);
   };
-  draw();
+  const refrescar=()=>{ const t0=performance.now(); document.getElementById("sclose").textContent=`Ver ${plural(total(),"concierto")}`;
+    el.querySelectorAll("[data-g]").forEach(c=>{c.checked=sel.includes(c.dataset.g);});
+    el.querySelectorAll("[data-solo]").forEach(x=>{x.textContent=resumenEst(x.dataset.solo);});
+    el.querySelectorAll("[data-es]").forEach(b=>{const [g,x]=b.dataset.es.split("|"); const on=(selEst[g]||[]).includes(x); b.classList.toggle("on",on); b.setAttribute("aria-pressed",on);});
+    el.querySelectorAll("[data-o]").forEach(b=>b.setAttribute("aria-pressed",b.dataset.o===ori));
+    const gk=document.getElementById("fgenok"); if(gk) gk.checked=genOk; medir("hoja",t0); };
+  const cerrar=()=>{el.innerHTML=""; document.removeEventListener("keydown",esc_);};
+  const esc_=e=>{if(e.key==="Escape") cerrar();};
+  const enlazar=()=>{
+    document.getElementById("sbg").onclick=cerrar; document.getElementById("sx").onclick=cerrar;
+    document.addEventListener("keydown",esc_);
+    document.getElementById("sdef").onclick=()=>{sel=[...DEF_GRUPOS]; selEst={}; genOk=true; const o=ori; ori="todos"; if(o!=="todos") pintar(); else refrescar();};
+    document.getElementById("sclose").onclick=()=>{setGrupos(sel); state.origen=ori; store.set("origen",ori); state.estilos=selEst; store.set("estilos",selEst); state.genericos=genOk; store.set("genericos",genOk); cerrar(); renderBody(false);};
+    document.getElementById("fgenok").onchange=e=>{genOk=e.target.checked; refrescar();};
+    el.querySelectorAll("[data-rap]").forEach(b=>b.onclick=()=>{const k=b.dataset.rap; sel=k==="def"?[...DEF_GRUPOS]:k==="todos"?GRUPOS.map(g=>g.id):[]; if(k!=="todos") selEst={}; refrescar();});
+    el.querySelectorAll("[data-g]").forEach(c=>c.onchange=()=>{const g=c.dataset.g; sel=c.checked?[...new Set([...sel,g])]:sel.filter(x=>x!==g); if(!c.checked) delete selEst[g]; refrescar();});
+    el.querySelectorAll("[data-ver]").forEach(b=>b.onclick=()=>{const inc=el.querySelector(`[data-inc="${CSS.escape(b.dataset.ver)}"]`); inc.hidden=!inc.hidden; b.setAttribute("aria-expanded",String(!inc.hidden));});
+    el.querySelectorAll("[data-es]").forEach(b=>b.onclick=()=>{const [g,x]=b.dataset.es.split("|"); const l=selEst[g]||[];
+      selEst[g]=l.includes(x)?l.filter(y=>y!==x):[...l,x]; if(!selEst[g].length) delete selEst[g]; if(!sel.includes(g)) sel.push(g); refrescar();});
+    el.querySelectorAll("[data-o]").forEach(b=>b.onclick=()=>{ori=b.dataset.o; const sc=el.querySelector(".sc").scrollTop; pintar(); el.querySelector(".sc").scrollTop=sc;});
+  };
+  pintar();
 }
 
 // ---------------------------------------------------------------- tarjeta (lista)
@@ -429,13 +478,19 @@ function estadoMini(r){
   return "";
 }
 function card(r){
-  const im=img(r), h=horaCard(r);
-  return `<a class="card" href="#concierto/${esc(r.id)}" style="--gc:var(${color(r)})">
-   ${im?`<img class="thumb" src="${esc(im.url)}" alt="" width="60" height="60" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.outerHTML='<span class=&quot;thumb&quot;>${iniciales(r.artista)}</span>'">`:`<span class="thumb">${iniciales(r.artista)}</span>`}
+  // el HTML de cada tarjeta se genera una vez y se reutiliza (cambiar filtros o de semana no lo recalcula)
+  if(!r._card){
+    const im=img(r), h=horaCard(r);
+    r._conImg=!!im;
+    r._card=`<a class="card" href="#concierto/${esc(r.id)}" data-id="${esc(r.id)}" style="--gc:var(${color(r)})">
+   ${im?`<img class="thumb" src="${esc(fotoUrl(im.url,160,true))}" data-o="${esc(im.url)}" data-i="${iniciales(r.artista)}" alt="" width="60" height="60" %CARGA% decoding="async" referrerpolicy="no-referrer" onerror="fotoError(this)">`:`<span class="thumb">${iniciales(r.artista)}</span>`}
    <div class="cbody"><div class="art">${esc(r.artista)}</div>
    ${r.invitados&&r.invitados.length?`<div class="sub">+ ${r.invitados.map(esc).join(" + ")}</div>`:""}
    <div class="sub">${h?`<b>${esc(h)}</b> · `:""}${esc(r.sala||"sala sin indicar")}${r.municipio&&r.municipio!=="Madrid"?` · ${esc(r.municipio)}`:""}</div>
    <div class="tags">${r.nacionalidad?`<span class="flag" title="${esc(pais(r.nacionalidad))}">${flag(r.nacionalidad)}</span>`:""}${estiloTags(r,2)}${estadoMini(r)}</div></div><span class="chev" aria-hidden="true">›</span></a>`;
+  }
+  // las primeras miniaturas de la vista se piden ya y con prioridad; el resto, al acercarse
+  return r._conImg?r._card.replace("%CARGA%",nImg++<8?'fetchpriority="high"':'loading="lazy"'):r._card;
 }
 // estado vacío que dice por qué: sin conciertos anunciados, o todos ocultos por los filtros (con un botón)
 function vacioHTML(ocultos,cuando){
@@ -526,7 +581,7 @@ function viewConcierto(){
   const volver=state.from||`#dia/${r.fecha}`;
   return `<a class="back" href="${esc(volver)}">‹ Volver</a>
    <div class="dt">
-    <div class="hero" style="--gc:var(${color(r)})"><div class="ph">${iniciales(r.artista)}</div>${im?`<div class="blur" style="background-image:url('${esc(im.url)}')"></div><img src="${esc(im.url)}" alt="Foto de ${esc(r.artista)}" referrerpolicy="no-referrer" onerror="this.previousElementSibling.remove();this.remove()">`:""}</div>
+    <div class="hero" style="--gc:var(${color(r)})"><div class="ph">${iniciales(r.artista)}</div>${im?`<div class="blur" style="background-image:url('${esc(fotoUrl(im.url,160,true))}')"></div><img src="${esc(fotoUrl(im.url,720,false))}" data-o="${esc(im.url)}" alt="Foto de ${esc(r.artista)}" fetchpriority="high" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.o&&this.src!==this.dataset.o){this.src=this.dataset.o;this.dataset.o=''}else{this.previousElementSibling.remove();this.remove()}">`:""}</div>
     ${im?`<div class="credit">Foto: <a href="${esc(im.enlace||im.url)}" target="_blank" rel="noopener">${esc(im.credito)}</a>${f&&f.imagen?"":" (imagen del anuncio)"}</div>`:""}
     <h2>${esc(r.artista)}</h2>
     ${r.ciclo?`<div class="ciclo">${esc(r.ciclo)}</div>`:""}
@@ -566,25 +621,44 @@ function stripHTML(mon,bd,modo){
     return `<button data-${modo}="${f}" class="${f===state.date&&modo==="sel"?"sel":""}${f===HOY?" hoyd":""}${f<HOY?" past":""}" aria-label="${esc(fmt(f,{weekday:"long",day:"numeric"}))}: ${plural(n,"concierto")}"><span class="d">${esc(fmt(f,{weekday:"short"}).slice(0,2))}</span><span class="n">${parse(f).getDate()}</span><span class="c">${n||"–"}</span></button>`}).join("")}</div>`;
 }
 function viewMes(){
+  // Rejilla del mes y, debajo, los conciertos del día elegido (sin salir de la vista). Tocar otro día solo cambia
+  // la lista de abajo. Los fines de semana se distinguen y cada día muestra el reparto por géneros.
   const d=parse(state.date); const y=d.getFullYear(), m=d.getMonth();
   const first=iso(new Date(y,m,1)); const start=mondayOf(first);
   const bd=byDate(); let cells="", total=0;
   for(let i=0;i<42;i++){
     const f=addDays(start,i); const fd=parse(f); if(i>=35&&fd.getMonth()!==m) break;
-    const fuera=fd.getMonth()!==m;
+    const fuera=fd.getMonth()!==m, finde=fd.getDay()===0||fd.getDay()===6;
     const list=fuera?[]:(bd[f]||[]); total+=list.length; const counts={}; list.forEach(r=>{const g=grupos(r)[0]; counts[g]=(counts[g]||0)+1;});
     const stack=GRUPOS.filter(g=>counts[g.id]).map(g=>`<i style="flex:${counts[g.id]};background:var(${g.v})"></i>`).join("");
-    cells+=`<button class="day${fuera?" out":""}${f<HOY?" past":""}${f===HOY?" today":""}${list.length?"":" zero"}" data-day="${f}" ${fuera?'tabindex="-1" aria-hidden="true"':""} aria-label="${esc(fmt(f,{weekday:"long",day:"numeric",month:"long"}))}: ${plural(list.length,"concierto")}"><span class="n">${fd.getDate()}</span><span class="cnt">${list.length||""}</span>${list.length?`<span class="stack">${stack}</span>`:""}</button>`;
+    cells+=`<button class="day${fuera?" out":""}${finde?" finde":""}${f<HOY?" past":""}${f===HOY?" today":""}${f===state.date&&!fuera?" sel":""}${list.length?"":" zero"}" data-mdia="${f}" ${fuera?'tabindex="-1" aria-hidden="true" disabled':""} aria-pressed="${f===state.date}" aria-label="${esc(fmt(f,{weekday:"long",day:"numeric",month:"long"}))}: ${plural(list.length,"concierto")}"><span class="n">${fd.getDate()}</span><span class="cnt">${list.length||""}</span>${list.length?`<span class="stack">${stack}</span>`:""}</button>`;
   }
   const mesHoy=HOY.slice(0,7)===first.slice(0,7);
   return navHTML(-1,1,`${esc(fmt(first,{month:"long",year:"numeric"}))}<div class="hint" style="font-weight:500">${plural(total,"concierto")}</div>`,"Mes anterior","Mes siguiente",mesHoy)+
-   `<div class="cal">${["L","M","X","J","V","S","D"].map(x=>`<div class="dow">${x}</div>`).join("")}${cells}</div>
+   `<div class="cal">${["L","M","X","J","V","S","D"].map((x,i)=>`<div class="dow${i>4?" finde":""}">${x}</div>`).join("")}${cells}</div>
    <div class="legend">${GRUPOS.filter(g=>state.grupos.includes(g.id)).map(g=>`<span><i style="background:var(${g.v})"></i>${esc(g.nombre)}</span>`).join("")}</div>
-   <p class="hint">Toca un día para ver sus conciertos. La barra de colores indica el reparto por géneros.</p>`;
+   <div id="mlista">${listaMes(bd)}</div>`;
 }
+function listaMes(bd){
+  const f=state.date, l=bd[f]||[];
+  return `<div class="dayhead mhead">${esc(fmt(f,{weekday:"long",day:"numeric",month:"long"}))}<small>${plural(l.length,"concierto")}</small></div>`+
+    (l.length?l.map(card).join(""):vacioHTML(DATA.filter(r=>r.fecha===f&&pasaTexto(r)).length,"este día"));
+}
+function elegirDiaMes(f){
+  if(parse(f).getMonth()!==parse(state.date).getMonth()) return;
+  state.date=f; nImg=0;
+  document.querySelectorAll("[data-mdia]").forEach(b=>{const on=b.dataset.mdia===f; b.classList.toggle("sel",on); b.setAttribute("aria-pressed",on);});
+  document.getElementById("mlista").innerHTML=listaMes(byDate());
+  setHash(); precargar();
+  document.querySelectorAll("#mlista [data-quitar]").forEach(b=>b.onclick=()=>{setGrupos(GRUPOS.map(g=>g.id)); state.origen="todos"; store.set("origen","todos"); state.estilos={}; store.set("estilos",{}); state.genericos=true; store.set("genericos",true); renderBody(false);});
+}
+// Las semanas tienen hasta 200+ conciertos: se pintan ya los ~30 primeros y el resto de días justo después, para
+// que la lista aparezca al instante. Al volver de un concierto se pinta todo de golpe (hay que recolocar la lista).
+let DIFERIDOS=null, pintarTodo=false;
 function viewSemana(){
-  const mon=mondayOf(state.date); const bd=byDate(); let out="", total=0;
-  for(let i=0;i<7;i++){const f=addDays(mon,i); const l=bd[f]||[]; total+=l.length; if(l.length) out+=dayList(f,l);}
+  const mon=mondayOf(state.date); const bd=byDate(); let out="", total=0, ya=0; DIFERIDOS={bd,dias:[]};
+  for(let i=0;i<7;i++){const f=addDays(mon,i); const l=bd[f]||[]; total+=l.length; if(!l.length) continue;
+    if(ya<30||pintarTodo){ out+=dayList(f,l); ya+=l.length; } else { out+=`<div class="dif" id="d-${f}" data-dif="${f}" style="min-height:${l.length*90+40}px"></div>`; DIFERIDOS.dias.push(f); }}
   const esHoy=mon===mondayOf(HOY);
   return navHTML(-7,7,`${esc(fmt(mon,{day:"numeric",month:"short"}))} – ${esc(fmt(addDays(mon,6),{day:"numeric",month:"short"}))}<div class="hint" style="font-weight:500">${plural(total,"concierto")}</div>`,"Semana anterior","Semana siguiente",esHoy)+
     `<div class="stickystrip">${stripHTML(mon,bd,"jump")}</div>`+(out||vacioHTML(DATA.filter(r=>r.fecha>=mon&&r.fecha<=addDays(mon,6)&&pasaTexto(r)).length,"esta semana"));
@@ -688,11 +762,14 @@ async function asegurarDetalle(id){
   const r=BYID[id]; if(!r||r._full||!DETALLES) return true;
   const f=r.fecha;
   pedidos[f]=pedidos[f]||fetch("data/"+DETALLES.replace("{fecha}",f),{cache:"no-cache"}).then(x=>{if(!x.ok) throw new Error(x.status); return x.json();});
-  try{ const d=await pedidos[f]; Object.entries(d).forEach(([k,v])=>{const x=BYID[k]; if(x){Object.assign(x,v); x._full=true;}}); return true; }
+  try{ const d=await pedidos[f]; Object.entries(d).forEach(([k,v])=>{const x=BYID[k]; if(x){Object.assign(x,v); x._full=true; delete x._card;}}); return true; }
   catch(e){ delete pedidos[f]; return false; }
 }
+// tiempos de pintado (los lee la prueba en vivo, tools/probar_web.py)
+const medir=(q,t0)=>{(window.__tiempos=window.__tiempos||[]).push([q,Math.round(performance.now()-t0)]);};
 async function renderBody(keepFocus){
-  const main=document.getElementById("main");
+  const t0=performance.now();
+  const main=document.getElementById("main"); nImg=0;
   if(state.tab==="Concierto"&&BYID[state.id]&&!BYID[state.id]._full&&DETALLES){
     main.innerHTML=`<div class="dt"><div class="skel skel-hero"></div><div class="skel skel-l"></div><div class="skel skel-m"></div><div class="skel skel-m"></div></div>`;
     if(!await asegurarDetalle(state.id)){ main.innerHTML=`<a class="back" href="#dia/${state.date||HOY}">‹ Volver</a><p class="empty">No se pudo cargar el detalle del concierto. Comprueba la conexión y vuelve a intentarlo.</p>`; return; }
@@ -711,14 +788,38 @@ async function renderBody(keepFocus){
   else { main.innerHTML=withFilters?filtersHTML()+`<div id="fbody">${body}</div>`:body; if(withFilters) bindFilters(); }
   bindBody();
   setHash();
+  if(state.tab!=="Concierto"){ completarDiferidos(); precargar(); }
+  medir(state.tab,t0);
+}
+// al ver una lista se piden en segundo plano los detalles de sus primeros días; al tocar un concierto, el suyo y su
+// foto: cuando se abre, ya están (o casi)
+function precargar(){
+  if(!DETALLES) return;
+  const dias=[...new Set([...document.querySelectorAll("#main .card")].slice(0,40).map(c=>(BYID[c.dataset.id]||{}).fecha).filter(Boolean))];
+  const idle=window.requestIdleCallback||(f=>setTimeout(f,300));
+  dias.slice(0,8).forEach((f,i)=>idle(()=>{const r=DATA.find(x=>x.fecha===f&&!x._full); if(r) asegurarDetalle(r.id);},{timeout:2000+i*500}));
+}
+function tocar(e){
+  const c=e.target.closest&&e.target.closest(".card"); if(!c) return;
+  const r=BYID[c.dataset.id]; if(!r) return;
+  asegurarDetalle(r.id);
+  const im=img(r); if(im){ const p=new Image(); p.referrerPolicy="no-referrer"; p.src=fotoUrl(im.url,720,false); }
+}
+function completarDiferidos(){
+  if(!DIFERIDOS||!DIFERIDOS.dias.length) return;
+  const {bd,dias}=DIFERIDOS; DIFERIDOS=null;
+  const paso=()=>{ const f=dias.shift(); if(!f) return; const el=document.querySelector(`[data-dif="${f}"]`);
+    if(el){ el.outerHTML=dayList(f,bd[f]); } if(dias.length) requestAnimationFrame(paso); };
+  requestAnimationFrame(paso);
 }
 function bindBody(){
   document.querySelectorAll("[data-day]").forEach(b=>b.onclick=()=>{state.date=b.dataset.day; state.tab="Día"; render(); scrollTo(0,0);});
+  document.querySelectorAll("[data-mdia]").forEach(b=>b.onclick=()=>elegirDiaMes(b.dataset.mdia));
   document.querySelectorAll("[data-sel]").forEach(b=>b.onclick=()=>{state.date=b.dataset.sel; renderBody(true);});
   document.querySelectorAll("[data-jump]").forEach(b=>b.onclick=()=>{const el=document.getElementById("d-"+b.dataset.jump); if(el) el.scrollIntoView({behavior:"smooth"}); else toast("Ese día no hay conciertos con estos filtros");});
   document.querySelectorAll("[data-nav]").forEach(b=>b.onclick=()=>{
     const n=Number(b.dataset.nav);
-    if(state.tab==="Mes"){const d=parse(state.date); state.date=iso(new Date(d.getFullYear(),d.getMonth()+n,1));}
+    if(state.tab==="Mes"){const d=parse(state.date); const f=iso(new Date(d.getFullYear(),d.getMonth()+n,1)); state.date=f.slice(0,7)===HOY.slice(0,7)?HOY:f;}
     else state.date=addDays(state.date,n);
     renderBody(true);
   });
@@ -727,6 +828,8 @@ function bindBody(){
   const vt=document.getElementById("vertodo"); if(vt) vt.onclick=()=>{setGrupos(GRUPOS.map(g=>g.id)); state.origen="todos"; store.set("origen","todos"); renderBody(false);};
   const r=BYID[state.id];
   if(state.tab==="Concierto"&&r){
+    // "Volver" es volver atrás en el historial (a la lista, en el mismo sitio), no abrirla de nuevo
+    const bk=document.querySelector("#main .back"); if(bk&&state.from) bk.onclick=e=>{e.preventDefault(); history.back();};
     const i=document.getElementById("ics"); if(i) i.onclick=()=>descargarIcs(r);
     const s=document.getElementById("share"); if(s) s.onclick=()=>compartir(r);
   }
@@ -756,7 +859,28 @@ async function load(){
   }catch(e){ document.getElementById("main").innerHTML=`<p class="empty">No se pudieron cargar los datos (${esc(e.message)}). Comprueba la conexión y recarga la página.</p>`; return; }
   state.tab=store.get("tab","Mes"); if(!VISTAS.includes(state.tab)) state.tab="Mes"; state.date=HOY; readHash(); render();
 }
-addEventListener("hashchange",()=>{readHash(); render(); if(state.tab==="Concierto") scrollTo(0,0);});
+document.getElementById("main").addEventListener("pointerdown",tocar,{passive:true});
+// Volver deja la lista donde estaba: al salir de una lista se guarda por qué concierto ibas (y a qué altura de la
+// pantalla estaba) y, al volver a esa misma lista, se recoloca ahí
+const posiciones={}; let tocado=null;
+document.getElementById("main").addEventListener("click",e=>{const c=e.target.closest&&e.target.closest(".card"); if(c) tocado={id:c.dataset.id,top:c.getBoundingClientRect().top};},true);
+function recolocar(){
+  const p=posiciones[location.hash]; if(!p||state.tab==="Concierto") return false;
+  const el=p.id&&document.querySelector(`.card[data-id="${CSS.escape(p.id)}"]`);
+  if(el){
+    el.scrollIntoView({block:"center"});           // primero cerca (las tarjetas de fuera aún no tienen su alto real)
+    scrollBy(0,el.getBoundingClientRect().top-(p.top||0));  // y luego a la misma altura de pantalla que tenía
+    const q=el.getBoundingClientRect(); if(q.top<0||q.bottom>innerHeight) el.scrollIntoView({block:"center"});
+  } else scrollTo(0,p.y);
+  return true;
+}
+addEventListener("hashchange",()=>{
+  if(lastHash&&!lastHash.startsWith("#concierto")) posiciones[lastHash]={y:scrollY,...(tocado||{})};
+  tocado=null;
+  pintarTodo=!!posiciones[location.hash];
+  readHash(); render(); pintarTodo=false;
+  if(state.tab==="Concierto") scrollTo(0,0); else requestAnimationFrame(()=>{ if(!recolocar()) scrollTo(0,0); });
+});
 addEventListener("resize",()=>{const h=document.getElementById("hdr"); if(h) document.documentElement.style.setProperty("--hh",h.offsetHeight+"px");});
 load();
 // copia local de la web y de los últimos datos: si la red o GitHub Pages fallan, se sigue viendo la agenda

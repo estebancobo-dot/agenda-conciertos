@@ -1,5 +1,22 @@
 # Versiones
 
+## 2.15.0 — 2026-09-30
+
+Usabilidad y velocidad, medidas con un navegador real sobre la web publicada (móvil con 4G lenta; `tools/probar_web.py`, workflow "Probar la web en vivo"):
+
+- **Miniaturas mucho más ligeras.** Las fotos de las agendas son carteles a tamaño completo (a veces de 1-2 MB, en servidores lentos): cada miniatura tardaba de mediana 3,3 s. Ahora se pide una copia reducida (Wikimedia en su tamaño pequeño; el resto a través de wsrv.nl, una CDN gratuita que redimensiona y guarda la copia). Las primeras 8 de cada vista se piden ya y con prioridad. Si la copia falla, se usa la original y, si no, las iniciales.
+- **Fuera las fotos genéricas**: la imagen de fondo que Madrid en Vivo pone a 392 conciertos, logos de salas… (las que la agenda usa para 4 artistas distintos o más). Mejor las iniciales que una foto que no es del artista.
+- **Detalle más rápido**: al ver una lista se piden en segundo plano los detalles de sus días, y al tocar un concierto su ficha y su foto, así que al abrirlo ya están. La foto grande usa también copia reducida, con la miniatura de fondo mientras llega.
+- **Volver deja la lista donde estabas**, tanto con el botón atrás del móvil como con "‹ Volver": en el mismo concierto y a la misma altura de pantalla.
+- **Filtros más rápidos y claros**:
+  - La hoja ya no se redibuja entera en cada toque: marcar un género o un estilo tarda unos 25 ms (antes, cientos de ms).
+  - Un solo "Borrar filtros" (antes "Restablecer" en la hoja y "Quitar filtros" en la barra) y accesos rápidos: "Los de siempre", "Todos", "Ninguno".
+  - Los estilos de cada género se despliegan con "Elegir estilos" y solo aparecen los que tienen conciertos. Lo elegido se ve al lado ("Solo: Thrash, Doom").
+  - Las pastillas de género muestran cuántos conciertos hay.
+  - Se cierra con ✕, tocando fuera o con Escape, sin aplicar cambios.
+- **Listas más ágiles**: cada tarjeta se genera una vez y se reutiliza. En semanas con más de 200 conciertos se pintan ya los primeros y el resto justo después (pintar una semana: de ~190 a ~60-80 ms con la CPU de un móvil medio).
+- **Vista mes**: al tocar un día, sus conciertos aparecen debajo del calendario, sin salir de la vista; el día elegido se marca y los fines de semana se distinguen.
+
 ## 2.14.2 — 2026-09-30
 
 - **Nombres mal descodificados.** Si una web no declara su juego de caracteres y el contenido es UTF-8 válido, se lee como UTF-8, en lugar de adivinarlo. El 29/09 la adivinanza falló con Revi: "Brujería" salió "Brujer├Ła", "Eskóbula" salió "Esk├│bula"…

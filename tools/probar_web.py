@@ -133,6 +133,7 @@ def recorrido(b):
     pg.wait_for_timeout(500)
     y_antes = pg.evaluate("scrollY")
     art = cards.nth(n).locator(".art").inner_text()
+    cid = cards.nth(n).get_attribute("data-id")
     t0 = time.monotonic()
     cards.nth(n).click()
     pg.wait_for_selector(".dt h2", timeout=30000)
@@ -148,15 +149,30 @@ def recorrido(b):
             foto_ms = "más de 20 s"
     pg.screenshot(path=str(OUT / "3_detalle.png"))
     t0 = time.monotonic()
-    pg.go_back()
-    pg.wait_for_selector(".card")
+    pg.evaluate("history.back()")
+    pg.wait_for_function("location.hash.startsWith('#semana') && document.querySelectorAll('.card').length>0")
+    volver_ms = ms(t0)
     pg.wait_for_timeout(600)
     y_despues = pg.evaluate("scrollY")
-    visible = pg.evaluate("""(a)=>{const c=[...document.querySelectorAll('.card')].find(x=>x.querySelector('.art').textContent===a);
-       if(!c) return false; const b=c.getBoundingClientRect(); return b.top>=0&&b.bottom<=innerHeight}""", art)
-    paso("3_detalle", artista=art, datos_ms=datos_ms, foto=foto, foto_ms=foto_ms, volver_ms=ms(t0),
-         scroll_antes=y_antes, scroll_despues=y_despues, sigue_viendo_el_concierto=visible)
+    visible = pg.evaluate("""(a)=>{const c=document.querySelector(`.card[data-id="${a}"]`);
+       if(!c) return false; const b=c.getBoundingClientRect(); return b.top>-10&&b.top<innerHeight-40}""", cid)
     pg.screenshot(path=str(OUT / "3_volver.png"))
+    # otra vez, ahora con el botón "‹ Volver" de la ficha
+    cards = pg.locator(".card")
+    m = min(20, cards.count() - 1)
+    cards.nth(m).scroll_into_view_if_needed()
+    pg.wait_for_timeout(400)
+    art2 = cards.nth(m).get_attribute("data-id")
+    cards.nth(m).click()
+    pg.wait_for_selector(".dt h2", timeout=30000)
+    pg.click("a.back")
+    pg.wait_for_selector(".card")
+    pg.wait_for_timeout(600)
+    visible2 = pg.evaluate("""(a)=>{const c=document.querySelector(`.card[data-id="${a}"]`);
+       if(!c) return false; const b=c.getBoundingClientRect(); return b.top>-10&&b.top<innerHeight-40}""", art2)
+    paso("3_detalle", artista=art, datos_ms=datos_ms, foto=foto, foto_ms=foto_ms, volver_ms=volver_ms,
+         scroll_antes=y_antes, scroll_despues=y_despues, sigue_viendo_el_concierto=visible,
+         boton_volver_sigue_viendo=visible2)
 
     # 4. filtros
     pg.evaluate("scrollTo(0,0)")
@@ -169,10 +185,9 @@ def recorrido(b):
     pg.locator("[data-g='fuera de foco']").click()
     pg.wait_for_timeout(30)
     marcar = ms(t0)
-    det = pg.locator("details[data-det='rock y metal'] summary")
-    det.click()
+    pg.locator("[data-ver='rock y metal']").click()
     t0 = time.monotonic()
-    est = pg.locator("details[data-det='rock y metal'] button.est.has").first
+    est = pg.locator("[data-inc='rock y metal'] button.est").first
     est_nombre = est.inner_text()
     est.click()
     pg.wait_for_timeout(30)
@@ -203,11 +218,22 @@ def recorrido(b):
 
     # 5. mes
     t0 = time.monotonic()
-    pg.evaluate(f"location.hash='#mes/{date.today().isoformat()}'")
+    pg.evaluate(f"location.hash='#mes/{(date.today() + timedelta(days=10)).isoformat()}'")
     pg.wait_for_selector(".cal")
-    paso("5_mes", ms=ms(t0))
+    mes_ms = ms(t0)
+    dia = pg.locator("[data-mdia]:not(.zero):not(.sel)").last
+    t0 = time.monotonic()
+    dia.click()
+    pg.wait_for_function("document.querySelector('#mlista')!==null")
+    pg.wait_for_timeout(30)
+    paso("5_mes", ms=mes_ms, elegir_dia_ms=ms(t0), lista_debajo=pg.locator("#mlista .card").count())
     pg.screenshot(path=str(OUT / "5_mes.png"), full_page=True)
 
+    tiempos = pg.evaluate("window.__tiempos||[]")
+    por: dict = {}
+    for q, t in tiempos:
+        por.setdefault(q, []).append(t)
+    paso("6_pintado_interno_ms", **{q: {"n": len(v), "mediana": sorted(v)[len(v) // 2], "max": max(v)} for q, v in por.items()})
     lt = pg.evaluate("window.__lt||[]")
     paso("6_bloqueos_js", tareas_largas=len(lt), total_ms=sum(d for _, d in lt), peores=sorted(lt, key=lambda x: -x[1])[:8])
     dur = [i["ms"] for i in imgs if isinstance(i.get("ms"), (int, float)) and i["ms"] > 0]

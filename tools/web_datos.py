@@ -22,6 +22,21 @@ LIGEROS = ("id", "fecha", "hora", "artista", "invitados", "sala", "municipio", "
            "estilos_discogs", "genero_discogs", "grupos", "categoria", "grupos_generico", "estado")
 
 
+def genericas(recs: list[dict]) -> set[str]:
+    """Imágenes que la agenda pone a muchos artistas distintos: el fondo genérico de Madrid en Vivo (392
+    conciertos), el logo de una sala… No son del artista: mejor las iniciales que una foto que confunde."""
+    from collections import defaultdict as dd
+    artistas = dd(set)
+    for r in recs:
+        u = (r.get("imagen") or {}).get("url")
+        if u:
+            artistas[u].add(" ".join(str(r.get("artista", "")).lower().split())[:30])
+    return {u for u, a in artistas.items() if len(a) >= MAX_ARTISTAS_IMAGEN}
+
+
+MAX_ARTISTAS_IMAGEN = 4
+
+
 def ligero(r: dict) -> dict:
     out = {k: r[k] for k in LIGEROS if r.get(k) not in (None, [], "", False)}
     if r.get("conflictos"):  # la tarjeta dice qué dato no cuadra ("hora sin confirmar") y la hora más votada
@@ -38,7 +53,14 @@ def ligero(r: dict) -> dict:
 
 
 def preparar(concerts: dict, destino: Path) -> dict:
-    recs = concerts.get("conciertos", [])
+    import copy
+    genericas_ = genericas(concerts.get("conciertos", []))
+    recs = []
+    for r in concerts.get("conciertos", []):
+        if (r.get("imagen") or {}).get("url") in genericas_:
+            r = copy.copy(r)
+            r["imagen"] = None
+        recs.append(r)
     (destino / "detalles").mkdir(parents=True, exist_ok=True)
     agenda = {k: v for k, v in concerts.items() if k != "conciertos"}
     agenda["conciertos"] = [ligero(r) for r in recs]
