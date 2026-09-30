@@ -8,17 +8,19 @@ cada imagen una sola vez con el mismo lector que las agendas (robots.txt, identi
 reduce a 160×160 WebP (~5 KB) para las listas y a 720 px (~40 KB) para la ficha, y se sirve desde la propia web:
 rápida y guardada por el service worker.
 
-Las miniaturas ya hechas se guardan entre ejecuciones (caché de GitHub Actions, carpeta DIR): cada día solo se
-descargan las nuevas. Con límite de tiempo: lo que no dé tiempo se hace al día siguiente y, mientras, la web usa
-la imagen original.
+Se guardan en la rama `miniaturas` del repositorio (un único commit, sin historial). Cada ejecución la trae, hace
+solo las que faltan, quita las de conciertos que ya no están en la agenda y sube el resultado; git solo envía los
+archivos nuevos. Con límite de tiempo: lo que no dé tiempo se hace en la siguiente ejecución y, mientras, la web
+usa la imagen original.
 
-Uso: python tools/miniaturas.py [--minutos N]
+Uso: python tools/miniaturas.py [--minutos N] [--guardar]
 """
 from __future__ import annotations
 
 import hashlib
 import io
 import json
+import subprocess
 import sys
 import time
 from pathlib import Path
@@ -26,6 +28,48 @@ from pathlib import Path
 RAIZ = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(RAIZ))
 DIR = RAIZ / "miniaturas"
+RAMA = "miniaturas"
+
+
+def git(*args: str, entrada: str | None = None, check: bool = True) -> subprocess.CompletedProcess:
+    return subprocess.run(["git", *args], cwd=RAIZ, input=entrada, text=True, capture_output=True, check=check)
+
+
+def traer() -> str | None:
+    """Trae la rama `miniaturas` a DIR (sin tocar el repositorio de trabajo). Devuelve su commit."""
+    DIR.mkdir(exist_ok=True)
+    if git("fetch", "-q", "--depth=1", "origin", f"refs/heads/{RAMA}", check=False).returncode != 0:
+        return None
+    sha = git("rev-parse", "FETCH_HEAD").stdout.strip()
+    tar = subprocess.run(["git", "archive", "--format=tar", sha], cwd=RAIZ, capture_output=True, check=True).stdout
+    subprocess.run(["tar", "-x", "-C", str(DIR)], input=tar, check=True)
+    return sha
+
+
+def guardar(sha_base: str | None, validos: set[str]) -> None:
+    """Sube DIR como único commit de la rama (quitando las de conciertos que ya no están). Reintenta si otra
+    ejecución ha subido mientras tanto (se unen: cada archivo depende solo de su foto)."""
+    git("config", "user.name", "github-actions[bot]")
+    git("config", "user.email", "41898282+github-actions[bot]@users.noreply.github.com")
+    for intento in range(4):
+        for p in DIR.glob("*.webp"):
+            if p.name not in validos:
+                p.unlink()
+        rutas = sorted(DIR.glob("*.webp"))
+        blobs = git("hash-object", "-w", "--stdin-paths", entrada="\n".join(map(str, rutas))).stdout.split()
+        arbol = git("mktree", entrada="".join(f"100644 blob {b}\t{p.name}\n" for b, p in zip(blobs, rutas))).stdout.strip()
+        if sha_base and git("rev-parse", f"{sha_base}^{{tree}}").stdout.strip() == arbol:
+            print("Rama de miniaturas: sin cambios")
+            return
+        commit = git("commit-tree", arbol, "-m", f"Miniaturas ({len(rutas)} archivos)").stdout.strip()
+        r = git("push", f"--force-with-lease=refs/heads/{RAMA}:{sha_base or ''}", "origin",
+                f"{commit}:refs/heads/{RAMA}", check=False)
+        if r.returncode == 0:
+            print(f"Rama de miniaturas guardada: {len(rutas)} archivos")
+            return
+        print(f"La rama de miniaturas cambió mientras tanto (intento {intento + 1}): se unen y se reintenta")
+        sha_base = traer()
+    print("No se pudo guardar la rama de miniaturas", file=sys.stderr)
 LADO = 160
 
 
@@ -77,7 +121,7 @@ def origen(u: str) -> str:
 def main() -> int:
     minutos = float(sys.argv[sys.argv.index("--minutos") + 1]) if "--minutos" in sys.argv else 8
     from scraper.fetch import Fetcher
-    DIR.mkdir(exist_ok=True)
+    base = traer()
     concerts = json.loads((RAIZ / "data" / "concerts.json").read_text(encoding="utf-8"))
     urls = pendientes(concerts)
     hechas = {p.name for p in DIR.glob("*.webp")}
@@ -113,6 +157,8 @@ def main() -> int:
     total = len({nombre(u) for u in urls} & {p.name for p in DIR.glob("*.webp")})
     print(f"Miniaturas: {len(urls)} imágenes; {nuevas} nuevas, {fallos} fallos, "
           f"{total} listas, {len(faltan) - nuevas - fallos} para otro día ({round(time.monotonic() - t0)} s)")
+    if "--guardar" in sys.argv:
+        guardar(base, {n for u in urls for n in (nombre(u), nombre(u, True))})
     return 0
 
 

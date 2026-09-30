@@ -133,6 +133,10 @@ La lista completa, con su tipo, fiabilidad y cómo fue la última ejecución, es
 - **No se usan** porque bloquean el acceso automático o fallan: IndyRock, JacksOnLive, La Hora del Blues.
 - **Foros (solo consulta manual, no se rastrean)**: Foro Azkena y Zona-Zero — útiles para confirmar a mano rumores o cambios de sala.
 
+## Fotos
+
+Todas las fotos se reducen al publicar: miniatura de 160 px (~6 KB) para las listas y foto de 720 px para la ficha, en WebP. Se sirven desde la propia web y se guardan en la rama `miniaturas` (un único commit, sin historial; `tools/miniaturas.py`). Cada ejecución hace solo las nuevas, las de los conciertos más próximos primero.
+
 ## Validación automática de la web publicada
 
 Nadie tiene que probar la web a mano. Después de cada publicación, y una vez al día, el workflow **Validar la web

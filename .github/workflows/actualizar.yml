@@ -78,7 +78,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: python tools/alertas.py
-      - name: Miniaturas guardadas de otros días
+      - name: Miniaturas de la caché antigua (solo para pasar a la rama miniaturas)
         uses: actions/cache/restore@v4
         with:
           path: miniaturas
@@ -89,13 +89,7 @@ jobs:
         # siguiente ejecución). Nunca impide publicar la web
         continue-on-error: true
         timeout-minutes: 12
-        run: python tools/miniaturas.py --minutos ${{ github.event.schedule == '10 3 * * *' && '10' || '6' }}
-      - name: Guardar miniaturas para otros días
-        if: always()
-        uses: actions/cache/save@v4
-        with:
-          path: miniaturas
-          key: miniaturas-${{ github.run_id }}
+        run: python tools/miniaturas.py --guardar --minutos ${{ github.event.schedule == '10 3 * * *' && '10' || '6' }}
       - name: Preparar web
         run: |
           # la web con el código más reciente de main (esta ejecución pudo empezar antes de un cambio de la web)

@@ -10,7 +10,7 @@ on:
         default: "5"
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -36,22 +36,15 @@ jobs:
       - run: pip install -r requirements.txt
       - name: Traer datos (rama datos)
         run: python tools/datos.py
-      - name: Miniaturas guardadas
+      - name: Miniaturas de la caché antigua (solo para pasar a la rama miniaturas)
         uses: actions/cache/restore@v4
         with:
           path: miniaturas
           key: miniaturas-${{ github.run_id }}
           restore-keys: miniaturas-
       - name: Miniaturas propias nuevas
-        if: github.event.inputs.minutos != '0'
         continue-on-error: true
-        run: python tools/miniaturas.py --minutos ${{ github.event.inputs.minutos || '5' }}
-      - name: Guardar miniaturas para otros días
-        if: always() && github.event.inputs.minutos != '0'
-        uses: actions/cache/save@v4
-        with:
-          path: miniaturas
-          key: miniaturas-${{ github.run_id }}
+        run: python tools/miniaturas.py --guardar --minutos ${{ github.event.inputs.minutos || '5' }}
       - name: Preparar web
         run: |
           mkdir -p _site/data

@@ -2,6 +2,7 @@
 
 ## 2.20.1 — 2026-09-30
 
+- Miniaturas y fotos de ficha guardadas en la rama `miniaturas` del repositorio, en vez de la caché de GitHub Actions (que caduca y se llenaba con una copia por ejecución). Es un único commit sin historial: cada ejecución sube solo las fotos nuevas y quita las de conciertos que ya no están.
 - Las miniaturas se piden unas 2 pantallas antes de que lleguen (antes, 150 px), y los días de la lista se pintan también antes. Ahora que las fotos son propias y pesan ~6 KB, al bajar la lista ya están cuando llegan.
 - Validación del peor caso: la semana, el día y el mes con más conciertos (ahora la semana del 5 de octubre, con 320), con el filtro "Todos", sin caché. Mide huecos sin foto mientras se baja seguido: fallo si pasan del 15 %.
 - Accesibilidad: las tablas del informe que se desplazan de lado se pueden recorrer con el teclado.
