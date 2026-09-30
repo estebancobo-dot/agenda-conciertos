@@ -51,8 +51,10 @@ def test_miniaturas_propias(tmp_path):
     mini = reducir(buf.getvalue())
     assert Image.open(io.BytesIO(mini)).size == (160, 160) and len(mini) < 20000
     u = "https://doc.conciertos.club/doc/c/2026/x.jpg"
-    recs = [{"imagen": {"url": u}}, {"imagen": {"url": "https://thumb.wikimedia.org/a/250px-b.jpg"}}]
-    assert pendientes({"conciertos": recs}) == [u]  # solo los servidores que no se pueden reducir de otra forma
+    d = "https://i.discogs.com/abc/rs:fit/g:sm/q:90/h:600/w:600/x.jpeg"
+    recs = [{"imagen": {"url": u}}, {"imagen": {"url": "https://thumb.wikimedia.org/a/250px-b.jpg"}},
+            {"imagen": {"url": d}}]
+    assert pendientes({"conciertos": recs}) == [u, d]  # solo los servidores que no se pueden reducir de otra forma
     (tmp_path / nombre(u)).write_bytes(mini)
     web_datos.MINIATURAS.clear()
     web_datos.cargar_miniaturas(recs, tmp_path)

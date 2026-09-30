@@ -1,5 +1,9 @@
 # Versiones
 
+## 2.15.1 — 2026-09-30
+
+- **Miniaturas propias también para Discogs.** En la prueba en vivo sus fotos eran ya las más lentas (unos 3,7 s cada una a 600 px), porque Discogs no deja pasar al redimensionador. Ahora se reducen al publicar, igual que las de conciertos.club (respetando robots.txt y el ritmo de cada servidor), y se sirven desde la propia web. Se descargan en paralelo, un hilo por servidor.
+
 ## 2.15.0 — 2026-09-30
 
 Usabilidad y velocidad, medidas con un navegador real sobre la web publicada (móvil con 4G lenta; `tools/probar_web.py`, workflow "Probar la web en vivo"):

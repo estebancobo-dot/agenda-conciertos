@@ -1,4 +1,4 @@
-"""Miniaturas propias para las imágenes de las agendas que ningún servicio puede reducir.
+"""Miniaturas propias para las imágenes que ningún servicio puede reducir (conciertos.club y Discogs).
 
 conciertos.club (más de 1.000 conciertos) publica carteles a tamaño completo en un servidor lento (4-9 s por
 imagen con 4G) y el redimensionador wsrv.nl lo tiene bloqueado. Aquí, al publicar la web, se descarga cada
@@ -23,7 +23,8 @@ from pathlib import Path
 RAIZ = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(RAIZ))
 DIR = RAIZ / "miniaturas"
-HOSTS = ("conciertos.club", "doc.conciertos.club")
+# conciertos.club y Discogs: wsrv.nl no los reduce (bloqueado / 403) y sus originales tardan 4-9 s con 4G
+HOSTS = ("conciertos.club", "doc.conciertos.club", "i.discogs.com")
 LADO = 160
 
 
@@ -59,16 +60,28 @@ def main() -> int:
     hechas = {p.name for p in DIR.glob("*.webp")}
     faltan = [u for u in urls if nombre(u) not in hechas]
     f = Fetcher()
-    t0, nuevas, fallos = time.monotonic(), 0, 0
+    t0 = time.monotonic()
+    cuenta = {"nuevas": 0, "fallos": 0}
+
+    def servidor(lista):
+        # un hilo por servidor: cada uno a su ritmo (el Fetcher espera entre peticiones al mismo servidor)
+        for u in lista:
+            if time.monotonic() - t0 > minutos * 60:
+                return
+            try:
+                (DIR / nombre(u)).write_bytes(reducir(f.get_bytes(u)))
+                cuenta["nuevas"] += 1
+            except Exception as e:  # noqa: BLE001 - una imagen rota no para las demás
+                cuenta["fallos"] += 1
+                print(f"  {u}: {type(e).__name__}: {str(e)[:100]}")
+
+    por_servidor: dict[str, list[str]] = {}
     for u in faltan:
-        if time.monotonic() - t0 > minutos * 60:
-            break
-        try:
-            (DIR / nombre(u)).write_bytes(reducir(f.get_bytes(u)))
-            nuevas += 1
-        except Exception as e:  # noqa: BLE001 - una imagen rota no para las demás
-            fallos += 1
-            print(f"  {u}: {type(e).__name__}: {str(e)[:100]}")
+        por_servidor.setdefault(u.split("/")[2], []).append(u)
+    from concurrent.futures import ThreadPoolExecutor
+    with ThreadPoolExecutor(max_workers=max(1, len(por_servidor))) as ex:
+        list(ex.map(servidor, por_servidor.values()))
+    nuevas, fallos = cuenta["nuevas"], cuenta["fallos"]
     total = len({nombre(u) for u in urls} & {p.name for p in DIR.glob("*.webp")})
     print(f"Miniaturas: {len(urls)} imágenes de {', '.join(HOSTS)}; {nuevas} nuevas, {fallos} fallos, "
           f"{total} listas, {len(faltan) - nuevas - fallos} para otro día ({round(time.monotonic() - t0)} s)")
