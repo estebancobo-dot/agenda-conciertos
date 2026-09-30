@@ -128,7 +128,11 @@ def discogs_pais(perfil: str | None) -> str | None:
     if not perfil:
         return None
     m = re.search(r"\bfrom ([A-Z][^.\n\[]{2,80}?)(?:\.|\n|$)", perfil)
-    return pais_de_texto(m.group(1)) if m else None
+    if m and pais_de_texto(m.group(1)):
+        return pais_de_texto(m.group(1))
+    # "Spanish rock band.", "Argentinian singer-songwriter born in Rosario." (scraper/origen.py)
+    from .origen import pais_en_texto
+    return pais_en_texto(re.sub(r"\[/?[a-z]+=?[^\]]*\]", "", perfil)[:400], solo_con_nombre=False)[0]
 
 
 def discogs_estilos(masters: list[dict]) -> tuple[list[str], list[str]]:
@@ -406,6 +410,36 @@ def buscar_lastfm(f: Fetcher, nombre: str, mbid: str | None, key: str,
     return r
 
 
+def buscar_lastfm_bio(f: Fetcher, nombre: str, mbid: str | None, key: str) -> dict:
+    """País dicho en la biografía de Last.fm ("X is a Spanish band from Madrid")."""
+    from .origen import pais_en_texto
+    q = f"mbid={mbid}" if mbid else f"artist={quote(nombre)}&autocorrect=0"
+    data = json.loads(f.get(f"{LASTFM}?method=artist.getinfo&{q}&api_key={key}&format=json&lang=en"))
+    if "error" in data:
+        return {"encontrado": False, "motivo": data.get("message", "no encontrado")}
+    art = data.get("artist") or {}
+    if not mbid and (art.get("name") or "").casefold() != nombre.casefold():
+        return {"encontrado": False, "motivo": f"Last.fm devuelve otro nombre ({art.get('name')})"}
+    bio = re.sub(r"<[^>]+>", " ", (art.get("bio") or {}).get("summary") or "")
+    bio = re.sub(r"\s*Read more on Last\.fm.*$", "", bio).strip()
+    pais, frase = pais_en_texto(bio, solo_con_nombre=False)
+    return {"encontrado": True, "pais": pais, "frase": frase,
+            "identificado_por": "identificador de MusicBrainz" if mbid else "coincidencia por nombre"}
+
+
+def buscar_en_agenda(f: Fetcher, nombre: str, urls: list[str]) -> dict:
+    """País que la propia agenda dice del artista en la página del concierto ("la banda madrileña X")."""
+    from .origen import pais_en_texto
+    for u in urls[:2]:
+        s = BeautifulSoup(f.get(u), "html.parser")
+        for t in s(["script", "style", "nav", "header", "footer", "form", "aside", "noscript"]):
+            t.decompose()
+        pais, frase = pais_en_texto(s.get_text("\n"), nombre)
+        if pais:
+            return {"encontrado": True, "pais": pais, "frase": frase, "url": u}
+    return {"encontrado": False, "motivo": "la agenda no dice de dónde es"}
+
+
 # ------------------------------------------------------------------ MusicBrainz (géneros votados por la comunidad)
 MB_ARTISTA = "https://musicbrainz.org/ws/2/artist/{mbid}?inc=genres&fmt=json"
 
@@ -417,8 +451,11 @@ def musicbrainz_parse(data: dict) -> dict:
                  key=lambda x: -x[1])
     maximo = gen[0][1] if gen else 0
     gen = [[n, c] for n, c in gen if n and c >= max(1, 0.25 * maximo)][:8]
+    # país; si MusicBrainz no lo tiene, el de su zona o lugar de inicio ("Madrid", "Glasgow"…)
+    area = [(data.get(k) or {}).get("name") for k in ("area", "begin-area", "begin_area")]
+    pais = data.get("country") or next((pais_de_texto(a) for a in area if a and pais_de_texto(a)), None)
     return {"encontrado": True, "mbid": data.get("id"), "nombre": data.get("name"), "generos": gen,
-            "pais": data.get("country")}
+            "pais": pais, "area": [a for a in area if a]}
 
 
 def buscar_musicbrainz(f: Fetcher, nombre: str, mbid: str | None, mb_cache: dict | None, hoy: date) -> dict:
@@ -460,8 +497,21 @@ def _tiene_estilo(ent: dict) -> bool:
 
 
 def _pasos_con_error(ent: dict) -> list[str]:
-    return [k for k in ("wikipedia", "wikidata", "discogs", "lastfm", "musicbrainz")
+    return [k for k in ("wikipedia", "wikidata", "discogs", "lastfm", "musicbrainz", "lastfm_bio", "agenda")
             if str((ent.get(k) or {}).get("motivo", "")).startswith("error")]
+
+
+def _mb_sin_area(ent: dict) -> bool:
+    mb = ent.get("musicbrainz") or {}
+    return bool(mb.get("encontrado") and not mb.get("pais") and "area" not in mb)
+
+
+def _falta_origen(ent: dict, clave_lastfm) -> bool:
+    """Sin país en ninguna fuente y aún sin mirar la biografía de Last.fm o la página de la agenda."""
+    if (ficha(ent) or {}).get("pais"):
+        return False
+    return "agenda" not in ent or (bool(clave_lastfm) and (ent.get("lastfm") or {}).get("encontrado")
+                                   and "lastfm_bio" not in ent)
 
 
 def _encontrado(ent: dict) -> bool:
@@ -488,8 +538,11 @@ def enriquecer(recs: list[dict], cache: dict, hoy: date, presupuesto_seg: float 
              "discogs_con_token": "Authorization" in fetcher_dc.session.headers, "lastfm_activo": bool(clave_lastfm)}
     inicio = time.monotonic()
     vistos, pendientes = set(), []
+    urls_de: dict[str, list[str]] = {}
+    fetcher_ag = Fetcher()
     from .clasificar import es_espectaculo
     from .nombres import claves_ficha
+    from .origen import sin_artista
     # cada concierto: el título tal cual y, si lleva ciclo, festival, gira o varios artistas, el nombre limpio y el
     # cabeza de cartel (scraper/nombres.py)
     candidatos = [(r, n) for r in sorted(recs, key=lambda r: (not r["en_foco"], r["fecha"])) for n in claves_ficha(r)]
@@ -497,9 +550,10 @@ def enriquecer(recs: list[dict], cache: dict, hoy: date, presupuesto_seg: float 
         k = norm(nombre)
         if k in vistos or not nombre_consultable(nombre):
             continue
-        if es_espectaculo([e["estilo"] for e in r.get("estilo_fuente", [])]):
-            continue  # teatro, musical…: el título no es un artista
+        if es_espectaculo([e["estilo"] for e in r.get("estilo_fuente", [])]) or sin_artista(r["artista"]):
+            continue  # teatro, musical, jam session…: el título no es un artista
         vistos.add(k)
+        urls_de[k] = [x["url"] for x in r.get("fuentes") or [] if str(x.get("url", "")).startswith("http")]
         ent = cache.get(k)
         cad = CADUCIDAD_OK if ent and _encontrado(ent) else CADUCIDAD_NO
         if not ent or ent.get("fecha", "") < (hoy - timedelta(days=cad)).isoformat():
@@ -507,8 +561,8 @@ def enriquecer(recs: list[dict], cache: dict, hoy: date, presupuesto_seg: float 
             continue
         falta_wd = ent.get("wikipedia", {}).get("wikidata") and "wikidata" not in ent
         falta_lf = clave_lastfm and ("lastfm" not in ent or _lastfm_mejorable(ent)) and not _tiene_estilo(ent)
-        falta_mb = "musicbrainz" not in ent
-        if falta_wd or falta_lf or falta_mb or _pasos_con_error(ent):
+        falta_mb = "musicbrainz" not in ent or _mb_sin_area(ent)
+        if falta_wd or falta_lf or falta_mb or _falta_origen(ent, clave_lastfm) or _pasos_con_error(ent):
             pendientes.append((k, nombre, ent))
         else:
             stats["desde_cache"] += 1
@@ -542,6 +596,8 @@ def enriquecer(recs: list[dict], cache: dict, hoy: date, presupuesto_seg: float 
         if "discogs" not in ent:
             dc_id = (ent.get("wikidata") or {}).get("ids", {}).get("discogs")
             paso("discogs", buscar_discogs, fetcher_dc, nombre, dc_id)
+        if _mb_sin_area(ent):
+            ent.pop("musicbrainz")  # fichas anteriores sin la zona del artista: se completa
         if "musicbrainz" not in ent:
             mbid = (ent.get("wikidata") or {}).get("ids", {}).get("musicbrainz")
             paso("musicbrainz", buscar_musicbrainz, fetcher_mb, nombre, mbid, mb_cache, hoy)
@@ -550,6 +606,14 @@ def enriquecer(recs: list[dict], cache: dict, hoy: date, presupuesto_seg: float 
         if clave_lastfm and "lastfm" not in ent and not _tiene_estilo(ent):
             mbid, via = _mbid(ent)
             paso("lastfm", buscar_lastfm, fetcher_lf, nombre, mbid, clave_lastfm, via)
+        # sin país en las webs de música: la biografía de Last.fm y lo que dice la propia agenda
+        if clave_lastfm and _falta_origen(ent, clave_lastfm) and "lastfm_bio" not in ent \
+                and (ent.get("lastfm") or {}).get("encontrado"):
+            lf = ent["lastfm"]
+            mb = (ent.get("musicbrainz") or {}).get("mbid") if lf.get("identificado_por") != "coincidencia por nombre" else None
+            paso("lastfm_bio", buscar_lastfm_bio, fetcher_lf, nombre, mb, clave_lastfm)
+        if not (ficha(ent) or {}).get("pais") and "agenda" not in ent and urls_de.get(k):
+            paso("agenda", buscar_en_agenda, fetcher_ag, nombre, urls_de[k])
         return k, ent
 
     from concurrent.futures import ThreadPoolExecutor
@@ -684,10 +748,14 @@ def lf_pais(ent: dict) -> str | None:
     """País por las etiquetas de Last.fm ("spanish", "british"…), solo si Last.fm identificó al artista por su
     identificador de MusicBrainz (por el nombre podría ser otro) y todas las etiquetas de país coinciden."""
     lf = ent.get("lastfm") or {}
-    if not lf.get("encontrado") or lf.get("identificado_por") == "coincidencia por nombre":
+    if not lf.get("encontrado"):
         return None
     paises = {_DEMONIMOS[norm(t)] for t in lf.get("etiquetas") or [] if norm(t) in _DEMONIMOS}
-    return paises.pop() if len(paises) == 1 else None
+    pais = paises.pop() if len(paises) == 1 else None
+    # identificado solo por el nombre podría ser un homónimo de otro país; "spanish" para quien toca en Madrid, sí
+    if lf.get("identificado_por") == "coincidencia por nombre" and pais != "ES":
+        return None
+    return pais
 
 
 def ficha(ent: dict | None) -> dict | None:
@@ -738,13 +806,21 @@ def ficha(ent: dict | None) -> dict | None:
     elif wp.get("encontrado") and (wp.get("pais") or pais_de_texto(wp.get("origen"))):
         # el lugar de origen guardado se vuelve a leer con la lista de países actual ("Franklin, Tennessee, U.S")
         pais, fuente_pais = wp.get("pais") or pais_de_texto(wp.get("origen")), "Wikipedia"
-    elif dc.get("encontrado") and dc.get("pais"):
-        pais, fuente_pais = dc["pais"], "Discogs"
+    elif dc.get("encontrado") and (dc.get("pais") or discogs_pais(dc.get("perfil"))):
+        pais, fuente_pais = dc.get("pais") or discogs_pais(dc.get("perfil")), "Discogs"
     elif lf_pais(ent):
-        pais, fuente_pais = lf_pais(ent), "Last.fm (etiqueta de país de los oyentes, artista identificado por MusicBrainz)"
+        lf0 = ent.get("lastfm") or {}
+        pais, fuente_pais = lf_pais(ent), ("Last.fm (etiqueta de país de los oyentes, artista identificado por "
+                                           f"{'su nombre' if lf0.get('identificado_por') == 'coincidencia por nombre' else 'MusicBrainz'})")
     elif (ent.get("musicbrainz") or {}).get("encontrado") and ent["musicbrainz"].get("pais"):
         # país del artista en MusicBrainz (identificado por Wikidata o por ser el único con ese nombre exacto)
         pais, fuente_pais = ent["musicbrainz"]["pais"], "MusicBrainz"
+    elif (ent.get("agenda") or {}).get("pais"):
+        ag = ent["agenda"]
+        pais, fuente_pais = ag["pais"], f"la agenda ({ag['url'].split('/')[2]}): «{ag.get('frase', '')[:160]}»"
+    elif (ent.get("lastfm_bio") or {}).get("pais") and (
+            ent["lastfm_bio"].get("identificado_por") != "coincidencia por nombre" or ent["lastfm_bio"]["pais"] == "ES"):
+        pais, fuente_pais = ent["lastfm_bio"]["pais"], f"Last.fm (biografía): «{ent['lastfm_bio'].get('frase', '')[:160]}»"
     imagen = None
     if wp.get("encontrado") and wp.get("imagen"):
         imagen = {"url": wp["imagen"], "credito": "Wikimedia Commons", "enlace": wp.get("imagen_pagina") or wp["url"]}

@@ -303,7 +303,9 @@ def aplicar_ficha(r: dict, f: dict | None) -> None:
     if not r.get("nacionalidad") and pais_del_titulo(r["artista"]):
         r["nacionalidad"], r["nacionalidad_fuente"] = pais_del_titulo(r["artista"]), "la agenda (en el título)"
     # teatro, musicales, danza…: no es un artista, el origen no aplica (no cuenta como "origen sin confirmar")
-    r["origen_no_aplica"] = origen.startswith("agenda (espect") or None
+    # y jam sessions, micros abiertos, "Concierto de blues": no hay un artista del que decir el origen
+    from .origen import sin_artista
+    r["origen_no_aplica"] = (origen.startswith("agenda (espect") or (sin_artista(r["artista"]) and not r.get("nacionalidad"))) or None
 
 
 def cambios_grupos(previos: dict[str, list[str]], recs: list[dict], hoy: str) -> dict:

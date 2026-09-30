@@ -245,6 +245,9 @@ def publicacion(b):
         if not (x.ok and (x.headers.get("content-type") or "").startswith("image/")):
             malas.append(f"{u} (HTTP {x.status})")
     check("Publicación", "Miniaturas y fotos propias servidas", len(malas), ok=not malas, detalle=", ".join(malas[:3]))
+    sin_origen = sum(1 for r in futuros if not r.get("nacionalidad") and not r.get("origen_no_aplica"))
+    check("Publicación", "Conciertos próximos sin origen del artista", round(100 * sin_origen / max(1, len(futuros)), 1),
+          aviso=40, grave=False, unidad="%", detalle=f"{sin_origen} de {len(futuros)}")
     # las fotos que no son propias pasan por wsrv.nl, que tarda 1-3 s con las que nadie ha pedido antes
     con_img = [r for r in futuros if r.get("img")]
     for campo, nombre_c in (("mini", "miniatura"), ("foto", "foto de ficha")):

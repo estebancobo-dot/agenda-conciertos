@@ -1,5 +1,17 @@
 # Versiones
 
+## 2.20.0 — 2026-09-30
+
+Origen del artista con otro enfoque. Antes solo se buscaba en las webs de música (Wikidata, Wikipedia, Discogs, MusicBrainz y Last.fm por etiquetas) y 1.657 de 2.643 conciertos próximos se quedaban sin origen. De esos:
+
+- **~200 no tienen un artista del que decir el origen**: "Concierto de Blues" (79), "Concierto de Jazz" (52), jam sessions, micros abiertos, karaoke. Pasan a "no aplica", como los espectáculos.
+- **Lo que dice la propia agenda.** En la página del concierto se buscan frases explícitas sobre el artista: "la banda madrileña X", "el cantautor argentino X", "procedentes de Glasgow". Solo cuentan si la frase nombra al artista y el texto da un único país. Dónde vive ("afincada en Madrid") no cuenta. La ficha muestra la frase y la web de la que sale.
+- **Biografía de Last.fm** ("X is a Spanish band from Madrid") y **perfil de Discogs** sin la fórmula "from…" ("Spanish punk rock band").
+- **MusicBrainz**: si no tiene el país del artista, se usa su zona o su lugar de inicio (Madrid → España).
+- **Last.fm identificado solo por el nombre**: se acepta la etiqueta "spanish" para quien toca en Madrid. Otro país no, porque podría ser un homónimo.
+
+Solo con lo que ya estaba guardado, los conciertos sin origen bajan de 1.657 a ~1.417. Las páginas de las agendas y las biografías se consultan en las pasadas de fichas (cada 2 horas, con el mismo ritmo y robots.txt de siempre), así que la cifra seguirá bajando en los próximos días. La validación diaria avisa si más del 40 % de los conciertos próximos siguen sin origen.
+
 ## 2.19.0 — 2026-09-30
 
 - **Todas las fotos se sirven desde la propia web.** Antes solo las de conciertos.club y Discogs. El resto (Madrid en Vivo, 679 conciertos; Songkick, Wikimedia, Fever…) se reducía al vuelo con wsrv.nl, que solo es rápido con fotos que alguien ya ha pedido. La primera vez tardaba 1-3 s por foto, por eso los listados de un día o de un mes y la foto de la ficha iban unas veces rápido y otras lento. Ahora cada foto se descarga una vez al publicar (respetando robots.txt y el ritmo de cada web), se reduce a miniatura (160 px, ~6 KB) y a foto de ficha (720 px) y se sirve desde GitHub Pages. Las de los conciertos más próximos van primero.
