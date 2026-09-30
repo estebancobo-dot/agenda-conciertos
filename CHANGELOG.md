@@ -1,5 +1,9 @@
 # Versiones
 
+## 2.17.1 — 2026-09-30
+
+- **La ficha enseña una sola foto.** Se quita el apaño de la 2.17.0 (foto pequeña borrosa y la grande encima al llegar). Ahora las fotos de ficha de los conciertos que tienes en pantalla se descargan en segundo plano mientras miras la lista: de 2 en 2, con prioridad baja, solo cuando ya han llegado las miniaturas y nunca con el ahorro de datos activado. Al abrir la ficha, la foto ya está en el móvil y sale directamente. Si aún no ha llegado, se ve el recuadro con las iniciales y la foto aparece en cuanto llega, sin que la página salte.
+
 ## 2.17.0 — 2026-09-30
 
 Scroll, fichas y vista mes en móviles reales (las pruebas anteriores no reproducían bien el uso real: bajaban la lista con pausas y sobre cachés ya calientes):

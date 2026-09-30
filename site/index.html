@@ -123,11 +123,8 @@ input[type=search]::-webkit-search-cancel-button{display:none}
 /* ficha */
 .back{display:inline-flex;align-items:center;gap:6px;margin:4px 0 10px;text-decoration:none;font-weight:600}
 .hero{position:relative;border-radius:16px;overflow:hidden;background:var(--panel2);aspect-ratio:4/3;max-height:420px;width:100%}
-.hero .blur{position:absolute;inset:-20px;background-size:cover;background-position:center;filter:blur(22px) brightness(.8);transform:scale(1.1)}
-.hero img{position:relative;z-index:1;width:100%;height:100%;object-fit:contain;display:block}
-.hero img.provisional{position:absolute;inset:0;z-index:1;object-fit:contain;filter:blur(2px)}
-.hero img.grande{position:absolute;inset:0;z-index:2;opacity:0;transition:opacity .25s}
-.hero img.grande.ok{opacity:1}
+.hero img{position:absolute;inset:0;z-index:1;width:100%;height:100%;object-fit:contain;display:block;background:var(--panel2);opacity:0;transition:opacity .15s}
+.hero img.ok,.hero img.ya{opacity:1;transition:none}
 .hero .ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:3.4rem;font-weight:800;color:#fff;background:linear-gradient(135deg,var(--gc,var(--c-sin)),color-mix(in srgb,var(--gc,var(--c-sin)) 45%,#000))}
 .credit{font-size:.72rem;color:var(--muted);margin-top:4px}
 .dt h2{font-size:1.55rem;margin:12px 0 2px;line-height:1.15}
@@ -612,7 +609,7 @@ function viewConcierto(){
   const volver=state.from||`#dia/${r.fecha}`;
   return `<a class="back" href="${esc(volver)}">‹ Volver</a>
    <div class="dt">
-    <div class="hero" style="--gc:var(${color(r)})"><div class="ph">${iniciales(r.artista)}</div>${im?`<div class="blur" style="background-image:url('${esc(r.mini||fotoUrl(im.url,160,true))}')"></div><img class="provisional" src="${esc(r.mini||fotoUrl(im.url,160,true))}" alt="" aria-hidden="true" referrerpolicy="no-referrer"><img class="grande" src="${esc(r.foto||fotoUrl(im.url,720,false))}" data-o="${esc(im.url)}" alt="Foto de ${esc(r.artista)}" fetchpriority="high" decoding="async" referrerpolicy="no-referrer" onload="this.classList.add('ok');fotoGrande(this)" onerror="if(this.dataset.o&&this.src!==this.dataset.o){this.src=this.dataset.o;this.dataset.o=''}else{this.previousElementSibling.remove();this.remove()}">`:""}</div>
+    <div class="hero" style="--gc:var(${color(r)})"><div class="ph">${iniciales(r.artista)}</div>${im?`<img class="foto${fotoLista(r)?" ya":""}" src="${esc(fotoDetalle(r,im))}" data-o="${esc(im.url)}" alt="Foto de ${esc(r.artista)}" fetchpriority="high" decoding="async" referrerpolicy="no-referrer" onload="this.classList.add('ok');fotoGrande(this)" onerror="if(this.dataset.o&&this.src!==this.dataset.o){this.src=this.dataset.o;this.dataset.o=''}else{this.remove()}">`:""}</div>
     ${im?`<div class="credit">Foto: <a href="${esc(im.enlace||im.url)}" target="_blank" rel="noopener">${esc(im.credito)}</a>${f&&f.imagen?"":" (imagen del anuncio)"}</div>`:""}
     <h2>${esc(r.artista)}</h2>
     ${r.ciclo?`<div class="ciclo">${esc(r.ciclo)}</div>`:""}
@@ -850,8 +847,8 @@ async function renderBody(keepFocus){
   else { main.innerHTML=withFilters?filtersHTML()+`<div id="fbody">${body}</div>`:body; if(withFilters) bindFilters(); }
   bindBody();
   setHash();
-  if(state.tab!=="Concierto"){ completarDiferidos(); observarImagenes(document.getElementById("main")); precargar(); rum("lista",performance.now()-t0); }
-  else { const g=document.querySelector(".hero img.grande"); if(g&&!g.complete) g._t0=performance.now(); }
+  if(state.tab!=="Concierto"){ completarDiferidos(); observarImagenes(document.getElementById("main")); precargar(); fotosEnPantalla(); rum("lista",performance.now()-t0); }
+  else { const g=document.querySelector(".hero img"); if(g&&!g.complete) g._t0=performance.now(); else if(g) g.classList.add("ok"); }
   medir(state.tab,t0);
 }
 // al ver una lista se piden en segundo plano los detalles de sus primeros días; al tocar un concierto, el suyo y su
@@ -867,8 +864,37 @@ function tocar(e){
   const c=e.target.closest&&e.target.closest(".card"); if(!c) return;
   const r=BYID[c.dataset.id]; if(!r) return;
   asegurarDetalle(r.id);
-  const im=img(r); if(im){ const p=new Image(); p.referrerPolicy="no-referrer"; p.src=r.foto||fotoUrl(im.url,720,false); }
+  const im=img(r); if(im) traerFoto(fotoDetalle(r,im),"high");
 }
+// La ficha enseña una sola foto. Para que al abrirla ya esté en el móvil, cuando la lista deja de pedir miniaturas
+// se traen en segundo plano las fotos de ficha de los conciertos que tienes en pantalla (unos 30-50 KB cada una),
+// de 2 en 2 y con prioridad baja para no frenar nada de lo que estás viendo.
+const fotoDetalle=(r,im)=>r.foto||fotoUrl(im.url,720,false);
+const TRAIDAS=new Map(); const COLA_F=[]; let fEnVuelo=0;
+const fotoLista=r=>{const im=img(r); return im&&TRAIDAS.get(fotoDetalle(r,im))===true;};
+function traerFoto(u,prio){
+  if(TRAIDAS.has(u)) return; TRAIDAS.set(u,false);
+  const p=new Image(); p.referrerPolicy="no-referrer"; p.decoding="async"; p.fetchPriority=prio||"low";
+  p.onload=()=>{TRAIDAS.set(u,true); if(!prio){fEnVuelo--; seguirFotos();}};
+  p.onerror=()=>{TRAIDAS.delete(u); if(!prio){fEnVuelo--; seguirFotos();}};
+  if(!prio) fEnVuelo++;
+  p.src=u;
+}
+function seguirFotos(){ while(fEnVuelo<2&&COLA_F.length&&!COLA.length&&!enVuelo) traerFoto(COLA_F.shift()); }
+let tFotos=0;
+function fotosEnPantalla(){
+  clearTimeout(tFotos);
+  tFotos=setTimeout(()=>{
+    if(state.tab==="Concierto"||(navigator.connection&&navigator.connection.saveData)) return;
+    COLA_F.length=0;
+    for(const c of document.querySelectorAll("#main .card")){
+      const b=c.getBoundingClientRect(); if(b.bottom<0||b.top>innerHeight) continue;
+      const r=BYID[c.dataset.id], im=r&&img(r); if(im&&!TRAIDAS.has(fotoDetalle(r,im))) COLA_F.push(fotoDetalle(r,im));
+    }
+    seguirFotos();
+  },400);
+}
+addEventListener("scroll",fotosEnPantalla,{passive:true});
 // ---------------------------------------------------------------- carga de imágenes y días según el scroll
 // Con 200 conciertos en una semana, el navegador pedía decenas de fotos a la vez (compitiendo por la red) y
 // pintaba el resto de días justo cuando empezabas a bajar. Ahora:
@@ -883,7 +909,7 @@ function bombear(){
     COLA.sort((a,b)=>distancia(a)-distancia(b));
     const i=COLA.shift(); if(!i.isConnected||!i.dataset.src) continue;
     enVuelo++; const t0=i._visto||performance.now();
-    const fin=ok=>{enVuelo--; rum("img",performance.now()-t0,ok); bombear();};
+    const fin=ok=>{enVuelo--; rum("img",performance.now()-t0,ok); bombear(); if(!COLA.length&&!enVuelo) seguirFotos();};
     i.addEventListener("load",()=>fin(true),{once:true}); i.addEventListener("error",()=>fin(false),{once:true});
     i.src=i.dataset.src; delete i.dataset.src;
   }
