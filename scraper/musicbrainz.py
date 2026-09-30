@@ -38,8 +38,11 @@ def completar(recs: list[dict], cache: dict, hoy: date, fetcher: Fetcher | None,
     inicio = time.monotonic()
     # primero los conciertos en foco y más próximos
     orden = sorted([r for r in recs if not r.get("nacionalidad")], key=lambda r: (not r["en_foco"], r["fecha"]))
+    from .nombres import claves_ficha
     for r in orden:
-        nombre = r["artista"]
+        # el nombre limpio (sin ciclo, festival ni gira) si lo hay; si no, el título
+        claves = claves_ficha(r)
+        nombre = claves[1] if len(claves) > 1 else claves[0]
         if es_generico(nombre) or len(norm(nombre)) < 2 or str(r.get("grupos_origen") or "").startswith("agenda (esp"):
             r["nacionalidad_fuente"] = None
             continue

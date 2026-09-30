@@ -49,6 +49,37 @@ PAISES = {
     "south korea": "KR", "corea del sur": "KR", "estonia": "EE", "latvia": "LV", "lithuania": "LT", "slovenia": "SI",
     "croatia": "HR", "serbia": "RS", "romania": "RO", "rumania": "RO", "bulgaria": "BG", "luxembourg": "LU",
     "malta": "MT", "puerto rico": "PR", "morocco": "MA", "marruecos": "MA",
+    "u s": "US", "u s a": "US", "us": "US", "usa": "US", "eeuu": "US", "ee uu": "US", "china": "CN",
+    "bolivia": "BO", "ecuador": "EC", "paraguay": "PY", "costa rica": "CR", "panama": "PA", "guatemala": "GT",
+    "el salvador": "SV", "honduras": "HN", "nicaragua": "NI", "dominican republic": "DO",
+    "republica dominicana": "DO", "philippines": "PH", "filipinas": "PH", "india": "IN", "indonesia": "ID",
+    "mali": "ML", "senegal": "SN", "nigeria": "NG", "ghana": "GH", "egypt": "EG", "egipto": "EG",
+    "algeria": "DZ", "argelia": "DZ", "tunisia": "TN", "tunez": "TN", "lebanon": "LB", "libano": "LB",
+    "iran": "IR", "jamaica": "JM", "slovakia": "SK", "eslovaquia": "SK", "republica checa": "CZ",
+    "chequia": "CZ", "kazakhstan": "KZ", "kazajistan": "KZ", "moldova": "MD", "moldavia": "MD", "ssr moldova": "MD",
+    "belarus": "BY", "bielorrusia": "BY", "armenia": "AM", "taiwan": "TW", "hong kong": "HK", "thailand": "TH",
+    "tailandia": "TH", "vietnam": "VN", "singapore": "SG", "singapur": "SG", "malaysia": "MY", "korea": "KR",
+    "corea": "KR", "mongolia": "MN", "cape verde": "CV", "cabo verde": "CV", "mozambique": "MZ", "angola": "AO",
+    "kenya": "KE", "ethiopia": "ET", "etiopia": "ET", "benin": "BJ", "gabon": "GA", "madagascar": "MG",
+}
+# estados y provincias que aparecen solos como origen (sin el país)
+REGIONES_PAIS = {
+    **{x: "US" for x in ("alabama", "alaska", "arizona", "arkansas", "california", "colorado", "connecticut",
+                         "delaware", "florida", "hawaii", "idaho", "illinois", "indiana", "iowa", "kansas",
+                         "kentucky", "louisiana", "luisiana", "maine", "maryland", "massachusetts", "michigan",
+                         "minnesota", "mississippi", "misisipi", "missouri", "montana", "nebraska", "nevada",
+                         "new hampshire", "new jersey", "nueva jersey", "new mexico", "nuevo mexico", "new york",
+                         "nueva york", "new york city", "north carolina", "carolina del norte", "north dakota",
+                         "ohio", "oklahoma", "oregon", "pennsylvania", "pensilvania", "rhode island",
+                         "south carolina", "carolina del sur", "south dakota", "tennessee", "texas", "utah",
+                         "vermont", "virginia", "west virginia", "wisconsin", "wyoming", "brooklyn", "los angeles",
+                         "chicago", "seattle", "nashville", "austin", "detroit", "boston", "san francisco")},
+    **{x: "GB" for x in ("london", "londres", "manchester", "liverpool", "glasgow", "birmingham", "leeds",
+                         "sheffield", "bristol", "brighton", "edinburgh", "edimburgo", "cardiff", "belfast")},
+    **{x: "CA" for x in ("ontario", "quebec", "british columbia", "columbia britanica", "alberta", "toronto",
+                         "montreal", "vancouver")},
+    **{x: "AU" for x in ("new south wales", "nueva gales del sur", "victoria", "queensland", "sydney",
+                         "melbourne", "brisbane", "perth")},
 }
 # comunidades y regiones españolas que aparecen como origen
 REGIONES_ES = {"madrid", "barcelona", "cataluna", "catalunya", "andalucia", "pais vasco", "euskadi", "galicia",
@@ -70,6 +101,9 @@ def pais_de_texto(texto: str | None) -> str | None:
     for p in reversed(partes):
         if p in REGIONES_ES:
             return "ES"
+    for p in reversed(partes):
+        if p in REGIONES_PAIS:
+            return REGIONES_PAIS[p]
     return None
 
 
@@ -455,8 +489,11 @@ def enriquecer(recs: list[dict], cache: dict, hoy: date, presupuesto_seg: float 
     inicio = time.monotonic()
     vistos, pendientes = set(), []
     from .clasificar import es_espectaculo
-    for r in sorted(recs, key=lambda r: (not r["en_foco"], r["fecha"])):
-        nombre = r["artista"]
+    from .nombres import claves_ficha
+    # cada concierto: el título tal cual y, si lleva ciclo, festival, gira o varios artistas, el nombre limpio y el
+    # cabeza de cartel (scraper/nombres.py)
+    candidatos = [(r, n) for r in sorted(recs, key=lambda r: (not r["en_foco"], r["fecha"])) for n in claves_ficha(r)]
+    for r, nombre in candidatos:
         k = norm(nombre)
         if k in vistos or not nombre_consultable(nombre):
             continue
@@ -633,6 +670,26 @@ def evidencias(ent: dict) -> list[dict]:
     return out
 
 
+_DEMONIMOS = {"spanish": "ES", "spain": "ES", "espanol": "ES", "espana": "ES", "argentina": "AR",
+              "argentinian": "AR", "argentine": "AR", "mexican": "MX", "mexico": "MX", "chilean": "CL", "chile": "CL",
+              "colombian": "CO", "british": "GB", "uk": "GB", "english": "GB", "scottish": "GB", "welsh": "GB",
+              "irish": "IE", "american": "US", "usa": "US", "french": "FR", "italian": "IT", "german": "DE",
+              "swedish": "SE", "norwegian": "NO", "finnish": "FI", "danish": "DK", "dutch": "NL", "belgian": "BE",
+              "portuguese": "PT", "brazilian": "BR", "japanese": "JP", "canadian": "CA", "australian": "AU",
+              "greek": "GR", "polish": "PL", "russian": "RU", "cuban": "CU", "uruguayan": "UY", "peruvian": "PE",
+              "venezuelan": "VE", "icelandic": "IS", "swiss": "CH", "austrian": "AT"}
+
+
+def lf_pais(ent: dict) -> str | None:
+    """País por las etiquetas de Last.fm ("spanish", "british"…), solo si Last.fm identificó al artista por su
+    identificador de MusicBrainz (por el nombre podría ser otro) y todas las etiquetas de país coinciden."""
+    lf = ent.get("lastfm") or {}
+    if not lf.get("encontrado") or lf.get("identificado_por") == "coincidencia por nombre":
+        return None
+    paises = {_DEMONIMOS[norm(t)] for t in lf.get("etiquetas") or [] if norm(t) in _DEMONIMOS}
+    return paises.pop() if len(paises) == 1 else None
+
+
 def ficha(ent: dict | None) -> dict | None:
     """Resumen de la ficha musical para la web y para los filtros."""
     if not ent:
@@ -678,10 +735,13 @@ def ficha(ent: dict | None) -> dict | None:
     pais, fuente_pais = None, None
     if wd.get("encontrado") and wd.get("pais"):
         pais, fuente_pais = wd["pais"], "Wikidata"
-    elif wp.get("encontrado") and wp.get("pais"):
-        pais, fuente_pais = wp["pais"], "Wikipedia"
+    elif wp.get("encontrado") and (wp.get("pais") or pais_de_texto(wp.get("origen"))):
+        # el lugar de origen guardado se vuelve a leer con la lista de países actual ("Franklin, Tennessee, U.S")
+        pais, fuente_pais = wp.get("pais") or pais_de_texto(wp.get("origen")), "Wikipedia"
     elif dc.get("encontrado") and dc.get("pais"):
         pais, fuente_pais = dc["pais"], "Discogs"
+    elif lf_pais(ent):
+        pais, fuente_pais = lf_pais(ent), "Last.fm (etiqueta de país de los oyentes, artista identificado por MusicBrainz)"
     elif (ent.get("musicbrainz") or {}).get("encontrado") and ent["musicbrainz"].get("pais"):
         # país del artista en MusicBrainz (identificado por Wikidata o por ser el único con ese nombre exacto)
         pais, fuente_pais = ent["musicbrainz"]["pais"], "MusicBrainz"

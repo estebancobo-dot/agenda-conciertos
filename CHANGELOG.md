@@ -1,5 +1,16 @@
 # Versiones
 
+## 2.16.0 — 2026-09-30
+
+**Origen de los artistas: muchos menos "sin confirmar"** (antes, 1.925 de 2.643):
+
+- **Nombre limpio para buscar la ficha.** Si la agenda mezcla el artista con el ciclo, el festival, la gira o un aviso ("Fiestas de Boadilla del Monte 2026. Siloé", "Inverfest. Sho-Hai", "Kiko Veneno - Gira 2026", "ACCEPT 50º ANIVERSARIO", "THE SILENCERS (UK) en Madrid - CAMBIA A NAZCA"), la ficha se busca también con el nombre limpio. Con varios artistas ("LA BANDA EN OBRAS & MC CLAN"), también con el cabeza de cartel. Así salen estilo, foto y origen. Hay 285 nombres nuevos que las pasadas de fichas irán completando.
+  - Las bandas tributo y los espectáculos ("Queen vs. ABBA. Candlelight", "LA VAN GOGH (TRIB. LA OREJA DE VAN GOGH)") solo se buscan por su título, nunca con la ficha del homenajeado.
+- **El país que pone la propia agenda en el título**: "(UK)", "(USA)", "(ITALIA)", "(FR)"…
+- **Más países reconocidos** en el lugar de origen de Wikipedia y en los perfiles de Discogs: "U.S", estados de EE. UU. ("Franklin, Tennessee"), China, Bolivia, Filipinas, Malí, Túnez, Kazajistán…
+- **Etiquetas de país de Last.fm** ("spanish", "british"…), solo si Last.fm identificó al artista por su identificador de MusicBrainz y todas coinciden.
+- **Teatro, musicales y danza: "No aplica"** en lugar de "Origen sin confirmar" (no son artistas), y ya no salen al filtrar por "Origen sin confirmar".
+
 ## 2.15.1 — 2026-09-30
 
 - **La búsqueda es un filtro más, y se ve.** Antes, con un nombre escrito en "Buscar", la hoja de filtros no lo mostraba: al pulsar "Todos" seguían saliendo solo los resultados de la búsqueda y los recuentos no cuadraban.

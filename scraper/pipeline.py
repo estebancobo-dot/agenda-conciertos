@@ -217,6 +217,18 @@ def etiquetas_por_fuente(r: dict) -> list[list[str]]:
     return list(por.values())
 
 
+def ficha_de(r: dict, cache: dict) -> dict | None:
+    """Ficha del artista: la del título tal cual o, si no la hay, la del nombre limpio (sin ciclo, festival ni gira)
+    o la del cabeza de cartel (scraper/nombres.py)."""
+    from .artistas import ficha
+    from .nombres import claves_ficha
+    for n in claves_ficha(r):
+        f = ficha(cache.get(norm(n)))
+        if f:
+            return f
+    return None
+
+
 def aplicar_ficha(r: dict, f: dict | None) -> None:
     """Grupos de filtro, estilos, nacionalidad y foto.
 
@@ -286,6 +298,12 @@ def aplicar_ficha(r: dict, f: dict | None) -> None:
                                 str(r.get("nacionalidad_fuente", "")).startswith("MusicBrainz")):
         r["nacionalidad"], r["nacionalidad_fuente"] = f["pais"], f["fuente_pais"]
     r["imagen"] = (f or {}).get("imagen") or r.get("imagen_evento")
+    # la agenda a veces pone el país en el título: "THE SILENCERS (UK)"
+    from .nombres import pais_del_titulo
+    if not r.get("nacionalidad") and pais_del_titulo(r["artista"]):
+        r["nacionalidad"], r["nacionalidad_fuente"] = pais_del_titulo(r["artista"]), "la agenda (en el título)"
+    # teatro, musicales, danza…: no es un artista, el origen no aplica (no cuenta como "origen sin confirmar")
+    r["origen_no_aplica"] = origen.startswith("agenda (espect") or None
 
 
 def cambios_grupos(previos: dict[str, list[str]], recs: list[dict], hoy: str) -> dict:
@@ -540,7 +558,7 @@ def ejecutar(hoy: date | None = None, solo: list[str] | None = None, fetcher: Fe
         guardar_fichas()
     from .artistas import ficha
     for r in recs:
-        aplicar_ficha(r, ficha(cache_art.get(norm(r["artista"]))))
+        aplicar_ficha(r, ficha_de(r, cache_art))
     # MusicBrainz (solo para los que siguen sin nacionalidad)
     mb_stats = {"desactivado": True}
     if musicbrainz:
@@ -630,7 +648,7 @@ def ejecutar_fichas(hoy: date | None = None, presupuesto_seg: float = 3000) -> d
     _write("artistas.json", cache_art)
     previos = _grupos_previos(recs)
     for r in recs:
-        aplicar_ficha(r, ficha(cache_art.get(norm(r["artista"]))))
+        aplicar_ficha(r, ficha_de(r, cache_art))
     _write("concerts.json", datos)
     escribir_csv(recs, DATA / "concerts.csv")
     informe = _read("informe.json", {})
@@ -651,6 +669,6 @@ def reaplicar_fichas() -> None:
         return
     cache = _read("artistas.json", {})
     for r in recs:
-        aplicar_ficha(r, ficha(cache.get(norm(r["artista"]))))
+        aplicar_ficha(r, ficha_de(r, cache))
     _write("concerts.json", datos)
     escribir_csv(recs, DATA / "concerts.csv")
