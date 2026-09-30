@@ -1,5 +1,11 @@
 # Versiones
 
+## 2.18.0 — 2026-09-30
+
+- **Validación automática de la web publicada** (`tools/validar_web.py`, workflow "Validar la web publicada"). Se lanza sola después de cada publicación y una vez al día, sobre la web real, con un navegador real que imita un móvil de gama media-baja (4G lenta, CPU 6x). Tiene unas 90 comprobaciones con umbral fijo, en 6 bloques: publicación, funcional, UX, rendimiento, gestión de fallos y otros. Si algo falla, abre el issue `alerta-web` (aviso por correo), que se cierra solo al arreglarse. Sustituye a la antigua "Probar la web en vivo", que solo medía y no decidía si algo estaba bien o mal.
+- **Una publicación ya no puede dejar código antiguo.** La ejecución diaria prepara la web con el código más reciente de `main`, aunque hubiera empezado antes de un cambio. Si aun así la web publicada no coincide con `main`, la validación la vuelve a publicar sola.
+- Ficha sin conexión o con el detalle caído: el precio ya no se queda en "Cargando…" (encontrado por la validación de fallos).
+
 ## 2.17.1 — 2026-09-30
 
 - **La ficha enseña una sola foto.** Se quita el apaño de la 2.17.0 (foto pequeña borrosa y la grande encima al llegar). Ahora las fotos de ficha de los conciertos que tienes en pantalla se descargan en segundo plano mientras miras la lista: de 2 en 2, con prioridad baja, solo cuando ya han llegado las miniaturas y nunca con el ahorro de datos activado. Al abrir la ficha, la foto ya está en el móvil y sale directamente. Si aún no ha llegado, se ve el recuadro con las iniciales y la foto aparece en cuanto llega, sin que la página salte.

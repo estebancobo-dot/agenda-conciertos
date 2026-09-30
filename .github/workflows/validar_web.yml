@@ -1,0 +1,72 @@
+name: Validar la web publicada
+
+# Valida la web real (GitHub Pages) con un navegador real que imita un móvil de gama media-baja con 4G lenta
+# (tools/validar_web.py): publicación, funcionamiento, UX, rendimiento, gestión de fallos y otros. Se lanza sola
+# después de cada publicación y una vez al día. Si algo falla:
+#   - la ejecución sale en rojo y se abre (o actualiza) el issue `alerta-web`, que GitHub avisa por correo;
+#   - si la web publicada no es el código de `main` (una publicación que empezó con código anterior), la vuelve
+#     a publicar sola.
+# Resultados, informe y capturas: resumen de la ejecución y rama `pruebas-web`.
+on:
+  workflow_run:
+    workflows: ["Actualizar agenda y publicar web", "Publicar la web (sin leer agendas)"]
+    types: [completed]
+  schedule:
+    - cron: "37 9 * * *"
+  workflow_dispatch:
+    inputs:
+      url:
+        description: "Web a validar"
+        default: "https://estebancobo-dot.github.io/agenda-conciertos/"
+
+permissions:
+  contents: write
+  issues: write
+  actions: write
+
+concurrency:
+  group: validar-web
+  cancel-in-progress: true
+
+jobs:
+  validar:
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      URL: ${{ github.event.inputs.url || 'https://estebancobo-dot.github.io/agenda-conciertos/' }}
+      GH_TOKEN: ${{ github.token }}
+      RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install playwright && python -m playwright install --with-deps chromium
+      - name: Esperar a que GitHub Pages sirva la publicación
+        run: sleep 60
+      - name: Validar
+        id: validar
+        run: python tools/validar_web.py "$URL" pruebas
+      - name: Volver a publicar si la web no es el código de main
+        if: always() && github.event.workflow_run.name != 'Publicar la web (sin leer agendas)'
+        run: |
+          if python -c "import json,sys; r=json.load(open('pruebas/resultados.json')); sys.exit(0 if any(c['estado']=='fallo' and 'publicado = el de main' in c['nombre'] for c in r['comprobaciones']) else 1)"; then
+            echo "La web publicada no es el código de main: se vuelve a publicar"
+            gh workflow run publicar_web.yml --ref main -R "${{ github.repository }}"
+          fi
+      - name: Issue alerta-web
+        if: always()
+        run: python tools/alerta_web.py pruebas
+      - name: Guardar resultados (rama pruebas-web)
+        if: always()
+        run: |
+          cd pruebas
+          git init -q -b pruebas-web
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -qm "Validación de la web $(date -u +%Y-%m-%dT%H:%MZ)"
+          git push -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" pruebas-web

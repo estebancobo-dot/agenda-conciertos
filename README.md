@@ -133,6 +133,29 @@ La lista completa, con su tipo, fiabilidad y cómo fue la última ejecución, es
 - **No se usan** porque bloquean el acceso automático o fallan: IndyRock, JacksOnLive, La Hora del Blues.
 - **Foros (solo consulta manual, no se rastrean)**: Foro Azkena y Zona-Zero — útiles para confirmar a mano rumores o cambios de sala.
 
+## Validación automática de la web publicada
+
+Nadie tiene que probar la web a mano. Después de cada publicación, y una vez al día, el workflow **Validar la web
+publicada** (`tools/validar_web.py`) recorre la web real de GitHub Pages con un navegador real. Imita un móvil de gama
+media-baja con 4G lenta y CPU 6 veces más lenta. Cada comprobación tiene un umbral fijo y queda como ✅, ⚠️ o ❌:
+
+- **Publicación**: la web servida es exactamente el código de `main`. Los datos son recientes, están completos y son
+  coherentes: agenda, detalle por días, miniaturas propias y todo por https.
+- **Funcional**: semana, búsqueda, filtros, ficha, enlaces directos, vista mes e informe enseñan lo que dicen los datos.
+- **UX**: volver deja la lista donde estaba, la ficha tiene una sola foto y búsqueda y filtros son claros. Al elegir un
+  día en el mes, su lista queda a la vista. Además: sin scroll lateral (320 px y ordenador), modo oscuro, saltos de
+  diseño (CLS), accesibilidad con axe-core y tamaño de los botones.
+- **Rendimiento**: primera y segunda visita, LCP y miniaturas al bajar despacio y deprisa. También cambiar de semana,
+  abrir fichas (con la foto ya descargada y sin ella), filtros, bloqueos de JavaScript y KB descargados.
+- **Fallos**: se comprueba sin conexión (copia del service worker) y con averías simuladas: detalle que no llega,
+  fotos que no cargan, agenda caída o lenta, taxonomía rota. La página tiene que avisar y seguir funcionando, con 0
+  errores de JavaScript.
+- **Otros**: imágenes de las agendas a través del proxy, enlaces a las fuentes y errores de consola.
+
+Si algo falla, la ejecución sale en rojo y se abre (o actualiza) el issue `alerta-web`, del que GitHub avisa por correo.
+El issue se cierra solo cuando la web vuelve a pasar. Si la web publicada no es el código de `main`, se vuelve a
+publicar sola. El informe está en el resumen de cada ejecución y, con las capturas, en la rama `pruebas-web`.
+
 ## Para desarrolladores
 
 ```bash

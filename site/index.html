@@ -620,7 +620,7 @@ function viewConcierto(){
      <div class="row"><span class="ic">📍</span><div><div class="v">${esc(r.sala||"Sala sin indicar")}</div><div class="s">${esc(r.municipio||"")} · <a href="${esc(mapa)}" target="_blank" rel="noopener">Cómo llegar</a>${sala&&sala.web?` · <a href="${esc(sala.web)}" target="_blank" rel="noopener">Web de la sala</a>`:""}</div></div></div>
      <div class="row"><span class="ic">🎸</span><div>${estiloHTML}</div></div>
      <div class="row"><span class="ic">${r.nacionalidad?flag(r.nacionalidad):"🏳️"}</span><div>${r.nacionalidad?`<div class="v">${esc(pais(r.nacionalidad))}</div><div class="s">según ${esc(r.nacionalidad_fuente||"la fuente")}</div>`:(r.origen_no_aplica?`<div class="v muted">No aplica</div><div class="s">Es un espectáculo (teatro, musical, danza…), no un artista</div>`:`<div class="v muted">Origen sin confirmar</div><div class="s">Ninguna fuente fiable lo indica</div>`)}</div></div>
-     <div class="row"><span class="ic">🎟️</span><div>${r.precio?`<div class="v">${esc(precioTxt(r.precio))}</div><div class="s">según ${r.precio_fuente?`<a href="${esc(r.precio_fuente.url)}" target="_blank" rel="noopener">${esc(r.precio_fuente.nombre.split(" (")[0])}</a>`:"la web"} · puede no incluir gastos</div>`:(r._full?`<div class="v muted">Precio sin indicar</div>`:`<div class="v muted">Cargando…</div>`)}</div></div>
+     <div class="row"><span class="ic">🎟️</span><div>${r.precio?`<div class="v">${esc(precioTxt(r.precio))}</div><div class="s">según ${r.precio_fuente?`<a href="${esc(r.precio_fuente.url)}" target="_blank" rel="noopener">${esc(r.precio_fuente.nombre.split(" (")[0])}</a>`:"la web"} · puede no incluir gastos</div>`:(r._full?`<div class="v muted">Precio sin indicar</div>`:`<div class="v muted carg">Cargando…</div>`)}</div></div>
     </div>
     <div class="actions">
      ${entradas?`<a class="lbtn primary" href="${esc(entradas)}" target="_blank" rel="noopener">${r.confirmado_sala?"Ver en la web de la sala":"Ver anuncio y entradas"} ↗</a>`:""}
@@ -827,7 +827,7 @@ async function renderBody(keepFocus){
     const id=state.id, t1=performance.now();
     asegurarDetalle(id).then(ok=>{ rum("ficha_datos",performance.now()-t1,ok);
       if(state.tab!=="Concierto"||state.id!==id) return;
-      if(ok) renderBody(false); else { const b=document.getElementById("cargando"); if(b) b.textContent="No se pudieron cargar las fuentes y el precio: comprueba la conexión."; } });
+      if(ok) renderBody(false); else { const b=document.getElementById("cargando"); if(b) b.textContent="No se pudieron cargar las fuentes y el precio: comprueba la conexión."; document.querySelectorAll(".carg").forEach(x=>x.textContent="Sin conexión"); } });
   }
   const withFilters=VISTAS.includes(state.tab);
   let body="";
