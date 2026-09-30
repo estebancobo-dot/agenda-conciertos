@@ -1,123 +1,126 @@
 {
- "b_bigmama": {
-  "bytes": 288683,
+ "adb_dp": {
+  "bytes": 38568,
   "cabeceras": {
-   "X-Powered-By": "PHP/8.3.33",
+   "X-Powered-By": "PHP/8.4.14",
    "status": 200
   },
   "ok": true,
   "robots": "ok",
-  "url": "https://bigmamaballroom.com/conciertos-blues/"
+  "url": "https://www.theaudiodb.com/api/v1/json/123/artist-mb.php?i=79491354-3d83-40e3-9d8e-7592d58d790a"
  },
- "b_gruta": {
-  "bytes": 632135,
+ "adb_robots": {
+  "bytes": 80,
   "cabeceras": {
-   "X-Microcache": "True",
    "status": 200
   },
   "ok": true,
   "robots": "ok",
-  "url": "https://gruta77.com/events/"
+  "url": "https://www.theaudiodb.com/robots.txt"
  },
- "b_legion": {
-  "bytes": 182830,
+ "mb_doblecapa": {
+  "bytes": 484,
   "cabeceras": {
-   "X-Microcache": "True",
-   "X-Powered-By": "PHP/8.5.2",
-   "status": 200
-  },
-  "ok": true,
-  "robots": "ok",
-  "url": "https://metallegion.es/conciertos/"
- },
- "b_rozas": {
-  "bytes": 1195105,
-  "cabeceras": {
-   "X-Content-Type-Options": "nosniff, nosniff",
-   "X-Drupal-Cache": "MISS",
-   "X-Drupal-Dynamic-Cache": "MISS",
-   "X-Frame-Options": "sameorigin",
-   "X-Generator": "Drupal 10 (https://www.drupal.org)",
-   "X-Permitted-Cross-Domain-Policies": "none",
-   "X-XSS-Protection": "1; mode=block",
-   "status": 200
-  },
-  "ok": true,
-  "robots": "ok",
-  "url": "https://www.lasrozas.es/calendario-de-eventos"
- },
- "b_silikona": {
-  "bytes": 85940,
-  "cabeceras": {
-   "X-Microcache": "True",
-   "X-Pingback": "https://silikona.es/xmlrpc.php",
-   "X-TEC-API-ORIGIN": "https://silikona.es",
-   "X-TEC-API-ROOT": "https://silikona.es/wp-json/tribe/events/v1/",
-   "X-TEC-API-VERSION": "v1",
-   "status": 200
-  },
-  "ok": true,
-  "robots": "ok",
-  "url": "https://silikona.es/"
- },
- "b_thm": {
-  "cabeceras": {},
-  "error": "RobotsUnreachable: web inaccesible al leer robots.txt: inaccesible (508)",
-  "ok": false,
-  "robots": "inaccesible (508)",
-  "url": "https://www.todoheavymetal.com/index.php/agenda/amp"
- },
- "mev_rest_est": {
-  "bytes": 4690,
-  "cabeceras": {
-   "X-Content-Type-Options": "nosniff",
-   "X-Powered-By": "PHP/8.4.26, PleskLin",
-   "X-Robots-Tag": "noindex",
-   "X-WP-Total": "6",
-   "X-WP-TotalPages": "1",
-   "status": 200
-  },
-  "ok": true,
-  "robots": "ok",
-  "url": "https://madridenvivo.com/wp-json/wp/v2/estilo_evento?per_page=100"
- },
- "mev_rest_ev": {
-  "bytes": 38384,
-  "cabeceras": {
-   "X-Content-Type-Options": "nosniff",
-   "X-Powered-By": "PHP/8.4.26, PleskLin",
-   "X-Robots-Tag": "noindex",
-   "X-WP-Total": "86321",
-   "X-WP-TotalPages": "17265",
-   "status": 200
-  },
-  "ok": true,
-  "robots": "ok",
-  "url": "https://madridenvivo.com/wp-json/wp/v2/evento?per_page=5"
- },
- "mev_rest_sala": {
-  "bytes": 33476,
-  "cabeceras": {
-   "X-Content-Type-Options": "nosniff",
-   "X-Powered-By": "PHP/8.4.26, PleskLin",
-   "X-Robots-Tag": "noindex",
-   "X-WP-Total": "63",
-   "X-WP-TotalPages": "21",
-   "status": 200
-  },
-  "ok": true,
-  "robots": "ok",
-  "url": "https://madridenvivo.com/wp-json/wp/v2/sala?per_page=3"
- },
- "mev_robots": {
-  "bytes": 194,
-  "cabeceras": {
-   "X-Accel-Version": "0.01",
-   "X-Powered-By": "WP Rocket/3.10.5.1, PleskLin",
+   "X-Cache-Status": "MISS",
+   "X-MB-Gateway": "rudi",
+   "X-RateLimit-Limit": "1900",
+   "X-RateLimit-Remaining": "403",
+   "X-RateLimit-Reset": "1790748322",
+   "X-Runtime": "0.075287",
    "status": 200
   },
   "ok": true,
   "robots": "",
-  "url": "https://madridenvivo.com/robots.txt"
+  "url": "https://musicbrainz.org/ws/2/artist/1f83be21-010e-4998-8436-e4b4ad40bb97?inc=genres+tags&fmt=json"
+ },
+ "mb_dp": {
+  "bytes": 1515,
+  "cabeceras": {
+   "X-Cache-Status": "MISS",
+   "X-MB-Gateway": "rudi",
+   "X-RateLimit-Limit": "1900",
+   "X-RateLimit-Remaining": "1403",
+   "X-RateLimit-Reset": "1790748318",
+   "X-Runtime": "0.130546",
+   "status": 200
+  },
+  "ok": true,
+  "robots": "",
+  "url": "https://musicbrainz.org/ws/2/artist/79491354-3d83-40e3-9d8e-7592d58d790a?inc=genres+tags&fmt=json"
+ },
+ "mb_genres": {
+  "bytes": 25956,
+  "cabeceras": {
+   "X-Cache-Status": "MISS",
+   "X-MB-Gateway": "rudi",
+   "X-RateLimit-Limit": "1900",
+   "X-RateLimit-Remaining": "1851",
+   "X-RateLimit-Reset": "1790748326",
+   "X-Runtime": "0.010143",
+   "status": 200
+  },
+  "ok": true,
+  "robots": "",
+  "url": "https://musicbrainz.org/ws/2/genre/all?fmt=txt"
+ },
+ "mb_medina": {
+  "bytes": 915,
+  "cabeceras": {
+   "X-Cache-Status": "MISS",
+   "X-MB-Gateway": "rudi",
+   "X-RateLimit-Limit": "1900",
+   "X-RateLimit-Remaining": "286",
+   "X-RateLimit-Reset": "1790748318",
+   "X-Runtime": "0.040571",
+   "status": 200
+  },
+  "ok": true,
+  "robots": "",
+  "url": "https://musicbrainz.org/ws/2/artist/63d38a2c-55dc-4318-9ff4-82d4c265f89f?inc=genres+tags&fmt=json"
+ },
+ "mb_sabbat": {
+  "bytes": 1021,
+  "cabeceras": {
+   "X-Cache-Status": "MISS",
+   "X-MB-Gateway": "rudi",
+   "X-RateLimit-Limit": "1900",
+   "X-RateLimit-Remaining": "1009",
+   "X-RateLimit-Reset": "1790748320",
+   "X-Runtime": "0.112679",
+   "status": 200
+  },
+  "ok": true,
+  "robots": "",
+  "url": "https://musicbrainz.org/ws/2/artist/cad31485-4806-4c2a-8a70-2bdadacc05f8?inc=genres+tags&fmt=json"
+ },
+ "mb_teksuo": {
+  "bytes": 927,
+  "cabeceras": {
+   "X-Cache-Status": "MISS",
+   "X-MB-Gateway": "rudi",
+   "X-RateLimit-Limit": "1900",
+   "X-RateLimit-Remaining": "1081",
+   "X-RateLimit-Reset": "1790748324",
+   "X-Runtime": "0.032342",
+   "status": 200
+  },
+  "ok": true,
+  "robots": "",
+  "url": "https://musicbrainz.org/ws/2/artist/e44a6b9a-dbe2-4366-ab77-b30c6ca9fc25?inc=genres+tags&fmt=json"
+ },
+ "mb_tigre": {
+  "bytes": 657,
+  "cabeceras": {
+   "X-Cache-Status": "MISS",
+   "X-MB-Gateway": "rudi",
+   "X-RateLimit-Limit": "1900",
+   "X-RateLimit-Remaining": "1671",
+   "X-RateLimit-Reset": "1790748322",
+   "X-Runtime": "0.182955",
+   "status": 200
+  },
+  "ok": true,
+  "robots": "",
+  "url": "https://musicbrainz.org/ws/2/artist/e080f839-6b11-4934-b678-b973ee83d460?inc=genres+tags&fmt=json"
  }
 }
