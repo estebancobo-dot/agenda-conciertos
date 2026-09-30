@@ -1,5 +1,10 @@
 # Versiones
 
+## 2.14.2 — 2026-09-30
+
+- **Nombres mal descodificados.** Si una web no declara su juego de caracteres y el contenido es UTF-8 válido, se lee como UTF-8, en lugar de adivinarlo. El 29/09 la adivinanza falló con Revi: "Brujería" salió "Brujer├Ła", "Eskóbula" salió "Esk├│bula"…
+- Esas copias rotas de lecturas anteriores ya no se arrastran como "¿cancelado?": no eran conciertos aparte. En la ejecución del 30/09 eran 4 de los 9 "posiblemente cancelados".
+
 ## 2.14.1 — 2026-09-30
 
 - **Fase 1b: `main` ya no guarda datos.** La rama `datos` se creó bien en la primera pasada (un solo commit con los 7 archivos generados), así que se quitan de `main`. Las ejecuciones los traen de esa rama; para tenerlos en local, `python tools/datos.py`.

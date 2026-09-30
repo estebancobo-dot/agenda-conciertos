@@ -194,7 +194,13 @@ class Fetcher:
                                                              if k.lower().startswith(("x-", "retry", "ratelimit"))}}
         r.raise_for_status()
         if not r.encoding or r.encoding.lower() == "iso-8859-1":
-            r.encoding = r.apparent_encoding or "utf-8"
+            # sin juego de caracteres declarado: si el contenido es UTF-8 válido, lo es (casi todas las webs).
+            # Adivinarlo (apparent_encoding) falló con Revi el 29/09: "Brujería" salió "Brujer├Ła"
+            try:
+                r.content.decode("utf-8")
+                r.encoding = "utf-8"
+            except UnicodeDecodeError:
+                r.encoding = r.apparent_encoding or "utf-8"
         text = r.text
         if es_antibot(text):
             raise AntiBotBlocked(f"{url}: la web responde con un captcha/verificación anti-bots")

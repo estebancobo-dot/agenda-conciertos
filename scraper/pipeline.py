@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import csv
 import json
+import re
 import logging
 import threading
 import time
@@ -334,6 +335,10 @@ def _fuera_de_cobertura(p: dict, srcs: list[str]) -> bool:
     return bool(est) and all(e in MEV_EXCLUIDOS for e in est)
 
 
+# restos de leer UTF-8 con otra codificación ("├", "Ã©", "â€™"): nunca aparecen en un nombre real
+MOJIBAKE = re.compile(r"[├┤┬┴┼╢╣║╗╝]|Ã[\x80-\xbf©±³º¡\u0152-\u2122]|â€")
+
+
 def conciliar(recs: list[dict], anteriores: list[dict], hoy: date, resultados: dict, fuentes: dict[str, Source]):
     """Asigna ids estables, fechas de primera/última vez y marca 'posiblemente cancelado'."""
     hoy_s = hoy.isoformat()
@@ -362,6 +367,8 @@ def conciliar(recs: list[dict], anteriores: list[dict], hoy: date, resultados: d
             continue
         if p["fecha"] < limite_hist:
             continue
+        if MOJIBAKE.search(p["artista"]):
+            continue  # nombre mal descodificado en una lectura anterior ("Brujer├Ła"): no es un concierto aparte
         if p["fecha"] < hoy_s:
             arrastrados.append(p)  # ya pasó: se conserva como histórico del mes
             continue

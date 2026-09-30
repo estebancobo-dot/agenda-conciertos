@@ -95,3 +95,30 @@ def test_avisos_de_fuentes():
     # normal: sin aviso
     f = informe_fuentes([s], {"mev": {"funciono": True, "brutos": 40}}, recs * 8, set(), dict(hist), d(2026, 9, 30))[0]
     assert f["aviso"] is None
+
+
+def test_restos_de_mala_descodificacion_no_quedan_como_cancelados():
+    from datetime import date as d
+    from scraper.pipeline import conciliar
+    s = fuente("revi", None)
+    fantasma = {"id": "x1", "fecha": "2026-11-19", "artista": "Brujer├Ła", "sala": "Revi Live", "invitados": [],
+                "fuentes": [{"id": "revi"}], "estado": "1_fuente", "notas": [], "hora": None}
+    out = conciliar([], [fantasma], d(2026, 9, 30), {"revi": {"completa": True}}, {"revi": s})
+    assert out == []
+
+
+def test_utf8_sin_declarar_no_se_adivina(monkeypatch):
+    import requests
+    from scraper.fetch import Fetcher
+    r = requests.models.Response()
+    r.status_code, r._content, r.encoding = 200, "Brujería · Eskóbula".encode("utf-8"), None
+    f = Fetcher()
+    monkeypatch.setattr(f.session, "request", lambda *a, **k: r)
+    assert f.get("https://revi.test/agenda", check_robots=False) == "Brujería · Eskóbula"
+    # una web realmente en latin-1 (no es UTF-8 válido) se sigue leyendo bien
+    r2 = requests.models.Response()
+    html = "<html><body><h1>Agenda de conciertos</h1><p>Brujería en la sala, próximo sábado. Información y "
+    html += "entradas en taquilla.</p></body></html>"
+    r2.status_code, r2._content, r2.encoding = 200, html.encode("latin-1"), None
+    monkeypatch.setattr(f.session, "request", lambda *a, **k: r2)
+    assert "Brujería" in f.get("https://revi.test/otra", check_robots=False)
