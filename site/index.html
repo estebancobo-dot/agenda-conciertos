@@ -586,7 +586,7 @@ function viewConcierto(){
   const volver=state.from||`#dia/${r.fecha}`;
   return `<a class="back" href="${esc(volver)}">‹ Volver</a>
    <div class="dt">
-    <div class="hero" style="--gc:var(${color(r)})"><div class="ph">${iniciales(r.artista)}</div>${im?`<div class="blur" style="background-image:url('${esc(r.mini||fotoUrl(im.url,160,true))}')"></div><img src="${esc(fotoUrl(im.url,720,false))}" data-o="${esc(im.url)}" alt="Foto de ${esc(r.artista)}" fetchpriority="high" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.o&&this.src!==this.dataset.o){this.src=this.dataset.o;this.dataset.o=''}else{this.previousElementSibling.remove();this.remove()}">`:""}</div>
+    <div class="hero" style="--gc:var(${color(r)})"><div class="ph">${iniciales(r.artista)}</div>${im?`<div class="blur" style="background-image:url('${esc(r.mini||fotoUrl(im.url,160,true))}')"></div><img src="${esc(r.foto||fotoUrl(im.url,720,false))}" data-o="${esc(im.url)}" alt="Foto de ${esc(r.artista)}" fetchpriority="high" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.o&&this.src!==this.dataset.o){this.src=this.dataset.o;this.dataset.o=''}else{this.previousElementSibling.remove();this.remove()}">`:""}</div>
     ${im?`<div class="credit">Foto: <a href="${esc(im.enlace||im.url)}" target="_blank" rel="noopener">${esc(im.credito)}</a>${f&&f.imagen?"":" (imagen del anuncio)"}</div>`:""}
     <h2>${esc(r.artista)}</h2>
     ${r.ciclo?`<div class="ciclo">${esc(r.ciclo)}</div>`:""}
@@ -766,7 +766,7 @@ const pedidos={};
 async function asegurarDetalle(id){
   const r=BYID[id]; if(!r||r._full||!DETALLES) return true;
   const f=r.fecha;
-  pedidos[f]=pedidos[f]||fetch("data/"+DETALLES.replace("{fecha}",f),{cache:"no-cache"}).then(x=>{if(!x.ok) throw new Error(x.status); return x.json();});
+  pedidos[f]=pedidos[f]||fetch("data/"+DETALLES.replace("{fecha}",f)).then(x=>{if(!x.ok) throw new Error(x.status); return x.json();});
   try{ const d=await pedidos[f]; Object.entries(d).forEach(([k,v])=>{const x=BYID[k]; if(x){Object.assign(x,v); x._full=true; delete x._card;}}); return true; }
   catch(e){ delete pedidos[f]; return false; }
 }
@@ -800,15 +800,16 @@ async function renderBody(keepFocus){
 // foto: cuando se abre, ya están (o casi)
 function precargar(){
   if(!DETALLES) return;
-  const dias=[...new Set([...document.querySelectorAll("#main .card")].slice(0,40).map(c=>(BYID[c.dataset.id]||{}).fecha).filter(Boolean))];
+  const dias=[...new Set([...document.querySelectorAll("#main .card")].map(c=>(BYID[c.dataset.id]||{}).fecha).filter(Boolean))];
+  if(DIFERIDOS) DIFERIDOS.dias.forEach(f=>dias.includes(f)||dias.push(f));
   const idle=window.requestIdleCallback||(f=>setTimeout(f,300));
-  dias.slice(0,8).forEach((f,i)=>idle(()=>{const r=DATA.find(x=>x.fecha===f&&!x._full); if(r) asegurarDetalle(r.id);},{timeout:2000+i*500}));
+  dias.slice(0,14).forEach((f,i)=>idle(()=>{const r=DATA.find(x=>x.fecha===f&&!x._full); if(r) asegurarDetalle(r.id);},{timeout:2000+i*500}));
 }
 function tocar(e){
   const c=e.target.closest&&e.target.closest(".card"); if(!c) return;
   const r=BYID[c.dataset.id]; if(!r) return;
   asegurarDetalle(r.id);
-  const im=img(r); if(im){ const p=new Image(); p.referrerPolicy="no-referrer"; p.src=fotoUrl(im.url,720,false); }
+  const im=img(r); if(im){ const p=new Image(); p.referrerPolicy="no-referrer"; p.src=r.foto||fotoUrl(im.url,720,false); }
 }
 function completarDiferidos(){
   if(!DIFERIDOS||!DIFERIDOS.dias.length) return;

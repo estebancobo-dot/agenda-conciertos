@@ -2,6 +2,10 @@
 
 ## 2.15.1 — 2026-09-30
 
+- **Fichas con tiempo de carga estable.** Antes dependía de dónde viniera la foto y de si sus datos estaban precargados:
+  - La foto grande de conciertos.club y Discogs también se genera al publicar (720 px, unos 40 KB) y se sirve desde la web; antes se pedía el original, de 4 a 9 s con 4G.
+  - Se precargan los datos de todos los días de la lista, no solo los primeros.
+  - Los detalles ya descargados se reutilizan: la copia sin conexión los da al instante y los actualiza por detrás, y el navegador ya no pregunta cada vez si han cambiado. Si la red no responde, la web tira de la copia a los 3,5 s (antes 6 s).
 - **Miniaturas propias también para Discogs.** En la prueba en vivo sus fotos eran ya las más lentas (unos 3,7 s cada una a 600 px), porque Discogs no deja pasar al redimensionador. Ahora se reducen al publicar, igual que las de conciertos.club (respetando robots.txt y el ritmo de cada servidor), y se sirven desde la propia web. Se descargan en paralelo, un hilo por servidor.
 
 ## 2.15.0 — 2026-09-30

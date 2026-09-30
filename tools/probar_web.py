@@ -179,6 +179,27 @@ def recorrido(b):
          scroll_antes=y_antes, scroll_despues=y_despues, sigue_viendo_el_concierto=visible,
          boton_volver_sigue_viendo=visible2)
 
+    # 3b. fichas de conciertos lejanos (sin precarga), de cada origen de foto
+    casos = pg.evaluate("""()=>{const hoy=new Date().toISOString().slice(0,10); const out={};
+      const tipo=u=>!u?'sin foto':/discogs/.test(u)?'discogs':/conciertos\.club/.test(u)?'conciertos.club':/wikimedia/.test(u)?'wikimedia':/madridenvivo/.test(u)?'madridenvivo':'otros';
+      for(const r of DATA.filter(r=>r.fecha>hoy).reverse()){const t=tipo(r.img); if(!out[t]) out[t]=r.id;} return out}""")
+    fichas = {}
+    for t, cid in casos.items():
+        t0 = time.monotonic()
+        pg.evaluate(f"location.hash='#concierto/{cid}'")
+        pg.wait_for_selector(".dt h2", timeout=30000)
+        d = ms(t0)
+        f = None
+        if pg.evaluate("!!document.querySelector('.hero img')"):
+            try:
+                pg.wait_for_function("(()=>{const i=document.querySelector('.hero img');return !i||(i.complete&&i.naturalWidth>0)})()",
+                                     timeout=20000)
+                f = ms(t0)
+            except Exception:
+                f = "más de 20 s"
+        fichas[t] = {"datos_ms": d, "foto_ms": f}
+    paso("3b_fichas_por_origen_de_foto", **fichas)
+
     # 4. filtros
     pg.evaluate("scrollTo(0,0)")
     t0 = time.monotonic()

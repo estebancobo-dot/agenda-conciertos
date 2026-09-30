@@ -3,7 +3,8 @@
 conciertos.club (más de 1.000 conciertos) publica carteles a tamaño completo en un servidor lento (4-9 s por
 imagen con 4G) y el redimensionador wsrv.nl lo tiene bloqueado. Aquí, al publicar la web, se descarga cada
 imagen una sola vez con el mismo lector que las agendas (robots.txt, identificación y ritmo por servidor), se
-reduce a 160×160 WebP (~5 KB) y se sirve desde la propia web: rápida y guardada por el service worker.
+reduce a 160×160 WebP (~5 KB) para las listas y a 720 px (~40 KB) para la ficha, y se sirve desde la propia web:
+rápida y guardada por el service worker.
 
 Las miniaturas ya hechas se guardan entre ejecuciones (caché de GitHub Actions, carpeta DIR): cada día solo se
 descargan las nuevas. Con límite de tiempo: lo que no dé tiempo se hace al día siguiente y, mientras, la web usa
@@ -28,8 +29,21 @@ HOSTS = ("conciertos.club", "doc.conciertos.club", "i.discogs.com")
 LADO = 160
 
 
-def nombre(url: str) -> str:
-    return hashlib.sha1(url.encode()).hexdigest()[:16] + ".webp"
+def nombre(url: str, grande: bool = False) -> str:
+    return hashlib.sha1(url.encode()).hexdigest()[:16] + ("-g" if grande else "") + ".webp"
+
+
+GRANDE = 720  # foto de la ficha del concierto
+
+
+def reducir_grande(datos: bytes) -> bytes:
+    """Foto de la ficha: el cartel entero (sin recortar) a 720 px como mucho, ~40 KB."""
+    from PIL import Image, ImageOps
+    im = ImageOps.exif_transpose(Image.open(io.BytesIO(datos))).convert("RGB")
+    im.thumbnail((GRANDE, GRANDE), Image.LANCZOS)
+    out = io.BytesIO()
+    im.save(out, "WEBP", quality=75, method=6)
+    return out.getvalue()
 
 
 def reducir(datos: bytes) -> bytes:
@@ -58,7 +72,7 @@ def main() -> int:
     concerts = json.loads((RAIZ / "data" / "concerts.json").read_text(encoding="utf-8"))
     urls = pendientes(concerts)
     hechas = {p.name for p in DIR.glob("*.webp")}
-    faltan = [u for u in urls if nombre(u) not in hechas]
+    faltan = [u for u in urls if nombre(u) not in hechas or nombre(u, True) not in hechas]
     f = Fetcher()
     t0 = time.monotonic()
     cuenta = {"nuevas": 0, "fallos": 0}
@@ -69,7 +83,9 @@ def main() -> int:
             if time.monotonic() - t0 > minutos * 60:
                 return
             try:
-                (DIR / nombre(u)).write_bytes(reducir(f.get_bytes(u)))
+                datos = f.get_bytes(u)
+                (DIR / nombre(u)).write_bytes(reducir(datos))
+                (DIR / nombre(u, True)).write_bytes(reducir_grande(datos))
                 cuenta["nuevas"] += 1
             except Exception as e:  # noqa: BLE001 - una imagen rota no para las demás
                 cuenta["fallos"] += 1

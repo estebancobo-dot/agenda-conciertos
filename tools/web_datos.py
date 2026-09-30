@@ -36,6 +36,7 @@ def genericas(recs: list[dict]) -> set[str]:
 
 MAX_ARTISTAS_IMAGEN = 4
 MINIATURAS: dict[str, str] = {}  # url original → ruta de la miniatura propia (tools/miniaturas.py)
+GRANDES: dict[str, str] = {}  # url original → ruta de la foto reducida para la ficha
 
 
 def ligero(r: dict) -> dict:
@@ -52,6 +53,8 @@ def ligero(r: dict) -> dict:
         out["img"] = im["url"]
         if MINIATURAS and im["url"] in MINIATURAS:
             out["mini"] = MINIATURAS[im["url"]]
+        if GRANDES and im["url"] in GRANDES:
+            out["foto"] = GRANDES[im["url"]]
     return out
 
 
@@ -63,6 +66,8 @@ def cargar_miniaturas(recs: list[dict], carpeta: Path) -> None:
         u = (r.get("imagen") or {}).get("url")
         if u and nombre(u) in hechas:
             MINIATURAS[u] = f"miniaturas/{nombre(u)}"
+        if u and nombre(u, True) in hechas:
+            GRANDES[u] = f"miniaturas/{nombre(u, True)}"
 
 
 def preparar(concerts: dict, destino: Path) -> dict:
@@ -95,10 +100,10 @@ def main() -> int:
     concerts = json.loads((RAIZ / "data" / "concerts.json").read_text(encoding="utf-8"))
     carpeta = RAIZ / "miniaturas"
     cargar_miniaturas(concerts.get("conciertos", []), carpeta)
-    if MINIATURAS:
+    if MINIATURAS or GRANDES:
         import shutil
         (sitio / "miniaturas").mkdir(parents=True, exist_ok=True)
-        for ruta in set(MINIATURAS.values()):
+        for ruta in set(MINIATURAS.values()) | set(GRANDES.values()):
             shutil.copy(carpeta / ruta.split("/")[1], sitio / ruta)
     print(preparar(concerts, destino), "miniaturas propias:", len(set(MINIATURAS.values())))
     return 0

@@ -48,6 +48,9 @@ def test_miniaturas_propias(tmp_path):
     from miniaturas import nombre, pendientes, reducir
     buf = io.BytesIO()
     Image.new("RGB", (800, 1100), (200, 30, 30)).save(buf, "JPEG")
+    from miniaturas import reducir_grande
+    grande = Image.open(io.BytesIO(reducir_grande(buf.getvalue())))
+    assert max(grande.size) == 720 and grande.size[1] > grande.size[0]  # el cartel entero, sin recortar
     mini = reducir(buf.getvalue())
     assert Image.open(io.BytesIO(mini)).size == (160, 160) and len(mini) < 20000
     u = "https://doc.conciertos.club/doc/c/2026/x.jpg"
