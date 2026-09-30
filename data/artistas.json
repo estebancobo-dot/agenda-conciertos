@@ -2464,6 +2464,10 @@
    "generos": [],
    "url": "https://www.last.fm/music/El%2BCuarto%2BVac%C3%ADo",
    "identificado_por": "coincidencia por nombre"
+  },
+  "musicbrainz": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
   }
  },
  "neon collective tributes": {
@@ -2573,6 +2577,10 @@
    "generos": [],
    "url": "https://www.last.fm/music/Red%2BZone",
    "identificado_por": "coincidencia por nombre"
+  },
+  "musicbrainz": {
+   "encontrado": false,
+   "motivo": "7 artistas homónimos"
   }
  },
  "pancho cespedes": {
@@ -3845,6 +3853,10 @@
    "generos": [],
    "url": "https://www.last.fm/music/Ginel",
    "identificado_por": "coincidencia por nombre"
+  },
+  "musicbrainz": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
   }
  },
  "el diablo de shanghai": {
@@ -7947,6 +7959,10 @@
    ],
    "url": "https://www.last.fm/music/Compro%2BOro",
    "identificado_por": "coincidencia por nombre"
+  },
+  "musicbrainz": {
+   "encontrado": false,
+   "motivo": "3 artistas homónimos"
   }
  },
  "devin townsend": {
@@ -10764,6 +10780,10 @@
    "generos": [],
    "url": "https://www.last.fm/music/El%2BCebri",
    "identificado_por": "coincidencia por nombre"
+  },
+  "musicbrainz": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
   }
  },
  "body talk isaac nouveau": {
@@ -11285,6 +11305,10 @@
   "lastfm": {
    "encontrado": false,
    "motivo": "The artist you supplied could not be found"
+  },
+  "musicbrainz": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
   }
  },
  "leoni torres": {
@@ -12596,6 +12620,14 @@
    "generos": [],
    "url": "https://www.last.fm/music/Kid%2BMount",
    "identificado_por": "coincidencia por nombre"
+  },
+  "musicbrainz": {
+   "encontrado": true,
+   "mbid": "dbc0264f-6d4d-4654-9cad-4cc44b501147",
+   "nombre": "Kid Mount",
+   "generos": [],
+   "pais": "ES",
+   "identificado_por": "única coincidencia exacta del nombre en MusicBrainz"
   }
  },
  "toldos verdes": {
@@ -12791,6 +12823,14 @@
    ],
    "url": "https://www.last.fm/music/Montedapena",
    "identificado_por": "coincidencia por nombre"
+  },
+  "musicbrainz": {
+   "encontrado": true,
+   "mbid": "8f21c641-5a9a-4f57-a2dd-6696ce0a8abf",
+   "nombre": "Montedapena",
+   "generos": [],
+   "pais": "ES",
+   "identificado_por": "única coincidencia exacta del nombre en MusicBrainz"
   }
  },
  "will jacobs and marcos coll band": {
@@ -14111,6 +14151,14 @@
    "imagen": "https://i.discogs.com/_NRqVSqLTB2BZQMUqBgnOZQSwH_LOaKxQPhA9DLq-Cc/rs:fit/g:sm/q:90/h:615/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTEzMDQ2/MTYzLTE3NDIyODMw/MDMtOTEwNC5qcGVn.jpeg",
    "identificado_por": "única coincidencia exacta del nombre en Discogs",
    "perfil": ""
+  },
+  "musicbrainz": {
+   "encontrado": true,
+   "mbid": "3db08288-c4a2-4c33-bfcd-6924529b29f2",
+   "nombre": "Lords of Lounge",
+   "generos": [],
+   "pais": null,
+   "identificado_por": "única coincidencia exacta del nombre en MusicBrainz"
   }
  },
  "alfredo temblekes": {
@@ -20233,6 +20281,14 @@
    "imagen": "https://i.discogs.com/GgaZr32EqmV0Spq-pjwJGP-fc7Xvt-YtC4BLUd33JFY/rs:fit/g:sm/q:90/h:409/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTc5OTc1/MTAtMTU5NDE3OTE1/NC05MDUwLmpwZWc.jpeg",
    "identificado_por": "única coincidencia exacta del nombre en Discogs",
    "perfil": "Danish quintet of schoolgirls from Engdalskolen in Brabrand, Aarhus lead by music teacher [a758016]. Sang on an educational record from [l68838] recorded in June 1970, and dissolved about a half year later. Notable for having [a250436], who"
+  },
+  "musicbrainz": {
+   "encontrado": true,
+   "mbid": "3ac299ac-3464-43f7-a0c0-82c55a9180b5",
+   "nombre": "De Fem",
+   "generos": [],
+   "pais": null,
+   "identificado_por": "única coincidencia exacta del nombre en MusicBrainz"
   }
  },
  "delarocha": {
@@ -22843,6 +22899,23 @@
    ],
    "url": "https://www.last.fm/music/A%C3%A9rokorda",
    "identificado_por": "coincidencia por nombre"
+  },
+  "musicbrainz": {
+   "encontrado": true,
+   "mbid": "7b54df85-2d26-476f-a2f4-ebab55b92d7a",
+   "nombre": "Aérokorda",
+   "generos": [
+    [
+     "folk",
+     1
+    ],
+    [
+     "instrumental",
+     1
+    ]
+   ],
+   "pais": "BE",
+   "identificado_por": "única coincidencia exacta del nombre en MusicBrainz"
   }
  },
  "lev3l": {
@@ -24663,6 +24736,14 @@
    ],
    "url": "https://www.last.fm/music/mariagrep",
    "identificado_por": "coincidencia por nombre"
+  },
+  "musicbrainz": {
+   "encontrado": true,
+   "mbid": "fce12b52-faa1-48dd-879d-4c7888b465ca",
+   "nombre": "mariagrep",
+   "generos": [],
+   "pais": "ES",
+   "identificado_por": "única coincidencia exacta del nombre en MusicBrainz"
   }
  },
  "odd mami": {
@@ -24805,6 +24886,14 @@
    "generos": [],
    "url": "https://www.last.fm/music/La%2BNi%C3%B1a%2BParaca%C3%ADdas",
    "identificado_por": "coincidencia por nombre"
+  },
+  "musicbrainz": {
+   "encontrado": true,
+   "mbid": "e8d4fed7-3fd0-4180-9402-c6d5d8addeed",
+   "nombre": "La Niña Paracaidas",
+   "generos": [],
+   "pais": "ES",
+   "identificado_por": "única coincidencia exacta del nombre en MusicBrainz"
   }
  },
  "radar joven": {
@@ -25598,6 +25687,14 @@
    ],
    "url": "https://www.last.fm/music/Pantera%2BBlue",
    "identificado_por": "coincidencia por nombre"
+  },
+  "musicbrainz": {
+   "encontrado": true,
+   "mbid": "90b55292-539d-4ba9-a99f-b7b19ddb1d50",
+   "nombre": "Pantera Blue",
+   "generos": [],
+   "pais": "ES",
+   "identificado_por": "única coincidencia exacta del nombre en MusicBrainz"
   }
  },
  "ruel": {
@@ -25724,6 +25821,14 @@
    "imagen": "https://i.discogs.com/KdjO42mlGIMDPyjsPMJ_NHN7cuvwRpHMDAkQoUUWdKs/rs:fit/g:sm/q:90/h:566/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTEwMjcy/NDY2LTE2MzgyNDcy/OTAtMTU5OC5qcGVn.jpeg",
    "identificado_por": "única coincidencia exacta del nombre en Discogs",
    "perfil": "Spanish group"
+  },
+  "musicbrainz": {
+   "encontrado": true,
+   "mbid": "b5c5ef4c-494e-4a76-b083-b707e79a37d8",
+   "nombre": "interrogación amor",
+   "generos": [],
+   "pais": "ES",
+   "identificado_por": "única coincidencia exacta del nombre en MusicBrainz"
   }
  },
  "manolo uvi": {
@@ -28736,6 +28841,14 @@
    "estilos": [],
    "generos": [],
    "url": "https://www.last.fm/music/Julieta%2BRada",
+   "identificado_por": "identificador de MusicBrainz en Wikidata"
+  },
+  "musicbrainz": {
+   "encontrado": true,
+   "mbid": "3a01ab15-0389-4d49-aecf-5250b136c7d6",
+   "nombre": "Julieta Rada",
+   "generos": [],
+   "pais": "UY",
    "identificado_por": "identificador de MusicBrainz en Wikidata"
   }
  },
@@ -34794,6 +34907,10 @@
   "lastfm": {
    "encontrado": false,
    "motivo": "The artist you supplied could not be found"
+  },
+  "musicbrainz": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
   }
  },
  "malon": {
@@ -46074,6 +46191,10 @@
   "lastfm": {
    "encontrado": false,
    "motivo": "The artist you supplied could not be found"
+  },
+  "musicbrainz": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
   }
  },
  "howlin ramblers": {

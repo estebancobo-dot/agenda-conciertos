@@ -1,49 +1,49 @@
 {
  "version": "2.10.0",
- "generado": "2026-09-30T08:28:50+00:00",
- "modo": "completa",
+ "generado": "2026-09-30T08:53:09+00:00",
+ "modo": "reintento de rockandblog",
  "hoy": "2026-09-30",
  "horizonte": "2027-01-28",
- "duracion_seg": 2161,
+ "duracion_seg": 22,
  "totales": {
   "conciertos": 2645,
-  "en_foco": 1577,
+  "en_foco": 1576,
   "contrastados": 675,
   "una_fuente": 1851,
   "conflictos": 117,
   "posiblemente_cancelados": 2,
-  "nuevos_hoy": 0,
-  "fuentes_ok": 63,
+  "nuevos_hoy": 21,
+  "fuentes_ok": 64,
   "fuentes_total": 64,
-  "peticiones_http": 277,
-  "fuera_de_ventana": 1201,
+  "peticiones_http": 1,
+  "fuera_de_ventana": 35,
   "fuera_de_ambito": 1157,
   "ejemplos_fuera_de_ambito": [
-   "2026-10-17 SIN PROPINA @ ? (Murcia) [Rockgle]",
-   "2026-10-24 SIN PROPINA @ Sala Republicca (Valencia) [Rockgle]",
-   "2026-10-17 GUADAÑA @ Transylvania Metal Pub (Vigo (Pontevedra)) [Rockgle]",
-   "2026-10-24 GUADAÑA @ Urban Rock Concept (Vitoria-Gasteiz (Álava)) [Rockgle]",
-   "2026-11-07 GUADAÑA @ Sala Utopía (Zaragoza) [Rockgle]",
-   "2026-11-14 GUADAÑA @ Rock and Rolla (Granada) [Rockgle]",
-   "2026-10-17 REINCIDENTES @ ? (Valencia) [Rockgle]",
-   "2026-11-07 REINCIDENTES @ Estayike (Piedrabuena (Ciudad Real)) [Rockgle]",
-   "2026-11-14 REINCIDENTES @ ? (Pinseque (Zaragoza)) [Rockgle]",
-   "2026-12-05 REINCIDENTES @ Rock D’Aki! (L’Hospitalet de Llobregat (Barcelona)) [Rockgle]",
-   "2026-10-30 EL DROGAS @ Reus (Tarragona) (Pintor Rock) [Rockgle]",
-   "2026-11-14 EL DROGAS @ Mislata (Valencia) (Repvblicca) [Rockgle]",
-   "2026-11-20 EL DROGAS @ Bilbao (Bizkaia) (Santana 27) [Rockgle]",
-   "2026-11-21 EL DROGAS @ Bilbao (Bizkaia) (Santana 27) [Rockgle]",
-   "2026-10-03 SARATOGA @ Sala Porta Caeli (Valladolid) [Rockgle]",
-   "2026-10-10 SARATOGA @ Sala Zero (Tarragona) [Rockgle]",
-   "2026-10-16 SARATOGA @ Tijuana (México) [Rockgle]",
-   "2026-10-24 SARATOGA @ Todos Somos Ángeles Rock Fest, Puebla (México) [Rockgle]",
-   "2026-10-25 SARATOGA @ Todos Somos Ángeles Rock Fest, Guadalajara (México) [Rockgle]",
-   "2026-11-18 SARATOGA @ Sala El Teatrino, Salta (Argentina) [Rockgle]",
-   "2026-11-20 SARATOGA @ Sala El Teatrito, Buenos Aires (Argentina) [Rockgle]",
-   "2026-11-21 SARATOGA @ Sala Metrónomo (Santiago de Chile) [Rockgle]",
-   "2026-11-22 SARATOGA @ La Bodeguita de Nicanor, Concepción (Chile) [Rockgle]",
-   "2026-11-25 SARATOGA @ Sala Live Era, Montevideo (Uruguay) [Rockgle]",
-   "2026-11-28 SARATOGA @ Centro de Convenciones Leguía, Lima (Perú) [Rockgle]"
+   "2026-10-03 Hombres G @ Palau Sant Jordi (Barcelona) [Blog de Ticketmaster (agenda rock)]",
+   "2026-11-14 Hombres G @ Roig Arena (Valencia) [Blog de Ticketmaster (agenda rock)]",
+   "2026-11-21 Hombres G @ Pabellón Príncipe Felipe (Zaragoza) [Blog de Ticketmaster (agenda rock)]",
+   "2026-11-28 Hombres G @ Navarra Arena (Pamplona/Iruña) [Blog de Ticketmaster (agenda rock)]",
+   "2026-12-05 Hombres G @ Coliseum (A Coruña) [Blog de Ticketmaster (agenda rock)]",
+   "2026-10-02 Blood Red Shoes @ Sala Azkena (Bilbao) [Blog de Ticketmaster (agenda rock)]",
+   "2026-10-03 Blood Red Shoes @ Sala Razzmatazz 2 (Barcelona) [Blog de Ticketmaster (agenda rock)]",
+   "2026-10-17 Las Novias @ Sala WOLF (Barcelona) [Blog de Ticketmaster (agenda rock)]",
+   "2026-10-22 Madee @ La Nau de Barcelona (sin ciudad) [Blog de Ticketmaster (agenda rock)]",
+   "2026-10-22 Tan Biónica @ Sala Razzmatazz 1 (Barcelona) [Blog de Ticketmaster (agenda rock)]",
+   "2026-10-23 Joe Jackson @ Paral·lel 62 (Barcelona) [Blog de Ticketmaster (agenda rock)]",
+   "2026-10-24 Declan Welsh and the Decadent West @ Sala WOLF (Barcelona) [Blog de Ticketmaster (agenda rock)]",
+   "2026-10-25 Niall Horan @ Palau Sant Jordi (Barcelona) [Blog de Ticketmaster (agenda rock)]",
+   "2026-11-11 Frazey Ford @ Sala Jerusalem (Valencia) [Blog de Ticketmaster (agenda rock)]",
+   "2026-11-12 Frazey Ford @ La Nau (Barcelona) [Blog de Ticketmaster (agenda rock)]",
+   "2026-11-21 Clan of Xymox @ Sala Jerusalem (Valencia) [Blog de Ticketmaster (agenda rock)]",
+   "2026-12-05 The Sheepdogs en su Out All Night Tour @ La 2 de Apolo (Barcelona) [Blog de Ticketmaster (agenda rock)]",
+   "2026-11-27 ACCEPT @ Auditorio Roig Arena (Valencia) [TodoHeavyMetal]",
+   "2026-11-13 AMON AMARTH @ Sant Jordi Club (Barcelona) [TodoHeavyMetal]",
+   "2026-10-31 AZRAEL @ Sala El Tren (Granada) [TodoHeavyMetal]",
+   "2026-11-11 BEAST IN BLACK @ Sala Razzmatazz 1 (Barcelona) [TodoHeavyMetal]",
+   "2026-11-13 BEAST IN BLACK @ Sala Santana 27 (Bilbao) [TodoHeavyMetal]",
+   "2027-01-16 BLOODHUNTER @ Sala Z (Zaragoza) [TodoHeavyMetal]",
+   "2026-12-19 EASY RIDER @ Sala Bóveda (Barcelona +HAPAX) [TodoHeavyMetal]",
+   "2026-11-19 FLOTSAM AND JETSAM @ RCA Club (Lisboa) [TodoHeavyMetal]"
   ]
  },
  "fuentes": [
@@ -60,7 +60,7 @@
    "funciono": true,
    "estado": "ok",
    "conciertos": 1455,
-   "nuevos": 0,
+   "nuevos": 20,
    "solo_en_esta": 864,
    "eventos_brutos": 1462,
    "paginas": 18,
@@ -72,7 +72,7 @@
    "reintento": null,
    "desde_cache": 0,
    "cache_fecha": null,
-   "no_leida": false
+   "no_leida": true
   },
   {
    "id": "cc_portada",
@@ -87,7 +87,7 @@
    "funciono": true,
    "estado": "ok",
    "conciertos": 554,
-   "nuevos": 0,
+   "nuevos": 18,
    "solo_en_esta": 242,
    "eventos_brutos": 555,
    "paginas": 1,
@@ -99,7 +99,7 @@
    "reintento": null,
    "desde_cache": 0,
    "cache_fecha": null,
-   "no_leida": false
+   "no_leida": true
   },
   {
    "id": "cc_estilos",
@@ -114,7 +114,7 @@
    "funciono": true,
    "estado": "ok",
    "conciertos": 665,
-   "nuevos": 0,
+   "nuevos": 7,
    "solo_en_esta": 338,
    "eventos_brutos": 768,
    "paginas": 12,
@@ -126,7 +126,7 @@
    "reintento": null,
    "desde_cache": 0,
    "cache_fecha": null,
-   "no_leida": false
+   "no_leida": true
   },
   {
    "id": "laganzua",
@@ -153,7 +153,7 @@
    "reintento": null,
    "desde_cache": 0,
    "cache_fecha": null,
-   "no_leida": false
+   "no_leida": true
   },
   {
    "id": "cpm",
@@ -180,7 +180,7 @@
    "reintento": null,
    "desde_cache": 0,
    "cache_fecha": null,
-   "no_leida": false
+   "no_leida": true
   },
   {
    "id": "madridenvivo",
@@ -194,9 +194,9 @@
    "notas": "",
    "funciono": true,
    "estado": "ok",
-   "conciertos": 940,
-   "nuevos": 0,
-   "solo_en_esta": 636,
+   "conciertos": 939,
+   "nuevos": 19,
+   "solo_en_esta": 635,
    "eventos_brutos": 959,
    "paginas": 100,
    "errores": [],
@@ -207,7 +207,7 @@
    "reintento": null,
    "desde_cache": 0,
    "cache_fecha": null,
-   "no_leida": false
+   "no_leida": true
   },
   {
    "id": "songkick",
@@ -234,7 +234,7 @@
    "reintento": null,
    "desde_cache": 0,
    "cache_fecha": null,
-   "no_leida": false
+   "no_leida": true
   },
   {
    "id": "rockandblog",
@@ -246,23 +246,21 @@
    "grupo": "rockandblog",
    "reconfirma": true,
    "notas": "",
-   "funciono": false,
-   "estado": "error",
-   "conciertos": 72,
+   "funciono": true,
+   "estado": "ok",
+   "conciertos": 77,
    "nuevos": 0,
    "solo_en_esta": 2,
-   "eventos_brutos": 0,
+   "eventos_brutos": 114,
    "paginas": 1,
-   "errores": [
-    "web inaccesible al leer robots.txt: inaccesible (ConnectTimeout)"
-   ],
-   "robots": "inaccesible (ConnectTimeout)",
+   "errores": [],
+   "robots": "ok",
    "robots_bloquea": false,
-   "aviso": "posible cambio en la web: antes daba 72 conciertos (último éxito 2026-09-30)",
-   "segundos": 30.1,
-   "reintento": "falló también en el 2.º intento",
-   "desde_cache": 74,
-   "cache_fecha": "2026-09-30",
+   "aviso": null,
+   "segundos": 1.8,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
    "no_leida": false
   },
   {
@@ -290,7 +288,7 @@
    "reintento": null,
    "desde_cache": 0,
    "cache_fecha": null,
-   "no_leida": false
+   "no_leida": true
   },
   {
    "id": "radar_cpm",
@@ -305,7 +303,7 @@
    "funciono": true,
    "estado": "ok",
    "conciertos": 43,
-   "nuevos": 0,
+   "nuevos": 2,
    "solo_en_esta": 0,
    "eventos_brutos": 43,
    "paginas": 1,
@@ -317,7 +315,7 @@
    "reintento": null,
    "desde_cache": 0,
    "cache_fecha": null,
-   "no_leida": false
+   "no_leida": true
   },
   {
    "id": "thm",
@@ -344,7 +342,7 @@
    "reintento": null,
    "desde_cache": 0,
    "cache_fecha": null,
-   "no_leida": false
+   "no_leida": true
   },
   {
    "id": "metallegion",
@@ -371,7 +369,7 @@
    "reintento": null,
    "desde_cache": 0,
    "cache_fecha": null,
-   "no_leida": false
+   "no_leida": true
   },
   {
    "id": "metalcry",
@@ -398,7 +396,7 @@
    "reintento": null,
    "desde_cache": 0,
    "cache_fecha": null,
-   "no_leida": false
+   "no_leida": true
   },
   {
    "id": "hellpress",
@@ -413,8 +411,8 @@
    "funciono": true,
    "estado": "ok",
    "conciertos": 41,
-   "nuevos": 0,
-   "solo_en_esta": 1,
+   "nuevos": 1,
+   "solo_en_esta": 2,
    "eventos_brutos": 195,
    "paginas": 1,
    "errores": [],
@@ -425,7 +423,7 @@
    "reintento": null,
    "desde_cache": 0,
    "cache_fecha": null,
-   "no_leida": false
+   "no_leida": true
   },
   {
    "id": "hellpress_melodico",
@@ -452,7 +450,7 @@
    "reintento": null,
    "desde_cache": 0,
    "cache_fecha": null,
-   "no_leida": false
+   "no_leida": true
   },
   {
    "id": "metalsymphony",
@@ -479,7 +477,7 @@
    "reintento": null,
    "desde_cache": 0,
    "cache_fecha": null,
-   "no_leida": false
+   "no_leida": true
   },
   {
    "id": "rockforeveryone",
@@ -506,7 +504,7 @@
    "reintento": null,
    "desde_cache": 0,
    "cache_fecha": null,
-   "no_leida": false
+   "no_leida": true
   },
   {
    "id": "mariskal",
@@ -533,7 +531,7 @@
    "reintento": null,
    "desde_cache": 0,
    "cache_fecha": null,
-   "no_leida": false
+   "no_leida": true
   },
   {
    "id": "rockgle",
@@ -560,7 +558,7 @@
    "reintento": null,
    "desde_cache": 0,
    "cache_fecha": null,
-   "no_leida": false
+   "no_leida": true
   },
   {
    "id": "madness",
@@ -587,7 +585,7 @@
    "reintento": null,
    "desde_cache": 0,
    "cache_fecha": null,
-   "no_leida": false
+   "no_leida": true
   },
   {
    "id": "getrock",
@@ -614,7 +612,7 @@
    "reintento": null,
    "desde_cache": 0,
    "cache_fecha": null,
-   "no_leida": false
+   "no_leida": true
   },
   {
    "id": "neverland",
@@ -641,7 +639,7 @@
    "reintento": null,
    "desde_cache": 0,
    "cache_fecha": null,
-   "no_leida": false
+   "no_leida": true
   },
   {
    "id": "rockprog_agenda",
@@ -668,7 +666,7 @@
    "reintento": null,
    "desde_cache": 0,
    "cache_fecha": null,
-   "no_leida": false
+   "no_leida": true
   },
   {
    "id": "rockprog",
@@ -695,7 +693,7 @@
    "reintento": null,
    "desde_cache": 0,
    "cache_fecha": null,
-   "no_leida": false
+   "no_leida": true
   },
   {
    "id": "dirtyrock",
@@ -722,7 +720,7 @@
    "reintento": null,
    "desde_cache": 0,
    "cache_fecha": null,
-   "no_leida": false
+   "no_leida": true
   },
   {
    "id": "viriaor",
@@ -749,7 +747,7 @@
    "reintento": null,
    "desde_cache": 0,
    "cache_fecha": null,
-   "no_leida": false
+   "no_leida": true
   },
   {
    "id": "diariorockero",
@@ -776,7 +774,7 @@
    "reintento": null,
    "desde_cache": 0,
    "cache_fecha": null,
-   "no_leida": false
+   "no_leida": true
   },
   {
    "id": "mutick",
@@ -803,7 +801,7 @@
    "reintento": null,
    "desde_cache": 0,
    "cache_fecha": null,
-   "no_leida": false
+   "no_leida": true
   },
   {
    "id": "qconciertos",
@@ -830,7 +828,7 @@
    "reintento": null,
    "desde_cache": 0,
    "cache_fecha": null,
-   "no_leida": false
+   "no_leida": true
   },
   {
    "id": "sbm",
@@ -857,7 +855,7 @@
    "reintento": null,
    "desde_cache": 0,
    "cache_fecha": null,
-   "no_leida": false
+   "no_leida": true
   },
   {
    "id": "bigmama",
@@ -884,7 +882,7 @@
    "reintento": null,
    "desde_cache": 0,
    "cache_fecha": null,
-   "no_leida": false
+   "no_leida": true
   },
   {
    "id": "gruta77",
@@ -911,7 +909,7 @@
    "reintento": null,
    "desde_cache": 0,
    "cache_fecha": null,
-   "no_leida": false
+   "no_leida": true
   },
   {
    "id": "movistar",
@@ -938,7 +936,7 @@
    "reintento": null,
    "desde_cache": 0,
    "cache_fecha": null,
-   "no_leida": false
+   "no_leida": true
   },
   {
    "id": "riviera",
@@ -965,7 +963,7 @@
    "reintento": null,
    "desde_cache": 0,
    "cache_fecha": null,
-   "no_leida": false
+   "no_leida": true
   },
   {
    "id": "nazca",
@@ -992,7 +990,7 @@
    "reintento": null,
    "desde_cache": 0,
    "cache_fecha": null,
-   "no_leida": false
+   "no_leida": true
   },
   {
    "id": "wagon",
@@ -1019,7 +1017,7 @@
    "reintento": null,
    "desde_cache": 0,
    "cache_fecha": null,
-   "no_leida": false
+   "no_leida": true
   },
   {
    "id": "revi",
@@ -1046,7 +1044,7 @@
    "reintento": null,
    "desde_cache": 0,
    "cache_fecha": null,
-   "no_leida": false
+   "no_leida": true
   },
   {
    "id": "chango",
@@ -1073,7 +1071,7 @@
    "reintento": null,
    "desde_cache": 0,
    "cache_fecha": null,
-   "no_leida": false
+   "no_leida": true
   },
   {
    "id": "salabut",
@@ -1100,7 +1098,7 @@
    "reintento": null,
    "desde_cache": 0,
    "cache_fecha": null,
-   "no_leida": false
+   "no_leida": true
   },
   {
    "id": "elsol",
@@ -1127,7 +1125,7 @@
    "reintento": null,
    "desde_cache": 0,
    "cache_fecha": null,
-   "no_leida": false
+   "no_leida": true
   },
   {
    "id": "villanos",
@@ -1154,7 +1152,7 @@
    "reintento": null,
    "desde_cache": 0,
    "cache_fecha": null,
-   "no_leida": false
+   "no_leida": true
   },
   {
    "id": "rockville",
@@ -1181,7 +1179,7 @@
    "reintento": null,
    "desde_cache": 0,
    "cache_fecha": null,
-   "no_leida": false
+   "no_leida": true
   },
   {
    "id": "funhouse",
@@ -1208,7 +1206,7 @@
    "reintento": null,
    "desde_cache": 0,
    "cache_fecha": null,
-   "no_leida": false
+   "no_leida": true
   },
   {
    "id": "wurlitzer",
@@ -1235,7 +1233,7 @@
    "reintento": null,
    "desde_cache": 0,
    "cache_fecha": null,
-   "no_leida": false
+   "no_leida": true
   },
   {
    "id": "honky",
@@ -1262,7 +1260,7 @@
    "reintento": null,
    "desde_cache": 0,
    "cache_fecha": null,
-   "no_leida": false
+   "no_leida": true
   },
   {
    "id": "silikona",
@@ -1289,7 +1287,7 @@
    "reintento": null,
    "desde_cache": 0,
    "cache_fecha": null,
-   "no_leida": false
+   "no_leida": true
   },
   {
    "id": "clamores",
@@ -1316,7 +1314,7 @@
    "reintento": null,
    "desde_cache": 0,
    "cache_fecha": null,
-   "no_leida": false
+   "no_leida": true
   },
   {
    "id": "galileo",
@@ -1343,7 +1341,7 @@
    "reintento": null,
    "desde_cache": 0,
    "cache_fecha": null,
-   "no_leida": false
+   "no_leida": true
   },
   {
    "id": "siroco",
@@ -1370,7 +1368,7 @@
    "reintento": null,
    "desde_cache": 0,
    "cache_fecha": null,
-   "no_leida": false
+   "no_leida": true
   },
   {
    "id": "mobydick",
@@ -1397,7 +1395,7 @@
    "reintento": null,
    "desde_cache": 0,
    "cache_fecha": null,
-   "no_leida": false
+   "no_leida": true
   },
   {
    "id": "independance",
@@ -1424,7 +1422,7 @@
    "reintento": null,
    "desde_cache": 0,
    "cache_fecha": null,
-   "no_leida": false
+   "no_leida": true
   },
   {
    "id": "salab",
@@ -1451,7 +1449,7 @@
    "reintento": null,
    "desde_cache": 0,
    "cache_fecha": null,
-   "no_leida": false
+   "no_leida": true
   },
   {
    "id": "nuevacubierta",
@@ -1478,7 +1476,7 @@
    "reintento": null,
    "desde_cache": 0,
    "cache_fecha": null,
-   "no_leida": false
+   "no_leida": true
   },
   {
    "id": "muni_alcala_de_henares",
@@ -1505,7 +1503,7 @@
    "reintento": null,
    "desde_cache": 0,
    "cache_fecha": null,
-   "no_leida": false
+   "no_leida": true
   },
   {
    "id": "muni_aranjuez",
@@ -1532,7 +1530,7 @@
    "reintento": null,
    "desde_cache": 0,
    "cache_fecha": null,
-   "no_leida": false
+   "no_leida": true
   },
   {
    "id": "muni_collado_villalba",
@@ -1559,7 +1557,7 @@
    "reintento": null,
    "desde_cache": 0,
    "cache_fecha": null,
-   "no_leida": false
+   "no_leida": true
   },
   {
    "id": "muni_las_rozas_de_madrid",
@@ -1586,7 +1584,7 @@
    "reintento": null,
    "desde_cache": 0,
    "cache_fecha": null,
-   "no_leida": false
+   "no_leida": true
   },
   {
    "id": "muni_leganes",
@@ -1613,7 +1611,7 @@
    "reintento": null,
    "desde_cache": 0,
    "cache_fecha": null,
-   "no_leida": false
+   "no_leida": true
   },
   {
    "id": "muni_alcorcon",
@@ -1640,7 +1638,7 @@
    "reintento": null,
    "desde_cache": 0,
    "cache_fecha": null,
-   "no_leida": false
+   "no_leida": true
   },
   {
    "id": "muni_boadilla_del_monte",
@@ -1667,7 +1665,7 @@
    "reintento": null,
    "desde_cache": 0,
    "cache_fecha": null,
-   "no_leida": false
+   "no_leida": true
   },
   {
    "id": "muni_torrejon_de_ardoz",
@@ -1694,7 +1692,7 @@
    "reintento": null,
    "desde_cache": 0,
    "cache_fecha": null,
-   "no_leida": false
+   "no_leida": true
   },
   {
    "id": "muni_valdemoro",
@@ -1721,7 +1719,7 @@
    "reintento": null,
    "desde_cache": 0,
    "cache_fecha": null,
-   "no_leida": false
+   "no_leida": true
   },
   {
    "id": "muni_pinto",
@@ -1748,7 +1746,7 @@
    "reintento": null,
    "desde_cache": 0,
    "cache_fecha": null,
-   "no_leida": false
+   "no_leida": true
   },
   {
    "id": "muni_mostoles",
@@ -1775,7 +1773,7 @@
    "reintento": null,
    "desde_cache": 0,
    "cache_fecha": null,
-   "no_leida": false
+   "no_leida": true
   }
  ],
  "sin_agenda_legible": {
@@ -1872,25 +1870,25 @@
  "musicbrainz": {
   "consultas": 0,
   "desde_cache": 1880,
-  "asignadas": 255,
-  "sin_confirmar": 1625,
+  "asignadas": 261,
+  "sin_confirmar": 1619,
   "pendientes": 0
  },
  "artistas": {
   "consultados": 0,
-  "completados": 0,
-  "desde_cache": 1483,
-  "discogs": 676,
+  "completados": 18,
+  "desde_cache": 1466,
+  "discogs": 682,
   "wikipedia": 282,
   "wikidata": 261,
-  "lastfm": 654,
-  "musicbrainz": 721,
-  "sin_ficha": 368,
+  "lastfm": 664,
+  "musicbrainz": 730,
+  "sin_ficha": 357,
   "pendientes": 0,
   "errores": [],
   "discogs_con_token": true,
   "lastfm_activo": true,
-  "duracion_seg": 0,
+  "duracion_seg": 12,
   "durante_agendas": {
    "consultados": 0,
    "completados": 0
@@ -1920,7 +1918,7 @@
    "ejemplos_salen": []
   },
   "rock y metal": {
-   "total": 623,
+   "total": 622,
    "entran": 1,
    "salen": 1,
    "ejemplos_entran": [
@@ -1931,7 +1929,7 @@
    ]
   },
   "sin clasificar": {
-   "total": 236,
+   "total": 237,
    "entran": 1,
    "salen": 1,
    "ejemplos_entran": [
@@ -1942,14 +1940,14 @@
    ]
   },
   "fuera de foco": {
-   "total": 1312,
+   "total": 1313,
    "entran": 0,
    "salen": 0,
    "ejemplos_entran": [],
    "ejemplos_salen": []
   },
   "blues": {
-   "total": 274,
+   "total": 273,
    "entran": 0,
    "salen": 0,
    "ejemplos_entran": [],
@@ -1963,14 +1961,14 @@
    "ejemplos_salen": []
   },
   "punk y garage": {
-   "total": 120,
+   "total": 119,
    "entran": 0,
    "salen": 0,
    "ejemplos_entran": [],
    "ejemplos_salen": []
   },
   "americana/country/folk": {
-   "total": 67,
+   "total": 68,
    "entran": 0,
    "salen": 0,
    "ejemplos_entran": [],
