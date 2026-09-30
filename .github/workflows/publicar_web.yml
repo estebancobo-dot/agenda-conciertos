@@ -4,6 +4,10 @@ name: Publicar la web (sin leer agendas)
 # que un cambio de la web llegue en un par de minutos sin esperar a la siguiente lectura de agendas o de fichas.
 on:
   workflow_dispatch:
+    inputs:
+      minutos:
+        description: "Minutos para hacer miniaturas nuevas antes de publicar (0: ninguna)"
+        default: "5"
 
 permissions:
   contents: read
@@ -12,12 +16,12 @@ permissions:
 
 concurrency:
   group: publicar-web
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   publicar:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 120
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url || steps.reintento.outputs.page_url }}
@@ -38,6 +42,16 @@ jobs:
           path: miniaturas
           key: miniaturas-${{ github.run_id }}
           restore-keys: miniaturas-
+      - name: Miniaturas propias nuevas
+        if: github.event.inputs.minutos != '0'
+        continue-on-error: true
+        run: python tools/miniaturas.py --minutos ${{ github.event.inputs.minutos || '5' }}
+      - name: Guardar miniaturas para otros días
+        if: always() && github.event.inputs.minutos != '0'
+        uses: actions/cache/save@v4
+        with:
+          path: miniaturas
+          key: miniaturas-${{ github.run_id }}
       - name: Preparar web
         run: |
           mkdir -p _site/data

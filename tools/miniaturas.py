@@ -1,8 +1,10 @@
-"""Miniaturas propias para las imágenes que ningún servicio puede reducir (conciertos.club y Discogs).
+"""Miniaturas propias de TODAS las imágenes de los conciertos, servidas desde la propia web.
 
-conciertos.club (más de 1.000 conciertos) publica carteles a tamaño completo en un servidor lento (4-9 s por
-imagen con 4G) y el redimensionador wsrv.nl lo tiene bloqueado. Aquí, al publicar la web, se descarga cada
-imagen una sola vez con el mismo lector que las agendas (robots.txt, identificación y ritmo por servidor), se
+Antes solo se hacían para conciertos.club y Discogs; el resto (Madrid en Vivo, Songkick…) se reducía al vuelo con
+wsrv.nl. Pero wsrv.nl solo es rápido con las imágenes que alguien ha pedido antes: la primera vez tiene que
+descargar el original (los de Madrid en Vivo son de 2.560 px) y tarda 1-3 s por foto. Por eso las listas y las
+fichas iban unas veces rápido y otras lento, según el día o el concierto. Aquí, al publicar la web, se descarga
+cada imagen una sola vez con el mismo lector que las agendas (robots.txt, identificación y ritmo por servidor), se
 reduce a 160×160 WebP (~5 KB) para las listas y a 720 px (~40 KB) para la ficha, y se sirve desde la propia web:
 rápida y guardada por el service worker.
 
@@ -24,8 +26,6 @@ from pathlib import Path
 RAIZ = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(RAIZ))
 DIR = RAIZ / "miniaturas"
-# conciertos.club y Discogs: wsrv.nl no los reduce (bloqueado / 403) y sus originales tardan 4-9 s con 4G
-HOSTS = ("conciertos.club", "doc.conciertos.club", "i.discogs.com")
 LADO = 160
 
 
@@ -57,12 +57,21 @@ def reducir(datos: bytes) -> bytes:
 
 
 def pendientes(concerts: dict) -> list[str]:
-    urls = []
-    for r in concerts.get("conciertos", []):
+    """Todas las imágenes, las de los conciertos más próximos primero (si no da tiempo, faltan las lejanas)."""
+    urls: list[str] = []
+    for r in sorted(concerts.get("conciertos", []), key=lambda r: r.get("fecha") or "9"):
         u = (r.get("imagen") or {}).get("url") or ""
-        if u.split("/")[2:3] and u.split("/")[2] in HOSTS and u not in urls:
+        if u.startswith("https://") and u not in urls:
             urls.append(u)
     return urls
+
+
+def origen(u: str) -> str:
+    """Wikimedia da miniaturas de 250 px: para la ficha se pide la de 800 px del mismo archivo."""
+    import re
+    if "wikimedia.org" in u and "/thumb/" in u:
+        return re.sub(r"/\d+px-([^/]+)$", r"/800px-\1", u)
+    return u
 
 
 def main() -> int:
@@ -83,7 +92,10 @@ def main() -> int:
             if time.monotonic() - t0 > minutos * 60:
                 return
             try:
-                datos = f.get_bytes(u)
+                try:
+                    datos = f.get_bytes(origen(u))
+                except Exception:  # noqa: BLE001 - el archivo original es más pequeño que 800 px
+                    datos = f.get_bytes(u)
                 (DIR / nombre(u)).write_bytes(reducir(datos))
                 (DIR / nombre(u, True)).write_bytes(reducir_grande(datos))
                 cuenta["nuevas"] += 1
@@ -99,7 +111,7 @@ def main() -> int:
         list(ex.map(servidor, por_servidor.values()))
     nuevas, fallos = cuenta["nuevas"], cuenta["fallos"]
     total = len({nombre(u) for u in urls} & {p.name for p in DIR.glob("*.webp")})
-    print(f"Miniaturas: {len(urls)} imágenes de {', '.join(HOSTS)}; {nuevas} nuevas, {fallos} fallos, "
+    print(f"Miniaturas: {len(urls)} imágenes; {nuevas} nuevas, {fallos} fallos, "
           f"{total} listas, {len(faltan) - nuevas - fallos} para otro día ({round(time.monotonic() - t0)} s)")
     return 0
 

@@ -1,5 +1,12 @@
 # Versiones
 
+## 2.19.0 — 2026-09-30
+
+- **Todas las fotos se sirven desde la propia web.** Antes solo las de conciertos.club y Discogs. El resto (Madrid en Vivo, 679 conciertos; Songkick, Wikimedia, Fever…) se reducía al vuelo con wsrv.nl, que solo es rápido con fotos que alguien ya ha pedido. La primera vez tardaba 1-3 s por foto, por eso los listados de un día o de un mes y la foto de la ficha iban unas veces rápido y otras lento. Ahora cada foto se descarga una vez al publicar (respetando robots.txt y el ritmo de cada web), se reduce a miniatura (160 px, ~6 KB) y a foto de ficha (720 px) y se sirve desde GitHub Pages. Las de los conciertos más próximos van primero.
+- Hasta 8 miniaturas a la vez (antes 4): las propias son pequeñas y salen del mismo servidor.
+- **La validación ya no se engaña con cachés calientes.** Cada vez elige días, meses y fichas al azar y los abre en un navegador sin caché, como la primera vez que los mira alguien. Además mide qué parte de las fotos es propia (mínimo 97 %) y cuántas imágenes se piden fuera de la web.
+- **Contraste corregido.** Los números de los chips y los días pasados de la tira de la semana tenían poco contraste. La validación ahora lo comprueba en semana, mes, ficha e informe, en modo claro y oscuro, y cuenta como fallo si vuelve a pasar.
+
 ## 2.18.0 — 2026-09-30
 
 - **Validación automática de la web publicada** (`tools/validar_web.py`, workflow "Validar la web publicada"). Se lanza sola después de cada publicación y una vez al día, sobre la web real, con un navegador real que imita un móvil de gama media-baja (4G lenta, CPU 6x). Tiene unas 90 comprobaciones con umbral fijo, en 6 bloques: publicación, funcional, UX, rendimiento, gestión de fallos y otros. Si algo falla, abre el issue `alerta-web` (aviso por correo), que se cierra solo al arreglarse. Sustituye a la antigua "Probar la web en vivo", que solo medía y no decidía si algo estaba bien o mal.

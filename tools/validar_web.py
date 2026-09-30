@@ -245,6 +245,12 @@ def publicacion(b):
         if not (x.ok and (x.headers.get("content-type") or "").startswith("image/")):
             malas.append(f"{u} (HTTP {x.status})")
     check("Publicación", "Miniaturas y fotos propias servidas", len(malas), ok=not malas, detalle=", ".join(malas[:3]))
+    # las fotos que no son propias pasan por wsrv.nl, que tarda 1-3 s con las que nadie ha pedido antes
+    con_img = [r for r in futuros if r.get("img")]
+    for campo, nombre_c in (("mini", "miniatura"), ("foto", "foto de ficha")):
+        pct = round(100 * sum(1 for r in con_img if r.get(campo)) / max(1, len(con_img)), 1)
+        check("Rendimiento", f"Conciertos con {nombre_c} propia (servida desde la web)", pct, ok=pct >= 97,
+              detalle=f"de {len(con_img)} con imagen; mínimo 97 %", unidad="%")
 
     try:
         inf = rq.get(URL + "data/informe.json").json()
@@ -571,6 +577,61 @@ def busqueda(pg, lunes):
     check("UX", "El cuadro de búsqueda queda vacío al borrar", ok=pg.input_value("#q") == "")
 
 
+@escenario("Rendimiento", "Listas y fichas en frío")
+def en_frio(b, datos):
+    """Como la primera vez que alguien mira un día, un mes o una ficha cualquiera: navegador sin caché y fechas
+    y conciertos elegidos al azar en cada validación (nada calentado por validaciones anteriores)."""
+    hoy = date.today().isoformat()
+    por_dia: dict = {}
+    for r in datos:
+        if r.get("fecha", "") >= hoy and r.get("img"):
+            por_dia.setdefault(r["fecha"], []).append(r)
+    dias = [f for f, lista in por_dia.items() if len(lista) >= 6]
+    tiempos, ajenas = {"día": [], "mes": []}, []
+    for vista, f in [("día", x) for x in random.sample(dias, min(3, len(dias)))] + \
+                    [("mes", x) for x in random.sample(dias, min(3, len(dias)))]:
+        ctx = contexto(b)
+        pg = pagina(ctx)
+        pedidas = []
+        pg.on("request", lambda q: q.resource_type == "image" and not q.url.startswith("data:") and pedidas.append(q.url))
+        pg.goto(URL + (f"#dia/{f}" if vista == "día" else f"#mes/{f}"), wait_until="commit")
+        esperar_datos(pg)
+        if vista == "mes":
+            pg.wait_for_selector(f"[data-mdia='{f}']")
+            pg.click(f"[data-mdia='{f}']")
+            pg.wait_for_timeout(700)  # baja hasta la lista del día
+        else:
+            pg.wait_for_selector("#main .card")
+        t = esperar_miniaturas(pg)
+        tiempos[vista].append(t)
+        ajenas += [u for u in pedidas if not u.startswith(URL)]
+        if t is None or t > 2500:
+            pg.screenshot(path=str(OUT / f"8_frio_{vista}_{f}.png"))
+        ctx.close()
+    medida("listas_en_frio", **{k: v for k, v in tiempos.items()})
+    for vista, v in tiempos.items():
+        peor = None if any(x is None for x in v) else max(v, default=0)
+        check("Rendimiento", f"Vista {vista} sin caché: miniaturas visibles cargadas (peor de {len(v)} fechas al azar)",
+              peor, aviso=1000, fallo=2500, detalle=str(v))
+    # fichas al azar, cada una en un navegador nuevo (como al abrir un enlace compartido)
+    fotos, hosts = [], []
+    for r in random.sample([r for lista in por_dia.values() for r in lista], min(4, sum(map(len, por_dia.values())))):
+        ctx = contexto(b)
+        pg = pagina(ctx)
+        pg.goto(URL + f"#concierto/{r['id']}", wait_until="commit")
+        pg.wait_for_selector(".dt h2", timeout=60000)
+        t0 = time.monotonic()
+        fotos.append(ficha_con_foto(pg, t0))
+        hosts.append(pg.evaluate("(()=>{const i=document.querySelector('.hero img');return i?new URL(i.currentSrc||i.src).hostname:''})()"))
+        ctx.close()
+    medida("fichas_en_frio", fotos_ms=fotos, servidores=hosts)
+    check("Rendimiento", f"Ficha sin caché: foto desde que se ve la ficha (peor de {len(fotos)} al azar)",
+          None if any(x is None for x in fotos) else max(fotos, default=0), aviso=1200, fallo=2500,
+          detalle=f"{fotos} {hosts}")
+    check("Rendimiento", "Imágenes de las listas pedidas fuera de la web (wsrv.nl, agendas)", len(ajenas),
+          ok=len(ajenas) <= 3, detalle="; ".join(sorted({u.split('/')[2] for u in ajenas})), unidad="")
+
+
 def mes(pg):
     t0 = time.monotonic()
     pg.evaluate(f"location.hash='#mes/{(date.today() + timedelta(days=10)).isoformat()}'")
@@ -746,15 +807,34 @@ def pantallas(b):
             peq = pg.evaluate("""[...document.querySelectorAll('button,a,input,[role=button]')].filter(e=>{const b=e.getBoundingClientRect();
                 return b.width>0&&b.height>0&&b.top<innerHeight&&(b.height<32||b.width<32)&&!e.closest('.card')}).map(e=>(e.id||e.className||e.tagName)+':'+Math.round(e.getBoundingClientRect().width)+'x'+Math.round(e.getBoundingClientRect().height)).slice(0,8)""")
             check("UX", "Botones con tamaño de dedo (≥ 32 px)", len(peq), ok=not peq, grave=False, detalle=", ".join(peq))
-            try:
-                pg.add_script_tag(url="https://cdnjs.cloudflare.com/ajax/libs/axe-core/4.10.2/axe.min.js")
-                v = pg.evaluate("""axe.run(document,{resultTypes:['violations']}).then(r=>r.violations
-                    .filter(v=>['critical','serious'].includes(v.impact)).map(v=>v.id+' ('+v.nodes.length+')'))""")
-                check("UX", "Accesibilidad (axe-core): problemas graves", len(v), ok=not v, grave=False,
-                      detalle=", ".join(v))
-            except Exception as e:  # noqa: BLE001
-                check("UX", "Accesibilidad (axe-core)", ok=False, grave=False, detalle=str(e)[:120])
+        if nombre.startswith("móvil pequeño") or "oscuro" in nombre:
+            accesibilidad(pg, "modo oscuro" if "oscuro" in nombre else "modo claro")
         ctx.close()
+
+
+def accesibilidad(pg, modo):
+    """axe-core en semana, mes, ficha e informe: problemas graves y contraste (el contraste ya está corregido:
+    si vuelve a fallar es fallo, no aviso)."""
+    graves, contraste = set(), []
+    for h in (f"#semana/{lunes_de(date.today()).isoformat()}", f"#mes/{date.today().isoformat()}", "ficha", "#informe"):
+        if h == "ficha":
+            pg.evaluate("location.hash='#concierto/'+DATA.find(r=>r.fecha>=HOY&&r.img).id")
+        else:
+            pg.evaluate(f"location.hash='{h}'")
+        pg.wait_for_timeout(1500)
+        if not pg.evaluate("typeof axe!=='undefined'"):
+            pg.add_script_tag(url="https://cdnjs.cloudflare.com/ajax/libs/axe-core/4.10.2/axe.min.js")
+        v = pg.evaluate("""axe.run(document,{resultTypes:['violations']}).then(r=>r.violations
+            .filter(v=>['critical','serious'].includes(v.impact)).map(v=>({id:v.id,n:v.nodes.map(n=>n.target.join(' '))})))""")
+        for x in v:
+            if x["id"] == "color-contrast":
+                contraste += [f"{h.split('/')[0]} {t}" for t in x["n"]]
+            else:
+                graves.add(f"{x['id']} ({len(x['n'])})")
+    check("UX", f"Contraste de color suficiente ({modo})", len(contraste), ok=not contraste,
+          detalle=", ".join(contraste[:6]))
+    check("UX", f"Accesibilidad (axe-core): otros problemas graves ({modo})", len(graves), ok=not graves,
+          grave=False, detalle=", ".join(sorted(graves)))
 
 
 @escenario("Otros", "Imágenes a través del proxy")
@@ -815,7 +895,7 @@ def informe() -> int:
 
 
 def main() -> int:
-    random.seed(date.today().toordinal())
+    random.seed()  # fechas y conciertos distintos en cada validación: sin cachés calentadas por la anterior
     with sync_playwright() as p:
         b = p.chromium.launch(executable_path=os.environ.get("CHROMIUM") or None)
         datos = publicacion(b) or []
@@ -824,6 +904,7 @@ def main() -> int:
             enlaces_directos(b, datos)
             averias(b, datos)
             proxy_imagenes(b, datos)
+            en_frio(b, datos)
         sin_conexion(b)
         pantallas(b)
         b.close()

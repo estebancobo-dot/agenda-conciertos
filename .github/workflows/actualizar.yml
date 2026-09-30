@@ -84,11 +84,12 @@ jobs:
           path: miniaturas
           key: miniaturas-${{ github.run_id }}
           restore-keys: miniaturas-
-      - name: Miniaturas propias (carteles de conciertos.club)
-        # solo las nuevas; con tope de tiempo (lo que falte, mañana). Nunca impide publicar la web
+      - name: Miniaturas propias (todas las fotos, servidas desde la web)
+        # solo las nuevas, las de los conciertos más próximos primero; con tope de tiempo (lo que falte, en la
+        # siguiente ejecución). Nunca impide publicar la web
         continue-on-error: true
         timeout-minutes: 12
-        run: python tools/miniaturas.py --minutos ${{ github.event.schedule == '10 3 * * *' && '10' || '4' }}
+        run: python tools/miniaturas.py --minutos ${{ github.event.schedule == '10 3 * * *' && '10' || '6' }}
       - name: Guardar miniaturas para otros días
         if: always()
         uses: actions/cache/save@v4

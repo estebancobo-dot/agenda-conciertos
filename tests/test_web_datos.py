@@ -55,9 +55,12 @@ def test_miniaturas_propias(tmp_path):
     assert Image.open(io.BytesIO(mini)).size == (160, 160) and len(mini) < 20000
     u = "https://doc.conciertos.club/doc/c/2026/x.jpg"
     d = "https://i.discogs.com/abc/rs:fit/g:sm/q:90/h:600/w:600/x.jpeg"
-    recs = [{"imagen": {"url": u}}, {"imagen": {"url": "https://thumb.wikimedia.org/a/250px-b.jpg"}},
-            {"imagen": {"url": d}}]
-    assert pendientes({"conciertos": recs}) == [u, d]  # solo los servidores que no se pueden reducir de otra forma
+    w = "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/80/ZENET.jpg/250px-ZENET.jpg"
+    recs = [{"fecha": "2026-11-01", "imagen": {"url": u}}, {"fecha": "2026-10-01", "imagen": {"url": w}},
+            {"fecha": "2026-12-01", "imagen": {"url": d}}, {"fecha": "2026-10-02", "imagen": {"url": u}}]
+    assert pendientes({"conciertos": recs}) == [w, u, d]  # todas, las más próximas primero
+    from miniaturas import origen
+    assert origen(w).endswith("/800px-ZENET.jpg") and origen(u) == u
     (tmp_path / nombre(u)).write_bytes(mini)
     web_datos.MINIATURAS.clear()
     web_datos.cargar_miniaturas(recs, tmp_path)

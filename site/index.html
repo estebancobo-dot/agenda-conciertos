@@ -62,7 +62,7 @@ input[type=search]::-webkit-search-cancel-button{display:none}
 .chips::-webkit-scrollbar{display:none}
 .chip{flex:0 0 auto;display:inline-flex;align-items:center;gap:6px;min-height:36px;border:1px solid var(--line);background:var(--panel);border-radius:999px;padding:5px 12px;font-size:.85rem;color:var(--muted)}
 .chip i{width:9px;height:9px;border-radius:50%;display:inline-block}
-.chip .cc{font-size:.72rem;opacity:.7;font-weight:500}
+.chip .cc{font-size:.72rem;font-weight:500}
 .chip[aria-pressed="true"]{border-color:var(--ink);color:var(--ink);font-weight:700;background:color-mix(in srgb,var(--ink) 7%,var(--panel))}
 .chip[aria-pressed="false"] i{opacity:.35}
 .active{font-size:.8rem;color:var(--muted);margin:6px 0 0}
@@ -80,14 +80,16 @@ input[type=search]::-webkit-search-cancel-button{display:none}
 .strip button.sel{background:var(--ink);color:var(--bg);border-color:var(--ink)}
 .strip button.sel .d,.strip button.sel .c{color:var(--bg);opacity:.8}
 .strip button.hoyd{outline:2px solid var(--accent);outline-offset:-2px}
-.strip button.past{opacity:.5}
+.strip button.past{background:var(--panel2);border-style:dashed}
+.strip button.past .n{color:var(--muted)}
 .stickystrip{position:sticky;top:var(--hh,96px);z-index:3;background:var(--bg);padding:6px 0 2px}
 /* mes */
 .cal{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
 .cal .dow{font-size:.72rem;color:var(--muted);text-align:center;padding:2px 0;font-weight:700}
 .day{background:var(--panel);border:1px solid var(--line);border-radius:10px;min-height:58px;padding:4px 5px;display:flex;flex-direction:column;text-align:left}
 .day.out{visibility:hidden}
-.day.past{opacity:.45}
+.day.past .card{filter:grayscale(1)}
+.day.past .thumb{opacity:.6}
 .day.today{outline:2px solid var(--accent);outline-offset:-2px;opacity:1}
 .day .n{font-size:.75rem;color:var(--muted);font-weight:600}
 .day .cnt{font-size:1.05rem;font-weight:800;margin-top:auto}
@@ -902,7 +904,7 @@ addEventListener("scroll",fotosEnPantalla,{passive:true});
 //    que estás viendo;
 //  - cada día de la lista se pinta cuando te acercas a él.
 const PIXEL="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
-const COLA=[]; let enVuelo=0; const MAX_IMG=4;
+const COLA=[]; let enVuelo=0; const MAX_IMG=8;
 const distancia=i=>{const b=i.getBoundingClientRect(); return b.bottom<0?-b.bottom:Math.max(0,b.top-innerHeight);};
 function bombear(){
   while(enVuelo<MAX_IMG&&COLA.length){
