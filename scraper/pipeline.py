@@ -459,6 +459,9 @@ def ejecutar(hoy: date | None = None, solo: list[str] | None = None, fetcher: Fe
     no_leidas = {s.id for s in FUENTES} - {s.id for s in fuentes}
     anteriores = _read("concerts.json", {}).get("conciertos", [])
     anteriores_ids = {p["id"] for p in anteriores}
+    # los grupos de la ejecución anterior se copian ya: los registros anteriores se reutilizan (y se modifican)
+    # al conciliar, así que al final ya tendrían los grupos nuevos
+    grupos_previos = _grupos_previos(anteriores)
     t0 = time.monotonic()
     # Las fichas de artista usan otras webs (Discogs, Wikipedia…): se buscan mientras se leen las agendas,
     # empezando por los artistas de la ejecución anterior; al terminar se completan los nuevos.
@@ -556,7 +559,7 @@ def ejecutar(hoy: date | None = None, solo: list[str] | None = None, fetcher: Fe
         "musicbrainz": mb_stats,
         "artistas": art_stats,
         "estilos_sin_mapear": sin_mapear[:300],
-        "grupos": cambios_grupos(_grupos_previos(anteriores), recs, hoy.isoformat()),
+        "grupos": cambios_grupos(grupos_previos, recs, hoy.isoformat()),
     }
     _write("concerts.json", {"generado": ahora, "hoy": hoy.isoformat(), "horizonte": horizonte.isoformat(),
                              "conciertos": recs})

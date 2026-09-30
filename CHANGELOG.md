@@ -15,6 +15,7 @@ Clasificación más consistente y grupo nuevo:
 - "Música ligera", "Balada" y "Pop melódico" van a "Otros géneros". "Pop electrónico" y "Electropop" se tratan como etiquetas genéricas.
 - **Conjunto de control:** 46 artistas reales con su grupo correcto (y los que no deben tener) congelados en los tests. Cualquier cambio que los rompa falla antes de publicarse.
 - **Informe: conciertos por grupo**, con cuántos entran y salen de cada grupo respecto a la ejecución anterior y ejemplos.
+  - Corrección tras la primera publicación: los grupos anteriores se copian al empezar. Antes se leían al final, cuando los registros reutilizados ya tenían los grupos nuevos, y casi todo salía a 0.
 
 ## 2.9.1 — 2026-09-30
 
