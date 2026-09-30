@@ -47,3 +47,21 @@ def test_sin_artista():
     for t in ("80 REDNECKS", "Blues & Roots", "Pearl Jam Tribute", "Jamiroquai Experience",
               "CONCIERTO DE ROCK OVER & ARTISTA INVITADO"):
         assert not sin_artista(t), t
+
+
+def test_nombre_en_titulo():
+    from scraper.artistas import nombre_en_titulo
+    assert nombre_en_titulo("ESPECTÁCULO FLAMENCO: CLAUDIA CRUZ") == "CLAUDIA CRUZ"
+    assert nombre_en_titulo("THE RUMORS: TRIBUTO FLEETWOOD MAC") == "THE RUMORS"
+    assert nombre_en_titulo("LA VAN GOGH (TRIB. LA OREJA DE VAN GOGH)") == "LA VAN GOGH"
+    assert nombre_en_titulo("Los Miserables") == "Los Miserables"
+
+
+def test_origen_por_agenda():
+    from scraper.artistas import clave_agenda
+    from scraper.pipeline import origen_por_agenda
+    r = {"artista": "THE RUMORS: TRIBUTO FLEETWOOD MAC"}
+    cache = {clave_agenda(r["artista"]): {"agenda": {"encontrado": True, "pais": "ES", "url": "https://x.es/e/1",
+                                                      "frase": "The Rumors, banda tributo madrileña"}}}
+    origen_por_agenda(r, cache)
+    assert r["nacionalidad"] == "ES" and "x.es" in r["nacionalidad_fuente"]

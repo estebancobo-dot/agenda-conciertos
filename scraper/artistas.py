@@ -510,6 +510,27 @@ def _pasos_con_error(ent: dict) -> list[str]:
             if str((ent.get(k) or {}).get("motivo", "")).startswith("error")]
 
 
+def nombre_en_titulo(titulo: str) -> str:
+    """El nombre del intérprete dentro de un título de espectáculo o tributo: "ESPECTÁCULO FLAMENCO: CLAUDIA CRUZ"
+    → "CLAUDIA CRUZ"; "THE RUMORS: TRIBUTO FLEETWOOD MAC" → "THE RUMORS"."""
+    from .nombres import _TRIBUTO
+    t = re.sub(r"\([^)]*\)?", " ", titulo or "")  # "(TRIB. LA OREJA DE VAN GOGH)", "(UK)"
+    partes = [p.strip(" \"'«»") for p in re.split(r"\s*[:|]\s+|\s+[-–—]\s+|\.\s+", t) if p.strip()]
+    buenas = [p for p in partes if not _TRIBUTO.search(norm(p))
+              and not re.search(r"\b(espectaculo|flamenco|fiestas?|festival|concierto|ciclo|homenaje)\b", norm(p))]
+    return (buenas[-1] if buenas else titulo or "").strip()
+
+
+def clave_agenda(titulo: str) -> str:
+    return "agenda:" + norm(titulo or "")
+
+
+def _solo_agenda(r: dict, lista: list) -> None:
+    urls = [x["url"] for x in r.get("fuentes") or [] if str(x.get("url", "")).startswith("http")]
+    if urls and not r.get("nacionalidad"):
+        lista.append((clave_agenda(r["artista"]), nombre_en_titulo(r["artista"]), urls))
+
+
 def _mb_sin_area(ent: dict) -> bool:
     mb = ent.get("musicbrainz") or {}
     return bool(mb.get("encontrado") and not mb.get("pais") and "area" not in mb)
@@ -555,12 +576,26 @@ def enriquecer(recs: list[dict], cache: dict, hoy: date, presupuesto_seg: float 
     # cada concierto: el título tal cual y, si lleva ciclo, festival, gira o varios artistas, el nombre limpio y el
     # cabeza de cartel (scraper/nombres.py)
     candidatos = [(r, n) for r in sorted(recs, key=lambda r: (not r["en_foco"], r["fecha"])) for n in claves_ficha(r)]
+    solo_agenda: list[tuple[str, str, list[str]]] = []  # tributos, espectáculos…: solo lo que dice la agenda
+    for r in recs:
+        # tributos y títulos que no se buscan en webs de música ("THE RUMORS: TRIBUTO FLEETWOOD MAC"): la banda
+        # tributo no es el artista homenajeado, pero la agenda puede decir de dónde es ("banda tributo madrileña")
+        if len(claves_ficha(r)) == 1 and not r.get("nacionalidad") and not sin_artista(r["artista"]):
+            from .nombres import _TRIBUTO
+            if _TRIBUTO.search(norm(r["artista"])) or "tributos y versiones" in (r.get("categorias") or []):
+                _solo_agenda(r, solo_agenda)
     for r, nombre in candidatos:
         k = norm(nombre)
         if k in vistos or not nombre_consultable(nombre):
             continue
-        if es_espectaculo([e["estilo"] for e in r.get("estilo_fuente", [])]) or sin_artista(r["artista"]):
-            continue  # teatro, musical, jam session…: el título no es un artista
+        if sin_artista(r["artista"]):
+            continue  # jam session, micro abierto…: no hay artista
+        if es_espectaculo([e["estilo"] for e in r.get("estilo_fuente", [])]):
+            # teatro, flamenco, musical…: el título no se busca en webs de música; si nombra a un intérprete
+            # ("ESPECTÁCULO FLAMENCO: CLAUDIA CRUZ"), la agenda puede decir de dónde es
+            if norm(nombre_en_titulo(r["artista"])) != norm(r["artista"]):
+                _solo_agenda(r, solo_agenda)
+            continue
         vistos.add(k)
         urls_de[k] = [x["url"] for x in r.get("fuentes") or [] if str(x.get("url", "")).startswith("http")]
         ent = cache.get(k)
@@ -643,6 +678,35 @@ def enriquecer(recs: list[dict], cache: dict, hoy: date, presupuesto_seg: float 
                         guardar()
                     except Exception as e:  # noqa: BLE001
                         log.warning("no se pudo guardar artistas.json: %s", e)
+    # los de solo agenda, con el tiempo que quede
+    def leer_agenda(t):
+        k, nombre, urls = t
+        if time.monotonic() - inicio > presupuesto_seg or (parar is not None and parar.is_set()):
+            return k, None
+        ent = dict(cache.get(k) or {"nombre": nombre, "fecha": hoy.isoformat(), "solo_agenda": True})
+        try:
+            ent["agenda"] = buscar_en_agenda(fetcher_ag, nombre, urls)
+        except Exception as e:  # noqa: BLE001
+            ent["agenda"] = {"encontrado": False, "motivo": f"error: {type(e).__name__}"}
+        return k, ent
+    vistos_ag = set()
+    pend_ag = []
+    for k, nombre, urls in solo_agenda:
+        ent = cache.get(k) or {}
+        if k in vistos_ag or not urls:
+            continue
+        vistos_ag.add(k)
+        ag = ent.get("agenda") or {}
+        if not ag or str(ag.get("motivo", "")).startswith("error") or \
+                ent.get("fecha", "") < (hoy - timedelta(days=CADUCIDAD_NO)).isoformat():
+            pend_ag.append((k, nombre, urls))
+    with ThreadPoolExecutor(max_workers=8) as ex:
+        for k, ent in ex.map(leer_agenda, pend_ag):
+            if ent is None:
+                stats["pendientes"] += 1
+            else:
+                cache[k] = ent
+                stats["solo_agenda"] = stats.get("solo_agenda", 0) + 1
     for k in vistos:
         ent = cache.get(k) or {}
         for fuente in ("discogs", "wikipedia", "wikidata", "lastfm", "musicbrainz"):

@@ -229,6 +229,18 @@ def ficha_de(r: dict, cache: dict) -> dict | None:
     return None
 
 
+def origen_por_agenda(r: dict, cache: dict) -> None:
+    """Tributos y espectáculos que no se buscan en webs de música: el origen que dice la página de la agenda."""
+    from .artistas import clave_agenda
+    if r.get("nacionalidad"):
+        return
+    ag = (cache.get(clave_agenda(r["artista"])) or {}).get("agenda") or {}
+    if ag.get("pais"):
+        r["nacionalidad"] = ag["pais"]
+        r["nacionalidad_fuente"] = f"la agenda ({ag['url'].split('/')[2]}): «{ag.get('frase', '')[:160]}»"
+        r["origen_no_aplica"] = None
+
+
 def aplicar_ficha(r: dict, f: dict | None) -> None:
     """Grupos de filtro, estilos, nacionalidad y foto.
 
@@ -561,6 +573,7 @@ def ejecutar(hoy: date | None = None, solo: list[str] | None = None, fetcher: Fe
     from .artistas import ficha
     for r in recs:
         aplicar_ficha(r, ficha_de(r, cache_art))
+        origen_por_agenda(r, cache_art)
     # MusicBrainz (solo para los que siguen sin nacionalidad)
     mb_stats = {"desactivado": True}
     if musicbrainz:
@@ -651,6 +664,7 @@ def ejecutar_fichas(hoy: date | None = None, presupuesto_seg: float = 3000) -> d
     previos = _grupos_previos(recs)
     for r in recs:
         aplicar_ficha(r, ficha_de(r, cache_art))
+        origen_por_agenda(r, cache_art)
     _write("concerts.json", datos)
     escribir_csv(recs, DATA / "concerts.csv")
     informe = _read("informe.json", {})
@@ -672,5 +686,6 @@ def reaplicar_fichas() -> None:
     cache = _read("artistas.json", {})
     for r in recs:
         aplicar_ficha(r, ficha_de(r, cache))
+        origen_por_agenda(r, cache)
     _write("concerts.json", datos)
     escribir_csv(recs, DATA / "concerts.csv")

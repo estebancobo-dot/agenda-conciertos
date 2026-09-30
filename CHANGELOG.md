@@ -1,5 +1,11 @@
 # Versiones
 
+## 2.21.0 — 2026-10-01
+
+- **Fichas más rápidas**: 75 minutos por pasada (antes 45), 8 artistas a la vez y primero los que no tienen origen. Una pasada ya recorre todos los pendientes.
+- **Origen de tributos y espectáculos con intérprete**: no se buscan en webs de música (la banda tributo no es el artista homenajeado), pero se lee lo que dice la página de la agenda. Por ejemplo, "THE RUMORS: TRIBUTO FLEETWOOD MAC" → «The Rumors, banda tributo madrileña» y "ESPECTÁCULO FLAMENCO: CLAUDIA CRUZ" → lo que diga de Claudia Cruz.
+- Las páginas de agenda borradas (404), vetadas por robots.txt (Instagram, calendarios) o con captcha ya no cuentan como error ni se repiten en cada pasada.
+
 ## 2.20.1 — 2026-09-30
 
 - Miniaturas y fotos de ficha guardadas en la rama `miniaturas` del repositorio, en vez de la caché de GitHub Actions (que caduca y se llenaba con una copia por ejecución). Es un único commit sin historial: cada ejecución sube solo las fotos nuevas y quita las de conciertos que ya no están.
