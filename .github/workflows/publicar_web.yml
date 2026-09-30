@@ -1,0 +1,56 @@
+name: Publicar la web (sin leer agendas)
+
+# Vuelve a publicar la web con los datos ya guardados en la rama `datos` y el código actual de `main`. Sirve para
+# que un cambio de la web llegue en un par de minutos sin esperar a la siguiente lectura de agendas o de fichas.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: publicar-web
+  cancel-in-progress: true
+
+jobs:
+  publicar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Traer datos (rama datos)
+        run: python tools/datos.py
+      - name: Miniaturas guardadas
+        uses: actions/cache/restore@v4
+        with:
+          path: miniaturas
+          key: miniaturas-${{ github.run_id }}
+          restore-keys: miniaturas-
+      - name: Preparar web
+        run: |
+          mkdir -p _site/data
+          cp site/index.html site/sw.js _site/
+          cp CHANGELOG.md _site/
+          cp data/concerts.json data/informe.json data/taxonomia.json data/estilos_map.json data/salas_alias.json data/concerts.csv _site/data/
+          python tools/web_datos.py _site
+          touch _site/.nojekyll
+      - uses: actions/configure-pages@v5
+        with:
+          enablement: true
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - id: deployment
+        uses: actions/deploy-pages@v4
