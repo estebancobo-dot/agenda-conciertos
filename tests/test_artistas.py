@@ -321,3 +321,22 @@ def test_estilos_ambiguos_de_discogs_no_son_rock():
     r = _rec("Callas en concierto - En holograma", [("Versiones/Tributos", "conciertos.club (buscador semanal)")])
     aplicar_ficha(r, None)
     assert r["grupos"] == ["fuera de foco"]
+
+
+def test_lastfm_se_confirma_con_el_identificador_de_musicbrainz():
+    from scraper.artistas import _lastfm_mejorable, _mbid
+    ent = {"lastfm": {"encontrado": True, "identificado_por": "coincidencia por nombre"},
+           "musicbrainz": {"encontrado": True, "mbid": "abc"}}
+    assert _mbid(ent) == ("abc", "identificador de MusicBrainz (único artista con ese nombre)")
+    assert _lastfm_mejorable(ent)
+    ent["lastfm"]["mbid_probado"] = True  # ya se probó y Last.fm no lo conocía: no se repite
+    assert not _lastfm_mejorable(ent)
+    ent = {"wikidata": {"ids": {"musicbrainz": "wd"}}, "musicbrainz": {"encontrado": True, "mbid": "abc"}}
+    assert _mbid(ent)[0] == "wd"
+
+
+def test_nacionalidad_de_musicbrainz_en_la_ficha():
+    from scraper.artistas import ficha
+    f = ficha({"discogs": {"encontrado": False}, "wikipedia": {"encontrado": False},
+               "musicbrainz": {"encontrado": True, "mbid": "x", "generos": [["hard rock", 5]], "pais": "SE"}})
+    assert (f["pais"], f["fuente_pais"]) == ("SE", "MusicBrainz")

@@ -25,7 +25,7 @@ def test_agenda_ligera_y_detalle(tmp_path):
     assert set(x) <= set(LIGEROS) | {"conflictos", "estilo_fuente", "img"}
     assert "fuentes" not in x and "ficha" not in x and "precio" not in x and "hora" not in x  # vacíos fuera
     assert x["img"] == "https://x/y.jpg"
-    assert [c["campo"] for c in x["conflictos"]] == ["hora"]  # solo lo que usa la tarjeta
+    assert [c["campo"] for c in x["conflictos"]] == ["hora", "sala"]
     assert x["estilo_fuente"] == [{"estilo": "Metal"}]
     det = json.loads((tmp_path / "detalles" / "2026-10-09.json").read_text())
     assert det["a1"] == REC  # el detalle es el registro completo

@@ -1,5 +1,15 @@
 # Versiones
 
+## 2.14.0 — 2026-09-30
+
+Fase 4 de mejoras (identidad de artistas y UX):
+
+- **Nacionalidad desde MusicBrainz también en la ficha.** Si MusicBrainz identifica al artista (por Wikidata o por ser el único con ese nombre exacto), su país cuenta. Con los datos de hoy pasan de 628 a 722 los conciertos con origen confirmado.
+- **Last.fm con identidad confirmada.** Si Last.fm encontró al artista solo por el nombre y MusicBrainz tiene su identificador, se vuelve a consultar Last.fm con ese identificador (284 artistas). Así sus etiquetas dejan de ser "posible homónimo" y cuentan en el consenso. Si Last.fm no conoce el identificador, se anota y no se repite.
+- **Estados vacíos que explican el porqué.** "No hay conciertos anunciados este día" o, si los ocultan los filtros, cuáles son y un botón "Ver N conciertos ocultos".
+- **Conflictos más claros en las tarjetas**: "⚠ hora sin confirmar", "⚠ sala sin confirmar"… en lugar de "datos distintos".
+- **Accesibilidad**: botones y filtros más grandes para el dedo y foco visible al navegar con el teclado.
+
 ## 2.13.0 — 2026-09-30
 
 Fase 3 de mejoras (duplicados y vigilancia de las fuentes):

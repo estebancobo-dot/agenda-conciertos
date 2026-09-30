@@ -305,12 +305,32 @@ def buscar_wikipedia(f: Fetcher, nombre: str) -> dict:
 LASTFM = "https://ws.audioscrobbler.com/2.0/"
 
 
+def _mbid(ent: dict) -> tuple[str | None, str]:
+    """Identificador de MusicBrainz del artista: el de Wikidata o, si no, el de la única coincidencia exacta del
+    nombre en MusicBrainz."""
+    mbid = (ent.get("wikidata") or {}).get("ids", {}).get("musicbrainz")
+    if mbid:
+        return mbid, "identificador de MusicBrainz en Wikidata"
+    mb = ent.get("musicbrainz") or {}
+    if mb.get("encontrado") and mb.get("mbid"):
+        return mb["mbid"], "identificador de MusicBrainz (único artista con ese nombre)"
+    return None, ""
+
+
+def _lastfm_mejorable(ent: dict) -> bool:
+    """Last.fm encontrado solo por el nombre cuando ya hay identificador de MusicBrainz que no se ha probado."""
+    lf = ent.get("lastfm") or {}
+    return (lf.get("identificado_por") == "coincidencia por nombre" and not lf.get("mbid_probado")
+            and bool(_mbid(ent)[0]))
+
+
 def lastfm_key() -> str:
     import os
     return os.environ.get("LASTFM_KEY", "").strip()
 
 
-def lastfm_parse(data: dict, nombre: str, por_mbid: bool) -> dict:
+def lastfm_parse(data: dict, nombre: str, por_mbid: bool,
+                 via_mbid: str = "identificador de MusicBrainz en Wikidata") -> dict:
     """Etiquetas de los oyentes traducidas a estilos de Discogs (solo equivalencias declaradas en taxonomia.json)."""
     if "error" in data:
         return {"encontrado": False, "motivo": data.get("message", "no encontrado")}
@@ -326,10 +346,13 @@ def lastfm_parse(data: dict, nombre: str, por_mbid: bool) -> dict:
             generos.append(g)
     return {"encontrado": True, "nombre": artista, "etiquetas": etiquetas, "estilos": estilos[:5],
             "generos": generos[:3], "url": f"https://www.last.fm/music/{quote(artista.replace(' ', '+'))}",
-            "identificado_por": "identificador de MusicBrainz en Wikidata" if por_mbid else "coincidencia por nombre"}
+            "identificado_por": via_mbid if por_mbid else "coincidencia por nombre"}
 
 
-def buscar_lastfm(f: Fetcher, nombre: str, mbid: str | None, key: str) -> dict:
+def buscar_lastfm(f: Fetcher, nombre: str, mbid: str | None, key: str,
+                  via_mbid: str = "identificador de MusicBrainz en Wikidata") -> dict:
+    """Etiquetas de Last.fm. Con identificador de MusicBrainz la identidad es la de MusicBrainz; si Last.fm no lo
+    conoce, se prueba por el nombre (y se anota que ya se probó, para no repetirlo en cada ejecución)."""
     import requests
     q = f"mbid={mbid}" if mbid else f"artist={quote(nombre)}&autocorrect=0"
     try:
@@ -337,13 +360,15 @@ def buscar_lastfm(f: Fetcher, nombre: str, mbid: str | None, key: str) -> dict:
     except requests.HTTPError as e:
         if e.response is not None and e.response.status_code in (400, 404):
             try:
-                return lastfm_parse(e.response.json(), nombre, bool(mbid))
+                return lastfm_parse(e.response.json(), nombre, bool(mbid), via_mbid)
             except ValueError:
                 pass
         raise
-    r = lastfm_parse(json.loads(txt), nombre, bool(mbid))
+    r = lastfm_parse(json.loads(txt), nombre, bool(mbid), via_mbid)
     if not r["encontrado"] and mbid:  # Last.fm no siempre conoce el identificador: se prueba por nombre
-        return buscar_lastfm(f, nombre, None, key)
+        r = buscar_lastfm(f, nombre, None, key)
+    if mbid:
+        r["mbid_probado"] = True
     return r
 
 
@@ -444,7 +469,7 @@ def enriquecer(recs: list[dict], cache: dict, hoy: date, presupuesto_seg: float 
             pendientes.append((k, nombre, None))
             continue
         falta_wd = ent.get("wikipedia", {}).get("wikidata") and "wikidata" not in ent
-        falta_lf = clave_lastfm and "lastfm" not in ent and not _tiene_estilo(ent)
+        falta_lf = clave_lastfm and ("lastfm" not in ent or _lastfm_mejorable(ent)) and not _tiene_estilo(ent)
         falta_mb = "musicbrainz" not in ent
         if falta_wd or falta_lf or falta_mb or _pasos_con_error(ent):
             pendientes.append((k, nombre, ent))
@@ -483,9 +508,11 @@ def enriquecer(recs: list[dict], cache: dict, hoy: date, presupuesto_seg: float 
         if "musicbrainz" not in ent:
             mbid = (ent.get("wikidata") or {}).get("ids", {}).get("musicbrainz")
             paso("musicbrainz", buscar_musicbrainz, fetcher_mb, nombre, mbid, mb_cache, hoy)
+        if clave_lastfm and _lastfm_mejorable(ent):
+            ent.pop("lastfm")  # se encontró por el nombre y ahora hay identificador de MusicBrainz: se confirma
         if clave_lastfm and "lastfm" not in ent and not _tiene_estilo(ent):
-            mbid = (ent.get("wikidata") or {}).get("ids", {}).get("musicbrainz")
-            paso("lastfm", buscar_lastfm, fetcher_lf, nombre, mbid, clave_lastfm)
+            mbid, via = _mbid(ent)
+            paso("lastfm", buscar_lastfm, fetcher_lf, nombre, mbid, clave_lastfm, via)
         return k, ent
 
     from concurrent.futures import ThreadPoolExecutor
@@ -655,6 +682,9 @@ def ficha(ent: dict | None) -> dict | None:
         pais, fuente_pais = wp["pais"], "Wikipedia"
     elif dc.get("encontrado") and dc.get("pais"):
         pais, fuente_pais = dc["pais"], "Discogs"
+    elif (ent.get("musicbrainz") or {}).get("encontrado") and ent["musicbrainz"].get("pais"):
+        # país del artista en MusicBrainz (identificado por Wikidata o por ser el único con ese nombre exacto)
+        pais, fuente_pais = ent["musicbrainz"]["pais"], "MusicBrainz"
     imagen = None
     if wp.get("encontrado") and wp.get("imagen"):
         imagen = {"url": wp["imagen"], "credito": "Wikimedia Commons", "enlace": wp.get("imagen_pagina") or wp["url"]}
