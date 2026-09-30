@@ -14,6 +14,9 @@ on:
         description: "Solo fichas de artista (no lee las agendas)"
         type: boolean
         default: false
+      minutos_fichas:
+        description: "Minutos para las fichas de artista (máx. 90)"
+        default: "75"
       solo:
         description: "Solo estas fuentes (ids separados por comas; vacío = todas)"
         required: false
@@ -60,7 +63,9 @@ jobs:
           if [ "${{ github.event.schedule }}" = "40 5-23/2 * * *" ] || [ "${{ github.event.inputs.fichas }}" = "true" ]; then
             # cada 2 horas: reintenta las fuentes que fallaron en la última lectura y completa fichas pendientes
             python -m scraper --reintentar || echo "El reintento de fuentes falló; se sigue con las fichas"
-            python -m scraper --fichas --minutos 45
+            # 75 minutos: cabe entre dos pasadas (cada 2 horas) y la última (23:40 UTC) acaba mucho antes de la
+            # lectura completa de las 03:10 UTC
+            python -m scraper --fichas --minutos ${{ github.event.inputs.minutos_fichas || '75' }}
           elif [ -n "${{ github.event.inputs.solo }}" ]; then
             python -m scraper --solo "${{ github.event.inputs.solo }}"
           else

@@ -623,8 +623,12 @@ def enriquecer(recs: list[dict], cache: dict, hoy: date, presupuesto_seg: float 
             paso("agenda", buscar_en_agenda, fetcher_ag, nombre, urls_de[k])
         return k, ent
 
+    # primero los que aún no tienen origen (lo que más falta en la web), sin perder el orden por fecha; y 8 a la
+    # vez: cada servidor sigue yendo a su ritmo (el Fetcher espera entre peticiones al mismo servidor), pero
+    # mientras uno espera a Discogs otro lee la página de una agenda o MusicBrainz
+    pendientes.sort(key=lambda p: not _falta_origen(p[2] or {}, clave_lastfm) if p[2] else False)
     from concurrent.futures import ThreadPoolExecutor
-    with ThreadPoolExecutor(max_workers=4) as ex:
+    with ThreadPoolExecutor(max_workers=8) as ex:
         for (k, ent), (_, _, previa) in zip(ex.map(consultar, pendientes), pendientes):
             if ent is None:
                 stats["pendientes"] += 1
