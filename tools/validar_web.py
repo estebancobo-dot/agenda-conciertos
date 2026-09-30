@@ -699,6 +699,19 @@ def peor_caso(b, datos):
           detalle=f"{len(faltan)} pantallas; peores {peores}; pantallas con alguna sin cargar: {sum(1 for x in faltan if x)}")
     check("Rendimiento", f"Peor caso {nombre}: bloqueo de JavaScript más largo al bajar", max((d for _, d in lt), default=0),
           aviso=300, fallo=1000)
+    # bajando seguido a ritmo de lectura rápida con el dedo (~1.500 px/s): huecos sin foto a la vista mientras baja
+    pg.evaluate("scrollTo(0,0)")
+    pg.wait_for_timeout(1500)
+    vistas = cargadas = 0
+    for _ in range(60):
+        pg.mouse.wheel(0, 300)
+        pg.wait_for_timeout(200)
+        m = miniaturas(pg)
+        vistas += m["visibles"]
+        cargadas += m["cargadas"]
+    check("Rendimiento", f"Peor caso {nombre}: bajando seguido, miniaturas a la vista sin cargar",
+          round(100 * (vistas - cargadas) / max(1, vistas), 1), aviso=5, fallo=15, unidad="%",
+          detalle=f"{vistas - cargadas} de {vistas} vistas en 12 s")
     pg.evaluate("scrollTo(0,0)")
     pg.wait_for_timeout(500)
     for _ in range(40):

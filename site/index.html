@@ -730,7 +730,7 @@ function viewFuentes(){
   const sin=Object.entries(INFORME.sin_agenda_legible||{}).map(([k,v])=>`<li><b>${esc(k)}</b>: ${esc(v)}</li>`).join("");
   const no=Object.entries(INFORME.no_usar||{}).map(([k,v])=>`<li><b>${esc(k)}</b>: ${esc(v)}</li>`).join("");
   return `<p class="muted">Agendas: prioridad para resolver conflictos 1 web oficial de sala · 2 promotora o ticketera · 3 agregador · 4 blog o foro. Ficha del artista (estilo, origen y foto): Discogs y Wikipedia; nacionalidad como último recurso en MusicBrainz.</p>
-   <div class="scroll"><table><thead><tr><th>Fuente</th><th>Tipo</th><th>Fiabilidad</th><th>Última ejecución</th></tr></thead><tbody>${rows}</tbody></table></div>
+   <div class="scroll" tabindex="0" role="region" aria-label="Tabla (se desplaza de lado)"><table><thead><tr><th>Fuente</th><th>Tipo</th><th>Fiabilidad</th><th>Última ejecución</th></tr></thead><tbody>${rows}</tbody></table></div>
    <h3>Salas sin agenda legible</h3><ul>${sin}</ul><h3>No se usan</h3><ul>${no}</ul>`;
 }
 function viewInforme(){
@@ -744,11 +744,11 @@ function viewInforme(){
    ${(INFORME.alertas||[]).length?`<div class="box box-warn"><b>Fuentes que conviene revisar</b><ul>${INFORME.alertas.map(x=>`<li>${esc(x)}</li>`).join("")}</ul></div>`:""}
    <div class="kpis">${k(t.conciertos,"conciertos próximos")}${k(t.en_foco,"en foco")}${k(t.contrastados,"contrastados (2+ webs)")}${k(t.una_fuente,"de 1 web")}${k(t.conflictos,"con conflicto")}${k(t.posiblemente_cancelados,"posiblemente cancelados")}${k(t.nuevos_hoy,"nuevos hoy")}${k(`${t.fuentes_ok}/${t.fuentes_total}`,"fuentes que funcionaron")}</div>
    ${a.consultados!==undefined?`<h3>Fichas de artista</h3><div class="kpis">${k(a.discogs,"con ficha en Discogs")}${k(a.wikipedia,"con ficha en Wikipedia")}${a.wikidata!==undefined?k(a.wikidata,"con Wikidata"):""}${a.lastfm!==undefined?k(a.lastfm,"con etiquetas de Last.fm"):""}${a.musicbrainz!==undefined?k(a.musicbrainz,"con géneros de MusicBrainz"):""}${k(a.sin_ficha,"sin ficha")}${k(a.pendientes,"pendientes (próximas ejecuciones)")}</div>`:""}
-   ${INFORME.grupos?`<h3>Conciertos por grupo</h3><p class="muted">Entran / salen: conciertos que ya estaban y han cambiado de grupo desde la ejecución anterior (por fichas nuevas o por cambios en la clasificación).</p><div class="scroll"><table><thead><tr><th>Grupo</th><th>Conciertos</th><th>Entran</th><th>Salen</th></tr></thead><tbody>${GRUPOS.filter(g=>INFORME.grupos[g.id]).map(g=>{const x=INFORME.grupos[g.id]; const ej=l=>l&&l.length?`<div class="muted">${esc(l.join(", "))}</div>`:""; return `<tr><td>${esc(g.nombre)}</td><td>${x.total}</td><td>${x.entran}${ej(x.ejemplos_entran)}</td><td>${x.salen}${ej(x.ejemplos_salen)}</td></tr>`;}).join("")}</tbody></table></div>`:""}
+   ${INFORME.grupos?`<h3>Conciertos por grupo</h3><p class="muted">Entran / salen: conciertos que ya estaban y han cambiado de grupo desde la ejecución anterior (por fichas nuevas o por cambios en la clasificación).</p><div class="scroll" tabindex="0" role="region" aria-label="Tabla (se desplaza de lado)"><table><thead><tr><th>Grupo</th><th>Conciertos</th><th>Entran</th><th>Salen</th></tr></thead><tbody>${GRUPOS.filter(g=>INFORME.grupos[g.id]).map(g=>{const x=INFORME.grupos[g.id]; const ej=l=>l&&l.length?`<div class="muted">${esc(l.join(", "))}</div>`:""; return `<tr><td>${esc(g.nombre)}</td><td>${x.total}</td><td>${x.entran}${ej(x.ejemplos_entran)}</td><td>${x.salen}${ej(x.ejemplos_salen)}</td></tr>`;}).join("")}</tbody></table></div>`:""}
    ${(()=>{const r=resumenRum(); if(!r.length) return ""; const txt=JSON.stringify({version:INFORME.version,ua:navigator.userAgent,conexion:(navigator.connection||{}).effectiveType,medidas:r});
-     return `<h3>Rendimiento en este móvil</h3><p class="muted">Tiempos reales medidos en este dispositivo (no se envían a ningún sitio). En milisegundos.</p><div class="scroll"><table><thead><tr><th>Qué</th><th>Veces</th><th>Mediana</th><th>9 de cada 10, menos de</th><th>Peor</th><th>Fallos</th></tr></thead><tbody>${r.map(x=>`<tr><td>${esc(x.n)}</td><td>${x.veces}</td><td>${x.mediana}</td><td>${x.p90}</td><td>${x.max}</td><td>${x.fallos}</td></tr>`).join("")}</tbody></table></div>
+     return `<h3>Rendimiento en este móvil</h3><p class="muted">Tiempos reales medidos en este dispositivo (no se envían a ningún sitio). En milisegundos.</p><div class="scroll" tabindex="0" role="region" aria-label="Tabla (se desplaza de lado)"><table><thead><tr><th>Qué</th><th>Veces</th><th>Mediana</th><th>9 de cada 10, menos de</th><th>Peor</th><th>Fallos</th></tr></thead><tbody>${r.map(x=>`<tr><td>${esc(x.n)}</td><td>${x.veces}</td><td>${x.mediana}</td><td>${x.p90}</td><td>${x.max}</td><td>${x.fallos}</td></tr>`).join("")}</tbody></table></div>
      <p><button class="lbtn" id="copiarRum" data-t="${esc(txt)}">Copiar estos datos</button> <button class="lbtn" id="borrarRum">Empezar de cero</button></p>`;})()}
-   <h3>Fuentes</h3><div class="scroll"><table><thead><tr><th>Fuente</th><th>Funcionó</th><th>Conciertos</th><th>Nuevos</th><th>Solo aquí</th><th>Páginas</th><th>robots.txt bloquea</th><th>Errores / avisos</th></tr></thead><tbody>${rows}</tbody></table></div>
+   <h3>Fuentes</h3><div class="scroll" tabindex="0" role="region" aria-label="Tabla (se desplaza de lado)"><table><thead><tr><th>Fuente</th><th>Funcionó</th><th>Conciertos</th><th>Nuevos</th><th>Solo aquí</th><th>Páginas</th><th>robots.txt bloquea</th><th>Errores / avisos</th></tr></thead><tbody>${rows}</tbody></table></div>
    <h3>Correcciones manuales</h3><ul>${(c.aplicadas||[]).map(x=>`<li>${esc(x.correccion)}: aplicada a ${x.registros}</li>`).join("")}${(c.sin_coincidencia||[]).map(x=>`<li class="muted">${esc(x.correccion)}: sin concierto que coincida (${esc(x.nota)})</li>`).join("")}</ul>
    <h3>Fuera de ámbito (otras provincias)</h3><p class="muted">${esc(t.fuera_de_ambito)} eventos descartados. Ejemplos:</p><ul class="muted">${(t.ejemplos_fuera_de_ambito||[]).slice(0,10).map(x=>`<li>${esc(x)}</li>`).join("")}</ul>`;
 }
@@ -900,7 +900,7 @@ addEventListener("scroll",fotosEnPantalla,{passive:true});
 // ---------------------------------------------------------------- carga de imágenes y días según el scroll
 // Con 200 conciertos en una semana, el navegador pedía decenas de fotos a la vez (compitiendo por la red) y
 // pintaba el resto de días justo cuando empezabas a bajar. Ahora:
-//  - las fotos entran en una cola en cuanto están cerca de la pantalla y se piden de 4 en 4, siempre primero las
+//  - las fotos entran en una cola unas 2 pantallas antes de llegar y se piden de 8 en 8, siempre primero las
 //    que estás viendo;
 //  - cada día de la lista se pinta cuando te acercas a él.
 const PIXEL="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
@@ -919,7 +919,7 @@ function bombear(){
 const obsImg=("IntersectionObserver" in window)?new IntersectionObserver(es=>{
   for(const e of es) if(e.isIntersecting){ obsImg.unobserve(e.target); e.target._visto=performance.now(); COLA.push(e.target); }
   bombear();
-},{rootMargin:"150px 0px"}):null;
+},{rootMargin:"1500px 0px"}):null;  // ~2 pantallas por delante: al bajar, la foto ya está cuando llega
 function observarImagenes(raiz){
   (raiz||document).querySelectorAll("img[data-src]").forEach(i=>{ if(obsImg) obsImg.observe(i); else { i.src=i.dataset.src; delete i.dataset.src; } });
   (raiz||document).querySelectorAll("img.thumb[fetchpriority]").forEach(i=>{ if(i.complete) return; const t0=performance.now();
@@ -935,7 +935,7 @@ function completarDiferidos(){
   if(obsDias) obsDias.disconnect();
   const ph=[...document.querySelectorAll("[data-dif]")];
   if(!("IntersectionObserver" in window)){ ph.forEach(pintarDia); return; }
-  obsDias=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ obsDias.unobserve(e.target); pintarDia(e.target); } }),{rootMargin:"900px 0px"});
+  obsDias=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ obsDias.unobserve(e.target); pintarDia(e.target); } }),{rootMargin:"1800px 0px"});
   ph.forEach(el=>{ el._pintar=()=>{obsDias.unobserve(el); pintarDia(el);}; obsDias.observe(el); });
 }
 function bindBody(){

@@ -1,5 +1,11 @@
 # Versiones
 
+## 2.20.1 — 2026-09-30
+
+- Las miniaturas se piden unas 2 pantallas antes de que lleguen (antes, 150 px), y los días de la lista se pintan también antes. Ahora que las fotos son propias y pesan ~6 KB, al bajar la lista ya están cuando llegan.
+- Validación del peor caso: la semana, el día y el mes con más conciertos (ahora la semana del 5 de octubre, con 320), con el filtro "Todos", sin caché. Mide huecos sin foto mientras se baja seguido: fallo si pasan del 15 %.
+- Accesibilidad: las tablas del informe que se desplazan de lado se pueden recorrer con el teclado.
+
 ## 2.20.0 — 2026-09-30
 
 Origen del artista con otro enfoque. Antes solo se buscaba en las webs de música (Wikidata, Wikipedia, Discogs, MusicBrainz y Last.fm por etiquetas) y 1.657 de 2.643 conciertos próximos se quedaban sin origen. De esos:
