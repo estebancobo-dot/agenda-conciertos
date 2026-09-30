@@ -36,7 +36,10 @@ def main(lista: str, salida: str) -> None:
                 if post:
                     txt = f.get(url, method="POST", data=post, headers={"Content-Type": "application/json"})
                 else:
-                    txt = f.get(url, check_robots=not url.endswith('robots.txt'))
+                    # la API de MusicBrainz (/ws/2) es para uso programático: misma excepción documentada que
+                    # en scraper/musicbrainz.py (su robots.txt se refiere al rastreo de las páginas web)
+                    txt = f.get(url, check_robots=not url.endswith('robots.txt') and "musicbrainz.org/ws/" not in url,
+                                headers={"Accept": "application/json"} if "musicbrainz.org/ws/" in url else None)
                 (out / f"{name}.html").write_text(txt, encoding="utf-8")
                 rec.update(ok=True, bytes=len(txt))
             except RobotsBlocked:
