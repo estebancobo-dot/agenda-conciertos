@@ -122,7 +122,15 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      url: ${{ steps.deployment.outputs.page_url || steps.reintento.outputs.page_url }}
     steps:
       - id: deployment
+        uses: actions/deploy-pages@v4
+        continue-on-error: true
+      # GitHub no admite dos publicaciones a la vez: si otra estaba en curso, se espera y se reintenta
+      - name: Esperar a la publicación en curso
+        if: steps.deployment.outcome == 'failure'
+        run: sleep 120
+      - id: reintento
+        if: steps.deployment.outcome == 'failure'
         uses: actions/deploy-pages@v4
