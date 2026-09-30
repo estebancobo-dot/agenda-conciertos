@@ -630,6 +630,7 @@ def ejecutar_fichas(hoy: date | None = None, presupuesto_seg: float = 3000) -> d
     informe["grupos"] = cambios_grupos(previos, recs, hoy.isoformat())
     stats["ultima_carga_fichas"] = datetime.now(timezone.utc).isoformat(timespec="seconds")
     informe["artistas"] = stats
+    informe["version_fichas"] = __version__  # la clasificación publicada es la de esta versión
     _write("informe.json", informe)
     return stats
 

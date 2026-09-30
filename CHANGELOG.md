@@ -1,5 +1,10 @@
 # Versiones
 
+## 2.14.1 — 2026-09-30
+
+- **Fase 1b: `main` ya no guarda datos.** La rama `datos` se creó bien en la primera pasada (un solo commit con los 7 archivos generados), así que se quitan de `main`. Las ejecuciones los traen de esa rama; para tenerlos en local, `python tools/datos.py`.
+- El informe indica con qué versión se clasificaron los conciertos cuando la última pasada solo completó fichas ("2.14.1 (agendas leídas con la 2.10.0)").
+
 ## 2.14.0 — 2026-09-30
 
 Fase 4 de mejoras (identidad de artistas y UX):

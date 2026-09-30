@@ -4,3 +4,11 @@ __pycache__/
 capturas/
 data/*.tmp
 data/.traidos.json
+# datos generados: viven en la rama `datos` (python tools/datos.py los trae)
+data/concerts.json
+data/concerts.csv
+data/informe.json
+data/estado.json
+data/fuentes_cache.json
+data/artistas.json
+data/musicbrainz_cache.json
