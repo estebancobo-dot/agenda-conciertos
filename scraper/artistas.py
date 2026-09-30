@@ -347,6 +347,46 @@ def buscar_lastfm(f: Fetcher, nombre: str, mbid: str | None, key: str) -> dict:
     return r
 
 
+# ------------------------------------------------------------------ MusicBrainz (géneros votados por la comunidad)
+MB_ARTISTA = "https://musicbrainz.org/ws/2/artist/{mbid}?inc=genres&fmt=json"
+
+
+def musicbrainz_parse(data: dict) -> dict:
+    """Géneros de MusicBrainz: vocabulario cerrado y votado. Se quedan los que tienen al menos una cuarta parte
+    de los votos del más votado (máx. 8), ordenados por votos."""
+    gen = sorted(((g.get("name", ""), int(g.get("count") or 0)) for g in data.get("genres") or []),
+                 key=lambda x: -x[1])
+    maximo = gen[0][1] if gen else 0
+    gen = [[n, c] for n, c in gen if n and c >= max(1, 0.25 * maximo)][:8]
+    return {"encontrado": True, "mbid": data.get("id"), "nombre": data.get("name"), "generos": gen,
+            "pais": data.get("country")}
+
+
+def buscar_musicbrainz(f: Fetcher, nombre: str, mbid: str | None, mb_cache: dict | None, hoy: date) -> dict:
+    """Con el identificador de Wikidata la identidad es exacta; si no, se usa la única coincidencia exacta del
+    nombre en MusicBrainz (la misma búsqueda que da la nacionalidad, guardada en musicbrainz_cache.json)."""
+    via = "identificador de MusicBrainz en Wikidata"
+    if not mbid:
+        from .musicbrainz import buscar
+        k = norm(nombre)
+        c = (mb_cache or {}).get(k)
+        if c is None:
+            c = buscar(f, nombre)
+            c["fecha"] = hoy.isoformat()
+            if mb_cache is not None:
+                mb_cache[k] = c
+        mbid = c.get("mbid")
+        via = "única coincidencia exacta del nombre en MusicBrainz"
+        if not mbid:
+            n = c.get("coincidencias_exactas", 0)
+            return {"encontrado": False, "motivo": "sin coincidencia exacta" if not n else f"{n} artistas homónimos"}
+    data = json.loads(f.get(MB_ARTISTA.format(mbid=mbid), check_robots=False,
+                            headers={"Accept": "application/json"}))
+    r = musicbrainz_parse(data)
+    r["identificado_por"] = via
+    return r
+
+
 # ------------------------------------------------------------------ orquestación
 def nombre_consultable(nombre: str) -> bool:
     n = norm(nombre)
@@ -361,18 +401,18 @@ def _tiene_estilo(ent: dict) -> bool:
 
 
 def _pasos_con_error(ent: dict) -> list[str]:
-    return [k for k in ("wikipedia", "wikidata", "discogs", "lastfm")
+    return [k for k in ("wikipedia", "wikidata", "discogs", "lastfm", "musicbrainz")
             if str((ent.get(k) or {}).get("motivo", "")).startswith("error")]
 
 
 def _encontrado(ent: dict) -> bool:
-    return any((ent.get(k) or {}).get("encontrado") for k in ("discogs", "wikipedia", "lastfm"))
+    return any((ent.get(k) or {}).get("encontrado") for k in ("discogs", "wikipedia", "lastfm", "musicbrainz"))
 
 
 def enriquecer(recs: list[dict], cache: dict, hoy: date, presupuesto_seg: float = 1200,
                fetcher_dc: Fetcher | None = None, fetcher_wp: Fetcher | None = None,
                fetcher_lf: Fetcher | None = None, clave_lastfm: str | None = None, parar=None,
-               guardar=None) -> dict:
+               guardar=None, fetcher_mb: Fetcher | None = None, mb_cache: dict | None = None) -> dict:
     """Completa cache[norm(artista)] para los artistas principales, priorizando los conciertos en foco y próximos.
 
     Cada artista se consulta una vez; la ficha se renueva a los 180 días (30 si no se encontró). Si una ficha
@@ -381,8 +421,11 @@ def enriquecer(recs: list[dict], cache: dict, hoy: date, presupuesto_seg: float 
     fetcher_wp = fetcher_wp or fetcher_wikimedia()
     clave_lastfm = lastfm_key() if clave_lastfm is None else clave_lastfm
     fetcher_lf = fetcher_lf or fetcher_lastfm()
+    if fetcher_mb is None:
+        from .musicbrainz import fetcher_musicbrainz
+        fetcher_mb = fetcher_musicbrainz()
     stats = {"consultados": 0, "completados": 0, "desde_cache": 0, "discogs": 0, "wikipedia": 0, "wikidata": 0,
-             "lastfm": 0, "sin_ficha": 0, "pendientes": 0, "errores": [],
+             "lastfm": 0, "musicbrainz": 0, "sin_ficha": 0, "pendientes": 0, "errores": [],
              "discogs_con_token": "Authorization" in fetcher_dc.session.headers, "lastfm_activo": bool(clave_lastfm)}
     inicio = time.monotonic()
     vistos, pendientes = set(), []
@@ -402,7 +445,8 @@ def enriquecer(recs: list[dict], cache: dict, hoy: date, presupuesto_seg: float 
             continue
         falta_wd = ent.get("wikipedia", {}).get("wikidata") and "wikidata" not in ent
         falta_lf = clave_lastfm and "lastfm" not in ent and not _tiene_estilo(ent)
-        if falta_wd or falta_lf or _pasos_con_error(ent):
+        falta_mb = "musicbrainz" not in ent
+        if falta_wd or falta_lf or falta_mb or _pasos_con_error(ent):
             pendientes.append((k, nombre, ent))
         else:
             stats["desde_cache"] += 1
@@ -436,6 +480,9 @@ def enriquecer(recs: list[dict], cache: dict, hoy: date, presupuesto_seg: float 
         if "discogs" not in ent:
             dc_id = (ent.get("wikidata") or {}).get("ids", {}).get("discogs")
             paso("discogs", buscar_discogs, fetcher_dc, nombre, dc_id)
+        if "musicbrainz" not in ent:
+            mbid = (ent.get("wikidata") or {}).get("ids", {}).get("musicbrainz")
+            paso("musicbrainz", buscar_musicbrainz, fetcher_mb, nombre, mbid, mb_cache, hoy)
         if clave_lastfm and "lastfm" not in ent and not _tiene_estilo(ent):
             mbid = (ent.get("wikidata") or {}).get("ids", {}).get("musicbrainz")
             paso("lastfm", buscar_lastfm, fetcher_lf, nombre, mbid, clave_lastfm)
@@ -457,7 +504,7 @@ def enriquecer(recs: list[dict], cache: dict, hoy: date, presupuesto_seg: float 
                         log.warning("no se pudo guardar artistas.json: %s", e)
     for k in vistos:
         ent = cache.get(k) or {}
-        for fuente in ("discogs", "wikipedia", "wikidata", "lastfm"):
+        for fuente in ("discogs", "wikipedia", "wikidata", "lastfm", "musicbrainz"):
             if ent.get(fuente, {}).get("encontrado"):
                 stats[fuente] += 1
         if ent and not _encontrado(ent):
@@ -474,7 +521,7 @@ def _estilos_discogs_de_wikipedia(generos: list[str]) -> list[str]:
     return est
 
 
-PESO_FUENTE = {"Discogs": 1.0, "Last.fm": 0.8, "Wikipedia": 0.6}
+PESO_FUENTE = {"Discogs": 1.0, "MusicBrainz": 0.9, "Last.fm": 0.8, "Wikipedia": 0.6}
 PESO_RANGO = [1.0, 0.75, 0.55, 0.45, 0.35, 0.3]
 
 
@@ -511,6 +558,15 @@ def evidencias(ent: dict) -> list[dict]:
             for x in gen:
                 add(x, "genero", "Last.fm", i)
             i += 1 if (est or gen) else 0
+    mb = ent.get("musicbrainz") or {}
+    if mb.get("encontrado"):
+        i = 0
+        from .clasificar import traducir_musicbrainz
+        for t, _votos in mb.get("generos") or []:  # por número de votos
+            trad = traducir_musicbrainz(t)
+            for x, tipo in trad:
+                add(x, tipo, "MusicBrainz", i)
+            i += 1 if trad else 0
     if wp.get("encontrado"):
         i = 0
         for t in wp.get("generos") or []:  # en el orden de la ficha de Wikipedia
@@ -532,7 +588,10 @@ def ficha(ent: dict | None) -> dict | None:
     lf = ent.get("lastfm") or {}
     if not lf.get("encontrado") or not (lf.get("estilos") or lf.get("generos")):
         lf = {}
-    if not dc.get("encontrado") and not wp.get("encontrado") and not lf:
+    mbz = ent.get("musicbrainz") or {}
+    if not mbz.get("encontrado") or not mbz.get("generos"):
+        mbz = {}
+    if not dc.get("encontrado") and not wp.get("encontrado") and not lf and not mbz:
         return None
     from .clasificar import genero_de_estilo
     estilos = list(dc.get("estilos") or []) if dc.get("encontrado") else []
@@ -587,8 +646,9 @@ def ficha(ent: dict | None) -> dict | None:
         enlaces.append({"nombre": "AllMusic", "url": f"https://www.allmusic.com/artist/{ids['allmusic']}"})
     if ids.get("spotify"):
         enlaces.append({"nombre": "Spotify", "url": f"https://open.spotify.com/artist/{ids['spotify']}"})
-    if ids.get("musicbrainz"):
-        enlaces.append({"nombre": "MusicBrainz", "url": f"https://musicbrainz.org/artist/{ids['musicbrainz']}"})
+    if ids.get("musicbrainz") or mbz.get("mbid"):
+        enlaces.append({"nombre": "MusicBrainz",
+                        "url": f"https://musicbrainz.org/artist/{ids.get('musicbrainz') or mbz['mbid']}"})
     if ids.get("lastfm"):
         enlaces.append({"nombre": "Last.fm", "url": f"https://www.last.fm/music/{ids['lastfm']}"})
     elif lf:

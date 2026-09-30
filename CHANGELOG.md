@@ -1,5 +1,21 @@
 # Versiones
 
+## 2.9.0 — 2026-09-30
+
+- **MusicBrainz entra en el consenso de géneros** (peso 0,9, entre Discogs y Last.fm).
+  - Sus géneros los vota la comunidad con un vocabulario cerrado. Se usan los que tienen al menos una cuarta parte de los votos del más votado. Ejemplo, Deep Purple: hard rock 28, rock 14, heavy metal 13, progressive rock 8.
+  - Identidad: el identificador de MusicBrainz en Wikidata (exacto) o la única coincidencia exacta del nombre (la misma búsqueda que ya daba la nacionalidad, sin repetir consultas).
+  - Ritmo de 1 petición por segundo (su norma). Los ~1.550 artistas guardados se completan en las próximas ejecuciones.
+- **Traducción de sus géneros a Discogs:**
+  - Literal, o por sinónimo (nwobhm → Heavy Metal, symphonic prog → Prog Rock, americana → Folk/Country…).
+  - Si no hay, por la palabra que define la familia ("melodic metalcore" → metal, "rock en español" → rock, "trap latino" → hip hop).
+  - Se traducen 790 de sus 2.209 géneros; los que quedan fuera son sobre todo músicas lejanas a esta agenda.
+- **Revisado AllMusic y similares:**
+  - AllMusic no tiene API: su soporte dice que sus datos son de un tercero y no puede redistribuirlos. La API de TiVo (antes Rovi), de donde salen, es solo comercial.
+  - TheAudioDB tiene clave gratuita, pero sus géneros son muy generales ("Rock/Pop").
+  - Spotify pide una aplicación de desarrollador y sus géneros no siempre están disponibles.
+  - No se añaden.
+
 ## 2.8.0 — 2026-09-30
 
 **Clasificación por géneros sin falsos positivos**

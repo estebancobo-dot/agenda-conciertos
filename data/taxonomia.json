@@ -284,7 +284,11 @@
   "musica celta": "Celtic",
   "flamenco": "Flamenco",
   "electric blues": "Electric Blues",
-  "boogie-woogie": "Boogie Woogie"
+  "boogie-woogie": "Boogie Woogie",
+  "nwobhm": "Heavy Metal",
+  "new wave of british heavy metal": "Heavy Metal",
+  "symphonic prog": "Prog Rock",
+  "progressive metal": "Progressive Metal"
  },
  "otros_generos": [
   "Electronic",
@@ -333,6 +337,15 @@
   "punk": "Rock",
   "indie": "Rock",
   "rnb": "Funk / Soul",
-  "contemporary r&b": "Funk / Soul"
+  "contemporary r&b": "Funk / Soul",
+  "americana": "Folk, World, & Country",
+  "latin pop": "Latin",
+  "flamenco pop": "Latin",
+  "latin rock": "Latin",
+  "bolero": "Latin",
+  "copla": "Latin",
+  "opera": "Classical",
+  "synth-pop": "Electronic",
+  "synthpop": "Electronic"
  }
 }

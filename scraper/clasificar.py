@@ -258,3 +258,35 @@ def grupos_de_agenda(etiquetas_por_fuente: list[list[str]]) -> tuple[list[str], 
 
 
 PESO_RANGO_AGENDA = [1.0, 0.75, 0.55, 0.45]
+
+
+# Géneros de MusicBrainz sin equivalencia literal en Discogs: su vocabulario es cerrado ("melodic metalcore",
+# "rock en español"…), así que se traducen por la palabra que define la familia. Solo se usa con MusicBrainz.
+_FAMILIAS_MB = [
+    (r"\bmetal(core)?\b", "Heavy Metal", "estilo"), (r"\bgrindcore\b", "Grindcore", "estilo"),
+    (r"\bpunk\b", "Punk", "estilo"), (r"\bhardcore\b", "Hardcore", "estilo"), (r"\bgarage\b", "Garage Rock", "estilo"),
+    (r"\bshoegaze\b", "Shoegaze", "estilo"), (r"\bpsych", "Psychedelic Rock", "estilo"),
+    (r"\bblues\b", "Blues", "genero"), (r"\bcountry\b", "Country", "estilo"), (r"\bbluegrass\b", "Bluegrass", "estilo"),
+    (r"\bfolk\b", "Folk", "estilo"), (r"\bjazz\b", "Jazz", "genero"),
+    (r"\b(hip hop|rap|trap|drill|grime)\b", "Hip Hop", "genero"),
+    (r"\b(house|techno|trance|edm|electro\w*|dubstep|drum and bass|synth\w*|ambient|idm)\b", "Electronic", "genero"),
+    (r"\b(reggaeton|cumbia|salsa|bachata|latin|flamenco|rumba|bolero|tango|son)\b", "Latin", "genero"),
+    (r"\b(soul|funk|r&b|rnb|disco)\b", "Funk / Soul", "genero"), (r"\b(reggae|dub|dancehall)\b", "Reggae", "genero"),
+    (r"\b(classical|orchestral|opera|baroque|romantic|symphon\w*|choral)\b", "Classical", "genero"),
+    (r"\bpop\b", "Pop", "genero"), (r"\brock\b", "Rock", "genero"),
+]
+
+
+def traducir_musicbrainz(genero: str) -> list[tuple[str, str]]:
+    """[(nombre, 'estilo'|'genero')] de Discogs para un género de MusicBrainz."""
+    est, _ = discogs([genero])
+    if est:
+        return [(e, "estilo") for e in est]
+    gen = generos_de_texto([genero])
+    if gen:
+        return [(g, "genero") for g in gen]
+    n = norm(genero)
+    for rx, nombre, tipo in _FAMILIAS_MB:
+        if re.search(rx, n) and grupo_de(nombre, tipo):
+            return [(nombre, tipo)]
+    return []

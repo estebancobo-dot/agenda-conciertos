@@ -432,13 +432,19 @@ def ejecutar(hoy: date | None = None, solo: list[str] | None = None, fetcher: Fe
     # Las fichas de artista usan otras webs (Discogs, Wikipedia…): se buscan mientras se leen las agendas,
     # empezando por los artistas de la ejecución anterior; al terminar se completan los nuevos.
     cache_art = _read("artistas.json", {})
+    cache_mb = _read("musicbrainz_cache.json", {})
+
+    def guardar_fichas():
+        _write("artistas.json", cache_art)
+        _write("musicbrainz_cache.json", cache_mb)
+
     parar, hilo, previas = threading.Event(), None, {}
     if musicbrainz and anteriores and not no_leidas:
         from .artistas import enriquecer
         hilo = threading.Thread(target=lambda: previas.update(
             enriquecer([p for p in anteriores if p["fecha"] >= hoy.isoformat()], cache_art, hoy,
-                       presupuesto_seg=PRESUPUESTO_FICHAS, parar=parar,
-                       guardar=lambda: _write("artistas.json", cache_art))), daemon=True)
+                       presupuesto_seg=PRESUPUESTO_FICHAS, parar=parar, guardar=guardar_fichas,
+                       mb_cache=cache_mb)), daemon=True)
         hilo.start()
     eventos, resultados = rastrear(fuentes, fetcher, hoy, horizonte, estado.setdefault("fuentes", {}),
                                    pausa_reintento=pausa_reintento)
@@ -471,10 +477,10 @@ def ejecutar(hoy: date | None = None, solo: list[str] | None = None, fetcher: Fe
             parar.set()
             hilo.join()
         resto = max(PRESUPUESTO_FICHAS - (time.monotonic() - t0), 300)
-        art_stats = enriquecer(recs, cache_art, hoy, presupuesto_seg=resto,
-                               guardar=lambda: _write("artistas.json", cache_art))
+        art_stats = enriquecer(recs, cache_art, hoy, presupuesto_seg=resto, guardar=guardar_fichas,
+                               mb_cache=cache_mb)
         art_stats["durante_agendas"] = {k: previas.get(k, 0) for k in ("consultados", "completados")}
-        _write("artistas.json", cache_art)
+        guardar_fichas()
     from .artistas import ficha
     for r in recs:
         aplicar_ficha(r, ficha(cache_art.get(norm(r["artista"]))))
@@ -482,9 +488,8 @@ def ejecutar(hoy: date | None = None, solo: list[str] | None = None, fetcher: Fe
     mb_stats = {"desactivado": True}
     if musicbrainz:
         from .musicbrainz import completar, fetcher_musicbrainz
-        cache = _read("musicbrainz_cache.json", {})
-        mb_stats = completar(recs, cache, hoy, fetcher_musicbrainz(), max_consultas=max_mb)
-        _write("musicbrainz_cache.json", cache)
+        mb_stats = completar(recs, cache_mb, hoy, fetcher_musicbrainz(), max_consultas=max_mb)
+        _write("musicbrainz_cache.json", cache_mb)
     recs.sort(key=lambda r: (r["fecha"], r["hora"] or "99", norm(r["artista"])))
     # estilos que no se han podido traducir a categoría
     sin_mapear = sorted({e["estilo"] + " (" + e["fuente"] + ")" for r in recs for e in r["estilo_fuente"]
@@ -543,10 +548,17 @@ def ejecutar_fichas(hoy: date | None = None, presupuesto_seg: float = 3000) -> d
     datos = _read("concerts.json", {})
     recs = datos.get("conciertos", [])
     cache_art = _read("artistas.json", {})
-    stats = enriquecer(recs, cache_art, hoy, presupuesto_seg=presupuesto_seg,
-                       guardar=lambda: _write("artistas.json", cache_art))
+    cache_mb = _read("musicbrainz_cache.json", {})
+
+    def guardar_fichas():
+        _write("artistas.json", cache_art)
+        _write("musicbrainz_cache.json", cache_mb)
+
+    stats = enriquecer(recs, cache_art, hoy, presupuesto_seg=presupuesto_seg, guardar=guardar_fichas,
+                       mb_cache=cache_mb)
     if not stats["consultados"] and not stats["completados"]:
         return stats  # nada pendiente: no se toca ningún archivo (ni commit ni nueva publicación)
+    _write("musicbrainz_cache.json", cache_mb)
     _write("artistas.json", cache_art)
     for r in recs:
         aplicar_ficha(r, ficha(cache_art.get(norm(r["artista"]))))

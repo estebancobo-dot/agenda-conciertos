@@ -12,6 +12,14 @@ def j(name):
     return json.loads((FIX / f"{name}.json").read_text(encoding="utf-8"))
 
 
+def _mb_vacio():
+    from tests.fakefetch import FakeFetcher
+    return FakeFetcher({"https://musicbrainz.org/ws/2/artist/?query=*": lambda u, kw: json.dumps({"artists": []})})
+
+
+MB_VACIO = _mb_vacio()
+
+
 def w(name):
     return (FIX / f"{name}.html").read_text(encoding="utf-8")
 
@@ -137,12 +145,12 @@ def test_enriquecer_solo_completa_lo_que_falta():
     lf = FakeFetcher({"https://ws.audioscrobbler.com/*": lambda u, kw: json.dumps(LF)})
     recs = [{"artista": "Grupo Pequeño", "en_foco": True, "fecha": "2026-10-17"}]
     st = A.enriquecer(recs, cache, date(2026, 9, 29), fetcher_dc=FakeFetcher({}), fetcher_wp=FakeFetcher({}),
-                      fetcher_lf=lf, clave_lastfm="CLAVE")
+                      fetcher_lf=lf, clave_lastfm="CLAVE", fetcher_mb=MB_VACIO, mb_cache={})
     assert st["completados"] == 1 and st["lastfm"] == 1 and len(lf.urls) == 1
     assert cache["grupo pequeno"]["lastfm"]["estilos"] == ["Stoner Rock", "Hard Rock"]
     # la segunda vez ya no consulta nada
     st = A.enriquecer(recs, cache, date(2026, 9, 29), fetcher_dc=FakeFetcher({}), fetcher_wp=FakeFetcher({}),
-                      fetcher_lf=lf, clave_lastfm="CLAVE")
+                      fetcher_lf=lf, clave_lastfm="CLAVE", fetcher_mb=MB_VACIO, mb_cache={})
     assert st["desde_cache"] == 1 and len(lf.urls) == 1
 
 
@@ -167,7 +175,8 @@ def test_discogs_id_de_wikidata_borrado_busca_por_nombre():
     dc2 = FakeFetcher({"https://api.discogs.com/*": lambda u, kw: json.dumps({"results": []})})
     wp = FakeFetcher({})
     st = A.enriquecer([{"artista": "Los Deltonos", "en_foco": True, "fecha": "2026-10-10"}], cache, date(2026, 9, 29),
-                      fetcher_dc=dc2, fetcher_wp=wp, fetcher_lf=FakeFetcher({}), clave_lastfm="")
+                      fetcher_dc=dc2, fetcher_wp=wp, fetcher_lf=FakeFetcher({}), clave_lastfm="",
+                      fetcher_mb=MB_VACIO, mb_cache={})
     assert st["completados"] == 1 and dc2.urls and not wp.urls
     assert cache["los deltonos"]["discogs"]["motivo"] == "sin coincidencia exacta"
 
@@ -253,3 +262,35 @@ def test_etiqueta_paraguas_de_agenda_es_generica():
 def test_rnb_moderno_no_es_blues():
     from scraper.clasificar import generos_de_texto, discogs
     assert discogs(["R&B"])[0] == [] and generos_de_texto(["R&B"]) == ["Funk / Soul"]
+
+
+def test_musicbrainz_generos_votados():
+    dp = A.musicbrainz_parse(j("mb_dp"))
+    assert dp["generos"][0] == ["hard rock", 28] and dp["pais"] == "GB"
+    assert all(c >= 7 for _, c in dp["generos"])  # los de menos de 1/4 de los votos del principal se descartan
+    ent = {"musicbrainz": {**dp, "identificado_por": "identificador de MusicBrainz en Wikidata"}}
+    evs = A.evidencias(ent)
+    assert evs[0]["nombre"] == "Hard Rock" and evs[0]["fuente"] == "MusicBrainz"
+    tk = A.musicbrainz_parse(j("mb_teksuo"))  # 'metalcore' 2 votos, 'metal' 1
+    assert [g for g, _ in tk["generos"]] == ["metalcore", "metal"]
+
+
+def test_musicbrainz_en_el_consenso():
+    from scraper.pipeline import aplicar_ficha
+    ent = {"musicbrainz": {**A.musicbrainz_parse(j("mb_medina")), "identificado_por": "x"}}
+    r = _rec("Medina Azahara", [("Pop / Rock", "Madrid en Vivo (asociación de salas)")])
+    aplicar_ficha(r, A.ficha(ent))
+    assert r["grupos"] == ["rock y metal"] and not r["grupos_generico"] and r["grupos_segun"] == ["MusicBrainz"]
+
+
+def test_buscar_musicbrainz_usa_la_cache_de_nacionalidad():
+    from datetime import date
+    from tests.fakefetch import FakeFetcher
+    mb = FakeFetcher({"https://musicbrainz.org/ws/2/artist/63d38a2c-55dc-4318-9ff4-82d4c265f89f*":
+                      lambda u, kw: (FIX / "mb_medina.json").read_text(encoding="utf-8")})
+    cache = {"medina azahara": {"pais": "ES", "coincidencias_exactas": 1,
+                                "mbid": "63d38a2c-55dc-4318-9ff4-82d4c265f89f", "fecha": "2026-09-29"}}
+    r = A.buscar_musicbrainz(mb, "Medina Azahara", None, cache, date(2026, 9, 30))
+    assert r["encontrado"] and r["identificado_por"].startswith("única coincidencia") and len(mb.urls) == 1
+    r = A.buscar_musicbrainz(MB_VACIO, "Grupo Nuevo", None, cache, date(2026, 9, 30))
+    assert not r["encontrado"] and cache["grupo nuevo"]["coincidencias_exactas"] == 0
