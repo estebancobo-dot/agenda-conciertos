@@ -1,0 +1,4534 @@
+{
+ "_descripcion": "Conjunto de control de la clasificación: artistas reales de la agenda (datos congelados de sus fichas y de las agendas) con los grupos que deben tener y los que no. Si un cambio en la taxonomía o en el consenso rompe alguno, falla el test antes de publicar.",
+ "casos": [
+  {
+   "artista": "Leiva",
+   "concierto": {
+    "id": "f98872e866b0",
+    "fecha": "2026-09-29",
+    "artista": "Leiva",
+    "estilo_fuente": [
+     {
+      "estilo": "Pop-rock/Indie",
+      "fuente": "conciertos.club (buscador semanal)"
+     },
+     {
+      "estilo": "Pop-rock/Indie",
+      "fuente": "conciertos.club (portada Madrid)"
+     },
+     {
+      "estilo": "Pop-rock/Indie",
+      "fuente": "conciertos.club (por estilo)"
+     },
+     {
+      "estilo": "Rock and Roll",
+      "fuente": "La Ganzúa"
+     }
+    ],
+    "fuentes": [
+     {
+      "nombre": "conciertos.club (buscador semanal)",
+      "id": "cc_buscador",
+      "url": "https://conciertos.club/madrid/conciertos/110281-leiva/1790708400",
+      "prioridad": 3
+     },
+     {
+      "nombre": "conciertos.club (portada Madrid)",
+      "id": "cc_portada",
+      "url": "https://conciertos.club/madrid/conciertos/110281-leiva/1790708400",
+      "prioridad": 3
+     },
+     {
+      "nombre": "conciertos.club (por estilo)",
+      "id": "cc_estilos",
+      "url": "https://conciertos.club/madrid/conciertos/110281-leiva/1790708400",
+      "prioridad": 3
+     },
+     {
+      "nombre": "La Ganzúa",
+      "id": "laganzua",
+      "url": "https://www.laganzua.net/conciertos/leiva-segunda-fecha-madrid-1013398",
+      "prioridad": 3
+     },
+     {
+      "nombre": "Conciertos por Madrid",
+      "id": "cpm",
+      "url": "https://conciertospormadrid.com/conciertos/leiva-madrid-29-septiembre-2026/",
+      "prioridad": 3
+     }
+    ],
+    "nacionalidad": "ES",
+    "nacionalidad_fuente": "Wikipedia",
+    "imagen_evento": {
+     "url": "https://conciertos.club/doc/a/2024/a_leiva.jpg",
+     "credito": "conciertos.club (buscador semanal)",
+     "enlace": "https://conciertos.club/madrid/conciertos/110281-leiva/1790708400"
+    },
+    "categorias": [
+     "pop e indie",
+     "punk y garage"
+    ]
+   },
+   "ficha": {
+    "nombre": "Leiva",
+    "fecha": "2026-09-29",
+    "wikipedia": {
+     "encontrado": true,
+     "url": "https://es.wikipedia.org/wiki/Leiva_(cantante)",
+     "generos": [
+      "Rock en español",
+      "Rock alternativo",
+      "Rock and roll",
+      "Pop rock",
+      "Indie rock"
+     ],
+     "origen": "30 de abril de 1980 (46, años), Madrid, (, España, )",
+     "pais": "ES",
+     "imagen": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/11/Premios_Goya_2026_-_Leyva_%28cropped%29.jpg/330px-Premios_Goya_2026_-_Leyva_%28cropped%29.jpg",
+     "imagen_pagina": "https://es.wikipedia.org/wiki/Archivo:Premios_Goya_2026_-_Leyva_(cropped).jpg",
+     "idioma": "es"
+    },
+    "discogs": {
+     "encontrado": false,
+     "motivo": "3 artistas homónimos"
+    }
+   },
+   "debe": [
+    "pop e indie"
+   ],
+   "no_debe": [
+    "fuera de foco"
+   ]
+  },
+  {
+   "artista": "La Monja Enana",
+   "concierto": {
+    "id": "268182fd1fdd",
+    "fecha": "2026-11-27",
+    "artista": "La Monja Enana",
+    "estilo_fuente": [],
+    "fuentes": [
+     {
+      "nombre": "Songkick Madrid",
+      "id": "songkick",
+      "url": "https://www.songkick.com/concerts/43149940-la-monja-enana-at-unas-chung-lee",
+      "prioridad": 3
+     }
+    ],
+    "nacionalidad": "ES",
+    "nacionalidad_fuente": "Wikidata",
+    "imagen_evento": {
+     "url": "https://images.sk-static.com/images/media/profile_images/artists/170951/huge_avatar",
+     "credito": "Songkick Madrid",
+     "enlace": "https://www.songkick.com/concerts/43149940-la-monja-enana-at-unas-chung-lee"
+    },
+    "categorias": [
+     "sin clasificar"
+    ]
+   },
+   "ficha": {
+    "nombre": "La Monja Enana",
+    "fecha": "2026-09-29",
+    "wikipedia": {
+     "encontrado": true,
+     "url": "https://es.wikipedia.org/wiki/La_Monja_Enana",
+     "generos": [
+      "Pop",
+      "Indie español"
+     ],
+     "wikidata": "Q6460413",
+     "origen": "España, España",
+     "pais": "ES",
+     "imagen": null,
+     "imagen_pagina": null,
+     "idioma": "es"
+    },
+    "wikidata": {
+     "encontrado": true,
+     "id": "Q6460413",
+     "ids": {
+      "discogs": "199891",
+      "allmusic": "mn0001917505",
+      "musicbrainz": "9a6436f5-6c9b-4200-bf0c-1de4b043273d",
+      "lastfm": "La+Monja+Enana"
+     },
+     "pais": "ES",
+     "imagen_commons": null
+    },
+    "discogs": {
+     "encontrado": true,
+     "id": 199891,
+     "nombre": "La Monja Enana",
+     "url": "https://www.discogs.com/artist/199891-La-Monja-Enana",
+     "generos": [
+      "Pop"
+     ],
+     "estilos": [
+      "Indie Pop",
+      "Bubblegum"
+     ],
+     "discos_analizados": 1,
+     "pais": null,
+     "imagen": "https://i.discogs.com/EjCLzaa9R3YrIHveagstmrhEeL7KfrvW9LUlM-QN4Ho/rs:fit/g:sm/q:90/h:468/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTE5OTg5/MS0xMjcyODM5MzQ5/LmpwZWc.jpeg",
+     "identificado_por": "identificador de Discogs en Wikidata",
+     "perfil": "Spanish band La Monja Enana played their first gig in 1997, at a festival organized by the music academy that Ana, Juan and Julia attended to take music lessons. Their demotape would be heavily airplayed in radio shows like Radio 3’s “Diari"
+    }
+   },
+   "debe": [
+    "pop e indie"
+   ],
+   "no_debe": []
+  },
+  {
+   "artista": "Kuve",
+   "concierto": {
+    "id": "f93d7c925104",
+    "fecha": "2026-11-12",
+    "artista": "Kuve",
+    "estilo_fuente": [
+     {
+      "estilo": "Pop-rock/Indie",
+      "fuente": "conciertos.club (buscador semanal)"
+     },
+     {
+      "estilo": "Pop-rock/Indie",
+      "fuente": "conciertos.club (por estilo)"
+     }
+    ],
+    "fuentes": [
+     {
+      "nombre": "conciertos.club (buscador semanal)",
+      "id": "cc_buscador",
+      "url": "https://conciertos.club/madrid/conciertos/127687-kuve",
+      "prioridad": 3
+     },
+     {
+      "nombre": "conciertos.club (por estilo)",
+      "id": "cc_estilos",
+      "url": "https://conciertos.club/madrid/conciertos/127687-kuve",
+      "prioridad": 3
+     }
+    ],
+    "nacionalidad": "ES",
+    "nacionalidad_fuente": "Wikidata",
+    "imagen_evento": {
+     "url": "https://doc.conciertos.club/doc/c/2026/kuve_20261112.jpg",
+     "credito": "conciertos.club (buscador semanal)",
+     "enlace": "https://conciertos.club/madrid/conciertos/127687-kuve"
+    },
+    "categorias": [
+     "pop e indie"
+    ]
+   },
+   "ficha": {
+    "nombre": "Kuve",
+    "fecha": "2026-09-29",
+    "wikipedia": {
+     "encontrado": true,
+     "url": "https://en.wikipedia.org/wiki/Kuve",
+     "generos": [
+      "Pop",
+      "Electronic",
+      "Indie pop"
+     ],
+     "wikidata": "Q109312074",
+     "origen": "Madrid, , Spain",
+     "pais": "ES",
+     "imagen": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/76/Madrid_Pride_2026_-_Kuve_-_260702_222348.jpg/250px-Madrid_Pride_2026_-_Kuve_-_260702_222348.jpg",
+     "imagen_pagina": "https://en.wikipedia.org/wiki/File:Madrid_Pride_2026_-_Kuve_-_260702_222348.jpg",
+     "idioma": "en"
+    },
+    "wikidata": {
+     "encontrado": true,
+     "id": "Q109312074",
+     "ids": {},
+     "pais": "ES",
+     "imagen_commons": "Madrid Pride 2026 - Kuve - 260702 222348.jpg"
+    },
+    "discogs": {
+     "encontrado": true,
+     "id": 3713233,
+     "nombre": "Kuve",
+     "url": "https://www.discogs.com/artist/3713233-Kuve",
+     "generos": [
+      "Pop"
+     ],
+     "estilos": [],
+     "discos_analizados": 2,
+     "pais": "ES",
+     "imagen": "https://i.discogs.com/xy2KCK58RItrq0A_065evx_YzHUg4_ZE0NhduW0SlOo/rs:fit/g:sm/q:90/h:591/w:543/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTM3MTMy/MzMtMTYwMDIzNjQz/Ni01MTc2LmpwZWc.jpeg",
+     "identificado_por": "única coincidencia exacta del nombre en Discogs",
+     "perfil": "Singer and songwriter from Murcia, Spain"
+    }
+   },
+   "debe": [
+    "pop e indie"
+   ],
+   "no_debe": [
+    "fuera de foco"
+   ]
+  },
+  {
+   "artista": "Vetusta Morla",
+   "concierto": {
+    "id": "3396b0e29591",
+    "fecha": "2026-11-19",
+    "artista": "Vetusta Morla",
+    "estilo_fuente": [
+     {
+      "estilo": "Pop-rock/Indie",
+      "fuente": "conciertos.club (buscador semanal)"
+     },
+     {
+      "estilo": "Pop-rock/Indie",
+      "fuente": "conciertos.club (por estilo)"
+     }
+    ],
+    "fuentes": [
+     {
+      "nombre": "conciertos.club (buscador semanal)",
+      "id": "cc_buscador",
+      "url": "https://conciertos.club/madrid/conciertos/116103-vetusta-morla/1795118400",
+      "prioridad": 3
+     },
+     {
+      "nombre": "conciertos.club (por estilo)",
+      "id": "cc_estilos",
+      "url": "https://conciertos.club/madrid/conciertos/116103-vetusta-morla/1795118400",
+      "prioridad": 3
+     },
+     {
+      "nombre": "Conciertos por Madrid",
+      "id": "cpm",
+      "url": "https://conciertospormadrid.com/conciertos/vetusta-morla-madrid-19-noviembre-2026/",
+      "prioridad": 3
+     }
+    ],
+    "nacionalidad": "ES",
+    "nacionalidad_fuente": "Wikidata",
+    "imagen_evento": {
+     "url": "https://conciertos.club/doc/a/2023/a_vetustamorla.jpg",
+     "credito": "conciertos.club (buscador semanal)",
+     "enlace": "https://conciertos.club/madrid/conciertos/116103-vetusta-morla/1795118400"
+    },
+    "categorias": [
+     "pop e indie"
+    ]
+   },
+   "ficha": {
+    "nombre": "Vetusta Morla",
+    "fecha": "2026-09-29",
+    "wikipedia": {
+     "encontrado": true,
+     "url": "https://es.wikipedia.org/wiki/Vetusta_Morla",
+     "generos": [
+      "Rock alternativo",
+      "Indie rock",
+      "Indie pop",
+      "Pop rock"
+     ],
+     "wikidata": "Q780823",
+     "origen": "Tres Cantos, (, Madrid, ), España, España",
+     "pais": "ES",
+     "imagen": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f1/Vetusta_Morla_2.jpg/250px-Vetusta_Morla_2.jpg",
+     "imagen_pagina": "https://es.wikipedia.org/wiki/Archivo:Vetusta_Morla_2.jpg",
+     "idioma": "es"
+    },
+    "wikidata": {
+     "encontrado": true,
+     "id": "Q780823",
+     "ids": {
+      "discogs": "1508009",
+      "musicbrainz": "b185451a-9edd-46df-8046-1db7e9594f5a"
+     },
+     "pais": "ES",
+     "imagen_commons": "Goyas 2024 - Vetusta Morla.jpg"
+    },
+    "discogs": {
+     "encontrado": true,
+     "id": 1508009,
+     "nombre": "Vetusta Morla",
+     "url": "https://www.discogs.com/artist/1508009-Vetusta-Morla",
+     "generos": [
+      "Rock",
+      "Pop"
+     ],
+     "estilos": [
+      "Indie Rock",
+      "Alternative Rock",
+      "Pop Rock"
+     ],
+     "discos_analizados": 8,
+     "pais": null,
+     "imagen": "https://i.discogs.com/VyuE7kbYWBaSnIPCnYVd0Eptar3kDG6C-ArRNDcesac/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTE1MDgw/MDktMTY2MjIyMDY2/NC00Nzg0LmpwZWc.jpeg",
+     "identificado_por": "identificador de Discogs en Wikidata",
+     "perfil": "* Pucho (vocals)"
+    }
+   },
+   "debe": [
+    "pop e indie"
+   ],
+   "no_debe": [
+    "fuera de foco"
+   ]
+  },
+  {
+   "artista": "Sr. Chinarro",
+   "concierto": {
+    "id": "5519c2389aae",
+    "fecha": "2026-10-01",
+    "artista": "Sr. Chinarro",
+    "estilo_fuente": [
+     {
+      "estilo": "Pop / Rock",
+      "fuente": "Madrid en Vivo (asociación de salas)"
+     },
+     {
+      "estilo": "Pop-rock/Indie",
+      "fuente": "conciertos.club (buscador semanal)"
+     },
+     {
+      "estilo": "Pop-rock/Indie",
+      "fuente": "conciertos.club (por estilo)"
+     },
+     {
+      "estilo": "Pop-rock/Indie",
+      "fuente": "conciertos.club (portada Madrid)"
+     }
+    ],
+    "fuentes": [
+     {
+      "nombre": "Madrid en Vivo (asociación de salas)",
+      "id": "madridenvivo",
+      "url": "https://madridenvivo.com/?post_type=evento&p=793137",
+      "prioridad": 3
+     },
+     {
+      "nombre": "conciertos.club (buscador semanal)",
+      "id": "cc_buscador",
+      "url": "https://conciertos.club/madrid/conciertos/121177-sr-chinarro",
+      "prioridad": 3
+     },
+     {
+      "nombre": "conciertos.club (por estilo)",
+      "id": "cc_estilos",
+      "url": "https://conciertos.club/madrid/conciertos/121177-sr-chinarro",
+      "prioridad": 3
+     },
+     {
+      "nombre": "conciertos.club (portada Madrid)",
+      "id": "cc_portada",
+      "url": "https://conciertos.club/madrid/conciertos/121177-sr-chinarro",
+      "prioridad": 3
+     }
+    ],
+    "nacionalidad": "ES",
+    "nacionalidad_fuente": "Wikipedia",
+    "imagen_evento": {
+     "url": "https://madridenvivo.com/wp-content/uploads/2026/09/MADRID.01.10.2026-scaled.jpg",
+     "credito": "Madrid en Vivo (asociación de salas)",
+     "enlace": "https://madridenvivo.com/?post_type=evento&p=793137"
+    },
+    "categorias": [
+     "pop e indie",
+     "rock y metal"
+    ]
+   },
+   "ficha": {
+    "nombre": "Sr. Chinarro",
+    "fecha": "2026-09-29",
+    "wikipedia": {
+     "encontrado": true,
+     "url": "https://es.wikipedia.org/wiki/Sr._Chinarro",
+     "generos": [
+      "Indie pop",
+      "pop rock"
+     ],
+     "origen": "Sevilla, (Andalucía),, España",
+     "pais": "ES",
+     "imagen": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/78/Sr_Chinarro.jpg/250px-Sr_Chinarro.jpg",
+     "imagen_pagina": "https://es.wikipedia.org/wiki/Archivo:Sr_Chinarro.jpg",
+     "idioma": "es"
+    },
+    "discogs": {
+     "encontrado": true,
+     "id": 323038,
+     "nombre": "Sr. Chinarro",
+     "url": "https://www.discogs.com/artist/323038-Sr-Chinarro",
+     "generos": [
+      "Rock",
+      "Pop"
+     ],
+     "estilos": [
+      "Indie Rock"
+     ],
+     "discos_analizados": 21,
+     "pais": null,
+     "imagen": "https://i.discogs.com/bxz-qFvdf8wRt3UY7a_jAhwnmFh0lgSS0UpweVeyCAw/rs:fit/g:sm/q:90/h:190/w:207/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTMyMzAz/OC0xMTYxMjU3MDk0/LmpwZWc.jpeg",
+     "perfil": ""
+    }
+   },
+   "debe": [
+    "pop e indie"
+   ],
+   "no_debe": [
+    "fuera de foco"
+   ]
+  },
+  {
+   "artista": "Arde Bogotá",
+   "concierto": {
+    "id": "a6c4cbb1b5b3",
+    "fecha": "2026-11-26",
+    "artista": "Arde Bogotá",
+    "estilo_fuente": [
+     {
+      "estilo": "Pop-rock/Indie",
+      "fuente": "conciertos.club (buscador semanal)"
+     },
+     {
+      "estilo": "Pop-rock/Indie",
+      "fuente": "conciertos.club (por estilo)"
+     }
+    ],
+    "fuentes": [
+     {
+      "nombre": "La Riviera (web oficial)",
+      "id": "riviera",
+      "url": "https://salariviera.com/event/arde-bogota-entradas-en-taquilla-riviera-23-09-26-a-las-1700-horas/",
+      "prioridad": 1
+     },
+     {
+      "nombre": "conciertos.club (buscador semanal)",
+      "id": "cc_buscador",
+      "url": "https://conciertos.club/madrid/conciertos/127638-hervideros-arde-bogota/1795723200",
+      "prioridad": 3
+     },
+     {
+      "nombre": "conciertos.club (por estilo)",
+      "id": "cc_estilos",
+      "url": "https://conciertos.club/madrid/conciertos/127638-hervideros-arde-bogota/1795723200",
+      "prioridad": 3
+     },
+     {
+      "nombre": "Conciertos por Madrid",
+      "id": "cpm",
+      "url": "https://conciertospormadrid.com/conciertos/arde-bogota-madrid-2026/",
+      "prioridad": 3
+     }
+    ],
+    "nacionalidad": "ES",
+    "nacionalidad_fuente": "Discogs",
+    "imagen_evento": {
+     "url": "https://doc.conciertos.club/doc/c/2026/poster-1790017597.jpg",
+     "credito": "conciertos.club (buscador semanal)",
+     "enlace": "https://conciertos.club/madrid/conciertos/127638-hervideros-arde-bogota/1795723200"
+    },
+    "categorias": [
+     "pop e indie"
+    ]
+   },
+   "ficha": {
+    "nombre": "Arde Bogotá",
+    "fecha": "2026-09-29",
+    "wikipedia": {
+     "encontrado": false,
+     "motivo": "es: redirige a otra página; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+    },
+    "discogs": {
+     "encontrado": true,
+     "id": 9305266,
+     "nombre": "Arde Bogotá",
+     "url": "https://www.discogs.com/artist/9305266-Arde-Bogotá",
+     "generos": [
+      "Rock"
+     ],
+     "estilos": [
+      "Indie Rock"
+     ],
+     "discos_analizados": 2,
+     "pais": "ES",
+     "imagen": "https://i.discogs.com/hAlOasgWUYhFOtNi_kvab7kWmmD7i8MayHVfwqbv8sQ/rs:fit/g:sm/q:90/h:400/w:400/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTkzMDUy/NjYtMTYyMTUxODI5/MS0yMzc2LmpwZWc.jpeg",
+     "identificado_por": "única coincidencia exacta del nombre en Discogs",
+     "perfil": "Spanish indie rock group from Cartagena (Murcia), active since 2017"
+    }
+   },
+   "debe": [
+    "pop e indie"
+   ],
+   "no_debe": [
+    "fuera de foco"
+   ]
+  },
+  {
+   "artista": "Hombres G",
+   "concierto": {
+    "id": "8521ae9efb64",
+    "fecha": "2026-12-11",
+    "artista": "Hombres G",
+    "estilo_fuente": [
+     {
+      "estilo": "Pop-rock/Indie",
+      "fuente": "conciertos.club (buscador semanal)"
+     },
+     {
+      "estilo": "Pop-rock/Indie",
+      "fuente": "conciertos.club (por estilo)"
+     },
+     {
+      "estilo": "Pop Rock",
+      "fuente": "La Ganzúa"
+     },
+     {
+      "estilo": "latin, rock, pop",
+      "fuente": "Songkick Madrid"
+     }
+    ],
+    "fuentes": [
+     {
+      "nombre": "conciertos.club (buscador semanal)",
+      "id": "cc_buscador",
+      "url": "https://conciertos.club/madrid/conciertos/109891-hombres-g",
+      "prioridad": 3
+     },
+     {
+      "nombre": "conciertos.club (por estilo)",
+      "id": "cc_estilos",
+      "url": "https://conciertos.club/madrid/conciertos/109891-hombres-g",
+      "prioridad": 3
+     },
+     {
+      "nombre": "La Ganzúa",
+      "id": "laganzua",
+      "url": "https://www.laganzua.net/conciertos/hombres-g-segunda-fecha-madrid-madrid-1015377",
+      "prioridad": 3
+     },
+     {
+      "nombre": "Songkick Madrid",
+      "id": "songkick",
+      "url": "https://www.songkick.com/concerts/42912995-hombres-g-at-movistar-arena",
+      "prioridad": 3
+     },
+     {
+      "nombre": "Conciertos por Madrid",
+      "id": "cpm",
+      "url": "https://conciertospormadrid.com/conciertos/hombres-g-madrid-11-diciembre-2026/",
+      "prioridad": 3
+     }
+    ],
+    "nacionalidad": "ES",
+    "nacionalidad_fuente": "Wikidata",
+    "imagen_evento": {
+     "url": "https://conciertos.club/doc/c/2025/c_hombresg2026.jpg",
+     "credito": "conciertos.club (buscador semanal)",
+     "enlace": "https://conciertos.club/madrid/conciertos/109891-hombres-g"
+    },
+    "categorias": [
+     "pop e indie",
+     "rock y metal",
+     "fuera de foco"
+    ]
+   },
+   "ficha": {
+    "nombre": "Hombres G",
+    "fecha": "2026-09-29",
+    "wikipedia": {
+     "encontrado": true,
+     "url": "https://es.wikipedia.org/wiki/Hombres_G",
+     "generos": [
+      "Rock en español",
+      "Pop rock",
+      "New wave",
+      "Pop psicodélico",
+      "Dance punk",
+      "Funk rock"
+     ],
+     "wikidata": "Q3772826",
+     "origen": "Madrid, ,, España",
+     "pais": "ES",
+     "imagen": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/11/Hombres_G_en_el_estudio_cantando.jpg/250px-Hombres_G_en_el_estudio_cantando.jpg",
+     "imagen_pagina": "https://es.wikipedia.org/wiki/Archivo:Hombres_G_en_el_estudio_cantando.jpg",
+     "idioma": "es"
+    },
+    "wikidata": {
+     "encontrado": true,
+     "id": "Q3772826",
+     "ids": {
+      "discogs": "651012",
+      "spotify": "60uh2KYYSCqAgJNxcU4DA0",
+      "musicbrainz": "8b1628a7-130a-4faf-96d8-2418bd9043c2"
+     },
+     "pais": "ES",
+     "imagen_commons": "Hombres G en el estudio cantando.jpg"
+    },
+    "discogs": {
+     "encontrado": true,
+     "id": 651012,
+     "nombre": "Hombres G",
+     "url": "https://www.discogs.com/artist/651012-Hombres-G",
+     "generos": [
+      "Pop",
+      "Rock"
+     ],
+     "estilos": [
+      "Pop Rock"
+     ],
+     "discos_analizados": 25,
+     "pais": null,
+     "imagen": "https://i.discogs.com/IodDkELRUpd_f2kN2Qhd_7VChm7wo82aERyGj7fa5H4/rs:fit/g:sm/q:90/h:357/w:504/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTY1MTAx/Mi0xNTE1OTk3ODAw/LTIwMzguanBlZw.jpeg",
+     "identificado_por": "identificador de Discogs en Wikidata",
+     "perfil": "Spanish pop rock band, formed in Spain in 1983. They are widely considered one of Spain's most prominent pop groups of the 1980s and early 1990s"
+    }
+   },
+   "debe": [
+    "pop e indie"
+   ],
+   "no_debe": [
+    "fuera de foco"
+   ]
+  },
+  {
+   "artista": "Blood Red Shoes",
+   "concierto": {
+    "id": "6fb078b530e2",
+    "fecha": "2026-10-01",
+    "artista": "Blood Red Shoes",
+    "estilo_fuente": [
+     {
+      "estilo": "Pop / Rock",
+      "fuente": "Madrid en Vivo (asociación de salas)"
+     },
+     {
+      "estilo": "Post-Punk",
+      "fuente": "conciertos.club (buscador semanal)"
+     },
+     {
+      "estilo": "Post-Punk",
+      "fuente": "conciertos.club (por estilo)"
+     },
+     {
+      "estilo": "Indie Rock, Post Punk",
+      "fuente": "La Ganzúa"
+     },
+     {
+      "estilo": "rock, electronic, indie_alternative",
+      "fuente": "Songkick Madrid"
+     },
+     {
+      "estilo": "Post-Punk",
+      "fuente": "conciertos.club (portada Madrid)"
+     }
+    ],
+    "fuentes": [
+     {
+      "nombre": "Moby Dick Club (web oficial)",
+      "id": "mobydick",
+      "url": "https://www.mobydickclub.com/",
+      "prioridad": 1
+     },
+     {
+      "nombre": "Madrid en Vivo (asociación de salas)",
+      "id": "madridenvivo",
+      "url": "https://madridenvivo.com/?post_type=evento&p=796103",
+      "prioridad": 3
+     },
+     {
+      "nombre": "conciertos.club (buscador semanal)",
+      "id": "cc_buscador",
+      "url": "https://conciertos.club/madrid/conciertos/126463-blood-red-shoes",
+      "prioridad": 3
+     },
+     {
+      "nombre": "conciertos.club (por estilo)",
+      "id": "cc_estilos",
+      "url": "https://conciertos.club/madrid/conciertos/126463-blood-red-shoes",
+      "prioridad": 3
+     },
+     {
+      "nombre": "La Ganzúa",
+      "id": "laganzua",
+      "url": "https://www.laganzua.net/conciertos/blood-red-shoes-madrid-1015503",
+      "prioridad": 3
+     },
+     {
+      "nombre": "Songkick Madrid",
+      "id": "songkick",
+      "url": "https://www.songkick.com/concerts/43115188-blood-red-shoes-at-moby-dick-club",
+      "prioridad": 3
+     },
+     {
+      "nombre": "Rock for Everyone (agenda mensual Madrid)",
+      "id": "rockforeveryone",
+      "url": "https://rockforeveryone.es/agenda-de-conciertos-heavy-en-madrid-en-octubre-de-2026/",
+      "prioridad": 3
+     },
+     {
+      "nombre": "Conciertos por Madrid",
+      "id": "cpm",
+      "url": "https://conciertospormadrid.com/conciertos/blood-red-shoes-madrid-2026/",
+      "prioridad": 3
+     },
+     {
+      "nombre": "conciertos.club (portada Madrid)",
+      "id": "cc_portada",
+      "url": "https://conciertos.club/madrid/conciertos/126463-blood-red-shoes",
+      "prioridad": 3
+     },
+     {
+      "nombre": "Blog de Ticketmaster (agenda rock)",
+      "id": "tm_blog",
+      "url": "https://blog.ticketmaster.es/post/agenda-rock-2026-38621/",
+      "prioridad": 3
+     },
+     {
+      "nombre": "MariskalRock (guía)",
+      "id": "mariskal",
+      "url": "https://mariskalrock.com/guia-de-conciertos/",
+      "prioridad": 4
+     },
+     {
+      "nombre": "Rock and Blog",
+      "id": "rockandblog",
+      "url": "https://rockandblog.net/agenda-conciertos-rock/#45e81409831b77407fbc22afc09f0d78",
+      "prioridad": 4
+     }
+    ],
+    "nacionalidad": "GB",
+    "nacionalidad_fuente": "Wikipedia",
+    "imagen_evento": {
+     "url": "https://madridenvivo.com/wp-content/uploads/2022/08/fondo-privado.jpg",
+     "credito": "Madrid en Vivo (asociación de salas)",
+     "enlace": "https://madridenvivo.com/?post_type=evento&p=796103"
+    },
+    "categorias": [
+     "pop e indie",
+     "rock y metal",
+     "punk y garage",
+     "fuera de foco"
+    ]
+   },
+   "ficha": {
+    "nombre": "Blood Red Shoes",
+    "fecha": "2026-09-29",
+    "wikipedia": {
+     "encontrado": true,
+     "url": "https://es.wikipedia.org/wiki/Blood_Red_Shoes",
+     "generos": [
+      "Indie rock",
+      "Punk rock",
+      "Post-punk",
+      "Noise pop",
+      "Stoner rock",
+      "Shoegazing"
+     ],
+     "origen": "Brighton, ,, Inglaterra, ,, GBR, Reino Unido",
+     "pais": "GB",
+     "imagen": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b9/Blood_Red_Shoes.jpg/250px-Blood_Red_Shoes.jpg",
+     "imagen_pagina": "https://es.wikipedia.org/wiki/Archivo:Blood_Red_Shoes.jpg",
+     "idioma": "es"
+    },
+    "discogs": {
+     "encontrado": true,
+     "id": 534920,
+     "nombre": "Blood Red Shoes",
+     "url": "https://www.discogs.com/artist/534920-Blood-Red-Shoes",
+     "generos": [
+      "Rock"
+     ],
+     "estilos": [
+      "Indie Rock",
+      "Alternative Rock"
+     ],
+     "discos_analizados": 25,
+     "pais": null,
+     "imagen": "https://i.discogs.com/uXQlT5R4Yw3-G7glUukJQAnH1ZLyJSDCXF9YtRc_Sk0/rs:fit/g:sm/q:90/h:350/w:350/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTUzNDky/MC0xNjI0MDI3NzA2/LTIxNTYuanBlZw.jpeg",
+     "perfil": "British indie rock duo founded in 2004 in Brighton"
+    }
+   },
+   "debe": [
+    "pop e indie"
+   ],
+   "no_debe": [
+    "fuera de foco"
+   ]
+  },
+  {
+   "artista": "Shakira",
+   "concierto": {
+    "id": "f4cea4f9dac2",
+    "fecha": "2026-10-02",
+    "artista": "Shakira",
+    "estilo_fuente": [
+     {
+      "estilo": "Pop Latino",
+      "fuente": "conciertos.club (buscador semanal)"
+     },
+     {
+      "estilo": "Pop Rock, Latina",
+      "fuente": "La Ganzúa"
+     },
+     {
+      "estilo": "latin, pop, rock",
+      "fuente": "Songkick Madrid"
+     },
+     {
+      "estilo": "Pop Latino",
+      "fuente": "conciertos.club (portada Madrid)"
+     }
+    ],
+    "fuentes": [
+     {
+      "nombre": "conciertos.club (buscador semanal)",
+      "id": "cc_buscador",
+      "url": "https://conciertos.club/madrid/conciertos/116336-shakira",
+      "prioridad": 3
+     },
+     {
+      "nombre": "La Ganzúa",
+      "id": "laganzua",
+      "url": "https://www.laganzua.net/conciertos/shakira-septima-fecha-madrid-madrid-1015560",
+      "prioridad": 3
+     },
+     {
+      "nombre": "Songkick Madrid",
+      "id": "songkick",
+      "url": "https://www.songkick.com/concerts/43129992-shakira-at-iberdrola-music",
+      "prioridad": 3
+     },
+     {
+      "nombre": "Conciertos por Madrid",
+      "id": "cpm",
+      "url": "https://conciertospormadrid.com/conciertos/shakira-madrid-2-octubre-2026/",
+      "prioridad": 3
+     },
+     {
+      "nombre": "conciertos.club (portada Madrid)",
+      "id": "cc_portada",
+      "url": "https://conciertos.club/madrid/conciertos/116336-shakira",
+      "prioridad": 3
+     }
+    ],
+    "nacionalidad": "CO",
+    "nacionalidad_fuente": "Wikipedia",
+    "imagen_evento": {
+     "url": "https://conciertos.club/doc/a/2026/a_shakira_madrid.jpg",
+     "credito": "conciertos.club (buscador semanal)",
+     "enlace": "https://conciertos.club/madrid/conciertos/116336-shakira"
+    },
+    "categorias": [
+     "pop e indie",
+     "fuera de foco",
+     "rock y metal"
+    ]
+   },
+   "ficha": {
+    "nombre": "Shakira",
+    "fecha": "2026-09-29",
+    "wikipedia": {
+     "encontrado": true,
+     "url": "https://en.wikipedia.org/wiki/Shakira",
+     "generos": [
+      "Latin",
+      "pop",
+      "dance",
+      "rock"
+     ],
+     "origen": "Bogotá, , Colombia",
+     "pais": "CO",
+     "imagen": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b8/2023-11-16_Gala_de_los_Latin_Grammy%2C_03_%28cropped%2902.jpg/250px-2023-11-16_Gala_de_los_Latin_Grammy%2C_03_%28cropped%2902.jpg",
+     "imagen_pagina": "https://en.wikipedia.org/wiki/File:2023-11-16_Gala_de_los_Latin_Grammy,_03_(cropped)02.jpg",
+     "idioma": "en"
+    },
+    "discogs": {
+     "encontrado": false,
+     "motivo": "9 artistas homónimos"
+    },
+    "lastfm": {
+     "encontrado": true,
+     "nombre": "Shakira",
+     "etiquetas": [
+      "pop",
+      "latin",
+      "female vocalists",
+      "spanish"
+     ],
+     "estilos": [],
+     "generos": [
+      "Pop",
+      "Latin"
+     ],
+     "url": "https://www.last.fm/music/Shakira",
+     "identificado_por": "coincidencia por nombre"
+    }
+   },
+   "debe": [
+    "fuera de foco"
+   ],
+   "no_debe": [
+    "pop e indie",
+    "rock y metal"
+   ]
+  },
+  {
+   "artista": "Tini",
+   "concierto": {
+    "id": "9cd1afa7be2b",
+    "fecha": "2027-01-26",
+    "artista": "Tini",
+    "estilo_fuente": [
+     {
+      "estilo": "Pop",
+      "fuente": "conciertos.club (buscador semanal)"
+     },
+     {
+      "estilo": "Pop",
+      "fuente": "conciertos.club (por estilo)"
+     },
+     {
+      "estilo": "pop",
+      "fuente": "Songkick Madrid"
+     }
+    ],
+    "fuentes": [
+     {
+      "nombre": "conciertos.club (buscador semanal)",
+      "id": "cc_buscador",
+      "url": "https://conciertos.club/madrid/conciertos/116678-tini",
+      "prioridad": 3
+     },
+     {
+      "nombre": "conciertos.club (por estilo)",
+      "id": "cc_estilos",
+      "url": "https://conciertos.club/madrid/conciertos/116678-tini",
+      "prioridad": 3
+     },
+     {
+      "nombre": "Songkick Madrid",
+      "id": "songkick",
+      "url": "https://www.songkick.com/concerts/43073404-tini-at-movistar-arena",
+      "prioridad": 3
+     }
+    ],
+    "nacionalidad": null,
+    "nacionalidad_fuente": null,
+    "imagen_evento": {
+     "url": "https://conciertos.club/doc/a/2020/a_tini.jpg",
+     "credito": "conciertos.club (buscador semanal)",
+     "enlace": "https://conciertos.club/madrid/conciertos/116678-tini"
+    },
+    "categorias": [
+     "pop e indie"
+    ]
+   },
+   "ficha": {
+    "nombre": "Tini",
+    "fecha": "2026-09-29",
+    "wikipedia": {
+     "encontrado": false,
+     "motivo": "es: no es la página de un grupo o músico; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+    },
+    "discogs": {
+     "encontrado": false,
+     "motivo": "9 artistas homónimos"
+    },
+    "lastfm": {
+     "encontrado": true,
+     "nombre": "Tini",
+     "etiquetas": [
+      "argentina",
+      "deep house",
+      "pop",
+      "latin pop"
+     ],
+     "estilos": [],
+     "generos": [
+      "Pop"
+     ],
+     "url": "https://www.last.fm/music/Tini",
+     "identificado_por": "coincidencia por nombre"
+    }
+   },
+   "debe": [
+    "fuera de foco"
+   ],
+   "no_debe": [
+    "pop e indie"
+   ]
+  },
+  {
+   "artista": "Mónica Naranjo",
+   "concierto": {
+    "id": "50f3db230546",
+    "fecha": "2026-12-07",
+    "artista": "Mónica Naranjo",
+    "estilo_fuente": [
+     {
+      "estilo": "Pop",
+      "fuente": "conciertos.club (buscador semanal)"
+     },
+     {
+      "estilo": "Pop",
+      "fuente": "conciertos.club (por estilo)"
+     },
+     {
+      "estilo": "Pop Rock",
+      "fuente": "La Ganzúa"
+     }
+    ],
+    "fuentes": [
+     {
+      "nombre": "conciertos.club (buscador semanal)",
+      "id": "cc_buscador",
+      "url": "https://conciertos.club/madrid/conciertos/121664-monica-naranjo",
+      "prioridad": 3
+     },
+     {
+      "nombre": "conciertos.club (por estilo)",
+      "id": "cc_estilos",
+      "url": "https://conciertos.club/madrid/conciertos/121664-monica-naranjo",
+      "prioridad": 3
+     },
+     {
+      "nombre": "La Ganzúa",
+      "id": "laganzua",
+      "url": "https://www.laganzua.net/conciertos/monica-naranjo-madrid-1017338",
+      "prioridad": 3
+     },
+     {
+      "nombre": "Songkick Madrid",
+      "id": "songkick",
+      "url": "https://www.songkick.com/concerts/43234676-monica-naranjo-at-movistar-arena",
+      "prioridad": 3
+     },
+     {
+      "nombre": "Conciertos por Madrid",
+      "id": "cpm",
+      "url": "https://conciertospormadrid.com/conciertos/monica-naranjo-madrid-2026-movistar-arena/",
+      "prioridad": 3
+     }
+    ],
+    "nacionalidad": "ES",
+    "nacionalidad_fuente": "MusicBrainz (coincidencia por nombre)",
+    "imagen_evento": {
+     "url": "https://doc.conciertos.club/doc/c/2026/monicanara_20261207.jpg",
+     "credito": "conciertos.club (buscador semanal)",
+     "enlace": "https://conciertos.club/madrid/conciertos/121664-monica-naranjo"
+    },
+    "categorias": [
+     "pop e indie",
+     "rock y metal"
+    ]
+   },
+   "ficha": {
+    "nombre": "Mónica Naranjo",
+    "fecha": "2026-09-29",
+    "wikipedia": {
+     "encontrado": false,
+     "motivo": "es: redirige a otra página; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+    },
+    "discogs": {
+     "encontrado": false,
+     "motivo": "2 artistas homónimos"
+    },
+    "lastfm": {
+     "encontrado": true,
+     "nombre": "Mónica Naranjo",
+     "etiquetas": [
+      "pop",
+      "spanish",
+      "female vocalists",
+      "latin"
+     ],
+     "estilos": [],
+     "generos": [
+      "Pop",
+      "Latin"
+     ],
+     "url": "https://www.last.fm/music/M%C3%B3nica%2BNaranjo",
+     "identificado_por": "coincidencia por nombre"
+    }
+   },
+   "debe": [
+    "fuera de foco"
+   ],
+   "no_debe": [
+    "pop e indie"
+   ]
+  },
+  {
+   "artista": "Yandel",
+   "concierto": {
+    "id": "de08dc76d0e0",
+    "fecha": "2026-11-09",
+    "artista": "Yandel",
+    "estilo_fuente": [
+     {
+      "estilo": "Urbana, Reggaetón",
+      "fuente": "La Ganzúa"
+     },
+     {
+      "estilo": "latin, pop, hip_hop",
+      "fuente": "Songkick Madrid"
+     }
+    ],
+    "fuentes": [
+     {
+      "nombre": "La Ganzúa",
+      "id": "laganzua",
+      "url": "https://www.laganzua.net/conciertos/yandel-tercera-fecha-madrid-1016955",
+      "prioridad": 3
+     },
+     {
+      "nombre": "Songkick Madrid",
+      "id": "songkick",
+      "url": "https://www.songkick.com/concerts/43393918-yandel-at-movistar-arena",
+      "prioridad": 3
+     }
+    ],
+    "nacionalidad": "US",
+    "nacionalidad_fuente": "Wikidata",
+    "imagen_evento": {
+     "url": "https://www.laganzua.net/conciertosbdnew/fotosnoticias/yandel-2026.jpg",
+     "credito": "La Ganzúa",
+     "enlace": "https://www.laganzua.net/conciertos/yandel-tercera-fecha-madrid-1016955"
+    },
+    "categorias": [
+     "fuera de foco",
+     "pop e indie"
+    ]
+   },
+   "ficha": {
+    "nombre": "Yandel",
+    "fecha": "2026-09-29",
+    "wikipedia": {
+     "encontrado": true,
+     "url": "https://en.wikipedia.org/wiki/Yandel",
+     "generos": [
+      "Reggaeton",
+      "urban pop",
+      "Latin hip-hop",
+      "dancehall"
+     ],
+     "wikidata": "Q955032",
+     "origen": "Llandel Veguilla Malavé, (, 1977-01-14, ), January 14, 1977, (age, 49), Cayey, Puerto Rico",
+     "pais": "PR",
+     "imagen": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/17/Yandel_-_Como_Si_El_Mundo_Se_Fuera_A_Acabar_-_Behind_to_Scenes.png/250px-Yandel_-_Como_Si_El_Mundo_Se_Fuera_A_Acabar_-_Behind_to_Scenes.png",
+     "imagen_pagina": "https://en.wikipedia.org/wiki/File:Yandel_-_Como_Si_El_Mundo_Se_Fuera_A_Acabar_-_Behind_to_Scenes.png",
+     "idioma": "en"
+    },
+    "wikidata": {
+     "encontrado": true,
+     "id": "Q955032",
+     "ids": {
+      "discogs": "547341",
+      "allmusic": "mn0000686922",
+      "spotify": "0eHQ9o50hj6ZDNBt6Ys1sD",
+      "musicbrainz": "3d291f48-a8be-4113-baad-c73618a7897d",
+      "lastfm": "Yandel"
+     },
+     "pais": "US",
+     "imagen_commons": "Yandel - Como Si El Mundo Se Fuera A Acabar - Behind to Scenes.png"
+    },
+    "discogs": {
+     "encontrado": true,
+     "id": 547341,
+     "nombre": "Yandel",
+     "url": "https://www.discogs.com/artist/547341-Yandel",
+     "generos": [
+      "Latin",
+      "Electronic",
+      "Pop"
+     ],
+     "estilos": [
+      "Reggaeton",
+      "Synth-pop"
+     ],
+     "discos_analizados": 5,
+     "pais": null,
+     "imagen": "https://i.discogs.com/yRey6n-rbZilDK-9KIifeHn46Hw-rfBnJtuYZZZ5GjM/rs:fit/g:sm/q:90/h:337/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTU0NzM0/MS0xNTA1MDg5NTA3/LTQxMzQuanBlZw.jpeg",
+     "identificado_por": "identificador de Discogs en Wikidata",
+     "perfil": "Vocalist, born January 14, 1977 in Cayey, Puerto Rico"
+    }
+   },
+   "debe": [
+    "fuera de foco"
+   ],
+   "no_debe": [
+    "pop e indie"
+   ]
+  },
+  {
+   "artista": "Julio Iglesias Jr",
+   "concierto": {
+    "id": "d7d395a78446",
+    "fecha": "2026-11-16",
+    "artista": "Julio Iglesias Jr",
+    "estilo_fuente": [
+     {
+      "estilo": "Pop",
+      "fuente": "conciertos.club (buscador semanal)"
+     },
+     {
+      "estilo": "Pop",
+      "fuente": "conciertos.club (por estilo)"
+     }
+    ],
+    "fuentes": [
+     {
+      "nombre": "conciertos.club (buscador semanal)",
+      "id": "cc_buscador",
+      "url": "https://conciertos.club/madrid/conciertos/122726-julio-iglesias-jr",
+      "prioridad": 3
+     },
+     {
+      "nombre": "conciertos.club (por estilo)",
+      "id": "cc_estilos",
+      "url": "https://conciertos.club/madrid/conciertos/122726-julio-iglesias-jr",
+      "prioridad": 3
+     },
+     {
+      "nombre": "Songkick Madrid",
+      "id": "songkick",
+      "url": "https://www.songkick.com/concerts/42921890-julio-iglesias-jr-at-nuevo-teatro-alcala",
+      "prioridad": 3
+     }
+    ],
+    "nacionalidad": "ES",
+    "nacionalidad_fuente": "Wikipedia",
+    "imagen_evento": {
+     "url": "https://conciertos.club/doc/a/2026/a_julioiglesiasjr.jpg",
+     "credito": "conciertos.club (buscador semanal)",
+     "enlace": "https://conciertos.club/madrid/conciertos/122726-julio-iglesias-jr"
+    },
+    "categorias": [
+     "pop e indie"
+    ]
+   },
+   "ficha": {
+    "nombre": "Julio Iglesias Jr",
+    "fecha": "2026-09-29",
+    "wikipedia": {
+     "encontrado": true,
+     "url": "https://en.wikipedia.org/wiki/Julio_Iglesias_Jr.",
+     "generos": [
+      "Pop"
+     ],
+     "wikidata": "Q1832274",
+     "origen": "Julio José Iglesias Preysler, (, 1973-02-25, ), 25 February 1973, (age, 53), Madrid, , Spain",
+     "pais": "ES",
+     "imagen": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7e/Latin_Lovers_M6_Live_2014_%28cropped1%29.JPG/250px-Latin_Lovers_M6_Live_2014_%28cropped1%29.JPG",
+     "imagen_pagina": "https://en.wikipedia.org/wiki/File:Latin_Lovers_M6_Live_2014_(cropped1).JPG",
+     "idioma": "en"
+    },
+    "wikidata": {
+     "encontrado": true,
+     "id": "Q1832274",
+     "ids": {
+      "discogs": "916330",
+      "musicbrainz": "bbb184be-eef6-4977-9c02-2df0bf7eade6"
+     },
+     "pais": null,
+     "imagen_commons": "Latin Lovers M6 Live 2014 (cropped1).JPG"
+    },
+    "discogs": {
+     "encontrado": true,
+     "id": 916330,
+     "nombre": "Julio Iglesias, Jr.",
+     "url": "https://www.discogs.com/artist/916330-Julio-Iglesias-Jr",
+     "generos": [
+      "Pop",
+      "Latin",
+      "Electronic"
+     ],
+     "estilos": [
+      "Ballad",
+      "House",
+      "Synth-pop"
+     ],
+     "discos_analizados": 4,
+     "pais": null,
+     "imagen": "https://i.discogs.com/FnQZcxWt8CBKo0AjwUBrTCiBA3vzwEB82tkWUR6Z9IM/rs:fit/g:sm/q:90/h:364/w:350/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTkxNjMz/MC0xNTkzMDQzMzcx/LTEzNDcuanBlZw.jpeg",
+     "identificado_por": "identificador de Discogs en Wikidata",
+     "perfil": "Julio Iglesias, Jr. (born February 25, 1973) is a Spanish singer. Son of well-known singer, [a67331] and brother of [a87582]"
+    }
+   },
+   "debe": [
+    "fuera de foco"
+   ],
+   "no_debe": [
+    "pop e indie"
+   ]
+  },
+  {
+   "artista": "Los Miserables",
+   "concierto": {
+    "id": "72955b2b6a9d",
+    "fecha": "2026-09-29",
+    "artista": "Los Miserables",
+    "estilo_fuente": [
+     {
+      "estilo": "Musicales/Teatro musical",
+      "fuente": "conciertos.club (buscador semanal)"
+     }
+    ],
+    "fuentes": [
+     {
+      "nombre": "conciertos.club (buscador semanal)",
+      "id": "cc_buscador",
+      "url": "https://conciertos.club/madrid/conciertos/97132-los-miserables/1790704800",
+      "prioridad": 3
+     }
+    ],
+    "nacionalidad": null,
+    "nacionalidad_fuente": null,
+    "imagen_evento": {
+     "url": "https://conciertos.club/doc/c/2025/c_losmiserables.jpg",
+     "credito": "conciertos.club (buscador semanal)",
+     "enlace": "https://conciertos.club/madrid/conciertos/97132-los-miserables/1790704800"
+    },
+    "categorias": [
+     "fuera de foco"
+    ]
+   },
+   "ficha": {
+    "nombre": "Los Miserables",
+    "fecha": "2026-09-29",
+    "wikipedia": {
+     "encontrado": true,
+     "url": "https://es.wikipedia.org/wiki/Los_Miserables_(banda)",
+     "generos": [
+      "Punk rock",
+      "hardcore",
+      "rock alternativo"
+     ],
+     "wikidata": "Q2889942",
+     "origen": "Santiago, ,, Chile",
+     "pais": "CL",
+     "imagen": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a7/A-1080469-1353362526-1015.jpg/250px-A-1080469-1353362526-1015.jpg",
+     "imagen_pagina": "https://es.wikipedia.org/wiki/Archivo:A-1080469-1353362526-1015.jpg",
+     "idioma": "es"
+    },
+    "wikidata": {
+     "encontrado": true,
+     "id": "Q2889942",
+     "ids": {
+      "discogs": "1080469",
+      "allmusic": "mn0001528296",
+      "musicbrainz": "95f51e48-0d99-4d9a-b5b0-c83ce1a3f7af",
+      "lastfm": "Los+Miserables"
+     },
+     "pais": "CL",
+     "imagen_commons": null
+    },
+    "discogs": {
+     "encontrado": true,
+     "id": 1080469,
+     "nombre": "Los Miserables",
+     "url": "https://www.discogs.com/artist/1080469-Los-Miserables",
+     "generos": [
+      "Rock"
+     ],
+     "estilos": [
+      "Punk",
+      "Ska"
+     ],
+     "discos_analizados": 16,
+     "pais": null,
+     "imagen": "https://i.discogs.com/waEF1nw4UVjX_mf71pf9lU_nnnNczfSsmYzc6y7TrxU/rs:fit/g:sm/q:90/h:226/w:318/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTEwODA0/NjktMTcxNzA1MjQ1/NS00MzYxLmpwZWc.jpeg",
+     "identificado_por": "identificador de Discogs en Wikidata",
+     "perfil": "Chilean punk-rock band from Santiago"
+    }
+   },
+   "debe": [
+    "fuera de foco"
+   ],
+   "no_debe": [
+    "punk y garage",
+    "rock y metal"
+   ]
+  },
+  {
+   "artista": "ETERNAL",
+   "concierto": {
+    "id": "6cf329ac6bea",
+    "fecha": "2026-09-30",
+    "artista": "ETERNAL",
+    "estilo_fuente": [],
+    "fuentes": [
+     {
+      "nombre": "Agenda municipal de Alcalá de Henares",
+      "id": "muni_alcala_de_henares",
+      "url": "https://culturalcala.es/item_event/eternal/",
+      "prioridad": 2
+     }
+    ],
+    "nacionalidad": null,
+    "nacionalidad_fuente": null,
+    "imagen_evento": {
+     "url": "https://culturalcala.es/wp-content/uploads/2026/09/ETERNAL-WEB.webp",
+     "credito": "Agenda municipal de Alcalá de Henares",
+     "enlace": "https://culturalcala.es/item_event/eternal/"
+    },
+    "categorias": [
+     "sin clasificar"
+    ]
+   },
+   "ficha": {
+    "nombre": "ETERNAL",
+    "fecha": "2026-09-29",
+    "wikipedia": {
+     "encontrado": false,
+     "motivo": "es: no existe; en: no existe"
+    },
+    "discogs": {
+     "encontrado": false,
+     "motivo": "11 artistas homónimos"
+    },
+    "lastfm": {
+     "encontrado": true,
+     "nombre": "Eternal",
+     "etiquetas": [
+      "doom metal",
+      "rnb",
+      "soul",
+      "90s"
+     ],
+     "estilos": [
+      "Doom Metal"
+     ],
+     "generos": [
+      "Rock",
+      "Funk / Soul"
+     ],
+     "url": "https://www.last.fm/music/Eternal",
+     "identificado_por": "coincidencia por nombre"
+    }
+   },
+   "debe": [],
+   "no_debe": [
+    "rock y metal"
+   ]
+  },
+  {
+   "artista": "Zenet",
+   "concierto": {
+    "id": "bfe396d1ca36",
+    "fecha": "2026-09-30",
+    "artista": "Zenet",
+    "estilo_fuente": [
+     {
+      "estilo": "Jazz/Swing",
+      "fuente": "conciertos.club (buscador semanal)"
+     },
+     {
+      "estilo": "Jazz/Swing",
+      "fuente": "conciertos.club (portada Madrid)"
+     }
+    ],
+    "fuentes": [
+     {
+      "nombre": "conciertos.club (buscador semanal)",
+      "id": "cc_buscador",
+      "url": "https://conciertos.club/madrid/conciertos/125678-zenet",
+      "prioridad": 3
+     },
+     {
+      "nombre": "conciertos.club (portada Madrid)",
+      "id": "cc_portada",
+      "url": "https://conciertos.club/madrid/conciertos/125678-zenet",
+      "prioridad": 3
+     }
+    ],
+    "nacionalidad": "ES",
+    "nacionalidad_fuente": "Wikidata",
+    "imagen_evento": {
+     "url": "https://doc.conciertos.club/doc/c/2026/qOsm8F1KFIJD20260930.jpg",
+     "credito": "conciertos.club (buscador semanal)",
+     "enlace": "https://conciertos.club/madrid/conciertos/125678-zenet"
+    },
+    "categorias": [
+     "fuera de foco"
+    ]
+   },
+   "ficha": {
+    "nombre": "Zenet",
+    "fecha": "2026-09-29",
+    "wikipedia": {
+     "encontrado": true,
+     "url": "https://es.wikipedia.org/wiki/Zenet",
+     "generos": [],
+     "wikidata": "Q91013752",
+     "origen": "2 de octubre de 1967, (58 años), Málaga, (, España, )",
+     "pais": "ES",
+     "imagen": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/80/ZENET.jpg/250px-ZENET.jpg",
+     "imagen_pagina": "https://es.wikipedia.org/wiki/Archivo:ZENET.jpg",
+     "idioma": "es"
+    },
+    "wikidata": {
+     "encontrado": true,
+     "id": "Q91013752",
+     "ids": {},
+     "pais": "ES",
+     "imagen_commons": "ZENET.jpg"
+    },
+    "discogs": {
+     "encontrado": true,
+     "id": 2606669,
+     "nombre": "Zenet",
+     "url": "https://www.discogs.com/artist/2606669-Zenet",
+     "generos": [
+      "Latin",
+      "Pop",
+      "Jazz"
+     ],
+     "estilos": [
+      "Lounge"
+     ],
+     "discos_analizados": 7,
+     "pais": "ES",
+     "imagen": "https://i.discogs.com/-jYrqrIEZauyQBLf2Wx2HB0jRL00Pkhdoym5Q1IJ4_k/rs:fit/g:sm/q:90/h:411/w:537/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTI2MDY2/NjktMTQyMDM3NzI3/My04NjU2LmpwZWc.jpeg",
+     "identificado_por": "única coincidencia exacta del nombre en Discogs",
+     "perfil": "Antonio Mellado Escalona, known as [b]Zenet[/b], is a Spanish Easy Listening singer from Malaga"
+    }
+   },
+   "debe": [
+    "fuera de foco"
+   ],
+   "no_debe": [
+    "rock y metal"
+   ]
+  },
+  {
+   "artista": "Sabiwa",
+   "concierto": {
+    "id": "489c0a97f207",
+    "fecha": "2026-10-03",
+    "artista": "Sabiwa",
+    "estilo_fuente": [
+     {
+      "estilo": "Electrónica, Ambient, Trip Hop",
+      "fuente": "La Ganzúa"
+     }
+    ],
+    "fuentes": [
+     {
+      "nombre": "La Ganzúa",
+      "id": "laganzua",
+      "url": "https://www.laganzua.net/conciertos/sabiwa-scintii-sonia-calico-madrid-1017186",
+      "prioridad": 3
+     }
+    ],
+    "nacionalidad": null,
+    "nacionalidad_fuente": null,
+    "imagen_evento": null,
+    "categorias": [
+     "fuera de foco"
+    ]
+   },
+   "ficha": {
+    "nombre": "Sabiwa",
+    "fecha": "2026-09-29",
+    "wikipedia": {
+     "encontrado": false,
+     "motivo": "es: no existe; en: no existe"
+    },
+    "discogs": {
+     "encontrado": true,
+     "id": 6482830,
+     "nombre": "Sabiwa",
+     "url": "https://www.discogs.com/artist/6482830-Sabiwa",
+     "generos": [
+      "Electronic"
+     ],
+     "estilos": [
+      "Experimental",
+      "Ambient",
+      "Abstract",
+      "Glitch",
+      "Tribal"
+     ],
+     "discos_analizados": 2,
+     "pais": null,
+     "imagen": "https://i.discogs.com/EYwXb0C1vcH5rbHziFXdKhPI5xKQ5gTHO18lyr_VLoY/rs:fit/g:sm/q:90/h:495/w:495/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTY0ODI4/MzAtMTUyNjMxMDc0/MC03ODkzLmpwZWc.jpeg",
+     "identificado_por": "única coincidencia exacta del nombre en Discogs",
+     "perfil": "Music producer / Audio visual / Artwork artist from Taipei, Taiwan"
+    }
+   },
+   "debe": [
+    "fuera de foco"
+   ],
+   "no_debe": [
+    "rock y metal"
+   ]
+  },
+  {
+   "artista": "Martin Kohlstedt",
+   "concierto": {
+    "id": "a432046ef7fb",
+    "fecha": "2027-01-15",
+    "artista": "Martin Kohlstedt",
+    "estilo_fuente": [],
+    "fuentes": [
+     {
+      "nombre": "Songkick Madrid",
+      "id": "songkick",
+      "url": "https://www.songkick.com/concerts/43312607-martin-kohlstedt-at-teatro-san-pol",
+      "prioridad": 3
+     }
+    ],
+    "nacionalidad": "DE",
+    "nacionalidad_fuente": "MusicBrainz (coincidencia por nombre)",
+    "imagen_evento": {
+     "url": "https://images.sk-static.com/images/media/profile_images/artists/7300134/huge_avatar",
+     "credito": "Songkick Madrid",
+     "enlace": "https://www.songkick.com/concerts/43312607-martin-kohlstedt-at-teatro-san-pol"
+    },
+    "categorias": [
+     "sin clasificar"
+    ]
+   },
+   "ficha": {
+    "nombre": "Martin Kohlstedt",
+    "fecha": "2026-09-29",
+    "wikipedia": {
+     "encontrado": false,
+     "motivo": "es: no existe; en: no es la página de un grupo o músico; en_(band): no existe"
+    },
+    "discogs": {
+     "encontrado": true,
+     "id": 3281532,
+     "nombre": "Martin Kohlstedt",
+     "url": "https://www.discogs.com/artist/3281532-Martin-Kohlstedt",
+     "generos": [
+      "Classical",
+      "Electronic"
+     ],
+     "estilos": [
+      "Neo-Classical",
+      "Contemporary",
+      "Instrumental"
+     ],
+     "discos_analizados": 8,
+     "pais": null,
+     "imagen": "https://i.discogs.com/oOdh26Pi9gCh2Z3-XwagCIu9_U46l7CxIzRpTbdrmNw/rs:fit/g:sm/q:90/h:748/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTMyODE1/MzItMTUxMDg0Nzg2/OS02MjE1LmpwZWc.jpeg",
+     "identificado_por": "única coincidencia exacta del nombre en Discogs",
+     "perfil": "Martin Kohlstedt is a German musician, pianist, composer and producer who works in his own compositions with acoustic pianos as well as electronic elements, beats and the Fender Rhodes"
+    }
+   },
+   "debe": [],
+   "no_debe": [
+    "rock y metal"
+   ]
+  },
+  {
+   "artista": "Blaya",
+   "concierto": {
+    "id": "d2675b99ebff",
+    "fecha": "2026-10-07",
+    "artista": "Blaya",
+    "estilo_fuente": [
+     {
+      "estilo": "Pop / Rock",
+      "fuente": "Madrid en Vivo (asociación de salas)"
+     }
+    ],
+    "fuentes": [
+     {
+      "nombre": "Madrid en Vivo (asociación de salas)",
+      "id": "madridenvivo",
+      "url": "https://madridenvivo.com/?post_type=evento&p=794494",
+      "prioridad": 3
+     },
+     {
+      "nombre": "Songkick Madrid",
+      "id": "songkick",
+      "url": "https://www.songkick.com/concerts/43354476-blaya-at-cafe-berlin-old-location",
+      "prioridad": 3
+     }
+    ],
+    "nacionalidad": "BR",
+    "nacionalidad_fuente": "Wikipedia",
+    "imagen_evento": {
+     "url": "https://madridenvivo.com/wp-content/uploads/2022/08/fondo-privado.jpg",
+     "credito": "Madrid en Vivo (asociación de salas)",
+     "enlace": "https://madridenvivo.com/?post_type=evento&p=794494"
+    },
+    "categorias": [
+     "pop e indie",
+     "rock y metal"
+    ]
+   },
+   "ficha": {
+    "nombre": "Blaya",
+    "fecha": "2026-09-29",
+    "wikipedia": {
+     "encontrado": true,
+     "url": "https://es.wikipedia.org/wiki/Blaya",
+     "generos": [
+      "Kuduro",
+      "funk carioca",
+      "R&B",
+      "bass music",
+      "pop",
+      "trap"
+     ],
+     "origen": "27 de mayo de 1987, (39 años), Fortaleza, (, Brasil, )",
+     "pais": "BR",
+     "imagen": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f1/Nashdoeswork--6.jpg/250px-Nashdoeswork--6.jpg",
+     "imagen_pagina": "https://es.wikipedia.org/wiki/Archivo:Nashdoeswork--6.jpg",
+     "idioma": "es"
+    },
+    "discogs": {
+     "encontrado": true,
+     "id": 1996426,
+     "nombre": "Blaya",
+     "url": "https://www.discogs.com/artist/1996426-Blaya",
+     "generos": [
+      "Electronic"
+     ],
+     "estilos": [
+      "UK Garage"
+     ],
+     "discos_analizados": 1,
+     "pais": null,
+     "imagen": "https://i.discogs.com/cWxuf2cPou8hi-6qffJP15j1bv2ze7rheLar8dm57SQ/rs:fit/g:sm/q:90/h:399/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTE5OTY0/MjYtMTUwNTkyMjQ2/MS01MTc2LmpwZWc.jpeg",
+     "perfil": ""
+    }
+   },
+   "debe": [],
+   "no_debe": [
+    "blues"
+   ]
+  },
+  {
+   "artista": "Efdemin",
+   "concierto": {
+    "id": "c8f8e7234a00",
+    "fecha": "2026-11-14",
+    "artista": "Efdemin",
+    "estilo_fuente": [
+     {
+      "estilo": "rock",
+      "fuente": "Songkick Madrid"
+     }
+    ],
+    "fuentes": [
+     {
+      "nombre": "Songkick Madrid",
+      "id": "songkick",
+      "url": "https://www.songkick.com/festivals/3801625-code-23-aniversario-la-trilogia-segunda-parte/id/43376110-code-23-aniversario-la-triloga-segunda-parte-2026",
+      "prioridad": 3
+     }
+    ],
+    "nacionalidad": "DE",
+    "nacionalidad_fuente": "Discogs",
+    "imagen_evento": {
+     "url": "https://images.sk-static.com/images/media/profile_images/events/43376110/huge_avatar?series_id=3801625",
+     "credito": "Songkick Madrid",
+     "enlace": "https://www.songkick.com/festivals/3801625-code-23-aniversario-la-trilogia-segunda-parte/id/43376110-code-23-aniversario-la-triloga-segunda-parte-2026"
+    },
+    "categorias": [
+     "rock y metal"
+    ]
+   },
+   "ficha": {
+    "nombre": "Efdemin",
+    "fecha": "2026-09-29",
+    "wikipedia": {
+     "encontrado": false,
+     "motivo": "es: no existe; en: no existe"
+    },
+    "discogs": {
+     "encontrado": true,
+     "id": 77593,
+     "nombre": "Efdemin",
+     "url": "https://www.discogs.com/artist/77593-Efdemin",
+     "generos": [
+      "Electronic"
+     ],
+     "estilos": [
+      "Techno",
+      "House",
+      "Deep House",
+      "Minimal"
+     ],
+     "discos_analizados": 14,
+     "pais": "DE",
+     "imagen": "https://i.discogs.com/ZmbdbiKQLGJ-62teYXGolX7fHYeOxTnlyUj6yPq-7nc/rs:fit/g:sm/q:90/h:700/w:531/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTc3NTkz/LTE1MzMyNDY0NTEt/NTY3NC5qcGVn.jpeg",
+     "identificado_por": "única coincidencia exacta del nombre en Discogs",
+     "perfil": "Minimal, deep house and techno producer from Berlin, Germany"
+    }
+   },
+   "debe": [
+    "fuera de foco"
+   ],
+   "no_debe": [
+    "rock y metal"
+   ]
+  },
+  {
+   "artista": "Gonzalo Alhambra",
+   "concierto": {
+    "id": "7ae368dc99d0",
+    "fecha": "2026-10-10",
+    "artista": "Gonzalo Alhambra",
+    "estilo_fuente": [
+     {
+      "estilo": "Pop / Rock",
+      "fuente": "Madrid en Vivo (asociación de salas)"
+     },
+     {
+      "estilo": "Música ligera",
+      "fuente": "conciertos.club (buscador semanal)"
+     },
+     {
+      "estilo": "Flamenco Pop",
+      "fuente": "La Ganzúa"
+     },
+     {
+      "estilo": "Música ligera",
+      "fuente": "conciertos.club (portada Madrid)"
+     }
+    ],
+    "fuentes": [
+     {
+      "nombre": "Madrid en Vivo (asociación de salas)",
+      "id": "madridenvivo",
+      "url": "https://madridenvivo.com/?post_type=evento&p=796167",
+      "prioridad": 3
+     },
+     {
+      "nombre": "conciertos.club (buscador semanal)",
+      "id": "cc_buscador",
+      "url": "https://conciertos.club/madrid/conciertos/115299-gonzalo-alhambra",
+      "prioridad": 3
+     },
+     {
+      "nombre": "La Ganzúa",
+      "id": "laganzua",
+      "url": "https://www.laganzua.net/conciertos/gonzalo-alhambra-madrid-1015098",
+      "prioridad": 3
+     },
+     {
+      "nombre": "Songkick Madrid",
+      "id": "songkick",
+      "url": "https://www.songkick.com/concerts/43045635-gonzalo-alhambra-at-sala-vesta",
+      "prioridad": 3
+     },
+     {
+      "nombre": "conciertos.club (portada Madrid)",
+      "id": "cc_portada",
+      "url": "https://conciertos.club/madrid/conciertos/115299-gonzalo-alhambra",
+      "prioridad": 3
+     }
+    ],
+    "nacionalidad": null,
+    "nacionalidad_fuente": null,
+    "imagen_evento": {
+     "url": "https://madridenvivo.com/wp-content/uploads/2022/08/fondo-privado.jpg",
+     "credito": "Madrid en Vivo (asociación de salas)",
+     "enlace": "https://madridenvivo.com/?post_type=evento&p=796167"
+    },
+    "categorias": [
+     "pop e indie",
+     "rock y metal"
+    ]
+   },
+   "ficha": {
+    "nombre": "Gonzalo Alhambra",
+    "fecha": "2026-09-29",
+    "wikipedia": {
+     "encontrado": false,
+     "motivo": "es: no existe; en: no existe"
+    },
+    "discogs": {
+     "encontrado": false,
+     "motivo": "sin coincidencia exacta"
+    },
+    "lastfm": {
+     "encontrado": true,
+     "nombre": "Gonzalo Alhambra",
+     "etiquetas": [],
+     "estilos": [],
+     "generos": [],
+     "url": "https://www.last.fm/music/Gonzalo%2BAlhambra",
+     "identificado_por": "coincidencia por nombre"
+    }
+   },
+   "debe": [
+    "fuera de foco"
+   ],
+   "no_debe": []
+  },
+  {
+   "artista": "EUROPE",
+   "concierto": {
+    "id": "a6bece4df5f3",
+    "fecha": "2026-10-10",
+    "artista": "EUROPE",
+    "estilo_fuente": [],
+    "fuentes": [
+     {
+      "nombre": "Metalcry",
+      "id": "metalcry",
+      "url": "https://metalcry.com/vuelve-europe-gira-historica-por-el-40o-aniversario-de-the-final-countdown/",
+      "prioridad": 3
+     }
+    ],
+    "nacionalidad": null,
+    "nacionalidad_fuente": null,
+    "imagen_evento": null,
+    "categorias": [
+     "sin clasificar"
+    ]
+   },
+   "ficha": {
+    "nombre": "EUROPE",
+    "fecha": "2026-09-29",
+    "wikipedia": {
+     "encontrado": false,
+     "motivo": "es: no existe; en: no es la página de un grupo o músico; en_(band): no existe"
+    },
+    "discogs": {
+     "encontrado": false,
+     "motivo": "5 artistas homónimos"
+    },
+    "lastfm": {
+     "encontrado": true,
+     "nombre": "Europe",
+     "etiquetas": [
+      "hard rock",
+      "rock",
+      "classic rock",
+      "80s"
+     ],
+     "estilos": [
+      "Hard Rock",
+      "Classic Rock"
+     ],
+     "generos": [
+      "Rock"
+     ],
+     "url": "https://www.last.fm/music/Europe",
+     "identificado_por": "coincidencia por nombre"
+    }
+   },
+   "debe": [
+    "rock y metal"
+   ],
+   "no_debe": []
+  },
+  {
+   "artista": "FROZEN SOUL",
+   "concierto": {
+    "id": "187349487bbf",
+    "fecha": "2026-10-23",
+    "artista": "FROZEN SOUL",
+    "estilo_fuente": [],
+    "fuentes": [
+     {
+      "nombre": "MariskalRock (guía)",
+      "id": "mariskal",
+      "url": "https://mariskalrock.com/guia-de-conciertos/",
+      "prioridad": 4
+     }
+    ],
+    "nacionalidad": null,
+    "nacionalidad_fuente": null,
+    "imagen_evento": null,
+    "categorias": [
+     "sin clasificar"
+    ]
+   },
+   "ficha": {
+    "nombre": "FROZEN SOUL",
+    "fecha": "2026-09-29",
+    "wikipedia": {
+     "encontrado": false,
+     "motivo": "es: no existe; en: no existe"
+    },
+    "discogs": {
+     "encontrado": false,
+     "motivo": "2 artistas homónimos"
+    },
+    "lastfm": {
+     "encontrado": true,
+     "nombre": "Frozen Soul",
+     "etiquetas": [
+      "death metal",
+      "old school death metal"
+     ],
+     "estilos": [
+      "Death Metal"
+     ],
+     "generos": [
+      "Rock"
+     ],
+     "url": "https://www.last.fm/music/Frozen%2BSoul",
+     "identificado_por": "coincidencia por nombre"
+    }
+   },
+   "debe": [
+    "rock y metal"
+   ],
+   "no_debe": []
+  },
+  {
+   "artista": "FLESHCRAWL",
+   "concierto": {
+    "id": "a8df894865a5",
+    "fecha": "2026-12-05",
+    "artista": "FLESHCRAWL",
+    "estilo_fuente": [],
+    "fuentes": [
+     {
+      "nombre": "Hellpress (agenda)",
+      "id": "hellpress",
+      "url": "https://www.hellpress.com/noticias/fleshcrawl-celebra-25-anos-death-metal-conciertos-espana/",
+      "prioridad": 3
+     }
+    ],
+    "nacionalidad": "DE",
+    "nacionalidad_fuente": "MusicBrainz (coincidencia por nombre)",
+    "imagen_evento": null,
+    "categorias": [
+     "sin clasificar"
+    ]
+   },
+   "ficha": {
+    "nombre": "FLESHCRAWL",
+    "fecha": "2026-09-29",
+    "wikipedia": {
+     "encontrado": false,
+     "motivo": "es: no existe; en: no existe"
+    },
+    "discogs": {
+     "encontrado": false,
+     "motivo": "3 artistas homónimos"
+    },
+    "lastfm": {
+     "encontrado": true,
+     "nombre": "Fleshcrawl",
+     "etiquetas": [
+      "death metal",
+      "Brutal Death Metal"
+     ],
+     "estilos": [
+      "Death Metal"
+     ],
+     "generos": [
+      "Rock"
+     ],
+     "url": "https://www.last.fm/music/Fleshcrawl",
+     "identificado_por": "coincidencia por nombre"
+    }
+   },
+   "debe": [
+    "rock y metal"
+   ],
+   "no_debe": []
+  },
+  {
+   "artista": "Placebo",
+   "concierto": {
+    "id": "ea639e7e4c74",
+    "fecha": "2026-10-01",
+    "artista": "Placebo",
+    "estilo_fuente": [
+     {
+      "estilo": "Pop-rock/Indie",
+      "fuente": "conciertos.club (buscador semanal)"
+     },
+     {
+      "estilo": "Pop-rock/Indie",
+      "fuente": "conciertos.club (por estilo)"
+     },
+     {
+      "estilo": "Indie Rock, Indie Pop",
+      "fuente": "La Ganzúa"
+     },
+     {
+      "estilo": "indie_alternative, rock",
+      "fuente": "Songkick Madrid"
+     },
+     {
+      "estilo": "Pop-rock/Indie",
+      "fuente": "conciertos.club (portada Madrid)"
+     }
+    ],
+    "fuentes": [
+     {
+      "nombre": "Movistar Arena (web oficial)",
+      "id": "movistar",
+      "url": "https://www.movistararena.es/api/calendar/ics.php?id=2916&lang=es",
+      "prioridad": 1
+     },
+     {
+      "nombre": "conciertos.club (buscador semanal)",
+      "id": "cc_buscador",
+      "url": "https://conciertos.club/madrid/conciertos/116341-placebo",
+      "prioridad": 3
+     },
+     {
+      "nombre": "conciertos.club (por estilo)",
+      "id": "cc_estilos",
+      "url": "https://conciertos.club/madrid/conciertos/116341-placebo",
+      "prioridad": 3
+     },
+     {
+      "nombre": "La Ganzúa",
+      "id": "laganzua",
+      "url": "https://www.laganzua.net/conciertos/placebo-madrid-1015390",
+      "prioridad": 3
+     },
+     {
+      "nombre": "La Ganzúa",
+      "id": "laganzua",
+      "url": "https://www.laganzua.net/conciertos/placebo-paquetes-vip-madrid-1015395",
+      "prioridad": 3
+     },
+     {
+      "nombre": "Songkick Madrid",
+      "id": "songkick",
+      "url": "https://www.songkick.com/concerts/43109241-placebo-at-movistar-arena",
+      "prioridad": 3
+     },
+     {
+      "nombre": "Conciertos por Madrid",
+      "id": "cpm",
+      "url": "https://conciertospormadrid.com/conciertos/placebo-madrid-2026/",
+      "prioridad": 3
+     },
+     {
+      "nombre": "conciertos.club (portada Madrid)",
+      "id": "cc_portada",
+      "url": "https://conciertos.club/madrid/conciertos/116341-placebo",
+      "prioridad": 3
+     },
+     {
+      "nombre": "MariskalRock (guía)",
+      "id": "mariskal",
+      "url": "https://mariskalrock.com/guia-de-conciertos/",
+      "prioridad": 4
+     },
+     {
+      "nombre": "Rock and Blog",
+      "id": "rockandblog",
+      "url": "https://rockandblog.net/agenda-conciertos-rock/#8164d892d7aea8f1875df07f4d82ffd0",
+      "prioridad": 4
+     }
+    ],
+    "nacionalidad": "GB",
+    "nacionalidad_fuente": "Wikipedia",
+    "imagen_evento": {
+     "url": "https://conciertos.club/doc/a/2017/a_placebo.jpg",
+     "credito": "conciertos.club (buscador semanal)",
+     "enlace": "https://conciertos.club/madrid/conciertos/116341-placebo"
+    },
+    "categorias": [
+     "pop e indie",
+     "rock y metal"
+    ]
+   },
+   "ficha": {
+    "nombre": "Placebo",
+    "fecha": "2026-09-29",
+    "wikipedia": {
+     "encontrado": true,
+     "url": "https://es.wikipedia.org/wiki/Placebo_(banda)",
+     "generos": [
+      "Rock alternativo",
+      "Pop punk",
+      "Rock industrial",
+      "Glam rock",
+      "Britpop",
+      "Rock gótico"
+     ],
+     "origen": "Londres, Reino Unido, Reino Unido, Reino Unido",
+     "pais": "GB",
+     "imagen": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a9/PlaceboBologna2009.jpg/250px-PlaceboBologna2009.jpg",
+     "imagen_pagina": "https://es.wikipedia.org/wiki/Archivo:PlaceboBologna2009.jpg",
+     "idioma": "es"
+    },
+    "discogs": {
+     "encontrado": false,
+     "motivo": "7 artistas homónimos"
+    }
+   },
+   "debe": [
+    "rock y metal"
+   ],
+   "no_debe": [
+    "fuera de foco"
+   ]
+  },
+  {
+   "artista": "Gloryhammer",
+   "concierto": {
+    "id": "71fb9957b98a",
+    "fecha": "2026-10-18",
+    "artista": "Gloryhammer",
+    "estilo_fuente": [
+     {
+      "estilo": "Metal/Rock duro",
+      "fuente": "conciertos.club (buscador semanal)"
+     },
+     {
+      "estilo": "Metal/Rock duro",
+      "fuente": "conciertos.club (por estilo)"
+     },
+     {
+      "estilo": "Metal/Rock duro",
+      "fuente": "conciertos.club (portada Madrid)"
+     },
+     {
+      "estilo": "metal",
+      "fuente": "Songkick Madrid"
+     }
+    ],
+    "fuentes": [
+     {
+      "nombre": "Sala But (web oficial)",
+      "id": "salabut",
+      "url": "https://www.salabut.es/agenda-conciertos/",
+      "prioridad": 1
+     },
+     {
+      "nombre": "Get Rock (promotora)",
+      "id": "getrock",
+      "url": "https://www.getrock.es/conciertos/gloryhammer/madrid-2026",
+      "prioridad": 2
+     },
+     {
+      "nombre": "conciertos.club (buscador semanal)",
+      "id": "cc_buscador",
+      "url": "https://conciertos.club/madrid/conciertos/125212-gloryhammer-majestica-arion",
+      "prioridad": 3
+     },
+     {
+      "nombre": "conciertos.club (por estilo)",
+      "id": "cc_estilos",
+      "url": "https://conciertos.club/madrid/conciertos/125212-gloryhammer-majestica-arion",
+      "prioridad": 3
+     },
+     {
+      "nombre": "Rock for Everyone (agenda mensual Madrid)",
+      "id": "rockforeveryone",
+      "url": "https://rockforeveryone.es/agenda-de-conciertos-heavy-en-madrid-en-octubre-de-2026/",
+      "prioridad": 3
+     },
+     {
+      "nombre": "conciertos.club (portada Madrid)",
+      "id": "cc_portada",
+      "url": "https://conciertos.club/madrid/conciertos/125212-gloryhammer-majestica-arion",
+      "prioridad": 3
+     },
+     {
+      "nombre": "Metal Legion",
+      "id": "metallegion",
+      "url": "https://metallegion.es/conciertos/",
+      "prioridad": 3
+     },
+     {
+      "nombre": "Hellpress (agenda)",
+      "id": "hellpress",
+      "url": "https://www.hellpress.com/noticias/gloryhammer-gira-conciertos-2026/",
+      "prioridad": 3
+     },
+     {
+      "nombre": "Rockgle",
+      "id": "rockgle",
+      "url": "https://www.rockgle.es/p/agenda-de-conciertos_07.html",
+      "prioridad": 4
+     },
+     {
+      "nombre": "MariskalRock (guía)",
+      "id": "mariskal",
+      "url": "https://mariskalrock.com/guia-de-conciertos/",
+      "prioridad": 4
+     },
+     {
+      "nombre": "Songkick Madrid",
+      "id": "songkick",
+      "url": "https://www.songkick.com/concerts/43014430-gloryhammer-at-mon-madrid",
+      "prioridad": 3
+     },
+     {
+      "nombre": "Rock and Blog",
+      "id": "rockandblog",
+      "url": "https://rockandblog.net/agenda-conciertos-rock/#83451e7ef8755c2a8f464093c808f529",
+      "prioridad": 4
+     }
+    ],
+    "nacionalidad": "GB",
+    "nacionalidad_fuente": "Wikidata",
+    "imagen_evento": {
+     "url": "https://conciertos.club/doc/lp/l_SalaLaPaqui_Mad_pp.jpg",
+     "credito": "conciertos.club (buscador semanal)",
+     "enlace": "https://conciertos.club/madrid/conciertos/125212-gloryhammer-majestica-arion"
+    },
+    "categorias": [
+     "rock y metal"
+    ]
+   },
+   "ficha": {
+    "nombre": "Gloryhammer",
+    "fecha": "2026-09-29",
+    "wikipedia": {
+     "encontrado": true,
+     "url": "https://es.wikipedia.org/wiki/Gloryhammer",
+     "generos": [
+      "Power metal sinfónico"
+     ],
+     "wikidata": "Q11838832",
+     "origen": "Reino Unido, Suiza",
+     "pais": "CH",
+     "imagen": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b5/Gloryhammer_John_Smith_2019_%284%29.jpg/330px-Gloryhammer_John_Smith_2019_%284%29.jpg",
+     "imagen_pagina": "https://es.wikipedia.org/wiki/Archivo:Gloryhammer_John_Smith_2019_(4).jpg",
+     "idioma": "es"
+    },
+    "wikidata": {
+     "encontrado": true,
+     "id": "Q11838832",
+     "ids": {
+      "discogs": "3184969",
+      "allmusic": "mn0003079098",
+      "spotify": "7dkEByOe0oHqc54qU4hwzV",
+      "musicbrainz": "85997032-ff48-4383-b86a-a920d4230a0b",
+      "lastfm": "Gloryhammer"
+     },
+     "pais": "GB",
+     "imagen_commons": "20160806 Wacken Wacken Open Air Gloryhammer 0136.jpg"
+    },
+    "discogs": {
+     "encontrado": true,
+     "id": 3184969,
+     "nombre": "Gloryhammer",
+     "url": "https://www.discogs.com/artist/3184969-Gloryhammer",
+     "generos": [
+      "Rock"
+     ],
+     "estilos": [
+      "Power Metal",
+      "Symphonic Metal",
+      "Folk Rock",
+      "Heavy Metal"
+     ],
+     "discos_analizados": 5,
+     "pais": null,
+     "imagen": "https://i.discogs.com/WGg-fK4CaYd9OIv8AUBV-9xiAVDO2rYdDJZfDuGc4Us/rs:fit/g:sm/q:90/h:375/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTMxODQ5/NjktMTY3OTEyOTEx/Ny00NTA3LmpwZWc.jpeg",
+     "identificado_por": "identificador de Discogs en Wikidata",
+     "perfil": "Scottish symphonic power metal band formed in 2010 by [a1079425] ([a1050916])"
+    }
+   },
+   "debe": [
+    "rock y metal"
+   ],
+   "no_debe": [
+    "americana/country/folk"
+   ]
+  },
+  {
+   "artista": "Kamelot",
+   "concierto": {
+    "id": "8f0cbbec6fd8",
+    "fecha": "2026-11-22",
+    "artista": "Kamelot",
+    "estilo_fuente": [
+     {
+      "estilo": "Metal/Rock duro",
+      "fuente": "conciertos.club (buscador semanal)"
+     },
+     {
+      "estilo": "Metal/Rock duro",
+      "fuente": "conciertos.club (por estilo)"
+     },
+     {
+      "estilo": "Hard Rock, Metal",
+      "fuente": "La Ganzúa"
+     },
+     {
+      "estilo": "metal",
+      "fuente": "Songkick Madrid"
+     }
+    ],
+    "fuentes": [
+     {
+      "nombre": "La Riviera (web oficial)",
+      "id": "riviera",
+      "url": "https://www.ticketmaster.es/event/kamelot--exit-eden--temperance-entradas/2050409112",
+      "prioridad": 1
+     },
+     {
+      "nombre": "conciertos.club (buscador semanal)",
+      "id": "cc_buscador",
+      "url": "https://conciertos.club/madrid/conciertos/124510-kamelot",
+      "prioridad": 3
+     },
+     {
+      "nombre": "conciertos.club (por estilo)",
+      "id": "cc_estilos",
+      "url": "https://conciertos.club/madrid/conciertos/124510-kamelot",
+      "prioridad": 3
+     },
+     {
+      "nombre": "La Ganzúa",
+      "id": "laganzua",
+      "url": "https://www.laganzua.net/conciertos/kamelot-exit-eden-temperance-madrid-1015242",
+      "prioridad": 3
+     },
+     {
+      "nombre": "Songkick Madrid",
+      "id": "songkick",
+      "url": "https://www.songkick.com/concerts/43066708-kamelot-at-la-riviera",
+      "prioridad": 3
+     },
+     {
+      "nombre": "Conciertos por Madrid",
+      "id": "cpm",
+      "url": "https://conciertospormadrid.com/conciertos/kamelot-madrid-2026/",
+      "prioridad": 3
+     },
+     {
+      "nombre": "TodoHeavyMetal",
+      "id": "thm",
+      "url": "https://www.todoheavymetal.com/index.php/agenda/amp",
+      "prioridad": 3
+     },
+     {
+      "nombre": "Metalcry",
+      "id": "metalcry",
+      "url": "https://metalcry.com/kamelot-desembarcara-en-barcelona-y-madrid-con-su-ambicioso-dark-asylum-world-tour/",
+      "prioridad": 3
+     },
+     {
+      "nombre": "Metal Symphony (agenda de temporada)",
+      "id": "metalsymphony",
+      "url": "https://www.metalsymphony.com/conciertos-de-rock-y-metal-en-espana-otono-2026/",
+      "prioridad": 3
+     },
+     {
+      "nombre": "Metal Legion",
+      "id": "metallegion",
+      "url": "https://metallegion.es/conciertos/",
+      "prioridad": 3
+     },
+     {
+      "nombre": "Hellpress (agenda)",
+      "id": "hellpress",
+      "url": "https://www.hellpress.com/noticias/kamelot-conciertos-barcelona-madrid-exit-eden-temperance/",
+      "prioridad": 3
+     },
+     {
+      "nombre": "MariskalRock (guía)",
+      "id": "mariskal",
+      "url": "https://mariskalrock.com/guia-de-conciertos/",
+      "prioridad": 4
+     },
+     {
+      "nombre": "Rock and Blog",
+      "id": "rockandblog",
+      "url": "https://rockandblog.net/agenda-conciertos-rock/#30d454f09b771b9f65e3eaf6e00fa7bd",
+      "prioridad": 4
+     }
+    ],
+    "nacionalidad": "US",
+    "nacionalidad_fuente": "Wikidata",
+    "imagen_evento": {
+     "url": "https://doc.conciertos.club/doc/c/2026/kamelot_20261122.jpg",
+     "credito": "conciertos.club (buscador semanal)",
+     "enlace": "https://conciertos.club/madrid/conciertos/124510-kamelot"
+    },
+    "categorias": [
+     "rock y metal"
+    ]
+   },
+   "ficha": {
+    "nombre": "Kamelot",
+    "fecha": "2026-09-29",
+    "wikipedia": {
+     "encontrado": true,
+     "url": "https://es.wikipedia.org/wiki/Kamelot",
+     "generos": [
+      "Power metal",
+      "Metal progresivo",
+      "Metal sinfónico",
+      "Heavy metal"
+     ],
+     "wikidata": "Q457368",
+     "origen": "Tampa, ,, Florida, ,, Estados Unidos",
+     "pais": "US",
+     "imagen": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9d/Kamelot_en_el_festival_Leyendas_del_Rock_%282018%29.jpg/250px-Kamelot_en_el_festival_Leyendas_del_Rock_%282018%29.jpg",
+     "imagen_pagina": "https://es.wikipedia.org/wiki/Archivo:Kamelot_en_el_festival_Leyendas_del_Rock_(2018).jpg",
+     "idioma": "es"
+    },
+    "wikidata": {
+     "encontrado": true,
+     "id": "Q457368",
+     "ids": {
+      "discogs": "264513",
+      "allmusic": "mn0000299394",
+      "spotify": "7gTbq5nTZGQIUgjEGXQpOS",
+      "musicbrainz": "2449300a-6ca7-45da-8102-22789d256475",
+      "lastfm": "Kamelot"
+     },
+     "pais": "US",
+     "imagen_commons": "Concert of Kamelot in Barcelona, Sala Razzmatazz.jpg"
+    },
+    "discogs": {
+     "encontrado": true,
+     "id": 264513,
+     "nombre": "Kamelot",
+     "url": "https://www.discogs.com/artist/264513-Kamelot",
+     "generos": [
+      "Rock",
+      "Folk, World, & Country"
+     ],
+     "estilos": [
+      "Power Metal",
+      "Progressive Metal",
+      "Symphonic Metal",
+      "Folk",
+      "Country"
+     ],
+     "discos_analizados": 25,
+     "pais": "US",
+     "imagen": "https://i.discogs.com/_7VhSzm4MnqTTs5EY0fQCQzB0bLROm_X549aPgcYpKY/rs:fit/g:sm/q:90/h:750/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTI2NDUx/My0xNjc2Nzk1NDYw/LTYxMjcuanBlZw.jpeg",
+     "identificado_por": "identificador de Discogs en Wikidata",
+     "perfil": "Progressive melodic power metal band from Tampa, Florida (USA)"
+    }
+   },
+   "debe": [
+    "rock y metal"
+   ],
+   "no_debe": [
+    "americana/country/folk"
+   ]
+  },
+  {
+   "artista": "Eluveitie",
+   "concierto": {
+    "id": "494f0585afca",
+    "fecha": "2026-12-01",
+    "artista": "Eluveitie",
+    "estilo_fuente": [
+     {
+      "estilo": "Metal/Rock duro",
+      "fuente": "conciertos.club (buscador semanal)"
+     },
+     {
+      "estilo": "Metal/Rock duro",
+      "fuente": "conciertos.club (por estilo)"
+     }
+    ],
+    "fuentes": [
+     {
+      "nombre": "La Riviera (web oficial)",
+      "id": "riviera",
+      "url": "https://www.resurrectionfest.es/route/eluveitie-tour-2026/",
+      "prioridad": 1
+     },
+     {
+      "nombre": "conciertos.club (buscador semanal)",
+      "id": "cc_buscador",
+      "url": "https://conciertos.club/madrid/conciertos/124506-eluveitie-pain-wolfheart",
+      "prioridad": 3
+     },
+     {
+      "nombre": "conciertos.club (por estilo)",
+      "id": "cc_estilos",
+      "url": "https://conciertos.club/madrid/conciertos/124506-eluveitie-pain-wolfheart",
+      "prioridad": 3
+     },
+     {
+      "nombre": "Metalcry",
+      "id": "metalcry",
+      "url": "https://metalcry.com/eluveitie-regresan-a-madrid-y-barcelona-en-diciembre-de-2026/",
+      "prioridad": 3
+     },
+     {
+      "nombre": "Metal Symphony (agenda de temporada)",
+      "id": "metalsymphony",
+      "url": "https://www.metalsymphony.com/conciertos-de-rock-y-metal-en-espana-otono-2026/",
+      "prioridad": 3
+     },
+     {
+      "nombre": "Metal Legion",
+      "id": "metallegion",
+      "url": "https://metallegion.es/conciertos/",
+      "prioridad": 3
+     },
+     {
+      "nombre": "Hellpress (agenda)",
+      "id": "hellpress",
+      "url": "https://www.hellpress.com/noticias/eluveitie-pain-y-wolfheart-unen-fuerzas-para-2-conciertos-en-espana-ciudades-y-fechas/",
+      "prioridad": 3
+     },
+     {
+      "nombre": "Rockgle",
+      "id": "rockgle",
+      "url": "https://www.rockgle.es/p/agenda-de-conciertos_07.html",
+      "prioridad": 4
+     },
+     {
+      "nombre": "MariskalRock (guía)",
+      "id": "mariskal",
+      "url": "https://mariskalrock.com/guia-de-conciertos/",
+      "prioridad": 4
+     }
+    ],
+    "nacionalidad": "CH",
+    "nacionalidad_fuente": "Wikidata",
+    "imagen_evento": {
+     "url": "https://doc.conciertos.club/doc/c/2026/eluveitie_20261201.jpg",
+     "credito": "conciertos.club (buscador semanal)",
+     "enlace": "https://conciertos.club/madrid/conciertos/124506-eluveitie-pain-wolfheart"
+    },
+    "categorias": [
+     "rock y metal"
+    ]
+   },
+   "ficha": {
+    "nombre": "Eluveitie",
+    "fecha": "2026-09-29",
+    "wikipedia": {
+     "encontrado": true,
+     "url": "https://es.wikipedia.org/wiki/Eluveitie",
+     "generos": [
+      "Folk metal",
+      "Death metal melódico"
+     ],
+     "wikidata": "Q75788",
+     "origen": "Winterthur, ,, Zúrich, ,, Suiza, [, 1, ]",
+     "pais": "CH",
+     "imagen": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9d/Eluveitie%2C_3-Maj%C3%B3wka_2023%2C_056.jpg/330px-Eluveitie%2C_3-Maj%C3%B3wka_2023%2C_056.jpg",
+     "imagen_pagina": "https://es.wikipedia.org/wiki/Archivo:Eluveitie,_3-Majówka_2023,_056.jpg",
+     "idioma": "es"
+    },
+    "wikidata": {
+     "encontrado": true,
+     "id": "Q75788",
+     "ids": {
+      "discogs": "508784",
+      "allmusic": "mn0000329978",
+      "spotify": "5X0N2k3qMnI8kSrGJT3kfT",
+      "musicbrainz": "8000598a-5edb-401c-8e6d-36b167feaf38",
+      "lastfm": "eluveitie"
+     },
+     "pais": "CH",
+     "imagen_commons": "Eluveitie, 3-Majówka 2023, 056.jpg"
+    },
+    "discogs": {
+     "encontrado": true,
+     "id": 508784,
+     "nombre": "Eluveitie",
+     "url": "https://www.discogs.com/artist/508784-Eluveitie",
+     "generos": [
+      "Rock"
+     ],
+     "estilos": [
+      "Folk Metal",
+      "Melodic Death Metal",
+      "Folk Rock",
+      "Viking Metal"
+     ],
+     "discos_analizados": 12,
+     "pais": null,
+     "imagen": "https://i.discogs.com/CBK46Uti_C1MJrnQEnEe7xJaeWHc-NUc0-x7hRtRQHI/rs:fit/g:sm/q:90/h:382/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTUwODc4/NC0xNzM3NjI0NzMy/LTI0MDIuanBlZw.jpeg",
+     "identificado_por": "identificador de Discogs en Wikidata",
+     "perfil": "Eluveitie is a Swiss death metal band. Eluveitie combine traditional Celtic folk music with melodic death metal, influenced by the classic Gothenburg sound"
+    }
+   },
+   "debe": [
+    "rock y metal"
+   ],
+   "no_debe": []
+  },
+  {
+   "artista": "Die Krupps",
+   "concierto": {
+    "id": "0a3b362c03ec",
+    "fecha": "2026-11-14",
+    "artista": "Die Krupps",
+    "estilo_fuente": [
+     {
+      "estilo": "electronic, metal, rock, indie_alternative",
+      "fuente": "Songkick Madrid"
+     }
+    ],
+    "fuentes": [
+     {
+      "nombre": "Songkick Madrid",
+      "id": "songkick",
+      "url": "https://www.songkick.com/festivals/3780056-santuario-fest/id/43158766-santuario-fest-2026",
+      "prioridad": 3
+     }
+    ],
+    "nacionalidad": "DE",
+    "nacionalidad_fuente": "Wikidata",
+    "imagen_evento": {
+     "url": "https://images.sk-static.com/images/media/profile_images/events/43158766/huge_avatar?series_id=3780056",
+     "credito": "Songkick Madrid",
+     "enlace": "https://www.songkick.com/festivals/3780056-santuario-fest/id/43158766-santuario-fest-2026"
+    },
+    "categorias": [
+     "fuera de foco",
+     "rock y metal",
+     "pop e indie"
+    ]
+   },
+   "ficha": {
+    "nombre": "Die Krupps",
+    "fecha": "2026-09-29",
+    "wikipedia": {
+     "encontrado": true,
+     "url": "https://es.wikipedia.org/wiki/Die_Krupps",
+     "generos": [
+      "Música industrial",
+      "EBM",
+      "Metal Industrial",
+      "Rock industrial",
+      "Música experimental",
+      "Groove metal"
+     ],
+     "wikidata": "Q318322",
+     "origen": "Alemania",
+     "pais": "DE",
+     "imagen": "https://upload.wikimedia.org/wikipedia/commons/6/6b/Krupps2.jpg",
+     "imagen_pagina": "https://es.wikipedia.org/wiki/Archivo:Krupps2.jpg",
+     "idioma": "es"
+    },
+    "wikidata": {
+     "encontrado": true,
+     "id": "Q318322",
+     "ids": {
+      "discogs": "36932",
+      "allmusic": "mn0000824122",
+      "musicbrainz": "fc555365-17a2-4820-84e8-400887aa3d6f"
+     },
+     "pais": "DE",
+     "imagen_commons": "20170722 Köln Amphi Die Krupps 0209 Die Krupps.jpg"
+    },
+    "discogs": {
+     "encontrado": true,
+     "id": 36932,
+     "nombre": "Die Krupps",
+     "url": "https://www.discogs.com/artist/36932-Die-Krupps",
+     "generos": [
+      "Electronic",
+      "Rock"
+     ],
+     "estilos": [
+      "Industrial",
+      "Industrial Metal",
+      "Techno",
+      "EBM"
+     ],
+     "discos_analizados": 23,
+     "pais": null,
+     "imagen": "https://i.discogs.com/RKKoVHCgLG836KOHxj49v5pcaSkVfIAh5-rnP-GlwMo/rs:fit/g:sm/q:90/h:597/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTM2OTMy/LTE1NzczNjE2MjQt/Mzc1NS5qcGVn.jpeg",
+     "identificado_por": "identificador de Discogs en Wikidata",
+     "perfil": "A German post punk/industrial/EBM/metal band formed in Düsseldorf in October 1980 by Jürgen Engler and Bernward Malaka who had played together in Germany´s alledged first punk band Male"
+    }
+   },
+   "debe": [
+    "rock y metal"
+   ],
+   "no_debe": []
+  },
+  {
+   "artista": "Michael Monroe",
+   "concierto": {
+    "id": "2c63c5e56edd",
+    "fecha": "2026-10-29",
+    "artista": "Michael Monroe",
+    "estilo_fuente": [
+     {
+      "estilo": "rock, metal",
+      "fuente": "Songkick Madrid"
+     }
+    ],
+    "fuentes": [
+     {
+      "nombre": "Revi Live / Revi Space (web oficial)",
+      "id": "revi",
+      "url": "https://www.madnesslive.es/es/pagina/360-conciertos-de-michael-monroe-en-octubre-de-2026#",
+      "prioridad": 1
+     },
+     {
+      "nombre": "Madness Live (promotora)",
+      "id": "madness",
+      "url": "https://www.madnesslive.es/es/conciertos-en-madrid/1981-comprar-entrada-michael-monroe-madrid.html",
+      "prioridad": 2
+     },
+     {
+      "nombre": "conciertos.club (buscador semanal)",
+      "id": "cc_buscador",
+      "url": "https://conciertos.club/madrid/conciertos/124859-michael-monroe",
+      "prioridad": 3
+     },
+     {
+      "nombre": "Songkick Madrid",
+      "id": "songkick",
+      "url": "https://www.songkick.com/concerts/43159331-michael-monroe-at-revi-live",
+      "prioridad": 3
+     },
+     {
+      "nombre": "Rock for Everyone (agenda mensual Madrid)",
+      "id": "rockforeveryone",
+      "url": "https://rockforeveryone.es/agenda-de-conciertos-heavy-en-madrid-en-octubre-de-2026/",
+      "prioridad": 3
+     },
+     {
+      "nombre": "Conciertos por Madrid",
+      "id": "cpm",
+      "url": "https://conciertospormadrid.com/conciertos/michael-monroe-madrid-2026/",
+      "prioridad": 3
+     },
+     {
+      "nombre": "conciertos.club (portada Madrid)",
+      "id": "cc_portada",
+      "url": "https://conciertos.club/madrid/conciertos/124859-michael-monroe",
+      "prioridad": 3
+     },
+     {
+      "nombre": "Metal Legion",
+      "id": "metallegion",
+      "url": "https://metallegion.es/conciertos/",
+      "prioridad": 3
+     },
+     {
+      "nombre": "Hellpress (agenda)",
+      "id": "hellpress",
+      "url": "https://www.hellpress.com/noticias/michael-monroe-espana-llevara-glam-rock-escenarios-conciertos-octubre/",
+      "prioridad": 3
+     },
+     {
+      "nombre": "MariskalRock (guía)",
+      "id": "mariskal",
+      "url": "https://mariskalrock.com/guia-de-conciertos/",
+      "prioridad": 4
+     },
+     {
+      "nombre": "Rock and Blog",
+      "id": "rockandblog",
+      "url": "https://rockandblog.net/agenda-conciertos-rock/#39b8f721582654655a6999aabe905204",
+      "prioridad": 4
+     }
+    ],
+    "nacionalidad": "FI",
+    "nacionalidad_fuente": "Wikidata",
+    "imagen_evento": {
+     "url": "https://doc.conciertos.club/doc/c/2026/michaelmon_20261029.jpg",
+     "credito": "conciertos.club (buscador semanal)",
+     "enlace": "https://conciertos.club/madrid/conciertos/124859-michael-monroe"
+    },
+    "categorias": [
+     "rock y metal"
+    ]
+   },
+   "ficha": {
+    "nombre": "Michael Monroe",
+    "fecha": "2026-09-29",
+    "wikipedia": {
+     "encontrado": true,
+     "url": "https://es.wikipedia.org/wiki/Michael_Monroe",
+     "generos": [
+      "Glam punk",
+      "Hard rock",
+      "Glam metal",
+      "Punk rock"
+     ],
+     "wikidata": "Q1386535",
+     "origen": "17 de junio de 1962 (64, años), Finlandia, Finlandia, ,, Helsinki",
+     "pais": "FI",
+     "imagen": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d4/MikeMonroe.JPG/250px-MikeMonroe.JPG",
+     "imagen_pagina": "https://es.wikipedia.org/wiki/Archivo:MikeMonroe.JPG",
+     "idioma": "es"
+    },
+    "wikidata": {
+     "encontrado": true,
+     "id": "Q1386535",
+     "ids": {
+      "discogs": "265121",
+      "allmusic": "mn0000462105",
+      "spotify": "5Ul6r5lUSOraWUidNnsILZ",
+      "musicbrainz": "f7e854f4-d845-43e3-8b39-6da632e273e2"
+     },
+     "pais": "FI",
+     "imagen_commons": "Michael Monroe - Ilosaarirock 2011 4.jpg"
+    },
+    "discogs": {
+     "encontrado": true,
+     "id": 265121,
+     "nombre": "Michael Monroe",
+     "url": "https://www.discogs.com/artist/265121-Michael-Monroe",
+     "generos": [
+      "Rock"
+     ],
+     "estilos": [
+      "Hard Rock",
+      "Glam",
+      "Rock & Roll"
+     ],
+     "discos_analizados": 24,
+     "pais": null,
+     "imagen": "https://i.discogs.com/2zgnkVCUfLeQw0ots4AZGinZ2mdnyKbeNfCQmSuVZt4/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTI2NTEy/MS0xNzAzNzY2NTcz/LTY4MTguanBlZw.jpeg",
+     "identificado_por": "identificador de Discogs en Wikidata",
+     "perfil": "Finnish musician, born June 17, 1962"
+    }
+   },
+   "debe": [
+    "rock y metal"
+   ],
+   "no_debe": []
+  },
+  {
+   "artista": "Wucan",
+   "concierto": {
+    "id": "c0e10370145b",
+    "fecha": "2026-10-14",
+    "artista": "Wucan",
+    "estilo_fuente": [
+     {
+      "estilo": "Rock-Metal",
+      "fuente": "RockVille (web oficial)"
+     },
+     {
+      "estilo": "Pop / Rock",
+      "fuente": "Madrid en Vivo (asociación de salas)"
+     },
+     {
+      "estilo": "Metal/Rock duro",
+      "fuente": "conciertos.club (buscador semanal)"
+     },
+     {
+      "estilo": "Metal/Rock duro",
+      "fuente": "conciertos.club (por estilo)"
+     },
+     {
+      "estilo": "metal, folk_blues, rock",
+      "fuente": "Songkick Madrid"
+     },
+     {
+      "estilo": "Metal/Rock duro",
+      "fuente": "conciertos.club (portada Madrid)"
+     }
+    ],
+    "fuentes": [
+     {
+      "nombre": "RockVille (web oficial)",
+      "id": "rockville",
+      "url": "https://rockville.es/wucan-anciients/",
+      "prioridad": 1
+     },
+     {
+      "nombre": "Madness Live (promotora)",
+      "id": "madness",
+      "url": "https://www.madnesslive.es/es/conciertos-en-madrid/1996-comprar-entrada-wucan-anciients-madrid.html",
+      "prioridad": 2
+     },
+     {
+      "nombre": "Madrid en Vivo (asociación de salas)",
+      "id": "madridenvivo",
+      "url": "https://madridenvivo.com/?post_type=evento&p=794153",
+      "prioridad": 3
+     },
+     {
+      "nombre": "conciertos.club (buscador semanal)",
+      "id": "cc_buscador",
+      "url": "https://conciertos.club/madrid/conciertos/125209-wucan-anciients",
+      "prioridad": 3
+     },
+     {
+      "nombre": "conciertos.club (por estilo)",
+      "id": "cc_estilos",
+      "url": "https://conciertos.club/madrid/conciertos/125209-wucan-anciients",
+      "prioridad": 3
+     },
+     {
+      "nombre": "Songkick Madrid",
+      "id": "songkick",
+      "url": "https://www.songkick.com/concerts/43204503-anciients-at-sala-rockville",
+      "prioridad": 3
+     },
+     {
+      "nombre": "conciertos.club (portada Madrid)",
+      "id": "cc_portada",
+      "url": "https://conciertos.club/madrid/conciertos/125209-wucan-anciients",
+      "prioridad": 3
+     },
+     {
+      "nombre": "Metal Legion",
+      "id": "metallegion",
+      "url": "https://metallegion.es/conciertos/",
+      "prioridad": 3
+     },
+     {
+      "nombre": "Hellpress (agenda)",
+      "id": "hellpress",
+      "url": "https://www.hellpress.com/noticias/anciients-regresa-espana-8-anos-conciertos-ciudades-fechas-gira/",
+      "prioridad": 3
+     },
+     {
+      "nombre": "Hellpress (agenda)",
+      "id": "hellpress",
+      "url": "https://www.hellpress.com/noticias/wucan-expande-hard-rock-retro-espana-dos-nuevos-conciertos-apuntan-norte/",
+      "prioridad": 3
+     },
+     {
+      "nombre": "MariskalRock (guía)",
+      "id": "mariskal",
+      "url": "https://mariskalrock.com/guia-de-conciertos/",
+      "prioridad": 4
+     },
+     {
+      "nombre": "Rock and Blog",
+      "id": "rockandblog",
+      "url": "https://rockandblog.net/agenda-conciertos-rock/#0397758f8990c1b41b81b43ac389ab9f",
+      "prioridad": 4
+     },
+     {
+      "nombre": "Rock and Blog",
+      "id": "rockandblog",
+      "url": "https://rockandblog.net/agenda-conciertos-rock/#41c576a3bac4220845f9427b002a2a9d",
+      "prioridad": 4
+     }
+    ],
+    "nacionalidad": "DE",
+    "nacionalidad_fuente": "Wikidata",
+    "imagen_evento": {
+     "url": "https://madridenvivo.com/wp-content/uploads/2022/08/fondo-privado.jpg",
+     "credito": "Madrid en Vivo (asociación de salas)",
+     "enlace": "https://madridenvivo.com/?post_type=evento&p=794153"
+    },
+    "categorias": [
+     "rock y metal",
+     "pop e indie",
+     "americana/country/folk"
+    ]
+   },
+   "ficha": {
+    "nombre": "Wucan",
+    "fecha": "2026-09-29",
+    "wikipedia": {
+     "encontrado": true,
+     "url": "https://es.wikipedia.org/wiki/Wucan",
+     "generos": [
+      "Hard rock",
+      "folk rock",
+      "rock psicodélico",
+      "doom rock",
+      "stoner rock",
+      "Krautrock"
+     ],
+     "wikidata": "Q23786301",
+     "origen": "Dresde, (, Alemania, )",
+     "pais": "DE",
+     "imagen": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f5/Wucan_-_Sankt_Hell_2018_25.jpg/250px-Wucan_-_Sankt_Hell_2018_25.jpg",
+     "imagen_pagina": "https://es.wikipedia.org/wiki/Archivo:Wucan_-_Sankt_Hell_2018_25.jpg",
+     "idioma": "es"
+    },
+    "wikidata": {
+     "encontrado": true,
+     "id": "Q23786301",
+     "ids": {
+      "discogs": "3504936",
+      "spotify": "7FsZ5HKdtDFJ1xmK6NICBO",
+      "musicbrainz": "b53d1842-a95d-43cf-a106-3048da304d00"
+     },
+     "pais": "DE",
+     "imagen_commons": "Wucan - Sankt Hell 2018 43.jpg"
+    },
+    "discogs": {
+     "encontrado": true,
+     "id": 3504936,
+     "nombre": "Wucan",
+     "url": "https://www.discogs.com/artist/3504936-Wucan",
+     "generos": [
+      "Rock"
+     ],
+     "estilos": [
+      "Hard Rock",
+      "Psychedelic Rock",
+      "Prog Rock",
+      "Stoner Rock",
+      "Blues Rock"
+     ],
+     "discos_analizados": 7,
+     "pais": "DE",
+     "imagen": "https://i.discogs.com/5gjMBQ3Mmbh5Vf5z0CGXH9s_W247xEqyfFjabiUuhuU/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTM1MDQ5/MzYtMTY2NjEwNDQ3/NC04NTY0LmpwZWc.jpeg",
+     "identificado_por": "identificador de Discogs en Wikidata",
+     "perfil": "Psychedelic Rock band from Dresden, Germany. Founded 2011"
+    }
+   },
+   "debe": [
+    "rock y metal"
+   ],
+   "no_debe": []
+  },
+  {
+   "artista": "Suicide Commando",
+   "concierto": {
+    "id": "62c789da26c6",
+    "fecha": "2027-01-16",
+    "artista": "Suicide Commando",
+    "estilo_fuente": [
+     {
+      "estilo": "electronic",
+      "fuente": "Songkick Madrid"
+     }
+    ],
+    "fuentes": [
+     {
+      "nombre": "Songkick Madrid",
+      "id": "songkick",
+      "url": "https://www.songkick.com/concerts/43258503-suicide-commando-at-sala-nazca",
+      "prioridad": 3
+     }
+    ],
+    "nacionalidad": "BE",
+    "nacionalidad_fuente": "Wikidata",
+    "imagen_evento": {
+     "url": "https://images.sk-static.com/images/media/profile_images/artists/299423/huge_avatar",
+     "credito": "Songkick Madrid",
+     "enlace": "https://www.songkick.com/concerts/43258503-suicide-commando-at-sala-nazca"
+    },
+    "categorias": [
+     "fuera de foco"
+    ]
+   },
+   "ficha": {
+    "nombre": "Suicide Commando",
+    "fecha": "2026-09-29",
+    "wikipedia": {
+     "encontrado": true,
+     "url": "https://es.wikipedia.org/wiki/Suicide_Commando",
+     "generos": [
+      "Aggrotech",
+      "Electro-industrial",
+      "Electro dark"
+     ],
+     "wikidata": "Q1543315",
+     "origen": "Bélgica, Bélgica",
+     "pais": "BE",
+     "imagen": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d7/Suicide_commando_johan_van_roy.jpg/250px-Suicide_commando_johan_van_roy.jpg",
+     "imagen_pagina": "https://es.wikipedia.org/wiki/Archivo:Suicide_commando_johan_van_roy.jpg",
+     "idioma": "es"
+    },
+    "wikidata": {
+     "encontrado": true,
+     "id": "Q1543315",
+     "ids": {
+      "discogs": "15020",
+      "allmusic": "mn0000576976",
+      "spotify": "4N99bzdRBNRi7hGNCpMuhu",
+      "musicbrainz": "c37412cd-f0cc-4507-8825-48f95aef3624",
+      "lastfm": "Suicide+Commando"
+     },
+     "pais": "BE",
+     "imagen_commons": "Suicide commando johan van roy.jpg"
+    },
+    "discogs": {
+     "encontrado": true,
+     "id": 15020,
+     "nombre": "Suicide Commando",
+     "url": "https://www.discogs.com/artist/15020-Suicide-Commando",
+     "generos": [
+      "Electronic"
+     ],
+     "estilos": [
+      "Industrial",
+      "EBM",
+      "Electro"
+     ],
+     "discos_analizados": 25,
+     "pais": null,
+     "imagen": "https://i.discogs.com/WXC9P4TeDZbY1h7anKTKBDJapaPJjtU47WdfmEmnZGw/rs:fit/g:sm/q:90/h:402/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTE1MDIw/LTE1MTE4NTI4NTIt/OTEzOC5qcGVn.jpeg",
+     "identificado_por": "identificador de Discogs en Wikidata",
+     "perfil": "Belgian electro-industrial music act formed in 1986 by Johan Van Roy. For live shows, it consists of Van Roy on vocals, Torben Schmidt on keyboards, and Mario Vaerewijck on drums"
+    }
+   },
+   "debe": [
+    "synth y dark wave"
+   ],
+   "no_debe": [
+    "rock y metal"
+   ]
+  },
+  {
+   "artista": "Combichrist",
+   "concierto": {
+    "id": "6983498a55dc",
+    "fecha": "2026-12-05",
+    "artista": "Combichrist",
+    "estilo_fuente": [
+     {
+      "estilo": "Electrónica/Dance",
+      "fuente": "conciertos.club (buscador semanal)"
+     },
+     {
+      "estilo": "Hard Rock, Metal Industrial, Aggrotech",
+      "fuente": "La Ganzúa"
+     },
+     {
+      "estilo": "electronic",
+      "fuente": "Songkick Madrid"
+     }
+    ],
+    "fuentes": [
+     {
+      "nombre": "conciertos.club (buscador semanal)",
+      "id": "cc_buscador",
+      "url": "https://conciertos.club/madrid/conciertos/127684-combichrist",
+      "prioridad": 3
+     },
+     {
+      "nombre": "La Ganzúa",
+      "id": "laganzua",
+      "url": "https://www.laganzua.net/conciertos/combichrist-xpq-21-madrid-1016102",
+      "prioridad": 3
+     },
+     {
+      "nombre": "Songkick Madrid",
+      "id": "songkick",
+      "url": "https://www.songkick.com/concerts/43229560-combichrist-at-sala-nazca",
+      "prioridad": 3
+     },
+     {
+      "nombre": "MariskalRock (guía)",
+      "id": "mariskal",
+      "url": "https://mariskalrock.com/guia-de-conciertos/",
+      "prioridad": 4
+     },
+     {
+      "nombre": "Rock and Blog",
+      "id": "rockandblog",
+      "url": "https://rockandblog.net/agenda-conciertos-rock/#3a4496776767aaa99f9804d0905fe584",
+      "prioridad": 4
+     }
+    ],
+    "nacionalidad": "US",
+    "nacionalidad_fuente": "Wikidata",
+    "imagen_evento": {
+     "url": "https://doc.conciertos.club/doc/c/2026/combichris_20261205.jpg",
+     "credito": "conciertos.club (buscador semanal)",
+     "enlace": "https://conciertos.club/madrid/conciertos/127684-combichrist"
+    },
+    "categorias": [
+     "fuera de foco",
+     "rock y metal"
+    ]
+   },
+   "ficha": {
+    "nombre": "Combichrist",
+    "fecha": "2026-09-29",
+    "wikipedia": {
+     "encontrado": true,
+     "url": "https://es.wikipedia.org/wiki/Combichrist",
+     "generos": [
+      "Aggrotech",
+      "EBM",
+      "Industrial",
+      "Electro-Industrial",
+      "Industrial metal"
+     ],
+     "wikidata": "Q266782",
+     "origen": "Noruega, Noruega",
+     "pais": "NO",
+     "imagen": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0f/Combichrist_%E2%80%93_Wacken_Open_Air_2015_02.jpg/250px-Combichrist_%E2%80%93_Wacken_Open_Air_2015_02.jpg",
+     "imagen_pagina": "https://es.wikipedia.org/wiki/Archivo:Combichrist_–_Wacken_Open_Air_2015_02.jpg",
+     "idioma": "es"
+    },
+    "wikidata": {
+     "encontrado": true,
+     "id": "Q266782",
+     "ids": {
+      "discogs": "139618",
+      "allmusic": "mn0000676088",
+      "spotify": "5556RAgwP70PnXbaUTGNbR",
+      "musicbrainz": "c29f4522-f710-4bb5-a06b-d436fcc3b2fd",
+      "lastfm": "Combichrist"
+     },
+     "pais": "US",
+     "imagen_commons": "Combichrist-05.jpg"
+    },
+    "discogs": {
+     "encontrado": true,
+     "id": 139618,
+     "nombre": "Combichrist",
+     "url": "https://www.discogs.com/artist/139618-Combichrist",
+     "generos": [
+      "Electronic"
+     ],
+     "estilos": [
+      "Industrial",
+      "EBM",
+      "Techno",
+      "Electro",
+      "Rhythmic Noise"
+     ],
+     "discos_analizados": 25,
+     "pais": null,
+     "imagen": "https://i.discogs.com/8DjtLBzOnAM-M1myuk8ideEHgvn5NybfgT6nEppvrQY/rs:fit/g:sm/q:90/h:400/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTEzOTYx/OC0xNjQ3OTk3MzQz/LTk4MjIuanBlZw.jpeg",
+     "identificado_por": "identificador de Discogs en Wikidata",
+     "perfil": "Norwegian EBM/Electro band initially formed as a side project of [a35945] frontman [a296813] in 2003. Following the demise of that band, Combichrist became a full-time project. The band has played as a solo act, a duo, a trio, a four-, five"
+    }
+   },
+   "debe": [
+    "synth y dark wave"
+   ],
+   "no_debe": []
+  },
+  {
+   "artista": "VIOFLESH",
+   "concierto": {
+    "id": "e0e97041e579",
+    "fecha": "2026-10-30",
+    "artista": "VIOFLESH",
+    "estilo_fuente": [
+     {
+      "estilo": "Pop / Rock",
+      "fuente": "Madrid en Vivo (asociación de salas)"
+     }
+    ],
+    "fuentes": [
+     {
+      "nombre": "Madrid en Vivo (asociación de salas)",
+      "id": "madridenvivo",
+      "url": "https://madridenvivo.com/?post_type=evento&p=794204",
+      "prioridad": 3
+     }
+    ],
+    "nacionalidad": "CL",
+    "nacionalidad_fuente": "MusicBrainz (coincidencia por nombre)",
+    "imagen_evento": {
+     "url": "https://madridenvivo.com/wp-content/uploads/2026/09/f53a229a-0b1f-414a-9036-cc7218e20b40_cartel.png",
+     "credito": "Madrid en Vivo (asociación de salas)",
+     "enlace": "https://madridenvivo.com/?post_type=evento&p=794204"
+    },
+    "categorias": [
+     "pop e indie",
+     "rock y metal"
+    ]
+   },
+   "ficha": {
+    "nombre": "VIOFLESH",
+    "fecha": "2026-09-29",
+    "wikipedia": {
+     "encontrado": false,
+     "motivo": "es: no existe; en: no existe"
+    },
+    "discogs": {
+     "encontrado": true,
+     "id": 9413260,
+     "nombre": "Vioflesh",
+     "url": "https://www.discogs.com/artist/9413260-Vioflesh",
+     "generos": [
+      "Rock",
+      "Electronic"
+     ],
+     "estilos": [
+      "Synthwave",
+      "Coldwave",
+      "Darkwave"
+     ],
+     "discos_analizados": 1,
+     "pais": null,
+     "imagen": "https://i.discogs.com/AVx7v1GUUtpqHnKoz_6VBGvTtLn7ly1Nni7tjTZTh7Y/rs:fit/g:sm/q:90/h:750/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTk0MTMy/NjAtMTY4OTE2MTg1/OC0xMTg1LmpwZWc.jpeg",
+     "identificado_por": "única coincidencia exacta del nombre en Discogs",
+     "perfil": "Synth-pop and coldwave band from Santiago de Chile. Founded in February 2017 by Vio Valenzuela and Flesh"
+    }
+   },
+   "debe": [
+    "synth y dark wave"
+   ],
+   "no_debe": [
+    "pop e indie"
+   ]
+  },
+  {
+   "artista": "AVIADOR DRO",
+   "concierto": {
+    "id": "286800dd951b",
+    "fecha": "2026-10-03",
+    "artista": "AVIADOR DRO",
+    "estilo_fuente": [
+     {
+      "estilo": "Pop / Rock",
+      "fuente": "Madrid en Vivo (asociación de salas)"
+     }
+    ],
+    "fuentes": [
+     {
+      "nombre": "Madrid en Vivo (asociación de salas)",
+      "id": "madridenvivo",
+      "url": "https://madridenvivo.com/?post_type=evento&p=794879",
+      "prioridad": 3
+     }
+    ],
+    "nacionalidad": null,
+    "nacionalidad_fuente": null,
+    "imagen_evento": {
+     "url": "https://madridenvivo.com/wp-content/uploads/2022/08/fondo-privado.jpg",
+     "credito": "Madrid en Vivo (asociación de salas)",
+     "enlace": "https://madridenvivo.com/?post_type=evento&p=794879"
+    },
+    "categorias": [
+     "pop e indie",
+     "rock y metal"
+    ]
+   },
+   "ficha": {
+    "nombre": "AVIADOR DRO",
+    "fecha": "2026-09-29",
+    "wikipedia": {
+     "encontrado": false,
+     "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+    },
+    "discogs": {
+     "encontrado": true,
+     "id": 111497,
+     "nombre": "Aviador Dro",
+     "url": "https://www.discogs.com/artist/111497-Aviador-Dro",
+     "generos": [
+      "Electronic",
+      "Pop"
+     ],
+     "estilos": [
+      "Synth-pop",
+      "Minimal"
+     ],
+     "discos_analizados": 12,
+     "pais": null,
+     "imagen": "https://i.discogs.com/y-b8erEp9WtjOZxbLTz1uA0t7SnlFJDnXday8YtQESQ/rs:fit/g:sm/q:90/h:311/w:380/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTExMTQ5/Ny0xMjU2MzcxNjAy/LmdpZg.jpeg",
+     "perfil": "In the late 70's, a group of friends leaded by Servando Carballar were writing fanzines in the post-dictatorial Franco regime in Madrid, Spain. They were enthusiasts of science, technology, futurism, films, board games and of the music from"
+    }
+   },
+   "debe": [
+    "synth y dark wave"
+   ],
+   "no_debe": []
+  },
+  {
+   "artista": "Duran Duran",
+   "concierto": {
+    "id": "045b440393dd",
+    "fecha": "2026-10-06",
+    "artista": "Duran Duran",
+    "estilo_fuente": [
+     {
+      "estilo": "Post-Punk",
+      "fuente": "conciertos.club (buscador semanal)"
+     },
+     {
+      "estilo": "Post-Punk",
+      "fuente": "conciertos.club (por estilo)"
+     },
+     {
+      "estilo": "Post-Punk",
+      "fuente": "conciertos.club (portada Madrid)"
+     }
+    ],
+    "fuentes": [
+     {
+      "nombre": "conciertos.club (buscador semanal)",
+      "id": "cc_buscador",
+      "url": "https://conciertos.club/madrid/conciertos/126399-duran-duran",
+      "prioridad": 3
+     },
+     {
+      "nombre": "conciertos.club (por estilo)",
+      "id": "cc_estilos",
+      "url": "https://conciertos.club/madrid/conciertos/126399-duran-duran",
+      "prioridad": 3
+     },
+     {
+      "nombre": "conciertos.club (portada Madrid)",
+      "id": "cc_portada",
+      "url": "https://conciertos.club/madrid/conciertos/126399-duran-duran",
+      "prioridad": 3
+     }
+    ],
+    "nacionalidad": "GB",
+    "nacionalidad_fuente": "Wikipedia",
+    "imagen_evento": {
+     "url": "https://conciertos.club/doc/lp/I_WizinkCenter_Mad_pp.jpg",
+     "credito": "conciertos.club (buscador semanal)",
+     "enlace": "https://conciertos.club/madrid/conciertos/126399-duran-duran"
+    },
+    "categorias": [
+     "punk y garage"
+    ]
+   },
+   "ficha": {
+    "nombre": "Duran Duran",
+    "fecha": "2026-09-29",
+    "wikipedia": {
+     "encontrado": true,
+     "url": "https://es.wikipedia.org/wiki/Duran_Duran",
+     "generos": [
+      "New romantic",
+      "Synthpop",
+      "New wave",
+      "Dance-rock",
+      "Pop rock"
+     ],
+     "origen": "Birmingham, ,, Inglaterra, Reino Unido",
+     "pais": "GB",
+     "imagen": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f1/Duran_Duran_2011.jpg/330px-Duran_Duran_2011.jpg",
+     "imagen_pagina": "https://es.wikipedia.org/wiki/Archivo:Duran_Duran_2011.jpg",
+     "idioma": "es"
+    },
+    "discogs": {
+     "encontrado": true,
+     "id": 10262,
+     "nombre": "Duran Duran",
+     "url": "https://www.discogs.com/artist/10262-Duran-Duran",
+     "generos": [
+      "Rock",
+      "Pop",
+      "Electronic"
+     ],
+     "estilos": [
+      "Synth-pop",
+      "Pop Rock",
+      "New Wave"
+     ],
+     "discos_analizados": 21,
+     "pais": null,
+     "imagen": "https://i.discogs.com/HkXJFqmCGrV3p3nJwPNeffmk8USqrnFxrg0NlEZplQ4/rs:fit/g:sm/q:90/h:337/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTEwMjYy/LTE3MzAwNTM5NzUt/NzYxOS5qcGVn.jpeg",
+     "perfil": "UK pop, new wave, and synth pop group founded in Birmingham, England in 1978. They have sold over 100 million records"
+    }
+   },
+   "debe": [
+    "synth y dark wave",
+    "pop e indie"
+   ],
+   "no_debe": [
+    "fuera de foco"
+   ]
+  },
+  {
+   "artista": "Mind Enterprises",
+   "concierto": {
+    "id": "f96a2eed9a3b",
+    "fecha": "2026-11-18",
+    "artista": "Mind Enterprises",
+    "estilo_fuente": [],
+    "fuentes": [
+     {
+      "nombre": "La Riviera (web oficial)",
+      "id": "riviera",
+      "url": "https://www.entradas.com/artist/mind-enterprises/?affiliate=RIV",
+      "prioridad": 1
+     },
+     {
+      "nombre": "conciertos.club (buscador semanal)",
+      "id": "cc_buscador",
+      "url": "https://conciertos.club/madrid/conciertos/124499-mind-enterprises",
+      "prioridad": 3
+     }
+    ],
+    "nacionalidad": "IT",
+    "nacionalidad_fuente": "Wikidata",
+    "imagen_evento": {
+     "url": "https://doc.conciertos.club/doc/c/2026/mindenterp_20261118.jpg",
+     "credito": "conciertos.club (buscador semanal)",
+     "enlace": "https://conciertos.club/madrid/conciertos/124499-mind-enterprises"
+    },
+    "categorias": [
+     "sin clasificar"
+    ]
+   },
+   "ficha": {
+    "nombre": "Mind Enterprises",
+    "fecha": "2026-09-29",
+    "wikipedia": {
+     "encontrado": true,
+     "url": "https://en.wikipedia.org/wiki/Mind_Enterprises",
+     "generos": [
+      "Italo disco",
+      "techno",
+      "electro"
+     ],
+     "wikidata": "Q138030988",
+     "origen": null,
+     "pais": null,
+     "imagen": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/65/Trans_2025_Mind_Enterprises_002.jpg/250px-Trans_2025_Mind_Enterprises_002.jpg",
+     "imagen_pagina": "https://en.wikipedia.org/wiki/File:Trans_2025_Mind_Enterprises_002.jpg",
+     "idioma": "en"
+    },
+    "wikidata": {
+     "encontrado": true,
+     "id": "Q138030988",
+     "ids": {
+      "discogs": "2956330",
+      "spotify": "5pN1DJhPFDKso4OtC0QhnB",
+      "musicbrainz": "d864fd61-929b-4d8c-a241-3c2eed1b53bb"
+     },
+     "pais": "IT",
+     "imagen_commons": "Trans 2025 Mind Enterprises 002.jpg"
+    },
+    "discogs": {
+     "encontrado": true,
+     "id": 2956330,
+     "nombre": "Mind Enterprises",
+     "url": "https://www.discogs.com/artist/2956330-Mind-Enterprises",
+     "generos": [
+      "Electronic",
+      "Pop"
+     ],
+     "estilos": [
+      "Italo-Disco",
+      "Nu-Disco",
+      "Synth-pop",
+      "Broken Beat"
+     ],
+     "discos_analizados": 4,
+     "pais": null,
+     "imagen": "https://i.discogs.com/JJoRB2AcM27DjJHr4rB_Jo93nJmjld7QdQrBZvA61oU/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTI5NTYz/MzAtMTc3MTc2MDYy/MC0xOTI1LmpwZWc.jpeg",
+     "identificado_por": "identificador de Discogs en Wikidata",
+     "perfil": ""
+    }
+   },
+   "debe": [
+    "synth y dark wave"
+   ],
+   "no_debe": []
+  },
+  {
+   "artista": "Dame Area",
+   "concierto": {
+    "id": "0d44db158962",
+    "fecha": "2026-10-16",
+    "artista": "Dame Area",
+    "estilo_fuente": [],
+    "fuentes": [
+     {
+      "nombre": "Songkick Madrid",
+      "id": "songkick",
+      "url": "https://www.songkick.com/concerts/43140441-dame-area-at-copernico",
+      "prioridad": 3
+     }
+    ],
+    "nacionalidad": null,
+    "nacionalidad_fuente": null,
+    "imagen_evento": {
+     "url": "https://images.sk-static.com/images/media/profile_images/artists/10151619/huge_avatar",
+     "credito": "Songkick Madrid",
+     "enlace": "https://www.songkick.com/concerts/43140441-dame-area-at-copernico"
+    },
+    "categorias": [
+     "sin clasificar"
+    ]
+   },
+   "ficha": {
+    "nombre": "Dame Area",
+    "fecha": "2026-09-29",
+    "wikipedia": {
+     "encontrado": false,
+     "motivo": "es: no existe; en: no existe"
+    },
+    "discogs": {
+     "encontrado": true,
+     "id": 6429925,
+     "nombre": "Dame Area",
+     "url": "https://www.discogs.com/artist/6429925-Dame-Area",
+     "generos": [
+      "Electronic"
+     ],
+     "estilos": [
+      "Industrial",
+      "Minimal",
+      "Experimental",
+      "EBM",
+      "Tribal"
+     ],
+     "discos_analizados": 8,
+     "pais": null,
+     "imagen": "https://i.discogs.com/z2hkZc8HhAyDxOVSpjd4WIO_uS3W6JJtr4Iq4K1l4dw/rs:fit/g:sm/q:90/h:565/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTY0Mjk5/MjUtMTc1MDQ1OTY2/OS0zOTM0LmpwZWc.jpeg",
+     "identificado_por": "única coincidencia exacta del nombre en Discogs",
+     "perfil": "Barcelona industrial tribal experimental duo. Born on [l182684] venue"
+    }
+   },
+   "debe": [
+    "synth y dark wave"
+   ],
+   "no_debe": []
+  },
+  {
+   "artista": "Allie X",
+   "concierto": {
+    "id": "5c641dd56b6c",
+    "fecha": "2026-11-08",
+    "artista": "Allie X",
+    "estilo_fuente": [
+     {
+      "estilo": "Pop electrónico",
+      "fuente": "conciertos.club (buscador semanal)"
+     },
+     {
+      "estilo": "pop, indie_alternative",
+      "fuente": "Songkick Madrid"
+     }
+    ],
+    "fuentes": [
+     {
+      "nombre": "conciertos.club (buscador semanal)",
+      "id": "cc_buscador",
+      "url": "https://conciertos.club/madrid/conciertos/118881-allie-x",
+      "prioridad": 3
+     },
+     {
+      "nombre": "Songkick Madrid",
+      "id": "songkick",
+      "url": "https://www.songkick.com/concerts/43189449-allie-x-at-sala-nazca-live",
+      "prioridad": 3
+     }
+    ],
+    "nacionalidad": "CA",
+    "nacionalidad_fuente": "Wikidata",
+    "imagen_evento": {
+     "url": "https://doc.conciertos.club/doc/c/2026/allie-x20261108.jpg",
+     "credito": "conciertos.club (buscador semanal)",
+     "enlace": "https://conciertos.club/madrid/conciertos/118881-allie-x"
+    },
+    "categorias": [
+     "pop e indie"
+    ]
+   },
+   "ficha": {
+    "nombre": "Allie X",
+    "fecha": "2026-09-29",
+    "wikipedia": {
+     "encontrado": true,
+     "url": "https://es.wikipedia.org/wiki/Allie_X",
+     "generos": [
+      "Synth pop"
+     ],
+     "wikidata": "Q16150821",
+     "origen": "31 de julio de 1985 (41, años), Oakville, Ontario, ,, Canadá",
+     "pais": "CA",
+     "imagen": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/20/Allie_X_%40_The_Greek_10_04_2019_%2849311764167%29.jpg/330px-Allie_X_%40_The_Greek_10_04_2019_%2849311764167%29.jpg",
+     "imagen_pagina": "https://es.wikipedia.org/wiki/Archivo:Allie_X_@_The_Greek_10_04_2019_(49311764167).jpg",
+     "idioma": "es"
+    },
+    "wikidata": {
+     "encontrado": true,
+     "id": "Q16150821",
+     "ids": {
+      "discogs": "3635043",
+      "allmusic": "mn0003221710",
+      "spotify": "0wnYgCeP013HkKoOyC5V32",
+      "musicbrainz": "7c922f2c-9d2b-4f37-a139-cddb83722ab3",
+      "lastfm": "Allie+X"
+     },
+     "pais": "CA",
+     "imagen_commons": "Allie X at CFC 25th Anniversary Celebration in LA.jpg"
+    },
+    "discogs": {
+     "encontrado": true,
+     "id": 3635043,
+     "nombre": "Allie Hughes",
+     "url": "https://www.discogs.com/artist/3635043-Allie-Hughes",
+     "generos": [],
+     "estilos": [],
+     "discos_analizados": 0,
+     "pais": null,
+     "imagen": "https://i.discogs.com/jQW85EfzgMa6ckSH_OiIm_ZZ86HVBSZ-hBaP1fNO768/rs:fit/g:sm/q:90/h:420/w:280/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTM2MzUw/NDMtMTY0NjQyMzU0/MC03MTk4LmpwZWc.jpeg",
+     "identificado_por": "identificador de Discogs en Wikidata",
+     "perfil": "Canadian singer and songwriter, born 31 July 1985 in Oakville, Ontario, Canada. Now performs as [a=Allie X]"
+    },
+    "lastfm": {
+     "encontrado": true,
+     "nombre": "Allie X",
+     "etiquetas": [
+      "synthpop",
+      "electropop",
+      "pop"
+     ],
+     "estilos": [],
+     "generos": [
+      "Pop"
+     ],
+     "url": "https://www.last.fm/music/Allie%2BX",
+     "identificado_por": "identificador de MusicBrainz en Wikidata"
+    }
+   },
+   "debe": [
+    "synth y dark wave"
+   ],
+   "no_debe": []
+  },
+  {
+   "artista": "Somos la Herencia",
+   "concierto": {
+    "id": "71b1cd19ed95",
+    "fecha": "2026-11-20",
+    "artista": "Somos la Herencia",
+    "estilo_fuente": [
+     {
+      "estilo": "Post-Punk",
+      "fuente": "conciertos.club (buscador semanal)"
+     },
+     {
+      "estilo": "Post-Punk",
+      "fuente": "conciertos.club (por estilo)"
+     }
+    ],
+    "fuentes": [
+     {
+      "nombre": "conciertos.club (buscador semanal)",
+      "id": "cc_buscador",
+      "url": "https://conciertos.club/madrid/conciertos/126525-somos-la-herencia",
+      "prioridad": 3
+     },
+     {
+      "nombre": "conciertos.club (por estilo)",
+      "id": "cc_estilos",
+      "url": "https://conciertos.club/madrid/conciertos/126525-somos-la-herencia",
+      "prioridad": 3
+     },
+     {
+      "nombre": "Songkick Madrid",
+      "id": "songkick",
+      "url": "https://www.songkick.com/concerts/43313750-somos-la-herencia-at-shoko-madrid",
+      "prioridad": 3
+     }
+    ],
+    "nacionalidad": "ES",
+    "nacionalidad_fuente": "MusicBrainz (coincidencia por nombre)",
+    "imagen_evento": {
+     "url": "https://doc.conciertos.club/doc/c/2026/somoslaher_20261120.jpg",
+     "credito": "conciertos.club (buscador semanal)",
+     "enlace": "https://conciertos.club/madrid/conciertos/126525-somos-la-herencia"
+    },
+    "categorias": [
+     "punk y garage"
+    ]
+   },
+   "ficha": {
+    "nombre": "Somos la Herencia",
+    "fecha": "2026-09-29",
+    "wikipedia": {
+     "encontrado": false,
+     "motivo": "es: no existe; en: no existe"
+    },
+    "discogs": {
+     "encontrado": true,
+     "id": 3397295,
+     "nombre": "Somos La Herencia",
+     "url": "https://www.discogs.com/artist/3397295-Somos-La-Herencia",
+     "generos": [
+      "Rock",
+      "Electronic"
+     ],
+     "estilos": [
+      "Post-Punk",
+      "Darkwave",
+      "Coldwave",
+      "Experimental"
+     ],
+     "discos_analizados": 5,
+     "pais": null,
+     "imagen": "https://i.discogs.com/SKLlUuytABoqxIF8aZRHNJuYovAYxxQDcCGo8h14MmI/rs:fit/g:sm/q:90/h:614/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTMzOTcy/OTUtMTcyNzYzMzE3/MC03NzIxLmpwZWc.jpeg",
+     "identificado_por": "única coincidencia exacta del nombre en Discogs",
+     "perfil": "Spanish Post-Punk band from Madrid formed in 2012"
+    }
+   },
+   "debe": [
+    "punk y garage"
+   ],
+   "no_debe": []
+  },
+  {
+   "artista": "Los Coronas",
+   "concierto": {
+    "id": "c7f314fb03b0",
+    "fecha": "2026-11-06",
+    "artista": "Los Coronas",
+    "estilo_fuente": [
+     {
+      "estilo": "Garage Pop",
+      "fuente": "Gruta 77 (web oficial)"
+     },
+     {
+      "estilo": "Rock and roll/Garage",
+      "fuente": "conciertos.club (buscador semanal)"
+     },
+     {
+      "estilo": "Rock and roll/Garage",
+      "fuente": "conciertos.club (por estilo)"
+     }
+    ],
+    "fuentes": [
+     {
+      "nombre": "Gruta 77 (web oficial)",
+      "id": "gruta77",
+      "url": "https://gruta77.com/events/los-coronas-varonas/var/ri-0.l-L2",
+      "prioridad": 1
+     },
+     {
+      "nombre": "conciertos.club (buscador semanal)",
+      "id": "cc_buscador",
+      "url": "https://conciertos.club/madrid/conciertos/124481-los-coronas-varonas",
+      "prioridad": 3
+     },
+     {
+      "nombre": "conciertos.club (por estilo)",
+      "id": "cc_estilos",
+      "url": "https://conciertos.club/madrid/conciertos/124481-los-coronas-varonas",
+      "prioridad": 3
+     },
+     {
+      "nombre": "Songkick Madrid",
+      "id": "songkick",
+      "url": "https://www.songkick.com/concerts/43316260-los-coronas-at-gruta-77",
+      "prioridad": 3
+     }
+    ],
+    "nacionalidad": "ES",
+    "nacionalidad_fuente": "Wikidata",
+    "imagen_evento": {
+     "url": "https://doc.conciertos.club/doc/c/2026/loscoronas_20261106.jpg",
+     "credito": "conciertos.club (buscador semanal)",
+     "enlace": "https://conciertos.club/madrid/conciertos/124481-los-coronas-varonas"
+    },
+    "categorias": [
+     "punk y garage"
+    ]
+   },
+   "ficha": {
+    "nombre": "Los Coronas",
+    "fecha": "2026-09-29",
+    "wikipedia": {
+     "encontrado": true,
+     "url": "https://es.wikipedia.org/wiki/Los_Coronas",
+     "generos": [
+      "surf rock",
+      "rock instrumental",
+      "Rock"
+     ],
+     "wikidata": "Q5979599",
+     "origen": "Madrid, (, Comunidad de Madrid, Comunidad de Madrid, España, España, )",
+     "pais": "ES",
+     "imagen": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1d/Los_Coronas.jpg/250px-Los_Coronas.jpg",
+     "imagen_pagina": "https://es.wikipedia.org/wiki/Archivo:Los_Coronas.jpg",
+     "idioma": "es"
+    },
+    "wikidata": {
+     "encontrado": true,
+     "id": "Q5979599",
+     "ids": {
+      "discogs": "864361",
+      "allmusic": "mn0001968499",
+      "musicbrainz": "420a794b-2454-4230-bccb-6ef4b3043df5",
+      "lastfm": "Los+Coronas"
+     },
+     "pais": "ES",
+     "imagen_commons": "Los Coronas.jpg"
+    },
+    "discogs": {
+     "encontrado": true,
+     "id": 864361,
+     "nombre": "Los Coronas",
+     "url": "https://www.discogs.com/artist/864361-Los-Coronas",
+     "generos": [
+      "Rock"
+     ],
+     "estilos": [
+      "Surf",
+      "Pop Rock"
+     ],
+     "discos_analizados": 7,
+     "pais": null,
+     "imagen": "https://i.discogs.com/1rT26YVSeUM9eh9mbCxQCZZCpTFb7xvtmktisJnlM4A/rs:fit/g:sm/q:90/h:350/w:350/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTg2NDM2/MS0xMzA0NDk4MTYw/LmpwZWc.jpeg",
+     "identificado_por": "identificador de Discogs en Wikidata",
+     "perfil": "Spanish surf rock'nroll band from Madrid with [a1011553] members"
+    }
+   },
+   "debe": [
+    "punk y garage"
+   ],
+   "no_debe": [
+    "fuera de foco"
+   ]
+  },
+  {
+   "artista": "LOS VINAGRES",
+   "concierto": {
+    "id": "fb6e8e0be472",
+    "fecha": "2026-10-03",
+    "artista": "LOS VINAGRES",
+    "estilo_fuente": [
+     {
+      "estilo": "Rock",
+      "fuente": "Sala Villanos (web oficial)"
+     },
+     {
+      "estilo": "Pop / Rock",
+      "fuente": "Madrid en Vivo (asociación de salas)"
+     },
+     {
+      "estilo": "Rock and roll/Garage",
+      "fuente": "conciertos.club (buscador semanal)"
+     },
+     {
+      "estilo": "Rock and roll/Garage",
+      "fuente": "conciertos.club (por estilo)"
+     },
+     {
+      "estilo": "Rock and roll/Garage",
+      "fuente": "conciertos.club (portada Madrid)"
+     }
+    ],
+    "fuentes": [
+     {
+      "nombre": "Sala Villanos (web oficial)",
+      "id": "villanos",
+      "url": "https://salavillanos.es/evento/los-vinagres/",
+      "prioridad": 1
+     },
+     {
+      "nombre": "Madrid en Vivo (asociación de salas)",
+      "id": "madridenvivo",
+      "url": "https://madridenvivo.com/?post_type=evento&p=795794",
+      "prioridad": 3
+     },
+     {
+      "nombre": "conciertos.club (buscador semanal)",
+      "id": "cc_buscador",
+      "url": "https://conciertos.club/madrid/conciertos/124518-las-noches-de-rio-babel-los-vinagres",
+      "prioridad": 3
+     },
+     {
+      "nombre": "conciertos.club (por estilo)",
+      "id": "cc_estilos",
+      "url": "https://conciertos.club/madrid/conciertos/124518-las-noches-de-rio-babel-los-vinagres",
+      "prioridad": 3
+     },
+     {
+      "nombre": "conciertos.club (portada Madrid)",
+      "id": "cc_portada",
+      "url": "https://conciertos.club/madrid/conciertos/124518-las-noches-de-rio-babel-los-vinagres",
+      "prioridad": 3
+     }
+    ],
+    "nacionalidad": "ES",
+    "nacionalidad_fuente": "Discogs",
+    "imagen_evento": {
+     "url": "https://madridenvivo.com/wp-content/uploads/2022/08/fondo-privado.jpg",
+     "credito": "Madrid en Vivo (asociación de salas)",
+     "enlace": "https://madridenvivo.com/?post_type=evento&p=795794"
+    },
+    "categorias": [
+     "rock y metal",
+     "pop e indie",
+     "punk y garage"
+    ]
+   },
+   "ficha": {
+    "nombre": "LOS VINAGRES",
+    "fecha": "2026-09-29",
+    "wikipedia": {
+     "encontrado": false,
+     "motivo": "es: no existe; es_(banda): no existe; es_(grupo_musical): no existe; es_(cantante): no existe"
+    },
+    "discogs": {
+     "encontrado": true,
+     "id": 4629354,
+     "nombre": "Los Vinagres",
+     "url": "https://www.discogs.com/artist/4629354-Los-Vinagres",
+     "generos": [
+      "Folk, World, & Country",
+      "Rock",
+      "Pop"
+     ],
+     "estilos": [
+      "Garage Rock",
+      "Indie Pop"
+     ],
+     "discos_analizados": 2,
+     "pais": "ES",
+     "imagen": "https://i.discogs.com/l0xwKVD8FKCwBSjlOE_EFRUqvjDR71_j-kDX4caOUeA/rs:fit/g:sm/q:90/h:337/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTQ2Mjkz/NTQtMTUwMTM0NTgy/NS0yNjg1LmpwZWc.jpeg",
+     "perfil": "Spanish garage-blues rock band from La Palma (Canarias) based in Madrid"
+    }
+   },
+   "debe": [
+    "punk y garage"
+   ],
+   "no_debe": []
+  },
+  {
+   "artista": "Santero y Los Muchachos",
+   "concierto": {
+    "id": "040cf05ecd3c",
+    "fecha": "2026-11-13",
+    "artista": "Santero y Los Muchachos",
+    "estilo_fuente": [
+     {
+      "estilo": "Pop / Rock",
+      "fuente": "Madrid en Vivo (asociación de salas)"
+     },
+     {
+      "estilo": "Americana/Folk Rock/Country",
+      "fuente": "conciertos.club (buscador semanal)"
+     },
+     {
+      "estilo": "Americana/Folk Rock/Country",
+      "fuente": "conciertos.club (por estilo)"
+     }
+    ],
+    "fuentes": [
+     {
+      "nombre": "La Riviera (web oficial)",
+      "id": "riviera",
+      "url": "https://mutick.com/e/entradas-santero-y-los-muchachos-madrid",
+      "prioridad": 1
+     },
+     {
+      "nombre": "Mutick / The Flying Pig (MomentaZos)",
+      "id": "mutick",
+      "url": "https://mutick.com/e/entradas-santero-y-los-muchachos-madrid",
+      "prioridad": 2
+     },
+     {
+      "nombre": "Madrid en Vivo (asociación de salas)",
+      "id": "madridenvivo",
+      "url": "https://madridenvivo.com/?post_type=evento&p=768114",
+      "prioridad": 3
+     },
+     {
+      "nombre": "conciertos.club (buscador semanal)",
+      "id": "cc_buscador",
+      "url": "https://conciertos.club/madrid/conciertos/114271-santero-y-los-muchachos",
+      "prioridad": 3
+     },
+     {
+      "nombre": "conciertos.club (por estilo)",
+      "id": "cc_estilos",
+      "url": "https://conciertos.club/madrid/conciertos/114271-santero-y-los-muchachos",
+      "prioridad": 3
+     }
+    ],
+    "nacionalidad": "ES",
+    "nacionalidad_fuente": "MusicBrainz (coincidencia por nombre)",
+    "imagen_evento": {
+     "url": "https://mutick.com/img/eventos/b8ecc1cc-0be2-4f9b-932c-f0ca542635c1/b8ecc1cc-0be2-4f9b-932c-f0ca542635c1_cartel.jpeg",
+     "credito": "Mutick / The Flying Pig (MomentaZos)",
+     "enlace": "https://mutick.com/e/entradas-santero-y-los-muchachos-madrid"
+    },
+    "categorias": [
+     "pop e indie",
+     "rock y metal",
+     "americana/country/folk"
+    ]
+   },
+   "ficha": {
+    "nombre": "Santero y Los Muchachos",
+    "fecha": "2026-09-29",
+    "wikipedia": {
+     "encontrado": false,
+     "motivo": "es: no existe; en: no existe"
+    },
+    "discogs": {
+     "encontrado": true,
+     "id": 5830714,
+     "nombre": "Santero Y Los Muchachos",
+     "url": "https://www.discogs.com/artist/5830714-Santero-Y-Los-Muchachos",
+     "generos": [
+      "Rock"
+     ],
+     "estilos": [
+      "Country Rock",
+      "Acoustic",
+      "Classic Rock",
+      "Folk Rock",
+      "Blues Rock"
+     ],
+     "discos_analizados": 3,
+     "pais": null,
+     "imagen": "https://i.discogs.com/geQQ9dVzoJkF-gwgv8wkMduLphLrQKY8LshaoxEGo5c/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTU4MzA3/MTQtMTU1ODExMDU1/My0yNDY4LmpwZWc.jpeg",
+     "identificado_por": "única coincidencia exacta del nombre en Discogs",
+     "perfil": ""
+    }
+   },
+   "debe": [
+    "americana/country/folk"
+   ],
+   "no_debe": []
+  },
+  {
+   "artista": "Lera Lynn",
+   "concierto": {
+    "id": "2b0375ad42fb",
+    "fecha": "2026-09-30",
+    "artista": "Lera Lynn",
+    "estilo_fuente": [
+     {
+      "estilo": "Pop / Rock",
+      "fuente": "Madrid en Vivo (asociación de salas)"
+     },
+     {
+      "estilo": "folk_blues",
+      "fuente": "Songkick Madrid"
+     }
+    ],
+    "fuentes": [
+     {
+      "nombre": "Madrid en Vivo (asociación de salas)",
+      "id": "madridenvivo",
+      "url": "https://madridenvivo.com/?post_type=evento&p=792008",
+      "prioridad": 3
+     },
+     {
+      "nombre": "conciertos.club (buscador semanal)",
+      "id": "cc_buscador",
+      "url": "https://conciertos.club/madrid/conciertos/126506-lera-lynn",
+      "prioridad": 3
+     },
+     {
+      "nombre": "Songkick Madrid",
+      "id": "songkick",
+      "url": "https://www.songkick.com/concerts/43208622-lera-lynn-at-sala-clamores",
+      "prioridad": 3
+     },
+     {
+      "nombre": "conciertos.club (portada Madrid)",
+      "id": "cc_portada",
+      "url": "https://conciertos.club/madrid/conciertos/126506-lera-lynn",
+      "prioridad": 3
+     }
+    ],
+    "nacionalidad": "US",
+    "nacionalidad_fuente": "Wikipedia",
+    "imagen_evento": {
+     "url": "https://madridenvivo.com/wp-content/uploads/2022/08/fondo-privado.jpg",
+     "credito": "Madrid en Vivo (asociación de salas)",
+     "enlace": "https://madridenvivo.com/?post_type=evento&p=792008"
+    },
+    "categorias": [
+     "pop e indie",
+     "rock y metal",
+     "americana/country/folk"
+    ]
+   },
+   "ficha": {
+    "nombre": "Lera Lynn",
+    "fecha": "2026-09-29",
+    "wikipedia": {
+     "encontrado": true,
+     "url": "https://es.wikipedia.org/wiki/Lera_Lynn",
+     "generos": [
+      "Indie",
+      "Indie rock",
+      "Americana",
+      "Country"
+     ],
+     "origen": "5 de diciembre de 1984, Houston, ,, Texas",
+     "pais": "US",
+     "imagen": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6d/Lera_Lynn_2015.jpg/250px-Lera_Lynn_2015.jpg",
+     "imagen_pagina": "https://es.wikipedia.org/wiki/Archivo:Lera_Lynn_2015.jpg",
+     "idioma": "es"
+    },
+    "discogs": {
+     "encontrado": true,
+     "id": 2719782,
+     "nombre": "Lera Lynn",
+     "url": "https://www.discogs.com/artist/2719782-Lera-Lynn",
+     "generos": [
+      "Folk, World, & Country",
+      "Rock"
+     ],
+     "estilos": [],
+     "discos_analizados": 9,
+     "pais": null,
+     "imagen": "https://i.discogs.com/uIdM0KdFTfHoy0IsRBEcnTy-r2MAJzTRcpoOxDDP3ow/rs:fit/g:sm/q:90/h:313/w:313/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTI3MTk3/ODItMTQ3NTU4MTg0/Mi0yMDg3LmpwZWc.jpeg",
+     "perfil": "Lera Lynn (born December 5, 1984, Houston, Texas, USA) is an American singer, songwriter, musician, and actress"
+    }
+   },
+   "debe": [
+    "americana/country/folk"
+   ],
+   "no_debe": []
+  },
+  {
+   "artista": "Elles Bailey",
+   "concierto": {
+    "id": "e9c45d4a47da",
+    "fecha": "2026-10-23",
+    "artista": "Elles Bailey",
+    "estilo_fuente": [
+     {
+      "estilo": "Villanos del Jazz",
+      "fuente": "Sala Villanos (web oficial)"
+     },
+     {
+      "estilo": "Pop / Rock",
+      "fuente": "Madrid en Vivo (asociación de salas)"
+     }
+    ],
+    "fuentes": [
+     {
+      "nombre": "Sala Villanos (web oficial)",
+      "id": "villanos",
+      "url": "https://salavillanos.es/evento/elles-bailey/",
+      "prioridad": 1
+     },
+     {
+      "nombre": "Madrid en Vivo (asociación de salas)",
+      "id": "madridenvivo",
+      "url": "https://madridenvivo.com/?post_type=evento&p=795835",
+      "prioridad": 3
+     },
+     {
+      "nombre": "conciertos.club (buscador semanal)",
+      "id": "cc_buscador",
+      "url": "https://conciertos.club/madrid/conciertos/125034-elles-bailey",
+      "prioridad": 3
+     },
+     {
+      "nombre": "conciertos.club (portada Madrid)",
+      "id": "cc_portada",
+      "url": "https://conciertos.club/madrid/conciertos/125034-elles-bailey",
+      "prioridad": 3
+     }
+    ],
+    "nacionalidad": "GB",
+    "nacionalidad_fuente": "Wikidata",
+    "imagen_evento": {
+     "url": "https://madridenvivo.com/wp-content/uploads/2022/08/fondo-privado.jpg",
+     "credito": "Madrid en Vivo (asociación de salas)",
+     "enlace": "https://madridenvivo.com/?post_type=evento&p=795835"
+    },
+    "categorias": [
+     "fuera de foco",
+     "pop e indie",
+     "rock y metal"
+    ]
+   },
+   "ficha": {
+    "nombre": "Elles Bailey",
+    "fecha": "2026-09-29",
+    "wikipedia": {
+     "encontrado": true,
+     "url": "https://en.wikipedia.org/wiki/Elles_Bailey",
+     "generos": [
+      "Blues rock",
+      "Americana",
+      "rock"
+     ],
+     "wikidata": "Q63368444",
+     "origen": "Bristol, , England",
+     "pais": "GB",
+     "imagen": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d6/Elles_Bailey_Live_at_The_Stables_MK_05_Feb_2023.jpg/250px-Elles_Bailey_Live_at_The_Stables_MK_05_Feb_2023.jpg",
+     "imagen_pagina": "https://en.wikipedia.org/wiki/File:Elles_Bailey_Live_at_The_Stables_MK_05_Feb_2023.jpg",
+     "idioma": "en"
+    },
+    "wikidata": {
+     "encontrado": true,
+     "id": "Q63368444",
+     "ids": {
+      "discogs": "5741635",
+      "allmusic": "mn0003819987",
+      "spotify": "4NPMwh3kDwi6uVCNtmeUvU",
+      "musicbrainz": "f1c7b5c6-ba5d-4d14-a2b0-97aa76fae28a",
+      "lastfm": "Elles+Bailey"
+     },
+     "pais": "GB",
+     "imagen_commons": "Elles Bailey Live at The Stables MK 05 Feb 2023.jpg"
+    },
+    "discogs": {
+     "encontrado": true,
+     "id": 5741635,
+     "nombre": "Elles Bailey",
+     "url": "https://www.discogs.com/artist/5741635-Elles-Bailey",
+     "generos": [
+      "Blues",
+      "Rock",
+      "Folk, World, & Country"
+     ],
+     "estilos": [
+      "Blues Rock",
+      "Bluegrass",
+      "Country Blues"
+     ],
+     "discos_analizados": 10,
+     "pais": null,
+     "imagen": "https://i.discogs.com/GXgCzpbMFQ_sK82_-kN0tWW4x3oalTSekiU7jR_p0dg/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTU3NDE2/MzUtMTU1NjQ2MTc3/Mi0xMDQwLmpwZWc.jpeg",
+     "identificado_por": "identificador de Discogs en Wikidata",
+     "perfil": ""
+    }
+   },
+   "debe": [
+    "blues"
+   ],
+   "no_debe": []
+  },
+  {
+   "artista": "DOBLECAPA",
+   "concierto": {
+    "id": "eab55576f3e8",
+    "fecha": "2026-10-17",
+    "artista": "DOBLECAPA",
+    "estilo_fuente": [
+     {
+      "estilo": "Pop / Rock",
+      "fuente": "Madrid en Vivo (asociación de salas)"
+     }
+    ],
+    "fuentes": [
+     {
+      "nombre": "Madrid en Vivo (asociación de salas)",
+      "id": "madridenvivo",
+      "url": "https://madridenvivo.com/?post_type=evento&p=794317",
+      "prioridad": 3
+     }
+    ],
+    "nacionalidad": null,
+    "nacionalidad_fuente": null,
+    "imagen_evento": {
+     "url": "https://madridenvivo.com/wp-content/uploads/2022/08/fondo-privado.jpg",
+     "credito": "Madrid en Vivo (asociación de salas)",
+     "enlace": "https://madridenvivo.com/?post_type=evento&p=794317"
+    },
+    "categorias": [
+     "pop e indie",
+     "rock y metal"
+    ]
+   },
+   "ficha": {
+    "nombre": "DOBLECAPA",
+    "fecha": "2026-09-29",
+    "wikipedia": {
+     "encontrado": false,
+     "motivo": "es: no existe; en: no existe"
+    },
+    "discogs": {
+     "encontrado": true,
+     "id": 6041847,
+     "nombre": "DobleCapa",
+     "url": "https://www.discogs.com/artist/6041847-DobleCapa",
+     "generos": [
+      "Rock",
+      "Blues"
+     ],
+     "estilos": [
+      "Blues Rock",
+      "Alternative Rock"
+     ],
+     "discos_analizados": 3,
+     "pais": null,
+     "imagen": "https://i.discogs.com/7Ns9KM8fDkAFuVGaX3Nh5SwthXQd9qX1ItDpj3DvFNQ/rs:fit/g:sm/q:90/h:450/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTYwNDE4/NDctMTUyOTk3MTEx/NS00NDQxLmpwZWc.jpeg",
+     "identificado_por": "única coincidencia exacta del nombre en Discogs",
+     "perfil": "Spanish instrumental blues-rock duo from Madrid active since 2015"
+    }
+   },
+   "debe": [
+    "blues"
+   ],
+   "no_debe": []
+  }
+ ]
+}

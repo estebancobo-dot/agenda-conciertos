@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Conciertos Madrid</title>
-<meta name="description" content="Agenda automática de conciertos en la Comunidad de Madrid: rock, metal, blues, americana, folk, punk, pop e indie. Datos trazables a sus fuentes.">
+<meta name="description" content="Agenda automática de conciertos en la Comunidad de Madrid: rock, metal, blues, americana, folk, punk, indie, synthwave y dark wave. Datos trazables a sus fuentes.">
 <meta name="theme-color" content="#14161a" media="(prefers-color-scheme: dark)">
 <meta name="theme-color" content="#f6f5f2" media="(prefers-color-scheme: light)">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23c2410c'/%3E%3Cpath d='M40 12v26a8 8 0 1 1-4-6.9V18l-12 3v21a8 8 0 1 1-4-6.9V16z' fill='%23fff'/%3E%3C/svg%3E">
@@ -13,20 +13,20 @@
   --bg:#f6f5f2; --panel:#ffffff; --panel2:#efede8; --ink:#1b1c1f; --muted:#5d6066; --line:#dcd9d2;
   --accent:#c2410c; --ok:#15803d; --warn:#b45309; --bad:#b91c1c; --info:#1d4ed8;
   --c-rock:#b91c1c; --c-pop:#7c3aed; --c-amer:#a16207; --c-blues:#1d4ed8; --c-punk:#be185d; --c-cant:#0f766e;
-  --c-trib:#c2410c; --c-fuera:#6b7280; --c-sin:#334155;
+  --c-trib:#c2410c; --c-fuera:#6b7280; --c-sin:#334155; --c-synth:#4d7c0f;
   --radius:14px; --shadow:0 1px 2px rgba(0,0,0,.06),0 4px 14px rgba(0,0,0,.05);
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
   --bg:#14161a; --panel:#1d2025; --panel2:#262a30; --ink:#ecebe8; --muted:#a2a6ad; --line:#33383f;
   --accent:#fb923c; --ok:#4ade80; --warn:#fbbf24; --bad:#f87171; --info:#93c5fd;
   --c-rock:#f87171; --c-pop:#c4b5fd; --c-amer:#facc15; --c-blues:#60a5fa; --c-punk:#f472b6; --c-cant:#2dd4bf;
-  --c-trib:#fb923c; --c-fuera:#9ca3af; --c-sin:#cbd5e1; --shadow:none;
+  --c-trib:#fb923c; --c-fuera:#9ca3af; --c-sin:#cbd5e1; --c-synth:#a3e635; --shadow:none;
 }}
 :root[data-theme="dark"]{
   --bg:#14161a; --panel:#1d2025; --panel2:#262a30; --ink:#ecebe8; --muted:#a2a6ad; --line:#33383f;
   --accent:#fb923c; --ok:#4ade80; --warn:#fbbf24; --bad:#f87171; --info:#93c5fd;
   --c-rock:#f87171; --c-pop:#c4b5fd; --c-amer:#facc15; --c-blues:#60a5fa; --c-punk:#f472b6; --c-cant:#2dd4bf;
-  --c-trib:#fb923c; --c-fuera:#9ca3af; --c-sin:#cbd5e1; --shadow:none;
+  --c-trib:#fb923c; --c-fuera:#9ca3af; --c-sin:#cbd5e1; --c-synth:#a3e635; --shadow:none;
 }
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
@@ -217,6 +217,7 @@ const GRUPOS = [
   {id:"pop e indie", nombre:"Indie y pop-rock", v:"--c-pop", desc:"Indie rock, indie pop, pop rock, power pop, shoegaze, new wave… (el pop comercial y latino va a Otros géneros)"},
   {id:"americana/country/folk", nombre:"Americana y folk", v:"--c-amer", desc:"Country, country rock, folk, folk rock, southern rock, bluegrass…"},
   {id:"blues", nombre:"Blues", v:"--c-blues", desc:"Todos los estilos de blues y el blues rock."},
+  {id:"synth y dark wave", nombre:"Synthwave y dark wave", v:"--c-synth", desc:"Synthwave y neo synthwave (retrowave, outrun, darksynth…), darkwave, coldwave, synth-pop, EBM, italo-disco… (el resto de la electrónica va a Otros géneros)"},
   {id:"cantautor", nombre:"Cantautores", v:"--c-cant", desc:"Solo por la etiqueta de la agenda (Discogs no tiene este estilo)."},
   {id:"tributos y versiones", nombre:"Tributos", v:"--c-trib", desc:"Bandas tributo y de versiones (por la agenda o el título)."},
   {id:"sin clasificar", nombre:"Sin clasificar", v:"--c-sin", desc:"Ni las webs de música ni la agenda dan estilo. Se muestran para no perder conciertos."},
@@ -232,7 +233,10 @@ const store = {
   set(k,v){try{localStorage.setItem("agenda:"+k,JSON.stringify(v))}catch(e){}}
 };
 let DATA=[], BYID={}, INFORME=null, TAXO=null, SALAS={}, MAP=null, HOY=null;
-let state = {tab:"Mes", date:null, id:null, q:"", grupos:store.get("grupos2",DEF_GRUPOS), origen:store.get("origen","todos"), from:null,
+// selección guardada con la lista de grupos anterior: se conserva y se añaden los grupos nuevos
+const gruposGuardados=()=>{const g3=store.get("grupos3",null); if(g3) return g3;
+  const g2=store.get("grupos2",null); return g2?[...g2,...DEF_GRUPOS.filter(g=>!["rock y metal","punk y garage","pop e indie","americana/country/folk","blues","cantautor","tributos y versiones","sin clasificar"].includes(g))]:DEF_GRUPOS;};
+let state = {tab:"Mes", date:null, id:null, q:"", grupos:gruposGuardados(), origen:store.get("origen","todos"), from:null,
   estilos:store.get("estilos",{}), genericos:store.get("genericos",true)};
 let regionNames=null; try{regionNames=new Intl.DisplayNames(["es"],{type:"region"})}catch(e){}
 
@@ -322,7 +326,7 @@ function filtersHTML(){
    <div class="chips" role="group" aria-label="Géneros">${chips}</div>
    ${n?`<div class="active">Filtrando: ${esc(resumenFiltros())} · <button id="freset">Quitar filtros</button></div>`:""}`;
 }
-function setGrupos(g){ state.grupos=g; store.set("grupos2",g); }
+function setGrupos(g){ state.grupos=g; store.set("grupos3",g); }
 function bindFilters(){
   const q=document.getElementById("q");
   if(q) q.oninput=()=>{const had=!!state.q; state.q=q.value; if(!!state.q!==had){renderBody(false); const nq=document.getElementById("q"); nq.focus(); nq.setSelectionRange(nq.value.length,nq.value.length);} else renderBody(true);};
@@ -613,7 +617,8 @@ function viewInforme(){
   return `<p>Última actualización: <b>${esc(new Date(INFORME.generado).toLocaleString("es-ES",{dateStyle:"full",timeStyle:"short"}))}</b>${INFORME.modo&&INFORME.modo!=="completa"?` (${esc(INFORME.modo)})`:""} · ventana ${esc(INFORME.hoy)} → ${esc(INFORME.horizonte)} · versión ${esc(INFORME.version)}</p>
    <div class="kpis">${k(t.conciertos,"conciertos próximos")}${k(t.en_foco,"en foco")}${k(t.contrastados,"contrastados (2+ webs)")}${k(t.una_fuente,"de 1 web")}${k(t.conflictos,"con conflicto")}${k(t.posiblemente_cancelados,"posiblemente cancelados")}${k(t.nuevos_hoy,"nuevos hoy")}${k(`${t.fuentes_ok}/${t.fuentes_total}`,"fuentes que funcionaron")}</div>
    ${a.consultados!==undefined?`<h3>Fichas de artista</h3><div class="kpis">${k(a.discogs,"con ficha en Discogs")}${k(a.wikipedia,"con ficha en Wikipedia")}${a.wikidata!==undefined?k(a.wikidata,"con Wikidata"):""}${a.lastfm!==undefined?k(a.lastfm,"con etiquetas de Last.fm"):""}${a.musicbrainz!==undefined?k(a.musicbrainz,"con géneros de MusicBrainz"):""}${k(a.sin_ficha,"sin ficha")}${k(a.pendientes,"pendientes (próximas ejecuciones)")}</div>`:""}
-   <div class="scroll"><table><thead><tr><th>Fuente</th><th>Funcionó</th><th>Conciertos</th><th>Nuevos</th><th>Solo aquí</th><th>Páginas</th><th>robots.txt bloquea</th><th>Errores / avisos</th></tr></thead><tbody>${rows}</tbody></table></div>
+   ${INFORME.grupos?`<h3>Conciertos por grupo</h3><p class="muted">Entran / salen: conciertos que ya estaban y han cambiado de grupo desde la ejecución anterior (por fichas nuevas o por cambios en la clasificación).</p><div class="scroll"><table><thead><tr><th>Grupo</th><th>Conciertos</th><th>Entran</th><th>Salen</th></tr></thead><tbody>${GRUPOS.filter(g=>INFORME.grupos[g.id]).map(g=>{const x=INFORME.grupos[g.id]; const ej=l=>l&&l.length?`<div class="muted">${esc(l.join(", "))}</div>`:""; return `<tr><td>${esc(g.nombre)}</td><td>${x.total}</td><td>${x.entran}${ej(x.ejemplos_entran)}</td><td>${x.salen}${ej(x.ejemplos_salen)}</td></tr>`;}).join("")}</tbody></table></div>`:""}
+   <h3>Fuentes</h3><div class="scroll"><table><thead><tr><th>Fuente</th><th>Funcionó</th><th>Conciertos</th><th>Nuevos</th><th>Solo aquí</th><th>Páginas</th><th>robots.txt bloquea</th><th>Errores / avisos</th></tr></thead><tbody>${rows}</tbody></table></div>
    <h3>Correcciones manuales</h3><ul>${(c.aplicadas||[]).map(x=>`<li>${esc(x.correccion)}: aplicada a ${x.registros}</li>`).join("")}${(c.sin_coincidencia||[]).map(x=>`<li class="muted">${esc(x.correccion)}: sin concierto que coincida (${esc(x.nota)})</li>`).join("")}</ul>
    <h3>Fuera de ámbito (otras provincias)</h3><p class="muted">${esc(t.fuera_de_ambito)} eventos descartados. Ejemplos:</p><ul class="muted">${(t.ejemplos_fuera_de_ambito||[]).slice(0,10).map(x=>`<li>${esc(x)}</li>`).join("")}</ul>`;
 }

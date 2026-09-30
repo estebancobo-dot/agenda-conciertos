@@ -528,7 +528,7 @@ PESO_RANGO = [1.0, 0.75, 0.55, 0.45, 0.35, 0.3]
 def evidencias(ent: dict) -> list[dict]:
     """Todos los estilos y géneros que dan las webs de música, con un peso según la fuente y su posición
     (la web pone primero el principal). Sirven para decidir los grupos por consenso, no por la primera fuente."""
-    from .clasificar import discogs, generos_de_texto
+    from .clasificar import discogs, genero_de_estilo, generos_de_texto
     out = []
 
     lf_debil = (ent.get("lastfm") or {}).get("identificado_por") == "coincidencia por nombre"
@@ -546,9 +546,10 @@ def evidencias(ent: dict) -> list[dict]:
             add(e, "estilo", "Discogs", i)
         # los géneros de Discogs también cuentan (con menos peso si hay estilos): deciden los estilos ambiguos
         # ("Instrumental", "Experimental") y evitan que un estilo compartido arrastre a un género equivocado
+        conocidos = [e for e in dc.get("estilos") or [] if genero_de_estilo(e)]
         for i, g in enumerate(dc.get("generos") or []):
             add(g, "genero", "Discogs", i)
-            if dc.get("estilos"):
+            if conocidos:  # si ningún estilo está en la taxonomía (Techno, House…), el género decide solo
                 out[-1]["peso"] = round(out[-1]["peso"] * 0.6, 3)
     if lf.get("encontrado"):
         i = 0

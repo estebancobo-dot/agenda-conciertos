@@ -204,17 +204,31 @@ def por_consenso(pesos: dict[str, float]) -> list[str]:
             if p >= UMBRAL_PRINCIPAL * maximo and p >= UMBRAL_TOTAL * total]
 
 
-def grupos_de_evidencias(evs: list[dict], grupos_agenda: list[str] | None = None) -> tuple[list[str], list[str]]:
+def sin_generos_cubiertos(evs: list[dict]) -> list[dict]:
+    """Quita los géneros que ya concreta algún estilo: si una web dice "Indie Pop", el "Pop" genérico (de esa u
+    otra web) no vota por su cuenta en contra de su propio estilo."""
+    cubiertos = {genero_de_estilo(e["nombre"]) for e in evs
+                 if e["tipo"] == "estilo" and grupo_de(e["nombre"], "estilo")}
+    return [e for e in evs if not (e["tipo"] == "genero" and e["nombre"] in cubiertos)]
+
+
+def grupos_de_evidencias(evs: list[dict], grupos_agenda: list[str] | None = None,
+                         pesos_agenda: dict[str, float] | None = None,
+                         contexto: list[str] | None = None) -> tuple[list[str], list[str]]:
     """Grupos por consenso ponderado y los estilos que los sostienen, ordenados por peso.
 
-    Las evidencias débiles (Last.fm identificado solo por el nombre) valen la mitad; si son las únicas, solo
-    cuentan los grupos en los que coinciden con la agenda (si la agenda no dice nada, no se usan): así un
-    título genérico como "Eternal" no se convierte en un grupo de doom metal."""
+    - Un género que ya concreta un estilo no vota aparte ("Pop" no vota contra "Indie Pop").
+    - Las etiquetas concretas de las agendas (pesos_agenda) suman como una web más.
+    - Las evidencias débiles (Last.fm identificado solo por el nombre) valen la mitad; si son las únicas, solo
+      cuentan los grupos en los que coinciden con la agenda o con la especialidad de la web que publica el
+      concierto (contexto): así un título genérico como "Eternal" no se convierte en un grupo de doom metal,
+      pero EUROPE en una agenda de metal sí es el grupo de hard rock."""
+    evs = sin_generos_cubiertos(evs)
     fuertes = [e for e in evs if not e.get("debil")]
     debiles = [e for e in evs if e.get("debil")]
 
     def puntuar(lista, factor_debil):
-        pesos: dict[str, float] = {}
+        pesos: dict[str, float] = dict(pesos_agenda or {}) if fuertes else {}
         por_estilo: dict[str, float] = {}
         for e in lista:
             g = grupo_de(e["nombre"], e["tipo"])
@@ -231,7 +245,8 @@ def grupos_de_evidencias(evs: list[dict], grupos_agenda: list[str] | None = None
         grupos = por_consenso(pesos)
     else:
         pesos, por_estilo = puntuar(debiles, 1.0)
-        grupos = [g for g in por_consenso(pesos) if g in (grupos_agenda or [])]
+        validos = set(grupos_agenda or []) | set(contexto or [])
+        grupos = [g for g in por_consenso(pesos) if g in validos]
     estilos = [x for x, _ in sorted(por_estilo.items(), key=lambda x: -x[1]) if grupo_de(x, "estilo") in grupos]
     return grupos, estilos
 
@@ -268,6 +283,44 @@ def grupos_de_agenda(etiquetas_por_fuente: list[list[str]]) -> tuple[list[str], 
 
 
 PESO_RANGO_AGENDA = [1.0, 0.75, 0.55, 0.45]
+# Lo que dice una agenda cuenta como una web de música más, con menos peso que Discogs: la agenda etiqueta el
+# concierto (a veces con prisa), las webs de música al artista. Una sola agenda no llega a igualar al estilo
+# principal de Discogs; varias webs de agenda distintas que coinciden suman, hasta 1.
+PESO_AGENDA, TOPE_AGENDA = 0.5, 1.0
+
+
+def pesos_de_agenda(etiquetas_por_fuente: list[list[str]]) -> dict[str, float]:
+    """Peso de cada grupo según las etiquetas concretas de las agendas (las "paraguas" como "Pop / Rock" no
+    cuentan). Cada web aporta como mucho una vez a cada grupo."""
+    exacto = _mapa()[0]
+    pesos: dict[str, float] = {}
+    for etiquetas in etiquetas_por_fuente:
+        propios: dict[str, float] = {}
+        for e in etiquetas:
+            if isinstance(exacto.get(norm(e)), list):
+                continue
+            for i, c in enumerate(categorias_de(e)):
+                if c != "sin clasificar":
+                    propios[c] = max(propios.get(c, 0), PESO_AGENDA * PESO_RANGO_AGENDA[min(i, 3)])
+        for c, p in propios.items():
+            pesos[c] = min(TOPE_AGENDA, pesos.get(c, 0) + p)
+    return pesos
+
+
+@lru_cache(maxsize=1)
+def _contexto():
+    return {k: v for k, v in load_json("estilos_map.json").get("contexto_fuente", {}).items() if not k.startswith("_")}
+
+
+def contexto_de_fuentes(ids: list[str]) -> list[str]:
+    """Grupos que cubre la especialidad de las webs que publican el concierto (agenda de metal, de blues…)."""
+    ctx = _contexto()
+    out: list[str] = []
+    for i in ids:
+        for g in ctx.get(i, []):
+            if g not in out:
+                out.append(g)
+    return out
 
 
 # Géneros de MusicBrainz sin equivalencia literal en Discogs: su vocabulario es cerrado ("melodic metalcore",
@@ -279,6 +332,9 @@ _FAMILIAS_MB = [
     (r"\bblues\b", "Blues", "genero"), (r"\bcountry\b", "Country", "estilo"), (r"\bbluegrass\b", "Bluegrass", "estilo"),
     (r"\bfolk\b", "Folk", "estilo"), (r"\bjazz\b", "Jazz", "genero"),
     (r"\b(hip hop|rap|trap|drill|grime)\b", "Hip Hop", "genero"),
+    (r"\b(synthwave|retrowave|outrun|darksynth|dreamwave|chillsynth|sovietwave|spacesynth)\b", "Synthwave", "estilo"),
+    (r"\b(darkwave|dark wave)\b", "Darkwave", "estilo"), (r"\b(coldwave|cold wave|minimal wave|minimal synth)\b", "Coldwave", "estilo"),
+    (r"\b(ebm|electro industrial|aggrotech|futurepop)\b", "EBM", "estilo"), (r"\bsynth ?pop\b", "Synth-pop", "estilo"),
     (r"\b(house|techno|trance|edm|electro\w*|dubstep|drum and bass|synth\w*|ambient|idm)\b", "Electronic", "genero"),
     (r"\b(reggaeton|cumbia|salsa|bachata|latin|flamenco|rumba|bolero|tango|son)\b", "Latin", "genero"),
     (r"\b(soul|funk|r&b|rnb|disco)\b", "Funk / Soul", "genero"), (r"\b(reggae|dub|dancehall)\b", "Reggae", "genero"),

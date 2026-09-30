@@ -1,5 +1,21 @@
 # Versiones
 
+## 2.10.0 — 2026-09-30
+
+Clasificación más consistente y grupo nuevo:
+
+- **Nuevo grupo "Synthwave y dark wave".**
+  - Synthwave y todo el neo synthwave actual: retrowave, outrun, darksynth, dreamwave, chillsynth, sovietwave, spacesynth.
+  - Darkwave, coldwave y minimal wave; synth-pop y tecnopop; EBM, electro-industrial, aggrotech y futurepop; italo-disco, electroclash, chillwave, vaporwave, witch house y dungeon synth.
+  - Antes toda la electrónica iba a "Otros géneros": Suicide Commando, Combichrist, Aviador Dro o Mind Enterprises no aparecían en ningún filtro de foco. El resto de la electrónica (techno, house…) sigue en "Otros géneros".
+- **Un género no vota contra su propio estilo.** Si una web dice "Indie Pop", el "Pop" genérico ya no cuenta aparte. La Monja Enana, Kuve o Jimena Amarillo vuelven a "Indie y pop-rock".
+- **La agenda cuenta en el consenso** como una web más, con menos peso que Discogs. Una sola agenda no desplaza al estilo principal de Discogs; varias que coinciden, sí.
+- **Especialidad de la web.** Si Last.fm identifica al artista solo por el nombre y el concierto viene de una agenda de metal (o de rock, o de blues) que coincide, se acepta. Vuelven EUROPE, Frozen Soul, Fleshcrawl, Bloodhunter… que habían quedado sin clasificar.
+- **Si ningún estilo de Discogs está en la taxonomía** (Techno, House…), el género decide solo, con todo su peso.
+- "Música ligera", "Balada" y "Pop melódico" van a "Otros géneros". "Pop electrónico" y "Electropop" se tratan como etiquetas genéricas.
+- **Conjunto de control:** 46 artistas reales con su grupo correcto (y los que no deben tener) congelados en los tests. Cualquier cambio que los rompa falla antes de publicarse.
+- **Informe: conciertos por grupo**, con cuántos entran y salen de cada grupo respecto a la ejecución anterior y ejemplos.
+
 ## 2.9.1 — 2026-09-30
 
 Más falsos géneros corregidos:

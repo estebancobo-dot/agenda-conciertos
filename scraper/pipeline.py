@@ -221,11 +221,12 @@ def aplicar_ficha(r: dict, f: dict | None) -> None:
 
     1. Si la agenda lo presenta como teatro, musical, danza… no es un concierto: no se usa la ficha de ningún
        "artista" (evita homónimos como el musical "Los Miserables" y el grupo punk chileno).
-    2. Si hay ficha de webs de música, los grupos salen del consenso ponderado de todas (Discogs, Last.fm,
-       Wikipedia): el principal y los que tengan un peso comparable, no todos los que aparezcan.
+    2. Si hay ficha de webs de música, los grupos salen del consenso ponderado de todas (Discogs, MusicBrainz,
+       Last.fm, Wikipedia) y de las etiquetas concretas de las agendas: el principal y los que tengan un peso
+       comparable, no todos los que aparezcan.
     3. Si no, de las etiquetas de las agendas. Las genéricas ("Pop / Rock") se marcan como tales."""
-    from .clasificar import (en_foco, es_espectaculo, grupos_de_agenda, grupos_de_evidencias,
-                             titulo_fuera_de_foco)
+    from .clasificar import (contexto_de_fuentes, en_foco, es_espectaculo, grupos_de_agenda, grupos_de_evidencias,
+                             pesos_de_agenda, titulo_fuera_de_foco)
     etiquetas = etiquetas_por_fuente(r)
     generico, estilos, segun = False, [], []
     r.pop("estilo_descartado", None)
@@ -238,12 +239,16 @@ def aplicar_ficha(r: dict, f: dict | None) -> None:
         cats, origen = [], "agenda"
         grupos_agenda, generico_agenda = grupos_de_agenda(etiquetas)
         if f and f.get("evidencias"):
-            cats, estilos = grupos_de_evidencias(f["evidencias"], grupos_agenda)
+            contexto = contexto_de_fuentes([x.get("id") for x in r.get("fuentes", [])])
+            p_agenda = pesos_de_agenda(etiquetas)
+            cats, estilos = grupos_de_evidencias(f["evidencias"], grupos_agenda, p_agenda, contexto)
             if cats:
                 pesos: dict[str, float] = {}
                 for e in f["evidencias"]:
                     pesos[e["fuente"]] = pesos.get(e["fuente"], 0) + e["peso"]
                 segun = [x for x, _ in sorted(pesos.items(), key=lambda x: -x[1])]
+                if any(g in p_agenda for g in cats):
+                    segun.append("agenda")
                 origen = segun[0]
         if not cats:
             if f and f.get("evidencias"):
@@ -273,6 +278,32 @@ def aplicar_ficha(r: dict, f: dict | None) -> None:
                                 str(r.get("nacionalidad_fuente", "")).startswith("MusicBrainz")):
         r["nacionalidad"], r["nacionalidad_fuente"] = f["pais"], f["fuente_pais"]
     r["imagen"] = (f or {}).get("imagen") or r.get("imagen_evento")
+
+
+def cambios_grupos(previos: dict[str, list[str]], recs: list[dict], hoy: str) -> dict:
+    """Conciertos futuros por grupo y cuántos han entrado o salido de cada grupo respecto a la ejecución anterior
+    (solo los que ya existían: así se ve si un cambio de clasificación ha movido muchos conciertos de golpe)."""
+    out: dict[str, dict] = {}
+    for r in recs:
+        if r["fecha"] < hoy:
+            continue
+        ahora = r.get("grupos") or []
+        for g in ahora:
+            out.setdefault(g, {"total": 0, "entran": 0, "salen": 0, "ejemplos_entran": [], "ejemplos_salen": []})
+            out[g]["total"] += 1
+        if r["id"] not in previos:
+            continue
+        antes = previos[r["id"]]
+        for g, tipo in [(g, "entran") for g in ahora if g not in antes] + [(g, "salen") for g in antes if g not in ahora]:
+            d = out.setdefault(g, {"total": 0, "entran": 0, "salen": 0, "ejemplos_entran": [], "ejemplos_salen": []})
+            d[tipo] += 1
+            if len(d["ejemplos_" + tipo]) < 8 and r["artista"] not in d["ejemplos_" + tipo]:
+                d["ejemplos_" + tipo].append(r["artista"])
+    return out
+
+
+def _grupos_previos(recs: list[dict]) -> dict[str, list[str]]:
+    return {r["id"]: list(r.get("grupos") or []) for r in recs}
 
 
 def _match_prev(r: dict, prev: list[dict]) -> dict | None:
@@ -525,6 +556,7 @@ def ejecutar(hoy: date | None = None, solo: list[str] | None = None, fetcher: Fe
         "musicbrainz": mb_stats,
         "artistas": art_stats,
         "estilos_sin_mapear": sin_mapear[:300],
+        "grupos": cambios_grupos(_grupos_previos(anteriores), recs, hoy.isoformat()),
     }
     _write("concerts.json", {"generado": ahora, "hoy": hoy.isoformat(), "horizonte": horizonte.isoformat(),
                              "conciertos": recs})
@@ -560,11 +592,13 @@ def ejecutar_fichas(hoy: date | None = None, presupuesto_seg: float = 3000) -> d
         return stats  # nada pendiente: no se toca ningún archivo (ni commit ni nueva publicación)
     _write("musicbrainz_cache.json", cache_mb)
     _write("artistas.json", cache_art)
+    previos = _grupos_previos(recs)
     for r in recs:
         aplicar_ficha(r, ficha(cache_art.get(norm(r["artista"]))))
     _write("concerts.json", datos)
     escribir_csv(recs, DATA / "concerts.csv")
     informe = _read("informe.json", {})
+    informe["grupos"] = cambios_grupos(previos, recs, hoy.isoformat())
     stats["ultima_carga_fichas"] = datetime.now(timezone.utc).isoformat(timespec="seconds")
     informe["artistas"] = stats
     _write("informe.json", informe)

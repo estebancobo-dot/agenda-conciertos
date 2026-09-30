@@ -5,6 +5,7 @@
   "pop e indie",
   "americana/country/folk",
   "blues",
+  "synth y dark wave",
   "punk y garage",
   "cantautor",
   "tributos y versiones",
@@ -16,6 +17,7 @@
   "pop e indie",
   "americana/country/folk",
   "blues",
+  "synth y dark wave",
   "punk y garage",
   "cantautor",
   "tributos y versiones",
@@ -91,9 +93,111 @@
   "Flamenco Capital": "fuera de foco",
   "Musicales": "fuera de foco",
   "Conciertos": "sin clasificar",
-  "Concierto": "sin clasificar"
+  "Concierto": "sin clasificar",
+  "Música ligera": "fuera de foco",
+  "Synthwave": "synth y dark wave",
+  "Darkwave": "synth y dark wave",
+  "Dark Wave": "synth y dark wave",
+  "Synth Pop": "synth y dark wave",
+  "Synth-pop": "synth y dark wave",
+  "EBM": "synth y dark wave",
+  "Coldwave": "synth y dark wave",
+  "Retrowave": "synth y dark wave",
+  "Electropop": [
+   "pop e indie",
+   "fuera de foco"
+  ],
+  "Pop electrónico": [
+   "pop e indie",
+   "fuera de foco"
+  ],
+  "Balada": "fuera de foco"
  },
  "palabras_clave": [
+  [
+   "synthwave",
+   "synth y dark wave"
+  ],
+  [
+   "synth wave",
+   "synth y dark wave"
+  ],
+  [
+   "retrowave",
+   "synth y dark wave"
+  ],
+  [
+   "outrun",
+   "synth y dark wave"
+  ],
+  [
+   "darksynth",
+   "synth y dark wave"
+  ],
+  [
+   "darkwave",
+   "synth y dark wave"
+  ],
+  [
+   "dark wave",
+   "synth y dark wave"
+  ],
+  [
+   "coldwave",
+   "synth y dark wave"
+  ],
+  [
+   "cold wave",
+   "synth y dark wave"
+  ],
+  [
+   "minimal wave",
+   "synth y dark wave"
+  ],
+  [
+   "synth pop",
+   "synth y dark wave"
+  ],
+  [
+   "synthpop",
+   "synth y dark wave"
+  ],
+  [
+   "tecnopop",
+   "synth y dark wave"
+  ],
+  [
+   "ebm",
+   "synth y dark wave"
+  ],
+  [
+   "electro industrial",
+   "synth y dark wave"
+  ],
+  [
+   "aggrotech",
+   "synth y dark wave"
+  ],
+  [
+   "futurepop",
+   "synth y dark wave"
+  ],
+  [
+   "italo disco",
+   "synth y dark wave"
+  ],
+  [
+   "pop melodico",
+   "fuera de foco"
+  ],
+  [
+   "balada",
+   "fuera de foco"
+  ],
+  [
+   "musica ligera",
+   "fuera de foco"
+  ],
   [
    "pop latino",
    "fuera de foco"
@@ -531,7 +635,7 @@
   "para familias"
  ],
  "discogs_a_categoria": {
-  "_descripcion": "Cómo se agrupan los estilos de Discogs en los filtros. Un estilo no listado va al grupo de su género: Rock → rock y metal, Pop comercial (sin un estilo indie o pop-rock) → fuera de foco, Blues → blues, Folk/World/Country → americana/country/folk, resto de géneros → fuera de foco.",
+  "_descripcion": "Cómo se agrupan los estilos de Discogs en los filtros. Un estilo no listado va al grupo de su género: Rock → rock y metal, Pop comercial (sin un estilo indie o pop-rock) → fuera de foco, Blues → blues, Folk/World/Country → americana/country/folk, la familia synth y dark wave de Electronic → synth y dark wave, resto de géneros → fuera de foco.",
   "punk y garage": [
    "Punk",
    "Hardcore",
@@ -564,9 +668,7 @@
    "Jangle Pop",
    "New Wave",
    "Lo-Fi",
-   "Soft Rock",
-   "Coldwave",
-   "Synth-pop"
+   "Soft Rock"
   ],
   "americana/country/folk": [
    "Country Rock",
@@ -585,6 +687,19 @@
   ],
   "blues": [
    "Blues Rock"
+  ],
+  "synth y dark wave": [
+   "Synthwave",
+   "Darkwave",
+   "Coldwave",
+   "Synth-pop",
+   "EBM",
+   "Electroclash",
+   "Italo-Disco",
+   "Chillwave",
+   "Vaporwave",
+   "Witch House",
+   "Dungeon Synth"
   ],
   "fuera de foco": [
    "Flamenco",
@@ -622,5 +737,114 @@
   "Pop": "fuera de foco",
   "Blues": "blues",
   "Folk, World, & Country": "americana/country/folk"
+ },
+ "contexto_fuente": {
+  "_descripcion": "Especialidad de las webs que publican el concierto. No asigna grupos por sí sola: solo sirve para aceptar lo que dice Last.fm cuando lo identifica únicamente por el nombre (si Last.fm dice hard rock y el concierto viene de una agenda de metal, es ese grupo y no un homónimo).",
+  "thm": [
+   "rock y metal",
+   "punk y garage"
+  ],
+  "metallegion": [
+   "rock y metal",
+   "punk y garage"
+  ],
+  "metalcry": [
+   "rock y metal",
+   "punk y garage"
+  ],
+  "hellpress": [
+   "rock y metal",
+   "punk y garage"
+  ],
+  "metalsymphony": [
+   "rock y metal",
+   "punk y garage"
+  ],
+  "neverland": [
+   "rock y metal",
+   "punk y garage"
+  ],
+  "madness": [
+   "rock y metal",
+   "punk y garage"
+  ],
+  "hellpress_melodico": [
+   "rock y metal"
+  ],
+  "rockprog_agenda": [
+   "rock y metal"
+  ],
+  "rockprog": [
+   "rock y metal"
+  ],
+  "viriaor": [
+   "rock y metal"
+  ],
+  "rockandblog": [
+   "rock y metal",
+   "punk y garage",
+   "blues",
+   "americana/country/folk",
+   "pop e indie"
+  ],
+  "tm_blog": [
+   "rock y metal",
+   "punk y garage",
+   "blues",
+   "americana/country/folk",
+   "pop e indie"
+  ],
+  "rockforeveryone": [
+   "rock y metal",
+   "punk y garage",
+   "blues",
+   "americana/country/folk",
+   "pop e indie"
+  ],
+  "mariskal": [
+   "rock y metal",
+   "punk y garage",
+   "blues",
+   "americana/country/folk",
+   "pop e indie"
+  ],
+  "rockgle": [
+   "rock y metal",
+   "punk y garage",
+   "blues",
+   "americana/country/folk",
+   "pop e indie"
+  ],
+  "getrock": [
+   "rock y metal",
+   "punk y garage",
+   "blues",
+   "americana/country/folk",
+   "pop e indie"
+  ],
+  "dirtyrock": [
+   "rock y metal",
+   "punk y garage",
+   "blues",
+   "americana/country/folk",
+   "pop e indie"
+  ],
+  "diariorockero": [
+   "rock y metal",
+   "punk y garage",
+   "blues",
+   "americana/country/folk",
+   "pop e indie"
+  ],
+  "sbm": [
+   "blues",
+   "americana/country/folk",
+   "rock y metal"
+  ],
+  "bigmama": [
+   "blues",
+   "americana/country/folk",
+   "rock y metal"
+  ]
  }
 }
