@@ -568,6 +568,14 @@ def ejecutar(hoy: date | None = None, solo: list[str] | None = None, fetcher: Fe
         "estilos_sin_mapear": sin_mapear[:300],
         "grupos": cambios_grupos(grupos_previos, recs, hoy.isoformat()),
     }
+    # la ejecución completa del día queda registrada aunque luego los reintentos rehagan el informe
+    if no_leidas:
+        informe["ultima_completa"] = _read("informe.json", {}).get("ultima_completa")
+    else:
+        informe["ultima_completa"] = {"generado": ahora, "duracion_seg": informe["duracion_seg"],
+                                      "fuentes_ok": informe["totales"]["fuentes_ok"],
+                                      "fuentes_total": informe["totales"]["fuentes_total"],
+                                      "peticiones_http": informe["totales"]["peticiones_http"]}
     _write("concerts.json", {"generado": ahora, "hoy": hoy.isoformat(), "horizonte": horizonte.isoformat(),
                              "conciertos": recs})
     escribir_csv(recs, DATA / "concerts.csv")

@@ -38,9 +38,15 @@ Agenda automática y gratuita de los conciertos de los próximos 120 días en Ma
 
 ### Cuándo se actualiza
 
-- **Conciertos**: una vez al día, a las 05:00 UTC. Se vuelven a leer todas las agendas, porque es la única forma de detectar cambios de hora o cancelaciones.
+- **Conciertos**: una vez al día, a las 03:10 UTC (05:10 en Madrid en verano, 04:10 en invierno). Tarda unos 40 minutos, así que termina antes de las 7 en Madrid aunque GitHub la arranque con retraso. Se vuelven a leer todas las agendas, porque es la única forma de detectar cambios de hora o cancelaciones.
 - **Si una web falla** (bloqueo, caída), se reintenta a los 90 segundos y otra vez cada 2 horas. Mientras tanto se usan sus conciertos de la última lectura completa (hasta 14 días), avisando en la ficha: no se pierde nada de lo que aporta.
-- **Fichas de artista** (estilo, origen, foto): cada artista se consulta una sola vez y se guarda en `data/artistas.json`. En la ejecución diaria se buscan a la vez que se leen las agendas. Además, cada 2 horas se completan los pendientes durante un máximo de 50 minutos, sin tocar las agendas. Cuando ya no quedan pendientes, esa ejecución termina en segundos y no vuelve a publicar la web.
+- **Fichas de artista** (estilo, origen, foto): cada artista se consulta una sola vez y se guarda en `data/artistas.json`. En la ejecución diaria se buscan a la vez que se leen las agendas. Además, cada 2 horas de 05:40 a 23:40 UTC se completan los pendientes durante un máximo de 45 minutos, sin tocar las agendas (de madrugada no hay pasadas, para no retrasar la ejecución completa). Cuando ya no quedan pendientes, esa ejecución termina en segundos y no vuelve a publicar la web.
+
+### Dónde se guardan los datos
+
+Los datos que se generan (conciertos, informe, estado de las fuentes y las cachés de fichas y de fuentes) viven en la rama **`datos`**, no en `main`. Esa rama es un único commit que se reemplaza en cada ejecución, así que el repositorio no crece con cada actualización. `main` solo tiene el código y la configuración (estilos, taxonomía, salas, correcciones).
+
+Para tenerlos en local: `python tools/datos.py` (los trae de la rama `datos` a `data/`).
 
 ### Lanzar la actualización a mano
 

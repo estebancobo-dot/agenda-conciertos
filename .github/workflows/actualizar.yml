@@ -2,8 +2,12 @@ name: Actualizar agenda y publicar web
 
 on:
   schedule:
-    - cron: "0 5 * * *"      # todos los días a las 05:00 UTC: agendas + fichas
-    - cron: "40 */2 * * *"   # cada 2 horas: solo fichas de artista pendientes (termina enseguida si no hay)
+    # todos los días a las 03:10 UTC (05:10 en Madrid en verano, 04:10 en invierno): agendas + fichas. Tarda unos
+    # 40 minutos; con el retraso habitual de los cron de GitHub termina antes de las 7 en Madrid todo el año
+    - cron: "10 3 * * *"
+    # cada 2 horas de 05:40 a 23:40 UTC: reintenta las fuentes que fallaron y completa fichas de artista. No hay
+    # pasadas de madrugada para que ninguna retrase la ejecución completa (no se solapan: van en cola)
+    - cron: "40 5-23/2 * * *"
   workflow_dispatch:
     inputs:
       fichas:
@@ -37,6 +41,9 @@ jobs:
           python-version: "3.11"
           cache: pip
       - run: pip install -r requirements.txt
+      - name: Traer datos (rama datos)
+        # los datos generados viven en la rama `datos`; si no se pueden traer, no se rastrea (ver tools/datos.py)
+        run: python tools/datos.py
       - name: Tests
         run: python -m pytest -q
       - name: Rastrear fuentes
@@ -49,7 +56,7 @@ jobs:
           LASTFM_KEY: ${{ secrets.LASTFM_KEY }}
           TICKETMASTER_KEY: ${{ secrets.TICKETMASTER_KEY }}
         run: |
-          if [ "${{ github.event.schedule }}" = "40 */2 * * *" ] || [ "${{ github.event.inputs.fichas }}" = "true" ]; then
+          if [ "${{ github.event.schedule }}" = "40 5-23/2 * * *" ] || [ "${{ github.event.inputs.fichas }}" = "true" ]; then
             # cada 2 horas: reintenta las fuentes que fallaron en la última lectura y completa fichas pendientes
             python -m scraper --reintentar || echo "El reintento de fuentes falló; se sigue con las fichas"
             python -m scraper --fichas --minutos 45

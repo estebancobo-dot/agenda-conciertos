@@ -1,5 +1,16 @@
 # Versiones
 
+## 2.11.0 — 2026-09-30
+
+Fase 1 de mejoras (tolerancia a fallos y horarios):
+
+- **Horario nuevo.** La ejecución completa arranca a las 03:10 UTC (05:10 en Madrid en verano, 04:10 en invierno) y termina antes de las 7. Las pasadas de cada 2 horas van de 05:40 a 23:40 UTC: de madrugada no hay ninguna que pueda retrasar la completa.
+- **Rama `datos`.** Los datos generados ya no se guardan en `main`, sino en una rama aparte con un único commit que se reemplaza cada vez: el repositorio deja de crecer unos 10 MB al día.
+  - La primera ejecución crea la rama a partir de los datos de `main`.
+  - Si al empezar no se pueden traer los datos, no se rastrea ni se guarda nada, para no machacar lo guardado con datos incompletos.
+  - Dos ejecuciones que guarden a la vez siguen uniendo sus cachés, como antes.
+- **Informe: la última lectura completa queda registrada** (fecha, duración, fuentes que funcionaron) aunque luego las pasadas de cada 2 horas rehagan el informe. Antes el informe decía "duración 22 s" tras un reintento.
+
 ## 2.10.1 — 2026-09-30
 
 - **Homónimos en Discogs.** Si la ficha de Discogs no tiene una identidad segura (encontrada solo por el nombre, con otro nombre o con el sufijo de homónimos de Discogs, "Martin (14)") y contradice a todo lo demás (la pone solo fuera de foco y la agenda y las otras webs solo en foco, o al revés), se trata como posible homónimo: no decide el género y la ficha del concierto lo explica.

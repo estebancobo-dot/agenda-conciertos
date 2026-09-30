@@ -3,3 +3,4 @@ __pycache__/
 .pytest_cache/
 capturas/
 data/*.tmp
+data/.traidos.json
