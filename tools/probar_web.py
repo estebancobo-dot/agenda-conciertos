@@ -82,6 +82,11 @@ def recorrido(b):
     ctx = nuevo_contexto(b)
     pg = ctx.new_page()
     pg.on("pageerror", lambda e: R["errores"].append(str(e)[:300]))
+    fallos: list = []
+    pg.on("response", lambda x: x.request.resource_type == "image" and x.status >= 400 and fallos.append(
+        {"status": x.status, "url": x.url[:160]}))
+    pg.on("requestfailed", lambda q: q.resource_type == "image" and fallos.append(
+        {"error": (q.failure or "")[:80], "url": q.url[:160]}))
     pg.on("requestfinished", lambda q: q.resource_type == "image" and imgs.append(
         {"url": q.url[:120], "ms": round(q.timing["responseEnd"]) if q.timing else None}))
     lento(pg)
@@ -241,6 +246,24 @@ def recorrido(b):
          lentas=[i for i in imgs if (i.get("ms") or 0) > 3000][:10],
          hosts=sorted({i["url"].split("/")[2] for i in imgs}))
 
+    paso("7_imagenes_fallidas", total=len(fallos), ejemplos=fallos[:15])
+    # cómo responde wsrv.nl con cada servidor de imágenes de las agendas
+    from urllib.parse import quote
+    diag = {}
+    for u in ("https://doc.conciertos.club/doc/c/2026/luciaferna_20260930.jpg",
+              "https://conciertos.club/doc/c/2025/c_losmiserables.jpg",
+              "https://madridenvivo.com/wp-content/uploads/2026/09/06-DE-ESTRAPERLO-1-scaled.jpg",
+              "https://i.discogs.com/ykcwyCltCUe0YKUKr7M6Wq6KKBBrypCgTi40Qr10HmU/rs:fit/g:sm/q:90/h:684/w:463/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWltYWdlcy9BLTEyODgwOTItMTYyNTI3NDkzNy01Mjg4LmpwZWc.jpeg",
+              "https://images.sk-static.com/images/media/profile_images/artists/10317821/huge_avatar"):
+        t0 = time.monotonic()
+        try:
+            x = pg.request.get(f"https://wsrv.nl/?url={quote(u, safe='')}&w=160&h=160&fit=cover&output=webp&q=70",
+                               timeout=30000)
+            diag[u.split("/")[2]] = {"status": x.status, "ms": ms(t0), "bytes": len(x.body()),
+                                     "tipo": x.headers.get("content-type"), "texto": x.text()[:120] if x.status >= 400 else ""}
+        except Exception as e:  # noqa: BLE001
+            diag[u.split("/")[2]] = {"error": str(e)[:120]}
+    paso("9_wsrv", **diag)
     # segunda visita (misma sesión: caché del navegador y del service worker)
     t0 = time.monotonic()
     pg.goto(URL + "#semana/" + lunes.isoformat(), wait_until="commit")
