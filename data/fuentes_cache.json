@@ -82347,6 +82347,36 @@
   "fecha": "2026-09-30",
   "eventos": [
    {
+    "fecha": "2026-09-30",
+    "artista": "LEANWOLF",
+    "url": "https://metalcry.com/leanwolf-llegara-a-espana-antes-de-representar-a-francia-en-el-european-blues-challenge-2027/",
+    "sala": "Sala Recycle",
+    "ciudad": "Córdoba",
+    "hora": null,
+    "invitados": [],
+    "precio": null,
+    "estilo": null,
+    "nacionalidad": null,
+    "nota": "Metalcry pone 20:00 por defecto: hora ignorada.",
+    "imagen": null,
+    "fuente": "metalcry"
+   },
+   {
+    "fecha": "2026-09-30",
+    "artista": "ROSALIE CUNNINGHAM",
+    "url": "https://metalcry.com/rosalie-cunningham-regresa-a-espana-con-diez-fechas-de-presentacion-de-rosalies-fourth/",
+    "sala": "Sala 16 Toneladas",
+    "ciudad": "Valencia",
+    "hora": null,
+    "invitados": [],
+    "precio": null,
+    "estilo": null,
+    "nacionalidad": null,
+    "nota": "Metalcry pone 20:00 por defecto: hora ignorada.",
+    "imagen": null,
+    "fuente": "metalcry"
+   },
+   {
     "fecha": "2026-11-02",
     "artista": "THE BROWNING",
     "url": "https://metalcry.com/the-browning-encabeza-una-gira-brutal-en-noviembre-de-2026/",
@@ -118078,23 +118108,8 @@
   ]
  },
  "galileo": {
-  "fecha": "2026-09-29",
+  "fecha": "2026-09-30",
   "eventos": [
-   {
-    "fecha": "2026-09-29",
-    "artista": "En bruto – Open mic",
-    "url": "https://salagalileo.es/programacion/en-bruto-open-mic/",
-    "sala": "Galileo Galilei",
-    "ciudad": "Madrid",
-    "hora": "20:30",
-    "invitados": [],
-    "precio": null,
-    "estilo": null,
-    "nacionalidad": null,
-    "nota": null,
-    "imagen": null,
-    "fuente": "galileo"
-   },
    {
     "fecha": "2026-09-30",
     "artista": "Grandes Canciones del Cine by Laraland",
@@ -118189,6 +118204,21 @@
     "fecha": "2026-10-09",
     "artista": "MYGUEL en acústico – Club 77",
     "url": "https://salagalileo.es/programacion/myguel-en-acustico-club-77/",
+    "sala": "Galileo Galilei",
+    "ciudad": "Madrid",
+    "hora": "19:00",
+    "invitados": [],
+    "precio": null,
+    "estilo": null,
+    "nacionalidad": null,
+    "nota": null,
+    "imagen": null,
+    "fuente": "galileo"
+   },
+   {
+    "fecha": "2026-10-10",
+    "artista": "La Cuota Comedy",
+    "url": "https://salagalileo.es/programacion/la-cuota-comedy/",
     "sala": "Galileo Galilei",
     "ciudad": "Madrid",
     "hora": "19:00",
