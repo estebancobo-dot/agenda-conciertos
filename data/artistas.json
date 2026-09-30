@@ -44279,5 +44279,173 @@
    "url": "https://www.last.fm/music/Lou%2BMarini",
    "identificado_por": "identificador de MusicBrainz en Wikidata"
   }
+ },
+ "exclusive os cabides": {
+  "nombre": "Exclusive Os Cabides",
+  "fecha": "2026-09-30",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; en: no existe"
+  },
+  "discogs": {
+   "encontrado": true,
+   "id": 16944772,
+   "nombre": "Exclusive Os Cabides",
+   "url": "https://www.discogs.com/artist/16944772-Exclusive-Os-Cabides",
+   "generos": [],
+   "estilos": [],
+   "discos_analizados": 0,
+   "pais": null,
+   "imagen": "https://i.discogs.com/UVx6RfpHxyt3rtgQcnOY6WEJUt1GD-FSTPIQV3J0NwI/rs:fit/g:sm/q:90/h:595/w:497/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTE2OTQ0/NzcyLTE3ODE3OTc2/OTgtOTM4NS5qcGVn.jpeg",
+   "identificado_por": "única coincidencia exacta del nombre en Discogs",
+   "perfil": "Vindo de Florianópolis, o grupo formado por João Paulo Pretto, Antônio dos Anjos, Carolina Werutsky, Eduardo Possa e Maitê Fontalva se consolida como um dos nomes mais inventivos do novo rock brasileiro, combinando humor, poesia, psicodelia"
+  },
+  "lastfm": {
+   "encontrado": true,
+   "nombre": "Exclusive Os Cabides",
+   "etiquetas": [
+    "brazilian",
+    "rock"
+   ],
+   "estilos": [],
+   "generos": [
+    "Rock"
+   ],
+   "url": "https://www.last.fm/music/Exclusive%2BOs%2BCabides",
+   "identificado_por": "coincidencia por nombre"
+  }
+ },
+ "tangerine flavour": {
+  "nombre": "TANGERINE FLAVOUR",
+  "fecha": "2026-09-30",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; en: no existe"
+  },
+  "discogs": {
+   "encontrado": true,
+   "id": 7186561,
+   "nombre": "Tangerine Flavour",
+   "url": "https://www.discogs.com/artist/7186561-Tangerine-Flavour",
+   "generos": [
+    "Rock",
+    "Pop",
+    "Blues"
+   ],
+   "estilos": [
+    "Classic Rock",
+    "Country Rock",
+    "Pop Rock",
+    "Blues Rock",
+    "Jazz-Rock"
+   ],
+   "discos_analizados": 2,
+   "pais": null,
+   "imagen": "https://i.discogs.com/B-AxpLCFpixdiGMVIFXc-aHqyvV9bdsOyLxpiTjJFZ0/rs:fit/g:sm/q:90/h:240/w:360/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTcxODY1/NjEtMTU5MTYzNTMy/OC05NzMzLmpwZWc.jpeg",
+   "identificado_por": "única coincidencia exacta del nombre en Discogs",
+   "perfil": ""
+  }
+ },
+ "carey": {
+  "nombre": "CAREY",
+  "fecha": "2026-09-30",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; en: no existe"
+  },
+  "discogs": {
+   "encontrado": false,
+   "motivo": "sin coincidencia exacta"
+  },
+  "lastfm": {
+   "encontrado": true,
+   "nombre": "Carey",
+   "etiquetas": [
+    "USA",
+    "rock",
+    "melodic hardcore",
+    "punk rock",
+    "5432fun",
+    "sxsw 2016",
+    "noise pop"
+   ],
+   "estilos": [
+    "Melodic Hardcore",
+    "Punk"
+   ],
+   "generos": [
+    "Rock"
+   ],
+   "url": "https://www.last.fm/music/Carey",
+   "identificado_por": "coincidencia por nombre"
+  }
+ },
+ "richard libeton": {
+  "nombre": "Richard Libeton",
+  "fecha": "2026-09-30",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; en: no existe"
+  },
+  "discogs": {
+   "encontrado": true,
+   "id": 6096914,
+   "nombre": "Richard Libeton",
+   "url": "https://www.discogs.com/artist/6096914-Richard-Libeton",
+   "generos": [],
+   "estilos": [],
+   "discos_analizados": 0,
+   "pais": null,
+   "imagen": null,
+   "identificado_por": "única coincidencia exacta del nombre en Discogs",
+   "perfil": ""
+  },
+  "lastfm": {
+   "encontrado": true,
+   "nombre": "Richard Libeton",
+   "etiquetas": [],
+   "estilos": [],
+   "generos": [],
+   "url": "https://www.last.fm/music/Richard%2BLibeton",
+   "identificado_por": "coincidencia por nombre"
+  }
+ },
+ "elio toffana": {
+  "nombre": "Elio Toffana",
+  "fecha": "2026-09-30",
+  "wikipedia": {
+   "encontrado": false,
+   "motivo": "es: no existe; en: no existe"
+  },
+  "discogs": {
+   "encontrado": true,
+   "id": 2125599,
+   "nombre": "Elio Toffana",
+   "url": "https://www.discogs.com/artist/2125599-Elio-Toffana",
+   "generos": [
+    "Hip Hop"
+   ],
+   "estilos": [],
+   "discos_analizados": 2,
+   "pais": null,
+   "imagen": "https://i.discogs.com/xHGzwLHMwZbH4ljC_hyyHlWJ123sUoLI0QHFOOffcQM/rs:fit/g:sm/q:90/h:399/w:399/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTIxMjU1/OTktMTI5NzYzNjUy/OC5qcGVn.jpeg",
+   "identificado_por": "única coincidencia exacta del nombre en Discogs",
+   "perfil": "Spanish rapper"
+  },
+  "lastfm": {
+   "encontrado": true,
+   "nombre": "Elio Toffana",
+   "etiquetas": [
+    "rap",
+    "hip hop",
+    "spanish rap"
+   ],
+   "estilos": [],
+   "generos": [
+    "Hip Hop"
+   ],
+   "url": "https://www.last.fm/music/Elio%2BToffana",
+   "identificado_por": "coincidencia por nombre"
+  }
  }
 }

@@ -1,187 +1,7 @@
 {
  "cc_buscador": {
-  "fecha": "2026-09-29",
+  "fecha": "2026-09-30",
   "eventos": [
-   {
-    "fecha": "2026-09-29",
-    "artista": "El Rey León, el musical",
-    "url": "https://conciertos.club/madrid/conciertos/31200-el-rey-leon-el-musical/1790706600",
-    "sala": "Teatro Lope de Vega",
-    "ciudad": "Madrid (Madrid)",
-    "hora": "20:30",
-    "invitados": [],
-    "precio": "27€",
-    "estilo": "Musicales/Teatro musical",
-    "nacionalidad": null,
-    "nota": null,
-    "imagen": "https://conciertos.club/doc/a/2025/c_elreyleon2025.jpg",
-    "fuente": "cc_buscador"
-   },
-   {
-    "fecha": "2026-09-29",
-    "artista": "Concierto de Blues",
-    "url": "https://conciertos.club/madrid/conciertos/111933-concierto-de-blues/1790708400",
-    "sala": "La Coquette",
-    "ciudad": "Madrid (Madrid)",
-    "hora": "21:00",
-    "invitados": [],
-    "precio": null,
-    "estilo": "Blues/RNB",
-    "nacionalidad": null,
-    "nota": null,
-    "imagen": "https://conciertos.club/doc/c/2026/l_LaCoquette_Mad.jpg",
-    "fuente": "cc_buscador"
-   },
-   {
-    "fecha": "2026-09-29",
-    "artista": "Jam Session Blues",
-    "url": "https://conciertos.club/madrid/conciertos/121765-jam-session-blues/1790708400",
-    "sala": "Moe",
-    "ciudad": "Madrid (Madrid)",
-    "hora": "21:00",
-    "invitados": [],
-    "precio": null,
-    "estilo": "Varios",
-    "nacionalidad": null,
-    "nota": null,
-    "imagen": "https://conciertos.club/doc/c/2026/c_moejamblues.jpg",
-    "fuente": "cc_buscador"
-   },
-   {
-    "fecha": "2026-09-29",
-    "artista": "Acid Jam",
-    "url": "https://conciertos.club/madrid/conciertos/126353-acid-jam/1790717400",
-    "sala": "Intruso Bar",
-    "ciudad": "Madrid (Madrid)",
-    "hora": "23:30",
-    "invitados": [],
-    "precio": null,
-    "estilo": "Soul/Funk",
-    "nacionalidad": null,
-    "nota": null,
-    "imagen": "https://conciertos.club/doc/c/2026/c_intrusoacidjam.jpg",
-    "fuente": "cc_buscador"
-   },
-   {
-    "fecha": "2026-09-29",
-    "artista": "Los Miserables",
-    "url": "https://conciertos.club/madrid/conciertos/97132-los-miserables/1790704800",
-    "sala": "Teatro Apolo",
-    "ciudad": "Madrid (Madrid)",
-    "hora": "20:00",
-    "invitados": [],
-    "precio": "34,89€",
-    "estilo": "Musicales/Teatro musical",
-    "nacionalidad": null,
-    "nota": null,
-    "imagen": "https://conciertos.club/doc/c/2025/c_losmiserables.jpg",
-    "fuente": "cc_buscador"
-   },
-   {
-    "fecha": "2026-09-29",
-    "artista": "SIX. El Musical",
-    "url": "https://conciertos.club/madrid/conciertos/116174-six-el-musical/1790704800",
-    "sala": "Teatro Gran Vía",
-    "ciudad": "Madrid (Madrid)",
-    "hora": "20:00",
-    "invitados": [],
-    "precio": "22,82€",
-    "estilo": "Musicales/Teatro musical",
-    "nacionalidad": null,
-    "nota": null,
-    "imagen": "https://conciertos.club/doc/a/2026/a_six.jpg",
-    "fuente": "cc_buscador"
-   },
-   {
-    "fecha": "2026-09-29",
-    "artista": "Big Martes",
-    "url": "https://conciertos.club/madrid/conciertos/126355-big-martes/1790712000",
-    "sala": "Big Mama Ballroom",
-    "ciudad": "Madrid (Madrid)",
-    "hora": "22:00",
-    "invitados": [],
-    "precio": "6,50€",
-    "estilo": "Jazz/Swing",
-    "nacionalidad": null,
-    "nota": null,
-    "imagen": "https://doc.conciertos.club/doc/c/2026/big-martes20260922.jpg",
-    "fuente": "cc_buscador"
-   },
-   {
-    "fecha": "2026-09-29",
-    "artista": "Rosa León",
-    "url": "https://conciertos.club/madrid/conciertos/126405-rosa-leon",
-    "sala": "Teatro de la Zarzuela",
-    "ciudad": "Madrid (Madrid)",
-    "hora": "19:30",
-    "invitados": [],
-    "precio": null,
-    "estilo": "Cantautores",
-    "nacionalidad": null,
-    "nota": null,
-    "imagen": "https://conciertos.club/doc/lp/l_TeatrodelaZarzuela_Mad_pp.jpg",
-    "fuente": "cc_buscador"
-   },
-   {
-    "fecha": "2026-09-29",
-    "artista": "Isabel van Gelder",
-    "url": "https://conciertos.club/madrid/conciertos/118852-isabel-van-gelder",
-    "sala": "Sala Villanos",
-    "ciudad": "Madrid (Madrid)",
-    "hora": "20:00",
-    "invitados": [],
-    "precio": "25€",
-    "estilo": null,
-    "nacionalidad": null,
-    "nota": null,
-    "imagen": "https://doc.conciertos.club/doc/c/2026/entradas-isabel-van-gelder20260929.jpg",
-    "fuente": "cc_buscador"
-   },
-   {
-    "fecha": "2026-09-29",
-    "artista": "Perotá Chingó",
-    "url": "https://conciertos.club/madrid/conciertos/125677-perota-chingo",
-    "sala": "Gran Teatro Caixabank Príncipe Pío",
-    "ciudad": "Madrid (Madrid)",
-    "hora": "20:30",
-    "invitados": [],
-    "precio": "27,50€",
-    "estilo": "World Music/Música Étnica",
-    "nacionalidad": null,
-    "nota": null,
-    "imagen": "https://doc.conciertos.club/doc/c/2026/bFRJsADUynQ720260929.jpg",
-    "fuente": "cc_buscador"
-   },
-   {
-    "fecha": "2026-09-29",
-    "artista": "Leiva",
-    "url": "https://conciertos.club/madrid/conciertos/110281-leiva/1790708400",
-    "sala": "Movistar Arena",
-    "ciudad": "Madrid (Madrid)",
-    "hora": "21:00",
-    "invitados": [],
-    "precio": null,
-    "estilo": "Pop-rock/Indie",
-    "nacionalidad": null,
-    "nota": null,
-    "imagen": "https://conciertos.club/doc/a/2024/a_leiva.jpg",
-    "fuente": "cc_buscador"
-   },
-   {
-    "fecha": "2026-09-29",
-    "artista": "Fiestas de Las Rozas. Tributo a Estopa",
-    "url": "https://conciertos.club/madrid/conciertos/127005-fiestas-de-las-rozas-tributo-a-estopa",
-    "sala": "Plaza Mayor",
-    "ciudad": "Las Rozas (Madrid)",
-    "hora": "22:00",
-    "invitados": [],
-    "precio": null,
-    "estilo": "Versiones/Tributos",
-    "nacionalidad": null,
-    "nota": null,
-    "imagen": "https://conciertos.club/img/nofoto.jpg",
-    "fuente": "cc_buscador"
-   },
    {
     "fecha": "2026-09-30",
     "artista": "El Rey León, el musical",
@@ -5164,6 +4984,23 @@
     "nacionalidad": null,
     "nota": null,
     "imagen": "https://doc.conciertos.club/doc/c/2026/recreativo_20261016.jpg",
+    "fuente": "cc_buscador"
+   },
+   {
+    "fecha": "2026-10-16",
+    "artista": "20 aniversario Drunk-o-rama: Las Jennys de Arroyoculebro",
+    "url": "https://conciertos.club/madrid/conciertos/128106-20-aniversario-drunk-o-rama-las-jennys-de-arroyoculebro-protein-girl-and-the-muscle-boys",
+    "sala": "Wurlitzer Ballroom",
+    "ciudad": "Madrid (Madrid)",
+    "hora": "21:00",
+    "invitados": [
+     "Protein Girl and the Muscle Boys"
+    ],
+    "precio": null,
+    "estilo": "Rock and roll/Garage",
+    "nacionalidad": null,
+    "nota": null,
+    "imagen": "https://doc.conciertos.club/doc/c/2026/poster-1790713197.jpg",
     "fuente": "cc_buscador"
    },
    {
@@ -22281,147 +22118,87 @@
     "nota": null,
     "imagen": "https://conciertos.club/doc/a/2022/a_luisfercan.jpg",
     "fuente": "cc_buscador"
+   },
+   {
+    "fecha": "2027-01-28",
+    "artista": "Noches de Piano Jazz",
+    "url": "https://conciertos.club/madrid/conciertos/115657-noches-de-piano-jazz/1801159200",
+    "sala": "El Café de la Ópera",
+    "ciudad": "Madrid (Madrid)",
+    "hora": "19:00",
+    "invitados": [],
+    "precio": "20€",
+    "estilo": "Jazz/Swing",
+    "nacionalidad": null,
+    "nota": null,
+    "imagen": "https://conciertos.club/doc/c/2026/c_pianojazzcafeopera2.jpg",
+    "fuente": "cc_buscador"
+   },
+   {
+    "fecha": "2027-01-28",
+    "artista": "El Zorro. El Musical",
+    "url": "https://conciertos.club/madrid/conciertos/116173-el-zorro-el-musical/1801161000",
+    "sala": "Teatro La Latina",
+    "ciudad": "Madrid (Madrid)",
+    "hora": "19:30",
+    "invitados": [],
+    "precio": "26,75€",
+    "estilo": "Musicales/Teatro musical",
+    "nacionalidad": null,
+    "nota": null,
+    "imagen": "https://conciertos.club/doc/a/2026/a_elzorro.jpg",
+    "fuente": "cc_buscador"
+   },
+   {
+    "fecha": "2027-01-28",
+    "artista": "Tini",
+    "url": "https://conciertos.club/madrid/conciertos/116680-tini",
+    "sala": "Movistar Arena",
+    "ciudad": "Madrid (Madrid)",
+    "hora": "20:00",
+    "invitados": [],
+    "precio": "103€",
+    "estilo": "Pop",
+    "nacionalidad": null,
+    "nota": null,
+    "imagen": "https://conciertos.club/doc/a/2020/a_tini.jpg",
+    "fuente": "cc_buscador"
+   },
+   {
+    "fecha": "2027-01-28",
+    "artista": "Elio Toffana",
+    "url": "https://conciertos.club/madrid/conciertos/123728-elio-toffana",
+    "sala": "Sala But",
+    "ciudad": "Madrid (Madrid)",
+    "hora": "21:00",
+    "invitados": [],
+    "precio": "26€",
+    "estilo": "Hip-Hop",
+    "nacionalidad": null,
+    "nota": null,
+    "imagen": "https://doc.conciertos.club/doc/c/2026/elio-toffana20270128.jpg",
+    "fuente": "cc_buscador"
+   },
+   {
+    "fecha": "2027-01-28",
+    "artista": "Inverfest. La Milagrosa",
+    "url": "https://conciertos.club/madrid/conciertos/124623-inverfest-la-milagrosa",
+    "sala": "La Riviera",
+    "ciudad": "Madrid (Madrid)",
+    "hora": "21:00",
+    "invitados": [],
+    "precio": "22€",
+    "estilo": "Pop-rock/Indie",
+    "nacionalidad": null,
+    "nota": null,
+    "imagen": "https://conciertos.club/doc/a/2025/a_lamilagrosa.jpg",
+    "fuente": "cc_buscador"
    }
   ]
  },
  "cc_portada": {
-  "fecha": "2026-09-29",
+  "fecha": "2026-09-30",
   "eventos": [
-   {
-    "fecha": "2026-09-29",
-    "artista": "Rosa León",
-    "url": "https://conciertos.club/madrid/conciertos/126405-rosa-leon",
-    "sala": "Teatro de la Zarzuela",
-    "ciudad": "Madrid (Madrid)",
-    "hora": "19:30",
-    "invitados": [],
-    "precio": null,
-    "estilo": "Cantautores",
-    "nacionalidad": null,
-    "nota": null,
-    "imagen": "https://conciertos.club/doc/lp/l_TeatrodelaZarzuela_Mad_pp.jpg",
-    "fuente": "cc_portada"
-   },
-   {
-    "fecha": "2026-09-29",
-    "artista": "Isabel van Gelder",
-    "url": "https://conciertos.club/madrid/conciertos/118852-isabel-van-gelder",
-    "sala": "Sala Villanos",
-    "ciudad": "Madrid (Madrid)",
-    "hora": "20:00",
-    "invitados": [],
-    "precio": "25€",
-    "estilo": null,
-    "nacionalidad": null,
-    "nota": null,
-    "imagen": "https://doc.conciertos.club/doc/c/2026/entradas-isabel-van-gelder20260929.jpg",
-    "fuente": "cc_portada"
-   },
-   {
-    "fecha": "2026-09-29",
-    "artista": "Perotá Chingó",
-    "url": "https://conciertos.club/madrid/conciertos/125677-perota-chingo",
-    "sala": "Gran Teatro Caixabank Príncipe Pío",
-    "ciudad": "Madrid (Madrid)",
-    "hora": "20:30",
-    "invitados": [],
-    "precio": "27,50€",
-    "estilo": "World Music/Música Étnica",
-    "nacionalidad": null,
-    "nota": null,
-    "imagen": "https://doc.conciertos.club/doc/c/2026/bFRJsADUynQ720260929.jpg",
-    "fuente": "cc_portada"
-   },
-   {
-    "fecha": "2026-09-29",
-    "artista": "Leiva",
-    "url": "https://conciertos.club/madrid/conciertos/110281-leiva/1790708400",
-    "sala": "Movistar Arena",
-    "ciudad": "Madrid (Madrid)",
-    "hora": "21:00",
-    "invitados": [],
-    "precio": null,
-    "estilo": "Pop-rock/Indie",
-    "nacionalidad": null,
-    "nota": null,
-    "imagen": "https://conciertos.club/doc/a/2024/a_leiva.jpg",
-    "fuente": "cc_portada"
-   },
-   {
-    "fecha": "2026-09-29",
-    "artista": "Concierto de Blues",
-    "url": "https://conciertos.club/madrid/conciertos/111933-concierto-de-blues/1790708400",
-    "sala": "La Coquette",
-    "ciudad": "Madrid (Madrid)",
-    "hora": "21:00",
-    "invitados": [],
-    "precio": null,
-    "estilo": "Blues/RNB",
-    "nacionalidad": null,
-    "nota": null,
-    "imagen": "https://conciertos.club/doc/c/2026/l_LaCoquette_Mad.jpg",
-    "fuente": "cc_portada"
-   },
-   {
-    "fecha": "2026-09-29",
-    "artista": "Jam Session Blues",
-    "url": "https://conciertos.club/madrid/conciertos/121765-jam-session-blues/1790708400",
-    "sala": "Moe",
-    "ciudad": "Madrid (Madrid)",
-    "hora": "21:00",
-    "invitados": [],
-    "precio": null,
-    "estilo": "Varios",
-    "nacionalidad": null,
-    "nota": null,
-    "imagen": "https://conciertos.club/doc/c/2026/c_moejamblues.jpg",
-    "fuente": "cc_portada"
-   },
-   {
-    "fecha": "2026-09-29",
-    "artista": "Big Martes",
-    "url": "https://conciertos.club/madrid/conciertos/126355-big-martes/1790712000",
-    "sala": "Big Mama Ballroom",
-    "ciudad": "Madrid (Madrid)",
-    "hora": "22:00",
-    "invitados": [],
-    "precio": "6,50€",
-    "estilo": "Jazz/Swing",
-    "nacionalidad": null,
-    "nota": null,
-    "imagen": "https://doc.conciertos.club/doc/c/2026/big-martes20260922.jpg",
-    "fuente": "cc_portada"
-   },
-   {
-    "fecha": "2026-09-29",
-    "artista": "Fiestas de Las Rozas. Tributo a Estopa",
-    "url": "https://conciertos.club/madrid/conciertos/127005-fiestas-de-las-rozas-tributo-a-estopa",
-    "sala": "Plaza Mayor",
-    "ciudad": "Las Rozas (Madrid)",
-    "hora": "22:00",
-    "invitados": [],
-    "precio": null,
-    "estilo": "Versiones/Tributos",
-    "nacionalidad": null,
-    "nota": null,
-    "imagen": "https://conciertos.club/img/nofoto.jpg",
-    "fuente": "cc_portada"
-   },
-   {
-    "fecha": "2026-09-29",
-    "artista": "Acid Jam",
-    "url": "https://conciertos.club/madrid/conciertos/126353-acid-jam/1790717400",
-    "sala": "Intruso Bar",
-    "ciudad": "Madrid (Madrid)",
-    "hora": "23:30",
-    "invitados": [],
-    "precio": null,
-    "estilo": "Soul/Funk",
-    "nacionalidad": null,
-    "nota": null,
-    "imagen": "https://conciertos.club/doc/c/2026/c_intrusoacidjam.jpg",
-    "fuente": "cc_portada"
-   },
    {
     "fecha": "2026-09-30",
     "artista": "Pablo Martín Caminero",
@@ -26429,6 +26206,23 @@
     "nacionalidad": null,
     "nota": null,
     "imagen": "https://doc.conciertos.club/doc/c/2026/recreativo_20261016.jpg",
+    "fuente": "cc_portada"
+   },
+   {
+    "fecha": "2026-10-16",
+    "artista": "20 aniversario Drunk-o-rama: Las Jennys de Arroyoculebro",
+    "url": "https://conciertos.club/madrid/conciertos/128106-20-aniversario-drunk-o-rama-las-jennys-de-arroyoculebro-protein-girl-and-the-muscle-boys",
+    "sala": "Wurlitzer Ballroom",
+    "ciudad": "Madrid (Madrid)",
+    "hora": "21:00",
+    "invitados": [
+     "Protein Girl and the Muscle Boys"
+    ],
+    "precio": null,
+    "estilo": "Rock and roll/Garage",
+    "nacionalidad": null,
+    "nota": null,
+    "imagen": "https://doc.conciertos.club/doc/c/2026/poster-1790713197.jpg",
     "fuente": "cc_portada"
    },
    {
@@ -30687,11 +30481,208 @@
     "nota": null,
     "imagen": "https://conciertos.club/doc/c/2026/c_intrusoacidjam.jpg",
     "fuente": "cc_portada"
+   },
+   {
+    "fecha": "2026-11-04",
+    "artista": "FEEBLE LITTLE HORSE",
+    "url": "https://conciertos.club/madrid/conciertos/124734-feeble-little-horse",
+    "sala": "Sala El Sol",
+    "ciudad": "Madrid (Madrid)",
+    "hora": "20:00",
+    "invitados": [],
+    "precio": "20€",
+    "estilo": null,
+    "nacionalidad": null,
+    "nota": null,
+    "imagen": "https://doc.conciertos.club/doc/c/2026/feeblelitt_20261104.jpg",
+    "fuente": "cc_portada"
+   },
+   {
+    "fecha": "2026-11-04",
+    "artista": "Julieta Rada",
+    "url": "https://conciertos.club/madrid/conciertos/124920-julieta-rada",
+    "sala": "Café Berlín",
+    "ciudad": "Madrid (Madrid)",
+    "hora": "20:00",
+    "invitados": [],
+    "precio": "18€",
+    "estilo": "Música Latina",
+    "nacionalidad": null,
+    "nota": null,
+    "imagen": "https://doc.conciertos.club/doc/c/2026/julietarad_20261104.jpg",
+    "fuente": "cc_portada"
+   },
+   {
+    "fecha": "2026-11-04",
+    "artista": "PENDRAGON",
+    "url": "https://conciertos.club/madrid/conciertos/121688-pendragon",
+    "sala": "La Sala del Movistar Arena",
+    "ciudad": "Madrid (Madrid)",
+    "hora": "20:30",
+    "invitados": [],
+    "precio": null,
+    "estilo": null,
+    "nacionalidad": null,
+    "nota": null,
+    "imagen": "https://doc.conciertos.club/doc/c/2026/pendragonw_20261104.jpg",
+    "fuente": "cc_portada"
+   },
+   {
+    "fecha": "2026-11-04",
+    "artista": "Radio Days",
+    "url": "https://conciertos.club/madrid/conciertos/126036-radio-days",
+    "sala": "Fun House",
+    "ciudad": "Madrid (Madrid)",
+    "hora": "20:30",
+    "invitados": [],
+    "precio": null,
+    "estilo": "Rock and roll/Garage",
+    "nacionalidad": null,
+    "nota": null,
+    "imagen": "https://doc.conciertos.club/doc/c/2026/radiodays_20261104.jpg",
+    "fuente": "cc_portada"
+   },
+   {
+    "fecha": "2026-11-04",
+    "artista": "Radar Joven. Mala Gestión",
+    "url": "https://conciertos.club/madrid/conciertos/127663-radar-joven-mala-gestion-marx-ha-muerto",
+    "sala": "Sala But",
+    "ciudad": "Madrid (Madrid)",
+    "hora": "20:30",
+    "invitados": [
+     "Marx ha muerto"
+    ],
+    "precio": null,
+    "estilo": "Rock/Rock Alternativo",
+    "nacionalidad": null,
+    "nota": null,
+    "imagen": "https://conciertos.club/doc/c/2026/c_radarjoven2610.jpg",
+    "fuente": "cc_portada"
+   },
+   {
+    "fecha": "2026-11-04",
+    "artista": "Alex Ubago",
+    "url": "https://conciertos.club/madrid/conciertos/108565-alex-ubago",
+    "sala": "La Riviera",
+    "ciudad": "Madrid (Madrid)",
+    "hora": "21:00",
+    "invitados": [],
+    "precio": "38,50€",
+    "estilo": "Pop-rock/Indie",
+    "nacionalidad": null,
+    "nota": null,
+    "imagen": "https://conciertos.club/doc/a/2020/a_alexubago.jpg",
+    "fuente": "cc_portada"
+   },
+   {
+    "fecha": "2026-11-04",
+    "artista": "Concierto de Blues",
+    "url": "https://conciertos.club/madrid/conciertos/111933-concierto-de-blues/1793822400",
+    "sala": "La Coquette",
+    "ciudad": "Madrid (Madrid)",
+    "hora": "21:00",
+    "invitados": [],
+    "precio": null,
+    "estilo": "Blues/RNB",
+    "nacionalidad": null,
+    "nota": null,
+    "imagen": "https://conciertos.club/doc/c/2026/l_LaCoquette_Mad.jpg",
+    "fuente": "cc_portada"
+   },
+   {
+    "fecha": "2026-11-04",
+    "artista": "BLISS. TRIBUTO A MUSE",
+    "url": "https://conciertos.club/madrid/conciertos/114338-bliss-tributo-a-muse",
+    "sala": "Sala Uni",
+    "ciudad": "Madrid (Madrid)",
+    "hora": "21:00",
+    "invitados": [],
+    "precio": "22€",
+    "estilo": "Versiones/Tributos",
+    "nacionalidad": null,
+    "nota": null,
+    "imagen": "https://conciertos.club/img/nofoto.jpg",
+    "fuente": "cc_portada"
+   },
+   {
+    "fecha": "2026-11-04",
+    "artista": "Las Noches de Río Babel. Dromedarios Mágicos",
+    "url": "https://conciertos.club/madrid/conciertos/124533-las-noches-de-rio-babel-dromedarios-magicos",
+    "sala": "Café La Palma",
+    "ciudad": "Madrid (Madrid)",
+    "hora": "21:00",
+    "invitados": [],
+    "precio": "20€",
+    "estilo": "Urbana/Reggaeton/Trap",
+    "nacionalidad": null,
+    "nota": null,
+    "imagen": "https://doc.conciertos.club/doc/c/2026/dromedarios-magicos20261104.jpg",
+    "fuente": "cc_portada"
+   },
+   {
+    "fecha": "2026-11-04",
+    "artista": "Mark Guiliana",
+    "url": "https://conciertos.club/madrid/conciertos/125066-mark-guiliana",
+    "sala": "Sala Villanos",
+    "ciudad": "Madrid (Madrid)",
+    "hora": "21:00",
+    "invitados": [],
+    "precio": "24,20€",
+    "estilo": "Jazz/Swing",
+    "nacionalidad": null,
+    "nota": null,
+    "imagen": "https://conciertos.club/doc/a/2023/a_markguiliana.jpg",
+    "fuente": "cc_portada"
+   },
+   {
+    "fecha": "2026-11-04",
+    "artista": "Jam de Cumbia",
+    "url": "https://conciertos.club/madrid/conciertos/118825-jam-de-cumbia/1793826000",
+    "sala": "Stairway",
+    "ciudad": "Madrid (Madrid)",
+    "hora": "22:00",
+    "invitados": [],
+    "precio": "6€",
+    "estilo": "Música Latina",
+    "nacionalidad": null,
+    "nota": null,
+    "imagen": "https://doc.conciertos.club/doc/c/2026/entradas-para-jam-de-cumbia9569173.jpg",
+    "fuente": "cc_portada"
+   },
+   {
+    "fecha": "2026-11-04",
+    "artista": "Jam Session Jazz",
+    "url": "https://conciertos.club/madrid/conciertos/121766-jam-session-jazz/1793826000",
+    "sala": "Moe",
+    "ciudad": "Madrid (Madrid)",
+    "hora": "22:00",
+    "invitados": [],
+    "precio": null,
+    "estilo": "Jazz/Swing",
+    "nacionalidad": null,
+    "nota": null,
+    "imagen": "https://conciertos.club/doc/c/2026/c_moejamjazz.jpg",
+    "fuente": "cc_portada"
+   },
+   {
+    "fecha": "2026-11-04",
+    "artista": "On Fire Jam!",
+    "url": "https://conciertos.club/madrid/conciertos/126350-on-fire-jam/1793831400",
+    "sala": "Intruso Bar",
+    "ciudad": "Madrid (Madrid)",
+    "hora": "23:30",
+    "invitados": [],
+    "precio": null,
+    "estilo": "Varios",
+    "nacionalidad": null,
+    "nota": null,
+    "imagen": "https://conciertos.club/doc/c/2026/c_intrusoonfire.jpg",
+    "fuente": "cc_portada"
    }
   ]
  },
  "cc_estilos": {
-  "fecha": "2026-09-29",
+  "fecha": "2026-09-30",
   "eventos": [
    {
     "fecha": "2026-09-30",
@@ -30860,21 +30851,6 @@
     "nacionalidad": null,
     "nota": null,
     "imagen": "https://conciertos.club/doc/cp/2026/c_thesadies2611_p.jpg",
-    "fuente": "cc_estilos"
-   },
-   {
-    "fecha": "2026-09-29",
-    "artista": "Concierto de Blues",
-    "url": "https://conciertos.club/madrid/conciertos/111933-concierto-de-blues/1790708400",
-    "sala": "La Coquette",
-    "ciudad": "Madrid (Madrid)",
-    "hora": "21:00",
-    "invitados": [],
-    "precio": null,
-    "estilo": "Blues/RNB",
-    "nacionalidad": null,
-    "nota": null,
-    "imagen": "https://conciertos.club/doc/cp/2026/l_LaCoquette_Mad_p.jpg",
     "fuente": "cc_estilos"
    },
    {
@@ -32420,21 +32396,6 @@
     "nacionalidad": null,
     "nota": null,
     "imagen": "https://conciertos.club/doc/ap/2017/a_carlosnunez_p.jpg",
-    "fuente": "cc_estilos"
-   },
-   {
-    "fecha": "2026-09-29",
-    "artista": "Leiva",
-    "url": "https://conciertos.club/madrid/conciertos/110281-leiva/1790708400",
-    "sala": "Movistar Arena",
-    "ciudad": "Madrid (Madrid)",
-    "hora": "21:00",
-    "invitados": [],
-    "precio": null,
-    "estilo": "Pop-rock/Indie",
-    "nacionalidad": null,
-    "nota": null,
-    "imagen": "https://conciertos.club/doc/ap/2024/a_leiva_p.jpg",
     "fuente": "cc_estilos"
    },
    {
@@ -37168,6 +37129,23 @@
     "fuente": "cc_estilos"
    },
    {
+    "fecha": "2026-10-16",
+    "artista": "20 aniversario Drunk-o-rama: Las Jennys de Arroyoculebro",
+    "url": "https://conciertos.club/madrid/conciertos/128106-20-aniversario-drunk-o-rama-las-jennys-de-arroyoculebro-protein-girl-and-the-muscle-boys",
+    "sala": "Wurlitzer Ballroom",
+    "ciudad": "Madrid (Madrid)",
+    "hora": "21:00",
+    "invitados": [
+     "Protein Girl and the Muscle Boys"
+    ],
+    "precio": null,
+    "estilo": "Rock and roll/Garage",
+    "nacionalidad": null,
+    "nota": null,
+    "imagen": "https://doc.conciertos.club/doc/cp/2026/poster-1790713197_p.jpg",
+    "fuente": "cc_estilos"
+   },
+   {
     "fecha": "2026-10-23",
     "artista": "Black Maracas",
     "url": "https://conciertos.club/madrid/conciertos/126517-black-maracas",
@@ -38793,21 +38771,6 @@
     "fuente": "cc_estilos"
    },
    {
-    "fecha": "2026-09-29",
-    "artista": "Rosa León",
-    "url": "https://conciertos.club/madrid/conciertos/126405-rosa-leon",
-    "sala": "Teatro de la Zarzuela",
-    "ciudad": "Madrid (Madrid)",
-    "hora": "19:30",
-    "invitados": [],
-    "precio": null,
-    "estilo": "Cantautores",
-    "nacionalidad": null,
-    "nota": null,
-    "imagen": "https://conciertos.club/doc/lp/l_TeatrodelaZarzuela_Mad_pp.jpg",
-    "fuente": "cc_estilos"
-   },
-   {
     "fecha": "2026-10-04",
     "artista": "Silvio Rodríguez",
     "url": "https://conciertos.club/madrid/conciertos/119184-silvio-rodriguez",
@@ -39180,21 +39143,6 @@
     "nacionalidad": null,
     "nota": null,
     "imagen": "https://doc.conciertos.club/doc/cp/2027/conciertod_20270313_p.jpg",
-    "fuente": "cc_estilos"
-   },
-   {
-    "fecha": "2026-09-29",
-    "artista": "Fiestas de Las Rozas Tributo a Estopa",
-    "url": "https://conciertos.club/madrid/conciertos/127005-fiestas-de-las-rozas-tributo-a-estopa",
-    "sala": "Plaza Mayor",
-    "ciudad": "Las Rozas (Madrid)",
-    "hora": "22:00",
-    "invitados": [],
-    "precio": null,
-    "estilo": "Versiones/Tributos",
-    "nacionalidad": null,
-    "nota": null,
-    "imagen": "https://conciertos.club/img/nofoto.jpg",
     "fuente": "cc_estilos"
    },
    {
@@ -42496,38 +42444,8 @@
   ]
  },
  "laganzua": {
-  "fecha": "2026-09-29",
+  "fecha": "2026-09-30",
   "eventos": [
-   {
-    "fecha": "2026-09-29",
-    "artista": "Perotá Chingó",
-    "url": "https://www.laganzua.net/conciertos/perota-chingo-madrid-1016402",
-    "sala": "Gran Teatro Caixabank Príncipe Pío",
-    "ciudad": "Madrid",
-    "hora": "20:30",
-    "invitados": [],
-    "precio": "27 EUR",
-    "estilo": "Indie Pop, Indie Folk",
-    "nacionalidad": null,
-    "nota": null,
-    "imagen": "https://www.laganzua.net/conciertosbdnew/fotosnoticias/perota-chingo-2026.jpg",
-    "fuente": "laganzua"
-   },
-   {
-    "fecha": "2026-09-29",
-    "artista": "Leiva",
-    "url": "https://www.laganzua.net/conciertos/leiva-segunda-fecha-madrid-1013398",
-    "sala": "Movistar Arena",
-    "ciudad": "Madrid",
-    "hora": "21:00",
-    "invitados": [],
-    "precio": null,
-    "estilo": "Rock and Roll",
-    "nacionalidad": null,
-    "nota": null,
-    "imagen": "https://www.laganzua.net/conciertosbdnew/fotosnoticias/leiva-2025b.jpg",
-    "fuente": "laganzua"
-   },
    {
     "fecha": "2026-09-30",
     "artista": "Leiva",
@@ -45816,59 +45734,12 @@
   ]
  },
  "cpm": {
-  "fecha": "2026-09-29",
+  "fecha": "2026-09-30",
   "eventos": [
    {
-    "fecha": "2026-09-29",
-    "artista": "LEIVA",
-    "url": "https://conciertospormadrid.com/conciertos/leiva-madrid-29-septiembre-2026/",
-    "sala": "Movistar Arena",
-    "ciudad": "Madrid",
-    "hora": null,
-    "invitados": [],
-    "precio": null,
-    "estilo": null,
-    "nacionalidad": null,
-    "nota": null,
-    "imagen": null,
-    "fuente": "cpm"
-   },
-   {
-    "fecha": "2026-09-29",
-    "artista": "GLOORY HOLE",
-    "url": "https://conciertospormadrid.com/conciertos/gloory-hole-marttein-madrid-2026/",
-    "sala": "",
-    "ciudad": "Madrid",
-    "hora": null,
-    "invitados": [
-     "MARTTEIN"
-    ],
-    "precio": null,
-    "estilo": null,
-    "nacionalidad": null,
-    "nota": null,
-    "imagen": null,
-    "fuente": "cpm"
-   },
-   {
     "fecha": "2026-09-30",
     "artista": "LEIVA",
     "url": "https://conciertospormadrid.com/conciertos/leiva-madrid-30-septiembre-2026/",
-    "sala": "Movistar Arena",
-    "ciudad": "Madrid",
-    "hora": null,
-    "invitados": [],
-    "precio": null,
-    "estilo": null,
-    "nacionalidad": null,
-    "nota": null,
-    "imagen": null,
-    "fuente": "cpm"
-   },
-   {
-    "fecha": "2026-09-29",
-    "artista": "LEIVA",
-    "url": "https://conciertospormadrid.com/conciertos/leiva-madrid-29-septiembre-2026/",
     "sala": "Movistar Arena",
     "ciudad": "Madrid",
     "hora": null,
@@ -45888,23 +45759,6 @@
     "ciudad": "Madrid",
     "hora": null,
     "invitados": [],
-    "precio": null,
-    "estilo": null,
-    "nacionalidad": null,
-    "nota": null,
-    "imagen": null,
-    "fuente": "cpm"
-   },
-   {
-    "fecha": "2026-09-29",
-    "artista": "GLOORY HOLE",
-    "url": "https://conciertospormadrid.com/conciertos/gloory-hole-marttein-madrid-2026/",
-    "sala": "",
-    "ciudad": "Madrid",
-    "hora": null,
-    "invitados": [
-     "MARTTEIN"
-    ],
     "precio": null,
     "estilo": null,
     "nacionalidad": null,
@@ -49955,98 +49809,8 @@
   ]
  },
  "madridenvivo": {
-  "fecha": "2026-09-29",
+  "fecha": "2026-09-30",
   "eventos": [
-   {
-    "fecha": "2026-09-29",
-    "artista": "ISABEL VAN GELDER",
-    "url": "https://madridenvivo.com/?post_type=evento&p=791009",
-    "sala": "Villanos",
-    "ciudad": "Madrid",
-    "hora": null,
-    "invitados": [],
-    "precio": null,
-    "estilo": "Pop / Rock",
-    "nacionalidad": null,
-    "nota": null,
-    "imagen": "https://madridenvivo.com/wp-content/uploads/2022/08/fondo-privado.jpg",
-    "fuente": "madridenvivo"
-   },
-   {
-    "fecha": "2026-09-29",
-    "artista": "ENAMOR AL ARTE",
-    "url": "https://madridenvivo.com/evento/jazzville-pop-rock-concierto-3/",
-    "sala": "Jazzville",
-    "ciudad": "Madrid",
-    "hora": null,
-    "invitados": [],
-    "precio": null,
-    "estilo": "Pop / Rock",
-    "nacionalidad": null,
-    "nota": null,
-    "imagen": "https://madridenvivo.com/wp-content/uploads/2022/08/fondo-privado.jpg",
-    "fuente": "madridenvivo"
-   },
-   {
-    "fecha": "2026-09-29",
-    "artista": "EN BRUTO – OPEN MIC",
-    "url": "https://madridenvivo.com/?post_type=evento&p=792359",
-    "sala": "Galileo Galilei",
-    "ciudad": "Madrid",
-    "hora": null,
-    "invitados": [],
-    "precio": null,
-    "estilo": "Pop / Rock",
-    "nacionalidad": null,
-    "nota": null,
-    "imagen": "https://madridenvivo.com/wp-content/uploads/2022/08/fondo-privado.jpg",
-    "fuente": "madridenvivo"
-   },
-   {
-    "fecha": "2026-09-29",
-    "artista": "LANDA",
-    "url": "https://madridenvivo.com/?post_type=evento&p=792440",
-    "sala": "El Sol",
-    "ciudad": "Madrid",
-    "hora": null,
-    "invitados": [],
-    "precio": null,
-    "estilo": "Pop / Rock",
-    "nacionalidad": null,
-    "nota": null,
-    "imagen": "https://madridenvivo.com/wp-content/uploads/2022/08/fondo-privado.jpg",
-    "fuente": "madridenvivo"
-   },
-   {
-    "fecha": "2026-09-29",
-    "artista": "VIKXIE",
-    "url": "https://madridenvivo.com/?post_type=evento&p=796138",
-    "sala": "Moby Dick",
-    "ciudad": "Madrid",
-    "hora": null,
-    "invitados": [],
-    "precio": null,
-    "estilo": "Pop / Rock",
-    "nacionalidad": null,
-    "nota": null,
-    "imagen": "https://madridenvivo.com/wp-content/uploads/2022/08/fondo-privado.jpg",
-    "fuente": "madridenvivo"
-   },
-   {
-    "fecha": "2026-09-29",
-    "artista": "LET THEM COOK BY THENOMADZONE",
-    "url": "https://madridenvivo.com/?post_type=evento&p=796331",
-    "sala": "Siroco",
-    "ciudad": "Madrid",
-    "hora": null,
-    "invitados": [],
-    "precio": null,
-    "estilo": "Pop / Rock",
-    "nacionalidad": null,
-    "nota": null,
-    "imagen": "https://madridenvivo.com/wp-content/uploads/2022/08/fondo-privado.jpg",
-    "fuente": "madridenvivo"
-   },
    {
     "fecha": "2026-09-30",
     "artista": "DIMITRI PAPANIKAS CUENTA: VIOLETA PARRA",
@@ -51618,7 +51382,7 @@
    },
    {
     "fecha": "2026-10-03",
-    "artista": "TANGENINE FL¡AVOUR",
+    "artista": "TANGERINE FLAVOUR",
     "url": "https://madridenvivo.com/evento/concierto-ricon-del-arte-pop-rock-2/",
     "sala": "Rincón del Arte Nuevo",
     "ciudad": "Madrid",
@@ -51961,7 +51725,7 @@
     "estilo": "Pop / Rock",
     "nacionalidad": null,
     "nota": null,
-    "imagen": "https://madridenvivo.com/wp-content/uploads/2022/08/fondo-privado.jpg",
+    "imagen": "https://madridenvivo.com/wp-content/uploads/2026/09/2187875_8911634b_rosalie-cunningham_1024.jpg",
     "fuente": "madridenvivo"
    },
    {
@@ -52006,7 +51770,7 @@
     "estilo": "Pop / Rock",
     "nacionalidad": null,
     "nota": null,
-    "imagen": "https://madridenvivo.com/wp-content/uploads/2022/08/fondo-privado.jpg",
+    "imagen": "https://madridenvivo.com/wp-content/uploads/2025/05/albertsolo4.jpg",
     "fuente": "madridenvivo"
    },
    {
@@ -59174,33 +58938,18 @@
     "fuente": "madridenvivo"
    },
    {
-    "fecha": "2026-09-29",
-    "artista": "BIG MARTES",
-    "url": "https://madridenvivo.com/evento/big-martes-10/",
-    "sala": "Big Mama Ballroom",
+    "fecha": "2027-01-28",
+    "artista": "CAREY",
+    "url": "https://madridenvivo.com/?post_type=evento&p=793134",
+    "sala": "Villanos",
     "ciudad": "Madrid",
     "hora": null,
     "invitados": [],
     "precio": null,
-    "estilo": "Músicas negras",
+    "estilo": "Pop / Rock",
     "nacionalidad": null,
     "nota": null,
-    "imagen": "https://madridenvivo.com/wp-content/uploads/2026/08/Big-Martes-1-1.jpg",
-    "fuente": "madridenvivo"
-   },
-   {
-    "fecha": "2026-09-29",
-    "artista": "DE ESTRAPERLO DE JESÚS MAÑERU",
-    "url": "https://madridenvivo.com/?post_type=evento&p=793786",
-    "sala": "Café Central Ateneo",
-    "ciudad": "Madrid",
-    "hora": null,
-    "invitados": [],
-    "precio": null,
-    "estilo": "Músicas negras",
-    "nacionalidad": null,
-    "nota": null,
-    "imagen": "https://madridenvivo.com/wp-content/uploads/2026/09/06-DE-ESTRAPERLO-1-scaled.jpg",
+    "imagen": "https://madridenvivo.com/wp-content/uploads/2026/09/2066-I6a1d6f6920661780313961-ev-1.jpg",
     "fuente": "madridenvivo"
    },
    {
@@ -62466,71 +62215,6 @@
     "fuente": "madridenvivo"
    },
    {
-    "fecha": "2026-09-29",
-    "artista": "ESPECTÁCULO FLAMENCO: CLAUDIA CRUZ",
-    "url": "https://madridenvivo.com/evento/espectaculo-flamenco-907-29-09-2026/",
-    "sala": "Tablao Flamenco 1911",
-    "ciudad": "Madrid",
-    "hora": null,
-    "invitados": [
-     "PAULA RODRIGUEZ",
-     "JOSE ESCARPIN"
-    ],
-    "precio": null,
-    "estilo": "Flamenco Capital",
-    "nacionalidad": null,
-    "nota": null,
-    "imagen": "https://madridenvivo.com/wp-content/uploads/2026/01/ESCARPIN-1-1.jpg",
-    "fuente": "madridenvivo"
-   },
-   {
-    "fecha": "2026-09-29",
-    "artista": "ESPECTÁCULO FLAMENCO: PAULA MORENO Y BARTOLO AL BAILE",
-    "url": "https://madridenvivo.com/evento/espectaculo-flamenco-912-2/",
-    "sala": "Tablao de la Villa",
-    "ciudad": "Madrid",
-    "hora": null,
-    "invitados": [],
-    "precio": null,
-    "estilo": "Flamenco Capital",
-    "nacionalidad": null,
-    "nota": null,
-    "imagen": "https://madridenvivo.com/wp-content/uploads/2024/02/tablao-imagen-1-1-2-2-1-2.jpg",
-    "fuente": "madridenvivo"
-   },
-   {
-    "fecha": "2026-09-29",
-    "artista": "ESPECTÁCULO FLAMENCO: PAULA MORENO Y BARTOLO AL BAILE",
-    "url": "https://madridenvivo.com/evento/espectaculo-flamenco-912-3/",
-    "sala": "Tablao de la Villa",
-    "ciudad": "Madrid",
-    "hora": null,
-    "invitados": [],
-    "precio": null,
-    "estilo": "Flamenco Capital",
-    "nacionalidad": null,
-    "nota": null,
-    "imagen": "https://madridenvivo.com/wp-content/uploads/2024/02/tablao-imagen-1-1-2-2-1-2.jpg",
-    "fuente": "madridenvivo"
-   },
-   {
-    "fecha": "2026-09-29",
-    "artista": "ESPECTÁCULO FLAMENCO: JOSE CARMONA \"RAPICO\"",
-    "url": "https://madridenvivo.com/evento/espectaculo-flamenco-jose-carmona-rapico-lucia-la-flaca-29-09-2026/",
-    "sala": "Tablao Ópera Flamenca",
-    "ciudad": "Madrid",
-    "hora": null,
-    "invitados": [
-     "LUCIA \"LA FLACA\""
-    ],
-    "precio": null,
-    "estilo": "Flamenco Capital",
-    "nacionalidad": null,
-    "nota": null,
-    "imagen": "https://madridenvivo.com/wp-content/uploads/2025/09/tabloperaflamenca-escenageneral2-1536x1024-1-6.jpg",
-    "fuente": "madridenvivo"
-   },
-   {
     "fecha": "2026-09-30",
     "artista": "ESPECTÁCULO FLAMENCO: CLAUDIA CRUZ",
     "url": "https://madridenvivo.com/evento/espectaculo-flamenco-907-30-09-2026/",
@@ -64922,40 +64606,8 @@
   ]
  },
  "songkick": {
-  "fecha": "2026-09-29",
+  "fecha": "2026-09-30",
   "eventos": [
-   {
-    "fecha": "2026-09-29",
-    "artista": "Isabel van Gelder",
-    "url": "https://www.songkick.com/concerts/43102877-isabel-van-gelder-at-sala-villanos",
-    "sala": "Sala Villanos",
-    "ciudad": "Madrid",
-    "hora": "20:00",
-    "invitados": [
-     "Orange Oak"
-    ],
-    "precio": null,
-    "estilo": null,
-    "nacionalidad": null,
-    "nota": null,
-    "imagen": "https://images.sk-static.com/images/media/profile_images/artists/10368963/huge_avatar",
-    "fuente": "songkick"
-   },
-   {
-    "fecha": "2026-09-29",
-    "artista": "Pitú",
-    "url": "https://www.songkick.com/concerts/43437283-pitu-at-bloom-dinner-show",
-    "sala": "BLOOM Dinner Show",
-    "ciudad": "Madrid",
-    "hora": "20:30",
-    "invitados": [],
-    "precio": null,
-    "estilo": null,
-    "nacionalidad": null,
-    "nota": null,
-    "imagen": "https://images.sk-static.com/images/media/profile_images/artists/5216153/huge_avatar",
-    "fuente": "songkick"
-   },
    {
     "fecha": "2026-09-30",
     "artista": "Lera Lynn",
@@ -72698,7 +72350,7 @@
      "Årabrot"
     ],
     "precio": null,
-    "estilo": "metal, rock, electronic",
+    "estilo": null,
     "nacionalidad": null,
     "nota": null,
     "imagen": "https://images.sk-static.com/images/media/profile_images/artists/10408323/huge_avatar",
@@ -74980,11 +74632,41 @@
     "nota": null,
     "imagen": "https://images.sk-static.com/images/media/profile_images/artists/10309420/huge_avatar",
     "fuente": "songkick"
+   },
+   {
+    "fecha": "2027-03-06",
+    "artista": "Volavent",
+    "url": "https://www.songkick.com/concerts/43114287-volavent-at-sala-el-sol",
+    "sala": "Sala El Sol",
+    "ciudad": "Madrid",
+    "hora": null,
+    "invitados": [],
+    "precio": null,
+    "estilo": null,
+    "nacionalidad": null,
+    "nota": null,
+    "imagen": "https://images.sk-static.com/images/media/profile_images/artists/10209931/huge_avatar",
+    "fuente": "songkick"
+   },
+   {
+    "fecha": "2027-03-08",
+    "artista": "Manu Tenorio",
+    "url": "https://www.songkick.com/concerts/43439575-manu-tenorio-at-teatro-rialto",
+    "sala": "Teatro Rialto",
+    "ciudad": "Madrid",
+    "hora": null,
+    "invitados": [],
+    "precio": null,
+    "estilo": null,
+    "nacionalidad": null,
+    "nota": null,
+    "imagen": "https://images.sk-static.com/images/media/profile_images/artists/10137533/huge_avatar",
+    "fuente": "songkick"
    }
   ]
  },
  "rockandblog": {
-  "fecha": "2026-09-29",
+  "fecha": "2026-09-30",
   "eventos": [
    {
     "fecha": "2027-12-02",
@@ -76625,7 +76307,7 @@
   ]
  },
  "tm_blog": {
-  "fecha": "2026-09-29",
+  "fecha": "2026-09-30",
   "eventos": [
    {
     "fecha": "2026-11-28",
@@ -77118,7 +76800,7 @@
   ]
  },
  "radar_cpm": {
-  "fecha": "2026-09-29",
+  "fecha": "2026-09-30",
   "eventos": [
    {
     "fecha": "2026-10-15",
@@ -77810,7 +77492,7 @@
   ]
  },
  "thm": {
-  "fecha": "2026-09-29",
+  "fecha": "2026-09-30",
   "eventos": [
    {
     "fecha": "2026-11-27",
@@ -79746,7 +79428,7 @@
   ]
  },
  "metallegion": {
-  "fecha": "2026-09-29",
+  "fecha": "2026-09-30",
   "eventos": [
    {
     "fecha": "2026-11-27",
@@ -82662,7 +82344,7 @@
   ]
  },
  "metalcry": {
-  "fecha": "2026-09-29",
+  "fecha": "2026-09-30",
   "eventos": [
    {
     "fecha": "2026-11-02",
@@ -85039,23 +84721,8 @@
   ]
  },
  "hellpress": {
-  "fecha": "2026-09-29",
+  "fecha": "2026-09-30",
   "eventos": [
-   {
-    "fecha": "2026-09-29",
-    "artista": "THE RIVEN",
-    "url": "https://www.hellpress.com/noticias/kamijo-cantante-versailles-concierto-madrid-gira-europea/",
-    "sala": "Louie Louie Live Estepona",
-    "ciudad": "Estepona",
-    "hora": null,
-    "invitados": [],
-    "precio": null,
-    "estilo": null,
-    "nacionalidad": null,
-    "nota": null,
-    "imagen": null,
-    "fuente": "hellpress"
-   },
    {
     "fecha": "2026-09-30",
     "artista": "THE RIVEN",
@@ -88157,7 +87824,7 @@
   ]
  },
  "hellpress_melodico": {
-  "fecha": "2026-09-29",
+  "fecha": "2026-09-30",
   "eventos": [
    {
     "fecha": "2027-09-18",
@@ -88207,7 +87874,7 @@
   ]
  },
  "metalsymphony": {
-  "fecha": "2026-09-29",
+  "fecha": "2026-09-30",
   "eventos": [
    {
     "fecha": "2026-11-07",
@@ -89492,7 +89159,7 @@
   ]
  },
  "rockforeveryone": {
-  "fecha": "2026-09-29",
+  "fecha": "2026-09-30",
   "eventos": [
    {
     "fecha": "2026-09-30",
@@ -89849,7 +89516,7 @@
   ]
  },
  "mariskal": {
-  "fecha": "2026-09-29",
+  "fecha": "2026-09-30",
   "eventos": [
    {
     "fecha": "2026-11-27",
@@ -94940,21 +94607,6 @@
     "fuente": "mariskal"
    },
    {
-    "fecha": "2026-09-29",
-    "artista": "ISABEL VAN GELDER",
-    "url": "https://mariskalrock.com/guia-de-conciertos/",
-    "sala": "Villanos",
-    "ciudad": "Madrid",
-    "hora": null,
-    "invitados": [],
-    "precio": null,
-    "estilo": null,
-    "nacionalidad": null,
-    "nota": "Fuente de fiabilidad baja (mantiene fechas antiguas); año deducido: la fuente no indica año.",
-    "imagen": null,
-    "fuente": "mariskal"
-   },
-   {
     "fecha": "2026-09-30",
     "artista": "ISABEL VAN GELDER",
     "url": "https://mariskalrock.com/guia-de-conciertos/",
@@ -98007,21 +97659,6 @@
     "invitados": [
      "RICHARD ASHCROFT"
     ],
-    "precio": null,
-    "estilo": null,
-    "nacionalidad": null,
-    "nota": "Fuente de fiabilidad baja (mantiene fechas antiguas); año deducido: la fuente no indica año.",
-    "imagen": null,
-    "fuente": "mariskal"
-   },
-   {
-    "fecha": "2026-09-29",
-    "artista": "OCEAN COLOUR SCENE",
-    "url": "https://mariskalrock.com/guia-de-conciertos/",
-    "sala": "Teatro Cervantes",
-    "ciudad": "Málaga",
-    "hora": null,
-    "invitados": [],
     "precio": null,
     "estilo": null,
     "nacionalidad": null,
@@ -101912,23 +101549,6 @@
     "fuente": "mariskal"
    },
    {
-    "fecha": "2026-09-29",
-    "artista": "THE SISTERS OF MERCY",
-    "url": "https://mariskalrock.com/guia-de-conciertos/",
-    "sala": "Paral·lel 62",
-    "ciudad": "Barcelona",
-    "hora": null,
-    "invitados": [
-     "REAL FARMER"
-    ],
-    "precio": null,
-    "estilo": null,
-    "nacionalidad": null,
-    "nota": "Fuente de fiabilidad baja (mantiene fechas antiguas); año deducido: la fuente no indica año.",
-    "imagen": null,
-    "fuente": "mariskal"
-   },
-   {
     "fecha": "2026-10-20",
     "artista": "THE STROKES",
     "url": "https://mariskalrock.com/guia-de-conciertos/",
@@ -103309,7 +102929,7 @@
   ]
  },
  "rockgle": {
-  "fecha": "2026-09-29",
+  "fecha": "2026-09-30",
   "eventos": [
    {
     "fecha": "2026-10-17",
@@ -105699,7 +105319,7 @@
   ]
  },
  "madness": {
-  "fecha": "2026-09-29",
+  "fecha": "2026-09-30",
   "eventos": [
    {
     "fecha": "2026-11-12",
@@ -109520,23 +109140,8 @@
   ]
  },
  "getrock": {
-  "fecha": "2026-09-29",
+  "fecha": "2026-09-30",
   "eventos": [
-   {
-    "fecha": "2026-09-29",
-    "artista": "ZUCCHERO",
-    "url": "https://www.getrock.es/conciertos/zucchero/barcelona-2026",
-    "sala": "Palau de la Música Catalana",
-    "ciudad": "Barcelona",
-    "hora": "20:15",
-    "invitados": [],
-    "precio": null,
-    "estilo": null,
-    "nacionalidad": null,
-    "nota": null,
-    "imagen": null,
-    "fuente": "getrock"
-   },
    {
     "fecha": "2026-10-01",
     "artista": "ZUCCHERO",
@@ -109869,7 +109474,7 @@
   ]
  },
  "neverland": {
-  "fecha": "2026-09-29",
+  "fecha": "2026-09-30",
   "eventos": [
    {
     "fecha": "2026-10-02",
@@ -110174,7 +109779,7 @@
   ]
  },
  "rockprog_agenda": {
-  "fecha": "2026-09-29",
+  "fecha": "2026-09-30",
   "eventos": [
    {
     "fecha": "2026-10-02",
@@ -110299,7 +109904,7 @@
   ]
  },
  "rockprog": {
-  "fecha": "2026-09-29",
+  "fecha": "2026-09-30",
   "eventos": [
    {
     "fecha": "2027-03-13",
@@ -110334,7 +109939,7 @@
   ]
  },
  "dirtyrock": {
-  "fecha": "2026-09-29",
+  "fecha": "2026-09-30",
   "eventos": [
    {
     "fecha": "2027-02-26",
@@ -110369,7 +109974,7 @@
   ]
  },
  "viriaor": {
-  "fecha": "2026-09-29",
+  "fecha": "2026-09-30",
   "eventos": [
    {
     "fecha": "2026-10-14",
@@ -110389,7 +109994,7 @@
   ]
  },
  "diariorockero": {
-  "fecha": "2026-09-29",
+  "fecha": "2026-09-30",
   "eventos": [
    {
     "fecha": "2026-10-23",
@@ -110454,7 +110059,7 @@
   ]
  },
  "mutick": {
-  "fecha": "2026-09-29",
+  "fecha": "2026-09-30",
   "eventos": [
    {
     "fecha": "2027-10-01",
@@ -110978,7 +110583,7 @@
   ]
  },
  "qconciertos": {
-  "fecha": "2026-09-29",
+  "fecha": "2026-09-30",
   "eventos": [
    {
     "fecha": "2026-10-14",
@@ -111005,51 +110610,6 @@
     "invitados": [],
     "precio": null,
     "estilo": "Country",
-    "nacionalidad": null,
-    "nota": null,
-    "imagen": null,
-    "fuente": "qconciertos"
-   },
-   {
-    "fecha": "2026-09-29",
-    "artista": "En Bruto",
-    "url": "https://qconciertos.es/conciertos-en-madrid-provincia/",
-    "sala": "Sala Galileo Galilei",
-    "ciudad": "Madrid",
-    "hora": null,
-    "invitados": [],
-    "precio": null,
-    "estilo": null,
-    "nacionalidad": null,
-    "nota": null,
-    "imagen": null,
-    "fuente": "qconciertos"
-   },
-   {
-    "fecha": "2026-09-29",
-    "artista": "Orange Oak",
-    "url": "https://qconciertos.es/conciertos-en-madrid-provincia/",
-    "sala": "Sala Villanos",
-    "ciudad": "Madrid",
-    "hora": null,
-    "invitados": [],
-    "precio": null,
-    "estilo": null,
-    "nacionalidad": null,
-    "nota": null,
-    "imagen": null,
-    "fuente": "qconciertos"
-   },
-   {
-    "fecha": "2026-09-29",
-    "artista": "BLUES & ROOTS JAM",
-    "url": "https://qconciertos.es/conciertos-en-madrid-provincia/",
-    "sala": "Intruso Bar",
-    "ciudad": "Madrid",
-    "hora": null,
-    "invitados": [],
-    "precio": null,
-    "estilo": null,
     "nacionalidad": null,
     "nota": null,
     "imagen": null,
@@ -111084,11 +110644,71 @@
     "nota": null,
     "imagen": null,
     "fuente": "qconciertos"
+   },
+   {
+    "fecha": "2026-09-30",
+    "artista": "Maya Ongaku",
+    "url": "https://qconciertos.es/conciertos-en-madrid-provincia/",
+    "sala": "Moby Dick Club",
+    "ciudad": "Madrid",
+    "hora": null,
+    "invitados": [],
+    "precio": null,
+    "estilo": null,
+    "nacionalidad": null,
+    "nota": null,
+    "imagen": null,
+    "fuente": "qconciertos"
+   },
+   {
+    "fecha": "2026-09-30",
+    "artista": "Exclusive Os Cabides",
+    "url": "https://qconciertos.es/conciertos-en-madrid-provincia/",
+    "sala": "Café la Palma",
+    "ciudad": "Madrid",
+    "hora": null,
+    "invitados": [],
+    "precio": null,
+    "estilo": null,
+    "nacionalidad": null,
+    "nota": null,
+    "imagen": null,
+    "fuente": "qconciertos"
+   },
+   {
+    "fecha": "2026-09-30",
+    "artista": "MAYA ONGAKU",
+    "url": "https://qconciertos.es/conciertos-en-madrid-provincia/",
+    "sala": "Moby Dick Club",
+    "ciudad": "Madrid",
+    "hora": null,
+    "invitados": [],
+    "precio": null,
+    "estilo": null,
+    "nacionalidad": null,
+    "nota": null,
+    "imagen": null,
+    "fuente": "qconciertos"
+   },
+   {
+    "fecha": "2026-09-30",
+    "artista": "After Church Open Mic",
+    "url": "https://qconciertos.es/conciertos-en-madrid-provincia/",
+    "sala": "Sala Honky Tonk",
+    "ciudad": "Madrid",
+    "hora": null,
+    "invitados": [],
+    "precio": null,
+    "estilo": null,
+    "nacionalidad": null,
+    "nota": null,
+    "imagen": null,
+    "fuente": "qconciertos"
    }
   ]
  },
  "sbm": {
-  "fecha": "2026-09-29",
+  "fecha": "2026-09-30",
   "eventos": [
    {
     "fecha": "2026-10-03",
@@ -111108,7 +110728,7 @@
   ]
  },
  "bigmama": {
-  "fecha": "2026-09-29",
+  "fecha": "2026-09-30",
   "eventos": [
    {
     "fecha": "2026-10-03",
@@ -111158,7 +110778,7 @@
   ]
  },
  "gruta77": {
-  "fecha": "2026-09-29",
+  "fecha": "2026-09-30",
   "eventos": [
    {
     "fecha": "2026-10-02",
@@ -111671,7 +111291,7 @@
   ]
  },
  "movistar": {
-  "fecha": "2026-09-29",
+  "fecha": "2026-09-30",
   "eventos": [
    {
     "fecha": "2026-10-01",
@@ -111811,7 +111431,7 @@
   ]
  },
  "riviera": {
-  "fecha": "2026-09-29",
+  "fecha": "2026-09-30",
   "eventos": [
    {
     "fecha": "2026-10-03",
@@ -112566,7 +112186,7 @@
   ]
  },
  "nazca": {
-  "fecha": "2026-09-29",
+  "fecha": "2026-09-30",
   "eventos": [
    {
     "fecha": "2026-10-02",
@@ -112676,7 +112296,7 @@
   ]
  },
  "wagon": {
-  "fecha": "2026-09-29",
+  "fecha": "2026-09-30",
   "eventos": [
    {
     "fecha": "2026-10-02",
@@ -113116,7 +112736,7 @@
   ]
  },
  "revi": {
-  "fecha": "2026-09-29",
+  "fecha": "2026-09-30",
   "eventos": [
    {
     "fecha": "2026-10-02",
@@ -113916,7 +113536,7 @@
   ]
  },
  "chango": {
-  "fecha": "2026-09-29",
+  "fecha": "2026-09-30",
   "eventos": [
    {
     "fecha": "2026-10-17",
@@ -114011,7 +113631,7 @@
   ]
  },
  "salabut": {
-  "fecha": "2026-09-29",
+  "fecha": "2026-09-30",
   "eventos": [
    {
     "fecha": "2026-10-02",
@@ -114442,25 +114062,8 @@
   ]
  },
  "elsol": {
-  "fecha": "2026-09-29",
+  "fecha": "2026-09-30",
   "eventos": [
-   {
-    "fecha": "2026-09-29",
-    "artista": "LANDA",
-    "url": "https://salaelsol.com/eventos/landa/",
-    "sala": "Sala El Sol",
-    "ciudad": "Madrid",
-    "hora": "21:00",
-    "invitados": [
-     "DELGADO Y SEÑOR"
-    ],
-    "precio": null,
-    "estilo": null,
-    "nacionalidad": null,
-    "nota": null,
-    "imagen": null,
-    "fuente": "elsol"
-   },
    {
     "fecha": "2026-09-30",
     "artista": "LUCÍA FERNÁNDEZ",
@@ -114494,7 +114097,7 @@
   ]
  },
  "rockville": {
-  "fecha": "2026-09-29",
+  "fecha": "2026-09-30",
   "eventos": [
    {
     "fecha": "2026-09-30",
@@ -114900,23 +114503,8 @@
   ]
  },
  "funhouse": {
-  "fecha": "2026-09-29",
+  "fecha": "2026-09-30",
   "eventos": [
-   {
-    "fecha": "2026-09-29",
-    "artista": "Rolando Bruno",
-    "url": "https://www.funhousemusicbar.com/conciertos/rolando-bruno-2/",
-    "sala": "Fun House",
-    "ciudad": "Madrid",
-    "hora": "20:30",
-    "invitados": [],
-    "precio": null,
-    "estilo": null,
-    "nacionalidad": null,
-    "nota": null,
-    "imagen": null,
-    "fuente": "funhouse"
-   },
    {
     "fecha": "2026-09-30",
     "artista": "NOEL MCKAY",
@@ -115503,7 +115091,7 @@
   ]
  },
  "wurlitzer": {
-  "fecha": "2026-09-29",
+  "fecha": "2026-09-30",
   "eventos": [
    {
     "fecha": "2026-09-30",
@@ -115944,23 +115532,8 @@
   ]
  },
  "honky": {
-  "fecha": "2026-09-29",
+  "fecha": "2026-09-30",
   "eventos": [
-   {
-    "fecha": "2026-09-29",
-    "artista": "AFTER CHURCH OPEN MIC",
-    "url": "https://clubhonky.com/programacion/after-church-open-mic-202609-5/",
-    "sala": "Honky Tonk",
-    "ciudad": "Madrid",
-    "hora": "23:30",
-    "invitados": [],
-    "precio": null,
-    "estilo": null,
-    "nacionalidad": null,
-    "nota": null,
-    "imagen": null,
-    "fuente": "honky"
-   },
    {
     "fecha": "2026-09-30",
     "artista": "GORG & BENZOL",
@@ -115994,7 +115567,7 @@
   ]
  },
  "silikona": {
-  "fecha": "2026-09-29",
+  "fecha": "2026-09-30",
   "eventos": [
    {
     "fecha": "2026-10-03",
@@ -116066,7 +115639,7 @@
   ]
  },
  "clamores": {
-  "fecha": "2026-09-29",
+  "fecha": "2026-09-30",
   "eventos": [
    {
     "fecha": "2026-10-02",
@@ -116139,7 +115712,7 @@
   ]
  },
  "siroco": {
-  "fecha": "2026-09-29",
+  "fecha": "2026-09-30",
   "eventos": [
    {
     "fecha": "2026-09-30",
@@ -116206,7 +115779,7 @@
   ]
  },
  "mobydick": {
-  "fecha": "2026-09-29",
+  "fecha": "2026-09-30",
   "eventos": [
    {
     "fecha": "2026-10-06",
@@ -116301,7 +115874,7 @@
   ]
  },
  "independance": {
-  "fecha": "2026-09-29",
+  "fecha": "2026-09-30",
   "eventos": [
    {
     "fecha": "2026-10-02",
@@ -116488,7 +116061,7 @@
   ]
  },
  "salab": {
-  "fecha": "2026-09-29",
+  "fecha": "2026-09-30",
   "eventos": [
    {
     "fecha": "2026-10-02",
@@ -116542,7 +116115,7 @@
   ]
  },
  "nuevacubierta": {
-  "fecha": "2026-09-29",
+  "fecha": "2026-09-30",
   "eventos": [
    {
     "fecha": "2026-10-09",
@@ -116669,7 +116242,7 @@
   ]
  },
  "muni_alcala_de_henares": {
-  "fecha": "2026-09-29",
+  "fecha": "2026-09-30",
   "eventos": [
    {
     "fecha": "2026-09-30",
@@ -116689,11 +116262,11 @@
   ]
  },
  "muni_aranjuez": {
-  "fecha": "2026-09-29",
+  "fecha": "2026-09-30",
   "eventos": []
  },
  "muni_collado_villalba": {
-  "fecha": "2026-09-29",
+  "fecha": "2026-09-30",
   "eventos": [
    {
     "fecha": "2026-10-17",
@@ -116713,7 +116286,7 @@
   ]
  },
  "muni_las_rozas_de_madrid": {
-  "fecha": "2026-09-29",
+  "fecha": "2026-09-30",
   "eventos": [
    {
     "fecha": "2026-10-25",
@@ -116838,7 +116411,7 @@
   ]
  },
  "muni_torrejon_de_ardoz": {
-  "fecha": "2026-09-29",
+  "fecha": "2026-09-30",
   "eventos": [
    {
     "fecha": "2026-10-09",
@@ -116858,23 +116431,8 @@
   ]
  },
  "villanos": {
-  "fecha": "2026-09-29",
+  "fecha": "2026-09-30",
   "eventos": [
-   {
-    "fecha": "2026-09-29",
-    "artista": "ISABEL VAN GELDER",
-    "url": "https://salavillanos.es/evento/isabel-van-gelder/",
-    "sala": "Sala Villanos",
-    "ciudad": "Madrid",
-    "hora": "20:00",
-    "invitados": [],
-    "precio": null,
-    "estilo": "Rock",
-    "nacionalidad": null,
-    "nota": null,
-    "imagen": null,
-    "fuente": "villanos"
-   },
    {
     "fecha": "2026-09-30",
     "artista": "SARA HEBE",

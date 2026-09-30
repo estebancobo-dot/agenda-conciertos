@@ -45,7 +45,9 @@
     "https://www.hellpress.com/noticias/wet-apex/",
     "https://www.hellpress.com/noticias/lion-rock-fest-2025-segundo-grupo/",
     "https://www.hellpress.com/noticias/disfear-the-last-nail-disco-postumo-ultimas-grabaciones-tomas-lindberg-marcus-andersson-ultimas-grabaciones/",
-    "https://www.hellpress.com/noticias/leo-jimenez-presenta-inquebrantable-primer-adelanto-nuevo-disco/"
+    "https://www.hellpress.com/noticias/leo-jimenez-presenta-inquebrantable-primer-adelanto-nuevo-disco/",
+    "https://www.hellpress.com/noticias/gregor-mackintosh-paradise-lost-disfruta-soledad-ermitano-total-no-interesan-redes-sociales/",
+    "https://www.hellpress.com/noticias/thundermother-lanzara-mothers-of-thunder-nuestro-mejor-album-hasta-fecha/"
    ],
    "eventos": [
     {
@@ -91,7 +93,7 @@
      "fuente": ""
     }
    ],
-   "ultima_entrada": "https://www.hellpress.com/noticias/disfear-the-last-nail-disco-postumo-ultimas-grabaciones-tomas-lindberg-marcus-andersson-ultimas-grabaciones/"
+   "ultima_entrada": "https://www.hellpress.com/noticias/gregor-mackintosh-paradise-lost-disfruta-soledad-ermitano-total-no-interesan-redes-sociales/"
   },
   "metalsymphony": {},
   "rockforeveryone": {},
@@ -404,188 +406,251 @@
   "radar_cpm": {},
   "_duracion": {
    "muni_getafe": 30.5,
-   "villanos": 3.0,
-   "muni_san_sebastian_de_los_reyes": 2.1,
+   "villanos": 3.2,
+   "muni_san_sebastian_de_los_reyes": 2.8,
+   "galileo": 1.8,
    "ticketle": 1.4,
-   "galileo": 1.7,
-   "muni_arganda_del_rey": 1.3,
-   "muni_alcobendas": 1.3,
-   "bandsintown": 1.2,
-   "radar_joven": 1.2,
-   "muni_coslada": 0.3
+   "muni_alcobendas": 1.2,
+   "muni_arganda_del_rey": 1.4,
+   "bandsintown": 1.1,
+   "radar_joven": 1.3,
+   "muni_coslada": 0.3,
+   "cc_buscador": 45.6,
+   "cc_portada": 7.3,
+   "cc_estilos": 37.9,
+   "laganzua": 25.9,
+   "cpm": 10.6,
+   "madridenvivo": 2007.2,
+   "songkick": 14.8,
+   "rockandblog": 3.0,
+   "tm_blog": 1.3,
+   "radar_cpm": 2.4,
+   "thm": 10.3,
+   "metallegion": 2.8,
+   "metalcry": 6.7,
+   "hellpress": 2.0,
+   "hellpress_melodico": 6.2,
+   "metalsymphony": 3.0,
+   "rockforeveryone": 13.6,
+   "mariskal": 3.4,
+   "rockgle": 12.2,
+   "madness": 30.1,
+   "getrock": 5.8,
+   "neverland": 0.6,
+   "rockprog_agenda": 34.3,
+   "rockprog": 9.8,
+   "force": 30.9,
+   "dirtyrock": 2.0,
+   "viriaor": 1.1,
+   "diariorockero": 10.5,
+   "mutick": 45.9,
+   "qconciertos": 4.2,
+   "sbm": 2.3,
+   "bigmama": 3.4,
+   "gruta77": 6.1,
+   "movistar": 2.2,
+   "riviera": 1.9,
+   "nazca": 2.6,
+   "wagon": 1.5,
+   "revi": 5.1,
+   "chango": 1.9,
+   "salabut": 1.3,
+   "elsol": 3.6,
+   "rockville": 1.8,
+   "funhouse": 1.8,
+   "wurlitzer": 4.0,
+   "honky": 3.9,
+   "silikona": 7.3,
+   "clamores": 1.2,
+   "siroco": 3.6,
+   "mobydick": 1.9,
+   "independance": 1.9,
+   "salab": 7.5,
+   "nuevacubierta": 9.5,
+   "muni_alcala_de_henares": 2.0,
+   "muni_aranjuez": 3.8,
+   "muni_collado_villalba": 2.8,
+   "muni_las_rozas_de_madrid": 2.6,
+   "muni_leganes": 3.4,
+   "muni_alcorcon": 2.7,
+   "muni_boadilla_del_monte": 11.8,
+   "muni_torrejon_de_ardoz": 2.0,
+   "muni_valdemoro": 1.9,
+   "muni_pinto": 43.0,
+   "muni_mostoles": 3.3
   }
  },
  "historial_fuentes": {
   "cc_buscador": {
-   "ultima_ok": "2026-09-29",
-   "ultimo_conteo": 1461
+   "ultima_ok": "2026-09-30",
+   "ultimo_conteo": 1455
   },
   "cc_portada": {
-   "ultima_ok": "2026-09-29",
-   "ultimo_conteo": 549
+   "ultima_ok": "2026-09-30",
+   "ultimo_conteo": 554
   },
   "cc_estilos": {
-   "ultima_ok": "2026-09-29",
-   "ultimo_conteo": 666
+   "ultima_ok": "2026-09-30",
+   "ultimo_conteo": 665
   },
   "laganzua": {
-   "ultima_ok": "2026-09-29",
-   "ultimo_conteo": 214
+   "ultima_ok": "2026-09-30",
+   "ultimo_conteo": 212
   },
   "cpm": {
-   "ultima_ok": "2026-09-29",
-   "ultimo_conteo": 133
+   "ultima_ok": "2026-09-30",
+   "ultimo_conteo": 131
   },
   "madridenvivo": {
-   "ultima_ok": "2026-09-29",
-   "ultimo_conteo": 955
+   "ultima_ok": "2026-09-30",
+   "ultimo_conteo": 939
   },
   "songkick": {
-   "ultima_ok": "2026-09-29",
-   "ultimo_conteo": 571
+   "ultima_ok": "2026-09-30",
+   "ultimo_conteo": 573
   },
   "rockandblog": {
-   "ultima_ok": "2026-09-29",
+   "ultima_ok": "2026-09-30",
    "ultimo_conteo": 72
   },
   "tm_blog": {
-   "ultima_ok": "2026-09-29",
+   "ultima_ok": "2026-09-30",
    "ultimo_conteo": 15
   },
   "thm": {
-   "ultima_ok": "2026-09-29",
+   "ultima_ok": "2026-09-30",
    "ultimo_conteo": 14
   },
   "metallegion": {
-   "ultima_ok": "2026-09-29",
+   "ultima_ok": "2026-09-30",
    "ultimo_conteo": 40
   },
   "metalcry": {
-   "ultima_ok": "2026-09-29",
+   "ultima_ok": "2026-09-30",
    "ultimo_conteo": 23
   },
   "hellpress": {
-   "ultima_ok": "2026-09-29",
+   "ultima_ok": "2026-09-30",
    "ultimo_conteo": 41
   },
   "hellpress_melodico": {
-   "ultima_ok": "2026-09-29",
+   "ultima_ok": "2026-09-30",
    "ultimo_conteo": 0
   },
   "metalsymphony": {
-   "ultima_ok": "2026-09-29",
+   "ultima_ok": "2026-09-30",
    "ultimo_conteo": 22
   },
   "rockforeveryone": {
-   "ultima_ok": "2026-09-29",
+   "ultima_ok": "2026-09-30",
    "ultimo_conteo": 22
   },
   "mariskal": {
-   "ultima_ok": "2026-09-29",
+   "ultima_ok": "2026-09-30",
    "ultimo_conteo": 155
   },
   "madness": {
-   "ultima_ok": "2026-09-29",
+   "ultima_ok": "2026-09-30",
    "ultimo_conteo": 16
   },
   "getrock": {
-   "ultima_ok": "2026-09-29",
+   "ultima_ok": "2026-09-30",
    "ultimo_conteo": 6
   },
   "neverland": {
-   "ultima_ok": "2026-09-29",
+   "ultima_ok": "2026-09-30",
    "ultimo_conteo": 2
   },
   "rockprog_agenda": {
-   "ultima_ok": "2026-09-29",
+   "ultima_ok": "2026-09-30",
    "ultimo_conteo": 5
   },
   "dirtyrock": {
-   "ultima_ok": "2026-09-29",
+   "ultima_ok": "2026-09-30",
    "ultimo_conteo": 1
   },
   "viriaor": {
-   "ultima_ok": "2026-09-29",
+   "ultima_ok": "2026-09-30",
    "ultimo_conteo": 1
   },
   "mutick": {
-   "ultima_ok": "2026-09-29",
+   "ultima_ok": "2026-09-30",
    "ultimo_conteo": 32
   },
   "qconciertos": {
-   "ultima_ok": "2026-09-29",
+   "ultima_ok": "2026-09-30",
    "ultimo_conteo": 5
   },
   "sbm": {
-   "ultima_ok": "2026-09-29",
+   "ultima_ok": "2026-09-30",
    "ultimo_conteo": 1
   },
   "bigmama": {
-   "ultima_ok": "2026-09-29",
+   "ultima_ok": "2026-09-30",
    "ultimo_conteo": 3
   },
   "gruta77": {
-   "ultima_ok": "2026-09-29",
+   "ultima_ok": "2026-09-30",
    "ultimo_conteo": 29
   },
   "movistar": {
-   "ultima_ok": "2026-09-29",
+   "ultima_ok": "2026-09-30",
    "ultimo_conteo": 9
   },
   "riviera": {
-   "ultima_ok": "2026-09-29",
+   "ultima_ok": "2026-09-30",
    "ultimo_conteo": 50
   },
   "nazca": {
-   "ultima_ok": "2026-09-29",
+   "ultima_ok": "2026-09-30",
    "ultimo_conteo": 7
   },
   "wagon": {
-   "ultima_ok": "2026-09-29",
+   "ultima_ok": "2026-09-30",
    "ultimo_conteo": 19
   },
   "revi": {
-   "ultima_ok": "2026-09-29",
+   "ultima_ok": "2026-09-30",
    "ultimo_conteo": 43
   },
   "chango": {
-   "ultima_ok": "2026-09-29",
+   "ultima_ok": "2026-09-30",
    "ultimo_conteo": 6
   },
   "salabut": {
-   "ultima_ok": "2026-09-29",
+   "ultima_ok": "2026-09-30",
    "ultimo_conteo": 28
   },
   "elsol": {
-   "ultima_ok": "2026-09-29",
-   "ultimo_conteo": 3
+   "ultima_ok": "2026-09-30",
+   "ultimo_conteo": 2
   },
   "villanos": {
-   "ultima_ok": "2026-09-29",
+   "ultima_ok": "2026-09-30",
    "ultimo_conteo": 101
   },
   "rockville": {
-   "ultima_ok": "2026-09-29",
+   "ultima_ok": "2026-09-30",
    "ultimo_conteo": 26
   },
   "funhouse": {
-   "ultima_ok": "2026-09-29",
-   "ultimo_conteo": 37
+   "ultima_ok": "2026-09-30",
+   "ultimo_conteo": 36
   },
   "wurlitzer": {
-   "ultima_ok": "2026-09-29",
+   "ultima_ok": "2026-09-30",
    "ultimo_conteo": 27
   },
   "honky": {
-   "ultima_ok": "2026-09-29",
-   "ultimo_conteo": 3
+   "ultima_ok": "2026-09-30",
+   "ultimo_conteo": 2
   },
   "silikona": {
-   "ultima_ok": "2026-09-29",
+   "ultima_ok": "2026-09-30",
    "ultimo_conteo": 4
   },
   "clamores": {
-   "ultima_ok": "2026-09-29",
+   "ultima_ok": "2026-09-30",
    "ultimo_conteo": 1
   },
   "galileo": {
@@ -593,65 +658,66 @@
    "ultimo_conteo": 8
   },
   "siroco": {
-   "ultima_ok": "2026-09-29",
+   "ultima_ok": "2026-09-30",
    "ultimo_conteo": 4
   },
   "mobydick": {
-   "ultima_ok": "2026-09-29",
+   "ultima_ok": "2026-09-30",
    "ultimo_conteo": 6
   },
   "independance": {
-   "ultima_ok": "2026-09-29",
+   "ultima_ok": "2026-09-30",
    "ultimo_conteo": 12
   },
   "salab": {
-   "ultima_ok": "2026-09-29",
+   "ultima_ok": "2026-09-30",
    "ultimo_conteo": 3
   },
   "nuevacubierta": {
-   "ultima_ok": "2026-09-29",
+   "ultima_ok": "2026-09-30",
    "ultimo_conteo": 7
   },
   "muni_aranjuez": {
-   "ultima_ok": "2026-09-29",
+   "ultima_ok": "2026-09-30",
    "ultimo_conteo": 0
   },
   "radar_cpm": {
-   "ultima_ok": "2026-09-29",
+   "ultima_ok": "2026-09-30",
    "ultimo_conteo": 43
   },
   "rockgle": {
-   "ultima_ok": "2026-09-29",
+   "ultima_ok": "2026-09-30",
    "ultimo_conteo": 26
   },
   "diariorockero": {
-   "ultima_ok": "2026-09-29",
+   "ultima_ok": "2026-09-30",
    "ultimo_conteo": 3
   },
   "muni_alcala_de_henares": {
-   "ultima_ok": "2026-09-29",
+   "ultima_ok": "2026-09-30",
    "ultimo_conteo": 1
   },
   "muni_collado_villalba": {
-   "ultima_ok": "2026-09-29",
+   "ultima_ok": "2026-09-30",
    "ultimo_conteo": 1
   },
   "muni_torrejon_de_ardoz": {
-   "ultima_ok": "2026-09-29",
+   "ultima_ok": "2026-09-30",
    "ultimo_conteo": 1
   },
   "rockprog": {
-   "ultima_ok": "2026-09-29",
+   "ultima_ok": "2026-09-30",
    "ultimo_conteo": 1
   },
   "muni_las_rozas_de_madrid": {
-   "ultima_ok": "2026-09-29",
+   "ultima_ok": "2026-09-30",
    "ultimo_conteo": 8
   }
  },
- "ultima_ejecucion": "2026-09-29T20:53:15+00:00",
+ "ultima_ejecucion": "2026-09-30T05:46:43+00:00",
  "fuentes_fallidas": [
   "bandsintown",
+  "galileo",
   "muni_alcobendas",
   "muni_arganda_del_rey",
   "muni_coslada",
@@ -677,11 +743,11 @@
    "estado": "ok",
    "funciono": true,
    "completa": true,
-   "brutos": 108,
+   "brutos": 107,
    "paginas": 1,
    "errores": [],
    "robots": "ok",
-   "segundos": 3.0
+   "segundos": 3.2
   },
   "muni_san_sebastian_de_los_reyes": {
    "estado": "bloqueado_antibots",
@@ -693,7 +759,19 @@
     "https://www.ssreyes.org/agenda-cultural: la web responde con un captcha/verificación anti-bots"
    ],
    "robots": "ok",
-   "segundos": 2.1
+   "segundos": 2.8
+  },
+  "galileo": {
+   "estado": "bloqueado_antibots",
+   "funciono": false,
+   "completa": false,
+   "brutos": 0,
+   "paginas": 1,
+   "errores": [
+    "https://salagalileo.es/: la web responde con un captcha/verificación anti-bots"
+   ],
+   "robots": "ok",
+   "segundos": 1.8
   },
   "ticketle": {
    "estado": "bloqueado_403",
@@ -707,15 +785,17 @@
    "robots": "ok",
    "segundos": 1.4
   },
-  "galileo": {
-   "estado": "ok",
-   "funciono": true,
-   "completa": true,
-   "brutos": 8,
+  "muni_alcobendas": {
+   "estado": "bloqueado_403",
+   "funciono": false,
+   "completa": false,
+   "brutos": 0,
    "paginas": 1,
-   "errores": [],
-   "robots": "ok",
-   "segundos": 1.7
+   "errores": [
+    "HTTPError: 403 Client Error: Forbidden for url: https://www.alcobendas.org/es/temas/cultura/programacion-cultural"
+   ],
+   "robots": "sin_robots (403)",
+   "segundos": 1.2
   },
   "muni_arganda_del_rey": {
    "estado": "bloqueado_403",
@@ -727,19 +807,7 @@
     "HTTPError: 403 Client Error: Forbidden for url: https://www.argandadelrey.es/eventos/agenda-cultural-2/"
    ],
    "robots": "sin_robots (403)",
-   "segundos": 1.3
-  },
-  "muni_alcobendas": {
-   "estado": "bloqueado_403",
-   "funciono": false,
-   "completa": false,
-   "brutos": 0,
-   "paginas": 1,
-   "errores": [
-    "HTTPError: 403 Client Error: Forbidden for url: https://www.alcobendas.org/es/temas/cultura/programacion-cultural"
-   ],
-   "robots": "sin_robots (403)",
-   "segundos": 1.3
+   "segundos": 1.4
   },
   "bandsintown": {
    "estado": "bloqueado_403",
@@ -751,7 +819,7 @@
     "HTTPError: 403 Client Error: Forbidden for url: https://www.bandsintown.com/c/madrid-spain"
    ],
    "robots": "sin_robots (403)",
-   "segundos": 1.2
+   "segundos": 1.1
   },
   "radar_joven": {
    "estado": "error",
@@ -763,7 +831,7 @@
     "HTTPError: 404 Client Error: Not Found for url: https://www.comunidad.madrid/actividades/2026/radar-joven-2026"
    ],
    "robots": "sin_robots (404)",
-   "segundos": 1.2
+   "segundos": 1.3
   },
   "muni_coslada": {
    "estado": "error",
@@ -777,25 +845,45 @@
    "robots": "inaccesible (SSLError)",
    "segundos": 0.3
   },
-  "honky": {
+  "cc_buscador": {
    "estado": "ok",
    "funciono": true,
    "completa": true,
-   "brutos": 30,
-   "paginas": 1,
+   "brutos": 1462,
+   "paginas": 18,
    "errores": [],
    "robots": "ok",
-   "segundos": 5.0
+   "segundos": 45.6
   },
-  "viriaor": {
+  "cc_portada": {
    "estado": "ok",
    "funciono": true,
    "completa": true,
-   "brutos": 1,
+   "brutos": 555,
    "paginas": 1,
    "errores": [],
    "robots": "ok",
-   "segundos": 1.2
+   "segundos": 7.3
+  },
+  "cc_estilos": {
+   "estado": "ok",
+   "funciono": true,
+   "completa": true,
+   "brutos": 768,
+   "paginas": 12,
+   "errores": [],
+   "robots": "ok",
+   "segundos": 37.9
+  },
+  "laganzua": {
+   "estado": "ok",
+   "funciono": true,
+   "completa": true,
+   "brutos": 219,
+   "paginas": 18,
+   "errores": [],
+   "robots": "ok",
+   "segundos": 25.9
   },
   "cpm": {
    "estado": "ok",
@@ -805,217 +893,27 @@
    "paginas": 5,
    "errores": [],
    "robots": "ok",
-   "segundos": 11.2
+   "segundos": 10.6
   },
-  "tm_blog": {
+  "madridenvivo": {
    "estado": "ok",
    "funciono": true,
    "completa": true,
-   "brutos": 33,
-   "paginas": 1,
+   "brutos": 959,
+   "paginas": 100,
    "errores": [],
    "robots": "ok",
-   "segundos": 1.5
+   "segundos": 2007.2
   },
-  "elsol": {
+  "songkick": {
    "estado": "ok",
    "funciono": true,
    "completa": true,
-   "brutos": 23,
-   "paginas": 1,
+   "brutos": 650,
+   "paginas": 13,
    "errores": [],
    "robots": "ok",
-   "segundos": 3.9
-  },
-  "nuevacubierta": {
-   "estado": "ok",
-   "funciono": true,
-   "completa": true,
-   "brutos": 8,
-   "paginas": 1,
-   "errores": [],
-   "robots": "ok",
-   "segundos": 8.8
-  },
-  "cc_portada": {
-   "estado": "ok",
-   "funciono": true,
-   "completa": true,
-   "brutos": 550,
-   "paginas": 1,
-   "errores": [],
-   "robots": "ok",
-   "segundos": 8.1
-  },
-  "riviera": {
-   "estado": "ok",
-   "funciono": true,
-   "completa": true,
-   "brutos": 50,
-   "paginas": 1,
-   "errores": [],
-   "robots": "ok",
-   "segundos": 2.6
-  },
-  "madness": {
-   "estado": "ok",
-   "funciono": true,
-   "completa": true,
-   "brutos": 225,
-   "paginas": 9,
-   "errores": [],
-   "robots": "ok",
-   "segundos": 28.2
-  },
-  "movistar": {
-   "estado": "ok",
-   "funciono": true,
-   "completa": true,
-   "brutos": 9,
-   "paginas": 1,
-   "errores": [],
-   "robots": "ok",
-   "segundos": 3.6
-  },
-  "metalcry": {
-   "estado": "ok",
-   "funciono": true,
-   "completa": true,
-   "brutos": 155,
-   "paginas": 1,
-   "errores": [],
-   "robots": "ok",
-   "segundos": 7.5
-  },
-  "siroco": {
-   "estado": "ok",
-   "funciono": true,
-   "completa": true,
-   "brutos": 4,
-   "paginas": 1,
-   "errores": [],
-   "robots": "ok",
-   "segundos": 3.9
-  },
-  "neverland": {
-   "estado": "ok",
-   "funciono": true,
-   "completa": true,
-   "brutos": 21,
-   "paginas": 1,
-   "errores": [],
-   "robots": "ok",
-   "segundos": 1.3
-  },
-  "salabut": {
-   "estado": "ok",
-   "funciono": true,
-   "completa": true,
-   "brutos": 33,
-   "paginas": 1,
-   "errores": [],
-   "robots": "ok",
-   "segundos": 1.4
-  },
-  "thm": {
-   "estado": "ok",
-   "funciono": true,
-   "completa": true,
-   "brutos": 121,
-   "paginas": 1,
-   "errores": [],
-   "robots": "ok",
-   "segundos": 12.0
-  },
-  "rockforeveryone": {
-   "estado": "ok",
-   "funciono": true,
-   "completa": true,
-   "brutos": 38,
-   "paginas": 5,
-   "errores": [],
-   "robots": "ok",
-   "segundos": 11.9
-  },
-  "muni_valdemoro": {
-   "estado": "ok_sin_resultados",
-   "funciono": true,
-   "completa": false,
-   "brutos": 0,
-   "paginas": 1,
-   "errores": [],
-   "robots": "ok",
-   "segundos": 2.1
-  },
-  "muni_torrejon_de_ardoz": {
-   "estado": "ok",
-   "funciono": true,
-   "completa": true,
-   "brutos": 1,
-   "paginas": 1,
-   "errores": [],
-   "robots": "ok",
-   "segundos": 2.2
-  },
-  "gruta77": {
-   "estado": "ok",
-   "funciono": true,
-   "completa": true,
-   "brutos": 30,
-   "paginas": 1,
-   "errores": [],
-   "robots": "ok",
-   "segundos": 2.5
-  },
-  "muni_leganes": {
-   "estado": "ok_sin_resultados",
-   "funciono": true,
-   "completa": false,
-   "brutos": 0,
-   "paginas": 1,
-   "errores": [],
-   "robots": "ok",
-   "segundos": 4.6
-  },
-  "metallegion": {
-   "estado": "ok",
-   "funciono": true,
-   "completa": true,
-   "brutos": 196,
-   "paginas": 1,
-   "errores": [],
-   "robots": "ok",
-   "segundos": 3.2
-  },
-  "mobydick": {
-   "estado": "ok",
-   "funciono": true,
-   "completa": true,
-   "brutos": 6,
-   "paginas": 1,
-   "errores": [],
-   "robots": "ok",
-   "segundos": 2.1
-  },
-  "dirtyrock": {
-   "estado": "ok",
-   "funciono": true,
-   "completa": true,
-   "brutos": 2,
-   "paginas": 1,
-   "errores": [],
-   "robots": "ok",
-   "segundos": 2.2
-  },
-  "mutick": {
-   "estado": "ok",
-   "funciono": true,
-   "completa": true,
-   "brutos": 34,
-   "paginas": 36,
-   "errores": [],
-   "robots": "ok",
-   "segundos": 47.2
+   "segundos": 14.8
   },
   "rockandblog": {
    "estado": "ok",
@@ -1025,47 +923,17 @@
    "paginas": 1,
    "errores": [],
    "robots": "ok",
-   "segundos": 3.5
+   "segundos": 3.0
   },
-  "sbm": {
+  "tm_blog": {
    "estado": "ok",
    "funciono": true,
    "completa": true,
-   "brutos": 3,
+   "brutos": 33,
    "paginas": 1,
    "errores": [],
    "robots": "ok",
-   "segundos": 3.2
-  },
-  "getrock": {
-   "estado": "ok",
-   "funciono": true,
-   "completa": true,
-   "brutos": 24,
-   "paginas": 2,
-   "errores": [],
-   "robots": "ok",
-   "segundos": 6.2
-  },
-  "independance": {
-   "estado": "ok",
-   "funciono": true,
-   "completa": true,
-   "brutos": 12,
-   "paginas": 1,
-   "errores": [],
-   "robots": "ok",
-   "segundos": 2.2
-  },
-  "madridenvivo": {
-   "estado": "ok",
-   "funciono": true,
-   "completa": true,
-   "brutos": 974,
-   "paginas": 103,
-   "errores": [],
-   "robots": "ok",
-   "segundos": 2144.9
+   "segundos": 1.3
   },
   "radar_cpm": {
    "estado": "ok",
@@ -1075,27 +943,37 @@
    "paginas": 1,
    "errores": [],
    "robots": "ok",
-   "segundos": 4.7
+   "segundos": 2.4
   },
-  "salab": {
+  "thm": {
    "estado": "ok",
    "funciono": true,
    "completa": true,
-   "brutos": 3,
+   "brutos": 121,
    "paginas": 1,
    "errores": [],
    "robots": "ok",
-   "segundos": 8.3
+   "segundos": 10.3
   },
-  "force": {
-   "estado": "ok_sin_resultados",
+  "metallegion": {
+   "estado": "ok",
    "funciono": true,
-   "completa": false,
-   "brutos": 0,
+   "completa": true,
+   "brutos": 196,
    "paginas": 1,
    "errores": [],
    "robots": "ok",
-   "segundos": 8.8
+   "segundos": 2.8
+  },
+  "metalcry": {
+   "estado": "ok",
+   "funciono": true,
+   "completa": true,
+   "brutos": 155,
+   "paginas": 1,
+   "errores": [],
+   "robots": "ok",
+   "segundos": 6.7
   },
   "hellpress": {
    "estado": "ok",
@@ -1105,37 +983,37 @@
    "paginas": 1,
    "errores": [],
    "robots": "ok",
-   "segundos": 2.3
+   "segundos": 2.0
   },
-  "rockprog_agenda": {
+  "hellpress_melodico": {
    "estado": "ok",
    "funciono": true,
    "completa": true,
-   "brutos": 10,
+   "brutos": 3,
+   "paginas": 3,
+   "errores": [],
+   "robots": "ok",
+   "segundos": 6.2
+  },
+  "metalsymphony": {
+   "estado": "ok",
+   "funciono": true,
+   "completa": true,
+   "brutos": 84,
+   "paginas": 2,
+   "errores": [],
+   "robots": "ok",
+   "segundos": 3.0
+  },
+  "rockforeveryone": {
+   "estado": "ok",
+   "funciono": true,
+   "completa": true,
+   "brutos": 38,
    "paginas": 5,
    "errores": [],
    "robots": "ok",
-   "segundos": 32.1
-  },
-  "cc_buscador": {
-   "estado": "ok",
-   "funciono": true,
-   "completa": true,
-   "brutos": 1468,
-   "paginas": 18,
-   "errores": [],
-   "robots": "ok",
-   "segundos": 50.2
-  },
-  "laganzua": {
-   "estado": "ok",
-   "funciono": true,
-   "completa": true,
-   "brutos": 221,
-   "paginas": 18,
-   "errores": [],
-   "robots": "ok",
-   "segundos": 27.6
+   "segundos": 13.6
   },
   "mariskal": {
    "estado": "ok",
@@ -1145,9 +1023,69 @@
    "paginas": 1,
    "errores": [],
    "robots": "ok",
-   "segundos": 3.6
+   "segundos": 3.4
   },
-  "muni_boadilla_del_monte": {
+  "rockgle": {
+   "estado": "ok",
+   "funciono": true,
+   "completa": true,
+   "brutos": 155,
+   "paginas": 1,
+   "errores": [],
+   "robots": "sin_robots (404)",
+   "segundos": 12.2
+  },
+  "madness": {
+   "estado": "ok",
+   "funciono": true,
+   "completa": true,
+   "brutos": 225,
+   "paginas": 9,
+   "errores": [],
+   "robots": "ok",
+   "segundos": 30.1
+  },
+  "getrock": {
+   "estado": "ok",
+   "funciono": true,
+   "completa": true,
+   "brutos": 24,
+   "paginas": 2,
+   "errores": [],
+   "robots": "ok",
+   "segundos": 5.8
+  },
+  "neverland": {
+   "estado": "ok",
+   "funciono": true,
+   "completa": true,
+   "brutos": 21,
+   "paginas": 1,
+   "errores": [],
+   "robots": "ok",
+   "segundos": 0.6
+  },
+  "rockprog_agenda": {
+   "estado": "ok",
+   "funciono": true,
+   "completa": true,
+   "brutos": 10,
+   "paginas": 5,
+   "errores": [],
+   "robots": "ok",
+   "segundos": 34.3
+  },
+  "rockprog": {
+   "estado": "ok",
+   "funciono": true,
+   "completa": true,
+   "brutos": 2,
+   "paginas": 1,
+   "errores": [],
+   "robots": "ok",
+   "segundos": 9.8
+  },
+  "force": {
    "estado": "ok_sin_resultados",
    "funciono": true,
    "completa": false,
@@ -1155,7 +1093,287 @@
    "paginas": 1,
    "errores": [],
    "robots": "ok",
-   "segundos": 12.0
+   "segundos": 30.9
+  },
+  "dirtyrock": {
+   "estado": "ok",
+   "funciono": true,
+   "completa": true,
+   "brutos": 2,
+   "paginas": 1,
+   "errores": [],
+   "robots": "ok",
+   "segundos": 2.0
+  },
+  "viriaor": {
+   "estado": "ok",
+   "funciono": true,
+   "completa": true,
+   "brutos": 1,
+   "paginas": 1,
+   "errores": [],
+   "robots": "ok",
+   "segundos": 1.1
+  },
+  "diariorockero": {
+   "estado": "ok",
+   "funciono": true,
+   "completa": true,
+   "brutos": 4,
+   "paginas": 1,
+   "errores": [],
+   "robots": "ok",
+   "segundos": 10.5
+  },
+  "mutick": {
+   "estado": "ok",
+   "funciono": true,
+   "completa": true,
+   "brutos": 34,
+   "paginas": 36,
+   "errores": [],
+   "robots": "ok",
+   "segundos": 45.9
+  },
+  "qconciertos": {
+   "estado": "ok",
+   "funciono": true,
+   "completa": true,
+   "brutos": 8,
+   "paginas": 2,
+   "errores": [],
+   "robots": "ok",
+   "segundos": 4.2
+  },
+  "sbm": {
+   "estado": "ok",
+   "funciono": true,
+   "completa": true,
+   "brutos": 3,
+   "paginas": 1,
+   "errores": [],
+   "robots": "ok",
+   "segundos": 2.3
+  },
+  "bigmama": {
+   "estado": "ok",
+   "funciono": true,
+   "completa": true,
+   "brutos": 3,
+   "paginas": 1,
+   "errores": [],
+   "robots": "ok",
+   "segundos": 3.4
+  },
+  "gruta77": {
+   "estado": "ok",
+   "funciono": true,
+   "completa": true,
+   "brutos": 30,
+   "paginas": 1,
+   "errores": [],
+   "robots": "ok",
+   "segundos": 6.1
+  },
+  "movistar": {
+   "estado": "ok",
+   "funciono": true,
+   "completa": true,
+   "brutos": 9,
+   "paginas": 1,
+   "errores": [],
+   "robots": "ok",
+   "segundos": 2.2
+  },
+  "riviera": {
+   "estado": "ok",
+   "funciono": true,
+   "completa": true,
+   "brutos": 50,
+   "paginas": 1,
+   "errores": [],
+   "robots": "ok",
+   "segundos": 1.9
+  },
+  "nazca": {
+   "estado": "ok",
+   "funciono": true,
+   "completa": true,
+   "brutos": 9,
+   "paginas": 1,
+   "errores": [],
+   "robots": "ok",
+   "segundos": 2.6
+  },
+  "wagon": {
+   "estado": "ok",
+   "funciono": true,
+   "completa": true,
+   "brutos": 30,
+   "paginas": 1,
+   "errores": [],
+   "robots": "ok",
+   "segundos": 1.5
+  },
+  "revi": {
+   "estado": "ok",
+   "funciono": true,
+   "completa": true,
+   "brutos": 49,
+   "paginas": 1,
+   "errores": [],
+   "robots": "ok",
+   "segundos": 5.1
+  },
+  "chango": {
+   "estado": "ok",
+   "funciono": true,
+   "completa": true,
+   "brutos": 6,
+   "paginas": 1,
+   "errores": [],
+   "robots": "ok",
+   "segundos": 1.9
+  },
+  "salabut": {
+   "estado": "ok",
+   "funciono": true,
+   "completa": true,
+   "brutos": 33,
+   "paginas": 1,
+   "errores": [],
+   "robots": "ok",
+   "segundos": 1.3
+  },
+  "elsol": {
+   "estado": "ok",
+   "funciono": true,
+   "completa": true,
+   "brutos": 23,
+   "paginas": 1,
+   "errores": [],
+   "robots": "ok",
+   "segundos": 3.6
+  },
+  "rockville": {
+   "estado": "ok",
+   "funciono": true,
+   "completa": true,
+   "brutos": 26,
+   "paginas": 1,
+   "errores": [],
+   "robots": "ok",
+   "segundos": 1.8
+  },
+  "funhouse": {
+   "estado": "ok",
+   "funciono": true,
+   "completa": true,
+   "brutos": 37,
+   "paginas": 1,
+   "errores": [],
+   "robots": "ok",
+   "segundos": 1.8
+  },
+  "wurlitzer": {
+   "estado": "ok",
+   "funciono": true,
+   "completa": true,
+   "brutos": 27,
+   "paginas": 1,
+   "errores": [],
+   "robots": "ok",
+   "segundos": 4.0
+  },
+  "honky": {
+   "estado": "ok",
+   "funciono": true,
+   "completa": true,
+   "brutos": 30,
+   "paginas": 1,
+   "errores": [],
+   "robots": "ok",
+   "segundos": 3.9
+  },
+  "silikona": {
+   "estado": "ok",
+   "funciono": true,
+   "completa": true,
+   "brutos": 4,
+   "paginas": 1,
+   "errores": [],
+   "robots": "ok",
+   "segundos": 7.3
+  },
+  "clamores": {
+   "estado": "ok",
+   "funciono": true,
+   "completa": true,
+   "brutos": 4,
+   "paginas": 1,
+   "errores": [],
+   "robots": "ok",
+   "segundos": 1.2
+  },
+  "siroco": {
+   "estado": "ok",
+   "funciono": true,
+   "completa": true,
+   "brutos": 4,
+   "paginas": 1,
+   "errores": [],
+   "robots": "ok",
+   "segundos": 3.6
+  },
+  "mobydick": {
+   "estado": "ok",
+   "funciono": true,
+   "completa": true,
+   "brutos": 6,
+   "paginas": 1,
+   "errores": [],
+   "robots": "ok",
+   "segundos": 1.9
+  },
+  "independance": {
+   "estado": "ok",
+   "funciono": true,
+   "completa": true,
+   "brutos": 12,
+   "paginas": 1,
+   "errores": [],
+   "robots": "ok",
+   "segundos": 1.9
+  },
+  "salab": {
+   "estado": "ok",
+   "funciono": true,
+   "completa": true,
+   "brutos": 3,
+   "paginas": 1,
+   "errores": [],
+   "robots": "ok",
+   "segundos": 7.5
+  },
+  "nuevacubierta": {
+   "estado": "ok",
+   "funciono": true,
+   "completa": true,
+   "brutos": 8,
+   "paginas": 1,
+   "errores": [],
+   "robots": "ok",
+   "segundos": 9.5
+  },
+  "muni_alcala_de_henares": {
+   "estado": "ok",
+   "funciono": true,
+   "completa": true,
+   "brutos": 1,
+   "paginas": 1,
+   "errores": [],
+   "robots": "ok",
+   "segundos": 2.0
   },
   "muni_aranjuez": {
    "estado": "ok",
@@ -1167,76 +1385,6 @@
    "robots": "ok",
    "segundos": 3.8
   },
-  "bigmama": {
-   "estado": "ok",
-   "funciono": true,
-   "completa": true,
-   "brutos": 3,
-   "paginas": 1,
-   "errores": [],
-   "robots": "ok",
-   "segundos": 5.5
-  },
-  "funhouse": {
-   "estado": "ok",
-   "funciono": true,
-   "completa": true,
-   "brutos": 38,
-   "paginas": 1,
-   "errores": [],
-   "robots": "ok",
-   "segundos": 2.4
-  },
-  "metalsymphony": {
-   "estado": "ok",
-   "funciono": true,
-   "completa": true,
-   "brutos": 84,
-   "paginas": 2,
-   "errores": [],
-   "robots": "ok",
-   "segundos": 2.9
-  },
-  "muni_alcorcon": {
-   "estado": "ok_sin_resultados",
-   "funciono": true,
-   "completa": false,
-   "brutos": 0,
-   "paginas": 1,
-   "errores": [],
-   "robots": "ok",
-   "segundos": 3.3
-  },
-  "hellpress_melodico": {
-   "estado": "ok",
-   "funciono": true,
-   "completa": true,
-   "brutos": 3,
-   "paginas": 1,
-   "errores": [],
-   "robots": "ok",
-   "segundos": 3.2
-  },
-  "silikona": {
-   "estado": "ok",
-   "funciono": true,
-   "completa": true,
-   "brutos": 4,
-   "paginas": 1,
-   "errores": [],
-   "robots": "ok",
-   "segundos": 7.8
-  },
-  "qconciertos": {
-   "estado": "ok",
-   "funciono": true,
-   "completa": true,
-   "brutos": 7,
-   "paginas": 2,
-   "errores": [],
-   "robots": "ok",
-   "segundos": 4.5
-  },
   "muni_collado_villalba": {
    "estado": "ok",
    "funciono": true,
@@ -1245,117 +1393,7 @@
    "paginas": 1,
    "errores": [],
    "robots": "ok",
-   "segundos": 2.3
-  },
-  "rockprog": {
-   "estado": "ok",
-   "funciono": true,
-   "completa": true,
-   "brutos": 2,
-   "paginas": 44,
-   "errores": [],
-   "robots": "ok",
-   "segundos": 159.8
-  },
-  "diariorockero": {
-   "estado": "ok",
-   "funciono": true,
-   "completa": true,
-   "brutos": 4,
-   "paginas": 1,
-   "errores": [],
-   "robots": "ok",
-   "segundos": 9.1
-  },
-  "muni_mostoles": {
-   "estado": "ok_sin_resultados",
-   "funciono": true,
-   "completa": false,
-   "brutos": 0,
-   "paginas": 1,
-   "errores": [],
-   "robots": "ok",
-   "segundos": 2.4
-  },
-  "wagon": {
-   "estado": "ok",
-   "funciono": true,
-   "completa": true,
-   "brutos": 30,
-   "paginas": 1,
-   "errores": [],
-   "robots": "ok",
-   "segundos": 1.6
-  },
-  "muni_pinto": {
-   "estado": "ok_sin_resultados",
-   "funciono": true,
-   "completa": false,
-   "brutos": 0,
-   "paginas": 1,
-   "errores": [],
-   "robots": "ok",
-   "segundos": 28.3
-  },
-  "songkick": {
-   "estado": "ok",
-   "funciono": true,
-   "completa": true,
-   "brutos": 650,
-   "paginas": 13,
-   "errores": [],
-   "robots": "ok",
-   "segundos": 15.1
-  },
-  "chango": {
-   "estado": "ok",
-   "funciono": true,
-   "completa": true,
-   "brutos": 6,
-   "paginas": 1,
-   "errores": [],
-   "robots": "ok",
-   "segundos": 2.5
-  },
-  "wurlitzer": {
-   "estado": "ok",
-   "funciono": true,
-   "completa": true,
-   "brutos": 27,
-   "paginas": 1,
-   "errores": [],
-   "robots": "ok",
-   "segundos": 5.6
-  },
-  "rockville": {
-   "estado": "ok",
-   "funciono": true,
-   "completa": true,
-   "brutos": 26,
-   "paginas": 1,
-   "errores": [],
-   "robots": "ok",
-   "segundos": 2.7
-  },
-  "clamores": {
-   "estado": "ok",
-   "funciono": true,
-   "completa": true,
-   "brutos": 4,
-   "paginas": 1,
-   "errores": [],
-   "robots": "ok",
-   "segundos": 1.4
-  },
-  "cc_estilos": {
-   "estado": "ok",
-   "funciono": true,
-   "completa": true,
-   "brutos": 771,
-   "paginas": 12,
-   "errores": [],
-   "robots": "ok",
-   "segundos": 42.0
+   "segundos": 2.8
   },
   "muni_las_rozas_de_madrid": {
    "estado": "ok",
@@ -1365,19 +1403,39 @@
    "paginas": 1,
    "errores": [],
    "robots": "ok",
-   "segundos": 3.7
+   "segundos": 2.6
   },
-  "rockgle": {
-   "estado": "ok",
+  "muni_leganes": {
+   "estado": "ok_sin_resultados",
    "funciono": true,
-   "completa": true,
-   "brutos": 155,
+   "completa": false,
+   "brutos": 0,
    "paginas": 1,
    "errores": [],
    "robots": "ok",
-   "segundos": 1.7
+   "segundos": 3.4
   },
-  "muni_alcala_de_henares": {
+  "muni_alcorcon": {
+   "estado": "ok_sin_resultados",
+   "funciono": true,
+   "completa": false,
+   "brutos": 0,
+   "paginas": 1,
+   "errores": [],
+   "robots": "ok",
+   "segundos": 2.7
+  },
+  "muni_boadilla_del_monte": {
+   "estado": "ok_sin_resultados",
+   "funciono": true,
+   "completa": false,
+   "brutos": 0,
+   "paginas": 1,
+   "errores": [],
+   "robots": "ok",
+   "segundos": 11.8
+  },
+  "muni_torrejon_de_ardoz": {
    "estado": "ok",
    "funciono": true,
    "completa": true,
@@ -1385,27 +1443,37 @@
    "paginas": 1,
    "errores": [],
    "robots": "ok",
-   "segundos": 2.3
+   "segundos": 2.0
   },
-  "revi": {
-   "estado": "ok",
+  "muni_valdemoro": {
+   "estado": "ok_sin_resultados",
    "funciono": true,
-   "completa": true,
-   "brutos": 49,
+   "completa": false,
+   "brutos": 0,
    "paginas": 1,
    "errores": [],
    "robots": "ok",
-   "segundos": 5.9
+   "segundos": 1.9
   },
-  "nazca": {
-   "estado": "ok",
+  "muni_pinto": {
+   "estado": "ok_sin_resultados",
    "funciono": true,
-   "completa": true,
-   "brutos": 9,
+   "completa": false,
+   "brutos": 0,
    "paginas": 1,
    "errores": [],
    "robots": "ok",
-   "segundos": 2.6
+   "segundos": 43.0
+  },
+  "muni_mostoles": {
+   "estado": "ok_sin_resultados",
+   "funciono": true,
+   "completa": false,
+   "brutos": 0,
+   "paginas": 1,
+   "errores": [],
+   "robots": "ok",
+   "segundos": 3.3
   }
  }
 }
