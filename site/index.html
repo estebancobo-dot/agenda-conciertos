@@ -238,6 +238,10 @@ details.more ul{padding-left:20px;margin:8px 0}
 .estsec .chips2{display:flex;flex-wrap:wrap;gap:6px}
 .estsec h4{display:flex;align-items:center;gap:8px}
 .estsec h4 i{width:10px;height:10px;border-radius:50%;display:inline-block}
+.estsec[hidden],.estsec .chip[hidden],h4.otros[hidden],.lnk[hidden]{display:none}
+.estacc{margin:-2px 0 6px;font-size:.85rem}
+.estacc .sw{display:flex;gap:10px;align-items:center;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin:4px 0 2px}
+.estacc .sw input{width:20px;height:20px;accent-color:var(--ink);flex:0 0 auto}
 .sback{border:0;background:none;color:var(--info);font-size:.95rem;padding:6px 0;min-height:40px}
 .qact{display:flex;gap:10px;align-items:center;justify-content:space-between;background:color-mix(in srgb,var(--c-trib) 12%,var(--panel));border:1px solid color-mix(in srgb,var(--c-trib) 40%,var(--line));border-radius:12px;padding:10px 12px;margin:8px 0;font-size:.88rem}
 .qact button{flex:0 0 auto;min-height:38px;border:1px solid var(--line);border-radius:10px;background:var(--panel);font-weight:700;padding:0 10px}
@@ -575,6 +579,10 @@ function openSheet(){
   // Géneros como chips que se ajustan en filas (antes, 22 tarjetas con descripción: ~3.500 px de scroll). Los estilos
   // de cada género, en su propio panel ("Afinar por estilos ›"), como hacen las apps de iOS y Android.
   let vista="gen", scGen=0; const abiertos=new Set();
+  // Desde "Habituales" o "Todos", al marcar el primer estilo se filtra solo por los estilos marcados (lo que se busca
+  // al elegir "Bluegrass" y "Post-Punk"); "Incluir también los demás géneros" recupera el resto enteros.
+  let baseSel=null, soloEst=false;
+  const generosConEst=()=>Object.keys(selEst).filter(g=>(selEst[g]||[]).length);
   const modo=()=>Object.keys(selEst).length?"custom":modoGrupos(sel);
   const gchip=g=>`<button type="button" class="chip" data-g="${esc(g.id)}" aria-pressed="${sel.includes(g.id)}" title="${esc(g.desc)}"><i style="background:var(${g.v})"></i>${esc(g.nombre)}<small class="cc" data-ct="${esc(g.id)}">${cnt[g.id]||0}</small></button>`;
   const resumenTodos=()=>{const l=Object.entries(selEst).map(([g,x])=>`${(GRUPOS.find(y=>y.id===g)||{}).nombre||g}: ${x.join(", ")}`); return l.length?l.join(" · "):"Todos los estilos de cada género";};
@@ -585,14 +593,20 @@ function openSheet(){
      <div class="gchips">${GRUPOS.filter(g=>!g.mas).map(gchip).join("")}<div class="sub">Más géneros</div>${GRUPOS.filter(g=>g.mas).map(gchip).join("")}</div>
      <button type="button" class="lnk" data-rap="ninguno">Quitar todos (para elegir solo los que quieras)</button>
      <button type="button" class="navrow" id="vestilos"><b>Afinar por estilos</b><span id="resest">${esc(resumenTodos())}</span></button>`;};
-  const htmlEstilos=()=>{const gs=GRUPOS.filter(g=>sel.includes(g.id)&&arbolDe(g.id).length);
+  // Panel de estilos: buscador ("blue", "post"…) sobre los estilos de TODOS los géneros; primero los géneros elegidos
+  // (con sus 12 estilos con más conciertos), luego el resto plegados. Marcar un estilo elige su género.
+  const htmlEstilos=()=>{const conE=GRUPOS.filter(g=>arbolDe(g.id).length);
+    const orden=[...conE.filter(g=>sel.includes(g.id)),...conE.filter(g=>!sel.includes(g.id))];
     return `<button type="button" class="sback" id="sback">‹ Géneros</button>
-     <p class="hint" style="margin-top:0">Dentro de cada género elegido puedes quedarte solo con algunos estilos (los de Discogs; el número es de conciertos próximos). Si no marcas ninguno, entran todos.</p>
-     ${gs.map(g=>{const e=est[g.id]||{}, l=selEst[g.id]||[];
-       // los 12 con más conciertos (y los ya elegidos); el resto, con "Ver los N"
-       const a=arbolDe(g.id), ver=abiertos.has(g.id)||a.length<=14;
-       const vis=ver?a:a.filter((x,k)=>k<12||l.includes(x));
-       return `<section class="estsec"><h4><i style="background:var(${g.v})"></i>${esc(g.nombre)}</h4><div class="chips2">${vis.map(x=>`<button type="button" class="chip" data-es="${esc(g.id)}|${esc(x)}" aria-pressed="${l.includes(x)}">${esc(x)}<small class="cc">${e[x]}</small></button>`).join("")}</div>${ver?"":`<button type="button" class="lnk" data-mas="${esc(g.id)}">Ver los ${a.length} estilos</button>`}</section>`;}).join("")||`<p class="empty">Elige antes algún género.</p>`}`;};
+     <input class="search" id="bes" type="search" placeholder="Buscar estilo: bluegrass, post-punk…" aria-label="Buscar estilo" autocomplete="off" style="margin:4px 0 8px">
+     <p class="hint" style="margin-top:0">Si marcas estilos de un género, de ese género solo salen esos; si no marcas ninguno, salen todos sus conciertos. El número es de conciertos próximos.</p>
+     <div class="estacc"></div>
+     ${orden.map((g,k)=>{const e=est[g.id]||{}, l=selEst[g.id]||[], elegido=sel.includes(g.id);
+       const a=arbolDe(g.id), todos=abiertos.has(g.id)||(elegido&&a.length<=14);
+       const def=x=>todos||(elegido&&a.indexOf(x)<12)||l.includes(x);
+       const cab=!elegido&&(k===0||sel.includes(orden[k-1].id))?`<h4 class="otros">Otros géneros</h4>`:"";
+       return `${cab}<section class="estsec" data-sec="${esc(g.id)}"><h4><i style="background:var(${g.v})"></i>${esc(g.nombre)}${elegido?"":` <small class="cc">${a.length} estilos</small>`}</h4><div class="chips2">${a.map(x=>`<button type="button" class="chip" data-es="${esc(g.id)}|${esc(x)}" data-n="${esc(norm(x))}" data-def="${def(x)?1:0}" aria-pressed="${l.includes(x)}" ${def(x)?"":"hidden"}>${esc(x)}<small class="cc">${e[x]}</small></button>`).join("")}</div>${a.every(def)?"":`<button type="button" class="lnk" data-mas="${esc(g.id)}">${elegido?`Ver los ${a.length} estilos`:"Ver sus estilos"}</button>`}</section>`;}).join("")}
+     <p class="empty" id="besnada" hidden>Ningún estilo con ese nombre tiene conciertos próximos.</p>`;};
   const pintar=()=>{
     const t0=performance.now();
     contar();
@@ -616,24 +630,45 @@ function openSheet(){
     el.querySelectorAll("[data-es]").forEach(b=>{const [g,x]=b.dataset.es.split("|"); b.setAttribute("aria-pressed",(selEst[g]||[]).includes(x));});
     el.querySelectorAll("[data-o]").forEach(b=>b.setAttribute("aria-pressed",b.dataset.o===ori));
     const gk=document.getElementById("fgenok"); if(gk) gk.checked=genOk; medir("hoja",t0); };
+  // "Quitar estilos" y el interruptor de los demás géneros se rehacen al marcar, sin repintar (el buscador sigue igual)
+  const acciones=()=>{ const d=el.querySelector(".estacc"); if(!d) return;
+    if(!generosConEst().length){ d.innerHTML=""; return; }
+    const otros=(baseSel||[]).filter(g=>!generosConEst().includes(g));
+    d.innerHTML=`<button type="button" class="lnk" id="quitarest">Quitar estilos</button>${otros.length?`<label class="sw"><input type="checkbox" id="conotros" ${soloEst?"":"checked"}><span>Incluir también los demás géneros (${otros.length}) con todos sus conciertos</span></label>`:""}`;
+    document.getElementById("quitarest").onclick=()=>{selEst={}; if(baseSel) sel=baseSel; baseSel=null; soloEst=false; const y=el.querySelector(".sc").scrollTop; pintar(); el.querySelector(".sc").scrollTop=y;};
+    const co=document.getElementById("conotros");
+    if(co) co.onchange=()=>{ soloEst=!co.checked; sel=soloEst?generosConEst():[...new Set([...baseSel,...generosConEst()])]; refrescar(); }; };
   const cerrar=()=>{el.innerHTML=""; document.removeEventListener("keydown",esc_);};
   const esc_=e=>{if(e.key==="Escape"){ if(vista==="est"){ vista="gen"; pintar(); el.querySelector(".sc").scrollTop=scGen; } else cerrar(); }};
   const enlazar=()=>{
     document.getElementById("sbg").onclick=cerrar; document.getElementById("sx").onclick=cerrar;
     document.removeEventListener("keydown",esc_); document.addEventListener("keydown",esc_);
-    document.getElementById("sdef").onclick=()=>{sel=[...DEF_GRUPOS]; selEst={}; genOk=true; const cambia=ori!=="todos"||q||vista!=="gen"; ori="todos"; q=""; vista="gen"; if(cambia) pintar(); else refrescar();};
+    document.getElementById("sdef").onclick=()=>{sel=[...DEF_GRUPOS]; selEst={}; genOk=true; baseSel=null; soloEst=false; const cambia=ori!=="todos"||q||vista!=="gen"; ori="todos"; q=""; vista="gen"; if(cambia) pintar(); else refrescar();};
     const sq=document.getElementById("sq"); if(sq) sq.onclick=()=>{q=""; const sc=el.querySelector(".sc").scrollTop; pintar(); el.querySelector(".sc").scrollTop=sc;};
     document.getElementById("sclose").onclick=()=>{state.q=q; setGrupos(sel); state.origen=ori; store.set("origen",ori); state.estilos=selEst; store.set("estilos",selEst); state.genericos=genOk; store.set("genericos",genOk); cerrar(); renderBody(false);};
     const gk=document.getElementById("fgenok"); if(gk) gk.onchange=e=>{genOk=e.target.checked; refrescar();};
     el.querySelectorAll("[data-rap]").forEach(b=>b.onclick=()=>{const k=b.dataset.rap; if(k==="custom") return;
-      sel=k==="def"?[...DEF_GRUPOS]:k==="todos"?GRUPOS.map(g=>g.id):[]; selEst={}; refrescar();});
+      sel=k==="def"?[...DEF_GRUPOS]:k==="todos"?GRUPOS.map(g=>g.id):[]; selEst={}; baseSel=null; soloEst=false; refrescar();});
     el.querySelectorAll("[data-g]").forEach(c=>c.onclick=()=>{const g=c.dataset.g; const on=sel.includes(g);
       sel=on?sel.filter(x=>x!==g):[...sel,g]; if(on) delete selEst[g]; refrescar();});
     const ve=document.getElementById("vestilos"); if(ve) ve.onclick=()=>{scGen=el.querySelector(".sc").scrollTop; vista="est"; pintar();};
     const sb=document.getElementById("sback"); if(sb) sb.onclick=()=>{vista="gen"; pintar(); el.querySelector(".sc").scrollTop=scGen;};
     el.querySelectorAll("[data-mas]").forEach(b=>b.onclick=()=>{abiertos.add(b.dataset.mas); const sc=el.querySelector(".sc").scrollTop; pintar(); el.querySelector(".sc").scrollTop=sc;});
+    const bes=document.getElementById("bes");
+    if(bes) bes.oninput=()=>{ const t=norm(bes.value); let hay=false;
+      el.querySelectorAll(".estsec").forEach(sec=>{ let n=0;
+        sec.querySelectorAll("[data-es]").forEach(c=>{ const v=t?c.dataset.n.includes(t):c.dataset.def==="1"; c.hidden=!v; if(v) n++; });
+        sec.hidden=!!t&&!n; const m=sec.querySelector("[data-mas]"); if(m) m.hidden=!!t; if(n) hay=true; });
+      el.querySelectorAll("h4.otros").forEach(h=>h.hidden=!!t);
+      document.getElementById("besnada").hidden=!t||hay; };
+    acciones();
     el.querySelectorAll("[data-es]").forEach(b=>b.onclick=()=>{const [g,x]=b.dataset.es.split("|"); const l=selEst[g]||[];
-      selEst[g]=l.includes(x)?l.filter(y=>y!==x):[...l,x]; if(!selEst[g].length) delete selEst[g]; if(!sel.includes(g)) sel.push(g); refrescar();});
+      if(!generosConEst().length&&modoGrupos(sel)!=="custom"){ baseSel=[...sel]; soloEst=true; }
+      selEst[g]=l.includes(x)?l.filter(y=>y!==x):[...l,x]; if(!selEst[g].length) delete selEst[g];
+      if(soloEst) sel=generosConEst().length?generosConEst():(soloEst=false, baseSel||sel);
+      else if(!sel.includes(g)) sel.push(g);
+      if(!generosConEst().length) baseSel=null;
+      refrescar(); acciones();});
     // el origen cambia los números de cada género: se vuelve a pintar, en el mismo sitio de la hoja
     el.querySelectorAll("[data-o]").forEach(b=>b.onclick=()=>{ori=b.dataset.o; const sc=el.querySelector(".sc").scrollTop; pintar(); el.querySelector(".sc").scrollTop=sc;});
   };

@@ -1,5 +1,12 @@
 # Versiones
 
+## 2.31.0 — 2026-10-01
+
+- **Elegir subgéneros directamente** (p. ej. Bluegrass + Post-Punk). El panel de estilos tiene buscador ("blue", "post…") sobre los estilos de todos los géneros: primero los de los géneros elegidos y luego el resto, plegados. Marcar un estilo elige su género; antes había que elegir primero los géneros a mano y, si no, el panel solo decía "Elige antes algún género".
+- **Desde "Habituales" o "Todos", al marcar el primer estilo se filtra solo por los estilos marcados** (antes seguían todos los demás géneros enteros: "Ver 1451 conciertos" en vez de 33). Un interruptor, "Incluir también los demás géneros", los recupera si se quieren.
+- **"Quitar estilos"** deja los géneros como estaban antes de marcar estilos.
+- La validación diaria lo comprueba en la web publicada (buscar y marcar dos estilos de géneros distintos: salen justo sus conciertos).
+
 ## 2.30.1 — 2026-10-01
 
 - En la fila de géneros de la lista, los elegidos pasan delante (justo tras "Habituales"): al tocar uno que estaba a la derecha, la fila volvía al principio y no se veía por qué estabas filtrando.

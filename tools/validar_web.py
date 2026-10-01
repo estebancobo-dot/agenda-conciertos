@@ -460,6 +460,7 @@ def recorrido(b):
     medida("fichas_lejanas", **lejanas)
 
     filtros(pg, lunes)
+    estilos(pg, lunes)
     busqueda(pg, lunes)
     # filtros de origen: España confirmados, Latinoamérica, resto del mundo, estimados, sin confirmar y "no aplica"
     # reparten todos los conciertos sin dejar ninguno fuera ni contar ninguno dos veces
@@ -602,6 +603,36 @@ def filtros(pg, lunes):
     for nombre, v in (("abrir la hoja", abrir), ("'Ninguno'", marcar), ("aplicar", aplicar), ("borrar filtros", quitar),
                       ("'Los de siempre'", rest), ("chip de grupo", t_chip)):
         check("Rendimiento", f"Filtros: {nombre}", v, aviso=300, fallo=800)
+
+
+def estilos(pg, lunes):
+    """Elegir dos subgéneros de géneros distintos con el buscador del panel de estilos, partiendo de "Habituales":
+    salen justo los conciertos con alguno de esos estilos (el resto de géneros no se cuela)."""
+    pg.evaluate(f"location.hash='#semana/{lunes.isoformat()}'")
+    pg.wait_for_selector("#fgen")
+    pg.evaluate("scrollTo(0,0)")
+    dos = pg.evaluate("""()=>{const c={}; DATA.filter(r=>r.fecha>=HOY).forEach(r=>(r.estilos_discogs||[]).forEach(s=>{
+        const g=grupoDeEstilo(s); if(DEF_GRUPOS.includes(g)) (c[g]=c[g]||{})[s]=((c[g]||{})[s]||0)+1;}));
+      return Object.entries(c).map(([g,o])=>Object.entries(o).sort((a,b)=>a[1]-b[1]).find(x=>x[1]>=2)).filter(Boolean).slice(0,2).map(x=>x[0])}""")
+    if len(dos) < 2:
+        return
+    pg.click("#fgen")
+    pg.wait_for_selector(".sheet")
+    pg.click("[data-rap='def']")
+    pg.click("#vestilos")
+    for e in dos:
+        pg.fill("#bes", e[:6])
+        pg.wait_for_timeout(100)
+        pg.click(f"[data-es$='|{e}']")
+    pg.click("#sclose")
+    pg.wait_for_function("!document.querySelector('.sheet')")
+    r = pg.evaluate("""(es)=>{const f=DATA.filter(r=>r.fecha>=HOY&&visible(r));
+        return {n:f.length, malos:f.filter(r=>!(r.estilos_discogs||[]).some(s=>es.includes(s))).length,
+          esperados:DATA.filter(r=>r.fecha>=HOY&&pasaTexto(r)&&pasaOrigen(r)&&(r.estilos_discogs||[]).some(s=>es.includes(s))).length}}""", dos)
+    check("Funcional", "Subgéneros: buscando y marcando dos estilos de géneros distintos salen justo sus conciertos",
+          f"{dos}: {r['n']} de {r['esperados']}", ok=r["n"] == r["esperados"] and r["malos"] == 0 and r["n"] > 0,
+          detalle=str(r))
+    pg.evaluate("()=>{setGrupos([...DEF_GRUPOS]); state.estilos={}; store.set('estilos',{}); renderBody(false);}")
 
 
 def busqueda(pg, lunes):
