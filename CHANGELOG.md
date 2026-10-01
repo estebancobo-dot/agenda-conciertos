@@ -1,5 +1,13 @@
 # Versiones
 
+## 2.33.1 — 2026-10-01
+
+Revisión de la primera pasada real (1.521 páginas leídas: 473 conciertos con enlace de compra, 397 con cartel de gira, 29 precios, 2 cancelados, 1 aplazado, 1 agotado):
+- Un blog de agenda de una ticketera (blog.ticketmaster.es) salía como "Comprar entradas en Ticketmaster" y una página de contacto como enlace de compra: la fuente solo cuenta como página de entradas si su URL es de ese concierto, y se descartan blogs, contacto, información legal, ayuda…
+- Logos (de la sala o de la ticketera) no cuentan como cartel de la gira.
+- Nombres legibles de ticketeras (los enlaces de afiliado de La Ganzúa son Ticketmaster; Movingtickets, Ticket&Roll, Enterticket…) y enlaces sin parámetros de seguimiento.
+- Horas: de 938 conciertos sin hora, 88 tienen una página fiable con hora, pero 85 están sin hora porque sus fuentes no coinciden: la página es una de esas mismas versiones, así que el conflicto se sigue enseñando en vez de elegir una.
+
 ## 2.33.0 — 2026-10-01
 
 **Gestión de conciertos, fase 1: páginas de concierto y de entradas.**

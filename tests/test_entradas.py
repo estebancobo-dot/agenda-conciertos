@@ -40,7 +40,7 @@ def test_sin_hora_real_y_graph():
 
 def test_ticketeras():
     assert ticketera("https://www.wegow.com/es/conciertos/x") == "Wegow"
-    assert ticketera("https://tickets.salaxyz.com/e/1") == "tickets.salaxyz.com"
+    assert ticketera("https://tickets.salaxyz.com/e/1") == "Salaxyz"
     assert ticketera("https://www.spotify.com/x") is None
 
 
@@ -127,3 +127,22 @@ def test_leer_entradas_incremental():
     assert "https://madridenvivo.com/?p=1" not in cache  # Madrid en Vivo no se lee
     leer_entradas(recs, cache, F(), date(2026, 10, 2), 30)
     assert F.n == 2  # al día siguiente no se vuelve a leer (caché)
+
+
+def test_errores_vistos_en_la_primera_pasada():
+    from scraper.entradas import aplicar_entradas, limpiar
+    assert ticketera("https://ticketmaster.evyy.net/RG4nXa") == "Ticketmaster"
+    assert ticketera("https://ventas.geeticket.com/x") == "Geeticket"
+    assert ticketera("https://tickets.salaxyz.com/e/1") == "Salaxyz"
+    assert limpiar("https://feverup.com/m/648932?_gl=1*abc&srsltid=x&utm_source=y&id=3") == "https://feverup.com/m/648932?id=3"
+    # el blog de una ticketera (listado de toda la agenda) no es la página de entradas; ni una página de contacto
+    blog = "https://blog.ticketmaster.es/post/agenda-rock-2026-38621/"
+    rs = [_rec(i, "21:00", [{"id": "tm_blog", "nombre": "Blog de Ticketmaster", "url": blog, "prioridad": 3}]) for i in range(3)]
+    rs.append(_rec(9, "21:00", [{"id": "s", "nombre": "Sala", "prioridad": 1, "url": "https://sala.es/e9"}],
+                   imagen={"url": "https://x/foto.jpg"}))
+    cache = {"https://sala.es/e9": {"fecha": "2026-10-01", "d": {
+        "enlaces": [{"url": "https://www.enterticket.es/info/contact?page=consultanos", "nombre": "Enterticket", "compra": False}],
+        "og_imagen": "https://sala.es/wp-content/uploads/Logo-Sala-2024.png"}}}
+    aplicar_entradas(rs, cache)
+    assert not any(r.get("entradas") for r in rs)
+    assert "gira" not in rs[3]  # el logo de la sala no es un cartel

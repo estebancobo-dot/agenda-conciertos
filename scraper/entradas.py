@@ -35,12 +35,34 @@ TICKETERAS = {
     "entradasatualcance.com": "Entradas a tu alcance", "tickentradas.com": "Tickentradas",
     "madnesslive.es": "Madness Live", "redentradas.com": "Redentradas", "ataquilla.com": "Ataquilla",
     "janto.es": "Janto", "auditorionacional.inaem.gob.es": "INAEM", "entradasinaem.es": "INAEM",
+    "movingtickets.com": "Movingtickets", "ticketandroll.com": "Ticket&Roll", "enterticket.es": "Enterticket",
+    "enterticket.com": "Enterticket", "jfpromotickets.es": "JF Promotickets", "geeticket.com": "Geeticket",
+    "ticketgate.es": "Ticketgate", "tomaticket.es": "Tomaticket", "codetickets.com": "Codetickets",
+    "ticketfever.es": "Ticketfever", "ticketrey.com": "Ticketrey", "entradas.conciertos.club": "conciertos.club",
+    "ticketmaster.evyy.net": "Ticketmaster", "ticketmaster-es.tm7508.net": "Ticketmaster", "tixxlab.com": "Tixxlab",
+    "metaltickets.eu": "Metaltickets", "passline.com": "Passline", "onelivemedia.com": "One Live Media",
 }
 _TICKET_HOST = re.compile(r"ticket|entrada|taquilla|tiquet|boleter", re.I)
 _TEXTO_COMPRA = re.compile(r"(?i)\b(comprar|compra|entradas?|tickets?|reserva[r]?|buy)\b")
 # enlaces que nunca son de compra aunque el dominio lo parezca
-_NO = re.compile(r"(?i)/(blog|noticias?|news|ayuda|help|faq|contacto|login|registro|cuenta|account)\b|facebook|instagram|"
-                 r"twitter|x\.com|youtube|spotify|whatsapp|mailto:|tel:")
+_NO = re.compile(r"(?i)/(blog|post|noticias?|news|ayuda|help|faq|contact[oa]?|info|login|registro|cuenta|account|legal|"
+                 r"aviso-legal|privacidad|privacy|cookies|condiciones|terms|about|quienes-somos|nosotros|empleo|jobs)\b|"
+                 r"//blog\.|facebook|instagram|twitter|x\.com|youtube|spotify|whatsapp|mailto:|tel:")
+# parámetros de seguimiento que no cambian la página
+_RASTREO = re.compile(r"(?i)^(utm_\w+|_gl|gclid|fbclid|srsltid|mc_[ce]id|_ga)$")
+# imágenes que no son un cartel: logos, imagen por defecto de la web, la de compartir de la ticketera
+_NO_CARTEL = re.compile(r"(?i)logo|default|placeholder|no[-_]?image|sin[-_]?imagen|fallback|og[-_]?image|share|"
+                        r"/prod/images/[a-z]+\.(jpe?g|png)$")
+
+
+def limpiar(u: str | None) -> str | None:
+    """Sin fragmento ni parámetros de seguimiento (utm_, _gl, srsltid…)."""
+    if not u:
+        return u
+    from urllib.parse import parse_qsl, urlencode, urlunsplit
+    p = urlsplit(u.split("#")[0])
+    q = [(k, v) for k, v in parse_qsl(p.query, keep_blank_values=True) if not _RASTREO.match(k)]
+    return urlunsplit((p.scheme, p.netloc, p.path, urlencode(q), ""))
 
 
 def dominio(url: str | None) -> str:
@@ -53,10 +75,13 @@ def ticketera(url: str | None) -> str | None:
     d = dominio(url)
     if not d:
         return None
-    for k, v in TICKETERAS.items():
+    for k, v in sorted(TICKETERAS.items(), key=lambda kv: -len(kv[0])):
         if d == k or d.endswith("." + k):
             return v
-    return d if _TICKET_HOST.search(d.split(":")[0]) else None
+    if not _TICKET_HOST.search(d.split(":")[0]):
+        return None
+    partes = [x for x in d.split(":")[0].split(".")[:-1] if x not in ("www", "tickets", "ticket", "entradas", "venta", "ventas")]
+    return (partes[-1] if partes else d).capitalize()
 
 
 def _eventos_jsonld(soup: BeautifulSoup) -> list[dict]:
@@ -171,7 +196,7 @@ def enlaces_entradas(soup: BeautifulSoup, url: str) -> list[dict]:
         nombre = ticketera(href)
         if not nombre:
             continue
-        clave = href.split("#")[0]
+        clave = limpiar(href)
         if clave in vistos:
             continue
         vistos.add(clave)
@@ -199,8 +224,8 @@ def leer_pagina(html: str, url: str, fecha: str | None = None) -> dict:
         img = _imagen(ev.get("image"))
         out["imagen"] = urljoin(url, img) if img else None
         ou = _offer_url(ev)
-        if ou and dominio(ou) != dominio(url) and ticketera(ou):
-            out["entradas_jsonld"] = ou
+        if ou and dominio(ou) != dominio(url) and ticketera(ou) and not _NO.search(ou):
+            out["entradas_jsonld"] = limpiar(ou)
     og = soup.find("meta", attrs={"property": "og:image"}) or soup.find("meta", attrs={"name": "og:image"})
     if og and og.get("content"):
         out["og_imagen"] = urljoin(url, og["content"].strip())
@@ -371,6 +396,7 @@ def aplicar_entradas(recs: list[dict], cache: dict) -> dict:
     Idempotente: lo que se puso en una pasada anterior se quita y se vuelve a calcular con la regla actual."""
     conf = confianza(recs, cache)
     genericas = imagenes_genericas(recs)
+    usos = Counter(sin_fragmento(x.get("url")) for r in recs for x in r.get("fuentes") or [] if x.get("url"))
     c = Counter()
     for r in recs:
         # deshacer lo de pasadas anteriores
@@ -383,12 +409,13 @@ def aplicar_entradas(recs: list[dict], cache: dict) -> dict:
             r.pop(k, None)
         pags = _paginas_leidas(r, cache)
         # enlace de compra: la fuente que ya es una ticketera; si no, el que dan las páginas
-        ent = next(({"url": sin_fragmento(x["url"]), "nombre": ticketera(x["url"]), "via": x.get("nombre", "").split(" (")[0]}
-                    for x in r.get("fuentes") or [] if ticketera(x.get("url")) and _especifica(x.get("url"))), None)
+        ent = next(({"url": limpiar(x["url"]), "nombre": ticketera(x["url"]), "via": x.get("nombre", "").split(" (")[0]}
+                    for x in r.get("fuentes") or [] if ticketera(x.get("url")) and _especifica(x.get("url"))
+                    and usos[sin_fragmento(x["url"])] == 1 and not _NO.search(x["url"])), None)
         if not ent:
             for u, d, nombre in pags:
                 t = destino_compra(d) if not ticketera(u) else None
-                if t:
+                if t and not _NO.search(t):
                     ent = {"url": t, "nombre": ticketera(t), "via": nombre}
                     break
         if ent:
@@ -419,7 +446,7 @@ def aplicar_entradas(recs: list[dict], cache: dict) -> dict:
         if sin_fragmento(ie.get("enlace")) in oficiales:
             cands.append((ie.get("url"), (ie.get("credito") or "").split(" (")[0], ie.get("enlace")))
         for img, nombre, u in cands:
-            if img and img not in genericas and img != ya and img.startswith("http"):
+            if img and img not in genericas and img != ya and img.startswith("http") and not _NO_CARTEL.search(img):
                 r["gira"] = {"imagen": img, "credito": nombre, "enlace": u}
                 c["gira"] += 1
                 break
