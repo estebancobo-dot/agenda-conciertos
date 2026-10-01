@@ -467,6 +467,7 @@ def recorrido(b):
     check("Funcional", "Filtros de origen: España, Latinoamérica, resto del mundo y sin confirmar cuadran",
           f"{suma} de {o['total']}", ok=suma == o["total"] and o["es"] == o["esc"] + o["est"], detalle=str(o))
     mes(pg)
+    cabeceras_fijas(pg, lunes)
 
     # informe
     pg.evaluate("location.hash='#informe'")
@@ -820,6 +821,64 @@ def mes(pg):
     check("Funcional", "Mes: la lista del día son los conciertos de ese día", f"{r['n']} de {r['esperados']}",
           ok=r["n"] == r["esperados"] and r["otros"] == 0)
     pg.screenshot(path=str(OUT / "5_mes.png"))
+
+
+def cabeceras_fijas(pg, lunes):
+    """Al bajar por una lista, la fecha completa del día se queda pegada arriba (debajo de la tira de días en semana
+    y día) y, en la semana, la tira marca el día por el que vas. Tocar un día de la tira lleva justo a su cabecera."""
+    estado = """()=>{const ss=document.querySelector('#main .stickystrip'), lim=ss?ss.getBoundingClientRect().bottom
+         :document.getElementById('hdr').getBoundingClientRect().bottom;
+       const pegada=[...document.querySelectorAll('#main .dayhead')].find(h=>Math.abs(h.getBoundingClientRect().top-lim)<3);
+       const sec=pegada&&pegada.closest('.dia');
+       const en=document.querySelector('#main .strip .en,#main .strip .sel');
+       return {pegada:!!pegada, fecha:sec&&sec.dataset.f, texto:pegada&&pegada.textContent, marcado:en&&(en.dataset.jump||en.dataset.sel),
+               alto:Math.round(lim)}}"""
+    # semana: a media lista
+    pg.evaluate(f"location.hash='#semana/{lunes.isoformat()}'")
+    pg.wait_for_selector(".card", timeout=30000)
+    pg.wait_for_timeout(800)
+    pg.evaluate("scrollTo(0,document.documentElement.scrollHeight/2)")
+    pg.wait_for_timeout(600)
+    r = pg.evaluate(estado)
+    check("UX", "Semana: al bajar, la fecha completa del día se queda fija arriba", r["texto"], ok=r["pegada"],
+          detalle=str(r))
+    check("UX", "Semana: la tira de días marca el día por el que vas", f"{r['marcado']} / {r['fecha']}",
+          ok=r["pegada"] and r["marcado"] == r["fecha"])
+    check("UX", "Semana: lo fijo arriba (cabecera, tira y fecha) no ocupa más de un tercio de la pantalla",
+          r["alto"] + 40, aviso=844 // 3, fallo=844 // 2, unidad="px")
+    pg.screenshot(path=str(OUT / "5b_semana_fija.png"))
+    # semana: tocar el último día con conciertos lleva a su cabecera
+    dias = pg.evaluate("[...document.querySelectorAll('#main .stickystrip [data-jump]')]"
+                       ".filter(b=>document.getElementById('d-'+b.dataset.jump)).map(b=>b.dataset.jump)")
+    if dias:
+        pg.evaluate("scrollTo(0,0)")
+        pg.wait_for_timeout(300)
+        pg.click(f"[data-jump='{dias[-1]}']")
+        pg.wait_for_timeout(1500)
+        r = pg.evaluate(estado)
+        check("UX", "Semana: tocar un día de la tira lleva justo a ese día", f"{r['fecha']} (pedido {dias[-1]})",
+              ok=r["fecha"] == dias[-1] and r["marcado"] == dias[-1], detalle=str(r))
+    # día
+    dia = pg.evaluate("""(l)=>{const b=byDate(); let m=l; for(let i=0;i<7;i++){const f=addDays(l,i);
+        if((b[f]||[]).length>(b[m]||[]).length) m=f;} return m}""", lunes.isoformat())
+    pg.evaluate(f"location.hash='#dia/{dia}'")
+    pg.wait_for_timeout(1200)
+    if pg.evaluate("document.querySelectorAll('#main .card').length") > 8:
+        pg.evaluate("scrollTo(0,document.documentElement.scrollHeight/2)")
+        pg.wait_for_timeout(600)
+        r = pg.evaluate(estado)
+        check("UX", "Día: al bajar, la fecha completa se queda fija arriba con la tira de días", r["texto"],
+              ok=r["pegada"] and r["fecha"] == dia and r["marcado"] == dia, detalle=str(r))
+    # mes: la lista del día elegido
+    pg.evaluate(f"location.hash='#mes/{dia}'")
+    pg.wait_for_selector(".cal")
+    pg.wait_for_timeout(800)
+    if pg.evaluate("document.querySelectorAll('#mlista .card').length") > 8:
+        pg.evaluate("scrollTo(0,document.documentElement.scrollHeight-innerHeight*1.5)")
+        pg.wait_for_timeout(600)
+        r = pg.evaluate(estado)
+        check("UX", "Mes: al bajar por la lista del día, su fecha completa se queda fija arriba", r["texto"],
+              ok=r["pegada"] and r["fecha"] == dia, detalle=str(r))
 
 
 # ---------------------------------------------------------------------------------------------- 3. enlaces directos

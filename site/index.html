@@ -86,10 +86,13 @@ input[type=search]::-webkit-search-cancel-button{display:none}
 .strip .c{font-size:.7rem;color:var(--muted)}
 .strip button.sel{background:var(--ink);color:var(--bg);border-color:var(--ink)}
 .strip button.sel .d,.strip button.sel .c{color:var(--bg);opacity:.8}
+.strip button.en{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.strip button.en .d,.strip button.en .c{color:var(--bg);opacity:.8}
 .strip button.hoyd{outline:2px solid var(--accent);outline-offset:-2px}
 .strip button.past{background:var(--panel2);border-style:dashed}
 .strip button.past .n{color:var(--muted)}
-.stickystrip{position:sticky;top:var(--hh,96px);z-index:3;background:var(--bg);padding:6px 0 2px}
+.stickystrip{position:sticky;top:var(--hh,96px);z-index:3;background:var(--bg);margin:0 -16px;padding:4px 16px 0}
+.stickystrip .strip{margin:0}
 /* mes */
 .cal{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
 .cal .dow{font-size:.72rem;color:var(--muted);text-align:center;padding:2px 0;font-weight:700}
@@ -106,13 +109,16 @@ input[type=search]::-webkit-search-cancel-button{display:none}
 .day.finde:not(.zero){background:color-mix(in srgb,var(--accent) 6%,var(--panel))}
 .dow.finde{color:var(--accent)}
 .day.sel{outline:3px solid var(--ink);outline-offset:-3px;opacity:1}
-.mhead{margin-top:14px;scroll-margin-top:calc(var(--hh,120px) + 8px)}
+.mhead{margin-top:14px}
 .mhead.flash{animation:flash 1.2s ease}
-@keyframes flash{0%{background:color-mix(in srgb,var(--accent) 35%,var(--panel))}100%{background:transparent}}
+@keyframes flash{0%{background:color-mix(in srgb,var(--accent) 35%,var(--panel))}100%{background:var(--bg)}}
 .legend{display:flex;flex-wrap:wrap;gap:6px 12px;font-size:.76rem;color:var(--muted);margin-top:10px}
 .legend span{display:inline-flex;align-items:center;gap:5px}
 .legend i{width:10px;height:10px;border-radius:2px;display:inline-block}
-.dayhead{margin:18px 0 6px;font-weight:800;display:flex;align-items:baseline;gap:8px;scroll-margin-top:170px}
+/* cabecera del día: se queda pegada arriba (debajo de la tira de días, si la hay) mientras bajas por sus conciertos;
+   la del día siguiente empuja a la anterior. Una sola línea: fecha completa y cuántos hay */
+.dia,.dif{scroll-margin-top:calc(var(--hh,96px) + var(--sh,0px))}
+.dayhead{position:sticky;top:calc(var(--hh,96px) + var(--sh,0px));z-index:2;background:var(--bg);margin:12px -16px 0;padding:7px 16px 5px;font-weight:800;display:flex;align-items:baseline;gap:8px;border-bottom:1px solid var(--line);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .dayhead small{color:var(--muted);font-weight:500}
 /* tarjeta */
 .card{content-visibility:auto;contain-intrinsic-size:auto 82px;display:flex;gap:12px;align-items:center;background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:10px;margin:8px 0;box-shadow:var(--shadow);text-decoration:none;color:inherit;position:relative;overflow:hidden}
@@ -562,9 +568,11 @@ function vacioHTML(ocultos,cuando){
   return `<div class="empty">No hay conciertos ${cuando} con estos filtros (${esc(resumenFiltros())}).<br>
     <button class="lbtn" data-quitar style="margin-top:10px">Ver ${plural(ocultos,"concierto")} oculto${ocultos===1?"":"s"}</button></div>`;
 }
+const mayus=t=>t.charAt(0).toUpperCase()+t.slice(1);
+function dayHead(fecha,n,cls){ return `<div class="dayhead${cls||""}">${esc(mayus(fmt(fecha,{weekday:"long",day:"numeric",month:"long"})))}<small>${plural(n,"concierto")}</small></div>`; }
 function dayList(fecha,list,opts={}){
-  return (opts.cab===false?"":`<div class="dayhead" id="d-${fecha}">${esc(fmt(fecha,{weekday:"long",day:"numeric",month:"long"}))}<small>${plural(list.length,"concierto")}</small></div>`)+
-    (list.length?list.map(card).join(""):(opts.vacio===false?"":vacioHTML(DATA.filter(r=>r.fecha===fecha&&pasaTexto(r)).length,"este día")));
+  return `<section class="dia" id="d-${fecha}" data-f="${fecha}">`+(opts.cab===false?"":dayHead(fecha,list.length))+
+    (list.length?list.map(card).join(""):(opts.vacio===false?"":vacioHTML(DATA.filter(r=>r.fecha===fecha&&pasaTexto(r)).length,"este día")))+`</section>`;
 }
 
 // ---------------------------------------------------------------- ficha detallada
@@ -708,8 +716,8 @@ function viewMes(){
 }
 function listaMes(bd){
   const f=state.date, l=bd[f]||[];
-  return `<div class="dayhead mhead">${esc(fmt(f,{weekday:"long",day:"numeric",month:"long"}))}<small>${plural(l.length,"concierto")}</small></div>`+
-    (l.length?l.map(card).join(""):vacioHTML(DATA.filter(r=>r.fecha===f&&pasaTexto(r)).length,"este día"));
+  return `<section class="dia" data-f="${f}">${dayHead(f,l.length," mhead")}`+
+    (l.length?l.map(card).join(""):vacioHTML(DATA.filter(r=>r.fecha===f&&pasaTexto(r)).length,"este día"))+`</section>`;
 }
 function elegirDiaMes(f){
   if(parse(f).getMonth()!==parse(state.date).getMonth()) return;
@@ -719,7 +727,7 @@ function elegirDiaMes(f){
   const ml=document.getElementById("mlista"); ml.innerHTML=listaMes(byDate());
   observarImagenes(ml); setHash(); precargar();
   const h=ml.querySelector(".mhead"); h.classList.remove("flash"); void h.offsetWidth; h.classList.add("flash");
-  if(h.getBoundingClientRect().top>innerHeight*0.55) h.scrollIntoView({behavior:"smooth",block:"start"});
+  const sec=ml.querySelector(".dia"); if(sec.getBoundingClientRect().top>innerHeight*0.55) sec.scrollIntoView({behavior:"smooth",block:"start"});
   medir("mes-dia",t0); rum("lista",performance.now()-t0);
   document.querySelectorAll("#mlista [data-quitar]").forEach(b=>b.onclick=()=>{setGrupos(GRUPOS.map(g=>g.id)); state.origen="todos"; store.set("origen","todos"); state.estilos={}; store.set("estilos",{}); state.genericos=true; store.set("genericos",true); renderBody(false);});
 }
@@ -736,9 +744,9 @@ function viewSemana(){
 }
 function viewDia(){
   const bd=byDate(), mon=mondayOf(state.date);
-  return navHTML(-1,1,`${esc(fmt(state.date,{weekday:"long",day:"numeric",month:"long"}))}<div class="hint" style="font-weight:500">${plural((bd[state.date]||[]).length,"concierto")}</div>`,"Día anterior","Día siguiente",state.date===HOY)+
-    stripHTML(mon,bd,"sel")+
-    `<div id="swipe">${dayList(state.date,bd[state.date]||[],{cab:false})}</div>`;
+  return navHTML(-1,1,`${esc(fmt(state.date,{month:"long",year:"numeric"}))}`,"Día anterior","Día siguiente",state.date===HOY)+
+    `<div class="stickystrip">${stripHTML(mon,bd,"sel")}</div>`+
+    `<div id="swipe">${dayList(state.date,bd[state.date]||[])}</div>`;
 }
 function viewBusqueda(){
   const res=DATA.filter(r=>r.fecha>=HOY&&visible(r));
@@ -884,7 +892,7 @@ async function renderBody(keepFocus){
     const n=nFiltros(); document.getElementById("fbadge").innerHTML=n?` <span class="badge">${n}</span>`:"";
   }
   else { main.innerHTML=withFilters?filtersHTML()+`<div id="fbody">${body}</div>`:body; if(withFilters) bindFilters(); }
-  bindBody();
+  bindBody(); fijas();
   setHash();
   if(state.tab!=="Concierto"){ completarDiferidos(); observarImagenes(document.getElementById("main")); precargar(); fotosEnPantalla(); rum("lista",performance.now()-t0); }
   else { const g=document.querySelector(".hero img"); if(g&&!g.complete) g._t0=performance.now(); else if(g) g.classList.add("ok"); }
@@ -934,6 +942,26 @@ function fotosEnPantalla(){
   },400);
 }
 addEventListener("scroll",fotosEnPantalla,{passive:true});
+// ---------------------------------------------------------------- lo que se queda fijo arriba al bajar
+// Semana y día llevan la tira de los 7 días fija; debajo, la cabecera del día (fecha completa y nº de conciertos)
+// se pega mientras bajas por sus conciertos. En la semana, la tira marca además el día por el que vas.
+function fijas(){
+  const ss=document.querySelector("#main .stickystrip");
+  document.documentElement.style.setProperty("--sh",(ss?ss.offsetHeight:0)+"px");
+  diaEnPantalla();
+}
+function diaEnPantalla(){
+  const bs=[...document.querySelectorAll("#main .stickystrip [data-jump]")]; if(!bs.length) return;
+  const lim=document.querySelector("#main .stickystrip").getBoundingClientRect().bottom+40;
+  const ds=[...document.querySelectorAll("#main .dia,#main [data-dif]")]; if(!ds.length) return;
+  const fin=innerHeight+scrollY>=document.documentElement.scrollHeight-4;
+  let cur=ds[0];
+  for(const d of ds){ const t=d.getBoundingClientRect().top; if(t<=lim||(fin&&t<innerHeight)) cur=d; }
+  const f=cur.dataset.f||cur.dataset.dif;
+  bs.forEach(b=>{const on=b.dataset.jump===f; b.classList.toggle("en",on); if(on) b.setAttribute("aria-current","date"); else b.removeAttribute("aria-current");});
+}
+let rDia=0;
+addEventListener("scroll",()=>{ if(!rDia) rDia=requestAnimationFrame(()=>{rDia=0; diaEnPantalla();}); },{passive:true});
 // ---------------------------------------------------------------- carga de imágenes y días según el scroll
 // Con 200 conciertos en una semana, el navegador pedía decenas de fotos a la vez (compitiendo por la red) y
 // pintaba el resto de días justo cuando empezabas a bajar. Ahora:
@@ -975,13 +1003,22 @@ function completarDiferidos(){
   obsDias=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ obsDias.unobserve(e.target); pintarDia(e.target); } }),{rootMargin:"1800px 0px"});
   ph.forEach(el=>{ el._pintar=()=>{obsDias.unobserve(el); pintarDia(el);}; obsDias.observe(el); });
 }
+// Salto a un día de la lista: directo (con desplazamiento suave, las tarjetas que se iban pintando por el camino
+// cambiaban de alto y se quedaba a mitad) y se corrige unos fotogramas mientras las de alrededor toman su alto real
+function irA(el){
+  el.scrollIntoView(); let n=0;
+  const fix=()=>{ const sm=parseFloat(getComputedStyle(el).scrollMarginTop)||0;
+    if(Math.abs(el.getBoundingClientRect().top-sm)>2) el.scrollIntoView();
+    if(++n<8) requestAnimationFrame(fix); else diaEnPantalla(); };
+  requestAnimationFrame(fix);
+}
 function bindBody(){
   document.querySelectorAll("[data-day]").forEach(b=>b.onclick=()=>{state.date=b.dataset.day; state.tab="Día"; render(); scrollTo(0,0);});
   document.querySelectorAll("[data-mdia]").forEach(b=>b.onclick=()=>elegirDiaMes(b.dataset.mdia));
   document.querySelectorAll("[data-sel]").forEach(b=>b.onclick=()=>{state.date=b.dataset.sel; renderBody(true);});
   document.querySelectorAll("[data-jump]").forEach(b=>b.onclick=()=>{let el=document.getElementById("d-"+b.dataset.jump);
     if(el&&el._pintar){ el._pintar(); el=document.getElementById("d-"+b.dataset.jump); }
-    if(el) el.scrollIntoView({behavior:"smooth"}); else toast("Ese día no hay conciertos con estos filtros");});
+    if(el) irA(el); else toast("Ese día no hay conciertos con estos filtros");});
   document.querySelectorAll("[data-nav]").forEach(b=>b.onclick=()=>{
     const n=Number(b.dataset.nav);
     if(state.tab==="Mes"){const d=parse(state.date); const f=iso(new Date(d.getFullYear(),d.getMonth()+n,1)); state.date=f.slice(0,7)===HOY.slice(0,7)?HOY:f;}
@@ -1048,7 +1085,7 @@ addEventListener("hashchange",()=>{
   readHash(); render(); pintarTodo=false;
   if(state.tab==="Concierto") scrollTo(0,0); else requestAnimationFrame(()=>{ if(!recolocar()) scrollTo(0,0); });
 });
-addEventListener("resize",()=>{const h=document.getElementById("hdr"); if(h) document.documentElement.style.setProperty("--hh",h.offsetHeight+"px");});
+addEventListener("resize",()=>{const h=document.getElementById("hdr"); if(h) document.documentElement.style.setProperty("--hh",h.offsetHeight+"px"); fijas();});
 load();
 // copia local de la web y de los últimos datos: si la red o GitHub Pages fallan, se sigue viendo la agenda
 if("serviceWorker" in navigator&&location.protocol==="https:") addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(()=>{}));

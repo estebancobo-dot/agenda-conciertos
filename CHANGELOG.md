@@ -1,5 +1,12 @@
 # Versiones
 
+## 2.26.0 — 2026-10-01
+
+- **La fecha del día se queda fija arriba al bajar por la lista**, igual en mes, semana y día: una sola línea con la fecha completa y cuántos conciertos hay ("Viernes, 9 de octubre · 58 conciertos"). Al llegar al día siguiente, su cabecera empuja a la anterior.
+- **Semana: la tira de días marca el día por el que vas** mientras bajas. Tocar un día de la tira lleva justo a su cabecera (antes, con semanas largas, se quedaba a mitad de camino porque las tarjetas cambiaban de alto durante el desplazamiento suave).
+- **Día: la tira de la semana también se queda fija**, para cambiar de día sin subir. Arriba, el mes y el año; la fecha completa va en la cabecera del día, sin repetirla.
+- Lo fijo ocupa como mucho ~200 px de 844 en un móvil (cabecera, tira y fecha). La validación diaria lo comprueba en las tres vistas, junto con que la tira marque el día correcto y que el salto a un día sea exacto.
+
 ## 2.25.0 — 2026-10-01
 
 - **Filtro de origen con Latinoamérica aparte**: España (confirmados y probables, estos con la bandera atenuada), España (solo confirmados), Latinoamérica, Resto del mundo y Origen sin confirmar. Medido sobre 692 artistas con país confirmado, el "probablemente España" por el nombre acierta el 76 %, y casi todos los fallos son latinoamericanos (un nombre en español no distingue España de Latinoamérica): así se ve aparte. La validación diaria comprueba que las opciones reparten todos los conciertos sin dejar ninguno fuera ni contar ninguno dos veces.
