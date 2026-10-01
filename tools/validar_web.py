@@ -882,6 +882,140 @@ def cabeceras_fijas(pg, lunes):
 
 
 # ---------------------------------------------------------------------------------------------- 3. enlaces directos
+MESES_ES = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre",
+            "noviembre", "diciembre"]
+
+
+def ultimo_domingo(y: int, m: int) -> date:
+    d = (date(y, m + 1, 1) if m < 12 else date(y + 1, 1, 1)) - timedelta(days=1)
+    return d - timedelta(days=(d.weekday() + 1) % 7)
+
+
+@escenario("Funcional", "Paso de días, semanas, meses y años")
+def navegacion_fechas(b):
+    """Con las flechas ‹ › de las tres vistas: de un día a otro, de una semana a otra, de un mes al siguiente, de un
+    año al siguiente (y vuelta atrás), por el cambio de hora de octubre y de marzo y por febrero. En cada paso,
+    la fecha de la dirección, el título, la tira de 7 días, la cuadrícula del mes y los conciertos de la lista
+    tienen que ser justo los que tocan según el calendario y los datos."""
+    ctx = contexto(b)
+    pg = pagina(ctx, lenta=False)
+    pg.goto(URL, wait_until="commit")
+    esperar_datos(pg)
+    hoy = date.fromisoformat(pg.evaluate("HOY"))
+    fin_anyo = date(hoy.year, 12, 28)
+    fallos: list[str] = []
+    pasos = malos = 0
+    leer = """()=>{document.querySelectorAll('[data-dif]').forEach(e=>e._pintar&&e._pintar());
+       const ids=[...document.querySelectorAll('#main .card')].map(c=>c.dataset.id);
+       return {hash:location.hash, fecha:state.date, titulo:(document.querySelector('#main .nav .title')||{}).innerText||'',
+         tira:[...document.querySelectorAll('#main .strip button')].map(b=>b.dataset.jump||b.dataset.sel),
+         marcado:[...document.querySelectorAll('#main .strip .sel')].map(b=>b.dataset.sel),
+         celdas:[...document.querySelectorAll('#main [data-mdia]:not(.out)')].map(b=>b.dataset.mdia),
+         primera:[...document.querySelectorAll('#main [data-mdia]')].findIndex(b=>!b.classList.contains('out')),
+         elegida:[...document.querySelectorAll('#main [data-mdia].sel')].map(b=>b.dataset.mdia),
+         cabeceras:[...document.querySelectorAll('#main .dia')].map(s=>s.dataset.f),
+         fechas:ids.map(i=>(BYID[i]||{}).fecha), ids}}"""
+    esperados = """([a,z])=>DATA.filter(r=>r.fecha>=a&&r.fecha<=z&&visible(r)).map(r=>r.id).sort()"""
+
+    def comprobar(vista: str, d: date, que: str):
+        nonlocal pasos, malos
+        pasos += 1
+        v = pg.evaluate(leer)
+        mal = []
+        if v["fecha"] != d.isoformat():
+            mal.append(f"fecha {v['fecha']}")
+        if not v["hash"].endswith("/" + d.isoformat()):
+            mal.append(f"dirección {v['hash']}")
+        if vista in ("semana", "dia"):
+            lunes = lunes_de(d)
+            tira = [(lunes + timedelta(days=i)).isoformat() for i in range(7)]
+            if v["tira"] != tira:
+                mal.append(f"tira {v['tira']}")
+        if vista == "dia":
+            a = z = d
+            if v["marcado"] != [d.isoformat()]:
+                mal.append(f"marcado {v['marcado']}")
+            if f"{MESES_ES[d.month - 1]} de {d.year}" not in v["titulo"].lower():
+                mal.append(f"título {v['titulo']!r}")
+            if v["cabeceras"] != [d.isoformat()]:
+                mal.append(f"cabecera {v['cabeceras']}")
+        elif vista == "semana":
+            a, z = lunes_de(d), lunes_de(d) + timedelta(days=6)
+            if str(a.day) not in v["titulo"] or str(z.day) not in v["titulo"]:
+                mal.append(f"título {v['titulo']!r}")
+        else:
+            a = z = d
+            uno = d.replace(day=1)
+            sig = (uno + timedelta(days=32)).replace(day=1)
+            dias = [(uno + timedelta(days=i)).isoformat() for i in range((sig - uno).days)]
+            if v["celdas"] != dias:
+                mal.append(f"cuadrícula {len(v['celdas'])} días ({v['celdas'][:1]}…{v['celdas'][-1:]})")
+            if v["primera"] != uno.weekday():
+                mal.append(f"el día 1 cae en la columna {v['primera']} y no en la {uno.weekday()}")
+            if v["elegida"] != [d.isoformat()]:
+                mal.append(f"día elegido {v['elegida']}")
+            if f"{MESES_ES[d.month - 1]} de {d.year}" not in v["titulo"].lower():
+                mal.append(f"título {v['titulo']!r}")
+        esp = pg.evaluate(esperados, [a.isoformat(), z.isoformat()])
+        if sorted(v["ids"]) != esp:
+            mal.append(f"conciertos {len(v['ids'])} de {len(esp)}")
+        if any(f is None or f < a.isoformat() or f > z.isoformat() for f in v["fechas"]):
+            mal.append("conciertos de otras fechas")
+        if v["fechas"] != sorted(v["fechas"]):
+            mal.append("desordenados")
+        if mal:
+            malos += 1
+            fallos.append(f"{vista} {que} → {d}: {'; '.join(mal)}")
+
+    def recorrer(vista: str, inicio: date, n: int, paso: int, flecha: int, que: str):
+        pg.evaluate(f"location.hash='#{vista}/{inicio.isoformat()}'")
+        pg.wait_for_function(f"state.date==='{inicio.isoformat()}'", timeout=15000)
+        pg.wait_for_timeout(200)
+        comprobar(vista, inicio, que)
+        d = inicio
+        for sentido in (1, -1):
+            for _ in range(n):
+                pg.click(f"#main [data-nav='{flecha * sentido}']")
+                if vista == "mes":
+                    m = d.month - 1 + sentido
+                    d = date(d.year + m // 12, m % 12 + 1, 1)
+                    if d.strftime("%Y-%m") == hoy.strftime("%Y-%m"):
+                        d = hoy
+                else:
+                    d = d + timedelta(days=paso * sentido)
+                pg.wait_for_function(f"state.date==='{d.isoformat()}'", timeout=15000)
+                pg.wait_for_timeout(150)
+                comprobar(vista, d, que)
+
+    cambio_oct = ultimo_domingo(hoy.year if hoy.month <= 10 else hoy.year + 1, 10)
+    cambio_mar = ultimo_domingo(hoy.year + 1 if hoy.month > 3 else hoy.year, 3)
+    try:
+        recorrer("dia", fin_anyo, 7, 1, 1, "de un año a otro")
+        recorrer("dia", cambio_oct - timedelta(days=2), 4, 1, 1, "por el cambio de hora de octubre")
+        recorrer("dia", cambio_mar - timedelta(days=2), 4, 1, 1, "por el cambio de hora de marzo")
+        recorrer("dia", date(hoy.year + 1, 2, 26), 4, 1, 1, "de febrero a marzo")
+        recorrer("semana", lunes_de(hoy) + timedelta(days=2), 6, 7, 7, "semana a semana y de un mes a otro")
+        recorrer("semana", lunes_de(fin_anyo) - timedelta(days=14), 5, 7, 7, "de un año a otro")
+        recorrer("mes", hoy, 16, 0, 1, "mes a mes y de un año a otro")
+        # cambiar de vista conserva la fecha; "Hoy" vuelve a hoy
+        d = date(hoy.year + 1, 1, 2)
+        for vista in ("dia", "semana", "mes"):
+            pg.click(f"[data-tab='{ {'dia': 'Día', 'semana': 'Semana', 'mes': 'Mes'}[vista] }']")
+            if vista == "dia":
+                pg.evaluate(f"location.hash='#dia/{d.isoformat()}'")
+            pg.wait_for_function(f"state.date==='{d.isoformat()}'", timeout=15000)
+            pg.wait_for_timeout(200)
+            comprobar(vista, d, "al cambiar de vista")
+        pg.click("#hoy")
+        pg.wait_for_function(f"state.date==='{hoy.isoformat()}'", timeout=15000)
+        comprobar("mes", hoy, "botón Hoy")
+    except Exception as e:  # noqa: BLE001
+        fallos.append(f"se atascó: {str(e)[:200]}")
+    check("Funcional", "Paso de días, semanas, meses y años (con cambios de hora y febrero) con las flechas",
+          f"{pasos - malos} de {pasos} pasos bien", ok=not fallos, detalle=" | ".join(fallos[:6]))
+    ctx.close()
+
+
 @escenario("Funcional", "Enlaces directos")
 def enlaces_directos(b, datos):
     ctx = contexto(b)
@@ -1129,6 +1263,7 @@ def main() -> int:
         b = p.chromium.launch(executable_path=os.environ.get("CHROMIUM") or None)
         datos = publicacion(b) or []
         recorrido(b)
+        navegacion_fechas(b)
         if datos:
             enlaces_directos(b, datos)
             averias(b, datos)
