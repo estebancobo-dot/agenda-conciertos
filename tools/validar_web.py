@@ -52,7 +52,11 @@ RED = {"offline": False, "latency": 150, "downloadThroughput": 1.6 * 1024 * 1024
 INICIO = """
 window.__lt=[]; window.__cls=0; window.__lcp=0;
 try{new PerformanceObserver(l=>l.getEntries().forEach(e=>window.__lt.push([Math.round(e.startTime),Math.round(e.duration)]))).observe({type:'longtask',buffered:true});}catch(e){}
-try{new PerformanceObserver(l=>l.getEntries().forEach(e=>{if(!e.hadRecentInput) window.__cls+=e.value;})).observe({type:'layout-shift',buffered:true});}catch(e){}
+window.__clsSrc=[];
+try{new PerformanceObserver(l=>l.getEntries().forEach(e=>{if(e.hadRecentInput) return; window.__cls+=e.value;
+  window.__clsSrc.push(e.value.toFixed(3)+' a los '+Math.round(e.startTime)+' ms: '+(e.sources||[]).map(s=>{const n=s.node;
+    return !n?'?':n.nodeType!==1?'texto':(n.id?'#'+n.id:n.tagName.toLowerCase()+(n.className&&typeof n.className==='string'?'.'+n.className.split(' ')[0]:''));}).join(', '));
+})).observe({type:'layout-shift',buffered:true});}catch(e){}
 try{new PerformanceObserver(l=>{const e=l.getEntries(); if(e.length) window.__lcp=Math.round(e[e.length-1].startTime);}).observe({type:'largest-contentful-paint',buffered:true});}catch(e){}
 """
 FOTO_LISTA = "(()=>{const i=document.querySelector('.hero img');return !i||(i.complete&&i.naturalWidth>0)})()"
@@ -476,7 +480,10 @@ def recorrido(b):
     txt = pg.inner_text("#main")
     check("Funcional", "Informe se abre", ok="Rendimiento en este móvil" in txt and "Conciertos por grupo" in txt)
 
-    # segunda visita (caché del navegador y del service worker)
+    # segunda visita (caché del navegador y del service worker). Antes se iba a la misma dirección en la que ya estaba
+    # y el navegador no recargaba nada: los saltos de diseño (CLS) eran los de todo el recorrido, con sus scrolls
+    # forzados, y crecían con cada comprobación nueva. Pasando por una página en blanco es una visita de verdad.
+    pg.goto("about:blank")
     t0 = time.monotonic()
     pg.goto(URL + "#semana/" + lunes.isoformat(), wait_until="commit")
     pg.wait_for_selector(".card", timeout=60000)
@@ -487,7 +494,8 @@ def recorrido(b):
     peor = max((d for _, d in lt), default=0)
     medida("bloqueos_js", n=len(lt), total_ms=sum(d for _, d in lt), peores=sorted(lt, key=lambda x: -x[1])[:8])
     check("Rendimiento", "Bloqueo de JavaScript más largo (CPU 6x)", peor, aviso=300, fallo=1000)
-    check("UX", "Saltos de diseño (CLS)", round(pg.evaluate("window.__cls"), 3), aviso=0.1, fallo=0.25, unidad="")
+    check("UX", "Saltos de diseño (CLS)", round(pg.evaluate("window.__cls"), 3), aviso=0.1, fallo=0.25, unidad="",
+          detalle=" | ".join(pg.evaluate("window.__clsSrc||[]")[:6]))
     dur = [i["ms"] for i in imgs if isinstance(i.get("ms"), (int, float)) and i["ms"] > 0]
     medida("imagenes", pedidas=len(imgs), mediana_ms=mediana(dur), hosts=sorted({i["url"].split("/")[2] for i in imgs}),
            fallidas=fallidas[:20])
