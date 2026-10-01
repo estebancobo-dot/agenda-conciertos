@@ -1,5 +1,16 @@
 # Versiones
 
+## 2.23.0 — 2026-10-01
+
+Lo aprendido con el diagnóstico de páginas reales (workflow "Diagnóstico de páginas de agenda"):
+
+- **Las páginas de Madrid en Vivo no describen al artista** (solo el título), y de ahí salen casi todas las etiquetas "Pop / Rock". Leyendo la agenda no se puede concretar su estilo; hace falta una web de música.
+- **Discogs: también los discos sueltos.** Unos 200 artistas estaban identificados en Discogs, pero sin estilo, porque solo se miraban sus "masters" y los grupos pequeños casi nunca tienen. Ahora se leen también sus discos (género, estilo y el país donde se editaron: si todos se editaron en el mismo país, ese es su origen, "Discogs (país de edición de todos sus discos)").
+- **Discogs: entre homónimos, el de España.** Si hay varios artistas con el mismo nombre y solo el perfil de uno dice que es de España, es ese (el concierto es en Madrid). Se marca así en la ficha y, como toda identidad por el nombre, se descarta si contradice a la agenda.
+- **Estilo leído en la agenda**: también entre paréntesis detrás del nombre ("JOSH MEADER TRIO (Jazz-Fusión / 21:00 horas)", "Clarence Bekker Band (Soul & Funk)") y en las frases sobre el artista ("miaw es un dúo de pop experimental… Su música… shoegaze, trip-hop"). Más papeles para el origen (soprano, tenor, director…) y "el productor y DJ alemán más conocido como STVW".
+- **Bandcamp y Deezer no se usan**: su robots.txt no permite las búsquedas automáticas.
+- La lectura completa ya no se rompe con un título sin letras (solo símbolos u otro alfabeto).
+
 ## 2.22.0 — 2026-10-01
 
 Catálogo más inteligente: géneros con entidad propia, estilo leído en la página del concierto, origen de tributos y origen estimado por el nombre.

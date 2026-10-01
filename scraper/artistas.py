@@ -152,11 +152,22 @@ def discogs_ficha(f: Fetcher, art: dict, nombre: str, via: str) -> dict:
                                f"&type=master&per_page=25")).get("results", [])
     # solo discos de este artista exacto (la búsqueda por 'artist' también devuelve colaboraciones)
     masters = [m for m in masters if norm(_sin_sufijo(m.get("title", "").split(" - ")[0])) == norm(nombre)] or masters
+    pais_discos = None
+    if not masters:
+        # los grupos pequeños casi nunca tienen "master" (solo se crean con varias ediciones): sus discos sueltos
+        # también traen género, estilo y el país donde se editaron
+        masters = json.loads(f.get(f"{DISCOGS}/database/search?artist={quote(_sin_sufijo(art.get('name')))}"
+                                   f"&type=release&per_page=25")).get("results", [])
+        masters = [m for m in masters if norm(_sin_sufijo(m.get("title", "").split(" - ")[0])) == norm(nombre)]
+        paises = {m.get("country") for m in masters if m.get("country")}
+        if len(paises) == 1:
+            pais_discos = pais_de_texto(paises.pop())
     generos, estilos = discogs_estilos(masters)
     img = next((i.get("uri") for i in art.get("images", []) if i.get("type") == "primary"), None) or \
         next((i.get("uri") for i in art.get("images", [])), None)
     return {"encontrado": True, "id": art.get("id"), "nombre": art.get("name"), "url": art.get("uri"),
-            "generos": generos, "estilos": estilos, "discos_analizados": len(masters),
+            "generos": generos, "estilos": estilos, "discos_analizados": len(masters), "v": 2,
+            "pais_discos": pais_discos,
             "pais": discogs_pais(art.get("profile")), "imagen": img, "identificado_por": via,
             "perfil": clean((art.get("profile") or "").split("\n")[0])[:240]}
 
@@ -175,8 +186,26 @@ def buscar_discogs(f: Fetcher, nombre: str, discogs_id: str | None = None) -> di
     q = quote(nombre)
     res = json.loads(f.get(f"{DISCOGS}/database/search?q={q}&type=artist&per_page=50"))
     cand, n = discogs_identificar(res.get("results", []), nombre)
+    if not cand and 2 <= n <= 6:
+        # varios artistas con ese nombre: si solo uno es de España (el concierto es en Madrid), es ese
+        exactos = [r for r in res.get("results", []) if r.get("type") == "artist"
+                   and norm(_sin_sufijo(r.get("title"))) == norm(nombre)]
+        espanoles = []
+        for c in exactos[:6]:
+            try:
+                a = json.loads(f.get(c["resource_url"]))
+            except Exception:  # noqa: BLE001 - una ficha que no se puede leer no decide nada
+                continue
+            if discogs_pais(a.get("profile")) == "ES":
+                espanoles.append(a)
+        if len(espanoles) == 1:
+            r = discogs_ficha(f, espanoles[0], nombre,
+                              f"el único de España entre {n} artistas homónimos de Discogs (el concierto es en Madrid)")
+            r["homonimos"] = n
+            return r
     if not cand:
-        return {"encontrado": False, "motivo": "sin coincidencia exacta" if n == 0 else f"{n} artistas homónimos"}
+        return {"encontrado": False, "motivo": "sin coincidencia exacta" if n == 0 else f"{n} artistas homónimos",
+                "v": 2}
     import requests
     try:
         art = json.loads(f.get(cand["resource_url"]))
@@ -552,6 +581,14 @@ def _solo_agenda(r: dict, lista: list) -> None:
         lista.append((clave_agenda(r["artista"]), nombre_en_titulo(r["artista"]), urls))
 
 
+def _dc_sin_discos(ent: dict) -> bool:
+    """Fichas de Discogs de antes de mirar los discos sueltos y de elegir entre homónimos: se repiten una vez."""
+    dc = ent.get("discogs") or {}
+    if dc.get("v") == 2:
+        return False
+    return bool(dc.get("encontrado") and not dc.get("discos_analizados")) or "homónimos" in str(dc.get("motivo") or "")
+
+
 def _mb_sin_area(ent: dict) -> bool:
     mb = ent.get("musicbrainz") or {}
     return bool(mb.get("encontrado") and not mb.get("pais") and "area" not in mb)
@@ -641,7 +678,7 @@ def enriquecer(recs: list[dict], cache: dict, hoy: date, presupuesto_seg: float 
             continue
         falta_wd = ent.get("wikipedia", {}).get("wikidata") and "wikidata" not in ent
         falta_lf = clave_lastfm and ("lastfm" not in ent or _lastfm_mejorable(ent)) and not _tiene_estilo(ent)
-        falta_mb = "musicbrainz" not in ent or _mb_sin_area(ent)
+        falta_mb = "musicbrainz" not in ent or _mb_sin_area(ent) or _dc_sin_discos(ent)
         if falta_wd or falta_lf or falta_mb or _falta_origen(ent, clave_lastfm) or _pasos_con_error(ent):
             pendientes.append((k, nombre, ent))
         else:
@@ -678,6 +715,8 @@ def enriquecer(recs: list[dict], cache: dict, hoy: date, presupuesto_seg: float 
             paso("discogs", buscar_discogs, fetcher_dc, nombre, dc_id)
         if _mb_sin_area(ent):
             ent.pop("musicbrainz")  # fichas anteriores sin la zona del artista: se completa
+        if _dc_sin_discos(ent):
+            ent.pop("discogs")  # ficha anterior que no miraba los discos sueltos: se completa
         if "musicbrainz" not in ent:
             mbid = (ent.get("wikidata") or {}).get("ids", {}).get("musicbrainz")
             paso("musicbrainz", buscar_musicbrainz, fetcher_mb, nombre, mbid, mb_cache, hoy)
@@ -928,6 +967,9 @@ def ficha(ent: dict | None) -> dict | None:
     elif (ent.get("musicbrainz") or {}).get("encontrado") and ent["musicbrainz"].get("pais"):
         # país del artista en MusicBrainz (identificado por Wikidata o por ser el único con ese nombre exacto)
         pais, fuente_pais = ent["musicbrainz"]["pais"], "MusicBrainz"
+    elif dc.get("encontrado") and dc.get("pais_discos"):
+        # sin país en el perfil: el de todos sus discos (un grupo pequeño edita en su país)
+        pais, fuente_pais = dc["pais_discos"], "Discogs (país de edición de todos sus discos)"
     elif agenda_valida(ent.get("agenda"), ent.get("nombre")):
         ag = ent["agenda"]
         pais, fuente_pais = ag["pais"], f"la agenda ({ag['url'].split('/')[2]}): «{ag.get('frase', '')[:160]}»"

@@ -340,3 +340,37 @@ def test_nacionalidad_de_musicbrainz_en_la_ficha():
     f = ficha({"discogs": {"encontrado": False}, "wikipedia": {"encontrado": False},
                "musicbrainz": {"encontrado": True, "mbid": "x", "generos": [["hard rock", 5]], "pais": "SE"}})
     assert (f["pais"], f["fuente_pais"]) == ("SE", "MusicBrainz")
+
+
+def test_discogs_sin_masters_usa_los_discos_sueltos():
+    # un grupo pequeño sin "master": el estilo y el país salen de sus discos sueltos
+    import json as _j
+
+    class F:
+        def get(self, u, **k):
+            if "type=master" in u:
+                return _j.dumps({"results": []})
+            return _j.dumps({"results": [
+                {"title": "Gorila Flo - Primero", "genre": ["Rock"], "style": ["Garage Rock", "Punk"], "country": "Spain"},
+                {"title": "Gorila Flo - Segundo", "genre": ["Rock"], "style": ["Garage Rock"], "country": "Spain"},
+                {"title": "Otro Grupo - Split", "genre": ["Pop"], "style": ["Ballad"], "country": "US"}]})
+    r = A.discogs_ficha(F(), {"id": 1, "name": "Gorila Flo", "uri": "/a/1", "profile": ""}, "Gorila Flo", "x")
+    assert r["estilos"][0] == "Garage Rock" and r["discos_analizados"] == 2 and r["pais_discos"] == "ES"
+
+
+def test_discogs_homonimos_elige_el_espanol():
+    import json as _j
+
+    class F:
+        def get(self, u, **k):
+            if "type=artist" in u:
+                return _j.dumps({"results": [
+                    {"type": "artist", "title": "Trapiche", "resource_url": "u1"},
+                    {"type": "artist", "title": "Trapiche (2)", "resource_url": "u2"}]})
+            if u == "u1":
+                return _j.dumps({"id": 1, "name": "Trapiche", "uri": "/a/1", "profile": "Brazilian samba group."})
+            if u == "u2":
+                return _j.dumps({"id": 2, "name": "Trapiche (2)", "uri": "/a/2", "profile": "Spanish rock band from Madrid."})
+            return _j.dumps({"results": [{"title": "Trapiche - Uno", "genre": ["Rock"], "style": ["Hard Rock"]}]})
+    r = A.buscar_discogs(F(), "TRAPICHE")
+    assert r["encontrado"] and r["id"] == 2 and r["pais"] == "ES" and "único de España" in r["identificado_por"]
