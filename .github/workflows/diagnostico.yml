@@ -9,7 +9,7 @@ on:
         description: "Páginas por web"
         default: "16"
       webs:
-        description: "Solo estas webs (separadas por comas; vacío = todas)"
+        description: "Solo estas webs (separadas por comas; vacío = todas), 'fuentes', o la URL de una página"
         default: ""
 
 permissions:
@@ -29,7 +29,9 @@ jobs:
           cache: pip
       - run: pip install -r requirements.txt
       - run: python tools/datos.py
-      - if: github.event.inputs.webs != 'fuentes'
+      - if: github.event.inputs.webs != 'fuentes' && !startsWith(github.event.inputs.webs, 'http')
         run: python tools/diagnostico_agenda.py ${{ github.event.inputs.n || '16' }} "${{ github.event.inputs.webs }}"
       - if: github.event.inputs.webs == 'fuentes'
         run: python tools/diagnostico_fuentes.py ${{ github.event.inputs.n || '30' }}
+      - if: startsWith(github.event.inputs.webs, 'http')
+        run: python tools/ver_pagina.py "${{ github.event.inputs.webs }}"
