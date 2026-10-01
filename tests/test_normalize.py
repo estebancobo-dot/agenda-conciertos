@@ -43,7 +43,7 @@ def test_artistas_y_pais():
 def test_categorias():
     assert categoria_de("Metal/Rock duro") == "rock y metal"
     assert categoria_de("Americana/Folk Rock/Country") == "americana/country/folk"
-    assert categoria_de("Urbana/Reggaeton/Trap") == "fuera de foco"
+    assert categoria_de("Urbana/Reggaeton/Trap") == "urbana y hip hop"
     assert categoria_de("Versiones/Tributos") == "tributos y versiones"
     assert categoria_de(None) is None
 

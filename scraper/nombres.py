@@ -78,3 +78,32 @@ def claves_ficha(r: dict) -> list[str]:
             vistos.add(norm(x))
             unicos.append(x)
     return unicos
+
+
+_HOMENAJE = [
+    re.compile(r"\b(?:tributo|homenaje|tribute)\s+(?:a|al|to|de)\s+(.+)$", re.I),
+    re.compile(r"\btrib\.?\s+(?:a\s+)?(.+?)\)?$", re.I),
+    re.compile(r"^(?:the\s+)?(.+?)(?:\s+the)?\s+(?:tribute|tributo)(?:\s+(?:band|show|banda))?$", re.I),
+    re.compile(r"\b(?:tributo|tribute)\s+(.+)$", re.I),
+    re.compile(r"\b(?:the music of|la musica de|lo mejor de)\s+(.+)$", re.I),
+]
+_NO_HOMENAJEADO = {"band", "banda", "festival", "fest", "show", "night", "noche", "concierto", "concert", "party",
+                   "fiesta", "night live", "rock", "metal", "pop", "bands", "bandas"}
+
+
+def homenajeado(titulo: str) -> str | None:
+    """Artista al que homenajea un tributo: "THE RUMORS: TRIBUTO FLEETWOOD MAC" → "FLEETWOOD MAC", "LA VAN GOGH
+    (TRIB. LA OREJA DE VAN GOGH)" → "LA OREJA DE VAN GOGH", "Queen Tribute Band" → "Queen". None si no lo dice."""
+    if not _TRIBUTO.search(norm(titulo or "")):
+        return None
+    t = re.sub(r"\.\s*candlelight.*$", "", titulo or "", flags=re.I)
+    t = re.sub(r"\btrib\.\s*", "tributo ", t, flags=re.I)  # "(TRIB. LA OREJA DE VAN GOGH)"
+    trozos = [x.strip(" .:-–\"'«»") for x in re.split(r"[()]|\s*[:|]\s+|\s+[-–—]\s+|\.\s+", t) if x and x.strip()]
+    for parte in [x for x in trozos if _TRIBUTO.search(norm(x))]:
+        for rx in _HOMENAJE:
+            m = rx.search(parte)
+            if m:
+                x = re.split(r"\s*,\s+|\s+(?:en|el|por|con)\s+(?=[a-záéíóú])", m.group(1).strip(" .:-–\"'«»()"))[0].strip()
+                if len(norm(x)) >= 3 and not _TRIBUTO.search(norm(x)) and norm(x) not in _NO_HOMENAJEADO:
+                    return x
+    return None

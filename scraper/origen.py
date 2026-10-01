@@ -173,3 +173,104 @@ def pais_en_texto(texto: str, nombre: str | None = None, solo_con_nombre: bool =
     if len(paises) != 1:
         return None, ""
     return halladas[0][0], halladas[0][1][:220]
+
+
+# ------------------------------------------------------------------ estilo dicho en la página del concierto
+def _vocabulario() -> list[str]:
+    """Estilos y géneros que se reconocen en un texto (los de la taxonomía, sus sinónimos y las palabras clave
+    de las etiquetas de agenda), del más largo al más corto para quedarse con "rock alternativo" antes que
+    "rock"."""
+    from .normalize import load_json
+    t, m = load_json("taxonomia.json"), load_json("estilos_map.json")
+    voc = {norm(e) for estilos in t["generos"].values() for e in estilos}
+    voc |= {norm(k) for k in t.get("sinonimos", {})} | {norm(k) for k in t.get("sinonimos_genero", {})}
+    voc |= {norm(k) for k, _ in m["palabras_clave"]}
+    voc -= {"club", "dj", "afro", "heavy", "jam", "roots", "oi", "vocal", "instrumental", "experimental", "modern",
+            "contemporary", "theme", "score", "beat", "mod", "musical", "teatro", "coro", "rap", "son", "disco"}
+    return sorted((v for v in voc if len(v) >= 3), key=len, reverse=True)
+
+
+_VOC: list[str] | None = None
+_TRAS_ESTILO = re.compile(rf"^\s*,?\s*(?:\([^)]*\)\s*)?(?:es|son|fue|era|,)?\s*(?:un|una|unos|el|la|los|las)?\s*"
+                          rf"(?:{_QUIEN_ES})\s+(?:de\s+|del\s+)?([^.;:!?()]{{2,70}})")
+_ANTES_ESTILO = re.compile(rf"\b(?:{_QUIEN_ES})\s+(?:de\s+|del\s+)?([^.;:!?()]{{2,50}}?)\s*,?\s*$")
+_EN_ESTILO = re.compile(r"\b((?:[a-z&'-]+\s+){1,3})(?:band|group|outfit|act|duo|trio|singer|artist|project)\b")
+
+
+def estilos_en_texto(texto: str, nombre: str) -> list[str]:
+    """Estilos que la página del concierto dice del artista, pegados a su nombre: "X es una banda de rock
+    alternativo y power pop", "el grupo de soul X", "X, a garage rock band". Sin nombre no se lee nada."""
+    global _VOC
+    if _VOC is None:
+        _VOC = _vocabulario()
+    clave = norm(nombre or "")
+    if not clave:
+        return []
+    out: list[str] = []
+
+    def terminos(trozo: str):
+        t = f" {trozo} "
+        for v in _VOC:
+            if f" {v} " in t and v not in out and not any(v in o for o in out):
+                out.append(v)
+                t = t.replace(f" {v} ", " | ")
+
+    for f in _frases(texto):
+        n = norm(f)
+        i = n.find(clave)
+        while i >= 0:
+            despues, antes = n[i + len(clave):i + len(clave) + 140], n[max(0, i - 90):i]
+            m = _TRAS_ESTILO.match(despues)
+            if m:
+                terminos(m.group(1))
+            m = _ANTES_ESTILO.search(antes)
+            if m:
+                terminos(m.group(1))
+            m = _EN_ESTILO.search(despues[:60])
+            if m and re.match(r"^\s*,?\s*(?:is|are|was)?\s*(?:a|an|the)?\s*", despues):
+                terminos(m.group(1))
+            i = n.find(clave, i + 1)
+    return out[:5]
+
+
+# ------------------------------------------------------------------ origen estimado por el nombre
+_PALABRAS: tuple[frozenset, frozenset, frozenset] | None = None
+_RELLENO = {"dr", "mr", "mc", "dj", "sr", "st", "la", "el", "y", "e", "&", "feat", "ft", "presenta", "presentan", "live",
+            "band", "trio", "quartet", "quintet", "orchestra", "project", "experience", "tributo", "tribute",
+            "the", "and", "of", "en", "concierto", "madrid", "gira", "tour", "show",
+            # palabras del evento, no del artista ("Noches de Piano Jazz", "Concierto inaugural de…")
+            "de", "del", "los", "las", "con", "noche", "noches", "conciertos", "espectaculo", "flamenco", "presenta",
+            "nueva", "nuevo", "anos", "homenaje", "fiestas", "fiesta", "ciclo", "festival", "verbena", "inaugural",
+            "especial", "navidad", "hispanidad", "jazz", "piano", "sesion", "musica", "canciones", "grandes",
+            "orquesta", "banda", "grupo", "trio", "cuarteto", "quinteto", "friends", "amigos", "invitados"}
+
+
+def _palabras() -> tuple[frozenset, frozenset, frozenset]:
+    global _PALABRAS
+    if _PALABRAS is None:
+        from .normalize import load_json
+        d = load_json("palabras.json")
+        _PALABRAS = frozenset(d["es"]), frozenset(d["es_fuerte"]), frozenset(d["en"])
+    return _PALABRAS
+
+
+def pais_estimado(nombre: str) -> tuple[str | None, str]:
+    """("ES", motivo) si el nombre del artista está en español: alguna palabra propia del español ("cuarteto",
+    "amados", "rayo", nombres como "Felipe") o letras como la ñ, y ninguna propia del inglés. Es una estimación,
+    no un dato: solo se usa cuando ninguna fuente dice de dónde es, y se muestra como tal ("probablemente")."""
+    es, fuerte, en = _palabras()
+    crudo = (nombre or "").lower()
+    tokens = [t for t in re.findall(r"[a-z]+", norm(nombre or "")) if len(t) >= 2]
+    contenido = [t for t in tokens if t not in _RELLENO]
+    if not contenido:
+        return None, ""
+    de_es = [t for t in contenido if t in es]
+    de_en = [t for t in tokens if t in en and t not in {"dr", "mr"}]
+    if de_en:
+        return None, ""
+    tildes = bool(re.search(r"[ñáéíóú]", crudo))
+    claro = tildes or len(de_es) >= 2 or any(t in fuerte for t in de_es)
+    if claro and (de_es or tildes) and len(de_es) * 2 >= len(contenido):
+        motivo = "nombre en español" + (f" ({', '.join(de_es[:3])})" if de_es else " (con tildes)")
+        return "ES", motivo
+    return None, ""

@@ -79,8 +79,8 @@ def test_grupos_de_filtro_desde_discogs():
     assert categorias_de_ficha(["Rock"], ["Hard Rock", "Heavy Metal"]) == ["rock y metal"]
     assert categorias_de_ficha(["Rock"], ["Garage Rock"]) == ["punk y garage"]
     assert categorias_de_ficha(["Rock", "Blues"], ["Blues Rock"]) == ["blues"]
-    assert categorias_de_ficha(["Folk, World, & Country"], ["Flamenco"]) == ["fuera de foco"]
-    assert categorias_de_ficha(["Hip Hop"], []) == ["fuera de foco"]
+    assert categorias_de_ficha(["Folk, World, & Country"], ["Flamenco"]) == ["flamenco y copla"]
+    assert categorias_de_ficha(["Hip Hop"], []) == ["urbana y hip hop"]
 
 
 def test_no_se_consultan_titulos_de_evento():
@@ -225,7 +225,7 @@ def test_musical_no_se_confunde_con_un_grupo():
     r = _rec("Los Miserables", [("Musicales/Teatro musical", "conciertos.club (buscador semanal)")],
              nacionalidad="CL", nacionalidad_fuente="Wikidata")
     aplicar_ficha(r, A.ficha(ent))
-    assert r["grupos"] == ["fuera de foco"] and r["ficha"] is None and r["nacionalidad"] is None
+    assert r["grupos"] == ["musicales y espectáculos"] and r["ficha"] is None and r["nacionalidad"] is None
 
 
 def test_consenso_no_mete_en_rock_a_quien_solo_lo_menciona():
@@ -235,7 +235,7 @@ def test_consenso_no_mete_en_rock_a_quien_solo_lo_menciona():
                       "generos": ["Pop", "Latin"], "identificado_por": "coincidencia por nombre", "url": "u"}}
     r = _rec("Shakira", [("Pop Latino", "conciertos.club (buscador semanal)")])
     aplicar_ficha(r, A.ficha(ent))
-    assert r["grupos"] == ["fuera de foco"]  # pop latino/comercial: ni rock ni "indie y pop-rock"
+    assert r["grupos"][0] == "latina" and not {"rock y metal", "pop e indie"} & set(r["grupos"])  # ni rock ni indie
     assert "Rock" not in r["genero_discogs"]
 
 
@@ -301,14 +301,14 @@ def test_indie_y_pop_rock_no_incluye_pop_comercial():
     ent = {"discogs": {"encontrado": True, "estilos": ["Ballad", "Europop", "Pop Rock"], "generos": ["Pop"], "url": "/a/1"}}
     r = _rec("Cantante Pop", [("Pop", "Songkick Madrid")])
     aplicar_ficha(r, A.ficha(ent))
-    assert r["grupos"] == ["fuera de foco"]
+    assert r["grupos"] == ["pop comercial"]
     ent = {"discogs": {"encontrado": True, "estilos": ["Indie Rock", "Pop Rock", "Indie Pop"], "generos": ["Rock", "Pop"], "url": "/a/2"}}
     r = _rec("Grupo Indie", [])
     aplicar_ficha(r, A.ficha(ent))
     assert r["grupos"] == ["pop e indie"]
     r = _rec("Sin ficha", [("Pop Latino", "conciertos.club (buscador semanal)")])
     aplicar_ficha(r, None)
-    assert r["grupos"] == ["fuera de foco"]
+    assert r["grupos"] == ["latina"]
 
 
 def test_estilos_ambiguos_de_discogs_no_son_rock():
@@ -317,7 +317,7 @@ def test_estilos_ambiguos_de_discogs_no_son_rock():
                        "generos": ["Classical", "Electronic"], "url": "/a/1"}}
     r = _rec("Martin Kohlstedt", [])
     aplicar_ficha(r, A.ficha(ent))
-    assert r["grupos"] == ["fuera de foco"]
+    assert "rock y metal" not in r["grupos"] and r["grupos"][0] == "clásica y lírica"
     r = _rec("Callas en concierto - En holograma", [("Versiones/Tributos", "conciertos.club (buscador semanal)")])
     aplicar_ficha(r, None)
     assert r["grupos"] == ["fuera de foco"]

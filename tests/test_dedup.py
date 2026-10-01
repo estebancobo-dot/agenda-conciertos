@@ -130,9 +130,10 @@ def test_estilo_solo_de_la_fuente():
     assert r["estilo_fuente"] == [{"estilo": "Metal/Rock duro", "fuente": "a"}]
 
 
-def test_candlelight_fuera_de_foco():
+def test_candlelight_es_clasica_no_tributo():
+    # cuarteto de cuerda con versiones: lo decide el título aunque la agenda diga "tributo"
     r = run((ev("Tributo a Queen. Candlelight", "Círculo de Bellas Artes", estilo="Versiones/Tributos"), src("a")))[0]
-    assert r["categoria"] == "fuera de foco"
+    assert r["categoria"] == "clásica y lírica"
 
 
 def test_nacionalidad_solo_si_la_da_la_fuente():

@@ -16,6 +16,8 @@
   --accent:#c2410c; --ok:#15803d; --warn:#b45309; --bad:#b91c1c; --info:#1d4ed8;
   --c-rock:#b91c1c; --c-pop:#7c3aed; --c-amer:#a16207; --c-blues:#1d4ed8; --c-punk:#be185d; --c-cant:#0f766e;
   --c-trib:#c2410c; --c-fuera:#6b7280; --c-sin:#334155; --c-synth:#4d7c0f;
+  --c-jazz:#0e7490; --c-soul:#9d174d; --c-flam:#b45309; --c-urb:#4338ca; --c-lat:#15803d; --c-elec:#0369a1;
+  --c-clas:#57534e; --c-reg:#3f6212; --c-world:#92400e; --c-popc:#a21caf; --c-esc:#475569;
   --radius:14px; --shadow:0 1px 2px rgba(0,0,0,.06),0 4px 14px rgba(0,0,0,.05);
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
@@ -23,12 +25,16 @@
   --accent:#fb923c; --ok:#4ade80; --warn:#fbbf24; --bad:#f87171; --info:#93c5fd;
   --c-rock:#f87171; --c-pop:#c4b5fd; --c-amer:#facc15; --c-blues:#60a5fa; --c-punk:#f472b6; --c-cant:#2dd4bf;
   --c-trib:#fb923c; --c-fuera:#9ca3af; --c-sin:#cbd5e1; --c-synth:#a3e635; --shadow:none;
+  --c-jazz:#22d3ee; --c-soul:#f9a8d4; --c-flam:#fbbf24; --c-urb:#a5b4fc; --c-lat:#4ade80; --c-elec:#7dd3fc;
+  --c-clas:#d6d3d1; --c-reg:#bef264; --c-world:#fdba74; --c-popc:#f0abfc; --c-esc:#94a3b8;
 }}
 :root[data-theme="dark"]{
   --bg:#14161a; --panel:#1d2025; --panel2:#262a30; --ink:#ecebe8; --muted:#a2a6ad; --line:#33383f;
   --accent:#fb923c; --ok:#4ade80; --warn:#fbbf24; --bad:#f87171; --info:#93c5fd;
   --c-rock:#f87171; --c-pop:#c4b5fd; --c-amer:#facc15; --c-blues:#60a5fa; --c-punk:#f472b6; --c-cant:#2dd4bf;
   --c-trib:#fb923c; --c-fuera:#9ca3af; --c-sin:#cbd5e1; --c-synth:#a3e635; --shadow:none;
+  --c-jazz:#22d3ee; --c-soul:#f9a8d4; --c-flam:#fbbf24; --c-urb:#a5b4fc; --c-lat:#4ade80; --c-elec:#7dd3fc;
+  --c-clas:#d6d3d1; --c-reg:#bef264; --c-world:#fdba74; --c-popc:#f0abfc; --c-esc:#94a3b8;
 }
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
@@ -62,6 +68,7 @@ input[type=search]::-webkit-search-cancel-button{display:none}
 .chips::-webkit-scrollbar{display:none}
 .chip{flex:0 0 auto;display:inline-flex;align-items:center;gap:6px;min-height:36px;border:1px solid var(--line);background:var(--panel);border-radius:999px;padding:5px 12px;font-size:.85rem;color:var(--muted)}
 .chip i{width:9px;height:9px;border-radius:50%;display:inline-block}
+.flag.est{opacity:.55;filter:grayscale(.3)}
 .chip .cc{font-size:.72rem;font-weight:500}
 .chip[aria-pressed="true"]{border-color:var(--ink);color:var(--ink);font-weight:700;background:color-mix(in srgb,var(--ink) 7%,var(--panel))}
 .chip[aria-pressed="false"] i{opacity:.35}
@@ -243,16 +250,28 @@ th{color:var(--muted);font-weight:600}
 const GRUPOS = [
   {id:"rock y metal", nombre:"Rock y metal", v:"--c-rock", desc:"Hard rock, heavy metal, AOR, prog, stoner, psicodelia, grunge, rock clásico y alternativo…"},
   {id:"punk y garage", nombre:"Punk y garage", v:"--c-punk", desc:"Punk, hardcore, garage, post-punk, rock & roll, rockabilly, surf…"},
-  {id:"pop e indie", nombre:"Indie y pop-rock", v:"--c-pop", desc:"Indie rock, indie pop, pop rock, power pop, shoegaze, new wave… (el pop comercial y latino va a Otros géneros)"},
+  {id:"pop e indie", nombre:"Indie y pop-rock", v:"--c-pop", desc:"Indie rock, indie pop, pop rock, power pop, shoegaze, new wave… (el pop comercial y el latino tienen su propio grupo)"},
   {id:"americana/country/folk", nombre:"Americana y folk", v:"--c-amer", desc:"Country, country rock, folk, folk rock, southern rock, bluegrass…"},
   {id:"blues", nombre:"Blues", v:"--c-blues", desc:"Todos los estilos de blues y el blues rock."},
-  {id:"synth y dark wave", nombre:"Synthwave y dark wave", v:"--c-synth", desc:"Synthwave y neo synthwave (retrowave, outrun, darksynth…), darkwave, coldwave, synth-pop, EBM, italo-disco… (el resto de la electrónica va a Otros géneros)"},
+  {id:"synth y dark wave", nombre:"Synthwave y dark wave", v:"--c-synth", desc:"Synthwave y neo synthwave (retrowave, outrun, darksynth…), darkwave, coldwave, synth-pop, EBM, italo-disco… (el resto de la electrónica va a Electrónica)"},
   {id:"cantautor", nombre:"Cantautores", v:"--c-cant", desc:"Solo por la etiqueta de la agenda (Discogs no tiene este estilo)."},
   {id:"tributos y versiones", nombre:"Tributos", v:"--c-trib", desc:"Bandas tributo y de versiones (por la agenda o el título)."},
   {id:"sin clasificar", nombre:"Sin clasificar", v:"--c-sin", desc:"Ni las webs de música ni la agenda dan estilo. Se muestran para no perder conciertos."},
-  {id:"fuera de foco", nombre:"Otros géneros", v:"--c-fuera", desc:"Pop comercial y latino, electrónica, hip hop, jazz, flamenco, clásica, teatro y musicales, Candlelight…"}];
+  {id:"jazz y swing", nombre:"Jazz y swing", v:"--c-jazz", desc:"Swing, bebop, hard bop, jazz vocal, latin jazz, fusión, big band, gypsy jazz…", mas:true},
+  {id:"soul, funk y r&b", nombre:"Soul, funk y R&B", v:"--c-soul", desc:"Soul, funk, R&B, gospel, disco, neo soul, afrobeat…", mas:true},
+  {id:"flamenco y copla", nombre:"Flamenco y copla", v:"--c-flam", desc:"Flamenco, cante y baile, rumba, copla.", mas:true},
+  {id:"urbana y hip hop", nombre:"Urbana y hip hop", v:"--c-urb", desc:"Hip hop, rap, trap, reguetón, drill, grime…", mas:true},
+  {id:"latina", nombre:"Latina", v:"--c-lat", desc:"Salsa, cumbia, bachata, son, bolero, tango, bossa nova, pop latino…", mas:true},
+  {id:"electrónica", nombre:"Electrónica", v:"--c-elec", desc:"Techno, house, trance, drum and bass, ambient, sesiones de DJ… (synthwave y dark wave tienen su grupo)", mas:true},
+  {id:"clásica y lírica", nombre:"Clásica y lírica", v:"--c-clas", desc:"Música clásica, ópera, zarzuela, música de cámara, bandas sonoras, conciertos Candlelight…", mas:true},
+  {id:"reggae", nombre:"Reggae y dub", v:"--c-reg", desc:"Reggae, roots, dub, dancehall, rocksteady…", mas:true},
+  {id:"músicas del mundo", nombre:"Músicas del mundo", v:"--c-world", desc:"Fado, música africana, mestizaje y fusión, músicas tradicionales…", mas:true},
+  {id:"pop comercial", nombre:"Pop comercial", v:"--c-popc", desc:"Pop de radiofórmula, baladas, canción melódica, europop, K-pop…", mas:true},
+  {id:"musicales y espectáculos", nombre:"Musicales y espectáculos", v:"--c-esc", desc:"Teatro musical, danza, humor y otros espectáculos que no son conciertos.", mas:true},
+  {id:"fuera de foco", nombre:"Otros", v:"--c-fuera", desc:"Lo que no es de ningún género: infantil, karaoke, tardeo…", mas:true}];
 const GV = Object.fromEntries(GRUPOS.map(g=>[g.id,g.v]));
-const DEF_GRUPOS = GRUPOS.filter(g=>g.id!=="fuera de foco").map(g=>g.id);
+// por defecto, los géneros de siempre; el resto ("Más géneros") se añade desde los filtros
+const DEF_GRUPOS = GRUPOS.filter(g=>!g.mas).map(g=>g.id);
 const VISTAS = ["Mes","Semana","Día"];
 const INFO = ["Estilos","Fuentes","Informe","Versiones"];
 const TABS = [...VISTAS,...INFO];
@@ -263,7 +282,11 @@ const store = {
 };
 let DATA=[], BYID={}, INFORME=null, TAXO=null, SALAS={}, MAP=null, HOY=null, DETALLES=null;
 // selección guardada con la lista de grupos anterior: se conserva y se añaden los grupos nuevos
-const gruposGuardados=()=>{const g3=store.get("grupos3",null); if(g3) return g3;
+// 2.22: lo que antes era "Otros géneros" (fuera de foco) se reparte en grupos propios. Quien tenía elegido
+// "Otros géneros" sigue viéndolo todo (se le añaden los grupos nuevos)
+const NUEVOS_22=GRUPOS.filter(g=>g.mas).map(g=>g.id);
+const gruposGuardados=()=>{const g4=store.get("grupos4",null); if(g4) return g4;
+  const g3=store.get("grupos3",null); if(g3) return g3.includes("fuera de foco")?[...new Set([...g3,...NUEVOS_22])]:g3;
   const g2=store.get("grupos2",null); return g2?[...g2,...DEF_GRUPOS.filter(g=>!["rock y metal","punk y garage","pop e indie","americana/country/folk","blues","cantautor","tributos y versiones","sin clasificar"].includes(g))]:DEF_GRUPOS;};
 let state = {tab:"Mes", date:null, id:null, q:"", grupos:gruposGuardados(), origen:store.get("origen","todos"), from:null,
   estilos:store.get("estilos",{}), genericos:store.get("genericos",true)};
@@ -340,9 +363,9 @@ function borrarFiltros(){
   state.genericos=true; store.set("genericos",true); state.q=""; renderBody(false);
 }
 function pasaOrigen(r){
-  if(state.origen==="es") return r.nacionalidad==="ES";
+  if(state.origen==="es") return r.nacionalidad==="ES"||(!r.nacionalidad&&r.nacionalidad_estimada==="ES");
   if(state.origen==="ext") return !!r.nacionalidad && r.nacionalidad!=="ES";
-  if(state.origen==="nc") return !r.nacionalidad&&!r.origen_no_aplica;
+  if(state.origen==="nc") return !r.nacionalidad&&!r.nacionalidad_estimada&&!r.origen_no_aplica;
   return true;
 }
 // Un concierto pasa si está en un género elegido; si en ese género se han elegido estilos concretos, además
@@ -356,7 +379,7 @@ function pasaGrupo(r){
 function visible(r){ return pasaGrupo(r) && pasaTexto(r) && pasaOrigen(r); }
 function byDate(){const m={}; for(const r of DATA){ if(!visible(r)) continue; (m[r.fecha]=m[r.fecha]||[]).push(r);} return m;}
 const nEstilos=()=>Object.values(state.estilos).reduce((n,l)=>n+(l||[]).length,0);
-const esDefecto=()=>DEF_GRUPOS.every(g=>state.grupos.includes(g))&&!state.grupos.includes("fuera de foco")&&!nEstilos()&&state.genericos;
+const esDefecto=()=>DEF_GRUPOS.every(g=>state.grupos.includes(g))&&!NUEVOS_22.some(g=>state.grupos.includes(g))&&!nEstilos()&&state.genericos;
 function nFiltros(){ return (esDefecto()?0:1)+(state.origen!=="todos"?1:0)+(state.q.trim()?1:0); }
 function resumenFiltros(){
   const p=[];
@@ -384,7 +407,7 @@ function extraHTML(){
   return `<div class="chips" role="group" aria-label="Géneros">${chips}</div>
    ${n?`<div class="active">Filtrando: ${esc(resumenFiltros())} · <button id="freset">Borrar filtros</button></div>`:""}`;
 }
-function setGrupos(g){ state.grupos=g; store.set("grupos3",g); }
+function setGrupos(g){ state.grupos=g; store.set("grupos4",g); }
 function bindFilters(){
   const q=document.getElementById("q");
   if(q) q.oninput=()=>{const had=!!state.q; state.q=q.value; if(!!state.q!==had){renderBody(false); const nq=document.getElementById("q"); nq.focus(); nq.setSelectionRange(nq.value.length,nq.value.length);} else renderBody(true);};
@@ -418,7 +441,7 @@ function openSheet(){
   const ARBOL={}; todosLosEstilos().forEach(s=>{const g=grupoDeEstilo(s); (ARBOL[g]=ARBOL[g]||[]).push(s);});
   let sel=[...state.grupos], ori=state.origen, selEst=JSON.parse(JSON.stringify(state.estilos||{})), genOk=state.genericos, q=state.q;
   const el=document.getElementById("sheet");
-  const pasaOri=r=>ori==="todos"||(ori==="es"?r.nacionalidad==="ES":ori==="ext"?r.nacionalidad&&r.nacionalidad!=="ES":!r.nacionalidad);
+  const pasaOri=r=>ori==="todos"||(ori==="es"?(r.nacionalidad||r.nacionalidad_estimada)==="ES":ori==="ext"?r.nacionalidad&&r.nacionalidad!=="ES":!r.nacionalidad&&!r.nacionalidad_estimada&&!r.origen_no_aplica);
   let fut=[], cnt={}, est={}, gen={};
   const contar=()=>{ fut=DATA.filter(r=>r.fecha>=HOY&&pasaTexto(r,q)&&pasaOri(r)); cnt={}; est={}; gen={};
     for(const r of fut){ for(const g of grupos(r)){cnt[g]=(cnt[g]||0)+1; if(r.grupos_generico) gen[g]=(gen[g]||0)+1;}
@@ -441,7 +464,9 @@ function openSheet(){
      ${q.trim()?`<div class="qact"><span>🔎 Buscando <b>«${esc(q.trim())}»</b>: solo cuentan los conciertos que coinciden con la búsqueda.</span><button id="sq">Quitar búsqueda</button></div>`:""}
      <h4>Géneros</h4>
      <div class="rapidos"><button data-rap="def">Los de siempre</button><button data-rap="todos">Todos</button><button data-rap="ninguno">Ninguno</button></div>
-     ${GRUPOS.map(fila).join("")}
+     ${GRUPOS.filter(g=>!g.mas).map(fila).join("")}
+     <h4 style="margin-top:14px">Más géneros</h4>
+     ${GRUPOS.filter(g=>g.mas).map(fila).join("")}
      <p class="hint">Dentro de un género puedes quedarte solo con algunos estilos (los de Discogs; el número es de conciertos próximos).</p>
      <h4>Origen del artista</h4>
      <div class="opts">${ORIGENES.map(([v,t])=>`<button data-o="${v}" aria-pressed="${ori===v}">${esc(t)}</button>`).join("")}</div>
@@ -514,7 +539,7 @@ function card(r){
    <div class="cbody"><div class="art">${esc(r.artista)}</div>
    ${r.invitados&&r.invitados.length?`<div class="sub">+ ${r.invitados.map(esc).join(" + ")}</div>`:""}
    <div class="sub">${h?`<b>${esc(h)}</b> · `:""}${esc(r.sala||"sala sin indicar")}${r.municipio&&r.municipio!=="Madrid"?` · ${esc(r.municipio)}`:""}</div>
-   <div class="tags">${r.nacionalidad?`<span class="flag" title="${esc(pais(r.nacionalidad))}">${flag(r.nacionalidad)}</span>`:""}${estiloTags(r,2)}${estadoMini(r)}</div></div><span class="chev" aria-hidden="true">›</span></a>`;
+   <div class="tags">${r.nacionalidad?`<span class="flag" title="${esc(pais(r.nacionalidad))}">${flag(r.nacionalidad)}</span>`:r.nacionalidad_estimada?`<span class="flag est" title="Probablemente ${esc(pais(r.nacionalidad_estimada))} (estimado por el nombre)">${flag(r.nacionalidad_estimada)}</span>`:""}${estiloTags(r,2)}${estadoMini(r)}</div></div><span class="chev" aria-hidden="true">›</span></a>`;
   }
   // las primeras miniaturas de la vista se piden ya y con prioridad; el resto, al acercarse
   // las primeras de la vista se piden ya; el resto, por la cola (primero las que están en pantalla)
@@ -621,7 +646,8 @@ function viewConcierto(){
      <div class="row"><span class="ic">📅</span><div><div class="v">${esc(fmt(r.fecha,{weekday:"long",day:"numeric",month:"long"}))}</div><div class="s">${r.hora?`${esc(r.hora)} h`:h?"Hora por confirmar: las webs no coinciden":"Hora sin indicar"}</div></div></div>
      <div class="row"><span class="ic">📍</span><div><div class="v">${esc(r.sala||"Sala sin indicar")}</div><div class="s">${esc(r.municipio||"")} · <a href="${esc(mapa)}" target="_blank" rel="noopener">Cómo llegar</a>${sala&&sala.web?` · <a href="${esc(sala.web)}" target="_blank" rel="noopener">Web de la sala</a>`:""}</div></div></div>
      <div class="row"><span class="ic">🎸</span><div>${estiloHTML}</div></div>
-     <div class="row"><span class="ic">${r.nacionalidad?flag(r.nacionalidad):"🏳️"}</span><div>${r.nacionalidad?`<div class="v">${esc(pais(r.nacionalidad))}</div><div class="s">según ${esc(r.nacionalidad_fuente||"la fuente")}</div>`:(r.origen_no_aplica?`<div class="v muted">No aplica</div><div class="s">Es un espectáculo (teatro, musical, danza…), no un artista</div>`:`<div class="v muted">Origen sin confirmar</div><div class="s">Ninguna fuente fiable lo indica</div>`)}</div></div>
+     <div class="row"><span class="ic">${r.nacionalidad?flag(r.nacionalidad):r.nacionalidad_estimada?flag(r.nacionalidad_estimada):"🏳️"}</span><div>${r.nacionalidad?`<div class="v">${esc(pais(r.nacionalidad))}</div><div class="s">según ${esc(r.nacionalidad_fuente||"la fuente")}</div>`:r.nacionalidad_estimada?`<div class="v">Probablemente ${esc(pais(r.nacionalidad_estimada))}</div><div class="s">Estimado: ${esc(r.nacionalidad_estimada_motivo||"nombre en español")}. Ninguna fuente lo confirma</div>`:(r.origen_no_aplica?`<div class="v muted">No aplica</div><div class="s">Es un espectáculo (teatro, musical, danza…), no un artista</div>`:`<div class="v muted">Origen sin confirmar</div><div class="s">Ninguna fuente fiable lo indica</div>`)}</div></div>
+     ${r.homenaje?`<div class="row"><span class="ic">🎤</span><div><div class="v">Tributo a ${esc(r.homenaje.artista)}${r.homenaje.pais?` · ${flag(r.homenaje.pais)} ${esc(pais(r.homenaje.pais))}`:""}</div><div class="s">${r.homenaje.pais?"Origen del artista homenajeado; arriba, el de la banda tributo":"Artista homenajeado (origen sin confirmar)"}</div></div></div>`:""}
      <div class="row"><span class="ic">🎟️</span><div>${r.precio?`<div class="v">${esc(precioTxt(r.precio))}</div><div class="s">según ${r.precio_fuente?`<a href="${esc(r.precio_fuente.url)}" target="_blank" rel="noopener">${esc(r.precio_fuente.nombre.split(" (")[0])}</a>`:"la web"} · puede no incluir gastos</div>`:(r._full?`<div class="v muted">Precio sin indicar</div>`:`<div class="v muted carg">Cargando…</div>`)}</div></div>
     </div>
     <div class="actions">

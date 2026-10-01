@@ -962,11 +962,12 @@
     }
    },
    "debe": [
-    "fuera de foco"
+    "latina"
    ],
    "no_debe": [
     "pop e indie",
-    "rock y metal"
+    "rock y metal",
+    "fuera de foco"
    ]
   },
   {
@@ -1049,10 +1050,11 @@
     }
    },
    "debe": [
-    "fuera de foco"
+    "pop comercial"
    ],
    "no_debe": [
-    "pop e indie"
+    "pop e indie",
+    "fuera de foco"
    ]
   },
   {
@@ -1149,10 +1151,11 @@
     }
    },
    "debe": [
-    "fuera de foco"
+    "pop comercial"
    ],
    "no_debe": [
-    "pop e indie"
+    "pop e indie",
+    "fuera de foco"
    ]
   },
   {
@@ -1251,10 +1254,11 @@
     }
    },
    "debe": [
-    "fuera de foco"
+    "urbana y hip hop"
    ],
    "no_debe": [
-    "pop e indie"
+    "pop e indie",
+    "fuera de foco"
    ]
   },
   {
@@ -1353,10 +1357,11 @@
     }
    },
    "debe": [
-    "fuera de foco"
+    "pop comercial"
    ],
    "no_debe": [
-    "pop e indie"
+    "pop e indie",
+    "fuera de foco"
    ]
   },
   {
@@ -1440,11 +1445,12 @@
     }
    },
    "debe": [
-    "fuera de foco"
+    "musicales y espectáculos"
    ],
    "no_debe": [
     "punk y garage",
-    "rock y metal"
+    "rock y metal",
+    "fuera de foco"
    ]
   },
   {
@@ -1592,10 +1598,11 @@
     }
    },
    "debe": [
-    "fuera de foco"
+    "jazz y swing"
    ],
    "no_debe": [
-    "rock y metal"
+    "rock y metal",
+    "fuera de foco"
    ]
   },
   {
@@ -1655,10 +1662,11 @@
     }
    },
    "debe": [
-    "fuera de foco"
+    "electrónica"
    ],
    "no_debe": [
-    "rock y metal"
+    "rock y metal",
+    "fuera de foco"
    ]
   },
   {
@@ -1860,10 +1868,11 @@
     }
    },
    "debe": [
-    "fuera de foco"
+    "electrónica"
    ],
    "no_debe": [
-    "rock y metal"
+    "rock y metal",
+    "fuera de foco"
    ]
   },
   {
@@ -1956,9 +1965,11 @@
     }
    },
    "debe": [
-    "fuera de foco"
+    "pop comercial"
    ],
-   "no_debe": []
+   "no_debe": [
+    "fuera de foco"
+   ]
   },
   {
    "artista": "EUROPE",
@@ -4625,10 +4636,11 @@
     }
    },
    "debe": [
-    "fuera de foco"
+    "urbana y hip hop"
    ],
    "no_debe": [
-    "rock y metal"
+    "rock y metal",
+    "fuera de foco"
    ],
    "homonimo": true
   },
@@ -4814,10 +4826,11 @@
     }
    },
    "debe": [
-    "fuera de foco"
+    "urbana y hip hop"
    ],
    "no_debe": [
-    "punk y garage"
+    "punk y garage",
+    "fuera de foco"
    ],
    "homonimo": true
   }

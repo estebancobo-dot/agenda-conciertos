@@ -76,6 +76,19 @@ def categorias_de(estilo: str | None) -> list[str]:
     return out
 
 
+@lru_cache(maxsize=1)
+def _titulo_cat():
+    d = load_json("estilos_map.json").get("titulo_a_categoria", {})
+    return [(norm(k), v) for k, v in d.items() if not k.startswith("_")]
+
+
+def grupo_de_titulo(titulo: str) -> str | None:
+    """Grupo que decide el propio título: "Candlelight…" → otros, "… el musical" → musicales y espectáculos,
+    "Espectáculo flamenco…" → flamenco y copla, "DJ set" → electrónica. None si el título no dice nada."""
+    n = f" {norm(titulo)} "
+    return next((v for k, v in _titulo_cat() if f" {k} " in n), None)
+
+
 def titulo_fuera_de_foco(titulo: str) -> bool:
     _, _, titulo_kw, _ = _mapa()
     n = f" {norm(titulo)} "
@@ -159,7 +172,7 @@ def categorias_de_ficha(generos: list[str], estilos: list[str]) -> list[str]:
         c = por_estilo.get(norm(e)) or por_genero.get(genero_de_estilo(e) or "", None)
         if c is None and genero_de_estilo(e) is None:
             continue
-        c = c or "fuera de foco"
+        c = c or "fuera de foco"  # género sin grupo propio (no debería quedar ninguno)
         if c not in cats:
             cats.append(c)
     for g in generos:
@@ -230,10 +243,12 @@ def revisar_homonimos(evs: list[dict], pesos_agenda: dict[str, float] | None = N
                 pesos[g] = pesos.get(g, 0) + e["peso"]
         return set(por_consenso(pesos))
 
+    foco = set(_mapa()[3]) - {"sin clasificar"}
+
     def lado(gs):
         if not gs:
             return None
-        return "fuera" if gs == {"fuera de foco"} else ("foco" if "fuera de foco" not in gs else "mixto")
+        return "fuera" if not (gs & foco) else ("foco" if gs <= foco else "mixto")
 
     otras = [e for e in evs if not e.get("verificar") and not e.get("debil")]
     a, b = lado(grupos(dudosas)), lado(grupos(otras, pesos_agenda))
@@ -287,13 +302,15 @@ def grupos_de_evidencias(evs: list[dict], grupos_agenda: list[str] | None = None
     return grupos, estilos
 
 
+NO_GRUPO_CONCIERTO = ("fuera de foco", "sin clasificar", "musicales y espectáculos")
+
+
 def es_espectaculo(etiquetas: list[str]) -> bool:
     """La agenda lo presenta como teatro, musical, danza, humor… y ninguna etiqueta indica un concierto."""
     if not etiquetas:
         return False
     no = [e for e in etiquetas if NO_CONCIERTO.search(norm(e))]
-    si = [e for e in etiquetas if e not in no and any(c not in ("fuera de foco", "sin clasificar")
-                                                     for c in categorias_de(e))]
+    si = [e for e in etiquetas if e not in no and any(c not in NO_GRUPO_CONCIERTO for c in categorias_de(e))]
     return bool(no) and not si
 
 
@@ -372,7 +389,8 @@ _FAMILIAS_MB = [
     (r"\b(darkwave|dark wave)\b", "Darkwave", "estilo"), (r"\b(coldwave|cold wave|minimal wave|minimal synth)\b", "Coldwave", "estilo"),
     (r"\b(ebm|electro industrial|aggrotech|futurepop)\b", "EBM", "estilo"), (r"\bsynth ?pop\b", "Synth-pop", "estilo"),
     (r"\b(house|techno|trance|edm|electro\w*|dubstep|drum and bass|synth\w*|ambient|idm)\b", "Electronic", "genero"),
-    (r"\b(reggaeton|cumbia|salsa|bachata|latin|flamenco|rumba|bolero|tango|son)\b", "Latin", "genero"),
+    (r"\b(flamenco|rumba flamenca|copla|sevillanas|bulerias)\b", "Flamenco", "estilo"),
+    (r"\b(reggaeton|cumbia|salsa|bachata|latin|rumba|bolero|tango|son)\b", "Latin", "genero"),
     (r"\b(soul|funk|r&b|rnb|disco)\b", "Funk / Soul", "genero"), (r"\b(reggae|dub|dancehall)\b", "Reggae", "genero"),
     (r"\b(classical|orchestral|opera|baroque|romantic|symphon\w*|choral)\b", "Classical", "genero"),
     (r"\bpop\b", "Pop", "genero"), (r"\brock\b", "Rock", "genero"),

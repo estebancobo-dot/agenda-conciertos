@@ -428,9 +428,11 @@ def buscar_lastfm_bio(f: Fetcher, nombre: str, mbid: str | None, key: str) -> di
 
 
 def buscar_en_agenda(f: Fetcher, nombre: str, urls: list[str]) -> dict:
-    """País que la propia agenda dice del artista en la página del concierto ("la banda madrileña X")."""
-    from .origen import pais_en_texto
+    """Lo que la propia agenda dice del artista en la página del concierto: de dónde es ("la banda madrileña X")
+    y qué estilo hace ("X es un grupo de rock alternativo y power pop")."""
+    from .origen import estilos_en_texto, pais_en_texto
     import requests
+    out: dict = {"v": VERSION_AGENDA, "estilos": []}
     for u in urls[:2]:
         try:
             html = f.get(u)
@@ -443,10 +445,21 @@ def buscar_en_agenda(f: Fetcher, nombre: str, urls: list[str]) -> dict:
         s = BeautifulSoup(html, "html.parser")
         for t in s(["script", "style", "nav", "header", "footer", "form", "aside", "noscript"]):
             t.decompose()
-        pais, frase = pais_en_texto(s.get_text("\n"), nombre)
-        if pais:
-            return {"encontrado": True, "pais": pais, "frase": frase, "url": u}
-    return {"encontrado": False, "motivo": "la agenda no dice de dónde es"}
+        texto = s.get_text("\n")
+        pais, frase = pais_en_texto(texto, nombre)
+        if pais and not out.get("pais"):
+            out.update(pais=pais, frase=frase, url=u)
+        for e in estilos_en_texto(texto, nombre):
+            if e not in out["estilos"]:
+                out["estilos"].append(e)
+                out.setdefault("url_estilos", u)
+    out["encontrado"] = bool(out.get("pais") or out["estilos"])
+    if not out["encontrado"]:
+        out["motivo"] = "la agenda no dice de dónde es ni qué estilo hace"
+    return out
+
+
+VERSION_AGENDA = 2  # 2: también el estilo. Las lecturas de una versión anterior se repiten
 
 
 # ------------------------------------------------------------------ MusicBrainz (géneros votados por la comunidad)
@@ -544,11 +557,22 @@ def _mb_sin_area(ent: dict) -> bool:
     return bool(mb.get("encontrado") and not mb.get("pais") and "area" not in mb)
 
 
+def _falta_agenda(ent: dict) -> bool:
+    """Falta leer la página del concierto: sin país o sin estilo en las webs de música, y sin lectura (o con una
+    lectura de una versión anterior, que no buscaba el estilo)."""
+    if (ent.get("agenda") or {}).get("v") == VERSION_AGENDA:
+        return False
+    f = ficha(ent) or {}
+    return not f.get("pais") or not f.get("estilos")
+
+
 def _falta_origen(ent: dict, clave_lastfm) -> bool:
-    """Sin país en ninguna fuente y aún sin mirar la biografía de Last.fm o la página de la agenda."""
+    """Sin país o estilo en ninguna fuente y aún sin mirar la biografía de Last.fm o la página de la agenda."""
+    if _falta_agenda(ent):
+        return True
     if (ficha(ent) or {}).get("pais"):
         return False
-    return "agenda" not in ent or (bool(clave_lastfm) and (ent.get("lastfm") or {}).get("encontrado")
+    return (bool(clave_lastfm) and (ent.get("lastfm") or {}).get("encontrado")
                                    and "lastfm_bio" not in ent)
 
 
@@ -585,6 +609,10 @@ def enriquecer(recs: list[dict], cache: dict, hoy: date, presupuesto_seg: float 
     # cabeza de cartel (scraper/nombres.py)
     candidatos = [(r, n) for r in sorted(recs, key=lambda r: (not r["en_foco"], r["fecha"])) for n in claves_ficha(r)]
     solo_agenda: list[tuple[str, str, list[str]]] = []  # tributos, espectáculos…: solo lo que dice la agenda
+    # el artista al que homenajea cada tributo (Queen, Fleetwood Mac…): su ficha da el origen del homenajeado y
+    # el estilo del tributo
+    from .nombres import homenajeado
+    candidatos += [(r, h) for r in recs for h in [homenajeado(r["artista"])] if h]
     for r in recs:
         # tributos y títulos que no se buscan en webs de música ("THE RUMORS: TRIBUTO FLEETWOOD MAC"): la banda
         # tributo no es el artista homenajeado, pero la agenda puede decir de dónde es ("banda tributo madrileña")
@@ -664,7 +692,7 @@ def enriquecer(recs: list[dict], cache: dict, hoy: date, presupuesto_seg: float 
             lf = ent["lastfm"]
             mb = (ent.get("musicbrainz") or {}).get("mbid") if lf.get("identificado_por") != "coincidencia por nombre" else None
             paso("lastfm_bio", buscar_lastfm_bio, fetcher_lf, nombre, mb, clave_lastfm)
-        if not (ficha(ent) or {}).get("pais") and "agenda" not in ent and urls_de.get(k):
+        if _falta_agenda(ent) and urls_de.get(k):
             paso("agenda", buscar_en_agenda, fetcher_ag, nombre, urls_de[k])
         return k, ent
 
@@ -705,7 +733,7 @@ def enriquecer(recs: list[dict], cache: dict, hoy: date, presupuesto_seg: float 
             continue
         vistos_ag.add(k)
         ag = ent.get("agenda") or {}
-        if not ag or str(ag.get("motivo", "")).startswith("error") or \
+        if not ag or str(ag.get("motivo", "")).startswith("error") or ag.get("v") != VERSION_AGENDA or \
                 ent.get("fecha", "") < (hoy - timedelta(days=CADUCIDAD_NO)).isoformat():
             pend_ag.append((k, nombre, urls))
     with ThreadPoolExecutor(max_workers=8) as ex:

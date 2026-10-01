@@ -68,3 +68,43 @@ def test_origen_por_agenda():
                                                       "frase": "The Rumors es una banda tributo madrileña"}}}
     origen_por_agenda(r, cache)
     assert r["nacionalidad"] == "ES" and "x.es" in r["nacionalidad_fuente"]
+
+
+def test_estimacion_por_nombre():
+    from scraper.origen import pais_estimado
+    assert pais_estimado("FELIPE ARCE CUARTETO")[0] == "ES"
+    assert pais_estimado("Los Amados")[0] == "ES"
+    assert pais_estimado("LUCÍA FERNÁNDEZ")[0] == "ES"
+    for n in ("80 REDNECKS", "Eternal", "Max Cooper", "Noel McKay", "THE BANG", "Noches de Piano Jazz"):
+        assert pais_estimado(n)[0] is None, n
+
+
+def test_homenajeado():
+    from scraper.nombres import homenajeado
+    assert homenajeado("THE RUMORS: TRIBUTO FLEETWOOD MAC") == "FLEETWOOD MAC"
+    assert homenajeado("LA VAN GOGH (TRIB. LA OREJA DE VAN GOGH)") == "LA OREJA DE VAN GOGH"
+    assert homenajeado("Queen Tribute Band") == "Queen"
+    assert homenajeado("Brit Floyd - The Pink Floyd Tribute") == "Pink Floyd"
+    assert homenajeado("METAL on METAL: tribute Festival") is None
+    assert homenajeado("Leiva") is None
+
+
+def test_estilos_en_texto():
+    from scraper.origen import estilos_en_texto
+    assert estilos_en_texto("Claim es un grupo murciano de rock alternativo y post punk.", "Claim") == \
+        ["rock alternativo", "post punk"]
+    assert estilos_en_texto("Haches es una banda española de rock urbano formada en 2019.", "Haches") == ["rock urbano"]
+    assert estilos_en_texto("La banda de power pop Los Bengala presenta disco.", "Los Bengala") == ["power pop"]
+    assert estilos_en_texto("Thee Nameshakes, a Glasgow garage rock band.", "Thee Nameshakes") == ["garage rock"]
+    assert estilos_en_texto("Un concierto de rock en Madrid.", "Claim") == []
+
+
+def test_grupos_nuevos():
+    from scraper.clasificar import categoria_de, grupo_de_titulo
+    assert categoria_de("Jazz/Swing") == "jazz y swing"
+    assert categoria_de("Flamenco Capital") == "flamenco y copla"
+    assert categoria_de("Soul/Funk") == "soul, funk y r&b"
+    assert categoria_de("Rock urbano") == "rock y metal"
+    assert grupo_de_titulo("Tributo a Queen. Candlelight") == "clásica y lírica"
+    assert grupo_de_titulo("Los Miserables, el musical") == "musicales y espectáculos"
+    assert grupo_de_titulo("Leiva") is None

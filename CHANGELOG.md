@@ -1,5 +1,16 @@
 # Versiones
 
+## 2.22.0 — 2026-10-01
+
+Catálogo más inteligente: géneros con entidad propia, estilo leído en la página del concierto, origen de tributos y origen estimado por el nombre.
+
+- **"Otros géneros" se reparte en 11 grupos propios**, con sus estilos de Discogs como el resto: jazz y swing, soul, funk y R&B, flamenco y copla, urbana y hip hop, latina, electrónica, clásica y lírica (los Candlelight incluidos), reggae y dub, músicas del mundo, pop comercial, y musicales y espectáculos. "Otros" queda solo para lo que no es de ningún género (infantil, karaoke, tardeo): de 1.299 conciertos a 11. La taxonomía incluye ahora los géneros y estilos de Discogs de Jazz, Funk / Soul, Hip Hop, Latin, Classical, Reggae, Stage & Screen y toda la electrónica. En los filtros salen en "Más géneros". Quien tenía marcado "Otros géneros" los sigue viendo todos.
+- **El estilo, también desde la página del concierto**: "Claim es un grupo murciano de rock alternativo y post punk" → Alternative Rock y Post-Punk. Cuenta como la etiqueta de una agenda más, así que concreta las etiquetas paraguas ("Pop / Rock", "Músicas negras") y da estilo a quien no tiene ficha. Sin ficha, los estilos de Discogs que nombran las propias etiquetas ("Jazz/Swing" → Swing). Conciertos sin estilo: de 2.060 a ~1.580 antes de leer las páginas.
+- **Lo que dice la página de la agenda se aplica siempre**: antes, el origen leído allí se perdía si el artista no estaba en ninguna web de música, que es justo el caso de los grupos locales.
+- **Tributos con dos orígenes**: el de la banda tributo (el del concierto) y el del artista homenajeado ("Tributo a Fleetwood Mac" → Fleetwood Mac, Reino Unido). Si el tributo no tiene estilo, se usa el del homenajeado.
+- **Origen estimado por el nombre**: si ninguna fuente dice de dónde es y el nombre está claramente en español ("Felipe Arce Cuarteto", "Lucía Fernández"), sale como "probablemente España", con la bandera atenuada y el motivo en la ficha. No se estima en festivales, ciclos, latina ni urbana. Cuenta en el filtro "Españoles" y no en "Origen sin confirmar". Las palabras propias del español y del inglés salen de las frecuencias de wordfreq (data/palabras.json).
+- La validación diaria mide la calidad del catálogo: conciertos en "Otros", sin clasificar, con etiqueta genérica, sin estilo y sin origen.
+
 ## 2.21.0 — 2026-10-01
 
 - **Fichas más rápidas**: 75 minutos por pasada (antes 45), 8 artistas a la vez y primero los que no tienen origen. Una pasada ya recorre todos los pendientes.

@@ -214,6 +214,8 @@ def etiquetas_por_fuente(r: dict) -> list[list[str]]:
         grupo = e["fuente"].split(" (")[0]  # las variantes de una misma web cuentan una vez
         if e["estilo"] not in por.setdefault(grupo, []):
             por[grupo].append(e["estilo"])
+    if (r.get("estilo_texto") or {}).get("estilos"):  # lo que dice el texto de la página: una agenda más
+        por["texto de la agenda"] = list(r["estilo_texto"]["estilos"])
     return list(por.values())
 
 
@@ -229,17 +231,91 @@ def ficha_de(r: dict, cache: dict) -> dict | None:
     return None
 
 
+def _lecturas_agenda(r: dict, cache: dict) -> list[dict]:
+    """Lo leído en la página del concierto para este artista (por cada nombre probado y por el título)."""
+    from .artistas import clave_agenda
+    from .nombres import claves_ficha
+    out = []
+    for k in [norm(n) for n in claves_ficha(r)] + [clave_agenda(r["artista"])]:
+        ent = cache.get(k) or {}
+        if (ent.get("agenda") or {}).get("encontrado"):
+            out.append(ent)
+    return out
+
+
+def estilos_de_agenda(r: dict, cache: dict) -> None:
+    """Estilos que dice la página del concierto ("X es un grupo de rock alternativo"): cuentan como la etiqueta
+    de una agenda más, así que concretan las etiquetas paraguas ("Pop / Rock") y dan estilo a quien no lo tiene."""
+    estilos, url = [], None
+    for ent in _lecturas_agenda(r, cache):
+        for e in ent["agenda"].get("estilos") or []:
+            if e not in estilos:
+                estilos.append(e)
+                url = url or ent["agenda"].get("url_estilos") or ent["agenda"].get("url")
+    if estilos:
+        r["estilo_texto"] = {"estilos": estilos[:5], "url": url}
+    else:
+        r.pop("estilo_texto", None)
+
+
 def origen_por_agenda(r: dict, cache: dict) -> None:
-    """Tributos y espectáculos que no se buscan en webs de música: el origen que dice la página de la agenda."""
-    from .artistas import agenda_valida, clave_agenda
+    """El origen que dice la página de la agenda, aunque el artista no esté en ninguna web de música (grupos
+    locales) o no se busque en ellas (tributos, espectáculos con intérprete)."""
+    from .artistas import agenda_valida
     if r.get("nacionalidad"):
         return
-    ent = cache.get(clave_agenda(r["artista"])) or {}
-    ag = ent.get("agenda") or {}
-    if agenda_valida(ag, ent.get("nombre")):
-        r["nacionalidad"] = ag["pais"]
-        r["nacionalidad_fuente"] = f"la agenda ({ag['url'].split('/')[2]}): «{ag.get('frase', '')[:160]}»"
-        r["origen_no_aplica"] = None
+    for ent in _lecturas_agenda(r, cache):
+        ag = ent["agenda"]
+        if agenda_valida(ag, ent.get("nombre")):
+            r["nacionalidad"] = ag["pais"]
+            r["nacionalidad_fuente"] = f"la agenda ({ag['url'].split('/')[2]}): «{ag.get('frase', '')[:160]}»"
+            r["origen_no_aplica"] = None
+            return
+
+
+def tributo_y_estimacion(r: dict, cache: dict) -> None:
+    """Dos cosas que se completan al final, cuando ya se sabe todo lo demás:
+
+    - Tributos: a quién homenajean y de dónde es ("THE RUMORS: TRIBUTO FLEETWOOD MAC" → Fleetwood Mac, Reino
+      Unido). El origen del concierto sigue siendo el de la banda tributo; el del homenajeado se muestra aparte.
+      Si el tributo no tiene estilo, se usa el del homenajeado (un tributo a Queen es hard rock).
+    - Origen estimado: si ninguna fuente dice de dónde es el artista y su nombre está en español, "probablemente
+      España" (se muestra como estimación, no como dato). No se estima en latina ni urbana, donde es habitual
+      que sean de Latinoamérica."""
+    from .artistas import ficha, nombre_en_titulo
+    from .clasificar import grupos_de_evidencias
+    from .nombres import claves_ficha, homenajeado
+    from .origen import pais_estimado
+    h = homenajeado(r["artista"])
+    r.pop("homenaje", None)
+    if h:
+        hf = ficha(cache.get(norm(h)))
+        r["homenaje"] = {"artista": h, "pais": (hf or {}).get("pais")}
+        if hf and hf.get("evidencias"):
+            cats, estilos = grupos_de_evidencias(hf["evidencias"])
+            previos = [g for g in r.get("grupos") or [] if g not in ("sin clasificar", "tributos y versiones")]
+            if cats and not previos or r.get("grupos_generico"):
+                r["grupos"] = ["tributos y versiones"] + [g for g in cats if g != "tributos y versiones"]
+                r["categoria"] = r["grupos"][0]
+                r["grupos_generico"] = False
+                r["grupos_segun"] = [f"estilo de {h} (homenajeado)"]
+            if not r.get("estilos_discogs") and estilos:
+                r["estilos_discogs"] = estilos[:5]
+    r.pop("nacionalidad_estimada", None)
+    r.pop("nacionalidad_estimada_motivo", None)
+    if r.get("nacionalidad") or r.get("origen_no_aplica"):
+        return
+    if {"latina", "urbana y hip hop"} & set(r.get("grupos") or []):
+        return
+    nombre = nombre_en_titulo(r["artista"]) if h else (claves_ficha(r)[1:2] or [r["artista"]])[0]
+    # "McEnroe presenta «La vida libre»", "DEPEDRO presentando su nuevo disco": solo el nombre, no el del disco
+    nombre = re.split(r"\s+(?:presenta\w*|en concierto|nuevo disco|su disco|gira|tour)\b|[«\"“]", nombre, flags=re.I)[0]
+    if re.search(r"\b(festival|fest|certamen|ciclo|concierto de|conciertos|versiones|jam|vermu|tardeo|apertura|clausura|"
+                 r"fiestas?|muestra|encuentro|gala|noche de|programa|foro|jornadas?|congreso|feria|expo)\b", norm(nombre)):
+        return  # un festival o un ciclo no es un artista: no se estima nada
+    pais, motivo = pais_estimado(nombre)
+    if pais:
+        r["nacionalidad_estimada"], r["nacionalidad_estimada_motivo"] = pais, motivo
 
 
 def aplicar_ficha(r: dict, f: dict | None) -> None:
@@ -252,13 +328,13 @@ def aplicar_ficha(r: dict, f: dict | None) -> None:
        comparable, no todos los que aparezcan.
     3. Si no, de las etiquetas de las agendas. Las genéricas ("Pop / Rock") se marcan como tales."""
     from .clasificar import (contexto_de_fuentes, en_foco, es_espectaculo, grupos_de_agenda, grupos_de_evidencias,
-                             pesos_de_agenda, revisar_homonimos, titulo_fuera_de_foco)
+                             grupo_de_titulo, pesos_de_agenda, revisar_homonimos)
     etiquetas = etiquetas_por_fuente(r)
     generico, estilos, segun = False, [], []
     r.pop("estilo_descartado", None)
     r.pop("homonimo_descartado", None)
     if es_espectaculo([e for es in etiquetas for e in es]):
-        f, cats, origen = None, ["fuera de foco"], "agenda (espectáculo, no concierto)"
+        f, cats, origen = None, ["musicales y espectáculos"], "agenda (espectáculo, no concierto)"
         # el origen que viniera de buscar el título como artista (Wikidata, MusicBrainz…) tampoco vale
         if str(r.get("nacionalidad_fuente") or "").startswith(("Wikidata", "Wikipedia", "Discogs", "MusicBrainz")):
             r["nacionalidad"], r["nacionalidad_fuente"] = None, None
@@ -295,12 +371,17 @@ def aplicar_ficha(r: dict, f: dict | None) -> None:
             cats = ["sin clasificar"]
     if "tributos y versiones" in r.get("categorias", []) and "tributos y versiones" not in cats:
         cats.append("tributos y versiones")
-    if titulo_fuera_de_foco(r["artista"]):
-        cats, generico = ["fuera de foco"], False
+    if grupo_de_titulo(r["artista"]):
+        cats, generico = [grupo_de_titulo(r["artista"])], False
     r["ficha"] = f
     r["grupos"], r["grupos_origen"], r["grupos_generico"], r["grupos_segun"] = cats, origen, generico, segun
     r["categoria"] = cats[0]
     r["en_foco"] = en_foco(cats)
+    if not estilos and origen.startswith("agenda"):
+        # sin ficha: los estilos de Discogs que nombran las propias etiquetas ("Jazz/Swing" → Swing, "rock
+        # alternativo" → Alternative Rock), solo los de los grupos asignados
+        from .clasificar import discogs, grupo_de
+        estilos = [e for e in discogs([x for es in etiquetas for x in es])[0] if grupo_de(e, "estilo") in cats]
     r["estilos_discogs"] = estilos[:5]
     from .clasificar import grupo_de
     r["genero_discogs"] = [g for g in ((f or {}).get("generos") or []) if grupo_de(g, "genero") in cats] \
@@ -577,8 +658,10 @@ def ejecutar(hoy: date | None = None, solo: list[str] | None = None, fetcher: Fe
         guardar_fichas()
     from .artistas import ficha
     for r in recs:
+        estilos_de_agenda(r, cache_art)
         aplicar_ficha(r, ficha_de(r, cache_art))
         origen_por_agenda(r, cache_art)
+        tributo_y_estimacion(r, cache_art)
     # MusicBrainz (solo para los que siguen sin nacionalidad)
     mb_stats = {"desactivado": True}
     if musicbrainz:
@@ -668,8 +751,10 @@ def ejecutar_fichas(hoy: date | None = None, presupuesto_seg: float = 3000) -> d
     _write("artistas.json", cache_art)
     previos = _grupos_previos(recs)
     for r in recs:
+        estilos_de_agenda(r, cache_art)
         aplicar_ficha(r, ficha_de(r, cache_art))
         origen_por_agenda(r, cache_art)
+        tributo_y_estimacion(r, cache_art)
     _write("concerts.json", datos)
     escribir_csv(recs, DATA / "concerts.csv")
     informe = _read("informe.json", {})
@@ -690,7 +775,9 @@ def reaplicar_fichas() -> None:
         return
     cache = _read("artistas.json", {})
     for r in recs:
+        estilos_de_agenda(r, cache)
         aplicar_ficha(r, ficha_de(r, cache))
         origen_por_agenda(r, cache)
+        tributo_y_estimacion(r, cache)
     _write("concerts.json", datos)
     escribir_csv(recs, DATA / "concerts.csv")

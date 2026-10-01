@@ -10,7 +10,7 @@ import hashlib
 import re
 from dataclasses import dataclass, field
 
-from .clasificar import categoria_de, categorias_de, discogs, en_foco, titulo_fuera_de_foco
+from .clasificar import categoria_de, categorias_de, discogs, en_foco, grupo_de_titulo, titulo_fuera_de_foco
 from .model import RawEvent, Source
 from .normalize import clean, contiene, es_generico, es_relleno, misma_sala, norm, parecido, parecido_flexible
 
@@ -228,8 +228,9 @@ def construir(cluster: Cluster, municipio_de) -> dict:
     if not cats:
         cats = ["sin clasificar"]
     categoria = next((categoria_de(e["estilo"]) for e in estilos if categoria_de(e["estilo"])), None) or cats[0]
-    if titulo_fuera_de_foco(artista):  # Candlelight, musicales…: fuera de foco aunque la fuente diga 'tributo'
-        cats, categoria = ["fuera de foco"], "fuera de foco"
+    if grupo_de_titulo(artista):  # Candlelight, musicales…: lo decide el título aunque la fuente diga 'tributo'
+        cats = [grupo_de_titulo(artista)]
+        categoria = cats[0]
     estilos_d, generos_d = discogs([e["estilo"] for e in estilos])
     # nacionalidad solo si la da la fuente
     nac = next(((i.ev.nacionalidad, i.src.nombre) for i in sorted(items, key=lambda i: i.src.prioridad)
@@ -397,8 +398,8 @@ def recalcular_categorias(r: dict) -> None:
                 cats.append(c)
     if not cats:
         cats = ["sin clasificar"]
-    if titulo_fuera_de_foco(r["artista"]):
-        cats = ["fuera de foco"]
+    if grupo_de_titulo(r["artista"]):
+        cats = [grupo_de_titulo(r["artista"])]
     r["categorias"] = cats
     if r.get("categoria") not in cats:
         r["categoria"] = cats[0]

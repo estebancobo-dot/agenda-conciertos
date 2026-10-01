@@ -245,9 +245,26 @@ def publicacion(b):
         if not (x.ok and (x.headers.get("content-type") or "").startswith("image/")):
             malas.append(f"{u} (HTTP {x.status})")
     check("Publicación", "Miniaturas y fotos propias servidas", len(malas), ok=not malas, detalle=", ".join(malas[:3]))
-    sin_origen = sum(1 for r in futuros if not r.get("nacionalidad") and not r.get("origen_no_aplica"))
-    check("Publicación", "Conciertos próximos sin origen del artista", round(100 * sin_origen / max(1, len(futuros)), 1),
-          aviso=40, grave=False, unidad="%", detalle=f"{sin_origen} de {len(futuros)}")
+    n = max(1, len(futuros))
+    sin_origen = sum(1 for r in futuros if not r.get("nacionalidad") and not r.get("nacionalidad_estimada")
+                     and not r.get("origen_no_aplica"))
+    estimados = sum(1 for r in futuros if not r.get("nacionalidad") and r.get("nacionalidad_estimada"))
+    check("Publicación", "Conciertos próximos sin origen del artista (ni confirmado ni estimado)",
+          round(100 * sin_origen / n, 1), aviso=30, fallo=50, unidad="%",
+          detalle=f"{sin_origen} de {len(futuros)}; además {estimados} estimados por el nombre")
+    # catálogo: que casi todo tenga un género propio y un estilo
+    otros = sum(1 for r in futuros if "fuera de foco" in (r.get("grupos") or []))
+    check("Publicación", "Conciertos en 'Otros' (sin género propio)", round(100 * otros / n, 1), aviso=3, fallo=10,
+          unidad="%", detalle=f"{otros} de {len(futuros)}")
+    sin_clas = sum(1 for r in futuros if "sin clasificar" in (r.get("grupos") or []))
+    check("Publicación", "Conciertos sin clasificar", round(100 * sin_clas / n, 1), aviso=5, fallo=15, unidad="%",
+          detalle=f"{sin_clas} de {len(futuros)}")
+    genericos = sum(1 for r in futuros if r.get("grupos_generico"))
+    check("Publicación", "Conciertos con etiqueta genérica (\"Pop / Rock\", \"Músicas negras\")",
+          round(100 * genericos / n, 1), aviso=8, fallo=25, unidad="%", detalle=f"{genericos} de {len(futuros)}")
+    sin_estilo = sum(1 for r in futuros if not r.get("estilos_discogs") and not r.get("origen_no_aplica"))
+    check("Publicación", "Conciertos sin ningún estilo", round(100 * sin_estilo / n, 1), aviso=30, fallo=60, unidad="%",
+          detalle=f"{sin_estilo} de {len(futuros)}")
     # las fotos que no son propias pasan por wsrv.nl, que tarda 1-3 s con las que nadie ha pedido antes
     con_img = [r for r in futuros if r.get("img")]
     for campo, nombre_c in (("mini", "miniatura"), ("foto", "foto de ficha")):

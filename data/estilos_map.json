@@ -1,5 +1,5 @@
 {
- "_descripcion": "Traduce el estilo que da cada fuente a una categoría. 'exacto' se compara tras normalizar; si no hay coincidencia exacta se aplican las 'palabras_clave' en orden (la primera que aparezca como palabra gana). Si la fuente no da estilo: 'sin clasificar'. 'titulo_fuera_de_foco': palabras en el título del evento que lo marcan fuera de foco (p. ej. Candlelight, musicales). Si un estilo no encaja en nada se queda 'sin clasificar' y aparece en el informe para añadirlo aquí. Un valor puede ser una lista de categorías cuando el estilo de la fuente abarca varias (p. ej. 'Pop / Rock').",
+ "_descripcion": "Traduce el estilo que da cada fuente a una categoría. 'exacto' se compara tras normalizar; si no hay coincidencia exacta se aplican las 'palabras_clave' en orden (la primera que aparezca como palabra gana). Si la fuente no da estilo: 'sin clasificar'. 'titulo_fuera_de_foco': palabras en el título del evento que lo marcan fuera de foco (p. ej. Candlelight, musicales). Si un estilo no encaja en nada se queda 'sin clasificar' y aparece en el informe para añadirlo aquí. Un valor puede ser una lista de categorías cuando el estilo de la fuente abarca varias (p. ej. 'Pop / Rock'). Los grupos que no están 'en_foco' (jazz, soul, flamenco, urbana, latina, electrónica, clásica, reggae, músicas del mundo, pop comercial, musicales) tienen entidad propia; 'fuera de foco' queda para lo que no es de ningún género (Candlelight, infantil, karaoke…).",
  "categorias": [
   "rock y metal",
   "pop e indie",
@@ -9,6 +9,17 @@
   "punk y garage",
   "cantautor",
   "tributos y versiones",
+  "jazz y swing",
+  "soul, funk y r&b",
+  "flamenco y copla",
+  "urbana y hip hop",
+  "latina",
+  "electrónica",
+  "clásica y lírica",
+  "reggae",
+  "músicas del mundo",
+  "pop comercial",
+  "musicales y espectáculos",
   "fuera de foco",
   "sin clasificar"
  ],
@@ -30,7 +41,7 @@
   "Pop-rock/Indie": "pop e indie",
   "Pop": [
    "pop e indie",
-   "fuera de foco"
+   "pop comercial"
   ],
   "Post-Punk": "punk y garage",
   "Rock/Rock Alternativo": "rock y metal",
@@ -40,43 +51,43 @@
   "Metal/Rock duro": "rock y metal",
   "Cantautores": "cantautor",
   "Versiones/Tributos": "tributos y versiones",
-  "Jazz/Swing": "fuera de foco",
-  "Soul/Funk": "fuera de foco",
-  "Mestizaje/Fusión": "fuera de foco",
-  "World Music/Música Étnica": "fuera de foco",
-  "Urbana/Reggaeton/Trap": "fuera de foco",
-  "Musicales/Teatro musical": "fuera de foco",
-  "Electrónica": "fuera de foco",
-  "Electrónica/Dance": "fuera de foco",
-  "Flamenco": "fuera de foco",
-  "Clásica": "fuera de foco",
-  "Música Clásica": "fuera de foco",
-  "Latina": "fuera de foco",
-  "Latino": "fuera de foco",
-  "Hip Hop/Rap": "fuera de foco",
-  "Reggae/Ska": "fuera de foco",
-  "Copla": "fuera de foco",
-  "Rumba": "fuera de foco",
+  "Jazz/Swing": "jazz y swing",
+  "Soul/Funk": "soul, funk y r&b",
+  "Mestizaje/Fusión": "músicas del mundo",
+  "World Music/Música Étnica": "músicas del mundo",
+  "Urbana/Reggaeton/Trap": "urbana y hip hop",
+  "Musicales/Teatro musical": "musicales y espectáculos",
+  "Electrónica": "electrónica",
+  "Electrónica/Dance": "electrónica",
+  "Flamenco": "flamenco y copla",
+  "Clásica": "clásica y lírica",
+  "Música Clásica": "clásica y lírica",
+  "Latina": "latina",
+  "Latino": "latina",
+  "Hip Hop/Rap": "urbana y hip hop",
+  "Reggae/Ska": "reggae",
+  "Copla": "flamenco y copla",
+  "Rumba": "flamenco y copla",
   "Infantil": "fuera de foco",
   "Varios": "sin clasificar",
   "folk_blues": "americana/country/folk",
   "indie_alternative": "pop e indie",
-  "funk_soul": "fuera de foco",
-  "hip_hop": "fuera de foco",
-  "r_and_b": "fuera de foco",
-  "classical": "fuera de foco",
+  "funk_soul": "soul, funk y r&b",
+  "hip_hop": "urbana y hip hop",
+  "r_and_b": "soul, funk y r&b",
+  "classical": "clásica y lírica",
   "country": "americana/country/folk",
-  "world": "fuera de foco",
-  "reggae": "fuera de foco",
-  "electronic": "fuera de foco",
-  "latin": "fuera de foco",
-  "jazz": "fuera de foco",
+  "world": "músicas del mundo",
+  "reggae": "reggae",
+  "electronic": "electrónica",
+  "latin": "latina",
+  "jazz": "jazz y swing",
   "metal": "rock y metal",
   "punk": "punk y garage",
   "rock": "rock y metal",
   "pop": [
    "pop e indie",
-   "fuera de foco"
+   "pop comercial"
   ],
   "blues": "blues",
   "folk": "americana/country/folk",
@@ -86,15 +97,15 @@
   ],
   "Músicas negras": [
    "blues",
-   "fuera de foco"
+   "soul, funk y r&b"
   ],
-  "Artes escénicas": "fuera de foco",
-  "Clubbing": "fuera de foco",
-  "Flamenco Capital": "fuera de foco",
-  "Musicales": "fuera de foco",
+  "Artes escénicas": "musicales y espectáculos",
+  "Clubbing": "electrónica",
+  "Flamenco Capital": "flamenco y copla",
+  "Musicales": "musicales y espectáculos",
   "Conciertos": "sin clasificar",
   "Concierto": "sin clasificar",
-  "Música ligera": "fuera de foco",
+  "Música ligera": "pop comercial",
   "Synthwave": "synth y dark wave",
   "Darkwave": "synth y dark wave",
   "Dark Wave": "synth y dark wave",
@@ -105,13 +116,58 @@
   "Retrowave": "synth y dark wave",
   "Electropop": [
    "pop e indie",
-   "fuera de foco"
+   "pop comercial"
   ],
   "Pop electrónico": [
    "pop e indie",
-   "fuera de foco"
+   "pop comercial"
   ],
-  "Balada": "fuera de foco"
+  "Balada": "pop comercial",
+  "Flamenco/Copla": "flamenco y copla",
+  "Música Latina": "latina",
+  "Pop Latino": "latina",
+  "Soul": "soul, funk y r&b",
+  "Funk": "soul, funk y r&b",
+  "R&B": "soul, funk y r&b",
+  "Gospel": "soul, funk y r&b",
+  "Hip-Hop": "urbana y hip hop",
+  "Hip Hop": "urbana y hip hop",
+  "Urbana": "urbana y hip hop",
+  "Trap": "urbana y hip hop",
+  "Reggaeton": "urbana y hip hop",
+  "Reggaetón": "urbana y hip hop",
+  "Reggae": "reggae",
+  "Ska": "punk y garage",
+  "Dub": "reggae",
+  "World Music": "músicas del mundo",
+  "Música del mundo": "músicas del mundo",
+  "Danza/Ballet": "musicales y espectáculos",
+  "Danza": "musicales y espectáculos",
+  "Teatro": "musicales y espectáculos",
+  "Humor": "musicales y espectáculos",
+  "comedy": "musicales y espectáculos",
+  "Ópera": "clásica y lírica",
+  "Opera": "clásica y lírica",
+  "Zarzuela": "clásica y lírica",
+  "Lírica": "clásica y lírica",
+  "Bandas sonoras": "clásica y lírica",
+  "Swing": "jazz y swing",
+  "Jazz": "jazz y swing",
+  "Blues/Jazz": [
+   "blues",
+   "jazz y swing"
+  ],
+  "Electrónica/Techno": "electrónica",
+  "Techno": "electrónica",
+  "House": "electrónica",
+  "Salsa": "latina",
+  "Cumbia": "latina",
+  "Bachata": "latina",
+  "Tango": "latina",
+  "Bossa Nova": "latina",
+  "Fado": "músicas del mundo",
+  "Celta": "americana/country/folk",
+  "Rock urbano": "rock y metal"
  },
  "palabras_clave": [
   [
@@ -188,27 +244,35 @@
   ],
   [
    "pop melodico",
-   "fuera de foco"
+   "pop comercial"
   ],
   [
    "balada",
-   "fuera de foco"
+   "pop comercial"
   ],
   [
    "musica ligera",
-   "fuera de foco"
+   "pop comercial"
   ],
   [
    "pop latino",
-   "fuera de foco"
+   "latina"
   ],
   [
    "latino",
-   "fuera de foco"
+   "latina"
+  ],
+  [
+   "rock and roll urbano",
+   "rock y metal"
+  ],
+  [
+   "rock urbano",
+   "rock y metal"
   ],
   [
    "urbano",
-   "fuera de foco"
+   "urbana y hip hop"
   ],
   [
    "candlelight",
@@ -435,6 +499,170 @@
    "pop e indie"
   ],
   [
+   "bulerias",
+   "flamenco y copla"
+  ],
+  [
+   "cantaor",
+   "flamenco y copla"
+  ],
+  [
+   "cantaora",
+   "flamenco y copla"
+  ],
+  [
+   "sevillanas",
+   "flamenco y copla"
+  ],
+  [
+   "r b",
+   "soul, funk y r&b"
+  ],
+  [
+   "neo soul",
+   "soul, funk y r&b"
+  ],
+  [
+   "motown",
+   "soul, funk y r&b"
+  ],
+  [
+   "disco",
+   "soul, funk y r&b"
+  ],
+  [
+   "big band",
+   "jazz y swing"
+  ],
+  [
+   "bebop",
+   "jazz y swing"
+  ],
+  [
+   "be bop",
+   "jazz y swing"
+  ],
+  [
+   "dixieland",
+   "jazz y swing"
+  ],
+  [
+   "bossa",
+   "latina"
+  ],
+  [
+   "tango",
+   "latina"
+  ],
+  [
+   "son cubano",
+   "latina"
+  ],
+  [
+   "merengue",
+   "latina"
+  ],
+  [
+   "mariachi",
+   "latina"
+  ],
+  [
+   "ranchera",
+   "latina"
+  ],
+  [
+   "vallenato",
+   "latina"
+  ],
+  [
+   "drill",
+   "urbana y hip hop"
+  ],
+  [
+   "grime",
+   "urbana y hip hop"
+  ],
+  [
+   "dancehall",
+   "reggae"
+  ],
+  [
+   "dub",
+   "reggae"
+  ],
+  [
+   "trance",
+   "electrónica"
+  ],
+  [
+   "drum and bass",
+   "electrónica"
+  ],
+  [
+   "dubstep",
+   "electrónica"
+  ],
+  [
+   "ambient",
+   "electrónica"
+  ],
+  [
+   "lirica",
+   "clásica y lírica"
+  ],
+  [
+   "orquesta sinfonica",
+   "clásica y lírica"
+  ],
+  [
+   "sinfonic",
+   "clásica y lírica"
+  ],
+  [
+   "coro",
+   "clásica y lírica"
+  ],
+  [
+   "barroc",
+   "clásica y lírica"
+  ],
+  [
+   "chanson",
+   "pop comercial"
+  ],
+  [
+   "cancion melodica",
+   "pop comercial"
+  ],
+  [
+   "etnica",
+   "músicas del mundo"
+  ],
+  [
+   "africa",
+   "músicas del mundo"
+  ],
+  [
+   "celta",
+   "americana/country/folk"
+  ],
+  [
+   "fado",
+   "músicas del mundo"
+  ],
+  [
+   "danza",
+   "musicales y espectáculos"
+  ],
+  [
+   "ballet",
+   "musicales y espectáculos"
+  ],
+  [
+   "humor",
+   "musicales y espectáculos"
+  ],
+  [
    "rock",
    "rock y metal"
   ],
@@ -444,139 +672,139 @@
   ],
   [
    "flamenco",
-   "fuera de foco"
+   "flamenco y copla"
   ],
   [
    "jazz",
-   "fuera de foco"
+   "jazz y swing"
   ],
   [
    "swing",
-   "fuera de foco"
+   "jazz y swing"
   ],
   [
    "electronic",
-   "fuera de foco"
+   "electrónica"
   ],
   [
    "electronica",
-   "fuera de foco"
+   "electrónica"
   ],
   [
    "techno",
-   "fuera de foco"
+   "electrónica"
   ],
   [
    "house",
-   "fuera de foco"
+   "electrónica"
   ],
   [
    "dj",
-   "fuera de foco"
+   "electrónica"
   ],
   [
    "clubbing",
-   "fuera de foco"
+   "electrónica"
   ],
   [
    "club",
-   "fuera de foco"
+   "electrónica"
   ],
   [
    "trap",
-   "fuera de foco"
+   "urbana y hip hop"
   ],
   [
    "reggaeton",
-   "fuera de foco"
+   "urbana y hip hop"
   ],
   [
    "urban",
-   "fuera de foco"
+   "urbana y hip hop"
   ],
   [
    "urbana",
-   "fuera de foco"
+   "urbana y hip hop"
   ],
   [
    "hip hop",
-   "fuera de foco"
+   "urbana y hip hop"
   ],
   [
    "rap",
-   "fuera de foco"
+   "urbana y hip hop"
   ],
   [
    "clasica",
-   "fuera de foco"
+   "clásica y lírica"
   ],
   [
    "classical",
-   "fuera de foco"
+   "clásica y lírica"
   ],
   [
    "musical",
-   "fuera de foco"
+   "musicales y espectáculos"
   ],
   [
    "teatro",
-   "fuera de foco"
+   "musicales y espectáculos"
   ],
   [
    "world",
-   "fuera de foco"
+   "músicas del mundo"
   ],
   [
    "latin",
-   "fuera de foco"
+   "latina"
   ],
   [
    "latina",
-   "fuera de foco"
+   "latina"
   ],
   [
    "salsa",
-   "fuera de foco"
+   "latina"
   ],
   [
    "cumbia",
-   "fuera de foco"
+   "latina"
   ],
   [
    "bachata",
-   "fuera de foco"
+   "latina"
   ],
   [
    "soul",
-   "fuera de foco"
+   "soul, funk y r&b"
   ],
   [
    "funk",
-   "fuera de foco"
+   "soul, funk y r&b"
   ],
   [
    "reggae",
-   "fuera de foco"
+   "reggae"
   ],
   [
    "afro",
-   "fuera de foco"
+   "músicas del mundo"
   ],
   [
    "copla",
-   "fuera de foco"
+   "flamenco y copla"
   ],
   [
    "rumba",
-   "fuera de foco"
+   "flamenco y copla"
   ],
   [
    "opera",
-   "fuera de foco"
+   "clásica y lírica"
   ],
   [
    "zarzuela",
-   "fuera de foco"
+   "clásica y lírica"
   ],
   [
    "infantil",
@@ -584,31 +812,31 @@
   ],
   [
    "comedia",
-   "fuera de foco"
+   "musicales y espectáculos"
   ],
   [
    "monologo",
-   "fuera de foco"
+   "musicales y espectáculos"
   ],
   [
    "bandas sonoras",
-   "fuera de foco"
+   "clásica y lírica"
   ],
   [
    "gospel",
-   "fuera de foco"
+   "soul, funk y r&b"
   ],
   [
    "k pop",
-   "fuera de foco"
+   "pop comercial"
   ],
   [
    "mestizaje",
-   "fuera de foco"
+   "músicas del mundo"
   ],
   [
    "fusion",
-   "fuera de foco"
+   "músicas del mundo"
   ],
   [
    "jam",
@@ -635,7 +863,7 @@
   "para familias"
  ],
  "discogs_a_categoria": {
-  "_descripcion": "Cómo se agrupan los estilos de Discogs en los filtros. Un estilo no listado va al grupo de su género: Rock → rock y metal, Pop comercial (sin un estilo indie o pop-rock) → fuera de foco, Blues → blues, Folk/World/Country → americana/country/folk, la familia synth y dark wave de Electronic → synth y dark wave, resto de géneros → fuera de foco.",
+  "_descripcion": "Cómo se agrupan los estilos de Discogs en los filtros. Un estilo no listado va al grupo de su género (genero_a_categoria): Rock → rock y metal, Pop → pop comercial (salvo indie o pop-rock), Blues → blues, Folk/World/Country → americana/country/folk, Jazz → jazz y swing, Funk / Soul → soul, funk y r&b, Hip Hop → urbana y hip hop, Latin → latina, Electronic → electrónica (salvo la familia synth y dark wave), Classical → clásica y lírica, Reggae → reggae, Stage & Screen → musicales y espectáculos.",
   "punk y garage": [
    "Punk",
    "Hardcore",
@@ -701,8 +929,10 @@
    "Witch House",
    "Dungeon Synth"
   ],
-  "fuera de foco": [
-   "Flamenco",
+  "flamenco y copla": [
+   "Flamenco"
+  ],
+  "músicas del mundo": [
    "African",
    "Polka",
    "Fado",
@@ -710,6 +940,15 @@
    "Laïkó",
    "Canzone Napoletana",
    "Volksmusik",
+   "Nordic",
+   "Pacific",
+   "Romani",
+   "Sea Shanties",
+   "Highlife",
+   "Catalan Music",
+   "Afrobeat"
+  ],
+  "pop comercial": [
    "Schlager",
    "Ballad",
    "Vocal",
@@ -720,23 +959,37 @@
    "Europop",
    "Kayōkyoku",
    "Bubblegum",
+   "Light Music",
+   "City Pop"
+  ],
+  "soul, funk y r&b": [
+   "Gospel",
+   "Disco"
+  ],
+  "fuera de foco": [
    "Novelty",
    "Parody",
-   "Light Music",
    "Music Hall",
    "Barbershop",
-   "Sea Shanties",
-   "Nordic",
-   "Pacific",
-   "Romani",
-   "Gospel"
+   "Break-In"
   ]
  },
  "genero_a_categoria": {
   "Rock": "rock y metal",
-  "Pop": "fuera de foco",
+  "Pop": "pop comercial",
   "Blues": "blues",
-  "Folk, World, & Country": "americana/country/folk"
+  "Folk, World, & Country": "americana/country/folk",
+  "Jazz": "jazz y swing",
+  "Funk / Soul": "soul, funk y r&b",
+  "Hip Hop": "urbana y hip hop",
+  "Latin": "latina",
+  "Electronic": "electrónica",
+  "Classical": "clásica y lírica",
+  "Reggae": "reggae",
+  "Stage & Screen": "musicales y espectáculos",
+  "Non-Music": "musicales y espectáculos",
+  "Children's": "fuera de foco",
+  "Brass & Military": "clásica y lírica"
  },
  "contexto_fuente": {
   "_descripcion": "Especialidad de las webs que publican el concierto. No asigna grupos por sí sola: solo sirve para aceptar lo que dice Last.fm cuando lo identifica únicamente por el nombre (si Last.fm dice hard rock y el concierto viene de una agenda de metal, es ese grupo y no un homónimo).",
@@ -846,5 +1099,25 @@
    "americana/country/folk",
    "rock y metal"
   ]
+ },
+ "titulo_a_categoria": {
+  "_descripcion": "Palabras del título que deciden el grupo aunque la agenda diga otra cosa (Candlelight, musicales…). Sustituye a 'titulo_fuera_de_foco' para el grupo; esa lista sigue marcando que el título no es un artista.",
+  "espectaculo flamenco": "flamenco y copla",
+  "el musical": "musicales y espectáculos",
+  "musical": "musicales y espectáculos",
+  "monologo": "musicales y espectáculos",
+  "stand up": "musicales y espectáculos",
+  "dj set": "electrónica",
+  "sesion dj": "electrónica",
+  "candlelight": "clásica y lírica",
+  "tardeo": "fuera de foco",
+  "karaoke": "fuera de foco",
+  "holograma": "fuera de foco",
+  "hologram": "fuera de foco",
+  "cantajuego": "fuera de foco",
+  "cantajuegos": "fuera de foco",
+  "infantil": "fuera de foco",
+  "para ninos": "fuera de foco",
+  "para familias": "fuera de foco"
  }
 }

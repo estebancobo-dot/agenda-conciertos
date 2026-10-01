@@ -36,9 +36,10 @@ def test_familia_synth_completa(etiqueta, estilo):
     assert grupo_de(estilo, "estilo") == SYNTH
 
 
-def test_resto_de_la_electronica_sigue_fuera():
-    assert grupo_de("Electronic", "genero") == "fuera de foco"
-    assert traducir_musicbrainz("techno") == [("Electronic", "genero")]
+def test_resto_de_la_electronica_tiene_grupo_propio():
+    assert grupo_de("Electronic", "genero") == "electrónica"
+    assert grupo_de("Techno", "estilo") == "electrónica"
+    assert traducir_musicbrainz("techno") == [("Techno", "estilo")]
     assert traducir_musicbrainz("darksynth") == [("Synthwave", "estilo")]
 
 
@@ -56,7 +57,7 @@ def test_la_agenda_suma_pero_sola_no_supera_a_discogs():
     assert pesos_de_agenda([["Rock"], ["Rock/Rock Alternativo"], ["Metal/Rock duro"]]) == {"rock y metal": 1.0}
     evs = [{"nombre": "Techno", "tipo": "estilo", "fuente": "Discogs", "peso": 1.0},
            {"nombre": "Electronic", "tipo": "genero", "fuente": "Discogs", "peso": 1.0}]
-    assert grupos_de_evidencias(evs, [], {"rock y metal": 0.5})[0] == ["fuera de foco"]
+    assert grupos_de_evidencias(evs, [], {"rock y metal": 0.5})[0] == ["electrónica"]
 
 
 def test_contexto_de_la_web_acepta_lastfm_por_nombre():
