@@ -468,6 +468,7 @@ def recorrido(b):
           f"{suma} de {o['total']}", ok=suma == o["total"] and o["es"] == o["esc"] + o["est"], detalle=str(o))
     mes(pg)
     cabeceras_fijas(pg, lunes)
+    accesos_al_bajar(pg, lunes)
 
     # informe
     pg.evaluate("location.hash='#informe'")
@@ -821,6 +822,38 @@ def mes(pg):
     check("Funcional", "Mes: la lista del día son los conciertos de ese día", f"{r['n']} de {r['esperados']}",
           ok=r["n"] == r["esperados"] and r["otros"] == 0)
     pg.screenshot(path=str(OUT / "5_mes.png"))
+
+
+def accesos_al_bajar(pg, lunes):
+    """A media lista: el menú ☰ se abre a la vista, y Buscar y Filtros están en la cabecera (Filtros abre la hoja sin
+    mover la lista; Buscar lleva a la caja de búsqueda lista para escribir). Arriba del todo no se duplican."""
+    pg.evaluate(f"location.hash='#semana/{lunes.isoformat()}'")
+    pg.wait_for_selector(".card", timeout=30000)
+    pg.evaluate("scrollTo(0,0)")
+    pg.wait_for_timeout(500)
+    arriba = pg.is_visible("#hq") or pg.is_visible("#hf")
+    pg.evaluate("scrollTo(0,document.documentElement.scrollHeight/2)")
+    pg.wait_for_timeout(600)
+    check("UX", "Al bajar por la lista, Buscar y Filtros siguen a mano en la cabecera (y arriba no se duplican)",
+          ok=pg.is_visible("#hq") and pg.is_visible("#hf") and not arriba)
+    pg.click("#menubtn")
+    pg.wait_for_timeout(300)
+    m = pg.evaluate("(()=>{const m=document.querySelector('#menu .menu'); if(!m) return null;"
+                    "const b=m.getBoundingClientRect(); return b.top>=0&&b.bottom<=innerHeight})()")
+    check("Funcional", "A media lista, el menú ☰ se abre a la vista", ok=bool(m))
+    pg.evaluate("document.getElementById('menu').innerHTML=''")
+    if pg.is_visible("#hf"):
+        y = pg.evaluate("scrollY")
+        pg.click("#hf")
+        pg.wait_for_timeout(500)
+        check("Funcional", "A media lista, Filtros abre la hoja sin mover la lista",
+              ok=pg.is_visible(".sheet") and pg.evaluate("scrollY") == y)
+        pg.evaluate("document.getElementById('sheet').innerHTML=''")
+    if pg.is_visible("#hq"):
+        pg.click("#hq")
+        pg.wait_for_timeout(400)
+        check("Funcional", "A media lista, Buscar lleva a la caja de búsqueda lista para escribir",
+              ok=pg.evaluate("document.activeElement&&document.activeElement.id==='q'&&scrollY<5"))
 
 
 def cabeceras_fijas(pg, lunes):

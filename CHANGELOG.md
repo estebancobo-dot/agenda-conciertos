@@ -1,5 +1,11 @@
 # Versiones
 
+## 2.27.0 — 2026-10-01
+
+- **El menú ☰ funciona a cualquier altura de la lista.** Se abría arriba del todo de la página, fuera de la pantalla si habías bajado: parecía que no hacía nada. Ahora se abre siempre bajo el botón.
+- **Buscar y Filtros siempre a mano.** Al bajar por la lista, cuando la barra de búsqueda y filtros se va hacia arriba, aparecen dos iconos en la cabecera fija (lupa y filtros, con el número de filtros activos). Filtros abre la hoja ahí mismo, sin mover la lista; Buscar sube a la caja de búsqueda y la deja lista para escribir (la búsqueda es en todas las fechas). Arriba del todo no salen, para no duplicar la barra.
+- La validación diaria lo comprueba a media lista en la web publicada.
+
 ## 2.26.0 — 2026-10-01
 
 - **La fecha del día se queda fija arriba al bajar por la lista**, igual en mes, semana y día: una sola línea con la fecha completa y cuántos conciertos hay ("Viernes, 9 de octubre · 58 conciertos"). Al llegar al día siguiente, su cabecera empuja a la anterior.

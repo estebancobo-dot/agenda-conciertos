@@ -48,10 +48,14 @@ header{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 92
 .top h1{font-size:1.05rem;margin:0;flex:1;min-width:0;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .top h1 small{display:block;font-weight:400;color:var(--muted);font-size:.74rem}
 .iconbtn{border:1px solid var(--line);background:var(--panel);border-radius:10px;min-width:40px;height:40px;padding:0 10px;display:inline-flex;align-items:center;justify-content:center;gap:4px}
+.top .acc{display:none;position:relative}
+header.compacto .top .acc{display:inline-flex}
+.top .acc svg{width:20px;height:20px}
+.top .acc .badge{position:absolute;top:-5px;right:-5px}
 .seg{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;padding:2px 16px 8px;max-width:960px;margin:0 auto}
 .seg button{border:0;background:var(--panel2);padding:7px 0;border-radius:10px;color:var(--muted);font-weight:700;font-size:.92rem}
 .seg button[aria-selected="true"]{background:var(--ink);color:var(--bg)}
-.menu{position:absolute;right:16px;top:52px;background:var(--panel);border:1px solid var(--line);border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.18);z-index:30;min-width:220px;padding:6px}
+.menu{position:fixed;right:max(16px,calc((100vw - 960px)/2 + 16px));top:calc(env(safe-area-inset-top) + 52px);background:var(--panel);border:1px solid var(--line);border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.18);z-index:30;min-width:220px;padding:6px}
 .menu a,.menu button{display:flex;width:100%;align-items:center;gap:10px;padding:10px 12px;border:0;background:none;text-decoration:none;color:var(--ink);border-radius:8px;text-align:left}
 .menu a:hover,.menu button:hover{background:var(--panel2)}
 .menu hr{border:0;border-top:1px solid var(--line);margin:4px 0}
@@ -242,6 +246,8 @@ th{color:var(--muted);font-weight:600}
 <header id="hdr">
   <div class="top">
     <h1>Conciertos Madrid<small id="upd">Cargando…</small></h1>
+    <button class="iconbtn acc" id="hq" aria-label="Buscar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
+    <button class="iconbtn acc" id="hf" aria-haspopup="dialog" aria-label="Filtros"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12M20 18h0"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/></svg><span id="hfb"></span></button>
     <button class="iconbtn" id="menubtn" aria-haspopup="menu" aria-label="Más opciones">☰</button>
   </div>
   <nav class="seg" role="tablist" id="tabs"></nav>
@@ -366,6 +372,18 @@ function openMenu(){
   m.querySelectorAll("[data-go]").forEach(b=>b.onclick=()=>{close(); state.tab=b.dataset.go; render(); scrollTo(0,0);});
 }
 document.getElementById("menubtn").onclick=openMenu;
+// Buscar y Filtros siempre a mano: cuando la barra de búsqueda y filtros se va hacia arriba al bajar por la lista,
+// aparecen como dos iconos en la cabecera fija. Filtros abre la hoja ahí mismo (la lista se queda donde estabas);
+// Buscar sube a la caja de búsqueda y la deja lista para escribir.
+function accesos(){
+  const bar=document.querySelector("#main .bar"), hdr=document.getElementById("hdr");
+  const on=!!bar&&bar.getBoundingClientRect().bottom<hdr.getBoundingClientRect().bottom;
+  hdr.classList.toggle("compacto",on);
+  if(on){ const n=nFiltros(), b=document.getElementById("hfb"), t=n?`<span class="badge">${n}</span>`:"";
+    if(b.innerHTML!==t) b.innerHTML=t; document.getElementById("hf").setAttribute("aria-label",n?`Filtros (${n} activos)`:"Filtros"); }
+}
+document.getElementById("hq").onclick=()=>{ scrollTo(0,0); const q=document.getElementById("q"); if(q){ q.focus(); q.select(); } accesos(); };
+document.getElementById("hf").onclick=()=>openSheet();
 
 // ---------------------------------------------------------------- filtros
 function textoDe(r){return norm([r.artista,(r.invitados||[]).join(" "),r.sala,r.municipio,r.ciclo,(r.estilos_discogs||[]).join(" "),(r.genero_discogs||[]).join(" ")].join(" "));}
@@ -947,7 +965,7 @@ addEventListener("scroll",fotosEnPantalla,{passive:true});
 function fijas(){
   const ss=document.querySelector("#main .stickystrip");
   document.documentElement.style.setProperty("--sh",(ss?ss.offsetHeight:0)+"px");
-  diaEnPantalla();
+  diaEnPantalla(); accesos();
 }
 function diaEnPantalla(){
   const bs=[...document.querySelectorAll("#main .stickystrip [data-jump]")]; if(!bs.length) return;
@@ -960,7 +978,7 @@ function diaEnPantalla(){
   bs.forEach(b=>{const on=b.dataset.jump===f; b.classList.toggle("en",on); if(on) b.setAttribute("aria-current","date"); else b.removeAttribute("aria-current");});
 }
 let rDia=0;
-addEventListener("scroll",()=>{ if(!rDia) rDia=requestAnimationFrame(()=>{rDia=0; diaEnPantalla();}); },{passive:true});
+addEventListener("scroll",()=>{ if(!rDia) rDia=requestAnimationFrame(()=>{rDia=0; diaEnPantalla(); accesos();}); },{passive:true});
 // ---------------------------------------------------------------- carga de imágenes y días según el scroll
 // Con 200 conciertos en una semana, el navegador pedía decenas de fotos a la vez (compitiendo por la red) y
 // pintaba el resto de días justo cuando empezabas a bajar. Ahora:
