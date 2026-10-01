@@ -1,5 +1,9 @@
 # Versiones
 
+## 2.30.1 — 2026-10-01
+
+- En la fila de géneros de la lista, los elegidos pasan delante (justo tras "Habituales"): al tocar uno que estaba a la derecha, la fila volvía al principio y no se veía por qué estabas filtrando.
+
 ## 2.30.0 — 2026-10-01
 
 - **La lupa ya no te sube al principio.** Abre la búsqueda en la propia cabecera, lista para escribir, sin mover la lista. Al escribir salen los resultados (de todas las fechas); Cancelar (o borrar el texto) vuelve a la lista exactamente en la tarjeta en la que estabas.

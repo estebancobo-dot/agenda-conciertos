@@ -511,7 +511,8 @@ function extraHTML(){
   // uno se filtra por él, y los marcados (rellenos, con ✓) son justo los que se están viendo
   const modo=modoGrupos(state.grupos);
   const chips=`<button class="chip" data-pre="${modo==="todos"?"todos":"def"}" aria-pressed="${modo!=="custom"}">${modo==="todos"?"Todos los géneros":"Habituales"}</button>`+
-    GRUPOS.map(g=>`<button class="chip" data-chip="${esc(g.id)}" aria-pressed="${modo==="custom"&&state.grupos.includes(g.id)}"><i style="background:var(${g.v})"></i>${esc(g.nombre)}<small class="cc">${cn[g.id]||0}</small></button>`).join("");
+    // los elegidos, delante (si no, al tocar uno que está a la derecha la fila vuelve al principio y no se ve)
+    [...GRUPOS].sort((x,y)=>(modo==="custom")*((state.grupos.includes(y.id))-(state.grupos.includes(x.id)))).map(g=>`<button class="chip" data-chip="${esc(g.id)}" aria-pressed="${modo==="custom"&&state.grupos.includes(g.id)}"><i style="background:var(${g.v})"></i>${esc(g.nombre)}<small class="cc">${cn[g.id]||0}</small></button>`).join("");
   return `<div class="chips" role="group" aria-label="Géneros">${chips}</div>
    ${n?`<div class="active">Filtrando: ${esc(resumenFiltros())} · <button id="freset">Borrar filtros</button></div>`:""}`;
 }
