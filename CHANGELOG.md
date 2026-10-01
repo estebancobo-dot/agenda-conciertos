@@ -1,5 +1,15 @@
 # Versiones
 
+## 2.34.0 — 2026-10-02
+
+**Gestión de conciertos, fase 2: lecturas separadas y más frecuentes.**
+
+- Madrid en Vivo se lee **aparte, cada noche a las 01:20 UTC** (03:20 en Madrid): pide 10 s entre peticiones (su robots.txt) y tardaba 38 de los 45 minutos de la lectura completa.
+- La **lectura completa de las 03:10 UTC** lee las otras 63 fuentes en pocos minutos y usa la de Madrid en Vivo de un par de horas antes; cuenta como lectura completa.
+- **Lecturas rápidas de todas las agendas (menos Madrid en Vivo) a las 09:40, 15:40 y 21:40 UTC**: conciertos nuevos, cambios y cancelaciones cada 6 horas en vez de una vez al día. Van dentro de esas pasadas de fichas (no como tareas aparte: en la cola de GitHub una tarea en espera se cancela si llega otra). El resto de pasadas siguen igual (reintento de las que fallaron, fichas y páginas de entradas).
+- Nuevas opciones: `python -m scraper --sin id1,id2` (todas menos esas) y `--minutos-fichas N` (tope para fichas de artista en una lectura de agendas).
+- El informe explica el nuevo calendario. Test de integración: las fuentes leídas aparte entran con su última lectura y no se pierde ningún concierto.
+
 ## 2.33.1 — 2026-10-01
 
 Revisión de la primera pasada real (1.521 páginas leídas: 473 conciertos con enlace de compra, 397 con cartel de gira, 29 precios, 2 cancelados, 1 aplazado, 1 agotado):

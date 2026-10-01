@@ -585,11 +585,15 @@ PRESUPUESTO_FICHAS = 2400  # tope de la ejecución diaria para fichas (los pendi
 
 def ejecutar(hoy: date | None = None, solo: list[str] | None = None, fetcher: Fetcher | None = None,
              musicbrainz: bool = True, max_mb: int = 700, reintentar: bool = False,
-             pausa_reintento: float = PAUSA_REINTENTO_SEG) -> dict | None:
+             pausa_reintento: float = PAUSA_REINTENTO_SEG, sin: list[str] | None = None,
+             presupuesto_fichas: float | None = None) -> dict | None:
     """Ejecución completa. Con `solo` o `reintentar`, se leen solo algunas fuentes y las demás entran con su
     última lectura completa (caché), así que la agenda publicada nunca pierde conciertos de las no leídas.
     `reintentar`: vuelve a leer las fuentes que fallaron en la última ejecución; si ninguna responde, no
-    cambia nada y devuelve None."""
+    cambia nada y devuelve None.
+    `sin`: todas menos estas (Madrid en Vivo se lee aparte cada noche: tarda 38 de los 45 minutos de la lectura).
+    Si las que faltan solo son esas, la lectura cuenta como completa: entran con su lectura de unas horas antes.
+    `presupuesto_fichas`: segundos para fichas de artista (por defecto PRESUPUESTO_FICHAS)."""
     hoy = hoy or datetime.now(timezone.utc).astimezone().date()
     horizonte = hoy + timedelta(days=HORIZONTE_DIAS)
     fetcher = fetcher or Fetcher()
@@ -599,8 +603,10 @@ def ejecutar(hoy: date | None = None, solo: list[str] | None = None, fetcher: Fe
         if not solo:
             log.info("Reintento: ninguna fuente falló en la última ejecución")
             return None
-    fuentes = [s for s in FUENTES if not solo or s.id in solo]
+    fuentes = [s for s in FUENTES if (not solo or s.id in solo) and s.id not in (sin or [])]
     no_leidas = {s.id for s in FUENTES} - {s.id for s in fuentes}
+    completa = not reintentar and not solo and no_leidas <= set(sin or [])
+    tope_fichas = PRESUPUESTO_FICHAS if presupuesto_fichas is None else presupuesto_fichas
     anteriores = _read("concerts.json", {}).get("conciertos", [])
     anteriores_ids = {p["id"] for p in anteriores}
     # los grupos de la ejecución anterior se copian ya: los registros anteriores se reutilizan (y se modifican)
@@ -617,11 +623,11 @@ def ejecutar(hoy: date | None = None, solo: list[str] | None = None, fetcher: Fe
         _write("musicbrainz_cache.json", cache_mb)
 
     parar, hilo, previas = threading.Event(), None, {}
-    if musicbrainz and anteriores and not no_leidas:
+    if musicbrainz and anteriores and completa:
         from .artistas import enriquecer
         hilo = threading.Thread(target=lambda: previas.update(
             enriquecer([p for p in anteriores if p["fecha"] >= hoy.isoformat()], cache_art, hoy,
-                       presupuesto_seg=PRESUPUESTO_FICHAS, parar=parar, guardar=guardar_fichas,
+                       presupuesto_seg=tope_fichas, parar=parar, guardar=guardar_fichas,
                        mb_cache=cache_mb)), daemon=True)
         hilo.start()
     eventos, resultados = rastrear(fuentes, fetcher, hoy, horizonte, estado.setdefault("fuentes", {}),
@@ -654,7 +660,7 @@ def ejecutar(hoy: date | None = None, solo: list[str] | None = None, fetcher: Fe
         if hilo:
             parar.set()
             hilo.join()
-        resto = max(PRESUPUESTO_FICHAS - (time.monotonic() - t0), 300)
+        resto = max(tope_fichas - (time.monotonic() - t0), min(300, tope_fichas))
         art_stats = enriquecer(recs, cache_art, hoy, presupuesto_seg=resto, guardar=guardar_fichas,
                                mb_cache=cache_mb)
         art_stats["durante_agendas"] = {k: previas.get(k, 0) for k in ("consultados", "completados")}
@@ -683,7 +689,8 @@ def ejecutar(hoy: date | None = None, solo: list[str] | None = None, fetcher: Fe
     informe = {
         "version": __version__,
         "generado": ahora,
-        "modo": ("reintento de " + ", ".join(sorted(s.id for s in fuentes))) if no_leidas else "completa",
+        "modo": ("completa" + (f" ({', '.join(sorted(no_leidas))} de su lectura aparte)" if no_leidas else "")) if completa
+        else (("solo " if solo and not reintentar else "reintento de ") + ", ".join(sorted(s.id for s in fuentes))),
         "hoy": hoy.isoformat(),
         "horizonte": horizonte.isoformat(),
         "duracion_seg": round(time.monotonic() - t0),
@@ -713,7 +720,7 @@ def ejecutar(hoy: date | None = None, solo: list[str] | None = None, fetcher: Fe
         "alertas": [f"{f['nombre']}: {f['aviso']}" for f in inf_fuentes if f.get("aviso")],
     }
     # la ejecución completa del día queda registrada aunque luego los reintentos rehagan el informe
-    if no_leidas:
+    if not completa:
         informe["ultima_completa"] = _read("informe.json", {}).get("ultima_completa")
     else:
         informe["ultima_completa"] = {"generado": ahora, "duracion_seg": informe["duracion_seg"],

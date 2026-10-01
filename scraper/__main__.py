@@ -1,4 +1,4 @@
-"""Uso: python -m scraper [--solo id1,id2] [--sin-musicbrainz] [--hoy AAAA-MM-DD] | --fichas [--minutos N]"""
+"""Uso: python -m scraper [--solo id1,id2 | --sin id1,id2] [--minutos-fichas N] [--sin-musicbrainz] [--hoy AAAA-MM-DD] | --fichas [--minutos N]"""
 import argparse
 import logging
 from datetime import date
@@ -9,6 +9,9 @@ from .pipeline import ejecutar
 def main() -> None:
     ap = argparse.ArgumentParser(description="Agenda de conciertos de la Comunidad de Madrid")
     ap.add_argument("--solo", help="ids de fuentes separados por comas (por defecto, todas)")
+    ap.add_argument("--sin", help="todas las fuentes menos estas (ids separados por comas)")
+    ap.add_argument("--minutos-fichas", type=float, default=None,
+                    help="tope de minutos para fichas de artista en la lectura de agendas")
     ap.add_argument("--sin-musicbrainz", action="store_true")
     ap.add_argument("--max-musicbrainz", type=int, default=600)
     ap.add_argument("--hoy", help="fecha de referencia AAAA-MM-DD (pruebas)")
@@ -28,7 +31,9 @@ def main() -> None:
         return
     inf = ejecutar(hoy=date.fromisoformat(a.hoy) if a.hoy else None,
                    solo=a.solo.split(",") if a.solo else None,
-                   musicbrainz=not a.sin_musicbrainz, max_mb=a.max_musicbrainz, reintentar=a.reintentar)
+                   musicbrainz=not a.sin_musicbrainz, max_mb=a.max_musicbrainz, reintentar=a.reintentar,
+                   sin=a.sin.split(",") if a.sin else None,
+                   presupuesto_fichas=a.minutos_fichas * 60 if a.minutos_fichas is not None else None)
     if inf is None:
         print("Reintento: nada que cambiar (ninguna fuente pendiente o ninguna ha respondido)")
         return

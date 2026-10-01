@@ -5,6 +5,9 @@ on:
     # todos los días a las 03:10 UTC (05:10 en Madrid en verano, 04:10 en invierno): agendas + fichas. Tarda unos
     # 40 minutos; con el retraso habitual de los cron de GitHub termina antes de las 7 en Madrid todo el año
     - cron: "10 3 * * *"
+    # Madrid en Vivo, aparte, a las 01:20 UTC: pide 10 s entre peticiones y tarda ~40 minutos ella sola (era 38 de los
+    # 45 minutos de la lectura completa). La de las 03:10 lee las demás y usa esta, de un par de horas antes
+    - cron: "20 1 * * *"
     # cada 2 horas de 05:40 a 23:40 UTC: reintenta las fuentes que fallaron y completa fichas de artista. No hay
     # pasadas de madrugada para que ninguna retrase la ejecución completa (no se solapan: van en cola)
     - cron: "40 5-23/2 * * *"
@@ -60,10 +63,23 @@ jobs:
           LASTFM_KEY: ${{ secrets.LASTFM_KEY }}
           TICKETMASTER_KEY: ${{ secrets.TICKETMASTER_KEY }}
         run: |
-          if [ "${{ github.event.schedule }}" = "40 5-23/2 * * *" ] || [ "${{ github.event.inputs.fichas }}" = "true" ]; then
-            # cada 2 horas: reintenta las fuentes que fallaron en la última lectura y completa fichas pendientes
+          if [ "${{ github.event.schedule }}" = "20 1 * * *" ]; then
+            # solo Madrid en Vivo (las demás entran con su última lectura) y fichas de sus artistas nuevos
+            python -m scraper --solo madridenvivo --minutos-fichas 10
+          elif [ "${{ github.event.schedule }}" = "10 3 * * *" ]; then
+            # todas menos Madrid en Vivo (leída a las 01:20): unos minutos de agendas y el resto, fichas
+            python -m scraper --sin madridenvivo
+          elif [ "${{ github.event.schedule }}" = "40 5-23/2 * * *" ] || [ "${{ github.event.inputs.fichas }}" = "true" ]; then
             INICIO=$(date +%s)
-            python -m scraper --reintentar || echo "El reintento de fuentes falló; se sigue con las fichas"
+            HORA=$(date -u +%H)
+            if [ "${{ github.event.schedule }}" = "40 5-23/2 * * *" ] && { [ "$HORA" = "09" ] || [ "$HORA" = "15" ] || [ "$HORA" = "21" ]; }; then
+              # 09:40, 15:40 y 21:40 UTC: lectura rápida de todas las agendas menos Madrid en Vivo (conciertos nuevos,
+              # cambios y cancelaciones cada 6 horas), en la misma pasada: tareas aparte se cancelarían en la cola
+              python -m scraper --sin madridenvivo --minutos-fichas 10 || echo "La lectura rápida falló; se sigue con las fichas"
+            else
+              # el resto de pasadas: reintenta las fuentes que fallaron en la última lectura
+              python -m scraper --reintentar || echo "El reintento de fuentes falló; se sigue con las fichas"
+            fi
             # 75 minutos: cabe entre dos pasadas (cada 2 horas) y la última (23:40 UTC) acaba mucho antes de la
             # lectura completa de las 03:10 UTC. Si el reintento tardó, las fichas usan solo lo que queda de los
             # 100 minutos del paso (con 8 de margen para aplicar las fichas y guardar): si no, el paso se cortaba
