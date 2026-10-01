@@ -28,7 +28,7 @@ DATA = RAIZ / "data"
 sys.path.insert(0, str(RAIZ))
 sys.path.insert(0, str(RAIZ / "tools"))
 
-CACHES = ("artistas.json", "musicbrainz_cache.json")
+CACHES = ("artistas.json", "musicbrainz_cache.json", "paginas.json")
 PROPIOS = ("concerts.json", "concerts.csv", "informe.json", "estado.json", "fuentes_cache.json")
 
 

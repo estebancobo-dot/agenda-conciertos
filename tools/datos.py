@@ -22,7 +22,7 @@ RAIZ = Path(__file__).resolve().parent.parent
 DATA = RAIZ / "data"
 RAMA = "datos"
 GENERADOS = ("concerts.json", "concerts.csv", "informe.json", "estado.json", "fuentes_cache.json",
-             "artistas.json", "musicbrainz_cache.json")
+             "artistas.json", "musicbrainz_cache.json", "paginas.json")
 TRAIDOS = DATA / ".traidos.json"  # huella de lo traído: el guardado sabe qué ha regenerado esta ejecución
 
 

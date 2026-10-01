@@ -13,6 +13,10 @@ from __future__ import annotations
 
 import json
 import re
+import time
+from collections import Counter, defaultdict
+from concurrent.futures import ThreadPoolExecutor
+from datetime import date, timedelta
 from urllib.parse import urljoin, urlsplit
 
 from bs4 import BeautifulSoup
@@ -214,3 +218,210 @@ def imagenes_genericas(recs: list[dict], minimo: int = 3) -> set[str]:
             if u:
                 por_url.setdefault(u, set()).add(norm(r.get("artista"))[:20])
     return {u for u, arts in por_url.items() if len(arts) >= minimo}
+
+
+# ------------------------------------------------------------------ lectura incremental (pasadas de fichas)
+# Madrid en Vivo pide 10 s entre peticiones y su página de evento casi nunca enlaza a las entradas: no compensa
+NO_LEER = {"madridenvivo"}
+# entre páginas de agregador, las que mejor dicen hora/precio (diagnóstico de entradas, oct. 2026)
+ORDEN = ["mutick", "laganzua", "songkick", "cc_buscador", "cc_estilos", "cc_portada", "cpm"]
+MAX_ENLACES = 6   # una página con más enlaces a entradas es un listado (agenda entera): no son de este concierto
+CADUCA_CERCA, CADUCA_LEJOS, CERCA_DIAS, OLVIDAR_DIAS = 3, 10, 14, 30
+
+
+def sin_fragmento(u: str) -> str:
+    return (u or "").split("#")[0]
+
+
+def _especifica(u: str | None) -> bool:
+    """Una URL de compra concreta, no la portada de la ticketera."""
+    p = urlsplit(u or "")
+    return bool(p.netloc) and p.path.strip("/") != ""
+
+
+def paginas_de(r: dict, usos: Counter) -> list[tuple[str, dict]]:
+    """Páginas propias de este concierto (no listados) en orden de preferencia: web de la sala, luego agregadores."""
+    out = []
+    for x in r.get("fuentes") or []:
+        u = sin_fragmento(x.get("url"))
+        if not u.startswith("http") or usos[u] != 1 or x.get("id") in NO_LEER:
+            continue
+        out.append((u, x))
+    orden = {k: i for i, k in enumerate(ORDEN)}
+    return sorted(out, key=lambda ux: (ux[1].get("prioridad", 9) != 1, orden.get(ux[1].get("id"), 50)))
+
+
+def _caducada(e: dict | None, fecha: str, hoy: date) -> bool:
+    if not e:
+        return True
+    dias = CADUCA_CERCA if (date.fromisoformat(fecha) - hoy).days <= CERCA_DIAS else CADUCA_LEJOS
+    return e.get("fecha", "") < (hoy - timedelta(days=dias)).isoformat()
+
+
+def _resumen(d: dict) -> dict:
+    """Lo que se guarda de una página (la caché va a la rama de datos: sin texto ni listas largas)."""
+    enl = d.get("enlaces") or []
+    out = {k: d[k] for k in ("hora", "precio", "disponibilidad", "estado", "imagen", "og_imagen", "entradas_jsonld")
+           if d.get(k)}
+    if enl and len(enl) <= MAX_ENLACES:
+        out["enlaces"] = [{k: e[k] for k in ("url", "nombre", "compra")} for e in enl[:3]]
+    return out
+
+
+def destino_compra(d: dict) -> str | None:
+    """La página de entradas de este concierto que dice una página: la del JSON-LD o el enlace de compra."""
+    for u in [d.get("entradas_jsonld")] + [e["url"] for e in sorted(d.get("enlaces") or [], key=lambda e: not e["compra"])]:
+        if u and _especifica(u):
+            return u
+    return None
+
+
+def leer_entradas(recs: list[dict], cache: dict, fetcher, hoy: date, presupuesto_seg: float,
+                  max_workers: int = 8) -> dict:
+    """Lee (o vuelve a leer, si caducó) la página de cada concierto próximo y la de entradas que enlace, empezando por
+    los más cercanos, hasta agotar el tiempo. Todo lo leído va a `cache` {url: {"fecha", "d"|"error"}}."""
+    from .fetch import RobotsBlocked
+    fin = time.monotonic() + max(0.0, presupuesto_seg)
+    hoy_s = hoy.isoformat()
+    futuros = sorted((r for r in recs if r["fecha"] >= hoy_s), key=lambda r: r["fecha"])
+    usos = Counter(sin_fragmento(x.get("url")) for r in recs for x in r.get("fuentes") or [] if x.get("url"))
+    stats = Counter()
+    fallos_dom: Counter = Counter()
+
+    def leer(url: str, fecha: str) -> dict | None:
+        if time.monotonic() > fin or fallos_dom[dominio(url)] >= 3:
+            return None
+        try:
+            d = _resumen(leer_pagina(fetcher.get(url), url, fecha))
+            cache[url] = {"fecha": hoy_s, "d": d}
+            stats["leidas"] += 1
+            return d
+        except RobotsBlocked:
+            cache[url] = {"fecha": hoy_s, "error": "robots.txt no lo permite"}
+        except Exception as e:  # noqa: BLE001 (una web caída o que bloquea no para nada)
+            cache[url] = {"fecha": hoy_s, "error": f"{type(e).__name__}"[:60]}
+            fallos_dom[dominio(url)] += 1
+        stats["errores"] += 1
+        return None
+
+    def tarea(r: dict) -> None:
+        pags = paginas_de(r, usos)
+        # la web de la sala (si la hay) y, si no, la mejor página de agenda
+        elegidas = [p for p in pags if p[1].get("prioridad") == 1][:1] or pags[:1]
+        for u, _ in elegidas:
+            d = cache.get(u, {}).get("d") if not _caducada(cache.get(u), r["fecha"], hoy) else leer(u, r["fecha"])
+            t = destino_compra(d or {})
+            if t and ticketera(t) and _caducada(cache.get(t), r["fecha"], hoy):
+                leer(t, r["fecha"])
+
+    with ThreadPoolExecutor(max_workers=max_workers) as ex:
+        list(ex.map(tarea, futuros))
+    # se olvida lo que ya no es de ningún concierto próximo ni se ha leído en un mes
+    vivas = {sin_fragmento(x.get("url")) for r in futuros for x in r.get("fuentes") or []}
+    viejo = (hoy - timedelta(days=OLVIDAR_DIAS)).isoformat()
+    for u in [u for u, e in cache.items() if u not in vivas and e.get("fecha", "") < viejo]:
+        del cache[u]
+    stats["en_cache"] = len(cache)
+    return dict(stats)
+
+
+# ------------------------------------------------------------------ aplicar a los conciertos
+def _num_precio(p: str | None) -> float | None:
+    m = re.search(r"\d+(?:[.,]\d+)?", str(p or ""))
+    return float(m.group(0).replace(",", ".")) if m else None
+
+
+def _paginas_leidas(r: dict, cache: dict) -> list[tuple[str, dict, str]]:
+    """(url, datos, nombre) de las páginas leídas de este concierto y de las de entradas que enlazan."""
+    out = []
+    for x in r.get("fuentes") or []:
+        u = sin_fragmento(x.get("url"))
+        d = (cache.get(u) or {}).get("d")
+        if d is None:
+            continue
+        out.append((u, d, x.get("nombre", dominio(u)).split(" (")[0]))
+        t = destino_compra(d)
+        td = (cache.get(t) or {}).get("d") if t else None
+        if td is not None:
+            out.insert(0, (t, td, ticketera(t) or dominio(t)))  # la página de entradas, primero
+    return out
+
+
+def confianza(recs: list[dict], cache: dict) -> dict[str, dict]:
+    """Por web: ¿su hora y su precio coinciden con los que ya sabemos por otras fuentes? (≥80 % en ≥3 casos). Hay
+    webs que ponen "20:00" a todo en sus datos estructurados: así se quedan fuera solas."""
+    h, p = defaultdict(lambda: [0, 0]), defaultdict(lambda: [0, 0])
+    for r in recs:
+        for u, d, _ in _paginas_leidas(r, cache):
+            dom = dominio(u)
+            if d.get("hora") and r.get("hora") and not r.get("hora_pagina"):
+                h[dom][0] += d["hora"] == r["hora"]
+                h[dom][1] += 1
+            a, b = _num_precio(d.get("precio")), _num_precio(r.get("precio"))
+            if a is not None and b is not None and not (r.get("precio_fuente") or {}).get("pagina"):
+                p[dom][0] += abs(a - b) <= 0.6
+                p[dom][1] += 1
+    doms = set(h) | set(p)
+    ok = lambda c: c[1] >= 3 and c[0] / c[1] >= 0.8  # noqa: E731
+    return {d: {"hora": ok(h[d]), "precio": ok(p[d]), "n_hora": h[d][1], "n_precio": p[d][1]} for d in doms}
+
+
+def aplicar_entradas(recs: list[dict], cache: dict) -> dict:
+    """Entradas, hora/precio que falten, agotado/cancelado y cartel de la gira, a partir de las páginas leídas.
+    Idempotente: lo que se puso en una pasada anterior se quita y se vuelve a calcular con la regla actual."""
+    conf = confianza(recs, cache)
+    genericas = imagenes_genericas(recs)
+    c = Counter()
+    for r in recs:
+        # deshacer lo de pasadas anteriores
+        hp = r.pop("hora_pagina", None)
+        if hp and r.get("hora") == hp.get("hora"):
+            r["hora"] = None
+        if (r.get("precio_fuente") or {}).get("pagina"):
+            r["precio"], r["precio_fuente"] = None, None
+        for k in ("entradas", "agotado", "estado_evento", "gira"):
+            r.pop(k, None)
+        pags = _paginas_leidas(r, cache)
+        # enlace de compra: la fuente que ya es una ticketera; si no, el que dan las páginas
+        ent = next(({"url": sin_fragmento(x["url"]), "nombre": ticketera(x["url"]), "via": x.get("nombre", "").split(" (")[0]}
+                    for x in r.get("fuentes") or [] if ticketera(x.get("url")) and _especifica(x.get("url"))), None)
+        if not ent:
+            for u, d, nombre in pags:
+                t = destino_compra(d) if not ticketera(u) else None
+                if t:
+                    ent = {"url": t, "nombre": ticketera(t), "via": nombre}
+                    break
+        if ent:
+            r["entradas"] = ent
+            c["entradas"] += 1
+        hora_conflicto = any(x.get("campo") == "hora" for x in r.get("conflictos") or [])
+        for u, d, nombre in pags:
+            cf = conf.get(dominio(u), {})
+            if not r.get("hora") and not hora_conflicto and d.get("hora") and cf.get("hora"):
+                r["hora"], r["hora_pagina"] = d["hora"], {"hora": d["hora"], "nombre": nombre, "url": u}
+                c["hora"] += 1
+            if not r.get("precio") and d.get("precio") and cf.get("precio"):
+                r["precio"], r["precio_fuente"] = d["precio"], {"nombre": nombre, "url": u, "pagina": True}
+                c["precio"] += 1
+            if d.get("disponibilidad") == "agotado" and "agotado" not in r:
+                r["agotado"] = {"nombre": nombre, "url": u}
+                c["agotado"] += 1
+            if d.get("estado") and "estado_evento" not in r:
+                r["estado_evento"] = {"tipo": d["estado"], "nombre": nombre, "url": u}
+                c[d["estado"]] += 1
+        # cartel de la gira: solo el que publica la sala, la promotora o la página de entradas (las agendas generales
+        # ponen a menudo la foto de perfil del artista). Nunca una imagen de relleno ni la foto que ya se enseña.
+        ya = (r.get("imagen") or {}).get("url")
+        oficiales = {sin_fragmento(x.get("url")) for x in r.get("fuentes") or [] if x.get("prioridad") in (1, 2)}
+        cands = [(d.get("imagen") or d.get("og_imagen"), nombre, u) for u, d, nombre in pags
+                 if ticketera(u) or u in oficiales]
+        ie = r.get("imagen_evento") or {}
+        if sin_fragmento(ie.get("enlace")) in oficiales:
+            cands.append((ie.get("url"), (ie.get("credito") or "").split(" (")[0], ie.get("enlace")))
+        for img, nombre, u in cands:
+            if img and img not in genericas and img != ya and img.startswith("http"):
+                r["gira"] = {"imagen": img, "credito": nombre, "enlace": u}
+                c["gira"] += 1
+                break
+    c["webs_fiables_hora"] = sum(v["hora"] for v in conf.values())
+    return dict(c)

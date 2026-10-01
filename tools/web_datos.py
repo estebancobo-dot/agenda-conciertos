@@ -49,6 +49,10 @@ def ligero(r: dict) -> dict:
     etiquetas = list(dict.fromkeys(e["estilo"] for e in r.get("estilo_fuente") or []))
     if etiquetas:
         out["estilo_fuente"] = [{"estilo": e} for e in etiquetas]
+    if r.get("agotado"):
+        out["agotado"] = True
+    if r.get("estado_evento"):
+        out["evento"] = r["estado_evento"]["tipo"]  # "cancelado" | "aplazado": se ve en la tarjeta
     im = r.get("imagen") or {}
     if im.get("url"):
         out["img"] = im["url"]
@@ -69,6 +73,9 @@ def cargar_miniaturas(recs: list[dict], carpeta: Path) -> None:
             MINIATURAS[u] = f"miniaturas/{nombre(u)}"
         if u and nombre(u, True) in hechas:
             GRANDES[u] = f"miniaturas/{nombre(u, True)}"
+        g = (r.get("gira") or {}).get("imagen")  # cartel de la gira: solo hace falta la grande (ficha)
+        if g and nombre(g, True) in hechas:
+            GRANDES[g] = f"miniaturas/{nombre(g, True)}"
 
 
 def preparar(concerts: dict, destino: Path) -> dict:
@@ -79,6 +86,10 @@ def preparar(concerts: dict, destino: Path) -> dict:
         if (r.get("imagen") or {}).get("url") in genericas_:
             r = copy.copy(r)
             r["imagen"] = None
+        g = r.get("gira") or {}
+        if g.get("imagen") in GRANDES:  # el cartel, servido desde la propia web (copia reducida)
+            r = copy.copy(r)
+            r["gira"] = {**g, "foto": GRANDES[g["imagen"]]}
         recs.append(r)
     (destino / "detalles").mkdir(parents=True, exist_ok=True)
     agenda = {k: v for k, v in concerts.items() if k != "conciertos"}

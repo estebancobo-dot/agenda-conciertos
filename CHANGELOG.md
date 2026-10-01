@@ -1,5 +1,18 @@
 # Versiones
 
+## 2.33.0 — 2026-10-01
+
+**Gestión de conciertos, fase 1: páginas de concierto y de entradas.**
+
+- Nuevo lector (`scraper/entradas.py`) de la página de cada concierto (web de la sala, agenda) y de la página de entradas que enlaza. Solo toma lo que la página dice en sus datos estructurados (schema.org, los que lee Google) y en sus enlaces:
+  - **Enlace de compra directo** ("Comprar entradas en Mutick ↗"), como botón principal de la ficha: el de la propia fuente si ya es una ticketera, el que da la web de la sala o, si no, el de la agenda. Nunca la portada genérica de una ticketera ni enlaces de páginas que listan muchos conciertos.
+  - **Hora y precio que falten** (nunca se pisa lo que ya dicen las fuentes), solo de webs cuya hora/precio coincide con lo que ya sabemos en ≥80 % de los casos: se mide en cada pasada. Hay webs que ponen "20:00" a todo (Conciertos por Madrid, Wurlitzer, Metalcry en el diagnóstico): así se quedan fuera solas. La ficha dice de qué web sale.
+  - **Agotado, cancelado o aplazado**, solo si la página lo dice: aviso en la tarjeta y en la ficha, con enlace a quien lo dice.
+  - **Cartel de la gira** publicado por la sala, la promotora o la página de entradas (no las fotos de perfil de las agendas, ni imágenes de relleno, ni la misma foto del artista). En la ficha, una sola cabecera deslizable: foto del artista ↔ cartel, con puntitos. Se sirve como copia reducida propia, como las fotos.
+- Diagnóstico previo con páginas reales (200 de concierto, 64 de entradas): hora fiable en conciertos.club, La Ganzúa, Villanos, Gruta 77, Mutick, Silikona; ticketeras legibles: Mutick, Movingtickets, Fever, Entradium, DICE, Eventbrite, Ticket&Roll, JF Promotickets. Ticketmaster, Giglon, Tomaticket y OneBox bloquean la lectura (403) y Enterticket la prohíbe en su robots.txt: se enlazan, pero no se leen.
+- Se lee en las pasadas de fichas (cada 2 h) con el tiempo que les sobra: primero los conciertos más cercanos, con caché (`paginas.json` en la rama de datos; se relee a los 3 días si el concierto es en menos de 2 semanas, si no a los 10). Madrid en Vivo no se lee (10 s por página y casi nunca enlaza a las entradas). Una web que falla 3 veces se deja para la siguiente pasada.
+- La validación diaria comprueba en la web publicada que el enlace de compra es el botón principal y anota cuántos conciertos tienen enlace, hora y cartel.
+
 ## 2.32.0 — 2026-10-01
 
 - **Hoja de filtros más clara.**

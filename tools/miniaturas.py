@@ -103,8 +103,14 @@ def reducir(datos: bytes) -> bytes:
 def pendientes(concerts: dict) -> list[str]:
     """Todas las imágenes, las de los conciertos más próximos primero (si no da tiempo, faltan las lejanas)."""
     urls: list[str] = []
-    for r in sorted(concerts.get("conciertos", []), key=lambda r: r.get("fecha") or "9"):
+    orden = sorted(concerts.get("conciertos", []), key=lambda r: r.get("fecha") or "9")
+    for r in orden:
         u = (r.get("imagen") or {}).get("url") or ""
+        if u.startswith("https://") and u not in urls:
+            urls.append(u)
+    # después, los carteles de gira (scraper/entradas.py) de la ficha
+    for r in orden:
+        u = (r.get("gira") or {}).get("imagen") or ""
         if u.startswith("https://") and u not in urls:
             urls.append(u)
     return urls

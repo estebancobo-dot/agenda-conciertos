@@ -158,6 +158,15 @@ input[type=search]::-webkit-search-cancel-button{display:none}
 .flag{font-size:1rem;line-height:1}
 .st{font-size:.72rem;font-weight:700;border-radius:999px;padding:1px 8px;border:1px solid currentColor}
 .st-conf{color:var(--bad)} .st-canc{color:var(--warn)}
+.st-agot{color:var(--warn)}
+/* ficha: foto del artista ↔ cartel de la gira, deslizando (una sola cabecera) */
+.carr{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:8px;scrollbar-width:none;border-radius:16px}
+.carr::-webkit-scrollbar{display:none}
+.carr>.hero{flex:0 0 100%;scroll-snap-align:center;scroll-snap-stop:always}
+.dots{display:flex;justify-content:center;gap:6px;margin-top:6px}
+.dots button{width:22px;height:22px;border:0;background:none;padding:0;display:flex;align-items:center;justify-content:center}
+.dots button::after{content:"";width:7px;height:7px;border-radius:50%;background:var(--line)}
+.dots button[aria-current="true"]::after{background:var(--ink)}
 .chev{color:var(--muted);font-size:1.3rem}
 /* ficha */
 .back{display:inline-flex;align-items:center;gap:6px;margin:4px 0 10px;text-decoration:none;font-weight:600}
@@ -709,6 +718,9 @@ function estiloTags(r,n){
   return a?`<span class="tag ag" title="Etiqueta de la agenda, no de una web de música">${esc(a)}</span>`:"";
 }
 function estadoMini(r){
+  const ev=r.evento||(r.estado_evento||{}).tipo;
+  if(ev) return `<span class="st st-conf">${esc(ev)}</span>`;
+  if(r.agotado) return `<span class="st st-agot">agotado</span>`;
   if(r.estado==="conflicto"){
     const campos=[...new Set((r.conflictos||[]).map(c=>({hora:"hora",sala:"sala",cartel:"cartel"})[c.campo]).filter(Boolean))];
     return `<span class="st st-conf" title="Las webs no coinciden: abre el concierto para ver cada versión">⚠ ${campos.length?esc(campos.join(" y "))+" sin confirmar":"datos distintos"}</span>`;
@@ -768,7 +780,16 @@ async function compartir(r){
   try{ if(navigator.share){ await navigator.share({title:r.artista,text,url}); return; } }catch(e){ return; }
   try{ await navigator.clipboard.writeText(`${text}\n${url}`); toast("Enlace copiado"); }catch(e){ prompt("Copia el enlace:",url); }
 }
-function estadoBox(r){
+// cancelado / aplazado / agotado, según la página del concierto o de las entradas (se dice cuál)
+function avisoEvento(r){
+  const ev=r.estado_evento||(r.evento?{tipo:r.evento}:null), ag=typeof r.agotado==="object"?r.agotado:(r.agotado?{}:null);
+  const de=x=>x&&x.url?` según <a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.nombre)}</a>`:"";
+  if(ev) return `<div class="box ${ev.tipo==="cancelado"?"box-bad":"box-warn"}"><b>${ev.tipo==="cancelado"?"Cancelado":"Aplazado"}</b>${de(ev)}. Confírmalo antes de ir.</div>`;
+  if(ag) return `<div class="box box-warn"><b>Entradas agotadas</b>${de(ag)}.</div>`;
+  return "";
+}
+function estadoBox(r){ return avisoEvento(r)+estadoBox0(r); }
+function estadoBox0(r){
   if(!r._full) return `<div class="box" id="cargando">Cargando fuentes, precio y enlaces…</div>`;
   const conflictos=(r.conflictos||[]).filter(c=>c.versiones&&c.versiones.length);
   if(r.estado==="conflicto"){
@@ -799,6 +820,11 @@ function viewConcierto(){
   const mapa=`https://www.google.com/maps/search/${encodeURIComponent((r.sala||"")+" "+(r.municipio||"Madrid"))}`;
   const fuentes=r.fuentes||[];
   const entradas=(r.confirmado_sala&&r.confirmado_sala.url)||(fuentes[0]||{}).url;
+  // cartel de la gira (scraper/entradas.py): otra imagen que la del artista, de la sala o de la página de entradas
+  const gira=r.gira&&r.gira.imagen?r.gira:null;
+  const giraHTML=gira?`<div class="hero gira"><img class="ok" src="${esc(gira.foto||fotoUrl(gira.imagen,720,false))}" data-o="${esc(gira.imagen)}" alt="Cartel de la gira de ${esc(r.artista)}" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="if(this.dataset.o&&this.src!==this.dataset.o){this.src=this.dataset.o;this.dataset.o=''}else{const c=this.closest('.carr');this.closest('.hero').remove();if(c){const d=c.nextElementSibling;if(d&&d.classList.contains('dots'))d.remove();}}"></div>`:"";
+  const comprar=r.entradas&&r.entradas.url?r.entradas:null;
+  const agotado=!!r.agotado;
   const estilos=r.estilos_discogs||[];
   const generos=r.genero_discogs||[];
   const tieneDiscogs=f&&(f.enlaces||[]).some(e=>e.nombre==="Discogs");
@@ -826,14 +852,15 @@ function viewConcierto(){
   const volver=state.from||`#dia/${r.fecha}`;
   return `<a class="back" href="${esc(volver)}">‹ Volver</a>
    <div class="dt">
-    <div class="hero" style="--gc:var(${color(r)})"><div class="ph">${iniciales(r.artista)}</div>${im?`<img class="foto${fotoLista(r)?" ya":""}" src="${esc(fotoDetalle(r,im))}" data-o="${esc(im.url)}" alt="Foto de ${esc(r.artista)}" fetchpriority="high" decoding="async" referrerpolicy="no-referrer" onload="this.classList.add('ok');fotoGrande(this)" onerror="if(this.dataset.o&&this.src!==this.dataset.o){this.src=this.dataset.o;this.dataset.o=''}else{this.remove()}">`:""}</div>
-    ${im?`<div class="credit">Foto: <a href="${esc(im.enlace||im.url)}" target="_blank" rel="noopener">${esc(im.credito)}</a>${f&&f.imagen?"":" (imagen del anuncio)"}</div>`:""}
+    ${gira&&im?`<div class="carr" id="carr" aria-label="Fotos: desliza para ver el cartel de la gira">`:""}<div class="hero" style="--gc:var(${color(r)})"><div class="ph">${iniciales(r.artista)}</div>${im?`<img class="foto${fotoLista(r)?" ya":""}" src="${esc(fotoDetalle(r,im))}" data-o="${esc(im.url)}" alt="Foto de ${esc(r.artista)}" fetchpriority="high" decoding="async" referrerpolicy="no-referrer" onload="this.classList.add('ok');fotoGrande(this)" onerror="if(this.dataset.o&&this.src!==this.dataset.o){this.src=this.dataset.o;this.dataset.o=''}else{this.remove()}">`:""}</div>
+    ${gira&&im?`${giraHTML}</div><div class="dots" role="group" aria-label="Fotos"><button data-slide="0" aria-current="true" aria-label="Foto del artista"></button><button data-slide="1" aria-current="false" aria-label="Cartel de la gira"></button></div>`:gira?giraHTML.replace('class="hero gira"','class="hero gira" style="margin-top:8px"'):""}
+    ${im||gira?`<div class="credit">${im?`Foto: <a href="${esc(im.enlace||im.url)}" target="_blank" rel="noopener">${esc(im.credito)}</a>${f&&f.imagen?"":" (imagen del anuncio)"}`:""}${im&&gira?" · ":""}${gira?`Cartel de la gira: <a href="${esc(gira.enlace||gira.imagen)}" target="_blank" rel="noopener">${esc(gira.credito)}</a>`:""}</div>`:""}
     <h2>${esc(r.artista)}</h2>
     ${r.ciclo?`<div class="ciclo">${esc(r.ciclo)}</div>`:""}
     ${r.invitados&&r.invitados.length?`<div class="inv">con ${r.invitados.map(esc).join(", ")}</div>`:""}
     ${estadoBox(r)}
     <div class="rows">
-     <div class="row"><span class="ic">📅</span><div><div class="v">${esc(fmt(r.fecha,{weekday:"long",day:"numeric",month:"long"}))}</div><div class="s">${r.hora?`${esc(r.hora)} h`:h?"Hora por confirmar: las webs no coinciden":"Hora sin indicar"}</div></div></div>
+     <div class="row"><span class="ic">📅</span><div><div class="v">${esc(fmt(r.fecha,{weekday:"long",day:"numeric",month:"long"}))}</div><div class="s">${r.hora?`${esc(r.hora)} h${r.hora_pagina?` · según <a href="${esc(r.hora_pagina.url)}" target="_blank" rel="noopener">${esc(r.hora_pagina.nombre)}</a>`:""}`:h?"Hora por confirmar: las webs no coinciden":"Hora sin indicar"}</div></div></div>
      <div class="row"><span class="ic">📍</span><div><div class="v">${esc(r.sala||"Sala sin indicar")}</div><div class="s">${esc(r.municipio||"")} · <a href="${esc(mapa)}" target="_blank" rel="noopener">Cómo llegar</a>${sala&&sala.web?` · <a href="${esc(sala.web)}" target="_blank" rel="noopener">Web de la sala</a>`:""}</div></div></div>
      <div class="row"><span class="ic">🎸</span><div>${estiloHTML}</div></div>
      <div class="row"><span class="ic">${r.nacionalidad?flag(r.nacionalidad):r.nacionalidad_estimada?flag(r.nacionalidad_estimada):"🏳️"}</span><div>${r.nacionalidad?`<div class="v">${esc(pais(r.nacionalidad))}</div><div class="s">según ${esc(r.nacionalidad_fuente||"la fuente")}</div>`:r.nacionalidad_estimada?`<div class="v">Probablemente ${esc(pais(r.nacionalidad_estimada))}</div><div class="s">Estimado: ${esc(r.nacionalidad_estimada_motivo||"nombre en español")}. Ninguna fuente lo confirma</div>`:(r.origen_no_aplica?`<div class="v muted">No aplica</div><div class="s">Es un espectáculo (teatro, musical, danza…), no un artista</div>`:`<div class="v muted">Origen sin confirmar</div><div class="s">Ninguna fuente fiable lo indica</div>`)}</div></div>
@@ -841,7 +868,8 @@ function viewConcierto(){
      <div class="row"><span class="ic">🎟️</span><div>${r.precio?`<div class="v">${esc(precioTxt(r.precio))}</div><div class="s">según ${r.precio_fuente?`<a href="${esc(r.precio_fuente.url)}" target="_blank" rel="noopener">${esc(r.precio_fuente.nombre.split(" (")[0])}</a>`:"la web"} · puede no incluir gastos</div>`:(r._full?`<div class="v muted">Precio sin indicar</div>`:`<div class="v muted carg">Cargando…</div>`)}</div></div>
     </div>
     <div class="actions">
-     ${entradas?`<a class="lbtn primary" href="${esc(entradas)}" target="_blank" rel="noopener">${r.confirmado_sala?"Ver en la web de la sala":"Ver anuncio y entradas"} ↗</a>`:""}
+     ${comprar?`<a class="lbtn primary" id="comprar" href="${esc(comprar.url)}" target="_blank" rel="noopener">${agotado?"Agotado · ver en":"Comprar entradas en"} ${esc(comprar.nombre)} ↗</a>`:""}
+     ${entradas&&(!comprar||entradas!==comprar.url)?`<a class="lbtn${comprar?"":" primary"}" href="${esc(entradas)}" target="_blank" rel="noopener">${r.confirmado_sala?"Ver en la web de la sala":comprar?"Ver el anuncio":"Ver anuncio y entradas"} ↗</a>`:""}
      <button class="lbtn" id="ics">📅 Al calendario</button><button class="lbtn" id="share">↗ Compartir</button>
     </div>
     <h3 class="sec">Escuchar y saber más</h3>
@@ -1228,6 +1256,11 @@ function bindBody(){
     const bk=document.querySelector("#main .back"); if(bk&&state.from) bk.onclick=e=>{e.preventDefault(); history.back();};
     const i=document.getElementById("ics"); if(i) i.onclick=()=>descargarIcs(r);
     const s=document.getElementById("share"); if(s) s.onclick=()=>compartir(r);
+    const ca=document.getElementById("carr");
+    if(ca){ const dots=[...document.querySelectorAll(".dots [data-slide]")];
+      const marcar=()=>{const k=Math.round(ca.scrollLeft/ca.clientWidth); dots.forEach((d,i)=>d.setAttribute("aria-current",i===k));};
+      ca.addEventListener("scroll",()=>requestAnimationFrame(marcar),{passive:true});
+      dots.forEach(d=>d.onclick=()=>ca.scrollTo({left:Number(d.dataset.slide)*ca.clientWidth,behavior:"smooth"})); }
   }
   const sw=document.getElementById("swipe");
   if(sw){ let x0=null,y0=null;

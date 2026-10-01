@@ -15,6 +15,7 @@ from pathlib import Path
 from . import __version__
 from .clasificar import categoria_de
 from .correcciones import aplicar as aplicar_correcciones
+from .entradas import aplicar_entradas
 from .fetch import AntiBotBlocked, Fetcher, RobotsBlocked, RobotsUnreachable
 from .merge import (Item, agrupar, artistas_coinciden, coinciden_flexible, construir, fusionar_conflictos_sala,
                     hacer_id, marcar_conflictos_cartel, nombres_rec, recalcular_categorias, recalcular_estado,
@@ -125,6 +126,7 @@ def rastrear(fuentes: list[Source], fetcher: Fetcher, hoy: date, horizonte: date
 
 # ---------------------------------------------------------------- caché de la última lectura buena de cada fuente
 CACHE_FUENTES = "fuentes_cache.json"
+CACHE_PAGINAS = "paginas.json"  # páginas de concierto y de entradas leídas (scraper/entradas.py)
 CACHE_MAX_DIAS = 14  # más antigua no se usa: la fuente puede haber cambiado o desaparecido
 
 
@@ -663,6 +665,7 @@ def ejecutar(hoy: date | None = None, solo: list[str] | None = None, fetcher: Fe
         aplicar_ficha(r, ficha_de(r, cache_art))
         origen_por_agenda(r, cache_art)
         tributo_y_estimacion(r, cache_art)
+    stats_entradas = aplicar_entradas(recs, _read(CACHE_PAGINAS, {}))
     # MusicBrainz (solo para los que siguen sin nacionalidad)
     mb_stats = {"desactivado": True}
     if musicbrainz:
@@ -703,6 +706,7 @@ def ejecutar(hoy: date | None = None, solo: list[str] | None = None, fetcher: Fe
         "correcciones": res_corr,
         "musicbrainz": mb_stats,
         "artistas": art_stats,
+        "entradas": stats_entradas,
         "estilos_sin_mapear": sin_mapear[:300],
         "grupos": cambios_grupos(grupos_previos, recs, hoy.isoformat()),
         # lo que requiere mirar a mano (se abre también un issue en GitHub, ver .github/workflows)
@@ -744,9 +748,17 @@ def ejecutar_fichas(hoy: date | None = None, presupuesto_seg: float = 3000) -> d
         _write("artistas.json", cache_art)
         _write("musicbrainz_cache.json", cache_mb)
 
+    t0 = time.monotonic()
     stats = enriquecer(recs, cache_art, hoy, presupuesto_seg=presupuesto_seg, guardar=guardar_fichas,
                        mb_cache=cache_mb)
-    if not stats["consultados"] and not stats["completados"] and \
+    # con el tiempo que sobra: páginas de concierto y de entradas (hora, precio, agotado, enlace, cartel)
+    from .entradas import leer_entradas
+    cache_pag = _read(CACHE_PAGINAS, {})
+    resto = presupuesto_seg - (time.monotonic() - t0) - 120
+    ent = leer_entradas(recs, cache_pag, Fetcher(), hoy, resto) if resto > 60 else {}
+    _write(CACHE_PAGINAS, cache_pag)
+    stats["paginas"] = ent
+    if not stats["consultados"] and not stats["completados"] and not ent.get("leidas") and \
             _read("informe.json", {}).get("version_fichas") == __version__:
         return stats  # nada pendiente: no se toca ningún archivo (ni commit ni nueva publicación)
     # con una versión nueva se vuelve a aplicar todo aunque no haya fichas nuevas: las reglas pueden haber cambiado
@@ -759,6 +771,7 @@ def ejecutar_fichas(hoy: date | None = None, presupuesto_seg: float = 3000) -> d
         aplicar_ficha(r, ficha_de(r, cache_art))
         origen_por_agenda(r, cache_art)
         tributo_y_estimacion(r, cache_art)
+    stats["entradas"] = aplicar_entradas(recs, cache_pag)
     _write("concerts.json", datos)
     escribir_csv(recs, DATA / "concerts.csv")
     informe = _read("informe.json", {})
@@ -783,5 +796,6 @@ def reaplicar_fichas() -> None:
         aplicar_ficha(r, ficha_de(r, cache))
         origen_por_agenda(r, cache)
         tributo_y_estimacion(r, cache)
+    aplicar_entradas(recs, _read(CACHE_PAGINAS, {}))
     _write("concerts.json", datos)
     escribir_csv(recs, DATA / "concerts.csv")

@@ -472,6 +472,7 @@ def recorrido(b):
     check("Funcional", "Filtros de origen: España, Latinoamérica, resto del mundo y sin confirmar cuadran",
           f"{suma} de {o['total']}", ok=suma == o["total"] and o["es"] == o["esc"] + o["est"], detalle=str(o))
     mes(pg)
+    entradas_ficha(pg)
     cabeceras_fijas(pg, lunes)
     accesos_al_bajar(pg, lunes)
 
@@ -524,6 +525,31 @@ def ficha_funcional(pg, cid):
     check("Funcional", "Ficha: enlaza a sus fuentes", f"{f['enlaces_fuente']} de {f['fuentes']}",
           ok=f["fuentes"] > 0 and f["enlaces_fuente"] == f["fuentes"])
     check("UX", "Ficha: no se queda en 'Cargando…'", ok=not f["cargando"])
+
+
+def entradas_ficha(pg):
+    """Página de entradas (scraper/entradas.py): un concierto con enlace de compra lo enseña como botón principal;
+    agotado/cancelado se avisan. Y cuántos conciertos tienen ya enlace, hora y cartel."""
+    r = pg.evaluate("""async()=>{const dias=[...new Set(DATA.filter(r=>r.fecha>=HOY).map(r=>r.fecha))].sort().slice(0,10);
+        let tot=0, ent=0, gira=0, hora=0, uno=null;
+        for(const d of dias){ const x=DATA.find(r=>r.fecha===d); if(!x) continue; await asegurarDetalle(x.id);
+          for(const r of DATA.filter(r=>r.fecha===d&&r._full)){ tot++; if(r.hora) hora++; if(r.gira) gira++;
+            if(r.entradas){ ent++; if(!uno) uno=r.id; } } }
+        return {tot, ent, gira, hora, uno}}""")
+    medida("entradas_10_dias", **r)
+    check("Otros", "Próximos 10 días: conciertos con enlace de compra directo", f"{r['ent']} de {r['tot']}",
+          ok=r["tot"] > 0, grave=False, detalle=f"con cartel de gira {r['gira']}, con hora {r['hora']}")
+    if not r["uno"]:
+        return
+    pg.evaluate(f"location.hash='#concierto/{r['uno']}'")
+    pg.wait_for_selector(".dt h2", timeout=15000)
+    pg.wait_for_timeout(800)
+    b = pg.evaluate("""(id)=>{const r=BYID[id], a=document.getElementById('comprar');
+        return {ok:!!a&&a.href===new URL(r.entradas.url,location.href).href&&a.innerText.includes(r.entradas.nombre),
+                texto:a&&a.innerText, agotado:!!r.agotado, aviso:!!r.agotado===!!document.querySelector('.dt .box-warn,.dt .box-bad')}}""",
+                    r["uno"])
+    check("Funcional", "Ficha: el enlace de compra de la página de entradas es el botón principal", b["texto"],
+          ok=b["ok"], detalle=str(b))
 
 
 def filtros(pg, lunes):
