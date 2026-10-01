@@ -275,7 +275,19 @@ const DEF_GRUPOS = GRUPOS.filter(g=>!g.mas).map(g=>g.id);
 const VISTAS = ["Mes","Semana","Día"];
 const INFO = ["Estilos","Fuentes","Informe","Versiones"];
 const TABS = [...VISTAS,...INFO];
-const ORIGENES = [["todos","Todos"],["es","🇪🇸 Españoles"],["ext","Extranjeros"],["nc","Origen sin confirmar"]];
+const ORIGENES = [["todos","Todos"],["es","🇪🇸 España"],["esc","🇪🇸 España (solo confirmados)"],["lat","🌎 Latinoamérica"],["ext","🌍 Resto del mundo"],["nc","Origen sin confirmar"]];
+// Latinoamérica tiene grupo propio: un nombre en español no distingue España de Latinoamérica, y así se ve aparte
+const LATAM = new Set(["AR","BO","BR","CL","CO","CR","CU","DO","EC","SV","GT","HN","MX","NI","PA","PY","PE","PR","UY","VE"]);
+// un mismo criterio para la agenda y para la hoja de filtros
+function origenDe(r, o){
+  const n=r.nacionalidad;
+  if(o==="es") return n==="ES"||(!n&&r.nacionalidad_estimada==="ES");
+  if(o==="esc") return n==="ES";
+  if(o==="lat") return !!n&&LATAM.has(n);
+  if(o==="ext") return !!n&&n!=="ES"&&!LATAM.has(n);
+  if(o==="nc") return !n&&!r.nacionalidad_estimada&&!r.origen_no_aplica;
+  return true;
+}
 const store = {
   get(k,d){try{const v=localStorage.getItem("agenda:"+k);return v===null?d:JSON.parse(v)}catch(e){return d}},
   set(k,v){try{localStorage.setItem("agenda:"+k,JSON.stringify(v))}catch(e){}}
@@ -363,9 +375,7 @@ function borrarFiltros(){
   state.genericos=true; store.set("genericos",true); state.q=""; renderBody(false);
 }
 function pasaOrigen(r){
-  if(state.origen==="es") return r.nacionalidad==="ES"||(!r.nacionalidad&&r.nacionalidad_estimada==="ES");
-  if(state.origen==="ext") return !!r.nacionalidad && r.nacionalidad!=="ES";
-  if(state.origen==="nc") return !r.nacionalidad&&!r.nacionalidad_estimada&&!r.origen_no_aplica;
+  if(state.origen!=="todos") return origenDe(r,state.origen);
   return true;
 }
 // Un concierto pasa si está en un género elegido; si en ese género se han elegido estilos concretos, además
@@ -389,7 +399,7 @@ function resumenFiltros(){
     else p.push(GRUPOS.filter(g=>state.grupos.includes(g.id)).map(g=>g.nombre+((state.estilos[g.id]||[]).length?` (${state.estilos[g.id].join(", ")})`:"")).join(", "));
     if(!state.genericos) p.push("sin etiquetas genéricas");
   }
-  if(state.origen!=="todos") p.push(ORIGENES.find(o=>o[0]===state.origen)[1].replace("🇪🇸 ",""));
+  if(state.origen!=="todos") p.push((ORIGENES.find(o=>o[0]===state.origen)||["",""])[1].replace(/^\S+ /,""));
   if(state.q.trim()) p.unshift(`búsqueda «${state.q.trim()}»`);
   return p.join(" · ");
 }
@@ -441,7 +451,7 @@ function openSheet(){
   const ARBOL={}; todosLosEstilos().forEach(s=>{const g=grupoDeEstilo(s); (ARBOL[g]=ARBOL[g]||[]).push(s);});
   let sel=[...state.grupos], ori=state.origen, selEst=JSON.parse(JSON.stringify(state.estilos||{})), genOk=state.genericos, q=state.q;
   const el=document.getElementById("sheet");
-  const pasaOri=r=>ori==="todos"||(ori==="es"?(r.nacionalidad||r.nacionalidad_estimada)==="ES":ori==="ext"?r.nacionalidad&&r.nacionalidad!=="ES":!r.nacionalidad&&!r.nacionalidad_estimada&&!r.origen_no_aplica);
+  const pasaOri=r=>ori==="todos"||origenDe(r,ori);
   let fut=[], cnt={}, est={}, gen={};
   const contar=()=>{ fut=DATA.filter(r=>r.fecha>=HOY&&pasaTexto(r,q)&&pasaOri(r)); cnt={}; est={}; gen={};
     for(const r of fut){ for(const g of grupos(r)){cnt[g]=(cnt[g]||0)+1; if(r.grupos_generico) gen[g]=(gen[g]||0)+1;}
@@ -470,6 +480,7 @@ function openSheet(){
      <p class="hint">Dentro de un género puedes quedarte solo con algunos estilos (los de Discogs; el número es de conciertos próximos).</p>
      <h4>Origen del artista</h4>
      <div class="opts">${ORIGENES.map(([v,t])=>`<button data-o="${v}" aria-pressed="${ori===v}">${esc(t)}</button>`).join("")}</div>
+     <p class="hint">"España" incluye los que probablemente son españoles por el nombre (bandera atenuada; aciertan en torno a 3 de cada 4: el resto suelen ser latinoamericanos). "Solo confirmados", los que dice una fuente.</p>
      <h4>Más opciones</h4>
      <label class="grp" style="display:flex;gap:10px;align-items:flex-start;padding:10px 12px"><input type="checkbox" id="fgenok" ${genOk?"checked":""} style="margin-top:3px"><span><b>Incluir los de etiqueta genérica</b><br><span class="hint">Artistas sin ficha que la agenda solo etiqueta como "Pop / Rock", "Músicas negras"…: salen en todos esos géneros porque no se sabe cuál es.</span></span></label>
      </div><div class="ft"><button id="sdef">Borrar filtros</button><button class="go" id="sclose">Ver ${plural(total(),"concierto")}</button></div></div>`;

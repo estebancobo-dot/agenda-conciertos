@@ -1,5 +1,10 @@
 # Versiones
 
+## 2.25.0 — 2026-10-01
+
+- **Filtro de origen con Latinoamérica aparte**: España (confirmados y probables, estos con la bandera atenuada), España (solo confirmados), Latinoamérica, Resto del mundo y Origen sin confirmar. Medido sobre 692 artistas con país confirmado, el "probablemente España" por el nombre acierta el 76 %, y casi todos los fallos son latinoamericanos (un nombre en español no distingue España de Latinoamérica): así se ve aparte. La validación diaria comprueba que las opciones reparten todos los conciertos sin dejar ninguno fuera ni contar ninguno dos veces.
+- **Origen buscado en todo Wikipedia**: para quien sigue sin origen, la búsqueda de Wikipedia (API oficial) encuentra frases como "la banda madrileña X" en artículos de festivales, sellos u otros grupos, aunque el artista no tenga artículo propio. Con la misma regla estricta que en las agendas: el gentilicio pegado al nombre.
+
 ## 2.24.0 — 2026-10-01
 
 - **Madrid en Vivo: los estilos de cada concierto.** Su buscador solo da la categoría ("Pop / Rock", "Músicas negras"), pero cada evento tiene además sus estilos ("#Folk-Rock", "#Indie"…). Ahora se leen de la API pública de WordPress de la web (permitida por su robots.txt), en bloques de 100 eventos y con los 10 s entre peticiones que pide. Son el estilo del concierto según la agenda; si un evento no tiene ninguno reconocible, se queda la categoría. Esto ataca la mayor fuente de etiquetas genéricas (~490 conciertos).

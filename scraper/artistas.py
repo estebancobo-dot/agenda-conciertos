@@ -287,6 +287,26 @@ def buscar_wikidata(f: Fetcher, qid: str) -> dict:
     return wikidata_parse(json.loads(f.get(WIKIDATA.format(q=qid))))
 
 
+# ------------------------------------------------------------------ Wikipedia: búsqueda en el texto de los artículos
+WP_BUSCAR = "https://{lang}.wikipedia.org/w/rest.php/v1/search/page?q={q}&limit=8"
+
+
+def buscar_en_wikipedia(f: Fetcher, nombre: str) -> dict:
+    """Origen que dice cualquier artículo de Wikipedia sobre el artista aunque no tenga artículo propio: "la banda
+    madrileña X" en el artículo de un festival, de un sello o de otro grupo. API oficial de búsqueda (la política
+    de Wikimedia la permite con User-Agent identificable; su robots.txt de /w/ es para rastreadores)."""
+    from .origen import pais_en_texto
+    for lang, extra in (("es", "banda OR grupo OR cantante OR cantautor OR músico"), ("en", "band OR singer")):
+        d = json.loads(f.get(WP_BUSCAR.format(lang=lang, q=quote(f'"{nombre}" {extra}')), check_robots=False))
+        for p in d.get("pages") or []:
+            texto = re.sub(r"<[^>]+>", "", p.get("excerpt") or "")
+            pais, frase = pais_en_texto(texto, nombre)
+            if pais:
+                return {"encontrado": True, "pais": pais, "frase": frase,
+                        "url": f"https://{lang}.wikipedia.org/wiki/{quote(p.get('key') or '')}", "articulo": p.get("title")}
+    return {"encontrado": False, "motivo": "ningún artículo dice de dónde es"}
+
+
 # ------------------------------------------------------------------ Wikipedia
 MUSICA_CAT = re.compile(r"(?i)grupos? de|cantantes?|m[uú]sicos?|raperos?|cantautor|d[uú]os de m[uú]sica|bandas? de|"
                         r"musical groups|bands|singers|musicians|rappers|songwriters|music(al)? duos")
@@ -548,7 +568,8 @@ def _tiene_estilo(ent: dict) -> bool:
 
 
 def _pasos_con_error(ent: dict) -> list[str]:
-    return [k for k in ("wikipedia", "wikidata", "discogs", "lastfm", "musicbrainz", "lastfm_bio", "agenda")
+    return [k for k in ("wikipedia", "wikidata", "discogs", "lastfm", "musicbrainz", "lastfm_bio", "agenda",
+                        "wikipedia_texto")
             if str((ent.get(k) or {}).get("motivo", "")).startswith("error")]
 
 
@@ -609,8 +630,8 @@ def _falta_origen(ent: dict, clave_lastfm) -> bool:
         return True
     if (ficha(ent) or {}).get("pais"):
         return False
-    return (bool(clave_lastfm) and (ent.get("lastfm") or {}).get("encontrado")
-                                   and "lastfm_bio" not in ent)
+    return "wikipedia_texto" not in ent or (bool(clave_lastfm) and (ent.get("lastfm") or {}).get("encontrado")
+                                            and "lastfm_bio" not in ent)
 
 
 def _encontrado(ent: dict) -> bool:
@@ -733,6 +754,8 @@ def enriquecer(recs: list[dict], cache: dict, hoy: date, presupuesto_seg: float 
             paso("lastfm_bio", buscar_lastfm_bio, fetcher_lf, nombre, mb, clave_lastfm)
         if _falta_agenda(ent) and urls_de.get(k):
             paso("agenda", buscar_en_agenda, fetcher_ag, nombre, urls_de[k])
+        if not (ficha(ent) or {}).get("pais") and "wikipedia_texto" not in ent and len(norm(nombre)) >= 4:
+            paso("wikipedia_texto", buscar_en_wikipedia, fetcher_wp, nombre)
         return k, ent
 
     # primero los que aún no tienen origen (lo que más falta en la web), sin perder el orden por fecha; y 8 a la
@@ -973,6 +996,9 @@ def ficha(ent: dict | None) -> dict | None:
     elif agenda_valida(ent.get("agenda"), ent.get("nombre")):
         ag = ent["agenda"]
         pais, fuente_pais = ag["pais"], f"la agenda ({ag['url'].split('/')[2]}): «{ag.get('frase', '')[:160]}»"
+    elif agenda_valida(ent.get("wikipedia_texto"), ent.get("nombre")):
+        wt = ent["wikipedia_texto"]
+        pais, fuente_pais = wt["pais"], f"Wikipedia (artículo «{wt.get('articulo', '')}»): «{wt.get('frase', '')[:160]}»"
     elif (ent.get("lastfm_bio") or {}).get("pais") and (
             ent["lastfm_bio"].get("identificado_por") != "coincidencia por nombre" or ent["lastfm_bio"]["pais"] == "ES"):
         pais, fuente_pais = ent["lastfm_bio"]["pais"], f"Last.fm (biografía): «{ent['lastfm_bio'].get('frase', '')[:160]}»"

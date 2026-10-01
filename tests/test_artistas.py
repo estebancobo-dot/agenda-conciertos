@@ -177,7 +177,8 @@ def test_discogs_id_de_wikidata_borrado_busca_por_nombre():
     st = A.enriquecer([{"artista": "Los Deltonos", "en_foco": True, "fecha": "2026-10-10"}], cache, date(2026, 9, 29),
                       fetcher_dc=dc2, fetcher_wp=wp, fetcher_lf=FakeFetcher({}), clave_lastfm="",
                       fetcher_mb=MB_VACIO, mb_cache={})
-    assert st["completados"] == 1 and dc2.urls and not wp.urls
+    # Wikipedia no se repite (ya estaba); solo la búsqueda de su origen en otros artículos, que es nueva
+    assert st["completados"] == 1 and dc2.urls and not [u for u in wp.urls if "/w/rest.php" not in u]
     assert cache["los deltonos"]["discogs"]["motivo"] == "sin coincidencia exacta"
 
 
@@ -374,3 +375,17 @@ def test_discogs_homonimos_elige_el_espanol():
             return _j.dumps({"results": [{"title": "Trapiche - Uno", "genre": ["Rock"], "style": ["Hard Rock"]}]})
     r = A.buscar_discogs(F(), "TRAPICHE")
     assert r["encontrado"] and r["id"] == 2 and r["pais"] == "ES" and "único de España" in r["identificado_por"]
+
+
+def test_origen_en_otros_articulos_de_wikipedia():
+    import json as _j
+
+    class F:
+        def get(self, u, **k):
+            return _j.dumps({"pages": [{"key": "Festival_X", "title": "Festival X",
+                                        "excerpt": 'Actuaron <span class="searchmatch">Los Bengala</span>, la banda madrileña '
+                                                   '<span class="searchmatch">Gorila Flo</span> y otros.'}]})
+    r = A.buscar_en_wikipedia(F(), "Gorila Flo")
+    assert r["pais"] == "ES" and r["articulo"] == "Festival X"
+    ent = {"nombre": "Gorila Flo", "wikipedia_texto": r}
+    assert A.ficha(ent) is None or A.ficha(ent).get("pais") in (None, "ES")
