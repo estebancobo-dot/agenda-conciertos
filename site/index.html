@@ -96,6 +96,7 @@ input[type=search]::-webkit-search-cancel-button{display:none}
 .chip[aria-pressed="true"] .cc{color:var(--bg)}
 .chip[aria-pressed="true"]::before{content:"✓";font-weight:800;margin-right:-2px}
 .chip[aria-pressed="true"] i{box-shadow:0 0 0 2px var(--bg)}
+.chip.quitar{border-color:var(--ink);font-weight:700}
 .active{font-size:.8rem;color:var(--muted);margin:6px 0 0}
 .active button{border:0;background:none;color:var(--info);padding:0;font-size:.8rem;text-decoration:underline}
 /* navegación de fechas */
@@ -201,6 +202,7 @@ details.more ul{padding-left:20px;margin:8px 0}
 .sheet .ft{padding:10px 16px calc(12px + env(safe-area-inset-bottom));border-top:1px solid var(--line);display:flex;gap:8px}
 .sheet .ft button{flex:1;height:46px;border-radius:12px;border:1px solid var(--line);background:var(--panel);font-weight:700}
 .sheet .ft .go{background:var(--ink);color:var(--bg);border-color:var(--ink);flex:2}
+.sheet .ft #sdef:disabled{opacity:.5;cursor:default}
 .sheet h3{margin:0 0 4px}
 .sheet h4{margin:16px 0 6px;font-size:.8rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
 .opts{display:grid;grid-template-columns:1fr 1fr;gap:6px}
@@ -514,11 +516,11 @@ function extraHTML(){
   // Como en Google Maps o Airbnb: sin filtro de género ("Habituales" o "Todos") ningún género sale marcado; al tocar
   // uno se filtra por él, y los marcados (rellenos, con ✓) son justo los que se están viendo
   const modo=modoGrupos(state.grupos);
-  const chips=`<button class="chip" data-pre="${modo==="todos"?"todos":"def"}" aria-pressed="${modo!=="custom"}">${modo==="todos"?"Todos los géneros":"Habituales"}</button>`+
+  const chips=(n?`<button class="chip quitar" id="fquitar" aria-label="Quitar todos los filtros">✕ Quitar filtros</button>`:"")+`<button class="chip" data-pre="${modo==="todos"?"todos":"def"}" aria-pressed="${modo!=="custom"}">${modo==="todos"?"Todos los géneros":"Habituales"}</button>`+
     // los elegidos, delante (si no, al tocar uno que está a la derecha la fila vuelve al principio y no se ve)
     [...GRUPOS].sort((x,y)=>(modo==="custom")*((state.grupos.includes(y.id))-(state.grupos.includes(x.id)))).map(g=>`<button class="chip" data-chip="${esc(g.id)}" aria-pressed="${modo==="custom"&&state.grupos.includes(g.id)}"><i style="background:var(${g.v})"></i>${esc(g.nombre)}<small class="cc">${cn[g.id]||0}</small></button>`).join("");
   return `<div class="chips" role="group" aria-label="Géneros">${chips}</div>
-   ${n?`<div class="active">Filtrando: ${esc(resumenFiltros())} · <button id="freset">Borrar filtros</button></div>`:""}`;
+   ${n?`<div class="active">Filtrando: ${esc(resumenFiltros())} · <button id="freset">Quitar filtros</button></div>`:""}`;
 }
 function setGrupos(g){ state.grupos=g; store.set("grupos4",g); }
 // preajuste de géneros: los habituales, todos, o una selección propia
@@ -535,6 +537,7 @@ function bindFilters(){
 }
 function bindExtra(){
   const fr=document.getElementById("freset"); if(fr) fr.onclick=borrarFiltros;
+  const fq=document.getElementById("fquitar"); if(fq) fq.onclick=borrarFiltros;
   document.querySelectorAll("[data-chip]").forEach(c=>c.onclick=()=>{
     const id=c.dataset.chip;
     let g;
@@ -591,7 +594,7 @@ function openSheet(){
     return `<h4>Géneros</h4>
      <div class="segp" role="group" aria-label="Preajuste de géneros"><button type="button" data-rap="def" aria-pressed="${m==="def"}">Habituales</button><button type="button" data-rap="todos" aria-pressed="${m==="todos"}">Todos</button><button type="button" data-rap="custom" aria-pressed="${m==="custom"}" ${m==="custom"?"":"disabled"} title="Se marca solo al cambiar la selección">Personalizado</button></div>
      <div class="gchips">${GRUPOS.filter(g=>!g.mas).map(gchip).join("")}<div class="sub">Más géneros</div>${GRUPOS.filter(g=>g.mas).map(gchip).join("")}</div>
-     <button type="button" class="lnk" data-rap="ninguno">Quitar todos (para elegir solo los que quieras)</button>
+     <button type="button" class="lnk" data-rap="ninguno">Desmarcar todos los géneros</button>
      <button type="button" class="navrow" id="vestilos"><b>Afinar por estilos</b><span id="resest">${esc(resumenTodos())}</span></button>`;};
   // Panel de estilos: buscador ("blue", "post"…) sobre los estilos de TODOS los géneros; primero los géneros elegidos
   // (con sus 12 estilos con más conciertos), luego el resto plegados. Marcar un estilo elige su género.
@@ -620,10 +623,13 @@ function openSheet(){
      <p class="hint">"España" incluye los que probablemente son españoles por el nombre (bandera atenuada; aciertan en torno a 3 de cada 4: el resto suelen ser latinoamericanos). "Solo confirmados", los que dice una fuente.</p>
      <h4>Más opciones</h4>
      <label class="grp" style="display:flex;gap:10px;align-items:flex-start;padding:10px 12px"><input type="checkbox" id="fgenok" ${genOk?"checked":""} style="margin-top:3px"><span><b>Incluir los de etiqueta genérica</b><br><span class="hint">Artistas sin ficha que la agenda solo etiqueta como "Pop / Rock", "Músicas negras"…: salen en todos esos géneros porque no se sabe cuál es.</span></span></label>`}
-     </div><div class="ft"><button id="sdef">Restablecer</button><button class="go" id="sclose">Ver ${plural(total(),"concierto")}</button></div></div>`;
-    enlazar(); medir("hoja-abrir",t0);
+     </div><div class="ft"><button id="sdef">Quitar todo</button><button class="go" id="sclose">Ver ${plural(total(),"concierto")}</button></div></div>`;
+    enlazar(); document.getElementById("sdef").disabled=sinNada(); medir("hoja-abrir",t0);
   };
+  // "Quitar todo" se apaga cuando ya no hay nada que quitar (géneros habituales, sin estilos, origen todos…)
+  const sinNada=()=>modoGrupos(sel)==="def"&&!Object.keys(selEst).length&&ori==="todos"&&genOk&&!q.trim();
   const refrescar=()=>{ const t0=performance.now(); document.getElementById("sclose").textContent=`Ver ${plural(total(),"concierto")}`;
+    document.getElementById("sdef").disabled=sinNada();
     el.querySelectorAll("[data-g]").forEach(c=>c.setAttribute("aria-pressed",sel.includes(c.dataset.g)));
     const m=modo(); el.querySelectorAll(".segp [data-rap]").forEach(b=>{b.setAttribute("aria-pressed",b.dataset.rap===m); if(b.dataset.rap==="custom") b.disabled=m!=="custom";});
     const re=document.getElementById("resest"); if(re) re.textContent=resumenTodos();

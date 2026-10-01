@@ -1,5 +1,9 @@
 # Versiones
 
+## 2.31.1 — 2026-10-01
+
+- **Quitar todos los filtros, a la vista.** En la lista, con algún filtro puesto, la fila de chips empieza por "✕ Quitar filtros". En la hoja, el botón de abajo a la izquierda se llama "Quitar todo" (antes "Restablecer") y se apaga cuando no hay nada que quitar. "Quitar todos" de los géneros pasa a "Desmarcar todos los géneros" para no confundirlo.
+
 ## 2.31.0 — 2026-10-01
 
 - **Elegir subgéneros directamente** (p. ej. Bluegrass + Post-Punk). El panel de estilos tiene buscador ("blue", "post…") sobre los estilos de todos los géneros: primero los de los géneros elegidos y luego el resto, plegados. Marcar un estilo elige su género; antes había que elegir primero los géneros a mano y, si no, el panel solo decía "Elige antes algún género".

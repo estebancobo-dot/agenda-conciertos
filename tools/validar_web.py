@@ -597,6 +597,14 @@ def filtros(pg, lunes):
     chip.click()
     pg.wait_for_timeout(30)
     vuelta = pg.evaluate(marcados)
+    pg.locator("[data-chip]").first.click()
+    pg.wait_for_timeout(30)
+    hay = pg.locator("#fquitar").count()
+    if hay:
+        pg.click("#fquitar")
+        pg.wait_for_timeout(30)
+    check("UX", "Con filtros, la fila de chips tiene '✕ Quitar filtros' y deja la agenda sin filtros",
+          ok=bool(hay) and pg.evaluate("nFiltros()===0") and not pg.locator("#fquitar").count())
     check("UX", "Chips de género: sin filtro solo 'Habituales' está marcado; al tocar uno se filtra por él y solo él "
           "sale relleno; al quitarlo se vuelve a 'Habituales'", f"{sin_filtro} → {con_filtro} → {vuelta}",
           ok=sin_filtro == ["pre"] and con_filtro == [cid] and otros == 0 and vuelta == ["pre"])
