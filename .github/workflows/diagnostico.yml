@@ -8,6 +8,9 @@ on:
       n:
         description: "Páginas por web"
         default: "16"
+      webs:
+        description: "Solo estas webs (separadas por comas; vacío = todas)"
+        default: ""
 
 permissions:
   contents: read
@@ -26,4 +29,4 @@ jobs:
           cache: pip
       - run: pip install -r requirements.txt
       - run: python tools/datos.py
-      - run: python tools/diagnostico_agenda.py ${{ github.event.inputs.n || '16' }}
+      - run: python tools/diagnostico_agenda.py ${{ github.event.inputs.n || '16' }} "${{ github.event.inputs.webs }}"

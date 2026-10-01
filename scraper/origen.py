@@ -63,7 +63,8 @@ _GENT_EN = {
 }
 # qué es el artista: el gentilicio tiene que ir pegado a una de estas palabras ("la banda madrileña", "el
 # cantautor argentino", "Spanish rock band"), no suelto ("cocina italiana", "la escena madrileña")
-_QUIEN_ES = (r"banda|grupo|formaci[oó]n|conjunto|orquesta|big band|combo|cantante|cantautora?|cantaora?|artista|"
+_QUIEN_ES = (r"soprano|tenor|baritono|mezzosoprano|contralto|directora?|violonchelista|contrabajista|percusionista|"
+             r"banda|grupo|formaci[oó]n|conjunto|orquesta|big band|combo|cantante|cantautora?|cantaora?|artista|"
              r"m[uú]sic[oa]|compositora?|productora?|rapera?|trapera?|dj|pianista|guitarrista|bater[ií]a|saxofonista|"
              r"trompetista|violinista|bajista|vocalista|int[eé]rprete|d[uú]o|tr[ií]o|cuarteto|quinteto|sexteto|"
              r"septeto|colectivo|proyecto|solista|bandas|grupos|m[uú]sicos|artistas")
@@ -117,7 +118,8 @@ def paises_en_frase(frase: str) -> set[str]:
 _GENT_RE = "|".join(sorted((k for k, v in _GENT_ES.items() if v), key=len, reverse=True))
 _TRAS_NOMBRE = re.compile(rf"^\s*,?\s*(?:\([^)]*\)\s*)?(?:es|son|fue|era|eran|,)?\s*(?:un|una|unos|el|la|los|las)?\s*"
                           rf"(?:{_QUIEN_ES})\s+(?:de\s+)?(?:[a-z&-]+\s+){{0,2}}?({_GENT_RE})\b")
-_ANTES_NOMBRE = re.compile(rf"\b(?:{_QUIEN_ES})\s+(?:de\s+[a-z&-]+\s+)?({_GENT_RE})\s*(?:de\s+[a-z]+\s*)?,?\s*$")
+_ANTES_NOMBRE = re.compile(rf"\b(?:{_QUIEN_ES})\s+(?:y\s+[a-z]+\s+)?(?:de\s+[a-z&-]+\s+)?({_GENT_RE})\s*(?:de\s+[a-z]+\s*)?"
+                           rf"(?:,?\s*(?:mas\s+)?(?:conocid[oa]s?\s+como|alias|llamad[oa]))?,?\s*$")
 
 
 def paises_junto_al_nombre(frase: str, clave: str) -> set[str]:
@@ -215,8 +217,27 @@ def estilos_en_texto(texto: str, nombre: str) -> list[str]:
                 out.append(v)
                 t = t.replace(f" {v} ", " | ")
 
+    # "JOSH MEADER TRIO (Jazz-Fusión / 21:00 horas / Entrada 16 €)", "Clarence Bekker Band (Soul & Funk)": el
+    # estilo entre paréntesis detrás del nombre, como lo ponen muchas salas en su programación
+    for linea in (texto or "").split("\n"):
+        nl = norm(linea)
+        j = nl.find(clave)
+        if j >= 0:
+            m = re.search(r"\(([^()]{3,90})\)", linea[j:j + len(clave) + 120] if len(nl) == len(linea) else linea)
+            if m:
+                terminos(norm(m.group(1).split("/")[0]))
+    sujeto = False
     for f in _frases(texto):
         n = norm(f)
+        # "miaw es un dúo de pop experimental …. Su música … shoegaze, trip-hop": la frase (y la siguiente si
+        # habla de "su música") son del artista
+        if re.match(rf"^(?:el|la|los|las)?\s*{re.escape(clave)}\s+(?:es|son|fue|era|eran)\b", n):
+            terminos(n[len(clave):])
+            sujeto = True
+        elif sujeto and re.match(r"^su (?:musica|sonido|propuesta|estilo|directo)\b", n):
+            terminos(n)
+        else:
+            sujeto = False
         i = n.find(clave)
         while i >= 0:
             despues, antes = n[i + len(clave):i + len(clave) + 140], n[max(0, i - 90):i]

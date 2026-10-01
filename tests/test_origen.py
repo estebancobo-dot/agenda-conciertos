@@ -108,3 +108,14 @@ def test_grupos_nuevos():
     assert grupo_de_titulo("Tributo a Queen. Candlelight") == "clásica y lírica"
     assert grupo_de_titulo("Los Miserables, el musical") == "musicales y espectáculos"
     assert grupo_de_titulo("Leiva") is None
+
+
+def test_estilos_de_programacion_real():
+    # textos reales de las páginas de las salas (diagnóstico del 1 de octubre)
+    from scraper.origen import estilos_en_texto
+    assert estilos_en_texto("LUNES 05 – JOSH MEADER TRIO (Jazz-Fusión / 21:00 horas / Entrada 16 €)",
+                            "JOSH MEADER TRIO") == ["jazz fusion"]
+    assert set(estilos_en_texto("Clarence Bekker Band + Quentin Moore (Soul & Funk)", "Clarence Bekker Band")) == \
+        {"soul", "funk"}
+    assert "shoegaze" in estilos_en_texto("miaw es un dúo de pop experimental formado por Liza Dries. Su música "
+                                          "transita entre el avant-pop y el shoegaze.", "miaw")

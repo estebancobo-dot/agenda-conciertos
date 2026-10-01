@@ -459,7 +459,7 @@ def buscar_en_agenda(f: Fetcher, nombre: str, urls: list[str]) -> dict:
     return out
 
 
-VERSION_AGENDA = 2  # 2: también el estilo. Las lecturas de una versión anterior se repiten
+VERSION_AGENDA = 3  # 2: también el estilo; 3: estilo entre paréntesis y frases sobre el artista. Las anteriores se repiten
 
 
 # ------------------------------------------------------------------ MusicBrainz (géneros votados por la comunidad)

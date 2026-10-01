@@ -167,7 +167,9 @@
   "Bossa Nova": "latina",
   "Fado": "músicas del mundo",
   "Celta": "americana/country/folk",
-  "Rock urbano": "rock y metal"
+  "Rock urbano": "rock y metal",
+  "Canción De Autor": "cantautor",
+  "Canción de autor": "cantautor"
  },
  "palabras_clave": [
   [
@@ -661,6 +663,42 @@
   [
    "humor",
    "musicales y espectáculos"
+  ],
+  [
+   "uk bass",
+   "electrónica"
+  ],
+  [
+   "pop experimental",
+   "pop e indie"
+  ],
+  [
+   "avant pop",
+   "pop e indie"
+  ],
+  [
+   "punk rave",
+   "electrónica"
+  ],
+  [
+   "country blues",
+   "blues"
+  ],
+  [
+   "cantautora",
+   "cantautor"
+  ],
+  [
+   "cancion de autor",
+   "cantautor"
+  ],
+  [
+   "jazz rock",
+   "jazz y swing"
+  ],
+  [
+   "jazz fusion",
+   "jazz y swing"
   ],
   [
    "rock",
