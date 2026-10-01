@@ -62,10 +62,17 @@ jobs:
         run: |
           if [ "${{ github.event.schedule }}" = "40 5-23/2 * * *" ] || [ "${{ github.event.inputs.fichas }}" = "true" ]; then
             # cada 2 horas: reintenta las fuentes que fallaron en la última lectura y completa fichas pendientes
+            INICIO=$(date +%s)
             python -m scraper --reintentar || echo "El reintento de fuentes falló; se sigue con las fichas"
             # 75 minutos: cabe entre dos pasadas (cada 2 horas) y la última (23:40 UTC) acaba mucho antes de la
-            # lectura completa de las 03:10 UTC
-            python -m scraper --fichas --minutos ${{ github.event.inputs.minutos_fichas || '75' }}
+            # lectura completa de las 03:10 UTC. Si el reintento tardó, las fichas usan solo lo que queda de los
+            # 100 minutos del paso (con 8 de margen para aplicar las fichas y guardar): si no, el paso se cortaba
+            # a mitad y esa pasada no publicaba nada
+            PEDIDO=${{ github.event.inputs.minutos_fichas || '75' }}
+            QUEDA=$(( 92 - ($(date +%s) - INICIO) / 60 ))
+            MIN=$(( PEDIDO < QUEDA ? PEDIDO : QUEDA )); MIN=$(( MIN < 5 ? 5 : MIN ))
+            echo "Fichas: $MIN minutos (pedidos $PEDIDO, quedan $QUEDA)"
+            python -m scraper --fichas --minutos $MIN
           elif [ -n "${{ github.event.inputs.solo }}" ]; then
             python -m scraper --solo "${{ github.event.inputs.solo }}"
           else
