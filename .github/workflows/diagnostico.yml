@@ -1,0 +1,29 @@
+name: Diagnóstico de páginas de agenda
+
+# Lee unas páginas de concierto y escribe en el registro qué dicen del artista (para mejorar la lectura de estilo
+# y origen). No guarda ni publica nada.
+on:
+  workflow_dispatch:
+    inputs:
+      n:
+        description: "Páginas por web"
+        default: "16"
+
+permissions:
+  contents: read
+
+jobs:
+  diagnostico:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - run: python tools/datos.py
+      - run: python tools/diagnostico_agenda.py ${{ github.event.inputs.n || '16' }}
