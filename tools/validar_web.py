@@ -844,6 +844,8 @@ def accesos_al_bajar(pg, lunes):
     pg.wait_for_timeout(600)
     check("UX", "Al bajar por la lista, Buscar y Filtros siguen a mano en la cabecera (y arriba no se duplican)",
           ok=pg.is_visible("#hq") and pg.is_visible("#hf") and not arriba)
+    pg.evaluate("scrollTo(0,document.documentElement.scrollHeight/2)")
+    pg.wait_for_timeout(400)
     pg.click("#menubtn")
     pg.wait_for_timeout(300)
     m = pg.evaluate("(()=>{const m=document.querySelector('#menu .menu'); if(!m) return null;"
@@ -857,11 +859,27 @@ def accesos_al_bajar(pg, lunes):
         check("Funcional", "A media lista, Filtros abre la hoja sin mover la lista",
               ok=pg.is_visible(".sheet") and pg.evaluate("scrollY") == y)
         pg.evaluate("document.getElementById('sheet').innerHTML=''")
-    if pg.is_visible("#hq"):
-        pg.click("#hq")
-        pg.wait_for_timeout(400)
-        check("Funcional", "A media lista, Buscar lleva a la caja de búsqueda lista para escribir",
-              ok=pg.evaluate("document.activeElement&&document.activeElement.id==='q'&&scrollY<5"))
+    # ‹ periodo › y Hoy en la cabecera: avanzar desde media lista deja la semana siguiente lista para leer
+    if pg.is_visible("#hnav [data-hn]"):
+        antes = pg.evaluate("state.date")
+        pg.click("#hnav [data-hn]:last-child")
+        pg.wait_for_timeout(700)
+        r = pg.evaluate("""()=>{const ss=document.querySelector('#main .stickystrip'), h=document.querySelector('#main .dayhead');
+            return {fecha:state.date, fija:document.getElementById('hdr').classList.contains('navfija'),
+              titulo:(document.querySelector('#hnav .t')||{}).innerText||'',
+              cabecera:!!h&&!!ss&&h.getBoundingClientRect().top>=ss.getBoundingClientRect().bottom-2&&h.getBoundingClientRect().top<innerHeight/2}}""")
+        esperado = (date.fromisoformat(antes) + timedelta(days=7)).isoformat()
+        check("UX", "A media lista, ‹ semana › en la cabecera: pasa a la siguiente y deja su primer día a la vista",
+              f"{r['fecha']} · {r['titulo']!r}", ok=r["fecha"] == esperado and r["fija"] and r["cabecera"],
+              detalle=str(r))
+    else:
+        check("UX", "A media lista, ‹ semana › y Hoy están en la cabecera", ok=False)
+    pg.evaluate("scrollTo(0,document.documentElement.scrollHeight/2)")
+    pg.wait_for_timeout(400)
+    pg.click("#hq")
+    pg.wait_for_timeout(400)
+    check("Funcional", "A media lista, Buscar lleva a la caja de búsqueda lista para escribir",
+          ok=pg.evaluate("document.activeElement&&document.activeElement.id==='q'&&scrollY<5"))
 
 
 def cabeceras_fijas(pg, lunes):

@@ -1,5 +1,10 @@
 # Versiones
 
+## 2.29.0 — 2026-10-01
+
+- **‹ periodo › y Hoy siempre a mano.** Al bajar por la lista, la fila de navegación (flechas, fecha del periodo y Hoy) se iba hacia arriba y había que volver al principio para cambiar de semana o de mes. Ahora, cuando esa fila desaparece, el título de la app en la cabecera fija deja su sitio a la misma navegación en compacto: "‹ 12–18 oct · 207 conciertos · Hoy ›" (semana), "‹ Oct 2026 ›" (mes), "‹ Sáb, 10 oct ›" (día). No añade altura. Al avanzar o volver a hoy, el periodo nuevo queda listo para leer justo debajo de la cabecera (tira de días y primer día, o la cuadrícula del mes).
+- La validación diaria lo comprueba a media lista en la web publicada.
+
 ## 2.28.0 — 2026-10-01
 
 - **Origen desde Wikipedia: fuera los falsos.** La búsqueda en todo Wikipedia (2.25.0) dio país a 29 artistas, pero en 15 era de otra persona: nombres cortos o genéricos que salen en frases ajenas ("Jazz" → la banda británica James Taylor Quartet, "Carey" → Mariah Carey, "Blues", "Martin" → Diego Martín, "Kraak" → Kraak & Smaak…). Ahora el nombre tiene que salir en la frase como nombre propio completo (con mayúscula, sin otra palabra con mayúscula pegada ni empezar a mitad de nombre) y el gentilicio pegado a él. Los hallazgos guardados se vuelven a comprobar con esta regla: quedan los 14 buenos (Megara, No Way Out, 31 Fam, Malón, Nirvana…).
