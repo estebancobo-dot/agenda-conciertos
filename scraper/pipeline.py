@@ -231,11 +231,12 @@ def ficha_de(r: dict, cache: dict) -> dict | None:
 
 def origen_por_agenda(r: dict, cache: dict) -> None:
     """Tributos y espectáculos que no se buscan en webs de música: el origen que dice la página de la agenda."""
-    from .artistas import clave_agenda
+    from .artistas import agenda_valida, clave_agenda
     if r.get("nacionalidad"):
         return
-    ag = (cache.get(clave_agenda(r["artista"])) or {}).get("agenda") or {}
-    if ag.get("pais"):
+    ent = cache.get(clave_agenda(r["artista"])) or {}
+    ag = ent.get("agenda") or {}
+    if agenda_valida(ag, ent.get("nombre")):
         r["nacionalidad"] = ag["pais"]
         r["nacionalidad_fuente"] = f"la agenda ({ag['url'].split('/')[2]}): «{ag.get('frase', '')[:160]}»"
         r["origen_no_aplica"] = None
@@ -306,6 +307,10 @@ def aplicar_ficha(r: dict, f: dict | None) -> None:
         if not origen.startswith("agenda") else []
     if origen != "agenda":
         r.pop("estilo_descartado", None)
+    # el origen leído en textos (página de la agenda, Last.fm) se vuelve a calcular siempre con la regla actual
+    fuente_nac = str(r.get("nacionalidad_fuente") or "")
+    if fuente_nac.startswith(("Last.fm", "la agenda (")) and not fuente_nac.startswith("la agenda (en el título)"):
+        r["nacionalidad"], r["nacionalidad_fuente"] = None, None
     if f and f.get("pais") and (not r.get("nacionalidad") or
                                 str(r.get("nacionalidad_fuente", "")).startswith("MusicBrainz")):
         r["nacionalidad"], r["nacionalidad_fuente"] = f["pais"], f["fuente_pais"]

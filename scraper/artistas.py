@@ -521,6 +521,14 @@ def nombre_en_titulo(titulo: str) -> str:
     return (buenas[-1] if buenas else titulo or "").strip()
 
 
+def agenda_valida(ag: dict | None, nombre: str | None) -> bool:
+    """El país leído en la agenda, comprobado otra vez con la regla actual sobre la frase guardada (las fichas
+    guardadas con una regla anterior más laxa no cuelan)."""
+    from .origen import paises_junto_al_nombre
+    ag = ag or {}
+    return bool(ag.get("pais") and nombre and ag["pais"] in paises_junto_al_nombre(ag.get("frase", ""), norm(nombre)))
+
+
 def clave_agenda(titulo: str) -> str:
     return "agenda:" + norm(titulo or "")
 
@@ -892,7 +900,7 @@ def ficha(ent: dict | None) -> dict | None:
     elif (ent.get("musicbrainz") or {}).get("encontrado") and ent["musicbrainz"].get("pais"):
         # país del artista en MusicBrainz (identificado por Wikidata o por ser el único con ese nombre exacto)
         pais, fuente_pais = ent["musicbrainz"]["pais"], "MusicBrainz"
-    elif (ent.get("agenda") or {}).get("pais"):
+    elif agenda_valida(ent.get("agenda"), ent.get("nombre")):
         ag = ent["agenda"]
         pais, fuente_pais = ag["pais"], f"la agenda ({ag['url'].split('/')[2]}): «{ag.get('frase', '')[:160]}»"
     elif (ent.get("lastfm_bio") or {}).get("pais") and (

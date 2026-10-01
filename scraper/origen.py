@@ -114,6 +114,42 @@ def paises_en_frase(frase: str) -> set[str]:
     return out
 
 
+_GENT_RE = "|".join(sorted((k for k, v in _GENT_ES.items() if v), key=len, reverse=True))
+_TRAS_NOMBRE = re.compile(rf"^\s*,?\s*(?:\([^)]*\)\s*)?(?:es|son|fue|era|eran|,)?\s*(?:un|una|unos|el|la|los|las)?\s*"
+                          rf"(?:{_QUIEN_ES})\s+(?:de\s+)?(?:[a-z&-]+\s+){{0,2}}?({_GENT_RE})\b")
+_ANTES_NOMBRE = re.compile(rf"\b(?:{_QUIEN_ES})\s+(?:de\s+[a-z&-]+\s+)?({_GENT_RE})\s*(?:de\s+[a-z]+\s*)?,?\s*$")
+
+
+def paises_junto_al_nombre(frase: str, clave: str) -> set[str]:
+    """Países dichos del artista en su misma frase y pegados a su nombre (texto normalizado)."""
+    n = norm(frase)
+    out: set[str] = set()
+    i = n.find(clave)
+    while i >= 0:
+        despues, antes = n[i + len(clave):i + len(clave) + 120], n[max(0, i - 80):i]
+        m = _TRAS_NOMBRE.match(despues)
+        if m:
+            out.add(_GENT_ES[m.group(1)])
+        m = _ANTES_NOMBRE.search(antes)
+        if m:
+            out.add(_GENT_ES[m.group(1)])
+        # "Compro Oro nace en Almería", "Thee Nameshakes, procedentes de Glasgow": lugar justo detrás del nombre
+        trozo = frase[len(frase) - len(frase.lstrip()):]  # el lugar se lee en el texto original (mayúsculas)
+        j = norm(trozo).find(clave)
+        if j >= 0:
+            from .artistas import pais_de_texto
+            m = re.match(r"^[^.;:]{0,60}?\b(?:nace en|nacid[oa]s? en|naci[oó] en|procedentes? de|originari[oa]s? de|"
+                         r"natural(?:es)? de|surgid[oa]s? en|formad[oa]s? en|fundad[oa]s? en)\s+([^.;:()\n]{2,60})",
+                         trozo[j + len(clave):], re.I)
+            if m:
+                lugar = re.split(r"\s+(?:y|en|a|con|que|para|el|la|los|las|desde)\s+|,\s*(?=[a-záéíóú])", m.group(1))[0]
+                p = pais_de_texto(lugar) or pais_de_texto(lugar.split(",")[-1])
+                if p:
+                    out.add(p)
+        i = n.find(clave, i + 1)
+    return out
+
+
 def pais_en_texto(texto: str, nombre: str | None = None, solo_con_nombre: bool = True) -> tuple[str | None, str]:
     """(país, frase) si el texto dice de dónde es el artista y solo da un país; (None, "") si no.
 
@@ -122,7 +158,14 @@ def pais_en_texto(texto: str, nombre: str | None = None, solo_con_nombre: bool =
     clave = norm(nombre or "")
     halladas: list[tuple[str, str]] = []
     for f in _frases(texto):
-        if nombre and solo_con_nombre and clave and clave not in norm(f):
+        if nombre and solo_con_nombre and clave:
+            if clave not in norm(f):
+                continue
+            # en una página de agenda el gentilicio tiene que ir pegado al nombre: "Mala Luna Band es un grupo
+            # madrileño", "la banda madrileña Sho-Hai". "Alchemy Project ... la banda inglesa" (Dire Straits, el
+            # grupo homenajeado) no dice de dónde es Alchemy Project
+            for p in paises_junto_al_nombre(f, clave):
+                halladas.append((p, f))
             continue
         for p in paises_en_frase(f):
             halladas.append((p, f))

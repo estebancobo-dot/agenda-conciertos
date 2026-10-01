@@ -4,6 +4,7 @@
 
 - **Fichas más rápidas**: 75 minutos por pasada (antes 45), 8 artistas a la vez y primero los que no tienen origen. Una pasada ya recorre todos los pendientes.
 - **Origen de tributos y espectáculos con intérprete**: no se buscan en webs de música (la banda tributo no es el artista homenajeado), pero se lee lo que dice la página de la agenda. Por ejemplo, "THE RUMORS: TRIBUTO FLEETWOOD MAC" → «The Rumors, banda tributo madrileña» y "ESPECTÁCULO FLAMENCO: CLAUDIA CRUZ" → lo que diga de Claudia Cruz.
+- **Más estricto con la página de la agenda**: el gentilicio tiene que ir pegado al nombre del artista ("Mala Luna Band es un grupo madrileño", "la banda valenciana Neon Collective"). Antes, en la página de Alchemy Project (tributo a Dire Straits), «la banda inglesa» se refería a Dire Straits y le ponía Reino Unido. Los orígenes leídos en textos se recalculan siempre con la regla actual.
 - Las páginas de agenda borradas (404), vetadas por robots.txt (Instagram, calendarios) o con captcha ya no cuentan como error ni se repiten en cada pasada.
 
 ## 2.20.1 — 2026-09-30

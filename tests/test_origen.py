@@ -18,6 +18,9 @@ def test_sin_frase_explicita_no_hay_pais():
     assert pais_en_texto("Los Amados y The Bang, banda inglesa y grupo mexicano.", "Los Amados")[0] is None
     # la frase tiene que hablar del artista
     assert pais_en_texto("La banda madrileña Sho-Hai abre la noche.", "Epical")[0] is None
+    # el gentilicio de otro (el grupo homenajeado) no es del artista
+    assert pais_en_texto("En 2017 reclutó a gente que compartía su devoción por la banda inglesa y en 2018 "
+                         "Alchemy Project empezó a tocar.", "Alchemy Project")[0] is None
     # dónde vive no es su origen
     assert pais_en_texto("Epical, banda afincada en Madrid.", "Epical")[0] is None
 
@@ -61,7 +64,7 @@ def test_origen_por_agenda():
     from scraper.artistas import clave_agenda
     from scraper.pipeline import origen_por_agenda
     r = {"artista": "THE RUMORS: TRIBUTO FLEETWOOD MAC"}
-    cache = {clave_agenda(r["artista"]): {"agenda": {"encontrado": True, "pais": "ES", "url": "https://x.es/e/1",
-                                                      "frase": "The Rumors, banda tributo madrileña"}}}
+    cache = {clave_agenda(r["artista"]): {"nombre": "THE RUMORS", "agenda": {"encontrado": True, "pais": "ES", "url": "https://x.es/e/1",
+                                                      "frase": "The Rumors es una banda tributo madrileña"}}}
     origen_por_agenda(r, cache)
     assert r["nacionalidad"] == "ES" and "x.es" in r["nacionalidad_fuente"]
