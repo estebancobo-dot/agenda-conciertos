@@ -389,3 +389,33 @@ def test_origen_en_otros_articulos_de_wikipedia():
     assert r["pais"] == "ES" and r["articulo"] == "Festival X"
     ent = {"nombre": "Gorila Flo", "wikipedia_texto": r}
     assert A.ficha(ent) is None or A.ficha(ent).get("pais") in (None, "ES")
+
+
+def test_wikipedia_solo_con_el_nombre_propio_completo():
+    # casos reales de la primera versión: el nombre corto salía en frases de otros artistas
+    malos = [("La cantante estadounidense Mariah Carey, la cantante estadounidense SZA", "Carey"),
+             ("El James Taylor Quartet es una banda británica de acid jazz y jazz funk", "Jazz"),
+             ("fue una banda inglesa de Blues Rock originaria de Inglaterra", "Blues"),
+             ("Diego Martínez Galindo, más conocido Diego Martín, es un cantautor y actor español", "Martin"),
+             ("el trío holandés Kraak &amp; Smaak y vocalistas como Neil Ormandy", "Kraak"),
+             ("de la Profecía) fue una banda de música israelí", "Profecía"),
+             ("Pablo “Tito” Rodríguez nació en Santurce, Puerto Rico", "Pablo"),
+             ("conocido artísticamente como Jere Klein, es un cantante y compositor chileno.", "Jere")]
+    for frase, nombre in malos:
+        assert A.wikipedia_pais(frase, nombre) is None, nombre
+    buenos = [("Megara es un grupo musical español de metal alternativo creado en 2015.", "MEGARA", "ES"),
+              ("Mientras estaban en Europa, conocieron a la banda española Gas Drummers, quienes", "Gas Drummers", "ES"),
+              ("Nirvana, banda estadounidense de grunge, fundada en 1987.", "NIRVANA", "US"),
+              ("Malón es una banda argentina de heavy metal fundada en 1995", "Malon", "AR")]
+    for frase, nombre, pais in buenos:
+        assert A.wikipedia_pais(frase, nombre) == pais, nombre
+    # un hallazgo guardado con la regla antigua deja de dar país
+    ent = {"nombre": "JAZZ", "wikipedia_texto": {"encontrado": True, "pais": "GB", "articulo": "James Taylor Quartet",
+                                                  "frase": malos[1][0]}}
+    assert not (A.ficha(ent) or {}).get("pais")
+
+
+def test_agenda_palabra_entera():
+    from scraper.origen import paises_junto_al_nombre
+    assert not paises_junto_al_nombre("Diego Martínez es un cantautor español", "martin")
+    assert paises_junto_al_nombre("Martin es un cantautor español", "martin") == {"ES"}

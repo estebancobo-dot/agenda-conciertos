@@ -126,8 +126,9 @@ def paises_junto_al_nombre(frase: str, clave: str) -> set[str]:
     """Países dichos del artista en su misma frase y pegados a su nombre (texto normalizado)."""
     n = norm(frase)
     out: set[str] = set()
-    i = n.find(clave)
-    while i >= 0:
+    # palabra entera: "martin" no es "martinez"
+    for m in re.finditer(rf"(?<![a-z0-9]){re.escape(clave)}(?![a-z0-9])", n) if clave else ():
+        i = m.start()
         despues, antes = n[i + len(clave):i + len(clave) + 120], n[max(0, i - 80):i]
         m = _TRAS_NOMBRE.match(despues)
         if m:
@@ -148,8 +149,46 @@ def paises_junto_al_nombre(frase: str, clave: str) -> set[str]:
                 p = pais_de_texto(lugar) or pais_de_texto(lugar.split(",")[-1])
                 if p:
                     out.add(p)
-        i = n.find(clave, i + 1)
     return out
+
+
+_UNION = {"de", "del", "la", "las", "el", "los", "y", "e", "of", "the", "and", "&", "van", "von", "da", "do", "dos",
+          "di", "le", "les", "du"}
+
+
+def _mayuscula(t: str) -> bool:
+    return t[:1].isupper() or t[:1].isdigit()
+
+
+def nombre_completo_en(frase: str, nombre: str) -> bool:
+    """El nombre sale en la frase como nombre propio completo, no como parte de otro: "Megara es un grupo" sí;
+    "Diego Martín" (para "Martin"), "Mariah Carey" (para "Carey"), "acid jazz" (para "Jazz"), "Kraak & Smaak" (para
+    "Kraak") o "Los Hijos de la Profecía" (para "Profecía") no. Para frases de webs generales (Wikipedia), donde
+    un nombre corto aparece en frases de otros artistas."""
+    partes = norm(nombre).split()
+    if not partes:
+        return False
+    import html
+    frase = html.unescape(frase)  # "Kraak &amp; Smaak"
+    toks = re.findall(r"[^\W_]+(?:['’][^\W_]+)*|&|[^\w\s]", frase)
+    nt = [norm(t) if re.match(r"[^\W_]", t) else ("and" if t == "&" else None) for t in toks]
+    k = len(partes)
+
+    def pegado(desde: int, paso: int) -> bool:
+        """¿Hay otra palabra con mayúscula pegada (directamente o tras "de", "la", "&"…)?"""
+        j, unido = desde, False
+        # "de", "la", "&" y comillas ("Pablo “Tito” Rodríguez") unen el nombre con lo de al lado
+        while 0 <= j < len(toks) and ((nt[j] in _UNION and not _mayuscula(toks[j])) or toks[j] in "“”\"«»‘’'"):
+            j += paso
+            unido = True
+        if j < 0 and unido and frase[:1].islower():
+            return True  # el extracto empieza a mitad de nombre: "…de la Profecía) fue una banda"
+        return 0 <= j < len(toks) and bool(nt[j]) and _mayuscula(toks[j])
+
+    for i in range(len(toks) - k + 1):
+        if nt[i:i + k] == partes and _mayuscula(toks[i]) and not pegado(i - 1, -1) and not pegado(i + k, 1):
+            return True
+    return False
 
 
 def pais_en_texto(texto: str, nombre: str | None = None, solo_con_nombre: bool = True) -> tuple[str | None, str]:

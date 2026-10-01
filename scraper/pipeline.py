@@ -745,8 +745,11 @@ def ejecutar_fichas(hoy: date | None = None, presupuesto_seg: float = 3000) -> d
 
     stats = enriquecer(recs, cache_art, hoy, presupuesto_seg=presupuesto_seg, guardar=guardar_fichas,
                        mb_cache=cache_mb)
-    if not stats["consultados"] and not stats["completados"]:
+    if not stats["consultados"] and not stats["completados"] and \
+            _read("informe.json", {}).get("version_fichas") == __version__:
         return stats  # nada pendiente: no se toca ningún archivo (ni commit ni nueva publicación)
+    # con una versión nueva se vuelve a aplicar todo aunque no haya fichas nuevas: las reglas pueden haber cambiado
+    # (p. ej. un país de Wikipedia que la regla nueva ya no acepta)
     _write("musicbrainz_cache.json", cache_mb)
     _write("artistas.json", cache_art)
     previos = _grupos_previos(recs)

@@ -1,5 +1,11 @@
 # Versiones
 
+## 2.28.0 — 2026-10-01
+
+- **Origen desde Wikipedia: fuera los falsos.** La búsqueda en todo Wikipedia (2.25.0) dio país a 29 artistas, pero en 15 era de otra persona: nombres cortos o genéricos que salen en frases ajenas ("Jazz" → la banda británica James Taylor Quartet, "Carey" → Mariah Carey, "Blues", "Martin" → Diego Martín, "Kraak" → Kraak & Smaak…). Ahora el nombre tiene que salir en la frase como nombre propio completo (con mayúscula, sin otra palabra con mayúscula pegada ni empezar a mitad de nombre) y el gentilicio pegado a él. Los hallazgos guardados se vuelven a comprobar con esta regla: quedan los 14 buenos (Megara, No Way Out, 31 Fam, Malón, Nirvana…).
+- **Nombre como palabra entera** también al leer las agendas: "martin" ya no coincide con "Martínez". Se pierde solo un país mal puesto ("tributo a U2": la banda tributo no es irlandesa).
+- La pasada de fichas vuelve a aplicar las fichas a todos los conciertos cuando cambia la versión, aunque no haya artistas nuevos que consultar (si no, una regla corregida no llegaba a la web hasta la lectura de la noche).
+
 ## 2.27.0 — 2026-10-01
 
 - **El menú ☰ funciona a cualquier altura de la lista.** Se abría arriba del todo de la página, fuera de la pantalla si habías bajado: parecía que no hacía nada. Ahora se abre siempre bajo el botón.

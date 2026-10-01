@@ -295,16 +295,28 @@ def buscar_en_wikipedia(f: Fetcher, nombre: str) -> dict:
     """Origen que dice cualquier artículo de Wikipedia sobre el artista aunque no tenga artículo propio: "la banda
     madrileña X" en el artículo de un festival, de un sello o de otro grupo. API oficial de búsqueda (la política
     de Wikimedia la permite con User-Agent identificable; su robots.txt de /w/ es para rastreadores)."""
-    from .origen import pais_en_texto
+    import html
     for lang, extra in (("es", "banda OR grupo OR cantante OR cantautor OR músico"), ("en", "band OR singer")):
         d = json.loads(f.get(WP_BUSCAR.format(lang=lang, q=quote(f'"{nombre}" {extra}')), check_robots=False))
         for p in d.get("pages") or []:
-            texto = re.sub(r"<[^>]+>", "", p.get("excerpt") or "")
-            pais, frase = pais_en_texto(texto, nombre)
-            if pais:
-                return {"encontrado": True, "pais": pais, "frase": frase,
-                        "url": f"https://{lang}.wikipedia.org/wiki/{quote(p.get('key') or '')}", "articulo": p.get("title")}
-    return {"encontrado": False, "motivo": "ningún artículo dice de dónde es"}
+            texto = html.unescape(re.sub(r"<[^>]+>", "", p.get("excerpt") or ""))
+            for frase in re.split(r"(?<=[.!?])\s+", texto):
+                pais = wikipedia_pais(frase, nombre)
+                if pais:
+                    return {"encontrado": True, "pais": pais, "frase": frase[:220], "v": 2,
+                            "url": f"https://{lang}.wikipedia.org/wiki/{quote(p.get('key') or '')}",
+                            "articulo": p.get("title")}
+    return {"encontrado": False, "motivo": "ningún artículo dice de dónde es", "v": 2}
+
+
+def wikipedia_pais(frase: str, nombre: str) -> str | None:
+    """País de una frase cualquiera de Wikipedia solo si habla del artista con su nombre propio completo (no
+    "Diego Martín" para "Martin" ni "acid jazz" para "Jazz") y el gentilicio va pegado a ese nombre."""
+    from .origen import nombre_completo_en, paises_junto_al_nombre
+    if not nombre or not nombre_completo_en(frase, nombre):
+        return None
+    ps = paises_junto_al_nombre(frase, norm(nombre))
+    return next(iter(ps)) if len(ps) == 1 else None
 
 
 # ------------------------------------------------------------------ Wikipedia
@@ -996,7 +1008,9 @@ def ficha(ent: dict | None) -> dict | None:
     elif agenda_valida(ent.get("agenda"), ent.get("nombre")):
         ag = ent["agenda"]
         pais, fuente_pais = ag["pais"], f"la agenda ({ag['url'].split('/')[2]}): «{ag.get('frase', '')[:160]}»"
-    elif agenda_valida(ent.get("wikipedia_texto"), ent.get("nombre")):
+    elif (ent.get("wikipedia_texto") or {}).get("pais") and wikipedia_pais(
+            ent["wikipedia_texto"].get("frase", ""), ent.get("nombre")) == ent["wikipedia_texto"]["pais"]:
+        # comprobado otra vez con la regla actual: los hallazgos de la primera versión, más laxa, no cuelan
         wt = ent["wikipedia_texto"]
         pais, fuente_pais = wt["pais"], f"Wikipedia (artículo «{wt.get('articulo', '')}»): «{wt.get('frase', '')[:160]}»"
     elif (ent.get("lastfm_bio") or {}).get("pais") and (
