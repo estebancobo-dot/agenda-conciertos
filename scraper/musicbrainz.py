@@ -42,6 +42,8 @@ def completar(recs: list[dict], cache: dict, hoy: date, fetcher: Fetcher | None,
     for r in orden:
         # el nombre limpio (sin ciclo, festival ni gira) si lo hay; si no, el título
         claves = claves_ficha(r)
+        if not claves:  # título sin letras que buscar (solo símbolos, otro alfabeto…)
+            continue
         nombre = claves[1] if len(claves) > 1 else claves[0]
         if es_generico(nombre) or len(norm(nombre)) < 2 or str(r.get("grupos_origen") or "").startswith("agenda (esp"):
             r["nacionalidad_fuente"] = None
