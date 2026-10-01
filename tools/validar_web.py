@@ -547,8 +547,9 @@ def filtros(pg, lunes):
     if grupo:
         pg.click(f"[data-g='{grupo}']")
     pre = pg.evaluate("[...document.querySelectorAll('.segp [aria-pressed=true]')].map(b=>b.dataset.rap)")
-    check("UX", "Filtros: al cambiar los géneros a mano, el preajuste marcado pasa a 'Personalizado'", pre,
-          ok=pre == ["custom"])
+    res = pg.evaluate("(document.getElementById('resgen')||{}).textContent||''")
+    check("UX", "Filtros: al elegir géneros a mano no queda marcado ningún preajuste y el título dice 'a tu medida'",
+          f"{pre} · {res!r}", ok=pre == [] and "a tu medida" in res)
     boton = pg.inner_text("#sclose")
     t0 = time.monotonic()
     pg.click("#sclose")

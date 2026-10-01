@@ -1,5 +1,13 @@
 # Versiones
 
+## 2.32.0 — 2026-10-01
+
+- **Hoja de filtros más clara.**
+  - Géneros: "Habituales · Todos · Ninguno" en el control de arriba ("Ninguno" sustituye al enlace "Desmarcar todos" que estaba suelto en medio). Si eliges a mano, no queda marcado ningún preajuste y el título lo dice: "Géneros · 2 de 21 · a tu medida" (desaparece el botón "Personalizado").
+  - Cada sección dice a la derecha qué tienes elegido (géneros, origen; los estilos, en "Afinar por estilos").
+  - El botón de abajo se llama "Por defecto" (antes "Quitar todo", que en realidad volvía a los habituales) y se apaga cuando ya está todo por defecto.
+- Comprobado el ir y volver: lo aplicado se ve igual al reabrir la hoja; cerrar con ✕ no aplica nada.
+
 ## 2.31.1 — 2026-10-01
 
 - **Quitar todos los filtros, a la vista.** En la lista, con algún filtro puesto, la fila de chips empieza por "✕ Quitar filtros". En la hoja, el botón de abajo a la izquierda se llama "Quitar todo" (antes "Restablecer") y se apaga cuando no hay nada que quitar. "Quitar todos" de los géneros pasa a "Desmarcar todos los géneros" para no confundirlo.

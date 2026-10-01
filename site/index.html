@@ -230,6 +230,9 @@ details.more ul{padding-left:20px;margin:8px 0}
 .segp button[aria-pressed="true"]{background:var(--panel);color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.15)}
 .segp button:disabled{opacity:1;cursor:default}
 .gchips{display:flex;flex-wrap:wrap;gap:6px}
+/* título de sección con lo elegido a la derecha ("Géneros · habituales") */
+.sheet h4.sech{display:flex;align-items:baseline;gap:8px}
+.sheet h4.sech span{margin-left:auto;text-transform:none;letter-spacing:0;font-weight:600;color:var(--ink);font-size:.8rem}
 .gchips .sub{width:100%;font-size:.74rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin:8px 0 0}
 .lnk{border:0;background:none;color:var(--info);padding:6px 0;font-size:.85rem;min-height:32px}
 .navrow{display:flex;align-items:center;gap:10px;width:100%;margin-top:12px;border:1px solid var(--line);background:var(--panel);border-radius:12px;padding:12px;text-align:left;min-height:48px}
@@ -586,15 +589,18 @@ function openSheet(){
   // al elegir "Bluegrass" y "Post-Punk"); "Incluir también los demás géneros" recupera el resto enteros.
   let baseSel=null, soloEst=false;
   const generosConEst=()=>Object.keys(selEst).filter(g=>(selEst[g]||[]).length);
-  const modo=()=>Object.keys(selEst).length?"custom":modoGrupos(sel);
+  // preajuste activo: "def" (habituales), "todos", "ninguno" o "custom" (a tu medida: ningún botón marcado)
+  const modo=()=>Object.keys(selEst).length?"custom":!sel.length?"ninguno":modoGrupos(sel);
+  const resumenGen=()=>{const m=modo(); return m==="def"?"habituales":m==="todos"?"todos":m==="ninguno"?"ninguno":`${sel.length} de ${GRUPOS.length} · a tu medida`;};
+  const resumenOri=()=>(ORIGENES.find(([v])=>v===ori)||[,""])[1].replace(/^\S+\s/,"");
   const gchip=g=>`<button type="button" class="chip" data-g="${esc(g.id)}" aria-pressed="${sel.includes(g.id)}" title="${esc(g.desc)}"><i style="background:var(${g.v})"></i>${esc(g.nombre)}<small class="cc" data-ct="${esc(g.id)}">${cnt[g.id]||0}</small></button>`;
   const resumenTodos=()=>{const l=Object.entries(selEst).map(([g,x])=>`${(GRUPOS.find(y=>y.id===g)||{}).nombre||g}: ${x.join(", ")}`); return l.length?l.join(" · "):"Todos los estilos de cada género";};
   const arbolDe=g=>{const e=est[g]||{}; return (ARBOL[g]||[]).filter(x=>e[x]).sort((a,b)=>e[b]-e[a]||a.localeCompare(b));};
   const htmlGeneros=()=>{const m=modo();
-    return `<h4>Géneros</h4>
-     <div class="segp" role="group" aria-label="Preajuste de géneros"><button type="button" data-rap="def" aria-pressed="${m==="def"}">Habituales</button><button type="button" data-rap="todos" aria-pressed="${m==="todos"}">Todos</button><button type="button" data-rap="custom" aria-pressed="${m==="custom"}" ${m==="custom"?"":"disabled"} title="Se marca solo al cambiar la selección">Personalizado</button></div>
+    return `<h4 class="sech">Géneros<span id="resgen">${esc(resumenGen())}</span></h4>
+     <div class="segp" role="group" aria-label="Elegir de golpe"><button type="button" data-rap="def" aria-pressed="${m==="def"}">Habituales</button><button type="button" data-rap="todos" aria-pressed="${m==="todos"}">Todos</button><button type="button" data-rap="ninguno" aria-pressed="${m==="ninguno"}">Ninguno</button></div>
+     <p class="hint" style="margin:-4px 0 8px">Toca los géneros para añadirlos o quitarlos. "Ninguno" sirve para empezar de cero y elegir solo los que quieras.</p>
      <div class="gchips">${GRUPOS.filter(g=>!g.mas).map(gchip).join("")}<div class="sub">Más géneros</div>${GRUPOS.filter(g=>g.mas).map(gchip).join("")}</div>
-     <button type="button" class="lnk" data-rap="ninguno">Desmarcar todos los géneros</button>
      <button type="button" class="navrow" id="vestilos"><b>Afinar por estilos</b><span id="resest">${esc(resumenTodos())}</span></button>`;};
   // Panel de estilos: buscador ("blue", "post"…) sobre los estilos de TODOS los géneros; primero los géneros elegidos
   // (con sus 12 estilos con más conciertos), luego el resto plegados. Marcar un estilo elige su género.
@@ -618,20 +624,21 @@ function openSheet(){
      ${vista==="est"?htmlEstilos():`
      ${q.trim()?`<div class="qact"><span>🔎 Buscando <b>«${esc(q.trim())}»</b>: solo cuentan los conciertos que coinciden con la búsqueda.</span><button id="sq">Quitar búsqueda</button></div>`:""}
      ${htmlGeneros()}
-     <h4>Origen del artista</h4>
+     <h4 class="sech">Origen del artista<span id="resori">${esc(resumenOri())}</span></h4>
      <div class="opts">${ORIGENES.map(([v,t])=>`<button data-o="${v}" aria-pressed="${ori===v}">${esc(t)}</button>`).join("")}</div>
      <p class="hint">"España" incluye los que probablemente son españoles por el nombre (bandera atenuada; aciertan en torno a 3 de cada 4: el resto suelen ser latinoamericanos). "Solo confirmados", los que dice una fuente.</p>
      <h4>Más opciones</h4>
      <label class="grp" style="display:flex;gap:10px;align-items:flex-start;padding:10px 12px"><input type="checkbox" id="fgenok" ${genOk?"checked":""} style="margin-top:3px"><span><b>Incluir los de etiqueta genérica</b><br><span class="hint">Artistas sin ficha que la agenda solo etiqueta como "Pop / Rock", "Músicas negras"…: salen en todos esos géneros porque no se sabe cuál es.</span></span></label>`}
-     </div><div class="ft"><button id="sdef">Quitar todo</button><button class="go" id="sclose">Ver ${plural(total(),"concierto")}</button></div></div>`;
+     </div><div class="ft"><button id="sdef" title="Géneros habituales, sin estilos, sin búsqueda, origen todos">Por defecto</button><button class="go" id="sclose">Ver ${plural(total(),"concierto")}</button></div></div>`;
     enlazar(); document.getElementById("sdef").disabled=sinNada(); medir("hoja-abrir",t0);
   };
-  // "Quitar todo" se apaga cuando ya no hay nada que quitar (géneros habituales, sin estilos, origen todos…)
+  // "Por defecto" se apaga cuando ya está todo por defecto (géneros habituales, sin estilos, origen todos…)
   const sinNada=()=>modoGrupos(sel)==="def"&&!Object.keys(selEst).length&&ori==="todos"&&genOk&&!q.trim();
   const refrescar=()=>{ const t0=performance.now(); document.getElementById("sclose").textContent=`Ver ${plural(total(),"concierto")}`;
     document.getElementById("sdef").disabled=sinNada();
     el.querySelectorAll("[data-g]").forEach(c=>c.setAttribute("aria-pressed",sel.includes(c.dataset.g)));
-    const m=modo(); el.querySelectorAll(".segp [data-rap]").forEach(b=>{b.setAttribute("aria-pressed",b.dataset.rap===m); if(b.dataset.rap==="custom") b.disabled=m!=="custom";});
+    const m=modo(); el.querySelectorAll(".segp [data-rap]").forEach(b=>b.setAttribute("aria-pressed",b.dataset.rap===m));
+    const rg=document.getElementById("resgen"); if(rg) rg.textContent=resumenGen();
     const re=document.getElementById("resest"); if(re) re.textContent=resumenTodos();
     el.querySelectorAll("[data-es]").forEach(b=>{const [g,x]=b.dataset.es.split("|"); b.setAttribute("aria-pressed",(selEst[g]||[]).includes(x));});
     el.querySelectorAll("[data-o]").forEach(b=>b.setAttribute("aria-pressed",b.dataset.o===ori));
@@ -653,7 +660,7 @@ function openSheet(){
     const sq=document.getElementById("sq"); if(sq) sq.onclick=()=>{q=""; const sc=el.querySelector(".sc").scrollTop; pintar(); el.querySelector(".sc").scrollTop=sc;};
     document.getElementById("sclose").onclick=()=>{state.q=q; setGrupos(sel); state.origen=ori; store.set("origen",ori); state.estilos=selEst; store.set("estilos",selEst); state.genericos=genOk; store.set("genericos",genOk); cerrar(); renderBody(false);};
     const gk=document.getElementById("fgenok"); if(gk) gk.onchange=e=>{genOk=e.target.checked; refrescar();};
-    el.querySelectorAll("[data-rap]").forEach(b=>b.onclick=()=>{const k=b.dataset.rap; if(k==="custom") return;
+    el.querySelectorAll("[data-rap]").forEach(b=>b.onclick=()=>{const k=b.dataset.rap;
       sel=k==="def"?[...DEF_GRUPOS]:k==="todos"?GRUPOS.map(g=>g.id):[]; selEst={}; baseSel=null; soloEst=false; refrescar();});
     el.querySelectorAll("[data-g]").forEach(c=>c.onclick=()=>{const g=c.dataset.g; const on=sel.includes(g);
       sel=on?sel.filter(x=>x!==g):[...sel,g]; if(on) delete selEst[g]; refrescar();});
