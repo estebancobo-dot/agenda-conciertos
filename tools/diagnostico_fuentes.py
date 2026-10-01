@@ -51,8 +51,9 @@ for nombre in nombres:
             t = hd.get_text(" ", strip=True) if hd else ""
             ok = norm(t) == norm(nombre)
             bc += ok
-            print(f"  BC {'✓' if ok else ' '} {t[:40]!r} · {sub.get_text(' ', strip=True)[:50] if sub else ''} · "
-                  f"{re.sub(r'\s+', ' ', tags.get_text(' ', strip=True))[:90] if tags else ''}")
+            lugar = sub.get_text(" ", strip=True)[:50] if sub else ""
+            etiquetas = re.sub(r"\s+", " ", tags.get_text(" ", strip=True))[:90] if tags else ""
+            print(f"  BC {'✓' if ok else ' '} {t[:40]!r} · {lugar} · {etiquetas}")
     except Exception as e:  # noqa: BLE001
         print("  BC ERROR", type(e).__name__, str(e)[:120])
     try:
