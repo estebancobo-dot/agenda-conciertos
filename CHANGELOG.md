@@ -1,5 +1,9 @@
 # Versiones
 
+## 2.29.1 — 2026-10-01
+
+- Los países de frases de Wikipedia se vuelven a calcular en cada pasada, como los de la agenda y Last.fm: con la 2.28.0 la regla ya no los daba, pero los conciertos conservaban el país que tenían (8 conciertos próximos con un país de otra persona: "Carey", "Martín", "Shaka & Elektra"…). Quedan los 7 buenos.
+
 ## 2.29.0 — 2026-10-01
 
 - **‹ periodo › y Hoy siempre a mano.** Al bajar por la lista, la fila de navegación (flechas, fecha del periodo y Hoy) se iba hacia arriba y había que volver al principio para cambiar de semana o de mes. Ahora, cuando esa fila desaparece, el título de la app en la cabecera fija deja su sitio a la misma navegación en compacto: "‹ 12–18 oct · 207 conciertos · Hoy ›" (semana), "‹ Oct 2026 ›" (mes), "‹ Sáb, 10 oct ›" (día). No añade altura. Al avanzar o volver a hoy, el periodo nuevo queda listo para leer justo debajo de la cabecera (tira de días y primer día, o la cuadrícula del mes).

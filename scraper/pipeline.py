@@ -390,7 +390,8 @@ def aplicar_ficha(r: dict, f: dict | None) -> None:
         r.pop("estilo_descartado", None)
     # el origen leído en textos (página de la agenda, Last.fm) se vuelve a calcular siempre con la regla actual
     fuente_nac = str(r.get("nacionalidad_fuente") or "")
-    if fuente_nac.startswith(("Last.fm", "la agenda (")) and not fuente_nac.startswith("la agenda (en el título)"):
+    if fuente_nac.startswith(("Last.fm", "la agenda (", "Wikipedia (artículo")) and \
+            not fuente_nac.startswith("la agenda (en el título)"):
         r["nacionalidad"], r["nacionalidad_fuente"] = None, None
     if f and f.get("pais") and (not r.get("nacionalidad") or
                                 str(r.get("nacionalidad_fuente", "")).startswith("MusicBrainz")):

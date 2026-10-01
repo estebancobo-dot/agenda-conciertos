@@ -419,3 +419,12 @@ def test_agenda_palabra_entera():
     from scraper.origen import paises_junto_al_nombre
     assert not paises_junto_al_nombre("Diego Martínez es un cantautor español", "martin")
     assert paises_junto_al_nombre("Martin es un cantautor español", "martin") == {"ES"}
+
+
+def test_pais_de_frase_de_wikipedia_se_recalcula_al_reaplicar():
+    # un concierto con un país puesto por la regla antigua lo pierde si la ficha ya no lo da
+    from scraper.pipeline import aplicar_ficha
+    r = {"artista": "CAREY", "fecha": "2026-10-10", "fuentes": [], "estilo_fuente": [], "categorias": [],
+         "nacionalidad": "US", "nacionalidad_fuente": "Wikipedia (artículo «X»): «La cantante estadounidense Mariah Carey»"}
+    aplicar_ficha(r, None)
+    assert r["nacionalidad"] is None
