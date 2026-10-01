@@ -84,13 +84,12 @@ input[type=search]::-webkit-search-cancel-button{display:none}
 .strip .d{font-size:.7rem;color:var(--muted);font-weight:700;text-transform:uppercase}
 .strip .n{font-size:1.05rem;font-weight:800}
 .strip .c{font-size:.7rem;color:var(--muted)}
-.strip button.sel{background:var(--ink);color:var(--bg);border-color:var(--ink)}
-.strip button.sel .d,.strip button.sel .c{color:var(--bg);opacity:.8}
-.strip button.en{background:var(--ink);color:var(--bg);border-color:var(--ink)}
-.strip button.en .d,.strip button.en .c{color:var(--bg);opacity:.8}
 .strip button.hoyd{outline:2px solid var(--accent);outline-offset:-2px}
 .strip button.past{background:var(--panel2);border-style:dashed}
 .strip button.past .n{color:var(--muted)}
+/* el día elegido (vista día) o por el que vas (semana), también si ya pasó: después de .past para que gane */
+.strip button.sel,.strip button.en{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.strip button.sel :is(.d,.n,.c),.strip button.en :is(.d,.n,.c){color:var(--bg)}
 .stickystrip{position:sticky;top:var(--hh,96px);z-index:3;background:var(--bg);margin:0 -16px;padding:4px 16px 0}
 .stickystrip .strip{margin:0}
 /* mes */

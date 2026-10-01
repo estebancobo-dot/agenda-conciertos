@@ -7,6 +7,7 @@
 - **Día: la tira de la semana también se queda fija**, para cambiar de día sin subir. Arriba, el mes y el año; la fecha completa va en la cabecera del día, sin repetirla.
 - **Validación del paso de fechas**: la validación diaria recorre con las flechas ‹ › las tres vistas de un día a otro, de una semana a otra, de un mes al siguiente, de un año al siguiente (y vuelta), por los cambios de hora de octubre y marzo y por febrero, y al cambiar de vista y con "Hoy". En cada paso comprueba la dirección, el título, la tira de 7 días, la cuadrícula del mes (días y columna del día 1) y que los conciertos sean justo los de esas fechas. Hoy: 103 de 103 pasos bien.
 - **Pasadas de fichas que no se cortan**: si el reintento de agendas tarda (el de las 10:00 tardó 41 min), las fichas usan solo el tiempo que queda del paso. Antes el paso se cortaba a los 100 min y esa pasada no actualizaba los conciertos ni publicaba la web (las fichas consultadas sí se guardaban).
+- Contraste del día marcado en la tira: si el día ya había pasado, el estilo de "día pasado" le quitaba el fondo oscuro y el texto quedaba claro sobre claro (lo detectó la validación con axe). La comprobación de accesibilidad cubre ahora también la vista día.
 - Lo fijo ocupa como mucho ~200 px de 844 en un móvil (cabecera, tira y fecha). La validación diaria lo comprueba en las tres vistas, junto con que la tira marque el día correcto y que el salto a un día sea exacto.
 
 ## 2.25.0 — 2026-10-01

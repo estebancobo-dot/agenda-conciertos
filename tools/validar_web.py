@@ -1179,7 +1179,8 @@ def accesibilidad(pg, modo):
     """axe-core en semana, mes, ficha e informe: problemas graves y contraste (el contraste ya está corregido:
     si vuelve a fallar es fallo, no aviso)."""
     graves, contraste = set(), []
-    for h in (f"#semana/{lunes_de(date.today()).isoformat()}", f"#mes/{date.today().isoformat()}", "ficha", "#informe"):
+    for h in (f"#semana/{lunes_de(date.today()).isoformat()}", f"#dia/{date.today().isoformat()}",
+              f"#mes/{date.today().isoformat()}", "ficha", "#informe"):
         if h == "ficha":
             pg.evaluate("location.hash='#concierto/'+DATA.find(r=>r.fecha>=HOY&&r.img).id")
         else:
