@@ -544,7 +544,10 @@ def filtros(pg, lunes):
     pg.wait_for_timeout(30)
     marcar = ms(t0)
     if grupo:
-        pg.check(f"[data-g='{grupo}']")
+        pg.click(f"[data-g='{grupo}']")
+    pre = pg.evaluate("[...document.querySelectorAll('.segp [aria-pressed=true]')].map(b=>b.dataset.rap)")
+    check("UX", "Filtros: al cambiar los géneros a mano, el preajuste marcado pasa a 'Personalizado'", pre,
+          ok=pre == ["custom"])
     boton = pg.inner_text("#sclose")
     t0 = time.monotonic()
     pg.click("#sclose")
@@ -572,15 +575,30 @@ def filtros(pg, lunes):
     pg.click("[data-rap='def']")
     pg.wait_for_timeout(30)
     rest = ms(t0)
+    pre = pg.evaluate("[...document.querySelectorAll('.segp [aria-pressed=true]')].map(b=>b.dataset.rap)")
+    check("UX", "Filtros: 'Habituales' queda marcado al elegirlo", pre, ok=pre == ["def"])
+    alto = pg.evaluate("document.querySelector('.sheet .sc').scrollHeight")
+    check("UX", "Filtros: la hoja es corta (géneros en chips; estilos en su propio panel)", alto, aviso=2000,
+          fallo=3000, unidad="px")
     pg.click("#sclose")
     pg.wait_for_function("!document.querySelector('.sheet')")
+    marcados = "[...document.querySelectorAll('#main .chips .chip[aria-pressed=true]')].map(c=>c.dataset.chip||'pre')"
+    sin_filtro = pg.evaluate(marcados)
     chip = pg.locator("[data-chip]").first
+    cid = chip.get_attribute("data-chip")
     t0 = time.monotonic()
     chip.click()
     pg.wait_for_timeout(30)
     t_chip = ms(t0)
+    con_filtro = pg.evaluate(marcados)
+    otros = pg.evaluate("(g)=>[...document.querySelectorAll('#main .card')].filter(c=>!((BYID[c.dataset.id]||{}).grupos||[]).includes(g)).length", cid)
     chip = pg.locator("[data-chip]").first
     chip.click()
+    pg.wait_for_timeout(30)
+    vuelta = pg.evaluate(marcados)
+    check("UX", "Chips de género: sin filtro solo 'Habituales' está marcado; al tocar uno se filtra por él y solo él "
+          "sale relleno; al quitarlo se vuelve a 'Habituales'", f"{sin_filtro} → {con_filtro} → {vuelta}",
+          ok=sin_filtro == ["pre"] and con_filtro == [cid] and otros == 0 and vuelta == ["pre"])
     for nombre, v in (("abrir la hoja", abrir), ("'Ninguno'", marcar), ("aplicar", aplicar), ("borrar filtros", quitar),
                       ("'Los de siempre'", rest), ("chip de grupo", t_chip)):
         check("Rendimiento", f"Filtros: {nombre}", v, aviso=300, fallo=800)
@@ -876,10 +894,21 @@ def accesos_al_bajar(pg, lunes):
         check("UX", "A media lista, ‹ semana › y Hoy están en la cabecera", ok=False)
     pg.evaluate("scrollTo(0,document.documentElement.scrollHeight/2)")
     pg.wait_for_timeout(400)
+    y = pg.evaluate("scrollY")
     pg.click("#hq")
     pg.wait_for_timeout(400)
-    check("Funcional", "A media lista, Buscar lleva a la caja de búsqueda lista para escribir",
-          ok=pg.evaluate("document.activeElement&&document.activeElement.id==='q'&&scrollY<5"))
+    check("Funcional", "A media lista, la lupa abre la búsqueda en la cabecera lista para escribir, sin mover la lista",
+          ok=pg.evaluate("document.activeElement&&document.activeElement.id==='hqi'") and pg.evaluate("scrollY") == y)
+    ancla = pg.evaluate("anclaBus")
+    pg.keyboard.type("rock")
+    pg.wait_for_timeout(800)
+    n = pg.evaluate("document.querySelectorAll('#main .card').length")
+    pg.click("#hqc")
+    pg.wait_for_timeout(600)
+    vuelve = pg.evaluate("(a)=>{const c=a&&document.querySelector(`#main .card[data-id=\"${a.id}\"]`);"
+                         "return !!c&&Math.abs(c.getBoundingClientRect().top-a.top)<3&&!state.q}", ancla)
+    check("Funcional", "Buscar desde media lista y cancelar: vuelve a la misma tarjeta", f"{n} resultados",
+          ok=n > 0 and vuelve)
 
 
 def cabeceras_fijas(pg, lunes):

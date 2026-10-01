@@ -1,5 +1,16 @@
 # Versiones
 
+## 2.30.0 — 2026-10-01
+
+- **La lupa ya no te sube al principio.** Abre la búsqueda en la propia cabecera, lista para escribir, sin mover la lista. Al escribir salen los resultados (de todas las fechas); Cancelar (o borrar el texto) vuelve a la lista exactamente en la tarjeta en la que estabas.
+- **Chips de género con el sentido de las apps actuales** (Material 3, iOS, Google Maps, Airbnb): elegido = relleno oscuro con ✓; sin elegir = solo contorno. Antes era al revés en la práctica: por defecto todos salían "marcados". Ahora, sin filtro de género solo está marcado "Habituales"; al tocar un género se filtra por él y sale relleno; tocando otros se añaden; al quitar el último se vuelve a "Habituales".
+- **Hoja de filtros más corta y clara** (de ~3.500 px de scroll a ~1.500):
+  - Preajuste como control segmentado: **Habituales · Todos · Personalizado**. Se marca el que está activo; si cambias algo a mano, se marca "Personalizado".
+  - Géneros como chips que se ajustan en filas (antes, 22 tarjetas con descripción; la descripción sigue al mantener el dedo o pasar el ratón).
+  - Estilos en su propio panel ("Afinar por estilos ›"), solo de los géneros elegidos, con los 12 con más conciertos y "Ver los N estilos".
+  - Origen del artista: la opción elegida, rellena (mismo criterio que los chips).
+- La validación diaria comprueba todo esto en la web publicada (lupa sin mover la lista y vuelta a la misma tarjeta, chips, preajuste, alto de la hoja).
+
 ## 2.29.1 — 2026-10-01
 
 - Los países de frases de Wikipedia se vuelven a calcular en cada pasada, como los de la agenda y Last.fm: con la 2.28.0 la regla ya no los daba, pero los conciertos conservaban el país que tenían (8 conciertos próximos con un país de otra persona: "Carey", "Martín", "Shaka & Elektra"…). Quedan los 7 buenos.
