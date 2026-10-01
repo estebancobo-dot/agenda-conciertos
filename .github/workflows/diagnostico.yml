@@ -29,4 +29,7 @@ jobs:
           cache: pip
       - run: pip install -r requirements.txt
       - run: python tools/datos.py
-      - run: python tools/diagnostico_agenda.py ${{ github.event.inputs.n || '16' }} "${{ github.event.inputs.webs }}"
+      - if: github.event.inputs.webs != 'fuentes'
+        run: python tools/diagnostico_agenda.py ${{ github.event.inputs.n || '16' }} "${{ github.event.inputs.webs }}"
+      - if: github.event.inputs.webs == 'fuentes'
+        run: python tools/diagnostico_fuentes.py ${{ github.event.inputs.n || '30' }}
