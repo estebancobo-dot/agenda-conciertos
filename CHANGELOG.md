@@ -1,5 +1,9 @@
 # Versiones
 
+## 2.24.0 — 2026-10-01
+
+- **Madrid en Vivo: los estilos de cada concierto.** Su buscador solo da la categoría ("Pop / Rock", "Músicas negras"), pero cada evento tiene además sus estilos ("#Folk-Rock", "#Indie"…). Ahora se leen de la API pública de WordPress de la web (permitida por su robots.txt), en bloques de 100 eventos y con los 10 s entre peticiones que pide. Son el estilo del concierto según la agenda; si un evento no tiene ninguno reconocible, se queda la categoría. Esto ataca la mayor fuente de etiquetas genéricas (~490 conciertos).
+
 ## 2.23.0 — 2026-10-01
 
 Lo aprendido con el diagnóstico de páginas reales (workflow "Diagnóstico de páginas de agenda"):

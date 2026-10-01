@@ -130,12 +130,78 @@ def mev_parse(html: str, page_url: str, today: date, estilo: str | None) -> list
     return out
 
 
+MEV_API = "https://madridenvivo.com/wp-json/wp/v2"
+MEV_API_PAGINAS = 12  # 100 eventos por página, los publicados más recientemente primero
+
+
+def mev_estilos_api(ctx: Ctx, eventos: list) -> int:
+    """Estilos de cada evento desde la API pública de WordPress de la web ("#Folk-Rock", "#Indie"…). El buscador
+    solo da la categoría ("Pop / Rock", "Músicas negras"); la ficha del evento lleva además sus estilos. Se piden
+    en bloques de 100 (con los 10 s entre peticiones que pide su robots.txt) y se ponen como estilo del evento,
+    los que se reconocen; la categoría queda si no hay ninguno. Devuelve cuántos eventos se han concretado."""
+    from urllib.parse import parse_qs, urlsplit
+
+    from ..clasificar import categorias_de
+    por_url = {e.url.rstrip("/"): e for e in eventos}
+    por_id = {}
+    for e in eventos:
+        q = parse_qs(urlsplit(e.url).query)
+        if q.get("p"):
+            por_id[q["p"][0]] = e
+    etiquetas: dict[int, list] = {}
+    for page in range(1, MEV_API_PAGINAS + 1):
+        try:
+            lote = json.loads(ctx.get(f"{MEV_API}/evento?per_page=100&page={page}&_fields=id,link,tags"))
+        except Exception as ex:  # noqa: BLE001 - sin la API se queda la categoría, como antes
+            ctx.errors.append(f"estilos por la API: página {page}: {type(ex).__name__}")
+            break
+        if not isinstance(lote, list) or not lote:
+            break
+        for ev in lote:
+            e = por_url.get(str(ev.get("link") or "").rstrip("/")) or por_id.get(str(ev.get("id")))
+            if e is not None and ev.get("tags"):
+                etiquetas[id(e)] = (e, ev["tags"])
+        if len(etiquetas) >= len(eventos):
+            break
+    ids = sorted({t for _, ts in etiquetas.values() for t in ts})
+    nombres: dict[int, str] = {}
+    for i in range(0, len(ids), 100):
+        try:
+            for t in json.loads(ctx.get(f"{MEV_API}/tags?include={','.join(map(str, ids[i:i + 100]))}"
+                                        f"&per_page=100&_fields=id,name")):
+                nombres[t["id"]] = t["name"]
+        except Exception as ex:  # noqa: BLE001
+            ctx.errors.append(f"nombres de estilos por la API: {type(ex).__name__}")
+    n = 0
+    for e, ts in etiquetas.values():
+        estilos = []
+        for t in ts:
+            nombre = re.sub(r"^#", "", str(nombres.get(t, ""))).replace("-", " ").strip()
+            if nombre and any(c != "sin clasificar" for c in categorias_de(nombre)) and nombre not in estilos:
+                estilos.append(nombre)
+        if estilos:
+            e.estilo = ", ".join(estilos[:4])
+            n += 1
+    return n
+
+
 def madridenvivo(ctx: Ctx):
     """Consulta el buscador avanzado por cada estilo (el estilo sale del filtro de la propia web)
-    y paginando la misma petición POST que hace la web al hacer scroll."""
+    y paginando la misma petición POST que hace la web al hacer scroll. Después, los estilos concretos de cada
+    evento por la API de la web (mev_estilos_api)."""
     import time
     t0 = time.monotonic()
     seen: dict[str, object] = {}
+    leidos = list(_madridenvivo_buscador(ctx, t0, seen))
+    try:
+        mev_estilos_api(ctx, leidos)
+    except Exception as ex:  # noqa: BLE001 - nunca impide dar los eventos con su categoría
+        ctx.errors.append(f"estilos por la API: {type(ex).__name__}: {str(ex)[:120]}")
+    yield from leidos
+
+
+def _madridenvivo_buscador(ctx: Ctx, t0: float, seen: dict):
+    import time
     for eid, ename in MEV_ESTILOS.items():
         for page in range(1, 200):
             if time.monotonic() - t0 > MEV_PRESUPUESTO_SEG:
