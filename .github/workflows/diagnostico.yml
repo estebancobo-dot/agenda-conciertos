@@ -22,7 +22,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: main
+          ref: ${{ github.ref_name }}  # la rama desde la que se lanza (main o una de desarrollo, para probar antes)
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
