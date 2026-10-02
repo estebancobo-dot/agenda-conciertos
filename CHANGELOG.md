@@ -1,5 +1,19 @@
 # Versiones
 
+## 2.42.0 — 2026-10-03
+
+**Salas cuya web no leíamos.** Las que más conciertos tenían sin que ninguno lo confirmara su web oficial (página de Fuentes). Para cada una se buscó su web y se probó desde GitHub (robots.txt, cómo publica las fechas):
+
+- **Nuevas fuentes** (web oficial, prioridad 1), probadas en real con la agenda actual: ningún conflicto.
+  - **Café Central** (Café Central Ateneo y el auditorio de La Cátedra): 42 conciertos, 27 se unen a los que ya teníamos y 15 nuevos. Las residencias de varias noches (de jueves a sábado, por ejemplo) salen una por noche.
+  - **Café La Palma**: 34 conciertos, 16 nuevos. Solo lo que la sala marca como concierto (sus sesiones de club, no).
+  - **Cadillac Solitario**: 27 conciertos, 15 nuevos, con su precio y "Tributo"/"Versiones" como estilo ("Matasuegras – Tributo Pop-Rock" → Matasuegras).
+  - **Dime que me Quieres**: 20 conciertos, 2 nuevos y el estilo de cada uno (pop, indie, versiones de rock…).
+  - Las tres últimas usan la API pública de su calendario (The Events Calendar, de WordPress): un lector común sirve para cualquier sala que lo use.
+- **No se pueden leer**, con el motivo en la página de Fuentes: El Despertar (su robots.txt no lo permite: se respeta), Intruso Bar y Moe (la página se monta en el navegador), Rincón del Arte Nuevo, Thundercat, Sala Vesta y El Café de la Ópera (sin fechas en la web), La Coquette, Jazzville y Barracudas (sin web propia: solo redes sociales). Sus conciertos siguen llegando por Madrid en Vivo y conciertos.club.
+- **Salas con dos nombres**, ahora una sola: "El Despertar Café" = "Café El Despertar", "Sala UNI" = "Sala Uni", "JazzVille", "Sala Barracudas"… y la web oficial de cada sala nueva para su página de sala.
+- Diagnóstico: lista de salas candidatas y lectura de la API de The Events Calendar.
+
 ## 2.41.0 — 2026-10-03
 
 **Gestión de conciertos, fase 7: historial de cambios, calendarios suscribibles y páginas de sala.**
