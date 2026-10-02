@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import json
 import re
+import time
 from dataclasses import dataclass, field
 from datetime import date, timedelta
 from typing import Iterable
@@ -14,6 +15,10 @@ from ..model import RawEvent
 from ..normalize import clean, es_relleno, extrae_pais, parse_fecha_texto, parse_hora, split_artistas
 
 
+class TiempoAgotado(Exception):
+    """La fuente ha superado su tiempo máximo de lectura: no se piden más páginas."""
+
+
 @dataclass
 class Ctx:
     """Contexto que recibe cada parser."""
@@ -23,8 +28,11 @@ class Ctx:
     estado: dict = field(default_factory=dict)   # estado incremental de esta fuente (se guarda en estado.json)
     pages: int = 0
     errors: list[str] = field(default_factory=list)
+    limite: float | None = None  # time.monotonic() a partir del cual no se piden más páginas (tope por fuente)
 
     def get(self, url: str, **kw) -> str:
+        if self.limite is not None and time.monotonic() > self.limite:
+            raise TiempoAgotado(url)
         self.pages += 1
         return self.fetcher.get(url, **kw)
 

@@ -48,6 +48,7 @@ class Source:
     reconfirma: bool = True  # False en lecturas incrementales (blogs): su ausencia no implica cancelación
     municipio_defecto: str | None = None  # municipio implícito si la fuente solo cubre un lugar
     notas: str = ""
+    tope_seg: float | None = 480  # tiempo máximo de lectura; lo que no dé tiempo sale de su última lectura buena
 
     def meta(self) -> dict:
         return {k: getattr(self, k) for k in ("id", "nombre", "url", "tipo", "prioridad", "fiabilidad", "grupo",

@@ -20,7 +20,7 @@ FUENTES: list[Source] = [
     S("cpm", "Conciertos por Madrid", "https://conciertospormadrid.com/", "agregador", 3, "media", "conciertospormadrid",
       ag.conciertospormadrid),
     S("madridenvivo", "Madrid en Vivo (asociación de salas)", "https://madridenvivo.com/buscador-avanzado/", "agregador",
-      3, "alta", "madridenvivo", ag.madridenvivo),
+      3, "alta", "madridenvivo", ag.madridenvivo, tope_seg=None),  # 10 s entre páginas: tiene su lectura aparte
     S("songkick", "Songkick Madrid", "https://www.songkick.com/metro-areas/28755-spain-madrid", "agregador", 3, "media",
       "songkick", ag.songkick),
     S("rockandblog", "Rock and Blog", "https://rockandblog.net/conciertos-rock-madrid/", "blog", 4, "media",

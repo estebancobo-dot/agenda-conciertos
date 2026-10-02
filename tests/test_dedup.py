@@ -256,3 +256,36 @@ def test_cartel_con_fichas_y_grupos_de_teloneros(monkeypatch):
          "fuentes": [], "estilo_fuente": []}
     aplicar_cartel(f, fichas)
     assert f["grupos"] == ["rock y metal"] and f["grupos_origen"] == "cartel del festival" and "grupos_cartel" not in f
+
+
+def test_tope_de_tiempo_por_fuente():
+    import time
+
+    from scraper.pipeline import leer_fuente
+
+    class F:
+        def get(self, url, **kw):
+            time.sleep(0.05)
+            return "x"
+
+        def robots_status(self, url):
+            return "ok"
+
+    def lector(ctx):
+        for i in range(100):  # una agenda que no acaba nunca
+            ctx.get(f"https://x/{i}")
+            yield RawEvent(fecha=date(2026, 10, 17), artista=f"A{i}", url="u")
+    s = Source("lenta", "Lenta", "https://x", "agregador", 3, "media", "lenta", lector, tope_seg=0.3)
+    evs, res = leer_fuente(s, F(), HOY, date(2027, 1, 27), {})
+    assert res["estado"] == "tope_de_tiempo" and res["funciono"] and not res["completa"]
+    assert 2 <= len(evs) <= 8 and res["segundos"] < 1.5  # se queda con lo leído; el resto, de su caché
+
+
+def test_codificacion_equivocada():
+    from scraper.normalize import clean
+    assert clean("Ed├®n") == "Edén" and clean("CafÃ© BerlÃ­n") == "Café Berlín"
+    assert clean("Motörhead") == "Motörhead" and clean("Brujer├Ła") == "Brujería" and clean("┬ĀSarkrista") == "Sarkrista"
+    # irreparable y con el mismo concierto bien escrito por otra web ese día en esa sala: se descarta
+    recs = run((ev("Motörhits. Tributo a Motörhead", "Revi Live", "21:00"), src("mutick")),
+               (ev("M├Č╢torHits", "Revi Live"), src("revi", prioridad=1)))
+    assert [r["artista"] for r in recs] == ["Motörhits. Tributo a Motörhead"]

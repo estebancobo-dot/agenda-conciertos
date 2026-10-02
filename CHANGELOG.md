@@ -1,5 +1,14 @@
 # Versiones
 
+## 2.40.0 — 2026-10-03
+
+**Gestión de conciertos, fase 6: tolerancia a fallos.**
+
+- **Tiempo máximo por fuente** (8 minutos; Madrid en Vivo, que tiene su lectura aparte, sin tope): una web que se atasca o no acaba ya no retrasa toda la lectura. Se queda con lo que haya leído y el resto sale de su última lectura buena (como cuando falla); en la página de Fuentes sale como "Lectura parcial" con el motivo.
+- **Detección de cambios en las webs**, además de la de "da muchos menos conciertos de lo habitual": aviso si una fuente deja de dar un dato que daba (la hora, la sala o el estilo: de ≥60 % de sus conciertos a ≤10 %) o pone de golpe casi todo el mismo día (síntoma típico de un lector que ya no entiende las fechas). Sale en las alertas y en su tarjeta de Fuentes.
+- **Texto mal descodificado** ("Ed├®n", "CafÃ© BerlÃ­n", "Brujer├Ła"): se repara palabra a palabra cuando el resultado es inequívoco (letras normales del español y vecinas); si no, se deja como está. Los 5 casos reales (todos de la web de Revi) quedan bien ("Brujería", "MötorHits", "Eskóbula") y se unen con el mismo concierto de otras agendas: 3 duplicados menos. Si alguno no se pudiera reparar y ese día en esa sala hay otro concierto bien escrito, se descarta como duplicado.
+- Tests de las tres cosas.
+
 ## 2.39.0 — 2026-10-03
 
 **Gestión de conciertos, fase 5: página de Fuentes profesional.**

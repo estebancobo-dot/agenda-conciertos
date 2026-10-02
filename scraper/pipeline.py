@@ -8,6 +8,7 @@ import logging
 import threading
 import time
 import traceback
+from collections import Counter
 from concurrent.futures import ThreadPoolExecutor
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
@@ -22,9 +23,9 @@ from .merge import (Item, agrupar, artistas_coinciden, coinciden_flexible, const
                     separar_ciclo)
 from .model import RawEvent, Source
 from .normalize import (DATA, canon_sala, clean, load_json, misma_sala, municipio, norm, parecido_flexible,
-                        sala_municipio)
+                        sala_municipio, tiene_mojibake)
 from .registry import FUENTES, NO_USAR, SIN_AGENDA_LEGIBLE
-from .sources.base import Ctx
+from .sources.base import Ctx, TiempoAgotado
 
 log = logging.getLogger("agenda")
 HORIZONTE_DIAS = 120
@@ -56,8 +57,9 @@ PAUSA_REINTENTO_SEG = 90
 
 
 def leer_fuente(src: Source, fetcher: Fetcher, hoy: date, horizonte: date, estado: dict) -> tuple[list, dict]:
-    ctx = Ctx(fetcher=fetcher, today=hoy, horizon=horizonte, estado=estado.setdefault(src.id, {}))
     t0 = time.monotonic()
+    ctx = Ctx(fetcher=fetcher, today=hoy, horizon=horizonte, estado=estado.setdefault(src.id, {}),
+              limite=t0 + src.tope_seg if src.tope_seg else None)
     evs: list[RawEvent] = []
     res = {"funciono": False, "estado": "", "brutos": 0, "paginas": 0, "errores": [], "robots": ""}
     try:
@@ -66,6 +68,12 @@ def leer_fuente(src: Source, fetcher: Fetcher, hoy: date, horizonte: date, estad
             evs.append(e)
         res["funciono"] = True
         res["estado"] = "ok" if evs else "ok_sin_resultados"
+    except TiempoAgotado:
+        # se queda con lo leído hasta ahora; lo demás sale de su última lectura buena (no es una lectura completa)
+        res["funciono"] = bool(evs)
+        res["estado"] = "tope_de_tiempo"
+        res["errores"].append(f"superó su tiempo máximo de lectura ({round(src.tope_seg / 60)} min): se queda con lo "
+                              f"leído y el resto sale de su última lectura buena")
     except AntiBotBlocked as e:
         res["estado"] = "bloqueado_antibots"
         res["errores"].append(str(e))
@@ -80,11 +88,18 @@ def leer_fuente(src: Source, fetcher: Fetcher, hoy: date, horizonte: date, estad
         res["estado"] = "bloqueado_403" if "403" in msg else "error"
         res["errores"].append(msg[:400])
         log.debug(traceback.format_exc())
+    if ctx.limite is not None and time.monotonic() > ctx.limite and res["estado"] != "tope_de_tiempo" and ctx.errors:
+        # el lector siguió con otras páginas tras el tope (cada una falló al momento): también es tope de tiempo
+        res["estado"] = "tope_de_tiempo"
+        ctx.errors = [e for e in ctx.errors if "TiempoAgotado" not in e]
+        res["errores"].append(f"superó su tiempo máximo de lectura ({round(src.tope_seg / 60)} min): se queda con lo "
+                              f"leído y el resto sale de su última lectura buena")
     res["errores"] += ctx.errors[:20]
     # lectura completa: funcionó, dio resultados y sin errores parciales (páginas caídas, tope de tiempo…)
-    res["completa"] = res["funciono"] and bool(evs) and not ctx.errors
+    res["completa"] = res["funciono"] and bool(evs) and not ctx.errors and res["estado"] != "tope_de_tiempo"
     res["paginas"] = ctx.pages
     res["brutos"] = len(evs)
+    res["campos"] = campos_leidos(evs)
     res["segundos"] = round(time.monotonic() - t0, 1)
     try:
         res["robots"] = fetcher.robots_status(src.url)
@@ -172,6 +187,34 @@ def municipio_item(it: Item) -> str | None:
     return sala_municipio(ev.sala) or ciudad_m or it.src.municipio_defecto
 
 
+def campos_leidos(evs: list[RawEvent]) -> dict:
+    """Qué parte de lo leído trae cada dato (hora, sala, estilo) y qué parte cae en el día más repetido: si una
+    fuente deja de dar un dato que daba, o de repente pone casi todo el mismo día, su web ha cambiado."""
+    if not evs:
+        return {}
+    n = len(evs)
+    dia = max(Counter(e.fecha for e in evs).values())
+    return {"hora": round(100 * sum(bool(e.hora) for e in evs) / n), "sala": round(100 * sum(bool(e.sala) for e in evs) / n),
+            "estilo": round(100 * sum(bool(e.estilo) for e in evs) / n), "mismo_dia": round(100 * dia / n), "n": n}
+
+
+CAMPOS_NOMBRE = {"hora": "la hora", "sala": "la sala", "estilo": "el estilo"}
+
+
+def cambio_de_diseno(antes: dict | None, ahora: dict | None) -> str | None:
+    """Aviso si la fuente ha dejado de dar un dato que daba (≥60 % antes, ≤10 % ahora) o pone de golpe casi todo en
+    el mismo día (posible lector que ya no entiende las fechas). Solo con lecturas de 10 o más conciertos."""
+    if not antes or not ahora or ahora.get("n", 0) < 10 or antes.get("n", 0) < 10:
+        return None
+    for k, nombre in CAMPOS_NOMBRE.items():
+        if antes.get(k, 0) >= 60 and ahora.get(k, 0) <= 10:
+            return f"ya no se lee {nombre} (antes en el {antes[k]} % de sus conciertos, ahora en el {ahora[k]} %): posible cambio en la web"
+    if ahora.get("mismo_dia", 0) >= 60 and antes.get("mismo_dia", 0) < 30:
+        return (f"pone el {ahora['mismo_dia']} % de sus conciertos el mismo día (antes como mucho el {antes['mismo_dia']} %): "
+                "posible cambio en cómo da las fechas")
+    return None
+
+
 def preparar(items: list[Item], hoy: date, horizonte: date) -> tuple[list[Item], dict]:
     fuera = {"fuera_de_ventana": 0, "fuera_de_ambito": 0, "ejemplos_fuera_de_ambito": []}
     ok = []
@@ -188,6 +231,11 @@ def preparar(items: list[Item], hoy: date, horizonte: date) -> tuple[list[Item],
                     f"{ev.fecha} {ev.artista} @ {ev.sala or '?'} ({ev.ciudad or 'sin ciudad'}) [{it.src.nombre}]")
             continue
         ok.append(it)
+    # nombre mal descodificado que no se ha podido reparar ("M├ČtorHits"): si ese día en esa sala hay otro concierto
+    # bien escrito, es el mismo anunciado por otra web y se descarta; si no, se queda (mejor raro que perdido)
+    limpios = {(it.ev.fecha, norm(it.ev.sala)) for it in ok if not tiene_mojibake(it.ev.artista)}
+    fuera["mal_codificados"] = sum(1 for it in ok if tiene_mojibake(it.ev.artista) and (it.ev.fecha, norm(it.ev.sala)) in limpios)
+    ok = [it for it in ok if not (tiene_mojibake(it.ev.artista) and (it.ev.fecha, norm(it.ev.sala)) in limpios)]
     return ok, fuera
 
 
@@ -646,6 +694,8 @@ def informe_fuentes(fuentes: list[Source], resultados: dict, recs: list[dict], a
                 dias = (hoy - date.fromisoformat(h["ultima_ok"])).days
                 if dias >= DIAS_ALERTA:
                     aviso = f"lleva {dias} días sin leerse bien (último éxito {h['ultima_ok']}, daba {h['ultimo_conteo']})"
+        elif res.get("funciono") and not res.get("no_leida") and cambio_de_diseno(h.get("campos"), res.get("campos")):
+            aviso = cambio_de_diseno(h.get("campos"), res.get("campos"))
         elif (res.get("funciono") and not res.get("no_leida") and h.get("ultimo_conteo", 0) >= 10
               and len(mios) < 0.3 * h["ultimo_conteo"]):
             # lee algo, pero muchos menos de lo habitual: suele ser un cambio de diseño que el lector no entiende
@@ -662,7 +712,7 @@ def informe_fuentes(fuentes: list[Source], resultados: dict, recs: list[dict], a
                     "desde_cache": res.get("desde_cache", 0), "cache_fecha": res.get("cache_fecha"),
                     "no_leida": res.get("no_leida", False)})
         if res.get("funciono") and res.get("brutos", 0) > 0 and not res.get("no_leida"):
-            historial[s.id] = {"ultima_ok": hoy.isoformat(), "ultimo_conteo": len(mios)}
+            historial[s.id] = {"ultima_ok": hoy.isoformat(), "ultimo_conteo": len(mios), "campos": res.get("campos")}
     return out
 
 

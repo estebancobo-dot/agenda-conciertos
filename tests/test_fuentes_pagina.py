@@ -41,3 +41,18 @@ def test_salas_sin_fuente():
     out = salas_sin_fuente(recs, date(2026, 10, 2))
     assert [x["sala"] for x in out] == ["Café Berlín"] and out[0]["conciertos"] == 5
     assert out[0]["motivo"] and "carteles" in out[0]["motivo"]  # el de la lista de salas sin agenda legible
+
+
+def test_cambio_de_diseno():
+    from datetime import date as d
+
+    from scraper.model import RawEvent
+    from scraper.pipeline import cambio_de_diseno, campos_leidos
+    antes = campos_leidos([RawEvent(fecha=d(2026, 10, i % 28 + 1), artista="x", url="u", sala="S", hora="21:00")
+                           for i in range(20)])
+    sin_hora = campos_leidos([RawEvent(fecha=d(2026, 10, i % 28 + 1), artista="x", url="u", sala="S") for i in range(20)])
+    mismo_dia = campos_leidos([RawEvent(fecha=d(2026, 10, 2), artista="x", url="u", sala="S", hora="21:00")
+                               for i in range(20)])
+    assert "ya no se lee la hora" in cambio_de_diseno(antes, sin_hora)
+    assert "mismo día" in cambio_de_diseno(antes, mismo_dia)
+    assert cambio_de_diseno(antes, antes) is None and cambio_de_diseno(None, sin_hora) is None

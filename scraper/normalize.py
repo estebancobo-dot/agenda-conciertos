@@ -38,11 +38,41 @@ def norm(s: str | None) -> str:
     return s.strip()
 
 
+# restos de leer UTF-8 con otra codificación ("Ed├®n", "CafÃ© BerlÃ­n", "â€™"): nunca están en un nombre real
+_MOJIBAKE = re.compile(r"[├┤┬┴┼╢╣║╗╝]|Ã[\x80-\xbf©±³º¡\u0152-\u2122]|â€")
+_PLAUSIBLES = set("\xa0áéíóúÁÉÍÓÚñÑüÜçÇàèìòùÀÈÌÒÙäëïöÄËÏÖâêîôûÂÊÎÔÛãõÃÕøØåÅæÆœŒßğşı’‘“”«»€¡¿ºª–—…·°")
+
+
+def reparar_codificacion(s: str) -> str:
+    """Deshace el texto UTF-8 leído con otra codificación, solo si el resultado es inequívoco: "Ed├®n" → "Edén",
+    "CafÃ© BerlÃ­n" → "Café Berlín". Si ninguna lo deja limpio (con letras normales del español y vecinas), se
+    deja como está: mejor un nombre raro que uno inventado."""
+    if not s or not _MOJIBAKE.search(s):
+        return s
+
+    def palabra(w: str) -> str:  # palabra a palabra: un "–" bien escrito al lado no impide arreglar el resto
+        if not _MOJIBAKE.search(w):
+            return w
+        for enc in ("cp1252", "latin-1", "cp850", "cp437", "cp775"):  # cp775: lo que hace la web de Revi
+            try:
+                t = w.encode(enc).decode("utf-8")
+            except (UnicodeEncodeError, UnicodeDecodeError):
+                continue
+            if not _MOJIBAKE.search(t) and all(c in _PLAUSIBLES for c in t if ord(c) > 127):
+                return t
+        return w
+    return re.sub(r"\S+", lambda m: palabra(m.group(0)), s)
+
+
+def tiene_mojibake(s: str | None) -> bool:
+    return bool(s) and bool(_MOJIBAKE.search(s))
+
+
 def clean(s: str | None) -> str:
-    """Limpia espacios y separadores sobrantes sin alterar el texto."""
+    """Limpia espacios y separadores sobrantes sin alterar el texto (y deshace la codificación equivocada)."""
     if not s:
         return ""
-    s = re.sub(r"\s+", " ", str(s).replace("\xa0", " ")).strip()
+    s = re.sub(r"\s+", " ", reparar_codificacion(str(s)).replace("\xa0", " ")).strip()
     return s.strip(" .·|-–,;")
 
 
