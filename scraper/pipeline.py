@@ -650,7 +650,10 @@ def informe_fuentes(fuentes: list[Source], resultados: dict, recs: list[dict], a
               and len(mios) < 0.3 * h["ultimo_conteo"]):
             # lee algo, pero muchos menos de lo habitual: suele ser un cambio de diseño que el lector no entiende
             aviso = f"da muchos menos conciertos de lo habitual ({len(mios)} frente a {h['ultimo_conteo']}): posible cambio en la web"
+        metricas = metricas_fuente(s, mios, grupo)
+        salud = salud_fuente(historial.setdefault("_dias", {}).setdefault(s.id, {}), res, len(mios), hoy)
         out.append({**s.meta(), "funciono": res.get("funciono", False), "estado": res.get("estado", "no ejecutada"),
+                    "metricas": metricas, "salud": salud,
                     "conciertos": len(mios), "nuevos": len(nuevos), "solo_en_esta": len(solo),
                     "eventos_brutos": res.get("brutos", 0), "paginas": res.get("paginas", 0),
                     "errores": res.get("errores", []), "robots": res.get("robots", ""),
@@ -661,6 +664,79 @@ def informe_fuentes(fuentes: list[Source], resultados: dict, recs: list[dict], a
         if res.get("funciono") and res.get("brutos", 0) > 0 and not res.get("no_leida"):
             historial[s.id] = {"ultima_ok": hoy.isoformat(), "ultimo_conteo": len(mios)}
     return out
+
+
+DIAS_SALUD = 14  # días de historial de cada fuente en la página de Fuentes
+
+
+def _pct(n: int, d: int) -> int | None:
+    return round(100 * n / d) if d else None
+
+
+def metricas_fuente(s: Source, mios: list[dict], grupo: dict) -> dict:
+    """Lo que aporta y lo fiable que resulta cada fuente, medido sobre sus conciertos próximos:
+    - otra_web: % que confirma al menos otra web independiente;
+    - coincide: de los que comparte con otras webs, % en que no lleva la contraria (cuando hay un conflicto de
+      hora, sala o cartel, su versión es la que dan más webs, o no hay conflicto);
+    - hora, precio, estilo: % en que ella da ese dato."""
+    otras = [r for r in mios if len({grupo.get(f["id"], f["id"]) for f in r["fuentes"]}) > 1]
+    en_contra = 0
+    for r in otras:
+        for c in r.get("conflictos") or []:
+            vs = c.get("versiones") or []
+            mayor = max((len(v.get("fuentes") or []) for v in vs), default=0)
+            if any(s.nombre in (v.get("fuentes") or []) and len(v.get("fuentes") or []) < mayor for v in vs):
+                en_contra += 1
+                break
+    def da(r, campo):
+        if campo == "estilo":
+            return any(e.get("fuente") == s.nombre for e in r.get("estilo_fuente") or [])
+        if campo == "precio":
+            return (r.get("precio_fuente") or {}).get("nombre") == s.nombre
+        return bool(r.get("hora"))  # la hora no guarda de qué fuente viene: la del concierto
+    return {"otra_web": _pct(len(otras), len(mios)), "coincide": _pct(len(otras) - en_contra, len(otras)),
+            "comparte": len(otras), "precio": _pct(sum(da(r, "precio") for r in mios), len(mios)),
+            "estilo": _pct(sum(da(r, "estilo") for r in mios), len(mios)),
+            "hora": _pct(sum(da(r, "hora") for r in mios), len(mios))}
+
+
+def salud_fuente(dias: dict, res: dict, n: int, hoy: date) -> list[dict]:
+    """Historial de los últimos 14 días de una fuente: por día, cuántas lecturas fueron bien de cuántas y con
+    cuántos conciertos. Las ejecuciones que no la leen (reintentos de otras, lectura aparte) no cuentan."""
+    hoy_s = hoy.isoformat()
+    if res and not res.get("no_leida"):
+        d = dias.setdefault(hoy_s, {"ok": 0, "n": 0})
+        d["n"] += 1
+        bien = bool(res.get("funciono")) and res.get("brutos", 0) > 0
+        d["ok"] += bien
+        d["c"] = n
+        d["e"] = res.get("estado") if not bien else ("parcial" if not res.get("completa") else "ok")
+    limite = (hoy - timedelta(days=DIAS_SALUD - 1)).isoformat()
+    for k in [k for k in dias if k < limite]:
+        del dias[k]
+    return [{"fecha": k, **dias[k]} for k in sorted(dias)]
+
+
+def salas_sin_fuente(recs: list[dict], hoy: date, minimo: int = 4) -> list[dict]:
+    """Salas con conciertos próximos cuya web oficial no leemos (ningún concierto suyo lo confirma la sala): son
+    candidatas a fuente nueva, o su web no tiene agenda legible (se dice por qué)."""
+    from .normalize import load_json
+    from .registry import SIN_AGENDA_LEGIBLE
+    alias = {norm(x["nombre"]): x for x in load_json("salas_alias.json").get("salas", [])}
+    por: dict[str, list[dict]] = {}
+    for r in recs:
+        # solo conciertos (los musicales y espectáculos de los teatros, con dos funciones al día, no cuentan)
+        if (r["fecha"] >= hoy.isoformat() and r.get("sala") and " / " not in r["sala"]
+                and not set(r.get("grupos") or []) & {"musicales y espectáculos", "fuera de foco"}):
+            por.setdefault(r["sala"], []).append(r)
+    out = []
+    for sala, rs in por.items():
+        if len(rs) < minimo or any(r.get("confirmado_sala") for r in rs):
+            continue
+        motivo = next((v for k, v in SIN_AGENDA_LEGIBLE.items() if norm(sala) in norm(k) or norm(k.split(" (")[0]) in norm(sala)), None)
+        out.append({"sala": sala, "conciertos": len(rs), "municipio": rs[0].get("municipio"),
+                    "web": (alias.get(norm(sala)) or {}).get("web"), "motivo": motivo})
+    return sorted(out, key=lambda x: -x["conciertos"])
 
 
 DIAS_ALERTA = 3  # días seguidos sin leer bien una fuente para avisar
@@ -793,6 +869,7 @@ def ejecutar(hoy: date | None = None, solo: list[str] | None = None, fetcher: Fe
         },
         "fuentes": inf_fuentes,
         "sin_agenda_legible": SIN_AGENDA_LEGIBLE,
+        "salas_sin_fuente": salas_sin_fuente(recs, hoy),
         "no_usar": NO_USAR,
         "correcciones": res_corr,
         "musicbrainz": mb_stats,

@@ -294,6 +294,32 @@ th{color:var(--muted);font-weight:600}
 .kpis{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px;margin:8px 0 14px}
 .kpi{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:10px}
 .kpi b{display:block;font-size:1.4rem}
+.fu{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin:0 0 10px}
+.fuh{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
+.fun{font-weight:750;color:var(--ink);text-decoration:none;font-size:1rem;line-height:1.25}
+.fun::after{content:" ↗";color:var(--muted);font-weight:400;font-size:.8em}
+.fus{color:var(--muted);font-size:.8rem;margin:2px 0 8px}
+.pill{flex:0 0 auto;font-size:.72rem;font-weight:700;border-radius:999px;padding:3px 9px;border:1px solid}
+.p-ok{color:var(--ok);border-color:color-mix(in srgb,var(--ok) 45%,var(--line));background:color-mix(in srgb,var(--ok) 8%,var(--panel))}
+.p-warn{color:color-mix(in srgb,var(--warn) 88%,var(--ink));border-color:color-mix(in srgb,var(--warn) 45%,var(--line));background:color-mix(in srgb,var(--warn) 6%,var(--panel))}
+.p-err{color:var(--bad);border-color:color-mix(in srgb,var(--bad) 45%,var(--line));background:color-mix(in srgb,var(--bad) 8%,var(--panel))}
+.p-sin{color:var(--muted);border-color:var(--line)}
+.fsal{display:grid;grid-template-columns:repeat(14,1fr);gap:3px;max-width:330px;margin:0 0 10px}
+.fsal i{height:14px;border-radius:3px;background:var(--panel2)}
+.fsal i.ok{background:var(--ok)} .fsal i.warn{background:var(--warn)} .fsal i.err{background:var(--bad)}
+.fmets{display:grid;grid-template-columns:repeat(auto-fill,minmax(92px,1fr));gap:6px}
+.fm{background:var(--panel2);border-radius:10px;padding:6px 8px;min-width:0}
+.fm b{display:block;font-size:1.05rem}
+.fm span{display:block;font-size:.72rem;color:var(--muted);line-height:1.2}
+.fud{margin-top:8px;font-size:.85rem}
+.fud summary{cursor:pointer;color:var(--muted)}
+.fud p,.fud ul{margin:6px 0 0}
+.fuchips .cnt{font-weight:400;color:var(--muted)} .fuchips [aria-pressed="true"] .cnt{color:var(--bg)}
+.fusq{margin:4px 0 12px}
+.fsin{list-style:none;padding:0;margin:6px 0 10px}
+.fsin li{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--line)}
+.fsin li small{display:block;color:var(--muted);font-size:.78rem}
+.fsin em{font-style:normal;font-weight:700;color:var(--muted)}
 .kpi span{color:var(--muted);font-size:.8rem}
 .s-ok{color:var(--ok);font-weight:700} .s-err{color:var(--bad);font-weight:700} .s-warn{color:var(--warn);font-weight:700}
 .genre{margin:14px 0}
@@ -1001,14 +1027,94 @@ function extraFuente(f){
     (f.no_leida?`<div class="muted">No se volvió a leer en el reintento: datos de la última ejecución completa</div>`:"");
 }
 function sClass(e){return e==="ok"?"s-ok":/error|bloq/.test(e)?"s-err":"s-warn"}
+// ---------------------------------------------------------------- página de Fuentes
+// Cada web de la que salen los conciertos: qué es, si se leyó bien hoy y los últimos 14 días, cuánto aporta y lo
+// fiable que resulta (medido sobre sus conciertos: cuántos confirma otra web, si lleva la contraria cuando no
+// coinciden, si da hora, precio y estilo). Debajo, las salas con conciertos cuya web no leemos y lo descartado.
+const FU_CAT={sala:["salas","Sala (web oficial)"],promotora:["promo","Promotora"],ticketera:["promo","Ticketera"],
+  agregador:["agreg","Agregador"],blog:["blog","Blog o prensa"],institucional:["inst","Institucional"]};
+const FU_FILTROS=[["todas","Todas"],["salas","Salas"],["promo","Promotoras y ticketeras"],["agreg","Agregadores"],
+  ["blog","Blogs y prensa"],["inst","Institucionales"],["mal","Con problemas"]];
+let fuF="todas", fuQ="";
+function fuEstado(f){
+  if(f.no_leida) return ["sin","Sin leer en esta pasada","Se lee en otra pasada: datos de su última lectura"];
+  if(f.estado==="bloqueado_robots") return ["err","robots.txt no deja","Su robots.txt prohíbe leerla: se respeta"];
+  if(!f.funciono) return f.desde_cache?["warn","Falló · con su caché",`Se mantienen ${f.desde_cache} conciertos de su lectura del ${f.cache_fecha}`]:["err","Falló",(f.errores||[])[0]||""];
+  if(f.aviso) return ["warn","Revisar",f.aviso];
+  if((f.errores||[]).length) return ["warn","Lectura parcial",f.errores[0]];
+  if(f.estado==="ok_sin_resultados") return ["sin","Sin conciertos ahora","Respondió bien, pero hoy no anuncia ninguno"];
+  return ["ok","Funciona",""];
+}
+const fuMal=f=>["err","warn"].includes(fuEstado(f)[0]);
+function fuSalud(f){
+  const d=Object.fromEntries((f.salud||[]).map(x=>[x.fecha,x])), hoy=parse(INFORME.hoy||HOY); let out="";
+  for(let i=13;i>=0;i--){const k=iso(new Date(hoy.getFullYear(),hoy.getMonth(),hoy.getDate()-i)), x=d[k];
+    const c=!x?"nd":x.ok===x.n?"ok":x.ok?"warn":"err";
+    const t=!x?`${fmt(k,{day:"numeric",month:"short"})}: sin datos`:`${fmt(k,{day:"numeric",month:"short"})}: ${x.ok} de ${plural(x.n,"lectura")} bien${x.c!==undefined?` · ${plural(x.c,"concierto")}`:""}`;
+    out+=`<i class="${c}" title="${esc(t)}"></i>`;}
+  const dias=(f.salud||[]).length, ok=(f.salud||[]).filter(x=>x.ok===x.n).length;
+  return `<div class="fsal" role="img" aria-label="Últimos 14 días: ${dias?`${ok} de ${dias} días sin fallos`:"aún sin historial"}">${out}</div>`;
+}
+function fuMetrica(v,lbl,tip){ return v===null||v===undefined?"":`<div class="fm" title="${esc(tip)}"><b>${v}%</b><span>${esc(lbl)}</span></div>`; }
+function fuCard(f){
+  const [cls,txt,det]=fuEstado(f), cat=FU_CAT[f.tipo]||["agreg",f.tipo], m=f.metricas||{};
+  return `<article class="fu" data-cat="${cat[0]}">
+   <div class="fuh"><a class="fun" href="${esc(f.url)}" target="_blank" rel="noopener">${esc(f.nombre)}</a><span class="pill p-${cls}">${esc(txt)}</span></div>
+   <div class="fus">${esc(cat[1])} · prioridad ${f.prioridad}${f.segundos?` · leída en ${Math.round(f.segundos)} s`:""}</div>
+   ${fuSalud(f)}
+   <div class="fmets"><div class="fm"><b>${f.conciertos}</b><span>conciertos</span></div><div class="fm" title="Conciertos que solo anuncia esta web"><b>${f.solo_en_esta}</b><span>solo aquí</span></div>
+    ${fuMetrica(m.otra_web,"confirma otra web","De sus conciertos, cuántos anuncia también al menos otra web independiente")}
+    ${fuMetrica(m.coincide,"coincide",`De los ${m.comparte||0} que comparte con otras webs, en cuántos no lleva la contraria (hora, sala o cartel)`)}
+    ${fuMetrica(m.precio,"da el precio","De sus conciertos, en cuántos el precio publicado sale de esta web")}
+    ${fuMetrica(m.estilo,"da el estilo","De sus conciertos, en cuántos esta web pone etiqueta de estilo")}</div>
+   ${det||f.notas||f.reintento?`<details class="fud"><summary>${esc(det?det.slice(0,90)+(det.length>90?"…":""):"Notas")}</summary>${det&&det.length>90?`<p>${esc(det)}</p>`:""}${f.notas?`<p class="muted">${esc(f.notas)}</p>`:""}${extraFuente(f)}${(f.errores||[]).length>1?`<ul class="muted">${f.errores.slice(1,6).map(e=>`<li>${esc(e)}</li>`).join("")}</ul>`:""}</details>`:""}
+  </article>`;
+}
 function viewFuentes(){
   if(!INFORME) return `<p class="empty">Sin informe.</p>`;
-  const rows=INFORME.fuentes.map(f=>`<tr><td><a href="${esc(f.url)}" target="_blank" rel="noopener">${esc(f.nombre)}</a>${f.notas?`<div class="muted">${esc(f.notas)}</div>`:""}</td><td>${esc(f.tipo)}<div class="muted">prioridad ${f.prioridad}</div></td><td>${esc(f.fiabilidad)}</td><td class="${sClass(f.estado)}">${esc(f.estado)}${f.aviso?`<div class="s-warn">${esc(f.aviso)}</div>`:""}${extraFuente(f)}</td></tr>`).join("");
-  const sin=Object.entries(INFORME.sin_agenda_legible||{}).map(([k,v])=>`<li><b>${esc(k)}</b>: ${esc(v)}</li>`).join("");
+  const fs=INFORME.fuentes, ok=fs.filter(f=>fuEstado(f)[0]==="ok"||fuEstado(f)[0]==="sin").length;
+  const n=k=>fs.filter(f=>(FU_CAT[f.tipo]||["agreg"])[0]===k).length;
+  const sinF=INFORME.salas_sin_fuente||[];
+  const sin=Object.entries(INFORME.sin_agenda_legible||{}).map(([k,v])=>`<li><b>${esc(k)}</b>${v?`: ${esc(v)}`:""}</li>`).join("");
   const no=Object.entries(INFORME.no_usar||{}).map(([k,v])=>`<li><b>${esc(k)}</b>: ${esc(v)}</li>`).join("");
-  return `<p class="muted">Agendas: prioridad para resolver conflictos 1 web oficial de sala · 2 promotora o ticketera · 3 agregador · 4 blog o foro. Ficha del artista (estilo, origen y foto): Discogs y Wikipedia; nacionalidad como último recurso en MusicBrainz.</p>
-   <div class="scroll" tabindex="0" role="region" aria-label="Tabla (se desplaza de lado)"><table><thead><tr><th>Fuente</th><th>Tipo</th><th>Fiabilidad</th><th>Última ejecución</th></tr></thead><tbody>${rows}</tbody></table></div>
-   <h3>Salas sin agenda legible</h3><ul>${sin}</ul><h3>No se usan</h3><ul>${no}</ul>`;
+  return `<div class="kpis">
+     <div class="kpi"><b>${fs.length}</b><span>webs leídas</span></div>
+     <div class="kpi"><b class="${ok===fs.length?"s-ok":"s-warn"}">${ok}</b><span>funcionan en la última lectura</span></div>
+     <div class="kpi"><b>${INFORME.totales.conciertos}</b><span>conciertos próximos</span></div>
+     <div class="kpi"><b>${INFORME.totales.contrastados}</b><span>confirmados por 2 o más webs</span></div></div>
+   <p class="muted">${n("salas")} salas · ${n("promo")} promotoras y ticketeras · ${n("agreg")} agregadores · ${n("blog")} blogs y prensa · ${n("inst")} institucionales. Última lectura: ${esc(new Date(INFORME.generado).toLocaleString("es-ES",{dateStyle:"medium",timeStyle:"short"}))}.</p>
+   <details class="more fuex"><summary>Cómo se usan y qué significa cada dato</summary>
+    <p>Si dos webs no coinciden en la hora, la sala o el cartel, manda la de más prioridad: 1 web oficial de la sala · 2 promotora o ticketera · 3 agregador · 4 blog o foro. Si no hay una de más prioridad, el conflicto se deja a la vista. La ficha del artista (estilo, origen y foto) sale de Discogs, Wikipedia, Last.fm y MusicBrainz.</p>
+    <p>Todas se leen respetando su robots.txt, con un navegador identificado y sin prisas (pausas entre páginas de la misma web). Si una falla, sus conciertos se mantienen hasta 14 días con su última lectura buena.</p>
+    <p><b>Últimos 14 días</b>: un cuadro por día; verde, todas las lecturas bien; ámbar, alguna falló; rojo, ninguna; gris, sin datos. <b>Solo aquí</b>: conciertos que no anuncia ninguna otra web. <b>Confirma otra web</b>: de sus conciertos, cuántos anuncia también otra web independiente. <b>Coincide</b>: cuando comparte un concierto con otras, en cuántos no lleva la contraria en hora, sala o cartel. <b>Da el precio / el estilo</b>: en cuántos de sus conciertos ese dato sale de ella.</p>
+   </details>
+   <div class="chips fuchips" id="fuchips" role="toolbar" aria-label="Filtrar fuentes">${fuChips()}</div>
+   <div class="fusq"><input class="search" id="fuq" type="search" placeholder="Buscar una web" value="${esc(fuQ)}" aria-label="Buscar una web" autocomplete="off"></div>
+   <div id="fulist">${fuLista()}</div>
+   <h3 class="sec">Salas con conciertos cuya web no leemos</h3>
+   <p class="muted">Salas con varios conciertos próximos que ninguna web oficial confirma: sus conciertos llegan por agregadores. Son candidatas a fuente nueva, o su web no tiene una agenda legible.</p>
+   ${sinF.length?`<ul class="fsin">${sinF.slice(0,12).map(fuSalaSin).join("")}</ul>${sinF.length>12?`<details class="more"><summary>Ver las ${sinF.length}</summary><ul class="fsin">${sinF.slice(12).map(fuSalaSin).join("")}</ul></details>`:""}`:`<p class="muted">Ninguna.</p>`}
+   <details class="more"><summary>Salas cuya web se comprobó y no tiene agenda legible</summary><ul>${sin}</ul></details>
+   <details class="more"><summary>Webs probadas y descartadas (${Object.keys(INFORME.no_usar||{}).length})</summary><ul>${no}</ul></details>`;
+}
+function fuSalaSin(x){
+  return `<li><span><b>${esc(x.sala)}</b>${x.municipio&&x.municipio!=="Madrid"?` · ${esc(x.municipio)}`:""}${x.motivo?`<small>${esc(x.motivo)}</small>`:x.web?`<small><a href="${esc(x.web)}" target="_blank" rel="noopener">${esc(x.web.replace(/^https?:\/\//,"").replace(/\/$/,""))}</a></small>`:""}</span><em>${x.conciertos}</em></li>`;
+}
+function fuChips(){
+  return FU_FILTROS.map(([k,l])=>`<button class="chip" data-fu="${k}" aria-pressed="${fuF===k}">${esc(l)}${k==="mal"?` <span class="cnt">${INFORME.fuentes.filter(fuMal).length}</span>`:""}</button>`).join("");
+}
+function fuLista(){
+  const q=norm(fuQ.trim());
+  const orden=["salas","promo","agreg","inst","blog"];
+  const fs=INFORME.fuentes.filter(f=>(fuF==="todas"||(fuF==="mal"?fuMal(f):(FU_CAT[f.tipo]||["agreg"])[0]===fuF))&&(!q||norm(f.nombre+" "+f.url).includes(q)))
+    .sort((a,b)=>(fuMal(b)-fuMal(a))||orden.indexOf((FU_CAT[a.tipo]||["agreg"])[0])-orden.indexOf((FU_CAT[b.tipo]||["agreg"])[0])||b.conciertos-a.conciertos);
+  return fs.length?fs.map(fuCard).join(""):`<p class="empty">Ninguna web con este filtro.</p>`;
+}
+function bindFuentes(){
+  const ch=document.getElementById("fuchips"); if(!ch) return;
+  ch.onclick=e=>{const b=e.target.closest("[data-fu]"); if(!b) return; fuF=b.dataset.fu;
+    ch.innerHTML=fuChips(); document.getElementById("fulist").innerHTML=fuLista();};
+  const q=document.getElementById("fuq"); if(q) q.oninput=()=>{fuQ=q.value; document.getElementById("fulist").innerHTML=fuLista();};
 }
 function viewInforme(){
   if(!INFORME) return `<p class="empty">Sin informe.</p>`;
@@ -1306,6 +1412,7 @@ document.getElementById("hnav").addEventListener("click",e=>{
   if(b.dataset.hn==="hoy") irHoy(); else navegar(Number(b.dataset.hn));
 });
 function bindBody(){
+  if(state.tab==="Fuentes") bindFuentes();
   document.querySelectorAll("[data-day]").forEach(b=>b.onclick=()=>{state.date=b.dataset.day; state.tab="Día"; render(); scrollTo(0,0);});
   document.querySelectorAll("[data-mdia]").forEach(b=>b.onclick=()=>elegirDiaMes(b.dataset.mdia));
   document.querySelectorAll("[data-sel]").forEach(b=>b.onclick=()=>{const f=b.dataset.sel; irAFecha(f,f<state.date?-1:f>state.date?1:0);});

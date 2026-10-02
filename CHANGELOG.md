@@ -1,5 +1,17 @@
 # Versiones
 
+## 2.39.0 — 2026-10-03
+
+**Gestión de conciertos, fase 5: página de Fuentes profesional.**
+
+- Resumen arriba: webs leídas, cuántas funcionan en la última lectura, conciertos próximos y cuántos confirman 2 o más webs; reparto por tipo.
+- **Filtros por tipo** (salas, promotoras y ticketeras, agregadores, blogs y prensa, institucionales) y **"Con problemas"**, y **búsqueda**.
+- **Una tarjeta por web**: estado de la última lectura en claro (Funciona, Lectura parcial, Falló · con su caché, robots.txt no deja, Revisar…), tipo y prioridad, tiempo de lectura, y **los últimos 14 días** (un cuadro por día: verde, todas las lecturas bien; ámbar, alguna falló; rojo, ninguna; gris, sin datos). El historial empieza a llenarse con esta versión.
+- **Fiabilidad medida** sobre sus conciertos: cuántos tiene y cuántos solo ella; qué parte confirma otra web independiente; **cuándo coincide** con las demás (si en un conflicto de hora, sala o cartel su versión es la minoritaria, lleva la contraria); en cuántos da el precio y el estilo. Con una explicación de cada dato.
+- **Salas con conciertos cuya web no leemos**: las que tienen varios conciertos próximos y ninguno confirmado por su web oficial (candidatas a fuente nueva), con el motivo si su web ya se comprobó.
+- Salas sin agenda legible y **webs probadas y descartadas**, con su motivo.
+- Validación en la web publicada: una tarjeta por web con su tira y sus datos, filtros, búsqueda y sin scroll lateral.
+
 ## 2.38.0 — 2026-10-02
 
 **Americana y folk: más fuentes.** El grupo tenía 88 conciertos, casi todos Folk y Folk Rock (61); de sus subgéneros (country, country rock, bluegrass, southern rock, honky tonk, hillbilly, western swing, cajun, zydeco, celta, neofolk) apenas había 3 de bluegrass y 2 de celta. Se buscaron agendas para todos y se probó cada una desde GitHub:

@@ -477,6 +477,7 @@ def recorrido(b):
     accesos_al_bajar(pg, lunes)
     cambiar_fecha_bajado(pg, lunes)
     cartel_web(pg)
+    pagina_fuentes(pg)
 
     # informe
     pg.evaluate("location.hash='#informe'")
@@ -1098,6 +1099,33 @@ def cartel_web(pg):
     check("Funcional", "Teloneros: el concierto sale al filtrar por el género del telonero (y la tarjeta lo dice)",
           f"{c['g']} el {c['fecha']}", ok=r["sale"] and r["tag"], detalle=str(r))
     pg.evaluate("(()=>{setGrupos(DEF_GRUPOS); renderBody(false);})()")
+
+
+
+def pagina_fuentes(pg):
+    """Fase 5: la página de Fuentes enseña una tarjeta por web (con su estado, su tira de 14 días y sus datos), los
+    filtros por tipo y la búsqueda funcionan, y no hay scroll lateral."""
+    pg.evaluate("location.hash='#fuentes'")
+    pg.wait_for_selector("#fulist .fu", timeout=30000)
+    pg.wait_for_timeout(400)
+    r = pg.evaluate("""()=>({n:document.querySelectorAll('#fulist .fu').length, total:INFORME.fuentes.length,
+        tiras:document.querySelectorAll('#fulist .fsal').length, metricas:document.querySelectorAll('#fulist .fmets').length,
+        lateral:document.documentElement.scrollWidth-innerWidth, salas:document.querySelectorAll('.fsin li').length})""")
+    pg.click("[data-fu=salas]")
+    pg.wait_for_timeout(300)
+    salas = pg.evaluate("""()=>({n:document.querySelectorAll('#fulist .fu').length,
+        bien:[...document.querySelectorAll('#fulist .fu')].every(a=>a.dataset.cat==='salas'),
+        esperadas:INFORME.fuentes.filter(f=>f.tipo==='sala').length})""")
+    nombre = pg.evaluate("INFORME.fuentes[0].nombre")
+    pg.click("[data-fu=todas]")
+    pg.fill("#fuq", nombre[:12])
+    pg.wait_for_timeout(300)
+    busca = pg.evaluate("(n)=>[...document.querySelectorAll('#fulist .fun')].some(a=>a.textContent===n)", nombre)
+    pg.fill("#fuq", "")
+    check("UX", "Fuentes: una tarjeta por web con estado, 14 días y datos; filtros y búsqueda; sin scroll lateral",
+          f"{r['n']} de {r['total']} webs · {salas['n']} salas · {r['salas']} salas sin web leída",
+          ok=r["n"] == r["total"] == r["tiras"] == r["metricas"] and r["lateral"] <= 0 and salas["bien"]
+          and salas["n"] == salas["esperadas"] and busca, detalle=str({**r, **salas, "busca": busca}))
 
 
 def cabeceras_fijas(pg, lunes):

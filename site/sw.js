@@ -1,7 +1,7 @@
 // Copia local de la web y de los últimos datos descargados. La web y la agenda: primero la red (cambian cada día);
 // si falla o tarda más de 3,5 s, la última copia buena. Detalles y miniaturas: la copia al instante y se
 // actualiza por detrás. Solo para este mismo sitio.
-const CACHE = "agenda-v22";
+const CACHE = "agenda-v23";
 
 self.addEventListener("install", e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(["./", "index.html"])).catch(() => {}));
