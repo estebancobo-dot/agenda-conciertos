@@ -94,7 +94,10 @@ if len(sys.argv) > 2 and sys.argv[1] == "--crudo":
     for u in sys.argv[2:]:
         print(f"\n## {u}\n  robots: {f.robots_status(u)} · permitido: {f.robots_allows(u)}")
         try:
-            print(f.get(u)[:12000])
+            # sin <head>, dibujos SVG, scripts ni estilos: lo que importa es cómo vienen los conciertos
+            t = f.get(u)
+            t = re.sub(r"(?is)<head\b.*?</head>|<svg\b.*?</svg>|<script\b.*?</script>|<style\b.*?</style>", "", t)
+            print(t[:15000])
         except Exception as e:  # noqa: BLE001
             print("  error:", type(e).__name__, e)
     sys.exit(0)

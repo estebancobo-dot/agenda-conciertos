@@ -488,7 +488,9 @@ def _tribe_precio(e: dict) -> str | None:
     return f"{f(a)} €" if a == b else f"{f(a)}-{f(b)} €"
 
 
-def tribe_parse(datos: dict, sala: str, ciudad: str, hoy: date, horizonte: date) -> list:
+def tribe_parse(datos: dict, sala: str, ciudad: str, hoy: date, horizonte: date, solo: str | None = None) -> list:
+    """`solo`: categoría que deben tener (Café La Palma marca así los conciertos; el resto son fiestas, alquiler
+    del local…)."""
     out = []
     for e in (datos or {}).get("events") or []:
         m = re.match(r"(\d{4})-(\d{2})-(\d{2})(?: (\d{2}):(\d{2}))?", str(e.get("start_date") or ""))
@@ -499,6 +501,8 @@ def tribe_parse(datos: dict, sala: str, ciudad: str, hoy: date, horizonte: date)
             continue
         cats = [clean(html_lib.unescape(c.get("name") or "")) for c in e.get("categories") or [] if c.get("name")]
         if cats and all(TRIBE_NO.match(c) for c in cats):
+            continue
+        if solo and not any(re.match(solo, c, re.I) for c in cats):
             continue
         titulo = clean(html_lib.unescape(re.sub(r"<[^>]+>", " ", str(e.get("title") or ""))))
         if not titulo:
@@ -514,14 +518,14 @@ def tribe_parse(datos: dict, sala: str, ciudad: str, hoy: date, horizonte: date)
     return out
 
 
-def _tribe(base: str, sala: str, ciudad: str = "Madrid"):
+def _tribe(base: str, sala: str, ciudad: str = "Madrid", solo: str | None = None):
     def run(ctx: Ctx):
         pagina = 1
         while pagina <= 10:
             url = (f"{base}{TRIBE_API}?per_page=50&page={pagina}&start_date={ctx.today.isoformat()}"
                    f"&end_date={ctx.horizon.isoformat()}")
             datos = json.loads(ctx.get(url))
-            yield from tribe_parse(datos, sala, ciudad, ctx.today, ctx.horizon)
+            yield from tribe_parse(datos, sala, ciudad, ctx.today, ctx.horizon, solo)
             if pagina >= int(datos.get("total_pages") or 1):
                 break
             pagina += 1
@@ -563,7 +567,7 @@ PARSERS = {
     "independance": _sec("https://independanceclub.com/collections/conciertos", "Independance Club"),
     "salab": _sec("https://www.salabmadrid.com/", "Sala B"),
     "nuevacubierta": _one("https://lanuevacubierta.com/eventos/", cubierta_parse),
-    "cafelapalma": _tribe("https://cafelapalma.com/", "Café La Palma"),
+    "cafelapalma": _tribe("https://cafelapalma.com/", "Café La Palma", solo=r"conciertos?$"),
     "cadillac": _tribe("https://cadillacsolitario.com/", "Cadillac Solitario"),
     "dimequemequieres": _tribe("https://conciertos.dimequemequieresbardecopas.com/", "Dime que me Quieres"),
 }

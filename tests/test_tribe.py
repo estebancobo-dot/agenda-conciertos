@@ -33,3 +33,10 @@ def test_categorias_de_genero_son_estilo():
     d = {"events": [ev("Delta Tango Romeo", "2026-10-08 21:00:00", ["Bolero", "Versiones"], "8€")]}
     r = tribe_parse(d, "Dime que me Quieres", "Madrid", HOY, HOR)[0]
     assert r.estilo == "Bolero, Versiones" and r.precio == "8 €"
+
+
+def test_solo_conciertos_marcados():
+    d = {"events": [ev("PALMEROS SOCIAL CLUB", "2026-10-30", ["Carrusel", "Palmeros"]),
+                    ev("CELEBRA TU EVENTO EN CAFÉ LA PALMA", "2026-12-31", ["Actividades", "Carrusel"]),
+                    ev("CARO TAXI", "2026-10-09 22:00:00", ["Concierto"])]}
+    assert [r.artista for r in tribe_parse(d, "Café La Palma", "Madrid", HOY, HOR, r"conciertos?$")] == ["CARO TAXI"]
