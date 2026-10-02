@@ -1,0 +1,19 @@
+{"@context": {}, "@graph": [
+ {"@id": "https://datos.madrid.es/egob/catalogo/tipo/evento/1.json", "@type": "https://datos.madrid.es/egob/kos/actividades/Musica",
+  "id": "1", "title": "Alejandra Torres Rovira &amp; Osvaldo Burucuá Dúo", "description": "Alejandra Torres Rovira es una cantautora argentina de folk. Concierto gratuito.",
+  "free": 1, "price": "", "dtstart": "2026-10-23 19:00:00.0", "dtend": "2026-10-23 23:59:00.0", "time": "19:00",
+  "link": "http://www.madrid.es/sites/v/index.jsp?vgnextoid=1", "event-location": "Centro Cultural San Juan Bautista (Ciudad Lineal)",
+  "address": {"area": {"locality": "MADRID", "postal-code": "28027", "street-address": "CALLE SAN NEMESIO 4"}}},
+ {"@type": "https://datos.madrid.es/egob/kos/actividades/ProgramacionDestacadaAgendaCultura", "title": "Andrés Coll Cosmic Trio",
+  "description": "Concierto de jazz del vibrafonista Andrés Coll.", "free": 0, "price": "12 euros", "dtstart": "2026-11-04 00:00:00.0",
+  "dtend": "2026-11-04 23:59:00.0", "time": "20:30", "link": "http://www.madrid.es/x2", "event-location": "CentroCentro",
+  "address": {"area": {"locality": "MADRID"}}},
+ {"@type": "https://datos.madrid.es/egob/kos/actividades/ProgramacionDestacadaAgendaCultura", "title": "Taller de grabado",
+  "description": "Inscripción previa.", "dtstart": "2026-10-10 00:00:00.0", "dtend": "2026-10-10 23:59:00.0", "event-location": "Matadero Madrid"},
+ {"@type": "https://datos.madrid.es/egob/kos/actividades/DanzaBaile", "title": "A viva voz", "dtstart": "2026-10-18 12:00:00.0",
+  "dtend": "2026-10-18 13:00:00.0", "event-location": "Centro Maris Stella"},
+ {"@type": "https://datos.madrid.es/egob/kos/actividades/Musica", "title": "Ciclo de órgano", "dtstart": "2026-10-01 00:00:00.0",
+  "dtend": "2026-12-20 23:59:00.0", "event-location": "Conde Duque"},
+ {"@type": "https://datos.madrid.es/egob/kos/actividades/Musica", "title": "Banda Sinfónica Municipal", "dtstart": "2026-10-10 00:00:00.0",
+  "dtend": "2026-10-11 23:59:00.0", "time": "", "event-location": "Parque del Retiro (Templete)", "price": "Entrada libre hasta completar aforo"}
+]}

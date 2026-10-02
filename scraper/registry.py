@@ -3,7 +3,7 @@ from __future__ import annotations
 
 from .model import Source
 from .sources import agregadores as ag
-from .sources import blogs, conciertos_club as cc, otras, rock_metal as rm, salas
+from .sources import abiertos, blogs, conciertos_club as cc, otras, rock_metal as rm, salas
 
 S = Source
 
@@ -118,6 +118,10 @@ FUENTES: list[Source] = [
     S("salab", "Sala B (web oficial)", "https://www.salabmadrid.com/", "sala", 1, "alta", "salab", salas.PARSERS["salab"]),
     S("nuevacubierta", "La Nueva Cubierta, Leganés (web oficial)", "https://lanuevacubierta.com/eventos/", "sala", 1,
       "alta", "nuevacubierta", salas.PARSERS["nuevacubierta"], municipio_defecto="Leganés"),
+    # datos abiertos del Ayuntamiento: lo que programan sus propios espacios (centros culturales, Conde Duque…)
+    S("datos_madrid", "Agenda cultural del Ayuntamiento de Madrid (datos abiertos)", abiertos.URL, "institucional", 1,
+      "alta", "datos_madrid", abiertos.datos_madrid, municipio_defecto="Madrid",
+      notas="Conjunto 206974 de datos.madrid.es: actividades de tipo Música y conciertos de la programación destacada."),
 ]
 
 # Salas pedidas cuya web no tiene agenda legible (comprobado sep-2026). Se listan en el informe.

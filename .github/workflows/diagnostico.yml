@@ -9,7 +9,7 @@ on:
         description: "Páginas por web"
         default: "16"
       webs:
-        description: "Solo estas webs (separadas por comas; vacío = todas), 'fuentes', 'entradas', 'cartel', 'candidatas', o la URL de una página"
+        description: "Solo estas webs (separadas por comas; vacío = todas), 'fuentes', 'entradas', 'cartel', 'candidatas', 'probar:ID[,ID]' (lector completo de esas fuentes), o la URL de una página"
         default: ""
 
 permissions:
@@ -29,7 +29,7 @@ jobs:
           cache: pip
       - run: pip install -r requirements.txt
       - run: python tools/datos.py
-      - if: github.event.inputs.webs != 'fuentes' && github.event.inputs.webs != 'entradas' && github.event.inputs.webs != 'cartel' && github.event.inputs.webs != 'candidatas' && !startsWith(github.event.inputs.webs, 'http')
+      - if: github.event.inputs.webs != 'fuentes' && github.event.inputs.webs != 'entradas' && github.event.inputs.webs != 'cartel' && github.event.inputs.webs != 'candidatas' && !startsWith(github.event.inputs.webs, 'probar:') && !startsWith(github.event.inputs.webs, 'http')
         run: python tools/diagnostico_agenda.py ${{ github.event.inputs.n || '16' }} "${{ github.event.inputs.webs }}"
       - if: github.event.inputs.webs == 'fuentes'
         run: python tools/diagnostico_fuentes.py ${{ github.event.inputs.n || '30' }}
@@ -41,3 +41,7 @@ jobs:
         run: python tools/diagnostico_cartel.py ${{ github.event.inputs.n || '10' }} 13
       - if: github.event.inputs.webs == 'candidatas'
         run: python tools/diagnostico_candidatas.py
+      - if: startsWith(github.event.inputs.webs, 'probar:')
+        env:
+          WEBS: ${{ github.event.inputs.webs }}
+        run: python tools/probar_fuente.py $(echo "${WEBS#probar:}" | tr ',' ' ')
