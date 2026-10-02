@@ -945,6 +945,17 @@ def lf_pais(ent: dict) -> str | None:
     return pais
 
 
+def commons_miniatura(archivo: str, ancho: int = 640) -> str:
+    """URL directa de la miniatura de un archivo de Wikimedia Commons (upload.wikimedia.org). La de
+    commons.wikimedia.org/wiki/Special:FilePath redirige a esta, pero su robots.txt prohíbe /wiki/Special: y la
+    miniatura propia no se podía hacer. La ruta sale del MD5 del nombre del archivo, como hace MediaWiki."""
+    import hashlib
+    nom = archivo.replace(" ", "_")
+    h = hashlib.md5(nom.encode()).hexdigest()
+    q = quote(nom)
+    return f"https://upload.wikimedia.org/wikipedia/commons/thumb/{h[0]}/{h[:2]}/{q}/{ancho}px-{q}"
+
+
 def ficha(ent: dict | None) -> dict | None:
     """Resumen de la ficha musical para la web y para los filtros."""
     if not ent:
@@ -1042,7 +1053,7 @@ def ficha(ent: dict | None) -> dict | None:
         enlaces.append({"nombre": "Last.fm", "url": lf["url"]})
     if imagen is None and wd.get("imagen_commons"):
         nom = quote(wd["imagen_commons"].replace(" ", "_"))
-        imagen = {"url": f"https://commons.wikimedia.org/wiki/Special:FilePath/{nom}?width=640",
+        imagen = {"url": commons_miniatura(wd["imagen_commons"]),
                   "credito": "Wikimedia Commons", "enlace": f"https://commons.wikimedia.org/wiki/File:{nom}"}
     # las fichas de Discogs de la 2.1.0 no guardaban cómo se identificó: entonces la única regla era esta
     dc_via = dc.get("identificado_por") or "única coincidencia exacta del nombre en Discogs"

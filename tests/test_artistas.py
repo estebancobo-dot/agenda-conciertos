@@ -428,3 +428,18 @@ def test_pais_de_frase_de_wikipedia_se_recalcula_al_reaplicar():
          "nacionalidad": "US", "nacionalidad_fuente": "Wikipedia (artículo «X»): «La cantante estadounidense Mariah Carey»"}
     aplicar_ficha(r, None)
     assert r["nacionalidad"] is None
+
+
+def test_foto_de_commons_por_url_directa():
+    # Special:FilePath está prohibido en el robots.txt de commons.wikimedia.org: se usa upload.wikimedia.org
+    from scraper.artistas import commons_miniatura
+    assert commons_miniatura("Example.jpg") == \
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Example.jpg/640px-Example.jpg"
+    import sys
+    sys.path.insert(0, "tools")
+    from miniaturas import candidatos
+    u = commons_miniatura("Messa band live.jpg")
+    c = candidatos(u)
+    assert c[0].endswith("/800px-Messa_band_live.jpg") and c[1] == u
+    assert c[2].startswith("https://upload.wikimedia.org/wikipedia/commons/") and "/thumb/" not in c[2]
+    assert c[2].endswith("/Messa_band_live.jpg")

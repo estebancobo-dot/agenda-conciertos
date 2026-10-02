@@ -1,5 +1,9 @@
 # Versiones
 
+## 2.34.1 — 2026-10-02
+
+- **Fotos de Wikimedia Commons sin miniatura propia** (Rajery, Messa…): la ficha guardaba la dirección `commons.wikimedia.org/wiki/Special:FilePath/…`, que el robots.txt de Wikimedia prohíbe a los lectores automáticos; la miniatura no se podía hacer y la web pedía la foto fuera. Ahora se guarda la dirección directa de `upload.wikimedia.org` (la misma a la que redirige) y, si el archivo es más pequeño que la miniatura pedida, se usa el original. Test.
+
 ## 2.34.0 — 2026-10-02
 
 **Gestión de conciertos, fase 2: lecturas separadas y más frecuentes.**

@@ -124,6 +124,16 @@ def origen(u: str) -> str:
     return u
 
 
+def candidatos(u: str) -> list[str]:
+    """Qué pedir, por orden: la de 800 px, la de la URL y, en Wikimedia, el archivo original (si es más pequeño
+    que la miniatura pedida, Wikimedia da error en vez de la imagen)."""
+    import re
+    out = [origen(u), u]
+    if "upload.wikimedia.org" in u and "/thumb/" in u:
+        out.append(re.sub(r"/thumb/(.+)/[^/]+$", r"/\1", u))
+    return list(dict.fromkeys(out))
+
+
 def main() -> int:
     minutos = float(sys.argv[sys.argv.index("--minutos") + 1]) if "--minutos" in sys.argv else 8
     from scraper.fetch import Fetcher
@@ -142,10 +152,15 @@ def main() -> int:
             if time.monotonic() - t0 > minutos * 60:
                 return
             try:
-                try:
-                    datos = f.get_bytes(origen(u))
-                except Exception:  # noqa: BLE001 - el archivo original es más pequeño que 800 px
-                    datos = f.get_bytes(u)
+                *antes, ultima = candidatos(u)
+                for cand in antes:
+                    try:
+                        datos = f.get_bytes(cand)
+                        break
+                    except Exception:  # noqa: BLE001 - el archivo original es más pequeño que 800 px
+                        pass
+                else:
+                    datos = f.get_bytes(ultima)
                 (DIR / nombre(u)).write_bytes(reducir(datos))
                 (DIR / nombre(u, True)).write_bytes(reducir_grande(datos))
                 cuenta["nuevas"] += 1
