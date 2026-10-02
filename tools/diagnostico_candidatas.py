@@ -33,6 +33,30 @@ CANDIDATAS = [
     ("conciertos.club (reggae-ska)", "https://conciertos.club/madrid/conciertos/estilos/reggae-ska"),
     ("conciertos.club (estilos)", "https://conciertos.club/madrid/conciertos/estilos/"),
 ]
+# Americana y folk (country, bluegrass, folk, celta, southern rock…): candidatas del 2-10-2026
+AMERICANA = [
+    ("Houston Party (promotora)", "https://houstonpartymusic.com/"),
+    ("Houston Party (fechas)", "https://houstonpartymusic.com/tour-dates/"),
+    ("SalirMadrid (country)", "https://salirmadrid.es/live-music-country-madrid"),
+    ("SalirMadrid (folk)", "https://salirmadrid.es/live-music-folk-madrid"),
+    ("SalirMadrid (música en directo)", "https://salirmadrid.es/live-music"),
+    ("NocheMAD (folk)", "https://www.nochemad.com/conciertos-folk-madrid"),
+    ("NocheMAD (country)", "https://www.nochemad.com/conciertos-country-madrid"),
+    ("Songkick (folk)", "https://www.songkick.com/metro-areas/28755-spain-madrid/genre/folk"),
+    ("Songkick (country)", "https://www.songkick.com/metro-areas/28755-spain-madrid/genre/country"),
+    ("Qconciertos (folk)", "https://qconciertos.es/estilo/folk/"),
+    ("Qconciertos (americana)", "https://qconciertos.es/estilo/americana/"),
+    ("Qconciertos (bluegrass)", "https://qconciertos.es/estilo/bluegrass/"),
+    ("Qconciertos (rock sureño)", "https://qconciertos.es/estilo/rock-sureno/"),
+    ("conciertos.club (world music)", "https://conciertos.club/madrid/conciertos/estilos/world-music-musica-etnica"),
+    ("Deviolines (jam de bluegrass)", "https://www.deviolines.com/eventos/spain/madrid/madrid/jam-sessions/jam-de-bluegrass-en-madrid/"),
+    ("Folklore Plaza Castilla", "http://www.folkloreplazacastilla.com/"),
+    ("Diariofolk (en vivo)", "https://www.diariofolk.com/en-vivo/"),
+    ("Taquilla (folk)", "https://www.taquilla.com/conciertos/folk"),
+    ("El Corte Inglés entradas (folk Madrid)", "https://www.elcorteingles.es/entradas/conciertos/madrid/folk/"),
+]
+if len(sys.argv) > 1 and sys.argv[1] == "americana":
+    CANDIDATAS = AMERICANA
 FECHA = re.compile(r"\b(\d{1,2})[/.-](\d{1,2})(?:[/.-](\d{2,4}))?\b|\b\d{1,2} de (?:enero|febrero|marzo|abril|mayo|junio|"
                    r"julio|agosto|septiembre|octubre|noviembre|diciembre)\b", re.I)
 f = Fetcher()
