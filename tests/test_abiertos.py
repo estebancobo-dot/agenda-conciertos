@@ -101,3 +101,13 @@ def test_salirmadrid():
     r = salirmadrid_parse(html, "https://salirmadrid.es/live-music-country-madrid", date(2026, 10, 2))[0]
     assert (r.artista, r.fecha.isoformat(), r.hora, r.sala, r.estilo) == ("Moonshine Wagon", "2026-12-04", "22:00",
                                                                           "Clamores", "Country")
+
+
+def test_salirmadrid_sin_after_party_y_palacio_de_deportes():
+    from scraper.normalize import canon_sala
+    from scraper.sources.abiertos import salirmadrid_parse
+    html = """<script type="application/ld+json">[{"@type":"MusicEvent","name":"El Búho After Party . Modis",
+      "startDate":"2026-10-08T23:59","location":{"name":"Café Berlín"}},{"@type":"MusicEvent","name":"El Búho presenta Hogar",
+      "startDate":"2026-10-08T22:30","location":{"name":"Café Berlín"}}]</script>"""
+    assert [e.artista for e in salirmadrid_parse(html, "u", date(2026, 10, 2))] == ["El Búho presenta Hogar"]
+    assert canon_sala("Palacio de Deportes") == "Movistar Arena"

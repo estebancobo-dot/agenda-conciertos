@@ -214,6 +214,10 @@ _SALIR_ESTILO = re.compile(r"\s*\(([^()]*\b(?:country|folk|bluegrass|americana|c
                            r"rockabilly|western|cajun|honky tonk|rock sure[nñ]o|southern rock)\b[^()]*)\)", re.I)
 
 
+# fiestas tras el concierto y sesiones de DJ: no son conciertos ("El Búho After Party . Modis")
+_NO_CONCIERTO = re.compile(r"(?i)\b(after ?party|dj set|sesi[oó]n de dj|fiesta)\b")
+
+
 def salirmadrid_titulo(t: str) -> tuple[str, str | None]:
     """"Concierto de Ryan Adams en Madrid" → Ryan Adams; "Moonshine Wagon (Country)" → (Moonshine Wagon, Country);
     "Concierto de Morat en Madrid (Segunda Fecha)" → Morat."""
@@ -233,7 +237,7 @@ def salirmadrid_parse(html: str, page_url: str, today: date) -> list:
     out = []
     for ev in jsonld_events(soup_of(html)):
         nombre, estilo = salirmadrid_titulo(str(ev.get("name") or ""))
-        if not nombre:
+        if not nombre or _NO_CONCIERTO.search(nombre):
             continue
         ev = dict(ev, name=nombre)
         r = ld_to_raw(ev, today, page_url, use_performers=False, split=True, estilo=estilo)
