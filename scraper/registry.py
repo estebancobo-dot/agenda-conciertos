@@ -122,6 +122,9 @@ FUENTES: list[Source] = [
     S("datos_madrid", "Agenda cultural del Ayuntamiento de Madrid (datos abiertos)", abiertos.URL, "institucional", 1,
       "alta", "datos_madrid", abiertos.datos_madrid, municipio_defecto="Madrid",
       notas="Conjunto 206974 de datos.madrid.es: actividades de tipo Música y conciertos de la programación destacada."),
+    S("gotifiestas", "GotiFiestas (escena gótica y dark wave)", "https://www.gotifiestas.com/eventos/", "agregador", 3,
+      "media", "gotifiestas", abiertos.gotifiestas, municipio_defecto="Madrid",
+      notas="Su API pública de WordPress: conciertos y festivales (no fiestas ni sesiones de DJ), con sus géneros."),
 ]
 
 # Salas pedidas cuya web no tiene agenda legible (comprobado sep-2026). Se listan en el informe.

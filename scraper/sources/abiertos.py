@@ -115,3 +115,68 @@ def parse(datos: dict | list, hoy: date, horizonte: date) -> list:
 
 def datos_madrid(ctx: Ctx):
     yield from parse(json.loads(ctx.get(URL)), ctx.today, ctx.horizon)
+
+
+# ------------------------------------------------------------------ GotiFiestas (escena gótica y dark wave)
+# Directorio sin ánimo de lucro de la escena gótica y alternativa de Madrid. Publica sus eventos con la API pública
+# de WordPress (/wp-json/wp/v2/eventos): fecha y hora, local, enlace y precio de las entradas, cartel, tipo
+# (Concierto, Festival, Fiesta, Quedada) y géneros (EBM, Darkwave, Post-Punk, Synthwave…). Se toman los conciertos
+# y festivales; las fiestas y sesiones de DJ no. Su robots.txt deja leerla (comprobado el 2-10-2026).
+GOTI = "https://www.gotifiestas.com/wp-json/wp/v2/eventos?per_page=100&page={}"
+GOTI_TIPOS = {"concierto", "festival"}
+# "LEROY SE MEURT + WE ARE NOT BROTHERS_SYNTH-PUNK_EBM", "BOUND BY ENDOGAMY (CH) + TBA _Electronic Post-Punk":
+# los géneros pegados al final con "_" (ya vienen en sus etiquetas) y "en concierto" no son parte del nombre
+_GOTI_COLA = re.compile(r"\s*_[^_]*(?:_[^_]*)*$|\s+en concierto$", re.I)
+
+
+def _meta(e: dict, k: str) -> str:
+    v = (e.get("meta") or {}).get(k)
+    v = v[0] if isinstance(v, list) and v else v
+    return clean(html_lib.unescape(str(v or "")))
+
+
+def gotifiestas_parse(datos: list, hoy: date, horizonte: date) -> list:
+    out = []
+    for e in datos if isinstance(datos, list) else []:
+        cl = e.get("gf_classification") or {}
+        tipo = norm_tipo((cl.get("category") or {}).get("name"))
+        if tipo not in GOTI_TIPOS:
+            continue
+        ini = _meta(e, "fecha_inicio")
+        f = _fecha(ini)
+        if not f or not (hoy <= f <= horizonte):
+            continue
+        m = re.search(r"T(\d{2}):(\d{2})", ini)
+        hora = f"{m.group(1)}:{m.group(2)}" if m and m.group(0) != "T00:00" else None
+        titulo = _meta(e, "titulo_evento") or clean(html_lib.unescape(str((e.get("title") or {}).get("rendered") or "")))
+        titulo = clean(_GOTI_COLA.sub("", titulo))
+        if not titulo:
+            continue
+        generos = [clean(t.get("name")) for t in cl.get("tags") or [] if clean(t.get("name")) and t.get("name") != "Varios"]
+        precio = _meta(e, "_gf_event_ticket_text")
+        r = make(f, titulo, str(e.get("link") or ""), sala=_meta(e, "_gf_event_venue") or _meta(e, "ubicacion"),
+                 hora=hora, precio=precio if re.search(r"\d", precio) else None, estilo=", ".join(generos) or None,
+                 imagen=_meta(e, "imagen_evento") or None)
+        if tipo == "festival":
+            r.tipo = "festival"
+        out.append(r)
+    return out
+
+
+def norm_tipo(s) -> str:
+    return clean(str(s or "")).lower()
+
+
+def gotifiestas(ctx: Ctx):
+    for pag in range(1, 6):
+        try:
+            datos = json.loads(ctx.get(GOTI.format(pag)))
+        except Exception as ex:  # noqa: BLE001 - WordPress responde 400 al pasar de la última página
+            if pag == 1:
+                raise
+            if "400" not in str(ex):
+                ctx.errors.append(f"página {pag}: {type(ex).__name__}: {str(ex)[:120]}")
+            break
+        yield from gotifiestas_parse(datos, ctx.today, ctx.horizon)
+        if len(datos) < 100:
+            break

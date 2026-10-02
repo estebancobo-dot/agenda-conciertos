@@ -61,3 +61,17 @@ def test_dos_coros_distintos_el_mismo_dia_no_se_unen():
     items, _ = preparar([Item(e, src) for e in parse(d, date(2026, 10, 2), date(2027, 1, 30))],
                         date(2026, 10, 2), date(2027, 1, 30))
     assert len(unificar(items)) == 2
+
+
+def test_gotifiestas():
+    from scraper.sources.abiertos import gotifiestas_parse
+    datos = json.loads((Path(__file__).parent / "fixtures" / "gotifiestas.json").read_text(encoding="utf-8"))
+    evs = gotifiestas_parse(datos, date(2026, 10, 2), date(2027, 1, 30))
+    assert [(e.fecha.isoformat(), e.artista, e.invitados) for e in evs] == [
+        ("2026-11-05", "BOUND BY ENDOGAMY", []),  # "(CH)" es su país y "TBA" no es un artista
+        ("2026-10-02", "LEROY SE MEURT", ["WE ARE NOT BROTHERS"]),
+        ("2026-12-12", "Dark Christmas Festival", []),
+        ("2027-01-08", "SPAMMERHEADS Y AZOTE MENTAL", [])]  # la fiesta (Body Electric) no entra
+    a = evs[0]
+    assert (a.hora, a.precio, a.sala, a.estilo, a.nacionalidad) == ("20:30", "20,69 €", "Hangar 48", "EBM, Post-Punk", "CH")
+    assert evs[1].precio is None and evs[2].tipo == "festival" and evs[2].hora is None
