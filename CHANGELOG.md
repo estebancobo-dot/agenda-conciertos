@@ -1,5 +1,15 @@
 # Versiones
 
+## 2.38.0 — 2026-10-02
+
+**Americana y folk: más fuentes.** El grupo tenía 88 conciertos, casi todos Folk y Folk Rock (61); de sus subgéneros (country, country rock, bluegrass, southern rock, honky tonk, hillbilly, western swing, cajun, zydeco, celta, neofolk) apenas había 3 de bluegrass y 2 de celta. Se buscaron agendas para todos y se probó cada una desde GitHub:
+
+- **SalirMadrid** (páginas de country y folk, JSON-LD): 26 conciertos, 19 ya los teníamos y 7 nuevos (Moonshine Wagon, Nick Mitchell Maiato, The Pink Stones, The Santos Gómes…). Su etiqueta de género es amplia (pone "folk" a Morat), así que el estilo solo se toma cuando el título lo dice ("Moonshine Wagon (Country)"). Sin las fiestas de después ni sesiones de DJ.
+- **Qconciertos: folk** además de country.
+- **conciertos.club: world music** (celta, músicas del mundo): no trae conciertos nuevos, pero da su etiqueta a los que ya estaban.
+- Alias de salas: Palacio de Deportes = Movistar Arena (une los de Morat); con el de El Perro Club de la 2.37.0 se une además un duplicado que ya existía (Grumpys + Petricor).
+- Probadas y descartadas: Houston Party (fechas sin año ni sala, y sus artistas ya llegan por otras fuentes), NocheMAD (mismos datos que SalirMadrid), páginas de género de Songkick (ya leemos todo Songkick con su género), El Corte Inglés (403), Taquilla (404), Folklore Plaza Castilla (no responde), Diariofolk (sin agenda), jam de bluegrass de Deviolines (fecha de 2022).
+
 ## 2.37.0 — 2026-10-02
 
 **Gestión de conciertos, fase 4: fuentes nuevas para los géneros con menos conciertos.**

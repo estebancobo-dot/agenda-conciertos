@@ -168,6 +168,11 @@ NO_USAR = {
     "esMadrid (agenda de música)": "La página no trae las fechas en el HTML (se cargan después con JavaScript).",
     "Comunidad de Madrid (agenda de actividades)": "La dirección de la agenda responde 404.",
     "Festify Indie": "La página llega vacía (los conciertos se cargan con JavaScript).",
+    # probadas el 2-10-2026 para Americana y folk
+    "Houston Party (promotora)": "Publica fechas sin año ni sala; sus artistas llegan por otras fuentes.",
+    "NocheMAD": "Los mismos conciertos que SalirMadrid (ya se lee).",
+    "El Corte Inglés (entradas)": "Responde 403 (acceso prohibido) desde GitHub.",
+    "Folklore Plaza Castilla": "La web no responde.",
 }
 
 
