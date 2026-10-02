@@ -21,7 +21,8 @@ from .merge import (Item, agrupar, artistas_coinciden, coinciden_flexible, const
                     hacer_id, marcar_conflictos_cartel, nombres_rec, recalcular_categorias, recalcular_estado,
                     separar_ciclo)
 from .model import RawEvent, Source
-from .normalize import DATA, canon_sala, clean, load_json, misma_sala, municipio, norm, sala_municipio
+from .normalize import (DATA, canon_sala, clean, load_json, misma_sala, municipio, norm, parecido_flexible,
+                        sala_municipio)
 from .registry import FUENTES, NO_USAR, SIN_AGENDA_LEGIBLE
 from .sources.base import Ctx
 
@@ -207,6 +208,9 @@ def unificar(items: list[Item]) -> list[dict]:
     marcar_conflictos_cartel(recs)
     for r in recs:
         separar_ciclo(r)
+        # el propio artista no es su telonero ("Valkyria" + "VALKYRIA" de otra agenda)
+        if not r.get("festival"):  # en un festival sí: "Saurom" toca en el "Saurom Juglar Fest"
+            r["invitados"] = [n for n in r["invitados"] if parecido_flexible(n, r["artista"]) < 90]
     return recs
 
 
@@ -318,6 +322,57 @@ def tributo_y_estimacion(r: dict, cache: dict) -> None:
     pais, motivo = pais_estimado(nombre)
     if pais:
         r["nacionalidad_estimada"], r["nacionalidad_estimada_motivo"] = pais, motivo
+
+
+def aplicar_cartel(r: dict, cache: dict) -> None:
+    """Fichas de los artistas del cartel (invitados, teloneros, artistas de un festival): país y grupos de cada uno.
+
+    - r["cartel"]: [{nombre, pais?, grupos?, estilos?}] con lo que dicen sus fichas (solo si alguno tiene ficha).
+    - r["grupos_cartel"]: {grupo: [artistas]} de los grupos del cartel que no son los del concierto. Con ellos un
+      concierto sale también al filtrar por el género de su telonero (y la web dice por quién).
+    - Un festival sin estilo propio (su nombre no se busca como artista y las agendas dicen "Festival" o nada)
+      toma los grupos que más se repiten en su cartel."""
+    from .artistas import ficha
+    from .clasificar import NO_GRUPO_CONCIERTO, contexto_de_fuentes, en_foco, grupos_de_evidencias
+    r.pop("cartel", None)
+    r.pop("grupos_cartel", None)
+    if not r.get("invitados") or str(r.get("grupos_origen") or "").startswith("agenda (espect"):
+        return
+    from .clasificar import grupos_de_agenda, pesos_de_agenda
+    contexto = contexto_de_fuentes([x.get("id") for x in r.get("fuentes", [])])
+    # las etiquetas del concierto, como con el cabeza de cartel: descartan homónimos (un DJ de techno con el
+    # nombre de un cantante latino) y pesan como una web más
+    etiquetas = etiquetas_por_fuente(r)
+    g_agenda, p_agenda = grupos_de_agenda(etiquetas)[0], pesos_de_agenda(etiquetas)
+    cartel = []
+    for n in r["invitados"][:40]:
+        f = ficha(cache.get(norm(n)))
+        x: dict = {"nombre": n}
+        if f and f.get("evidencias"):
+            gs, est = grupos_de_evidencias(f["evidencias"], g_agenda, p_agenda, contexto)
+            gs = [g for g in gs if g not in NO_GRUPO_CONCIERTO]
+            if gs:
+                x["grupos"], x["estilos"] = gs[:2], est[:3]
+        if f and f.get("pais"):
+            x["pais"] = f["pais"]
+        cartel.append(x)
+    if not any(len(x) > 1 for x in cartel):
+        return
+    r["cartel"] = cartel
+    cuenta: dict[str, list[str]] = {}
+    for x in cartel:
+        for g in x.get("grupos", [])[:1]:  # su grupo principal (el segundo puede venir de un homónimo)
+            cuenta.setdefault(g, []).append(x["nombre"])
+    if r.get("festival") and (r.get("grupos") in (None, [], ["sin clasificar"]) or r.get("grupos_generico")):
+        top = max(len(v) for v in cuenta.values()) if cuenta else 0
+        propios = [g for g, v in sorted(cuenta.items(), key=lambda kv: -len(kv[1])) if len(v) >= max(1, top / 2)][:3]
+        if propios:
+            r["grupos"], r["grupos_origen"], r["grupos_generico"] = propios, "cartel del festival", False
+            r["grupos_segun"] = ["fichas de los artistas del cartel"]
+            r["categoria"], r["en_foco"] = propios[0], en_foco(propios)
+    extra = {g: v for g, v in cuenta.items() if g not in (r.get("grupos") or [])}
+    if extra:
+        r["grupos_cartel"] = extra
 
 
 def aplicar_ficha(r: dict, f: dict | None) -> None:
@@ -694,12 +749,12 @@ def ejecutar(hoy: date | None = None, solo: list[str] | None = None, fetcher: Fe
                                mb_cache=cache_mb)
         art_stats["durante_agendas"] = {k: previas.get(k, 0) for k in ("consultados", "completados")}
         guardar_fichas()
-    from .artistas import ficha
     for r in recs:
         estilos_de_agenda(r, cache_art)
         aplicar_ficha(r, ficha_de(r, cache_art))
         origen_por_agenda(r, cache_art)
         tributo_y_estimacion(r, cache_art)
+        aplicar_cartel(r, cache_art)
     stats_entradas = aplicar_entradas(recs, _read(CACHE_PAGINAS, {}))
     # MusicBrainz (solo para los que siguen sin nacionalidad)
     mb_stats = {"desactivado": True}
@@ -773,7 +828,7 @@ def ejecutar(hoy: date | None = None, solo: list[str] | None = None, fetcher: Fe
 def ejecutar_fichas(hoy: date | None = None, presupuesto_seg: float = 3000) -> dict:
     """Solo fichas de artista: no vuelve a leer las agendas. Completa los artistas pendientes de
     data/concerts.json y actualiza concerts.json, concerts.csv y el bloque 'artistas' del informe."""
-    from .artistas import enriquecer, ficha
+    from .artistas import enriquecer
     hoy = hoy or datetime.now(timezone.utc).astimezone().date()
     datos = _read("concerts.json", {})
     recs = datos.get("conciertos", [])
@@ -807,6 +862,7 @@ def ejecutar_fichas(hoy: date | None = None, presupuesto_seg: float = 3000) -> d
         aplicar_ficha(r, ficha_de(r, cache_art))
         origen_por_agenda(r, cache_art)
         tributo_y_estimacion(r, cache_art)
+        aplicar_cartel(r, cache_art)
     stats["entradas"] = aplicar_entradas(recs, cache_pag)
     _write("concerts.json", datos)
     escribir_csv(recs, DATA / "concerts.csv")
@@ -821,7 +877,6 @@ def ejecutar_fichas(hoy: date | None = None, presupuesto_seg: float = 3000) -> d
 
 def reaplicar_fichas() -> None:
     """Aplica a data/concerts.json las fichas de data/artistas.json (tras unir datos de dos ejecuciones)."""
-    from .artistas import ficha
     datos = _read("concerts.json", {})
     recs = datos.get("conciertos", [])
     if not recs:
@@ -832,6 +887,7 @@ def reaplicar_fichas() -> None:
         aplicar_ficha(r, ficha_de(r, cache))
         origen_por_agenda(r, cache)
         tributo_y_estimacion(r, cache)
+        aplicar_cartel(r, cache)
     aplicar_entradas(recs, _read(CACHE_PAGINAS, {}))
     _write("concerts.json", datos)
     escribir_csv(recs, DATA / "concerts.csv")

@@ -683,6 +683,9 @@ def enriquecer(recs: list[dict], cache: dict, hoy: date, presupuesto_seg: float 
     # el estilo del tributo
     from .nombres import homenajeado
     candidatos += [(r, h) for r in recs for h in [homenajeado(r["artista"])] if h]
+    # después de todos los cabezas de cartel, los demás artistas del cartel (teloneros, artistas de festivales)
+    candidatos += [(r, n) for r in sorted(recs, key=lambda r: (not r["en_foco"], r["fecha"]))
+                   for n in (r.get("invitados") or [])[:15]]
     for r in recs:
         # tributos y títulos que no se buscan en webs de música ("THE RUMORS: TRIBUTO FLEETWOOD MAC"): la banda
         # tributo no es el artista homenajeado, pero la agenda puede decir de dónde es ("banda tributo madrileña")

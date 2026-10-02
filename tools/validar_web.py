@@ -476,6 +476,7 @@ def recorrido(b):
     cabeceras_fijas(pg, lunes)
     accesos_al_bajar(pg, lunes)
     cambiar_fecha_bajado(pg, lunes)
+    cartel_web(pg)
 
     # informe
     pg.evaluate("location.hash='#informe'")
@@ -585,7 +586,7 @@ def filtros(pg, lunes):
     bajar_hasta_el_final(pg)
     if grupo:
         r = pg.evaluate("""(g)=>{const ids=[...document.querySelectorAll('#main .card')].map(c=>c.dataset.id);
-           return {n:ids.length, otros:ids.filter(i=>!((BYID[i]||{}).grupos||[]).includes(g)).length}}""", grupo)
+           return {n:ids.length, otros:ids.filter(i=>{const r=BYID[i]||{}; return !(r.grupos||[]).includes(g)&&!(g in (r.grupos_cartel||{}));}).length}}""", grupo)
         n_boton = int(re.search(r"\d+", boton).group()) if re.search(r"\d+", boton) else None
         check("Funcional", f"Filtro de un solo grupo ({grupo}): solo salen de ese grupo", f"{r['n']} tarjetas",
               ok=r["n"] > 0 and r["otros"] == 0, detalle=f"{r['otros']} de otros grupos")
@@ -1067,6 +1068,36 @@ def cambiar_fecha_bajado(pg, lunes):
          pulsar("hoy"), hoy.isoformat(), "mes")
     check("UX", "Cambiar de día, semana o mes desde media lista deja la vista nueva desde su principio; Hoy siempre a mano",
           f"{n - len(malos)} de {n} casos bien", ok=not malos, detalle=" | ".join(malos[:6]))
+
+
+
+def cartel_web(pg):
+    """Fase 3: un festival sale con su insignia y todo su cartel en la ficha, y un concierto cuyo telonero es de
+    otro género sale al filtrar solo por ese género (y su tarjeta dice por qué)."""
+    f = pg.evaluate("(DATA.filter(r=>r.festival&&r.fecha>=HOY&&(r.invitados||[]).length>=2)[0]||{}).id")
+    if not f:
+        check("Funcional", "Festivales: insignia y cartel en la ficha", grave=False, detalle="hoy no hay ninguno")
+    else:
+        pg.evaluate(f"location.hash='#concierto/{f}'")
+        pg.wait_for_selector(".dt h2", timeout=30000)
+        pg.wait_for_timeout(800)
+        r = pg.evaluate("""(id)=>({fest:!!document.querySelector('.dt h2 .fest'), n:document.querySelectorAll('.cartel li').length,
+            esperados:(BYID[id].invitados||[]).length, titulo:(document.querySelector('.dt h2')||{}).innerText})""", f)
+        check("Funcional", "Festivales: insignia y cartel en la ficha", f"{r['titulo']!r}: {r['n']} de {r['esperados']}",
+              ok=r["fest"] and r["n"] == r["esperados"])
+    c = pg.evaluate("""(()=>{const r=DATA.find(r=>r.fecha>=HOY&&r.grupos_cartel&&Object.keys(r.grupos_cartel).some(g=>!grupos(r).includes(g)));
+        if(!r) return null; const g=Object.keys(r.grupos_cartel).find(g=>!grupos(r).includes(g)); return {id:r.id,fecha:r.fecha,g}})()""")
+    if not c:
+        check("Funcional", "Teloneros: el concierto sale al filtrar por el género del telonero", grave=False,
+              detalle="hoy no hay ninguno con fichas del cartel")
+        return
+    pg.evaluate(f"(()=>{{setGrupos(['{c['g']}']); state.estilos={{}}; location.hash='#dia/{c['fecha']}';}})()")
+    pg.wait_for_timeout(1200)
+    pg.evaluate("document.querySelectorAll('[data-dif]').forEach(e=>e._pintar&&e._pintar())")
+    r = pg.evaluate("(id)=>{const el=document.querySelector(`#main .card[data-id=\"${id}\"]`); return {sale:!!el, tag:!!(el&&el.querySelector('.tcart'))}}", c["id"])
+    check("Funcional", "Teloneros: el concierto sale al filtrar por el género del telonero (y la tarjeta lo dice)",
+          f"{c['g']} el {c['fecha']}", ok=r["sale"] and r["tag"], detalle=str(r))
+    pg.evaluate("(()=>{setGrupos(DEF_GRUPOS); renderBody(false);})()")
 
 
 def cabeceras_fijas(pg, lunes):

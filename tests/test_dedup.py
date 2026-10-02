@@ -235,3 +235,24 @@ def test_artista_dentro_de_un_festival_es_su_ciclo_no_un_festival():
     assert r["ciclo"] == "Festival JazzMadrid · JAZZ CON SABOR A CLUB 26"
     r = run((ev("Hällas", "Sala Nazca", "21:00", ["Komodor"]), src("cc")))[0]
     assert not r["festival"] and r["invitados"] == ["Komodor"] and not r["ciclo"]
+
+
+def test_cartel_con_fichas_y_grupos_de_teloneros(monkeypatch):
+    import scraper.artistas as art
+    from scraper.pipeline import aplicar_cartel
+    fichas = {"fleshcrawl": {"evidencias": [{"nombre": "Death Metal", "tipo": "estilo", "peso": 1.0, "fuente": "Discogs"}],
+                             "pais": "DE"},
+              "biznaga": {"evidencias": [{"nombre": "Punk", "tipo": "estilo", "peso": 1.0, "fuente": "Discogs"}],
+                          "pais": "ES"}}
+    monkeypatch.setattr(art, "ficha", lambda ent: ent)
+    r = {"artista": "Avulsed", "invitados": ["Fleshcrawl", "Biznaga", "Desconocidos"], "grupos": ["rock y metal"],
+         "fuentes": [], "estilo_fuente": []}
+    aplicar_cartel(r, fichas)
+    assert [x["nombre"] for x in r["cartel"]] == ["Fleshcrawl", "Biznaga", "Desconocidos"]
+    assert r["cartel"][0]["pais"] == "DE" and r["cartel"][0]["grupos"] == ["rock y metal"]
+    assert r["grupos_cartel"] == {"punk y garage": ["Biznaga"]}  # sale también al filtrar por punk
+    # festival sin estilo propio: toma el de su cartel
+    f = {"artista": "Madcore Fest", "festival": True, "invitados": ["Fleshcrawl"], "grupos": ["sin clasificar"],
+         "fuentes": [], "estilo_fuente": []}
+    aplicar_cartel(f, fichas)
+    assert f["grupos"] == ["rock y metal"] and f["grupos_origen"] == "cartel del festival" and "grupos_cartel" not in f

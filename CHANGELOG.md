@@ -1,5 +1,18 @@
 # Versiones
 
+## 2.36.0 — 2026-10-02
+
+**Gestión de conciertos, fase 3: conciertos con varios artistas (festivales, teloneros, ciclos).**
+
+- **Festivales**: se reconocen por su nombre y salen con su **insignia** y **todo su cartel**. El mismo festival anunciado con otro nombre en otra agenda se une ("Pirata Festival 2026 Madrid" = "Pirata Madrid Festival (Boikot, Evaristo…)"; "Dark Christmas Festival: Diorama" = "Dark Christmas Festival Madrid 2026"), y las variantes de su nombre ya no aparecen como si fueran artistas ("Saurom Juglar Festival 2026" como invitado del "SAUROM JUGLAR FEST").
+- **Songkick**: sus festivales (páginas /festivals/) salen con su nombre ("Cadena 100 Por Ellas 2026", "CODE 23 Aniversario", "Hallowfest 2026") y todo el cartel; antes se archivaban con el primer artista de la lista ("Rosana", "Vieze Asbak").
+- **Cartel desde el título**, solo cuando es inequívoco: "FESTIVAL X (A, B, C y más)" o "X FEST: A y B" (con "y más" se avisa de que el cartel no está completo). Un espectáculo ("MILLION DOLAR QUARTET: ELVIS PRESLEY, JOHNNY CASH…") o un dúo con "&" no se separan.
+- **Artistas dentro de un ciclo o festival**: "JAZZ CON SABOR A CLUB 26: MININO BRAVO (Festival JazzMadrid)" → Minino Bravo, con el ciclo aparte (46 conciertos); "Mad Psych Fest: JOSH MEADER TRIO" → Josh Meader Trio dentro del Mad Psych Fest.
+- **Fichas de los teloneros y artistas de festivales** (después de las de los cabezas de cartel): país y género de cada uno en la ficha del concierto ("También tocan" / "Cartel del festival"). Un concierto sale también al **filtrar por el género de su telonero**, y la tarjeta lo dice ("+ Punk y garage", con quién). Un festival sin estilo propio toma el de su cartel.
+- Al cambiar el título de un concierto (por separar el ciclo o unir un festival) **conserva su enlace** y su fecha de primera vez, y no aparece como "¿cancelado?".
+- El lector de páginas guarda también los artistas (performer), el nombre y el tipo del evento. Diagnóstico del cartel (`diagnostico.yml`, webs=cartel).
+- Validación en la web publicada: insignia y cartel de un festival, y concierto que sale por el género de su telonero.
+
 ## 2.35.0 — 2026-10-02
 
 **Navegación de fechas desde cualquier punto de la lista, en las tres vistas.**
