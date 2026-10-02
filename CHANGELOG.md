@@ -1,5 +1,16 @@
 # Versiones
 
+## 2.42.1 — 2026-10-03
+
+Revisión de la lectura de las 23:40 (hora de Madrid), la primera con el cartel de los festivales y las fuentes de datos abiertos:
+
+- **Falsos "¿cancelado?"** (3 de 11):
+  - un concierto anterior con el nombre de antes de un alias nuevo ("El Perro de la parte de atrás del coche", hoy "El Perro Club") ya no se da por cancelado: al comparar salas se usan los nombres canónicos de las dos. Lo mismo evita que el historial apunte un falso "cambio de sala" cuando solo cambia cómo se escribe;
+  - el mismo festival anunciado con y sin la palabra "Festival" ("Cadena 100 Por Ellas Festival 2026" = "Cadena 100 Por Ellas 2026") se reconoce como uno: todas las palabras que lo distinguen coinciden.
+- **Cambio de sala el mismo día** (ItineruM pasa de Revi Space a Revi Live en la web de Revi): ya no sale uno "¿cancelado?" y otro nuevo, sino el mismo concierto, con "Sala: antes → ahora" en su historial.
+- Los otros 7 "¿cancelado?" son reales: han desaparecido de las webs donde se anunciaban.
+- "Sin clasificar" sube de 225 a 291 por las actividades municipales sin género en su descripción (datos abiertos del Ayuntamiento, 65) y por Songkick; no es un fallo: siguen a la vista en su grupo.
+
 ## 2.42.0 — 2026-10-03
 
 **Salas cuya web no leíamos.** Las que más conciertos tenían sin que ninguno lo confirmara su web oficial (página de Fuentes). Para cada una se buscó su web y se probó desde GitHub (robots.txt, cómo publica las fechas):

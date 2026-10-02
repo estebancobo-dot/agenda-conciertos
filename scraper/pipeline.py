@@ -538,6 +538,12 @@ def _grupos_previos(recs: list[dict]) -> dict[str, list[str]]:
     return {r["id"]: list(r.get("grupos") or []) for r in recs}
 
 
+def _ms(a: str, b: str) -> bool:
+    """Misma sala, con los nombres llevados antes a su forma canónica: un registro anterior puede tener el nombre
+    de antes de un alias nuevo ("El Perro de la parte de atrás del coche" = "El Perro Club")."""
+    return misma_sala(a, b) or misma_sala(canon_sala(a), canon_sala(b))
+
+
 def _match_prev(r: dict, prev: list[dict], flexible: bool = False) -> dict | None:
     """El registro de la ejecución anterior que es este concierto. `flexible`: segunda vuelta para los que han
     cambiado de título (ciclo o festival separado del artista, "JAZZ CON SABOR A CLUB 26: X (Festival JazzMadrid)"
@@ -547,7 +553,7 @@ def _match_prev(r: dict, prev: list[dict], flexible: bool = False) -> dict | Non
         if p["fecha"] != r["fecha"]:
             continue
         sa, sb = [x for x in r["sala"].split(" / ") if x], [x for x in p["sala"].split(" / ") if x]
-        if sa and sb and not any(misma_sala(x, y) for x in sa for y in sb):
+        if sa and sb and not any(_ms(x, y) for x in sa for y in sb):
             continue
         if artistas_coinciden([r["artista"]], nombres_rec(p)) or artistas_coinciden([p["artista"]], nombres_rec(r)):
             return p
@@ -625,11 +631,18 @@ def conciliar(recs: list[dict], anteriores: list[dict], hoy: date, resultados: d
         # absorbido por un registro actual (mismo día y sala, nombre equivalente): no es una cancelación
         if any(r["fecha"] == p["fecha"] and (
                 mismo_festival(p["artista"], r["artista"]) or  # el mismo festival, aunque una agenda no dé bien la sala
-                (not r["sala"] or not p["sala"] or any(misma_sala(x, y) for x in r["sala"].split(" / ")
+                (not r["sala"] or not p["sala"] or any(_ms(x, y) for x in r["sala"].split(" / ")
                                                        for y in p["sala"].split(" / ")))
                 and (coinciden_flexible([p["artista"]], nombres_rec(r)) or
                      artistas_coinciden([_titulo_actual(p)], nombres_rec(r))))
                for r in recs):
+            continue
+        # el mismo día, el mismo artista y en las mismas webs, pero en otra sala que ya estaba en la agenda: es un
+        # cambio de sala de una lectura anterior (ItineruM, de Revi Space a Revi Live), no una cancelación. (Si el
+        # de la otra sala es nuevo hoy, lo empareja abajo el cambio de sala, que conserva el enlace y el historial.)
+        fp = {f["id"] for f in p["fuentes"]}
+        if any(i in previo and r["fecha"] == p["fecha"] and fp & {f["id"] for f in r["fuentes"]}
+               and artistas_coinciden([p["artista"]], [r["artista"]]) for i, r in enumerate(recs)):
             continue
         srcs = [f["id"] for f in p["fuentes"] if f["id"] in fuentes]
         if _fuera_de_cobertura(p, srcs):
@@ -648,13 +661,15 @@ def conciliar(recs: list[dict], anteriores: list[dict], hoy: date, resultados: d
             continue
         arrastrados.append(p)
     # cambio de fecha: el concierto que deja de anunciarse en su día y aparece, en las mismas webs, otro día en la
-    # misma sala con el mismo artista. Solo si la pareja es única (un artista con dos fechas en la sala no se toca).
+    # misma sala con el mismo artista; o el mismo día en otra sala (cambio de sala: de Revi Space a Revi Live).
+    # Solo si la pareja es única (un artista con dos fechas en la sala no se toca).
     nuevos = [i for i in range(len(recs)) if i not in previo]
     pareja: dict[str, list[int]] = {}
     for p in desaparecidos:
         fp = {f["id"] for f in p["fuentes"]}
-        pareja[p["id"]] = [i for i in nuevos if recs[i]["fecha"] != p["fecha"] and recs[i]["fecha"] >= hoy_s
-                           and fp & {f["id"] for f in recs[i]["fuentes"]} and _misma_sala_rec(recs[i], p)
+        pareja[p["id"]] = [i for i in nuevos if recs[i]["fecha"] >= hoy_s
+                           and fp & {f["id"] for f in recs[i]["fuentes"]}
+                           and (recs[i]["fecha"] != p["fecha"]) == _misma_sala_rec(recs[i], p)
                            and artistas_coinciden([p["artista"]], nombres_rec(recs[i]))]
     usados_nuevos = Counter(i for c in pareja.values() for i in c)
     for p in desaparecidos:
@@ -664,7 +679,8 @@ def conciliar(recs: list[dict], anteriores: list[dict], hoy: date, resultados: d
             ids.discard(r["id"])
             r["id"], r["primera_vez_visto"] = p["id"], p.get("primera_vez_visto") or hoy_s
             ids.add(r["id"])
-            r["notas"] = list(r.get("notas") or []) + [f"Antes se anunciaba el {p['fecha']} (cambio visto el {hoy_s})."]
+            antes = f"el {p['fecha']}" if p["fecha"] != r["fecha"] else f"en {p['sala']}"
+            r["notas"] = list(r.get("notas") or []) + [f"Antes se anunciaba {antes} (cambio visto el {hoy_s})."]
             continue
         if p["estado"] != "posiblemente cancelado":
             p["estado"] = "posiblemente cancelado"
@@ -676,7 +692,7 @@ def conciliar(recs: list[dict], anteriores: list[dict], hoy: date, resultados: d
 
 def _misma_sala_rec(a: dict, b: dict) -> bool:
     sa, sb = [x for x in (a.get("sala") or "").split(" / ") if x], [x for x in (b.get("sala") or "").split(" / ") if x]
-    return bool(sa and sb and any(misma_sala(x, y) for x in sa for y in sb))
+    return bool(sa and sb and any(_ms(x, y) for x in sa for y in sb))
 
 
 # ---------------------------------------------------------------- historial de cambios de cada concierto
@@ -719,7 +735,7 @@ def registrar_cambios(recs: list[dict], antes: dict[str, dict], hoy: str) -> int
         if p["fecha"] != r["fecha"]:
             anota("fecha", antes=p["fecha"], despues=r["fecha"])
         sa, sb = [x for x in p["sala"].split(" / ") if x], [x for x in (r.get("sala") or "").split(" / ") if x]
-        if sa and sb and not any(misma_sala(x, y) for x in sa for y in sb):
+        if sa and sb and not any(_ms(x, y) for x in sa for y in sb):
             anota("sala", antes=p["sala"], despues=r["sala"])
         if p["hora"] and r.get("hora") and p["hora"] != r["hora"] and p["hora_pagina"] == bool(r.get("hora_pagina")):
             anota("hora", antes=p["hora"], despues=r["hora"])

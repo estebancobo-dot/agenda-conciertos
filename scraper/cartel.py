@@ -92,5 +92,14 @@ def cartel_de_titulo(titulo: str | None) -> tuple[str | None, list[str], bool]:
 
 
 def mismo_festival(a: str, b: str) -> bool:
+    """El mismo festival, aunque una agenda no ponga "Festival" en el título ("Cadena 100 Por Ellas Festival 2026"
+    = "Cadena 100 Por Ellas 2026"): entonces todas las palabras que lo distinguen (al menos dos) están en el otro."""
     ka, kb = clave_festival(a), clave_festival(b)
-    return bool(ka) and ka == kb
+    if ka and kb:
+        return ka == kb
+    clave, otro = (ka, b) if ka else (kb, a)
+    if not clave or len(clave.split()) < 2:
+        return False
+    palabras = {p for p in re.findall(r"[a-z0-9]+", norm(_PARENTESIS.sub(" ", otro or "")))
+                if p not in _VACIAS and not re.fullmatch(r"(19|20)\d\d", p)}
+    return set(clave.split()) == palabras

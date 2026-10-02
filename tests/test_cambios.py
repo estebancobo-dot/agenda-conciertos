@@ -89,3 +89,35 @@ def test_otra_sala_no_es_cambio_de_fecha():
     nuevo = run((ev("Grupo Q", "Sala Clamores", fecha=date(2026, 11, 14)), s))
     out = conciliar(nuevo, prev, date(2026, 9, 29), {"mev": {"funciono": True, "completa": True}}, {"mev": s})
     assert len(out) == 2
+
+
+def test_cambio_de_sala_el_mismo_dia():
+    s = src("revi")
+    prev = run((ev("ItineruM", "Revi Space", fecha=date(2026, 11, 7)), s))
+    prev[0]["id"] = "p1"
+    antes = foto_cambios(prev)
+    nuevo = run((ev("ItineruM", "Revi Live", fecha=date(2026, 11, 7)), s))
+    out = conciliar(nuevo, prev, HOY, {"revi": {"funciono": True, "completa": True}}, {"revi": s})
+    assert len(out) == 1 and out[0]["id"] == "p1" and out[0]["sala"] == "Revi Live"
+    registrar_cambios(out, antes, HOY.isoformat())
+    assert [(c["campo"], c["antes"], c["despues"]) for c in out[0]["cambios"]] == [("sala", "Revi Space", "Revi Live")]
+
+
+def test_nombre_antiguo_de_la_sala_no_es_cancelacion_ni_cambio():
+    s = src("mev")
+    prev = [{"id": "p1", "fecha": "2026-11-07", "artista": "Grumpys", "sala": "El Perro de la parte de atrás del coche",
+             "invitados": [], "fuentes": [{"id": "mev"}], "estado": "1_fuente", "notas": [], "hora": None}]
+    antes = foto_cambios(prev)
+    nuevo = run((ev("Grumpys", "El Perro Club", fecha=date(2026, 11, 7)), s))
+    out = conciliar(nuevo, prev, HOY, {"mev": {"funciono": True, "completa": True}}, {"mev": s})
+    assert len(out) == 1 and out[0]["id"] == "p1"
+    assert registrar_cambios(out, antes, HOY.isoformat()) == 0
+
+
+def test_festival_con_y_sin_la_palabra_festival():
+    s = src("laganzua")
+    prev = [{"id": "p1", "fecha": "2026-10-24", "artista": "Cadena 100 Por Ellas Festival 2026", "sala": "Movistar Arena",
+             "invitados": [], "fuentes": [{"id": "laganzua"}], "estado": "1_fuente", "notas": [], "hora": None}]
+    nuevo = run((ev("Cadena 100 Por Ellas 2026", "Movistar Arena", fecha=date(2026, 10, 24)), s))
+    out = conciliar(nuevo, prev, HOY, {"laganzua": {"funciono": True, "completa": True}}, {"laganzua": s})
+    assert not any(r["estado"] == "posiblemente cancelado" for r in out)
