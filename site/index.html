@@ -104,6 +104,7 @@ input[type=search]::-webkit-search-cancel-button{display:none}
 .nav .title{flex:1;font-weight:800;text-align:center;font-size:1.02rem}
 .nav .title::first-letter,.dayhead::first-letter{text-transform:uppercase}
 .hoy{border:1px solid var(--line);background:var(--panel);border-radius:10px;height:40px;padding:0 12px;font-weight:600}
+.hoy.off{visibility:hidden}
 .strip{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin:0 0 6px}
 .strip button{border:1px solid var(--line);background:var(--panel);border-radius:12px;padding:5px 0;display:flex;flex-direction:column;align-items:center;line-height:1.15}
 .strip .d{font-size:.7rem;color:var(--muted);font-weight:700;text-transform:uppercase}
@@ -752,7 +753,8 @@ function vacioHTML(ocultos,cuando){
     <button class="lbtn" data-quitar style="margin-top:10px">Ver ${plural(ocultos,"concierto")} oculto${ocultos===1?"":"s"}</button></div>`;
 }
 const mayus=t=>t.charAt(0).toUpperCase()+t.slice(1);
-function dayHead(fecha,n,cls){ return `<div class="dayhead${cls||""}">${esc(mayus(fmt(fecha,{weekday:"long",day:"numeric",month:"long"})))}<small>${plural(n,"concierto")}</small></div>`; }
+function dayHead(fecha,n,cls){ const rel=fecha===HOY?"Hoy, ":fecha===addDays(HOY,1)?"Mañana, ":"", t=fmt(fecha,{weekday:"long",day:"numeric",month:"long"});
+  return `<div class="dayhead${cls||""}">${esc(rel?rel+t:mayus(t))}<small>${plural(n,"concierto")}</small></div>`; }
 function dayList(fecha,list,opts={}){
   return `<section class="dia" id="d-${fecha}" data-f="${fecha}">`+(opts.cab===false?"":dayHead(fecha,list.length))+
     (list.length?list.map(card).join(""):(opts.vacio===false?"":vacioHTML(DATA.filter(r=>r.fecha===fecha&&pasaTexto(r)).length,"este día")))+`</section>`;
@@ -888,7 +890,7 @@ function viewConcierto(){
 
 // ---------------------------------------------------------------- vistas de calendario
 function navHTML(prev,next,title,lblPrev,lblNext,esHoy){
-  return `<div class="nav"><button class="iconbtn" data-nav="${prev}" aria-label="${lblPrev}">‹</button><div class="title">${title}</div>${esHoy?"":`<button class="hoy" id="hoy">Hoy</button>`}<button class="iconbtn" data-nav="${next}" aria-label="${lblNext}">›</button></div>`;
+  return `<div class="nav"><button class="iconbtn" data-nav="${prev}" aria-label="${lblPrev}">‹</button><div class="title">${title}</div><button class="hoy${esHoy?" off":""}" id="hoy"${esHoy?' aria-hidden="true" tabindex="-1"':""}>Hoy</button><button class="iconbtn" data-nav="${next}" aria-label="${lblNext}">›</button></div>`;
 }
 function stripHTML(mon,bd,modo){
   return `<div class="strip">${[0,1,2,3,4,5,6].map(i=>{const f=addDays(mon,i), n=(bd[f]||[]).length;
@@ -907,8 +909,7 @@ function viewMes(){
     const stack=GRUPOS.filter(g=>counts[g.id]).map(g=>`<i style="flex:${counts[g.id]};background:var(${g.v})"></i>`).join("");
     cells+=`<button class="day${fuera?" out":""}${finde?" finde":""}${f<HOY?" past":""}${f===HOY?" today":""}${f===state.date&&!fuera?" sel":""}${list.length?"":" zero"}" data-mdia="${f}" ${fuera?'tabindex="-1" aria-hidden="true" disabled':""} aria-pressed="${f===state.date}" aria-label="${esc(fmt(f,{weekday:"long",day:"numeric",month:"long"}))}: ${plural(list.length,"concierto")}"><span class="n">${fd.getDate()}</span><span class="cnt">${list.length||""}</span>${list.length?`<span class="stack">${stack}</span>`:""}</button>`;
   }
-  const mesHoy=HOY.slice(0,7)===first.slice(0,7);
-  return navHTML(-1,1,`${esc(fmt(first,{month:"long",year:"numeric"}))}<div class="hint" style="font-weight:500">${plural(total,"concierto")}</div>`,"Mes anterior","Mes siguiente",mesHoy)+
+  return navHTML(-1,1,`${esc(fmt(first,{month:"long",year:"numeric"}))}<div class="hint" style="font-weight:500">${plural(total,"concierto")}</div>`,"Mes anterior","Mes siguiente",state.date===HOY)+
    `<div class="cal">${["L","M","X","J","V","S","D"].map((x,i)=>`<div class="dow${i>4?" finde":""}">${x}</div>`).join("")}${cells}</div>
    <div class="legend">${GRUPOS.filter(g=>state.grupos.includes(g.id)).map(g=>`<span><i style="background:var(${g.v})"></i>${esc(g.nombre)}</span>`).join("")}</div>
    <div id="mlista">${listaMes(bd)}</div>`;
@@ -937,9 +938,8 @@ function viewSemana(){
   const mon=mondayOf(state.date); const bd=byDate(); let out="", total=0, ya=0; DIFERIDOS={bd,dias:[]};
   for(let i=0;i<7;i++){const f=addDays(mon,i); const l=bd[f]||[]; total+=l.length; if(!l.length) continue;
     if(ya<30||pintarTodo){ out+=dayList(f,l); ya+=l.length; } else { out+=`<div class="dif" id="d-${f}" data-dif="${f}" style="min-height:${l.length*90+40}px"></div>`; DIFERIDOS.dias.push(f); }}
-  const esHoy=mon===mondayOf(HOY);
-  return navHTML(-7,7,`${esc(fmt(mon,{day:"numeric",month:"short"}))} – ${esc(fmt(addDays(mon,6),{day:"numeric",month:"short"}))}<div class="hint" style="font-weight:500">${plural(total,"concierto")}</div>`,"Semana anterior","Semana siguiente",esHoy)+
-    `<div class="stickystrip">${stripHTML(mon,bd,"jump")}</div>`+(out||vacioHTML(DATA.filter(r=>r.fecha>=mon&&r.fecha<=addDays(mon,6)&&pasaTexto(r)).length,"esta semana"));
+  return navHTML(-7,7,`${esc(fmt(mon,{day:"numeric",month:"short"}))} – ${esc(fmt(addDays(mon,6),{day:"numeric",month:"short"}))}<div class="hint" style="font-weight:500">${plural(total,"concierto")}</div>`,"Semana anterior","Semana siguiente",false)+
+    `<div class="stickystrip">${stripHTML(mon,bd,"jump")}</div><div id="swipe">`+(out||vacioHTML(DATA.filter(r=>r.fecha>=mon&&r.fecha<=addDays(mon,6)&&pasaTexto(r)).length,"esta semana"))+`</div>`;
 }
 function viewDia(){
   const bd=byDate(), mon=mondayOf(state.date);
@@ -1148,8 +1148,22 @@ addEventListener("scroll",fotosEnPantalla,{passive:true});
 function fijas(){
   const ss=document.querySelector("#main .stickystrip");
   document.documentElement.style.setProperty("--sh",(ss?ss.offsetHeight:0)+"px");
-  pintarHnav(); diaEnPantalla(); accesos();
+  pintarHnav(); diaEnPantalla(); marcarHoy(); accesos();
 }
+// "Hoy" se ve siempre que no estés ya en hoy: en el mes y el día, si el día elegido no es hoy; en la semana, si no es
+// la semana actual o vas por otro día. Oculto (no quitado), para que el título no salte.
+function marcarHoy(){
+  if(!VISTAS.includes(state.tab)) return;
+  let ya=state.date===HOY;
+  if(state.tab==="Semana"){
+    const obj=diaDeHoy(), en=document.querySelector("#main .strip .en");
+    ya=mondayOf(state.date)===mondayOf(HOY)&&(!obj||!!en&&en.dataset.jump===(obj.dataset.f||obj.dataset.dif));
+  }
+  document.querySelectorAll("#hoy,#hnav [data-hn=hoy]").forEach(b=>{ if(b.classList.contains("off")===ya) return;
+    b.classList.toggle("off",ya); if(ya){ b.setAttribute("aria-hidden","true"); b.tabIndex=-1; } else { b.removeAttribute("aria-hidden"); b.removeAttribute("tabindex"); } });
+}
+// en la semana actual, el día de hoy en la lista (o el siguiente con conciertos)
+const diaDeHoy=()=>[...document.querySelectorAll("#main .dia,#main [data-dif]")].find(s=>(s.dataset.f||s.dataset.dif)>=HOY&&mondayOf(s.dataset.f||s.dataset.dif)===mondayOf(HOY));
 function diaEnPantalla(){
   const bs=[...document.querySelectorAll("#main .stickystrip [data-jump]")]; if(!bs.length) return;
   const lim=document.querySelector("#main .stickystrip").getBoundingClientRect().bottom+40;
@@ -1161,7 +1175,7 @@ function diaEnPantalla(){
   bs.forEach(b=>{const on=b.dataset.jump===f; b.classList.toggle("en",on); if(on) b.setAttribute("aria-current","date"); else b.removeAttribute("aria-current");});
 }
 let rDia=0;
-addEventListener("scroll",()=>{ if(!rDia) rDia=requestAnimationFrame(()=>{rDia=0; diaEnPantalla(); accesos();}); },{passive:true});
+addEventListener("scroll",()=>{ if(!rDia) rDia=requestAnimationFrame(()=>{rDia=0; diaEnPantalla(); if(state.tab==="Semana") marcarHoy(); accesos();}); },{passive:true});
 // ---------------------------------------------------------------- carga de imágenes y días según el scroll
 // Con 200 conciertos en una semana, el navegador pedía decenas de fotos a la vez (compitiendo por la red) y
 // pintaba el resto de días justo cuando empezabas a bajar. Ahora:
@@ -1209,13 +1223,37 @@ function irA(el){
   el.scrollIntoView(); let n=0;
   const fix=()=>{ const sm=parseFloat(getComputedStyle(el).scrollMarginTop)||0;
     if(Math.abs(el.getBoundingClientRect().top-sm)>2) el.scrollIntoView();
-    if(++n<8) requestAnimationFrame(fix); else diaEnPantalla(); };
+    if(++n<8) requestAnimationFrame(fix); else { diaEnPantalla(); marcarHoy(); } };
   requestAnimationFrame(fix);
 }
 function navegar(n){
   if(state.tab==="Mes"){const d=parse(state.date); const f=iso(new Date(d.getFullYear(),d.getMonth()+n,1)); state.date=f.slice(0,7)===HOY.slice(0,7)?HOY:f;}
   else state.date=addDays(state.date,n);
-  renderBody(true);
+  irAFecha(state.date,n);
+}
+// Cambiar de día, semana o mes (flechas, tira de días, deslizar, Hoy) desde cualquier punto de la lista: la vista
+// nueva empieza arriba, justo bajo la cabecera (tira de 7 días y primer concierto, o la cuadrícula del mes). Si
+// estabas arriba del todo, no se mueve. Con un pequeño deslizamiento en el sentido del cambio.
+function irAFecha(f,sentido){
+  state.date=f; renderBody(true); alInicio();
+  const z=state.tab==="Mes"?document.querySelector("#main .cal"):document.getElementById("swipe");
+  if(sentido&&z&&z.animate&&!matchMedia("(prefers-reduced-motion: reduce)").matches)
+    z.animate([{transform:`translateX(${sentido>0?24:-24}px)`,opacity:.35},{transform:"none",opacity:1}],{duration:180,easing:"ease-out"});
+}
+function alInicio(){
+  const nav=document.querySelector("#main .nav"); if(!nav) return;
+  const y=nav.getBoundingClientRect().bottom+scrollY-document.getElementById("hdr").offsetHeight+1;
+  if(scrollY>y) scrollTo(0,y);
+  diaEnPantalla(); marcarHoy(); accesos();
+}
+// Hoy: en el mes y el día, el día de hoy; en la semana, la semana actual con la lista en hoy
+function irHoy(){
+  if(state.tab!=="Semana"){ irAFecha(HOY,HOY<state.date?-1:HOY>state.date?1:0); return; }
+  const otra=mondayOf(state.date)!==mondayOf(HOY);
+  if(otra) irAFecha(HOY,HOY<state.date?-1:1); else { state.date=HOY; setHash(); }
+  let el=diaDeHoy();
+  if(el&&el._pintar){ const f=el.dataset.dif; el._pintar(); el=document.getElementById("d-"+f); }
+  if(el) irA(el); else alInicio();
 }
 // ‹ periodo › y Hoy en la cabecera fija cuando la fila de navegación se ha ido hacia arriba: mismo efecto que la
 // fila, y la vista nueva se coloca justo debajo de la cabecera (tira de días y lista, o la cuadrícula del mes)
@@ -1228,25 +1266,21 @@ function pintarHnav(){
     (mon.slice(5,7)===dom.slice(5,7)?`${parse(mon).getDate()}–${fmt(dom,{day:"numeric",month:"short"})}`:`${fmt(mon,{day:"numeric",month:"short"})}–${fmt(dom,{day:"numeric",month:"short"})}`.replace(/sept/g,"sep")):
     fmt(d,{weekday:"short",day:"numeric",month:"short"});
   const n=(nav.querySelector(".title .hint")||{}).textContent||"";
-  const esHoy=!nav.querySelector("#hoy");
-  h.innerHTML=`<button class="iconbtn" data-hn="${a}" aria-label="${esc(nav.querySelector("[data-nav]").getAttribute("aria-label"))}">‹</button><div class="t">${esc(t)}${n?`<small>${esc(n)}</small>`:""}</div>${esHoy?"":`<button class="hoy" data-hn="hoy">Hoy</button>`}<button class="iconbtn" data-hn="${b}" aria-label="${esc(nav.querySelectorAll("[data-nav]")[1].getAttribute("aria-label"))}">›</button>`;
+  h.innerHTML=`<button class="iconbtn" data-hn="${a}" aria-label="${esc(nav.querySelector("[data-nav]").getAttribute("aria-label"))}">‹</button><div class="t">${esc(t)}${n?`<small>${esc(n)}</small>`:""}</div><button class="hoy" data-hn="hoy">Hoy</button><button class="iconbtn" data-hn="${b}" aria-label="${esc(nav.querySelectorAll("[data-nav]")[1].getAttribute("aria-label"))}">›</button>`;
 }
 document.getElementById("hnav").addEventListener("click",e=>{
   const b=e.target.closest("[data-hn]"); if(!b) return;
-  if(b.dataset.hn==="hoy"){ state.date=HOY; renderBody(true); } else navegar(Number(b.dataset.hn));
-  const nav=document.querySelector("#main .nav"), hh=document.getElementById("hdr").offsetHeight;
-  if(nav) scrollTo(0,nav.getBoundingClientRect().top+scrollY+nav.offsetHeight-hh+1);
-  accesos();
+  if(b.dataset.hn==="hoy") irHoy(); else navegar(Number(b.dataset.hn));
 });
 function bindBody(){
   document.querySelectorAll("[data-day]").forEach(b=>b.onclick=()=>{state.date=b.dataset.day; state.tab="Día"; render(); scrollTo(0,0);});
   document.querySelectorAll("[data-mdia]").forEach(b=>b.onclick=()=>elegirDiaMes(b.dataset.mdia));
-  document.querySelectorAll("[data-sel]").forEach(b=>b.onclick=()=>{state.date=b.dataset.sel; renderBody(true);});
+  document.querySelectorAll("[data-sel]").forEach(b=>b.onclick=()=>{const f=b.dataset.sel; irAFecha(f,f<state.date?-1:f>state.date?1:0);});
   document.querySelectorAll("[data-jump]").forEach(b=>b.onclick=()=>{let el=document.getElementById("d-"+b.dataset.jump);
     if(el&&el._pintar){ el._pintar(); el=document.getElementById("d-"+b.dataset.jump); }
     if(el) irA(el); else toast("Ese día no hay conciertos con estos filtros");});
   document.querySelectorAll("#main [data-nav]").forEach(b=>b.onclick=()=>navegar(Number(b.dataset.nav)));
-  const hoy=document.getElementById("hoy"); if(hoy) hoy.onclick=()=>{state.date=HOY; renderBody(true);};
+  const hoy=document.getElementById("hoy"); if(hoy) hoy.onclick=irHoy;
   document.querySelectorAll("[data-quitar]").forEach(b=>b.onclick=()=>{setGrupos(GRUPOS.map(g=>g.id)); state.origen="todos"; store.set("origen","todos"); state.estilos={}; store.set("estilos",{}); state.genericos=true; store.set("genericos",true); renderBody(false);});
   const cr=document.getElementById("copiarRum"); if(cr) cr.onclick=async()=>{try{await navigator.clipboard.writeText(cr.dataset.t); toast("Copiado");}catch(e){prompt("Copia estos datos:",cr.dataset.t);}};
   const br=document.getElementById("borrarRum"); if(br) br.onclick=()=>{for(const k in RUM) delete RUM[k]; try{localStorage.removeItem("agenda:rum");}catch(e){} renderBody(false);};
@@ -1263,11 +1297,12 @@ function bindBody(){
       ca.addEventListener("scroll",()=>requestAnimationFrame(marcar),{passive:true});
       dots.forEach(d=>d.onclick=()=>ca.scrollTo({left:Number(d.dataset.slide)*ca.clientWidth,behavior:"smooth"})); }
   }
-  const sw=document.getElementById("swipe");
-  if(sw){ let x0=null,y0=null;
+  // deslizar de lado: día siguiente/anterior (día), semana (lista de la semana) o mes (cuadrícula del mes)
+  const sw=state.tab==="Mes"?document.querySelector("#main .cal"):document.getElementById("swipe");
+  if(sw&&!state.q.trim()){ let x0=null,y0=null; const paso=state.tab==="Semana"?7:1;
     sw.ontouchstart=e=>{x0=e.touches[0].clientX; y0=e.touches[0].clientY;};
     sw.ontouchend=e=>{ if(x0===null) return; const dx=e.changedTouches[0].clientX-x0, dy=e.changedTouches[0].clientY-y0; x0=null;
-      if(Math.abs(dx)>70&&Math.abs(dx)>2*Math.abs(dy)){ state.date=addDays(state.date,dx<0?1:-1); renderBody(true); } };
+      if(Math.abs(dx)>70&&Math.abs(dx)>2*Math.abs(dy)) navegar(dx<0?paso:-paso); };
   }
 }
 function render(){ document.getElementById("hdr").classList.remove("buscando"); document.getElementById("sheet").innerHTML=""; document.getElementById("menu").innerHTML=""; renderTabs(); renderBody(false); }

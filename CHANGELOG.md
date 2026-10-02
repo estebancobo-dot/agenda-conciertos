@@ -1,5 +1,15 @@
 # Versiones
 
+## 2.35.0 — 2026-10-02
+
+**Navegación de fechas desde cualquier punto de la lista, en las tres vistas.**
+
+- Cambiar de día, semana o mes (tira de días, flechas ‹ ›, deslizar, Hoy) desde media lista deja la vista nueva **desde su principio**, justo bajo la cabecera: la tira de 7 días y el primer concierto, o la cuadrícula del mes. Antes, en la vista de día, tocar otro día de la tira o deslizar dejaba la lista del día nuevo a la misma altura (a media lista o en blanco). Si estabas arriba del todo, no se mueve nada.
+- **Hoy**, siempre que no estés ya en hoy: ahora también en el mes actual con otro día elegido (antes no salía) y en la semana actual cuando vas por otro día; en la semana lleva a la lista de hoy (antes se quedaba en el lunes). Cuando no hace falta se oculta sin quitar su hueco, para que el título no salte.
+- **Deslizar de lado** también en la semana (sobre la lista) y en el mes (sobre la cuadrícula), como ya pasaba en el día, con un pequeño desplazamiento en el sentido del cambio (desactivado si el móvil pide menos movimiento).
+- La cabecera del día dice **"Hoy, …"** y **"Mañana, …"**.
+- Validación en la web publicada: 11 casos nuevos (cada forma de cambiar de fecha en cada vista, desde media lista, y cuándo se ve Hoy).
+
 ## 2.34.1 — 2026-10-02
 
 - **Fotos de Wikimedia Commons sin miniatura propia** (Rajery, Messa…): la ficha guardaba la dirección `commons.wikimedia.org/wiki/Special:FilePath/…`, que el robots.txt de Wikimedia prohíbe a los lectores automáticos; la miniatura no se podía hacer y la web pedía la foto fuera. Ahora se guarda la dirección directa de `upload.wikimedia.org` (la misma a la que redirige) y, si el archivo es más pequeño que la miniatura pedida, se usa el original. Test.

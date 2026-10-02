@@ -475,6 +475,7 @@ def recorrido(b):
     entradas_ficha(pg)
     cabeceras_fijas(pg, lunes)
     accesos_al_bajar(pg, lunes)
+    cambiar_fecha_bajado(pg, lunes)
 
     # informe
     pg.evaluate("location.hash='#informe'")
@@ -975,6 +976,93 @@ def accesos_al_bajar(pg, lunes):
                          "return !!c&&Math.abs(c.getBoundingClientRect().top-a.top)<3&&!state.q}", ancla)
     check("Funcional", "Buscar desde media lista y cancelar: vuelve a la misma tarjeta", f"{n} resultados",
           ok=n > 0 and vuelve)
+
+
+
+DESLIZAR = """(sel)=>{const s=document.querySelector(sel); const t=x=>new Touch({identifier:1,target:s,clientX:x,clientY:400});
+  s.dispatchEvent(new TouchEvent('touchstart',{touches:[t(300)],changedTouches:[t(300)]}));
+  s.dispatchEvent(new TouchEvent('touchend',{touches:[],changedTouches:[t(90)]}));}"""
+POSICION = """()=>{const hh=document.getElementById('hdr').offsetHeight, ss=document.querySelector('#main .stickystrip');
+  const sb=ss?ss.getBoundingClientRect().bottom:hh, nav=document.querySelector('#main .nav'), cal=document.querySelector('#main .cal');
+  const sec=document.querySelector(`#main .dia[data-f="${state.date}"]`)||document.querySelector('#main .dia,#main [data-dif]');
+  const hoy=[...document.querySelectorAll('#hoy,#hnav [data-hn=hoy]')];
+  return {fecha:state.date, y:Math.round(scrollY), arriba:Math.round(nav.getBoundingClientRect().bottom+scrollY-hh+1),
+    sec:sec?Math.round(sec.getBoundingClientRect().top-sb):null, secF:sec&&(sec.dataset.f||sec.dataset.dif),
+    cal:cal?Math.round(cal.getBoundingClientRect().top-hh):null, hoyVisible:hoy.some(b=>!b.classList.contains('off'))}}"""
+
+
+def cambiar_fecha_bajado(pg, lunes):
+    """Desde media lista, cambiar de día, semana o mes (tira de días, flechas de la cabecera, deslizar, Hoy) deja la
+    vista nueva desde su principio, justo bajo la cabecera, nunca a media lista. Hoy sale siempre que no estés ya
+    en hoy (también en el mes actual con otro día elegido y en la semana actual cuando vas por otro día) y lleva a
+    hoy (en la semana, a la lista de hoy)."""
+    hoy = date.fromisoformat(pg.evaluate("HOY"))
+    malos: list[str] = []
+    n = 0
+
+    def pulsar(boton):
+        # el de la cabecera fija si se ve (a media lista); si no (lista corta), el de la fila de navegación
+        alt = {"sig": ("#hnav [data-hn]:last-child", "#main .nav [data-nav]:last-child"),
+               "ant": ("#hnav [data-hn]:first-child", "#main .nav [data-nav]:first-child"),
+               "hoy": ("#hnav [data-hn=hoy]", "#hoy")}[boton]
+        return lambda: pg.click(alt[0] if pg.is_visible(alt[0]) else alt[1])
+
+    def caso(nombre, inicio, accion, esperado, donde, bajar=True):
+        nonlocal n
+        n += 1
+        pg.evaluate(f"location.hash='#{inicio}'")
+        pg.wait_for_function(f"location.hash==='#{inicio}'&&!!document.querySelector('#main .nav')", timeout=15000)
+        pg.wait_for_timeout(400)
+        if bajar:
+            pg.evaluate("scrollTo(0,(document.documentElement.scrollHeight-innerHeight)/2)")
+            pg.wait_for_timeout(400)
+        accion()
+        pg.wait_for_timeout(700)
+        r = pg.evaluate(POSICION)
+        mal = []
+        if r["fecha"] != esperado:
+            mal.append(f"fecha {r['fecha']}")
+        if donde == "lista" and not (r["sec"] is not None and -3 <= r["sec"] <= 24 and r["y"] <= r["arriba"] + 2):
+            mal.append(f"lista a {r['sec']} px de la tira (scroll {r['y']}, principio {r['arriba']})")
+        if donde == "hoy" and not (r["sec"] is not None and -3 <= r["sec"] <= 24 and r["secF"] >= hoy.isoformat()):
+            mal.append(f"día {r['secF']} a {r['sec']} px")
+        if donde == "mes" and not (r["cal"] is not None and -3 <= r["cal"] <= 24):
+            mal.append(f"cuadrícula a {r['cal']} px")
+        if r["fecha"] == hoy.isoformat() and r["hoyVisible"]:
+            mal.append("Hoy sigue a la vista estando en hoy")
+        if mal:
+            malos.append(f"{nombre}: {'; '.join(mal)}")
+
+    dia = lunes + timedelta(days=3)
+    d = dia.isoformat()
+    caso("Día: otro día de la tira", f"dia/{d}", lambda: pg.click(f"#main .strip [data-sel='{(dia + timedelta(days=1)).isoformat()}']"),
+         (dia + timedelta(days=1)).isoformat(), "lista")
+    caso("Día: deslizar", f"dia/{d}", lambda: pg.evaluate(DESLIZAR, "#swipe"), (dia + timedelta(days=1)).isoformat(), "lista")
+    caso("Día: › de la cabecera", f"dia/{d}", pulsar("sig"),
+         (dia + timedelta(days=1)).isoformat(), "lista")
+    caso("Día: ‹ de la cabecera", f"dia/{d}", pulsar("ant"),
+         (dia - timedelta(days=1)).isoformat(), "lista")
+    if dia != hoy:
+        caso("Día: Hoy", f"dia/{d}", pulsar("hoy"), hoy.isoformat(), "lista")
+    caso("Semana: › de la cabecera", f"semana/{lunes.isoformat()}", pulsar("sig"),
+         (lunes + timedelta(days=7)).isoformat(), "lista")
+    caso("Semana: deslizar", f"semana/{lunes.isoformat()}", lambda: pg.evaluate(DESLIZAR, "#swipe"),
+         (lunes + timedelta(days=7)).isoformat(), "lista")
+    l_hoy = lunes_de(hoy)
+    if lunes != l_hoy:
+        caso("Semana: Hoy desde otra semana", f"semana/{lunes.isoformat()}", pulsar("hoy"),
+             hoy.isoformat(), "hoy")
+    if hoy.weekday() > 0:
+        caso("Semana actual: Hoy desde su lunes", f"semana/{l_hoy.isoformat()}",
+             pulsar("hoy"), hoy.isoformat(), "hoy", bajar=False)
+    caso("Mes: › de la cabecera", f"mes/{d}", pulsar("sig"),
+         (dia.replace(day=1) + timedelta(days=32)).replace(day=1).isoformat()
+         if (dia.replace(day=1) + timedelta(days=32)).strftime("%Y-%m") != hoy.strftime("%Y-%m") else hoy.isoformat(), "mes")
+    otro = hoy + timedelta(days=1 if hoy.day < 28 else -1)
+    caso("Mes actual con otro día: Hoy", f"mes/{otro.isoformat()}",
+         pulsar("hoy"), hoy.isoformat(), "mes")
+    check("UX", "Cambiar de día, semana o mes desde media lista deja la vista nueva desde su principio; Hoy siempre a mano",
+          f"{n - len(malos)} de {n} casos bien", ok=not malos, detalle=" | ".join(malos[:6]))
 
 
 def cabeceras_fijas(pg, lunes):
