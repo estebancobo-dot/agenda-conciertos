@@ -203,3 +203,48 @@ def gotifiestas(ctx: Ctx):
         yield from gotifiestas_parse(datos, ctx.today, ctx.horizon)
         if len(datos) < 100:
             break
+
+
+# ------------------------------------------------------------------ SalirMadrid (country y folk)
+# Agenda de ocio de Madrid con páginas por género. Sus eventos llevan JSON-LD (schema.org/Event). Se leen las de
+# country y folk. Su etiqueta de género es amplia (pone "folk" a Morat o a Depedro): el estilo solo se toma cuando el
+# propio título lo dice ("Moonshine Wagon (Country)", "Los Sonex (Folk mexicano)"); si no, lo dan las fichas.
+SALIR = ["https://salirmadrid.es/live-music-country-madrid", "https://salirmadrid.es/live-music-folk-madrid"]
+_SALIR_ESTILO = re.compile(r"\s*\(([^()]*\b(?:country|folk|bluegrass|americana|celta|celtic|irish|irlandes[ao]?|"
+                           r"rockabilly|western|cajun|honky tonk|rock sure[nñ]o|southern rock)\b[^()]*)\)", re.I)
+
+
+def salirmadrid_titulo(t: str) -> tuple[str, str | None]:
+    """"Concierto de Ryan Adams en Madrid" → Ryan Adams; "Moonshine Wagon (Country)" → (Moonshine Wagon, Country);
+    "Concierto de Morat en Madrid (Segunda Fecha)" → Morat."""
+    t = clean(html_lib.unescape(t or ""))
+    m = _SALIR_ESTILO.search(t)
+    estilo = clean(m.group(1)) if m else None
+    t = _SALIR_ESTILO.sub("", t)
+    t = re.sub(r"(?i)\s*\((?:primera|segunda|tercera|cuarta|nueva|[0-9]+\w*)\s+(?:fecha|sesi[oó]n|funci[oó]n)\)", "", t)
+    t = re.sub(r"(?i)\s*\(\d{1,2} de \w+\)", "", t)  # "(29 de Octubre)"
+    t = re.sub(r"(?i)^conciertos?\s+de\s+", "", t)
+    t = re.sub(r"(?i)\s+en\s+madrid\b.*$", "", t)
+    return clean(t), estilo
+
+
+def salirmadrid_parse(html: str, page_url: str, today: date) -> list:
+    from .base import jsonld_events, ld_to_raw, soup_of
+    out = []
+    for ev in jsonld_events(soup_of(html)):
+        nombre, estilo = salirmadrid_titulo(str(ev.get("name") or ""))
+        if not nombre:
+            continue
+        ev = dict(ev, name=nombre)
+        r = ld_to_raw(ev, today, page_url, use_performers=False, split=True, estilo=estilo)
+        if r:
+            out.append(r)
+    return out
+
+
+def salirmadrid(ctx: Ctx):
+    for url in SALIR:
+        try:
+            yield from salirmadrid_parse(ctx.get(url), url, ctx.today)
+        except Exception as ex:  # noqa: BLE001 - una página caída no tumba la otra
+            ctx.errors.append(f"{url}: {type(ex).__name__}: {str(ex)[:120]}")

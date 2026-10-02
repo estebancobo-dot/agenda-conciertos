@@ -17,7 +17,7 @@ SEARCH = ("https://conciertos.club/search.php?artist_id=&local_id=&provin_id=3&e
           "&fecha1={d1}&fecha2={d2}")
 ESTILOS = ["americana-folk-rock-country", "blues-rnb", "folk", "pop-rock-indie", "pop", "post-punk",
            "rock-rock-alternativo", "rock-and-roll-garage", "punk-hardcore", "metal-rock-duro", "cantautores",
-           "versiones-tributos", "reggae-ska"]
+           "versiones-tributos", "reggae-ska", "world-music-musica-etnica"]
 
 _TIME = re.compile(r"(\d{1,2})/(\d{1,2})/(\d{2})")
 

@@ -69,7 +69,7 @@ FUENTES: list[Source] = [
     # ---------------------------------------------------------------- D. americana, country, folk, blues
     S("mutick", "Mutick / The Flying Pig (MomentaZos)", "https://mutick.com", "ticketera", 2, "alta", "mutick",
       otras.mutick),
-    S("qconciertos", "Qconciertos (country y provincia de Madrid)", "https://qconciertos.es/estilo/country/",
+    S("qconciertos", "Qconciertos (country, folk y provincia de Madrid)", "https://qconciertos.es/estilo/country/",
       "agregador", 3, "media", "qconciertos", otras.qconciertos),
     S("sbm", "Sociedad de Blues de Madrid", "https://www.sociedaddebluesdemadrid.com/", "promotora", 2, "alta", "sbm",
       otras.sbm),
@@ -125,6 +125,9 @@ FUENTES: list[Source] = [
     S("gotifiestas", "GotiFiestas (escena gótica y dark wave)", "https://www.gotifiestas.com/eventos/", "agregador", 3,
       "media", "gotifiestas", abiertos.gotifiestas, municipio_defecto="Madrid",
       notas="Su API pública de WordPress: conciertos y festivales (no fiestas ni sesiones de DJ), con sus géneros."),
+    S("salirmadrid", "SalirMadrid (country y folk)", "https://salirmadrid.es/live-music-country-madrid", "agregador", 3,
+      "media", "salirmadrid", abiertos.salirmadrid, municipio_defecto="Madrid",
+      notas="Páginas de country y folk (JSON-LD). El estilo solo si el título lo dice: su etiqueta de género es amplia."),
 ]
 
 # Salas pedidas cuya web no tiene agenda legible (comprobado sep-2026). Se listan en el informe.

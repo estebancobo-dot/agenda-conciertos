@@ -385,5 +385,6 @@ def qconciertos_parse(html: str, page_url: str, today: date, estilo: str | None)
 
 def qconciertos(ctx: Ctx):
     for url, estilo in (("https://qconciertos.es/estilo/country/", "Country"),
+                        ("https://qconciertos.es/estilo/folk/", "Folk"),
                         ("https://qconciertos.es/conciertos-en-madrid-provincia/", None)):
         yield from qconciertos_parse(ctx.get(url), url, ctx.today, estilo)

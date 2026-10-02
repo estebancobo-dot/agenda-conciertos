@@ -85,3 +85,19 @@ def test_gotifiestas_titulos():
     assert _goti_titulo("Diorama – Bragolin – Carrellee // Madrid", "Nazca Music Live") == "Diorama – Bragolin – Carrellee"
     assert _goti_titulo("Chameleons “Arctic Tour 2026”", "Sala Mon Madrid Conciertos") == "Chameleons"
     assert _goti_titulo("Las Novias", "Sala El Sol") == "Las Novias"
+
+
+def test_salirmadrid():
+    from scraper.sources.abiertos import salirmadrid_parse, salirmadrid_titulo
+    assert salirmadrid_titulo("Moonshine Wagon (Country)") == ("Moonshine Wagon", "Country")
+    assert salirmadrid_titulo("Concierto de Morat en Madrid (Segunda Fecha)") == ("Morat", None)
+    assert salirmadrid_titulo("Concierto de Depedro en Madrid (29 de Octubre)") == ("Depedro", None)
+    assert salirmadrid_titulo("Los Sonex (Folk mexicano)") == ("Los Sonex", "Folk mexicano")
+    assert salirmadrid_titulo("SAMHAIN Irish Treble - Aérokorda - Folqué?")[1] is None
+    html = """<script type="application/ld+json">{"@context":"https://schema.org","@type":"MusicEvent",
+      "name":"Moonshine Wagon (Country)","startDate":"2026-12-04T22:00","location":{"@type":"Place","name":"Clamores",
+      "address":{"@type":"PostalAddress","addressLocality":"Madrid"}},"url":"https://salirmadrid.es/concierto/moonshine"}
+      </script>"""
+    r = salirmadrid_parse(html, "https://salirmadrid.es/live-music-country-madrid", date(2026, 10, 2))[0]
+    assert (r.artista, r.fecha.isoformat(), r.hora, r.sala, r.estilo) == ("Moonshine Wagon", "2026-12-04", "22:00",
+                                                                          "Clamores", "Country")
