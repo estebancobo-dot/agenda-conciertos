@@ -60,6 +60,8 @@ def _limpio(titulo: str) -> list[str]:
 def claves_ficha(r: dict) -> list[str]:
     """Nombres con los que buscar la ficha del artista, del más fiable al menos."""
     titulo = r.get("artista") or ""
+    if r.get("festival"):
+        return []  # el nombre de un festival no es un artista: su estilo sale de su cartel y de las agendas
     out = [titulo]
     from .clasificar import titulo_fuera_de_foco
     if (_TRIBUTO.search(norm(titulo)) or titulo_fuera_de_foco(titulo)

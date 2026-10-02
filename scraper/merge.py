@@ -10,6 +10,7 @@ import hashlib
 import re
 from dataclasses import dataclass, field
 
+from .cartel import cartel_de_titulo, clave_festival, es_festival, nombre_festival
 from .clasificar import categoria_de, categorias_de, discogs, en_foco, grupo_de_titulo, titulo_fuera_de_foco
 from .model import RawEvent, Source
 from .normalize import clean, contiene, es_generico, es_relleno, misma_sala, norm, parecido, parecido_flexible
@@ -87,6 +88,65 @@ def _con_sesiones(nombre: str) -> bool:
     return titulo_fuera_de_foco(nombre) or bool(_SESIONES.search(norm(nombre)))
 
 
+def _es_festival(it: Item) -> bool:
+    """Festival según la agenda o su título; no un artista con el festival o ciclo delante ("FESTIVAL MÚSICA
+    ANTIGUA ARANJUEZ. FAHMI ALQHI": el artista es Fahmi Alqhi y el festival, su ciclo)."""
+    if it.ev.tipo == "festival":
+        return True
+    m = _CICLO.match(it.ev.artista)
+    return es_festival(m.group(2) if m else it.ev.artista)
+
+
+def _mismo_festival(it: Item, c: Cluster) -> bool:
+    """El mismo festival anunciado con otro nombre en otra agenda ("Pirata Festival 2026 Madrid" y "Pirata Madrid
+    Festival (Boikot, Evaristo…)"; "Cadena 100 Por Ellas 2026" en Songkick y "Cadena 100 Por Ellas Festival 2026")."""
+    k = clave_festival(it.ev.artista) or (clave_festival(it.ev.artista + " festival") if it.ev.tipo == "festival" else "")
+    if not k:
+        return False
+    for o in c.items:
+        ko = clave_festival(o.ev.artista) or (clave_festival(o.ev.artista + " festival") if o.ev.tipo == "festival" else "")
+        if ko == k:
+            return True
+    return False
+
+
+def cartel_festival(items: list[Item]) -> tuple[str, list[str], bool] | None:
+    """Si el concierto es un festival (lo dice una agenda o su título), su nombre y su cartel: los artistas que dan
+    las agendas (sus listas, el título "FESTIVAL (A, B, C)" o "FEST: A") sin las variantes del nombre del festival
+    que otras agendas ponen como si fueran artistas."""
+    fest = [i for i in items if _es_festival(i)]
+    if not fest:
+        return None
+    top = min(fest, key=lambda i: (i.src.prioridad, i.ev.tipo != "festival"))
+    nombre = nombre_festival(top.ev.artista)
+    clave = clave_festival(nombre) or clave_festival(nombre + " festival")
+    cartel: list[str] = []
+    incompleto = False
+
+    def anadir(n: str) -> None:
+        if not n or es_generico(n) or es_relleno(n) or es_festival(n):
+            return
+        if (clave_festival(n + " festival") == clave) or any(parecido_flexible(n, x) >= UMBRAL for x in cartel):
+            return
+        cartel.append(n)
+
+    for it in sorted(items, key=lambda i: i.src.prioridad):
+        for n in [it.ev.artista, *it.ev.invitados]:
+            _, lista, inc = cartel_de_titulo(n)
+            if lista:
+                incompleto = incompleto or inc
+                for x in lista:
+                    anadir(x)
+            else:
+                anadir(n)
+    # "MADRID DOMINATION FEST Eskóbula": el nombre del festival sin el artista que la agenda le pega detrás
+    for x in cartel:
+        if norm(nombre).endswith(" " + norm(x)) and len(norm(nombre)) > len(norm(x)) + 4:
+            nombre = clean(nombre[: len(nombre) - len(x)])
+            break
+    return nombre, cartel, incompleto
+
+
 def agrupar(items: list[Item]) -> list[Cluster]:
     """Agrupa eventos de un mismo día en conciertos."""
     clusters: list[Cluster] = []
@@ -103,7 +163,7 @@ def agrupar(items: list[Item]) -> list[Cluster]:
             if it.ev.hora and _con_sesiones(it.ev.artista) and any(
                     o.src.id == it.src.id and o.ev.hora and o.ev.hora != it.ev.hora for o in c.items):
                 continue
-            if principal_coincide(it, c.nombres):
+            if principal_coincide(it, c.nombres) or _mismo_festival(it, c):
                 destino = c
                 break
         if destino is None:
@@ -199,6 +259,15 @@ def construir(cluster: Cluster, municipio_de) -> dict:
             if any(parecido_flexible(n, x) >= UMBRAL for x in invitados):
                 continue
             invitados.append(n)
+    # festival: el título es el del festival y su cartel, todos los artistas que dan las agendas
+    fest = cartel_festival(items)
+    cartel_incompleto = False
+    ciclo = None
+    if fest and len(fest[1]) == 1 and not fest[2]:
+        # un solo artista conocido ("Mad Psych Fest: JOSH MEADER TRIO"): es su concierto dentro del festival
+        ciclo, artista, invitados, fest = fest[0], fest[1][0], [], None
+    elif fest:
+        artista, invitados, cartel_incompleto = fest
     # sala
     sala = resolver("sala", _versiones(items, lambda i: i.ev.sala), notas, conflictos, igual=misma_sala)
     if sala is None and conflictos and conflictos[-1]["campo"] == "sala":
@@ -260,13 +329,15 @@ def construir(cluster: Cluster, municipio_de) -> dict:
         "hora": hora,
         "artista": artista,
         "invitados": invitados,
+        "festival": bool(fest),
+        "cartel_incompleto": cartel_incompleto,
         "sala": sala_txt,
         "municipio": municipio,
         "precio": precio,
         "precio_fuente": precio_fuente,
         "imagen_evento": imagen_evento,
         "confirmado_sala": {"nombre": oficial.src.nombre, "url": oficial.ev.url} if oficial else None,
-        "ciclo": None,
+        "ciclo": ciclo,
         "estilo_fuente": estilos,
         "categoria": categoria,
         "categorias": cats,
@@ -408,6 +479,7 @@ def recalcular_categorias(r: dict) -> None:
 
 
 _CICLO = re.compile(r"(?i)^\s*((?:radar joven|las noches de r[ií]o babel|villanos del jazz|momentazos|jazzmadrid|"
+                    r"jazz con sabor a club(?: \d+)?|"
                     r"festival [^:.]{2,40}|ciclo [^:.]{2,40}|madrid en vivo[^:]*|club 77)[^:.]*?)\s*[:.\-–]\s+(.{2,})$")
 
 
@@ -426,3 +498,9 @@ def separar_ciclo(r: dict) -> None:
         mt = re.search(r"(?i)\s*[-–(]\s*club 77\)?\s*$", r["artista"])
         if mt:
             r["ciclo"], r["artista"] = "Club 77", r["artista"][: mt.start()].strip()
+    # "MININO BRAVO (Festival JazzMadrid)": el artista toca dentro de un festival o ciclo, que va entre paréntesis
+    mf = re.search(r"\s*\(((?:[^()]*\b(?:festival|fest|ciclo)\b[^()]*))\)\s*$", r["artista"], re.I)
+    if mf and not r.get("festival") and len(clean(r["artista"][: mf.start()])) >= 2:
+        fest = clean(mf.group(1))
+        r["ciclo"] = f"{fest} · {r['ciclo']}" if r.get("ciclo") and norm(fest) not in norm(r["ciclo"]) else (r.get("ciclo") or fest)
+        r["artista"] = clean(r["artista"][: mf.start()])

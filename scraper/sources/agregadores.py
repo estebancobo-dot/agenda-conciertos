@@ -248,18 +248,27 @@ def songkick_parse(html: str, page_url: str, today: date) -> list:
             g = p.get("genre") if isinstance(p, dict) else None
             genres = g if isinstance(g, list) else ([g] if g else [])
         name = clean(ev.get("name"))
-        # "Artista @ Sala": Songkick nombra el evento así; el cartel real está en performer
-        names = [clean(p.get("name")) for p in perf if isinstance(p, dict) and p.get("name")]
+        # "Artista @ Sala": Songkick nombra el evento así; el cartel real está en performer (a veces con varios
+        # nombres en uno separados por ";")
+        names = [n for p in perf if isinstance(p, dict) and p.get("name")
+                 for n in (clean(x) for x in str(p["name"]).split(";")) if n]
         ev = dict(ev)
-        if names:
+        url = (ev.get("url") or page_url).split("?")[0]
+        # festival (su página es /festivals/…): el nombre es el del festival y todos los artistas son su cartel;
+        # el primero de la lista no es el cabeza de cartel
+        festival = "/festivals/" in url or "festival" in str(ev.get("@type") or "").lower()
+        if festival:
+            ev["name"] = name.split(" @ ")[0]
+        elif names:
             ev["name"] = names[0]
         elif " @ " in name:
             ev["name"] = name.split(" @ ")[0]
-        if "festival" in (ev.get("@type") or "").lower() or "Festival" in name:
-            ev["name"] = name.split(" @ ")[0]
-        r = ld_to_raw(ev, today, page_url, estilo=", ".join(genres) or None, split=False)
+        r = ld_to_raw(ev, today, page_url, estilo=", ".join(genres) or None, split=False, use_performers=False)
         if r:
-            r.url = (ev.get("url") or page_url).split("?")[0]
+            r.url = url
+            # mismos retoques que el resto de invitados (sin relleno ni el "(UK)" del país)
+            r.invitados = make(r.fecha, "-", url, invitados=names if festival else names[1:], split=False).invitados
+            r.tipo = "festival" if festival else None
             out.append(r)
     return out
 

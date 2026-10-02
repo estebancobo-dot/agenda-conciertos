@@ -18,7 +18,8 @@ from pathlib import Path
 RAIZ = Path(__file__).resolve().parent.parent
 
 # campos de la agenda ligera (el resto va al detalle)
-LIGEROS = ("id", "fecha", "hora", "artista", "invitados", "sala", "municipio", "ciclo", "nacionalidad",
+LIGEROS = ("id", "fecha", "hora", "artista", "invitados", "festival", "cartel_incompleto", "sala", "municipio", "ciclo",
+           "nacionalidad",
            "estilos_discogs", "genero_discogs", "grupos", "categoria", "grupos_generico", "estado", "origen_no_aplica",
            "nacionalidad_estimada")
 

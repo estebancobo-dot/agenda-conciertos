@@ -197,3 +197,41 @@ def test_variantes_de_nombre_en_la_misma_sala():
     assert len(recs) == 1
     # nombres distintos con una palabra en común no se juntan
     assert len(run((ev("Tom & Jerry", "Sala El Sol", "21:00"), src("a")), (ev("Tom Waits", "Sala El Sol"), src("b")))) == 2
+
+
+# ---------------------------------------------------------------- fase 3: cartel, festivales y ciclos
+def test_festival_mismo_en_varias_agendas_con_su_cartel():
+    # casos reales (2 oct. 2026): el mismo festival con otro nombre en otra agenda, y su cartel en el título
+    recs = run((ev("Pirata Festival 2026 Madrid", "", "19:30"), src("laganzua")),
+               (ev("Pirata Madrid Festival (Boikot, Evaristo, benito Kamelas, Reincidentes y más)", ""),
+                src("rockforeveryone", prioridad=4)))
+    assert len(recs) == 1
+    r = recs[0]
+    assert r["festival"] and r["artista"] == "Pirata Festival 2026 Madrid"
+    assert r["invitados"] == ["Boikot", "Evaristo", "benito Kamelas", "Reincidentes"] and r["cartel_incompleto"]
+
+
+def test_festival_sin_variantes_del_nombre_como_artistas():
+    recs = run((ev("SAUROM JUGLAR FEST MADRID", "Recinto Ferial", None, ["Alestorm", "DARTAGNAN"]), src("laganzua")),
+               (ev("Saurom Juglar Festival 2026", "Recinto Ferial"), src("cpm")),
+               (ev("SAUROM JUGLAR FEST: SAUROM", "Recinto Ferial"), src("mariskal", prioridad=4)))
+    assert len(recs) == 1
+    r = recs[0]
+    assert r["festival"] and r["artista"] == "SAUROM JUGLAR FEST MADRID"
+    assert r["invitados"] == ["Alestorm", "DARTAGNAN", "SAUROM"]
+
+
+def test_festival_de_songkick_por_su_nombre():
+    e = ev("Cadena 100 Por Ellas 2026", "Movistar Arena", None, ["Rosana", "Fangoria", "Pablo López"])
+    e.tipo = "festival"
+    recs = run((e, src("songkick")), (ev("Cadena 100 Por Ellas Festival 2026", "Movistar Arena"), src("laganzua")))
+    assert len(recs) == 1 and recs[0]["festival"] and recs[0]["invitados"] == ["Rosana", "Fangoria", "Pablo López"]
+
+
+def test_artista_dentro_de_un_festival_es_su_ciclo_no_un_festival():
+    r = run((ev("JAZZ CON SABOR A CLUB 26: SAN PATRICIO BIG BAND (Festival JazzMadrid)", "Sala Clamores"),
+             src("madridenvivo")))[0]
+    assert not r["festival"] and r["artista"] == "SAN PATRICIO BIG BAND"
+    assert r["ciclo"] == "Festival JazzMadrid · JAZZ CON SABOR A CLUB 26"
+    r = run((ev("Hällas", "Sala Nazca", "21:00", ["Komodor"]), src("cc")))[0]
+    assert not r["festival"] and r["invitados"] == ["Komodor"] and not r["ciclo"]

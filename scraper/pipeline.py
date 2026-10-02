@@ -435,7 +435,11 @@ def _grupos_previos(recs: list[dict]) -> dict[str, list[str]]:
     return {r["id"]: list(r.get("grupos") or []) for r in recs}
 
 
-def _match_prev(r: dict, prev: list[dict]) -> dict | None:
+def _match_prev(r: dict, prev: list[dict], flexible: bool = False) -> dict | None:
+    """El registro de la ejecución anterior que es este concierto. `flexible`: segunda vuelta para los que han
+    cambiado de título (ciclo o festival separado del artista, "JAZZ CON SABOR A CLUB 26: X (Festival JazzMadrid)"
+    → "X"; el mismo festival con otro nombre): conservan su id, su enlace y su fecha de primera vez."""
+    from .cartel import mismo_festival
     for p in prev:
         if p["fecha"] != r["fecha"]:
             continue
@@ -444,7 +448,19 @@ def _match_prev(r: dict, prev: list[dict]) -> dict | None:
             continue
         if artistas_coinciden([r["artista"]], nombres_rec(p)) or artistas_coinciden([p["artista"]], nombres_rec(r)):
             return p
+        if flexible and (coinciden_flexible([p["artista"]], nombres_rec(r)) or
+                         coinciden_flexible([r["artista"]], nombres_rec(p)) or
+                         artistas_coinciden([_titulo_actual(p)], nombres_rec(r)) or mismo_festival(p["artista"], r["artista"])):
+            return p
     return None
+
+
+def _titulo_actual(p: dict) -> str:
+    """El título de un registro anterior tal como se escribiría hoy (sin el ciclo o el festival delante o entre
+    paréntesis): "JAZZ CON SABOR A CLUB 26: ACIZ (Festival JazzMadrid)" → "ACIZ"."""
+    q = {"artista": p["artista"], "ciclo": None}
+    separar_ciclo(q)
+    return q["artista"]
 
 
 def _fuera_de_cobertura(p: dict, srcs: list[str]) -> bool:
@@ -468,10 +484,19 @@ def conciliar(recs: list[dict], anteriores: list[dict], hoy: date, resultados: d
         prev_por_fecha.setdefault(p["fecha"], []).append(p)
     usados = set()
     ids = set()
-    for r in recs:
-        p = _match_prev(r, [x for x in prev_por_fecha.get(r["fecha"], []) if x["id"] not in usados])
+    # primero los que casan por el nombre; después, los que han cambiado de título
+    previo: dict[int, dict] = {}
+    for flexible in (False, True):
+        for i, r in enumerate(recs):
+            if i in previo:
+                continue
+            p = _match_prev(r, [x for x in prev_por_fecha.get(r["fecha"], []) if x["id"] not in usados], flexible)
+            if p:
+                usados.add(p["id"])
+                previo[i] = p
+    for i, r in enumerate(recs):
+        p = previo.get(i)
         if p:
-            usados.add(p["id"])
             r["id"] = p["id"]
             r["primera_vez_visto"] = p.get("primera_vez_visto") or hoy_s
         else:
@@ -482,6 +507,7 @@ def conciliar(recs: list[dict], anteriores: list[dict], hoy: date, resultados: d
         ids.add(r["id"])
         r["ultima_vez_visto"] = hoy_s
     limite_hist = (hoy - timedelta(days=HISTORIA_DIAS)).isoformat()
+    from .cartel import mismo_festival
     arrastrados = []
     for p in anteriores:
         if p["id"] in usados or p["id"] in ids:
@@ -494,10 +520,13 @@ def conciliar(recs: list[dict], anteriores: list[dict], hoy: date, resultados: d
             arrastrados.append(p)  # ya pasó: se conserva como histórico del mes
             continue
         # absorbido por un registro actual (mismo día y sala, nombre equivalente): no es una cancelación
-        if any(r["fecha"] == p["fecha"] and (not r["sala"] or not p["sala"] or
-                                             any(misma_sala(x, y) for x in r["sala"].split(" / ")
-                                                 for y in p["sala"].split(" / ")))
-               and coinciden_flexible([p["artista"]], nombres_rec(r)) for r in recs):
+        if any(r["fecha"] == p["fecha"] and (
+                mismo_festival(p["artista"], r["artista"]) or  # el mismo festival, aunque una agenda no dé bien la sala
+                (not r["sala"] or not p["sala"] or any(misma_sala(x, y) for x in r["sala"].split(" / ")
+                                                       for y in p["sala"].split(" / ")))
+                and (coinciden_flexible([p["artista"]], nombres_rec(r)) or
+                     artistas_coinciden([_titulo_actual(p)], nombres_rec(r))))
+               for r in recs):
             continue
         srcs = [f["id"] for f in p["fuentes"] if f["id"] in fuentes]
         if _fuera_de_cobertura(p, srcs):

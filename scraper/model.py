@@ -19,6 +19,7 @@ class RawEvent:
     nacionalidad: str | None = None  # solo si la fuente la da
     nota: str | None = None        # aviso propio de la fuente (p. ej. año deducido)
     imagen: str | None = None      # imagen del evento que publica la fuente (cartel o foto)
+    tipo: str | None = None        # "festival" si la fuente lo dice (Songkick: /festivals/)
     fuente: str = ""               # id de la fuente (lo rellena el orquestador)
 
     def to_dict(self) -> dict:
