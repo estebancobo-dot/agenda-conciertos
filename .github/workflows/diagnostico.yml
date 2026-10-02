@@ -42,7 +42,7 @@ jobs:
       - if: startsWith(github.event.inputs.webs, 'candidatas')
         env:
           WEBS: ${{ github.event.inputs.webs }}
-        run: python tools/diagnostico_candidatas.py ${WEBS#candidatas}
+        run: python tools/diagnostico_candidatas.py $(echo "${WEBS#candidatas}" | tr -d ":")
       - if: startsWith(github.event.inputs.webs, 'probar:')
         env:
           WEBS: ${{ github.event.inputs.webs }}
