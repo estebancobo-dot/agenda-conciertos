@@ -725,7 +725,11 @@ def en_frio(b, datos):
             pg.click(f"[data-mdia='{f}']")
             pg.wait_for_timeout(700)  # baja hasta la lista del día
         else:
-            pg.wait_for_selector("#main .card")
+            # el día elegido al azar puede no tener ninguno de los géneros habituales: entonces se ven los ocultos
+            pg.wait_for_selector("#main .card, #main .empty")
+            if not pg.query_selector("#main .card") and pg.query_selector("#main [data-quitar]"):
+                pg.click("#main [data-quitar]")
+                pg.wait_for_selector("#main .card")
         t = esperar_miniaturas(pg)
         tiempos[vista].append(t)
         ajenas += [u for u in pedidas if not u.startswith(URL)]
