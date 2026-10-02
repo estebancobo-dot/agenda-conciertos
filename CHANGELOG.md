@@ -1,5 +1,19 @@
 # Versiones
 
+## 2.37.0 — 2026-10-02
+
+**Gestión de conciertos, fase 4: fuentes nuevas para los géneros con menos conciertos.**
+
+Antes, por grupo: synth y dark wave 25 conciertos, cantautores 26, reggae 14, músicas del mundo 32. Se buscaron agendas para ellos y se comprobó cada una desde GitHub (robots.txt y qué publica) antes de usarla:
+
+- **Agenda cultural del Ayuntamiento de Madrid** (datos abiertos, datos.madrid.es): lo que programan sus propios espacios (centros culturales de los 21 distritos, Conde Duque, CentroCentro, Matadero, bibliotecas…). Unos 145 conciertos en los próximos 100 días, con hora y precio (casi todos gratis), ninguno repetido con las demás fuentes. Solo las actividades de tipo Música y los conciertos de la programación destacada; sin audiciones de alumnos ni actos infantiles. El estilo, el que dice su título o su descripción (coral, jazz, zarzuela, boleros…), y solo si nombra un único género.
+- **GotiFiestas** (escena gótica, dark wave, EBM, post-punk), por su API pública: conciertos y festivales (no fiestas ni sesiones de DJ) con fecha, hora, sala, precio, cartel y sus géneros. De 17 conciertos, 13 ya los teníamos y ahora tienen su género concreto (EBM, Darkwave…), y 4 son nuevos.
+- **conciertos.club: reggae/ska** se lee también.
+- Probadas y descartadas (en la página de Fuentes, con el motivo): DotheReggae (403), Café Libertad 8 (devuelve una imagen), esMadrid y Festify Indie (fechas con JavaScript), agenda de la Comunidad de Madrid (404).
+- Alias de salas: Nazca Music Live = Sala Nazca, El Perro de la Parte de Atrás del Coche = El Perro Club, Fotomatón bar- sala de conciertos = Fotomatón Bar, Sala Mon Madrid Conciertos = Sala Mon Live.
+- En una agenda institucional, otra ficha (otra URL) es otro acto: dos coros distintos el mismo día ya no se unen por empezar igual.
+- Diagnóstico: `probar:ID` ejecuta el lector completo de una fuente y dice cómo encaja con la agenda actual (cuántos se unen, cuántos son nuevos, conflictos); `crudo:URL` y `candidatas`. Se lanza desde cualquier rama, para probar una fuente antes de llevarla a la lectura real.
+
 ## 2.36.0 — 2026-10-02
 
 **Gestión de conciertos, fase 3: conciertos con varios artistas (festivales, teloneros, ciclos).**

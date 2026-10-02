@@ -159,6 +159,12 @@ NO_USAR = {
     "JacksOnLive": "Bloquea el acceso automático.",
     "La Hora del Blues": "Bloquea el acceso automático.",
     "Foro Azkena, Zona-Zero": "Foros: solo consulta manual (ver README).",
+    # probadas el 2-10-2026 (fase 4, géneros con pocos conciertos)
+    "DotheReggae (agenda de reggae)": "Responde 403 (acceso prohibido) desde GitHub; el reggae llega por conciertos.club (reggae-ska).",
+    "Café Libertad 8 (cantautores)": "Su página de conciertos devuelve una imagen en vez de la agenda; sus conciertos llegan por conciertos.club.",
+    "esMadrid (agenda de música)": "La página no trae las fechas en el HTML (se cargan después con JavaScript).",
+    "Comunidad de Madrid (agenda de actividades)": "La dirección de la agenda responde 404.",
+    "Festify Indie": "La página llega vacía (los conciertos se cargan con JavaScript).",
 }
 
 
