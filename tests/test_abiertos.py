@@ -45,3 +45,19 @@ def test_datos_madrid_descripcion_con_varios_generos_no_da_estilo():
                     {"@type": "x/actividades/Musica", "title": "Trío Arbós", "dtstart": "2026-10-21 19:00:00.0",
                      "description": "Concierto de música de cámara."}]}
     assert [e.estilo for e in parse(d, date(2026, 10, 2), date(2027, 1, 30))] == [None, "Música clásica"]
+
+
+def test_dos_coros_distintos_el_mismo_dia_no_se_unen():
+    from scraper.merge import Item
+    from scraper.pipeline import preparar, unificar
+    from scraper.registry import por_id
+    src = por_id()["datos_madrid"]
+    d = {"@graph": [
+        {"@type": "x/actividades/Musica", "title": "Concierto. Coral Polifónica Nuestra Señora de la Merced",
+         "dtstart": "2026-10-24 20:30:00.0", "time": "20:30", "link": "https://madrid.es/a",
+         "event-location": "Parroquia Nuestra Señora de la Merced"},
+        {"@type": "x/actividades/Musica", "title": "Concierto. Coral Fundación Gredos San Diego",
+         "dtstart": "2026-10-24 16:45:00.0", "time": "16:45", "link": "https://madrid.es/b", "event-location": ""}]}
+    items, _ = preparar([Item(e, src) for e in parse(d, date(2026, 10, 2), date(2027, 1, 30))],
+                        date(2026, 10, 2), date(2027, 1, 30))
+    assert len(unificar(items)) == 2

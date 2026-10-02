@@ -163,6 +163,13 @@ def agrupar(items: list[Item]) -> list[Cluster]:
             if it.ev.hora and _con_sesiones(it.ev.artista) and any(
                     o.src.id == it.src.id and o.ev.hora and o.ev.hora != it.ev.hora for o in c.items):
                 continue
+            # en una agenda institucional (ayuntamientos), otra ficha (otra URL) es otro acto: dos coros distintos el
+            # mismo día ("Concierto. Coral Polifónica…" y "Concierto. Coral Fundación…") no se unen por empezar igual.
+            # Las agendas comerciales sí repiten un concierto con dos URLs (La Ganzúa, conciertos.club…)
+            if it.src.tipo == "institucional" and any(
+                    o.src.id == it.src.id and o.ev.url != it.ev.url and o.ev.url != o.src.url and it.ev.url != it.src.url
+                    for o in c.items):
+                continue
             if principal_coincide(it, c.nombres) or _mismo_festival(it, c):
                 destino = c
                 break
