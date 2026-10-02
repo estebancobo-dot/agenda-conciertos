@@ -5,6 +5,8 @@ como una secuencia de textos 'TÍTULO | FECHA | HORA' usan `secuencia()` con su 
 from __future__ import annotations
 
 import html as htmlmod
+import html as html_lib
+import json
 import re
 from datetime import date, timedelta
 from urllib.parse import urljoin
@@ -458,6 +460,74 @@ def cubierta_parse(html: str, page_url: str, today: date) -> list:
     return out
 
 
+# ------------------------------------------------------------------ salas con The Events Calendar (WordPress)
+# Muchas salas publican su agenda con este plugin, que tiene una API pública de eventos: fecha y hora, título,
+# enlace, precio, categorías e imagen, sin tener que entender el diseño de la página. Lo que la sala marca como
+# fiesta o sesión de DJ ("Clubbing") no es un concierto. "Matasuegras – Tributo Pop-Rock": el artista y, aparte,
+# lo que es (la etiqueta de estilo).
+TRIBE_API = "wp-json/tribe/events/v1/events"
+TRIBE_NO = re.compile(r"(?i)^(clubbing|club|fiesta|fiestas|dj|djs|sesi[oó]n(es)? dj|literatura|cine|teatro|humor|"
+                      r"monólogos?|talleres?|exposici[oó]n(es)?)$")
+_TRIBE_COLA = re.compile(r"\s+[–—-]\s+((?:tributo|versiones|homenaje|covers?)\b.*)$", re.I)
+
+
+def _tribe_precio(e: dict) -> str | None:
+    vals = []
+    for v in (e.get("cost_details") or {}).get("values") or []:
+        try:
+            vals.append(float(str(v).replace(",", ".")))
+        except ValueError:
+            pass
+    if not vals:
+        vals = [float(x.replace(",", ".")) for x in re.findall(r"\d+(?:[.,]\d+)?", str(e.get("cost") or ""))
+                if float(x.replace(",", ".")) < 500]
+    if not vals:
+        return "Gratis" if re.search(r"(?i)libre|gratis|gratuit", str(e.get("cost") or "")) else None
+    a, b = min(vals), max(vals)
+    f = lambda x: f"{x:g}".replace(".", ",")  # noqa: E731
+    return f"{f(a)} €" if a == b else f"{f(a)}-{f(b)} €"
+
+
+def tribe_parse(datos: dict, sala: str, ciudad: str, hoy: date, horizonte: date) -> list:
+    out = []
+    for e in (datos or {}).get("events") or []:
+        m = re.match(r"(\d{4})-(\d{2})-(\d{2})(?: (\d{2}):(\d{2}))?", str(e.get("start_date") or ""))
+        if not m:
+            continue
+        f = date(int(m.group(1)), int(m.group(2)), int(m.group(3)))
+        if not (hoy <= f <= horizonte):
+            continue
+        cats = [clean(html_lib.unescape(c.get("name") or "")) for c in e.get("categories") or [] if c.get("name")]
+        if cats and all(TRIBE_NO.match(c) for c in cats):
+            continue
+        titulo = clean(html_lib.unescape(re.sub(r"<[^>]+>", " ", str(e.get("title") or ""))))
+        if not titulo:
+            continue
+        estilos = [c for c in cats if not TRIBE_NO.match(c) and not re.match(r"(?i)^conciertos?$", c)]
+        mc = _TRIBE_COLA.search(titulo)
+        if mc:
+            titulo, estilos = titulo[: mc.start()], [mc.group(1)] + estilos
+        hora = f"{m.group(4)}:{m.group(5)}" if m.group(4) and not e.get("all_day") else None
+        img = (e.get("image") or {}).get("url") if isinstance(e.get("image"), dict) else None
+        out.append(make(f, titulo, str(e.get("url") or ""), sala=sala, ciudad=ciudad, hora=hora,
+                        precio=_tribe_precio(e), estilo=", ".join(dict.fromkeys(estilos)) or None, imagen=img))
+    return out
+
+
+def _tribe(base: str, sala: str, ciudad: str = "Madrid"):
+    def run(ctx: Ctx):
+        pagina = 1
+        while pagina <= 10:
+            url = (f"{base}{TRIBE_API}?per_page=50&page={pagina}&start_date={ctx.today.isoformat()}"
+                   f"&end_date={ctx.horizon.isoformat()}")
+            datos = json.loads(ctx.get(url))
+            yield from tribe_parse(datos, sala, ciudad, ctx.today, ctx.horizon)
+            if pagina >= int(datos.get("total_pages") or 1):
+                break
+            pagina += 1
+    return run
+
+
 # ------------------------------------------------------------------ registro de salas
 def _sec(url, sala, ciudad="Madrid", **kw):
     def run(ctx: Ctx):
@@ -493,4 +563,7 @@ PARSERS = {
     "independance": _sec("https://independanceclub.com/collections/conciertos", "Independance Club"),
     "salab": _sec("https://www.salabmadrid.com/", "Sala B"),
     "nuevacubierta": _one("https://lanuevacubierta.com/eventos/", cubierta_parse),
+    "cafelapalma": _tribe("https://cafelapalma.com/", "Café La Palma"),
+    "cadillac": _tribe("https://cadillacsolitario.com/", "Cadillac Solitario"),
+    "dimequemequieres": _tribe("https://conciertos.dimequemequieresbardecopas.com/", "Dime que me Quieres"),
 }

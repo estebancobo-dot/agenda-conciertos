@@ -483,7 +483,8 @@
    "alias": [
     "dime que me quieres",
     "sala dime que me quieres"
-   ]
+   ],
+   "web": "https://conciertos.dimequemequieresbardecopas.com/"
   },
   {
    "nombre": "Teatro Lope de Vega",
@@ -506,7 +507,8 @@
    "alias": [
     "sala vesta",
     "vesta"
-   ]
+   ],
+   "web": "https://salavesta.com/"
   },
   {
    "nombre": "Café La Palma",
@@ -514,7 +516,8 @@
    "alias": [
     "cafe la palma",
     "la palma"
-   ]
+   ],
+   "web": "https://cafelapalma.com/"
   },
   {
    "nombre": "Intruso Bar",
@@ -522,7 +525,8 @@
    "alias": [
     "intruso",
     "intruso bar"
-   ]
+   ],
+   "web": "https://www.intrusobar.com/"
   },
   {
    "nombre": "El Perro Club",
@@ -544,6 +548,118 @@
     "fotomaton bar sala de conciertos",
     "fotomaton"
    ]
+  },
+  {
+   "nombre": "Café El Despertar",
+   "municipio": "Madrid",
+   "alias": [
+    "cafe el despertar",
+    "el despertar cafe",
+    "el despertar",
+    "cafe en vivo el despertar",
+    "despertar"
+   ],
+   "web": "https://cafeeldespertar.com/"
+  },
+  {
+   "nombre": "Sala Uni",
+   "municipio": "Madrid",
+   "alias": [
+    "sala uni",
+    "sala uni madrid",
+    "uni madrid"
+   ]
+  },
+  {
+   "nombre": "Jazzville",
+   "municipio": "Madrid",
+   "alias": [
+    "jazzville",
+    "jazzville cafe",
+    "jazz ville",
+    "sala jazzville"
+   ]
+  },
+  {
+   "nombre": "Barracudas Rock Bar",
+   "municipio": "Madrid",
+   "alias": [
+    "barracudas rock bar",
+    "sala barracudas",
+    "barracudas",
+    "sala barracudas rock bar"
+   ]
+  },
+  {
+   "nombre": "Rincón del Arte Nuevo",
+   "municipio": "Madrid",
+   "alias": [
+    "rincon del arte nuevo",
+    "el rincon del arte nuevo",
+    "rincon arte nuevo",
+    "el rincon de arte nuevo"
+   ],
+   "web": "https://www.elrincondelartenuevo.com/"
+  },
+  {
+   "nombre": "Café Central Ateneo",
+   "municipio": "Madrid",
+   "alias": [
+    "cafe central ateneo",
+    "cafe central",
+    "cafe central madrid"
+   ],
+   "web": "https://cafecentralmadrid.com/"
+  },
+  {
+   "nombre": "Moe",
+   "municipio": "Madrid",
+   "alias": [
+    "moe",
+    "moe club",
+    "sala moe",
+    "moe madrid"
+   ],
+   "web": "https://www.moeclub.com/"
+  },
+  {
+   "nombre": "Thundercat",
+   "municipio": "Madrid",
+   "alias": [
+    "thundercat",
+    "thundercat club",
+    "sala thundercat"
+   ],
+   "web": "https://thundercatclub.com/"
+  },
+  {
+   "nombre": "Cadillac Solitario",
+   "municipio": "Madrid",
+   "alias": [
+    "cadillac solitario",
+    "sala cadillac solitario"
+   ],
+   "web": "https://cadillacsolitario.com/"
+  },
+  {
+   "nombre": "Hangar 48",
+   "municipio": "Madrid",
+   "alias": [
+    "hangar 48",
+    "sala hangar 48",
+    "hangar48",
+    "hangar48 club"
+   ],
+   "web": "https://www.hangar48.es/"
+  },
+  {
+   "nombre": "El Café de la Ópera",
+   "municipio": "Madrid",
+   "alias": [
+    "el cafe de la opera",
+    "cafe de la opera"
+   ],
+   "web": "https://www.elcafedelaopera.com/"
   }
  ],
  "distintas": [
