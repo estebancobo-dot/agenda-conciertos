@@ -23,6 +23,27 @@ URL = "https://datos.madrid.es/egob/catalogo/206974-0-agenda-eventos-culturales-
 TIPO_MUSICA = "/actividades/Musica"
 TIPO_DESTACADA = "/actividades/ProgramacionDestacadaAgendaCultura"
 MAX_DIAS = 3  # una "actividad" de más días seguidos es un ciclo, un curso o una exposición, no un concierto
+# lo que el propio título o descripción dice que es (la etiqueta que daría una agenda): sin esto, casi todos estos
+# conciertos (coros, bandas municipales, zarzuela…) quedarían "sin clasificar" y saldrían en los géneros habituales
+ESTILO_TEXTO = [
+    (re.compile(r"(?i)\b(coral|coro|polif[oó]nica|orquesta|sinf[oó]nic[oa]|filarm[oó]nica|cuarteto de cuerda|"
+                r"m[uú]sica cl[aá]sica|barroc[oa]|renacentista|m[uú]sica antigua|[oó]pera|l[ií]rica|recital de piano|"
+                r"piano y viol[ií]n|bandas? sonoras?|banda (?:de m[uú]sica|sinf[oó]nica|municipal)|"
+                r"m[uú]sica de c[aá]mara)\b"), "Música clásica"),
+    (re.compile(r"(?i)\bzarzuela\b"), "Zarzuela"),
+    (re.compile(r"(?i)\b(jazz|swing|big band|bebop)\b"), "Jazz"),
+    (re.compile(r"(?i)\b(flamenco|flamenca|cante jondo)\b"), "Flamenco"),
+    (re.compile(r"(?i)\b(copla|cupl[eé]|canci[oó]n espa[nñ]ola)\b"), "Copla"),
+    (re.compile(r"(?i)\b(boleros?|tangos?|salsa|cumbia|son cubano|m[uú]sica latinoamericana)\b"), "Música latina"),
+    (re.compile(r"(?i)\b(gospel|soul)\b"), "Soul"),
+    (re.compile(r"(?i)\b(blues)\b"), "Blues"),
+    (re.compile(r"(?i)\b(rock|pop rock)\b"), "Rock"),
+    (re.compile(r"(?i)\b(cantautora?|cantautores)\b"), "Cantautor"),
+    (re.compile(r"(?i)\b(folk|m[uú]sica tradicional|folcl[oó]rica)\b"), "Folk"),
+]
+# para público infantil o de alumnos: no son conciertos de artistas (se descartan)
+NO_ARTISTAS = re.compile(r"(?i)\b(audici[oó]n(?:es)? de (?:los )?alumnos|alumnos de|escuela de m[uú]sica|"
+                         r"cuentacuentos|para (?:beb[eé]s|ni[nñ]os)|infantil|caperucita)\b")
 
 
 def _fecha(s: str | None) -> date | None:
@@ -69,7 +90,15 @@ def parse(datos: dict | list, hoy: date, horizonte: date) -> list:
         if not titulo:
             continue
         descripcion = clean(re.sub(r"<[^>]+>", " ", html_lib.unescape(str(e.get("description") or ""))))
+        publico = json.dumps(e.get("audience") or "", ensure_ascii=False)
+        if NO_ARTISTAS.search(titulo) or NO_ARTISTAS.search(descripcion[:300]) or re.search(r"(?i)ni[nñ]os|familias", publico):
+            continue
         estilos = estilos_en_texto(descripcion, titulo) if descripcion else []
+        if not estilos:  # lo que dice el título o, si no, el principio de la descripción
+            for rx, est in ESTILO_TEXTO:
+                if rx.search(titulo) or rx.search(descripcion[:300]):
+                    estilos.append(est)
+                    break
         area = ((e.get("address") or {}).get("area") or {})
         lugar = clean(html_lib.unescape(str(e.get("event-location") or "")))
         url = str(e.get("link") or URL)
