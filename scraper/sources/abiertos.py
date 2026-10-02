@@ -94,11 +94,11 @@ def parse(datos: dict | list, hoy: date, horizonte: date) -> list:
         if NO_ARTISTAS.search(titulo) or NO_ARTISTAS.search(descripcion[:300]) or re.search(r"(?i)ni[nñ]os|familias", publico):
             continue
         estilos = estilos_en_texto(descripcion, titulo) if descripcion else []
-        if not estilos:  # lo que dice el título o, si no, el principio de la descripción
-            for rx, est in ESTILO_TEXTO:
-                if rx.search(titulo) or rx.search(descripcion[:300]):
-                    estilos.append(est)
-                    break
+        if not estilos:
+            # lo que dice el título; si no, la descripción, solo si nombra un único género ("de jazz a boleros" no)
+            del_titulo = [est for rx, est in ESTILO_TEXTO if rx.search(titulo)]
+            de_desc = {est for rx, est in ESTILO_TEXTO if rx.search(descripcion[:300])}
+            estilos = del_titulo[:1] or (list(de_desc) if len(de_desc) == 1 else [])
         area = ((e.get("address") or {}).get("area") or {})
         lugar = clean(html_lib.unescape(str(e.get("event-location") or "")))
         url = str(e.get("link") or URL)

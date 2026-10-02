@@ -37,3 +37,11 @@ def test_datos_madrid_estilo_del_texto_y_sin_actos_infantiles():
     assert [(e.artista, e.estilo) for e in evs] == [("Concierto. Coral Polifónica", "Música clásica"),
                                                    ("Antonio Serrano y Kaele Jiménez Quartet. Jazz Caló for Coltrane", "Jazz"),
                                                    ("Carlos Escobedo", None)]  # sin estilo si nada lo dice
+
+
+def test_datos_madrid_descripcion_con_varios_generos_no_da_estilo():
+    d = {"@graph": [{"@type": "x/actividades/Musica", "title": "Canciones para recordar", "dtstart": "2026-10-21 19:00:00.0",
+                     "description": "Un recorrido del jazz al bolero y la copla."},
+                    {"@type": "x/actividades/Musica", "title": "Trío Arbós", "dtstart": "2026-10-21 19:00:00.0",
+                     "description": "Concierto de música de cámara."}]}
+    assert [e.estilo for e in parse(d, date(2026, 10, 2), date(2027, 1, 30))] == [None, "Música clásica"]

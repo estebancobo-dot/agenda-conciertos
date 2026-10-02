@@ -46,3 +46,24 @@ for sid in sys.argv[1:]:
     for i in ok[:40]:
         e = i.ev
         print(f"   - {e.fecha} {e.hora or '--:--'} · {e.artista[:60]} · {e.sala[:40]} · {e.precio or ''} · {e.estilo or ''}")
+
+    # cómo encaja con la agenda actual (última lectura de todas las fuentes): con cuántos conciertos se une,
+    # cuántos son nuevos y si aparecen conflictos (sala u hora) por nombrar distinto la misma sala
+    import json  # noqa: E402
+
+    from scraper.model import RawEvent  # noqa: E402
+    from scraper.pipeline import unificar  # noqa: E402
+    cache = json.loads((Path(__file__).resolve().parent.parent / "data" / "fuentes_cache.json").read_text())
+    otros = [Item(RawEvent.from_dict(d), S[k]) for k, c in cache.items() if k in S and k != sid for d in c["eventos"]]
+    for it in otros:
+        it.ev.fuente = it.src.id
+    otros, _ = preparar(otros, hoy, horizonte)
+    recs = [r for r in unificar(otros + ok) if any(x["id"] == sid for x in r["fuentes"])]
+    juntos = [r for r in recs if len({x["id"] for x in r["fuentes"]}) > 1]
+    confl = [r for r in recs if r["conflictos"]]
+    print(f"  en la agenda: {len(recs)} conciertos; {len(juntos)} unidos a los de otras fuentes, "
+          f"{len(recs) - len(juntos)} nuevos; {len(confl)} con conflicto")
+    for r in juntos[:15]:
+        print(f"   = {r['fecha']} {r['artista'][:50]} · {r['sala'][:40]} · {[x['id'] for x in r['fuentes']]}")
+    for r in confl[:15]:
+        print(f"   ! {r['fecha']} {r['artista'][:50]} · {r['conflictos'][:1]}")
