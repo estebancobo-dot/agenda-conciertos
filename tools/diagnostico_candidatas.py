@@ -55,8 +55,37 @@ AMERICANA = [
     ("Taquilla (folk)", "https://www.taquilla.com/conciertos/folk"),
     ("El Corte Inglés entradas (folk Madrid)", "https://www.elcorteingles.es/entradas/conciertos/madrid/folk/"),
 ]
+# salas con muchos conciertos cuya web no leíamos (página de Fuentes): su web, su agenda y, si es un WordPress con
+# The Events Calendar, su API de eventos (/wp-json/tribe/events/v1/events). Candidatas del 3-10-2026
+TRIBE = "wp-json/tribe/events/v1/events?per_page=50"
+SALAS = [
+    ("Intruso Bar", "https://www.intrusobar.com/"),
+    ("Intruso Bar (API)", "https://www.intrusobar.com/" + TRIBE),
+    ("Moe Club", "https://www.moeclub.com/"),
+    ("Moe Club (API)", "https://www.moeclub.com/" + TRIBE),
+    ("Rincón del Arte Nuevo", "https://www.elrincondelartenuevo.com/"),
+    ("Café El Despertar", "https://cafeeldespertar.com/"),
+    ("Café El Despertar (API)", "https://cafeeldespertar.com/" + TRIBE),
+    ("Café Central (programación)", "https://cafecentralmadrid.com/programacion/"),
+    ("Café Central (API)", "https://cafecentralmadrid.com/" + TRIBE),
+    ("Thundercat (programación)", "https://thundercatclub.com/programacion-conciertos/"),
+    ("Thundercat (API)", "https://thundercatclub.com/" + TRIBE),
+    ("Café La Palma (agenda)", "https://cafelapalma.com/es/agenda-de-conciertos/"),
+    ("Café La Palma (API)", "https://cafelapalma.com/" + TRIBE),
+    ("Cadillac Solitario (eventos)", "https://cadillacsolitario.com/eventos/"),
+    ("Cadillac Solitario (API)", "https://cadillacsolitario.com/" + TRIBE),
+    ("Sala Vesta", "https://salavesta.com/"),
+    ("Sala Vesta (API)", "https://salavesta.com/" + TRIBE),
+    ("Hangar 48", "https://www.hangar48.es/"),
+    ("Hangar 48 (API)", "https://www.hangar48.es/" + TRIBE),
+    ("Dime que me Quieres", "https://conciertos.dimequemequieresbardecopas.com/"),
+    ("Dime que me Quieres (API)", "https://conciertos.dimequemequieresbardecopas.com/" + TRIBE),
+    ("El Café de la Ópera", "https://www.elcafedelaopera.com/"),
+]
 if len(sys.argv) > 1 and sys.argv[1] == "americana":
     CANDIDATAS = AMERICANA
+if len(sys.argv) > 1 and sys.argv[1] == "salas":
+    CANDIDATAS = SALAS
 FECHA = re.compile(r"\b(\d{1,2})[/.-](\d{1,2})(?:[/.-](\d{2,4}))?\b|\b\d{1,2} de (?:enero|febrero|marzo|abril|mayo|junio|"
                    r"julio|agosto|septiembre|octubre|noviembre|diciembre)\b", re.I)
 f = Fetcher()
@@ -72,6 +101,15 @@ if len(sys.argv) > 2 and sys.argv[1] == "--crudo":
 
 
 def resumen_json(datos) -> None:
+    if isinstance(datos, dict) and isinstance(datos.get("events"), list):  # The Events Calendar (WordPress)
+        evs = datos["events"]
+        print(f"  The Events Calendar: {len(evs)} eventos (total {datos.get('total')}, páginas {datos.get('total_pages')})")
+        for e in evs[:15]:
+            v = e.get("venue") or {}
+            cats = [c.get("name") for c in e.get("categories") or []]
+            print(f"   - {e.get('start_date')} · {str(e.get('title'))[:70]} · {v.get('venue') if isinstance(v, dict) else v} · "
+                  f"{cats} · {e.get('cost') or ''} · {str(e.get('url'))[:80]}")
+        return
     lista = datos.get("@graph") if isinstance(datos, dict) else datos
     if not isinstance(lista, list):
         print("  JSON sin lista de eventos; claves:", list(datos)[:20] if isinstance(datos, dict) else type(datos))
