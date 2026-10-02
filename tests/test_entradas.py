@@ -146,3 +146,12 @@ def test_errores_vistos_en_la_primera_pasada():
     aplicar_entradas(rs, cache)
     assert not any(r.get("entradas") for r in rs)
     assert "gira" not in rs[3]  # el logo de la sala no es un cartel
+
+
+def test_cartel_del_jsonld():
+    html = """<script type="application/ld+json">{"@type":"MusicEvent","name":"Noche Punk: Evaristo &amp; amigos",
+    "startDate":"2026-10-03T20:00","performer":[{"@type":"MusicGroup","name":"Evaristo"},{"name":"Boikot"},
+    {"name":"boikot"},"Reincidentes"]}</script>"""
+    r = leer_pagina(html, "https://x.es/e", "2026-10-03")
+    assert r["cartel"] == ["Evaristo", "Boikot", "Reincidentes"]
+    assert r["evento_nombre"] == "Noche Punk: Evaristo & amigos" and r["evento_tipo"] == "MusicEvent"

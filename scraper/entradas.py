@@ -11,6 +11,7 @@ Nada se deduce: si la página no lo dice, no hay dato. El JSON-LD solo cuenta si
 """
 from __future__ import annotations
 
+import html as html_lib
 import json
 import re
 import time
@@ -207,6 +208,18 @@ def enlaces_entradas(soup: BeautifulSoup, url: str) -> list[dict]:
     return sorted(out, key=lambda e: not e["compra"])
 
 
+def _artistas(perf) -> list[str]:
+    """Nombres de los performer del JSON-LD (una persona o grupo, o una lista), sin repetir."""
+    perf = perf if isinstance(perf, list) else [perf] if perf else []
+    out: list[str] = []
+    for p in perf:
+        n = p.get("name") if isinstance(p, dict) else p if isinstance(p, str) else None
+        n = re.sub(r"\s+", " ", html_lib.unescape(str(n or ""))).strip()
+        if n and n.lower() not in {x.lower() for x in out} and len(n) <= 120:
+            out.append(n)
+    return out
+
+
 def leer_pagina(html: str, url: str, fecha: str | None = None) -> dict:
     """Lo que dice una página de concierto. `fecha` (AAAA-MM-DD): solo vale el JSON-LD de ese día."""
     soup = BeautifulSoup(html, "html.parser")
@@ -226,6 +239,11 @@ def leer_pagina(html: str, url: str, fecha: str | None = None) -> dict:
         ou = _offer_url(ev)
         if ou and dominio(ou) != dominio(url) and ticketera(ou) and not _NO.search(ou):
             out["entradas_jsonld"] = limpiar(ou)
+        # cartel: los artistas (performer) en el orden de la página, y el nombre y tipo del evento
+        out["cartel"] = _artistas(ev.get("performer"))
+        out["evento_nombre"] = html_lib.unescape(str(ev.get("name") or "")).strip()[:200] or None
+        t = ev.get("@type")
+        out["evento_tipo"] = ",".join(t) if isinstance(t, list) else t
     og = soup.find("meta", attrs={"property": "og:image"}) or soup.find("meta", attrs={"name": "og:image"})
     if og and og.get("content"):
         out["og_imagen"] = urljoin(url, og["content"].strip())
