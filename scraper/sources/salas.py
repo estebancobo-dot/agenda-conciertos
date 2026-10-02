@@ -460,6 +460,44 @@ def cubierta_parse(html: str, page_url: str, today: date) -> list:
     return out
 
 
+# ------------------------------------------------------------------ Café Central (jazz)
+# Cada concierto es un bloque con su día de inicio y de fin en atributos (data-event-date, data-end-date: las
+# residencias de varias noches seguidas), el título, la hora ("8PM & 10PM": dos pases, se toma el primero) y el
+# espacio (Café Central Ateneo o el auditorio de La Cátedra).
+def _hora_pm(t: str) -> str | None:
+    m = re.search(r"(?i)\b(\d{1,2})(?::(\d{2}))?\s*(am|pm)\b", t or "")
+    if m:
+        h = int(m.group(1)) % 12 + (12 if m.group(3).lower() == "pm" else 0)
+        return f"{h:02d}:{m.group(2) or '00'}"
+    return parse_hora(t)
+
+
+def cafecentral_parse(html: str, page_url: str, today: date, horizonte: date | None = None) -> list:
+    out = []
+    horizonte = horizonte or today + timedelta(days=150)
+    for it in soup_of(html).select(".event-item[data-event-date]"):
+        try:
+            d1 = date.fromisoformat(it["data-event-date"])
+            d2 = date.fromisoformat(it.get("data-end-date") or it["data-event-date"])
+        except ValueError:
+            continue
+        h2 = it.find("h2")
+        a = it.find("a", href=True)
+        if not h2 or not text(h2):
+            continue
+        datos = [text(sp) for sp in it.select("span")]
+        hora = next((_hora_pm(x) for x in datos if _hora_pm(x)), None)
+        sala = "La Cátedra" if any(re.search(r"(?i)c[aá]tedra", x) for x in datos) else "Café Central Ateneo"
+        img = it.find("img")
+        for i in range(min((d2 - d1).days, 6) + 1):  # residencia: una por noche (como mucho una semana)
+            f = d1 + timedelta(days=i)
+            if today <= f <= horizonte:
+                out.append(make(f, text(h2), urljoin(page_url, a["href"]) if a else page_url, split=False,
+                                sala=sala, ciudad="Madrid", hora=hora, estilo="Jazz",
+                                imagen=urljoin(page_url, img["src"]) if img and img.get("src") else None))
+    return out
+
+
 # ------------------------------------------------------------------ salas con The Events Calendar (WordPress)
 # Muchas salas publican su agenda con este plugin, que tiene una API pública de eventos: fecha y hora, título,
 # enlace, precio, categorías e imagen, sin tener que entender el diseño de la página. Lo que la sala marca como
@@ -567,6 +605,8 @@ PARSERS = {
     "independance": _sec("https://independanceclub.com/collections/conciertos", "Independance Club"),
     "salab": _sec("https://www.salabmadrid.com/", "Sala B"),
     "nuevacubierta": _one("https://lanuevacubierta.com/eventos/", cubierta_parse),
+    "cafecentral": lambda ctx: cafecentral_parse(ctx.get("https://cafecentralmadrid.com/programacion/"),
+                                                 "https://cafecentralmadrid.com/programacion/", ctx.today, ctx.horizon),
     "cafelapalma": _tribe("https://cafelapalma.com/", "Café La Palma", solo=r"conciertos?$"),
     "cadillac": _tribe("https://cadillacsolitario.com/", "Cadillac Solitario"),
     "dimequemequieres": _tribe("https://conciertos.dimequemequieresbardecopas.com/", "Dime que me Quieres"),

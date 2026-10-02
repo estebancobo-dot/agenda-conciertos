@@ -118,6 +118,9 @@ FUENTES: list[Source] = [
     S("salab", "Sala B (web oficial)", "https://www.salabmadrid.com/", "sala", 1, "alta", "salab", salas.PARSERS["salab"]),
     S("nuevacubierta", "La Nueva Cubierta, Leganés (web oficial)", "https://lanuevacubierta.com/eventos/", "sala", 1,
       "alta", "nuevacubierta", salas.PARSERS["nuevacubierta"], municipio_defecto="Leganés"),
+    S("cafecentral", "Café Central (web oficial)", "https://cafecentralmadrid.com/programacion/", "sala", 1, "alta",
+      "cafecentral", salas.PARSERS["cafecentral"], municipio_defecto="Madrid",
+      notas="Café Central Ateneo y el auditorio de La Cátedra; las residencias de varias noches, una por noche."),
     # salas que publican su agenda con The Events Calendar (API de WordPress; comprobado el 3-10-2026)
     S("cafelapalma", "Café La Palma (web oficial)", "https://cafelapalma.com/es/agenda-de-conciertos/", "sala", 1, "alta",
       "cafelapalma", salas.PARSERS["cafelapalma"], municipio_defecto="Madrid",

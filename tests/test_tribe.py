@@ -40,3 +40,20 @@ def test_solo_conciertos_marcados():
                     ev("CELEBRA TU EVENTO EN CAFÉ LA PALMA", "2026-12-31", ["Actividades", "Carrusel"]),
                     ev("CARO TAXI", "2026-10-09 22:00:00", ["Concierto"])]}
     assert [r.artista for r in tribe_parse(d, "Café La Palma", "Madrid", HOY, HOR, r"conciertos?$")] == ["CARO TAXI"]
+
+
+def test_cafe_central():
+    from scraper.sources.salas import cafecentral_parse
+    html = """<div class="event-item hidden" data-event-date=2026-10-02 data-end-date=2026-10-03 data-venue-id=x>
+      <a href=https://cafecentralmadrid.com/events/tazelaar/><img src=/uploads/events/t.webp></a>
+      <a href=https://cafecentralmadrid.com/events/tazelaar/><h2>TAZELAAR &amp; ARTVED QUARTET</h2></a>
+      <div><span>viernes 2-sábado 3 oct.</span></div><div><span>8PM &amp; 10PM</span></div><div><span>Café Central Ateneo</span></div></div>
+      <div class="event-item" data-event-date=2026-09-30 data-end-date=2026-10-01><h2>PASADO</h2><span>9PM</span></div>
+      <div class="event-item" data-event-date=2026-10-20 data-end-date=2026-10-20><h2>X</h2><span>7:30 PM</span>
+      <span>La Cátedra (Auditorio)</span></div>"""
+    out = cafecentral_parse(html, "https://cafecentralmadrid.com/programacion/", HOY)
+    assert [(r.fecha.isoformat(), r.artista, r.hora, r.sala) for r in out] == [
+        ("2026-10-02", "TAZELAAR & ARTVED QUARTET", "20:00", "Café Central Ateneo"),
+        ("2026-10-03", "TAZELAAR & ARTVED QUARTET", "20:00", "Café Central Ateneo"),
+        ("2026-10-20", "X", "19:30", "La Cátedra")]
+    assert out[0].imagen == "https://cafecentralmadrid.com/uploads/events/t.webp"
