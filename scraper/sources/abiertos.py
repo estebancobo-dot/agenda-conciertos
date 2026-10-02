@@ -129,6 +129,28 @@ GOTI_TIPOS = {"concierto", "festival"}
 _GOTI_COLA = re.compile(r"\s*_[^_]*(?:_[^_]*)*$|\s+en concierto$", re.I)
 
 
+def _goti_titulo(titulo: str, sala: str) -> str:
+    """Sin lo que no es el nombre: "Entradas IST IST en MOBY DICK, MADRID 2026" → "IST IST", "GREY GALLOWS – Cadavra
+    Club – Madrid" → "GREY GALLOWS", "Suicide Commando “40th Anniversary Tour” // Madrid" → "Suicide Commando"."""
+    from ..normalize import norm
+    t = _GOTI_COLA.sub("", titulo)
+    t = re.sub(r"(?i)^entradas\s+(?:para\s+)?", "", t)
+    t = re.split(r"\s+//\s+", t)[0]
+    t = re.sub(r"\s*[“\"«][^”\"»]*\b(?:tour|gira)\b[^”\"»]*[”\"»]", "", t, flags=re.I)
+    ns = norm(sala)
+
+    def es_lugar(p: str) -> bool:
+        n = norm(p)
+        return n in ("madrid", "") or bool(re.fullmatch(r"madrid \d{4}", n)) or bool(ns and (n in ns or ns in n))
+
+    t = " – ".join(p for p in re.split(r"\s+[–—]\s+", t) if not es_lugar(p)) or t
+    # "… en MOBY DICK, MADRID 2026": lo que va tras " en " nombra la sala
+    m = re.search(r"\s+en\s+(.+)$", t, re.I)
+    if m and ns and any(w in ns.split() for w in norm(m.group(1)).replace(",", " ").split() if len(w) > 3):
+        t = t[: m.start()]
+    return clean(t)
+
+
 def _meta(e: dict, k: str) -> str:
     v = (e.get("meta") or {}).get(k)
     v = v[0] if isinstance(v, list) and v else v
@@ -149,12 +171,13 @@ def gotifiestas_parse(datos: list, hoy: date, horizonte: date) -> list:
         m = re.search(r"T(\d{2}):(\d{2})", ini)
         hora = f"{m.group(1)}:{m.group(2)}" if m and m.group(0) != "T00:00" else None
         titulo = _meta(e, "titulo_evento") or clean(html_lib.unescape(str((e.get("title") or {}).get("rendered") or "")))
-        titulo = clean(_GOTI_COLA.sub("", titulo))
+        sala = _meta(e, "_gf_event_venue") or _meta(e, "ubicacion")
+        titulo = _goti_titulo(titulo, sala)
         if not titulo:
             continue
         generos = [clean(t.get("name")) for t in cl.get("tags") or [] if clean(t.get("name")) and t.get("name") != "Varios"]
         precio = _meta(e, "_gf_event_ticket_text")
-        r = make(f, titulo, str(e.get("link") or ""), sala=_meta(e, "_gf_event_venue") or _meta(e, "ubicacion"),
+        r = make(f, titulo, str(e.get("link") or ""), sala=sala,
                  hora=hora, precio=precio if re.search(r"\d", precio) else None, estilo=", ".join(generos) or None,
                  imagen=_meta(e, "imagen_evento") or None)
         if tipo == "festival":

@@ -28,7 +28,9 @@
     "sala mon live",
     "mon madrid",
     "sala mon madrid",
-    "mon live madrid"
+    "mon live madrid",
+    "sala mon madrid conciertos",
+    "mon madrid conciertos"
    ],
    "web": "https://www.monmadrid.es/"
   },
@@ -109,7 +111,9 @@
     "nazca",
     "sala nazca",
     "nazca live",
-    "sala nazca live"
+    "sala nazca live",
+    "nazca music live",
+    "sala nazca music live"
    ],
    "web": "https://www.salanazcaconciertos.com/"
   },
@@ -515,6 +519,27 @@
    "alias": [
     "intruso",
     "intruso bar"
+   ]
+  },
+  {
+   "nombre": "El Perro Club",
+   "municipio": "Madrid",
+   "alias": [
+    "el perro de la parte de atras del coche",
+    "el perro de la parte de atrás del coche",
+    "sala el perro",
+    "el perro"
+   ]
+  },
+  {
+   "nombre": "Fotomatón Bar",
+   "municipio": "Madrid",
+   "alias": [
+    "fotomaton bar",
+    "fotomatón bar- sala de conciertos",
+    "fotomaton bar- sala de conciertos",
+    "fotomaton bar sala de conciertos",
+    "fotomaton"
    ]
   }
  ],

@@ -75,3 +75,13 @@ def test_gotifiestas():
     a = evs[0]
     assert (a.hora, a.precio, a.sala, a.estilo, a.nacionalidad) == ("20:30", "20,69 €", "Hangar 48", "EBM, Post-Punk", "CH")
     assert evs[1].precio is None and evs[2].tipo == "festival" and evs[2].hora is None
+
+
+def test_gotifiestas_titulos():
+    from scraper.sources.abiertos import _goti_titulo
+    assert _goti_titulo("Entradas IST IST en MOBY DICK, MADRID 2026", "Moby Dick Club") == "IST IST"
+    assert _goti_titulo("GREY GALLOWS – Cadavra Club – Madrid", "Cadavra") == "GREY GALLOWS"
+    assert _goti_titulo("Suicide Commando “40th Anniversary Tour” // Madrid", "Nazca Music Live") == "Suicide Commando"
+    assert _goti_titulo("Diorama – Bragolin – Carrellee // Madrid", "Nazca Music Live") == "Diorama – Bragolin – Carrellee"
+    assert _goti_titulo("Chameleons “Arctic Tour 2026”", "Sala Mon Madrid Conciertos") == "Chameleons"
+    assert _goti_titulo("Las Novias", "Sala El Sol") == "Las Novias"
