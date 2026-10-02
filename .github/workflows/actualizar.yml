@@ -121,7 +121,7 @@ jobs:
       - name: Preparar web
         run: |
           # la web con el código más reciente de main (esta ejecución pudo empezar antes de un cambio de la web)
-          git fetch -q --depth=1 origin main && git checkout FETCH_HEAD -- site CHANGELOG.md tools/web_datos.py
+          git fetch -q --depth=1 origin main && git checkout FETCH_HEAD -- site CHANGELOG.md tools/web_datos.py tools/calendarios.py
           mkdir -p _site/data
           cp site/index.html site/sw.js _site/
           cp CHANGELOG.md _site/

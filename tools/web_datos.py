@@ -52,6 +52,9 @@ def ligero(r: dict) -> dict:
         out["estilo_fuente"] = [{"estilo": e} for e in etiquetas]
     if r.get("agotado"):
         out["agotado"] = True
+    recientes = [c for c in r.get("cambios") or [] if c.get("dia", "") >= RECIENTE]
+    if recientes:  # la tarjeta avisa de lo que ha cambiado esta semana ("Nueva hora", "Cambia de fecha")
+        out["cambio"] = recientes[-1]["campo"]
     if r.get("estado_evento"):
         out["evento"] = r["estado_evento"]["tipo"]  # "cancelado" | "aplazado": se ve en la tarjeta
     im = r.get("imagen") or {}
@@ -79,8 +82,16 @@ def cargar_miniaturas(recs: list[dict], carpeta: Path) -> None:
             GRANDES[g] = f"miniaturas/{nombre(g, True)}"
 
 
+RECIENTE = ""  # cambios desde este día (7 días antes de la fecha de los datos) se avisan en la tarjeta
+DIAS_RECIENTE = 7
+
+
 def preparar(concerts: dict, destino: Path) -> dict:
     import copy
+    from datetime import date, timedelta
+    global RECIENTE
+    if concerts.get("hoy"):
+        RECIENTE = (date.fromisoformat(concerts["hoy"]) - timedelta(days=DIAS_RECIENTE)).isoformat()
     genericas_ = genericas(concerts.get("conciertos", []))
     recs = []
     for r in concerts.get("conciertos", []):
@@ -119,6 +130,13 @@ def main() -> int:
         for ruta in set(MINIATURAS.values()) | set(GRANDES.values()):
             shutil.copy(carpeta / ruta.split("/")[1], sitio / ruta)
     print(preparar(concerts, destino), "miniaturas propias:", len(set(MINIATURAS.values())))
+    # calendarios suscribibles y fichas de sala (tools/calendarios.py): si fallan, la web se publica igual
+    try:
+        from calendarios import generar, nombres_grupo_web
+        alias = json.loads((RAIZ / "data" / "salas_alias.json").read_text(encoding="utf-8")).get("salas", [])
+        print(generar(concerts, sitio, nombres_grupo_web(), alias))
+    except Exception as e:  # noqa: BLE001
+        print("calendarios: error", type(e).__name__, e)
     return 0
 
 

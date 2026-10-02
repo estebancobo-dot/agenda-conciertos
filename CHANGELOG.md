@@ -1,5 +1,16 @@
 # Versiones
 
+## 2.41.0 — 2026-10-03
+
+**Gestión de conciertos, fase 7: historial de cambios, calendarios suscribibles y páginas de sala.**
+
+- **Historial de cambios de cada concierto**: en cada lectura se compara cada concierto con la anterior y se apunta, con el día en que se vio, si cambia la **hora**, la **fecha**, el **precio** o la sala, si pasa a **cancelado o aplazado** o a **entradas agotadas** (con la web que lo dice), si **aparecen artistas en el cartel**, si **deja de anunciarse** o si **vuelve**. Sale en la ficha ("Historial de cambios", con el día en que apareció en la agenda) y, durante una semana, como aviso en la tarjeta ("hora cambiada", "fecha cambiada"…). Para que no haya ruido: un dato que aparece (una hora que no estaba) no es un cambio; una hora o un precio que pasa a salir de otra web (la página de entradas en vez de la agenda) tampoco; y un cambio que se deshace en 3 días se borra. Medido sobre los datos reales de los últimos 4 días: 1-2 cambios de hora y 3 cancelaciones al día.
+- **Cambios de fecha**: si un concierto deja de anunciarse en su día y en las mismas webs aparece otro día en la misma sala con el mismo artista, es el mismo concierto con fecha nueva: conserva su enlace (y quien lo tuviera guardado no lo pierde) y su historial dice "Fecha: antes → ahora", en vez de salir uno "¿cancelado?" y otro nuevo. Solo si la pareja es única (un artista con dos fechas en la sala no se toca).
+- **Calendarios suscribibles** (Google Calendar, Apple Calendar, Outlook): uno por **sala** y uno por **género** (con los conciertos donde toca en el cartel un artista de ese género). Se actualizan solos cada pocas horas: conciertos nuevos, cambios de hora o fecha (mismo evento, se corrige) y cancelados (marcados). Sin hora anunciada, el concierto ocupa el día entero. En el menú, **Calendarios**.
+- **Páginas de sala**: su programación completa (sin filtros), cómo llegar, su web, su calendario para suscribirse y de dónde salen sus conciertos (si leemos su web oficial o solo agendas generales). Se llega desde la ficha de cada concierto (el nombre de la sala es un enlace), desde la búsqueda (las salas que coinciden salen arriba) y desde **Salas**, en el menú: las ~200 salas con conciertos, con buscador por sala o municipio.
+- Validación en la web publicada: lista de salas, búsqueda, página de una sala con su programación y Volver, suscripción y .ics válido con sus conciertos, calendarios por género, e historial en la ficha. Accesibilidad (axe) sin fallos en las páginas nuevas, en claro y oscuro.
+- Tests del historial (qué se apunta y qué no, cambios de fecha) y de los calendarios.
+
 ## 2.40.0 — 2026-10-03
 
 **Gestión de conciertos, fase 6: tolerancia a fallos.**

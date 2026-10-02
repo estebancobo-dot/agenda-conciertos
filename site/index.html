@@ -169,6 +169,24 @@ input[type=search]::-webkit-search-cancel-button{display:none}
 .st{font-size:.72rem;font-weight:700;border-radius:999px;padding:1px 8px;border:1px solid currentColor}
 .st-conf{color:var(--bad)} .st-canc{color:var(--warn)}
 .st-agot{color:var(--warn)}
+.st-camb{color:var(--info)}
+ol.hist{list-style:none;margin:6px 0 4px;padding:0 0 0 14px;border-left:2px solid var(--line)}
+ol.hist li{position:relative;display:flex;gap:10px;padding:5px 0;font-size:.9rem}
+ol.hist li::before{content:"";position:absolute;left:-20px;top:11px;width:10px;height:10px;border-radius:50%;background:var(--panel);border:2px solid var(--muted)}
+ol.hist li:first-child::before{border-color:var(--info);background:var(--info)}
+ol.hist time{flex:0 0 66px;white-space:nowrap;color:var(--muted);font-variant-numeric:tabular-nums}
+ol.hist s{color:var(--muted)}
+.sala-h h2{margin:2px 0}
+.srow{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:9px 12px;margin:5px 0;background:var(--panel);border:1px solid var(--line);border-radius:12px;text-decoration:none;color:var(--ink)}
+.srow small{display:block;color:var(--muted);font-size:.8rem;margin-top:2px}
+.srow .lbtn{min-height:38px;flex:0 0 auto}
+.gdot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:8px}
+.sbox{display:block;margin:10px 0}
+.sbox input{width:100%;height:44px;border:1px solid var(--line);border-radius:12px;padding:0 12px;background:var(--panel);color:var(--ink);font-size:1rem}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.susc{display:grid;gap:8px}
+.salasb{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.salasb small{color:var(--muted);font-weight:500}
 /* ficha: foto del artista ↔ cartel de la gira, deslizando (una sola cabecera) */
 .carr{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:8px;scrollbar-width:none;border-radius:16px}
 .carr::-webkit-scrollbar{display:none}
@@ -280,7 +298,6 @@ details.more ul{padding-left:20px;margin:8px 0}
 .grp .inc .est.on{background:var(--ink);color:var(--bg);border-color:var(--ink);font-weight:700}
 .hint{color:var(--muted);font-size:.82rem}
 .empty{color:var(--muted);text-align:center;padding:30px 0}
-.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 .viejo{color:var(--c-trib);font-weight:600}
 .skel{background:linear-gradient(90deg,var(--panel2) 25%,var(--panel) 50%,var(--panel2) 75%);background-size:200% 100%;animation:sk 1.2s infinite linear;border-radius:10px;margin:10px 0}
 .skel-bar{height:40px}.skel-card{height:72px}.skel-hero{height:200px}.skel-l{height:28px;width:70%}.skel-m{height:48px}
@@ -378,7 +395,7 @@ const GN = Object.fromEntries(GRUPOS.map(g=>[g.id,g.nombre]));
 // por defecto, los géneros de siempre; el resto ("Más géneros") se añade desde los filtros
 const DEF_GRUPOS = GRUPOS.filter(g=>!g.mas).map(g=>g.id);
 const VISTAS = ["Mes","Semana","Día"];
-const INFO = ["Estilos","Fuentes","Informe","Versiones"];
+const INFO = ["Salas","Calendarios","Estilos","Fuentes","Informe","Versiones"];
 const TABS = [...VISTAS,...INFO];
 const ORIGENES = [["todos","Todos"],["es","🇪🇸 España"],["esc","🇪🇸 España (solo confirmados)"],["lat","🌎 Latinoamérica"],["ext","🌍 Resto del mundo"],["nc","Origen sin confirmar"]];
 // Latinoamérica tiene grupo propio: un nombre en español no distingue España de Latinoamérica, y así se ve aparte
@@ -397,7 +414,7 @@ const store = {
   get(k,d){try{const v=localStorage.getItem("agenda:"+k);return v===null?d:JSON.parse(v)}catch(e){return d}},
   set(k,v){try{localStorage.setItem("agenda:"+k,JSON.stringify(v))}catch(e){}}
 };
-let DATA=[], BYID={}, INFORME=null, TAXO=null, SALAS={}, MAP=null, HOY=null, DETALLES=null;
+let DATA=[], BYID={}, INFORME=null, TAXO=null, SALAS={}, MAP=null, HOY=null, DETALLES=null, SALASJ=null;
 // selección guardada con la lista de grupos anterior: se conserva y se añaden los grupos nuevos
 // 2.22: lo que antes era "Otros géneros" (fuera de foco) se reparte en grupos propios. Quien tenía elegido
 // "Otros géneros" sigue viéndolo todo (se le añaden los grupos nuevos)
@@ -460,7 +477,7 @@ function openMenu(){
   const m=document.getElementById("menu");
   if(m.innerHTML){m.innerHTML="";return;}
   m.innerHTML=`<div class="sheet-bg" style="background:transparent" id="mbg"></div><div class="menu" role="menu">
-    ${INFO.map(t=>`<button role="menuitem" data-go="${t}">${{Estilos:"🎼",Fuentes:"🔗",Informe:"📊",Versiones:"🕘"}[t]} ${t}</button>`).join("")}
+    ${INFO.map(t=>`<button role="menuitem" data-go="${t}">${{Salas:"📍",Calendarios:"📅",Estilos:"🎼",Fuentes:"🔗",Informe:"📊",Versiones:"🕘"}[t]} ${t}</button>`).join("")}
     <hr><a role="menuitem" href="data/concerts.csv" download>⬇ Descargar CSV (Excel)</a>
     <button role="menuitem" id="mtheme">◐ Modo claro / oscuro</button></div>`;
   const close=()=>m.innerHTML="";
@@ -790,7 +807,7 @@ function card(r){
    <div class="cbody"><div class="art">${r.festival?`<span class="fest">Festival</span> `:""}${esc(r.artista)}</div>
    ${r.invitados&&r.invitados.length?`<div class="sub">${r.festival?`${esc(cartelCorto(r))}`:`+ ${r.invitados.map(esc).join(" + ")}`}</div>`:""}
    <div class="sub">${h?`<b>${esc(h)}</b> · `:""}${esc(r.sala||"sala sin indicar")}${r.municipio&&r.municipio!=="Madrid"?` · ${esc(r.municipio)}`:""}</div>
-   <div class="tags">${r.nacionalidad?`<span class="flag" title="${esc(pais(r.nacionalidad))}">${flag(r.nacionalidad)}</span>`:r.nacionalidad_estimada?`<span class="flag est" title="Probablemente ${esc(pais(r.nacionalidad_estimada))} (estimado por el nombre)">${flag(r.nacionalidad_estimada)}</span>`:""}${estiloTags(r,2)}${cartelTags(r)}${estadoMini(r)}</div></div><span class="chev" aria-hidden="true">›</span></a>`;
+   <div class="tags">${r.nacionalidad?`<span class="flag" title="${esc(pais(r.nacionalidad))}">${flag(r.nacionalidad)}</span>`:r.nacionalidad_estimada?`<span class="flag est" title="Probablemente ${esc(pais(r.nacionalidad_estimada))} (estimado por el nombre)">${flag(r.nacionalidad_estimada)}</span>`:""}${estiloTags(r,2)}${cartelTags(r)}${estadoMini(r)}${cambioMini(r)}</div></div><span class="chev" aria-hidden="true">›</span></a>`;
   }
   // las primeras miniaturas de la vista se piden ya y con prioridad; el resto, al acercarse
   // las primeras de la vista se piden ya; el resto, por la cola (primero las que están en pantalla)
@@ -912,7 +929,7 @@ function viewConcierto(){
     ${estadoBox(r)}
     <div class="rows">
      <div class="row"><span class="ic">📅</span><div><div class="v">${esc(fmt(r.fecha,{weekday:"long",day:"numeric",month:"long"}))}</div><div class="s">${r.hora?`${esc(r.hora)} h${r.hora_pagina?` · según <a href="${esc(r.hora_pagina.url)}" target="_blank" rel="noopener">${esc(r.hora_pagina.nombre)}</a>`:""}`:h?"Hora por confirmar: las webs no coinciden":"Hora sin indicar"}</div></div></div>
-     <div class="row"><span class="ic">📍</span><div><div class="v">${esc(r.sala||"Sala sin indicar")}</div><div class="s">${esc(r.municipio||"")} · <a href="${esc(mapa)}" target="_blank" rel="noopener">Cómo llegar</a>${sala&&sala.web?` · <a href="${esc(sala.web)}" target="_blank" rel="noopener">Web de la sala</a>`:""}</div></div></div>
+     <div class="row"><span class="ic">📍</span><div><div class="v">${r.sala?salasLinks(r):"Sala sin indicar"}</div><div class="s">${esc(r.municipio||"")} · <a href="${esc(mapa)}" target="_blank" rel="noopener">Cómo llegar</a>${sala&&sala.web?` · <a href="${esc(sala.web)}" target="_blank" rel="noopener">Web de la sala</a>`:""}</div></div></div>
      <div class="row"><span class="ic">🎸</span><div>${estiloHTML}</div></div>
      <div class="row"><span class="ic">${r.nacionalidad?flag(r.nacionalidad):r.nacionalidad_estimada?flag(r.nacionalidad_estimada):"🏳️"}</span><div>${r.nacionalidad?`<div class="v">${esc(pais(r.nacionalidad))}</div><div class="s">según ${esc(r.nacionalidad_fuente||"la fuente")}</div>`:r.nacionalidad_estimada?`<div class="v">Probablemente ${esc(pais(r.nacionalidad_estimada))}</div><div class="s">Estimado: ${esc(r.nacionalidad_estimada_motivo||"nombre en español")}. Ninguna fuente lo confirma</div>`:(r.origen_no_aplica?`<div class="v muted">No aplica</div><div class="s">Es un espectáculo (teatro, musical, danza…), no un artista</div>`:`<div class="v muted">Origen sin confirmar</div><div class="s">Ninguna fuente fiable lo indica</div>`)}</div></div>
      ${r.homenaje?`<div class="row"><span class="ic">🎤</span><div><div class="v">Tributo a ${esc(r.homenaje.artista)}${r.homenaje.pais?` · ${flag(r.homenaje.pais)} ${esc(pais(r.homenaje.pais))}`:""}</div><div class="s">${r.homenaje.pais?"Origen del artista homenajeado; arriba, el de la banda tributo":"Artista homenajeado (origen sin confirmar)"}</div></div></div>`:""}
@@ -924,6 +941,7 @@ function viewConcierto(){
      <button class="lbtn" id="ics">📅 Al calendario</button><button class="lbtn" id="share">↗ Compartir</button>
     </div>
     ${cartelHTML(r)}
+    ${historialHTML(r)}
     <h3 class="sec">Escuchar y saber más</h3>
     <div class="links">${enlaces.map(e=>`<a class="lbtn" href="${esc(e.url)}" target="_blank" rel="noopener">${esc(e.nombre)}</a>`).join("")}</div>
     ${f&&f.perfil?`<p class="muted">${esc(f.perfil)} <span class="hint">(Discogs)</span></p>`:""}
@@ -946,6 +964,114 @@ function cartelHTML(r){
     return `<li><span class="cn">${esc(n)}${(x.estilos||[]).length?`<small>${esc(x.estilos.join(", "))}</small>`:""}</span>${x.pais?`<span class="flag" title="${esc(pais(x.pais))}">${flag(x.pais)}</span>`:""}<span class="cg">${(x.grupos||[]).slice(0,1).map(g=>`<span class="tag" style="box-shadow:inset 3px 0 0 var(${GV[g]||"--c-sin"})">${esc(GN[g]||g)}</span>`).join("")}</span></li>`;};
   const tit=r.festival?`Cartel del festival · ${plural(l.length,"artista")}${r.cartel_incompleto?" (y más)":""}`:`También tocan`;
   return `<h3 class="sec">${tit}</h3><ul class="cartel">${l.map(fila).join("")}</ul>${r._full&&!(r.cartel||[]).length?`<div class="hint">Sin ficha todavía de estos artistas: se buscan en las próximas pasadas.</div>`:""}${r.cartel_incompleto?`<div class="hint">La agenda no da el cartel completo.</div>`:""}`;
+}
+// ---------------------------------------------------------------- historial de cambios (scraper: registrar_cambios)
+const CAMBIO_TXT={hora:"Hora cambiada",fecha:"Fecha cambiada",sala:"Sala cambiada",precio:"Precio cambiado",cartel:"Cartel ampliado",reaparece:"Vuelve a anunciarse"};
+// en la tarjeta: lo que ha cambiado esta semana (cancelado, aplazado y agotado ya tienen su propio aviso)
+function cambioMini(r){ const t=!r.evento&&!r.estado_evento&&CAMBIO_TXT[r.cambio]; return t?`<span class="st st-camb">${esc(t.toLowerCase())}</span>`:""; }
+const diaCorto=f=>fmt(f,{day:"numeric",month:"short"});
+function lineaCambio(c){
+  const de=c.url?` según <a href="${esc(c.url)}" target="_blank" rel="noopener">${esc(c.fuente||"la web")}</a>`:c.fuente?` según ${esc(c.fuente)}`:"";
+  const ab=(a,b)=>`<s>${esc(a)}</s> → <b>${esc(b)}</b>`;
+  switch(c.campo){
+    case "hora": return `Hora: ${ab(c.antes,c.despues)}`;
+    case "fecha": return `Fecha: ${ab(fmt(c.antes,{weekday:"short",day:"numeric",month:"short"}),fmt(c.despues,{weekday:"short",day:"numeric",month:"short"}))}`;
+    case "sala": return `Sala: ${ab(c.antes,c.despues)}`;
+    case "precio": return `Precio: ${ab(precioTxt(c.antes),precioTxt(c.despues))}`;
+    case "evento": return `<b>${c.despues==="cancelado"?"Cancelado":"Aplazado"}</b>${de}`;
+    case "agotado": return `<b>Entradas agotadas</b>${de}`;
+    case "desaparece": return "Deja de aparecer en las webs donde se anunciaba";
+    case "reaparece": return "Vuelve a anunciarse";
+    case "cartel": return `Aparece en el cartel: ${esc((c.nombres||[]).join(", "))}`;
+  }
+  return esc(c.campo);
+}
+function historialHTML(r){
+  const l=r.cambios||[]; if(!l.length) return "";
+  const items=[...l].reverse().map(c=>`<li><time datetime="${esc(c.dia)}">${esc(diaCorto(c.dia))}</time><span>${lineaCambio(c)}</span></li>`).join("");
+  return `<h3 class="sec">Historial de cambios</h3><ol class="hist">${items}${r.primera_vez_visto?`<li><time datetime="${esc(r.primera_vez_visto)}">${esc(diaCorto(r.primera_vez_visto))}</time><span>Aparece en la agenda</span></li>`:""}</ol>
+    <div class="hint">Lo que cambia en las webs donde se anuncia, el día que se ve. Confírmalo en la web de la sala o de las entradas.</div>`;
+}
+// ---------------------------------------------------------------- salas y calendarios suscribibles
+// data/salas.json (tools/calendarios.py): cada sala con su municipio, su web, de qué webs salen sus conciertos y su
+// calendario .ics; y el calendario de cada género. Se pide la primera vez que hace falta.
+let salasPend=null;
+function cargarSalas(){ return salasPend=salasPend||fetch("data/salas.json",{cache:"no-cache"}).then(x=>{if(!x.ok) throw new Error(x.status); return x.json();}).then(d=>SALASJ=d).catch(()=>{salasPend=null; return null;}); }
+const partesSala=s=>String(s||"").split(" / ").map(x=>x.trim()).filter(Boolean);
+const hrefSala=n=>`#sala/${encodeURIComponent(n)}`;
+function salasLinks(r){ return partesSala(r.sala).map(n=>`<a href="${esc(hrefSala(n))}">${esc(n)}</a>`).join(" / "); }
+function infoSala(n){ return SALASJ&&SALASJ.salas.find(s=>s.nombre===n)||null; }
+const conciertosSala=n=>DATA.filter(r=>r.fecha>=HOY&&partesSala(r.sala).includes(n));
+// suscribirse: el enlace webcal:// abre la app de calendario del móvil o del ordenador (Apple, Outlook…); Google
+// Calendar y Outlook.com tienen su propia dirección para añadir un calendario por URL
+function abrirSuscribir(nombre,ruta){
+  const base=location.href.split("#")[0].replace(/[^/]*$/,""), https=base+ruta, webcal=https.replace(/^https?:/,"webcal:");
+  const el=document.getElementById("sheet");
+  el.innerHTML=`<div class="sheet-bg" id="sbg"></div><div class="sheet" role="dialog" aria-modal="true" aria-labelledby="sust"><div class="sc">
+    <h3 id="sust">Suscribirse: ${esc(nombre)}</h3>
+    <p class="muted" style="margin:4px 0 12px">Los conciertos aparecen en tu calendario y se actualizan solos (cada pocas horas): los nuevos se añaden, los cambios de hora o de fecha se corrigen y los cancelados se marcan.</p>
+    <div class="susc">
+     <a class="lbtn" href="${esc(webcal)}">Apple Calendar · iPhone · Mac</a>
+     <a class="lbtn" href="https://calendar.google.com/calendar/render?cid=${encodeURIComponent(webcal)}" target="_blank" rel="noopener">Google Calendar ↗</a>
+     <a class="lbtn" href="https://outlook.live.com/calendar/0/addfromweb?url=${encodeURIComponent(https)}&name=${encodeURIComponent(nombre)}" target="_blank" rel="noopener">Outlook ↗</a>
+     <button class="lbtn" id="suscopia">Copiar el enlace</button>
+    </div>
+    <p class="hint" style="margin-top:10px">En Android, con Google Calendar. Otras apps: copia el enlace y añádelo como «calendario por URL» o «suscripción».</p>
+   </div><div class="ft"><button id="suscerrar">Cerrar</button></div></div>`;
+  const cerrar=()=>{el.innerHTML="";};
+  document.getElementById("sbg").onclick=cerrar; document.getElementById("suscerrar").onclick=cerrar;
+  document.getElementById("suscopia").onclick=async()=>{try{await navigator.clipboard.writeText(https); toast("Enlace copiado");}catch(e){prompt("Copia el enlace:",https);}};
+  document.getElementById("suscerrar").focus();
+}
+function viewSala(){
+  const n=state.sala, i=infoSala(n), l=conciertosSala(n), a=SALAS[norm(n)]||{};
+  const muni=(i&&i.municipio)||(l[0]||{}).municipio||a.municipio||"";
+  const web=(i&&i.web)||a.web;
+  const mapa=`https://www.google.com/maps/search/${encodeURIComponent(n+" "+(muni||"Madrid"))}`;
+  const volver=state.from||"#salas";
+  const m={}; l.forEach(r=>(m[r.fecha]=m[r.fecha]||[]).push(r));
+  const origen=i?(i.oficial?`Leemos su web oficial (${esc(i.oficial.replace(/\s*\(web oficial\)/,""))}); sus conciertos se cruzan además con ${plural(Math.max(0,i.fuentes.length-1),"agenda")}.`
+      :`No leemos la web de esta sala: sus conciertos salen de ${i.fuentes.length>1?"agendas generales":"una agenda general"} (${esc(i.fuentes.slice(0,4).map(f=>f.nombre).join(", "))}).`):"";
+  return `<a class="back" href="${esc(volver)}">‹ Volver</a>
+   <div class="sala-h"><h2>${esc(n)}</h2><div class="muted">${esc(muni)}${muni?" · ":""}${plural(l.length,"concierto próximo","conciertos próximos")}</div></div>
+   <div class="actions">
+    ${i&&i.ics?`<button class="lbtn primary" data-sus="${esc(i.ics)}" data-susn="${esc(n)}">📅 Suscribirse a su calendario</button>`:""}
+    <a class="lbtn" href="${esc(mapa)}" target="_blank" rel="noopener">Cómo llegar ↗</a>
+    ${web?`<a class="lbtn" href="${esc(web)}" target="_blank" rel="noopener">Web de la sala ↗</a>`:""}
+   </div>
+   ${origen?`<p class="hint">${origen}</p>`:""}
+   ${Object.keys(m).sort().map(f=>`<section class="dia">${dayHead(f,m[f].length)}${m[f].map(card).join("")}</section>`).join("")||`<p class="empty">No tiene conciertos anunciados.</p>`}`;
+}
+let salQ="";
+function filasSalas(){
+  const q=norm(salQ.trim()), l=(SALASJ?SALASJ.salas:[]).filter(s=>!q||norm(s.nombre+" "+(s.municipio||"")).includes(q)).sort((a,b)=>b.conciertos-a.conciertos||a.nombre.localeCompare(b.nombre,"es"));
+  return l.map(s=>`<a class="srow" href="${esc(hrefSala(s.nombre))}"><div><b>${esc(s.nombre)}</b><small>${esc(s.municipio||"")}${s.municipio?" · ":""}${plural(s.conciertos,"concierto")}${s.oficial?" · web oficial leída":""}</small></div><span class="chev" aria-hidden="true">›</span></a>`).join("")||`<p class="empty">Ninguna sala con «${esc(salQ)}».</p>`;
+}
+function viewSalas(){
+  if(!SALASJ) return `<p class="empty">No se pudo cargar la lista de salas. Comprueba la conexión.</p>`;
+  return `<p class="muted">Las ${SALASJ.salas.length} salas con conciertos anunciados. En cada una, su programación completa y su calendario para suscribirte.</p>
+   <label class="sbox"><span class="sr">Buscar sala o municipio</span><input id="salq" type="search" placeholder="Buscar sala o municipio" value="${esc(salQ)}" autocomplete="off"></label>
+   <div id="sall">${filasSalas()}</div>`;
+}
+function viewCalendarios(){
+  if(!SALASJ) return `<p class="empty">No se pudieron cargar los calendarios. Comprueba la conexión.</p>`;
+  const cnt={}; DATA.forEach(r=>{ if(r.fecha>=HOY) gruposF(r).forEach(g=>cnt[g]=(cnt[g]||0)+1); });
+  const filas=GRUPOS.filter(g=>SALASJ.generos[g.id]).map(g=>`<div class="srow"><div><b><span class="gdot" style="background:var(${g.v})"></span>${esc(g.nombre)}</b><small>${plural(cnt[g.id]||0,"concierto")}</small></div><button class="lbtn" data-sus="${esc(SALASJ.generos[g.id])}" data-susn="${esc(g.nombre)}">Suscribirse</button></div>`).join("");
+  return `<p class="muted">Suscríbete a un género y sus conciertos aparecen en tu calendario (Google, Apple, Outlook…), con hora, sala y enlace a su ficha. Se actualiza solo: conciertos nuevos, cambios de hora o fecha y cancelaciones. Para una sala, ábrela en <a href="#salas">Salas</a>.</p>
+   <h3 class="sec">Por género</h3>${filas}
+   <p class="hint">Cada concierto aparece en el calendario de su género y en el de los géneros de su cartel (teloneros, festivales). Sin hora anunciada, ocupa el día entero.</p>`;
+}
+function bindSalas(){
+  const q=document.getElementById("salq");
+  if(q) q.oninput=()=>{salQ=q.value; document.getElementById("sall").innerHTML=filasSalas();};
+  document.querySelectorAll("[data-sus]").forEach(b=>b.onclick=()=>abrirSuscribir(b.dataset.susn,b.dataset.sus));
+}
+// en la búsqueda: las salas cuyo nombre coincide, arriba (llevan a su página)
+function salasBuscadas(){
+  const q=norm(state.q.trim()); if(q.length<3) return "";
+  const c={}; DATA.forEach(r=>{ if(r.fecha>=HOY) partesSala(r.sala).forEach(n=>{ if(norm(n).includes(q)) c[n]=(c[n]||0)+1; }); });
+  const l=Object.entries(c).sort((a,b)=>b[1]-a[1]).slice(0,6);
+  return l.length?`<div class="salasb">${l.map(([n,k])=>`<a class="lbtn" href="${esc(hrefSala(n))}">📍 ${esc(n)} <small>${k}</small></a>`).join("")}</div>`:"";
 }
 // ---------------------------------------------------------------- vistas de calendario
 function navHTML(prev,next,title,lblPrev,lblNext,esHoy){
@@ -1010,7 +1136,7 @@ function viewBusqueda(){
   const res=DATA.filter(r=>r.fecha>=HOY&&visible(r));
   const m={}; res.forEach(r=>(m[r.fecha]=m[r.fecha]||[]).push(r));
   const ocultos=DATA.filter(r=>r.fecha>=HOY&&pasaTexto(r)&&!visible(r)).length;
-  return `<p class="hint" style="margin-top:12px">${plural(res.length,"resultado")} para «${esc(state.q.trim())}» en todas las fechas${ocultos?` · <button class="sclear" style="position:static;width:auto;height:auto;color:var(--info);font-size:.82rem;text-decoration:underline" id="vertodo">ver ${ocultos} más ocultos por los filtros</button>`:""}</p>`+
+  return salasBuscadas()+`<p class="hint" style="margin-top:12px">${plural(res.length,"resultado")} para «${esc(state.q.trim())}» en todas las fechas${ocultos?` · <button class="sclear" style="position:static;width:auto;height:auto;color:var(--info);font-size:.82rem;text-decoration:underline" id="vertodo">ver ${ocultos} más ocultos por los filtros</button>`:""}</p>`+
     (Object.keys(m).sort().map(f=>dayList(f,m[f])).join("")||`<p class="empty">Nada encontrado.</p>`);
 }
 function viewEstilos(){
@@ -1156,7 +1282,7 @@ async function viewVersiones(){
 // ---------------------------------------------------------------- navegación
 let lastHash="";
 function setHash(){
-  const h=state.tab==="Concierto"?`#concierto/${state.id}`:`#${norm(state.tab)}${VISTAS.includes(state.tab)?"/"+state.date:""}`;
+  const h=state.tab==="Concierto"?`#concierto/${state.id}`:state.tab==="Sala"?hrefSala(state.sala):`#${norm(state.tab)}${VISTAS.includes(state.tab)?"/"+state.date:""}`;
   if(location.hash!==h) history.replaceState(null,"",h);
   lastHash=h;
 }
@@ -1166,11 +1292,15 @@ function readHash(){
     if(!lastHash.startsWith("#concierto")) state.from=lastHash||null;
     state.tab="Concierto"; state.id=decodeURIComponent(m[1]); const r=BYID[state.id]; if(r) state.date=r.fecha; return;
   }
+  if(m[0]==="sala"&&m[1]){
+    if(!lastHash.startsWith("#sala/")) state.from=lastHash||null;
+    state.tab="Sala"; state.sala=decodeURIComponent(m.slice(1).join("/")); return;
+  }
   const t=TABS.find(x=>norm(x)===m[0]); if(t) state.tab=t;
   if(m[1]&&/^\d{4}-\d{2}-\d{2}$/.test(m[1])) state.date=m[1];
 }
 function renderTabs(){
-  const act=state.tab==="Concierto"?null:state.tab;
+  const act=VISTAS.includes(state.tab)?state.tab:null;
   document.getElementById("tabs").innerHTML=VISTAS.map(t=>`<button role="tab" aria-selected="${t===act}" data-tab="${t}">${t}</button>`).join("");
   document.querySelectorAll("[data-tab]").forEach(b=>b.onclick=()=>{state.tab=b.dataset.tab; store.set("tab",state.tab); render(); scrollTo(0,0);});
   const hh=document.getElementById("hdr").offsetHeight; document.documentElement.style.setProperty("--hh",hh+"px");
@@ -1220,9 +1350,12 @@ async function renderBody(keepFocus){
   if(withFilters&&state.q.trim()) body=viewBusqueda();
   else if(state.tab==="Mes") body=viewMes(); else if(state.tab==="Semana") body=viewSemana(); else if(state.tab==="Día") body=viewDia();
   else if(state.tab==="Concierto") body=viewConcierto();
+  else if(state.tab==="Sala"){ await cargarSalas(); body=viewSala(); }
   else {
     const back=`<a class="back" href="#mes/${state.date||HOY}">‹ Agenda</a><h2 style="margin:4px 0 10px">${esc(state.tab)}</h2>`;
-    if(state.tab==="Estilos") body=back+viewEstilos(); else if(state.tab==="Fuentes") body=back+viewFuentes();
+    if(["Salas","Calendarios"].includes(state.tab)) await cargarSalas();
+    if(state.tab==="Salas") body=back+viewSalas(); else if(state.tab==="Calendarios") body=back+viewCalendarios();
+    else if(state.tab==="Estilos") body=back+viewEstilos(); else if(state.tab==="Fuentes") body=back+viewFuentes();
     else if(state.tab==="Informe") body=back+viewInforme(); else body=back+await viewVersiones();
   }
   if(withFilters&&keepFocus&&document.getElementById("fbody")){
@@ -1413,6 +1546,8 @@ document.getElementById("hnav").addEventListener("click",e=>{
 });
 function bindBody(){
   if(state.tab==="Fuentes") bindFuentes();
+  if(["Sala","Salas","Calendarios"].includes(state.tab)) bindSalas();
+  if(state.tab==="Sala"){ const bk=document.querySelector("#main .back"); if(bk&&state.from) bk.onclick=e=>{e.preventDefault(); history.back();}; }
   document.querySelectorAll("[data-day]").forEach(b=>b.onclick=()=>{state.date=b.dataset.day; state.tab="Día"; render(); scrollTo(0,0);});
   document.querySelectorAll("[data-mdia]").forEach(b=>b.onclick=()=>elegirDiaMes(b.dataset.mdia));
   document.querySelectorAll("[data-sel]").forEach(b=>b.onclick=()=>{const f=b.dataset.sel; irAFecha(f,f<state.date?-1:f>state.date?1:0);});

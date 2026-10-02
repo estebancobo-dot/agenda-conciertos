@@ -611,7 +611,7 @@ def conciliar(recs: list[dict], anteriores: list[dict], hoy: date, resultados: d
         r["ultima_vez_visto"] = hoy_s
     limite_hist = (hoy - timedelta(days=HISTORIA_DIAS)).isoformat()
     from .cartel import mismo_festival
-    arrastrados = []
+    arrastrados, desaparecidos = [], []
     for p in anteriores:
         if p["id"] in usados or p["id"] in ids:
             continue
@@ -644,12 +644,119 @@ def conciliar(recs: list[dict], anteriores: list[dict], hoy: date, resultados: d
                     ", ".join(fuentes[s].nombre for s in caidas) + ". Se mantiene el dato anterior.")
             p["notas"] = [n for n in p["notas"] if not n.startswith("No se pudo reconfirmar hoy")] + [nota]
         else:
-            if p["estado"] != "posiblemente cancelado":
-                p["estado"] = "posiblemente cancelado"
-                p["notas"].append(f"Ya no aparece en ninguna de sus fuentes (comprobado el {hoy_s}); "
-                                  f"visto por última vez el {p.get('ultima_vez_visto')}.")
+            desaparecidos.append(p)
+            continue
+        arrastrados.append(p)
+    # cambio de fecha: el concierto que deja de anunciarse en su día y aparece, en las mismas webs, otro día en la
+    # misma sala con el mismo artista. Solo si la pareja es única (un artista con dos fechas en la sala no se toca).
+    nuevos = [i for i in range(len(recs)) if i not in previo]
+    pareja: dict[str, list[int]] = {}
+    for p in desaparecidos:
+        fp = {f["id"] for f in p["fuentes"]}
+        pareja[p["id"]] = [i for i in nuevos if recs[i]["fecha"] != p["fecha"] and recs[i]["fecha"] >= hoy_s
+                           and fp & {f["id"] for f in recs[i]["fuentes"]} and _misma_sala_rec(recs[i], p)
+                           and artistas_coinciden([p["artista"]], nombres_rec(recs[i]))]
+    usados_nuevos = Counter(i for c in pareja.values() for i in c)
+    for p in desaparecidos:
+        c = pareja[p["id"]]
+        if len(c) == 1 and usados_nuevos[c[0]] == 1:
+            r = recs[c[0]]
+            ids.discard(r["id"])
+            r["id"], r["primera_vez_visto"] = p["id"], p.get("primera_vez_visto") or hoy_s
+            ids.add(r["id"])
+            r["notas"] = list(r.get("notas") or []) + [f"Antes se anunciaba el {p['fecha']} (cambio visto el {hoy_s})."]
+            continue
+        if p["estado"] != "posiblemente cancelado":
+            p["estado"] = "posiblemente cancelado"
+            p["notas"].append(f"Ya no aparece en ninguna de sus fuentes (comprobado el {hoy_s}); "
+                              f"visto por última vez el {p.get('ultima_vez_visto')}.")
         arrastrados.append(p)
     return recs + arrastrados
+
+
+def _misma_sala_rec(a: dict, b: dict) -> bool:
+    sa, sb = [x for x in (a.get("sala") or "").split(" / ") if x], [x for x in (b.get("sala") or "").split(" / ") if x]
+    return bool(sa and sb and any(misma_sala(x, y) for x in sa for y in sb))
+
+
+# ---------------------------------------------------------------- historial de cambios de cada concierto
+# Lo que cambia de un concierto entre una lectura y la siguiente (fase 7): fecha, hora, precio, cancelado o aplazado,
+# entradas agotadas, artistas que aparecen en el cartel, deja de anunciarse o vuelve. Cada cambio lleva el día en
+# que se vio. Solo se apunta lo que dicen las webs: un dato que pasa de nada a algo (una hora que aparece) es dato
+# nuevo, no un cambio; una hora o un precio que sale de otra web (la página de entradas en vez de la agenda) tampoco.
+CAMBIOS_MAX = 12
+OSCILA_DIAS = 3  # una hora o un precio que vuelve a su valor anterior en estos días: no cambió, era ruido
+
+
+def _precios(p: str | None) -> list[float]:
+    return sorted({float(x.replace(",", ".")) for x in re.findall(r"\d+(?:[.,]\d+)?", p or "")})
+
+
+def foto_cambios(recs: list[dict]) -> dict[str, dict]:
+    """Lo que hace falta de cada concierto para ver después qué ha cambiado (se toma antes de tocarlos)."""
+    return {r["id"]: {"fecha": r["fecha"], "sala": r.get("sala") or "", "hora": r.get("hora"),
+                      "hora_pagina": bool(r.get("hora_pagina")), "precio": r.get("precio"),
+                      "precio_pagina": bool((r.get("precio_fuente") or {}).get("pagina")),
+                      "evento": (r.get("estado_evento") or {}).get("tipo"), "agotado": bool(r.get("agotado")),
+                      "estado": r.get("estado"), "invitados": list(r.get("invitados") or []),
+                      "cambios": list(r.get("cambios") or [])}
+            for r in recs if r.get("id")}
+
+
+def registrar_cambios(recs: list[dict], antes: dict[str, dict], hoy: str) -> int:
+    """Añade a cada concierto (r["cambios"]) lo que ha cambiado desde `antes` (foto_cambios). Devuelve cuántos."""
+    nuevos = 0
+    for r in recs:
+        p = antes.get(r.get("id"))
+        if not p:
+            continue
+        cambios = [dict(c) for c in (r.get("cambios") or p["cambios"])]
+        hechos: list[dict] = []
+
+        def anota(campo: str, **kw) -> None:
+            hechos.append({"dia": hoy, "campo": campo, **kw})
+
+        if p["fecha"] != r["fecha"]:
+            anota("fecha", antes=p["fecha"], despues=r["fecha"])
+        sa, sb = [x for x in p["sala"].split(" / ") if x], [x for x in (r.get("sala") or "").split(" / ") if x]
+        if sa and sb and not any(misma_sala(x, y) for x in sa for y in sb):
+            anota("sala", antes=p["sala"], despues=r["sala"])
+        if p["hora"] and r.get("hora") and p["hora"] != r["hora"] and p["hora_pagina"] == bool(r.get("hora_pagina")):
+            anota("hora", antes=p["hora"], despues=r["hora"])
+        pa, pb = _precios(p["precio"]), _precios(r.get("precio"))
+        if pa and pb and pa != pb and p["precio_pagina"] == bool((r.get("precio_fuente") or {}).get("pagina")):
+            anota("precio", antes=p["precio"], despues=r["precio"])
+        ev = r.get("estado_evento") or {}
+        if ev.get("tipo") and ev["tipo"] != p["evento"]:
+            anota("evento", despues=ev["tipo"], fuente=ev.get("nombre"), url=ev.get("url"))
+        if r.get("agotado") and not p["agotado"]:
+            ag = r["agotado"] if isinstance(r["agotado"], dict) else {}
+            anota("agotado", fuente=ag.get("nombre"), url=ag.get("url"))
+        if r.get("estado") == "posiblemente cancelado" and p["estado"] != "posiblemente cancelado":
+            anota("desaparece")
+        elif p["estado"] == "posiblemente cancelado" and r.get("estado") != "posiblemente cancelado":
+            anota("reaparece")
+        ya = {norm(x) for x in p["invitados"]} | {norm(r["artista"])} | \
+             {norm(n) for c in cambios if c["campo"] == "cartel" for n in c.get("nombres", [])}
+        nuevos_cartel = [x for x in r.get("invitados") or [] if norm(x) not in ya]
+        if nuevos_cartel:
+            anota("cartel", nombres=nuevos_cartel[:6])
+        for h in hechos:
+            ultimo = next((c for c in reversed(cambios) if c["campo"] == h["campo"]), None)
+            if h["campo"] in ("hora", "precio", "fecha") and ultimo and ultimo.get("antes") == h.get("despues") and \
+                    (date.fromisoformat(hoy) - date.fromisoformat(ultimo["dia"])).days <= OSCILA_DIAS:
+                cambios.remove(ultimo)  # ida y vuelta en pocos días: no hubo cambio
+                continue
+            if h["campo"] in ("evento", "agotado") and any(c["campo"] == h["campo"] and c.get("despues") == h.get("despues")
+                                                           for c in cambios):
+                continue  # ya apuntado (la página se volvió a leer)
+            cambios.append(h)
+            nuevos += 1
+        if cambios:
+            r["cambios"] = cambios[-CAMBIOS_MAX:]
+        else:
+            r.pop("cambios", None)
+    return nuevos
 
 
 # ---------------------------------------------------------------- salidas
@@ -856,6 +963,7 @@ def ejecutar(hoy: date | None = None, solo: list[str] | None = None, fetcher: Fe
     items = [Item(e, por_id[sid]) for sid, evs in eventos.items() if sid in por_id for e in evs]
     items, fuera = preparar(items, hoy, horizonte)
     recs = unificar(items)
+    antes_cambios = foto_cambios(anteriores)  # antes de conciliar, que actualiza los anteriores
     recs = conciliar(recs, anteriores, hoy, resultados, {s.id: s for s in FUENTES})
     correcciones = load_json("correcciones.json")["correcciones"]
     recs, res_corr = aplicar_correcciones(recs, correcciones, hoy.isoformat())
@@ -888,6 +996,7 @@ def ejecutar(hoy: date | None = None, solo: list[str] | None = None, fetcher: Fe
         from .musicbrainz import completar, fetcher_musicbrainz
         mb_stats = completar(recs, cache_mb, hoy, fetcher_musicbrainz(), max_consultas=max_mb)
         _write("musicbrainz_cache.json", cache_mb)
+    n_cambios = registrar_cambios(recs, antes_cambios, hoy.isoformat())
     recs.sort(key=lambda r: (r["fecha"], r["hora"] or "99", norm(r["artista"])))
     # estilos que no se han podido traducir a categoría
     sin_mapear = sorted({e["estilo"] + " (" + e["fuente"] + ")" for r in recs for e in r["estilo_fuente"]
@@ -912,6 +1021,7 @@ def ejecutar(hoy: date | None = None, solo: list[str] | None = None, fetcher: Fe
             "conflictos": sum(r["estado"] == "conflicto" for r in futuros),
             "posiblemente_cancelados": sum(r["estado"] == "posiblemente cancelado" for r in futuros),
             "nuevos_hoy": sum(r["id"] not in anteriores_ids for r in futuros),
+            "cambios_hoy": n_cambios,
             "fuentes_ok": sum(f["funciono"] for f in inf_fuentes),
             "fuentes_total": len(inf_fuentes),
             "peticiones_http": fetcher.requests_count,
@@ -984,6 +1094,7 @@ def ejecutar_fichas(hoy: date | None = None, presupuesto_seg: float = 3000) -> d
     _write("musicbrainz_cache.json", cache_mb)
     _write("artistas.json", cache_art)
     previos = _grupos_previos(recs)
+    antes_cambios = foto_cambios(recs)
     for r in recs:
         estilos_de_agenda(r, cache_art)
         aplicar_ficha(r, ficha_de(r, cache_art))
@@ -991,6 +1102,7 @@ def ejecutar_fichas(hoy: date | None = None, presupuesto_seg: float = 3000) -> d
         tributo_y_estimacion(r, cache_art)
         aplicar_cartel(r, cache_art)
     stats["entradas"] = aplicar_entradas(recs, cache_pag)
+    stats["cambios"] = registrar_cambios(recs, antes_cambios, hoy.isoformat())
     _write("concerts.json", datos)
     escribir_csv(recs, DATA / "concerts.csv")
     informe = _read("informe.json", {})

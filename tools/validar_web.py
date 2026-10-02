@@ -478,6 +478,8 @@ def recorrido(b):
     cambiar_fecha_bajado(pg, lunes)
     cartel_web(pg)
     pagina_fuentes(pg)
+    salas_y_calendarios(pg)
+    historial_web(pg)
 
     # informe
     pg.evaluate("location.hash='#informe'")
@@ -1126,6 +1128,66 @@ def pagina_fuentes(pg):
           f"{r['n']} de {r['total']} webs · {salas['n']} salas · {r['salas']} salas sin web leída",
           ok=r["n"] == r["total"] == r["tiras"] == r["metricas"] and r["lateral"] <= 0 and salas["bien"]
           and salas["n"] == salas["esperadas"] and busca, detalle=str({**r, **salas, "busca": busca}))
+
+
+def salas_y_calendarios(pg):
+    """Fase 7: la lista de salas, la página de una sala (su programación, Volver, su calendario) y los calendarios por
+    género; los .ics publicados se descargan y son calendarios válidos con un evento por concierto."""
+    pg.evaluate("location.hash='#salas'")
+    pg.wait_for_selector("#sall .srow", timeout=30000)
+    n = pg.evaluate("document.querySelectorAll('#sall .srow').length")
+    pg.fill("#salq", "riviera")
+    pg.wait_for_timeout(300)
+    filtro = pg.evaluate("[...document.querySelectorAll('#sall .srow b')].map(b=>b.textContent)")
+    pg.fill("#salq", "")
+    pg.wait_for_timeout(200)
+    pg.click("#sall .srow")
+    pg.wait_for_selector(".sala-h", timeout=15000)
+    pg.wait_for_timeout(300)
+    sala = pg.evaluate("""()=>({nombre:state.sala, cards:document.querySelectorAll('#main .card').length,
+        esperadas:conciertosSala(state.sala).length, ics:(document.querySelector('[data-sus]')||{}).dataset?.sus||null,
+        lateral:document.documentElement.scrollWidth-innerWidth})""")
+    pg.click("[data-sus]")
+    pg.wait_for_selector(".susc a", timeout=5000)
+    enlaces = pg.evaluate("[...document.querySelectorAll('.susc a')].map(a=>a.href)")
+    pg.click("#suscerrar")
+    pg.click("#main .back")
+    pg.wait_for_timeout(500)
+    volver = pg.evaluate("location.hash")
+    texto = pg.evaluate("(u)=>fetch(u).then(r=>r.ok?r.text():'error '+r.status)", sala["ics"] or "x")
+    eventos = texto.count("BEGIN:VEVENT")
+    check("Funcional", "Salas: lista, búsqueda, página de la sala con su programación y Volver",
+          f"{n} salas · {sala['nombre']}: {sala['cards']} conciertos · volver a {volver}",
+          ok=n > 50 and filtro == ["La Riviera"] and sala["cards"] == sala["esperadas"] > 0 and volver == "#salas"
+          and sala["lateral"] <= 0, detalle=str({**sala, "filtro": filtro}))
+    check("Funcional", "Calendario de la sala: suscripción (webcal, Google, Outlook) y .ics válido con sus conciertos",
+          f"{eventos} eventos en {sala['ics']}",
+          ok=texto.startswith("BEGIN:VCALENDAR") and texto.rstrip().endswith("END:VCALENDAR") and eventos >= sala["cards"]
+          and any(e.startswith("webcal://") for e in enlaces) and any("calendar.google.com" in e for e in enlaces),
+          detalle=str(enlaces)[:300])
+    pg.evaluate("location.hash='#calendarios'")
+    pg.wait_for_selector("#main [data-sus]", timeout=15000)
+    cal = pg.evaluate("""async()=>{const b=[...document.querySelectorAll('#main [data-sus]')];
+        const t=await fetch(b[0].dataset.sus).then(r=>r.text());
+        return {n:b.length, ics:b[0].dataset.sus, ok:t.startsWith('BEGIN:VCALENDAR'), ev:(t.match(/BEGIN:VEVENT/g)||[]).length}}""")
+    check("Funcional", "Calendarios por género: uno por género y se descargan", f"{cal['n']} géneros · {cal['ev']} eventos en {cal['ics']}",
+          ok=cal["n"] >= 15 and cal["ok"] and cal["ev"] > 0, detalle=str(cal))
+
+
+def historial_web(pg):
+    """Fase 7: un concierto con cambios recientes lleva el aviso en la tarjeta y su historial en la ficha (si aún no
+    hay ninguno, se dice: los cambios aparecen según pasan los días)."""
+    pg.evaluate("location.hash='#mes/'+HOY")
+    pg.wait_for_timeout(500)
+    r = pg.evaluate("(()=>{const r=DATA.find(x=>x.cambio&&CAMBIO_TXT[x.cambio]); return r?{id:r.id,c:r.cambio,n:DATA.filter(x=>x.cambio).length}:null})()")
+    if not r:
+        check("Funcional", "Historial de cambios en la ficha", "aún sin cambios registrados", ok=False, grave=False)
+        return
+    pg.evaluate(f"location.hash='#concierto/{r['id']}'")
+    pg.wait_for_selector("ol.hist li", timeout=15000)
+    items = pg.evaluate("[...document.querySelectorAll('ol.hist li')].map(l=>l.textContent)")
+    check("Funcional", "Historial de cambios en la ficha (y aviso en la tarjeta)", f"{r['n']} conciertos con cambios · {items[0]}",
+          ok=len(items) >= 1, detalle=str(items)[:300])
 
 
 def cabeceras_fijas(pg, lunes):
