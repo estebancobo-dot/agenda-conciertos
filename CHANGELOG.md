@@ -1,5 +1,15 @@
 # Versiones
 
+## 2.46.0 — 2026-10-03
+
+**N1: confirmación auditada.**
+
+- **La web de la sala lo anuncia otro día**: si la web oficial de la sala tiene al mismo artista en otra fecha cercana (±45 días) y nada el día que dice la agenda, el concierto muestra un conflicto de **fecha** con las dos versiones y quién da cada una, y queda sin confirmar ("La web de la sala lo anuncia el …"). Con los datos de hoy: Tortoise (Sala But dice el 8 de noviembre y conciertos.club el 7) y dos conciertos de Café Central (su web dice el 23 de octubre y Madrid en Vivo el 23 de noviembre).
+- **Sin falsos "no lo anuncia la sala"**: no se contrasta con la web de una sala si hoy da muchos menos conciertos de lo habitual (lectura a medias o diseño cambiado) o si hoy falló y se usa su última lectura.
+- **Datos de la última lectura**: cuando todas las webs que anuncian un concierto han fallado hoy y se usa su última lectura buena, la confirmación lo dice ("se usa su última lectura (del …)") y no pasa de **probable**.
+- **Enlaces de compra genéricos**: un enlace de compra que aparece en conciertos de artistas distintos (la página general de una sala o de un promotor) ya no se toma como el de cada concierto ni suma confirmación (160 conciertos lo tenían mal).
+- **Auditoría por fuente** en la página de Fuentes: cuántos conciertos de las agendas contradice la web de cada sala (otra fecha, o nada ese día).
+
 ## 2.45.0 — 2026-10-03
 
 **Fase A: fiabilidad.**

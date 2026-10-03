@@ -240,8 +240,15 @@ def _fuentes(items: list[Item]) -> list[dict]:
         if k in seen:
             continue
         seen.add(k)
-        out.append({"nombre": it.src.nombre, "id": it.src.id, "url": it.ev.url, "prioridad": it.src.prioridad})
+        f = {"nombre": it.src.nombre, "id": it.src.id, "url": it.ev.url, "prioridad": it.src.prioridad}
+        m = _DE_CACHE.search(it.ev.nota or "")
+        if m:  # hoy no se pudo leer esa web: el dato es de su última lectura completa
+            f["cache"] = m.group(1)
+        out.append(f)
     return out
+
+
+_DE_CACHE = re.compile(r"última lectura completa de .*?\((\d{4}-\d{2}-\d{2})\): hoy no se pudo leer")
 
 
 def _versiones(items: list[Item], campo) -> dict[str, list[Item]]:

@@ -155,3 +155,21 @@ def test_cartel_del_jsonld():
     r = leer_pagina(html, "https://x.es/e", "2026-10-03")
     assert r["cartel"] == ["Evaristo", "Boikot", "Reincidentes"]
     assert r["evento_nombre"] == "Noche Punk: Evaristo & amigos" and r["evento_tipo"] == "MusicEvent"
+
+
+def test_enlace_de_compra_de_varios_artistas_no_se_usa():
+    from scraper.entradas import aplicar_entradas
+    def r(n, artista, url):
+        return _rec(n, None, [{"id": "cc", "nombre": "conciertos.club", "url": url, "prioridad": 3}], artista=artista)
+    gumbo = [{"url": "https://entradas.conciertos.club/es/events/gumbo-jam-1", "nombre": "conciertos.club", "compra": True}]
+    cumbia = [{"url": "https://entradas.conciertos.club/es/events/cumbia", "nombre": "conciertos.club", "compra": True}]
+    cache = {"https://conciertos.club/a": {"fecha": "2026-10-01", "d": {"enlaces": gumbo}},
+             "https://conciertos.club/b": {"fecha": "2026-10-01", "d": {"enlaces": gumbo}},
+             "https://conciertos.club/c": {"fecha": "2026-10-01", "d": {"enlaces": cumbia}},
+             "https://conciertos.club/d": {"fecha": "2026-10-01", "d": {"enlaces": cumbia}}}
+    recs = [r(1, "Al Di Meola", "https://conciertos.club/a"), r(2, "Andrea Motis", "https://conciertos.club/b"),
+            r(3, "Jam de Cumbia", "https://conciertos.club/c"), r(4, "Jam de Cumbia", "https://conciertos.club/d")]
+    stats = aplicar_entradas(recs, cache)
+    assert "entradas" not in recs[0] and "entradas" not in recs[1]
+    assert recs[2]["entradas"]["url"].endswith("/cumbia")  # el mismo espectáculo en dos fechas sí
+    assert stats.get("entradas_genericas") == 2

@@ -803,7 +803,7 @@ function estadoMini(r){
   if(ev) return `<span class="st st-conf">${esc(ev)}</span>`;
   if(r.agotado) return `<span class="st st-agot">agotado</span>`;
   if(r.estado==="conflicto"){
-    const campos=[...new Set((r.conflictos||[]).map(c=>({hora:"hora",sala:"sala",cartel:"cartel"})[c.campo]).filter(Boolean))];
+    const campos=[...new Set((r.conflictos||[]).map(c=>({hora:"hora",sala:"sala",cartel:"cartel",fecha:"fecha"})[c.campo]).filter(Boolean))];
     return `<span class="st st-conf" title="Las webs no coinciden: abre el concierto para ver cada versión">⚠ ${campos.length?esc(campos.join(" y "))+" sin confirmar":"datos distintos"}</span>`;
   }
   if(r.estado==="posiblemente cancelado") return `<span class="st st-canc">¿cancelado?</span>`;
@@ -886,11 +886,13 @@ function estadoBox0(r){
   if(!r._full) return `<div class="box" id="cargando">Cargando fuentes, precio y enlaces…</div>`;
   const conflictos=(r.conflictos||[]).filter(c=>c.versiones&&c.versiones.length);
   if(r.estado==="conflicto"){
-    const nom={hora:"Hora",sala:"Sala",cartel:"Cartel"};
+    const nom={hora:"Hora",sala:"Sala",cartel:"Cartel",fecha:"Fecha"};
+    const val=(c,v)=>c.campo==="fecha"&&/^\d{4}-\d\d-\d\d$/.test(v)?fmt(v,{weekday:"long",day:"numeric",month:"long"}):v;
     const items=conflictos.map(c=>{
       const vs=[...c.versiones].sort((a,b)=>b.fuentes.length-a.fuentes.length);
       const horas=c.campo==="hora"?vs.map(v=>v.valor).sort():[];
-      return `<div><b>${esc(nom[c.campo]||c.campo)}</b></div><div class="vers">${vs.map(v=>`<div><b>${esc(v.valor)}</b><span class="muted">${plural(v.fuentes.length,"web")}: ${esc(v.fuentes.map(x=>x.split(" (")[0]).filter((x,i,a)=>a.indexOf(x)===i).join(", "))}</span></div>`).join("")}</div>
+      return `<div><b>${esc(nom[c.campo]||c.campo)}</b></div><div class="vers">${vs.map(v=>`<div><b>${esc(val(c,v.valor))}</b><span class="muted">${plural(v.fuentes.length,"web")}: ${esc(v.fuentes.map(x=>x.split(" (")[0]).filter((x,i,a)=>a.indexOf(x)===i).join(", "))}</span></div>`).join("")}</div>
+        ${c.campo==="fecha"?`<div class="hint" style="margin-top:4px">La web oficial de la sala lo anuncia otro día. Confírmalo allí antes de ir.</div>`:""}
         ${c.campo==="hora"&&horas.length>1?`<div class="hint" style="margin-top:4px">Si una hora es bastante anterior, suele ser la apertura de puertas. Confírmalo en la web de la sala o de las entradas.</div>`:""}`;
     }).join("");
     const man=(r.notas||[]).filter(n=>/Corrección manual/.test(n)).map(n=>`<div class="hint">${esc(n)}</div>`).join("");
@@ -1212,7 +1214,8 @@ function viewEstilos(){
 function extraFuente(f){
   return (f.reintento?`<div class="muted">${esc(f.reintento)}</div>`:"")+
     (f.desde_cache?`<div class="s-warn">Se mantienen ${f.desde_cache} conciertos de su última lectura completa (${esc(f.cache_fecha)})</div>`:"")+
-    (f.no_leida?`<div class="muted">No se volvió a leer en el reintento: datos de la última ejecución completa</div>`:"");
+    (f.no_leida?`<div class="muted">No se volvió a leer en el reintento: datos de la última ejecución completa</div>`:"")+
+    (f.contraste_sala?`<div class="s-warn">Contraste con las agendas: ${[f.contraste_sala.otra_fecha?`${plural(f.contraste_sala.otra_fecha,"concierto")} con otra fecha en esta web`:"",f.contraste_sala.ausentes?`${plural(f.contraste_sala.ausentes,"concierto")} que esta web no anuncia ese día`:""].filter(Boolean).join(" · ")}</div>`:"");
 }
 function sClass(e){return e==="ok"?"s-ok":/error|bloq/.test(e)?"s-err":"s-warn"}
 // ---------------------------------------------------------------- página de Fuentes

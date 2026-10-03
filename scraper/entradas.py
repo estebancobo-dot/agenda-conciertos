@@ -468,5 +468,19 @@ def aplicar_entradas(recs: list[dict], cache: dict) -> dict:
                 r["gira"] = {"imagen": img, "credito": nombre, "enlace": u}
                 c["gira"] += 1
                 break
+    # un enlace de compra que les sale a varios artistas distintos no es de ningún concierto concreto (la página de
+    # conciertos.club enlaza a veces el primer evento de la sala: Al Di Meola → "Gumbo Jam"): no se enseña ni cuenta
+    from .normalize import norm
+    artistas_por_url: dict[str, set] = {}
+    for r in recs:
+        u = (r.get("entradas") or {}).get("url")
+        if u:
+            artistas_por_url.setdefault(u, set()).add(norm(r.get("artista")))
+    genericos = {u for u, a in artistas_por_url.items() if len(a) > 1}
+    for r in recs:
+        if (r.get("entradas") or {}).get("url") in genericos:
+            r.pop("entradas")
+            c["entradas"] -= 1
+            c["entradas_genericas"] += 1
     c["webs_fiables_hora"] = sum(v["hora"] for v in conf.values())
     return dict(c)

@@ -750,6 +750,8 @@ CONFIANZA = (("confirmado", 4), ("probable", 2), ("sin confirmar", -99))
 
 
 def puntuar_confianza(r: dict, fuentes: dict[str, Source]) -> dict:
+    """Nivel de confirmación de un concierto según quién lo anuncia (ver CONFIANZA). Si todas las webs que lo anuncian
+    han fallado hoy y se usa su última lectura buena, se dice y no pasa de "probable"."""
     puntos, motivos = 0, []
     ids = [f["id"] for f in r.get("fuentes") or [] if f.get("id") in fuentes]
     oficial = [fuentes[i] for i in ids if fuentes[i].tipo in ("sala", "institucional") and fuentes[i].prioridad == 1]
@@ -781,11 +783,23 @@ def puntuar_confianza(r: dict, fuentes: dict[str, Source]) -> dict:
     if r.get("conflictos"):
         puntos -= 2
         campos = sorted({c.get("campo") for c in r["conflictos"] if c.get("campo")})
-        motivos.append("Las webs no coinciden en " + " y ".join(campos))
+        fecha_sala = next((v for c in r["conflictos"] if c.get("campo") == "fecha" for v in c.get("versiones", [])[:1]), None)
+        if fecha_sala:
+            motivos.append(f"La web de la sala lo anuncia el {fecha_sala['valor']}")
+        resto = [c for c in campos if c != "fecha"]
+        if resto:
+            motivos.append("Las webs no coinciden en " + " y ".join(resto))
     if r.get("ausente_web_sala"):
         puntos -= 2
         motivos.append(f"La web de la sala ({r['ausente_web_sala']}) no anuncia nada ese día")
     nivel = next(n for n, minimo in CONFIANZA if puntos >= minimo)
+    cache = [f["cache"] for f in r.get("fuentes") or [] if f.get("id") in fuentes and f.get("cache")]
+    vivas = {f["id"] for f in r.get("fuentes") or [] if f.get("id") in fuentes and not f.get("cache")}
+    if ids and cache and not vivas:
+        motivos.append("Las webs que lo anuncian han fallado hoy: se usa su última lectura"
+                       + (f" (del {max(cache)[:10]})" if any(cache) else ""))
+        if nivel == "confirmado":
+            nivel = "probable"
     ev = (r.get("estado_evento") or {}).get("tipo")
     if ev or r.get("estado") == "posiblemente cancelado":
         nivel = "sin confirmar"
@@ -793,33 +807,61 @@ def puntuar_confianza(r: dict, fuentes: dict[str, Source]) -> dict:
     return {"nivel": nivel, "puntos": puntos, "motivos": motivos}
 
 
-def ausencias_web_sala(recs: list[dict], resultados: dict, fuentes: dict[str, Source], eventos: dict, hoy: str) -> int:
-    """Marca los conciertos de una sala cuya web oficial se ha leído entera hoy y no anuncia nada ese día
-    (r["ausente_web_sala"]). Si la web anuncia otro concierto ese día no se marca: suele ser el mismo con otro nombre
-    ("CARO CAXI" / "CARO TAXI"). Solo hasta la última fecha que publica esa web (muchas solo anuncian unas semanas) y
-    solo en las salas de las que esa web anuncia al menos 5 conciertos (su propia sala, no las de otras que mencione)."""
-    marcados = 0
+def ausencias_web_sala(recs: list[dict], resultados: dict, fuentes: dict[str, Source], eventos: dict, hoy: str,
+                      historial: dict | None = None) -> dict:
+    """Contrasta cada concierto con la web oficial de su sala, cuando se ha leído entera hoy:
+    - la web anuncia al mismo artista otro día (±45 días) y nada el día del concierto: conflicto de fecha, con las dos
+      versiones a la vista (r["conflictos"], campo "fecha");
+    - la web no anuncia nada ese día: r["ausente_web_sala"] (baja la confirmación). Si anuncia otro concierto ese día no
+      se marca: suele ser el mismo con otro nombre ("CARO CAXI" / "CARO TAXI").
+    Solo hasta la última fecha que publica esa web (muchas solo anuncian unas semanas), solo en las salas de las que esa
+    web anuncia al menos 5 conciertos (la suya, no otras que mencione) y nunca si hoy da muchos menos conciertos de lo
+    habitual (lectura incompleta o diseño cambiado: no sería culpa de los conciertos). Devuelve lo marcado por fuente."""
+    from .merge import mismo_acto_en_sala
+    historial = historial or {}
+    marcados: dict[str, dict] = {}
     for r in recs:
         r.pop("ausente_web_sala", None)
+        r["conflictos"] = [c for c in r.get("conflictos") or [] if c.get("campo") != "fecha"]
     for sid, evs in eventos.items():
         sr = fuentes.get(sid)
-        if not sr or sr.tipo != "sala" or not resultados.get(sid, {}).get("completa") or resultados[sid].get("no_leida"):
+        res = resultados.get(sid, {})
+        if not sr or sr.tipo != "sala" or not res.get("completa") or res.get("no_leida") or res.get("desde_cache"):
+            continue
+        antes = (historial.get(sid) or {}).get("ultimo_conteo") or 0
+        if antes >= 10 and len(evs) < 0.5 * antes:
             continue
         cuenta = Counter(canon_sala(e.sala) for e in evs if e.sala)
-        salas = [s for s, n in cuenta.items() if n >= 5]
+        salas = [x for x, n in cuenta.items() if n >= 5]
         if not salas or not evs:
             continue
         hasta = max(e.fecha for e in evs).isoformat()
         dias = {e.fecha.isoformat() for e in evs}
+        m = marcados.setdefault(sid, {"ausentes": 0, "otra_fecha": 0})
         for r in recs:
             if not (hoy <= r["fecha"] <= hasta) or r["fecha"] in dias or any(f["id"] == sid for f in r.get("fuentes") or []):
                 continue
             if r.get("estado") == "posiblemente cancelado":
                 continue
-            if any(_ms(x, s) for x in (r.get("sala") or "").split(" / ") if x for s in salas):
-                r["ausente_web_sala"] = sr.nombre.split(" (")[0]
-                marcados += 1
-    return marcados
+            if not any(_ms(x, sa) for x in (r.get("sala") or "").split(" / ") if x for sa in salas):
+                continue
+            f0 = date.fromisoformat(r["fecha"])
+            otra = sorted((e for e in evs if abs((e.fecha - f0).days) <= 45
+                           and (artistas_coinciden([r["artista"]], [e.artista]) or mismo_acto_en_sala(r["artista"], e.artista))),
+                          key=lambda e: abs((e.fecha - f0).days))
+            nombre = sr.nombre.split(" (")[0]
+            if otra:
+                agendas = list(dict.fromkeys(f["nombre"] for f in r.get("fuentes") or []))
+                r["conflictos"].append({"campo": "fecha", "versiones": [
+                    {"valor": otra[0].fecha.isoformat(), "fuentes": [sr.nombre]},
+                    {"valor": r["fecha"], "fuentes": agendas}]})
+                if r.get("estado") != "posiblemente cancelado":
+                    r["estado"] = "conflicto"
+                m["otra_fecha"] += 1
+            else:
+                r["ausente_web_sala"] = nombre
+                m["ausentes"] += 1
+    return {k: v for k, v in marcados.items() if v["ausentes"] or v["otra_fecha"]}
 
 
 # ---------------------------------------------------------------- historial de cambios de cada concierto
@@ -1163,7 +1205,9 @@ def ejecutar(hoy: date | None = None, solo: list[str] | None = None, fetcher: Fe
         mb_stats = completar(recs, cache_mb, hoy, fetcher_musicbrainz(), max_consultas=max_mb)
         _write("musicbrainz_cache.json", cache_mb)
     n_cambios = registrar_cambios(recs, antes_cambios, hoy.isoformat())
-    n_ausentes = ausencias_web_sala(recs, resultados, por_id, eventos, hoy.isoformat())
+    contraste_sala = ausencias_web_sala(recs, resultados, por_id, eventos, hoy.isoformat(),
+                                        estado.get("historial_fuentes", {}))
+    n_ausentes = sum(v["ausentes"] for v in contraste_sala.values())
     for r in recs:
         r["confianza"] = puntuar_confianza(r, por_id)
     recs.sort(key=lambda r: (r["fecha"], r["hora"] or "99", norm(r["artista"])))
@@ -1172,6 +1216,9 @@ def ejecutar(hoy: date | None = None, solo: list[str] | None = None, fetcher: Fe
                          if categoria_de(e["estilo"]) is None})
     historial = estado.setdefault("historial_fuentes", {})
     inf_fuentes = informe_fuentes(FUENTES, resultados, recs, anteriores_ids, historial, hoy)
+    for f in inf_fuentes:  # auditoría: qué contradice la web de cada sala
+        if f["id"] in contraste_sala:
+            f["contraste_sala"] = contraste_sala[f["id"]]
     futuros = [r for r in recs if r["fecha"] >= hoy.isoformat()]
     ahora = datetime.now(timezone.utc).isoformat(timespec="seconds")
     informe = {
@@ -1192,6 +1239,7 @@ def ejecutar(hoy: date | None = None, solo: list[str] | None = None, fetcher: Fe
             "nuevos_hoy": sum(r["id"] not in anteriores_ids for r in futuros),
             "cambios_hoy": n_cambios,
             "ausentes_web_sala": n_ausentes,
+            "otra_fecha_web_sala": sum(v["otra_fecha"] for v in contraste_sala.values()),
             "confianza": dict(Counter(r["confianza"]["nivel"] for r in futuros)),
             "fuentes_ok": sum(f["funciono"] for f in inf_fuentes),
             "fuentes_total": len(inf_fuentes),

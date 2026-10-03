@@ -72,9 +72,56 @@ def test_ausente_solo_si_la_sala_no_anuncia_nada_ese_dia():
             rec("cc", fecha="2026-10-15", artista="Fantasma"),     # ese día la sala no anuncia nada
             rec("cc", fecha="2026-11-30", artista="Lejano")]       # más allá de lo que publica la sala
     n = ausencias_web_sala(recs, {"elsol": {"completa": True}}, {"elsol": s, **F}, {"elsol": evs}, "2026-10-03")
-    assert n == 1 and recs[1]["ausente_web_sala"] == "Fuente elsol" and "ausente_web_sala" not in recs[0]
-    # si la web de la sala no se leyó entera, no se marca nada
-    assert ausencias_web_sala(recs, {"elsol": {"completa": False}}, {"elsol": s, **F}, {"elsol": evs}, "2026-10-03") == 0
+    assert n == {"elsol": {"ausentes": 1, "otra_fecha": 0}}
+    assert recs[1]["ausente_web_sala"] == "Fuente elsol" and "ausente_web_sala" not in recs[0]
+    # si la web de la sala no se leyó entera, no se marca nada (y se quita lo de antes)
+    assert ausencias_web_sala(recs, {"elsol": {"completa": False}}, {"elsol": s, **F}, {"elsol": evs}, "2026-10-03") == {}
+    assert "ausente_web_sala" not in recs[1]
+    # ni si se leyó entera pero da muchos menos conciertos de lo habitual (diseño cambiado, lectura a medias)
+    assert ausencias_web_sala(recs, {"elsol": {"completa": True}}, {"elsol": s, **F}, {"elsol": evs}, "2026-10-03",
+                              {"elsol": {"ultimo_conteo": 40}}) == {}
+    # ni si hoy falló y sus conciertos son de la última lectura
+    assert ausencias_web_sala(recs, {"elsol": {"completa": True, "desde_cache": 5}}, {"elsol": s, **F},
+                              {"elsol": evs}, "2026-10-03") == {}
+
+
+def test_la_web_de_la_sala_lo_anuncia_otro_dia():
+    s = fuente("villanos", "sala", 1, "alta")
+    evs = [RawEvent(date(2026, 10, d), f"Grupo {d}", "u", sala="Sala El Sol") for d in (10, 12, 13, 20)]
+    evs.append(RawEvent(date(2026, 10, 19), "El Naan Trio", "u", sala="Sala El Sol"))
+    recs = [rec("cc", fecha="2026-10-18", artista="EL NAAN TRIO")]
+    n = ausencias_web_sala(recs, {"villanos": {"completa": True}}, {"villanos": s, **F}, {"villanos": evs}, "2026-10-03")
+    r = recs[0]
+    assert n == {"villanos": {"ausentes": 0, "otra_fecha": 1}} and "ausente_web_sala" not in r
+    assert r["estado"] == "conflicto"
+    c = r["conflictos"][0]
+    assert c["campo"] == "fecha" and [v["valor"] for v in c["versiones"]] == ["2026-10-19", "2026-10-18"]
+    conf = puntuar_confianza(r, F)
+    assert conf["nivel"] == "sin confirmar" and "La web de la sala lo anuncia el 2026-10-19" in conf["motivos"]
+    # al día siguiente la agenda ya lo corrige: el conflicto de fecha desaparece, sin acumularse
+    r["fecha"] = "2026-10-19"
+    ausencias_web_sala(recs, {"villanos": {"completa": True}}, {"villanos": s, **F}, {"villanos": evs}, "2026-10-03")
+    assert not r["conflictos"]
+
+
+def test_solo_de_la_ultima_lectura_no_llega_a_confirmado():
+    r = rec("sala")
+    r["fuentes"][0]["cache"] = "2026-10-01"
+    c = puntuar_confianza(r, F)
+    assert c["nivel"] == "probable" and any("2026-10-01" in m for m in c["motivos"])
+    # si otra web lo da hoy, cuenta con normalidad
+    r["fuentes"].append({"id": "tm", "nombre": "Fuente tm"})
+    assert puntuar_confianza(r, F)["nivel"] == "confirmado"
+
+
+def test_la_fuente_marca_lo_que_viene_de_su_cache():
+    from scraper.pipeline import completar_con_cache
+    s = fuente("elsol", "sala", 1, "alta")
+    cache = {"elsol": {"fecha": "2026-10-01", "eventos": [RawEvent(date(2026, 10, 10), "X", "u", sala="Sala El Sol").to_dict()]}}
+    eventos, resultados = {}, {"elsol": {"completa": False}}
+    completar_con_cache([s], eventos, resultados, date(2026, 10, 3), date(2026, 12, 31), cache)
+    recs = run((eventos["elsol"][0], s))
+    assert recs[0]["fuentes"][0]["cache"] == "2026-10-01"
 
 
 def test_una_grafia_por_sala_y_propuestas():
