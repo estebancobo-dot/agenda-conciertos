@@ -468,6 +468,10 @@ _MESES_EN = {m: i for i, m in enumerate(("january", "february", "march", "april"
                                          "september", "october", "november", "december"), 1)}
 
 
+# lo que no es un concierto: sus noches de club (DJ) y de comedia
+_CLAMORES_NO = re.compile(r"(?i)dance club|clamores club|comedy|perreo|^baile\b")
+
+
 def clamores_parse(html: str, page_url: str, today: date) -> list:
     from ..normalize import infer_year
     out = []
@@ -484,12 +488,14 @@ def clamores_parse(html: str, page_url: str, today: date) -> list:
         except (TypeError, ValueError):
             f = None
         titulo = text(h2)
-        if not f or f < today or re.match(r"(?i)clamores dance club|dance club", titulo):
+        if not f or f < today or _CLAMORES_NO.search(titulo):
             continue
         estilo = None
         mt = re.match(r"^(.*?)\s*\(([^()]+)\)\s*$", titulo)
         if mt:
             titulo, estilo = mt.group(1), mt.group(2)
+        if estilo and re.search(r"(?i)comedia|humor|mon[oó]logo", estilo):
+            continue
         hora = parse_hora(text(it.select_one(".date-component-calendar4")) or "")
         precio = text(it.select_one(".post-heading")) or None
         img = it.find("img")

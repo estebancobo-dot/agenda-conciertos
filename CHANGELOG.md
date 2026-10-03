@@ -1,5 +1,10 @@
 # Versiones
 
+## 2.42.3 — 2026-10-03
+
+- **Sala Clamores vuelve a leerse**: rehízo su web y la agenda pasó de la portada a su página de calendario (el lector daba 0 conciertos y saltó el aviso de cambio en la web). Lector nuevo: día, hora, precio y estilo de cada concierto ("Manu Míguez (Folk)"), sin sus noches de club ni de comedia. Probado en real: 27 conciertos, 18 se unen a los que ya teníamos, 9 nuevos, ningún conflicto.
+- **Aviso claro cuando una sala cambia su robots.txt** (Sala Villanos, desde el 1-10): ya no dice "posible cambio en la web", sino que su robots.txt no permite leerla y se respeta; sus conciertos salen de su última lectura y de otras agendas.
+
 ## 2.42.2 — 2026-10-03
 
 **Historial de cambios sin ruido** (revisado sobre el primer día real: 31 conciertos con "cambios", casi todos falsos):

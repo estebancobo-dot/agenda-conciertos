@@ -69,7 +69,10 @@ def test_clamores():
     html = (item("/eventos/a", "Saturday", 3, "October", "14€ + G.G.", "17:30", "Manu Míguez (Folk)")
             + item("/eventos/b", "Saturday", 3, "October", "10€ + G.G.", "22:00", "Los Blody + Lavin + Jike (Rock &amp; Roll)")
             + item("/eventos/c", "Saturday", 3, "October", "Dsd Free", "23:55", "Clamores Dance Club: Kennah (Urban)")
-            + item("/eventos/d", "Monday", 4, "January", "12€", "21:00", "Grupo de enero"))
+            + item("/eventos/d", "Monday", 4, "January", "12€", "21:00", "Grupo de enero")
+            + item("/eventos/e", "Sunday", 11, "October", "12€", "21:00", "Esto no es un trío (Comedia)")
+            + item("/eventos/f", "Friday", 9, "October", "Dsd Free", "23:55", "Perreo Baby by Maggie &amp; Noree")
+            + item("/eventos/g", "Saturday", 17, "October", "Dsd Free", "23:55", "DaBasemnt Classics en Clamores Club"))
     out = clamores_parse(html, "https://www.salaclamores.es/calendario", date(2026, 10, 3))
     assert [(r.fecha.isoformat(), r.artista, r.invitados, r.hora, r.estilo, r.precio) for r in out] == [
         ("2026-10-03", "Manu Míguez", [], "17:30", "Folk", "14€ + G.G"),
