@@ -8,7 +8,8 @@
 - **Tempo Audiophile Club**: 53 conciertos, 17 nuevos (antes no se podía leer: su API de eventos sí). 3 conflictos que quedan a la vista: un nombre distinto en otra agenda ("Juan Zelada" / "Joao Selva") y un espectáculo con dos pases el mismo día.
 - **TicketAndRoll**, la ticketera de salas pequeñas: sus páginas de **Hangar 48** (tiene dos), **Rincón del Arte Nuevo** y **Jazzville**, tres salas sin web propia legible: 21 conciertos, 5 nuevos, ningún conflicto. "JAVIER MACARRO EN JAZZVILLE" → JAVIER MACARRO.
 - En los títulos, lo de entre paréntesis solo se toma como estilo si nombra un género: "(Chile)", "(Berlín)" o "(Feat: …)" no.
-- Probadas sin agenda legible: Sala Uni, Fulanita de Tal, Live Las Ventas, Café Berlín. Pendientes de revisar: Teatro Eslava, Palacio Vistalegre y Círculo de Bellas Artes (publican fechas, en otro formato).
+- **Teatro Eslava** (10 conciertos, 3 nuevos) y **Palacio Vistalegre** (17, 1 nuevo): su web oficial confirma los que ya traían las agendas. Sin el nombre de la gira en el título ("John Pollón – La Gira Láctea – Tour 2026" → John Pollón).
+- Probadas sin agenda legible: Sala Uni, Fulanita de Tal, Live Las Ventas, Café Berlín. Pendiente: Círculo de Bellas Artes (mezcla conciertos con exposiciones y charlas).
 
 ## 2.43.0 — 2026-10-03
 

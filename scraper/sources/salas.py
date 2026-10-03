@@ -523,7 +523,7 @@ def eslava_parse(html: str, page_url: str, today: date) -> list:
         if f < today:
             continue
         img = it.find("img")
-        out.append(make(f, text(h), h["href"], sala="Teatro Eslava", ciudad="Madrid",
+        out.append(make(f, re.sub(r"(?i)\s+en\s+madrid$", "", text(h)), h["href"], sala="Teatro Eslava", ciudad="Madrid",
                         imagen=img.get("src") if img else None))
     return out
 
