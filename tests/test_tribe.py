@@ -79,3 +79,31 @@ def test_clamores():
         ("2026-10-03", "Los Blody", ["Lavin", "Jike"], "22:00", "Rock & Roll", "10€ + G.G"),
         ("2027-01-04", "Grupo de enero", [], "21:00", None, "12€")]
     assert out[0].url == "https://www.salaclamores.es/eventos/a"
+
+
+def test_estilo_entre_parentesis_y_tras_punto():
+    d = {"events": [ev("MUXU (Pop Rock) + MONKEY MOON (Punk Rock)", "2026-10-09 21:00:00", ["Conciertos"], valores=["10", "12"]),
+                    ev("JUAN ZELADA · Soul / Funk / R&amp;B", "2026-10-10 22:00:00", ["Conciertos"]),
+                    ev("ZEUHL DJ", "2026-10-10 23:30:00", ["DJs"]),
+                    ev("EVENTO PRIVADO", "2026-10-07 17:00:00", ["Conciertos", "DJs"]),
+                    ev("LAS ERAS (ARG)", "2026-11-22 21:00:00", ["Conciertos"])]}
+    out = tribe_parse(d, "El Perro Club", "Madrid", HOY, HOR, r"conciertos?$")
+    assert [(r.artista, r.invitados, r.estilo, r.nacionalidad) for r in out] == [
+        ("MUXU", ["MONKEY MOON"], "Pop Rock", None), ("JUAN ZELADA", [], "Soul, Funk, R&B", None),
+        ("LAS ERAS", [], None, "AR")]
+    assert out[0].precio == "10-12 €"
+
+
+def test_ticketandroll():
+    import json
+    from scraper.sources.salas import ticketandroll_parse
+    def ld(nombre, inicio):
+        return {"@context": "https://schema.org", "@type": "MusicEvent", "name": nombre, "startDate": inicio,
+                "url": "https://ticketandroll.com/evento/x", "location": {"@type": "Place", "name": "Jazzville"}}
+    html = "".join(f'<script type="application/ld+json">{json.dumps(x)}</script>' for x in [
+        ld("JAVIER MACARRO EN JAZZVILLE", "2026-10-10T13:00"), ld("La del Pirata Cojo", "2026-10-03T21:00"),
+        ld("THE VELVET HANDS en Hangar 48", "2026-10-14T21:00"), ld("Viejo", "2026-09-01T21:00")])
+    out = ticketandroll_parse(html, "https://ticketandroll.com/local/jazzville", HOY, "Jazzville")
+    assert [(r.artista, r.hora, r.sala) for r in out] == [("JAVIER MACARRO", "13:00", "Jazzville"),
+                                                          ("La del Pirata Cojo", "21:00", "Jazzville"),
+                                                          ("THE VELVET HANDS en Hangar 48", "21:00", "Jazzville")]

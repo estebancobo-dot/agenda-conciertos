@@ -12,7 +12,7 @@ from datetime import date, timedelta
 from urllib.parse import urljoin
 
 from ..normalize import MESES, clean, parse_fecha_texto, parse_hora
-from .base import Ctx, jsonld_events, make, soup_of, text
+from .base import Ctx, TiempoAgotado, jsonld_events, ld_to_raw, make, soup_of, text
 
 DIAS = r"(?:lunes|martes|mi[eé]rcoles|jueves|viernes|s[aá]bado|domingo|lun|mar|mi[eé]|jue|vie|s[aá]b|dom|monday|" \
        r"tuesday|wednesday|thursday|friday|saturday|sunday|mon|tue|wed|thu|fri|sat|sun)\.?"
@@ -551,6 +551,12 @@ def cafecentral_parse(html: str, page_url: str, today: date, horizonte: date | N
 TRIBE_API = "wp-json/tribe/events/v1/events"
 TRIBE_NO = re.compile(r"(?i)^(clubbing|club|fiesta|fiestas|dj|djs|sesi[oó]n(es)? dj|literatura|cine|teatro|humor|"
                       r"monólogos?|talleres?|exposici[oó]n(es)?)$")
+# el estilo entre paréntesis o tras " · " en el título: "ALBERTO BALLESTEROS (Pop · Rock · Folk)", "MUXU (Pop Rock) +
+# MONKEY MOON (Punk Rock)" (se toma el del cabeza de cartel), "JUAN ZELADA · Soul / Funk / R&B". "(ARG)" y otros
+# códigos de país de 2-3 letras no son estilos
+_TRIBE_PAREN = re.compile(r"\s*\(([^()]{4,})\)")
+_TRIBE_PUNTO = re.compile(r"^(.+?)\s+·\s+(.+)$")
+_TRIBE_PRIVADO = re.compile(r"(?i)^(evento privado|cerrado|alquiler|celebra tu evento)")
 _TRIBE_COLA = re.compile(r"\s+[–—-]\s+((?:tributo|versiones|homenaje|covers?)\b.*)$", re.I)
 
 
@@ -588,9 +594,17 @@ def tribe_parse(datos: dict, sala: str, ciudad: str, hoy: date, horizonte: date,
         if solo and not any(re.match(solo, c, re.I) for c in cats):
             continue
         titulo = clean(html_lib.unescape(re.sub(r"<[^>]+>", " ", str(e.get("title") or ""))))
-        if not titulo:
+        if not titulo or _TRIBE_PRIVADO.match(titulo):
             continue
         estilos = [c for c in cats if not TRIBE_NO.match(c) and not re.match(r"(?i)^conciertos?$", c)]
+        parens = _TRIBE_PAREN.findall(titulo)
+        if parens:
+            titulo = clean(_TRIBE_PAREN.sub("", titulo))
+            estilos = estilos or [re.sub(r"\s*[·/]\s*", ", ", parens[0])]
+        else:
+            mp = _TRIBE_PUNTO.match(titulo)
+            if mp and not estilos:
+                titulo, estilos = mp.group(1), [re.sub(r"\s*[·/]\s*", ", ", mp.group(2))]
         mc = _TRIBE_COLA.search(titulo)
         if mc:
             titulo, estilos = titulo[: mc.start()], [mc.group(1)] + estilos
@@ -613,6 +627,47 @@ def _tribe(base: str, sala: str, ciudad: str = "Madrid", solo: str | None = None
                 break
             pagina += 1
     return run
+
+
+# ------------------------------------------------------------------ TicketAndRoll (páginas de sala)
+# Ticketera de salas pequeñas. Sus páginas de cada local traen los próximos conciertos en JSON-LD (fecha y hora, sala,
+# enlace e imagen). Sirve para salas sin web propia legible: Hangar 48 (tiene dos fichas), Rincón del Arte Nuevo y
+# Jazzville. "JAVIER MACARRO EN JAZZVILLE", "THE VELVET HANDS en Hangar 48": la sala no es parte del nombre.
+TICKETANDROLL = {
+    "https://ticketandroll.com/local/sala-hangar-48": "Hangar 48",
+    "https://ticketandroll.com/local/hangar-48": "Hangar 48",
+    "https://ticketandroll.com/local/el-rincon-del-arte-nuevo": "Rincón del Arte Nuevo",
+    "https://ticketandroll.com/local/jazzville": "Jazzville",
+}
+
+
+def ticketandroll_parse(html: str, page_url: str, today: date, sala: str) -> list:
+    from ..normalize import norm
+    out = []
+    ns = norm(sala)
+    for ev in jsonld_events(soup_of(html)):
+        r = ld_to_raw(ev, today, page_url, use_performers=False)
+        if not r or r.fecha < today:
+            continue
+        titulo = re.sub(r"(?i)\s+(?:en|@)\s+(?:la\s+)?(?:sala\s+)?(.+)$",
+                        lambda m: "" if ns and (norm(m.group(1)) in ns or ns in norm(m.group(1))) else m.group(0),
+                        html_lib.unescape(ev.get("name") or ""))
+        titulo = clean(re.sub(r"\s*-\s*$", "", titulo))
+        if not titulo:
+            continue
+        out.append(make(r.fecha, titulo, r.url, sala=sala, ciudad="Madrid", hora=r.hora, precio=r.precio,
+                        imagen=r.imagen))
+    return out
+
+
+def ticketandroll(ctx: Ctx):
+    for url, sala in TICKETANDROLL.items():
+        try:
+            yield from ticketandroll_parse(ctx.get(url), url, ctx.today, sala)
+        except TiempoAgotado:
+            raise
+        except Exception as e:  # noqa: BLE001
+            ctx.errors.append(f"{url}: {type(e).__name__}")
 
 
 # ------------------------------------------------------------------ registro de salas
@@ -652,6 +707,8 @@ PARSERS = {
     "nuevacubierta": _one("https://lanuevacubierta.com/eventos/", cubierta_parse),
     "cafecentral": lambda ctx: cafecentral_parse(ctx.get("https://cafecentralmadrid.com/programacion/"),
                                                  "https://cafecentralmadrid.com/programacion/", ctx.today, ctx.horizon),
+    "elperroclub": _tribe("https://elperroclub.es/", "El Perro Club", solo=r"conciertos?$"),
+    "tempo": _tribe("https://tempoclub.es/", "Tempo Audiophile Club", solo=r"conciertos?$"),
     "cafelapalma": _tribe("https://cafelapalma.com/", "Café La Palma", solo=r"conciertos?$"),
     "cadillac": _tribe("https://cadillacsolitario.com/", "Cadillac Solitario"),
     "dimequemequieres": _tribe("https://conciertos.dimequemequieresbardecopas.com/", "Dime que me Quieres"),
