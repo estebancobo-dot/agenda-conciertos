@@ -505,6 +505,60 @@ def clamores_parse(html: str, page_url: str, today: date) -> list:
     return out
 
 
+# ------------------------------------------------------------------ Teatro Eslava
+# Su página de conciertos (JetEngine): por concierto, un bloque con la fecha ("lunes 26.10.2026"), el título con su
+# enlace y el cartel. No da la hora.
+def eslava_parse(html: str, page_url: str, today: date) -> list:
+    out = []
+    for it in soup_of(html).select(".jet-listing-grid__item"):
+        fecha = it.select_one(".jet-listing-dynamic-field__content")
+        h = it.select_one("h3 a[href], h2 a[href]")
+        m = re.search(r"(\d{1,2})\.(\d{1,2})\.(\d{4})", text(fecha) if fecha else "")
+        if not (m and h and text(h)):
+            continue
+        try:
+            f = date(int(m.group(3)), int(m.group(2)), int(m.group(1)))
+        except ValueError:
+            continue
+        if f < today:
+            continue
+        img = it.find("img")
+        out.append(make(f, text(h), h["href"], sala="Teatro Eslava", ciudad="Madrid",
+                        imagen=img.get("src") if img else None))
+    return out
+
+
+# ------------------------------------------------------------------ Palacio Vistalegre
+# Carrusel de eventos: el enlace con el título (atributo title) y la fecha en bloques (día, mes en inglés abreviado,
+# año). El nombre de la gira no es parte del artista: "John Pollón – La Gira Láctea – Tour 2026", "Simple Plan
+# «Bigger Than You Think! Europe Tour 2026»".
+_GIRA = re.compile(r"\s*(?:[–—-]\s+.*\b(?:tour|gira)\b.*|«[^»]*»|\"[^\"]*\b(?:tour|gira)\b[^\"]*\")\s*$", re.I)
+
+
+def vistalegre_parse(html: str, page_url: str, today: date) -> list:
+    out, vistos = [], set()
+    for it in soup_of(html).select(".event-item"):
+        a = it.select_one("a[title][href]")
+        bloque = it.select_one(".event-date-block")
+        if not a or not bloque or a["href"] in vistos:
+            continue
+        dia, mes, anyo = (bloque.select_one(f".{k}") for k in ("day", "month", "year"))
+        m = {k[:3]: v for k, v in _MESES_EN.items()}.get(text(mes).strip().lower()[:3]) if mes else None
+        try:
+            f = date(int(text(anyo)), m, int(text(dia))) if m and dia and anyo else None
+        except ValueError:
+            f = None
+        titulo = clean(_GIRA.sub("", html_lib.unescape(a["title"])))
+        if not f or f < today or not titulo:
+            continue
+        vistos.add(a["href"])
+        img = it.find("img")
+        imagen = (img.get("data-lazy-src") or img.get("src")) if img else None
+        out.append(make(f, titulo, a["href"], sala="Palacio Vistalegre", ciudad="Madrid",
+                        imagen=imagen if imagen and imagen.startswith("http") else None))
+    return out
+
+
 # ------------------------------------------------------------------ Café Central (jazz)
 # Cada concierto es un bloque con su día de inicio y de fin en atributos (data-event-date, data-end-date: las
 # residencias de varias noches seguidas), el título, la hora ("8PM & 10PM": dos pases, se toma el primero) y el
@@ -718,6 +772,8 @@ PARSERS = {
     "independance": _sec("https://independanceclub.com/collections/conciertos", "Independance Club"),
     "salab": _sec("https://www.salabmadrid.com/", "Sala B"),
     "nuevacubierta": _one("https://lanuevacubierta.com/eventos/", cubierta_parse),
+    "vistalegre": _one("https://www.palaciovistalegre.com/", vistalegre_parse),
+    "eslava": _one("https://teatroeslava.com/conciertos/", eslava_parse),
     "cafecentral": lambda ctx: cafecentral_parse(ctx.get("https://cafecentralmadrid.com/programacion/"),
                                                  "https://cafecentralmadrid.com/programacion/", ctx.today, ctx.horizon),
     "elperroclub": _tribe("https://elperroclub.es/", "El Perro Club", solo=r"conciertos?$"),

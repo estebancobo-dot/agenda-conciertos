@@ -108,3 +108,30 @@ def test_ticketandroll():
     assert [(r.artista, r.hora, r.sala) for r in out] == [("JAVIER MACARRO", "13:00", "Jazzville"),
                                                           ("La del Pirata Cojo", "21:00", "Jazzville"),
                                                           ("THE VELVET HANDS en Hangar 48", "21:00", "Jazzville")]
+
+
+def test_eslava():
+    from scraper.sources.salas import eslava_parse
+    def item(fecha, titulo, href):
+        return f"""<div class="jet-listing-grid__item"><a href="{href}"><img src="https://teatroeslava.com/x.png"></a>
+          <div class="jet-listing-dynamic-field__content">{fecha}</div><h3 class="elementor-heading-title"><a href="{href}">{titulo}</a></h3></div>"""
+    html = item("lunes 26.10.2026", "The Lemon Twigs", "https://teatroeslava.com/conciertos/the-lemon-twigs/") + \
+        item("martes 01.09.2026", "Pasado", "https://teatroeslava.com/conciertos/p/")
+    out = eslava_parse(html, "https://teatroeslava.com/conciertos/", HOY)
+    assert [(r.fecha.isoformat(), r.artista, r.url) for r in out] == [
+        ("2026-10-26", "The Lemon Twigs", "https://teatroeslava.com/conciertos/the-lemon-twigs/")]
+
+
+def test_vistalegre():
+    from scraper.sources.salas import vistalegre_parse
+    def item(titulo, href, d, m, y):
+        return f"""<div class="event-carousel-item event-item"><div class="event-item"><a href="{href}" title="{titulo}">
+          <img src="data:x" data-lazy-src="https://www.palaciovistalegre.com/p.jpg"><div class="event-date-block">
+          <div class="day">{d}</div><div class="month">{m}</div><div class="year">{y}</div></div></a></div></div>"""
+    html = (item("John Pollón &#8211; La Gira Láctea &#8211; Tour 2026", "https://pv/event/jp/", 31, "Oct", 2026)
+            + item("Simple Plan «Bigger Than You Think! Europe Tour 2026»", "https://pv/event/sp/", 27, "Oct", 2026)
+            + item("Los Kjarkas", "https://pv/event/k/", 15, "Oct", 2026) + item("Los Kjarkas", "https://pv/event/k/", 15, "Oct", 2026))
+    out = vistalegre_parse(html, "https://www.palaciovistalegre.com/", HOY)
+    assert [(r.fecha.isoformat(), r.artista) for r in out] == [("2026-10-31", "John Pollón"), ("2026-10-27", "Simple Plan"),
+                                                              ("2026-10-15", "Los Kjarkas")]
+    assert out[0].imagen == "https://www.palaciovistalegre.com/p.jpg"

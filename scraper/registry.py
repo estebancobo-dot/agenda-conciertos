@@ -122,6 +122,10 @@ FUENTES: list[Source] = [
       "cafecentral", salas.PARSERS["cafecentral"], municipio_defecto="Madrid",
       notas="Café Central Ateneo y el auditorio de La Cátedra; las residencias de varias noches, una por noche."),
     # salas que publican su agenda con The Events Calendar (API de WordPress; comprobado el 3-10-2026)
+    S("vistalegre", "Palacio Vistalegre (web oficial)", "https://www.palaciovistalegre.com/", "sala", 1, "alta",
+      "vistalegre", salas.PARSERS["vistalegre"], municipio_defecto="Madrid"),
+    S("eslava", "Teatro Eslava (web oficial)", "https://teatroeslava.com/conciertos/", "sala", 1, "alta", "eslava",
+      salas.PARSERS["eslava"], municipio_defecto="Madrid"),
     S("elperroclub", "El Perro Club (web oficial)", "https://elperroclub.es/conciertos/", "sala", 1, "alta",
       "elperroclub", salas.PARSERS["elperroclub"], municipio_defecto="Madrid",
       notas="Sus conciertos; las sesiones de DJ, no."),
