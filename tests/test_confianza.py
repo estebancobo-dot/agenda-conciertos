@@ -142,3 +142,21 @@ def test_listado_incompleto_de_la_sala_no_penaliza():
                            {"vistalegre": evs}, "2026-10-03")
     assert "Papa Roach" in n["vistalegre"]["incompleta"] and n["vistalegre"]["ausentes"] == 0
     assert "ausente_web_sala" not in papa and "ausente_web_sala" not in otro
+
+
+def test_varias_salas_en_una_fuente_y_series():
+    s = fuente("salas_js", "sala", 1, "alta")
+    # Intruso publica una semana; Moe, un mes: lo que pasa de la semana de Intruso no se contrasta
+    evs = [RawEvent(date(2026, 10, d), f"Intruso {d}", "u", sala="Intruso Bar") for d in (3, 4, 6, 7, 8)]
+    evs += [RawEvent(date(2026, 10, 5), "Blues & Roots", "u", sala="Intruso Bar")]
+    evs += [RawEvent(date(2026, 10, d), f"Moe {d}", "u", sala="Moe") for d in range(4, 31, 3)]
+    jam = rec("cc", fecha="2026-10-12", artista="Blues & Roots", sala="Intruso Bar")
+    n = ausencias_web_sala([jam], {"salas_js": {"completa": True}}, {"salas_js": s, **F}, {"salas_js": evs}, "2026-10-03")
+    assert not jam["conflictos"] and "ausente_web_sala" not in jam and not n
+    # una serie que la web anuncia varios días no es "otra fecha"
+    evs2 = [RawEvent(date(2026, 10, d), "Jam de los martes", "u", sala="Sala El Sol") for d in (6, 13, 27)]
+    evs2 += [RawEvent(date(2026, 10, d), f"G{d}", "u", sala="Sala El Sol") for d in (7, 8, 9, 10)]
+    j = rec("cc", fecha="2026-10-20", artista="Jam de los martes")
+    ausencias_web_sala([j], {"elsol": {"completa": True}}, {"elsol": fuente("elsol", "sala", 1), **F}, {"elsol": evs2},
+                       "2026-10-03")
+    assert not j["conflictos"]

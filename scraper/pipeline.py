@@ -839,21 +839,28 @@ def ausencias_web_sala(recs: list[dict], resultados: dict, fuentes: dict[str, So
         salas = [x for x, n in cuenta.items() if n >= 5]
         if not salas or not evs:
             continue
-        hasta = max(e.fecha for e in evs).isoformat()
+        # hasta dónde publica cada sala: una fuente puede leer varias webs (Intruso publica una semana; Moe, un mes)
+        hasta_sala: dict[str, str] = {}
+        for e in evs:
+            k = canon_sala(e.sala) if e.sala else ""
+            hasta_sala[k] = max(hasta_sala.get(k, ""), e.fecha.isoformat())
         dias = {e.fecha.isoformat() for e in evs}
         m = marcados.setdefault(sid, {"ausentes": 0, "otra_fecha": 0})
         pendientes = []
         for r in recs:
-            if not (hoy <= r["fecha"] <= hasta) or r["fecha"] in dias or any(f["id"] == sid for f in r.get("fuentes") or []):
+            if r["fecha"] < hoy or r["fecha"] in dias or any(f["id"] == sid for f in r.get("fuentes") or []):
                 continue
             if r.get("estado") == "posiblemente cancelado":
                 continue
-            if not any(_ms(x, sa) for x in (r.get("sala") or "").split(" / ") if x for sa in salas):
+            suyas = [sa for x in (r.get("sala") or "").split(" / ") if x for sa in salas if _ms(x, sa)]
+            if not suyas or r["fecha"] > max(hasta_sala.get(sa, "") for sa in suyas):
                 continue
             f0 = date.fromisoformat(r["fecha"])
             otra = sorted((e for e in evs if abs((e.fecha - f0).days) <= 45
                            and (artistas_coinciden([r["artista"]], [e.artista]) or mismo_acto_en_sala(r["artista"], e.artista, r.get("sala") or ""))),
                           key=lambda e: abs((e.fecha - f0).days))
+            if len({e.fecha for e in otra}) > 1:
+                continue  # una serie (jam semanal, ciclo): la web la anuncia varios días, no es otra fecha del mismo
             pendientes.append((r, otra))
         # la web de la sala no lista todo lo que hay en ella (solo lo de su promotora, o una parte): si le falta un
         # concierto que anuncian 3 o más webs independientes, su silencio no dice nada de los demás (Vistalegre y

@@ -1,5 +1,10 @@
 # Versiones
 
+## 2.48.4 — 2026-10-03
+
+- Conflictos de fecha falsos con la web de la sala: "Blues & Roots" (jam de los lunes en Intruso) salía con otra fecha los días 12, 19 y 26. Ahora se contrasta solo hasta donde publica **cada sala** (una fuente puede leer varias webs: Intruso publica una semana; Moe, un mes) y una **serie** que la web anuncia varios días (jam semanal, ciclo) no se toma por otra fecha del mismo concierto. Quedan los 3 conflictos reales (Tortoise y dos de Café Central).
+- Alias: "Sala Moon" (así la escribe Songkick) es Sala Mon Live (Los Palmeras, el mismo día en las dos).
+
 ## 2.48.3 — 2026-10-03
 
 - Contraste: la etiqueta "Estimado" de la ficha no llegaba al contraste mínimo en modo claro (lo detectó la validación de la web publicada). El estado se ve ahora en el punto y el borde de color; el texto, con el color normal.
