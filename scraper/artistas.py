@@ -412,6 +412,8 @@ def _mbid(ent: dict) -> tuple[str | None, str]:
         return mbid, "identificador de MusicBrainz en Wikidata"
     mb = ent.get("musicbrainz") or {}
     if mb.get("encontrado") and mb.get("mbid"):
+        if "Spotify" in str(mb.get("identificado_por") or ""):
+            return mb["mbid"], mb["identificado_por"]
         return mb["mbid"], "identificador de MusicBrainz (único artista con ese nombre)"
     return None, ""
 
@@ -567,10 +569,29 @@ def musicbrainz_parse(data: dict) -> dict:
             "pais": pais, "area": [a for a in area if a]}
 
 
-def buscar_musicbrainz(f: Fetcher, nombre: str, mbid: str | None, mb_cache: dict | None, hoy: date) -> dict:
+MB_POR_URL = "https://musicbrainz.org/ws/2/url?resource={url}&inc=artist-rels&fmt=json"
+
+
+def mbid_por_spotify(f: Fetcher, spotify_id: str) -> str | None:
+    """El artista de MusicBrainz que tiene enlazada esa página de Spotify (identidad exacta, sin homónimos). None si
+    MusicBrainz no la tiene o la enlazan varios artistas."""
+    import requests
+    from urllib.parse import quote
+    url = quote(f"https://open.spotify.com/artist/{spotify_id}", safe="")
+    try:
+        data = json.loads(f.get(MB_POR_URL.format(url=url), check_robots=False, headers={"Accept": "application/json"}))
+    except requests.HTTPError as e:
+        if e.response is not None and e.response.status_code == 404:
+            return None
+        raise
+    ids = {(r.get("artist") or {}).get("id") for r in data.get("relations") or [] if (r.get("artist") or {}).get("id")}
+    return ids.pop() if len(ids) == 1 else None
+
+
+def buscar_musicbrainz(f: Fetcher, nombre: str, mbid: str | None, mb_cache: dict | None, hoy: date,
+                       via: str = "identificador de MusicBrainz en Wikidata") -> dict:
     """Con el identificador de Wikidata la identidad es exacta; si no, se usa la única coincidencia exacta del
     nombre en MusicBrainz (la misma búsqueda que da la nacionalidad, guardada en musicbrainz_cache.json)."""
-    via = "identificador de MusicBrainz en Wikidata"
     if not mbid:
         from .musicbrainz import buscar
         k = norm(nombre)
@@ -671,6 +692,14 @@ def _mb_sin_area(ent: dict) -> bool:
     return bool(mb.get("encontrado") and not mb.get("pais") and "area" not in mb)
 
 
+def _falta_spotify(ent: dict, sp: str | None) -> bool:
+    """Hay identificador de Spotify sin mirar (o con error) y MusicBrainz aún no identifica al artista."""
+    if not sp or (ent.get("musicbrainz") or {}).get("encontrado") or (ent.get("wikidata") or {}).get("ids", {}).get("musicbrainz"):
+        return False
+    hecho = ent.get("spotify") or {}
+    return hecho.get("id") != sp or bool(hecho.get("error"))
+
+
 def _falta_agenda(ent: dict) -> bool:
     """Falta leer la página del concierto: sin país o sin estilo en las webs de música, y sin lectura (o con una
     lectura de una versión anterior, que no buscaba el estilo)."""
@@ -715,6 +744,7 @@ def enriquecer(recs: list[dict], cache: dict, hoy: date, presupuesto_seg: float 
     inicio = time.monotonic()
     vistos, pendientes = set(), []
     urls_de: dict[str, list[str]] = {}
+    spotify_de: dict[str, str] = {}  # artista → su identificador de Spotify (Enterticket)
     fetcher_ag = Fetcher()
     from .clasificar import es_espectaculo
     from .nombres import claves_ficha
@@ -751,6 +781,8 @@ def enriquecer(recs: list[dict], cache: dict, hoy: date, presupuesto_seg: float 
             continue
         vistos.add(k)
         urls_de[k] = paginas_del_concierto(r)
+        if r.get("spotify") and norm(nombre) in {norm(x) for x in claves_ficha(r)[:3]}:
+            spotify_de[k] = r["spotify"]
         ent = cache.get(k)
         cad = CADUCIDAD_OK if ent and _encontrado(ent) else CADUCIDAD_NO
         if not ent or ent.get("fecha", "") < (hoy - timedelta(days=cad)).isoformat():
@@ -758,7 +790,7 @@ def enriquecer(recs: list[dict], cache: dict, hoy: date, presupuesto_seg: float 
             continue
         falta_wd = ent.get("wikipedia", {}).get("wikidata") and "wikidata" not in ent
         falta_lf = clave_lastfm and ("lastfm" not in ent or _lastfm_mejorable(ent)) and not _tiene_estilo(ent)
-        falta_mb = "musicbrainz" not in ent or _mb_sin_area(ent) or _dc_sin_discos(ent)
+        falta_mb = "musicbrainz" not in ent or _mb_sin_area(ent) or _dc_sin_discos(ent) or _falta_spotify(ent, spotify_de.get(k))
         if falta_wd or falta_lf or falta_mb or _falta_origen(ent, clave_lastfm) or _pasos_con_error(ent):
             pendientes.append((k, nombre, ent))
         else:
@@ -797,9 +829,25 @@ def enriquecer(recs: list[dict], cache: dict, hoy: date, presupuesto_seg: float 
             ent.pop("musicbrainz")  # fichas anteriores sin la zona del artista: se completa
         if _dc_sin_discos(ent):
             ent.pop("discogs")  # ficha anterior que no miraba los discos sueltos: se completa
+        sp = spotify_de.get(k)
+        if _falta_spotify(ent, sp):
+            # la página de Spotify del artista (la da Enterticket) identifica al artista exacto en MusicBrainz
+            ent["spotify"] = {"id": sp}
+            try:
+                ent["spotify"]["mbid"] = mbid_por_spotify(fetcher_mb, sp)
+            except Exception as e:  # noqa: BLE001
+                ent["spotify"]["error"] = type(e).__name__
+            if ent["spotify"].get("mbid") and not (ent.get("musicbrainz") or {}).get("encontrado"):
+                ent.pop("musicbrainz", None)
         if "musicbrainz" not in ent:
             mbid = (ent.get("wikidata") or {}).get("ids", {}).get("musicbrainz")
-            paso("musicbrainz", buscar_musicbrainz, fetcher_mb, nombre, mbid, mb_cache, hoy)
+            if mbid:
+                paso("musicbrainz", buscar_musicbrainz, fetcher_mb, nombre, mbid, mb_cache, hoy)
+            elif (ent.get("spotify") or {}).get("mbid"):
+                paso("musicbrainz", buscar_musicbrainz, fetcher_mb, nombre, ent["spotify"]["mbid"], mb_cache, hoy,
+                     "su página de Spotify (dada por Enterticket), enlazada en MusicBrainz")
+            else:
+                paso("musicbrainz", buscar_musicbrainz, fetcher_mb, nombre, None, mb_cache, hoy)
         if clave_lastfm and _lastfm_mejorable(ent):
             ent.pop("lastfm")  # se encontró por el nombre y ahora hay identificador de MusicBrainz: se confirma
         if clave_lastfm and "lastfm" not in ent and not _tiene_estilo(ent):

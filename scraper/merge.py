@@ -396,6 +396,7 @@ def construir(cluster: Cluster, municipio_de) -> dict:
         "precio": precio,
         "precio_fuente": precio_fuente,
         "imagen_evento": imagen_evento,
+        "spotify": next((i.ev.spotify for i in sorted(items, key=lambda i: i.src.prioridad) if i.ev.spotify), None),
         "confirmado_sala": {"nombre": oficial.src.nombre, "url": oficial.ev.url} if oficial else None,
         "ciclo": ciclo,
         "estilo_fuente": estilos,

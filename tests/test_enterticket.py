@@ -55,3 +55,30 @@ def test_incremental_solo_abre_lo_nuevo():
     # si sale del sitemap (ya no se vende), deja de salir
     paginas["https://www.enterticket.es/sitemap.xml"] = f"<url><loc>{base}b-barcelona-2</loc></url>"
     assert list(enterticket(Ctx(f, date(2026, 10, 5), date(2027, 1, 31), estado=estado))) == []
+
+
+def test_spotify_del_artista_solo_si_hay_uno():
+    def con(artistas):
+        ev = json.loads(pagina(artistas=()).split('application/json">')[1].split("</script>")[0])
+        ev["props"]["pageProps"]["event"]["artists"] = artistas
+        return f'<script id="__NEXT_DATA__" type="application/json">{json.dumps(ev)}</script>'
+    uno = evento_de_pagina(con([{"name": "Álvaro García", "spotify_id": "3xuiqNVeSn3hpnWlAto2eq"}]), "u")
+    assert uno["spotify"] == "3xuiqNVeSn3hpnWlAto2eq"
+    dos = evento_de_pagina(con([{"name": "A", "spotify_id": "3xuiqNVeSn3hpnWlAto2eq"}, {"name": "B"}]), "u")
+    assert dos["spotify"] is None
+
+
+def test_mbid_por_spotify():
+    from scraper.artistas import _falta_spotify, mbid_por_spotify
+
+    class F:
+        def get(self, url, **kw):
+            assert "open.spotify.com%2Fartist%2F3xuiqNVeSn3hpnWlAto2eq" in url
+            return json.dumps({"relations": [{"artist": {"id": "abc-123"}}]})
+    assert mbid_por_spotify(F(), "3xuiqNVeSn3hpnWlAto2eq") == "abc-123"
+    sp = "3xuiqNVeSn3hpnWlAto2eq"
+    assert _falta_spotify({"musicbrainz": {"encontrado": False, "motivo": "3 artistas homónimos"}}, sp)
+    assert not _falta_spotify({"musicbrainz": {"encontrado": True}}, sp)          # ya identificado
+    assert not _falta_spotify({"spotify": {"id": sp, "mbid": None}}, sp)           # ya mirado
+    assert _falta_spotify({"spotify": {"id": sp, "error": "HTTPError"}}, sp)       # error: se repite
+    assert not _falta_spotify({}, None)

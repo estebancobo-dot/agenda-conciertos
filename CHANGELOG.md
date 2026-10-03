@@ -1,5 +1,9 @@
 # Versiones
 
+## 2.50.0 — 2026-10-03
+
+**N3/N4 (segunda parte): artistas identificados por su página de Spotify.** Enterticket da el identificador de Spotify de cada artista. Si MusicBrainz no encontró al artista por su nombre (o encontró varios homónimos), se le pregunta qué artista tiene enlazada esa página de Spotify: es el artista exacto, sin riesgo de homónimos, y de su ficha salen su país y sus géneros. Solo con un único artista en el evento (con varios no se sabe de quién es el identificador). En la ficha se dice: "identificado por su página de Spotify (dada por Enterticket), enlazada en MusicBrainz". Con los datos de hoy, 26 de los 45 conciertos de Enterticket no tenían origen conocido.
+
 ## 2.49.1 — 2026-10-03
 
 **N5: hora, precio y sala con su estado.** Como el estilo y el origen: conocido (y de qué web), estimado (la hora, si las webs no coinciden: se enseñan las dos) o desconocido tras buscar (qué webs lo anuncian sin darlo). En la ficha se ve solo cuando falta el dato; en la página de Fuentes, el recuento de los cinco datos. Con los datos de hoy (antes de las horas de Madrid en Vivo): hora 2.096 conocidas, 89 sin acuerdo y 717 desconocidas; precio 1.604 y 1.298; sala 2.881 y 21.

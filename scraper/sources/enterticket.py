@@ -49,11 +49,14 @@ def evento_de_pagina(html: str, url: str) -> dict | None:
     hora = inicio[11:16] if inicio[11:16] not in ("", "00:00") else None
     precio = ev.get("minimum_price")
     artistas = [clean(a.get("name")) for a in ev.get("artists") or [] if clean(a.get("name"))]
+    spotify = next((str(a.get("spotify_id")) for a in ev.get("artists") or []
+                    if a.get("spotify_id") and re.fullmatch(r"[0-9A-Za-z]{22}", str(a.get("spotify_id")))), None)
     nombre = clean(_CIUDAD.sub("", nombre_ev)) or (artistas[0] if artistas else "")
     out.update({"nombre": nombre, "hora": hora, "sala": clean(venue.get("name")), "ciudad": muni, "url": url,
                 "precio": f"desde {precio:.2f} €".replace(".", ",") if isinstance(precio, (int, float)) and precio else None,
                 "invitados": [a for a in artistas[1:] if a.lower() not in nombre.lower()],
-                "activo": bool(ev.get("active", True)) and bool(ev.get("front_active", True))})
+                "activo": bool(ev.get("active", True)) and bool(ev.get("front_active", True)),
+                "spotify": spotify if len(artistas) == 1 else None})  # con varios, no se sabe de quién es
     return out
 
 
@@ -91,4 +94,4 @@ def enterticket(ctx: Ctx):
         f = date.fromisoformat(d["fecha"])
         if ctx.in_window(f):
             yield make(f, d["nombre"], d["url"], split=False, invitados=d.get("invitados") or [], sala=d["sala"],
-                       ciudad=d["ciudad"], hora=d.get("hora"), precio=d.get("precio"))
+                       ciudad=d["ciudad"], hora=d.get("hora"), precio=d.get("precio"), spotify=d.get("spotify"))
