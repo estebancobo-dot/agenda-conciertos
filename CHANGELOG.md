@@ -1,5 +1,11 @@
 # Versiones
 
+## 2.50.1 — 2026-10-03
+
+- Enterticket: las fichas de evento guardadas antes de leer el identificador de Spotify del artista se vuelven a mirar ya (antes, cada 3 días), para que la identificación por Spotify empiece en la próxima lectura.
+- Biografías en las páginas del concierto: una página de entradas que no deja leerla (403 de Giglon u OneBox) ya no cuenta como error que se repite en cada pasada.
+- Primera pasada con N3/N4/N5: estilo conocido de 775 a 842 conciertos; origen conocido de 850 a 920; hora conocida de 2.096 a 2.409 (desconocida de 717 a 363); precio conocido de 1.604 a 1.989. Quedan 948 artistas por mirar, que se completan en las pasadas de cada 2 horas.
+
 ## 2.50.0 — 2026-10-03
 
 **N3/N4 (segunda parte): artistas identificados por su página de Spotify.** Enterticket da el identificador de Spotify de cada artista. Si MusicBrainz no encontró al artista por su nombre (o encontró varios homónimos), se le pregunta qué artista tiene enlazada esa página de Spotify: es el artista exacto, sin riesgo de homónimos, y de su ficha salen su país y sus géneros. Solo con un único artista en el evento (con varios no se sabe de quién es el identificador). En la ficha se dice: "identificado por su página de Spotify (dada por Enterticket), enlazada en MusicBrainz". Con los datos de hoy, 26 de los 45 conciertos de Enterticket no tenían origen conocido.

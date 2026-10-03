@@ -70,7 +70,9 @@ def enterticket(ctx: Ctx):
     for slug in [s for s in fichas if s not in en_sitemap or (fichas[s].get("fecha") or "9999") < hoy]:
         fichas.pop(slug)  # ya pasó o ya no se vende
     nuevas = [u for u in urls if u.rsplit("/", 1)[-1] not in fichas]
-    viejas = [u for u in urls if (f := fichas.get(u.rsplit("/", 1)[-1])) and f.get("madrid") and f.get("visto", "") < revisar]
+    # las de Madrid, cada pocos días; y ya las guardadas antes de leer el identificador de Spotify del artista
+    viejas = [u for u in urls if (f := fichas.get(u.rsplit("/", 1)[-1])) and f.get("madrid")
+              and (f.get("visto", "") < revisar or "spotify" not in f)]
     # primero las que dicen Madrid en la dirección: casi siempre son de aquí
     nuevas.sort(key=lambda u: "madrid" not in u)
     pendientes = (nuevas + viejas)[:MAX_PAGINAS]

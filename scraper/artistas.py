@@ -500,8 +500,8 @@ def buscar_en_agenda(f: Fetcher, nombre: str, urls: list[str]) -> dict:
         try:
             html = f.get(u)
         except requests.HTTPError as e:
-            if e.response is not None and e.response.status_code in (404, 410):
-                continue  # la agenda ha quitado la página: no es un error que haya que repetir
+            if e.response is not None and e.response.status_code in (401, 403, 404, 410):
+                continue  # la página ya no está o la web no deja leerla (403 de algunas ticketeras): no se insiste
             raise
         except (RobotsBlocked, AntiBotBlocked):
             continue  # robots.txt no deja leerla (Instagram, calendarios…) o pide captcha: no se insiste
