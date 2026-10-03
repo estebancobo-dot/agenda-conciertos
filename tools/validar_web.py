@@ -480,6 +480,7 @@ def recorrido(b):
     pagina_fuentes(pg)
     salas_y_calendarios(pg)
     historial_web(pg)
+    vistas_finde_y_todos(pg)
 
     # informe
     pg.evaluate("location.hash='#informe'")
@@ -1183,6 +1184,50 @@ def salas_y_calendarios(pg):
         return {n:b.length, ics:b[0].dataset.sus, ok:t.startsWith('BEGIN:VCALENDAR'), ev:(t.match(/BEGIN:VEVENT/g)||[]).length}}""")
     check("Funcional", "Calendarios por género: uno por género y se descargan", f"{cal['n']} géneros · {cal['ev']} eventos en {cal['ics']}",
           ok=cal["n"] >= 15 and cal["ok"] and cal["ev"] > 0, detalle=str(cal))
+
+
+def vistas_finde_y_todos(pg):
+    """Fin de semana: viernes a domingo de la semana elegida (también si cambia el mes o el año), con lo que dicen los
+    datos. Todos: todos los conciertos desde hoy en una lista, en orden, con su total y los saltos por meses."""
+    hoy = date.fromisoformat(pg.evaluate("HOY"))
+    mie = lunes_de(hoy) + timedelta(days=9)  # miércoles de la semana que viene
+    malos = []
+    for d in (mie, date(hoy.year, 12, 31)):
+        pg.evaluate(f"location.hash='#finde/{d.isoformat()}'")
+        pg.wait_for_function(f"state.tab==='Finde'&&state.date==='{d.isoformat()}'", timeout=15000)
+        pg.wait_for_timeout(500)
+        bajar_hasta_el_final(pg)
+        vie = lunes_de(d) + timedelta(days=4)
+        esperado = [(vie + timedelta(days=i)).isoformat() for i in range(3)]
+        r = pg.evaluate("""(e)=>({tira:[...document.querySelectorAll('#main .strip button')].map(b=>b.dataset.jump),
+            vistos:[...document.querySelectorAll('#main .card')].map(c=>c.dataset.id).sort().join(),
+            datos:DATA.filter(r=>e.includes(r.fecha)&&visible(r)).map(r=>r.id).sort().join()})""", esperado)
+        if r["tira"] != esperado or r["vistos"] != r["datos"]:
+            malos.append(f"{d}: tira {r['tira']} · {len(r['vistos'].split(','))} vistos / {len(r['datos'].split(','))} en datos")
+    check("Funcional", "Fin de semana: viernes a domingo de la semana (también al cambiar de año), lo que dicen los datos",
+          f"{2 - len(malos)} de 2 bien", ok=not malos, detalle=" | ".join(malos))
+    t0 = time.monotonic()
+    pg.evaluate("location.hash='#todos/'+HOY")
+    pg.wait_for_selector("#lista .card", timeout=15000)
+    t = ms(t0)
+    r = pg.evaluate("""()=>{const f=[...document.querySelectorAll('#main .card')].map(c=>BYID[c.dataset.id].fecha);
+        const n=DATA.filter(r=>r.fecha>=HOY&&visible(r)).length;
+        return {pintadas:f.length, orden:f.every((x,i)=>!i||f[i-1]<=x), desdeHoy:f.every(x=>x>=HOY), n,
+                cab:document.querySelector('.todos-h b').textContent, meses:document.querySelectorAll('.meses button').length,
+                lateral:document.documentElement.scrollWidth-innerWidth}}""")
+    salto = None
+    if r["meses"] > 1:
+        pg.click(".meses button:nth-child(2)")
+        pg.wait_for_timeout(900)
+        salto = pg.evaluate("""()=>{const b=document.querySelector('.meses button:nth-child(2)');
+            const d=[...document.querySelectorAll('#main .dia')].find(x=>x.getBoundingClientRect().bottom>document.querySelector('#main .stickystrip').getBoundingClientRect().bottom+5);
+            return {mes:b.dataset.mes, dia:d&&d.dataset.f, marcado:b.classList.contains('en')}}""")
+    check("Funcional", "Todos: todos los conciertos desde hoy en orden, con su total, pintado progresivo y saltos por meses",
+          f"{r['cab']} · {r['pintadas']} pintados al abrir · {t} ms",
+          ok=r["orden"] and r["desdeHoy"] and r["cab"].startswith(f"{r['n']} ") and 0 < r["pintadas"] <= max(200, r["n"])
+          and r["lateral"] <= 0 and (salto is None or (salto["dia"] or "").startswith(salto["mes"]) and salto["marcado"]),
+          detalle=str({**r, "salto": salto}))
+    check("Rendimiento", "Todos: pintar la lista", t, aviso=800, fallo=2000)
 
 
 def historial_web(pg):

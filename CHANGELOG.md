@@ -1,5 +1,16 @@
 # Versiones
 
+## 2.43.0 — 2026-10-03
+
+**Dos vistas nuevas.**
+
+- **Finde**: los conciertos del viernes al domingo de esa semana, aunque cambie el mes o el año (el del 31 de diciembre es del viernes 1 al domingo 3 de enero). Con ‹ ›, deslizar de lado, la tira de los tres días y "Hoy" (de lunes a jueves, el fin de semana que viene).
+- **Todos**: todos los conciertos desde hoy en una sola lista, con los filtros y la búsqueda. Un subgénero con dos conciertos a tres meses de distancia sale seguido. Arriba, el total y una fila de meses para saltar (se marca el mes por el que vas).
+
+**Cómo se cargan las listas**: la web descarga una vez la agenda ligera (todos los conciertos próximos, unos 200 KB comprimidos, guardada en el móvil para la siguiente visita) y filtra, busca y pinta en el propio móvil, sin pedir nada más; el detalle de cada concierto se pide al abrirlo. Lo que se reparte es el pintado: los primeros ~30 conciertos al momento y el resto de días según te acercas. "Todos" con 1.500 conciertos se abre en menos de una décima de segundo. La búsqueda en todas las fechas usa ahora el mismo pintado progresivo.
+
+- Validación en la web publicada: el fin de semana (también uno que cruza de año) con lo que dicen los datos; Todos en orden, con su total y los saltos por meses. Accesibilidad (axe) sin fallos y sin scroll lateral a 320 px, en claro y oscuro.
+
 ## 2.42.3 — 2026-10-03
 
 - **Sala Clamores vuelve a leerse**: rehízo su web y la agenda pasó de la portada a su página de calendario (el lector daba 0 conciertos y saltó el aviso de cambio en la web). Lector nuevo: día, hora, precio y estilo de cada concierto ("Manu Míguez (Folk)"), sin sus noches de club ni de comedia. Probado en real: 27 conciertos, 18 se unen a los que ya teníamos, 9 nuevos, ningún conflicto.

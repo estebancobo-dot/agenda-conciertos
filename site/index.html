@@ -69,8 +69,9 @@ header.navfija .top>.iconbtn{min-width:36px;padding:0 6px}
 header.compacto .top .acc{display:inline-flex}
 .top .acc svg{width:20px;height:20px}
 .top .acc .badge{position:absolute;top:-5px;right:-5px}
-.seg{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;padding:2px 16px 8px;max-width:960px;margin:0 auto}
-.seg button{border:0;background:var(--panel2);padding:7px 0;border-radius:10px;color:var(--muted);font-weight:700;font-size:.92rem}
+.seg{display:grid;grid-template-columns:repeat(5,1fr);gap:4px;padding:2px 16px 8px;max-width:960px;margin:0 auto}
+.seg button{border:0;background:var(--panel2);padding:7px 0;border-radius:10px;color:var(--muted);font-weight:700;font-size:.92rem;min-width:0;white-space:nowrap}
+@media (max-width:360px){.seg{gap:3px;padding:2px 10px 8px}.seg button{font-size:.84rem}}
 .seg button[aria-selected="true"]{background:var(--ink);color:var(--bg)}
 .menu{position:fixed;right:max(16px,calc((100vw - 960px)/2 + 16px));top:calc(env(safe-area-inset-top) + 52px);background:var(--panel);border:1px solid var(--line);border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.18);z-index:30;min-width:220px;padding:6px}
 .menu a,.menu button{display:flex;width:100%;align-items:center;gap:10px;padding:10px 12px;border:0;background:none;text-decoration:none;color:var(--ink);border-radius:8px;text-align:left}
@@ -106,6 +107,15 @@ input[type=search]::-webkit-search-cancel-button{display:none}
 .hoy{border:1px solid var(--line);background:var(--panel);border-radius:10px;height:40px;padding:0 12px;font-weight:600}
 .hoy.off{visibility:hidden}
 .strip{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin:0 0 6px}
+.strip.s3{grid-template-columns:repeat(3,1fr)}
+.meses{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding-bottom:6px}
+.meses::-webkit-scrollbar{display:none}
+.meses button{flex:0 0 auto;border:1px solid var(--line);background:var(--panel);border-radius:999px;padding:6px 12px;font-weight:600;font-size:.86rem;color:var(--ink)}
+.meses button small{color:var(--muted);font-weight:500;margin-left:4px}
+.meses button.en{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.meses button.en small{color:var(--bg)}
+.todos-h{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin:10px 0 6px}
+.todos-h b{font-size:1.05rem}
 .strip button{border:1px solid var(--line);background:var(--panel);border-radius:12px;padding:5px 0;display:flex;flex-direction:column;align-items:center;line-height:1.15}
 .strip .d{font-size:.7rem;color:var(--muted);font-weight:700;text-transform:uppercase}
 .strip .n{font-size:1.05rem;font-weight:800}
@@ -394,7 +404,7 @@ const GV = Object.fromEntries(GRUPOS.map(g=>[g.id,g.v]));
 const GN = Object.fromEntries(GRUPOS.map(g=>[g.id,g.nombre]));
 // por defecto, los géneros de siempre; el resto ("Más géneros") se añade desde los filtros
 const DEF_GRUPOS = GRUPOS.filter(g=>!g.mas).map(g=>g.id);
-const VISTAS = ["Mes","Semana","Día"];
+const VISTAS = ["Mes","Semana","Finde","Día","Todos"];
 const INFO = ["Salas","Calendarios","Estilos","Fuentes","Informe","Versiones"];
 const TABS = [...VISTAS,...INFO];
 const ORIGENES = [["todos","Todos"],["es","🇪🇸 España"],["esc","🇪🇸 España (solo confirmados)"],["lat","🌎 Latinoamérica"],["ext","🌍 Resto del mundo"],["nc","Origen sin confirmar"]];
@@ -1077,8 +1087,8 @@ function salasBuscadas(){
 function navHTML(prev,next,title,lblPrev,lblNext,esHoy){
   return `<div class="nav"><button class="iconbtn" data-nav="${prev}" aria-label="${lblPrev}">‹</button><div class="title">${title}</div><button class="hoy${esHoy?" off":""}" id="hoy"${esHoy?' aria-hidden="true" tabindex="-1"':""}>Hoy</button><button class="iconbtn" data-nav="${next}" aria-label="${lblNext}">›</button></div>`;
 }
-function stripHTML(mon,bd,modo){
-  return `<div class="strip">${[0,1,2,3,4,5,6].map(i=>{const f=addDays(mon,i), n=(bd[f]||[]).length;
+function stripHTML(mon,bd,modo,dias=7){
+  return `<div class="strip${dias===3?" s3":""}">${[...Array(dias).keys()].map(i=>{const f=addDays(mon,i), n=(bd[f]||[]).length;
     return `<button data-${modo}="${f}" class="${f===state.date&&modo==="sel"?"sel":""}${f===HOY?" hoyd":""}${f<HOY?" past":""}" aria-label="${esc(fmt(f,{weekday:"long",day:"numeric"}))}: ${plural(n,"concierto")}"><span class="d">${esc(fmt(f,{weekday:"short"}).slice(0,2))}</span><span class="n">${parse(f).getDate()}</span><span class="c">${n||"–"}</span></button>`}).join("")}</div>`;
 }
 function viewMes(){
@@ -1120,11 +1130,41 @@ function elegirDiaMes(f){
 // que la lista aparezca al instante. Al volver de un concierto se pinta todo de golpe (hay que recolocar la lista).
 let DIFERIDOS=null, pintarTodo=false;
 function viewSemana(){
-  const mon=mondayOf(state.date); const bd=byDate(); let out="", total=0, ya=0; DIFERIDOS={bd,dias:[]};
-  for(let i=0;i<7;i++){const f=addDays(mon,i); const l=bd[f]||[]; total+=l.length; if(!l.length) continue;
-    if(ya<30||pintarTodo){ out+=dayList(f,l); ya+=l.length; } else { out+=`<div class="dif" id="d-${f}" data-dif="${f}" style="min-height:${l.length*90+40}px"></div>`; DIFERIDOS.dias.push(f); }}
+  const mon=mondayOf(state.date); const bd=byDate(); const dias=[0,1,2,3,4,5,6].map(i=>addDays(mon,i));
+  const total=dias.reduce((n,f)=>n+(bd[f]||[]).length,0), out=listaDias(dias,bd,pintarTodo?addDays(mon,6):null);
   return navHTML(-7,7,`${esc(fmt(mon,{day:"numeric",month:"short"}))} – ${esc(fmt(addDays(mon,6),{day:"numeric",month:"short"}))}<div class="hint" style="font-weight:500">${plural(total,"concierto")}</div>`,"Semana anterior","Semana siguiente",false)+
     `<div class="stickystrip">${stripHTML(mon,bd,"jump")}</div><div id="swipe">`+(out||vacioHTML(DATA.filter(r=>r.fecha>=mon&&r.fecha<=addDays(mon,6)&&pasaTexto(r)).length,"esta semana"))+`</div>`;
+}
+// lista de días con pintado progresivo: los primeros ~30 conciertos ya; el resto de días, huecos con su alto
+// aproximado que se pintan al acercarse (completarDiferidos). `hasta`: pintar ya todos hasta ese día (al volver de
+// una ficha, para recolocar la lista en la tarjeta que estabas)
+function listaDias(dias,bd,hasta){
+  let out="", ya=0; DIFERIDOS={bd,dias:[]};
+  for(const f of dias){ const l=bd[f]||[]; if(!l.length) continue;
+    if(ya<30||(hasta&&f<=hasta)){ out+=dayList(f,l); ya+=l.length; } else { out+=`<div class="dif" id="d-${f}" data-dif="${f}" style="min-height:${l.length*90+40}px"></div>`; DIFERIDOS.dias.push(f); }}
+  return out;
+}
+// Fin de semana: viernes, sábado y domingo de la semana elegida (aunque cambie el mes o el año)
+const viernesDe=f=>addDays(mondayOf(f),4);
+function viewFinde(){
+  const vie=viernesDe(state.date), dom=addDays(vie,2), bd=byDate();
+  const total=[0,1,2].reduce((n,i)=>n+(bd[addDays(vie,i)]||[]).length,0);
+  const op=vie.slice(0,4)!==dom.slice(0,4)||dom.slice(0,4)!==HOY.slice(0,4)?{day:"numeric",month:"short",year:"numeric"}:{day:"numeric",month:"short"};
+  const out=listaDias([0,1,2].map(i=>addDays(vie,i)),bd,pintarTodo?dom:null);
+  return navHTML(-7,7,`Fin de semana<div class="hint" style="font-weight:500">${esc(fmt(vie,{weekday:"short",...op}))} – ${esc(fmt(dom,{weekday:"short",...op}))} · ${plural(total,"concierto")}</div>`,"Fin de semana anterior","Fin de semana siguiente",false)+
+    `<div class="stickystrip">${stripHTML(vie,bd,"jump",3)}</div><div id="swipe">`+(out||vacioHTML(DATA.filter(r=>r.fecha>=vie&&r.fecha<=dom&&pasaTexto(r)).length,"este fin de semana"))+`</div>`;
+}
+// Todos: todos los conciertos desde hoy en una sola lista (con los filtros y la búsqueda), con saltos por meses
+function viewTodos(){
+  const bd=byDate(), dias=Object.keys(bd).filter(f=>f>=HOY).sort();
+  const total=dias.reduce((n,f)=>n+bd[f].length,0);
+  const meses={}; dias.forEach(f=>{const m=f.slice(0,7); if(!meses[m]) meses[m]={f,n:0}; meses[m].n+=bd[f].length;});
+  const p=posiciones[location.hash], hasta=pintarTodo&&p&&p.id&&BYID[p.id]?BYID[p.id].fecha:null;
+  const chips=Object.entries(meses).map(([m,x])=>`<button data-jump="${x.f}" data-mes="${m}">${esc(mayus(fmt(m+"-01",{month:"short"})).replace(".",""))}${m.slice(0,4)!==HOY.slice(0,4)?" "+m.slice(2,4):""}<small>${x.n}</small></button>`).join("");
+  const ocultos=DATA.filter(r=>r.fecha>=HOY&&pasaTexto(r)).length-total;
+  return `<div class="todos-h"><b>${plural(total,"concierto")} desde hoy</b>${ocultos>0?`<span class="hint">${ocultos} ocultos por los filtros</span>`:""}</div>`+
+    (dias.length>1?`<div class="stickystrip"><div class="meses" role="group" aria-label="Ir a un mes">${chips}</div></div>`:"")+
+    `<div id="lista">${listaDias(dias,bd,hasta)||vacioHTML(ocultos,"desde hoy")}</div>`;
 }
 function viewDia(){
   const bd=byDate(), mon=mondayOf(state.date);
@@ -1137,7 +1177,7 @@ function viewBusqueda(){
   const m={}; res.forEach(r=>(m[r.fecha]=m[r.fecha]||[]).push(r));
   const ocultos=DATA.filter(r=>r.fecha>=HOY&&pasaTexto(r)&&!visible(r)).length;
   return salasBuscadas()+`<p class="hint" style="margin-top:12px">${plural(res.length,"resultado")} para «${esc(state.q.trim())}» en todas las fechas${ocultos?` · <button class="sclear" style="position:static;width:auto;height:auto;color:var(--info);font-size:.82rem;text-decoration:underline" id="vertodo">ver ${ocultos} más ocultos por los filtros</button>`:""}</p>`+
-    (Object.keys(m).sort().map(f=>dayList(f,m[f])).join("")||`<p class="empty">Nada encontrado.</p>`);
+    (listaDias(Object.keys(m).sort(),m,pintarTodo?"9999":null)||`<p class="empty">Nada encontrado.</p>`);
 }
 function viewEstilos(){
   if(!TAXO) return `<p class="empty">No se pudo cargar la taxonomía.</p>`;
@@ -1349,6 +1389,7 @@ async function renderBody(keepFocus){
   let body="";
   if(withFilters&&state.q.trim()) body=viewBusqueda();
   else if(state.tab==="Mes") body=viewMes(); else if(state.tab==="Semana") body=viewSemana(); else if(state.tab==="Día") body=viewDia();
+  else if(state.tab==="Finde") body=viewFinde(); else if(state.tab==="Todos") body=viewTodos();
   else if(state.tab==="Concierto") body=viewConcierto();
   else if(state.tab==="Sala"){ await cargarSalas(); body=viewSala(); }
   else {
@@ -1427,9 +1468,11 @@ function fijas(){
 function marcarHoy(){
   if(!VISTAS.includes(state.tab)) return;
   let ya=state.date===HOY;
-  if(state.tab==="Semana"){
+  if(state.tab==="Todos") return;
+  if(state.tab==="Semana"||state.tab==="Finde"){
     const obj=diaDeHoy(), en=document.querySelector("#main .strip .en");
-    ya=mondayOf(state.date)===mondayOf(HOY)&&(!obj||!!en&&en.dataset.jump===(obj.dataset.f||obj.dataset.dif));
+    // en el fin de semana, de lunes a jueves "hoy" es el fin de semana que viene: ya estás en él
+    ya=mondayOf(state.date)===mondayOf(HOY)&&((state.tab==="Finde"&&HOY<viernesDe(HOY))||!obj||!!en&&en.dataset.jump===(obj.dataset.f||obj.dataset.dif));
   }
   document.querySelectorAll("#hoy,#hnav [data-hn=hoy]").forEach(b=>{ if(b.classList.contains("off")===ya) return;
     b.classList.toggle("off",ya); if(ya){ b.setAttribute("aria-hidden","true"); b.tabIndex=-1; } else { b.removeAttribute("aria-hidden"); b.removeAttribute("tabindex"); } });
@@ -1444,10 +1487,11 @@ function diaEnPantalla(){
   let cur=ds[0];
   for(const d of ds){ const t=d.getBoundingClientRect().top; if(t<=lim||(fin&&t<innerHeight)) cur=d; }
   const f=cur.dataset.f||cur.dataset.dif;
-  bs.forEach(b=>{const on=b.dataset.jump===f; b.classList.toggle("en",on); if(on) b.setAttribute("aria-current","date"); else b.removeAttribute("aria-current");});
+  bs.forEach(b=>{const on=b.dataset.mes?b.dataset.mes===f.slice(0,7):b.dataset.jump===f; b.classList.toggle("en",on);
+    if(on){ b.setAttribute("aria-current","date"); const c=b.parentNode; if(b.dataset.mes&&c.scrollWidth>c.clientWidth) c.scrollLeft=b.offsetLeft-16; } else b.removeAttribute("aria-current");});
 }
 let rDia=0;
-addEventListener("scroll",()=>{ if(!rDia) rDia=requestAnimationFrame(()=>{rDia=0; diaEnPantalla(); if(state.tab==="Semana") marcarHoy(); accesos();}); },{passive:true});
+addEventListener("scroll",()=>{ if(!rDia) rDia=requestAnimationFrame(()=>{rDia=0; diaEnPantalla(); if(state.tab==="Semana"||state.tab==="Finde") marcarHoy(); accesos();}); },{passive:true});
 // ---------------------------------------------------------------- carga de imágenes y días según el scroll
 // Con 200 conciertos en una semana, el navegador pedía decenas de fotos a la vez (compitiendo por la red) y
 // pintaba el resto de días justo cuando empezabas a bajar. Ahora:
@@ -1520,7 +1564,7 @@ function alInicio(){
 }
 // Hoy: en el mes y el día, el día de hoy; en la semana, la semana actual con la lista en hoy
 function irHoy(){
-  if(state.tab!=="Semana"){ irAFecha(HOY,HOY<state.date?-1:HOY>state.date?1:0); return; }
+  if(state.tab!=="Semana"&&state.tab!=="Finde"){ irAFecha(HOY,HOY<state.date?-1:HOY>state.date?1:0); return; }
   const otra=mondayOf(state.date)!==mondayOf(HOY);
   if(otra) irAFecha(HOY,HOY<state.date?-1:1); else { state.date=HOY; setHash(); }
   let el=diaDeHoy();
@@ -1574,7 +1618,7 @@ function bindBody(){
   }
   // deslizar de lado: día siguiente/anterior (día), semana (lista de la semana) o mes (cuadrícula del mes)
   const sw=state.tab==="Mes"?document.querySelector("#main .cal"):document.getElementById("swipe");
-  if(sw&&!state.q.trim()){ let x0=null,y0=null; const paso=state.tab==="Semana"?7:1;
+  if(sw&&!state.q.trim()){ let x0=null,y0=null; const paso=state.tab==="Semana"||state.tab==="Finde"?7:1;
     sw.ontouchstart=e=>{x0=e.touches[0].clientX; y0=e.touches[0].clientY;};
     sw.ontouchend=e=>{ if(x0===null) return; const dx=e.changedTouches[0].clientX-x0, dy=e.changedTouches[0].clientY-y0; x0=null;
       if(Math.abs(dx)>70&&Math.abs(dx)>2*Math.abs(dy)) navegar(dx<0?paso:-paso); };
