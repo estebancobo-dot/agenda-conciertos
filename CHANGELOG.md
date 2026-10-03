@@ -1,5 +1,15 @@
 # Versiones
 
+## 2.45.0 — 2026-10-03
+
+**Fase A: fiabilidad.**
+
+- **Confirmación de cada concierto**: no se exige un número de webs (muchos conciertos pequeños solo los anuncia un sitio y no se pierden), se dice quién lo confirma. **Confirmado**: lo anuncia la web oficial de la sala o el programa municipal, o se vende en una ticketera y sale en otras agendas, o lo recogen varias agendas independientes. **Probable**: dos agendas, o una de mucha confianza (Madrid en Vivo). **Sin confirmar**: una sola agenda poco fiable, webs que no coinciden, o la web de la sala no anuncia nada ese día. En la ficha, el nivel con sus motivos ("Lo anuncia Honky Tonk", "A la venta en Dice", "En 3 agendas o blogs…"); en la tarjeta, ✓ si está confirmado; en Filtros, **Confirmación** (todos, probable o confirmado, solo confirmados). Con los datos de hoy: 896 confirmados, 1.618 probables y 306 sin confirmar. Un enlace de compra de la misma web que una agenda ya contada no suma.
+- **Búsqueda activa en la web de la sala**: cuando la web oficial de una sala se lee entera y no anuncia nada ese día, el concierto lo dice y baja su confirmación (solo hasta la última fecha que publica esa web).
+- **Duplicados con otro nombre en la misma sala y día**: "THE DOORS ARE OPEN (Trib The Doors)" = "EL GRAN TRIBUTO A THE DOORS", "EMMA SWIFT (AUST-USA)" = "Emma Swift with Luther Russell", "CARO CAXI" = "CARO TAXI", "O.M.N.I" = "OMNI", "BLISS (Muse Tribute)" = "BLISS. TRIBUTO A MUSE"… (por las palabras que los distinguen, y a una hora cercana). No: "Tributo a Queen" / "Tributo a Mecano". Revisado sobre los datos de hoy: 10 unidos, los 10 bien.
+- **Salas**: una sola grafía cuando solo cambian mayúsculas o tildes ("TEATRO SALÓN CERVANTES" → "Teatro Salón Cervantes"); **propuestas de salas repetidas** con otro nombre en la página de Fuentes, para revisar; alias nuevos (Condeduque, Café Libertad 8, Canopy by Hilton).
+- Validación en la web publicada: nivel y motivos en la ficha y filtro "Solo confirmados". Tests de todo lo anterior.
+
 ## 2.44.0 — 2026-10-03
 
 **Más salas** (segunda tanda; cada una probada en real desde GitHub con la agenda actual):

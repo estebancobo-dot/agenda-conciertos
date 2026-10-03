@@ -180,6 +180,10 @@ input[type=search]::-webkit-search-cancel-button{display:none}
 .st-conf{color:var(--bad)} .st-canc{color:var(--warn)}
 .st-agot{color:var(--warn)}
 .st-camb{color:var(--info)}
+.conf{color:var(--ok);font-weight:800;font-size:.85rem;padding:0 2px}
+.confb{border-radius:12px;padding:8px 12px;margin:8px 0;border:1px solid var(--line);background:var(--panel);font-size:.9rem}
+.confb ul{margin:4px 0 0;padding-left:18px;color:var(--muted)}
+.confb.conf-ok b{color:var(--ok)} .confb.conf-mid b{color:var(--ink)} .confb.conf-low b{color:var(--warn)}
 ol.hist{list-style:none;margin:6px 0 4px;padding:0 0 0 14px;border-left:2px solid var(--line)}
 ol.hist li{position:relative;display:flex;gap:10px;padding:5px 0;font-size:.9rem}
 ol.hist li::before{content:"";position:absolute;left:-20px;top:11px;width:10px;height:10px;border-radius:50%;background:var(--panel);border:2px solid var(--muted)}
@@ -407,6 +411,11 @@ const DEF_GRUPOS = GRUPOS.filter(g=>!g.mas).map(g=>g.id);
 const VISTAS = ["Mes","Semana","Finde","Día","Todos"];
 const INFO = ["Salas","Calendarios","Estilos","Fuentes","Informe","Versiones"];
 const TABS = [...VISTAS,...INFO];
+// confirmación de cada concierto (scraper: puntuar_confianza): c confirmado, p probable, s sin confirmar
+const CONFS = [["todos","Todos"],["probable","Probable o confirmado"],["confirmado","Solo confirmados"]];
+const NIVEL = {c:"confirmado",p:"probable",s:"sin confirmar"};
+const nivelDe=r=>(r.confianza&&r.confianza.nivel)||NIVEL[r.conf]||"sin confirmar";
+const pasaNivel=(r,c)=>c==="todos"||(c==="confirmado"?nivelDe(r)==="confirmado":nivelDe(r)!=="sin confirmar");
 const ORIGENES = [["todos","Todos"],["es","🇪🇸 España"],["esc","🇪🇸 España (solo confirmados)"],["lat","🌎 Latinoamérica"],["ext","🌍 Resto del mundo"],["nc","Origen sin confirmar"]];
 // Latinoamérica tiene grupo propio: un nombre en español no distingue España de Latinoamérica, y así se ve aparte
 const LATAM = new Set(["AR","BO","BR","CL","CO","CR","CU","DO","EC","SV","GT","HN","MX","NI","PA","PY","PE","PR","UY","VE"]);
@@ -432,7 +441,7 @@ const NUEVOS_22=GRUPOS.filter(g=>g.mas).map(g=>g.id);
 const gruposGuardados=()=>{const g4=store.get("grupos4",null); if(g4) return g4;
   const g3=store.get("grupos3",null); if(g3) return g3.includes("fuera de foco")?[...new Set([...g3,...NUEVOS_22])]:g3;
   const g2=store.get("grupos2",null); return g2?[...g2,...DEF_GRUPOS.filter(g=>!["rock y metal","punk y garage","pop e indie","americana/country/folk","blues","cantautor","tributos y versiones","sin clasificar"].includes(g))]:DEF_GRUPOS;};
-let state = {tab:"Mes", date:null, id:null, q:"", grupos:gruposGuardados(), origen:store.get("origen","todos"), from:null,
+let state = {tab:"Mes", date:null, id:null, q:"", grupos:gruposGuardados(), origen:store.get("origen","todos"), conf:store.get("conf","todos"), from:null,
   estilos:store.get("estilos",{}), genericos:store.get("genericos",true)};
 let regionNames=null; try{regionNames=new Intl.DisplayNames(["es"],{type:"region"})}catch(e){}
 
@@ -551,7 +560,7 @@ function pasaTexto(r,q=state.q){
 // "Borrar filtros" deja todo como al entrar: géneros de siempre, cualquier origen, sin estilos y sin búsqueda
 function borrarFiltros(){
   setGrupos([...DEF_GRUPOS]); state.origen="todos"; store.set("origen","todos"); state.estilos={}; store.set("estilos",{});
-  state.genericos=true; store.set("genericos",true); state.q=""; renderBody(false);
+  state.conf="todos"; store.set("conf","todos"); state.genericos=true; store.set("genericos",true); state.q=""; renderBody(false);
 }
 function pasaOrigen(r){
   if(state.origen!=="todos") return origenDe(r,state.origen);
@@ -565,11 +574,11 @@ function pasaGrupo(r){
   const gs=gruposF(r);
   return state.grupos.some(g=>gs.includes(g)&&(!(state.estilos[g]||[]).length||state.estilos[g].some(s=>estilosDe(r).has(s))));
 }
-function visible(r){ return pasaGrupo(r) && pasaTexto(r) && pasaOrigen(r); }
+function visible(r){ return pasaGrupo(r) && pasaTexto(r) && pasaOrigen(r) && pasaNivel(r,state.conf); }
 function byDate(){const m={}; for(const r of DATA){ if(!visible(r)) continue; (m[r.fecha]=m[r.fecha]||[]).push(r);} return m;}
 const nEstilos=()=>Object.values(state.estilos).reduce((n,l)=>n+(l||[]).length,0);
 const esDefecto=()=>DEF_GRUPOS.every(g=>state.grupos.includes(g))&&!NUEVOS_22.some(g=>state.grupos.includes(g))&&!nEstilos()&&state.genericos;
-function nFiltros(){ return (esDefecto()?0:1)+(state.origen!=="todos"?1:0)+(state.q.trim()?1:0); }
+function nFiltros(){ return (esDefecto()?0:1)+(state.origen!=="todos"?1:0)+(state.conf!=="todos"?1:0)+(state.q.trim()?1:0); }
 function resumenFiltros(){
   const p=[];
   if(!esDefecto()){
@@ -579,6 +588,7 @@ function resumenFiltros(){
     if(!state.genericos) p.push("sin etiquetas genéricas");
   }
   if(state.origen!=="todos") p.push((ORIGENES.find(o=>o[0]===state.origen)||["",""])[1].replace(/^\S+ /,""));
+  if(state.conf!=="todos") p.push((CONFS.find(o=>o[0]===state.conf)||["",""])[1].toLowerCase());
   if(state.q.trim()) p.unshift(`búsqueda «${state.q.trim()}»`);
   return p.join(" · ");
 }
@@ -591,7 +601,7 @@ function filtersHTML(){
 // pastillas de género y resumen de filtros: se rehacen en cada tecla de la búsqueda (sin tocar el cuadro de texto)
 function extraHTML(){
   const n=nFiltros();
-  const cn={}; for(const r of DATA){ if(r.fecha<HOY||!pasaTexto(r)||!pasaOrigen(r)) continue; for(const g of grupos(r)) cn[g]=(cn[g]||0)+1; }
+  const cn={}; for(const r of DATA){ if(r.fecha<HOY||!pasaTexto(r)||!pasaOrigen(r)||!pasaNivel(r,state.conf)) continue; for(const g of grupos(r)) cn[g]=(cn[g]||0)+1; }
   // Como en Google Maps o Airbnb: sin filtro de género ("Habituales" o "Todos") ningún género sale marcado; al tocar
   // uno se filtra por él, y los marcados (rellenos, con ✓) son justo los que se están viendo
   const modo=modoGrupos(state.grupos);
@@ -646,9 +656,9 @@ function openSheet(){
   // Hoja de filtros. Se pinta una vez; cada toque solo cambia lo que toca (casilla, estilo, contador), sin volver a
   // construir la hoja entera. Los grupos y estilos de cada concierto están precalculados (r._g, r._e).
   const ARBOL={}; todosLosEstilos().forEach(s=>{const g=grupoDeEstilo(s); (ARBOL[g]=ARBOL[g]||[]).push(s);});
-  let sel=[...state.grupos], ori=state.origen, selEst=JSON.parse(JSON.stringify(state.estilos||{})), genOk=state.genericos, q=state.q;
+  let sel=[...state.grupos], ori=state.origen, cf=state.conf, selEst=JSON.parse(JSON.stringify(state.estilos||{})), genOk=state.genericos, q=state.q;
   const el=document.getElementById("sheet");
-  const pasaOri=r=>ori==="todos"||origenDe(r,ori);
+  const pasaOri=r=>(ori==="todos"||origenDe(r,ori))&&pasaNivel(r,cf);
   let fut=[], cnt={}, est={}, gen={};
   const contar=()=>{ fut=DATA.filter(r=>r.fecha>=HOY&&pasaTexto(r,q)&&pasaOri(r)); cnt={}; est={}; gen={};
     for(const r of fut){ for(const g of gruposF(r)){cnt[g]=(cnt[g]||0)+1; if(r.grupos_generico) gen[g]=(gen[g]||0)+1;}
@@ -702,6 +712,9 @@ function openSheet(){
      ${htmlGeneros()}
      <h4 class="sech">Origen del artista<span id="resori">${esc(resumenOri())}</span></h4>
      <div class="opts">${ORIGENES.map(([v,t])=>`<button data-o="${v}" aria-pressed="${ori===v}">${esc(t)}</button>`).join("")}</div>
+     <h4 class="sech">Confirmación<span id="rescf">${esc((CONFS.find(([v])=>v===cf)||[,""])[1])}</span></h4>
+     <div class="opts">${CONFS.map(([v,t])=>`<button data-cf="${v}" aria-pressed="${cf===v}">${esc(t)}</button>`).join("")}</div>
+     <p class="hint">Confirmado: lo anuncia la web de la sala, o se vende en una ticketera y sale en otras agendas, o lo recogen varias agendas independientes. Probable: dos agendas, o una de mucha confianza. En la ficha de cada concierto se dice quién lo confirma.</p>
      <p class="hint">"España" incluye los que probablemente son españoles por el nombre (bandera atenuada; aciertan en torno a 3 de cada 4: el resto suelen ser latinoamericanos). "Solo confirmados", los que dice una fuente.</p>
      <h4>Más opciones</h4>
      <label class="grp" style="display:flex;gap:10px;align-items:flex-start;padding:10px 12px"><input type="checkbox" id="fgenok" ${genOk?"checked":""} style="margin-top:3px"><span><b>Incluir los de etiqueta genérica</b><br><span class="hint">Artistas sin ficha que la agenda solo etiqueta como "Pop / Rock", "Músicas negras"…: salen en todos esos géneros porque no se sabe cuál es.</span></span></label>`}
@@ -709,7 +722,7 @@ function openSheet(){
     enlazar(); document.getElementById("sdef").disabled=sinNada(); medir("hoja-abrir",t0);
   };
   // "Por defecto" se apaga cuando ya está todo por defecto (géneros habituales, sin estilos, origen todos…)
-  const sinNada=()=>modoGrupos(sel)==="def"&&!Object.keys(selEst).length&&ori==="todos"&&genOk&&!q.trim();
+  const sinNada=()=>modoGrupos(sel)==="def"&&!Object.keys(selEst).length&&ori==="todos"&&cf==="todos"&&genOk&&!q.trim();
   const refrescar=()=>{ const t0=performance.now(); document.getElementById("sclose").textContent=`Ver ${plural(total(),"concierto")}`;
     document.getElementById("sdef").disabled=sinNada();
     el.querySelectorAll("[data-g]").forEach(c=>c.setAttribute("aria-pressed",sel.includes(c.dataset.g)));
@@ -732,9 +745,9 @@ function openSheet(){
   const enlazar=()=>{
     document.getElementById("sbg").onclick=cerrar; document.getElementById("sx").onclick=cerrar;
     document.removeEventListener("keydown",esc_); document.addEventListener("keydown",esc_);
-    document.getElementById("sdef").onclick=()=>{sel=[...DEF_GRUPOS]; selEst={}; genOk=true; baseSel=null; soloEst=false; const cambia=ori!=="todos"||q||vista!=="gen"; ori="todos"; q=""; vista="gen"; if(cambia) pintar(); else refrescar();};
+    document.getElementById("sdef").onclick=()=>{sel=[...DEF_GRUPOS]; selEst={}; genOk=true; baseSel=null; soloEst=false; const cambia=ori!=="todos"||cf!=="todos"||q||vista!=="gen"; ori="todos"; cf="todos"; q=""; vista="gen"; if(cambia) pintar(); else refrescar();};
     const sq=document.getElementById("sq"); if(sq) sq.onclick=()=>{q=""; const sc=el.querySelector(".sc").scrollTop; pintar(); el.querySelector(".sc").scrollTop=sc;};
-    document.getElementById("sclose").onclick=()=>{state.q=q; setGrupos(sel); state.origen=ori; store.set("origen",ori); state.estilos=selEst; store.set("estilos",selEst); state.genericos=genOk; store.set("genericos",genOk); cerrar(); renderBody(false);};
+    document.getElementById("sclose").onclick=()=>{state.q=q; setGrupos(sel); state.origen=ori; store.set("origen",ori); state.conf=cf; store.set("conf",cf); state.estilos=selEst; store.set("estilos",selEst); state.genericos=genOk; store.set("genericos",genOk); cerrar(); renderBody(false);};
     const gk=document.getElementById("fgenok"); if(gk) gk.onchange=e=>{genOk=e.target.checked; refrescar();};
     el.querySelectorAll("[data-rap]").forEach(b=>b.onclick=()=>{const k=b.dataset.rap;
       sel=k==="def"?[...DEF_GRUPOS]:k==="todos"?GRUPOS.map(g=>g.id):[]; selEst={}; baseSel=null; soloEst=false; refrescar();});
@@ -760,6 +773,7 @@ function openSheet(){
       refrescar(); acciones();});
     // el origen cambia los números de cada género: se vuelve a pintar, en el mismo sitio de la hoja
     el.querySelectorAll("[data-o]").forEach(b=>b.onclick=()=>{ori=b.dataset.o; const sc=el.querySelector(".sc").scrollTop; pintar(); el.querySelector(".sc").scrollTop=sc;});
+    el.querySelectorAll("[data-cf]").forEach(b=>b.onclick=()=>{cf=b.dataset.cf; const sc=el.querySelector(".sc").scrollTop; pintar(); el.querySelector(".sc").scrollTop=sc;});
   };
   pintar();
 }
@@ -817,7 +831,7 @@ function card(r){
    <div class="cbody"><div class="art">${r.festival?`<span class="fest">Festival</span> `:""}${esc(r.artista)}</div>
    ${r.invitados&&r.invitados.length?`<div class="sub">${r.festival?`${esc(cartelCorto(r))}`:`+ ${r.invitados.map(esc).join(" + ")}`}</div>`:""}
    <div class="sub">${h?`<b>${esc(h)}</b> · `:""}${esc(r.sala||"sala sin indicar")}${r.municipio&&r.municipio!=="Madrid"?` · ${esc(r.municipio)}`:""}</div>
-   <div class="tags">${r.nacionalidad?`<span class="flag" title="${esc(pais(r.nacionalidad))}">${flag(r.nacionalidad)}</span>`:r.nacionalidad_estimada?`<span class="flag est" title="Probablemente ${esc(pais(r.nacionalidad_estimada))} (estimado por el nombre)">${flag(r.nacionalidad_estimada)}</span>`:""}${estiloTags(r,2)}${cartelTags(r)}${estadoMini(r)}${cambioMini(r)}</div></div><span class="chev" aria-hidden="true">›</span></a>`;
+   <div class="tags">${r.nacionalidad?`<span class="flag" title="${esc(pais(r.nacionalidad))}">${flag(r.nacionalidad)}</span>`:r.nacionalidad_estimada?`<span class="flag est" title="Probablemente ${esc(pais(r.nacionalidad_estimada))} (estimado por el nombre)">${flag(r.nacionalidad_estimada)}</span>`:""}${estiloTags(r,2)}${cartelTags(r)}${estadoMini(r)}${cambioMini(r)}${nivelDe(r)==="confirmado"&&!r.evento?`<span class="conf" title="Confirmado: lo anuncia la sala, una ticketera o varias agendas" aria-label="Confirmado">✓</span>`:""}</div></div><span class="chev" aria-hidden="true">›</span></a>`;
   }
   // las primeras miniaturas de la vista se piden ya y con prioridad; el resto, al acercarse
   // las primeras de la vista se piden ya; el resto, por la cola (primero las que están en pantalla)
@@ -884,6 +898,7 @@ function estadoBox0(r){
   }
   if(r.estado==="posiblemente cancelado")
     return `<div class="box box-warn"><b>¿Cancelado?</b> Ya no aparece en ninguna de las webs donde se anunciaba. Visto por última vez el ${esc(r.ultima_vez_visto||"—")}.</div>`;
+  if(r.confianza) return "";  // quién lo confirma lo dice el bloque de confirmación (confianzaHTML)
   if(r.confirmado_sala)
     return `<div class="box box-ok">✓ Confirmado en la web oficial de la sala${r.fuentes.length>1?` y en ${plural(r.fuentes.length-1,"web")} más`:""}.</div>`;
   const n=new Set(r.fuentes.map(x=>x.nombre.split(" (")[0])).size;
@@ -937,6 +952,7 @@ function viewConcierto(){
     <h2>${r.festival?`<span class="fest">Festival</span> `:""}${esc(r.artista)}</h2>
     ${r.ciclo?`<div class="ciclo">${esc(r.ciclo)}</div>`:""}
     ${estadoBox(r)}
+    ${confianzaHTML(r)}
     <div class="rows">
      <div class="row"><span class="ic">📅</span><div><div class="v">${esc(fmt(r.fecha,{weekday:"long",day:"numeric",month:"long"}))}</div><div class="s">${r.hora?`${esc(r.hora)} h${r.hora_pagina?` · según <a href="${esc(r.hora_pagina.url)}" target="_blank" rel="noopener">${esc(r.hora_pagina.nombre)}</a>`:""}`:h?"Hora por confirmar: las webs no coinciden":"Hora sin indicar"}</div></div></div>
      <div class="row"><span class="ic">📍</span><div><div class="v">${r.sala?salasLinks(r):"Sala sin indicar"}</div><div class="s">${esc(r.municipio||"")} · <a href="${esc(mapa)}" target="_blank" rel="noopener">Cómo llegar</a>${sala&&sala.web?` · <a href="${esc(sala.web)}" target="_blank" rel="noopener">Web de la sala</a>`:""}</div></div></div>
@@ -966,6 +982,12 @@ function viewConcierto(){
    </div>`;
 }
 
+// quién confirma el concierto (scraper: puntuar_confianza)
+function confianzaHTML(r){
+  const c=r.confianza; if(!c) return "";
+  const t={confirmado:["ok","✓ Confirmado"],probable:["mid","Probable"],"sin confirmar":["low","Sin confirmar"]}[c.nivel]||["low",c.nivel];
+  return `<div class="confb conf-${t[0]}"><b>${esc(t[1])}</b>${(c.motivos||[]).length?`<ul>${c.motivos.map(m=>`<li>${esc(m)}</li>`).join("")}</ul>`:""}</div>`;
+}
 // el cartel en la ficha: cada artista con su país y su género (según su ficha en las webs de música)
 function cartelHTML(r){
   const l=r.invitados||[]; if(!l.length) return "";
@@ -1124,7 +1146,7 @@ function elegirDiaMes(f){
   const h=ml.querySelector(".mhead"); h.classList.remove("flash"); void h.offsetWidth; h.classList.add("flash");
   const sec=ml.querySelector(".dia"); if(sec.getBoundingClientRect().top>innerHeight*0.55) sec.scrollIntoView({behavior:"smooth",block:"start"});
   medir("mes-dia",t0); rum("lista",performance.now()-t0);
-  document.querySelectorAll("#mlista [data-quitar]").forEach(b=>b.onclick=()=>{setGrupos(GRUPOS.map(g=>g.id)); state.origen="todos"; store.set("origen","todos"); state.estilos={}; store.set("estilos",{}); state.genericos=true; store.set("genericos",true); renderBody(false);});
+  document.querySelectorAll("#mlista [data-quitar]").forEach(b=>b.onclick=()=>{setGrupos(GRUPOS.map(g=>g.id)); state.origen="todos"; store.set("origen","todos"); state.conf="todos"; store.set("conf","todos"); state.estilos={}; store.set("estilos",{}); state.genericos=true; store.set("genericos",true); renderBody(false);});
 }
 // Las semanas tienen hasta 200+ conciertos: se pintan ya los ~30 primeros y el resto de días justo después, para
 // que la lista aparezca al instante. Al volver de un concierto se pinta todo de golpe (hay que recolocar la lista).
@@ -1247,7 +1269,7 @@ function viewFuentes(){
      <div class="kpi"><b>${fs.length}</b><span>webs leídas</span></div>
      <div class="kpi"><b class="${ok===fs.length?"s-ok":"s-warn"}">${ok}</b><span>funcionan en la última lectura</span></div>
      <div class="kpi"><b>${INFORME.totales.conciertos}</b><span>conciertos próximos</span></div>
-     <div class="kpi"><b>${INFORME.totales.contrastados}</b><span>confirmados por 2 o más webs</span></div></div>
+     <div class="kpi"><b>${(INFORME.totales.confianza||{}).confirmado??INFORME.totales.contrastados}</b><span>${(INFORME.totales.confianza||{}).confirmado!=null?"confirmados (sala, ticketera o varias agendas)":"confirmados por 2 o más webs"}</span></div></div>
    <p class="muted">${n("salas")} salas · ${n("promo")} promotoras y ticketeras · ${n("agreg")} agregadores · ${n("blog")} blogs y prensa · ${n("inst")} institucionales. Última lectura: ${esc(new Date(INFORME.generado).toLocaleString("es-ES",{dateStyle:"medium",timeStyle:"short"}))}.</p>
    <details class="more fuex"><summary>Cómo se usan y qué significa cada dato</summary>
     <p>Si dos webs no coinciden en la hora, la sala o el cartel, manda la de más prioridad: 1 web oficial de la sala · 2 promotora o ticketera · 3 agregador · 4 blog o foro. Si no hay una de más prioridad, el conflicto se deja a la vista. La ficha del artista (estilo, origen y foto) sale de Discogs, Wikipedia, Last.fm y MusicBrainz.</p>
@@ -1260,6 +1282,7 @@ function viewFuentes(){
    <h3 class="sec">Salas con conciertos cuya web no leemos</h3>
    <p class="muted">Salas con varios conciertos próximos que ninguna web oficial confirma: sus conciertos llegan por agregadores. Son candidatas a fuente nueva, o su web no tiene una agenda legible.</p>
    ${sinF.length?`<ul class="fsin">${sinF.slice(0,12).map(fuSalaSin).join("")}</ul>${sinF.length>12?`<details class="more"><summary>Ver las ${sinF.length}</summary><ul class="fsin">${sinF.slice(12).map(fuSalaSin).join("")}</ul></details>`:""}`:`<p class="muted">Ninguna.</p>`}
+   ${(INFORME.salas_alias_propuestas||[]).length?`<details class="more"><summary>Posibles salas repetidas con otro nombre (${INFORME.salas_alias_propuestas.length})</summary><p class="hint">Para revisar: si son la misma, se añade el alias y sus conciertos se unen.</p><ul>${INFORME.salas_alias_propuestas.map(x=>`<li><b>${esc(x.salas[0])}</b> (${x.conciertos[0]}) y <b>${esc(x.salas[1])}</b> (${x.conciertos[1]}): ${esc(x.motivo)}</li>`).join("")}</ul></details>`:""}
    <details class="more"><summary>Salas cuya web se comprobó y no tiene agenda legible</summary><ul>${sin}</ul></details>
    <details class="more"><summary>Webs probadas y descartadas (${Object.keys(INFORME.no_usar||{}).length})</summary><ul>${no}</ul></details>`;
 }
@@ -1600,10 +1623,10 @@ function bindBody(){
     if(el) irA(el); else toast("Ese día no hay conciertos con estos filtros");});
   document.querySelectorAll("#main [data-nav]").forEach(b=>b.onclick=()=>navegar(Number(b.dataset.nav)));
   const hoy=document.getElementById("hoy"); if(hoy) hoy.onclick=irHoy;
-  document.querySelectorAll("[data-quitar]").forEach(b=>b.onclick=()=>{setGrupos(GRUPOS.map(g=>g.id)); state.origen="todos"; store.set("origen","todos"); state.estilos={}; store.set("estilos",{}); state.genericos=true; store.set("genericos",true); renderBody(false);});
+  document.querySelectorAll("[data-quitar]").forEach(b=>b.onclick=()=>{setGrupos(GRUPOS.map(g=>g.id)); state.origen="todos"; store.set("origen","todos"); state.conf="todos"; store.set("conf","todos"); state.estilos={}; store.set("estilos",{}); state.genericos=true; store.set("genericos",true); renderBody(false);});
   const cr=document.getElementById("copiarRum"); if(cr) cr.onclick=async()=>{try{await navigator.clipboard.writeText(cr.dataset.t); toast("Copiado");}catch(e){prompt("Copia estos datos:",cr.dataset.t);}};
   const br=document.getElementById("borrarRum"); if(br) br.onclick=()=>{for(const k in RUM) delete RUM[k]; try{localStorage.removeItem("agenda:rum");}catch(e){} renderBody(false);};
-  const vt=document.getElementById("vertodo"); if(vt) vt.onclick=()=>{setGrupos(GRUPOS.map(g=>g.id)); state.origen="todos"; store.set("origen","todos"); renderBody(false);};
+  const vt=document.getElementById("vertodo"); if(vt) vt.onclick=()=>{setGrupos(GRUPOS.map(g=>g.id)); state.origen="todos"; store.set("origen","todos"); state.conf="todos"; store.set("conf","todos"); renderBody(false);};
   const r=BYID[state.id];
   if(state.tab==="Concierto"&&r){
     // "Volver" es volver atrás en el historial (a la lista, en el mismo sitio), no abrirla de nuevo

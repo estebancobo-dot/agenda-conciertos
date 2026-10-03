@@ -52,6 +52,9 @@ def ligero(r: dict) -> dict:
         out["estilo_fuente"] = [{"estilo": e} for e in etiquetas]
     if r.get("agotado"):
         out["agotado"] = True
+    nivel = (r.get("confianza") or {}).get("nivel")
+    if nivel:  # c confirmado, p probable, s sin confirmar (filtro y marca de la tarjeta)
+        out["conf"] = {"confirmado": "c", "probable": "p"}.get(nivel, "s")
     recientes = [c for c in r.get("cambios") or [] if c.get("dia", "") >= RECIENTE]
     if recientes:  # la tarjeta avisa de lo que ha cambiado esta semana ("Nueva hora", "Cambia de fecha")
         out["cambio"] = recientes[-1]["campo"]

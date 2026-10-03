@@ -660,6 +660,35 @@
     "cafe de la opera"
    ],
    "web": "https://www.elcafedelaopera.com/"
+  },
+  {
+   "nombre": "Condeduque",
+   "municipio": "Madrid",
+   "alias": [
+    "condeduque",
+    "centro de cultura contemporanea condeduque",
+    "condeduque centro de cultura contemporanea",
+    "centro cultural conde duque",
+    "conde duque"
+   ]
+  },
+  {
+   "nombre": "Café Libertad 8",
+   "municipio": "Madrid",
+   "alias": [
+    "cafe libertad 8",
+    "libertad 8 cafe",
+    "libertad 8",
+    "cafe libertad ocho"
+   ]
+  },
+  {
+   "nombre": "Canopy by Hilton Madrid Castellana",
+   "municipio": "Madrid",
+   "alias": [
+    "canopy by hilton madrid castellana",
+    "hotel canopy by hilton madrid castellana"
+   ]
   }
  ],
  "distintas": [

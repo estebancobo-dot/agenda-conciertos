@@ -10,6 +10,8 @@ import hashlib
 import re
 from dataclasses import dataclass, field
 
+from rapidfuzz import fuzz
+
 from .cartel import cartel_de_titulo, clave_festival, es_festival, nombre_festival
 from .clasificar import categoria_de, categorias_de, discogs, en_foco, grupo_de_titulo, titulo_fuera_de_foco
 from .model import RawEvent, Source
@@ -147,6 +149,42 @@ def cartel_festival(items: list[Item]) -> tuple[str, list[str], bool] | None:
     return nombre, cartel, incompleto
 
 
+# palabras que no distinguen un acto de otro (para comparar dos anuncios del mismo día en la misma sala)
+_COMUNES = {"the", "la", "el", "los", "las", "de", "del", "a", "y", "and", "en", "con", "with", "feat", "ft", "presenta",
+            "presentan", "tributo", "tribute", "trib", "homenaje", "gran", "great", "aniversario", "concierto", "live",
+            "en", "vivo", "directo", "band", "banda", "club", "night", "noche", "fiesta", "party", "tour", "gira", "madrid",
+            "sala", "fest", "festival", "special", "especial", "show", "session", "sessions", "jam", "acustico", "usa",
+            "uk", "trio", "quartet", "cuarteto", "quinteto", "quintet", "orquesta", "orchestra", "dj", "djs", "edition",
+            "edicion", "vol", "rock", "roll", "jazz", "blues", "music", "musica", "par", "por", "para", "al", "un", "una"}
+
+
+def _palabras(nombre: str) -> list[str]:
+    return [w for w in norm(nombre).split() if len(w) >= 3 and w not in _COMUNES and not w.isdigit()]
+
+
+def mismo_acto_en_sala(a: str, b: str) -> bool:
+    """Dos anuncios del mismo día y la misma sala que son el mismo concierto con otro nombre: "THE DOORS ARE OPEN (Trib
+    The Doors)" = "EL GRAN TRIBUTO A THE DOORS", "EMMA SWIFT (AUST-USA)" = "Emma Swift with Luther Russell", "CARO CAXI"
+    = "CARO TAXI". No: "Tributo a Queen" / "Tributo a Mecano", "BLACK BIRDS" / "THE BLACK CROWES"."""
+    pa, pb = _palabras(a), _palabras(b)
+    if not pa or not pb:
+        return False
+    corto, largo = sorted((pa, pb), key=len)
+    comunes = set(pa) & set(pb)
+    if set(corto) <= set(largo) and any(len(w) >= 4 for w in corto):
+        return True
+    if len(comunes) >= 2:
+        return True
+    return pa[0] == pb[0] and len(pa[0]) >= 4 and fuzz.ratio(" ".join(pa), " ".join(pb)) >= 85
+
+
+def _horas_lejos(a: str | None, b: str | None) -> bool:
+    if not a or not b:
+        return False
+    ha, hb = int(a[:2]) * 60 + int(a[3:5]), int(b[:2]) * 60 + int(b[3:5])
+    return abs(ha - hb) > 120
+
+
 def agrupar(items: list[Item]) -> list[Cluster]:
     """Agrupa eventos de un mismo día en conciertos."""
     clusters: list[Cluster] = []
@@ -171,6 +209,11 @@ def agrupar(items: list[Item]) -> list[Cluster]:
                     for o in c.items):
                 continue
             if principal_coincide(it, c.nombres) or _mismo_festival(it, c):
+                destino = c
+                break
+            # misma sala (conocida en los dos) y mismo día, con otro nombre y a una hora cercana
+            if it.ev.sala and salas_c and any(mismo_acto_en_sala(it.ev.artista, o.ev.artista)
+                                              and not _horas_lejos(it.ev.hora, o.ev.hora) for o in c.items):
                 destino = c
                 break
         if destino is None:

@@ -358,6 +358,9 @@ def parecido(a: str, b: str) -> float:
     if not na or not nb:
         return 0.0
     r = fuzz.ratio(na, nb)
+    # "O.M.N.I" = "OMNI", "AC/DC" = "ACDC": iguales sin espacios ni signos (siglas)
+    if len(na.replace(" ", "")) >= 3 and na.replace(" ", "") == nb.replace(" ", ""):
+        return 100.0
     ha, hb = cabeza(a), cabeza(b)
     if ha and hb:
         r = max(r, fuzz.ratio(ha, hb))

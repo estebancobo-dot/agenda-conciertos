@@ -481,6 +481,7 @@ def recorrido(b):
     salas_y_calendarios(pg)
     historial_web(pg)
     vistas_finde_y_todos(pg)
+    confirmacion_web(pg)
 
     # informe
     pg.evaluate("location.hash='#informe'")
@@ -1228,6 +1229,33 @@ def vistas_finde_y_todos(pg):
           and r["lateral"] <= 0 and (salto is None or (salto["dia"] or "").startswith(salto["mes"]) and salto["marcado"]),
           detalle=str({**r, "salto": salto}))
     check("Rendimiento", "Todos: pintar la lista", t, aviso=800, fallo=2000)
+
+
+def confirmacion_web(pg):
+    """Fase A: cada concierto dice quién lo confirma (confirmado / probable / sin confirmar, con sus motivos) y el filtro
+    "Solo confirmados" deja solo los confirmados."""
+    pg.evaluate("location.hash='#semana/'+mondayOf(HOY)")
+    pg.wait_for_selector(".card", timeout=15000)
+    r = pg.evaluate("(()=>{const f=DATA.filter(r=>r.fecha>=HOY); return {con:f.filter(r=>r.conf).length, n:f.length,"
+                    "c:f.filter(r=>r.conf==='c').length, p:f.filter(r=>r.conf==='p').length, s:f.filter(r=>r.conf==='s').length}})()")
+    if not r["con"]:
+        check("Funcional", "Confirmación de cada concierto", "los datos aún no la traen", ok=False, grave=False)
+        return
+    cid = pg.evaluate("DATA.find(r=>r.conf==='c'&&r.fecha>=HOY).id")
+    pg.evaluate(f"location.hash='#concierto/{cid}'")
+    pg.wait_for_selector(".confb", timeout=15000)
+    txt = pg.inner_text(".confb")
+    pg.evaluate("location.hash='#todos/'+HOY")
+    pg.wait_for_selector("#lista .card", timeout=15000)
+    pg.evaluate("state.conf='confirmado'; renderBody(false)")
+    pg.wait_for_timeout(400)
+    solo = pg.evaluate("(()=>{const ids=[...document.querySelectorAll('#main .card')].map(c=>c.dataset.id);"
+                       "return {n:ids.length, bien:ids.every(i=>nivelDe(BYID[i])==='confirmado')}})()")
+    pg.evaluate("state.conf='todos'; renderBody(false)")
+    check("Funcional", "Confirmación: nivel y motivos en la ficha; filtro 'Solo confirmados'",
+          f"{r['c']} confirmados · {r['p']} probables · {r['s']} sin confirmar · ficha: {txt[:60]!r}",
+          ok=r["con"] == r["n"] and txt.startswith("✓ Confirmado") and solo["n"] > 0 and solo["bien"],
+          detalle=str({**r, **solo}))
 
 
 def historial_web(pg):

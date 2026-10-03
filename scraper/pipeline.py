@@ -236,7 +236,49 @@ def preparar(items: list[Item], hoy: date, horizonte: date) -> tuple[list[Item],
     limpios = {(it.ev.fecha, norm(it.ev.sala)) for it in ok if not tiene_mojibake(it.ev.artista)}
     fuera["mal_codificados"] = sum(1 for it in ok if tiene_mojibake(it.ev.artista) and (it.ev.fecha, norm(it.ev.sala)) in limpios)
     ok = [it for it in ok if not (tiene_mojibake(it.ev.artista) and (it.ev.fecha, norm(it.ev.sala)) in limpios)]
+    # una sola grafía por sala: "Teatro Salón Cervantes" / "TEATRO SALÓN CERVANTES", "ContraClub" / "Contraclub" (las
+    # que solo cambian en mayúsculas, tildes o signos). Se queda la más usada que no esté toda en mayúsculas
+    grafias: dict[str, Counter] = {}
+    for it in ok:
+        if it.ev.sala:
+            grafias.setdefault(norm(it.ev.sala), Counter())[it.ev.sala] += 1
+    mejor = {k: max(c, key=lambda x: (not x.isupper(), c[x], x)) for k, c in grafias.items() if len(c) > 1}
+    for it in ok:
+        if it.ev.sala and norm(it.ev.sala) in mejor:
+            it.ev.sala = mejor[norm(it.ev.sala)]
     return ok, fuera
+
+
+def posibles_alias_salas(recs: list[dict], hoy: str) -> list[dict]:
+    """Salas que pueden ser la misma escrita de dos formas, para revisarlas y añadir el alias a mano
+    (data/salas_alias.json): nombres casi iguales ("Café Libertad 8" / "Libertad 8 Café") o el mismo artista el mismo
+    día en dos salas de nombre parecido. No se unen solas: dos salas distintas pueden llamarse casi igual."""
+    from itertools import combinations
+
+    from rapidfuzz import fuzz
+    fut = [r for r in recs if r["fecha"] >= hoy]
+    cuenta = Counter(x for r in fut for x in (r.get("sala") or "").split(" / ") if x)
+    out: dict[tuple, dict] = {}
+    nombres = sorted(cuenta)
+    for a, b in combinations(nombres, 2):
+        na, nb = norm(a), norm(b)
+        # aunque ya se unan al comparar conciertos (misma_sala), con dos nombres salen como dos salas en la web
+        if len(na) >= 5 and len(nb) >= 5 and na != nb and fuzz.token_sort_ratio(na, nb) >= 88:
+            out[(a, b)] = {"salas": [a, b], "conciertos": [cuenta[a], cuenta[b]], "motivo": "nombres casi iguales"}
+    por_dia: dict[str, list] = {}
+    for r in fut:
+        for x in (r.get("sala") or "").split(" / "):
+            if x:
+                por_dia.setdefault(r["fecha"], []).append((x, r))
+    for f, l in por_dia.items():
+        for (sa, ra), (sb, rb) in combinations(l, 2):
+            if sa == sb or ra is rb or misma_sala(sa, sb) or fuzz.token_set_ratio(norm(sa), norm(sb)) < 60:
+                continue
+            if artistas_coinciden([ra["artista"]], nombres_rec(rb)):
+                k = tuple(sorted((sa, sb)))
+                out.setdefault(k, {"salas": list(k), "conciertos": [cuenta[k[0]], cuenta[k[1]]],
+                                   "motivo": f"{ra['artista']} el {f} en las dos"})
+    return list(out.values())[:30]
 
 
 # ---------------------------------------------------------------- unificación
@@ -695,6 +737,91 @@ def _misma_sala_rec(a: dict, b: dict) -> bool:
     return bool(sa and sb and any(_ms(x, y) for x in sa for y in sb))
 
 
+# ---------------------------------------------------------------- confirmación de cada concierto (fase A)
+# Cuánto se puede fiar uno de que el concierto existe tal cual: no se exige un número de webs (muchos conciertos
+# pequeños solo los anuncia un sitio, y no se pierden), se dice quién lo confirma. Puntos:
+#   - la web oficial de la sala o el programa municipal lo anuncia: 4
+#   - se vende en una ticketera (fuente o enlace de compra hallado en la página del concierto): 2
+#   - agendas y blogs independientes: la primera según su fiabilidad (alta 2, media 1, baja 0) y +1 por cada otra
+#     (hasta 3)
+#   - las webs no coinciden (hora, sala o cartel): -2; la web de la sala, leída entera, no lo anuncia: -2
+# Nivel: 4 o más "confirmado"; 2-3 "probable"; 0-1 "sin confirmar". Cancelado o "¿cancelado?": "sin confirmar".
+CONFIANZA = (("confirmado", 4), ("probable", 2), ("sin confirmar", -99))
+
+
+def puntuar_confianza(r: dict, fuentes: dict[str, Source]) -> dict:
+    puntos, motivos = 0, []
+    ids = [f["id"] for f in r.get("fuentes") or [] if f.get("id") in fuentes]
+    oficial = [fuentes[i] for i in ids if fuentes[i].tipo in ("sala", "institucional") and fuentes[i].prioridad == 1]
+    if oficial or r.get("confirmado_sala"):
+        puntos += 4
+        motivos.append(f"Lo anuncia {oficial[0].nombre.split(' (')[0] if oficial else 'la web oficial de la sala'}"
+                       + (" (programa municipal)" if oficial and oficial[0].tipo == "institucional" else ""))
+    tick = [fuentes[i] for i in ids if fuentes[i].tipo in ("ticketera", "promotora")]
+    # un enlace de compra de la misma web que una agenda ya contada (entradas.conciertos.club) no confirma más
+    ent = r.get("entradas") or {}
+    agendas = {norm(fuentes[i].nombre.split(" (")[0]) for i in ids if fuentes[i].tipo in ("agregador", "blog")}
+    if ent and not tick and any(norm(ent.get("nombre") or "").split(" ")[0] in a for a in agendas if a):
+        ent = {}
+    if tick or ent:
+        puntos += 2
+        quien = ent.get("nombre") or (tick[0].nombre.split(" (")[0] if tick else "una ticketera")
+        motivos.append(f"A la venta en {quien}")
+    grupos_ag: dict[str, Source] = {}
+    for i in ids:
+        sr = fuentes[i]
+        if sr.tipo in ("agregador", "blog") and sr.grupo not in grupos_ag:
+            grupos_ag[sr.grupo] = sr
+    if grupos_ag:
+        mejor = max({"alta": 2, "media": 1, "baja": 0}.get(sr.fiabilidad, 1) for sr in grupos_ag.values())
+        puntos += mejor + min(len(grupos_ag) - 1, 3)
+        motivos.append(f"En {len(grupos_ag)} agenda{'s' if len(grupos_ag) > 1 else ''} o blog{'s' if len(grupos_ag) > 1 else ''}"
+                       f" ({', '.join(sr.nombre.split(' (')[0] for sr in list(grupos_ag.values())[:3])}"
+                       f"{'…' if len(grupos_ag) > 3 else ''})")
+    if r.get("conflictos"):
+        puntos -= 2
+        campos = sorted({c.get("campo") for c in r["conflictos"] if c.get("campo")})
+        motivos.append("Las webs no coinciden en " + " y ".join(campos))
+    if r.get("ausente_web_sala"):
+        puntos -= 2
+        motivos.append(f"La web de la sala ({r['ausente_web_sala']}) no anuncia nada ese día")
+    nivel = next(n for n, minimo in CONFIANZA if puntos >= minimo)
+    ev = (r.get("estado_evento") or {}).get("tipo")
+    if ev or r.get("estado") == "posiblemente cancelado":
+        nivel = "sin confirmar"
+        motivos.append("Cancelado o aplazado según la web" if ev else "Ya no aparece en las webs donde se anunciaba")
+    return {"nivel": nivel, "puntos": puntos, "motivos": motivos}
+
+
+def ausencias_web_sala(recs: list[dict], resultados: dict, fuentes: dict[str, Source], eventos: dict, hoy: str) -> int:
+    """Marca los conciertos de una sala cuya web oficial se ha leído entera hoy y no anuncia nada ese día
+    (r["ausente_web_sala"]). Si la web anuncia otro concierto ese día no se marca: suele ser el mismo con otro nombre
+    ("CARO CAXI" / "CARO TAXI"). Solo hasta la última fecha que publica esa web (muchas solo anuncian unas semanas) y
+    solo en las salas de las que esa web anuncia al menos 5 conciertos (su propia sala, no las de otras que mencione)."""
+    marcados = 0
+    for r in recs:
+        r.pop("ausente_web_sala", None)
+    for sid, evs in eventos.items():
+        sr = fuentes.get(sid)
+        if not sr or sr.tipo != "sala" or not resultados.get(sid, {}).get("completa") or resultados[sid].get("no_leida"):
+            continue
+        cuenta = Counter(canon_sala(e.sala) for e in evs if e.sala)
+        salas = [s for s, n in cuenta.items() if n >= 5]
+        if not salas or not evs:
+            continue
+        hasta = max(e.fecha for e in evs).isoformat()
+        dias = {e.fecha.isoformat() for e in evs}
+        for r in recs:
+            if not (hoy <= r["fecha"] <= hasta) or r["fecha"] in dias or any(f["id"] == sid for f in r.get("fuentes") or []):
+                continue
+            if r.get("estado") == "posiblemente cancelado":
+                continue
+            if any(_ms(x, s) for x in (r.get("sala") or "").split(" / ") if x for s in salas):
+                r["ausente_web_sala"] = sr.nombre.split(" (")[0]
+                marcados += 1
+    return marcados
+
+
 # ---------------------------------------------------------------- historial de cambios de cada concierto
 # Lo que cambia de un concierto entre una lectura y la siguiente (fase 7): fecha, hora, precio, cancelado o aplazado,
 # entradas agotadas, artistas que aparecen en el cartel, deja de anunciarse o vuelve. Cada cambio lleva el día en
@@ -1036,6 +1163,9 @@ def ejecutar(hoy: date | None = None, solo: list[str] | None = None, fetcher: Fe
         mb_stats = completar(recs, cache_mb, hoy, fetcher_musicbrainz(), max_consultas=max_mb)
         _write("musicbrainz_cache.json", cache_mb)
     n_cambios = registrar_cambios(recs, antes_cambios, hoy.isoformat())
+    n_ausentes = ausencias_web_sala(recs, resultados, por_id, eventos, hoy.isoformat())
+    for r in recs:
+        r["confianza"] = puntuar_confianza(r, por_id)
     recs.sort(key=lambda r: (r["fecha"], r["hora"] or "99", norm(r["artista"])))
     # estilos que no se han podido traducir a categoría
     sin_mapear = sorted({e["estilo"] + " (" + e["fuente"] + ")" for r in recs for e in r["estilo_fuente"]
@@ -1061,6 +1191,8 @@ def ejecutar(hoy: date | None = None, solo: list[str] | None = None, fetcher: Fe
             "posiblemente_cancelados": sum(r["estado"] == "posiblemente cancelado" for r in futuros),
             "nuevos_hoy": sum(r["id"] not in anteriores_ids for r in futuros),
             "cambios_hoy": n_cambios,
+            "ausentes_web_sala": n_ausentes,
+            "confianza": dict(Counter(r["confianza"]["nivel"] for r in futuros)),
             "fuentes_ok": sum(f["funciono"] for f in inf_fuentes),
             "fuentes_total": len(inf_fuentes),
             "peticiones_http": fetcher.requests_count,
@@ -1069,6 +1201,7 @@ def ejecutar(hoy: date | None = None, solo: list[str] | None = None, fetcher: Fe
         "fuentes": inf_fuentes,
         "sin_agenda_legible": SIN_AGENDA_LEGIBLE,
         "salas_sin_fuente": salas_sin_fuente(recs, hoy),
+        "salas_alias_propuestas": posibles_alias_salas(recs, hoy.isoformat()),
         "no_usar": NO_USAR,
         "correcciones": res_corr,
         "musicbrainz": mb_stats,
@@ -1142,6 +1275,9 @@ def ejecutar_fichas(hoy: date | None = None, presupuesto_seg: float = 3000) -> d
         aplicar_cartel(r, cache_art)
     stats["entradas"] = aplicar_entradas(recs, cache_pag)
     stats["cambios"] = registrar_cambios(recs, antes_cambios, hoy.isoformat())
+    por_id = {s.id: s for s in FUENTES}
+    for r in recs:  # las páginas de entradas pueden haber añadido dónde se vende
+        r["confianza"] = puntuar_confianza(r, por_id)
     _write("concerts.json", datos)
     escribir_csv(recs, DATA / "concerts.csv")
     informe = _read("informe.json", {})
