@@ -849,7 +849,7 @@ def ausencias_web_sala(recs: list[dict], resultados: dict, fuentes: dict[str, So
                 continue
             f0 = date.fromisoformat(r["fecha"])
             otra = sorted((e for e in evs if abs((e.fecha - f0).days) <= 45
-                           and (artistas_coinciden([r["artista"]], [e.artista]) or mismo_acto_en_sala(r["artista"], e.artista))),
+                           and (artistas_coinciden([r["artista"]], [e.artista]) or mismo_acto_en_sala(r["artista"], e.artista, r.get("sala") or ""))),
                           key=lambda e: abs((e.fecha - f0).days))
             nombre = sr.nombre.split(" (")[0]
             if otra:

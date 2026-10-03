@@ -6,6 +6,7 @@ from scraper.sources.salas import salas_js_parse
 HTML = """<a href="#/evento/2329/2026-10-03/THE-CLAMS">21:30 THE CLAMS</a>
 <a href="#/evento/2361/2026-10-07/POETRY-SLAM-MADRID">20:30 POETRY SLAM MADRID</a>
 <a href="#/evento/1700/2026-10-15/THE-FADE-OUT-BLUES-BAND"></a>
+<a href="#/evento/1700/2026-10-15/THE-FADE-OUT-BLUES-BAND">Ver más</a>
 <a href="#/evento/1700/2026-10-15/THE-FADE-OUT-BLUES-BAND">THE FADE OUT BLUES BAND</a>
 <a href="#/evento/1683/2026-09-30/MOE-JAZZ-JAM-SESSION">MOE JAZZ JAM SESSION</a>
 <a href="#/eventos">EVENTOS</a>"""

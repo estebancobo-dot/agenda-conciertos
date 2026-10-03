@@ -848,6 +848,8 @@ def salas_js_parse(html: str, page_url: str, today: date, sala: str) -> list:
         mh = re.match(r"(\d{1,2}:\d{2})\s+(.+)", t)
         if mh:
             hora, t = mh.group(1), mh.group(2)
+        if re.fullmatch(r"(?i)ver m[aá]s|m[aá]s info(rmaci[oó]n)?|comprar|entradas|info", t.strip()):
+            t = ""  # enlace secundario del mismo concierto: el nombre sale de la dirección
         nombre = clean(t) or clean(unquote(m.group(2)).replace("-", " "))
         if f < today or not nombre or _NO_MUSICA.search(nombre):
             continue

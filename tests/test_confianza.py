@@ -50,6 +50,7 @@ def test_mismo_acto_con_otro_nombre():
     assert not mismo_acto_en_sala("Tributo a Queen", "Tributo a Mecano")
     assert not mismo_acto_en_sala("BLACK BIRDS", "THE BLACK CROWES")
     assert not mismo_acto_en_sala("Jam Session Blues", "Blues Night")
+    assert not mismo_acto_en_sala("INTRUSO JAZZ SESSION", "INTRUSO ACID JAM!", "Intruso Bar")
 
 
 def test_se_unen_en_la_misma_sala_y_dia_a_hora_cercana():

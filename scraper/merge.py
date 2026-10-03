@@ -162,11 +162,14 @@ def _palabras(nombre: str) -> list[str]:
     return [w for w in norm(nombre).split() if len(w) >= 3 and w not in _COMUNES and not w.isdigit()]
 
 
-def mismo_acto_en_sala(a: str, b: str) -> bool:
+def mismo_acto_en_sala(a: str, b: str, sala: str = "") -> bool:
     """Dos anuncios del mismo día y la misma sala que son el mismo concierto con otro nombre: "THE DOORS ARE OPEN (Trib
     The Doors)" = "EL GRAN TRIBUTO A THE DOORS", "EMMA SWIFT (AUST-USA)" = "Emma Swift with Luther Russell", "CARO CAXI"
-    = "CARO TAXI". No: "Tributo a Queen" / "Tributo a Mecano", "BLACK BIRDS" / "THE BLACK CROWES"."""
-    pa, pb = _palabras(a), _palabras(b)
+    = "CARO TAXI". No: "Tributo a Queen" / "Tributo a Mecano", "BLACK BIRDS" / "THE BLACK CROWES", ni dos sesiones que
+    solo comparten el nombre de la sala ("INTRUSO JAZZ SESSION" / "INTRUSO ACID JAM!")."""
+    de_sala = set(_palabras(sala))
+    pa = [w for w in _palabras(a) if w not in de_sala]
+    pb = [w for w in _palabras(b) if w not in de_sala]
     if not pa or not pb:
         return False
     corto, largo = sorted((pa, pb), key=len)
@@ -212,7 +215,7 @@ def agrupar(items: list[Item]) -> list[Cluster]:
                 destino = c
                 break
             # misma sala (conocida en los dos) y mismo día, con otro nombre y a una hora cercana
-            if it.ev.sala and salas_c and any(mismo_acto_en_sala(it.ev.artista, o.ev.artista)
+            if it.ev.sala and salas_c and any(mismo_acto_en_sala(it.ev.artista, o.ev.artista, it.ev.sala)
                                               and not _horas_lejos(it.ev.hora, o.ev.hora) for o in c.items):
                 destino = c
                 break
