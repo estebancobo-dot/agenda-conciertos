@@ -86,11 +86,12 @@ def test_estilo_entre_parentesis_y_tras_punto():
                     ev("JUAN ZELADA · Soul / Funk / R&amp;B", "2026-10-10 22:00:00", ["Conciertos"]),
                     ev("ZEUHL DJ", "2026-10-10 23:30:00", ["DJs"]),
                     ev("EVENTO PRIVADO", "2026-10-07 17:00:00", ["Conciertos", "DJs"]),
-                    ev("LAS ERAS (ARG)", "2026-11-22 21:00:00", ["Conciertos"])]}
+                    ev("LAS ERAS (ARG)", "2026-11-22 21:00:00", ["Conciertos"]),
+                    ev("VIOFLESH (Chile)", "2026-10-30 21:00:00", ["Conciertos"])]}
     out = tribe_parse(d, "El Perro Club", "Madrid", HOY, HOR, r"conciertos?$")
     assert [(r.artista, r.invitados, r.estilo, r.nacionalidad) for r in out] == [
         ("MUXU", ["MONKEY MOON"], "Pop Rock", None), ("JUAN ZELADA", [], "Soul, Funk, R&B", None),
-        ("LAS ERAS", [], None, "AR")]
+        ("LAS ERAS", [], None, "AR"), ("VIOFLESH", [], None, None)]
     assert out[0].precio == "10-12 €"
 
 

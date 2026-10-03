@@ -557,6 +557,16 @@ TRIBE_NO = re.compile(r"(?i)^(clubbing|club|fiesta|fiestas|dj|djs|sesi[oó]n(es)
 _TRIBE_PAREN = re.compile(r"\s*\(([^()]{4,})\)")
 _TRIBE_PUNTO = re.compile(r"^(.+?)\s+·\s+(.+)$")
 _TRIBE_PRIVADO = re.compile(r"(?i)^(evento privado|cerrado|alquiler|celebra tu evento)")
+_RAIZ_GENERO = re.compile(r"(?i)core|rock|pop|punk|metal|jazz|blues|soul|funk|folk|flamenc|rumba|cumbia|salsa|trap|"
+                          r"rap\b|hip|reggae|ska\b|indie|electr|techno|house|tango|bolero|fado|swing|gospel|grunge|"
+                          r"country|bluegrass|cantautor|bullerengue|son\b|samba|bossa|afro|latin|world|cl[aá]sic")
+
+
+def _es_genero(texto: str) -> bool:
+    from ..clasificar import categoria_de
+    return bool(categoria_de(texto) or _RAIZ_GENERO.search(texto))
+
+
 _TRIBE_COLA = re.compile(r"\s+[–—-]\s+((?:tributo|versiones|homenaje|covers?)\b.*)$", re.I)
 
 
@@ -600,7 +610,10 @@ def tribe_parse(datos: dict, sala: str, ciudad: str, hoy: date, horizonte: date,
         parens = _TRIBE_PAREN.findall(titulo)
         if parens:
             titulo = clean(_TRIBE_PAREN.sub("", titulo))
-            estilos = estilos or [re.sub(r"\s*[·/]\s*", ", ", parens[0])]
+            # solo si nombra un género: "(Chile)", "(Berlín)" o "(Feat: Chipper Cooke)" no son estilos
+            cand = re.sub(r"\s*[·/]\s*", ", ", parens[0])
+            if not estilos and _es_genero(cand):
+                estilos = [cand]
         else:
             mp = _TRIBE_PUNTO.match(titulo)
             if mp and not estilos:
