@@ -3,7 +3,7 @@ from __future__ import annotations
 
 from .model import Source
 from .sources import agregadores as ag
-from .sources import abiertos, blogs, conciertos_club as cc, otras, rock_metal as rm, salas
+from .sources import abiertos, blogs, conciertos_club as cc, enterticket, otras, rock_metal as rm, salas
 
 S = Source
 
@@ -134,6 +134,13 @@ FUENTES: list[Source] = [
     S("ticketandroll", "TicketAndRoll (Hangar 48, Rincón del Arte Nuevo, Jazzville)", "https://ticketandroll.com/",
       "ticketera", 2, "alta", "ticketandroll", salas.ticketandroll, municipio_defecto="Madrid",
       notas="Páginas de cada sala en la ticketera: salas sin web propia legible."),
+    S("enterticket", "Enterticket (Villanos y otras salas)", "https://www.enterticket.es/", "ticketera", 2, "alta",
+      "enterticket", enterticket.enterticket,
+      notas="Sus páginas de evento (las permite su robots.txt), a partir de su sitemap: solo conciertos en la Comunidad "
+            "de Madrid. Cada día se abren las nuevas; lo ya visto se recuerda."),
+    S("cclub_org", "entradas.conciertos.club (páginas de cada sala)", "https://entradas.conciertos.club/",
+      "ticketera", 2, "alta", "conciertos.club", salas.cclub, municipio_defecto="Madrid",
+      notas="Lo que publica cada sala en su página de la ticketera ('Organizado por …'): Café Berlín."),
     S("cafelapalma", "Café La Palma (web oficial)", "https://cafelapalma.com/es/agenda-de-conciertos/", "sala", 1, "alta",
       "cafelapalma", salas.PARSERS["cafelapalma"], municipio_defecto="Madrid",
       notas="Se toman sus conciertos; las sesiones de club (categoría Clubbing) no."),
@@ -157,7 +164,6 @@ FUENTES: list[Source] = [
 SIN_AGENDA_LEGIBLE = {
     "Sala Mon Live (monmadrid.es)": "La web no publica agenda de conciertos (solo información general).",
     "Sala Copérnico (salacopernico.es)": "La web muestra una 'cartelera orientativa' de ejemplo con fechas ficticias; no se usa.",
-    "Café Berlín (berlincafe.es)": "La web solo muestra carteles sin fechas en texto.",
     "The RockLab, Coslada (therocklab.es)": "Web hecha con Wix sin fechas legibles en el HTML.",
     "Maravillas Club": "El dominio maravillasclub.es es una página de parking.",
     "Cadavra": "No se encontró una web oficial accesible (dominios probados sin respuesta).",

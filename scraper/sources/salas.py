@@ -737,6 +737,95 @@ def ticketandroll(ctx: Ctx):
             ctx.errors.append(f"{url}: {type(e).__name__}")
 
 
+# Páginas de organizador de entradas.conciertos.club: salas que venden ahí y cuya web no se puede leer
+# (Café Berlín solo publica carteles; El Despertar, robots.txt; Intruso y Moe, JavaScript). La propia sala es quien
+# publica cada concierto ("Organizado por …"). Los de "Varias fechas" se leen en su página (una por sesión).
+CCLUB = "https://entradas.conciertos.club/es/organizers/"
+CCLUB_ORG = {"cafe-berlin": "Café Berlín"}
+_MES_CORTO = {"ene": 1, "feb": 2, "mar": 3, "abr": 4, "may": 5, "jun": 6, "jul": 7, "ago": 8, "sep": 9, "sept": 9,
+              "oct": 10, "nov": 11, "dic": 12}
+
+
+def _fecha_sin_anio(dia: int, mes: int, today: date) -> date | None:
+    """El año de una fecha sin año: la próxima vez que cae (las agendas no listan conciertos de hace meses)."""
+    try:
+        f = date(today.year, mes, dia)
+    except ValueError:
+        return None
+    if f < today - timedelta(days=31):
+        f = date(today.year + 1, mes, dia)
+    return f
+
+
+def cclub_parse(html: str, page_url: str, today: date, sala: str) -> tuple[list, list[str]]:
+    """Tarjetas de la página de un organizador. Devuelve (conciertos, enlaces de los de "Varias fechas")."""
+    from ..normalize import norm
+    sp = soup_of(html)
+    out, varias = [], []
+    ns = norm(sala)
+    for a in sp.select("a.event-card[href]"):
+        url = urljoin(page_url, a["href"])
+        titulo = text(a.select_one(".event-title")) or clean(a.get("title"))
+        lugar = text(a.select_one(".event-venue"))
+        if lugar and ns and ns not in norm(lugar):
+            continue  # el organizador también vende conciertos en otras salas: esos no son de esta sala
+        fd = a.select_one(".date")
+        m = re.match(r"(\d{1,2})\s+([a-z]+)", text(fd).lower())
+        if not m:
+            if fd is not None and "varias" in text(fd).lower():
+                varias.append(url)
+            continue
+        f = _fecha_sin_anio(int(m.group(1)), _MES_CORTO.get(m.group(2)[:4], _MES_CORTO.get(m.group(2)[:3], 0)), today)
+        if not f or f < today:
+            continue
+        precio = re.sub(r"(?i)^desde\s*", "desde ", text(a.select_one(".price"))) or None
+        out.append(make(f, _titulo_sin_sala(titulo, ns), url, sala=sala, ciudad="Madrid", precio=precio))
+    return out, varias
+
+
+def _titulo_sin_sala(titulo: str, ns: str) -> str:
+    from ..normalize import norm
+    t = re.sub(r"(?i)\s+(?:en|@)\s+(?:el\s+|la\s+)?(.+)$",
+               lambda m: "" if ns and (norm(m.group(1)).startswith(ns) or ns in norm(m.group(1))) else m.group(0), titulo)
+    return clean(re.sub(r"\s*[-–]\s*$", "", t))
+
+
+def cclub_evento_parse(html: str, page_url: str, today: date, sala: str) -> list:
+    """Página de un concierto de entradas.conciertos.club: cada sesión con su fecha (d.m.aaaa) y hora."""
+    from ..normalize import norm
+    sp = soup_of(html)
+    titulo = _titulo_sin_sala(text(sp.select_one("h1")), norm(sala))
+    out = []
+    for el in sp.find_all(string=re.compile(r"^\s*\d{1,2}\.\d{1,2}\.\d{4}\s*$")):
+        d, mth, y = map(int, el.strip().split("."))
+        try:
+            f = date(y, mth, d)
+        except ValueError:
+            continue
+        hora = None
+        sig = el.find_parent("span")
+        nxt = sig.find_next(string=re.compile(r"^\s*\d{1,2}:\d{2}\s*$")) if sig else None
+        if nxt:
+            hora = nxt.strip()
+        if f >= today and titulo:
+            out.append(make(f, titulo, page_url, sala=sala, ciudad="Madrid", hora=hora))
+    return list({(e.fecha, e.hora): e for e in out}.values())
+
+
+def cclub(ctx: Ctx):
+    for slug, sala in CCLUB_ORG.items():
+        url = CCLUB + slug
+        try:
+            evs, varias = cclub_parse(ctx.get(url), url, ctx.today, sala)
+            yield from evs
+            for u in varias:
+                yield from cclub_evento_parse(ctx.get(u), u, ctx.today, sala)
+        except TiempoAgotado:
+            raise
+        except Exception as e:  # noqa: BLE001
+            ctx.errors.append(f"{url}: {type(e).__name__}")
+
+
 # ------------------------------------------------------------------ registro de salas
 def _sec(url, sala, ciudad="Madrid", **kw):
     def run(ctx: Ctx):

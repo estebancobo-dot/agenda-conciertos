@@ -759,7 +759,9 @@ def puntuar_confianza(r: dict, fuentes: dict[str, Source]) -> dict:
         puntos += 4
         motivos.append(f"Lo anuncia {oficial[0].nombre.split(' (')[0] if oficial else 'la web oficial de la sala'}"
                        + (" (programa municipal)" if oficial and oficial[0].tipo == "institucional" else ""))
-    tick = [fuentes[i] for i in ids if fuentes[i].tipo in ("ticketera", "promotora")]
+    grupos_agenda = {fuentes[i].grupo for i in ids if fuentes[i].tipo in ("agregador", "blog")}
+    # la ticketera de una web cuya agenda ya cuenta (entradas.conciertos.club y conciertos.club) no confirma más
+    tick = [fuentes[i] for i in ids if fuentes[i].tipo in ("ticketera", "promotora") and fuentes[i].grupo not in grupos_agenda]
     # un enlace de compra de la misma web que una agenda ya contada (entradas.conciertos.club) no confirma más
     ent = r.get("entradas") or {}
     agendas = {norm(fuentes[i].nombre.split(" (")[0]) for i in ids if fuentes[i].tipo in ("agregador", "blog")}

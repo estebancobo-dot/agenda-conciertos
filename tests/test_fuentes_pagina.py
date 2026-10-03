@@ -36,11 +36,11 @@ def test_salud_14_dias():
 
 
 def test_salas_sin_fuente():
-    recs = [_r(["a"], sala="Café Berlín") for _ in range(5)] + [_r(["a"], sala="Sala X", sala_ok=True) for _ in range(5)]
+    recs = [_r(["a"], sala="La Coquette") for _ in range(5)] + [_r(["a"], sala="Sala X", sala_ok=True) for _ in range(5)]
     recs += [_r(["a"], sala="Bar Pequeño")]
     out = salas_sin_fuente(recs, date(2026, 10, 2))
-    assert [x["sala"] for x in out] == ["Café Berlín"] and out[0]["conciertos"] == 5
-    assert out[0]["motivo"] and "carteles" in out[0]["motivo"]  # el de la lista de salas sin agenda legible
+    assert [x["sala"] for x in out] == ["La Coquette"] and out[0]["conciertos"] == 5
+    assert out[0]["motivo"] and "Instagram" in out[0]["motivo"]  # el de la lista de salas sin agenda legible
 
 
 def test_cambio_de_diseno():
