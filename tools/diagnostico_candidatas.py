@@ -10,6 +10,8 @@ import re
 import sys
 from pathlib import Path
 
+from bs4 import BeautifulSoup
+
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from scraper.fetch import Fetcher, RobotsBlocked  # noqa: E402
@@ -121,6 +123,23 @@ if len(sys.argv) > 2 and sys.argv[1] == "--crudo":
         try:
             # sin <head>, dibujos SVG, scripts ni estilos: lo que importa es cómo vienen los conciertos
             t = f.get(u)
+            if marca.startswith("enlaces"):
+                # "URL@enlaces:patrón": solo los enlaces (y su texto) cuya dirección cumple el patrón
+                pat = re.compile(marca.partition(":")[2] or ".", re.I)
+                vistos = set()
+                for a in BeautifulSoup(t, "lxml").select("a[href]"):
+                    h = a["href"]
+                    if pat.search(h) and h not in vistos:
+                        vistos.add(h)
+                        print(f"  {h} · {a.get_text(' ', strip=True)[:90]}")
+                print(f"  ({len(vistos)} enlaces)")
+                continue
+            if marca == "json":
+                # "URL@json": los datos que trae la página para montarse con JavaScript (Next.js, JSON-LD…)
+                for sc in BeautifulSoup(t, "lxml").select('script[type="application/json"], script[type="application/ld+json"], script#__NEXT_DATA__'):
+                    print(f"  <script {sc.get('id') or sc.get('type')}> {len(sc.get_text())} letras")
+                    print(sc.get_text()[:12000])
+                continue
             t = re.sub(r"(?is)<head\b.*?</head>|<svg\b.*?</svg>|<script\b.*?</script>|<style\b.*?</style>", "", t)
             # con "URL@texto": desde la primera vez que sale ese texto (para ver un bloque concreto de una página larga)
             i = t.find(marca) if marca else 0
