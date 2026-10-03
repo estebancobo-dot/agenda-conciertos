@@ -116,12 +116,15 @@ f = Fetcher()
 if len(sys.argv) > 2 and sys.argv[1] == "--crudo":
     # lo que devuelve una dirección tal cual (las primeras 12.000 letras), p. ej. la API de WordPress de una web
     for u in sys.argv[2:]:
+        u, _, marca = u.partition("@")
         print(f"\n## {u}\n  robots: {f.robots_status(u)} · permitido: {f.robots_allows(u)}")
         try:
             # sin <head>, dibujos SVG, scripts ni estilos: lo que importa es cómo vienen los conciertos
             t = f.get(u)
             t = re.sub(r"(?is)<head\b.*?</head>|<svg\b.*?</svg>|<script\b.*?</script>|<style\b.*?</style>", "", t)
-            print(t[:15000])
+            # con "URL@texto": desde la primera vez que sale ese texto (para ver un bloque concreto de una página larga)
+            i = t.find(marca) if marca else 0
+            print(t[max(0, i - 300):][:15000])
         except Exception as e:  # noqa: BLE001
             print("  error:", type(e).__name__, e)
     sys.exit(0)
