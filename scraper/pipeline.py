@@ -830,7 +830,11 @@ def informe_fuentes(fuentes: list[Source], resultados: dict, recs: list[dict], a
         nuevos = [r for r in mios if r["id"] not in anteriores_ids]
         h = historial.get(s.id, {})
         aviso = None
-        if res and (not res.get("funciono") or res.get("brutos", 0) == 0) and h.get("ultimo_conteo", 0) > 0:
+        if res.get("estado") == "bloqueado_robots" and h.get("ultimo_conteo", 0) > 0:
+            # no es un cambio de diseño: la sala ha cambiado su robots.txt (se respeta). Hay que decidir si se quita
+            aviso = (f"su robots.txt ya no permite leerla (último éxito {h.get('ultima_ok')}, daba {h['ultimo_conteo']}): "
+                     f"se respeta; sus conciertos salen de su última lectura y de otras agendas")
+        elif res and (not res.get("funciono") or res.get("brutos", 0) == 0) and h.get("ultimo_conteo", 0) > 0:
             aviso = f"posible cambio en la web: antes daba {h['ultimo_conteo']} conciertos (último éxito {h.get('ultima_ok')})"
             if h.get("ultima_ok"):
                 dias = (hoy - date.fromisoformat(h["ultima_ok"])).days

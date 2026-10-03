@@ -460,6 +460,45 @@ def cubierta_parse(html: str, page_url: str, today: date) -> list:
     return out
 
 
+# ------------------------------------------------------------------ Sala Clamores
+# Su calendario (Webflow, rehecho en sept-2026): por concierto, el día, el mes en inglés, la hora, el precio
+# ("12€ + G.G.") y el título con el estilo entre paréntesis ("Manu Míguez (Folk)"). Las noches de "Clamores Dance
+# Club" son sesiones de DJ, no conciertos.
+_MESES_EN = {m: i for i, m in enumerate(("january", "february", "march", "april", "may", "june", "july", "august",
+                                         "september", "october", "november", "december"), 1)}
+
+
+def clamores_parse(html: str, page_url: str, today: date) -> list:
+    from ..normalize import infer_year
+    out = []
+    for it in soup_of(html).select(".collection-item-post"):
+        a = it.find("a", href=True)
+        h2 = it.find("h2")
+        dia, mes = it.select_one(".date-component-calendar-2"), it.select_one(".date-component-calendar-3")
+        if not (a and h2 and dia and mes):
+            continue
+        m = _MESES_EN.get(text(mes).strip().lower())
+        try:
+            d = int(text(dia))
+            f = date(infer_year(d, m, today), m, d) if m else None
+        except (TypeError, ValueError):
+            f = None
+        titulo = text(h2)
+        if not f or f < today or re.match(r"(?i)clamores dance club|dance club", titulo):
+            continue
+        estilo = None
+        mt = re.match(r"^(.*?)\s*\(([^()]+)\)\s*$", titulo)
+        if mt:
+            titulo, estilo = mt.group(1), mt.group(2)
+        hora = parse_hora(text(it.select_one(".date-component-calendar4")) or "")
+        precio = text(it.select_one(".post-heading")) or None
+        img = it.find("img")
+        out.append(make(f, titulo, urljoin(page_url, a["href"]), sala="Sala Clamores", ciudad="Madrid", hora=hora,
+                        precio=precio if precio and re.search(r"\d|free|gratis", precio, re.I) else None,
+                        estilo=estilo, imagen=img.get("src") if img else None))
+    return out
+
+
 # ------------------------------------------------------------------ Café Central (jazz)
 # Cada concierto es un bloque con su día de inicio y de fin en atributos (data-event-date, data-end-date: las
 # residencias de varias noches seguidas), el título, la hora ("8PM & 10PM": dos pases, se toma el primero) y el
@@ -599,7 +638,7 @@ PARSERS = {
     "wurlitzer": _one("https://wurlitzerballroom.com/agenda", wurlitzer_parse),
     "honky": _one("https://clubhonky.com/programacion/", honky_parse),
     "silikona": _one("https://silikona.es/", silikona_parse),
-    "clamores": _sec("https://www.salaclamores.es/", "Sala Clamores"),
+    "clamores": _one("https://www.salaclamores.es/calendario", clamores_parse),
     "siroco": _one("https://siroco.es/", siroco_parse),
     "mobydick": _one("https://www.mobydickclub.com/", mobydick_parse),
     "independance": _sec("https://independanceclub.com/collections/conciertos", "Independance Club"),

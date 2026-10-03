@@ -105,7 +105,7 @@ FUENTES: list[Source] = [
       salas.PARSERS["honky"]),
     S("silikona", "Silikona (web oficial)", "https://silikona.es/", "sala", 1, "alta", "silikona",
       salas.PARSERS["silikona"]),
-    S("clamores", "Sala Clamores (web oficial)", "https://www.salaclamores.es/", "sala", 1, "alta", "clamores",
+    S("clamores", "Sala Clamores (web oficial)", "https://www.salaclamores.es/calendario", "sala", 1, "alta", "clamores",
       salas.PARSERS["clamores"]),
     S("galileo", "Galileo Galilei (web oficial)", "https://salagalileo.es/", "sala", 1, "alta", "galileo",
       otras.galileo, notas="Su hosting a veces responde con un captcha anti-bots; sus conciertos llegan también por "

@@ -57,3 +57,22 @@ def test_cafe_central():
         ("2026-10-03", "TAZELAAR & ARTVED QUARTET", "20:00", "Café Central Ateneo"),
         ("2026-10-20", "X", "19:30", "La Cátedra")]
     assert out[0].imagen == "https://cafecentralmadrid.com/uploads/events/t.webp"
+
+
+def test_clamores():
+    from scraper.sources.salas import clamores_parse
+    def item(href, dow, d, mes, precio, hora, titulo):
+        return f"""<div class="collection-item-post"><a href="{href}"><div class="date-component-calendar dayclass">{dow}</div>
+          <div class="date-component-calendar-2">{d}</div><div class="date-component-calendar-3 dateclass">{mes}</div>
+          <img src="https://cdn/x.jpg"><h1 class="post-heading">{precio}</h1><div class="date-component-calendar4">{hora}</div>
+          <h2 class="heading-4">{titulo}</h2></a></div>"""
+    html = (item("/eventos/a", "Saturday", 3, "October", "14€ + G.G.", "17:30", "Manu Míguez (Folk)")
+            + item("/eventos/b", "Saturday", 3, "October", "10€ + G.G.", "22:00", "Los Blody + Lavin + Jike (Rock &amp; Roll)")
+            + item("/eventos/c", "Saturday", 3, "October", "Dsd Free", "23:55", "Clamores Dance Club: Kennah (Urban)")
+            + item("/eventos/d", "Monday", 4, "January", "12€", "21:00", "Grupo de enero"))
+    out = clamores_parse(html, "https://www.salaclamores.es/calendario", date(2026, 10, 3))
+    assert [(r.fecha.isoformat(), r.artista, r.invitados, r.hora, r.estilo, r.precio) for r in out] == [
+        ("2026-10-03", "Manu Míguez", [], "17:30", "Folk", "14€ + G.G"),
+        ("2026-10-03", "Los Blody", ["Lavin", "Jike"], "22:00", "Rock & Roll", "10€ + G.G"),
+        ("2027-01-04", "Grupo de enero", [], "21:00", None, "12€")]
+    assert out[0].url == "https://www.salaclamores.es/eventos/a"
