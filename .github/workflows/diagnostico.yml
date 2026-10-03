@@ -43,6 +43,8 @@ jobs:
         env:
           WEBS: ${{ github.event.inputs.webs }}
         run: python tools/diagnostico_candidatas.py $(echo "${WEBS#candidatas}" | tr -d ":")
+      - if: startsWith(github.event.inputs.webs, 'render:') || startsWith(github.event.inputs.webs, 'probar:')
+        run: pip install playwright && python -m playwright install --with-deps chromium
       - if: startsWith(github.event.inputs.webs, 'probar:')
         env:
           WEBS: ${{ github.event.inputs.webs }}
@@ -51,8 +53,6 @@ jobs:
         env:
           WEBS: ${{ github.event.inputs.webs }}
         run: python tools/diagnostico_candidatas.py --crudo $(echo "${WEBS#crudo:}" | tr ',' ' ')
-      - if: startsWith(github.event.inputs.webs, 'render:')
-        run: pip install playwright && python -m playwright install --with-deps chromium
       - if: startsWith(github.event.inputs.webs, 'render:')
         env:
           WEBS: ${{ github.event.inputs.webs }}

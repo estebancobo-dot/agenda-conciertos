@@ -141,6 +141,10 @@ FUENTES: list[Source] = [
     S("cclub_org", "entradas.conciertos.club (páginas de cada sala)", "https://entradas.conciertos.club/",
       "ticketera", 2, "alta", "conciertos.club", salas.cclub, municipio_defecto="Madrid",
       notas="Lo que publica cada sala en su página de la ticketera ('Organizado por …'): Café Berlín."),
+    S("salas_js", "Intruso y Moe (webs oficiales)", "https://intrusobar.com/", "sala", 1, "alta", "salas_js",
+      salas.salas_js, municipio_defecto="Madrid",
+      notas="Sus webs pintan la agenda con JavaScript: se leen con un navegador real (no tienen robots.txt). "
+            "Sin noches de poesía, monólogos ni DJ."),
     S("cafelapalma", "Café La Palma (web oficial)", "https://cafelapalma.com/es/agenda-de-conciertos/", "sala", 1, "alta",
       "cafelapalma", salas.PARSERS["cafelapalma"], municipio_defecto="Madrid",
       notas="Se toman sus conciertos; las sesiones de club (categoría Clubbing) no."),
@@ -174,8 +178,6 @@ SIN_AGENDA_LEGIBLE = {
     "Sala Groove, Pinto": "La web no responde (conexión rechazada).",
     # comprobadas el 3-10-2026 (salas con muchos conciertos cuya web no se leía)
     "Café El Despertar (cafeeldespertar.com)": "Su robots.txt no permite leerla: se respeta.",
-    "Intruso Bar (intrusobar.com)": "La página se monta en el navegador: el HTML no trae la agenda.",
-    "Moe (moeclub.com)": "La página se monta en el navegador: el HTML no trae la agenda.",
     "Thundercat (thundercatclub.com)": "La página de programación no trae fechas en el HTML y su calendario está vacío.",
     "Sala Vesta (salavesta.com)": "La web solo enlaza a sus publicaciones de Instagram (sin fechas).",
     "El Café de la Ópera (elcafedelaopera.com)": "Programación fija (cena cantada, jazz con piano) sin agenda con fechas.",

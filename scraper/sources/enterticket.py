@@ -20,6 +20,8 @@ SITEMAP = "https://www.enterticket.es/sitemap.xml"
 MAX_PAGINAS = 150      # páginas de evento por lectura (a 1 por segundo como mínimo)
 REVISAR_DIAS = 3       # los conciertos de Madrid se vuelven a mirar cada 3 días (hora, precio, cancelación)
 CATEGORIAS = {"conciertos", "festivales"}
+# fiestas y sesiones de DJ que la ticketera también llama "conciertos"
+_NO_CONCIERTO = re.compile(r"(?i)\b(dj|djs|dj set|brunch|clubbing|club night|fiesta|party|techno|after)\b")
 _NEXT = re.compile(r'<script id="__NEXT_DATA__"[^>]*>(.*?)</script>', re.S)
 _CIUDAD = re.compile(r"(?i)\s*(?:[-–|]\s*|\ben\s+)(?:madrid|alcal[aá] de henares|getafe|legan[eé]s|m[oó]stoles|"
                      r"fuenlabrada|alcorc[oó]n|torrej[oó]n de ardoz|las rozas)\b.*$")
@@ -39,13 +41,15 @@ def evento_de_pagina(html: str, url: str) -> dict | None:
     muni = municipio(addr.get("city")) if (addr.get("province") or "").lower() == "madrid" else None
     cat = ((ev.get("category") or {}).get("slug") or "").lower()
     inicio = ((ev.get("start_date") or {}).get("date") or "")[:16]
-    out = {"madrid": bool(muni and cat in CATEGORIAS and inicio), "fecha": inicio[:10]}
+    nombre_ev = html_lib.unescape(ev.get("name") or "")
+    out = {"madrid": bool(muni and cat in CATEGORIAS and inicio and not _NO_CONCIERTO.search(nombre_ev)),
+           "fecha": inicio[:10]}
     if not out["madrid"]:
         return out
     hora = inicio[11:16] if inicio[11:16] not in ("", "00:00") else None
     precio = ev.get("minimum_price")
     artistas = [clean(a.get("name")) for a in ev.get("artists") or [] if clean(a.get("name"))]
-    nombre = clean(_CIUDAD.sub("", html_lib.unescape(ev.get("name") or ""))) or (artistas[0] if artistas else "")
+    nombre = clean(_CIUDAD.sub("", nombre_ev)) or (artistas[0] if artistas else "")
     out.update({"nombre": nombre, "hora": hora, "sala": clean(venue.get("name")), "ciudad": muni, "url": url,
                 "precio": f"desde {precio:.2f} €".replace(".", ",") if isinstance(precio, (int, float)) and precio else None,
                 "invitados": [a for a in artistas[1:] if a.lower() not in nombre.lower()],

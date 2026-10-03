@@ -36,6 +36,15 @@ class Ctx:
         self.pages += 1
         return self.fetcher.get(url, **kw)
 
+    def render(self, url: str, **kw) -> str:
+        """La página ya montada por un navegador real (webs que pintan la agenda con JavaScript). Mismas reglas que
+        get: robots.txt (también de cada petición que hace la página), identificación y ritmo (scraper/render.py)."""
+        if self.limite is not None and time.monotonic() > self.limite:
+            raise TiempoAgotado(url)
+        from ..render import navegador_de
+        self.pages += 1
+        return navegador_de(self.fetcher).html(url, **kw)
+
     def soup(self, url: str, **kw) -> BeautifulSoup:
         return BeautifulSoup(self.get(url, **kw), "lxml")
 

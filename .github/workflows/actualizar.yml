@@ -53,6 +53,10 @@ jobs:
         run: python tools/datos.py
       - name: Tests
         run: python -m pytest -q
+      - name: Navegador para las webs con la agenda en JavaScript (Intruso, Moe)
+        continue-on-error: true  # si no se instala, esas salas salen de su última lectura y de otras agendas
+        timeout-minutes: 5
+        run: pip install playwright && python -m playwright install --with-deps chromium
       - name: Rastrear fuentes
         # deja margen dentro de las 2 horas del trabajo para guardar lo hecho aunque se corte
         timeout-minutes: 100

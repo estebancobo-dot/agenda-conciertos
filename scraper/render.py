@@ -102,3 +102,13 @@ class Navegador:
             except Exception:  # noqa: BLE001
                 pass
         self._browser = self._pw = None
+
+
+def navegador_de(fetcher: Fetcher) -> Navegador:
+    """Un navegador por lector (se abre la primera vez que hace falta y se cierra al terminar el programa)."""
+    nav = getattr(fetcher, "_navegador", None)
+    if nav is None:
+        import atexit
+        nav = fetcher._navegador = Navegador(fetcher)
+        atexit.register(nav.cerrar)
+    return nav

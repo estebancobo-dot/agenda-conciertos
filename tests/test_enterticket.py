@@ -25,6 +25,7 @@ def test_evento_de_madrid():
 def test_fuera_de_madrid_o_no_concierto():
     assert not evento_de_pagina(pagina(ciudad="Barcelona", provincia="Barcelona"), "u")["madrid"]
     assert not evento_de_pagina(pagina(categoria="humor"), "u")["madrid"]
+    assert not evento_de_pagina(pagina(nombre="Brunch Electronik Madrid x BSMT LIVE - The Blaze (DJ Set)"), "u")["madrid"]
     assert evento_de_pagina("<html>sin datos</html>", "u") is None
 
 

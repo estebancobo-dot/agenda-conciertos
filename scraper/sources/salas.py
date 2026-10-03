@@ -826,6 +826,51 @@ def cclub(ctx: Ctx):
             ctx.errors.append(f"{url}: {type(e).__name__}")
 
 
+# Intruso y Moe: la misma plataforma, que pinta la agenda con JavaScript (el HTML llega vacío). Con un navegador real
+# (sus webs no tienen robots.txt: se permite) cada concierto es un enlace "#/evento/ID/AAAA-MM-DD/NOMBRE"; Intruso pone
+# la hora delante del nombre ("21:30 THE CLAMS").
+SALAS_JS = {"https://intrusobar.com/#/eventos": "Intruso Bar", "https://intrusobar.com/": "Intruso Bar",
+            "https://moeclub.com/": "Moe"}
+_EVENTO_JS = re.compile(r"#/evento/\d+/(\d{4}-\d{2}-\d{2})/([^/?#]+)")
+_NO_MUSICA = re.compile(r"(?i)\b(poetry|slam|poes[ií]a|mon[oó]logos?|comedia|stand.?up|impro|tardeo|karaoke|dj)\b")
+
+
+def salas_js_parse(html: str, page_url: str, today: date, sala: str) -> list:
+    from urllib.parse import unquote
+    out = {}
+    for a in soup_of(html).select("a[href]"):
+        m = _EVENTO_JS.search(a["href"])
+        if not m:
+            continue
+        f = date.fromisoformat(m.group(1))
+        t = text(a)
+        hora = None
+        mh = re.match(r"(\d{1,2}:\d{2})\s+(.+)", t)
+        if mh:
+            hora, t = mh.group(1), mh.group(2)
+        nombre = clean(t) or clean(unquote(m.group(2)).replace("-", " "))
+        if f < today or not nombre or _NO_MUSICA.search(nombre):
+            continue
+        clave = (f, nombre.lower())
+        if clave not in out or (hora and not out[clave].hora):
+            out[clave] = make(f, nombre, urljoin(page_url, a["href"]), sala=sala, ciudad="Madrid", hora=hora)
+    return list(out.values())
+
+
+def salas_js(ctx: Ctx):
+    vistos = set()
+    for url, sala in SALAS_JS.items():
+        try:
+            for e in salas_js_parse(ctx.render(url), url, ctx.today, sala):
+                if (e.fecha, e.artista.lower(), sala) not in vistos:
+                    vistos.add((e.fecha, e.artista.lower(), sala))
+                    yield e
+        except TiempoAgotado:
+            raise
+        except Exception as e:  # noqa: BLE001
+            ctx.errors.append(f"{url}: {type(e).__name__}: {str(e)[:120]}")
+
+
 # ------------------------------------------------------------------ registro de salas
 def _sec(url, sala, ciudad="Madrid", **kw):
     def run(ctx: Ctx):
