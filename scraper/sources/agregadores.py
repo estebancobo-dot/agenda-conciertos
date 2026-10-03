@@ -134,8 +134,28 @@ MEV_API = "https://madridenvivo.com/wp-json/wp/v2"
 MEV_API_PAGINAS = 12  # 100 eventos por página, los publicados más recientemente primero
 
 
+def mev_datos_ficha(e, acf: dict) -> None:
+    """Hora y precio que la sala puso en la ficha del evento (campos de la API: hora_del_pase, precio_del_evento,
+    entrada_libre). El listado del buscador no los trae. Solo si la ficha es del mismo día que el evento."""
+    f = str(acf.get("fecha_del_evento") or "")
+    if len(f) == 8 and f != e.fecha.strftime("%Y%m%d"):
+        return  # evento con varias fechas: la ficha puede ser de otra
+    pases = [str(p.get("hora") or "").strip() for p in acf.get("hora_del_pase") or [] if isinstance(p, dict)]
+    pases = [h for h in pases if re.fullmatch(r"\d{1,2}:\d{2}", h) and h not in ("00:00",)]
+    if pases and not e.hora:
+        e.hora = pases[0].zfill(5)
+        if len(pases) > 1:
+            e.nota = clean(f"{e.nota or ''} Varios pases: {', '.join(pases)}.")
+    if not e.precio:
+        if acf.get("entrada_libre"):
+            e.precio = "Entrada libre"
+        elif re.search(r"\d", str(acf.get("precio_del_evento") or "")):
+            e.precio = clean(str(acf["precio_del_evento"]))
+
+
 def mev_estilos_api(ctx: Ctx, eventos: list) -> int:
-    """Estilos de cada evento desde la API pública de WordPress de la web ("#Folk-Rock", "#Indie"…). El buscador
+    """Estilos, hora y precio de cada evento desde la API pública de WordPress de la web ("#Folk-Rock", "#Indie"…;
+    hora_del_pase, precio_del_evento: mev_datos_ficha). El buscador
     solo da la categoría ("Pop / Rock", "Músicas negras"); la ficha del evento lleva además sus estilos. Se piden
     en bloques de 100 (con los 10 s entre peticiones que pide su robots.txt) y se ponen como estilo del evento,
     los que se reconocen; la categoría queda si no hay ninguno. Devuelve cuántos eventos se han concretado."""
@@ -149,9 +169,10 @@ def mev_estilos_api(ctx: Ctx, eventos: list) -> int:
         if q.get("p"):
             por_id[q["p"][0]] = e
     etiquetas: dict[int, list] = {}
+    vistos: set[int] = set()
     for page in range(1, MEV_API_PAGINAS + 1):
         try:
-            lote = json.loads(ctx.get(f"{MEV_API}/evento?per_page=100&page={page}&_fields=id,link,tags"))
+            lote = json.loads(ctx.get(f"{MEV_API}/evento?per_page=100&page={page}&_fields=id,link,tags,acf"))
         except Exception as ex:  # noqa: BLE001 - sin la API se queda la categoría, como antes
             ctx.errors.append(f"estilos por la API: página {page}: {type(ex).__name__}")
             break
@@ -159,9 +180,13 @@ def mev_estilos_api(ctx: Ctx, eventos: list) -> int:
             break
         for ev in lote:
             e = por_url.get(str(ev.get("link") or "").rstrip("/")) or por_id.get(str(ev.get("id")))
-            if e is not None and ev.get("tags"):
+            if e is None:
+                continue
+            vistos.add(id(e))
+            mev_datos_ficha(e, ev.get("acf") or {})
+            if ev.get("tags"):
                 etiquetas[id(e)] = (e, ev["tags"])
-        if len(etiquetas) >= len(eventos):
+        if len(vistos) >= len(eventos):
             break
     ids = sorted({t for _, ts in etiquetas.values() for t in ts})
     nombres: dict[int, str] = {}

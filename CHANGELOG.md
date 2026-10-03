@@ -1,5 +1,9 @@
 # Versiones
 
+## 2.49.0 — 2026-10-03
+
+**N5 (primera parte): horas y precios de Madrid en Vivo.** Su buscador no da la hora (467 conciertos sin hora solo estaban en Madrid en Vivo). La ficha de cada evento sí la tiene (y el precio, o si la entrada es libre), y su API pública la da en las mismas peticiones que ya se hacían para los estilos (100 eventos por petición, con los 10 s que pide su robots.txt): las mismas que antes, con un campo más. Si hay varios pases, se apuntan todos en la nota. Solo si la ficha es del mismo día que el evento; lo que ya dice el listado no se toca.
+
 ## 2.48.4 — 2026-10-03
 
 - Conflictos de fecha falsos con la web de la sala: "Blues & Roots" (jam de los lunes en Intruso) salía con otra fecha los días 12, 19 y 26. Ahora se contrasta solo hasta donde publica **cada sala** (una fuente puede leer varias webs: Intruso publica una semana; Moe, un mes) y una **serie** que la web anuncia varios días (jam semanal, ciclo) no se toma por otra fecha del mismo concierto. Quedan los 3 conflictos reales (Tortoise y dos de Café Central).
