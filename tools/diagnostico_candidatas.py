@@ -115,7 +115,11 @@ if len(sys.argv) > 1 and sys.argv[1] == "salas2":
 FECHA = re.compile(r"\b(\d{1,2})[/.-](\d{1,2})(?:[/.-](\d{2,4}))?\b|\b\d{1,2} de (?:enero|febrero|marzo|abril|mayo|junio|"
                    r"julio|agosto|septiembre|octubre|noviembre|diciembre)\b", re.I)
 f = Fetcher()
-if len(sys.argv) > 2 and sys.argv[1] == "--crudo":
+if len(sys.argv) > 2 and sys.argv[1] in ("--crudo", "--render"):
+    if sys.argv[1] == "--render":  # la página ya montada por un navegador real (webs con la agenda en JavaScript)
+        from scraper.render import Navegador
+        nav = Navegador(f)
+        f.get = lambda u, **kw: nav.html(u)
     # lo que devuelve una dirección tal cual (las primeras 12.000 letras), p. ej. la API de WordPress de una web
     for u in sys.argv[2:]:
         u, _, marca = u.partition("@")
@@ -146,6 +150,10 @@ if len(sys.argv) > 2 and sys.argv[1] == "--crudo":
             print(t[max(0, i - 300):][:15000])
         except Exception as e:  # noqa: BLE001
             print("  error:", type(e).__name__, e)
+    if sys.argv[1] == "--render":
+        print(f"\n  peticiones que robots.txt no permite (no se hicieron): {len(nav.cortadas)}",
+              *nav.cortadas[:20], sep="\n   ")
+        nav.cerrar()
     sys.exit(0)
 
 

@@ -9,7 +9,7 @@ on:
         description: "Páginas por web"
         default: "16"
       webs:
-        description: "Solo estas webs (separadas por comas; vacío = todas), 'fuentes', 'entradas', 'cartel', 'candidatas', 'probar:ID[,ID]' (lector completo de esas fuentes), 'crudo:URL' (lo que devuelve tal cual), o la URL de una página"
+        description: "Solo estas webs (separadas por comas; vacío = todas), 'fuentes', 'entradas', 'cartel', 'candidatas', 'probar:ID[,ID]' (lector completo de esas fuentes), 'crudo:URL' (lo que devuelve tal cual; URL@texto, URL@enlaces:patrón, URL@json), 'render:URL' (igual, con un navegador real), o la URL de una página"
         default: ""
 
 permissions:
@@ -29,7 +29,7 @@ jobs:
           cache: pip
       - run: pip install -r requirements.txt
       - run: python tools/datos.py
-      - if: github.event.inputs.webs != 'fuentes' && github.event.inputs.webs != 'entradas' && github.event.inputs.webs != 'cartel' && !startsWith(github.event.inputs.webs, 'candidatas') && !startsWith(github.event.inputs.webs, 'probar:') && !startsWith(github.event.inputs.webs, 'crudo:') && !startsWith(github.event.inputs.webs, 'http')
+      - if: github.event.inputs.webs != 'fuentes' && github.event.inputs.webs != 'entradas' && github.event.inputs.webs != 'cartel' && !startsWith(github.event.inputs.webs, 'candidatas') && !startsWith(github.event.inputs.webs, 'probar:') && !startsWith(github.event.inputs.webs, 'crudo:') && !startsWith(github.event.inputs.webs, 'render:') && !startsWith(github.event.inputs.webs, 'http')
         run: python tools/diagnostico_agenda.py ${{ github.event.inputs.n || '16' }} "${{ github.event.inputs.webs }}"
       - if: github.event.inputs.webs == 'fuentes'
         run: python tools/diagnostico_fuentes.py ${{ github.event.inputs.n || '30' }}
@@ -51,3 +51,9 @@ jobs:
         env:
           WEBS: ${{ github.event.inputs.webs }}
         run: python tools/diagnostico_candidatas.py --crudo $(echo "${WEBS#crudo:}" | tr ',' ' ')
+      - if: startsWith(github.event.inputs.webs, 'render:')
+        run: pip install playwright && python -m playwright install --with-deps chromium
+      - if: startsWith(github.event.inputs.webs, 'render:')
+        env:
+          WEBS: ${{ github.event.inputs.webs }}
+        run: python tools/diagnostico_candidatas.py --render $(echo "${WEBS#render:}" | tr ',' ' ')
