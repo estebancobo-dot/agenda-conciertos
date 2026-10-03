@@ -1,5 +1,15 @@
 # Versiones
 
+## 2.47.0 — 2026-10-03
+
+**N2: fuentes difíciles, por vías permitidas** (nunca saltándose un robots.txt).
+
+- **Enterticket**, la ticketera de Villanos (cuya web prohíbe leerla en su robots.txt desde el 1 de octubre): su robots.txt sí permite sus páginas de evento y su sitemap. Se leen los conciertos en la Comunidad de Madrid con sus datos (sala, fecha y hora, precio, artistas); cada día solo las páginas nuevas (150 como máximo) y lo ya visto se recuerda. Primera lectura: 48 conciertos (Vistalegre, La Riviera, Mon, Movistar Arena, Wagon, Sala B, But, Intruso…), 14 nuevos y ningún conflicto. Sin sesiones de DJ ni fiestas. En la página de Fuentes, el aviso de Villanos dice por dónde siguen llegando sus conciertos.
+- **Café Berlín**, por su página en entradas.conciertos.club, donde publica cada concierto la propia sala: 36 conciertos, 12 nuevos y ningún conflicto. Sale de la lista de salas sin agenda legible. No cuenta como confirmación aparte de conciertos.club (es la misma web).
+- **Intruso y Moe**, con un **navegador real**: sus webs pintan la agenda con JavaScript y no tienen robots.txt. El navegador se identifica igual, respeta el robots.txt de la página y de cada petición que hace (las prohibidas se cortan), va al mismo ritmo y no descarga imágenes. Sin noches de poesía, monólogos ni DJ.
+- El Despertar sigue sin leerse: su robots.txt lo prohíbe y no vende en ninguna ticketera legible; sus conciertos llegan por las agendas.
+- Diagnóstico: modos `crudo:URL@enlaces:patrón`, `crudo:URL@json` (datos incrustados) y `render:URL` (con navegador).
+
 ## 2.46.0 — 2026-10-03
 
 **N1: confirmación auditada.**
