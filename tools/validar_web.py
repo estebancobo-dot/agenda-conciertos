@@ -624,7 +624,8 @@ def filtros(pg, lunes):
     pg.wait_for_timeout(30)
     t_chip = ms(t0)
     con_filtro = pg.evaluate(marcados)
-    otros = pg.evaluate("(g)=>[...document.querySelectorAll('#main .card')].filter(c=>!((BYID[c.dataset.id]||{}).grupos||[]).includes(g)).length", cid)
+    # el filtro cuenta también los géneros del cartel (gruposF: un telonero de ese género)
+    otros = pg.evaluate("(g)=>[...document.querySelectorAll('#main .card')].filter(c=>!gruposF(BYID[c.dataset.id]||{}).includes(g)).length", cid)
     chip = pg.locator("[data-chip]").first
     chip.click()
     pg.wait_for_timeout(30)
@@ -1013,7 +1014,17 @@ def cambiar_fecha_bajado(pg, lunes):
         alt = {"sig": ("#hnav [data-hn]:last-child", "#main .nav [data-nav]:last-child"),
                "ant": ("#hnav [data-hn]:first-child", "#main .nav [data-nav]:first-child"),
                "hoy": ("#hnav [data-hn=hoy]", "#hoy")}[boton]
-        return lambda: pg.click(alt[0] if pg.is_visible(alt[0]) else alt[1])
+        def accion():
+            if boton == "hoy" and not pg.is_visible(alt[0]) and not pg.is_visible(alt[1]):
+                # Hoy se oculta, con razón, si ya se ve el día de hoy arriba (p. ej. con un filtro, la semana actual
+                # empieza en hoy); si no, es un fallo
+                if not pg.evaluate("(()=>{const o=diaDeHoy(),en=document.querySelector('#main .strip .en');"
+                                   "return !!o&&!!en&&en.dataset.jump===(o.dataset.f||o.dataset.dif)})()"):
+                    malos.append(f"Hoy oculto sin estar en hoy ({pg.evaluate('location.hash')})")
+                pg.evaluate("irHoy()")
+                return
+            pg.click(alt[0] if pg.is_visible(alt[0]) else alt[1])
+        return accion
 
     def caso(nombre, inicio, accion, esperado, donde, bajar=True):
         nonlocal n

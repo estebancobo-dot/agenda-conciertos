@@ -702,6 +702,9 @@ def _misma_sala_rec(a: dict, b: dict) -> bool:
 # nuevo, no un cambio; una hora o un precio que sale de otra web (la página de entradas en vez de la agenda) tampoco.
 CAMBIOS_MAX = 12
 OSCILA_DIAS = 3  # una hora o un precio que vuelve a su valor anterior en estos días: no cambió, era ruido
+# versión de las reglas: los cambios apuntados con reglas anteriores se descartan (el primer día, 3-10-2026, apuntó
+# como cambios lo que solo aportaban las salas recién añadidas)
+REGLAS_CAMBIOS = 2
 
 
 def _precios(p: str | None) -> list[float]:
@@ -715,6 +718,7 @@ def foto_cambios(recs: list[dict]) -> dict[str, dict]:
                       "precio_pagina": bool((r.get("precio_fuente") or {}).get("pagina")),
                       "evento": (r.get("estado_evento") or {}).get("tipo"), "agotado": bool(r.get("agotado")),
                       "estado": r.get("estado"), "invitados": list(r.get("invitados") or []),
+                      "fuentes": sorted({f.get("id") for f in r.get("fuentes") or []}),
                       "cambios": list(r.get("cambios") or [])}
             for r in recs if r.get("id")}
 
@@ -726,21 +730,27 @@ def registrar_cambios(recs: list[dict], antes: dict[str, dict], hoy: str) -> int
         p = antes.get(r.get("id"))
         if not p:
             continue
-        cambios = [dict(c) for c in (r.get("cambios") or p["cambios"])]
+        cambios = [dict(c) for c in (r.get("cambios") or p["cambios"]) if c.get("r") == REGLAS_CAMBIOS]
         hechos: list[dict] = []
+        # hora, precio y cartel solo si lo dicen las mismas webs antes y después: si se suma o falta una web (una sala
+        # recién añadida, una lectura incompleta), la diferencia es de quién lo cuenta, no un cambio del concierto
+        mismas = p["fuentes"] == sorted({f.get("id") for f in r.get("fuentes") or []})
 
         def anota(campo: str, **kw) -> None:
-            hechos.append({"dia": hoy, "campo": campo, **kw})
+            hechos.append({"dia": hoy, "campo": campo, "r": REGLAS_CAMBIOS, **kw})
 
         if p["fecha"] != r["fecha"]:
             anota("fecha", antes=p["fecha"], despues=r["fecha"])
         sa, sb = [x for x in p["sala"].split(" / ") if x], [x for x in (r.get("sala") or "").split(" / ") if x]
         if sa and sb and not any(_ms(x, y) for x in sa for y in sb):
             anota("sala", antes=p["sala"], despues=r["sala"])
-        if p["hora"] and r.get("hora") and p["hora"] != r["hora"] and p["hora_pagina"] == bool(r.get("hora_pagina")):
+        if mismas and p["hora"] and r.get("hora") and p["hora"] != r["hora"] and \
+                p["hora_pagina"] == bool(r.get("hora_pagina")):
             anota("hora", antes=p["hora"], despues=r["hora"])
         pa, pb = _precios(p["precio"]), _precios(r.get("precio"))
-        if pa and pb and pa != pb and p["precio_pagina"] == bool((r.get("precio_fuente") or {}).get("pagina")):
+        # "8 €" → "8-10 €" es más detalle, no otro precio: solo si ninguno contiene al otro
+        if mismas and pa and pb and not set(pa) <= set(pb) and not set(pb) <= set(pa) and \
+                p["precio_pagina"] == bool((r.get("precio_fuente") or {}).get("pagina")):
             anota("precio", antes=p["precio"], despues=r["precio"])
         ev = r.get("estado_evento") or {}
         if ev.get("tipo") and ev["tipo"] != p["evento"]:
@@ -754,15 +764,24 @@ def registrar_cambios(recs: list[dict], antes: dict[str, dict], hoy: str) -> int
             anota("reaparece")
         ya = {norm(x) for x in p["invitados"]} | {norm(r["artista"])} | \
              {norm(n) for c in cambios if c["campo"] == "cartel" for n in c.get("nombres", [])}
-        nuevos_cartel = [x for x in r.get("invitados") or [] if norm(x) not in ya]
-        if nuevos_cartel:
+        # un nombre que es el del cabeza escrito de otra forma ("RADAR JOVEN 2026: ASHLEYS", "GRUMPYS") no es otro
+        # artista en el cartel
+        base = [r["artista"], *p["invitados"]]
+        nuevos_cartel = [x for x in r.get("invitados") or [] if norm(x) not in ya
+                         and not coinciden_flexible([x], base) and not any(norm(b) and norm(b) in norm(x) for b in base)]
+        if mismas and nuevos_cartel:
             anota("cartel", nombres=nuevos_cartel[:6])
         for h in hechos:
             ultimo = next((c for c in reversed(cambios) if c["campo"] == h["campo"]), None)
-            if h["campo"] in ("hora", "precio", "fecha") and ultimo and ultimo.get("antes") == h.get("despues") and \
-                    (date.fromisoformat(hoy) - date.fromisoformat(ultimo["dia"])).days <= OSCILA_DIAS:
+            reciente = ultimo and (date.fromisoformat(hoy) - date.fromisoformat(ultimo["dia"])).days <= OSCILA_DIAS
+            if h["campo"] in ("hora", "precio", "fecha", "sala") and reciente and ultimo.get("antes") == h.get("despues"):
                 cambios.remove(ultimo)  # ida y vuelta en pocos días: no hubo cambio
                 continue
+            if h["campo"] == "reaparece":
+                ultimo = next((c for c in reversed(cambios) if c["campo"] == "desaparece"), None)
+                if ultimo and (date.fromisoformat(hoy) - date.fromisoformat(ultimo["dia"])).days <= OSCILA_DIAS:
+                    cambios.remove(ultimo)  # faltó en una lectura y volvió: no dejó de anunciarse
+                    continue
             if h["campo"] in ("evento", "agotado") and any(c["campo"] == h["campo"] and c.get("despues") == h.get("despues")
                                                            for c in cambios):
                 continue  # ya apuntado (la página se volvió a leer)

@@ -1,5 +1,17 @@
 # Versiones
 
+## 2.42.2 — 2026-10-03
+
+**Historial de cambios sin ruido** (revisado sobre el primer día real: 31 conciertos con "cambios", casi todos falsos):
+
+- La hora, el precio y los artistas del cartel solo se apuntan como cambio si lo dicen **las mismas webs antes y después**: el primer día se apuntaban como cambios las horas de Café La Palma (su web oficial, recién añadida, manda sobre Madrid en Vivo) y los nombres que traían las salas nuevas.
+- Un nombre que es el del cabeza escrito de otra forma ("RADAR JOVEN 2026: ASHLEYS", "GRUMPYS", "DOOMZDEI – El Perro Club") no es "otro artista en el cartel".
+- "8 €" → "8-10 €" es más detalle, no otro precio.
+- "Deja de aparecer" y "vuelve" en menos de 3 días (una lectura incompleta) no quedan; un cambio de sala que se deshace (la web de Revi alterna entre sus dos salas), tampoco.
+- Se borran los cambios apuntados con las reglas anteriores.
+
+**Validación de la web**: dos fallos de la propia prueba, no de la web. Pulsaba "Hoy" cuando está oculto con razón (con un filtro de género, la semana actual empieza ya en hoy), y al filtrar por un género no contaba los conciertos donde toca en el cartel un artista de ese género. Probado entero en local con los datos de hoy: salas, calendarios e historial, bien.
+
 ## 2.42.1 — 2026-10-03
 
 Revisión de la lectura de las 23:40 (hora de Madrid), la primera con el cartel de los festivales y las fuentes de datos abiertos:

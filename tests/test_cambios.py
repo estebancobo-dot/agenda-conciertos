@@ -56,8 +56,32 @@ def test_desaparece_y_reaparece():
     registrar_cambios([r], antes, "2026-10-02")
     antes = foto_cambios([r])
     r2 = rec(estado="1_fuente", cambios=r["cambios"])
-    registrar_cambios([r2], antes, "2026-10-04")
+    registrar_cambios([r2], antes, "2026-10-06")
     assert [c["campo"] for c in r2["cambios"]] == ["desaparece", "reaparece"]
+    # faltó en una lectura y volvió el mismo día: no queda nada
+    r3 = rec(estado="1_fuente", cambios=r["cambios"])
+    registrar_cambios([r3], foto_cambios([r]), "2026-10-02")
+    assert "cambios" not in r3
+
+
+def test_otra_web_no_es_un_cambio():
+    antes = foto_cambios([rec()])
+    r = rec(hora="22:00", invitados=["Otra Banda"], fuentes=[{"id": "x"}, {"id": "sala_nueva"}])
+    assert registrar_cambios([r], antes, "2026-10-03") == 0
+
+
+def test_el_cabeza_escrito_de_otra_forma_no_es_cartel_nuevo():
+    antes = foto_cambios([rec(artista="Ashleys")])
+    r = rec(artista="Ashleys", invitados=["RADAR JOVEN 2026: ASHLEYS", "ASHLEYS", "Nenazas"])
+    registrar_cambios([r], antes, "2026-10-03")
+    assert r["cambios"][0]["nombres"] == ["Nenazas"]
+
+
+def test_cambios_de_reglas_anteriores_se_descartan():
+    antes = foto_cambios([rec(cambios=[{"dia": "2026-10-03", "campo": "cartel", "nombres": ["X"]}])])
+    r = rec(cambios=[{"dia": "2026-10-03", "campo": "cartel", "nombres": ["X"]}])
+    registrar_cambios([r], antes, "2026-10-04")
+    assert "cambios" not in r
 
 
 def test_cambio_de_fecha_conserva_el_concierto():
@@ -70,7 +94,7 @@ def test_cambio_de_fecha_conserva_el_concierto():
     assert len(out) == 1 and out[0]["id"] == "p1" and out[0]["fecha"] == "2026-11-14"
     registrar_cambios(out, antes, HOY.isoformat())
     assert out[0]["cambios"][0] == {"dia": "2026-09-29", "campo": "fecha", "antes": "2026-10-10",
-                                         "despues": "2026-11-14"}
+                                    "despues": "2026-11-14", "r": 2}
 
 
 def test_dos_fechas_nuevas_no_se_adivina_cual():
