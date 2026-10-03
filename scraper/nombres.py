@@ -19,7 +19,11 @@ from .normalize import clean, norm
 _NO_ARTISTA = re.compile(
     r"\b(fiestas?|festival|fest|ciclo|jazz con sabor|noches?|temporada|presenta|gira|tour|en concierto|"
     r"aniversario|aniv|concierto|sesion|live|world tour|jazzmadrid|inverfest|radar joven|cambia a|nueva fecha|"
-    r"aplazado|entradas|sold out|agotad[oa]s?)\b")
+    r"aplazado|entradas|sold out|agotad[oa]s?|brunch|halloween|especial|hispanidad|navidad|espectaculo|tardeo|"
+    r"certamen|clausura|inaugural|musica|musica antigua|dia de la|homenaje|[ivxlc]+ edicion)\b|^[ivxlc]{2,}\b")
+# formación detrás del nombre: "INOIDEL GONZÁLEZ QUARTET" se busca también como "INOIDEL GONZÁLEZ"
+_FORMACION = re.compile(r"(?i)\s+(?:quartet|quintet|sextet|trio|tr[ií]o|cuarteto|quinteto|sexteto|group|ensemble|"
+                        r"orquesta|big band|combo)$")
 _PAIS_TIT = {
     "usa": "US", "us": "US", "eeuu": "US", "ee uu": "US", "estados unidos": "US", "uk": "GB", "gb": "GB",
     "reino unido": "GB", "inglaterra": "GB", "escocia": "GB", "gales": "GB", "irlanda": "IE", "ie": "IE",
@@ -52,7 +56,10 @@ def _limpio(titulo: str) -> list[str]:
     t = re.sub(r"(?i)\s+en madrid\b", "", t)          # "… en Madrid - 2026"
     t = re.sub(r"(?i)\s+\d+\s*[º°]?\s*aniversario\b.*$|\s+(?:gira|tour)\b.*$", "", t)  # "ACCEPT 50º ANIVERSARIO"
     # trozos separados por ". ", ": ", " - ", " – ", " | ": se queda el que no es ciclo, festival, gira ni aviso
+    t = re.sub(r"^\s*[A-ZÁÉÍÓÚÑ]{3,}!\s+", "", t)    # "HALLOWEEN! FRUIT TONES"
     trozos = [clean(x) for x in re.split(r"\s*[:|]\s+|\.\s+|\s+[-–—]\s+", t) if clean(x)]
+    # "'Apolo Brass', presenta 'Aires de América'": el artista es lo de antes de "presenta"
+    trozos = [clean(re.split(r"(?i)\s*,?\s+presenta\w*\b", x)[0]).strip(" '\"«»“”‘’,") or x for x in trozos]
     buenos = [x for x in trozos if not _NO_ARTISTA.search(norm(x)) and not re.fullmatch(r"\d{2,4}", x)]
     return buenos or [clean(t)]
 
@@ -64,16 +71,28 @@ def claves_ficha(r: dict) -> list[str]:
         return []  # el nombre de un festival no es un artista: su estilo sale de su cartel y de las agendas
     out = [titulo]
     from .clasificar import titulo_fuera_de_foco
-    if (_TRIBUTO.search(norm(titulo)) or titulo_fuera_de_foco(titulo)
-            or "tributos y versiones" in (r.get("categorias") or [])):
+    if _TRIBUTO.search(norm(titulo)) or "tributos y versiones" in (r.get("categorias") or []) or \
+            re.search(r"(?i)candlelight", titulo):
         # una banda tributo no es el artista homenajeado, y un Candlelight "Queen vs. ABBA" no es Queen ni ABBA:
         # solo su propio nombre
         return out
+    if titulo_fuera_de_foco(titulo):
+        # "ESPECTÁCULO FLAMENCO: CLAUDIA CRUZ": el intérprete sí se busca, no el título entero
+        from .artistas import nombre_en_titulo
+        n = re.sub(r"(?i)\s+al baile$", "", nombre_en_titulo(titulo)).strip()
+        partes = [p for p in _VARIOS.split(n) if len(norm(p)) >= 4]
+        return [titulo] + [x for x in dict.fromkeys([n] + partes[:1]) if norm(x) != norm(titulo)]
     limpios = _limpio(titulo)[:2]
     out += limpios
     partes = [p for p in _VARIOS.split(limpios[0]) if len(norm(p)) >= 3] if limpios else []
+    if re.search(r"(?i)\by sus?\b", limpios[0] if limpios else ""):
+        partes = []  # "PEPE Y SU TUMBAO" es un solo nombre: "PEPE" a secas sería otro
     if len(partes) > 1:
         out.append(partes[0])  # cabeza de cartel
+    for x in list(out[1:] or out):
+        sin = _FORMACION.sub("", re.sub(r"[’']s$", "", x)).strip()
+        if sin and len(norm(sin)) >= 4 and norm(sin) != norm(x):
+            out.append(sin)
     vistos, unicos = set(), []
     for x in out:
         if norm(x) and norm(x) not in vistos:

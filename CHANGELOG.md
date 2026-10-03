@@ -1,5 +1,16 @@
 # Versiones
 
+## 2.48.0 — 2026-10-03
+
+**N3 y N4 (primera parte): estilo y origen de cada concierto, siempre con su estado.**
+
+- Cada concierto dice en su ficha el **estado** de su estilo y de su origen: **dato conocido** (lo dice una web de música, o la agenda con una frase, y de cuál), **estimado** (deducido: etiqueta de la agenda, homenajeado de un tributo, nombre en español… con el motivo), **no aplica** (musicales, jam sessions, festivales con varios artistas) o **desconocido tras buscar**, con **dónde se ha buscado** y qué respondió cada web ("Discogs: sin coincidencia exacta", "MusicBrainz: 3 artistas homónimos"). Nada queda sin procesar. En la página de Fuentes, el recuento.
+- **Homónimos**: lo que viene de un artista encontrado **solo por su nombre** (Last.fm sin identificador) ya no se da por conocido sino por estimado, y el origen se muestra como "Probablemente…". Ejemplo: "LANDA" salía con la biografía de un músico checo.
+- **Orígenes que se contradicen**: si otra web da otro país para el mismo artista, se muestran las dos versiones ("Otras webs dicen otra cosa"). Con los datos de hoy, 36 conciertos: Sofía Ellar (Discogs Reino Unido, MusicBrainz España), Francisca Valenzuela (Wikipedia EE. UU., MusicBrainz Chile)… Suele ser lugar de nacimiento frente a nacionalidad.
+- **Más artistas buscables**: el intérprete se saca del título en "ESPECTÁCULO FLAMENCO: CLAUDIA CRUZ", "HALLOWEEN! FRUIT TONES", "'Apolo Brass', presenta…", "INOIDEL GONZÁLEZ QUARTET" (también sin "Quartet"), "Yasuharu Takanashi’s"… Nunca "PEPE" a secas de "PEPE Y SU TUMBAO".
+- Los musicales ("WICKED, El Musical") ya cuentan como origen "no aplica".
+- Con los datos de hoy, antes de estas mejoras: estilo 773 conocidos, 1.477 estimados, 306 no aplica y 264 desconocidos; origen 847, 454, 499 y 1.020.
+
 ## 2.47.0 — 2026-10-03
 
 **N2: fuentes difíciles, por vías permitidas** (nunca saltándose un robots.txt).

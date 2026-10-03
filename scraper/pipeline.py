@@ -551,7 +551,9 @@ def aplicar_ficha(r: dict, f: dict | None) -> None:
     # teatro, musicales, danza…: no es un artista, el origen no aplica (no cuenta como "origen sin confirmar")
     # y jam sessions, micros abiertos, "Concierto de blues": no hay un artista del que decir el origen
     from .origen import sin_artista
-    r["origen_no_aplica"] = (origen.startswith("agenda (espect") or (sin_artista(r["artista"]) and not r.get("nacionalidad"))) or None
+    from .clasificar import grupo_de_titulo as _gt
+    r["origen_no_aplica"] = (origen.startswith("agenda (espect") or (sin_artista(r["artista"]) and not r.get("nacionalidad"))
+                             or (_gt(r["artista"]) == "musicales y espectáculos" and not r.get("nacionalidad"))) or None
 
 
 def cambios_grupos(previos: dict[str, list[str]], recs: list[dict], hoy: str) -> dict:
@@ -1215,8 +1217,10 @@ def ejecutar(hoy: date | None = None, solo: list[str] | None = None, fetcher: Fe
     contraste_sala = ausencias_web_sala(recs, resultados, por_id, eventos, hoy.isoformat(),
                                         estado.get("historial_fuentes", {}))
     n_ausentes = sum(v["ausentes"] for v in contraste_sala.values())
+    from .normalizacion import normalizar, resumen as resumen_normalizacion
     for r in recs:
         r["confianza"] = puntuar_confianza(r, por_id)
+        normalizar(r, cache_art)
     recs.sort(key=lambda r: (r["fecha"], r["hora"] or "99", norm(r["artista"])))
     # estilos que no se han podido traducir a categoría
     sin_mapear = sorted({e["estilo"] + " (" + e["fuente"] + ")" for r in recs for e in r["estilo_fuente"]
@@ -1248,6 +1252,7 @@ def ejecutar(hoy: date | None = None, solo: list[str] | None = None, fetcher: Fe
             "ausentes_web_sala": n_ausentes,
             "otra_fecha_web_sala": sum(v["otra_fecha"] for v in contraste_sala.values()),
             "confianza": dict(Counter(r["confianza"]["nivel"] for r in futuros)),
+            "normalizacion": resumen_normalizacion(recs, hoy.isoformat()),
             "fuentes_ok": sum(f["funciono"] for f in inf_fuentes),
             "fuentes_total": len(inf_fuentes),
             "peticiones_http": fetcher.requests_count,
@@ -1331,12 +1336,15 @@ def ejecutar_fichas(hoy: date | None = None, presupuesto_seg: float = 3000) -> d
     stats["entradas"] = aplicar_entradas(recs, cache_pag)
     stats["cambios"] = registrar_cambios(recs, antes_cambios, hoy.isoformat())
     por_id = {s.id: s for s in FUENTES}
+    from .normalizacion import normalizar, resumen as resumen_normalizacion
     for r in recs:  # las páginas de entradas pueden haber añadido dónde se vende
         r["confianza"] = puntuar_confianza(r, por_id)
+        normalizar(r, cache_art)
     _write("concerts.json", datos)
     escribir_csv(recs, DATA / "concerts.csv")
     informe = _read("informe.json", {})
     informe["grupos"] = cambios_grupos(previos, recs, hoy.isoformat())
+    informe.setdefault("totales", {})["normalizacion"] = resumen_normalizacion(recs, hoy.isoformat())
     stats["ultima_carga_fichas"] = datetime.now(timezone.utc).isoformat(timespec="seconds")
     informe["artistas"] = stats
     informe["version_fichas"] = __version__  # la clasificación publicada es la de esta versión
@@ -1358,5 +1366,8 @@ def reaplicar_fichas() -> None:
         tributo_y_estimacion(r, cache)
         aplicar_cartel(r, cache)
     aplicar_entradas(recs, _read(CACHE_PAGINAS, {}))
+    from .normalizacion import normalizar
+    for r in recs:
+        normalizar(r, cache)
     _write("concerts.json", datos)
     escribir_csv(recs, DATA / "concerts.csv")

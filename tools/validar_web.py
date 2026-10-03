@@ -482,6 +482,7 @@ def recorrido(b):
     historial_web(pg)
     vistas_finde_y_todos(pg)
     confirmacion_web(pg)
+    normalizacion_web(pg)
 
     # informe
     pg.evaluate("location.hash='#informe'")
@@ -1256,6 +1257,26 @@ def confirmacion_web(pg):
           f"{r['c']} confirmados · {r['p']} probables · {r['s']} sin confirmar · ficha: {txt[:60]!r}",
           ok=r["con"] == r["n"] and txt.startswith("✓ Confirmado") and solo["n"] > 0 and solo["bien"],
           detalle=str({**r, **solo}))
+
+
+def normalizacion_web(pg):
+    """N3/N4: la ficha de cada concierto dice el estado de su estilo y de su origen (conocido, estimado, no aplica o
+    desconocido tras buscar, con dónde se ha buscado) y la página de Fuentes tiene el recuento."""
+    pg.evaluate("location.hash='#fuentes'")
+    pg.wait_for_timeout(1500)
+    if not pg.locator(".nrm-res").count():
+        check("Funcional", "Estado de estilo y origen (N3/N4)", "los datos aún no lo traen", ok=False, grave=False)
+        return
+    res = pg.inner_text(".nrm-res")
+    pg.evaluate("location.hash='#semana/'+mondayOf(HOY)")
+    pg.wait_for_selector(".card", timeout=15000)
+    cid = pg.evaluate("DATA.find(r=>r.fecha>=HOY).id")
+    pg.evaluate(f"location.hash='#concierto/{cid}'")
+    pg.wait_for_selector(".rows", timeout=15000)
+    pg.wait_for_timeout(1200)
+    chips = pg.evaluate("[...document.querySelectorAll('.rows .nrm-chip')].map(c=>c.textContent)")
+    check("Funcional", "Estado de estilo y origen en la ficha y recuento en Fuentes (N3/N4)",
+          f"ficha: {chips} · {res.splitlines()[1:3]}", ok=len(chips) == 2, detalle=res[:300])
 
 
 def historial_web(pg):
