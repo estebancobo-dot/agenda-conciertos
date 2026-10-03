@@ -1,5 +1,12 @@
 # Versiones
 
+## 2.48.1 — 2026-10-03
+
+**N3/N4: más orígenes y estilos leídos en las páginas del concierto.**
+
+- La biografía del artista ("banda madrileña de garage rock") se busca en **hasta 4 páginas** del concierto, una por web, empezando por la de la **sala** y la de **entradas**, que son las que suelen traerla (antes, las 2 primeras de las agendas). También en la **descripción incrustada** de las webs que se montan con JavaScript (Enterticket). Las fichas sin origen o sin estilo se vuelven a mirar con esta regla en las próximas pasadas.
+- Títulos que son solo el tipo de evento ("Noches de Piano Jazz", "Concierto de versiones", "COVERS LIVE", "Concierto de Otoño", "Concierto"): origen "no aplica" en vez de desconocido (66 conciertos más con los datos de hoy). Los nombres reales no se tocan ("Los Conciertos de Radio 3", "The Covers").
+
 ## 2.48.0 — 2026-10-03
 
 **N3 y N4 (primera parte): estilo y origen de cada concierto, siempre con su estado.**

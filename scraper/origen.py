@@ -85,11 +85,23 @@ _SIN_ARTISTA = re.compile(
     r"live music|concierto sorpresa|actuacion sorpresa|concierto benefico|ensayo abierto)\b")
 
 
+# títulos que son solo el tipo de evento, sin nombre de artista ("Noches de Piano Jazz", "Concierto de versiones",
+# "COVERS LIVE", "Concierto"): el título entero o lo que queda tras el nombre de un ciclo ("Pim Pam Punk. Concierto
+# benéfico" no: ahí el ciclo es el nombre)
+_SOLO_EVENTO = re.compile(
+    r"^(gran |especial )?(concierto|conciertos|recital|actuacion|musica en vivo|musica)( (de|del) (versiones|covers|"
+    r"blues|jazz|rock|flamenco|soul|swing|tango|boleros?|piano|guitarra|navidad|halloween|otono|primavera|verano|"
+    r"invierno|fin de (curso|ano)|clausura|apertura|alumnos|profesores|directores( de bandas)?))?( en (vivo|directo))?$|"
+    r"^noches? de (piano )?(jazz|blues|swing|rock|flamenco|tango|boleros?|soul|musica)( en (vivo|directo))?$|"
+    r"^(covers?|versiones|tributos?) (live|en vivo|en directo|variad[oa]s)$|^(covers?|versiones)$")
+
+
 def sin_artista(titulo: str) -> bool:
-    """El título no es un artista: jam sessions, micro abierto, karaoke, "Concierto de blues"…"""
+    """El título no es un artista: jam sessions, micro abierto, karaoke, "Concierto de blues", "Noches de Piano Jazz",
+    "Concierto de versiones"…"""
     t = norm(titulo or "")
     return bool(_SIN_ARTISTA.match(t) or re.search(r"\b(jam session|open mic|micro abierto|karaoke)\b", t)
-                or re.search(r"\bjam\s*!", (titulo or "").lower()))
+                or re.search(r"\bjam\s*!", (titulo or "").lower()) or _SOLO_EVENTO.match(t))
 
 
 def _frases(texto: str) -> list[str]:

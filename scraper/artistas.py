@@ -494,7 +494,7 @@ def buscar_en_agenda(f: Fetcher, nombre: str, urls: list[str]) -> dict:
     from .origen import estilos_en_texto, pais_en_texto
     import requests
     out: dict = {"v": VERSION_AGENDA, "estilos": []}
-    for u in urls[:2]:
+    for u in urls[:4]:
         try:
             html = f.get(u)
         except requests.HTTPError as e:
@@ -504,9 +504,10 @@ def buscar_en_agenda(f: Fetcher, nombre: str, urls: list[str]) -> dict:
         except (RobotsBlocked, AntiBotBlocked):
             continue  # robots.txt no deja leerla (Instagram, calendarios…) o pide captcha: no se insiste
         s = BeautifulSoup(html, "html.parser")
+        incrustado = _descripcion_incrustada(s)  # Enterticket y otras webs que se montan con JavaScript
         for t in s(["script", "style", "nav", "header", "footer", "form", "aside", "noscript"]):
             t.decompose()
-        texto = s.get_text("\n")
+        texto = s.get_text("\n") + ("\n" + incrustado if incrustado else "")
         pais, frase = pais_en_texto(texto, nombre)
         if pais and not out.get("pais"):
             out.update(pais=pais, frase=frase, url=u)
@@ -520,7 +521,32 @@ def buscar_en_agenda(f: Fetcher, nombre: str, urls: list[str]) -> dict:
     return out
 
 
-VERSION_AGENDA = 3  # 2: también el estilo; 3: estilo entre paréntesis y frases sobre el artista. Las anteriores se repiten
+def _descripcion_incrustada(s) -> str:
+    """La descripción del evento que algunas webs traen en los datos con los que se montan (__NEXT_DATA__ de Next.js,
+    JSON-LD): en el HTML visible no está."""
+    import json as _json
+    textos = []
+    for sc in s.select('script#__NEXT_DATA__, script[type="application/ld+json"]'):
+        try:
+            d = _json.loads(sc.string or sc.get_text() or "")
+        except ValueError:
+            continue
+        pila = [d]
+        while pila:
+            x = pila.pop()
+            if isinstance(x, dict):
+                for k, v in x.items():
+                    if k in ("description", "biography", "descripcion") and isinstance(v, str) and len(v) > 20:
+                        textos.append(BeautifulSoup(v, "html.parser").get_text(" "))
+                    elif isinstance(v, (dict, list)):
+                        pila.append(v)
+            elif isinstance(x, list):
+                pila.extend(x)
+    return "\n".join(textos)[:6000]
+
+
+VERSION_AGENDA = 4  # 2: también el estilo; 3: estilo entre paréntesis y frases sobre el artista; 4: hasta 4 páginas
+# (la de la sala y la de entradas primero) y la descripción incrustada (Enterticket). Las anteriores se repiten
 
 
 # ------------------------------------------------------------------ MusicBrainz (géneros votados por la comunidad)
@@ -608,8 +634,26 @@ def clave_agenda(titulo: str) -> str:
     return "agenda:" + norm(titulo or "")
 
 
+def paginas_del_concierto(r: dict, maximo: int = 4) -> list[str]:
+    """Páginas del concierto donde puede estar la biografía del artista, una por web: primero la de la sala y la
+    ticketera (prioridad 1 y 2, que suelen traer "banda madrileña de…"), luego la de entradas y las agendas."""
+    from urllib.parse import urlsplit
+    fuentes = sorted(r.get("fuentes") or [], key=lambda x: x.get("prioridad", 9))
+    cand = [x["url"] for x in fuentes if x.get("prioridad", 9) <= 2]
+    cand += [(r.get("entradas") or {}).get("url") or ""]
+    cand += [x["url"] for x in fuentes if x.get("prioridad", 9) > 2]
+    out, webs = [], set()
+    for u in cand:
+        u = str(u or "")
+        w = urlsplit(u).netloc.lower().removeprefix("www.")
+        if u.startswith("http") and w and w not in webs and "#" not in u:
+            webs.add(w)
+            out.append(u)
+    return out[:maximo]
+
+
 def _solo_agenda(r: dict, lista: list) -> None:
-    urls = [x["url"] for x in r.get("fuentes") or [] if str(x.get("url", "")).startswith("http")]
+    urls = paginas_del_concierto(r)
     if urls and not r.get("nacionalidad"):
         lista.append((clave_agenda(r["artista"]), nombre_en_titulo(r["artista"]), urls))
 
@@ -706,7 +750,7 @@ def enriquecer(recs: list[dict], cache: dict, hoy: date, presupuesto_seg: float 
                 _solo_agenda(r, solo_agenda)
             continue
         vistos.add(k)
-        urls_de[k] = [x["url"] for x in r.get("fuentes") or [] if str(x.get("url", "")).startswith("http")]
+        urls_de[k] = paginas_del_concierto(r)
         ent = cache.get(k)
         cad = CADUCIDAD_OK if ent and _encontrado(ent) else CADUCIDAD_NO
         if not ent or ent.get("fecha", "") < (hoy - timedelta(days=cad)).isoformat():

@@ -54,3 +54,22 @@ def test_resumen_cuenta_todos():
     res = resumen(recs, "2026-10-01")
     assert sum(res["estilo"].values()) == 3 and sum(res["origen"].values()) == 3
     assert res["estilo"]["conocido"] == 1 and res["origen"]["no_aplica"] == 1
+
+
+def test_paginas_del_concierto_primero_sala_y_entradas():
+    from scraper.artistas import paginas_del_concierto
+    r = {"fuentes": [{"url": "https://conciertos.club/a", "prioridad": 3},
+                     {"url": "https://conciertos.club/b", "prioridad": 3},
+                     {"url": "https://madridenvivo.com/e/1", "prioridad": 3},
+                     {"url": "https://salaelsol.com/agenda", "prioridad": 1}],
+         "entradas": {"url": "https://www.enterticket.es/eventos/x-1"}}
+    assert paginas_del_concierto(r) == ["https://salaelsol.com/agenda", "https://www.enterticket.es/eventos/x-1",
+                                        "https://conciertos.club/a", "https://madridenvivo.com/e/1"]
+
+
+def test_descripcion_incrustada():
+    from bs4 import BeautifulSoup
+    from scraper.artistas import _descripcion_incrustada
+    html = ('<script id="__NEXT_DATA__" type="application/json">{"props":{"pageProps":{"event":{"description":'
+            '"<div>Los Rayos es una banda madrile\\u00f1a de garage rock</div>"}}}}</script>')
+    assert "banda madrileña de garage rock" in _descripcion_incrustada(BeautifulSoup(html, "html.parser"))
