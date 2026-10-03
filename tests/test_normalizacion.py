@@ -73,3 +73,16 @@ def test_descripcion_incrustada():
     html = ('<script id="__NEXT_DATA__" type="application/json">{"props":{"pageProps":{"event":{"description":'
             '"<div>Los Rayos es una banda madrile\\u00f1a de garage rock</div>"}}}}</script>')
     assert "banda madrileña de garage rock" in _descripcion_incrustada(BeautifulSoup(html, "html.parser"))
+
+
+def test_n5_hora_precio_sala():
+    from scraper.normalizacion import estado_hora, estado_precio, estado_sala
+    f = [{"id": "mev", "nombre": "Madrid en Vivo (asociación de salas)"}]
+    assert estado_hora({"hora": "21:00", "fuentes": f})["estado"] == "conocido"
+    h = estado_hora({"hora": None, "fuentes": f, "conflictos": [{"campo": "hora", "versiones": [{"valor": "20:00"},
+                                                                                              {"valor": "21:30"}]}]})
+    assert h["estado"] == "estimado" and "20:00 o 21:30" in h["motivo"]
+    assert estado_hora({"hora": None, "fuentes": f})["buscado"] == ["Madrid en Vivo: no la da"]
+    assert estado_precio({"precio": "Entrada libre", "fuentes": f})["estado"] == "conocido"
+    assert estado_precio({"precio": None, "fuentes": f})["estado"] == "desconocido"
+    assert estado_sala({"sala": "", "fuentes": f})["estado"] == "desconocido"

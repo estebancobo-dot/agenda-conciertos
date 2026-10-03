@@ -1,5 +1,9 @@
 # Versiones
 
+## 2.49.1 — 2026-10-03
+
+**N5: hora, precio y sala con su estado.** Como el estilo y el origen: conocido (y de qué web), estimado (la hora, si las webs no coinciden: se enseñan las dos) o desconocido tras buscar (qué webs lo anuncian sin darlo). En la ficha se ve solo cuando falta el dato; en la página de Fuentes, el recuento de los cinco datos. Con los datos de hoy (antes de las horas de Madrid en Vivo): hora 2.096 conocidas, 89 sin acuerdo y 717 desconocidas; precio 1.604 y 1.298; sala 2.881 y 21.
+
 ## 2.49.0 — 2026-10-03
 
 **N5 (primera parte): horas y precios de Madrid en Vivo.** Su buscador no da la hora (467 conciertos sin hora solo estaban en Madrid en Vivo). La ficha de cada evento sí la tiene (y el precio, o si la entrada es libre), y su API pública la da en las mismas peticiones que ya se hacían para los estilos (100 eventos por petición, con los 10 s que pide su robots.txt): las mismas que antes, con un campo más. Si hay varios pases, se apuntan todos en la nota. Solo si la ficha es del mismo día que el evento; lo que ya dice el listado no se toca.

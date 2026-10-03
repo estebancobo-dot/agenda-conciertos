@@ -1276,7 +1276,7 @@ def normalizacion_web(pg):
     pg.wait_for_timeout(1200)
     chips = pg.evaluate("[...document.querySelectorAll('.rows .nrm-chip')].map(c=>c.textContent)")
     check("Funcional", "Estado de estilo y origen en la ficha y recuento en Fuentes (N3/N4)",
-          f"ficha: {chips} · {res.splitlines()[1:3]}", ok=len(chips) == 2, detalle=res[:300])
+          f"ficha: {chips} · {res.splitlines()[1:3]}", ok=len(chips) >= 2, detalle=res[:300])
 
 
 def historial_web(pg):

@@ -132,15 +132,48 @@ def paises_contradictorios(r: dict, cache: dict) -> list[dict]:
     return [{"valor": k, "fuentes": v} for k, v in vistos.items()]
 
 
+def _webs(r: dict) -> list[str]:
+    return list(dict.fromkeys(f.get("nombre", "").split(" (")[0] for f in r.get("fuentes") or [] if f.get("nombre")))
+
+
+def estado_hora(r: dict) -> dict:
+    """N5: la hora de comienzo. Conocida (la dan las webs, o la página del concierto), estimada si las webs no
+    coinciden (se enseñan las dos) o desconocida (ninguna de sus webs la da)."""
+    versiones = [v.get("valor") for c in r.get("conflictos") or [] if c.get("campo") == "hora"
+                 for v in c.get("versiones") or []]
+    if versiones and not r.get("hora"):
+        return {"estado": "estimado", "motivo": "las webs no coinciden: " + " o ".join(dict.fromkeys(versiones))}
+    if r.get("hora"):
+        pag = r.get("hora_pagina") or {}
+        return {"estado": "conocido", "fuente": pag.get("nombre") or ", ".join(_webs(r)[:3])}
+    return {"estado": "desconocido", "buscado": [f"{w}: no la da" for w in _webs(r)] or ["sin webs"]}
+
+
+def estado_precio(r: dict) -> dict:
+    p = str(r.get("precio") or "")
+    if p:
+        pf = r.get("precio_fuente") or {}
+        return {"estado": "conocido", "fuente": (pf.get("nombre") if isinstance(pf, dict) else None)
+                or ", ".join(_webs(r)[:3])}
+    return {"estado": "desconocido", "buscado": [f"{w}: no lo da" for w in _webs(r)] or ["sin webs"]}
+
+
+def estado_sala(r: dict) -> dict:
+    if r.get("sala"):
+        return {"estado": "conocido"}
+    return {"estado": "desconocido", "buscado": [f"{w}: no la da" for w in _webs(r)] or ["sin webs"]}
+
+
 def normalizar(r: dict, cache: dict) -> None:
-    r["normalizacion"] = {"estilo": estado_estilo(r, cache), "origen": estado_nacionalidad(r, cache)}
+    r["normalizacion"] = {"estilo": estado_estilo(r, cache), "origen": estado_nacionalidad(r, cache),
+                          "hora": estado_hora(r), "precio": estado_precio(r), "sala": estado_sala(r)}
 
 
 def resumen(recs: list[dict], hoy: str) -> dict:
     """Cuántos conciertos próximos hay en cada estado (para el informe y la página de Fuentes)."""
     from collections import Counter
     out = {}
-    for campo in ("estilo", "origen"):
+    for campo in ("estilo", "origen", "hora", "precio", "sala"):
         c = Counter((r.get("normalizacion") or {}).get(campo, {}).get("estado", "sin_estado")
                     for r in recs if r["fecha"] >= hoy)
         out[campo] = {e: c.get(e, 0) for e in ESTADOS + ("sin_estado",) if c.get(e, 0) or e in ESTADOS}
