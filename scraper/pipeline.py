@@ -1003,8 +1003,10 @@ def informe_fuentes(fuentes: list[Source], resultados: dict, recs: list[dict], a
         aviso = None
         if res.get("estado") == "bloqueado_robots" and h.get("ultimo_conteo", 0) > 0:
             # no es un cambio de diseño: la sala ha cambiado su robots.txt (se respeta). Hay que decidir si se quita
+            alt = ALTERNATIVAS.get(s.id)
             aviso = (f"su robots.txt ya no permite leerla (último éxito {h.get('ultima_ok')}, daba {h['ultimo_conteo']}): "
-                     f"se respeta; sus conciertos salen de su última lectura y de otras agendas")
+                     f"se respeta; sus conciertos salen de su última lectura y de otras agendas"
+                     + (f", y de {alt}" if alt else ""))
         elif res and (not res.get("funciono") or res.get("brutos", 0) == 0) and h.get("ultimo_conteo", 0) > 0:
             aviso = f"posible cambio en la web: antes daba {h['ultimo_conteo']} conciertos (último éxito {h.get('ultima_ok')})"
             if h.get("ultima_ok"):
@@ -1032,6 +1034,9 @@ def informe_fuentes(fuentes: list[Source], resultados: dict, recs: list[dict], a
             historial[s.id] = {"ultima_ok": hoy.isoformat(), "ultimo_conteo": len(mios), "campos": res.get("campos")}
     return out
 
+
+# fuentes bloqueadas (robots.txt) y la vía permitida por la que siguen llegando sus conciertos
+ALTERNATIVAS = {"villanos": "su venta de entradas en Enterticket (fuente Enterticket)"}
 
 DIAS_SALUD = 14  # días de historial de cada fuente en la página de Fuentes
 

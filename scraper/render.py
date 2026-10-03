@@ -69,30 +69,30 @@ class Navegador:
         with self._lock:
             browser = self._arrancar()
             st, rt = f._host(url), f._ritmo(url)
-            with rt.lock:
+            with rt.lock:  # solo el turno: durante la carga la página pide robots.txt de otros nombres del servidor
                 f._wait(rt, st)
-                f.requests_count += 1
-                ctx = browser.new_context(user_agent=f.user_agent, locale="es-ES", timezone_id="Europe/Madrid",
-                                          java_script_enabled=True)
-                try:
-                    page = ctx.new_page()
-                    page.route("**/*", self._ruta)
-                    t0 = time.monotonic()
-                    resp = page.goto(url, wait_until="domcontentloaded", timeout=timeout * 1000)
-                    if resp is not None and resp.status >= 400:
-                        raise RuntimeError(f"{resp.status} al abrir {urlsplit(url).netloc}")
-                    if esperar:
-                        page.wait_for_selector(esperar, timeout=timeout * 1000)
-                    else:
-                        try:
-                            page.wait_for_load_state("networkidle", timeout=min(timeout, 15) * 1000)
-                        except Exception:  # noqa: BLE001 - webs con conexiones abiertas siempre: vale lo que hay
-                            pass
-                    st.latencia = time.monotonic() - t0
-                    return page.content()
-                finally:
-                    ctx.close()
-                    rt.last = time.monotonic()
+            f.requests_count += 1
+            ctx = browser.new_context(user_agent=f.user_agent, locale="es-ES", timezone_id="Europe/Madrid",
+                                      java_script_enabled=True)
+            try:
+                page = ctx.new_page()
+                page.route("**/*", self._ruta)
+                t0 = time.monotonic()
+                resp = page.goto(url, wait_until="domcontentloaded", timeout=timeout * 1000)
+                if resp is not None and resp.status >= 400:
+                    raise RuntimeError(f"{resp.status} al abrir {urlsplit(url).netloc}")
+                if esperar:
+                    page.wait_for_selector(esperar, timeout=timeout * 1000)
+                else:
+                    try:
+                        page.wait_for_load_state("networkidle", timeout=min(timeout, 15) * 1000)
+                    except Exception:  # noqa: BLE001 - webs con conexiones abiertas siempre: vale lo que hay
+                        pass
+                st.latencia = time.monotonic() - t0
+                return page.content()
+            finally:
+                ctx.close()
+                rt.last = time.monotonic()
 
     def cerrar(self) -> None:
         for x, m in ((self._browser, "close"), (self._pw, "stop")):
