@@ -1,0 +1,1507 @@
+{
+ "url": "https://estebancobo-dot.github.io/agenda-conciertos/",
+ "fecha": "2026-10-03 14:55 UTC",
+ "comprobaciones": [
+  {
+   "categoria": "Publicación",
+   "nombre": "index.html publicado = el de main",
+   "estado": "ok",
+   "valor": null,
+   "umbral": "",
+   "detalle": ""
+  },
+  {
+   "categoria": "Publicación",
+   "nombre": "sw.js publicado = el de main",
+   "estado": "ok",
+   "valor": null,
+   "umbral": "",
+   "detalle": ""
+  },
+  {
+   "categoria": "Publicación",
+   "nombre": "Datos de la agenda recientes",
+   "estado": "ok",
+   "valor": 0.0,
+   "umbral": "aviso > 26 h / fallo > 50 h",
+   "detalle": ""
+  },
+  {
+   "categoria": "Publicación",
+   "nombre": "Conciertos próximos publicados",
+   "estado": "ok",
+   "valor": 2820,
+   "umbral": "",
+   "detalle": "mínimo 500"
+  },
+  {
+   "categoria": "Publicación",
+   "nombre": "Ids únicos",
+   "estado": "ok",
+   "valor": 0,
+   "umbral": "",
+   "detalle": ""
+  },
+  {
+   "categoria": "Publicación",
+   "nombre": "Cada concierto con id, fecha y artista",
+   "estado": "ok",
+   "valor": 0,
+   "umbral": "",
+   "detalle": ""
+  },
+  {
+   "categoria": "Publicación",
+   "nombre": "Conciertos sin sala ni municipio",
+   "estado": "ok",
+   "valor": 0,
+   "umbral": "",
+   "detalle": ""
+  },
+  {
+   "categoria": "Publicación",
+   "nombre": "Conciertos sin sala (la agenda no la dice)",
+   "estado": "aviso",
+   "valor": 21,
+   "umbral": "",
+   "detalle": "CONCIERTO DE DIRECTORES DE BAN (Aranjuez), XXIII MÚSICA ANTIGUA ARANJUEZ. (Aranjuez), XXIII MÚSICA ANTIGUA ARANJUEZ. (Aranjuez), ENCUENTRO CORAL INTERNACIONAL  (Collado Villalba)"
+  },
+  {
+   "categoria": "Publicación",
+   "nombre": "Imágenes solo por https",
+   "estado": "ok",
+   "valor": 0,
+   "umbral": "",
+   "detalle": ""
+  },
+  {
+   "categoria": "Publicación",
+   "nombre": "Fichero de detalle de cada día",
+   "estado": "ok",
+   "valor": 0,
+   "umbral": "",
+   "detalle": ""
+  },
+  {
+   "categoria": "Publicación",
+   "nombre": "El detalle trae todos los conciertos del día",
+   "estado": "ok",
+   "valor": 0,
+   "umbral": "",
+   "detalle": ""
+  },
+  {
+   "categoria": "Publicación",
+   "nombre": "Detalle y agenda coinciden",
+   "estado": "ok",
+   "valor": 0,
+   "umbral": "",
+   "detalle": ""
+  },
+  {
+   "categoria": "Publicación",
+   "nombre": "Miniaturas y fotos propias servidas",
+   "estado": "ok",
+   "valor": 0,
+   "umbral": "",
+   "detalle": ""
+  },
+  {
+   "categoria": "Publicación",
+   "nombre": "Conciertos próximos sin origen del artista (ni confirmado ni estimado)",
+   "estado": "aviso",
+   "valor": 37.4,
+   "umbral": "aviso > 30 % / fallo > 50 %",
+   "detalle": "1056 de 2820; además 376 estimados por el nombre"
+  },
+  {
+   "categoria": "Publicación",
+   "nombre": "Conciertos en 'Otros' (sin género propio)",
+   "estado": "ok",
+   "valor": 0.5,
+   "umbral": "aviso > 3 % / fallo > 10 %",
+   "detalle": "14 de 2820"
+  },
+  {
+   "categoria": "Publicación",
+   "nombre": "Conciertos sin clasificar",
+   "estado": "aviso",
+   "valor": 10.6,
+   "umbral": "aviso > 5 % / fallo > 15 %",
+   "detalle": "300 de 2820"
+  },
+  {
+   "categoria": "Publicación",
+   "nombre": "Conciertos con etiqueta genérica (\"Pop / Rock\", \"Músicas negras\")",
+   "estado": "ok",
+   "valor": 7.9,
+   "umbral": "aviso > 8 % / fallo > 25 %",
+   "detalle": "222 de 2820"
+  },
+  {
+   "categoria": "Publicación",
+   "nombre": "Conciertos sin ningún estilo",
+   "estado": "aviso",
+   "valor": 37.8,
+   "umbral": "aviso > 30 % / fallo > 60 %",
+   "detalle": "1066 de 2820"
+  },
+  {
+   "categoria": "Rendimiento",
+   "nombre": "Conciertos con miniatura propia (servida desde la web)",
+   "estado": "ok",
+   "valor": 100.0,
+   "umbral": "",
+   "detalle": "de 2099 con imagen; mínimo 97 %"
+  },
+  {
+   "categoria": "Rendimiento",
+   "nombre": "Conciertos con foto de ficha propia (servida desde la web)",
+   "estado": "ok",
+   "valor": 100.0,
+   "umbral": "",
+   "detalle": "de 2099 con imagen; mínimo 97 %"
+  },
+  {
+   "categoria": "Publicación",
+   "nombre": "Última lectura completa de las agendas",
+   "estado": "ok",
+   "valor": 5.0,
+   "umbral": "aviso > 27 h / fallo > 50 h",
+   "detalle": ""
+  },
+  {
+   "categoria": "Publicación",
+   "nombre": "Fuentes sin alertas",
+   "estado": "aviso",
+   "valor": 2,
+   "umbral": "",
+   "detalle": "Sala Villanos (web oficial): su robots.txt ya no permite leerla (último éxito 2026-10-01, daba 99): se respeta; sus conciertos salen de su última lectura y de otras agendas; Sala Clamores (web oficial): posible cambio en la web: antes daba 1 conciertos (último éxito 2026-10-02)"
+  },
+  {
+   "categoria": "Otros",
+   "nombre": "Enlaces a las fuentes responden",
+   "estado": "ok",
+   "valor": 1,
+   "umbral": "",
+   "detalle": "https://madridenvivo.com/evento/thundercat-conciertos-16/ (404)"
+  },
+  {
+   "categoria": "Rendimiento",
+   "nombre": "Primera visita: datos y lista pintados",
+   "estado": "ok",
+   "valor": 2412,
+   "umbral": "aviso > 5000 ms / fallo > 8000 ms",
+   "detalle": ""
+  },
+  {
+   "categoria": "Rendimiento",
+   "nombre": "Primera visita: LCP",
+   "estado": "ok",
+   "valor": 2492,
+   "umbral": "aviso > 4000 ms / fallo > 6000 ms",
+   "detalle": ""
+  },
+  {
+   "categoria": "Rendimiento",
+   "nombre": "Primera visita: KB descargados",
+   "estado": "ok",
+   "valor": 264,
+   "umbral": "aviso > 1500 KB / fallo > 3000 KB",
+   "detalle": ""
+  },
+  {
+   "categoria": "Funcional",
+   "nombre": "La cabecera dice cuántos conciertos hay y cuándo se actualizó",
+   "estado": "ok",
+   "valor": "2820 conciertos · actualizado 3 oct, 16:52",
+   "umbral": "",
+   "detalle": ""
+  },
+  {
+   "categoria": "Funcional",
+   "nombre": "Semana: salen justo los conciertos de los datos (con los filtros puestos)",
+   "estado": "ok",
+   "valor": "235 de 235",
+   "umbral": "",
+   "detalle": "faltan [] sobran [] días sin pintar 0"
+  },
+  {
+   "categoria": "Funcional",
+   "nombre": "Semana: todos de esa semana y en orden de fecha",
+   "estado": "ok",
+   "valor": 0,
+   "umbral": "",
+   "detalle": ""
+  },
+  {
+   "categoria": "Rendimiento",
+   "nombre": "Bajar despacio: miniaturas sin cargar a los 0,4 s (peor pantalla)",
+   "estado": "ok",
+   "valor": 0,
+   "umbral": "aviso > 1 miniaturas / fallo > 3 miniaturas",
+   "detalle": ""
+  },
+  {
+   "categoria": "Rendimiento",
+   "nombre": "Bajar deprisa: al parar, miniaturas visibles cargadas en",
+   "estado": "ok",
+   "valor": 72,
+   "umbral": "aviso > 1500 ms / fallo > 3000 ms",
+   "detalle": ""
+  },
+  {
+   "categoria": "Rendimiento",
+   "nombre": "Cambiar de semana (mediana de 3)",
+   "estado": "ok",
+   "valor": 260,
+   "umbral": "aviso > 700 ms / fallo > 1500 ms",
+   "detalle": ""
+  },
+  {
+   "categoria": "Rendimiento",
+   "nombre": "Abrir ficha desde la lista (datos)",
+   "estado": "ok",
+   "valor": 134,
+   "umbral": "aviso > 500 ms / fallo > 1500 ms",
+   "detalle": ""
+  },
+  {
+   "categoria": "Rendimiento",
+   "nombre": "Ficha completa (fuentes y precio)",
+   "estado": "ok",
+   "valor": 140,
+   "umbral": "aviso > 1500 ms / fallo > 4000 ms",
+   "detalle": ""
+  },
+  {
+   "categoria": "Funcional",
+   "nombre": "Ficha: artista y sala de los datos",
+   "estado": "ok",
+   "valor": "ENAMOR AL ARTE",
+   "umbral": "",
+   "detalle": "esperado 'ENAMOR AL ARTE' en 'Jazzville'"
+  },
+  {
+   "categoria": "Funcional",
+   "nombre": "Ficha: enlaza a sus fuentes",
+   "estado": "ok",
+   "valor": "1 de 1",
+   "umbral": "",
+   "detalle": ""
+  },
+  {
+   "categoria": "UX",
+   "nombre": "Ficha: no se queda en 'Cargando…'",
+   "estado": "ok",
+   "valor": null,
+   "umbral": "",
+   "detalle": ""
+  },
+  {
+   "categoria": "UX",
+   "nombre": "Volver (atrás del navegador) deja la lista en el concierto que abriste",
+   "estado": "ok",
+   "valor": null,
+   "umbral": "",
+   "detalle": ""
+  },
+  {
+   "categoria": "UX",
+   "nombre": "Volver (botón ‹ Volver) deja la lista en el concierto que abriste",
+   "estado": "ok",
+   "valor": null,
+   "umbral": "",
+   "detalle": ""
+  },
+  {
+   "categoria": "UX",
+   "nombre": "Ficha con una sola foto (sin miniatura provisional encima)",
+   "estado": "ok",
+   "valor": 1,
+   "umbral": "",
+   "detalle": ""
+  },
+  {
+   "categoria": "Rendimiento",
+   "nombre": "Foto de la ficha tras ver la lista 2 s (mediana)",
+   "estado": "ok",
+   "valor": 135,
+   "umbral": "aviso > 600 ms / fallo > 1500 ms",
+   "detalle": ""
+  },
+  {
+   "categoria": "Rendimiento",
+   "nombre": "Fichas cuya foto ya estaba descargada al abrir",
+   "estado": "ok",
+   "valor": 5,
+   "umbral": "",
+   "detalle": "5 de 5"
+  },
+  {
+   "categoria": "Rendimiento",
+   "nombre": "Ficha lejana (sin foto): datos",
+   "estado": "ok",
+   "valor": 87,
+   "umbral": "aviso > 800 ms / fallo > 2000 ms",
+   "detalle": ""
+  },
+  {
+   "categoria": "Rendimiento",
+   "nombre": "Ficha lejana (discogs): datos",
+   "estado": "ok",
+   "valor": 46,
+   "umbral": "aviso > 800 ms / fallo > 2000 ms",
+   "detalle": ""
+  },
+  {
+   "categoria": "Rendimiento",
+   "nombre": "Ficha lejana (discogs): foto",
+   "estado": "ok",
+   "valor": 57,
+   "umbral": "aviso > 3000 ms / fallo > 8000 ms",
+   "detalle": ""
+  },
+  {
+   "categoria": "Rendimiento",
+   "nombre": "Ficha lejana (conciertos.club): datos",
+   "estado": "ok",
+   "valor": 46,
+   "umbral": "aviso > 800 ms / fallo > 2000 ms",
+   "detalle": ""
+  },
+  {
+   "categoria": "Rendimiento",
+   "nombre": "Ficha lejana (conciertos.club): foto",
+   "estado": "ok",
+   "valor": 69,
+   "umbral": "aviso > 3000 ms / fallo > 8000 ms",
+   "detalle": ""
+  },
+  {
+   "categoria": "Rendimiento",
+   "nombre": "Ficha lejana (otros): datos",
+   "estado": "ok",
+   "valor": 91,
+   "umbral": "aviso > 800 ms / fallo > 2000 ms",
+   "detalle": ""
+  },
+  {
+   "categoria": "Rendimiento",
+   "nombre": "Ficha lejana (otros): foto",
+   "estado": "ok",
+   "valor": 96,
+   "umbral": "aviso > 3000 ms / fallo > 8000 ms",
+   "detalle": ""
+  },
+  {
+   "categoria": "Rendimiento",
+   "nombre": "Ficha lejana (wikimedia): datos",
+   "estado": "ok",
+   "valor": 45,
+   "umbral": "aviso > 800 ms / fallo > 2000 ms",
+   "detalle": ""
+  },
+  {
+   "categoria": "Rendimiento",
+   "nombre": "Ficha lejana (wikimedia): foto",
+   "estado": "ok",
+   "valor": 54,
+   "umbral": "aviso > 3000 ms / fallo > 8000 ms",
+   "detalle": ""
+  },
+  {
+   "categoria": "Rendimiento",
+   "nombre": "Ficha lejana (madridenvivo): datos",
+   "estado": "ok",
+   "valor": 78,
+   "umbral": "aviso > 800 ms / fallo > 2000 ms",
+   "detalle": ""
+  },
+  {
+   "categoria": "Rendimiento",
+   "nombre": "Ficha lejana (madridenvivo): foto",
+   "estado": "ok",
+   "valor": 83,
+   "umbral": "aviso > 3000 ms / fallo > 8000 ms",
+   "detalle": ""
+  },
+  {
+   "categoria": "UX",
+   "nombre": "Filtros: al elegir géneros a mano no queda marcado ningún preajuste y el título dice 'a tu medida'",
+   "estado": "ok",
+   "valor": "[] · '1 de 21 · a tu medida'",
+   "umbral": "",
+   "detalle": ""
+  },
+  {
+   "categoria": "Funcional",
+   "nombre": "Filtro de un solo grupo (pop e indie): solo salen de ese grupo",
+   "estado": "ok",
+   "valor": "84 tarjetas",
+   "umbral": "",
+   "detalle": "0 de otros grupos"
+  },
+  {
+   "categoria": "Funcional",
+   "nombre": "'Borrar filtros' deja la agenda sin filtros",
+   "estado": "ok",
+   "valor": null,
+   "umbral": "",
+   "detalle": ""
+  },
+  {
+   "categoria": "UX",
+   "nombre": "Filtros: 'Habituales' queda marcado al elegirlo",
+   "estado": "ok",
+   "valor": [
+    "def"
+   ],
+   "umbral": "",
+   "detalle": ""
+  },
+  {
+   "categoria": "UX",
+   "nombre": "Filtros: la hoja es corta (géneros en chips; estilos en su propio panel)",
+   "estado": "ok",
+   "valor": 1548,
+   "umbral": "aviso > 2000 px / fallo > 3000 px",
+   "detalle": ""
+  },
+  {
+   "categoria": "UX",
+   "nombre": "Con filtros, la fila de chips tiene '✕ Quitar filtros' y deja la agenda sin filtros",
+   "estado": "ok",
+   "valor": null,
+   "umbral": "",
+   "detalle": ""
+  },
+  {
+   "categoria": "UX",
+   "nombre": "Chips de género: sin filtro solo 'Habituales' está marcado; al tocar uno se filtra por él y solo él sale relleno; al quitarlo se vuelve a 'Habituales'",
+   "estado": "ok",
+   "valor": "['pre'] → ['rock y metal'] → ['pre']",
+   "umbral": "",
+   "detalle": ""
+  },
+  {
+   "categoria": "Rendimiento",
+   "nombre": "Filtros: abrir la hoja",
+   "estado": "aviso",
+   "valor": 313,
+   "umbral": "aviso > 300 ms / fallo > 800 ms",
+   "detalle": ""
+  },
+  {
+   "categoria": "Rendimiento",
+   "nombre": "Filtros: 'Ninguno'",
+   "estado": "ok",
+   "valor": 122,
+   "umbral": "aviso > 300 ms / fallo > 800 ms",
+   "detalle": ""
+  },
+  {
+   "categoria": "Rendimiento",
+   "nombre": "Filtros: aplicar",
+   "estado": "ok",
+   "valor": 201,
+   "umbral": "aviso > 300 ms / fallo > 800 ms",
+   "detalle": ""
+  },
+  {
+   "categoria": "Rendimiento",
+   "nombre": "Filtros: borrar filtros",
+   "estado": "ok",
+   "valor": 205,
+   "umbral": "aviso > 300 ms / fallo > 800 ms",
+   "detalle": ""
+  },
+  {
+   "categoria": "Rendimiento",
+   "nombre": "Filtros: 'Los de siempre'",
+   "estado": "ok",
+   "valor": 80,
+   "umbral": "aviso > 300 ms / fallo > 800 ms",
+   "detalle": ""
+  },
+  {
+   "categoria": "Rendimiento",
+   "nombre": "Filtros: chip de grupo",
+   "estado": "ok",
+   "valor": 178,
+   "umbral": "aviso > 300 ms / fallo > 800 ms",
+   "detalle": ""
+  },
+  {
+   "categoria": "Funcional",
+   "nombre": "Subgéneros: buscando y marcando dos estilos de géneros distintos salen justo sus conciertos",
+   "estado": "ok",
+   "valor": "['Beat', 'Celtic']: 4 de 4",
+   "umbral": "",
+   "detalle": "{'n': 4, 'malos': 0, 'esperados': 4}"
+  },
+  {
+   "categoria": "Funcional",
+   "nombre": "Buscar un artista lo encuentra",
+   "estado": "ok",
+   "valor": "Manu Míguez",
+   "umbral": "",
+   "detalle": ""
+  },
+  {
+   "categoria": "UX",
+   "nombre": "Búsqueda sin resultados lo dice",
+   "estado": "ok",
+   "valor": null,
+   "umbral": "",
+   "detalle": ""
+  },
+  {
+   "categoria": "UX",
+   "nombre": "La barra dice que se está buscando",
+   "estado": "ok",
+   "valor": "Filtrando: búsqueda «Leiva» · Quitar filtros",
+   "umbral": "",
+   "detalle": ""
+  },
+  {
+   "categoria": "UX",
+   "nombre": "La búsqueda se ve dentro de la hoja de filtros",
+   "estado": "ok",
+   "valor": null,
+   "umbral": "",
+   "detalle": ""
+  },
+  {
+   "categoria": "UX",
+   "nombre": "'Todos' (grupos) no borra la búsqueda a escondidas",
+   "estado": "ok",
+   "valor": null,
+   "umbral": "",
+   "detalle": ""
+  },
+  {
+   "categoria": "UX",
+   "nombre": "'Borrar filtros' en la hoja quita también la búsqueda",
+   "estado": "ok",
+   "valor": null,
+   "umbral": "",
+   "detalle": ""
+  },
+  {
+   "categoria": "UX",
+   "nombre": "El cuadro de búsqueda queda vacío al borrar",
+   "estado": "ok",
+   "valor": null,
+   "umbral": "",
+   "detalle": ""
+  },
+  {
+   "categoria": "Funcional",
+   "nombre": "Filtros de origen: España, Latinoamérica, resto del mundo y sin confirmar cuadran",
+   "estado": "ok",
+   "valor": "2820 de 2820",
+   "umbral": "",
+   "detalle": "{'total': 2820, 'esc': 443, 'es': 819, 'lat': 99, 'ext': 385, 'nc': 1056, 'est': 376, 'na': 461}"
+  },
+  {
+   "categoria": "Rendimiento",
+   "nombre": "Vista mes",
+   "estado": "ok",
+   "valor": 197,
+   "umbral": "aviso > 700 ms / fallo > 1500 ms",
+   "detalle": ""
+  },
+  {
+   "categoria": "UX",
+   "nombre": "Mes: al tocar un día, su lista queda a la vista",
+   "estado": "ok",
+   "valor": null,
+   "umbral": "",
+   "detalle": ""
+  },
+  {
+   "categoria": "Funcional",
+   "nombre": "Mes: la lista del día son los conciertos de ese día",
+   "estado": "ok",
+   "valor": "56 de 56",
+   "umbral": "",
+   "detalle": ""
+  },
+  {
+   "categoria": "Otros",
+   "nombre": "Próximos 10 días: conciertos con enlace de compra directo",
+   "estado": "ok",
+   "valor": "82 de 555",
+   "umbral": "",
+   "detalle": "con cartel de gira 69, con hora 341"
+  },
+  {
+   "categoria": "Funcional",
+   "nombre": "Ficha: el enlace de compra de la página de entradas es el botón principal",
+   "estado": "ok",
+   "valor": "Comprar entradas en Entradium ↗",
+   "umbral": "",
+   "detalle": "{'ok': True, 'texto': 'Comprar entradas en Entradium ↗', 'agotado': False, 'aviso': True}"
+  },
+  {
+   "categoria": "UX",
+   "nombre": "Semana: al bajar, la fecha completa del día se queda fija arriba",
+   "estado": "ok",
+   "valor": "Viernes, 2 de octubre72 conciertos",
+   "umbral": "",
+   "detalle": "{'pegada': True, 'fecha': '2026-10-02', 'texto': 'Viernes, 2 de octubre72 conciertos', 'marcado': '2026-10-02', 'alto': 161}"
+  },
+  {
+   "categoria": "UX",
+   "nombre": "Semana: la tira de días marca el día por el que vas",
+   "estado": "ok",
+   "valor": "2026-10-02 / 2026-10-02",
+   "umbral": "",
+   "detalle": ""
+  },
+  {
+   "categoria": "UX",
+   "nombre": "Semana: lo fijo arriba (cabecera, tira y fecha) no ocupa más de un tercio de la pantalla",
+   "estado": "ok",
+   "valor": 201,
+   "umbral": "aviso > 281 px / fallo > 422 px",
+   "detalle": ""
+  },
+  {
+   "categoria": "UX",
+   "nombre": "Semana: tocar un día de la tira lleva justo a ese día",
+   "estado": "ok",
+   "valor": "2026-10-04 (pedido 2026-10-04)",
+   "umbral": "",
+   "detalle": "{'pegada': True, 'fecha': '2026-10-04', 'texto': 'Mañana, domingo, 4 de octubre26 conciertos', 'marcado': '2026-10-04', 'alto': 161}"
+  },
+  {
+   "categoria": "UX",
+   "nombre": "Día: al bajar, la fecha completa se queda fija arriba con la tira de días",
+   "estado": "ok",
+   "valor": "Viernes, 2 de octubre72 conciertos",
+   "umbral": "",
+   "detalle": "{'pegada': True, 'fecha': '2026-10-02', 'texto': 'Viernes, 2 de octubre72 conciertos', 'marcado': '2026-10-02', 'alto': 161}"
+  },
+  {
+   "categoria": "UX",
+   "nombre": "Mes: al bajar por la lista del día, su fecha completa se queda fija arriba",
+   "estado": "ok",
+   "valor": "Viernes, 2 de octubre72 conciertos",
+   "umbral": "",
+   "detalle": "{'pegada': True, 'fecha': '2026-10-02', 'texto': 'Viernes, 2 de octubre72 conciertos', 'marcado': None, 'alto': 100}"
+  },
+  {
+   "categoria": "UX",
+   "nombre": "Al bajar por la lista, Buscar y Filtros siguen a mano en la cabecera (y arriba no se duplican)",
+   "estado": "ok",
+   "valor": null,
+   "umbral": "",
+   "detalle": ""
+  },
+  {
+   "categoria": "Funcional",
+   "nombre": "A media lista, el menú ☰ se abre a la vista",
+   "estado": "ok",
+   "valor": null,
+   "umbral": "",
+   "detalle": ""
+  },
+  {
+   "categoria": "Funcional",
+   "nombre": "A media lista, Filtros abre la hoja sin mover la lista",
+   "estado": "ok",
+   "valor": null,
+   "umbral": "",
+   "detalle": ""
+  },
+  {
+   "categoria": "UX",
+   "nombre": "A media lista, ‹ semana › en la cabecera: pasa a la siguiente y deja su primer día a la vista",
+   "estado": "ok",
+   "valor": "2026-10-05 · '5–11 oct\\n225 conciertos'",
+   "umbral": "",
+   "detalle": "{'fecha': '2026-10-05', 'fija': True, 'titulo': '5–11 oct\\n225 conciertos', 'cabecera': True}"
+  },
+  {
+   "categoria": "Funcional",
+   "nombre": "A media lista, la lupa abre la búsqueda en la cabecera lista para escribir, sin mover la lista",
+   "estado": "ok",
+   "valor": null,
+   "umbral": "",
+   "detalle": ""
+  },
+  {
+   "categoria": "Funcional",
+   "nombre": "Buscar desde media lista y cancelar: vuelve a la misma tarjeta",
+   "estado": "ok",
+   "valor": "30 resultados",
+   "umbral": "",
+   "detalle": ""
+  },
+  {
+   "categoria": "UX",
+   "nombre": "Cambiar de día, semana o mes desde media lista deja la vista nueva desde su principio; Hoy siempre a mano",
+   "estado": "ok",
+   "valor": "10 de 10 casos bien",
+   "umbral": "",
+   "detalle": ""
+  },
+  {
+   "categoria": "Funcional",
+   "nombre": "Festivales: insignia y cartel en la ficha",
+   "estado": "ok",
+   "valor": "'FESTIVAL Pirata Madrid Festival': 7 de 7",
+   "umbral": "",
+   "detalle": ""
+  },
+  {
+   "categoria": "Funcional",
+   "nombre": "Teloneros: el concierto sale al filtrar por el género del telonero (y la tarjeta lo dice)",
+   "estado": "ok",
+   "valor": "rock y metal el 2026-10-03",
+   "umbral": "",
+   "detalle": "{'sale': True, 'tag': True}"
+  },
+  {
+   "categoria": "UX",
+   "nombre": "Fuentes: una tarjeta por web con estado, 14 días y datos; filtros y búsqueda; sin scroll lateral",
+   "estado": "ok",
+   "valor": "71 de 71 webs · 27 salas · 72 salas sin web leída",
+   "umbral": "",
+   "detalle": "{'n': 27, 'total': 71, 'tiras': 71, 'metricas': 71, 'lateral': 0, 'salas': 72, 'bien': True, 'esperadas': 27, 'busca': True}"
+  },
+  {
+   "categoria": "Funcional",
+   "nombre": "Salas: lista, búsqueda, página de la sala con su programación y Volver",
+   "estado": "ok",
+   "valor": "245 salas · Sala Villanos: 105 conciertos · volver a #salas",
+   "umbral": "",
+   "detalle": "{'nombre': 'Sala Villanos', 'cards': 105, 'esperadas': 105, 'ics': 'calendario/sala-sala-villanos.ics', 'lateral': 0, 'filtro': ['La Riviera']}"
+  },
+  {
+   "categoria": "Funcional",
+   "nombre": "Calendario de la sala: suscripción (webcal, Google, Outlook) y .ics válido con sus conciertos",
+   "estado": "ok",
+   "valor": "109 eventos en calendario/sala-sala-villanos.ics",
+   "umbral": "",
+   "detalle": "['webcal://estebancobo-dot.github.io/agenda-conciertos/calendario/sala-sala-villanos.ics', 'https://calendar.google.com/calendar/render?cid=webcal%3A%2F%2Festebancobo-dot.github.io%2Fagenda-conciertos%2Fcalendario%2Fsala-sala-villanos.ics', 'https://outlook.live.com/calendar/0/addfromweb?url=https%3"
+  },
+  {
+   "categoria": "Funcional",
+   "nombre": "Calendarios por género: uno por género y se descargan",
+   "estado": "ok",
+   "valor": "20 géneros · 616 eventos en calendario/genero-rock-y-metal.ics",
+   "umbral": "",
+   "detalle": "{'n': 20, 'ics': 'calendario/genero-rock-y-metal.ics', 'ok': True, 'ev': 616}"
+  },
+  {
+   "categoria": "Funcional",
+   "nombre": "Historial de cambios en la ficha",
+   "estado": "aviso",
+   "valor": "aún sin cambios registrados",
+   "umbral": "",
+   "detalle": ""
+  },
+  {
+   "categoria": "Funcional",
+   "nombre": "Fin de semana: viernes a domingo de la semana (también al cambiar de año), lo que dicen los datos",
+   "estado": "ok",
+   "valor": "2 de 2 bien",
+   "umbral": "",
+   "detalle": ""
+  },
+  {
+   "categoria": "Funcional",
+   "nombre": "Todos: todos los conciertos desde hoy en orden, con su total, pintado progresivo y saltos por meses",
+   "estado": "ok",
+   "valor": "1557 conciertos desde hoy · 69 pintados al abrir · 202 ms",
+   "umbral": "",
+   "detalle": "{'pintadas': 69, 'orden': True, 'desdeHoy': True, 'n': 1557, 'cab': '1557 conciertos desde hoy', 'meses': 4, 'lateral': 0, 'salto': {'mes': '2026-11', 'dia': '2026-11-01', 'marcado': True}}"
+  },
+  {
+   "categoria": "Rendimiento",
+   "nombre": "Todos: pintar la lista",
+   "estado": "ok",
+   "valor": 202,
+   "umbral": "aviso > 800 ms / fallo > 2000 ms",
+   "detalle": ""
+  },
+  {
+   "categoria": "Funcional",
+   "nombre": "Informe se abre",
+   "estado": "ok",
+   "valor": null,
+   "umbral": "",
+   "detalle": ""
+  },
+  {
+   "categoria": "Rendimiento",
+   "nombre": "Segunda visita: lista pintada",
+   "estado": "ok",
+   "valor": 945,
+   "umbral": "aviso > 1500 ms / fallo > 3000 ms",
+   "detalle": ""
+  },
+  {
+   "categoria": "Rendimiento",
+   "nombre": "Segunda visita: miniaturas visibles cargadas",
+   "estado": "ok",
+   "valor": 119,
+   "umbral": "aviso > 800 ms / fallo > 2500 ms",
+   "detalle": ""
+  },
+  {
+   "categoria": "Rendimiento",
+   "nombre": "Bloqueo de JavaScript más largo (CPU 6x)",
+   "estado": "ok",
+   "valor": 171,
+   "umbral": "aviso > 300 ms / fallo > 1000 ms",
+   "detalle": ""
+  },
+  {
+   "categoria": "UX",
+   "nombre": "Saltos de diseño (CLS)",
+   "estado": "ok",
+   "valor": 0,
+   "umbral": "aviso > 0.1  / fallo > 0.25 ",
+   "detalle": ""
+  },
+  {
+   "categoria": "Rendimiento",
+   "nombre": "Imágenes que no cargan",
+   "estado": "ok",
+   "valor": 0.0,
+   "umbral": "aviso > 1 % / fallo > 5 %",
+   "detalle": ""
+  },
+  {
+   "categoria": "Otros",
+   "nombre": "Todo por https (sin contenido mixto)",
+   "estado": "ok",
+   "valor": 0,
+   "umbral": "",
+   "detalle": ""
+  },
+  {
+   "categoria": "Funcional",
+   "nombre": "Paso de días, semanas, meses y años (con cambios de hora y febrero) con las flechas",
+   "estado": "ok",
+   "valor": "103 de 103 pasos bien",
+   "umbral": "",
+   "detalle": ""
+  },
+  {
+   "categoria": "Funcional",
+   "nombre": "Enlace directo a una ficha la abre",
+   "estado": "ok",
+   "valor": "RADIOSPHERE",
+   "umbral": "",
+   "detalle": ""
+  },
+  {
+   "categoria": "Rendimiento",
+   "nombre": "Enlace directo a una ficha (visita nueva)",
+   "estado": "ok",
+   "valor": 2358,
+   "umbral": "aviso > 5000 ms / fallo > 9000 ms",
+   "detalle": ""
+  },
+  {
+   "categoria": "Fallos",
+   "nombre": "Enlace a un concierto que ya no existe: lo dice y deja volver",
+   "estado": "ok",
+   "valor": null,
+   "umbral": "",
+   "detalle": ""
+  },
+  {
+   "categoria": "UX",
+   "nombre": "Semana sin conciertos: lo dice",
+   "estado": "ok",
+   "valor": null,
+   "umbral": "",
+   "detalle": ""
+  },
+  {
+   "categoria": "Fallos",
+   "nombre": "Detalle que no llega: se ve la ficha básica y avisa",
+   "estado": "ok",
+   "valor": null,
+   "umbral": "",
+   "detalle": "‹ Volver PD EL PEQUEÑO DE LOS DALTON No se pudieron cargar las fuentes y el precio: comprueba la conexión. 📅 sábado, 3 de octubre 00:30 h 📍 Honky Tonk Madrid · "
+  },
+  {
+   "categoria": "Fallos",
+   "nombre": "Fotos que no cargan: sin iconos de imagen rota",
+   "estado": "ok",
+   "valor": 0,
+   "umbral": "",
+   "detalle": ""
+  },
+  {
+   "categoria": "Fallos",
+   "nombre": "Agenda que no llega: mensaje claro para recargar",
+   "estado": "ok",
+   "valor": null,
+   "umbral": "",
+   "detalle": "No se pudieron cargar los datos (data/concerts.json). Comprueba la conexión y recarga la página."
+  },
+  {
+   "categoria": "Fallos",
+   "nombre": "Agenda lenta: indica 'Cargando…' y luego se pinta",
+   "estado": "ok",
+   "valor": null,
+   "umbral": "",
+   "detalle": ""
+  },
+  {
+   "categoria": "Fallos",
+   "nombre": "Sin taxonomía de estilos: la agenda sigue funcionando",
+   "estado": "ok",
+   "valor": null,
+   "umbral": "",
+   "detalle": ""
+  },
+  {
+   "categoria": "Otros",
+   "nombre": "Miniaturas de las agendas a través del proxy",
+   "estado": "ok",
+   "valor": "0 de 0",
+   "umbral": "",
+   "detalle": ""
+  },
+  {
+   "categoria": "Rendimiento",
+   "nombre": "Vista día sin caché: miniaturas visibles cargadas (peor de 3 fechas al azar)",
+   "estado": "ok",
+   "valor": 9,
+   "umbral": "aviso > 1000 ms / fallo > 2500 ms",
+   "detalle": "[9, 4, 3]"
+  },
+  {
+   "categoria": "Rendimiento",
+   "nombre": "Vista mes sin caché: miniaturas visibles cargadas (peor de 3 fechas al azar)",
+   "estado": "ok",
+   "valor": 43,
+   "umbral": "aviso > 1000 ms / fallo > 2500 ms",
+   "detalle": "[43, 5, 13]"
+  },
+  {
+   "categoria": "Rendimiento",
+   "nombre": "Ficha sin caché: foto desde que se ve la ficha (peor de 4 al azar)",
+   "estado": "ok",
+   "valor": 85,
+   "umbral": "aviso > 1200 ms / fallo > 2500 ms",
+   "detalle": "[65, 85, 72, 69] ['estebancobo-dot.github.io', 'estebancobo-dot.github.io', 'estebancobo-dot.github.io', 'estebancobo-dot.github.io']"
+  },
+  {
+   "categoria": "Rendimiento",
+   "nombre": "Imágenes de las listas pedidas fuera de la web (wsrv.nl, agendas)",
+   "estado": "ok",
+   "valor": 0,
+   "umbral": "",
+   "detalle": ""
+  },
+  {
+   "categoria": "Rendimiento",
+   "nombre": "Peor caso semana del 19/10 (377 conciertos): pintar con 'Todos'",
+   "estado": "ok",
+   "valor": 267,
+   "umbral": "aviso > 700 ms / fallo > 1500 ms",
+   "detalle": ""
+  },
+  {
+   "categoria": "Rendimiento",
+   "nombre": "Peor caso semana del 19/10 (377 conciertos): miniaturas de la primera pantalla",
+   "estado": "ok",
+   "valor": 24,
+   "umbral": "aviso > 1000 ms / fallo > 2500 ms",
+   "detalle": ""
+  },
+  {
+   "categoria": "Funcional",
+   "nombre": "Peor caso semana del 19/10 (377 conciertos): con 'Todos' salen todos",
+   "estado": "ok",
+   "valor": "377 de 377",
+   "umbral": "",
+   "detalle": ""
+  },
+  {
+   "categoria": "Rendimiento",
+   "nombre": "Peor caso semana del 19/10 (377 conciertos): bajando despacio, miniaturas sin cargar a los 0,4 s (peor pantalla)",
+   "estado": "ok",
+   "valor": 0,
+   "umbral": "aviso > 1 miniaturas / fallo > 3 miniaturas",
+   "detalle": "59 pantallas; peores [0, 0, 0]; pantallas con alguna sin cargar: 0"
+  },
+  {
+   "categoria": "Rendimiento",
+   "nombre": "Peor caso semana del 19/10 (377 conciertos): bloqueo de JavaScript más largo al bajar",
+   "estado": "ok",
+   "valor": 0,
+   "umbral": "aviso > 300 ms / fallo > 1000 ms",
+   "detalle": ""
+  },
+  {
+   "categoria": "Rendimiento",
+   "nombre": "Peor caso semana del 19/10 (377 conciertos): bajando seguido, miniaturas a la vista sin cargar",
+   "estado": "ok",
+   "valor": 0.0,
+   "umbral": "aviso > 5 % / fallo > 15 %",
+   "detalle": "0 de 322 vistas en 12 s"
+  },
+  {
+   "categoria": "Rendimiento",
+   "nombre": "Peor caso semana del 19/10 (377 conciertos): bajando deprisa, al parar miniaturas visibles cargadas en",
+   "estado": "ok",
+   "valor": 156,
+   "umbral": "aviso > 1000 ms / fallo > 2500 ms",
+   "detalle": ""
+  },
+  {
+   "categoria": "Rendimiento",
+   "nombre": "Peor caso semana del 19/10 (377 conciertos): foto de una ficha del final de la lista",
+   "estado": "ok",
+   "valor": 269,
+   "umbral": "aviso > 800 ms / fallo > 2000 ms",
+   "detalle": ""
+  },
+  {
+   "categoria": "UX",
+   "nombre": "Peor caso semana del 19/10 (377 conciertos): volver deja la lista en el concierto",
+   "estado": "ok",
+   "valor": null,
+   "umbral": "",
+   "detalle": ""
+  },
+  {
+   "categoria": "Rendimiento",
+   "nombre": "Peor caso semana del 19/10 (377 conciertos): imágenes pedidas fuera de la web",
+   "estado": "ok",
+   "valor": 0,
+   "umbral": "",
+   "detalle": ""
+  },
+  {
+   "categoria": "Rendimiento",
+   "nombre": "Peor caso día 03/10 (102 conciertos): miniaturas de la primera pantalla",
+   "estado": "ok",
+   "valor": 109,
+   "umbral": "aviso > 1000 ms / fallo > 2500 ms",
+   "detalle": ""
+  },
+  {
+   "categoria": "Rendimiento",
+   "nombre": "Peor caso día 03/10 (102 conciertos): bajando despacio, miniaturas sin cargar a los 0,4 s (peor pantalla)",
+   "estado": "ok",
+   "valor": 0,
+   "umbral": "aviso > 1 miniaturas / fallo > 3 miniaturas",
+   "detalle": "17 pantallas"
+  },
+  {
+   "categoria": "Rendimiento",
+   "nombre": "Peor caso mes 10/2026 (1564 conciertos), día 17/10: al tocar el día, miniaturas visibles cargadas",
+   "estado": "ok",
+   "valor": 77,
+   "umbral": "aviso > 1000 ms / fallo > 2500 ms",
+   "detalle": "desde el toque: 983 ms"
+  },
+  {
+   "categoria": "Fallos",
+   "nombre": "Sin conexión: la agenda se abre con la copia guardada",
+   "estado": "ok",
+   "valor": 100,
+   "umbral": "aviso > 4500 ms / fallo > 8000 ms",
+   "detalle": ""
+  },
+  {
+   "categoria": "Fallos",
+   "nombre": "Sin conexión: se ven los conciertos",
+   "estado": "ok",
+   "valor": null,
+   "umbral": "",
+   "detalle": ""
+  },
+  {
+   "categoria": "Fallos",
+   "nombre": "Sin conexión: una ficha no guardada avisa en vez de quedarse cargando",
+   "estado": "ok",
+   "valor": null,
+   "umbral": "",
+   "detalle": "‹ Volver E EPICA No se pudieron cargar las fuentes y el precio: comprueba la conexión. 📅 domingo, 31 de enero Hora sin indicar 📍 La Riviera Madrid · Cómo llegar"
+  },
+  {
+   "categoria": "UX",
+   "nombre": "Sin scroll lateral (móvil pequeño 320 px)",
+   "estado": "ok",
+   "valor": 0,
+   "umbral": "",
+   "detalle": "0 px de más"
+  },
+  {
+   "categoria": "UX",
+   "nombre": "Botones con tamaño de dedo (≥ 32 px)",
+   "estado": "ok",
+   "valor": 0,
+   "umbral": "",
+   "detalle": ""
+  },
+  {
+   "categoria": "UX",
+   "nombre": "Contraste de color suficiente (modo claro)",
+   "estado": "ok",
+   "valor": 0,
+   "umbral": "",
+   "detalle": ""
+  },
+  {
+   "categoria": "UX",
+   "nombre": "Accesibilidad (axe-core): otros problemas graves (modo claro)",
+   "estado": "ok",
+   "valor": 0,
+   "umbral": "",
+   "detalle": ""
+  },
+  {
+   "categoria": "UX",
+   "nombre": "Sin scroll lateral (ordenador 1366 px)",
+   "estado": "ok",
+   "valor": 0,
+   "umbral": "",
+   "detalle": "0 px de más"
+  },
+  {
+   "categoria": "UX",
+   "nombre": "Sin scroll lateral (móvil en modo oscuro)",
+   "estado": "ok",
+   "valor": 0,
+   "umbral": "",
+   "detalle": "0 px de más"
+  },
+  {
+   "categoria": "UX",
+   "nombre": "Modo oscuro: fondo oscuro",
+   "estado": "ok",
+   "valor": 22,
+   "umbral": "",
+   "detalle": ""
+  },
+  {
+   "categoria": "UX",
+   "nombre": "Contraste de color suficiente (modo oscuro)",
+   "estado": "ok",
+   "valor": 0,
+   "umbral": "",
+   "detalle": ""
+  },
+  {
+   "categoria": "UX",
+   "nombre": "Accesibilidad (axe-core): otros problemas graves (modo oscuro)",
+   "estado": "ok",
+   "valor": 0,
+   "umbral": "",
+   "detalle": ""
+  },
+  {
+   "categoria": "Fallos",
+   "nombre": "Errores de JavaScript en todo el recorrido",
+   "estado": "ok",
+   "valor": 0,
+   "umbral": "",
+   "detalle": ""
+  },
+  {
+   "categoria": "Otros",
+   "nombre": "Errores en la consola",
+   "estado": "ok",
+   "valor": 0,
+   "umbral": "",
+   "detalle": ""
+  }
+ ],
+ "medidas": {
+  "semana_pintar": {
+   "ms": 218
+  },
+  "scroll_despacio": {
+   "sin_cargar_por_pantalla": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  "ficha_tras_ver_la_lista": {
+   "fotos_ms": [
+    116,
+    146,
+    179,
+    135,
+    112
+   ],
+   "ya_descargada": [
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  "fichas_lejanas": {
+   "sin foto": {
+    "datos_ms": 87,
+    "foto_ms": null
+   },
+   "discogs": {
+    "datos_ms": 46,
+    "foto_ms": 57
+   },
+   "conciertos.club": {
+    "datos_ms": 46,
+    "foto_ms": 69
+   },
+   "otros": {
+    "datos_ms": 91,
+    "foto_ms": 96
+   },
+   "wikimedia": {
+    "datos_ms": 45,
+    "foto_ms": 54
+   },
+   "madridenvivo": {
+    "datos_ms": 78,
+    "foto_ms": 83
+   }
+  },
+  "filtro_grupo": {
+   "grupo": "pop e indie",
+   "boton": "Ver 516 conciertos",
+   "tarjetas": 84,
+   "n_boton": 516
+  },
+  "entradas_10_dias": {
+   "tot": 555,
+   "ent": 82,
+   "gira": 69,
+   "hora": 341,
+   "uno": "d5a7072577b2"
+  },
+  "bloqueos_js": {
+   "n": 4,
+   "total_ms": 437,
+   "peores": [
+    [
+     595,
+     171
+    ],
+    [
+     378,
+     162
+    ],
+    [
+     305,
+     54
+    ],
+    [
+     543,
+     50
+    ]
+   ]
+  },
+  "imagenes": {
+   "pedidas": 485,
+   "mediana_ms": 22,
+   "hosts": [
+    "estebancobo-dot.github.io"
+   ],
+   "fallidas": []
+  },
+  "listas_en_frio": {
+   "día": [
+    9,
+    4,
+    3
+   ],
+   "mes": [
+    43,
+    5,
+    13
+   ]
+  },
+  "fichas_en_frio": {
+   "fotos_ms": [
+    65,
+    85,
+    72,
+    69
+   ],
+   "servidores": [
+    "estebancobo-dot.github.io",
+    "estebancobo-dot.github.io",
+    "estebancobo-dot.github.io",
+    "estebancobo-dot.github.io"
+   ]
+  },
+  "peor_caso_semana": {
+   "semana": "2026-10-19",
+   "conciertos": 377,
+   "sin_cargar_por_pantalla": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "recorrer_ms": 25714,
+   "bloqueos": []
+  }
+ },
+ "errores_js": [],
+ "consola": [
+  "Failed to load resource: net::ERR_FAILED",
+  "Failed to load resource: net::ERR_FAILED",
+  "Failed to load resource: net::ERR_FAILED",
+  "Failed to load resource: net::ERR_FAILED",
+  "Failed to load resource: net::ERR_FAILED",
+  "Failed to load resource: net::ERR_FAILED",
+  "Failed to load resource: net::ERR_FAILED",
+  "Failed to load resource: net::ERR_FAILED",
+  "Failed to load resource: net::ERR_FAILED",
+  "Failed to load resource: net::ERR_FAILED",
+  "Failed to load resource: net::ERR_FAILED",
+  "Failed to load resource: net::ERR_FAILED",
+  "Failed to load resource: net::ERR_FAILED",
+  "Failed to load resource: net::ERR_FAILED",
+  "Failed to load resource: net::ERR_FAILED",
+  "Failed to load resource: net::ERR_FAILED",
+  "Failed to load resource: net::ERR_FAILED",
+  "Failed to load resource: net::ERR_FAILED",
+  "Failed to load resource: net::ERR_FAILED",
+  "Failed to load resource: net::ERR_FAILED",
+  "Failed to load resource: net::ERR_FAILED",
+  "Failed to load resource: net::ERR_FAILED",
+  "Failed to load resource: the server responded with a status of 503 (Service Unavailable)",
+  "Failed to load resource: the server responded with a status of 503 (Service Unavailable)",
+  "Failed to load resource: the server responded with a status of 404 (Not Found)",
+  "Failed to load resource: net::ERR_FAILED",
+  "Failed to load resource: net::ERR_FAILED",
+  "Failed to load resource: net::ERR_FAILED",
+  "Failed to load resource: net::ERR_FAILED",
+  "Failed to load resource: net::ERR_FAILED",
+  "Failed to load resource: net::ERR_FAILED",
+  "Failed to load resource: net::ERR_FAILED",
+  "Failed to load resource: net::ERR_INTERNET_DISCONNECTED",
+  "Failed to load resource: net::ERR_INTERNET_DISCONNECTED",
+  "Failed to load resource: net::ERR_INTERNET_DISCONNECTED",
+  "Failed to load resource: net::ERR_INTERNET_DISCONNECTED",
+  "Failed to load resource: net::ERR_INTERNET_DISCONNECTED",
+  "Failed to load resource: net::ERR_INTERNET_DISCONNECTED",
+  "Failed to load resource: net::ERR_INTERNET_DISCONNECTED",
+  "Failed to load resource: net::ERR_FAILED",
+  "Failed to load resource: net::ERR_FAILED",
+  "Failed to load resource: net::ERR_INTERNET_DISCONNECTED",
+  "Failed to load resource: net::ERR_INTERNET_DISCONNECTED",
+  "Failed to load resource: net::ERR_FAILED",
+  "Failed to load resource: net::ERR_FAILED",
+  "Failed to load resource: net::ERR_FAILED",
+  "Failed to load resource: net::ERR_FAILED",
+  "Failed to load resource: net::ERR_FAILED",
+  "Failed to load resource: net::ERR_FAILED",
+  "Failed to load resource: net::ERR_FAILED"
+ ],
+ "version_main": "2.44.0",
+ "resumen": {
+  "ok": 145,
+  "aviso": 7,
+  "fallo": 0
+ }
+}
