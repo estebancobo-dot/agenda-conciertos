@@ -131,3 +131,14 @@ def test_una_grafia_por_sala_y_propuestas():
     props = posibles_alias_salas([{"fecha": "2026-10-10", "sala": "Café Libertad Ocho", "artista": "A"},
                                   {"fecha": "2026-10-11", "sala": "Libertad Ocho Café", "artista": "B"}], "2026-10-01")
     assert props and props[0]["motivo"] == "nombres casi iguales"
+
+
+def test_listado_incompleto_de_la_sala_no_penaliza():
+    s = fuente("vistalegre", "sala", 1, "alta")
+    evs = [RawEvent(date(2026, 10, d), f"Grupo {d}", "u", sala="Sala El Sol") for d in (10, 11, 12, 13, 30)]
+    papa = rec("cc", "lg", "mev", fecha="2026-10-20", artista="Papa Roach")  # 3 webs independientes
+    otro = rec("cc", fecha="2026-10-21", artista="Pequeño")
+    n = ausencias_web_sala([papa, otro], {"vistalegre": {"completa": True}}, {"vistalegre": s, **F},
+                           {"vistalegre": evs}, "2026-10-03")
+    assert "Papa Roach" in n["vistalegre"]["incompleta"] and n["vistalegre"]["ausentes"] == 0
+    assert "ausente_web_sala" not in papa and "ausente_web_sala" not in otro

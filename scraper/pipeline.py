@@ -842,6 +842,7 @@ def ausencias_web_sala(recs: list[dict], resultados: dict, fuentes: dict[str, So
         hasta = max(e.fecha for e in evs).isoformat()
         dias = {e.fecha.isoformat() for e in evs}
         m = marcados.setdefault(sid, {"ausentes": 0, "otra_fecha": 0})
+        pendientes = []
         for r in recs:
             if not (hoy <= r["fecha"] <= hasta) or r["fecha"] in dias or any(f["id"] == sid for f in r.get("fuentes") or []):
                 continue
@@ -853,7 +854,17 @@ def ausencias_web_sala(recs: list[dict], resultados: dict, fuentes: dict[str, So
             otra = sorted((e for e in evs if abs((e.fecha - f0).days) <= 45
                            and (artistas_coinciden([r["artista"]], [e.artista]) or mismo_acto_en_sala(r["artista"], e.artista, r.get("sala") or ""))),
                           key=lambda e: abs((e.fecha - f0).days))
-            nombre = sr.nombre.split(" (")[0]
+            pendientes.append((r, otra))
+        # la web de la sala no lista todo lo que hay en ella (solo lo de su promotora, o una parte): si le falta un
+        # concierto que anuncian 3 o más webs independientes, su silencio no dice nada de los demás (Vistalegre y
+        # Papa Roach, en 8 webs)
+        fuertes = [r for r, otra in pendientes if not otra and
+                   len({fuentes[f["id"]].grupo for f in r.get("fuentes") or [] if f.get("id") in fuentes}) >= 3]
+        if fuertes:
+            m["incompleta"] = f"no anuncia {fuertes[0]['artista']} ({fuertes[0]['fecha']}), que dan 3 o más webs"
+            pendientes = [(r, otra) for r, otra in pendientes if otra]
+        nombre = sr.nombre.split(" (")[0]
+        for r, otra in pendientes:
             if otra:
                 agendas = list(dict.fromkeys(f["nombre"] for f in r.get("fuentes") or []))
                 r["conflictos"].append({"campo": "fecha", "versiones": [
@@ -865,7 +876,7 @@ def ausencias_web_sala(recs: list[dict], resultados: dict, fuentes: dict[str, So
             else:
                 r["ausente_web_sala"] = nombre
                 m["ausentes"] += 1
-    return {k: v for k, v in marcados.items() if v["ausentes"] or v["otra_fecha"]}
+    return {k: v for k, v in marcados.items() if v["ausentes"] or v["otra_fecha"] or v.get("incompleta")}
 
 
 # ---------------------------------------------------------------- historial de cambios de cada concierto
@@ -1216,7 +1227,7 @@ def ejecutar(hoy: date | None = None, solo: list[str] | None = None, fetcher: Fe
     n_cambios = registrar_cambios(recs, antes_cambios, hoy.isoformat())
     contraste_sala = ausencias_web_sala(recs, resultados, por_id, eventos, hoy.isoformat(),
                                         estado.get("historial_fuentes", {}))
-    n_ausentes = sum(v["ausentes"] for v in contraste_sala.values())
+    n_ausentes = sum(v["ausentes"] for v in contraste_sala.values())  # (las de listado incompleto no marcan)
     from .normalizacion import normalizar, resumen as resumen_normalizacion
     for r in recs:
         r["confianza"] = puntuar_confianza(r, por_id)

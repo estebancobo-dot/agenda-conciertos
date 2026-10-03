@@ -1,5 +1,9 @@
 # Versiones
 
+## 2.48.2 — 2026-10-03
+
+**N1: webs de sala con el listado incompleto.** Si la web de una sala no anuncia un concierto en ella que dan 3 o más webs independientes (Papa Roach en Vistalegre, en 8 webs), su listado no está completo (solo lo de su promotora, o una parte) y su silencio ya no baja la confirmación de los demás. La página de Fuentes lo dice en esa sala. Con los datos de hoy: 6 webs de sala (La Riviera, Wagon, Changó, Sala But, Independance, Vistalegre) y los conciertos marcados como "la web de la sala no lo anuncia" bajan de 54 a 23.
+
 ## 2.48.1 — 2026-10-03
 
 **N3/N4: más orígenes y estilos leídos en las páginas del concierto.**

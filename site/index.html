@@ -1234,7 +1234,7 @@ function extraFuente(f){
   return (f.reintento?`<div class="muted">${esc(f.reintento)}</div>`:"")+
     (f.desde_cache?`<div class="s-warn">Se mantienen ${f.desde_cache} conciertos de su última lectura completa (${esc(f.cache_fecha)})</div>`:"")+
     (f.no_leida?`<div class="muted">No se volvió a leer en el reintento: datos de la última ejecución completa</div>`:"")+
-    (f.contraste_sala?`<div class="s-warn">Contraste con las agendas: ${[f.contraste_sala.otra_fecha?`${plural(f.contraste_sala.otra_fecha,"concierto")} con otra fecha en esta web`:"",f.contraste_sala.ausentes?`${plural(f.contraste_sala.ausentes,"concierto")} que esta web no anuncia ese día`:""].filter(Boolean).join(" · ")}</div>`:"");
+    (f.contraste_sala?`<div class="s-warn">Contraste con las agendas: ${[f.contraste_sala.otra_fecha?`${plural(f.contraste_sala.otra_fecha,"concierto")} con otra fecha en esta web`:"",f.contraste_sala.ausentes?`${plural(f.contraste_sala.ausentes,"concierto")} que esta web no anuncia ese día`:"",f.contraste_sala.incompleta?`su listado no está completo (${esc(f.contraste_sala.incompleta)}): su silencio no baja la confirmación`:""].filter(Boolean).join(" · ")}</div>`:"");
 }
 function sClass(e){return e==="ok"?"s-ok":/error|bloq/.test(e)?"s-err":"s-warn"}
 // ---------------------------------------------------------------- página de Fuentes
