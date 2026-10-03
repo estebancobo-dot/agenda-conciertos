@@ -82,10 +82,34 @@ SALAS = [
     ("Dime que me Quieres (API)", "https://conciertos.dimequemequieresbardecopas.com/" + TRIBE),
     ("El Café de la Ópera", "https://www.elcafedelaopera.com/"),
 ]
+# segunda tanda (3-10-2026): Hangar 48 y otras salas que venden por TicketAndRoll, y webs de salas con conciertos
+SALAS2 = [
+    ("TicketAndRoll (robots y portada)", "https://ticketandroll.com/"),
+    ("TicketAndRoll: Hangar 48", "https://ticketandroll.com/local/sala-hangar-48"),
+    ("TicketAndRoll: Hangar 48 (2)", "https://ticketandroll.com/local/hangar-48"),
+    ("TicketAndRoll: Rincón del Arte Nuevo", "https://ticketandroll.com/local/el-rincon-del-arte-nuevo"),
+    ("TicketAndRoll: Jazzville", "https://ticketandroll.com/local/jazzville"),
+    ("El Perro Club (conciertos)", "https://elperroclub.es/conciertos/"),
+    ("El Perro Club (API)", "https://elperroclub.es/" + TRIBE),
+    ("Sala Uni", "https://salauni.es/"),
+    ("Sala Uni (API)", "https://salauni.es/" + TRIBE),
+    ("Fulanita de Tal", "https://fulanitadetal.com/"),
+    ("Fulanita de Tal (API)", "https://fulanitadetal.com/" + TRIBE),
+    ("Live Las Ventas", "https://livelasventas.com/es/"),
+    ("Círculo de Bellas Artes (eventos)", "https://www.circulobellasartes.com/eventos/"),
+    ("Círculo de Bellas Artes (API)", "https://www.circulobellasartes.com/" + TRIBE),
+    ("Ateneo de Madrid", "https://www.ateneodemadrid.com/"),
+    ("Palacio Vistalegre", "https://www.palaciovistalegre.com/"),
+    ("Café Berlín", "https://berlincafe.es/"),
+    ("Tempo Audiophile Club (API)", "https://tempoclub.es/" + TRIBE),
+    ("Teatro Eslava", "https://teatroeslava.com/"),
+]
 if len(sys.argv) > 1 and sys.argv[1] == "americana":
     CANDIDATAS = AMERICANA
 if len(sys.argv) > 1 and sys.argv[1] == "salas":
     CANDIDATAS = SALAS
+if len(sys.argv) > 1 and sys.argv[1] == "salas2":
+    CANDIDATAS = SALAS2
 FECHA = re.compile(r"\b(\d{1,2})[/.-](\d{1,2})(?:[/.-](\d{2,4}))?\b|\b\d{1,2} de (?:enero|febrero|marzo|abril|mayo|junio|"
                    r"julio|agosto|septiembre|octubre|noviembre|diciembre)\b", re.I)
 f = Fetcher()
