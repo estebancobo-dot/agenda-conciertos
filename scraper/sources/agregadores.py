@@ -471,3 +471,68 @@ def totalstage_parse(html: str, page_url: str, today: date) -> list:
 
 def totalstage(ctx: Ctx):
     yield from totalstage_parse(ctx.get(TOTALSTAGE), TOTALSTAGE, ctx.today)
+
+
+# ------------------------------------------------------------------ JacksOnLive (agenda independiente desde 2014)
+JACKSON = "https://www.jacksonlive.es/madrid"
+
+
+def _inertia(html: str) -> dict:
+    """Los datos con los que se monta la página (Inertia: <script data-page="app" type="application/json">)."""
+    s = soup_of(html)
+    for sc in s.select('script[type="application/json"]'):
+        try:
+            d = json.loads(sc.get_text())
+        except ValueError:
+            continue
+        if isinstance(d, dict) and "props" in d:
+            return d["props"]
+    return {}
+
+
+def jackson_parse(html: str, page_url: str, today: date) -> list:
+    """Una página de estilo de Madrid: cada concierto con fecha y hora, estilo, precio, sala, municipio y artistas."""
+    out = []
+    for c in _inertia(html).get("conciertos") or []:
+        m = re.match(r"(\d{4})-(\d\d)-(\d\d)(?: (\d\d):(\d\d))?", str(c.get("hora") or ""))
+        if not m or str(c.get("eventStatus") or "") in ("EventCancelled", "EventPostponed"):
+            continue
+        try:
+            f = date(int(m.group(1)), int(m.group(2)), int(m.group(3)))
+        except ValueError:
+            continue
+        hora = f"{m.group(4)}:{m.group(5)}" if m.group(4) and f"{m.group(4)}:{m.group(5)}" != "00:00" else None
+        spot = c.get("spot") or {}
+        artistas = [clean(a.get("nombre")) for a in c.get("artistas") or [] if clean(a.get("nombre"))]
+        # "Concierto de X en Madrid (Segunda Fecha)": el nombre, sin el "concierto de" ni el lugar
+        titulo = re.sub(r"(?i)^concierto de\s+|\s+en\s+[^\s].*$", "", clean(c.get("nombre")) or "")
+        nombre = artistas[0] if artistas else titulo
+        precio = None
+        try:
+            bajo = float(c.get("lowPrice") or 0)
+        except (TypeError, ValueError):
+            bajo = 0
+        if bajo:
+            precio = f"desde {bajo:.2f} €".replace(".", ",")
+        festival = (c.get("category") or "") == "festival" or (c.get("type") or "") == "Festival"
+        out.append(make(f, titulo if festival else nombre, c.get("path") or page_url, split=False,
+                        invitados=artistas if festival else artistas[1:], sala=clean(spot.get("nombre")),
+                        ciudad=clean(spot.get("municipio")) or "Madrid", hora=hora, precio=precio,
+                        estilo=clean(c.get("type")), tipo="festival" if festival else None))
+    return out
+
+
+def jacksonlive(ctx: Ctx):
+    """La portada de Madrid enseña 100 de sus conciertos; cada página de estilo, todos los de ese estilo (por páginas)."""
+    props = _inertia(ctx.get(JACKSON))
+    estilos = list(dict.fromkeys((props.get("genreLinks") or {}).values())) or ["pop-rock"]
+    vistos = set()
+    for est in estilos:
+        for n in range(1, 11):
+            url = f"{JACKSON}/conciertos/{est}" + (f"?page={n}" if n > 1 else "")
+            evs = jackson_parse(ctx.get(url), url, ctx.today)
+            nuevos = [e for e in evs if e.url not in vistos]
+            vistos.update(e.url for e in evs)
+            yield from nuevos
+            if len(evs) < 100 or not nuevos:
+                break

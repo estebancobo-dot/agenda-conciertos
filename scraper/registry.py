@@ -23,6 +23,9 @@ FUENTES: list[Source] = [
       3, "alta", "madridenvivo", ag.madridenvivo, tope_seg=None),  # 10 s entre páginas: tiene su lectura aparte
     S("songkick", "Songkick Madrid", "https://www.songkick.com/metro-areas/28755-spain-madrid", "agregador", 3, "media",
       "songkick", ag.songkick),
+    S("jacksonlive", "JacksOnLive (agenda de Madrid)", ag.JACKSON, "agregador", 3, "media", "jacksonlive",
+      ag.jacksonlive, notas="Agenda independiente desde 2014. Lee sus páginas de estilo de Madrid: fecha y hora, "
+                            "estilo, precio, sala y artistas."),
     S("totalstage", "Total Stage (agenda de la comunidad)", ag.TOTALSTAGE, "agregador", 3, "media",
       "conciertos.club", ag.totalstage,
       notas="Agenda que completan sus usuarios: una sola página con todos los próximos de Madrid. Va en el grupo de "
@@ -203,7 +206,6 @@ NO_USAR = {
     "Agendas municipales de Getafe, Alcobendas, Arganda del Rey, San Sebastián de los Reyes y Coslada":
         "Bloqueo (403 o verificación antirobots), error de certificado o sin respuesta en todas las ejecuciones.",
     "IndyRock": "Bloquea el acceso automático.",
-    "JacksOnLive": "Bloquea el acceso automático.",
     "La Hora del Blues": "Bloquea el acceso automático.",
     "Foro Azkena, Zona-Zero": "Foros: solo consulta manual (ver README).",
     # probadas el 2-10-2026 (fase 4, géneros con pocos conciertos)
