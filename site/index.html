@@ -362,6 +362,15 @@ th{color:var(--muted);font-weight:600}
 .md ul{padding-left:20px} .md code{background:var(--panel2);padding:1px 4px;border-radius:4px}
 .muted{color:var(--muted)}
 @media (min-width:700px){.day{min-height:78px}.actions{grid-template-columns:repeat(3,1fr)}.actions .primary{grid-column:auto}}
+.favm{color:var(--warn);font-size:.95rem;line-height:1}
+.tnuevo{background:var(--accent);color:var(--panel);font-weight:700}
+.favbtn[aria-pressed="true"]{border-color:var(--warn);color:var(--ink)}
+.mbad{display:inline-block;margin-left:6px;padding:0 7px;border-radius:999px;background:var(--accent);color:var(--panel);font-size:.75rem;font-weight:700}
+#menubtn{position:relative}#menubtn.conaviso::after{content:"";position:absolute;top:6px;right:6px;width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 2px var(--panel)}
+.segn{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}.segn button{border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:999px;padding:6px 12px;font-size:.85rem}
+.segn button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.favcam ul{margin:4px 0 6px 18px;padding:0}.favcam li.grave{font-weight:700}.favc{padding:8px 0;border-top:1px solid var(--line)}.favc:first-of-type{border-top:0}
+.simil{margin-top:18px}.simil h3{font-size:1.02rem;margin:0 0 2px}.simr{margin-top:8px}.simw{margin:2px 0 0 72px}
 .nrm{margin-top:4px}
 .nrm-chip{display:inline-block;font-size:11px;font-weight:600;padding:1px 7px;border-radius:999px;border:1px solid;background:var(--panel2)}
 .nrm-chip{color:var(--ink)}.nrm-conocido{border-color:var(--ok)}.nrm-estimado{border-color:var(--warn)}.nrm-desconocido,.nrm-no_aplica{border-color:var(--line);color:var(--muted)}
@@ -417,7 +426,8 @@ const GN = Object.fromEntries(GRUPOS.map(g=>[g.id,g.nombre]));
 const DEF_GRUPOS = GRUPOS.filter(g=>!g.mas).map(g=>g.id);
 const VISTAS = ["Mes","Semana","Finde","Día","Todos"];
 const INFO = ["Salas","Calendarios","Estilos","Fuentes","Informe","Versiones"];
-const TABS = [...VISTAS,...INFO];
+const PROPIAS = ["Mis conciertos","Novedades"];  // fase B: lo de quien usa la web (guardado en su móvil)
+const TABS = [...VISTAS,...INFO,...PROPIAS];
 // confirmación de cada concierto (scraper: puntuar_confianza): c confirmado, p probable, s sin confirmar
 const CONFS = [["todos","Todos"],["probable","Probable o confirmado"],["confirmado","Solo confirmados"]];
 const NIVEL = {c:"confirmado",p:"probable",s:"sin confirmar"};
@@ -502,7 +512,10 @@ function toast(t){const d=document.createElement("div");d.className="toast";d.te
 function openMenu(){
   const m=document.getElementById("menu");
   if(m.innerHTML){m.innerHTML="";return;}
+  const nf=Object.keys(FAV.get()).length, nn=novedades(VISITA.anterior).length, nc=favConCambios().length;
   m.innerHTML=`<div class="sheet-bg" style="background:transparent" id="mbg"></div><div class="menu" role="menu">
+    <button role="menuitem" data-go="Mis conciertos">⭐ Mis conciertos${nf?` <small>${nf}</small>`:""}${nc?` <span class="mbad">${nc} con cambios</span>`:""}</button>
+    <button role="menuitem" data-go="Novedades">🆕 Novedades${nn?` <span class="mbad">${nn}</span>`:""}</button><hr>
     ${INFO.map(t=>`<button role="menuitem" data-go="${t}">${{Salas:"📍",Calendarios:"📅",Estilos:"🎼",Fuentes:"🔗",Informe:"📊",Versiones:"🕘"}[t]} ${t}</button>`).join("")}
     <hr><a role="menuitem" href="data/concerts.csv" download>⬇ Descargar CSV (Excel)</a>
     <button role="menuitem" id="mtheme">◐ Modo claro / oscuro</button></div>`;
@@ -838,11 +851,12 @@ function card(r){
    <div class="cbody"><div class="art">${r.festival?`<span class="fest">Festival</span> `:""}${esc(r.artista)}</div>
    ${r.invitados&&r.invitados.length?`<div class="sub">${r.festival?`${esc(cartelCorto(r))}`:`+ ${r.invitados.map(esc).join(" + ")}`}</div>`:""}
    <div class="sub">${h?`<b>${esc(h)}</b> · `:""}${esc(r.sala||"sala sin indicar")}${r.municipio&&r.municipio!=="Madrid"?` · ${esc(r.municipio)}`:""}</div>
-   <div class="tags">${r.nacionalidad?`<span class="flag" title="${esc(pais(r.nacionalidad))}">${flag(r.nacionalidad)}</span>`:r.nacionalidad_estimada?`<span class="flag est" title="Probablemente ${esc(pais(r.nacionalidad_estimada))} (estimado por el nombre)">${flag(r.nacionalidad_estimada)}</span>`:""}${estiloTags(r,2)}${cartelTags(r)}${estadoMini(r)}${cambioMini(r)}${nivelDe(r)==="confirmado"&&!r.evento?`<span class="conf" title="Confirmado: lo anuncia la sala, una ticketera o varias agendas" aria-label="Confirmado">✓</span>`:""}</div></div><span class="chev" aria-hidden="true">›</span></a>`;
+   <div class="tags">${r.nacionalidad?`<span class="flag" title="${esc(pais(r.nacionalidad))}">${flag(r.nacionalidad)}</span>`:r.nacionalidad_estimada?`<span class="flag est" title="Probablemente ${esc(pais(r.nacionalidad_estimada))} (estimado por el nombre)">${flag(r.nacionalidad_estimada)}</span>`:""}${estiloTags(r,2)}${cartelTags(r)}${estadoMini(r)}${cambioMini(r)}${nivelDe(r)==="confirmado"&&!r.evento?`<span class="conf" title="Confirmado: lo anuncia la sala, una ticketera o varias agendas" aria-label="Confirmado">✓</span>`:""}%MARCAS%</div></div><span class="chev" aria-hidden="true">›</span></a>`;
   }
   // las primeras miniaturas de la vista se piden ya y con prioridad; el resto, al acercarse
   // las primeras de la vista se piden ya; el resto, por la cola (primero las que están en pantalla)
-  return r._conImg?r._card.replace("%SRC%",nImg++<6?'fetchpriority="high" src':`src="${PIXEL}" data-src`):r._card;
+  const c=r._card.replace("%MARCAS%",marcas(r));
+  return r._conImg?c.replace("%SRC%",nImg++<6?'fetchpriority="high" src':`src="${PIXEL}" data-src`):c;
 }
 // estado vacío que dice por qué: sin conciertos anunciados, o todos ocultos por los filtros (con un botón)
 function vacioHTML(ocultos,cuando){
@@ -987,10 +1001,11 @@ function viewConcierto(){
     <div class="actions">
      ${comprar?`<a class="lbtn primary" id="comprar" href="${esc(comprar.url)}" target="_blank" rel="noopener">${agotado?"Agotado · ver en":"Comprar entradas en"} ${esc(comprar.nombre)} ↗</a>`:""}
      ${entradas&&(!comprar||entradas!==comprar.url)?`<a class="lbtn${comprar?"":" primary"}" href="${esc(entradas)}" target="_blank" rel="noopener">${r.confirmado_sala?"Ver en la web de la sala":comprar?"Ver el anuncio":"Ver anuncio y entradas"} ↗</a>`:""}
-     <button class="lbtn" id="ics">📅 Al calendario</button><button class="lbtn" id="share">↗ Compartir</button>
+     <button class="lbtn favbtn" id="fav" aria-pressed="${esFav(r.id)}">${esFav(r.id)?"★ En Mis conciertos":"☆ Guardar"}</button><button class="lbtn" id="ics">📅 Al calendario</button><button class="lbtn" id="share">↗ Compartir</button>
     </div>
     ${cartelHTML(r)}
     ${historialHTML(r)}
+    ${similaresHTML(r)}
     <h3 class="sec">Escuchar y saber más</h3>
     <div class="links">${enlaces.map(e=>`<a class="lbtn" href="${esc(e.url)}" target="_blank" rel="noopener">${esc(e.nombre)}</a>`).join("")}</div>
     ${f&&f.perfil?`<p class="muted">${esc(f.perfil)} <span class="hint">(Discogs)</span></p>`:""}
@@ -1375,6 +1390,104 @@ async function viewVersiones(){
 }
 
 
+// ---------------------------------------------------------------- fase B: Mis conciertos, Novedades, similares
+// Todo se guarda en este móvil (localStorage): sin cuentas ni servidores. Cada concierto guardado lleva una copia de
+// cómo era al guardarlo (fecha, hora, sala) para avisar si cambia, se cancela o desaparece de las agendas.
+const FAV={get(){return store.get("favoritos",{})}, set(v){store.set("favoritos",v)}};
+const esFav=id=>!!FAV.get()[id];
+const fotoFav=r=>({artista:r.artista,fecha:r.fecha,hora:r.hora||null,sala:r.sala||null,municipio:r.municipio||null,guardado:HOY});
+function toggleFav(id){const f=FAV.get(); let on; if(f[id]){delete f[id]; on=false;} else {const r=BYID[id]; if(!r) return false; f[id]=fotoFav(r); on=true;} FAV.set(f); const r=BYID[id]; if(r) delete r._card; return on;}
+function cambiosFav(id,g){
+  const r=BYID[id], out=[];
+  if(!r) return g.fecha<HOY?[]:[{t:"Ya no aparece en ninguna agenda: puede haberse cancelado o cambiado de nombre",grave:true}];
+  const f=x=>fmt(x,{weekday:"short",day:"numeric",month:"short"});
+  if(r.fecha!==g.fecha) out.push({t:`Fecha: ${f(g.fecha)} → ${f(r.fecha)}`});
+  if((r.hora||null)!==(g.hora||null)&&r.hora) out.push({t:`Hora: ${g.hora||"sin indicar"} → ${r.hora}`});
+  if((r.sala||null)!==(g.sala||null)&&r.sala) out.push({t:`Sala: ${g.sala||"sin indicar"} → ${r.sala}`});
+  if(r.estado==="posiblemente cancelado") out.push({t:"¿Cancelado? Ya no aparece en las webs donde se anunciaba",grave:true});
+  return out;
+}
+const favConCambios=()=>Object.entries(FAV.get()).filter(([id,g])=>cambiosFav(id,g).length);
+// última visita: lo que ha aparecido desde entonces es "Nuevo" (la primera vez, lo de los últimos 2 días)
+let VISITA={anterior:null};
+function iniciarVisita(){
+  const v=store.get("visita",null);
+  if(!v) VISITA={hoy:HOY,anterior:addDays(HOY,-2)};
+  else if(v.hoy!==HOY) VISITA={hoy:HOY,anterior:v.hoy};
+  else VISITA=v;
+  store.set("visita",VISITA);
+}
+const esNuevo=r=>!!r.primera_vez_visto&&!!VISITA.anterior&&r.primera_vez_visto>VISITA.anterior&&r.fecha>=HOY;
+function marcas(r){
+  return (esFav(r.id)?`<span class="favm" title="En Mis conciertos" aria-label="En Mis conciertos">★</span>`:"")+
+    (esNuevo(r)?`<span class="tag tnuevo" title="Nuevo desde tu última visita">Nuevo</span>`:"");
+}
+function marcarMenu(){ const b=document.getElementById("menubtn"); if(!b) return;
+  const n=favConCambios().length+(novedades(VISITA.anterior).length?1:0); b.classList.toggle("conaviso",n>0);
+  b.setAttribute("aria-label",n?"Más opciones (hay novedades o cambios en tus conciertos)":"Más opciones"); }
+function novedades(desde){
+  const d=desde||state.novDesde||VISITA.anterior;
+  return DATA.filter(r=>r.fecha>=HOY&&r.primera_vez_visto&&r.primera_vez_visto>d);
+}
+function viewNovedades(){
+  const opciones=[[VISITA.anterior,`Desde tu última visita (${fmt(VISITA.anterior,{day:"numeric",month:"short"})})`],[addDays(HOY,-7),"Últimos 7 días"],[addDays(HOY,-30),"Últimos 30 días"]];
+  const d=state.novDesde||VISITA.anterior;
+  const todas=novedades(d), vis=todas.filter(visible);
+  const bd={}; vis.forEach(r=>(bd[r.fecha]=bd[r.fecha]||[]).push(r));
+  const dias=Object.keys(bd).sort();
+  return `<p class="hint">Conciertos que han aparecido en las agendas, ordenados por la fecha del concierto. Con tus filtros de géneros, origen y confirmación.</p>
+    <div class="segn" role="group" aria-label="Desde cuándo">${opciones.map(([f,t])=>`<button data-nov="${f}" aria-pressed="${f===d}">${esc(t)}</button>`).join("")}</div>
+    <div class="todos-h"><b>${plural(vis.length,"concierto nuevo","conciertos nuevos")}</b>${todas.length>vis.length?`<span class="hint">${todas.length-vis.length} más ocultos por tus filtros</span>`:""}</div>
+    <div id="lista">${dias.map(f=>dayList(f,bd[f])).join("")||`<p class="empty">No hay conciertos nuevos en este periodo${todas.length?" con tus filtros":""}.</p>`}</div>`;
+}
+function viewFavoritos(){
+  const fav=FAV.get(), ids=Object.keys(fav);
+  if(!ids.length) return `<p class="empty">Aún no has guardado ningún concierto.<br>Abre uno y pulsa <b>☆ Guardar</b>: aparecerá aquí, y la web te avisará si cambia de fecha, hora o sala, o si se cancela. Se guarda en este móvil.</p>`;
+  const cambios=ids.filter(id=>cambiosFav(id,fav[id]).length);
+  const prox=ids.filter(id=>BYID[id]&&BYID[id].fecha>=HOY).map(id=>BYID[id]).sort((a,b)=>(a.fecha+(a.hora||"99")).localeCompare(b.fecha+(b.hora||"99")));
+  const fuera=ids.filter(id=>!BYID[id]||BYID[id].fecha<HOY);
+  const bd={}; prox.forEach(r=>(bd[r.fecha]=bd[r.fecha]||[]).push(r));
+  const f=x=>fmt(x,{weekday:"short",day:"numeric",month:"short"});
+  return (cambios.length?`<section class="box box-warn favcam"><b>Han cambiado ${plural(cambios.length,"concierto guardado","conciertos guardados")}</b>${cambios.map(id=>{const g=fav[id];
+      return `<div class="favc"><a href="#concierto/${esc(id)}">${esc(g.artista)}</a><ul>${cambiosFav(id,g).map(c=>`<li${c.grave?' class="grave"':""}>${esc(c.t)}</li>`).join("")}</ul>
+        <button class="lbtn" data-visto="${esc(id)}">Entendido</button></div>`;}).join("")}</section>`:"")+
+    `<div class="todos-h"><b>${plural(prox.length,"concierto guardado","conciertos guardados")}</b>${prox.length?`<button class="lbtn" id="favics">📅 Todos a mi calendario</button>`:""}</div>`+
+    dias_(bd)+
+    (fuera.length?`<details class="more"><summary>Ya pasados o retirados (${fuera.length})</summary>${fuera.map(id=>{const g=fav[id];
+      return `<div class="favc">${esc(g.artista)} · ${esc(f(g.fecha))}${g.sala?` · ${esc(g.sala)}`:""} <button class="lbtn" data-quitarfav="${esc(id)}">Quitar</button></div>`;}).join("")}</details>`:"")+
+    `<p class="hint">Se guardan en este móvil (si borras los datos del navegador, se pierden).</p>`;
+}
+const dias_=bd=>Object.keys(bd).sort().map(f=>dayList(f,bd[f])).join("");
+function icsVarios(lista){
+  const uno=lista.map(r=>icsDe(r).split("\r\n")).map(l=>l.slice(l.indexOf("BEGIN:VEVENT"),l.indexOf("END:VEVENT")+1));
+  return ["BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//agenda-conciertos//ES",...uno.flat(),"END:VCALENDAR"].join("\r\n");
+}
+function bindPropias(){
+  document.querySelectorAll("[data-nov]").forEach(b=>b.onclick=()=>{state.novDesde=b.dataset.nov; renderBody(false);});
+  document.querySelectorAll("[data-visto]").forEach(b=>b.onclick=()=>{const f=FAV.get(), id=b.dataset.visto;
+    if(BYID[id]) f[id]=fotoFav(BYID[id]); else delete f[id]; FAV.set(f); marcarMenu(); renderBody(false);});
+  document.querySelectorAll("[data-quitarfav]").forEach(b=>b.onclick=()=>{const f=FAV.get(); delete f[b.dataset.quitarfav]; FAV.set(f); renderBody(false);});
+  const fi=document.getElementById("favics"); if(fi) fi.onclick=()=>{
+    const l=Object.keys(FAV.get()).map(id=>BYID[id]).filter(r=>r&&r.fecha>=HOY);
+    const a=document.createElement("a"); a.href=URL.createObjectURL(new Blob([icsVarios(l)],{type:"text/calendar"}));
+    a.download="mis-conciertos.ics"; document.body.appendChild(a); a.click(); a.remove();};
+}
+// Artistas similares: otros conciertos próximos con los mismos estilos concretos (de Discogs o de las agendas) y,
+// a igualdad, del mismo género. Se dice por qué ("mismo estilo: Garage Rock").
+function similaresHTML(r){
+  const est=new Set(r.estilos_discogs||[]), gr=new Set(grupos(r).filter(g=>!["sin clasificar","tributos y versiones","musicales y espectáculos","fuera de foco"].includes(g)));
+  if(!est.size&&!gr.size) return "";
+  const yo=norm(r.artista);
+  const cand=DATA.filter(x=>x.fecha>=HOY&&x.id!==r.id&&norm(x.artista)!==yo&&!x.origen_no_aplica).map(x=>{
+    const comunes=(x.estilos_discogs||[]).filter(e=>est.has(e)), g=grupos(x).filter(y=>gr.has(y));
+    return {x,comunes,g,p:comunes.length*3+(g.length?1:0)};
+  }).filter(c=>c.comunes.length>0).sort((a,b)=>b.p-a.p||a.x.fecha.localeCompare(b.x.fecha));
+  const vistos=new Set(), top=[];
+  for(const c of cand){const k=norm(c.x.artista); if(vistos.has(k)) continue; vistos.add(k); top.push(c); if(top.length>=6) break;}
+  if(!top.length) return "";
+  return `<section class="simil"><h3>Si te gusta ${esc(r.artista)}</h3><p class="hint">Otros conciertos próximos con el mismo estilo</p>
+    ${top.map(c=>`<div class="simr">${card(c.x)}<div class="hint simw">mismo estilo: ${esc(c.comunes.slice(0,3).join(", "))}</div></div>`).join("")}</section>`;
+}
 // ---------------------------------------------------------------- navegación
 let lastHash="";
 function setHash(){
@@ -1392,7 +1505,7 @@ function readHash(){
     if(!lastHash.startsWith("#sala/")) state.from=lastHash||null;
     state.tab="Sala"; state.sala=decodeURIComponent(m.slice(1).join("/")); return;
   }
-  const t=TABS.find(x=>norm(x)===m[0]); if(t) state.tab=t;
+  const t=TABS.find(x=>norm(x)===decodeURIComponent(m[0]||"")); if(t) state.tab=t;
   if(m[1]&&/^\d{4}-\d{2}-\d{2}$/.test(m[1])) state.date=m[1];
 }
 function renderTabs(){
@@ -1451,7 +1564,8 @@ async function renderBody(keepFocus){
   else {
     const back=`<a class="back" href="#mes/${state.date||HOY}">‹ Agenda</a><h2 style="margin:4px 0 10px">${esc(state.tab)}</h2>`;
     if(["Salas","Calendarios"].includes(state.tab)) await cargarSalas();
-    if(state.tab==="Salas") body=back+viewSalas(); else if(state.tab==="Calendarios") body=back+viewCalendarios();
+    if(state.tab==="Mis conciertos") body=back+viewFavoritos(); else if(state.tab==="Novedades") body=back+viewNovedades();
+    else if(state.tab==="Salas") body=back+viewSalas(); else if(state.tab==="Calendarios") body=back+viewCalendarios();
     else if(state.tab==="Estilos") body=back+viewEstilos(); else if(state.tab==="Fuentes") body=back+viewFuentes();
     else if(state.tab==="Informe") body=back+viewInforme(); else body=back+await viewVersiones();
   }
@@ -1660,11 +1774,14 @@ function bindBody(){
   const cr=document.getElementById("copiarRum"); if(cr) cr.onclick=async()=>{try{await navigator.clipboard.writeText(cr.dataset.t); toast("Copiado");}catch(e){prompt("Copia estos datos:",cr.dataset.t);}};
   const br=document.getElementById("borrarRum"); if(br) br.onclick=()=>{for(const k in RUM) delete RUM[k]; try{localStorage.removeItem("agenda:rum");}catch(e){} renderBody(false);};
   const vt=document.getElementById("vertodo"); if(vt) vt.onclick=()=>{setGrupos(GRUPOS.map(g=>g.id)); state.origen="todos"; store.set("origen","todos"); state.conf="todos"; store.set("conf","todos"); renderBody(false);};
+  bindPropias();
   const r=BYID[state.id];
   if(state.tab==="Concierto"&&r){
     // "Volver" es volver atrás en el historial (a la lista, en el mismo sitio), no abrirla de nuevo
     const bk=document.querySelector("#main .back"); if(bk&&state.from) bk.onclick=e=>{e.preventDefault(); history.back();};
     const i=document.getElementById("ics"); if(i) i.onclick=()=>descargarIcs(r);
+    const fv=document.getElementById("fav"); if(fv) fv.onclick=()=>{const on=toggleFav(r.id); fv.setAttribute("aria-pressed",on);
+      fv.textContent=on?"★ En Mis conciertos":"☆ Guardar"; toast(on?"Guardado en Mis conciertos":"Quitado de Mis conciertos"); marcarMenu();};
     const s=document.getElementById("share"); if(s) s.onclick=()=>compartir(r);
     const ca=document.getElementById("carr");
     if(ca){ const dots=[...document.querySelectorAll(".dots [data-slide]")];
@@ -1697,7 +1814,8 @@ async function load(){
     // la actualización diaria no ha llegado (fallo de GitHub, sin conexión y datos guardados…): se avisa
     if(horas>30){ u.textContent+=` · ⚠ datos de hace ${horas<48?Math.round(horas)+" h":Math.round(horas/24)+" días"}`; u.classList.add("viejo"); }
   }catch(e){ document.getElementById("main").innerHTML=`<p class="empty">No se pudieron cargar los datos (${esc(e.message)}). Comprueba la conexión y recarga la página.</p>`; return; }
-  state.tab=store.get("tab","Mes"); if(!VISTAS.includes(state.tab)) state.tab="Mes"; state.date=HOY; readHash(); render();
+  iniciarVisita();
+  state.tab=store.get("tab","Mes"); if(!VISTAS.includes(state.tab)) state.tab="Mes"; state.date=HOY; readHash(); render(); marcarMenu();
 }
 document.getElementById("main").addEventListener("pointerdown",tocar,{passive:true});
 // Volver deja la lista donde estaba: al salir de una lista se guarda por qué concierto ibas (y a qué altura de la

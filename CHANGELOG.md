@@ -1,5 +1,14 @@
 # Versiones
 
+## 2.51.0 — 2026-10-04
+
+**Fase B: Mis conciertos, Novedades y artistas similares.** Todo en el propio móvil, sin cuentas.
+
+- **Mis conciertos**: botón **☆ Guardar** en la ficha de cada concierto; los guardados llevan **★** en la tarjeta y tienen su página (menú ☰ → Mis conciertos), con **📅 Todos a mi calendario**. La web guarda cómo era cada concierto al guardarlo y **avisa si cambia** de fecha, hora o sala, si parece cancelado o si desaparece de las agendas ("Hora: 21:00 → 22:00"), con un punto en el botón del menú; "Entendido" lo da por visto. Los conciertos que cambian de fecha o de sala siguen guardados (conservan su identificador).
+- **Novedades**: los conciertos que han aparecido desde tu última visita (o en los últimos 7 o 30 días), ordenados por la fecha del concierto y con tus filtros; en las listas, la marca **Nuevo**. La primera visita cuenta los 2 últimos días.
+- **Artistas similares**: en la ficha, "Si te gusta…": hasta 6 conciertos próximos de otros artistas con el mismo estilo concreto, y por qué ("mismo estilo: Garage Rock").
+- Validación en la web publicada: guardar, ★, Mis conciertos, Novedades y similares.
+
 ## 2.50.2 — 2026-10-04
 
 Revisión de calidad con los datos de la mañana:

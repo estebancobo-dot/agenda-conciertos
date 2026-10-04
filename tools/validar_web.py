@@ -483,6 +483,7 @@ def recorrido(b):
     vistas_finde_y_todos(pg)
     confirmacion_web(pg)
     normalizacion_web(pg)
+    fase_b_web(pg)
 
     # informe
     pg.evaluate("location.hash='#informe'")
@@ -1277,6 +1278,31 @@ def normalizacion_web(pg):
     chips = pg.evaluate("[...document.querySelectorAll('.rows .nrm-chip')].map(c=>c.textContent)")
     check("Funcional", "Estado de estilo y origen en la ficha y recuento en Fuentes (N3/N4)",
           f"ficha: {chips} · {res.splitlines()[1:3]}", ok=len(chips) >= 2, detalle=res[:300])
+
+
+def fase_b_web(pg):
+    """Fase B: guardar un concierto (★ en la tarjeta y en Mis conciertos, quitar), Novedades con su recuento y
+    artistas similares en la ficha. Deja el móvil de prueba como estaba (sin guardados)."""
+    pg.evaluate("location.hash='#semana/'+mondayOf(HOY)")
+    pg.wait_for_selector(".card", timeout=15000)
+    cid = pg.evaluate("(DATA.find(r=>r.fecha>=HOY&&(r.estilos_discogs||[]).length)||DATA.find(r=>r.fecha>=HOY)).id")
+    pg.evaluate(f"location.hash='#concierto/{cid}'")
+    pg.wait_for_selector("#fav", timeout=15000)
+    pg.click("#fav")
+    pg.wait_for_timeout(300)
+    guardado = pg.evaluate(f"esFav('{cid}')")
+    simil = pg.locator(".simil .card").count()
+    pg.evaluate("location.hash='#mis conciertos'")
+    pg.wait_for_timeout(800)
+    en_lista = pg.locator(f"#main .card[data-id='{cid}']").count()
+    estrella = pg.locator(f"#main .card[data-id='{cid}'] .favm").count()
+    pg.evaluate("localStorage.removeItem('agenda:favoritos')")
+    pg.evaluate("location.hash='#novedades'")
+    pg.wait_for_timeout(800)
+    nov = pg.inner_text(".todos-h") if pg.locator(".todos-h").count() else ""
+    check("Funcional", "Fase B: guardar en Mis conciertos (★), Novedades y artistas similares",
+          f"guardado y en la lista: {bool(guardado and en_lista)} · ★: {estrella} · {nov.splitlines()[0] if nov else 'sin Novedades'} · similares: {simil}",
+          ok=bool(guardado and en_lista and estrella and nov))
 
 
 def historial_web(pg):
