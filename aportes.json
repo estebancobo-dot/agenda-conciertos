@@ -2773,6 +2773,14 @@
    ],
    "lote": "A-2026-10-04-09",
    "fecha": "2026-10-04"
+  },
+  "wah": {
+   "nombre": "Wah!",
+   "motivo": "WAH: espectáculo de variedades con cena en IFEMA (cabaret), no un concierto",
+   "salas": [
+    "Pabellón 2, IFEMA Madrid"
+   ],
+   "fecha": "2026-10-04"
   }
  }
 }
