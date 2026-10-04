@@ -8,6 +8,12 @@ if git fetch -q --depth=1 origin aportes 2>/dev/null; then git checkout -q FETCH
 cp "$GITHUB_WORKSPACE/data/aportes.json" aportes.json
 mkdir -p informes
 if [ -f "$GITHUB_WORKSPACE/informe.md" ]; then cp "$GITHUB_WORKSPACE/informe.md" "informes/$(date -u +%Y%m%dT%H%M%S).md"; fi
+if [ -f "$GITHUB_WORKSPACE/lote.md" ]; then
+  mkdir -p lotes
+  L=$(grep -o '"lote": "[^"]*"' "$GITHUB_WORKSPACE/lote.md" | head -1 | cut -d'"' -f4)
+  cp "$GITHUB_WORKSPACE/lote.md" "lotes/${L:-ultimo}.md"
+  cp "$GITHUB_WORKSPACE/lote.md" lotes/ultimo.md
+fi
 git add -A
 if git diff --cached --quiet; then echo "Sin cambios"; exit 0; fi
 git -c user.name="agenda-bot" -c user.email="agenda-bot@users.noreply.github.com" commit -qm "Aportes de los lotes $(date -u +%FT%RZ)"
