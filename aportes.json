@@ -4652,6 +4652,267 @@
    "creado": "2026-10-04",
    "pendientes": 510,
    "importado": "2026-10-04"
+  },
+  "A-2026-10-04-18": {
+   "tipo": "artistas",
+   "creado": "2026-10-04",
+   "items": {
+    "a1": {
+     "nombre": "parsa jafari",
+     "clave": "parsa jafari",
+     "falta": [
+      "estilo"
+     ],
+     "salas": [
+      "The Bassement Club"
+     ]
+    },
+    "a2": {
+     "nombre": "Analog Society",
+     "clave": "analog society",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Sala Nazca"
+     ]
+    },
+    "a3": {
+     "nombre": "Kid Mount",
+     "clave": "kid mount",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Maravillas Club"
+     ]
+    },
+    "a4": {
+     "nombre": "Concierto en Palacio",
+     "clave": "concierto en palacio",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Centro Cultural Julio Cortázar (Moncloa - Aravaca)"
+     ]
+    },
+    "a5": {
+     "nombre": "Era Paraíso",
+     "clave": "era paraiso",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Centro Cultural Sara Montiel (Latina)"
+     ]
+    },
+    "a6": {
+     "nombre": "Folclore castellano tradicional",
+     "clave": "folclore castellano tradicional",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Centro Cultural José Luis Sampedro (Latina)"
+     ]
+    },
+    "a7": {
+     "nombre": "MÚSICA. 'Coplas en la lumbre' por Fátima Rü y Alberto Ruiz",
+     "clave": "musica coplas en la lumbre por fatima ru y alberto ruiz",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Centro Cultural Príncipe de Asturias (Ciudad Lineal)"
+     ]
+    },
+    "a8": {
+     "nombre": "Dropkick",
+     "clave": "dropkick",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Fotomatón Bar"
+     ]
+    },
+    "a9": {
+     "nombre": "GRETA",
+     "clave": "greta",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Sala B"
+     ]
+    },
+    "a10": {
+     "nombre": "Old Skulls Inc",
+     "clave": "old skulls inc",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Dime que me Quieres"
+     ]
+    },
+    "a11": {
+     "nombre": "20º ANIV. DRUNK-o-RAMA",
+     "clave": "20o aniv drunk o rama",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Wurlitzer Ballroom"
+     ]
+    },
+    "a12": {
+     "nombre": "BOO BOO WEAVILS",
+     "clave": "boo boo weavils",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Intruso Bar"
+     ]
+    },
+    "a13": {
+     "nombre": "CAROLINA OTERO & THE SOMEONE ELSES",
+     "clave": "carolina otero and the someone elses",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Sala Vesta"
+     ]
+    },
+    "a14": {
+     "nombre": "De Rancho",
+     "clave": "de rancho",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Sala El Sol"
+     ]
+    },
+    "a15": {
+     "nombre": "DREI",
+     "clave": "drei",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Cadillac Solitario"
+     ]
+    },
+    "a16": {
+     "nombre": "Lemot",
+     "clave": "lemot",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Plaza Mahou"
+     ]
+    },
+    "a17": {
+     "nombre": "Recreativos con Cinco Duros",
+     "clave": "recreativos con cinco duros",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Maravillas Club"
+     ]
+    },
+    "a18": {
+     "nombre": "LINDA BURNETTI",
+     "clave": "linda burnetti",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "El Perro Club"
+     ]
+    },
+    "a19": {
+     "nombre": "LOS JALEO",
+     "clave": "los jaleo",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Rockville"
+     ]
+    },
+    "a20": {
+     "nombre": "YES WE BLUES",
+     "clave": "yes we blues",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Moe"
+     ]
+    },
+    "a21": {
+     "nombre": "9louro en MAZO",
+     "clave": "9louro en mazo",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Sala Clamores"
+     ]
+    },
+    "a22": {
+     "nombre": "LORDS OF LOUNGE Lo Fi Rock Soul Funk",
+     "clave": "lords of lounge lo fi rock soul funk",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Tempo Audiophile Club"
+     ]
+    },
+    "a23": {
+     "nombre": "Pingüinos en Yugoslavia",
+     "clave": "pinguinos en yugoslavia",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Dime que me Quieres"
+     ]
+    },
+    "a24": {
+     "nombre": "LEGADO",
+     "clave": "legado",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Thundercat"
+     ]
+    },
+    "a25": {
+     "nombre": "Mayores con Reparos",
+     "clave": "mayores con reparos",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Fun House"
+     ]
+    }
+   },
+   "pendientes": 485
   }
  },
  "ocultos": {
