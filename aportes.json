@@ -833,6 +833,62 @@
    },
    "lote": "A-2026-10-04-09",
    "fecha": "2026-10-04"
+  },
+  "regina harsh": {
+   "nombre": "REGINA HARSH",
+   "pais": {
+    "valor": "ES",
+    "url": "https://www.lafactoriadelshow.com/regina-harsh/",
+    "cita": "espectaculos servicios para fiestas ideas para fiestas presupuesto rapido anunciate gratis acceso inicio musicos y grupos musicales cantantes de pop regina harsh regina harsh cantantes de pop de madrid trabaja en madrid y 1 provincias mas miembro desde 2022 pide presupuesto imagen anterior siguiente",
+    "ciudad": "Sevilla"
+   },
+   "estilos": {
+    "valores": [
+     "versiones"
+    ],
+    "url": "https://www.lafactoriadelshow.com/regina-harsh/",
+    "cita": "winehouse, christina aguilera. ideal para recepciones de celebraciones o musica ambiente durante las comidas, e incluso para las propias ceremonias. regina harsh se ofrece cantante mezzosoprano femenina con acompanamiento para hacer versiones acusticas de distintos tipos de canciones. disponemos de ",
+    "web_musica": false
+   },
+   "lote": "A-2026-10-04-10",
+   "fecha": "2026-10-04"
+  },
+  "mira godot": {
+   "nombre": "MIRA GODOT",
+   "estilos": {
+    "valores": [
+     "pop"
+    ],
+    "url": "https://www.lhmagazin.com/mira-godot-tiene-nuevo-single-godot-el-pop-mas-existencialista/",
+    "cita": "mira godot tiene nuevo single \"godot\" el pop mas existencialista · lh magazin «godot», cuarto single de mira godot, ya esta disponible en todas plataformas musi",
+    "web_musica": false
+   },
+   "lote": "A-2026-10-04-10",
+   "fecha": "2026-10-04"
+  },
+  "quiet light": {
+   "nombre": "Quiet Light",
+   "pais": {
+    "valor": "US",
+    "url": "https://www.mindies.es/2025/05/quiet-light-desplegara-su-encanto-sintetico-en-madrid/",
+    "cita": "ico de hotline tnt brilla de nuevo noe r. rivas tratando de escribir casi siempre sobre las cosas que me gustan. relacionados 25 marzo, 2026 noticias quiet light lanza el doble sencillo ‘postinternetfame’ y ‘self tape’ la compositora riya mahesh, que desarrolla su actividad artistica desde austin ba"
+   },
+   "enlaces": [
+    "https://quietlight.bandcamp.com/"
+   ],
+   "lote": "A-2026-10-04-10",
+   "fecha": "2026-10-04"
+  },
+  "atokateja": {
+   "nombre": "ATOKATEJA",
+   "pais": {
+    "valor": "ES",
+    "url": "https://siroco.es/eventos/atokateja/",
+    "cita": "atokateja - siroco sabado 14 febrero @ 21:00 - 23:59 - ven a disfrutar con nosotros de una noche de pop-rock espanol e internacional de los 80 y los 90 que os",
+    "ciudad": "Albelda de Iregua"
+   },
+   "lote": "A-2026-10-04-10",
+   "fecha": "2026-10-04"
   }
  },
  "conciertos": [
@@ -2579,6 +2635,170 @@
   "c:e21a130f": {
    "fecha": "2026-10-04",
    "lote": "C-2026-10-04-03"
+  },
+  "a:the pura fibra": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-10",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:umai session": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-10",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:radiosphere": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-10",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:regina harsh": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-10",
+   "aceptado": [
+    "estilos",
+    "pais"
+   ],
+   "rechazado": []
+  },
+  "a:patri suarez y gerard toal": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-10",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:veta": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-10",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:living dead dolls": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-10",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:walter sax big band": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-10",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:la sonrisa de javas": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-10",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:mi tio jimmy": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-10",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:west srk": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-10",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:mira godot": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-10",
+   "aceptado": [
+    "estilos"
+   ],
+   "rechazado": []
+  },
+  "a:recital y presentacion en el estanque de las brujas": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-10",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:mia subra": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-10",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:kris tena": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-10",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:quiet light": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-10",
+   "aceptado": [
+    "enlaces",
+    "pais"
+   ],
+   "rechazado": [
+    "estilos: ni la frase citada ni la página lo dicen junto al nombre"
+   ]
+  },
+  "a:el sotano de manuela": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-10",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:atokateja": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-10",
+   "aceptado": [
+    "pais"
+   ],
+   "rechazado": [
+    "estilos: ni la frase citada ni la página lo dicen junto al nombre"
+   ]
+  },
+  "a:los sensibles": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-10",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:osidados": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-10",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:moonshine riders": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-10",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:noche de hallowen dela mano de andres duende": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-10",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:pastos gansos": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-10",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:asociacion de artistas el chato": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-10",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:fiesta halloween": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-10",
+   "aceptado": [],
+   "rechazado": []
   }
  },
  "lotes": {
@@ -2657,284 +2877,8 @@
   "A-2026-10-04-10": {
    "tipo": "artistas",
    "creado": "2026-10-04",
-   "items": {
-    "a1": {
-     "nombre": "THE PURA FIBRA",
-     "clave": "the pura fibra",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Sala Siroco"
-     ]
-    },
-    "a2": {
-     "nombre": "UMAI SESSION",
-     "clave": "umai session",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Rincón del Arte Nuevo"
-     ]
-    },
-    "a3": {
-     "nombre": "RADIOSPHERE",
-     "clave": "radiosphere",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Honky Tonk"
-     ]
-    },
-    "a4": {
-     "nombre": "REGINA HARSH",
-     "clave": "regina harsh",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Fulanita de Tal"
-     ]
-    },
-    "a5": {
-     "nombre": "PATRI SUAREZ Y GERARD TOAL",
-     "clave": "patri suarez y gerard toal",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Rincón del Arte Nuevo"
-     ]
-    },
-    "a6": {
-     "nombre": "VETA",
-     "clave": "veta",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Sala Siroco"
-     ]
-    },
-    "a7": {
-     "nombre": "LIVING DEAD DOLLS",
-     "clave": "living dead dolls",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Café La Palma"
-     ]
-    },
-    "a8": {
-     "nombre": "WALTER SAX BIG BAND",
-     "clave": "walter sax big band",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Intruso Bar"
-     ]
-    },
-    "a9": {
-     "nombre": "LA SONRISA DE JAVAS",
-     "clave": "la sonrisa de javas",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Rincón del Arte Nuevo"
-     ]
-    },
-    "a10": {
-     "nombre": "MI TÍO JIMMY",
-     "clave": "mi tio jimmy",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Jazzville"
-     ]
-    },
-    "a11": {
-     "nombre": "West Srk",
-     "clave": "west srk",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Sala B"
-     ]
-    },
-    "a12": {
-     "nombre": "MIRA GODOT",
-     "clave": "mira godot",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Café La Palma"
-     ]
-    },
-    "a13": {
-     "nombre": "RECITAL Y PRESENTACIÓN \"EN EL ESTANQUE DE LAS BRUJAS\"",
-     "clave": "recital y presentacion en el estanque de las brujas",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Gruta 77"
-     ]
-    },
-    "a14": {
-     "nombre": "Mía Subrá",
-     "clave": "mia subra",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Dime que me Quieres"
-     ]
-    },
-    "a15": {
-     "nombre": "Kris Tena",
-     "clave": "kris tena",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Intruso Bar"
-     ]
-    },
-    "a16": {
-     "nombre": "Quiet Light",
-     "clave": "quiet light",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Sala Vesta / Moby Dick Club"
-     ]
-    },
-    "a17": {
-     "nombre": "EL SOTANO DE MANUELA",
-     "clave": "el sotano de manuela",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Cadavra"
-     ]
-    },
-    "a18": {
-     "nombre": "ATOKATEJA",
-     "clave": "atokateja",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Moe"
-     ]
-    },
-    "a19": {
-     "nombre": "LOS SENSIBLES",
-     "clave": "los sensibles",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Honky Tonk"
-     ]
-    },
-    "a20": {
-     "nombre": "OSIDADOS",
-     "clave": "osidados",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Intruso Bar"
-     ]
-    },
-    "a21": {
-     "nombre": "MOONSHINE RIDERS",
-     "clave": "moonshine riders",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Jazzville"
-     ]
-    },
-    "a22": {
-     "nombre": "NOCHE DE HALLOWEN dela mano de ANDRES DUENDE",
-     "clave": "noche de hallowen dela mano de andres duende",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Rincón del Arte Nuevo"
-     ]
-    },
-    "a23": {
-     "nombre": "PASTOS GANSOS",
-     "clave": "pastos gansos",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Honky Tonk"
-     ]
-    },
-    "a24": {
-     "nombre": "Asociación de Artistas El Cható",
-     "clave": "asociacion de artistas el chato",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Cadillac Solitario"
-     ]
-    },
-    "a25": {
-     "nombre": "FIESTA HALLOWEEN",
-     "clave": "fiesta halloween",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Fulanita de Tal"
-     ]
-    }
-   },
-   "pendientes": 685
+   "pendientes": 685,
+   "importado": "2026-10-04"
   }
  },
  "ocultos": {
@@ -3062,6 +3006,15 @@
    "salas": [
     "Pabellón 2, IFEMA Madrid"
    ],
+   "fecha": "2026-10-04"
+  },
+  "recital y presentacion en el estanque de las brujas": {
+   "nombre": "RECITAL Y PRESENTACIÓN \"EN EL ESTANQUE DE LAS BRUJAS\"",
+   "motivo": "recital y presentación de un libro, no concierto",
+   "salas": [
+    "Gruta 77"
+   ],
+   "lote": "A-2026-10-04-10",
    "fecha": "2026-10-04"
   }
  }
