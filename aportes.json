@@ -1255,7 +1255,9 @@
   "taylor swift": {
    "nombre": "TAYLOR SWIFT",
    "motivo": "fiesta temática de canciones de Taylor Swift (no es la artista)",
-   "lote": "A-2026-10-04-04",
+   "salas": [
+    "Sala But"
+   ],
    "fecha": "2026-10-04"
   }
  }
