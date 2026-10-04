@@ -2653,6 +2653,288 @@
    "creado": "2026-10-04",
    "pendientes": 859,
    "importado": "2026-10-04"
+  },
+  "A-2026-10-04-10": {
+   "tipo": "artistas",
+   "creado": "2026-10-04",
+   "items": {
+    "a1": {
+     "nombre": "THE PURA FIBRA",
+     "clave": "the pura fibra",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Sala Siroco"
+     ]
+    },
+    "a2": {
+     "nombre": "UMAI SESSION",
+     "clave": "umai session",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Rincón del Arte Nuevo"
+     ]
+    },
+    "a3": {
+     "nombre": "RADIOSPHERE",
+     "clave": "radiosphere",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Honky Tonk"
+     ]
+    },
+    "a4": {
+     "nombre": "REGINA HARSH",
+     "clave": "regina harsh",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Fulanita de Tal"
+     ]
+    },
+    "a5": {
+     "nombre": "PATRI SUAREZ Y GERARD TOAL",
+     "clave": "patri suarez y gerard toal",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Rincón del Arte Nuevo"
+     ]
+    },
+    "a6": {
+     "nombre": "VETA",
+     "clave": "veta",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Sala Siroco"
+     ]
+    },
+    "a7": {
+     "nombre": "LIVING DEAD DOLLS",
+     "clave": "living dead dolls",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Café La Palma"
+     ]
+    },
+    "a8": {
+     "nombre": "WALTER SAX BIG BAND",
+     "clave": "walter sax big band",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Intruso Bar"
+     ]
+    },
+    "a9": {
+     "nombre": "LA SONRISA DE JAVAS",
+     "clave": "la sonrisa de javas",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Rincón del Arte Nuevo"
+     ]
+    },
+    "a10": {
+     "nombre": "MI TÍO JIMMY",
+     "clave": "mi tio jimmy",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Jazzville"
+     ]
+    },
+    "a11": {
+     "nombre": "West Srk",
+     "clave": "west srk",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Sala B"
+     ]
+    },
+    "a12": {
+     "nombre": "MIRA GODOT",
+     "clave": "mira godot",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Café La Palma"
+     ]
+    },
+    "a13": {
+     "nombre": "RECITAL Y PRESENTACIÓN \"EN EL ESTANQUE DE LAS BRUJAS\"",
+     "clave": "recital y presentacion en el estanque de las brujas",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Gruta 77"
+     ]
+    },
+    "a14": {
+     "nombre": "Mía Subrá",
+     "clave": "mia subra",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Dime que me Quieres"
+     ]
+    },
+    "a15": {
+     "nombre": "Kris Tena",
+     "clave": "kris tena",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Intruso Bar"
+     ]
+    },
+    "a16": {
+     "nombre": "Quiet Light",
+     "clave": "quiet light",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Sala Vesta / Moby Dick Club"
+     ]
+    },
+    "a17": {
+     "nombre": "EL SOTANO DE MANUELA",
+     "clave": "el sotano de manuela",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Cadavra"
+     ]
+    },
+    "a18": {
+     "nombre": "ATOKATEJA",
+     "clave": "atokateja",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Moe"
+     ]
+    },
+    "a19": {
+     "nombre": "LOS SENSIBLES",
+     "clave": "los sensibles",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Honky Tonk"
+     ]
+    },
+    "a20": {
+     "nombre": "OSIDADOS",
+     "clave": "osidados",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Intruso Bar"
+     ]
+    },
+    "a21": {
+     "nombre": "MOONSHINE RIDERS",
+     "clave": "moonshine riders",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Jazzville"
+     ]
+    },
+    "a22": {
+     "nombre": "NOCHE DE HALLOWEN dela mano de ANDRES DUENDE",
+     "clave": "noche de hallowen dela mano de andres duende",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Rincón del Arte Nuevo"
+     ]
+    },
+    "a23": {
+     "nombre": "PASTOS GANSOS",
+     "clave": "pastos gansos",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Honky Tonk"
+     ]
+    },
+    "a24": {
+     "nombre": "Asociación de Artistas El Cható",
+     "clave": "asociacion de artistas el chato",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Cadillac Solitario"
+     ]
+    },
+    "a25": {
+     "nombre": "FIESTA HALLOWEEN",
+     "clave": "fiesta halloween",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Fulanita de Tal"
+     ]
+    }
+   },
+   "pendientes": 685
   }
  },
  "ocultos": {
