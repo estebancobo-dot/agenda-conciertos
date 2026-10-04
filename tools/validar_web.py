@@ -1497,8 +1497,11 @@ def enlaces_directos(b, datos):
         t0 = time.monotonic()
         pg.goto(URL + f"#concierto/{r['id']}", wait_until="commit")
         pg.wait_for_selector(".dt h2", timeout=60000)
+        # sin la etiqueta "Festival" que llevan delante los festivales
+        titulo = pg.evaluate("(()=>{const h=document.querySelector('.dt h2').cloneNode(true);"
+                             "h.querySelectorAll('.fest').forEach(x=>x.remove());return h.textContent})()")
         check("Funcional", "Enlace directo a una ficha la abre", pg.inner_text(".dt h2"),
-              ok=pg.inner_text(".dt h2").strip().lower() == r["artista"].strip().lower())
+              ok=" ".join(titulo.split()).lower() == " ".join(r["artista"].split()).lower())
         check("Rendimiento", "Enlace directo a una ficha (visita nueva)", ms(t0), aviso=5000, fallo=9000)
     pg.goto(URL + "#concierto/no-existe-123", wait_until="commit")
     esperar_datos(pg)

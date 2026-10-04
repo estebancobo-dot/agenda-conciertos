@@ -93,7 +93,9 @@ _SOLO_EVENTO = re.compile(
     r"blues|jazz|rock|flamenco|soul|swing|tango|boleros?|piano|guitarra|navidad|halloween|otono|primavera|verano|"
     r"invierno|fin de (curso|ano)|clausura|apertura|alumnos|profesores|directores( de bandas)?))?( en (vivo|directo))?$|"
     r"^noches? de (piano )?(jazz|blues|swing|rock|flamenco|tango|boleros?|soul|musica)( en (vivo|directo))?$|"
-    r"^(covers?|versiones|tributos?) (live|en vivo|en directo|variad[oa]s)$|^(covers?|versiones)$")
+    r"^(covers?|versiones|tributos?) (live|en vivo|en directo|variad[oa]s)$|^(covers?|versiones)$|"
+    # fichas sin rellenar o que solo dicen el tipo de noche ("BAND NAME", "PIANO BAR")
+    r"^(band name|nombre (del grupo|de la banda|del artista)|artista|grupo|piano bar|musica ambiente)$")
 
 
 def sin_artista(titulo: str) -> bool:

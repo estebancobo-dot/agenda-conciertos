@@ -171,7 +171,11 @@ def mismo_acto_en_sala(a: str, b: str, sala: str = "") -> bool:
     pa = [w for w in _palabras(a) if w not in de_sala]
     pb = [w for w in _palabras(b) if w not in de_sala]
     if not pa or not pb:
-        return False
+        # todo palabras genéricas ("Jam Session Blues" / "MOE BLUES JAM SESSION"): el mismo acto si, sin el nombre de
+        # la sala, son exactamente las mismas palabras ("jazz jam" y "blues jam" no)
+        ta = {w for w in norm(a).split() if len(w) >= 3 and w not in de_sala and w not in {"the", "los", "las", "del"}}
+        tb = {w for w in norm(b).split() if len(w) >= 3 and w not in de_sala and w not in {"the", "los", "las", "del"}}
+        return bool(ta) and ta == tb and len(ta) >= 2
     corto, largo = sorted((pa, pb), key=len)
     comunes = set(pa) & set(pb)
     if set(corto) <= set(largo) and any(len(w) >= 4 for w in corto):

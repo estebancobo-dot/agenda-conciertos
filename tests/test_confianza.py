@@ -160,3 +160,10 @@ def test_varias_salas_en_una_fuente_y_series():
     ausencias_web_sala([j], {"elsol": {"completa": True}}, {"elsol": fuente("elsol", "sala", 1), **F}, {"elsol": evs2},
                        "2026-10-03")
     assert not j["conflictos"]
+
+
+def test_jams_con_otro_nombre_y_rellenos():
+    from scraper.origen import sin_artista
+    assert mismo_acto_en_sala("Jam Session Blues", "MOE BLUES JAM SESSION", "Moe")
+    assert not mismo_acto_en_sala("Jam Session Jazz", "MOE BLUES JAM SESSION", "Moe")
+    assert sin_artista("BAND NAME") and sin_artista("PIANO BAR") and not sin_artista("The Band")

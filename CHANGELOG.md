@@ -1,5 +1,14 @@
 # Versiones
 
+## 2.50.2 — 2026-10-04
+
+Revisión de calidad con los datos de la mañana:
+- **Jams con otro nombre**: "Jam Session Blues" (Madrid en Vivo) y "MOE BLUES JAM SESSION" (web de Moe) se unen: sin el nombre de la sala son las mismas palabras. "Jazz jam" y "blues jam" siguen separados.
+- **Enterticket**: fuera las raves y noches de club ("Iboga Rave presenta…", "Twist Club e Iboga presentan: Hospitality…"); "Rat-Zinger + KOP | Sala Mon" ya no pone la sala como artista invitado.
+- **Fichas sin rellenar** ("BAND NAME") y noches sin artista ("PIANO BAR"): origen "no aplica".
+- Validación: la comprobación del enlace directo a una ficha fallaba con los festivales (su título lleva delante la etiqueta "Festival"); era la prueba, no la web.
+- Cifras de la mañana (2.803 conciertos próximos): estilo 859 conocidos, 1.380 estimados, 306 no aplica y 258 desconocidos; origen 940, 422, 559 y 882; hora 2.338 conocidas, 131 sin acuerdo entre webs y 334 desconocidas; precio 1.932 y 871. Ya no quedan artistas sin mirar.
+
 ## 2.50.1 — 2026-10-03
 
 - Enterticket: las fichas de evento guardadas antes de leer el identificador de Spotify del artista se vuelven a mirar ya (antes, cada 3 días), para que la identificación por Spotify empiece en la próxima lectura.

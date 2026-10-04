@@ -21,7 +21,7 @@ MAX_PAGINAS = 150      # páginas de evento por lectura (a 1 por segundo como m�
 REVISAR_DIAS = 3       # los conciertos de Madrid se vuelven a mirar cada 3 días (hora, precio, cancelación)
 CATEGORIAS = {"conciertos", "festivales"}
 # fiestas y sesiones de DJ que la ticketera también llama "conciertos"
-_NO_CONCIERTO = re.compile(r"(?i)\b(dj|djs|dj set|brunch|clubbing|club night|fiesta|party|techno|after)\b")
+_NO_CONCIERTO = re.compile(r"(?i)\b(dj|djs|dj set|brunch|clubbing|club night|fiesta|party|techno|after|rave|iboga)\b")
 _NEXT = re.compile(r'<script id="__NEXT_DATA__"[^>]*>(.*?)</script>', re.S)
 _CIUDAD = re.compile(r"(?i)\s*(?:[-–|]\s*|\ben\s+)(?:madrid|alcal[aá] de henares|getafe|legan[eé]s|m[oó]stoles|"
                      r"fuenlabrada|alcorc[oó]n|torrej[oó]n de ardoz|las rozas)\b.*$")
@@ -51,6 +51,7 @@ def evento_de_pagina(html: str, url: str) -> dict | None:
     artistas = [clean(a.get("name")) for a in ev.get("artists") or [] if clean(a.get("name"))]
     spotify = next((str(a.get("spotify_id")) for a in ev.get("artists") or []
                     if a.get("spotify_id") and re.fullmatch(r"[0-9A-Za-z]{22}", str(a.get("spotify_id")))), None)
+    nombre_ev = re.sub(r"\s*\|\s*sala\s+.*$", "", nombre_ev, flags=re.I)  # "Rat-Zinger + KOP | Sala Mon"
     nombre = clean(_CIUDAD.sub("", nombre_ev)) or (artistas[0] if artistas else "")
     out.update({"nombre": nombre, "hora": hora, "sala": clean(venue.get("name")), "ciudad": muni, "url": url,
                 "precio": f"desde {precio:.2f} €".replace(".", ",") if isinstance(precio, (int, float)) and precio else None,

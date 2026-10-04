@@ -82,3 +82,9 @@ def test_mbid_por_spotify():
     assert not _falta_spotify({"spotify": {"id": sp, "mbid": None}}, sp)           # ya mirado
     assert _falta_spotify({"spotify": {"id": sp, "error": "HTTPError"}}, sp)       # error: se repite
     assert not _falta_spotify({}, None)
+
+
+def test_raves_y_sala_en_el_titulo():
+    assert not evento_de_pagina(pagina(nombre="Iboga Rave presenta: Mandragora"), "u")["madrid"]
+    d = evento_de_pagina(pagina(nombre="Rat-Zinger + KOP | Sala Mon", artistas=("Rat-Zinger", "KOP")), "u")
+    assert d["nombre"] == "Rat-Zinger + KOP" and "Sala Mon" not in d["invitados"]
