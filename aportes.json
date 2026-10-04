@@ -1950,6 +1950,81 @@
    },
    "lote": "A-2026-10-04-25",
    "fecha": "2026-10-04"
+  },
+  "servando and florentino": {
+   "nombre": "Servando & Florentino",
+   "pais": {
+    "valor": "VE",
+    "url": "https://en.wikipedia.org/wiki/Servando_%26_Florentino",
+    "cita": "servando & florentino - wikipedia servando & florentino venezuelan musical sibling duo wikimedia foundation, inc. contributors to wikimedia projects servando & florentino"
+   },
+   "estilos": {
+    "valores": [
+     "salsa"
+    ],
+    "url": "https://en.wikipedia.org/wiki/Servando_%26_Florentino",
+    "cita": "attribution. you may also add the template {{translated|es|servando & florentino}} to the talk page . for more guidance, see wikipedia:translation . servando & florentino servando & florentino in 2015 background information origin caracas , venezuela genres salsa , latin pop years active 1997 ( 1997",
+    "web_musica": true
+   },
+   "lote": "A-2026-10-04-26",
+   "fecha": "2026-10-04"
+  },
+  "megara": {
+   "nombre": "MEGARA",
+   "pais": {
+    "valor": "ES",
+    "url": "https://en.wikipedia.org/wiki/Megara_(band)",
+    "cita": "megara (band) - wikipedia megara (band) spanish rock band wikimedia foundation, inc. contributors to wikimedia projects megara (band) - wikipedia jump to co",
+    "ciudad": "Madrid"
+   },
+   "estilos": {
+    "valores": [
+     "rock"
+    ],
+    "url": "https://stairwaytorock.com/megara-presenta-4n0-c3r0-en-madrid/",
+    "cita": "megara presenta 4n0 c3r0 en madrid: el inicio de una nueva era (o el principio del caos). informacion del evento y las entradas megara presenta 4n0 c3r0 en madrid: el inicio de una nueva era (o el principio del caos) | stairway to rock megara presenta 4n0 c3r0 en madrid: el inicio de",
+    "web_musica": false
+   },
+   "lote": "A-2026-10-04-26",
+   "fecha": "2026-10-04"
+  },
+  "max cooper": {
+   "nombre": "Max Cooper",
+   "pais": {
+    "valor": "GB",
+    "url": "https://en.wikipedia.org/wiki/Max_Cooper_(music_producer)",
+    "cita": "max cooper (music producer) - wikipedia max cooper (music producer) british musician and producer wikimedia foundation, inc. contributors to wikimedia projects",
+    "ciudad": "Belfast"
+   },
+   "estilos": {
+    "valores": [
+     "techno"
+    ],
+    "url": "https://en.wikipedia.org/wiki/Max_Cooper_(music_producer)",
+    "cita": "ects wikimedia commons wikidata item appearance move to sidebar hide from wikipedia, the free encyclopedia northern irish techno producer (born 1980) max cooper max cooper in 2017 background information born ( 1980-05-19 ) 19 may 1980 (age 46) belfast , northern ireland origin holywood rudolf steine",
+    "web_musica": true
+   },
+   "lote": "A-2026-10-04-26",
+   "fecha": "2026-10-04"
+  },
+  "bala": {
+   "nombre": "Bala",
+   "pais": {
+    "valor": "ES",
+    "url": "https://en.wikipedia.org/wiki/Bala_(band)",
+    "cita": "other projects wikimedia commons wikidata item appearance move to sidebar hide from wikipedia, the free encyclopedia galician stoner rock/grunge band bala in 2014 bala is a galician stoner rock / grunge band that consists of anxela baltar from a coruna (guitar and vocals) and violeta mosquera from p",
+    "ciudad": "A Coruña"
+   },
+   "estilos": {
+    "valores": [
+     "sludge metal"
+    ],
+    "url": "https://www.ocimagazine.es/bala-entrevista/",
+    "cita": "ago de compostela y barcelona las proximas semanas de la mano de son estrella galicia. pablo luna ocimag revista de actualidad en cultura y lifestyle bala: el rugido gallego de sludge metal que perfora fronteras portada bala: el rugido gallego que perfora fronteras. entrevistamos al duo gallego bala",
+    "web_musica": false
+   },
+   "lote": "A-2026-10-04-26",
+   "fecha": "2026-10-04"
   }
  },
  "conciertos": [
@@ -6366,6 +6441,168 @@
    "lote": "A-2026-10-04-25",
    "aceptado": [],
    "rechazado": []
+  },
+  "a:toro": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-26",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:cyril kamer": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-26",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:casual project patronas 2026": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-26",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:dave lee fka joey negro": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-26",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:rat": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-26",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:cryymm": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-26",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:this is michael": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-26",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:lex": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-26",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:servando and florentino": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-26",
+   "aceptado": [
+    "estilos",
+    "pais"
+   ],
+   "rechazado": []
+  },
+  "a:sylvania": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-26",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:kalenn": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-26",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:leo and leo": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-26",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:anna nadzion": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-26",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:megara": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-26",
+   "aceptado": [
+    "estilos",
+    "pais"
+   ],
+   "rechazado": []
+  },
+  "a:max cooper": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-26",
+   "aceptado": [
+    "estilos",
+    "pais"
+   ],
+   "rechazado": []
+  },
+  "a:raizlatina mescalina": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-26",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:jazz con batio jose maria pedraza alejandro escalera y kike terron": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-26",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:rkd trio": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-26",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:sports": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-26",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:munir hossns mysticsamba": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-26",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:full red grenade": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-26",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:mike sanchez solo piano show": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-26",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:silk and wood": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-26",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:mvrk": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-26",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:bala": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-26",
+   "aceptado": [
+    "estilos",
+    "pais"
+   ],
+   "rechazado": []
   }
  },
  "lotes": {
@@ -6540,259 +6777,8 @@
   "A-2026-10-04-26": {
    "tipo": "artistas",
    "creado": "2026-10-04",
-   "items": {
-    "a1": {
-     "nombre": "TORO",
-     "clave": "toro",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Independance Club"
-     ]
-    },
-    "a2": {
-     "nombre": "Cyril Kamer",
-     "clave": "cyril kamer",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Sala Wagon"
-     ]
-    },
-    "a3": {
-     "nombre": "CASUAL PROJECT – Patronas 2026",
-     "clave": "casual project patronas 2026",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "El Perro Club / Tempo Audiophile Club"
-     ]
-    },
-    "a4": {
-     "nombre": "Dave Lee (FKA Joey Negro)",
-     "clave": "dave lee fka joey negro",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Sala Villanos"
-     ]
-    },
-    "a5": {
-     "nombre": "Rat",
-     "clave": "rat",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Sala Mon Live"
-     ]
-    },
-    "a6": {
-     "nombre": "Cryymm",
-     "clave": "cryymm",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Cadillac Solitario"
-     ]
-    },
-    "a7": {
-     "nombre": "This Is Michael",
-     "clave": "this is michael",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Palacio Vistalegre"
-     ]
-    },
-    "a8": {
-     "nombre": "LEX",
-     "clave": "lex",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "La Sala del Movistar Arena"
-     ]
-    },
-    "a9": {
-     "nombre": "Servando & Florentino",
-     "clave": "servando and florentino",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Palacio Vistalegre"
-     ]
-    },
-    "a10": {
-     "nombre": "Sylvania",
-     "clave": "sylvania",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Revi Live"
-     ]
-    },
-    "a11": {
-     "nombre": "Kalenn",
-     "clave": "kalenn",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Galileo Galilei"
-     ]
-    },
-    "a12": {
-     "nombre": "Leo & Leo",
-     "clave": "leo and leo",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Teatro Albéniz Umusic / Teatro Albeniz"
-     ]
-    },
-    "a13": {
-     "nombre": "Anna Nadzion",
-     "clave": "anna nadzion",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Rincón del Arte Nuevo"
-     ]
-    },
-    "a14": {
-     "nombre": "MEGARA",
-     "clave": "megara",
-     "falta": [
-      "estilo"
-     ],
-     "salas": [
-      "Revi Live"
-     ]
-    },
-    "a15": {
-     "nombre": "Max Cooper",
-     "clave": "max cooper",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "La Riviera"
-     ]
-    },
-    "a16": {
-     "nombre": "#RaízLatina. Mescalina",
-     "clave": "raizlatina mescalina",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Moby Dick Club"
-     ]
-    },
-    "a17": {
-     "nombre": "JAZZ CON BATIO , JOSÉ MARÍA PEDRAZA, ALEJANDRO ESCALERA Y KIKE TERRÓN",
-     "clave": "jazz con batio jose maria pedraza alejandro escalera y kike terron",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Tablao Flamenco Torero"
-     ]
-    },
-    "a18": {
-     "nombre": "RKD TRIO",
-     "clave": "rkd trio",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Barracudas Rock Bar"
-     ]
-    },
-    "a19": {
-     "nombre": "Sports",
-     "clave": "sports",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Sala Changó"
-     ]
-    },
-    "a20": {
-     "nombre": "Munir Hossn’s MysticSamba",
-     "clave": "munir hossns mysticsamba",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Sala Villanos"
-     ]
-    },
-    "a21": {
-     "nombre": "FULL RED GRENADE",
-     "clave": "full red grenade",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "El Perro Club"
-     ]
-    },
-    "a22": {
-     "nombre": "MIKE SÁNCHEZ (solo piano show)",
-     "clave": "mike sanchez solo piano show",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Gruta 77"
-     ]
-    },
-    "a23": {
-     "nombre": "SILK & WOOD",
-     "clave": "silk and wood",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Fulanita de Tal"
-     ]
-    },
-    "a24": {
-     "nombre": "mvrk",
-     "clave": "mvrk",
-     "falta": [
-      "estilo"
-     ],
-     "salas": [
-      "Lenovo Garage, Autocine Madrid"
-     ]
-    },
-    "a25": {
-     "nombre": "Bala",
-     "clave": "bala",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Shoko"
-     ]
-    }
-   },
-   "pendientes": 285
+   "pendientes": 285,
+   "importado": "2026-10-04"
   }
  },
  "ocultos": {
