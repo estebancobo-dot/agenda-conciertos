@@ -23,8 +23,11 @@ FUENTES: list[Source] = [
       3, "alta", "madridenvivo", ag.madridenvivo, tope_seg=None),  # 10 s entre páginas: tiene su lectura aparte
     S("songkick", "Songkick Madrid", "https://www.songkick.com/metro-areas/28755-spain-madrid", "agregador", 3, "media",
       "songkick", ag.songkick),
-    S("totalstage", "Total Stage (agenda de la comunidad)", ag.TOTALSTAGE, "agregador", 3, "media", "totalstage",
-      ag.totalstage, notas="Agenda que completan sus usuarios: una sola página con todos los próximos de Madrid."),
+    S("totalstage", "Total Stage (agenda de la comunidad)", ag.TOTALSTAGE, "agregador", 3, "media",
+      "conciertos.club", ag.totalstage,
+      notas="Agenda que completan sus usuarios: una sola página con todos los próximos de Madrid. Va en el grupo de "
+            "conciertos.club porque copia sus datos (medido: en 14 de 14 horas distintas entre webs da la de "
+            "conciertos.club), así que no cuenta como confirmación independiente."),
     S("rockandblog", "Rock and Blog", "https://rockandblog.net/conciertos-rock-madrid/", "blog", 4, "media",
       "rockandblog", ag.rockandblog),
     S("tm_blog", "Blog de Ticketmaster (agenda rock)", "https://blog.ticketmaster.es/post/agenda-rock-2026-38621/",
