@@ -1833,6 +1833,66 @@
    },
    "lote": "A-2026-10-04-23",
    "fecha": "2026-10-04"
+  },
+  "benzu": {
+   "nombre": "BENZÚ",
+   "pais": {
+    "valor": "ES",
+    "url": "https://www.elespanol.com/malaga/cultura/20240715/conoce-benzu-joven-grupo-malagueno-experimentados-musicos-anade-nuevo-sonido-ciudad/869913255_0.html",
+    "cita": "la banda estreno el pasado mes su primer ep homonimo y tienen muy claros los pasos a dar para seguir creciendo. conoce a benzu: el joven grupo malagueno de experimentados musicos que anade un nuevo sonido a la ciudad la banda estreno el pasado mes su primer ep homonimo y tien",
+    "ciudad": "Málaga"
+   },
+   "estilos": {
+    "valores": [
+     "shoegaze"
+    ],
+    "url": "https://www.alquimiasonora.com/2025/02/noticia-benzu-nos-guian-por-su-terreno.html",
+    "cita": "[noticia] benzu nos guian por su terreno irregular propio de la costa ceuti con su nuevo ep. la joven banda de shoegaze mediterraneo nos comparte su nuevo ep compues",
+    "web_musica": false
+   },
+   "lote": "A-2026-10-04-24",
+   "fecha": "2026-10-04"
+  },
+  "manolo uvi": {
+   "nombre": "Manolo UVI",
+   "pais": {
+    "valor": "ES",
+    "url": "https://losmejoresrock.com/manolo-uvi-el-eterno-agitador-del-punk-madrileno-ahora-emprendedor/",
+    "cita": "manolo uvi, el eterno agitador del punk madrileno, ahora emprendedor el historico musico cuenta ya con su propia tienda fisica -gabba gabba shop- y promueve una",
+    "ciudad": "Madrid"
+   },
+   "lote": "A-2026-10-04-24",
+   "fecha": "2026-10-04"
+  },
+  "kelley stoltz en mazo": {
+   "nombre": "Kelley Stoltz en MAZO",
+   "pais": {
+    "valor": "US",
+    "url": "https://en.wikipedia.org/wiki/Kelley_Stoltz",
+    "cita": "kelley stoltz - wikipedia kelley stoltz american singer, songwriter and musician wikimedia foundation, inc. contributors to wikimedia projects kelley stoltz - wiki",
+    "ciudad": "San Francisco"
+   },
+   "estilos": {
+    "valores": [
+     "indie rock"
+    ],
+    "url": "https://en.wikipedia.org/wiki/Kelley_Stoltz",
+    "cita": "olar · jstor ( march 2016 ) ( learn how and when to remove this message ) kelley stoltz stoltz performing in 2014 background information born richard kelley stoltz ( 1971-09-21 ) september 21, 1971 (age 55) new york city , u.s. origin birmingham, michigan , u.s. genres indie rock psychedelic rock po",
+    "web_musica": true
+   },
+   "lote": "A-2026-10-04-24",
+   "fecha": "2026-10-04"
+  },
+  "john pollon": {
+   "nombre": "John Pollón",
+   "pais": {
+    "valor": "ES",
+    "url": "https://www.elbierzonoticias.com/ponferrada/john-pollon-revoluciona-20220904123542-nt.html",
+    "cita": "ampo culturas copiloto gente y estilo planes salamancahoy burgosconecta siguenos facebook instagram iniciar sesion ponferrada leon portada ponferrada john pollon revoluciona el 'gallinero' del auditorio municipal de ponferrada con sus 'friends' el reconocido artista de trap de cacabelos, autor del h",
+    "ciudad": "Cacabelos"
+   },
+   "lote": "A-2026-10-04-24",
+   "fecha": "2026-10-04"
   }
  },
  "conciertos": [
@@ -5920,6 +5980,170 @@
    "lote": "A-2026-10-04-23",
    "aceptado": [],
    "rechazado": []
+  },
+  "a:benzu": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-24",
+   "aceptado": [
+    "estilos",
+    "pais"
+   ],
+   "rechazado": []
+  },
+  "a:caribe cafe brujeria halloween night en salsa": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-24",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:lex luger": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-24",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:pagando el pato": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-24",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:supercremalleras": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-24",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:manolo uvi": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-24",
+   "aceptado": [
+    "pais"
+   ],
+   "rechazado": [
+    "estilos: no se pudo abrir (AntiBotBlocked)"
+   ]
+  },
+  "a:clover": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-24",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:el duke andaluz": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-24",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:guitarras calaveras": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-24",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:girlpower band": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-24",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:interludio": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-24",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:llanos": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-24",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:las nietas de charli": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-24",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:gustavo diaz quartet": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-24",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:kelley stoltz en mazo": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-24",
+   "aceptado": [
+    "estilos",
+    "pais"
+   ],
+   "rechazado": []
+  },
+  "a:el libro del buen amor": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-24",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:la musa de la musica": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-24",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:lady mgill": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-24",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:tusiwarriors": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-24",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:voces para volver por pedro y vera herrero": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-24",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:wardogs": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-24",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:dora band": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-24",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:dias alternos": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-24",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:estela gris": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-24",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:john pollon": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-24",
+   "aceptado": [
+    "pais"
+   ],
+   "rechazado": [
+    "estilos: ni la frase citada ni la página lo dicen junto al nombre"
+   ]
   }
  },
  "lotes": {
@@ -6082,262 +6306,8 @@
   "A-2026-10-04-24": {
    "tipo": "artistas",
    "creado": "2026-10-04",
-   "items": {
-    "a1": {
-     "nombre": "BENZÚ",
-     "clave": "benzu",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Café La Palma"
-     ]
-    },
-    "a2": {
-     "nombre": "CARIBE CAFÉ \"BRUJERÍA - HALLOWEEN NIGHT EN SALSA\"",
-     "clave": "caribe cafe brujeria halloween night en salsa",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Babylon Club"
-     ]
-    },
-    "a3": {
-     "nombre": "Lex Lüger",
-     "clave": "lex luger",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Barracudas Rock Bar"
-     ]
-    },
-    "a4": {
-     "nombre": "Pagando el pato",
-     "clave": "pagando el pato",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Cadillac Solitario"
-     ]
-    },
-    "a5": {
-     "nombre": "SUPERCREMALLERAS",
-     "clave": "supercremalleras",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Sala Siroco"
-     ]
-    },
-    "a6": {
-     "nombre": "Manolo UVI",
-     "clave": "manolo uvi",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Gruta 77"
-     ]
-    },
-    "a7": {
-     "nombre": "Clover",
-     "clave": "clover",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Dime que me Quieres"
-     ]
-    },
-    "a8": {
-     "nombre": "EL DUKE ANDALUZ",
-     "clave": "el duke andaluz",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Tempo Audiophile Club"
-     ]
-    },
-    "a9": {
-     "nombre": "Guitarras Calaveras",
-     "clave": "guitarras calaveras",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Sala Clamores"
-     ]
-    },
-    "a10": {
-     "nombre": "GIRLPOWER BAND",
-     "clave": "girlpower band",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Sala B"
-     ]
-    },
-    "a11": {
-     "nombre": "interludio",
-     "clave": "interludio",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Cadillac Solitario"
-     ]
-    },
-    "a12": {
-     "nombre": "LLANOS",
-     "clave": "llanos",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Rincón del Arte Nuevo"
-     ]
-    },
-    "a13": {
-     "nombre": "LAS NIETAS DE CHARLI",
-     "clave": "las nietas de charli",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Galileo Galilei"
-     ]
-    },
-    "a14": {
-     "nombre": "Gustavo Díaz Quartet",
-     "clave": "gustavo diaz quartet",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Sala Villanos"
-     ]
-    },
-    "a15": {
-     "nombre": "Kelley Stoltz en MAZO",
-     "clave": "kelley stoltz en mazo",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Sala Clamores"
-     ]
-    },
-    "a16": {
-     "nombre": "El libro del buen amor",
-     "clave": "el libro del buen amor",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Centro Cultural Antonio Machado (San Blas - Canillejas)"
-     ]
-    },
-    "a17": {
-     "nombre": "La Musa de la Música",
-     "clave": "la musa de la musica",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Centro Cultural Hortaleza"
-     ]
-    },
-    "a18": {
-     "nombre": "Lady M’Gill",
-     "clave": "lady mgill",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Dime que me Quieres"
-     ]
-    },
-    "a19": {
-     "nombre": "TUSIWARRIORS",
-     "clave": "tusiwarriors",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Sala Uni"
-     ]
-    },
-    "a20": {
-     "nombre": "Voces para volver, por Pedro y Vera Herrero",
-     "clave": "voces para volver por pedro y vera herrero",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Centro Sociocultural García Lorca (Carabanchel)"
-     ]
-    },
-    "a21": {
-     "nombre": "Wardogs",
-     "clave": "wardogs",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Revi Space"
-     ]
-    },
-    "a22": {
-     "nombre": "Dora Band",
-     "clave": "dora band",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Sala Copérnico"
-     ]
-    },
-    "a23": {
-     "nombre": "DÍAS ALTERNOS",
-     "clave": "dias alternos",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Sala Siroco"
-     ]
-    },
-    "a24": {
-     "nombre": "ESTELA GRIS",
-     "clave": "estela gris",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Maravillas Club"
-     ]
-    },
-    "a25": {
-     "nombre": "John Pollón",
-     "clave": "john pollon",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Palacio Vistalegre"
-     ]
-    }
-   },
-   "pendientes": 335
+   "pendientes": 335,
+   "importado": "2026-10-04"
   }
  },
  "ocultos": {
