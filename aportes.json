@@ -1257,6 +1257,99 @@
    },
    "lote": "A-2026-10-04-15",
    "fecha": "2026-10-04"
+  },
+  "erik urano": {
+   "nombre": "Erik Urano",
+   "pais": {
+    "valor": "ES",
+    "url": "https://www.diariodevalladolid.es/cultura/260207/279445/rapero-valladolid-erik-urano-lanza-stalker-disco-llama-reaccion-apatia.html",
+    "cita": "sa el vallisoletano con un disco distopico que, pese al dolor y la falta de horizontes, no renuncia al cambio desde la accion el rapero de valladolid erik urano lanza ‘stalker’, un disco que llama a la reaccion contra la apatia regresa el vallisoletano con un disco distopico que, pese al dolor y la ",
+    "ciudad": "Valladolid"
+   },
+   "estilos": {
+    "valores": [
+     "rap"
+    ],
+    "url": "https://www.neo2.com/erik-urano-musica-urbana/",
+    "cita": "novedades carminha, entrevista con el grupo... novedades carminha resucita el punk rock en una original alianza con la musica urbaba de... el rapero erik urano y la marca latigo juntos en... el rapero erik urano y latigo, marca espanola de streetwear, firman en equipo, y bajo la... texto: nadia leal",
+    "web_musica": false
+   },
+   "enlaces": [
+    "https://erikurano.com/"
+   ],
+   "lote": "A-2026-10-04-16",
+   "fecha": "2026-10-04"
+  },
+  "gonzalo alhambra": {
+   "nombre": "Gonzalo Alhambra",
+   "pais": {
+    "valor": "ES",
+    "url": "https://tevienes.com/es/u/gonzalo-alhambra",
+    "cita": "imiento; tras su paso por la voz 2020, hits como “lo demas me sobra” y el album uno lo situan como uno de los talentos emergentes de andalucia. 🎸🎤✨ 🎶 gonzalo alhambra - gonzalo alhambra: la nueva voz gaditana que une pop aflamencado y emocion pura 🎸🌊✨ cantautor gaditano que fusiona pop latino, flame",
+    "ciudad": "Sanlúcar de Barrameda"
+   },
+   "lote": "A-2026-10-04-16",
+   "fecha": "2026-10-04"
+  },
+  "europe": {
+   "nombre": "EUROPE",
+   "pais": {
+    "valor": "SE",
+    "url": "https://en.wikipedia.org/wiki/Europe_(band)",
+    "cita": "europe (band) - wikipedia europe (band) swedish rock band wikimedia foundation, inc. contributors to wikimedia projects europe (band) - wikipedia jump to co"
+   },
+   "estilos": {
+    "valores": [
+     "hard rock",
+     "heavy metal"
+    ],
+    "url": "https://en.wikipedia.org/wiki/Europe_(band)",
+    "cita": "s , which was released on 25 september. they also released the lead single from the album, \"one on one\". [ 58 ] musical style and influences [ edit ] europe's music has been described as arena rock , [ 1 ] hard rock , [ 2 ] glam metal , [ 3 ] [ 4 ] blues rock [ 4 ] and heavy metal . [ 5 ] [ 6 ] the ",
+    "web_musica": true
+   },
+   "lote": "A-2026-10-04-16",
+   "fecha": "2026-10-04"
+  },
+  "mariano diaz unplugged": {
+   "nombre": "MARIANO DÍAZ UNPLUGGED",
+   "pais": {
+    "valor": "AR",
+    "url": "https://www.circulobellasartes.com/biografia/mariano-diaz/",
+    "cita": "la carrera pianistica del argentino mariano diaz dibuja su punto de partida en la universidad de artes y ciencias musicales de la universidad de cadiz. pero mariano diaz - circulo de bellas artes la",
+    "ciudad": "Buenos Aires"
+   },
+   "estilos": {
+    "valores": [
+     "jazz"
+    ],
+    "url": "https://www.circulobellasartes.com/biografia/mariano-diaz/",
+    "cita": "ew tab) (opens in new tab) (opens in new tab) (opens in new tab) buscar search field required buscar mariano diaz la carrera pianistica del argentino mariano diaz dibuja su punto de partida en la universidad de artes y ciencias musicales de la universidad de cadiz. pero su pasion por el jazz no se m",
+    "web_musica": false
+   },
+   "lote": "A-2026-10-04-16",
+   "fecha": "2026-10-04"
+  },
+  "el cebri": {
+   "nombre": "El Cebri",
+   "pais": {
+    "valor": "ES",
+    "url": "https://www.theborderlinemusic.com/el-cebri-inicia-su-gira-secretos-de-un-sonador-en-madrid-sevilla-y-malaga/",
+    "cita": "el malagueno el cebri baja el telon de su gira «secretos de un sonador» con una triple descarga de mestizaje andaluz y rock visceral en madrid, sevilla y malaga. el cebri",
+    "ciudad": "Antequera"
+   },
+   "estilos": {
+    "valores": [
+     "fusión"
+    ],
+    "url": "https://elcebrimusic.bandcamp.com/",
+    "cita": "etos de un sonador, by el cebri 1 track album secretos de un sonador license_name featured_track_num art_id tangos del reproche license_name track_id el cebri el cebri es el alias artistico de david cebrian, compositor, cantante y guitarrista antequerano que fusiona musicas de raiz en un estilo unic",
+    "web_musica": true
+   },
+   "enlaces": [
+    "https://elcebrimusic.bandcamp.com/"
+   ],
+   "lote": "A-2026-10-04-16",
+   "fecha": "2026-10-04"
   }
  },
  "conciertos": [
@@ -4010,6 +4103,176 @@
     "pais"
    ],
    "rechazado": []
+  },
+  "a:erik urano": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-16",
+   "aceptado": [
+    "enlaces",
+    "estilos",
+    "pais"
+   ],
+   "rechazado": []
+  },
+  "a:prom kinks": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-16",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:gonzalo alhambra": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-16",
+   "aceptado": [
+    "pais"
+   ],
+   "rechazado": [
+    "estilos: ni la frase citada ni la página lo dicen junto al nombre"
+   ]
+  },
+  "a:gusa": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-16",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:recuerdos locos": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-16",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:the besters": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-16",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:vibra mahou": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-16",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:groove society": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-16",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:no more bullshit": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-16",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:desmelenao en mazo": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-16",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:djali kunda": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-16",
+   "aceptado": [],
+   "rechazado": [
+    "estilos: ni la frase citada ni la página lo dicen junto al nombre"
+   ]
+  },
+  "a:impulso": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-16",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:europe": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-16",
+   "aceptado": [
+    "estilos",
+    "pais"
+   ],
+   "rechazado": []
+  },
+  "a:rock and roll animals": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-16",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:black birds": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-16",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:mariano diaz unplugged": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-16",
+   "aceptado": [
+    "estilos",
+    "pais"
+   ],
+   "rechazado": []
+  },
+  "a:mujeres de cine en concierto": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-16",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:tony heimmer and nirankar khalsa": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-16",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:colmillo": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-16",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:javier gijon infinitesimal": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-16",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:o m n i": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-16",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:soul latino luis alfonso and jean carlos centeno": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-16",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:roni di capo and lady belle": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-16",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:el cebri": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-16",
+   "aceptado": [
+    "enlaces",
+    "estilos",
+    "pais"
+   ],
+   "rechazado": []
+  },
+  "a:alejandro udo": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-16",
+   "aceptado": [],
+   "rechazado": []
   }
  },
  "lotes": {
@@ -4124,259 +4387,8 @@
   "A-2026-10-04-16": {
    "tipo": "artistas",
    "creado": "2026-10-04",
-   "items": {
-    "a1": {
-     "nombre": "Erik Urano",
-     "clave": "erik urano",
-     "falta": [
-      "estilo"
-     ],
-     "salas": [
-      "Sala Copérnico"
-     ]
-    },
-    "a2": {
-     "nombre": "PROM KINKS",
-     "clave": "prom kinks",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Silikona"
-     ]
-    },
-    "a3": {
-     "nombre": "Gonzalo Alhambra",
-     "clave": "gonzalo alhambra",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Sala Vesta"
-     ]
-    },
-    "a4": {
-     "nombre": "GUSA",
-     "clave": "gusa",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "El Perro Club"
-     ]
-    },
-    "a5": {
-     "nombre": "RECUERDOS LOCOS",
-     "clave": "recuerdos locos",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Sala Nazca"
-     ]
-    },
-    "a6": {
-     "nombre": "The Besters",
-     "clave": "the besters",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Cadillac Solitario"
-     ]
-    },
-    "a7": {
-     "nombre": "VIBRA MAHOU",
-     "clave": "vibra mahou",
-     "falta": [
-      "estilo"
-     ],
-     "salas": [
-      "Café La Palma"
-     ]
-    },
-    "a8": {
-     "nombre": "GROOVE SOCIETY",
-     "clave": "groove society",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Intruso Bar"
-     ]
-    },
-    "a9": {
-     "nombre": "No more bullshit",
-     "clave": "no more bullshit",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Honky Tonk"
-     ]
-    },
-    "a10": {
-     "nombre": "Desmelenao en MAZO",
-     "clave": "desmelenao en mazo",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Sala Clamores"
-     ]
-    },
-    "a11": {
-     "nombre": "DJALI KUNDA",
-     "clave": "djali kunda",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Tempo Audiophile Club"
-     ]
-    },
-    "a12": {
-     "nombre": "IMPULSO",
-     "clave": "impulso",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Café Berlín"
-     ]
-    },
-    "a13": {
-     "nombre": "EUROPE",
-     "clave": "europe",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Plaza de Toros La Nueva Cubierta"
-     ]
-    },
-    "a14": {
-     "nombre": "ROCK AND ROLL ANIMALS",
-     "clave": "rock and roll animals",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Honky Tonk"
-     ]
-    },
-    "a15": {
-     "nombre": "BLACK BIRDS",
-     "clave": "black birds",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Rockville"
-     ]
-    },
-    "a16": {
-     "nombre": "MARIANO DÍAZ UNPLUGGED",
-     "clave": "mariano diaz unplugged",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Café Central Ateneo"
-     ]
-    },
-    "a17": {
-     "nombre": "MUJERES DE CINE EN CONCIERTO",
-     "clave": "mujeres de cine en concierto",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Galileo Galilei"
-     ]
-    },
-    "a18": {
-     "nombre": "TONY HEIMMER & NIRANKAR KHALSA",
-     "clave": "tony heimmer and nirankar khalsa",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Café El Despertar"
-     ]
-    },
-    "a19": {
-     "nombre": "COLMILLO",
-     "clave": "colmillo",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Café La Palma"
-     ]
-    },
-    "a20": {
-     "nombre": "Javier Gijón \" Infinitesimal\"",
-     "clave": "javier gijon infinitesimal",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Jazzville"
-     ]
-    },
-    "a21": {
-     "nombre": "O.M.N.I",
-     "clave": "o m n i",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "El Perro Club"
-     ]
-    },
-    "a22": {
-     "nombre": "SOUL LATINO – LUIS ALFONSO & JEAN CARLOS CENTENO",
-     "clave": "soul latino luis alfonso and jean carlos centeno",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "La Nueva Cubierta"
-     ]
-    },
-    "a23": {
-     "nombre": "RONI DI CAPO & LADY BELLE:",
-     "clave": "roni di capo and lady belle",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Gruta 77"
-     ]
-    },
-    "a24": {
-     "nombre": "El Cebri",
-     "clave": "el cebri",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Tempo Audiophile Club"
-     ]
-    },
-    "a25": {
-     "nombre": "ALEJANDRO UDO",
-     "clave": "alejandro udo",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Candela"
-     ]
-    }
-   },
-   "pendientes": 535
+   "pendientes": 535,
+   "importado": "2026-10-04"
   }
  },
  "ocultos": {
