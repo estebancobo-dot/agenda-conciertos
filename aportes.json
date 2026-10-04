@@ -694,6 +694,110 @@
    },
    "lote": "A-2026-10-04-07",
    "fecha": "2026-10-04"
+  },
+  "far east groove": {
+   "nombre": "Far East Groove",
+   "pais": {
+    "valor": "JP",
+    "url": "https://www.hellpress.com/noticias/far-east-groove-yasuharu-takanashi-conciertos-anime-heavy-metal/",
+    "cita": "el proyecto far east groove, liderado por el compositor japones yasuharu takanashi, actuara en espana en octubre con dos conciertos far east groove de yasuharu takanashi anuncia"
+   },
+   "estilos": {
+    "valores": [
+     "heavy metal"
+    ],
+    "url": "https://www.dirtyrock.info/2026/07/yasuharu-takanashi-lleva-el-anime-al-terreno-del-heavy-metal-far-east-groove-en-octubre/",
+    "cita": "far east groove llega a espana con yasuharu takanashi. heavy metal, bandas sonoras de anime y proyecciones en directo en barcelona y madrid los dias 13 y 14 de octub",
+    "web_musica": false
+   },
+   "lote": "A-2026-10-04-08",
+   "fecha": "2026-10-04"
+  },
+  "laura diepstraten": {
+   "nombre": "Laura Diepstraten",
+   "pais": {
+    "valor": "ES",
+    "url": "https://tododisca.es/discapacidad/laura-diepstraten-joven-ciega-andaluza-enamora-todos-voz/",
+    "cita": "laura diepstraten es una joven ciega de pulpi, un municipio de la provincia de almeria. desde muy pequena ha sentido pasion por la musica, y actualmente se laura dieps",
+    "ciudad": "Pulpí"
+   },
+   "estilos": {
+    "valores": [
+     "pop"
+    ],
+    "url": "https://www.once.es/servicios-sociales/cultura-y-ocio/promocion-artistica-para-quienes-actuan-hacen-musica-o-artes-plasticas-1/musicos-en-promocion/Laura_Diepstraten",
+    "cita": "n https://www.once.es/servicios-sociales/cultura-y-ocio/promocion-artistica-para-quienes-actuan-hacen-musica-o-artes-plasticas-1/musicos-en-promocion/laura_diepstraten https://www.once.es/++theme++once-theme/images/logo.png laura diepstraten pop laura diepstraten garcia (pulpi, almeria, 2006) es una",
+    "web_musica": false
+   },
+   "enlaces": [
+    "https://lauradiepstraten.es/"
+   ],
+   "lote": "A-2026-10-04-08",
+   "fecha": "2026-10-04"
+  },
+  "impulso mansur brown": {
+   "nombre": "IMPULSO - MANSUR BROWN",
+   "pais": {
+    "valor": "GB",
+    "url": "https://thepropagandasite.com/artist/mansur-brown",
+    "cita": "he word out be a propagandist! join home artists festivals concerts songs of the day more about faq browse by genre stores venues log in disseminate: mansur brown artist info city london england uk genre jazz electronic ambient songs fasiha love is mione alone equilibrium naqi songs fasiha love is m",
+    "ciudad": "Londres"
+   },
+   "estilos": {
+    "valores": [
+     "jazz",
+     "fusión"
+    ],
+    "url": "https://thepropagandasite.com/artist/mansur-brown",
+    "cita": "mansur brown is a guitarist, multi-instrumentalist, and producer who plays electronic ambient fusion that also incorporates elements of jazz and mansur brown | th",
+    "web_musica": false
+   },
+   "lote": "A-2026-10-04-08",
+   "fecha": "2026-10-04"
+  },
+  "oscar dudamel y su orquesta": {
+   "nombre": "Oscar Dudamel y su Orquesta",
+   "pais": {
+    "valor": "VE",
+    "url": "https://en.wikipedia.org/wiki/Oscar_Dudamel",
+    "cita": "d as pdf printable version in other projects wikidata item appearance move to sidebar hide from wikipedia, the free encyclopedia classical trombonist oscar dudamel born ( 1961-01-14 ) january 14, 1961 (age 65) [ 1 ] barquisimeto , venezuela instrument trombone label platoon website official website ",
+    "ciudad": "Barquisimeto"
+   },
+   "estilos": {
+    "valores": [
+     "salsa"
+    ],
+    "url": "https://en.wikipedia.org/wiki/Oscar_Dudamel",
+    "cita": "chestra conductor gustavo dudamel . [ 9 ] as of 2025 he leads oscar dudamel y su orquesta. [ 1 ] references [ edit ] 1 2 3 4 5 6 felibertt, augusto. \"oscar dudamel continues to achieve dreams and presents \"la rumba me llama\" \" . international salsa magazine . 1 2 \"novedades musicales con emilia, nic",
+    "web_musica": true
+   },
+   "enlaces": [
+    "https://www.oscardudamel.com/"
+   ],
+   "lote": "A-2026-10-04-08",
+   "fecha": "2026-10-04"
+  },
+  "nestor rausell y los impostores": {
+   "nombre": "Nestor Rausell y los Impostores",
+   "pais": {
+    "valor": "ES",
+    "url": "https://muzikalia.com/nestor-rausell-los-impostores-una-carretera-rockera/",
+    "cita": "das por las que acaban de decidirse en el estudio. el pronostico es positivo y desde muzikalia , le deseamos la mas inmensa de la fortunas y dichas a nestor rausell y los impostores . recomiendo a los lectores melomanos seguir a este combo de valencia en sus proximas huellas, ya que promete momentos",
+    "ciudad": "Valencia"
+   },
+   "estilos": {
+    "valores": [
+     "rock"
+    ],
+    "url": "https://muzikalia.com/nestor-rausell-los-impostores-una-carretera-rockera/",
+    "cita": "hoy en nuestra seccion 7 minutos al dia, dedicada a promocionar nuevas bandas, te presentamos a nestor rausell y los impostores nestor rausell y los impostores - una carretera rockera - muzikalia hoy en nuestra seccion 7 minutos al dia, dedicada a promocionar nuevas bandas, te",
+    "web_musica": false
+   },
+   "enlaces": [
+    "https://nestorrausellylosimpostores.bandcamp.com/"
+   ],
+   "lote": "A-2026-10-04-08",
+   "fecha": "2026-10-04"
   }
  },
  "conciertos": [
@@ -2057,6 +2161,177 @@
   "c:498a0336": {
    "fecha": "2026-10-04",
    "lote": "C-2026-10-04-02"
+  },
+  "a:far east groove": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-08",
+   "aceptado": [
+    "estilos",
+    "pais"
+   ],
+   "rechazado": []
+  },
+  "a:pa piratas nosotros cadiz en madrid": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-08",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:ven al cuple": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-08",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:tambours du senegal": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-08",
+   "aceptado": [],
+   "rechazado": [
+    "país SN: no se pudo abrir (HTTPError)",
+    "estilos: no se pudo abrir (HTTPError)"
+   ]
+  },
+  "a:samba y algo mas": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-08",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:body talk": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-08",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:orquesta juventud salsera": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-08",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:the prize": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-08",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:inercia sonora lussy cesc salsalvado": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-08",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:music for all": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-08",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:laura diepstraten": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-08",
+   "aceptado": [
+    "enlaces",
+    "estilos",
+    "pais"
+   ],
+   "rechazado": []
+  },
+  "a:eq band": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-08",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:los chocolatinos": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-08",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:carmen lillo en mazo": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-08",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:pacoenlaluna": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-08",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:los stratovilles": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-08",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:impulso mansur brown": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-08",
+   "aceptado": [
+    "estilos",
+    "pais"
+   ],
+   "rechazado": []
+  },
+  "a:oscar dudamel y su orquesta": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-08",
+   "aceptado": [
+    "enlaces",
+    "estilos",
+    "pais"
+   ],
+   "rechazado": []
+  },
+  "a:nestor rausell y los impostores": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-08",
+   "aceptado": [
+    "enlaces",
+    "estilos",
+    "pais"
+   ],
+   "rechazado": []
+  },
+  "a:ciencia urbana en sesion vermut": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-08",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:la merienda con blue posion": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-08",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:maria baresck": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-08",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:maria grant washington": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-08",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:verbena en la ballena con the nightrain": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-08",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:aniversario crazy girls": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-08",
+   "aceptado": [],
+   "rechazado": []
   }
  },
  "lotes": {
@@ -2117,284 +2392,8 @@
   "A-2026-10-04-08": {
    "tipo": "artistas",
    "creado": "2026-10-04",
-   "items": {
-    "a1": {
-     "nombre": "Far East Groove",
-     "clave": "far east groove",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Revi Live"
-     ]
-    },
-    "a2": {
-     "nombre": "PA’ PIRATAS NOSOTROS (Cádiz en Madrid)",
-     "clave": "pa piratas nosotros cadiz en madrid",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Hangar 48"
-     ]
-    },
-    "a3": {
-     "nombre": "¡VEN AL CUPLÉ!",
-     "clave": "ven al cuple",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Galileo Galilei"
-     ]
-    },
-    "a4": {
-     "nombre": "TAMBOURS DU SENEGAL",
-     "clave": "tambours du senegal",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Tempo Audiophile Club"
-     ]
-    },
-    "a5": {
-     "nombre": "SAMBA Y ALGO MÁS",
-     "clave": "samba y algo mas",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Café Berlín"
-     ]
-    },
-    "a6": {
-     "nombre": "BODY TALK",
-     "clave": "body talk",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Café La Palma"
-     ]
-    },
-    "a7": {
-     "nombre": "ORQUESTA JUVENTUD SALSERA",
-     "clave": "orquesta juventud salsera",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Intruso Bar"
-     ]
-    },
-    "a8": {
-     "nombre": "The Prize",
-     "clave": "the prize",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Fun House"
-     ]
-    },
-    "a9": {
-     "nombre": "INERCIA SONORA / LUSSY - CESC SALSALVADÓ",
-     "clave": "inercia sonora lussy cesc salsalvado",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Galileo Galilei"
-     ]
-    },
-    "a10": {
-     "nombre": "MUSIC FOR ALL",
-     "clave": "music for all",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Intruso Bar"
-     ]
-    },
-    "a11": {
-     "nombre": "Laura Diepstraten",
-     "clave": "laura diepstraten",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Intruso Bar"
-     ]
-    },
-    "a12": {
-     "nombre": "EQ BAND",
-     "clave": "eq band",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Honky Tonk"
-     ]
-    },
-    "a13": {
-     "nombre": "LOS CHOCOLATINOS",
-     "clave": "los chocolatinos",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Intruso Bar"
-     ]
-    },
-    "a14": {
-     "nombre": "Carmen Lillo en MAZO",
-     "clave": "carmen lillo en mazo",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Sala Clamores"
-     ]
-    },
-    "a15": {
-     "nombre": "PACOENLALUNA",
-     "clave": "pacoenlaluna",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Jazzville"
-     ]
-    },
-    "a16": {
-     "nombre": "LOS STRATOVILLES",
-     "clave": "los stratovilles",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Hangar 48"
-     ]
-    },
-    "a17": {
-     "nombre": "IMPULSO - MANSUR BROWN",
-     "clave": "impulso mansur brown",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Babylon Jazz Club"
-     ]
-    },
-    "a18": {
-     "nombre": "Oscar Dudamel y su Orquesta",
-     "clave": "oscar dudamel y su orquesta",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Café Berlín"
-     ]
-    },
-    "a19": {
-     "nombre": "Nestor Rausell y los Impostores",
-     "clave": "nestor rausell y los impostores",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Cadillac Solitario"
-     ]
-    },
-    "a20": {
-     "nombre": "CIENCIA URBANA EN SESIÓN VERMUT",
-     "clave": "ciencia urbana en sesion vermut",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Moby Dick Club"
-     ]
-    },
-    "a21": {
-     "nombre": "LA MERIENDA CON BLUE POSION",
-     "clave": "la merienda con blue posion",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Intruso Bar"
-     ]
-    },
-    "a22": {
-     "nombre": "Maria Baresck",
-     "clave": "maria baresck",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Dime que me Quieres"
-     ]
-    },
-    "a23": {
-     "nombre": "MARIA GRANT WASHINGTON",
-     "clave": "maria grant washington",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Fulanita de Tal"
-     ]
-    },
-    "a24": {
-     "nombre": "VERBENA EN LA BALLENA CON THE NIGHTRAIN",
-     "clave": "verbena en la ballena con the nightrain",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Moby Dick Club"
-     ]
-    },
-    "a25": {
-     "nombre": "Aniversario CRAZY GIRLS",
-     "clave": "aniversario crazy girls",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Cadillac Solitario"
-     ]
-    }
-   },
-   "pendientes": 735
+   "pendientes": 735,
+   "importado": "2026-10-04"
   }
  },
  "ocultos": {
