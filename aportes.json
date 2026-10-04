@@ -1859,6 +1859,288 @@
    "creado": "2026-10-04",
    "pendientes": 785,
    "importado": "2026-10-04"
+  },
+  "A-2026-10-04-07": {
+   "tipo": "artistas",
+   "creado": "2026-10-04",
+   "items": {
+    "a1": {
+     "nombre": "BLUE GARDEN",
+     "clave": "blue garden",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Café El Despertar"
+     ]
+    },
+    "a2": {
+     "nombre": "THE LATE SHIFT",
+     "clave": "the late shift",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Jazzville"
+     ]
+    },
+    "a3": {
+     "nombre": "OKMONIKS",
+     "clave": "okmoniks",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Fun House"
+     ]
+    },
+    "a4": {
+     "nombre": "MANZEBO AZOR",
+     "clave": "manzebo azor",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Café La Palma"
+     ]
+    },
+    "a5": {
+     "nombre": "POETRY SLAM MADRID",
+     "clave": "poetry slam madrid",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Intruso Bar"
+     ]
+    },
+    "a6": {
+     "nombre": "SANTI SANTOS",
+     "clave": "santi santos",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Cien por Cien"
+     ]
+    },
+    "a7": {
+     "nombre": "THUNDER BLUES",
+     "clave": "thunder blues",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Thundercat"
+     ]
+    },
+    "a8": {
+     "nombre": "H.LLS",
+     "clave": "h lls",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Cadavra"
+     ]
+    },
+    "a9": {
+     "nombre": "Livianas Provincianas",
+     "clave": "livianas provincianas",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Galileo Galilei"
+     ]
+    },
+    "a10": {
+     "nombre": "MIRADA DE VACA",
+     "clave": "mirada de vaca",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Intruso Bar"
+     ]
+    },
+    "a11": {
+     "nombre": "ARTURO PUEYO & GASTÓN JOYA",
+     "clave": "arturo pueyo and gaston joya",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Café El Despertar"
+     ]
+    },
+    "a12": {
+     "nombre": "SEMILLA NEGRA",
+     "clave": "semilla negra",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Honky Tonk"
+     ]
+    },
+    "a13": {
+     "nombre": "MYGUEL en acústico",
+     "clave": "myguel en acustico",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Galileo Galilei"
+     ]
+    },
+    "a14": {
+     "nombre": "MORIR TODAVIA",
+     "clave": "morir todavia",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Cien por Cien"
+     ]
+    },
+    "a15": {
+     "nombre": "Alfredo Garcia y la Hermandad Fratricida",
+     "clave": "alfredo garcia y la hermandad fratricida",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Sala Siroco"
+     ]
+    },
+    "a16": {
+     "nombre": "CARO TAXI",
+     "clave": "caro taxi",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Café La Palma"
+     ]
+    },
+    "a17": {
+     "nombre": "SÓLODOS",
+     "clave": "solodos",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Rincón del Arte Nuevo"
+     ]
+    },
+    "a18": {
+     "nombre": "ADRIÁN ESTÉVEZ TRÍO",
+     "clave": "adrian estevez trio",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Café El Despertar"
+     ]
+    },
+    "a19": {
+     "nombre": "HISPANIDAD 2026. ELLA ISAAC & THE GOLDDIGGERS",
+     "clave": "hispanidad 2026 ella isaac and the golddiggers",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Moe"
+     ]
+    },
+    "a20": {
+     "nombre": "MILENIALS Y YO",
+     "clave": "milenials y yo",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Thundercat"
+     ]
+    },
+    "a21": {
+     "nombre": "MARÍA MARTÍN",
+     "clave": "maria martin",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Jazzville"
+     ]
+    },
+    "a22": {
+     "nombre": "RODA DAS MINAS",
+     "clave": "roda das minas",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Rincón del Arte Nuevo"
+     ]
+    },
+    "a23": {
+     "nombre": "VERBENA EN LA BALLENA CON LA LEO",
+     "clave": "verbena en la ballena con la leo",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Moby Dick Club"
+     ]
+    },
+    "a24": {
+     "nombre": "ANDARIEGO\" PAUL SÁNCHEZ CUARTETO",
+     "clave": "andariego paul sanchez cuarteto",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Café El Despertar"
+     ]
+    },
+    "a25": {
+     "nombre": "ROD, VARELA & BUENO",
+     "clave": "rod varela and bueno",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Jazzville"
+     ]
+    }
+   },
+   "pendientes": 760
   }
  },
  "ocultos": {
