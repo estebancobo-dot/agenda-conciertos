@@ -153,19 +153,3 @@ def force(ctx: Ctx):
     yield from blog_incremental(ctx, "https://forcemagazine.es/agenda-force/",
                                 r"forcemagazine\.es/(?!agenda|calendario|tienda|revista|mi-cuenta|carrito|category)"
                                 r"[a-z0-9-]{15,}/?$", max_pages=2)
-
-
-def deruting(ctx: Ctx):
-    yield from blog_incremental(ctx, "https://www.deruting.com/giras/",
-                                r"deruting\.com/(?!giras|noticias|criticas|entrevistas|cultura|contacto|colaborar|category"
-                                r"|author|tag)[a-z0-9-]{20,}/?$")
-
-
-def stairway(ctx: Ctx):
-    yield from blog_incremental(ctx, "https://stairwaytorock.com/category/noticias/",
-                                r"stairwaytorock\.com/(?!category|author|tag|entrevista)[a-z0-9-]{20,}/?$")
-
-
-def thisisrock(ctx: Ctx):
-    yield from blog_incremental(ctx, "https://thisisrock.es/category/noticias/",
-                                r"thisisrock\.es/(?!category|author|tag)[a-z0-9-]{12,}/?$")

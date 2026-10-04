@@ -71,12 +71,6 @@ FUENTES: list[Source] = [
       "viriaor", blogs.viriaor, reconfirma=False),
     S("diariorockero", "Diario de un Rockero", "https://www.diariodeunrockero.es/", "blog", 4, "media",
       "diariorockero", blogs.diariorockero, reconfirma=False),
-    S("deruting", "DeRuting Magazine (giras)", "https://www.deruting.com/giras/", "blog", 4, "media", "deruting",
-      blogs.deruting, reconfirma=False),
-    S("stairway", "Stairway to Rock (noticias)", "https://stairwaytorock.com/category/noticias/", "blog", 4, "media",
-      "stairway", blogs.stairway, reconfirma=False),
-    S("thisisrock", "This Is Rock (noticias)", "https://thisisrock.es/category/noticias/", "blog", 4, "media",
-      "thisisrock", blogs.thisisrock, reconfirma=False),
     # ---------------------------------------------------------------- D. americana, country, folk, blues
     S("mutick", "Mutick / The Flying Pig (MomentaZos)", "https://mutick.com", "ticketera", 2, "alta", "mutick",
       otras.mutick),
