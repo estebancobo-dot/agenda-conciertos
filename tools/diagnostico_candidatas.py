@@ -156,7 +156,7 @@ if len(sys.argv) > 2 and sys.argv[1] in ("--crudo", "--render"):
                     elif isinstance(x, list) and x:
                         forma(x[0], pre + "  ", fondo + 1)
                 for sc in sp.select('script[type="application/json"], script#__NEXT_DATA__, [data-page]'):
-                    raw = sc.get("data-page") or sc.get_text()
+                    raw = sc.get("data-page") if (sc.get("data-page") or "").startswith("{") else sc.get_text()
                     try:
                         datos = json.loads(raw)
                     except ValueError as e:
