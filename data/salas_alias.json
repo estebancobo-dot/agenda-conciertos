@@ -673,7 +673,9 @@
     "centro de cultura contemporanea condeduque",
     "condeduque centro de cultura contemporanea",
     "centro cultural conde duque",
-    "conde duque"
+    "conde duque",
+    "centro cultural y social conde duque",
+    "centro cultural y social condeduque"
    ]
   },
   {
@@ -692,6 +694,64 @@
    "alias": [
     "canopy by hilton madrid castellana",
     "hotel canopy by hilton madrid castellana"
+   ]
+  },
+  {
+   "nombre": "Teatro Circo Price",
+   "municipio": "Madrid",
+   "alias": [
+    "teatro circo price",
+    "teatro circo price de madrid",
+    "circo price",
+    "price"
+   ]
+  },
+  {
+   "nombre": "Auditorio Nacional de Música",
+   "municipio": "Madrid",
+   "alias": [
+    "auditorio nacional de musica",
+    "auditorio nacional de musica de madrid",
+    "auditorio nacional",
+    "auditorio nacional de madrid",
+    "sala sinfonica auditorio nacional de musica",
+    "sala sinfonica, auditorio nacional de musica"
+   ]
+  },
+  {
+   "nombre": "Teatro Rialto",
+   "municipio": "Madrid",
+   "alias": [
+    "teatro rialto",
+    "teatro rialto de madrid",
+    "rialto"
+   ]
+  },
+  {
+   "nombre": "Music Station Príncipe Pío",
+   "municipio": "Madrid",
+   "alias": [
+    "music station principe pio",
+    "the music station principe pio",
+    "the music station"
+   ]
+  },
+  {
+   "nombre": "Babylon Club",
+   "municipio": "Madrid",
+   "alias": [
+    "babylon",
+    "babylon madrid",
+    "babylon club",
+    "babylon club madrid"
+   ]
+  },
+  {
+   "nombre": "Espacio Alma",
+   "municipio": "Madrid",
+   "alias": [
+    "espacio alma",
+    "teatro espacio alma"
    ]
   }
  ],

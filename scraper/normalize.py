@@ -110,6 +110,13 @@ def canon_sala(nombre: str | None) -> str:
     n = norm(nombre)
     # quita sufijos de ciudad: "sala x madrid", "sala x (madrid)"
     candidates = [n, re.sub(r"\s+(madrid|de madrid)$", "", n)]
+    # "Sala Villanos (Antigua Caracol)", "Palacio de los deportes de Madrid (Movistar Arena)": el nombre sin el
+    # paréntesis y, si no, el del paréntesis
+    m = re.match(r"(.+?)\s*\(([^()]+)\)\s*$", nombre)
+    if m:
+        for parte in (m.group(1), m.group(2)):
+            p = norm(parte)
+            candidates += [p, re.sub(r"\s+(madrid|de madrid)$", "", p)]
     for c in list(candidates):
         candidates.append(_sala_key(c))
     for c in candidates:
