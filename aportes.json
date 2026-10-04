@@ -2208,6 +2208,22 @@
    ],
    "lote": "A-2026-10-04-07",
    "fecha": "2026-10-04"
+  },
+  "rebrote": {
+   "nombre": "REBROTE",
+   "motivo": "el concierto del 10-10 es en la Sala B del CAEM de Salamanca, no en la Sala B de Madrid (Ayuntamiento de Salamanca)",
+   "salas": [
+    "Sala B"
+   ],
+   "fecha": "2026-10-04"
+  },
+  "lady pepa": {
+   "nombre": "Lady Pepa",
+   "motivo": "café-teatro (obra de teatro con música), no un concierto",
+   "salas": [
+    "Espacio Alma"
+   ],
+   "fecha": "2026-10-04"
   }
  }
 }
