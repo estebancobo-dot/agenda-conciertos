@@ -253,3 +253,17 @@ def test_regla_se_puede_deshacer():
     assert r["oculto"]["regla"]
     ap.aplicar_artista(r, {"mostrar": {"furi dj": {"nombre": "FURI DJ"}}})
     assert not r.get("oculto")
+
+
+def test_tributos_solo_en_su_grupo():
+    from scraper.nombres import agrupar_tributo, es_tributo
+    r = {"artista": "BOYS STILL CRY: TRIBUTO A THE CURE", "grupos": ["rock y metal"], "categoria": "rock y metal",
+         "grupos_generico": True, "estilos_discogs": ["Post-Punk"]}
+    agrupar_tributo(r)
+    assert r["grupos"] == ["tributos y versiones"] and r["estilo_tributo"] == ["rock y metal"]
+    assert r["estilos_discogs"] == ["Post-Punk"] and not r["grupos_generico"] and not r["en_foco"]
+    # la agenda lo etiqueta como tributo aunque el título no lo diga
+    assert es_tributo({"artista": "gREAT sTRAITS", "categorias": ["tributos y versiones"]})
+    assert es_tributo({"artista": "Tributo a Queen. Candlelight"})
+    assert not es_tributo({"artista": "Banda de música de Policía municipal de Madrid"})
+    assert not es_tributo({"artista": "Leiva", "categorias": ["pop e indie"]})

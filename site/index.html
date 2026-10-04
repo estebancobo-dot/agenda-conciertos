@@ -406,8 +406,8 @@ const GRUPOS = [
   {id:"blues", nombre:"Blues", v:"--c-blues", desc:"Todos los estilos de blues y el blues rock."},
   {id:"synth y dark wave", nombre:"Synthwave y dark wave", v:"--c-synth", desc:"Synthwave y neo synthwave (retrowave, outrun, darksynth…), darkwave, coldwave, synth-pop, EBM, italo-disco… (el resto de la electrónica va a Electrónica)"},
   {id:"cantautor", nombre:"Cantautores", v:"--c-cant", desc:"Solo por la etiqueta de la agenda (Discogs no tiene este estilo)."},
-  {id:"tributos y versiones", nombre:"Tributos", v:"--c-trib", desc:"Bandas tributo y de versiones (por la agenda o el título)."},
   {id:"sin clasificar", nombre:"Sin clasificar", v:"--c-sin", desc:"Ni las webs de música ni la agenda dan estilo. Se muestran para no perder conciertos."},
+  {id:"tributos y versiones", nombre:"Tributos y versiones", v:"--c-trib", desc:"Bandas tributo y de versiones (lo dice el título o la agenda), de cualquier estilo. Solo aquí: no salen en rock, pop… En la ficha, el estilo al que suenan.", mas:true},
   {id:"jazz y swing", nombre:"Jazz y swing", v:"--c-jazz", desc:"Swing, bebop, hard bop, jazz vocal, latin jazz, fusión, big band, gypsy jazz…", mas:true},
   {id:"soul, funk y r&b", nombre:"Soul, funk y R&B", v:"--c-soul", desc:"Soul, funk, R&B, gospel, disco, neo soul, afrobeat…", mas:true},
   {id:"flamenco y copla", nombre:"Flamenco y copla", v:"--c-flam", desc:"Flamenco, cante y baile, rumba, copla.", mas:true},
@@ -455,7 +455,9 @@ let DATA=[], BYID={}, INFORME=null, TAXO=null, SALAS={}, MAP=null, HOY=null, DET
 // 2.22: lo que antes era "Otros géneros" (fuera de foco) se reparte en grupos propios. Quien tenía elegido
 // "Otros géneros" sigue viéndolo todo (se le añaden los grupos nuevos)
 const NUEVOS_22=GRUPOS.filter(g=>g.mas).map(g=>g.id);
-const gruposGuardados=()=>{const g4=store.get("grupos4",null); if(g4) return g4;
+// 2.57: los tributos salen de los géneros habituales (van solo a "Tributos y versiones", que se añade desde los filtros)
+const gruposGuardados=()=>{const g5=store.get("grupos5",null); if(g5) return g5;
+  const g4=store.get("grupos4",null); if(g4) return g4.filter(g=>g!=="tributos y versiones");
   const g3=store.get("grupos3",null); if(g3) return g3.includes("fuera de foco")?[...new Set([...g3,...NUEVOS_22])]:g3;
   const g2=store.get("grupos2",null); return g2?[...g2,...DEF_GRUPOS.filter(g=>!["rock y metal","punk y garage","pop e indie","americana/country/folk","blues","cantautor","tributos y versiones","sin clasificar"].includes(g))]:DEF_GRUPOS;};
 let state = {tab:"Mes", date:null, id:null, q:"", grupos:gruposGuardados(), origen:store.get("origen","todos"), conf:store.get("conf","todos"), from:null,
@@ -631,7 +633,7 @@ function extraHTML(){
   return `<div class="chips" role="group" aria-label="Géneros">${chips}</div>
    ${n?`<div class="active">Filtrando: ${esc(resumenFiltros())} · <button id="freset">Quitar filtros</button></div>`:""}`;
 }
-function setGrupos(g){ state.grupos=g; store.set("grupos4",g); }
+function setGrupos(g){ state.grupos=g; store.set("grupos5",g); }
 // preajuste de géneros: los habituales, todos, o una selección propia
 function modoGrupos(sel){
   const mismo=(a,b)=>a.length===b.length&&b.every(x=>a.includes(x));
@@ -682,7 +684,7 @@ function openSheet(){
   let fut=[], cnt={}, est={}, gen={};
   const contar=()=>{ fut=DATA.filter(r=>r.fecha>=HOY&&pasaTexto(r,q)&&pasaOri(r)); cnt={}; est={}; gen={};
     for(const r of fut){ for(const g of gruposF(r)){cnt[g]=(cnt[g]||0)+1; if(r.grupos_generico) gen[g]=(gen[g]||0)+1;}
-      for(const s of r.estilos_discogs||[]){const g=grupoDeEstilo(s); if(!g) continue; (est[g]=est[g]||{})[s]=(est[g][s]||0)+1;}} };
+      for(const s of r.estilos_discogs||[]){const g=grupoDeEstilo(s); if(!g||!gruposF(r).includes(g)) continue; (est[g]=est[g]||{})[s]=(est[g][s]||0)+1;}} };
   const pasa=r=>{ if(r.grupos_generico&&!genOk) return false; const gs=gruposF(r);
     for(const g of sel){ if(!gs.includes(g)) continue; const l=selEst[g]; if(!l||!l.length) return true; const e=estilosDe(r); if(l.some(x=>e.has(x))) return true; }
     return false; };
@@ -964,7 +966,11 @@ function viewConcierto(){
   const nomG=id=>(GRUPOS.find(g=>g.id===id)||{nombre:id}).nombre;
   const gruposTxt=grupos(r).map(nomG).join(", ");
   let estiloHTML;
-  if((r.grupos_origen||"").startsWith("agenda (espect")){
+  const esTrib=grupos(r).length===1&&grupos(r)[0]==="tributos y versiones";
+  if(esTrib){
+    const suena=[...(r.estilo_tributo||[]).map(nomG), ...estilos.slice(0,4)];
+    estiloHTML=`<div class="v">Tributo o banda de versiones${suena.length?` · ${esc(suena.join(", "))}`:""}</div><div class="s">Solo en «Tributos y versiones» (no sale en los géneros de lo que versiona).${suena.length?" El estilo es el de la música que tocan"+(r.homenaje?` (${esc(r.homenaje.artista)})`:"")+".":""}</div>`;
+  } else if((r.grupos_origen||"").startsWith("agenda (espect")){
     estiloHTML=`<div class="v muted">No es un concierto</div><div class="s">La agenda lo presenta como ${esc((ag||"espectáculo").replace(/_/g," "))}: no se busca como grupo musical (evita confundirlo con un artista del mismo nombre). Género: ${esc(gruposTxt)}</div>`;
   } else if(estilos.length||(generos.length&&r.grupos_origen!=="agenda")){
     estiloHTML=`<div class="v">${esc((estilos.length?estilos:generos).join(", "))}</div><div class="s">Género: <b>${esc(gruposTxt)}</b> · según ${esc((r.grupos_segun||[]).join(", ")||r.grupos_origen||"Discogs")}${(r.grupos_segun||[]).length>1?" (por consenso)":""}</div>`;

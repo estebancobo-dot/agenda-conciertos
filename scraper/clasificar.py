@@ -243,7 +243,8 @@ def revisar_homonimos(evs: list[dict], pesos_agenda: dict[str, float] | None = N
                 pesos[g] = pesos.get(g, 0) + e["peso"]
         return set(por_consenso(pesos))
 
-    foco = set(_mapa()[3]) - {"sin clasificar"}
+    # los tributos ya no son "habituales" en la web, pero para detectar homónimos siguen del lado del rock y el pop
+    foco = (set(_mapa()[3]) - {"sin clasificar"}) | {"tributos y versiones"}
 
     def lado(gs):
         if not gs:

@@ -15,6 +15,7 @@ from pathlib import Path
 
 from . import __version__
 from .clasificar import categoria_de
+from .nombres import agrupar_tributo
 from .aportes import aplicar_artista as aplicar_aporte_artista, aplicar_conciertos as aplicar_aportes_conciertos
 from .correcciones import aplicar as aplicar_correcciones
 from .entradas import aplicar_entradas
@@ -1250,6 +1251,7 @@ def ejecutar(hoy: date | None = None, solo: list[str] | None = None, fetcher: Fe
         origen_por_agenda(r, cache_art)
         tributo_y_estimacion(r, cache_art)
         aplicar_aporte_artista(r, aportes)
+        agrupar_tributo(r)
         aplicar_cartel(r, cache_art)
     stats_entradas = aplicar_entradas(recs, _read(CACHE_PAGINAS, {}))
     stats_entradas["aportes"] = aplicar_aportes_conciertos(recs, aportes)
@@ -1381,6 +1383,7 @@ def ejecutar_fichas(hoy: date | None = None, presupuesto_seg: float = 3000) -> d
         origen_por_agenda(r, cache_art)
         tributo_y_estimacion(r, cache_art)
         aplicar_aporte_artista(r, aportes)
+        agrupar_tributo(r)
         aplicar_cartel(r, cache_art)
     stats["entradas"] = aplicar_entradas(recs, cache_pag)
     stats["entradas"]["aportes"] = aplicar_aportes_conciertos(recs, aportes)
@@ -1417,6 +1420,7 @@ def reaplicar_fichas() -> None:
         origen_por_agenda(r, cache)
         tributo_y_estimacion(r, cache)
         aplicar_aporte_artista(r, aportes)
+        agrupar_tributo(r)
         aplicar_cartel(r, cache)
     aplicar_entradas(recs, _read(CACHE_PAGINAS, {}))
     aplicar_aportes_conciertos(recs, aportes)

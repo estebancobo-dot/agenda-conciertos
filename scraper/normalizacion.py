@@ -62,6 +62,10 @@ def estado_estilo(r: dict, cache: dict) -> dict:
     origen = str(r.get("grupos_origen") or "")
     grupos = [g for g in r.get("grupos") or [] if g != "sin clasificar"]
     segun = ", ".join(r.get("grupos_segun") or [])
+    if grupos == ["tributos y versiones"]:
+        det = ", ".join(r.get("estilo_tributo") or []) or ", ".join((r.get("estilos_discogs") or [])[:3])
+        return {"estado": "conocido", "fuente": "el título o la agenda (tributo)",
+                "motivo": "tributo o banda de versiones" + (f"; suena a {det}" if det else "")}
     if origen.startswith("agenda (espect"):
         return {"estado": "no_aplica", "motivo": "espectáculo, no un concierto de un artista"}
     if grupos and origen in _WEBS_MUSICA:

@@ -41,6 +41,32 @@ _PAIS_TIT = {
     "rusia": "RU", "ua": "UA", "ucrania": "UA", "cz": "CZ", "republica checa": "CZ", "hu": "HU", "hungria": "HU",
 }
 _TRIBUTO = re.compile(r"\b(tributo|tribute|trib|homenaje|versiones|covers?|musica de|revival band|the music of)\b")
+# "Banda de música de Vallecas", "música de cámara": no son tributos aunque digan "música de"
+_NO_TRIBUTO = re.compile(r"\bbanda (de )?musica\b|\bmusica de camara\b")
+TRIBUTOS = "tributos y versiones"
+
+
+def es_tributo(r: dict) -> bool:
+    """Un tributo o una banda de versiones: lo dice el título ("Tributo a Queen. Candlelight", "BOYS STILL CRY:
+    TRIBUTO A THE CURE") o la agenda lo etiqueta así ("Versiones/Tributos")."""
+    t = norm(r.get("artista") or "")
+    if _TRIBUTO.search(t) and not _NO_TRIBUTO.search(t):
+        return True
+    return TRIBUTOS in (r.get("categorias") or [])
+
+
+def agrupar_tributo(r: dict) -> None:
+    """Los tributos van solo al grupo "tributos y versiones" (no a rock, pop… ni a los géneros habituales). El
+    estilo que tendrían (el de la agenda o el del homenajeado) se guarda como detalle del artista en
+    "estilo_tributo", y los subestilos siguen en estilos_discogs ("Hard Rock")."""
+    r.pop("estilo_tributo", None)
+    if not es_tributo(r):
+        return
+    otros = [g for g in r.get("grupos") or [] if g not in (TRIBUTOS, "sin clasificar", "fuera de foco")]
+    if otros:
+        r["estilo_tributo"] = otros
+    r["grupos"], r["categoria"], r["grupos_generico"] = [TRIBUTOS], TRIBUTOS, False
+    r["en_foco"] = False  # fuera de los géneros habituales
 _PARENTESIS = re.compile(r"\(([^()]{2,22})\)")
 _VARIOS = re.compile(r"\s+(?:&|\+|y|and|con|feat\.?|ft\.?|x|vs\.?)\s+|\s*,\s+|\s*/\s*", re.I)
 

@@ -1,5 +1,15 @@
 # Versiones
 
+## 2.57.0 — 2026-10-04
+
+**Tributos aparte: solo en "Tributos y versiones", fuera de los géneros habituales.**
+
+- **Qué es un tributo** (`scraper/nombres.py`, `es_tributo`): lo dice el título ("tributo", "tribute", "homenaje", "versiones", "covers", "the music of"…; también "Tributo a Queen. Candlelight") o la agenda lo etiqueta así ("Versiones/Tributos"). "Banda de música de…" y "música de cámara" no lo son. Antes 39 títulos con "tributo" u "homenaje" no estaban marcados (Boys Still Cry: tributo a The Cure, Tributo a Rocío Jurado, Amythology, los Candlelight…).
+- **Dónde salen**: solo en el grupo "Tributos y versiones" (no en rock, pop, jazz…), que pasa a "Más géneros": no está en los habituales ni en el filtro por defecto. Quien lo tenía elegido lo vuelve a añadir desde los filtros. Con los datos de hoy: 193 conciertos.
+- **El estilo al que suenan** queda como detalle del artista: el de la agenda o el del homenajeado ("rock y metal", "Post-Punk"), en la ficha ("Tributo o banda de versiones · Rock y metal") y en `estilo_tributo`. No cuenta en los recuentos de subgéneros de los demás géneros. El estilo de un tributo es "conocido" (lo dice el título o la agenda).
+- **Origen**: el de la banda tributo es el que cuenta para los filtros de origen; el del artista homenajeado se muestra aparte en la ficha.
+- **Duplicados**: "Plaza de Toros La Nueva Cubierta" es La Nueva Cubierta (Europe salía dos veces).
+
 ## 2.56.0 — 2026-10-04
 
 **Fuera lo que no es un concierto, y los lotes van a por lo que la web aún enseña como "sin confirmar".**
