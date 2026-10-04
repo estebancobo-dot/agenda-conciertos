@@ -227,3 +227,12 @@ def test_ocultos_no_salen_en_la_web(tmp_path):
     res = preparar({"conciertos": [a, b]}, tmp_path)
     assert res["conciertos"] == 1 and res["ocultos"] == 1
     assert json.loads((tmp_path / "ocultos.json").read_text())[0]["artista"] == "La Cuota Comedy"
+
+
+def test_oculto_solo_en_su_sala():
+    apo = {"ocultos": {"taylor swift": {"nombre": "TAYLOR SWIFT", "motivo": "fiesta temática", "salas": ["Sala But"]}}}
+    fiesta = {"fecha": "2026-11-23", "artista": "TAYLOR SWIFT", "sala": "Sala But", "fuentes": []}
+    concierto = {"fecha": "2027-06-01", "artista": "Taylor Swift", "sala": "Estadio Santiago Bernabéu", "fuentes": []}
+    ap.aplicar_artista(fiesta, apo)
+    ap.aplicar_artista(concierto, apo)
+    assert fiesta.get("oculto") and not concierto.get("oculto")

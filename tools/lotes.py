@@ -215,7 +215,8 @@ def lote_artistas(cands: list[dict], n: int, lote: str) -> tuple[str, dict]:
         if webs:
             item["anunciado_en"] = webs
         items.append(item)
-        pedido[aid] = {"nombre": x["nombre"], "clave": ap.clave_artista(x["nombre"]), "falta": sorted(x["falta"])}
+        pedido[aid] = {"nombre": x["nombre"], "clave": ap.clave_artista(x["nombre"]), "falta": sorted(x["falta"]),
+                       "salas": sorted({canon_sala(r.get("sala") or "") for r in cs if r.get("sala")})}
     texto = INSTR_ARTISTAS.replace("%LOTE%", lote) + "\nArtistas:\n```json\n" + \
         "[\n" + ",\n".join(json.dumps(x, ensure_ascii=False) for x in items) + "\n]\n```\n"
     return texto, pedido
@@ -332,8 +333,9 @@ def importar(texto: str, fetcher=None, hoy: str | None = None) -> str:
                                                            "rechazado": res["rechazado"][:4]}
             partes = []
             if str(item.get("identidad") or "").lower().startswith("no es"):
+                # solo en las salas donde salió ("TAYLOR SWIFT" en Sala But es una fiesta; un concierto suyo no se oculta)
                 apo.setdefault("ocultos", {})[k] = {"nombre": ped["nombre"], "motivo": str(item.get("nota") or "")[:160],
-                                                    "lote": d["lote"], "fecha": hoy}
+                                                    "salas": ped.get("salas") or [], "lote": d["lote"], "fecha": hoy}
                 partes.append(f"🙈 no es un concierto: {str(item.get('nota') or '')[:120]} (se oculta de la agenda; "
                               f"lista revisable en aportes.json → ocultos)")
             if "pais" in res["aceptado"]:
@@ -387,7 +389,8 @@ def ocultar(lista: list[dict], hoy: str | None = None) -> str:
     apo = cargar(APORTES, ap.vacio())
     for x in lista:
         apo.setdefault("ocultos", {})[ap.clave_artista(x["nombre"])] = {
-            "nombre": x["nombre"], "motivo": str(x.get("motivo") or "")[:160], "fecha": hoy or date.today().isoformat()}
+            "nombre": x["nombre"], "motivo": str(x.get("motivo") or "")[:160], "salas": x.get("salas") or [],
+            "fecha": hoy or date.today().isoformat()}
     guardar(APORTES, apo)
     return f"Ocultos: {len(apo['ocultos'])} (añadidos {len(lista)})."
 

@@ -434,6 +434,10 @@ def aplicar_artista(r: dict, aportes: dict) -> None:
     ocultos = (aportes or {}).get("ocultos") or {}
     o = next((ocultos[k] for k in (clave_artista(n) for n in [r.get("artista") or "", *claves_ficha(r)]) if k in ocultos),
              None)
+    if o and o.get("salas"):
+        from .normalize import misma_sala
+        if not any(misma_sala(canon_sala(r.get("sala") or ""), canon_sala(x)) for x in o["salas"]):
+            o = None  # oculto solo en las salas donde se vio que no era un concierto
     if o:
         r["oculto"] = {"motivo": o.get("motivo") or "no es un concierto", "nombre": o.get("nombre")}
     arts = (aportes or {}).get("artistas") or {}
