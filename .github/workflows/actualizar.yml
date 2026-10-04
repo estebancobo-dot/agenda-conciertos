@@ -75,10 +75,15 @@ jobs:
             python -m scraper --sin madridenvivo
           elif [ "${{ github.event.schedule }}" = "40 5-23/2 * * *" ] || [ "${{ github.event.inputs.fichas }}" = "true" ]; then
             INICIO=$(date +%s)
-            HORA=$(date -u +%H)
-            if [ "${{ github.event.schedule }}" = "40 5-23/2 * * *" ] && { [ "$HORA" = "09" ] || [ "$HORA" = "15" ] || [ "$HORA" = "21" ]; }; then
-              # 09:40, 15:40 y 21:40 UTC: lectura rápida de todas las agendas menos Madrid en Vivo (conciertos nuevos,
-              # cambios y cancelaciones cada 6 horas), en la misma pasada: tareas aparte se cancelarían en la cola
+            # minutos desde la última lectura de todas las agendas (informe.json "ultima_completa", que los reintentos no
+            # tocan): la rápida toca cuando han pasado más de
+            # 5,5 horas, así salen unas tres al día (hacia las 11:40, 17:40 y 23:40 UTC) aunque GitHub retrase la
+            # tarea (la de las 09:40 del 4-10 empezó a las 11:08 y, mirando la hora de reloj, se quedó sin lectura)
+            MINUTOS=$(python -c "import json,datetime as d;g=(json.load(open('data/informe.json')).get('ultima_completa') or {}).get('generado','');print(int((d.datetime.now(d.timezone.utc)-d.datetime.fromisoformat(g)).total_seconds()//60) if g else 9999)")
+            if [ "${{ github.event.schedule }}" = "40 5-23/2 * * *" ] && [ "$MINUTOS" -ge 330 ]; then
+              # lectura rápida de todas las agendas menos Madrid en Vivo (conciertos nuevos, cambios y cancelaciones),
+              # en la misma pasada: tareas aparte se cancelarían en la cola
+              echo "Lectura rápida: $MINUTOS minutos desde la última lectura de todas las agendas"
               python -m scraper --sin madridenvivo --minutos-fichas 10 || echo "La lectura rápida falló; se sigue con las fichas"
             else
               # el resto de pasadas: reintenta las fuentes que fallaron en la última lectura
