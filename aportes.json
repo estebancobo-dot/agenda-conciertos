@@ -1498,6 +1498,97 @@
    },
    "lote": "A-2026-10-04-18",
    "fecha": "2026-10-04"
+  },
+  "alex ferran presenta demo tour": {
+   "nombre": "Alex Ferrán presenta Demo Tour",
+   "pais": {
+    "valor": "ES",
+    "url": "https://www.orm.es/musicas-en-la-memoria/musicas-de-ida-y-vuelta-angie-capel-estreno-en-solitario-de-un-musico-que-es-un-prodigio/",
+    "cita": "nos visita alex ferran, nueva promesa del jazz pop murciano radicado en madrid, actualmente de gira por toda espana. musicas de ida y vuelta. angie capel: estreno en solita",
+    "ciudad": "Murcia"
+   },
+   "estilos": {
+    "valores": [
+     "pop",
+     "jazz"
+    ],
+    "url": "https://www.orm.es/musicas-en-la-memoria/musicas-de-ida-y-vuelta-angie-capel-estreno-en-solitario-de-un-musico-que-es-un-prodigio/",
+    "cita": "nos visita alex ferran, nueva promesa del jazz pop murciano radicado en madrid, actualmente de gira por toda espana. musicas de ida y vuelta. angie capel: estreno en solita",
+    "web_musica": false
+   },
+   "lote": "A-2026-10-04-19",
+   "fecha": "2026-10-04"
+  },
+  "berbiki": {
+   "nombre": "Berbikí",
+   "pais": {
+    "valor": "ES",
+    "url": "https://silikona.es/eventos/berbiki-volata/",
+    "cita": "berbiki + volata - sala silikona berbiki + volata directo desde los barrios de madrid berbiki es una banda de contundente post-heavyrock. influenciados por e",
+    "ciudad": "Madrid"
+   },
+   "estilos": {
+    "valores": [
+     "punk metal"
+    ],
+    "url": "https://silikona.es/eventos/berbiki-volata/",
+    "cita": "de madrid berbiki es una banda de contundente post-heavyrock. influenciados por el el rock duro, berbiki + volata directo desde los barrios de madrid berbiki es una banda de contundente post-heavyrock. influenciados por el el rock duro, el heavy clasico y por tendencias mas actuales del punk-metal s",
+    "web_musica": false
+   },
+   "lote": "A-2026-10-04-19",
+   "fecha": "2026-10-04"
+  },
+  "shakira martinez": {
+   "nombre": "Shakira Martínez",
+   "pais": {
+    "valor": "ES",
+    "url": "https://www.hola.com/actualidad/20220410206557/shakira-martinez-cantante-entrevista/",
+    "cita": "ija de chad low bautizo princesa elisabeth cortes de otono laura ponte marta ortega joya reina letizia viaje maribel verdu feng shui horoscopo de hoy shakira martinez, la nueva sensacion del flamenco moderno espana americas usa mexico iniciar sesion suscribete actualidad television biografias casas ",
+    "ciudad": "Elda"
+   },
+   "estilos": {
+    "valores": [
+     "flamenco pop",
+     "flamenco"
+    ],
+    "url": "https://surmusicsevilla.com/project/shakira-martinez/",
+    "cita": "shakira martinez, una joven promesa musical del flamenco pop en espana con una voz excepcional y una pasion innata por la musica. shakira martinez - surmusic sevilla",
+    "web_musica": false
+   },
+   "lote": "A-2026-10-04-19",
+   "fecha": "2026-10-04"
+  },
+  "sheila paz": {
+   "nombre": "SHEILA PAZ",
+   "estilos": {
+    "valores": [
+     "pop"
+    ],
+    "url": "https://lacocheracabaret.com/evento/sheila-paz/",
+    "cita": "tilleo y charla no pueden faltar. la diversion y el drama estan asegurados. vengan con ganas de pasarselo bien. ‪biografia: la cantante y compositora sheila paz explora el pop alternativo y urbano sin desprenderse nunca de sus raices andaluzas. aferrada a su esencia de folklorica, escribe sobre todo",
+    "web_musica": false
+   },
+   "lote": "A-2026-10-04-19",
+   "fecha": "2026-10-04"
+  },
+  "the silencers": {
+   "nombre": "THE SILENCERS",
+   "pais": {
+    "valor": "GB",
+    "url": "https://en.wikipedia.org/wiki/The_Silencers_(band)",
+    "cita": "the silencers (band) - wikipedia the silencers (band) scottish rock band wikimedia foundation, inc. contributors to wikimedia projects the silencers (band) - wikip",
+    "ciudad": "Glasgow"
+   },
+   "estilos": {
+    "valores": [
+     "rock"
+    ],
+    "url": "https://en.wikipedia.org/wiki/The_Silencers_(band)",
+    "cita": "the silencers (band) - wikipedia the silencers (band) scottish rock band wikimedia foundation, inc. contributors to wikimedia projects the silencers (band) - wikip",
+    "web_musica": true
+   },
+   "lote": "A-2026-10-04-19",
+   "fecha": "2026-10-04"
   }
  },
  "conciertos": [
@@ -4757,6 +4848,172 @@
    "lote": "A-2026-10-04-18",
    "aceptado": [],
    "rechazado": []
+  },
+  "a:alex ferran presenta demo tour": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-19",
+   "aceptado": [
+    "estilos",
+    "pais"
+   ],
+   "rechazado": []
+  },
+  "a:espana pintoresca": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-19",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:inauguracion de la semana cultural del c c castellano manchego de latina": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-19",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:sabor y solera con inolvidables": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-19",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:berbiki": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-19",
+   "aceptado": [
+    "estilos",
+    "pais"
+   ],
+   "rechazado": []
+  },
+  "a:shakira martinez": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-19",
+   "aceptado": [
+    "estilos",
+    "pais"
+   ],
+   "rechazado": []
+  },
+  "a:crvdo sessions vol 2": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-19",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:arai con toque cubano": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-19",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:burning nus": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-19",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:el mal de fruk": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-19",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:guzmen": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-19",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:n neteen": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-19",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:somos los caras cona": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-19",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:the bang": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-19",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:manuel cuesta": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-19",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:ap big band feat at one": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-19",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:albert marques and keith lamar": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-19",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:freedom first": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-19",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:lester dominguez": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-19",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:xiv concierto javi martin a beneficio del banco de alimentos": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-19",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:xtasy": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-19",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:madriz roots 1 launch party": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-19",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:sheila paz": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-19",
+   "aceptado": [
+    "estilos"
+   ],
+   "rechazado": [
+    "país ES: no se pudo abrir (HTTPError)"
+   ]
+  },
+  "a:el negro que toca el trombon": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-19",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:the silencers": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-19",
+   "aceptado": [
+    "estilos",
+    "pais"
+   ],
+   "rechazado": []
   }
  },
  "lotes": {
@@ -4889,262 +5146,8 @@
   "A-2026-10-04-19": {
    "tipo": "artistas",
    "creado": "2026-10-04",
-   "items": {
-    "a1": {
-     "nombre": "Alex Ferrán presenta Demo Tour",
-     "clave": "alex ferran presenta demo tour",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Sala Clamores"
-     ]
-    },
-    "a2": {
-     "nombre": "España Pintoresca",
-     "clave": "espana pintoresca",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Centro Sociocultural San Fermín (Usera)"
-     ]
-    },
-    "a3": {
-     "nombre": "Inauguración de la Semana Cultural del C-C. Castellano Manchego de Latina",
-     "clave": "inauguracion de la semana cultural del c c castellano manchego de latina",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Centro Cultural Fernando de los Ríos (Latina)"
-     ]
-    },
-    "a4": {
-     "nombre": "Sabor y solera, con inolvidables",
-     "clave": "sabor y solera con inolvidables",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Centro Cultural San Francisco La Prensa (Carabanchel)"
-     ]
-    },
-    "a5": {
-     "nombre": "Berbikí",
-     "clave": "berbiki",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Sala La Trinchera"
-     ]
-    },
-    "a6": {
-     "nombre": "Shakira Martínez",
-     "clave": "shakira martinez",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Independance Club"
-     ]
-    },
-    "a7": {
-     "nombre": "CRVDO SESSIONS VOL 2",
-     "clave": "crvdo sessions vol 2",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Sala Vesta"
-     ]
-    },
-    "a8": {
-     "nombre": "ARAI con toque cubano",
-     "clave": "arai con toque cubano",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Babylon Club"
-     ]
-    },
-    "a9": {
-     "nombre": "BURNING ÑUS",
-     "clave": "burning nus",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Rockville"
-     ]
-    },
-    "a10": {
-     "nombre": "EL MAL DE FRUK",
-     "clave": "el mal de fruk",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Hangar 48"
-     ]
-    },
-    "a11": {
-     "nombre": "Guzmen",
-     "clave": "guzmen",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Sala Siroco"
-     ]
-    },
-    "a12": {
-     "nombre": "N!Neteen",
-     "clave": "n neteen",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Galileo Galilei"
-     ]
-    },
-    "a13": {
-     "nombre": "Somos Los Caras Cona",
-     "clave": "somos los caras cona",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Sala Clamores"
-     ]
-    },
-    "a14": {
-     "nombre": "THE BANG",
-     "clave": "the bang",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Thundercat"
-     ]
-    },
-    "a15": {
-     "nombre": "MANUEL CUESTA",
-     "clave": "manuel cuesta",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Jazzville"
-     ]
-    },
-    "a16": {
-     "nombre": "AP BIG BAND feat AT ONE",
-     "clave": "ap big band feat at one",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Babylon Club"
-     ]
-    },
-    "a17": {
-     "nombre": "Albert Marquès & Keith LaMar",
-     "clave": "albert marques and keith lamar",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Sala Villanos"
-     ]
-    },
-    "a18": {
-     "nombre": "FREEDOM FIRST",
-     "clave": "freedom first",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Sala Villanos"
-     ]
-    },
-    "a19": {
-     "nombre": "LÉSTER DOMÍNGUEZ",
-     "clave": "lester dominguez",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Jazzville"
-     ]
-    },
-    "a20": {
-     "nombre": "XIV concierto «Javi Martín» a beneficio del banco de alimentos",
-     "clave": "xiv concierto javi martin a beneficio del banco de alimentos",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Cadillac Solitario"
-     ]
-    },
-    "a21": {
-     "nombre": "XTASY",
-     "clave": "xtasy",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Rockville"
-     ]
-    },
-    "a22": {
-     "nombre": "MADRIZ ROOTS #1 LAUNCH PARTY",
-     "clave": "madriz roots 1 launch party",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Silikona"
-     ]
-    },
-    "a23": {
-     "nombre": "SHEILA PAZ",
-     "clave": "sheila paz",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Sala B"
-     ]
-    },
-    "a24": {
-     "nombre": "EL NEGRO QUE TOCA EL TROMBON",
-     "clave": "el negro que toca el trombon",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Babylon Club"
-     ]
-    },
-    "a25": {
-     "nombre": "THE SILENCERS",
-     "clave": "the silencers",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Sala Copérnico"
-     ]
-    }
-   },
-   "pendientes": 460
+   "pendientes": 460,
+   "importado": "2026-10-04"
   }
  },
  "ocultos": {
