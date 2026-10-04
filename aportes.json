@@ -1133,6 +1133,59 @@
    },
    "lote": "A-2026-10-04-13",
    "fecha": "2026-10-04"
+  },
+  "sandy bell": {
+   "nombre": "Sandy Bell",
+   "pais": {
+    "valor": "US",
+    "url": "https://first-avenue.com/performer/sandy-bell/",
+    "cita": "sandy bell - first avenue alternative musician, singer-songwriter sandy bell plumbs the damaged american psyche with the poetical precision of emily dickinson a",
+    "ciudad": "Woodstock"
+   },
+   "enlaces": [
+    "https://sandybell.bandcamp.com/"
+   ],
+   "lote": "A-2026-10-04-14",
+   "fecha": "2026-10-04"
+  },
+  "paula caveira": {
+   "nombre": "Paula Caveira",
+   "estilos": {
+    "valores": [
+     "pop"
+    ],
+    "url": "https://whynotmagazine.es/2025/07/30/conoce-paula-caveira-telonera-maldita-nerea-llenar-salas-madrid/",
+    "cita": "descubre a paula caveira, la nueva voz emergente. la artista promete convertirse en una de las revelaciones del pop espanol. conoce a paula caveira: de telonera de maldita ne",
+    "web_musica": false
+   },
+   "lote": "A-2026-10-04-14",
+   "fecha": "2026-10-04"
+  },
+  "dark thoughts": {
+   "nombre": "dark thoughts",
+   "estilos": {
+    "valores": [
+     "punk rock"
+    ],
+    "url": "https://clrvynt.com/dark-thoughts-interview/",
+    "cita": "punk lifers jim shomo and amy opsasnick honor the ramones without worshiping them in ripping philly trio dark thoughts. the ramones forever fuel dark thoughts' blunt punk rock punk lifers jim shomo and amy opsasnick honor the ramones without worshiping them in ripping",
+    "web_musica": false
+   },
+   "lote": "A-2026-10-04-14",
+   "fecha": "2026-10-04"
+  },
+  "candela liste": {
+   "nombre": "CANDELA LISTE",
+   "estilos": {
+    "valores": [
+     "rock"
+    ],
+    "url": "https://www.premiosrockvillamadrid.es/grupo/candela-liste/",
+    "cita": "candela liste - premios rock villa de madrid candela liste forma parte de la nueva generacion de artistas que valora la musica como un arte. esta cantante, musico",
+    "web_musica": false
+   },
+   "lote": "A-2026-10-04-14",
+   "fecha": "2026-10-04"
   }
  },
  "conciertos": [
@@ -3552,6 +3605,173 @@
    "lote": "A-2026-10-04-13",
    "aceptado": [],
    "rechazado": []
+  },
+  "a:inercia sonora gon abril and luzia": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-14",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:capitulo xxxiv": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-14",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:sandy bell": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-14",
+   "aceptado": [
+    "enlaces",
+    "pais"
+   ],
+   "rechazado": [
+    "estilos: ni la frase citada ni la página lo dicen junto al nombre"
+   ]
+  },
+  "a:alfonso mansilla": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-14",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:dialogos en el aire": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-14",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:electric fence": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-14",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:paula caveira": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-14",
+   "aceptado": [
+    "estilos"
+   ],
+   "rechazado": []
+  },
+  "a:aitor castell and friends": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-14",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:dark thoughts": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-14",
+   "aceptado": [
+    "estilos"
+   ],
+   "rechazado": [
+    "país US: ni la frase citada ni la página lo dicen junto al nombre"
+   ]
+  },
+  "a:delta tango romeo": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-14",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:ea the sound of 90s": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-14",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:florenziano aixa trinitario": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-14",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:jotabarrioz": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-14",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:listening party selene casas": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-14",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:pablo hinchey": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-14",
+   "aceptado": [],
+   "rechazado": [
+    "estilos: no se pudo abrir (HTTPError)"
+   ]
+  },
+  "a:ferran exceso": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-14",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:andina de bahia": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-14",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:sofia campos": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-14",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:beatriz zaragoza": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-14",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:the buzz lovers": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-14",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:vocal vidas": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-14",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:black drones": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-14",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:concierto inaugural de la orquesta sinfonica municipal de torrejon": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-14",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:the indexes": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-14",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:candela liste": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-14",
+   "aceptado": [
+    "estilos"
+   ],
+   "rechazado": [
+    "país ES: no se pudo abrir (HTTPError)"
+   ]
   }
  },
  "lotes": {
@@ -3654,264 +3874,8 @@
   "A-2026-10-04-14": {
    "tipo": "artistas",
    "creado": "2026-10-04",
-   "items": {
-    "a1": {
-     "nombre": "Inercia Sonora/ Gon Abril & Luzía",
-     "clave": "inercia sonora gon abril and luzia",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Galileo Galilei"
-     ]
-    },
-    "a2": {
-     "nombre": "Capítulo XXXIV",
-     "clave": "capitulo xxxiv",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Cineteca Madrid"
-     ]
-    },
-    "a3": {
-     "nombre": "Sandy Bell",
-     "clave": "sandy bell",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Sala Wagon"
-     ]
-    },
-    "a4": {
-     "nombre": "ALFONSO MANSILLA",
-     "clave": "alfonso mansilla",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Candela"
-     ]
-    },
-    "a5": {
-     "nombre": "Diálogos en el aire",
-     "clave": "dialogos en el aire",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Centro Cultural Casa de Vacas (Retiro)"
-     ]
-    },
-    "a6": {
-     "nombre": "ELECTRIC FENCE",
-     "clave": "electric fence",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Rockville"
-     ]
-    },
-    "a7": {
-     "nombre": "Paula Caveira",
-     "clave": "paula caveira",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Moby Dick Club"
-     ]
-    },
-    "a8": {
-     "nombre": "AITOR CASTELL & FRIENDS",
-     "clave": "aitor castell and friends",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "El Perro Club"
-     ]
-    },
-    "a9": {
-     "nombre": "dark thoughts",
-     "clave": "dark thoughts",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Wurlitzer Ballroom"
-     ]
-    },
-    "a10": {
-     "nombre": "Delta Tango Romeo",
-     "clave": "delta tango romeo",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Dime que me Quieres"
-     ]
-    },
-    "a11": {
-     "nombre": "EA THE SOUND OF 90's",
-     "clave": "ea the sound of 90s",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Sala Nazca"
-     ]
-    },
-    "a12": {
-     "nombre": "FLORENZIANO-AIXA-TRINITARIO",
-     "clave": "florenziano aixa trinitario",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Fulanita de Tal"
-     ]
-    },
-    "a13": {
-     "nombre": "JOTABARRIOZ",
-     "clave": "jotabarrioz",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Hangar 48"
-     ]
-    },
-    "a14": {
-     "nombre": "LISTENING PARTY SELENE CASAS",
-     "clave": "listening party selene casas",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Fotomatón Bar"
-     ]
-    },
-    "a15": {
-     "nombre": "Pablo Hinchey",
-     "clave": "pablo hinchey",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Maravillas Club"
-     ]
-    },
-    "a16": {
-     "nombre": "FERRÁN EXCESO",
-     "clave": "ferran exceso",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Jazzville"
-     ]
-    },
-    "a17": {
-     "nombre": "ANDINA DE BAHÍA",
-     "clave": "andina de bahia",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Tablao Flamenco Torero"
-     ]
-    },
-    "a18": {
-     "nombre": "Sofía Campos",
-     "clave": "sofia campos",
-     "falta": [
-      "estilo"
-     ],
-     "salas": [
-      "Esquina Nua"
-     ]
-    },
-    "a19": {
-     "nombre": "Beatriz Zaragoza",
-     "clave": "beatriz zaragoza",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Centro Sociocultural Ágata (Villaverde)"
-     ]
-    },
-    "a20": {
-     "nombre": "The Buzz Lovers",
-     "clave": "the buzz lovers",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Sala Changó"
-     ]
-    },
-    "a21": {
-     "nombre": "Vocal vidas",
-     "clave": "vocal vidas",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Centro Cultural el Madroño (Vicálvaro)"
-     ]
-    },
-    "a22": {
-     "nombre": "Black Drones",
-     "clave": "black drones",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Dime que me Quieres"
-     ]
-    },
-    "a23": {
-     "nombre": "CONCIERTO INAUGURAL DE LA ORQUESTA SINFÓNICA MUNICIPAL DE TORREJÓN",
-     "clave": "concierto inaugural de la orquesta sinfonica municipal de torrejon",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Teatro Municipal José María Rodero"
-     ]
-    },
-    "a24": {
-     "nombre": "THE INDEXES",
-     "clave": "the indexes",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Sala B"
-     ]
-    },
-    "a25": {
-     "nombre": "CANDELA LISTE",
-     "clave": "candela liste",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Fotomatón Bar"
-     ]
-    }
-   },
-   "pendientes": 585
+   "pendientes": 585,
+   "importado": "2026-10-04"
   }
  },
  "ocultos": {
@@ -4066,6 +4030,15 @@
     "Sala Villanos"
    ],
    "lote": "A-2026-10-04-13",
+   "fecha": "2026-10-04"
+  },
+  "listening party selene casas": {
+   "nombre": "LISTENING PARTY SELENE CASAS",
+   "motivo": "Listening party: escucha del disco grabado, no concierto",
+   "salas": [
+    "Fotomatón Bar"
+   ],
+   "lote": "A-2026-10-04-14",
    "fecha": "2026-10-04"
   }
  }
