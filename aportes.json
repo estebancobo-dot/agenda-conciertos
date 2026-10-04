@@ -850,6 +850,213 @@
    "creado": "2026-10-04",
    "pendientes": 842,
    "importado": "2026-10-04"
+  },
+  "A-2026-10-04-04": {
+   "tipo": "artistas",
+   "creado": "2026-10-04",
+   "items": {
+    "a1": {
+     "nombre": "C15",
+     "clave": "c15",
+     "falta": [
+      "estilo",
+      "origen"
+     ]
+    },
+    "a2": {
+     "nombre": "Discerptus",
+     "clave": "discerptus",
+     "falta": [
+      "estilo",
+      "origen"
+     ]
+    },
+    "a3": {
+     "nombre": "TAYLOR SWIFT",
+     "clave": "taylor swift",
+     "falta": [
+      "estilo",
+      "origen"
+     ]
+    },
+    "a4": {
+     "nombre": "S.D.H",
+     "clave": "s d h",
+     "falta": [
+      "estilo",
+      "origen"
+     ]
+    },
+    "a5": {
+     "nombre": "SDH (Semiotics Department of Heteronyms)",
+     "clave": "sdh semiotics department of heteronyms",
+     "falta": [
+      "estilo",
+      "origen"
+     ]
+    },
+    "a6": {
+     "nombre": "Cavayo",
+     "clave": "cavayo",
+     "falta": [
+      "estilo",
+      "origen"
+     ]
+    },
+    "a7": {
+     "nombre": "Javi Bau",
+     "clave": "javi bau",
+     "falta": [
+      "estilo",
+      "origen"
+     ]
+    },
+    "a8": {
+     "nombre": "Anouck the band",
+     "clave": "anouck the band",
+     "falta": [
+      "estilo",
+      "origen"
+     ]
+    },
+    "a9": {
+     "nombre": "CODIGO 31 ZOEM PCH OKAMI",
+     "clave": "codigo 31 zoem pch okami",
+     "falta": [
+      "estilo",
+      "origen"
+     ]
+    },
+    "a10": {
+     "nombre": "Knoll",
+     "clave": "knoll",
+     "falta": [
+      "estilo",
+      "origen"
+     ]
+    },
+    "a11": {
+     "nombre": "Litost",
+     "clave": "litost",
+     "falta": [
+      "estilo",
+      "origen"
+     ]
+    },
+    "a12": {
+     "nombre": "Cloudy",
+     "clave": "cloudy",
+     "falta": [
+      "estilo",
+      "origen"
+     ]
+    },
+    "a13": {
+     "nombre": "Concierto Hide Tyson",
+     "clave": "concierto hide tyson",
+     "falta": [
+      "estilo",
+      "origen"
+     ]
+    },
+    "a14": {
+     "nombre": "Twist Club e Iboga",
+     "clave": "twist club e iboga",
+     "falta": [
+      "estilo",
+      "origen"
+     ]
+    },
+    "a15": {
+     "nombre": "CLEARWATER COMPANION",
+     "clave": "clearwater companion",
+     "falta": [
+      "estilo",
+      "origen"
+     ]
+    },
+    "a16": {
+     "nombre": "Kyle Hall",
+     "clave": "kyle hall",
+     "falta": [
+      "estilo",
+      "origen"
+     ]
+    },
+    "a17": {
+     "nombre": "JOSUÉ RARUJO & OBED HERNÁNDEZ x LIVE LAS VENTAS (MADRID)",
+     "clave": "josue rarujo and obed hernandez x live las ventas madrid",
+     "falta": [
+      "estilo",
+      "origen"
+     ]
+    },
+    "a18": {
+     "nombre": "MERINO",
+     "clave": "merino",
+     "falta": [
+      "estilo",
+      "origen"
+     ]
+    },
+    "a19": {
+     "nombre": "Fabio Laseca",
+     "clave": "fabio laseca",
+     "falta": [
+      "estilo",
+      "origen"
+     ]
+    },
+    "a20": {
+     "nombre": "RATA",
+     "clave": "rata",
+     "falta": [
+      "estilo",
+      "origen"
+     ]
+    },
+    "a21": {
+     "nombre": "Andrés Barrios",
+     "clave": "andres barrios",
+     "falta": [
+      "estilo",
+      "origen"
+     ]
+    },
+    "a22": {
+     "nombre": "Demarco Flamenco",
+     "clave": "demarco flamenco",
+     "falta": [
+      "estilo",
+      "origen"
+     ]
+    },
+    "a23": {
+     "nombre": "TERESITA MACIEL Y CUMBIADELIC SESSIONS",
+     "clave": "teresita maciel y cumbiadelic sessions",
+     "falta": [
+      "estilo",
+      "origen"
+     ]
+    },
+    "a24": {
+     "nombre": "La Ruta del Aguilar",
+     "clave": "la ruta del aguilar",
+     "falta": [
+      "estilo",
+      "origen"
+     ]
+    },
+    "a25": {
+     "nombre": "PABLO E INÉS",
+     "clave": "pablo e ines",
+     "falta": [
+      "estilo",
+      "origen"
+     ]
+    }
+   },
+   "pendientes": 817
   }
  },
  "ocultos": {
