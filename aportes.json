@@ -1681,6 +1681,64 @@
    },
    "lote": "A-2026-10-04-20",
    "fecha": "2026-10-04"
+  },
+  "carmen ferre": {
+   "nombre": "Carmen Ferre",
+   "pais": {
+    "valor": "ES",
+    "url": "https://www.vozpopuli.com/musica/carmen-ferre-de-la-voz-kids-a-cantar-con-antonio-orozco-recuerda-sus-inicios-en-la-musica-nunca-consiguieron-moldearme.html",
+    "cita": "la artista sevillana nos presenta 'astronauta', un tema inspirado en el amor dejando a un lado el ‘que diran’. carmen ferre, de 'la voz kids' a cantar con antonio orozco, recuerda sus inicios en la musica: “nunca consiguieron moldearme” la artista sevillana nos presenta 'a",
+    "ciudad": "Mairena del Aljarafe"
+   },
+   "estilos": {
+    "valores": [
+     "flamenco pop",
+     "pop"
+    ],
+    "url": "https://salagalileo.es/programacion/carmen-ferre/",
+    "cita": "carmen ferre, joven andaluza nacida en mairena del aljarafe , promesa de la musica flamenco pop en espanol, presenta su gira ojos de colores. esta vez en carmen f",
+    "web_musica": false
+   },
+   "lote": "A-2026-10-04-21",
+   "fecha": "2026-10-04"
+  },
+  "pepe rivero trio ft maria berasarte": {
+   "nombre": "PEPE RIVERO TRÍO FT. MARÍA BERASARTE",
+   "pais": {
+    "valor": "CU",
+    "url": "https://www.circulobellasartes.com/en/biografia/pepe-rivero/",
+    "cita": "cuban pepe rivero could be considered one of the best latin jazz pianists. the musician has worked with artists of the stature of celia cruz, pepe rivero - circulo de",
+    "ciudad": "Manzanillo"
+   },
+   "estilos": {
+    "valores": [
+     "jazz"
+    ],
+    "url": "https://clazz.es/que-es-clazz/artistas/pepe-rivero",
+    "cita": "pepe rivero, pianista y compositor de la \"nueva generacion\" internacional de jazz. aqui encontraras su biografia, enlaces a sus redes sociales y su musica. artis",
+    "web_musica": false
+   },
+   "lote": "A-2026-10-04-21",
+   "fecha": "2026-10-04"
+  },
+  "frozen soul": {
+   "nombre": "FROZEN SOUL",
+   "pais": {
+    "valor": "US",
+    "url": "https://en.wikipedia.org/wiki/Frozen_Soul",
+    "cita": "frozen soul - wikipedia frozen soul american metal band wikimedia foundation, inc. contributors to wikimedia projects frozen soul - wikipedia jump to content mai",
+    "ciudad": "Fort Worth"
+   },
+   "estilos": {
+    "valores": [
+     "death metal"
+    ],
+    "url": "https://en.wikipedia.org/wiki/Frozen_Soul",
+    "cita": "ad as pdf printable version in other projects wikidata item appearance move to sidebar hide from wikipedia, the free encyclopedia american metal band frozen soul origin fort worth, texas genre death metal years active 2018–present label century media [ 1 ] members chad green michael munday samantha ",
+    "web_musica": true
+   },
+   "lote": "A-2026-10-04-21",
+   "fecha": "2026-10-04"
   }
  },
  "conciertos": [
@@ -5279,6 +5337,165 @@
    "lote": "A-2026-10-04-20",
    "aceptado": [],
    "rechazado": []
+  },
+  "a:vera grv": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-21",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:concierto un viaje en el tiempo a traves de la musica": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-21",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:desde el churruca con humor": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-21",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:paulina torres pausaje": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-21",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:red violet": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-21",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:amanda": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-21",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:grim paradise": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-21",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:ian kay": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-21",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:carmen ferre": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-21",
+   "aceptado": [
+    "estilos",
+    "pais"
+   ],
+   "rechazado": []
+  },
+  "a:concierto de rock over and artista invitado": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-21",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:ok mckey": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-21",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:the wild boories": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-21",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:aurora and the six": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-21",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:javi arroyo": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-21",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:nina lunares": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-21",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:vicsan": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-21",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:brochure manrico seghi trio": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-21",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:pepe rivero trio ft maria berasarte": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-21",
+   "aceptado": [
+    "estilos",
+    "pais"
+   ],
+   "rechazado": []
+  },
+  "a:whatthefunk": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-21",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:carlota urdiales": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-21",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:frozen soul": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-21",
+   "aceptado": [
+    "estilos",
+    "pais"
+   ],
+   "rechazado": []
+  },
+  "a:the jokers": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-21",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:cuban brunch 3a temporada con pepe y su tumbao": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-21",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:sticky cherries": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-21",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:del caribe a la patagonia": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-21",
+   "aceptado": [],
+   "rechazado": []
   }
  },
  "lotes": {
@@ -5423,263 +5640,8 @@
   "A-2026-10-04-21": {
    "tipo": "artistas",
    "creado": "2026-10-04",
-   "items": {
-    "a1": {
-     "nombre": "Vera GRV",
-     "clave": "vera grv",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Shoko"
-     ]
-    },
-    "a2": {
-     "nombre": "Concierto: 'Un viaje en el tiempo a través de la música'",
-     "clave": "concierto un viaje en el tiempo a traves de la musica",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Centro Sociocultural Valle Inclán (Fuencarral - El Pardo)"
-     ]
-    },
-    "a3": {
-     "nombre": "Desde el Churruca con humor",
-     "clave": "desde el churruca con humor",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Centro Cultural Sara Montiel (Latina)"
-     ]
-    },
-    "a4": {
-     "nombre": "Paulina Torres. Pausaje",
-     "clave": "paulina torres pausaje",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Centro Cultural Carril del Conde (Hortaleza)"
-     ]
-    },
-    "a5": {
-     "nombre": "Red Violet",
-     "clave": "red violet",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Dime que me Quieres"
-     ]
-    },
-    "a6": {
-     "nombre": "Amanda",
-     "clave": "amanda",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "El Sótano"
-     ]
-    },
-    "a7": {
-     "nombre": "GRIM PARADISE",
-     "clave": "grim paradise",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Barracudas Rock Bar"
-     ]
-    },
-    "a8": {
-     "nombre": "Ian Kay",
-     "clave": "ian kay",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Fun House"
-     ]
-    },
-    "a9": {
-     "nombre": "Carmen Ferre",
-     "clave": "carmen ferre",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Galileo Galilei"
-     ]
-    },
-    "a10": {
-     "nombre": "CONCIERTO DE ROCK OVER & ARTISTA INVITADO",
-     "clave": "concierto de rock over and artista invitado",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Sala Olvido"
-     ]
-    },
-    "a11": {
-     "nombre": "Ok Mckey",
-     "clave": "ok mckey",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Cadillac Solitario"
-     ]
-    },
-    "a12": {
-     "nombre": "The Wild Boories",
-     "clave": "the wild boories",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Revi Live"
-     ]
-    },
-    "a13": {
-     "nombre": "Aurora & The Six",
-     "clave": "aurora and the six",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Canopy by Hilton Madrid Castellana"
-     ]
-    },
-    "a14": {
-     "nombre": "JAVI ARROYO",
-     "clave": "javi arroyo",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "El Perro Club"
-     ]
-    },
-    "a15": {
-     "nombre": "NIÑA LUNARES",
-     "clave": "nina lunares",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Fulanita de Tal"
-     ]
-    },
-    "a16": {
-     "nombre": "VicSan",
-     "clave": "vicsan",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Cocodrilo Rock Bar"
-     ]
-    },
-    "a17": {
-     "nombre": "BROCHURE MANRICO SEGHI TRIO",
-     "clave": "brochure manrico seghi trio",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Café El Despertar"
-     ]
-    },
-    "a18": {
-     "nombre": "PEPE RIVERO TRÍO FT. MARÍA BERASARTE",
-     "clave": "pepe rivero trio ft maria berasarte",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "La Cátedra"
-     ]
-    },
-    "a19": {
-     "nombre": "Whatthefunk",
-     "clave": "whatthefunk",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Tempo Audiophile Club"
-     ]
-    },
-    "a20": {
-     "nombre": "Carlota Urdiales",
-     "clave": "carlota urdiales",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Sala Uni"
-     ]
-    },
-    "a21": {
-     "nombre": "FROZEN SOUL",
-     "clave": "frozen soul",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Sala El Sol"
-     ]
-    },
-    "a22": {
-     "nombre": "THE JOKERS",
-     "clave": "the jokers",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Thundercat"
-     ]
-    },
-    "a23": {
-     "nombre": "Cuban Brunch: 3ª Temporada con Pepe y su tumbao",
-     "clave": "cuban brunch 3a temporada con pepe y su tumbao",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Sala Clamores"
-     ]
-    },
-    "a24": {
-     "nombre": "Sticky Cherries",
-     "clave": "sticky cherries",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Fun House"
-     ]
-    },
-    "a25": {
-     "nombre": "Del Caribe a la Patagonia",
-     "clave": "del caribe a la patagonia",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Centro Cultural Zazuar (Villa de Vallecas)"
-     ]
-    }
-   },
-   "pendientes": 410
+   "pendientes": 410,
+   "importado": "2026-10-04"
   }
  },
  "ocultos": {
