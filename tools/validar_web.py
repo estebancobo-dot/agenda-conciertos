@@ -1036,15 +1036,21 @@ def cambiar_fecha_bajado(pg, lunes):
         pg.evaluate(f"location.hash='#{inicio}'")
         pg.wait_for_function(f"location.hash==='#{inicio}'&&!!document.querySelector('#main .nav')", timeout=15000)
         pg.wait_for_timeout(400)
+        bajado = True
         if bajar:
             pg.evaluate("scrollTo(0,(document.documentElement.scrollHeight-innerHeight)/2)")
             pg.wait_for_timeout(400)
+            # con una lista corta (un lunes con pocos conciertos) la página casi no baja: no se está "a media lista"
+            # y la posición no se mide (la cabecera fija con ‹ Hoy › solo sale cuando la fila de navegación se va)
+            bajado = pg.evaluate("document.getElementById('hdr').classList.contains('navfija')")
         accion()
         pg.wait_for_timeout(700)
         r = pg.evaluate(POSICION)
         mal = []
         if r["fecha"] != esperado:
             mal.append(f"fecha {r['fecha']}")
+        if not bajado:
+            donde = None
         if donde == "lista" and not (r["sec"] is not None and -3 <= r["sec"] <= 24 and r["y"] <= r["arriba"] + 2):
             mal.append(f"lista a {r['sec']} px de la tira (scroll {r['y']}, principio {r['arriba']})")
         if donde == "hoy" and not (r["sec"] is not None and -3 <= r["sec"] <= 24 and r["secF"] >= hoy.isoformat()):
