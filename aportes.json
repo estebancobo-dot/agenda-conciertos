@@ -1209,6 +1209,288 @@
    "creado": "2026-10-04",
    "pendientes": 817,
    "importado": "2026-10-04"
+  },
+  "A-2026-10-04-05": {
+   "tipo": "artistas",
+   "creado": "2026-10-04",
+   "items": {
+    "a1": {
+     "nombre": "GERARDO AMORÍN",
+     "clave": "gerardo amorin",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Jazzville"
+     ]
+    },
+    "a2": {
+     "nombre": "Leyendas del Rock",
+     "clave": "leyendas del rock",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Espacio Gran Via"
+     ]
+    },
+    "a3": {
+     "nombre": "Va x Pata Negra",
+     "clave": "va x pata negra",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Café Berlín"
+     ]
+    },
+    "a4": {
+     "nombre": "YA QUE ESTAMOS TE LO VOY A CANTAR",
+     "clave": "ya que estamos te lo voy a cantar",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Rincón del Arte Nuevo"
+     ]
+    },
+    "a5": {
+     "nombre": "Peter Love",
+     "clave": "peter love",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Fuenlabrada"
+     ]
+    },
+    "a6": {
+     "nombre": "CHICLE DELUXE",
+     "clave": "chicle deluxe",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Sala Changó"
+     ]
+    },
+    "a7": {
+     "nombre": "Roger Comas",
+     "clave": "roger comas",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Maravillas Club"
+     ]
+    },
+    "a8": {
+     "nombre": "Joder Juan",
+     "clave": "joder juan",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Maravillas Club"
+     ]
+    },
+    "a9": {
+     "nombre": "Casero",
+     "clave": "casero",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Sala B"
+     ]
+    },
+    "a10": {
+     "nombre": "Me Acuerdo de Todo",
+     "clave": "me acuerdo de todo",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Cadavra"
+     ]
+    },
+    "a11": {
+     "nombre": "Momentos de Escandalo",
+     "clave": "momentos de escandalo",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Canopy by Hilton Madrid Castellana"
+     ]
+    },
+    "a12": {
+     "nombre": "REGGAETÓN VIEJO",
+     "clave": "reggaeton viejo",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "La Nueva Cubierta"
+     ]
+    },
+    "a13": {
+     "nombre": "MARTIN GARCIA CANCIÓN",
+     "clave": "martin garcia cancion",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Café Libertad 8"
+     ]
+    },
+    "a14": {
+     "nombre": "Delirio Kururu",
+     "clave": "delirio kururu",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Madreams"
+     ]
+    },
+    "a15": {
+     "nombre": "Habló Pablo",
+     "clave": "hablo pablo",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Hangar 48"
+     ]
+    },
+    "a16": {
+     "nombre": "CHICLE HALLOWEEN",
+     "clave": "chicle halloween",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Sala Changó"
+     ]
+    },
+    "a17": {
+     "nombre": "LA FAMILIA DRAG",
+     "clave": "la familia drag",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Sala Changó"
+     ]
+    },
+    "a18": {
+     "nombre": "CANTADORAS DE PAZ DE COLOMBIA",
+     "clave": "cantadoras de paz de colombia",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Tempo Audiophile Club"
+     ]
+    },
+    "a19": {
+     "nombre": "Adri Torrón - REDSTAR",
+     "clave": "adri torron redstar",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Café Berlín"
+     ]
+    },
+    "a20": {
+     "nombre": "SANTI CAMPOS E HIJOS",
+     "clave": "santi campos e hijos",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Fun House"
+     ]
+    },
+    "a21": {
+     "nombre": "CONCIERTO INTIMO + DOCUMENTAL EN EXCLUSIVA \"LOS CAÑOS\"",
+     "clave": "concierto intimo documental en exclusiva los canos",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Galileo Galilei"
+     ]
+    },
+    "a22": {
+     "nombre": "Seattle Supersonics",
+     "clave": "seattle supersonics",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Revi Live"
+     ]
+    },
+    "a23": {
+     "nombre": "Alfredo Rodriguez",
+     "clave": "alfredo rodriguez",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Teatro Fernán Gómez"
+     ]
+    },
+    "a24": {
+     "nombre": "Proyecto Gómez Casa",
+     "clave": "proyecto gomez casa",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Maravillas Club"
+     ]
+    },
+    "a25": {
+     "nombre": "GRUPO LIBERACIÓN",
+     "clave": "grupo liberacion",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Sala But"
+     ]
+    }
+   },
+   "pendientes": 792
   }
  },
  "ocultos": {
