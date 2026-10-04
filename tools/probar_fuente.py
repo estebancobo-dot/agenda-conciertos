@@ -65,5 +65,15 @@ for sid in sys.argv[1:]:
           f"{len(recs) - len(juntos)} nuevos; {len(confl)} con conflicto")
     for r in juntos[:15]:
         print(f"   = {r['fecha']} {r['artista'][:50]} · {r['sala'][:40]} · {[x['id'] for x in r['fuentes']]}")
+    # los nuevos, con lo que haya ese día en la misma sala o con el mismo nombre (por si es el mismo y no se ha unido)
+    from scraper.normalize import norm  # noqa: E402
+    todos = unificar(otros)
+    for r in [r for r in recs if r not in juntos][:120]:
+        na, ns = norm(r["artista"]), norm(r["sala"])
+        cerca = [o for o in todos if o["fecha"] == r["fecha"] and (
+            (ns and norm(o["sala"]) and (ns in norm(o["sala"]) or norm(o["sala"]) in ns))
+            or (na and (na in norm(o["artista"]) or norm(o["artista"]) in na)))]
+        pista = " | ¿= " + "; ".join(f"{o['artista'][:30]} @ {o['sala'][:25]}" for o in cerca[:2]) if cerca else ""
+        print(f"   + {r['fecha']} {r['artista'][:45]} · {r['sala'][:40]}{pista}")
     for r in confl[:15]:
         print(f"   ! {r['fecha']} {r['artista'][:50]} · {r['conflictos'][:1]}")
