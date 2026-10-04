@@ -159,7 +159,8 @@ if len(sys.argv) > 2 and sys.argv[1] in ("--crudo", "--render"):
                     raw = sc.get("data-page") or sc.get_text()
                     try:
                         datos = json.loads(raw)
-                    except ValueError:
+                    except ValueError as e:
+                        print(f"  <{sc.name}> {len(raw)} letras: no es JSON ({e}); empieza {raw[:80]!r} y acaba {raw[-80:]!r}")
                         continue
                     print(f"  <{sc.name} {sc.get('id') or sc.get('type') or 'data-page'}> {len(raw)} letras")
                     forma(datos)
