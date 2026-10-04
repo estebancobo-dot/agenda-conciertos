@@ -265,7 +265,7 @@ def imagenes_genericas(recs: list[dict], minimo: int = 3) -> set[str]:
 
 # ------------------------------------------------------------------ lectura incremental (pasadas de fichas)
 # Madrid en Vivo pide 10 s entre peticiones y su página de evento casi nunca enlaza a las entradas: no compensa
-NO_LEER = {"madridenvivo"}
+NO_LEER = {"madridenvivo", "totalstage"}  # sus páginas de concierto no dicen más que el listado
 # entre páginas de agregador, las que mejor dicen hora/precio (diagnóstico de entradas, oct. 2026)
 ORDEN = ["mutick", "laganzua", "songkick", "cc_buscador", "cc_estilos", "cc_portada", "cpm"]
 MAX_ENLACES = 6   # una página con más enlaces a entradas es un listado (agenda entera): no son de este concierto

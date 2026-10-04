@@ -1,2 +1,2 @@
 """Agenda automática de conciertos en la Comunidad de Madrid."""
-__version__ = "2.52.0"
+__version__ = "2.53.0"

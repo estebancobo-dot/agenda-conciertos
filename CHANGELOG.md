@@ -1,5 +1,12 @@
 # Versiones
 
+## 2.53.0 — 2026-10-04
+
+**Nueva fuente: Total Stage.**
+
+- **Total Stage** (totalstage.vercel.app, agenda que completan sus usuarios): una sola página con todos los próximos de Madrid, con fecha, hora, sala y estilo. Su robots.txt deja leerla. Medido hoy: 455 conciertos, 415 ya los teníamos; da la hora de 50 conciertos que no la tenían, unos 20 conciertos nuevos dentro de las fechas de la agenda y una agenda más para confirmar los demás. Sus páginas de concierto no dicen más que el listado: no se leen.
+- Revisadas y no añadidas (sin agenda propia o sin conciertos que falten): Ruta 66, Rock and Roll Army, DeRuting y Guía del Ocio (artículos y crónicas), Heart of Gold (promotora con giras por España y pocas fechas en Madrid; esas ya salen de sus ticketeras), Mondo Sonoro (su web rechaza al lector, 403: se respeta). El calendario de Dirty Rock lleva sin usarse desde 2020; su sección de giras ya se leía.
+
 ## 2.52.0 — 2026-10-04
 
 **Fase C: rellenar huecos con lo que ya está permitido leer, y estimaciones medidas.**

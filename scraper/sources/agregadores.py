@@ -435,3 +435,39 @@ def radar_cpm_parse(html: str, page_url: str, today: date) -> list:
 
 def radar_cpm(ctx: Ctx):
     yield from radar_cpm_parse(ctx.get(RADAR_CPM), RADAR_CPM, ctx.today)
+
+
+# ------------------------------------------------------------------ Total Stage (agenda de la comunidad)
+TOTALSTAGE = "https://totalstage.vercel.app/eventos/madrid"
+
+
+def totalstage_parse(html: str, page_url: str, today: date) -> list:
+    """Una sola página con todos los próximos de Madrid: enlace /concierto/<artista>/<AAAA-MM-DD>, nombre, línea
+    'fecha · hora · sala · Madrid' (la hora puede faltar) y etiquetas de estilo."""
+    s = soup_of(html)
+    out = []
+    for a in s.select('a[href^="/concierto/"]'):
+        m = re.search(r"/(\d{4})-(\d\d)-(\d\d)$", a["href"])
+        nombre = a.find("p", class_=re.compile("font-semibold"))
+        if not m or not nombre:
+            continue
+        try:
+            f = date(int(m.group(1)), int(m.group(2)), int(m.group(3)))
+        except ValueError:
+            continue
+        linea = next((p for p in a.find_all("p") if p is not nombre), None)
+        partes = [clean(x) for x in text(linea).split("·")] if linea else []
+        hora = next((p for p in partes if re.fullmatch(r"\d{1,2}:\d\d", p or "")), None)
+        resto = [p for p in partes[1:] if p and p != hora]
+        sala = resto[0] if len(resto) >= 2 else None
+        ciudad = resto[-1] if resto else "Madrid"
+        estilos = [text(x) for x in a.select("span.rounded-full")]
+        tipo = text(a.find("span")) or ""
+        out.append(make(f, text(nombre), urljoin(page_url, a["href"]), split=False, sala=sala, ciudad=ciudad,
+                        hora=parse_hora(hora) if hora else None, estilo=", ".join(estilos) or None,
+                        tipo="festival" if "festival" in tipo.lower() else None))
+    return out
+
+
+def totalstage(ctx: Ctx):
+    yield from totalstage_parse(ctx.get(TOTALSTAGE), TOTALSTAGE, ctx.today)
