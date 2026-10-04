@@ -344,8 +344,8 @@ def verificar_artista(item: dict, pedido: dict, lector: Lector) -> dict:
         url = str(item.get("estilos_url") or "")
         usables = lambda t: [e for e in estilos if norm(e) and norm(e) in norm(t) and categorias_de(e)]  # noqa: E731
         frase, motivo = comprobar(url, str(item.get("estilos_cita") or ""), lambda t: bool(usables(t)))
-        if not frase:
-            out["rechazado"].append(f"estilos: {motivo}")
+        if not frase or not usables(frase):  # la zona citada tiene que decir alguno de esos estilos
+            out["rechazado"].append(f"estilos: {motivo or 'la frase no dice ninguno de esos estilos'}")
         else:
             d = dominio(url)
             out["aceptado"]["estilos"] = {"valores": usables(frase), "url": url, "cita": frase,
