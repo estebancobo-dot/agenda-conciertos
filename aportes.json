@@ -2113,6 +2113,288 @@
    "creado": "2026-10-04",
    "pendientes": 947,
    "importado": "2026-10-04"
+  },
+  "A-2026-10-04-08": {
+   "tipo": "artistas",
+   "creado": "2026-10-04",
+   "items": {
+    "a1": {
+     "nombre": "Far East Groove",
+     "clave": "far east groove",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Revi Live"
+     ]
+    },
+    "a2": {
+     "nombre": "PA’ PIRATAS NOSOTROS (Cádiz en Madrid)",
+     "clave": "pa piratas nosotros cadiz en madrid",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Hangar 48"
+     ]
+    },
+    "a3": {
+     "nombre": "¡VEN AL CUPLÉ!",
+     "clave": "ven al cuple",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Galileo Galilei"
+     ]
+    },
+    "a4": {
+     "nombre": "TAMBOURS DU SENEGAL",
+     "clave": "tambours du senegal",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Tempo Audiophile Club"
+     ]
+    },
+    "a5": {
+     "nombre": "SAMBA Y ALGO MÁS",
+     "clave": "samba y algo mas",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Café Berlín"
+     ]
+    },
+    "a6": {
+     "nombre": "BODY TALK",
+     "clave": "body talk",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Café La Palma"
+     ]
+    },
+    "a7": {
+     "nombre": "ORQUESTA JUVENTUD SALSERA",
+     "clave": "orquesta juventud salsera",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Intruso Bar"
+     ]
+    },
+    "a8": {
+     "nombre": "The Prize",
+     "clave": "the prize",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Fun House"
+     ]
+    },
+    "a9": {
+     "nombre": "INERCIA SONORA / LUSSY - CESC SALSALVADÓ",
+     "clave": "inercia sonora lussy cesc salsalvado",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Galileo Galilei"
+     ]
+    },
+    "a10": {
+     "nombre": "MUSIC FOR ALL",
+     "clave": "music for all",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Intruso Bar"
+     ]
+    },
+    "a11": {
+     "nombre": "Laura Diepstraten",
+     "clave": "laura diepstraten",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Intruso Bar"
+     ]
+    },
+    "a12": {
+     "nombre": "EQ BAND",
+     "clave": "eq band",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Honky Tonk"
+     ]
+    },
+    "a13": {
+     "nombre": "LOS CHOCOLATINOS",
+     "clave": "los chocolatinos",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Intruso Bar"
+     ]
+    },
+    "a14": {
+     "nombre": "Carmen Lillo en MAZO",
+     "clave": "carmen lillo en mazo",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Sala Clamores"
+     ]
+    },
+    "a15": {
+     "nombre": "PACOENLALUNA",
+     "clave": "pacoenlaluna",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Jazzville"
+     ]
+    },
+    "a16": {
+     "nombre": "LOS STRATOVILLES",
+     "clave": "los stratovilles",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Hangar 48"
+     ]
+    },
+    "a17": {
+     "nombre": "IMPULSO - MANSUR BROWN",
+     "clave": "impulso mansur brown",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Babylon Jazz Club"
+     ]
+    },
+    "a18": {
+     "nombre": "Oscar Dudamel y su Orquesta",
+     "clave": "oscar dudamel y su orquesta",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Café Berlín"
+     ]
+    },
+    "a19": {
+     "nombre": "Nestor Rausell y los Impostores",
+     "clave": "nestor rausell y los impostores",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Cadillac Solitario"
+     ]
+    },
+    "a20": {
+     "nombre": "CIENCIA URBANA EN SESIÓN VERMUT",
+     "clave": "ciencia urbana en sesion vermut",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Moby Dick Club"
+     ]
+    },
+    "a21": {
+     "nombre": "LA MERIENDA CON BLUE POSION",
+     "clave": "la merienda con blue posion",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Intruso Bar"
+     ]
+    },
+    "a22": {
+     "nombre": "Maria Baresck",
+     "clave": "maria baresck",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Dime que me Quieres"
+     ]
+    },
+    "a23": {
+     "nombre": "MARIA GRANT WASHINGTON",
+     "clave": "maria grant washington",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Fulanita de Tal"
+     ]
+    },
+    "a24": {
+     "nombre": "VERBENA EN LA BALLENA CON THE NIGHTRAIN",
+     "clave": "verbena en la ballena con the nightrain",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Moby Dick Club"
+     ]
+    },
+    "a25": {
+     "nombre": "Aniversario CRAZY GIRLS",
+     "clave": "aniversario crazy girls",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Cadillac Solitario"
+     ]
+    }
+   },
+   "pendientes": 735
   }
  },
  "ocultos": {
