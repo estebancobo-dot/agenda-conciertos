@@ -102,7 +102,19 @@ def test_concierto_en_ticketera_y_dato_que_no_esta():
 def test_concierto_otra_fecha_se_rechaza():
     rec = dict(REC, fecha="2026-11-14")
     r = ap.verificar_concierto({"url": "https://salachango.com/agenda/los-chivatos", "hora": "21:00"}, rec, lector())
-    assert not r["aceptado"] and "fecha" in r["rechazado"][0]
+    assert not r["aceptado"] and "2026-11-14" in r["rechazado"][0]
+
+
+def test_pagina_con_varios_conciertos_mira_junto_al_artista():
+    pag = ("<html><body><h1>Los Chivatos</h1><p>Viernes 13 de noviembre de 2026. Concierto 21:00 h. 12 €</p>"
+           + "<p>" + "texto de relleno " * 80 + "</p><h3>Otros conciertos</h3><p>Sábado 14 de noviembre de 2026: "
+           "Otra Banda, 22:30 h, 40 €</p></body></html>")
+    lec = ap.Lector(F({"https://sala.example/x": pag}))
+    r = ap.verificar_concierto({"url": "https://sala.example/x", "hora": "22:30", "precio": "40 €"},
+                               dict(REC, fecha="2026-11-14"), lec)
+    assert not r["aceptado"]  # el 14 es de otra banda
+    r = ap.verificar_concierto({"url": "https://sala.example/x", "hora": "22:30", "precio": "40 €"}, REC, lec)
+    assert "hora" not in r["aceptado"] and "precio" not in r["aceptado"]  # la hora y el precio de la otra banda
 
 
 def test_cancelacion_solo_si_la_pagina_la_dice():

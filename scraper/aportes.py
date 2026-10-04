@@ -124,6 +124,21 @@ def texto_de(html: str) -> str:
         if (m.get("property") or m.get("name") or "").lower() in ("og:title", "og:description", "description",
                                                                    "twitter:description"):
             extra.append(m["content"])
+    # los datos de evento de la página (JSON-LD) también son texto de la página: nombre, descripción, lugar
+    import json as _json
+    for sc in s.select('script[type="application/ld+json"]'):
+        try:
+            datos = _json.loads(sc.string or sc.get_text() or "")
+        except ValueError:
+            continue
+        pila = [datos]
+        while pila:
+            x = pila.pop()
+            if isinstance(x, list):
+                pila.extend(x)
+            elif isinstance(x, dict):
+                extra += [str(x[k]) for k in ("name", "description", "headline", "startDate") if isinstance(x.get(k), str)]
+                pila.extend(v for v in x.values() if isinstance(v, (dict, list)))
     for x in s(["script", "style", "noscript", "svg"]):
         x.decompose()
     return plano(" ".join(extra + [s.get_text(" ")]))
@@ -156,6 +171,30 @@ def fecha_en(texto: str, fecha: str, html: str = "") -> bool:
         pats.append(rf"\b0?{d}(?:\s+de)?\s+{n}\b")
         pats.append(rf"\b{n}\s+0?{d}\b")
     return any(re.search(p, texto) for p in pats)
+
+
+def cerca_de(texto: str, nombres: list[str], radio: int = 600) -> str:
+    """Los trozos del texto (con signos) alrededor de cada vez que sale el artista: la fecha, la hora y el precio de
+    su concierto tienen que estar ahí, no en otro concierto de la misma página."""
+    trozos = []
+    for n in nombres:
+        palabras = re.findall(r"[a-z0-9]+", plano(n))
+        if not palabras:
+            continue
+        for m in re.finditer(r"(?<![a-z0-9])" + r"[^a-z0-9]+".join(map(re.escape, palabras)) + r"(?![a-z0-9])", texto):
+            trozos.append(texto[max(0, m.start() - radio):m.end() + radio])
+    return " … ".join(trozos)
+
+
+def fecha_del_evento(html: str, fecha: str) -> bool | None:
+    """Con datos de evento (JSON-LD): True si alguno es de esa fecha, False si los hay y ninguno lo es; None si no hay."""
+    from bs4 import BeautifulSoup
+    from .entradas import _eventos_jsonld
+    evs = _eventos_jsonld(BeautifulSoup(html, "html.parser"))
+    fechas = {str(e.get("startDate") or "")[:10] for e in evs if e.get("startDate")}
+    if not fechas:
+        return None
+    return fecha in fechas
 
 
 def hora_en(texto: str, hora: str) -> bool:
@@ -314,21 +353,23 @@ def verificar_concierto(item: dict, rec: dict, lector: Lector, web_sala: str | N
     if not any(nombra(tnorm, n) for n in nombres):
         out["rechazado"].append("la página citada no nombra al artista")
         return out
-    if not fecha_en(texto, rec["fecha"], html):
-        out["rechazado"].append(f"la página citada no dice la fecha ({rec['fecha']})")
+    zona = cerca_de(texto, nombres)
+    ev = fecha_del_evento(html, rec["fecha"])
+    if ev is False or (ev is None and not fecha_en(zona, rec["fecha"])):
+        out["rechazado"].append(f"la página citada no anuncia al artista el {rec['fecha']}")
         return out
     ld = leer_pagina(html, url, rec["fecha"])
     base = {"url": url}
     hora = str(item.get("hora") or "").strip()
     if re.fullmatch(r"\d{1,2}:\d{2}", hora):
         hora = hora.zfill(5)
-        if ld.get("hora") == hora or hora_en(texto, hora):
+        if ld.get("hora") == hora or (not ld.get("hora") and hora_en(zona, hora)):
             out["aceptado"]["hora"] = {"valor": hora, **base}
         else:
             out["rechazado"].append(f"hora {hora}: no está en la página")
     precio = str(item.get("precio") or "").strip()
     if precio:
-        if precio_en(texto, precio) or (ld.get("precio") and norm(ld["precio"]) == norm(precio)):
+        if precio_en(zona, precio) or (ld.get("precio") and precio_en(plano(ld["precio"]), precio)):
             out["aceptado"]["precio"] = {"valor": precio[:40], **base}
         else:
             out["rechazado"].append(f"precio {precio}: no está en la página")
