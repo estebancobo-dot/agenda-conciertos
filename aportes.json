@@ -3116,6 +3116,268 @@
    "creado": "2026-10-04",
    "pendientes": 660,
    "importado": "2026-10-04"
+  },
+  "A-2026-10-04-12": {
+   "tipo": "artistas",
+   "creado": "2026-10-04",
+   "items": {
+    "a1": {
+     "nombre": "McEnroe presenta «La vida libre»",
+     "clave": "mcenroe presenta la vida libre",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Sala Villanos"
+     ]
+    },
+    "a2": {
+     "nombre": "MAD DOGS",
+     "clave": "mad dogs",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "El Perro Club"
+     ]
+    },
+    "a3": {
+     "nombre": "CARMEN YOUNG",
+     "clave": "carmen young",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Tablao Flamenco 1911"
+     ]
+    },
+    "a4": {
+     "nombre": "LUCÍA PEDRÓS",
+     "clave": "lucia pedros",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Cardamomo"
+     ]
+    },
+    "a5": {
+     "nombre": "BELEN LOPEZ Y RAPICO",
+     "clave": "belen lopez y rapico",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Tablao de la Villa"
+     ]
+    },
+    "a6": {
+     "nombre": "ISAAC DE LOS REYES",
+     "clave": "isaac de los reyes",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Tablao Ópera Flamenca"
+     ]
+    },
+    "a7": {
+     "nombre": "Tiña",
+     "clave": "tina",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Cine & Teatro Capitol"
+     ]
+    },
+    "a8": {
+     "nombre": "CARLOS VELAZQUEZ Y NOEMI FERRER",
+     "clave": "carlos velazquez y noemi ferrer",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Tablao de la Villa"
+     ]
+    },
+    "a9": {
+     "nombre": "DAVID PANIAGUA",
+     "clave": "david paniagua",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Tablao Ópera Flamenca"
+     ]
+    },
+    "a10": {
+     "nombre": "ISAAC DE LOS REYES Y NOELIA RUIZ",
+     "clave": "isaac de los reyes y noelia ruiz",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Tablao de la Villa"
+     ]
+    },
+    "a11": {
+     "nombre": "The Sentimental Gentlemen",
+     "clave": "the sentimental gentlemen",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Big Mama Ballroom"
+     ]
+    },
+    "a12": {
+     "nombre": "Concierto de Año Nuevo",
+     "clave": "concierto de ano nuevo",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Gran Teatro Caixabank Príncipe Pío",
+      "Gran Teatro Caixabank Príncipe Pío / Nuevo Teatro Alcalá"
+     ]
+    },
+    "a13": {
+     "nombre": "Tini",
+     "clave": "tini",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Movistar Arena"
+     ]
+    },
+    "a14": {
+     "nombre": "NEW ORLEANS VERMÚ",
+     "clave": "new orleans vermu",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Sala Clamores"
+     ]
+    },
+    "a15": {
+     "nombre": "LADY & THE TRAMPS",
+     "clave": "lady and the tramps",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Café Central Ateneo"
+     ]
+    },
+    "a16": {
+     "nombre": "THE VELVET SERENADES",
+     "clave": "the velvet serenades",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Café Central Ateneo"
+     ]
+    },
+    "a17": {
+     "nombre": "ADÉDÈJÌ ADETAYO QUARTET",
+     "clave": "adedeji adetayo quartet",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Café Central Ateneo"
+     ]
+    },
+    "a18": {
+     "nombre": "CLANDESTINA BIG BAND",
+     "clave": "clandestina big band",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Moe",
+      "Sala Siroco"
+     ]
+    },
+    "a19": {
+     "nombre": "Comandante Twin",
+     "clave": "comandante twin",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "La Riviera",
+      "Puerta del Sol de Madrid"
+     ]
+    },
+    "a20": {
+     "nombre": "PATXI PASCUAL QUINTETO",
+     "clave": "patxi pascual quinteto",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Café Central Ateneo"
+     ]
+    },
+    "a21": {
+     "nombre": "ON THE ROCKS",
+     "clave": "on the rocks",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Honky Tonk",
+      "Thundercat"
+     ]
+    },
+    "a22": {
+     "nombre": "Pedrá",
+     "clave": "pedra",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Sala Aperitoche",
+      "Sala Wagon"
+     ]
+    },
+    "a23": {
+     "nombre": "The Trippers",
+     "clave": "the trippers",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Tempo Audiophile Club"
+     ]
+    },
+    "a24": {
+     "nombre": "DJTONER Q4RTET & ERIK TRUFFAZ",
+     "clave": "djtoner q4rtet and erik truffaz",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Sala Villanos"
+     ]
+    },
+    "a25": {
+     "nombre": "Melbourne",
+     "clave": "melbourne",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Sala Vesta"
+     ]
+    }
+   },
+   "pendientes": 635
   }
  },
  "ocultos": {
