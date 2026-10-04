@@ -6078,6 +6078,266 @@
    "creado": "2026-10-04",
    "pendientes": 360,
    "importado": "2026-10-04"
+  },
+  "A-2026-10-04-24": {
+   "tipo": "artistas",
+   "creado": "2026-10-04",
+   "items": {
+    "a1": {
+     "nombre": "BENZÚ",
+     "clave": "benzu",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Café La Palma"
+     ]
+    },
+    "a2": {
+     "nombre": "CARIBE CAFÉ \"BRUJERÍA - HALLOWEEN NIGHT EN SALSA\"",
+     "clave": "caribe cafe brujeria halloween night en salsa",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Babylon Club"
+     ]
+    },
+    "a3": {
+     "nombre": "Lex Lüger",
+     "clave": "lex luger",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Barracudas Rock Bar"
+     ]
+    },
+    "a4": {
+     "nombre": "Pagando el pato",
+     "clave": "pagando el pato",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Cadillac Solitario"
+     ]
+    },
+    "a5": {
+     "nombre": "SUPERCREMALLERAS",
+     "clave": "supercremalleras",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Sala Siroco"
+     ]
+    },
+    "a6": {
+     "nombre": "Manolo UVI",
+     "clave": "manolo uvi",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Gruta 77"
+     ]
+    },
+    "a7": {
+     "nombre": "Clover",
+     "clave": "clover",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Dime que me Quieres"
+     ]
+    },
+    "a8": {
+     "nombre": "EL DUKE ANDALUZ",
+     "clave": "el duke andaluz",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Tempo Audiophile Club"
+     ]
+    },
+    "a9": {
+     "nombre": "Guitarras Calaveras",
+     "clave": "guitarras calaveras",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Sala Clamores"
+     ]
+    },
+    "a10": {
+     "nombre": "GIRLPOWER BAND",
+     "clave": "girlpower band",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Sala B"
+     ]
+    },
+    "a11": {
+     "nombre": "interludio",
+     "clave": "interludio",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Cadillac Solitario"
+     ]
+    },
+    "a12": {
+     "nombre": "LLANOS",
+     "clave": "llanos",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Rincón del Arte Nuevo"
+     ]
+    },
+    "a13": {
+     "nombre": "LAS NIETAS DE CHARLI",
+     "clave": "las nietas de charli",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Galileo Galilei"
+     ]
+    },
+    "a14": {
+     "nombre": "Gustavo Díaz Quartet",
+     "clave": "gustavo diaz quartet",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Sala Villanos"
+     ]
+    },
+    "a15": {
+     "nombre": "Kelley Stoltz en MAZO",
+     "clave": "kelley stoltz en mazo",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Sala Clamores"
+     ]
+    },
+    "a16": {
+     "nombre": "El libro del buen amor",
+     "clave": "el libro del buen amor",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Centro Cultural Antonio Machado (San Blas - Canillejas)"
+     ]
+    },
+    "a17": {
+     "nombre": "La Musa de la Música",
+     "clave": "la musa de la musica",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Centro Cultural Hortaleza"
+     ]
+    },
+    "a18": {
+     "nombre": "Lady M’Gill",
+     "clave": "lady mgill",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Dime que me Quieres"
+     ]
+    },
+    "a19": {
+     "nombre": "TUSIWARRIORS",
+     "clave": "tusiwarriors",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Sala Uni"
+     ]
+    },
+    "a20": {
+     "nombre": "Voces para volver, por Pedro y Vera Herrero",
+     "clave": "voces para volver por pedro y vera herrero",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Centro Sociocultural García Lorca (Carabanchel)"
+     ]
+    },
+    "a21": {
+     "nombre": "Wardogs",
+     "clave": "wardogs",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Revi Space"
+     ]
+    },
+    "a22": {
+     "nombre": "Dora Band",
+     "clave": "dora band",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Sala Copérnico"
+     ]
+    },
+    "a23": {
+     "nombre": "DÍAS ALTERNOS",
+     "clave": "dias alternos",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Sala Siroco"
+     ]
+    },
+    "a24": {
+     "nombre": "ESTELA GRIS",
+     "clave": "estela gris",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Maravillas Club"
+     ]
+    },
+    "a25": {
+     "nombre": "John Pollón",
+     "clave": "john pollon",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Palacio Vistalegre"
+     ]
+    }
+   },
+   "pendientes": 335
   }
  },
  "ocultos": {
