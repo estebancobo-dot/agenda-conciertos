@@ -6779,6 +6779,264 @@
    "creado": "2026-10-04",
    "pendientes": 285,
    "importado": "2026-10-04"
+  },
+  "A-2026-10-04-27": {
+   "tipo": "artistas",
+   "creado": "2026-10-04",
+   "items": {
+    "a1": {
+     "nombre": "Samantha Palos",
+     "clave": "samantha palos",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "La Sala del Movistar Arena"
+     ]
+    },
+    "a2": {
+     "nombre": "MAD SAX BIG BAND",
+     "clave": "mad sax big band",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Moe"
+     ]
+    },
+    "a3": {
+     "nombre": "GAS 55",
+     "clave": "gas 55",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Tempo Audiophile Club"
+     ]
+    },
+    "a4": {
+     "nombre": "La Séptima Farola",
+     "clave": "la septima farola",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Cadillac Solitario"
+     ]
+    },
+    "a5": {
+     "nombre": "Valkyria",
+     "clave": "valkyria",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Barracudas Rock Bar"
+     ]
+    },
+    "a6": {
+     "nombre": "ÓSCAR BALLESTER",
+     "clave": "oscar ballester",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "El Perro Club"
+     ]
+    },
+    "a7": {
+     "nombre": "LAVAPIÉS JAZZ REUNION",
+     "clave": "lavapies jazz reunion",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Moe"
+     ]
+    },
+    "a8": {
+     "nombre": "AURORA GARCÍA JAZZ PROJECT",
+     "clave": "aurora garcia jazz project",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Tempo Audiophile Club"
+     ]
+    },
+    "a9": {
+     "nombre": "El Farru presenta “El baile al cante” - 9º FFC",
+     "clave": "el farru presenta el baile al cante 9o ffc",
+     "falta": [
+      "estilo"
+     ],
+     "salas": [
+      "Café Berlín"
+     ]
+    },
+    "a10": {
+     "nombre": "Portrait",
+     "clave": "portrait",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Silikona"
+     ]
+    },
+    "a11": {
+     "nombre": "DEROBERT & THE HALF-TRUTHS USA",
+     "clave": "derobert and the half truths usa",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Tempo Audiophile Club"
+     ]
+    },
+    "a12": {
+     "nombre": "Caminero Cuarteto",
+     "clave": "caminero cuarteto",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "CentroCentro"
+     ]
+    },
+    "a13": {
+     "nombre": "TRIADA",
+     "clave": "triada",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Sala Villanos"
+     ]
+    },
+    "a14": {
+     "nombre": "Lagos",
+     "clave": "lagos",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "La Riviera"
+     ]
+    },
+    "a15": {
+     "nombre": "Blanco Palamera",
+     "clave": "blanco palamera",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Café Berlín"
+     ]
+    },
+    "a16": {
+     "nombre": "31 Fam",
+     "clave": "31 fam",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "La Sala del Movistar Arena"
+     ]
+    },
+    "a17": {
+     "nombre": "HIJOS DE KING KONG",
+     "clave": "hijos de king kong",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Gruta 77"
+     ]
+    },
+    "a18": {
+     "nombre": "Marilia (Ella baila sola)",
+     "clave": "marilia ella baila sola",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Galileo Galilei"
+     ]
+    },
+    "a19": {
+     "nombre": "RAQUEL LAMAS TRIO",
+     "clave": "raquel lamas trio",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Intruso Bar"
+     ]
+    },
+    "a20": {
+     "nombre": "David y Carlos de Jacoba presentan “Lorqueando Federico” - 9ºFFC",
+     "clave": "david y carlos de jacoba presentan lorqueando federico 9offc",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Café Berlín"
+     ]
+    },
+    "a21": {
+     "nombre": "SENSORY PERCUSSION TRIO",
+     "clave": "sensory percussion trio",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Café El Despertar"
+     ]
+    },
+    "a22": {
+     "nombre": "JPFernandez",
+     "clave": "jpfernandez",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "La Sala del Movistar Arena"
+     ]
+    },
+    "a23": {
+     "nombre": "Migue de Antílopez",
+     "clave": "migue de antilopez",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Galileo Galilei"
+     ]
+    },
+    "a24": {
+     "nombre": "NADIA TROBISCH",
+     "clave": "nadia trobisch",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Fulanita de Tal"
+     ]
+    },
+    "a25": {
+     "nombre": "QUIQUE GUINEA CUARTETO",
+     "clave": "quique guinea cuarteto",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Silikona"
+     ]
+    }
+   },
+   "pendientes": 260
   }
  },
  "ocultos": {
