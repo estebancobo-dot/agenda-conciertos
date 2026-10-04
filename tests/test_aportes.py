@@ -240,10 +240,10 @@ def test_oculto_solo_en_su_sala():
 
 def test_reglas_no_concierto():
     for t in ("Real Madrid vs", "Movistar Estudiantes vs", "FURI DJ", "DJ TAZZMANIA", "Fast Expo Laura Blanco",
-              "KARAOKE CANALLA", "La Cuota Comedy", "Warren Sonbert. Sesión de cortometrajes I"):
+              "KARAOKE CANALLA", "La Cuota Comedy", "Presentación festival", "Warren Sonbert. Sesión de cortometrajes I"):
         assert ap.no_es_concierto(t), t
     for t in ("Baloncesto", "Queen vs. ABBA. Candlelight", "Concierto y Exposición de Guitarras", "Niños Bravos",
-              "Dj Nano en directo", "Un pingüino en mi ascensor", "Jam Session Jazz"):
+              "Dj Nano en directo", "Antonio Reyes presenta “Maestros”", "Un pingüino en mi ascensor", "Jam Session Jazz"):
         assert not ap.no_es_concierto(t), t
 
 

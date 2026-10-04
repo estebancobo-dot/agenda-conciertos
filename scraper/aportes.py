@@ -439,6 +439,7 @@ _NO_CONCIERTO = [
     (re.compile(r"\b(karaoke|podcast|bingo|quiz)\b"), "karaoke, podcast o juego"),
     (re.compile(r"\b(comedy|monologos?|stand.?up)\b"), "humor"),
     (re.compile(r"\bpresentacion (del? )?(libro|la novela|novela)\b"), "presentación de un libro"),
+    (re.compile(r"^presentacion\b"), "presentación (no concierto)"),
     (re.compile(r"\b(cortometrajes?|proyeccion|pelicula)\b"), "cine"),
     (re.compile(r"\b(feria del disco|mercadillo)\b"), "feria o mercadillo"),
 ]
