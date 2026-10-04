@@ -2013,6 +2013,50 @@
    "lote": "A-2026-10-04-07",
    "aceptado": [],
    "rechazado": []
+  },
+  "c:7cbcb455": {
+   "fecha": "2026-10-04",
+   "lote": "C-2026-10-04-02",
+   "aceptado": [],
+   "rechazado": [
+    "la página citada no nombra al artista"
+   ]
+  },
+  "c:fa5df7e1": {
+   "fecha": "2026-10-04",
+   "lote": "C-2026-10-04-02"
+  },
+  "c:12242e07": {
+   "fecha": "2026-10-04",
+   "lote": "C-2026-10-04-02"
+  },
+  "c:1bc0c77e": {
+   "fecha": "2026-10-04",
+   "lote": "C-2026-10-04-02"
+  },
+  "c:c26ca5a5": {
+   "fecha": "2026-10-04",
+   "lote": "C-2026-10-04-02"
+  },
+  "c:67118747": {
+   "fecha": "2026-10-04",
+   "lote": "C-2026-10-04-02"
+  },
+  "c:0d68f7b9": {
+   "fecha": "2026-10-04",
+   "lote": "C-2026-10-04-02"
+  },
+  "c:f57d5673": {
+   "fecha": "2026-10-04",
+   "lote": "C-2026-10-04-02"
+  },
+  "c:a023a491": {
+   "fecha": "2026-10-04",
+   "lote": "C-2026-10-04-02"
+  },
+  "c:498a0336": {
+   "fecha": "2026-10-04",
+   "lote": "C-2026-10-04-02"
   }
  },
  "lotes": {
@@ -2067,79 +2111,8 @@
   "C-2026-10-04-02": {
    "tipo": "conciertos",
    "creado": "2026-10-04",
-   "items": {
-    "c1": {
-     "id": "7cbcb455",
-     "fecha": "2026-10-04",
-     "artista": "Sebastian Chames",
-     "sala": "Recoletos Jazz",
-     "web_sala": null
-    },
-    "c2": {
-     "id": "fa5df7e1",
-     "fecha": "2026-10-07",
-     "artista": "Lady Pepa",
-     "sala": "Espacio Alma",
-     "web_sala": null
-    },
-    "c3": {
-     "id": "12242e07",
-     "fecha": "2026-10-07",
-     "artista": "Wah!",
-     "sala": "Pabellón 2, IFEMA Madrid",
-     "web_sala": null
-    },
-    "c4": {
-     "id": "1bc0c77e",
-     "fecha": "2026-10-08",
-     "artista": "Carlota Mad",
-     "sala": "Rincón del Arte Nuevo",
-     "web_sala": "https://www.elrincondelartenuevo.com/"
-    },
-    "c5": {
-     "id": "c26ca5a5",
-     "fecha": "2026-10-08",
-     "artista": "Sofía Campos",
-     "sala": "Esquina Nua",
-     "web_sala": null
-    },
-    "c6": {
-     "id": "67118747",
-     "fecha": "2026-10-08",
-     "artista": "Wah!",
-     "sala": "Pabellón 2, IFEMA Madrid",
-     "web_sala": null
-    },
-    "c7": {
-     "id": "0d68f7b9",
-     "fecha": "2026-10-09",
-     "artista": "Joma",
-     "sala": "Leaves",
-     "web_sala": null
-    },
-    "c8": {
-     "id": "f57d5673",
-     "fecha": "2026-10-09",
-     "artista": "MR. BLACK",
-     "sala": "Jazzville",
-     "web_sala": null
-    },
-    "c9": {
-     "id": "a023a491",
-     "fecha": "2026-10-10",
-     "artista": "REBROTE",
-     "sala": "Sala B",
-     "web_sala": null
-    },
-    "c10": {
-     "id": "498a0336",
-     "fecha": "2026-10-11",
-     "artista": "Wah!",
-     "sala": "Pabellón 2, IFEMA Madrid",
-     "web_sala": null
-    }
-   },
-   "pendientes": 947
+   "pendientes": 947,
+   "importado": "2026-10-04"
   }
  },
  "ocultos": {
