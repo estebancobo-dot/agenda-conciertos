@@ -15,6 +15,7 @@ from pathlib import Path
 
 from . import __version__
 from .clasificar import categoria_de
+from .aportes import aplicar_artista as aplicar_aporte_artista, aplicar_conciertos as aplicar_aportes_conciertos
 from .correcciones import aplicar as aplicar_correcciones
 from .entradas import aplicar_entradas
 from .fetch import AntiBotBlocked, Fetcher, RobotsBlocked, RobotsUnreachable
@@ -1242,13 +1243,16 @@ def ejecutar(hoy: date | None = None, solo: list[str] | None = None, fetcher: Fe
                                mb_cache=cache_mb)
         art_stats["durante_agendas"] = {k: previas.get(k, 0) for k in ("consultados", "completados")}
         guardar_fichas()
+    aportes = _read("aportes.json", {})  # datos de los lotes, comprobados en la página citada (rama aportes)
     for r in recs:
         estilos_de_agenda(r, cache_art)
         aplicar_ficha(r, ficha_de(r, cache_art))
         origen_por_agenda(r, cache_art)
         tributo_y_estimacion(r, cache_art)
+        aplicar_aporte_artista(r, aportes)
         aplicar_cartel(r, cache_art)
     stats_entradas = aplicar_entradas(recs, _read(CACHE_PAGINAS, {}))
+    stats_entradas["aportes"] = aplicar_aportes_conciertos(recs, aportes)
     # MusicBrainz (solo para los que siguen sin nacionalidad)
     mb_stats = {"desactivado": True}
     if musicbrainz:
@@ -1370,13 +1374,16 @@ def ejecutar_fichas(hoy: date | None = None, presupuesto_seg: float = 3000) -> d
     _write("artistas.json", cache_art)
     previos = _grupos_previos(recs)
     antes_cambios = foto_cambios(recs)
+    aportes = _read("aportes.json", {})  # datos de los lotes, comprobados en la página citada (rama aportes)
     for r in recs:
         estilos_de_agenda(r, cache_art)
         aplicar_ficha(r, ficha_de(r, cache_art))
         origen_por_agenda(r, cache_art)
         tributo_y_estimacion(r, cache_art)
+        aplicar_aporte_artista(r, aportes)
         aplicar_cartel(r, cache_art)
     stats["entradas"] = aplicar_entradas(recs, cache_pag)
+    stats["entradas"]["aportes"] = aplicar_aportes_conciertos(recs, aportes)
     stats["cambios"] = registrar_cambios(recs, antes_cambios, hoy.isoformat())
     por_id = {s.id: s for s in FUENTES}
     from .normalizacion import estimar_horas, normalizar, resumen as resumen_normalizacion
@@ -1403,13 +1410,16 @@ def reaplicar_fichas() -> None:
     if not recs:
         return
     cache = _read("artistas.json", {})
+    aportes = _read("aportes.json", {})
     for r in recs:
         estilos_de_agenda(r, cache)
         aplicar_ficha(r, ficha_de(r, cache))
         origen_por_agenda(r, cache)
         tributo_y_estimacion(r, cache)
+        aplicar_aporte_artista(r, aportes)
         aplicar_cartel(r, cache)
     aplicar_entradas(recs, _read(CACHE_PAGINAS, {}))
+    aplicar_aportes_conciertos(recs, aportes)
     from .normalizacion import estimar_horas, normalizar
     estimar_horas(recs)
     for r in recs:

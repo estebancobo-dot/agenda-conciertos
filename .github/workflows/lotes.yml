@@ -1,0 +1,137 @@
+name: Lotes para completar datos
+
+# Fase D. Todo pasa en una incidencia de GitHub con la etiqueta "lotes":
+# - cada mañana (y al pedirlo) se publica en ella el siguiente lote, listo para copiar en un chat de Claude;
+# - cuando el dueño del repositorio pega la respuesta del chat como comentario, se comprueba cada dato en la página
+#   que cita (tools/lotes.py importar), se guarda lo aceptado en la rama `aportes`, se contesta con el resultado y se
+#   publica el siguiente lote. Las lecturas de la agenda aplican lo aportado (tools/datos.py lo trae de esa rama).
+# Comentarios que entiende: la respuesta del chat (con su bloque JSON), "siguiente" (salta el lote pendiente),
+# "artistas" o "conciertos" (salta y pide uno de ese tipo) y "estado".
+on:
+  schedule:
+    - cron: "25 5 * * *"   # después de la lectura completa: a las 7:25 en Madrid (horario de verano) ya está
+  workflow_dispatch:
+    inputs:
+      tipo:
+        description: "Tipo del lote: auto, artistas o conciertos"
+        default: "auto"
+  issue_comment:
+    types: [created]
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: lotes
+  cancel-in-progress: false
+
+jobs:
+  lotes:
+    # solo comentarios del dueño en la incidencia de los lotes (nadie más puede meter datos)
+    if: >-
+      github.event_name != 'issue_comment' || (
+        github.event.comment.author_association == 'OWNER' &&
+        contains(github.event.issue.labels.*.name, 'lotes') &&
+        github.event.comment.user.type != 'Bot')
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      GH_TOKEN: ${{ github.token }}
+      COMENTARIO: ${{ github.event.comment.body }}
+      TIPO: ${{ github.event.inputs.tipo || 'auto' }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Traer datos y aportes
+        run: python tools/datos.py
+
+      - name: Incidencia de los lotes
+        id: inc
+        run: |
+          gh label create lotes --color 5319e7 --description "Lotes para completar datos con el chat" --force >/dev/null
+          N="${{ github.event.issue.number }}"
+          if [ -z "$N" ]; then
+            N=$(gh issue list --label lotes --state open --json number -q '.[0].number')
+          fi
+          if [ -z "$N" ]; then
+            N=$(gh issue create --label lotes --title "Lotes para completar datos" --body-file tools/lotes_instrucciones.md | grep -o '[0-9]*$')
+          fi
+          echo "n=$N" >> "$GITHUB_OUTPUT"
+
+      - name: Leer el comentario
+        id: com
+        if: github.event_name == 'issue_comment'
+        run: |
+          printf '%s' "$COMENTARIO" > respuesta.txt
+          ORDEN=$(tr '[:upper:]' '[:lower:]' < respuesta.txt | tr -d '[:space:][:punct:]')
+          case "$ORDEN" in
+            siguiente|saltar|otro) echo "accion=saltar" >> "$GITHUB_OUTPUT" ;;
+            artistas|conciertos) echo "accion=saltar" >> "$GITHUB_OUTPUT"; echo "TIPO=$ORDEN" >> "$GITHUB_ENV" ;;
+            estado) echo "accion=estado" >> "$GITHUB_OUTPUT" ;;
+            *) if grep -q '"lote"' respuesta.txt; then echo "accion=importar" >> "$GITHUB_OUTPUT"; else echo "accion=nada" >> "$GITHUB_OUTPUT"; fi ;;
+          esac
+
+      - name: Importar la respuesta
+        if: steps.com.outputs.accion == 'importar'
+        run: |
+          python tools/lotes.py importar respuesta.txt --informe informe.md
+          gh issue comment "${{ steps.inc.outputs.n }}" --body-file informe.md
+
+      - name: Saltar o estado
+        if: steps.com.outputs.accion == 'saltar' || steps.com.outputs.accion == 'estado'
+        run: |
+          if [ "${{ steps.com.outputs.accion }}" = "saltar" ]; then
+            L=$(python tools/lotes.py saltar)
+            [ -n "$L" ] && echo "Lote $L saltado: sus preguntas vuelven a estar disponibles." > informe.md || echo "No había lote pendiente." > informe.md
+          else
+            python tools/lotes.py estado > informe.md
+          fi
+          gh issue comment "${{ steps.inc.outputs.n }}" --body-file informe.md
+
+      - name: Publicar el siguiente lote
+        if: steps.com.outputs.accion != 'estado' && steps.com.outputs.accion != 'nada'
+        run: |
+          if [ -n "$(python tools/lotes.py pendiente)" ]; then
+            echo "Hay un lote sin respuesta: no se publica otro"; exit 0
+          fi
+          python tools/lotes.py generar --tipo "$TIPO" --salida lote.md 2> lote_id.txt > /dev/null
+          L=$(tail -1 lote_id.txt)
+          if [ -z "$L" ]; then
+            cp lote.md siguiente.md
+          else
+            {
+              echo "### Lote $L"
+              echo
+              echo "Copia todo el bloque de abajo (botón de copiar), pégalo en un chat nuevo de Claude y pega aquí su respuesta como comentario."
+              echo
+              echo '````text'
+              cat lote.md
+              echo '````'
+              echo
+              python tools/lotes.py estado
+            } > siguiente.md
+          fi
+          gh issue comment "${{ steps.inc.outputs.n }}" --body-file siguiente.md
+
+      - name: Guardar aportes (rama aportes)
+        if: always() && hashFiles('data/aportes.json') != ''
+        run: |
+          D="$RUNNER_TEMP/aportes"
+          git init -q "$D" && cd "$D"
+          git remote add origin "https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}.git"
+          if git fetch -q --depth=1 origin aportes 2>/dev/null; then git checkout -q FETCH_HEAD; else git checkout -q --orphan aportes; fi
+          cp "$GITHUB_WORKSPACE/data/aportes.json" aportes.json
+          mkdir -p informes
+          [ -f "$GITHUB_WORKSPACE/informe.md" ] && cp "$GITHUB_WORKSPACE/informe.md" "informes/$(date -u +%Y%m%dT%H%M%S).md"
+          git add -A
+          if git diff --cached --quiet; then echo "Sin cambios"; exit 0; fi
+          git -c user.name="agenda-bot" -c user.email="agenda-bot@users.noreply.github.com" commit -qm "Aportes de los lotes $(date -u +%FT%RZ)"
+          for i in 1 2 3 4; do git push -q origin HEAD:aportes && exit 0; sleep $((2**i)); done
+          exit 1

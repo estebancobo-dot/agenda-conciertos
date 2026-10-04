@@ -70,6 +70,13 @@ def estado_estilo(r: dict, cache: dict) -> dict:
             return {"estado": "estimado", "fuente": "Last.fm",
                     "motivo": "etiquetas de Last.fm de un artista identificado solo por su nombre"}
         return {"estado": "conocido", "fuente": origen}
+    if grupos and origen == "página citada":
+        cita = r.get("estilos_cita") or {}
+        web = (r.get("grupos_segun") or ["?"])[0]
+        if cita.get("web_musica"):
+            return {"estado": "conocido", "fuente": web, "cita": cita.get("cita"), "url": cita.get("url")}
+        return {"estado": "estimado", "fuente": web, "cita": cita.get("cita"), "url": cita.get("url"),
+                "motivo": f"lo dice {web} (página comprobada), que no es una web de música"}
     if grupos and origen == "cartel del festival":
         return {"estado": "conocido", "fuente": "fichas de los artistas del cartel"}
     if grupos and segun.startswith("estilo de ") and "homenajeado" in segun:
@@ -100,6 +107,8 @@ def estado_nacionalidad(r: dict, cache: dict) -> dict:
             return {"estado": "estimado", "valor": r["nacionalidad"], "fuente": fuente,
                     "motivo": "artista identificado solo por su nombre (podría ser un homónimo)"}
         out = {"estado": "conocido", "valor": r["nacionalidad"], "fuente": fuente}
+        if r.get("nacionalidad_cita"):
+            out.update(r["nacionalidad_cita"])
         otros = paises_contradictorios(r, cache)
         if otros:
             out["contradice"] = otros

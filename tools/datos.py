@@ -67,6 +67,25 @@ def restaurar(sha: str | None) -> str:
     return "main (la rama de datos aún no existe)"
 
 
+RAMA_APORTES = "aportes"
+
+
+def traer_aportes() -> str:
+    """data/aportes.json desde la rama `aportes` (lo aportado por los lotes y comprobado). Solo se lee: lo escribe
+    el flujo de los lotes (.github/workflows/lotes.yml). Si no existe o no se puede traer, se sigue sin él."""
+    for intento in range(3):
+        if git("fetch", "--depth=1", "origin", RAMA_APORTES, check=False).returncode == 0:
+            r = git("show", "FETCH_HEAD:aportes.json", check=False)
+            if r.returncode == 0:
+                (DATA / "aportes.json").write_bytes(r.stdout)
+                return "con aportes de los lotes"
+            return "sin aportes (la rama no tiene aportes.json)"
+        if git("ls-remote", "--exit-code", "origin", f"refs/heads/{RAMA_APORTES}", check=False).returncode == 2:
+            return "sin aportes (aún no hay lotes importados)"
+        time.sleep(2 ** (intento + 1))
+    return "sin aportes (no se pudo traer la rama)"
+
+
 def traer() -> int:
     sha = sha_remoto()
     origen = restaurar(sha)
@@ -74,7 +93,7 @@ def traer() -> int:
         print(f"No hay datos de partida ({origen}): no se rastrea desde cero", file=sys.stderr)
         return 1
     TRAIDOS.write_text(json.dumps({"sha": sha, "huellas": {n: huella(DATA / n) for n in GENERADOS}}))
-    print(f"Datos de partida: {origen}")
+    print(f"Datos de partida: {origen}; {traer_aportes()}")
     return 0
 
 
