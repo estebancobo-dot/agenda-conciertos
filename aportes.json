@@ -2394,6 +2394,288 @@
    "creado": "2026-10-04",
    "pendientes": 735,
    "importado": "2026-10-04"
+  },
+  "A-2026-10-04-09": {
+   "tipo": "artistas",
+   "creado": "2026-10-04",
+   "items": {
+    "a1": {
+     "nombre": "Carmen Avilés \"Carmela\"",
+     "clave": "carmen aviles carmela",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "La Riviera"
+     ]
+    },
+    "a2": {
+     "nombre": "G. PARSI [con OCEPEK]",
+     "clave": "g parsi con ocepek",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Café La Palma"
+     ]
+    },
+    "a3": {
+     "nombre": "BOOZE BUSINESS",
+     "clave": "booze business",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Intruso Bar"
+     ]
+    },
+    "a4": {
+     "nombre": "BORN TO RUN",
+     "clave": "born to run",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Honky Tonk"
+     ]
+    },
+    "a5": {
+     "nombre": "CUESTION DE GUSTOS",
+     "clave": "cuestion de gustos",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Rincón del Arte Nuevo"
+     ]
+    },
+    "a6": {
+     "nombre": "GERMAN GARCIA",
+     "clave": "german garcia",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Rincón del Arte Nuevo"
+     ]
+    },
+    "a7": {
+     "nombre": "JUAN ORTIZ ORGAN TRIO",
+     "clave": "juan ortiz organ trio",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Café El Despertar"
+     ]
+    },
+    "a8": {
+     "nombre": "LORCA",
+     "clave": "lorca",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Jazzville"
+     ]
+    },
+    "a9": {
+     "nombre": "LUIS QUINTANA",
+     "clave": "luis quintana",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Jazzville"
+     ]
+    },
+    "a10": {
+     "nombre": "RAYO STONED",
+     "clave": "rayo stoned",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Thundercat"
+     ]
+    },
+    "a11": {
+     "nombre": "TOMATE MATURE",
+     "clave": "tomate mature",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Sala Siroco"
+     ]
+    },
+    "a12": {
+     "nombre": "Espino",
+     "clave": "espino",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Fun House"
+     ]
+    },
+    "a13": {
+     "nombre": "TRIBU LE-BERT",
+     "clave": "tribu le bert",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Café La Palma"
+     ]
+    },
+    "a14": {
+     "nombre": "RAPHAEL DUVALLE DÚO",
+     "clave": "raphael duvalle duo",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Café El Despertar"
+     ]
+    },
+    "a15": {
+     "nombre": "SIRENA VERDE",
+     "clave": "sirena verde",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Cien por Cien"
+     ]
+    },
+    "a16": {
+     "nombre": "KABRAOKE",
+     "clave": "kabraoke",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Honky Tonk"
+     ]
+    },
+    "a17": {
+     "nombre": "YOLI SAA 25",
+     "clave": "yoli saa 25",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Intruso Bar"
+     ]
+    },
+    "a18": {
+     "nombre": "ORIGEN",
+     "clave": "origen",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Cien por Cien"
+     ]
+    },
+    "a19": {
+     "nombre": "Santi Muk",
+     "clave": "santi muk",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Sala Copérnico"
+     ]
+    },
+    "a20": {
+     "nombre": "RIZOS 1000",
+     "clave": "rizos 1000",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Café La Palma"
+     ]
+    },
+    "a21": {
+     "nombre": "ALVARO DEL VALLE & AINOA",
+     "clave": "alvaro del valle and ainoa",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Café El Despertar"
+     ]
+    },
+    "a22": {
+     "nombre": "LE PETIT FUCKIN’ BAND",
+     "clave": "le petit fuckin band",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Honky Tonk"
+     ]
+    },
+    "a23": {
+     "nombre": "Extraños Pasajeros",
+     "clave": "extranos pasajeros",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Plaza Mahou"
+     ]
+    },
+    "a24": {
+     "nombre": "CANALLITA SPEED",
+     "clave": "canallita speed",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Thundercat"
+     ]
+    },
+    "a25": {
+     "nombre": "LOS MALVADOS",
+     "clave": "los malvados",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Thundercat"
+     ]
+    }
+   },
+   "pendientes": 710
   }
  },
  "ocultos": {
