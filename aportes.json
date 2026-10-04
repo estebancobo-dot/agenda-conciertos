@@ -612,6 +612,213 @@
    "creado": "2026-10-04",
    "pendientes": 867,
    "importado": "2026-10-04"
+  },
+  "A-2026-10-04-03": {
+   "tipo": "artistas",
+   "creado": "2026-10-04",
+   "items": {
+    "a1": {
+     "nombre": "LQDMS · Pop/Rock",
+     "clave": "lqdms pop rock",
+     "falta": [
+      "estilo",
+      "origen"
+     ]
+    },
+    "a2": {
+     "nombre": "Blokk Sessions",
+     "clave": "blokk sessions",
+     "falta": [
+      "estilo",
+      "origen"
+     ]
+    },
+    "a3": {
+     "nombre": "BELLUM ZONE VII",
+     "clave": "bellum zone vii",
+     "falta": [
+      "estilo",
+      "origen"
+     ]
+    },
+    "a4": {
+     "nombre": "Hidden",
+     "clave": "hidden",
+     "falta": [
+      "estilo",
+      "origen"
+     ]
+    },
+    "a5": {
+     "nombre": "PARADISE",
+     "clave": "paradise",
+     "falta": [
+      "estilo",
+      "origen"
+     ]
+    },
+    "a6": {
+     "nombre": "Going Full Monkey Band",
+     "clave": "going full monkey band",
+     "falta": [
+      "estilo",
+      "origen"
+     ]
+    },
+    "a7": {
+     "nombre": "ELIAS J. TV.BAND",
+     "clave": "elias j tv band",
+     "falta": [
+      "estilo",
+      "origen"
+     ]
+    },
+    "a8": {
+     "nombre": "AFROJAM HALLOWEEN PARTY",
+     "clave": "afrojam halloween party",
+     "falta": [
+      "estilo",
+      "origen"
+     ]
+    },
+    "a9": {
+     "nombre": "ROSCI NEUENCE",
+     "clave": "rosci neuence",
+     "falta": [
+      "estilo",
+      "origen"
+     ]
+    },
+    "a10": {
+     "nombre": "Radiosfera",
+     "clave": "radiosfera",
+     "falta": [
+      "estilo",
+      "origen"
+     ]
+    },
+    "a11": {
+     "nombre": "Jere",
+     "clave": "jere",
+     "falta": [
+      "estilo",
+      "origen"
+     ]
+    },
+    "a12": {
+     "nombre": "Experience",
+     "clave": "experience",
+     "falta": [
+      "estilo",
+      "origen"
+     ]
+    },
+    "a13": {
+     "nombre": "KARLAN",
+     "clave": "karlan",
+     "falta": [
+      "estilo",
+      "origen"
+     ]
+    },
+    "a14": {
+     "nombre": "Tour Supernova",
+     "clave": "tour supernova",
+     "falta": [
+      "estilo",
+      "origen"
+     ]
+    },
+    "a15": {
+     "nombre": "A Night With The Beatles | The Nowhere Plan",
+     "clave": "a night with the beatles the nowhere plan",
+     "falta": [
+      "estilo",
+      "origen"
+     ]
+    },
+    "a16": {
+     "nombre": "AGUILERA Y MENI",
+     "clave": "aguilera y meni",
+     "falta": [
+      "estilo",
+      "origen"
+     ]
+    },
+    "a17": {
+     "nombre": "BSB (Bustos Saguar Band)",
+     "clave": "bsb bustos saguar band",
+     "falta": [
+      "estilo",
+      "origen"
+     ]
+    },
+    "a18": {
+     "nombre": "Kamikazes + Loncha Velasco",
+     "clave": "kamikazes loncha velasco",
+     "falta": [
+      "estilo",
+      "origen"
+     ]
+    },
+    "a19": {
+     "nombre": "LOOPING GREIS",
+     "clave": "looping greis",
+     "falta": [
+      "estilo",
+      "origen"
+     ]
+    },
+    "a20": {
+     "nombre": "KABEAUSHÉ PRESENTS",
+     "clave": "kabeaushe presents",
+     "falta": [
+      "estilo",
+      "origen"
+     ]
+    },
+    "a21": {
+     "nombre": "Westerman",
+     "clave": "westerman",
+     "falta": [
+      "estilo",
+      "origen"
+     ]
+    },
+    "a22": {
+     "nombre": "MIDDLE NAME",
+     "clave": "middle name",
+     "falta": [
+      "estilo",
+      "origen"
+     ]
+    },
+    "a23": {
+     "nombre": "The Sleeves",
+     "clave": "the sleeves",
+     "falta": [
+      "estilo",
+      "origen"
+     ]
+    },
+    "a24": {
+     "nombre": "Las Margaritas",
+     "clave": "las margaritas",
+     "falta": [
+      "estilo",
+      "origen"
+     ]
+    },
+    "a25": {
+     "nombre": "Tinez",
+     "clave": "tinez",
+     "falta": [
+      "estilo",
+      "origen"
+     ]
+    }
+   },
+   "pendientes": 842
   }
  }
 }
