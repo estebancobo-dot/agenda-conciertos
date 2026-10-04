@@ -431,6 +431,23 @@ def nombres_rec(r: dict) -> list[str]:
     return list(dict.fromkeys([r["artista"], *_limpio(r["artista"]), *r.get("invitados", [])]))
 
 
+def _misma_fuente_dos_eventos(a: dict, b: dict) -> bool:
+    """Una fuente común anuncia al artista en las dos salas: cada registro tiene una página suya de ese artista
+    (su nombre está en la dirección de la página, o la página no lo dice y no se puede saber)."""
+    comunes = {f["id"] for f in a["fuentes"]} & {f["id"] for f in b["fuentes"]}
+    if not comunes:
+        return False
+
+    def del_artista(r: dict, fid: str) -> bool:
+        claves = [norm(n).replace(" ", "") for n in nombres_rec(r)[:2] if norm(n)]
+        urls = [norm(re.sub(r"[-_+/%20.]+", " ", str(f.get("url") or ""))).replace(" ", "")
+                for f in r["fuentes"] if f["id"] == fid]
+        # sin dirección propia (listados de una sola página) no se sabe: se supone que sí
+        return any(not u or any(c and c in u for c in claves) for u in urls) or not urls
+
+    return any(del_artista(a, fid) and del_artista(b, fid) for fid in comunes)
+
+
 def fusionar_conflictos_sala(recs: list[dict]) -> list[dict]:
     """Mismo día, mismo artista (no genérico) y distinta sala → un solo registro con conflicto de sala
     (salvo que la fuente de mayor prioridad lo resuelva)."""
@@ -447,8 +464,10 @@ def fusionar_conflictos_sala(recs: list[dict]) -> list[dict]:
                 b = rs[j]
                 if j in usados or not a["sala"] or not b["sala"] or misma_sala(a["sala"], b["sala"]):
                     continue
-                # si la misma fuente lo anuncia en dos salas, son dos eventos (p. ej. Candlelight en varias sedes)
-                if {f["id"] for f in a["fuentes"]} & {f["id"] for f in b["fuentes"]}:
+                # si la misma fuente lo anuncia en dos salas, son dos eventos (p. ej. Candlelight en varias sedes); pero
+                # no si en uno de los dos esa fuente habla de otro artista (Total Stage pone al telonero aparte:
+                # "Landmvrks" unido a Papa Roach no hace de Papa Roach dos conciertos)
+                if _misma_fuente_dos_eventos(a, b):
                     continue
                 if es_generico(a["artista"]) or es_generico(b["artista"]):
                     continue

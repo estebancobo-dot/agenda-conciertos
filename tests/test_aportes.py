@@ -177,3 +177,19 @@ def test_generar_e_importar(tmp_path, monkeypatch):
     assert lote2.startswith("C-") and "Los Chivatos" in texto2 and "Gumbo" not in texto2
     with pytest.raises(ValueError):
         lotes.importar('{"lote": "A-1999-01-01-01", "artistas": []}', fetcher=F(PAGS), hoy=hoy)
+
+
+def test_telonero_aparte_no_impide_unir_salas():
+    from scraper.merge import _misma_fuente_dos_eventos
+    a = {"artista": "Papa Roach", "invitados": [], "fuentes": [
+        {"id": "totalstage", "url": "https://totalstage.vercel.app/concierto/Landmvrks/2026-12-04"},
+        {"id": "hellpress", "url": "https://www.hellpress.com/noticias/papa-roach-show-madrid"}]}
+    b = {"artista": "Papa Roach", "invitados": [], "fuentes": [
+        {"id": "totalstage", "url": "https://totalstage.vercel.app/concierto/Papa%20Roach/2026-12-04"},
+        {"id": "songkick", "url": "https://www.songkick.com/concerts/1-papa-roach-at-palacio-vistalegre"}]}
+    assert not _misma_fuente_dos_eventos(a, b)
+    c1 = {"artista": "Tributo a Queen. Candlelight", "invitados": [], "fuentes": [
+        {"id": "cc_buscador", "url": "https://conciertos.club/madrid/conciertos/1-tributo-a-queen-candlelight"}]}
+    c2 = {"artista": "Tributo a Queen. Candlelight", "invitados": [], "fuentes": [
+        {"id": "cc_buscador", "url": "https://conciertos.club/madrid/conciertos/2-tributo-a-queen-candlelight"}]}
+    assert _misma_fuente_dos_eventos(c1, c2)
