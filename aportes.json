@@ -1029,6 +1029,110 @@
    },
    "lote": "A-2026-10-04-12",
    "fecha": "2026-10-04"
+  },
+  "dida pelled": {
+   "nombre": "DIDA PELLED",
+   "pais": {
+    "valor": "IL",
+    "url": "https://aicf.org/artist/dida-pelled/",
+    "cita": "dida pelled - aicf new york-based israeli guitarist and vocalist dida has a particular talent for storytelling. whether it be a jazz standard, a scorching blues",
+    "ciudad": "Tel Aviv"
+   },
+   "estilos": {
+    "valores": [
+     "jazz",
+     "blues"
+    ],
+    "url": "https://www.allaboutjazz.com/dida-pelled-sultry-swing-blissful-blues",
+    "cita": "read dida pelled: sultry swing, blissful blues by r.j. deluke on all about jazz. discover in-depth jazz interview coverage, artist features, and expert writing since",
+    "web_musica": false
+   },
+   "enlaces": [
+    "https://didamusic.com/"
+   ],
+   "lote": "A-2026-10-04-13",
+   "fecha": "2026-10-04"
+  },
+  "chiara pancaldi quartet chames sessions": {
+   "nombre": "CHIARA PANCALDI QUARTET -CHAMES SESSIONS",
+   "estilos": {
+    "valores": [
+     "jazz"
+    ],
+    "url": "https://www.challengerecords.com/products/15761439614004/precious",
+    "cita": "precious by chiara pancaldi chiara pancaldi is a passionate italian jazz singer. performing live in clubs and festivals in italy and aborad: umbria jazz, london jazz festival, c",
+    "web_musica": false
+   },
+   "lote": "A-2026-10-04-13",
+   "fecha": "2026-10-04"
+  },
+  "ulf wakenius organ trio": {
+   "nombre": "ULF WAKENIUS ORGAN TRIO",
+   "pais": {
+    "valor": "SE",
+    "url": "https://en.wikipedia.org/wiki/Ulf_Wakenius",
+    "cita": "ulf wakenius - wikipedia ulf wakenius swedish musician wikimedia foundation, inc. contributors to wikimedia projects ulf wakenius - wikipedia jump to content main",
+    "ciudad": "Halmstad"
+   },
+   "estilos": {
+    "valores": [
+     "jazz"
+    ],
+    "url": "https://en.wikipedia.org/wiki/Ulf_Wakenius",
+    "cita": "ersion in other projects wikimedia commons wikidata item appearance move to sidebar hide from wikipedia, the free encyclopedia swedish jazz guitarist ulf wakenius wakenius in nice, france, 2014 background information born ulf karl erik wakenius ( 1958-04-16 ) 16 april 1958 (age 68) halmstad , sweden",
+    "web_musica": true
+   },
+   "lote": "A-2026-10-04-13",
+   "fecha": "2026-10-04"
+  },
+  "joshua edelman trio remembering barry harris": {
+   "nombre": "JOSHUA EDELMAN TRIO REMEMBERING BARRY HARRIS",
+   "pais": {
+    "valor": "US",
+    "url": "https://es.wikipedia.org/wiki/Joshua_John_Edelman",
+    "cita": "sita ser wikificado , por favor, editalo para que cumpla con las convenciones de estilo . este aviso fue puesto el 4 de enero de 2025. joshua edelman joshua edelman en la actualidad. informacion personal nombre de nacimiento joshua john edelman nacimiento 09 de abril de 1954 (72 anos) manhattan nuev",
+    "ciudad": "Nueva York"
+   },
+   "estilos": {
+    "valores": [
+     "jazz"
+    ],
+    "url": "https://es.wikipedia.org/wiki/Joshua_John_Edelman",
+    "cita": "nferencias; tambien mantiene su labor investigativa y de desarrollo del jazz aportando su vision. biografia [ editar ] infancia y juventud [ editar ] joshua edelman nacio en manhattan y crecio en greenwich village en la decada de 1960, epoca de cambios, en la cual se cuestionaban todas las politicas",
+    "web_musica": true
+   },
+   "lote": "A-2026-10-04-13",
+   "fecha": "2026-10-04"
+  },
+  "fyahbwoy": {
+   "nombre": "Fyahbwoy",
+   "pais": {
+    "valor": "ES",
+    "url": "https://es.wikipedia.org/wiki/Swan_Fyahbwoy",
+    "cita": "swan fyahbwoy - wikipedia, la enciclopedia libre swan fyahbwoy artista de dancehall de madrid, espana wikimedia foundation, inc. colaboradores de los proyectos wik",
+    "ciudad": "Madrid"
+   },
+   "estilos": {
+    "valores": [
+     "dancehall"
+    ],
+    "url": "https://es.wikipedia.org/wiki/Swan_Fyahbwoy",
+    "cita": "swan fyahbwoy - wikipedia, la enciclopedia libre swan fyahbwoy artista de dancehall de madrid, espana wikimedia foundation, inc. colaboradores de los proyectos wik",
+    "web_musica": true
+   },
+   "lote": "A-2026-10-04-13",
+   "fecha": "2026-10-04"
+  },
+  "jamie duffy": {
+   "nombre": "Jamie Duffy",
+   "pais": {
+    "valor": "IE",
+    "url": "https://en.wikipedia.org/wiki/Jamie_Duffy_(Irish_musician)",
+    "cita": "jamie duffy (irish musician) - wikipedia jamie duffy (irish musician) irish musician wikimedia foundation, inc. contributors to wikimedia projects jamie duffy (i",
+    "ciudad": "Glaslough"
+   },
+   "lote": "A-2026-10-04-13",
+   "fecha": "2026-10-04"
   }
  },
  "conciertos": [
@@ -3277,6 +3381,177 @@
    "rechazado": [
     "estilos: ni la frase citada ni la página lo dicen junto al nombre"
    ]
+  },
+  "a:dida pelled": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-13",
+   "aceptado": [
+    "enlaces",
+    "estilos",
+    "pais"
+   ],
+   "rechazado": []
+  },
+  "a:entre amigos jazz band": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-13",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:bal bliss en vivo": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-13",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:chiara pancaldi quartet chames sessions": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-13",
+   "aceptado": [
+    "estilos"
+   ],
+   "rechazado": [
+    "país IT: ni la frase citada ni la página lo dicen junto al nombre"
+   ]
+  },
+  "a:per verso": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-13",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:ulf wakenius organ trio": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-13",
+   "aceptado": [
+    "estilos",
+    "pais"
+   ],
+   "rechazado": []
+  },
+  "a:joshua edelman trio remembering barry harris": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-13",
+   "aceptado": [
+    "estilos",
+    "pais"
+   ],
+   "rechazado": []
+  },
+  "a:sonora": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-13",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:desastre": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-13",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:zaharave lite": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-13",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:kids rock family": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-13",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:pez mago": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-13",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:toxic raviolis": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-13",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:fran doblas": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-13",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:palomy lopez": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-13",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:mammy blue and cabareteras rockeras": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-13",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:paula moreno y bartolo": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-13",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:fyahbwoy": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-13",
+   "aceptado": [
+    "estilos",
+    "pais"
+   ],
+   "rechazado": []
+  },
+  "a:las musas de amparo": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-13",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:jamie duffy": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-13",
+   "aceptado": [
+    "pais"
+   ],
+   "rechazado": [
+    "estilos: ni la frase citada ni la página lo dicen junto al nombre"
+   ]
+  },
+  "a:la pachanga": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-13",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:naturally": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-13",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:no way out": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-13",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:chico herrera": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-13",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:josh meader trio": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-13",
+   "aceptado": [],
+   "rechazado": []
   }
  },
  "lotes": {
@@ -3373,262 +3648,8 @@
   "A-2026-10-04-13": {
    "tipo": "artistas",
    "creado": "2026-10-04",
-   "items": {
-    "a1": {
-     "nombre": "DIDA PELLED",
-     "clave": "dida pelled",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Café Central Ateneo"
-     ]
-    },
-    "a2": {
-     "nombre": "ENTRE AMIGOS JAZZ BAND",
-     "clave": "entre amigos jazz band",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Big Mama Ballroom",
-      "Moe"
-     ]
-    },
-    "a3": {
-     "nombre": "BAL BLISS EN VIVO!",
-     "clave": "bal bliss en vivo",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Big Mama Ballroom"
-     ]
-    },
-    "a4": {
-     "nombre": "CHIARA PANCALDI QUARTET -CHAMES SESSIONS",
-     "clave": "chiara pancaldi quartet chames sessions",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Café Central Ateneo"
-     ]
-    },
-    "a5": {
-     "nombre": "PER VERSO",
-     "clave": "per verso",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "El Perro Club"
-     ]
-    },
-    "a6": {
-     "nombre": "ULF WAKENIUS ORGAN TRIO",
-     "clave": "ulf wakenius organ trio",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Café Central Ateneo"
-     ]
-    },
-    "a7": {
-     "nombre": "JOSHUA EDELMAN TRIO REMEMBERING BARRY HARRIS",
-     "clave": "joshua edelman trio remembering barry harris",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Café Central Ateneo"
-     ]
-    },
-    "a8": {
-     "nombre": "Sonora",
-     "clave": "sonora",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Cien por Cien",
-      "El Perro Club"
-     ]
-    },
-    "a9": {
-     "nombre": "Desastre",
-     "clave": "desastre",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Derry Irish Tavern",
-      "Sala Oeste"
-     ]
-    },
-    "a10": {
-     "nombre": "ZAHARAVE:lite",
-     "clave": "zaharave lite",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Sala Villanos"
-     ]
-    },
-    "a11": {
-     "nombre": "Kids Rock Family",
-     "clave": "kids rock family",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Galileo Galilei"
-     ]
-    },
-    "a12": {
-     "nombre": "Pez Mago",
-     "clave": "pez mago",
-     "falta": [
-      "estilo"
-     ],
-     "salas": [
-      "Café Libertad 8"
-     ]
-    },
-    "a13": {
-     "nombre": "TOXIC RAVIOLIS",
-     "clave": "toxic raviolis",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Rockville"
-     ]
-    },
-    "a14": {
-     "nombre": "Fran Doblas",
-     "clave": "fran doblas",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Galileo Galilei"
-     ]
-    },
-    "a15": {
-     "nombre": "PALOMY LOPEZ",
-     "clave": "palomy lopez",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Candela"
-     ]
-    },
-    "a16": {
-     "nombre": "MAMMY BLUE & CABARETERAS ROCKERAS",
-     "clave": "mammy blue and cabareteras rockeras",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Tempo Audiophile Club"
-     ]
-    },
-    "a17": {
-     "nombre": "PAULA MORENO Y BARTOLO",
-     "clave": "paula moreno y bartolo",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Tablao de la Villa"
-     ]
-    },
-    "a18": {
-     "nombre": "Fyahbwoy",
-     "clave": "fyahbwoy",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "La Riviera"
-     ]
-    },
-    "a19": {
-     "nombre": "LAS MUSAS DE AMPARO",
-     "clave": "las musas de amparo",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Maravillas Club"
-     ]
-    },
-    "a20": {
-     "nombre": "Jamie Duffy",
-     "clave": "jamie duffy",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Sala Villanos"
-     ]
-    },
-    "a21": {
-     "nombre": "LA PACHANGA",
-     "clave": "la pachanga",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Intruso Bar"
-     ]
-    },
-    "a22": {
-     "nombre": "NATURALLY",
-     "clave": "naturally",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "El Perro Club"
-     ]
-    },
-    "a23": {
-     "nombre": "No Way Out",
-     "clave": "no way out",
-     "falta": [
-      "estilo"
-     ],
-     "salas": [
-      "Sala Mon Live"
-     ]
-    },
-    "a24": {
-     "nombre": "Chico Herrera",
-     "clave": "chico herrera",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Café Libertad 8"
-     ]
-    },
-    "a25": {
-     "nombre": "JOSH MEADER TRIO",
-     "clave": "josh meader trio",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Rockville"
-     ]
-    }
-   },
-   "pendientes": 610
+   "pendientes": 610,
+   "importado": "2026-10-04"
   }
  },
  "ocultos": {
@@ -3774,6 +3795,15 @@
     "Morocco"
    ],
    "lote": "A-2026-10-04-11",
+   "fecha": "2026-10-04"
+  },
+  "zaharave lite": {
+   "nombre": "ZAHARAVE:lite",
+   "motivo": "ZAHARAVE:lite: sesión de electrónica (rave), no concierto",
+   "salas": [
+    "Sala Villanos"
+   ],
+   "lote": "A-2026-10-04-13",
    "fecha": "2026-10-04"
   }
  }
