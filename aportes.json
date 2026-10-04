@@ -3650,6 +3650,268 @@
    "creado": "2026-10-04",
    "pendientes": 610,
    "importado": "2026-10-04"
+  },
+  "A-2026-10-04-14": {
+   "tipo": "artistas",
+   "creado": "2026-10-04",
+   "items": {
+    "a1": {
+     "nombre": "Inercia Sonora/ Gon Abril & Luzía",
+     "clave": "inercia sonora gon abril and luzia",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Galileo Galilei"
+     ]
+    },
+    "a2": {
+     "nombre": "Capítulo XXXIV",
+     "clave": "capitulo xxxiv",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Cineteca Madrid"
+     ]
+    },
+    "a3": {
+     "nombre": "Sandy Bell",
+     "clave": "sandy bell",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Sala Wagon"
+     ]
+    },
+    "a4": {
+     "nombre": "ALFONSO MANSILLA",
+     "clave": "alfonso mansilla",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Candela"
+     ]
+    },
+    "a5": {
+     "nombre": "Diálogos en el aire",
+     "clave": "dialogos en el aire",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Centro Cultural Casa de Vacas (Retiro)"
+     ]
+    },
+    "a6": {
+     "nombre": "ELECTRIC FENCE",
+     "clave": "electric fence",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Rockville"
+     ]
+    },
+    "a7": {
+     "nombre": "Paula Caveira",
+     "clave": "paula caveira",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Moby Dick Club"
+     ]
+    },
+    "a8": {
+     "nombre": "AITOR CASTELL & FRIENDS",
+     "clave": "aitor castell and friends",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "El Perro Club"
+     ]
+    },
+    "a9": {
+     "nombre": "dark thoughts",
+     "clave": "dark thoughts",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Wurlitzer Ballroom"
+     ]
+    },
+    "a10": {
+     "nombre": "Delta Tango Romeo",
+     "clave": "delta tango romeo",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Dime que me Quieres"
+     ]
+    },
+    "a11": {
+     "nombre": "EA THE SOUND OF 90's",
+     "clave": "ea the sound of 90s",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Sala Nazca"
+     ]
+    },
+    "a12": {
+     "nombre": "FLORENZIANO-AIXA-TRINITARIO",
+     "clave": "florenziano aixa trinitario",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Fulanita de Tal"
+     ]
+    },
+    "a13": {
+     "nombre": "JOTABARRIOZ",
+     "clave": "jotabarrioz",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Hangar 48"
+     ]
+    },
+    "a14": {
+     "nombre": "LISTENING PARTY SELENE CASAS",
+     "clave": "listening party selene casas",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Fotomatón Bar"
+     ]
+    },
+    "a15": {
+     "nombre": "Pablo Hinchey",
+     "clave": "pablo hinchey",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Maravillas Club"
+     ]
+    },
+    "a16": {
+     "nombre": "FERRÁN EXCESO",
+     "clave": "ferran exceso",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Jazzville"
+     ]
+    },
+    "a17": {
+     "nombre": "ANDINA DE BAHÍA",
+     "clave": "andina de bahia",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Tablao Flamenco Torero"
+     ]
+    },
+    "a18": {
+     "nombre": "Sofía Campos",
+     "clave": "sofia campos",
+     "falta": [
+      "estilo"
+     ],
+     "salas": [
+      "Esquina Nua"
+     ]
+    },
+    "a19": {
+     "nombre": "Beatriz Zaragoza",
+     "clave": "beatriz zaragoza",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Centro Sociocultural Ágata (Villaverde)"
+     ]
+    },
+    "a20": {
+     "nombre": "The Buzz Lovers",
+     "clave": "the buzz lovers",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Sala Changó"
+     ]
+    },
+    "a21": {
+     "nombre": "Vocal vidas",
+     "clave": "vocal vidas",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Centro Cultural el Madroño (Vicálvaro)"
+     ]
+    },
+    "a22": {
+     "nombre": "Black Drones",
+     "clave": "black drones",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Dime que me Quieres"
+     ]
+    },
+    "a23": {
+     "nombre": "CONCIERTO INAUGURAL DE LA ORQUESTA SINFÓNICA MUNICIPAL DE TORREJÓN",
+     "clave": "concierto inaugural de la orquesta sinfonica municipal de torrejon",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Teatro Municipal José María Rodero"
+     ]
+    },
+    "a24": {
+     "nombre": "THE INDEXES",
+     "clave": "the indexes",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Sala B"
+     ]
+    },
+    "a25": {
+     "nombre": "CANDELA LISTE",
+     "clave": "candela liste",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Fotomatón Bar"
+     ]
+    }
+   },
+   "pendientes": 585
   }
  },
  "ocultos": {
