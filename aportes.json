@@ -3369,6 +3369,266 @@
    "creado": "2026-10-04",
    "pendientes": 635,
    "importado": "2026-10-04"
+  },
+  "A-2026-10-04-13": {
+   "tipo": "artistas",
+   "creado": "2026-10-04",
+   "items": {
+    "a1": {
+     "nombre": "DIDA PELLED",
+     "clave": "dida pelled",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Café Central Ateneo"
+     ]
+    },
+    "a2": {
+     "nombre": "ENTRE AMIGOS JAZZ BAND",
+     "clave": "entre amigos jazz band",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Big Mama Ballroom",
+      "Moe"
+     ]
+    },
+    "a3": {
+     "nombre": "BAL BLISS EN VIVO!",
+     "clave": "bal bliss en vivo",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Big Mama Ballroom"
+     ]
+    },
+    "a4": {
+     "nombre": "CHIARA PANCALDI QUARTET -CHAMES SESSIONS",
+     "clave": "chiara pancaldi quartet chames sessions",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Café Central Ateneo"
+     ]
+    },
+    "a5": {
+     "nombre": "PER VERSO",
+     "clave": "per verso",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "El Perro Club"
+     ]
+    },
+    "a6": {
+     "nombre": "ULF WAKENIUS ORGAN TRIO",
+     "clave": "ulf wakenius organ trio",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Café Central Ateneo"
+     ]
+    },
+    "a7": {
+     "nombre": "JOSHUA EDELMAN TRIO REMEMBERING BARRY HARRIS",
+     "clave": "joshua edelman trio remembering barry harris",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Café Central Ateneo"
+     ]
+    },
+    "a8": {
+     "nombre": "Sonora",
+     "clave": "sonora",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Cien por Cien",
+      "El Perro Club"
+     ]
+    },
+    "a9": {
+     "nombre": "Desastre",
+     "clave": "desastre",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Derry Irish Tavern",
+      "Sala Oeste"
+     ]
+    },
+    "a10": {
+     "nombre": "ZAHARAVE:lite",
+     "clave": "zaharave lite",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Sala Villanos"
+     ]
+    },
+    "a11": {
+     "nombre": "Kids Rock Family",
+     "clave": "kids rock family",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Galileo Galilei"
+     ]
+    },
+    "a12": {
+     "nombre": "Pez Mago",
+     "clave": "pez mago",
+     "falta": [
+      "estilo"
+     ],
+     "salas": [
+      "Café Libertad 8"
+     ]
+    },
+    "a13": {
+     "nombre": "TOXIC RAVIOLIS",
+     "clave": "toxic raviolis",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Rockville"
+     ]
+    },
+    "a14": {
+     "nombre": "Fran Doblas",
+     "clave": "fran doblas",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Galileo Galilei"
+     ]
+    },
+    "a15": {
+     "nombre": "PALOMY LOPEZ",
+     "clave": "palomy lopez",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Candela"
+     ]
+    },
+    "a16": {
+     "nombre": "MAMMY BLUE & CABARETERAS ROCKERAS",
+     "clave": "mammy blue and cabareteras rockeras",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Tempo Audiophile Club"
+     ]
+    },
+    "a17": {
+     "nombre": "PAULA MORENO Y BARTOLO",
+     "clave": "paula moreno y bartolo",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Tablao de la Villa"
+     ]
+    },
+    "a18": {
+     "nombre": "Fyahbwoy",
+     "clave": "fyahbwoy",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "La Riviera"
+     ]
+    },
+    "a19": {
+     "nombre": "LAS MUSAS DE AMPARO",
+     "clave": "las musas de amparo",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Maravillas Club"
+     ]
+    },
+    "a20": {
+     "nombre": "Jamie Duffy",
+     "clave": "jamie duffy",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Sala Villanos"
+     ]
+    },
+    "a21": {
+     "nombre": "LA PACHANGA",
+     "clave": "la pachanga",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Intruso Bar"
+     ]
+    },
+    "a22": {
+     "nombre": "NATURALLY",
+     "clave": "naturally",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "El Perro Club"
+     ]
+    },
+    "a23": {
+     "nombre": "No Way Out",
+     "clave": "no way out",
+     "falta": [
+      "estilo"
+     ],
+     "salas": [
+      "Sala Mon Live"
+     ]
+    },
+    "a24": {
+     "nombre": "Chico Herrera",
+     "clave": "chico herrera",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Café Libertad 8"
+     ]
+    },
+    "a25": {
+     "nombre": "JOSH MEADER TRIO",
+     "clave": "josh meader trio",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Rockville"
+     ]
+    }
+   },
+   "pendientes": 610
   }
  },
  "ocultos": {
