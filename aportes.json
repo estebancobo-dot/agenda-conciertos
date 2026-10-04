@@ -6536,6 +6536,263 @@
    "creado": "2026-10-04",
    "pendientes": 310,
    "importado": "2026-10-04"
+  },
+  "A-2026-10-04-26": {
+   "tipo": "artistas",
+   "creado": "2026-10-04",
+   "items": {
+    "a1": {
+     "nombre": "TORO",
+     "clave": "toro",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Independance Club"
+     ]
+    },
+    "a2": {
+     "nombre": "Cyril Kamer",
+     "clave": "cyril kamer",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Sala Wagon"
+     ]
+    },
+    "a3": {
+     "nombre": "CASUAL PROJECT – Patronas 2026",
+     "clave": "casual project patronas 2026",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "El Perro Club / Tempo Audiophile Club"
+     ]
+    },
+    "a4": {
+     "nombre": "Dave Lee (FKA Joey Negro)",
+     "clave": "dave lee fka joey negro",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Sala Villanos"
+     ]
+    },
+    "a5": {
+     "nombre": "Rat",
+     "clave": "rat",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Sala Mon Live"
+     ]
+    },
+    "a6": {
+     "nombre": "Cryymm",
+     "clave": "cryymm",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Cadillac Solitario"
+     ]
+    },
+    "a7": {
+     "nombre": "This Is Michael",
+     "clave": "this is michael",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Palacio Vistalegre"
+     ]
+    },
+    "a8": {
+     "nombre": "LEX",
+     "clave": "lex",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "La Sala del Movistar Arena"
+     ]
+    },
+    "a9": {
+     "nombre": "Servando & Florentino",
+     "clave": "servando and florentino",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Palacio Vistalegre"
+     ]
+    },
+    "a10": {
+     "nombre": "Sylvania",
+     "clave": "sylvania",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Revi Live"
+     ]
+    },
+    "a11": {
+     "nombre": "Kalenn",
+     "clave": "kalenn",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Galileo Galilei"
+     ]
+    },
+    "a12": {
+     "nombre": "Leo & Leo",
+     "clave": "leo and leo",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Teatro Albéniz Umusic / Teatro Albeniz"
+     ]
+    },
+    "a13": {
+     "nombre": "Anna Nadzion",
+     "clave": "anna nadzion",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Rincón del Arte Nuevo"
+     ]
+    },
+    "a14": {
+     "nombre": "MEGARA",
+     "clave": "megara",
+     "falta": [
+      "estilo"
+     ],
+     "salas": [
+      "Revi Live"
+     ]
+    },
+    "a15": {
+     "nombre": "Max Cooper",
+     "clave": "max cooper",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "La Riviera"
+     ]
+    },
+    "a16": {
+     "nombre": "#RaízLatina. Mescalina",
+     "clave": "raizlatina mescalina",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Moby Dick Club"
+     ]
+    },
+    "a17": {
+     "nombre": "JAZZ CON BATIO , JOSÉ MARÍA PEDRAZA, ALEJANDRO ESCALERA Y KIKE TERRÓN",
+     "clave": "jazz con batio jose maria pedraza alejandro escalera y kike terron",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Tablao Flamenco Torero"
+     ]
+    },
+    "a18": {
+     "nombre": "RKD TRIO",
+     "clave": "rkd trio",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Barracudas Rock Bar"
+     ]
+    },
+    "a19": {
+     "nombre": "Sports",
+     "clave": "sports",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Sala Changó"
+     ]
+    },
+    "a20": {
+     "nombre": "Munir Hossn’s MysticSamba",
+     "clave": "munir hossns mysticsamba",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Sala Villanos"
+     ]
+    },
+    "a21": {
+     "nombre": "FULL RED GRENADE",
+     "clave": "full red grenade",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "El Perro Club"
+     ]
+    },
+    "a22": {
+     "nombre": "MIKE SÁNCHEZ (solo piano show)",
+     "clave": "mike sanchez solo piano show",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Gruta 77"
+     ]
+    },
+    "a23": {
+     "nombre": "SILK & WOOD",
+     "clave": "silk and wood",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Fulanita de Tal"
+     ]
+    },
+    "a24": {
+     "nombre": "mvrk",
+     "clave": "mvrk",
+     "falta": [
+      "estilo"
+     ],
+     "salas": [
+      "Lenovo Garage, Autocine Madrid"
+     ]
+    },
+    "a25": {
+     "nombre": "Bala",
+     "clave": "bala",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Shoko"
+     ]
+    }
+   },
+   "pendientes": 285
   }
  },
  "ocultos": {
