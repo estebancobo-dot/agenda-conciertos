@@ -175,6 +175,72 @@
    },
    "lote": "A-2026-10-04-02",
    "fecha": "2026-10-04"
+  },
+  "going full monkey band": {
+   "nombre": "Going Full Monkey Band",
+   "pais": {
+    "valor": "ES",
+    "url": "https://goingfullmonkey.bandcamp.com/",
+    "cita": "going full monkey. madrid, spain. going full monkey musica | going full monkey + agregar album pista tienda sesion grupal nuevo artista artista preexistente estadistic",
+    "ciudad": "Madrid"
+   },
+   "enlaces": [
+    "https://goingfullmonkey.bandcamp.com/"
+   ],
+   "lote": "A-2026-10-04-03",
+   "fecha": "2026-10-04"
+  },
+  "karlan": {
+   "nombre": "KARLAN",
+   "pais": {
+    "valor": "ES",
+    "url": "https://hipsteriancircus.es/2026/09/19/karlan-indie-segundo-album-digan-lo-que-digan/",
+    "cita": "eneracional. en ese ecosistema donde la autenticidad todavia cotiza al alza frente al frio calculo de las plataformas de streaming, la banda murciana karlan se ha ganado por meritos propios un estatus de ineludible referencia emergente . formado por lola garcia y mar rodriguez, el proyecto regresa a",
+    "ciudad": "Murcia"
+   },
+   "estilos": {
+    "valores": [
+     "indie"
+    ],
+    "url": "https://hipsteriancircus.es/2026/09/19/karlan-indie-segundo-album-digan-lo-que-digan/",
+    "cita": "karlan regresan con su segundo disco, \"digan lo que digan\", un artefacto sonoro de diez que mezcla el rock noventero y la electronica karlan dinamita el indie nacional con su segundo album, \"digan lo que digan\" - hipsterian circus karlan regresan con su segundo disco, \"digan lo que digan\",",
+    "web_musica": false
+   },
+   "lote": "A-2026-10-04-03",
+   "fecha": "2026-10-04"
+  },
+  "kamikazes loncha velasco": {
+   "nombre": "Kamikazes + Loncha Velasco",
+   "pais": {
+    "valor": "ES",
+    "url": "https://bolanueve.com/artist-profile-kamikazes/",
+    "cita": "home kamikazes disponible en miralo enyoutube escuchalo enspotify siguenos en biografia kamikazes, la banda de rock original del madrileno barrio de carabanchel, se",
+    "ciudad": "Madrid"
+   },
+   "estilos": {
+    "valores": [
+     "punk"
+    ],
+    "url": "https://bolanueve.com/artist-profile-kamikazes/",
+    "cita": "home kamikazes disponible en miralo enyoutube escuchalo enspotify siguenos en biografia kamikazes, la banda de rock original del madrileno barrio de carabanchel, se han hecho un hueco en el panorama mas rockero y punk espanol a base de esfuerzo y",
+    "web_musica": false
+   },
+   "enlaces": [
+    "https://kamikazes.es/"
+   ],
+   "lote": "A-2026-10-04-03",
+   "fecha": "2026-10-04"
+  },
+  "westerman": {
+   "nombre": "Westerman",
+   "pais": {
+    "valor": "GB",
+    "url": "https://en.wikipedia.org/wiki/Westerman_(musician)",
+    "cita": "Westerman is the stage name of British singer-songwriter Will Westerman",
+    "ciudad": "Londres"
+   },
+   "lote": "A-2026-10-04-03",
+   "fecha": "2026-10-04"
   }
  },
  "conciertos": [
@@ -592,6 +658,172 @@
    "lote": "A-2026-10-04-02",
    "aceptado": [],
    "rechazado": []
+  },
+  "a:going full monkey band": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-03",
+   "aceptado": [
+    "enlaces",
+    "pais"
+   ],
+   "rechazado": [
+    "estilos: ni la frase citada ni la página lo dicen junto al nombre"
+   ]
+  },
+  "a:afrojam halloween party": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-03",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:karlan": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-03",
+   "aceptado": [
+    "estilos",
+    "pais"
+   ],
+   "rechazado": []
+  },
+  "a:aguilera y meni": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-03",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:kamikazes loncha velasco": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-03",
+   "aceptado": [
+    "enlaces",
+    "estilos",
+    "pais"
+   ],
+   "rechazado": []
+  },
+  "a:westerman": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-03",
+   "aceptado": [
+    "pais"
+   ],
+   "rechazado": [
+    "estilos: la página citada no nombra a Westerman"
+   ]
+  },
+  "a:lqdms pop rock": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-03",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:blokk sessions": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-03",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:bellum zone vii": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-03",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:hidden": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-03",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:paradise": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-03",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:elias j tv band": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-03",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:rosci neuence": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-03",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:radiosfera": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-03",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:jere": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-03",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:experience": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-03",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:tour supernova": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-03",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:a night with the beatles the nowhere plan": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-03",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:bsb bustos saguar band": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-03",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:looping greis": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-03",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:kabeaushe presents": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-03",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:middle name": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-03",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:the sleeves": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-03",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:las margaritas": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-03",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:tinez": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-03",
+   "aceptado": [],
+   "rechazado": []
   }
  },
  "lotes": {
@@ -616,209 +848,8 @@
   "A-2026-10-04-03": {
    "tipo": "artistas",
    "creado": "2026-10-04",
-   "items": {
-    "a1": {
-     "nombre": "LQDMS · Pop/Rock",
-     "clave": "lqdms pop rock",
-     "falta": [
-      "estilo",
-      "origen"
-     ]
-    },
-    "a2": {
-     "nombre": "Blokk Sessions",
-     "clave": "blokk sessions",
-     "falta": [
-      "estilo",
-      "origen"
-     ]
-    },
-    "a3": {
-     "nombre": "BELLUM ZONE VII",
-     "clave": "bellum zone vii",
-     "falta": [
-      "estilo",
-      "origen"
-     ]
-    },
-    "a4": {
-     "nombre": "Hidden",
-     "clave": "hidden",
-     "falta": [
-      "estilo",
-      "origen"
-     ]
-    },
-    "a5": {
-     "nombre": "PARADISE",
-     "clave": "paradise",
-     "falta": [
-      "estilo",
-      "origen"
-     ]
-    },
-    "a6": {
-     "nombre": "Going Full Monkey Band",
-     "clave": "going full monkey band",
-     "falta": [
-      "estilo",
-      "origen"
-     ]
-    },
-    "a7": {
-     "nombre": "ELIAS J. TV.BAND",
-     "clave": "elias j tv band",
-     "falta": [
-      "estilo",
-      "origen"
-     ]
-    },
-    "a8": {
-     "nombre": "AFROJAM HALLOWEEN PARTY",
-     "clave": "afrojam halloween party",
-     "falta": [
-      "estilo",
-      "origen"
-     ]
-    },
-    "a9": {
-     "nombre": "ROSCI NEUENCE",
-     "clave": "rosci neuence",
-     "falta": [
-      "estilo",
-      "origen"
-     ]
-    },
-    "a10": {
-     "nombre": "Radiosfera",
-     "clave": "radiosfera",
-     "falta": [
-      "estilo",
-      "origen"
-     ]
-    },
-    "a11": {
-     "nombre": "Jere",
-     "clave": "jere",
-     "falta": [
-      "estilo",
-      "origen"
-     ]
-    },
-    "a12": {
-     "nombre": "Experience",
-     "clave": "experience",
-     "falta": [
-      "estilo",
-      "origen"
-     ]
-    },
-    "a13": {
-     "nombre": "KARLAN",
-     "clave": "karlan",
-     "falta": [
-      "estilo",
-      "origen"
-     ]
-    },
-    "a14": {
-     "nombre": "Tour Supernova",
-     "clave": "tour supernova",
-     "falta": [
-      "estilo",
-      "origen"
-     ]
-    },
-    "a15": {
-     "nombre": "A Night With The Beatles | The Nowhere Plan",
-     "clave": "a night with the beatles the nowhere plan",
-     "falta": [
-      "estilo",
-      "origen"
-     ]
-    },
-    "a16": {
-     "nombre": "AGUILERA Y MENI",
-     "clave": "aguilera y meni",
-     "falta": [
-      "estilo",
-      "origen"
-     ]
-    },
-    "a17": {
-     "nombre": "BSB (Bustos Saguar Band)",
-     "clave": "bsb bustos saguar band",
-     "falta": [
-      "estilo",
-      "origen"
-     ]
-    },
-    "a18": {
-     "nombre": "Kamikazes + Loncha Velasco",
-     "clave": "kamikazes loncha velasco",
-     "falta": [
-      "estilo",
-      "origen"
-     ]
-    },
-    "a19": {
-     "nombre": "LOOPING GREIS",
-     "clave": "looping greis",
-     "falta": [
-      "estilo",
-      "origen"
-     ]
-    },
-    "a20": {
-     "nombre": "KABEAUSHÉ PRESENTS",
-     "clave": "kabeaushe presents",
-     "falta": [
-      "estilo",
-      "origen"
-     ]
-    },
-    "a21": {
-     "nombre": "Westerman",
-     "clave": "westerman",
-     "falta": [
-      "estilo",
-      "origen"
-     ]
-    },
-    "a22": {
-     "nombre": "MIDDLE NAME",
-     "clave": "middle name",
-     "falta": [
-      "estilo",
-      "origen"
-     ]
-    },
-    "a23": {
-     "nombre": "The Sleeves",
-     "clave": "the sleeves",
-     "falta": [
-      "estilo",
-      "origen"
-     ]
-    },
-    "a24": {
-     "nombre": "Las Margaritas",
-     "clave": "las margaritas",
-     "falta": [
-      "estilo",
-      "origen"
-     ]
-    },
-    "a25": {
-     "nombre": "Tinez",
-     "clave": "tinez",
-     "falta": [
-      "estilo",
-      "origen"
-     ]
-    }
-   },
-   "pendientes": 842
+   "pendientes": 842,
+   "importado": "2026-10-04"
   }
  }
 }
