@@ -3876,6 +3876,266 @@
    "creado": "2026-10-04",
    "pendientes": 585,
    "importado": "2026-10-04"
+  },
+  "A-2026-10-04-15": {
+   "tipo": "artistas",
+   "creado": "2026-10-04",
+   "items": {
+    "a1": {
+     "nombre": "The ExBats",
+     "clave": "the exbats",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Fun House"
+     ]
+    },
+    "a2": {
+     "nombre": "BLOOD&MERY",
+     "clave": "blood and mery",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Sala Vesta"
+     ]
+    },
+    "a3": {
+     "nombre": "BOYS STILL CRY – The Ethernal Echo – 80s New Wave Party",
+     "clave": "boys still cry the ethernal echo 80s new wave party",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Hangar 48"
+     ]
+    },
+    "a4": {
+     "nombre": "CARA B",
+     "clave": "cara b",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Fulanita de Tal"
+     ]
+    },
+    "a5": {
+     "nombre": "Chiquita Movida",
+     "clave": "chiquita movida",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "La Riviera"
+     ]
+    },
+    "a6": {
+     "nombre": "Combo Cayena",
+     "clave": "combo cayena",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Cadillac Solitario"
+     ]
+    },
+    "a7": {
+     "nombre": "Patax",
+     "clave": "patax",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Puerta del Sol de Madrid"
+     ]
+    },
+    "a8": {
+     "nombre": "JOHNNY COMOMOLO Y SUS GANGSTERS DEL RITMO",
+     "clave": "johnny comomolo y sus gangsters del ritmo",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Gruta 77"
+     ]
+    },
+    "a9": {
+     "nombre": "Mayo Melvin",
+     "clave": "mayo melvin",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Honky Tonk"
+     ]
+    },
+    "a10": {
+     "nombre": "VASCK",
+     "clave": "vasck",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Rockville"
+     ]
+    },
+    "a11": {
+     "nombre": "Fiesta del Rock Argentino por Los Simuladores",
+     "clave": "fiesta del rock argentino por los simuladores",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Sala Clamores"
+     ]
+    },
+    "a12": {
+     "nombre": "Lucky Bastards",
+     "clave": "lucky bastards",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Tempo Audiophile Club"
+     ]
+    },
+    "a13": {
+     "nombre": "Ruido Primate",
+     "clave": "ruido primate",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Dime que me Quieres"
+     ]
+    },
+    "a14": {
+     "nombre": "Matasuegras",
+     "clave": "matasuegras",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Cadillac Solitario"
+     ]
+    },
+    "a15": {
+     "nombre": "MOLINA",
+     "clave": "molina",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Thundercat"
+     ]
+    },
+    "a16": {
+     "nombre": "VERSIONA-T (BY KIRAZ)",
+     "clave": "versiona t by kiraz",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Honky Tonk"
+     ]
+    },
+    "a17": {
+     "nombre": "No Brakes",
+     "clave": "no brakes",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Fun House"
+     ]
+    },
+    "a18": {
+     "nombre": "JAVIER MACARRO",
+     "clave": "javier macarro",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Jazzville"
+     ]
+    },
+    "a19": {
+     "nombre": "Julia Rodriguez",
+     "clave": "julia rodriguez",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Sala Villanos"
+     ]
+    },
+    "a20": {
+     "nombre": "Aires Iberoamérica, con Jasminum Ensemble",
+     "clave": "aires iberoamerica con jasminum ensemble",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Centro Cultural Fernando Lázaro Carreter (Carabanchel)"
+     ]
+    },
+    "a21": {
+     "nombre": "DIA DE LA HISPANIDAD. MÚSICA. 'Vocal Vidas'",
+     "clave": "dia de la hispanidad musica vocal vidas",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Centro Cultural Príncipe de Asturias (Ciudad Lineal)"
+     ]
+    },
+    "a22": {
+     "nombre": "La Jota del abuelo, de Julián Olivares",
+     "clave": "la jota del abuelo de julian olivares",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Centro Cultural Antonio Machado (San Blas - Canillejas)"
+     ]
+    },
+    "a23": {
+     "nombre": "Rueca",
+     "clave": "rueca",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Dime que me Quieres"
+     ]
+    },
+    "a24": {
+     "nombre": "The Black Wolves",
+     "clave": "the black wolves",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Plaza De Toros Cubierta"
+     ]
+    },
+    "a25": {
+     "nombre": "EUROPE 40 ANIVERSARIO",
+     "clave": "europe 40 aniversario",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "La Nueva Cubierta"
+     ]
+    }
+   },
+   "pendientes": 560
   }
  },
  "ocultos": {
