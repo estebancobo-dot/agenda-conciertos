@@ -5148,6 +5148,264 @@
    "creado": "2026-10-04",
    "pendientes": 460,
    "importado": "2026-10-04"
+  },
+  "A-2026-10-04-20": {
+   "tipo": "artistas",
+   "creado": "2026-10-04",
+   "items": {
+    "a1": {
+     "nombre": "VERMÚ FAMILIAR",
+     "clave": "vermu familiar",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Galileo Galilei"
+     ]
+    },
+    "a2": {
+     "nombre": "Joe Jackson",
+     "clave": "joe jackson",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Teatro La Latina"
+     ]
+    },
+    "a3": {
+     "nombre": "Canciones para recordar",
+     "clave": "canciones para recordar",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Centro Cultural Nicolás Salmerón (Chamartín)"
+     ]
+    },
+    "a4": {
+     "nombre": "Crocodiles en MAZO",
+     "clave": "crocodiles en mazo",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Sala Clamores"
+     ]
+    },
+    "a5": {
+     "nombre": "KIM SALMON’S SMOKED SALMON",
+     "clave": "kim salmons smoked salmon",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Fun House"
+     ]
+    },
+    "a6": {
+     "nombre": "Deriva",
+     "clave": "deriva",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Wurlitzer Ballroom"
+     ]
+    },
+    "a7": {
+     "nombre": "TRAMPOSO",
+     "clave": "tramposo",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Tempo Audiophile Club"
+     ]
+    },
+    "a8": {
+     "nombre": "Trueno",
+     "clave": "trueno",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Movistar Arena"
+     ]
+    },
+    "a9": {
+     "nombre": "LA NOCHE DEL CIERVO",
+     "clave": "la noche del ciervo",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Candela"
+     ]
+    },
+    "a10": {
+     "nombre": "Lu Decker",
+     "clave": "lu decker",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Moby Dick Club"
+     ]
+    },
+    "a11": {
+     "nombre": "JIMENA \"DESDE HOY\"",
+     "clave": "jimena desde hoy",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Galileo Galilei"
+     ]
+    },
+    "a12": {
+     "nombre": "DD DUNN & LOUISIANA CATS",
+     "clave": "dd dunn and louisiana cats",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Rockville"
+     ]
+    },
+    "a13": {
+     "nombre": "Basura",
+     "clave": "basura",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Maravillas Club"
+     ]
+    },
+    "a14": {
+     "nombre": "Cotton Pickers",
+     "clave": "cotton pickers",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Café Central Ateneo"
+     ]
+    },
+    "a15": {
+     "nombre": "EQUIPO LOVE",
+     "clave": "equipo love",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Moby Dick Club"
+     ]
+    },
+    "a16": {
+     "nombre": "FLORACIÓN DUAL",
+     "clave": "floracion dual",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Dime que me Quieres"
+     ]
+    },
+    "a17": {
+     "nombre": "Indus",
+     "clave": "indus",
+     "falta": [
+      "estilo"
+     ],
+     "salas": [
+      "El Sótano"
+     ]
+    },
+    "a18": {
+     "nombre": "La Rate Timide",
+     "clave": "la rate timide",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Sala Siroco"
+     ]
+    },
+    "a19": {
+     "nombre": "LA SALSA PUNK ORKESTRA",
+     "clave": "la salsa punk orkestra",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Gruta 77"
+     ]
+    },
+    "a20": {
+     "nombre": "Pemau & ToniWhite",
+     "clave": "pemau and toniwhite",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Dime que me Quieres"
+     ]
+    },
+    "a21": {
+     "nombre": "SKULL GURU",
+     "clave": "skull guru",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "El Perro Club"
+     ]
+    },
+    "a22": {
+     "nombre": "Very Magenta",
+     "clave": "very magenta",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Sala Vesta"
+     ]
+    },
+    "a23": {
+     "nombre": "XICO PALMA",
+     "clave": "xico palma",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Cadavra"
+     ]
+    },
+    "a24": {
+     "nombre": "COOLING SYSTEM",
+     "clave": "cooling system",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Moe"
+     ]
+    },
+    "a25": {
+     "nombre": "Que te jodan Pablo",
+     "clave": "que te jodan pablo",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Fotomatón Bar"
+     ]
+    }
+   },
+   "pendientes": 435
   }
  },
  "ocultos": {
