@@ -5419,6 +5419,267 @@
    "creado": "2026-10-04",
    "pendientes": 435,
    "importado": "2026-10-04"
+  },
+  "A-2026-10-04-21": {
+   "tipo": "artistas",
+   "creado": "2026-10-04",
+   "items": {
+    "a1": {
+     "nombre": "Vera GRV",
+     "clave": "vera grv",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Shoko"
+     ]
+    },
+    "a2": {
+     "nombre": "Concierto: 'Un viaje en el tiempo a través de la música'",
+     "clave": "concierto un viaje en el tiempo a traves de la musica",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Centro Sociocultural Valle Inclán (Fuencarral - El Pardo)"
+     ]
+    },
+    "a3": {
+     "nombre": "Desde el Churruca con humor",
+     "clave": "desde el churruca con humor",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Centro Cultural Sara Montiel (Latina)"
+     ]
+    },
+    "a4": {
+     "nombre": "Paulina Torres. Pausaje",
+     "clave": "paulina torres pausaje",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Centro Cultural Carril del Conde (Hortaleza)"
+     ]
+    },
+    "a5": {
+     "nombre": "Red Violet",
+     "clave": "red violet",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Dime que me Quieres"
+     ]
+    },
+    "a6": {
+     "nombre": "Amanda",
+     "clave": "amanda",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "El Sótano"
+     ]
+    },
+    "a7": {
+     "nombre": "GRIM PARADISE",
+     "clave": "grim paradise",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Barracudas Rock Bar"
+     ]
+    },
+    "a8": {
+     "nombre": "Ian Kay",
+     "clave": "ian kay",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Fun House"
+     ]
+    },
+    "a9": {
+     "nombre": "Carmen Ferre",
+     "clave": "carmen ferre",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Galileo Galilei"
+     ]
+    },
+    "a10": {
+     "nombre": "CONCIERTO DE ROCK OVER & ARTISTA INVITADO",
+     "clave": "concierto de rock over and artista invitado",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Sala Olvido"
+     ]
+    },
+    "a11": {
+     "nombre": "Ok Mckey",
+     "clave": "ok mckey",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Cadillac Solitario"
+     ]
+    },
+    "a12": {
+     "nombre": "The Wild Boories",
+     "clave": "the wild boories",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Revi Live"
+     ]
+    },
+    "a13": {
+     "nombre": "Aurora & The Six",
+     "clave": "aurora and the six",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Canopy by Hilton Madrid Castellana"
+     ]
+    },
+    "a14": {
+     "nombre": "JAVI ARROYO",
+     "clave": "javi arroyo",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "El Perro Club"
+     ]
+    },
+    "a15": {
+     "nombre": "NIÑA LUNARES",
+     "clave": "nina lunares",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Fulanita de Tal"
+     ]
+    },
+    "a16": {
+     "nombre": "VicSan",
+     "clave": "vicsan",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Cocodrilo Rock Bar"
+     ]
+    },
+    "a17": {
+     "nombre": "BROCHURE MANRICO SEGHI TRIO",
+     "clave": "brochure manrico seghi trio",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Café El Despertar"
+     ]
+    },
+    "a18": {
+     "nombre": "PEPE RIVERO TRÍO FT. MARÍA BERASARTE",
+     "clave": "pepe rivero trio ft maria berasarte",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "La Cátedra"
+     ]
+    },
+    "a19": {
+     "nombre": "Whatthefunk",
+     "clave": "whatthefunk",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Tempo Audiophile Club"
+     ]
+    },
+    "a20": {
+     "nombre": "Carlota Urdiales",
+     "clave": "carlota urdiales",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Sala Uni"
+     ]
+    },
+    "a21": {
+     "nombre": "FROZEN SOUL",
+     "clave": "frozen soul",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Sala El Sol"
+     ]
+    },
+    "a22": {
+     "nombre": "THE JOKERS",
+     "clave": "the jokers",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Thundercat"
+     ]
+    },
+    "a23": {
+     "nombre": "Cuban Brunch: 3ª Temporada con Pepe y su tumbao",
+     "clave": "cuban brunch 3a temporada con pepe y su tumbao",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Sala Clamores"
+     ]
+    },
+    "a24": {
+     "nombre": "Sticky Cherries",
+     "clave": "sticky cherries",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Fun House"
+     ]
+    },
+    "a25": {
+     "nombre": "Del Caribe a la Patagonia",
+     "clave": "del caribe a la patagonia",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Centro Cultural Zazuar (Villa de Vallecas)"
+     ]
+    }
+   },
+   "pendientes": 410
   }
  },
  "ocultos": {
