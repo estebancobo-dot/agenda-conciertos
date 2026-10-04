@@ -2539,6 +2539,46 @@
    "lote": "A-2026-10-04-09",
    "aceptado": [],
    "rechazado": []
+  },
+  "c:39567ec4": {
+   "fecha": "2026-10-04",
+   "lote": "C-2026-10-04-03"
+  },
+  "c:17946979": {
+   "fecha": "2026-10-04",
+   "lote": "C-2026-10-04-03"
+  },
+  "c:3e3314b2": {
+   "fecha": "2026-10-04",
+   "lote": "C-2026-10-04-03"
+  },
+  "c:846b0243": {
+   "fecha": "2026-10-04",
+   "lote": "C-2026-10-04-03"
+  },
+  "c:5189ba54": {
+   "fecha": "2026-10-04",
+   "lote": "C-2026-10-04-03"
+  },
+  "c:7b7ada55": {
+   "fecha": "2026-10-04",
+   "lote": "C-2026-10-04-03"
+  },
+  "c:43d1f41d": {
+   "fecha": "2026-10-04",
+   "lote": "C-2026-10-04-03"
+  },
+  "c:a1afc1dd": {
+   "fecha": "2026-10-04",
+   "lote": "C-2026-10-04-03"
+  },
+  "c:8469a336": {
+   "fecha": "2026-10-04",
+   "lote": "C-2026-10-04-03"
+  },
+  "c:e21a130f": {
+   "fecha": "2026-10-04",
+   "lote": "C-2026-10-04-03"
   }
  },
  "lotes": {
@@ -2611,79 +2651,8 @@
   "C-2026-10-04-03": {
    "tipo": "conciertos",
    "creado": "2026-10-04",
-   "items": {
-    "c1": {
-     "id": "39567ec4",
-     "fecha": "2026-10-12",
-     "artista": "Charly",
-     "sala": "Leaves",
-     "web_sala": null
-    },
-    "c2": {
-     "id": "17946979",
-     "fecha": "2026-10-12",
-     "artista": "SacMJJ",
-     "sala": "Teatro Calderón",
-     "web_sala": null
-    },
-    "c3": {
-     "id": "3e3314b2",
-     "fecha": "2026-10-13",
-     "artista": "Leyendas del Rock",
-     "sala": "Espacio Gran Via",
-     "web_sala": null
-    },
-    "c4": {
-     "id": "846b0243",
-     "fecha": "2026-10-14",
-     "artista": "La Zorra Zapata",
-     "sala": "Madrid, Espanya",
-     "web_sala": null
-    },
-    "c5": {
-     "id": "5189ba54",
-     "fecha": "2026-10-14",
-     "artista": "Lady Pepa",
-     "sala": "Espacio Alma",
-     "web_sala": null
-    },
-    "c6": {
-     "id": "7b7ada55",
-     "fecha": "2026-10-14",
-     "artista": "Nela",
-     "sala": "Espacio Gran Via",
-     "web_sala": null
-    },
-    "c7": {
-     "id": "43d1f41d",
-     "fecha": "2026-10-15",
-     "artista": "Wah!",
-     "sala": "Pabellón 2, IFEMA Madrid",
-     "web_sala": null
-    },
-    "c8": {
-     "id": "a1afc1dd",
-     "fecha": "2026-10-16",
-     "artista": "Diego Amador",
-     "sala": "Teatro Monumental",
-     "web_sala": null
-    },
-    "c9": {
-     "id": "8469a336",
-     "fecha": "2026-10-16",
-     "artista": "Tiña",
-     "sala": "Cine & Teatro Capitol",
-     "web_sala": null
-    },
-    "c10": {
-     "id": "e21a130f",
-     "fecha": "2026-10-17",
-     "artista": "LAURA DSK",
-     "sala": "Sala Mon Live",
-     "web_sala": "https://www.monmadrid.es/"
-    }
-   },
-   "pendientes": 859
+   "pendientes": 859,
+   "importado": "2026-10-04"
   }
  },
  "ocultos": {
