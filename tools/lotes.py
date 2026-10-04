@@ -149,7 +149,9 @@ Reglas (muy importantes, todo se comprueba automáticamente abriendo las página
 4. "identidad": "seguro" si los datos de la página encajan con el contexto (ciudad, estilo, sala); "dudoso" si hay
    varios artistas con ese nombre y no sabes cuál es; "no encontrado" si no hay nada; "no es musica" si lo que
    aparece no es un artista o grupo musical (un partido, cine, teatro, una exposición…), y explica qué es en "nota".
-5. "pais": código de dos letras (ES, AR, MX, US, GB, FR…). "estilos": de 1 a 4 estilos concretos en minúsculas
+5. "nombre_real": el nombre del artista o grupo si en la lista aparece con más cosas (por ejemplo "Fabio Lione" para
+   "FABIO LIONE’S DAWN OF VICTORY").
+6. "pais": código de dos letras (ES, AR, MX, US, GB, FR…). "estilos": de 1 a 4 estilos concretos en minúsculas
    tal como los dice la página (por ejemplo "punk rock", "indie pop", "flamenco fusión", "stoner rock").
 
 Responde SOLO con un bloque de código JSON con esta forma (un objeto por artista, con su "id"):

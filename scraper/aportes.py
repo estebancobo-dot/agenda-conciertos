@@ -279,51 +279,57 @@ def verificar_artista(item: dict, pedido: dict, lector: Lector) -> dict:
         if ident.startswith(("dudos", "varios")):
             out["rechazado"].append("el chat no pudo identificar al artista con seguridad")
         return out
+    # el nombre real del artista ("Fabio Lione") si el pedido es el título del concierto ("FABIO LIONE’S DAWN OF
+    # VICTORY"): solo si está dentro de ese título, para no cambiar de artista
+    real = str(item.get("nombre_real") or "").strip()
+    nombres = [nombre] + ([real] if real and norm(real) and norm(real) in norm(nombre) and len(norm(real)) >= 3 else [])
+
+    def comprobar(url: str, cita: str, dice) -> tuple[str | None, str]:
+        """(frase aceptada, motivo del rechazo). Vale la frase citada si está en la página y dice el dato; si no,
+        lo que la propia página dice junto al nombre del artista (a 150 letras como mucho)."""
+        r = lector.leer(url) if url else "sin página"
+        if isinstance(r, str):
+            return None, r
+        if not any(nombra(r[2], n) for n in nombres):
+            return None, f"la página citada no nombra a {nombres[-1]}"
+        if cita and contiene(r[2], cita) and dice(cita):
+            return cita[:300], ""
+        for trozo in cerca_de(r[1], nombres, 150).split(" … "):
+            if trozo and dice(trozo):
+                return trozo.strip()[:300], ""
+        return None, ("la frase citada no está en la página y la página no lo dice junto al nombre" if cita and
+                      not contiene(r[2], cita) else "ni la frase citada ni la página lo dicen junto al nombre")
+
     # país
     pais = str(item.get("pais") or "").strip().upper()[:2]
     if pais and pais.isalpha():
-        url, cita = str(item.get("pais_url") or ""), str(item.get("pais_cita") or "")
-        r = lector.leer(url) if url else "sin página"
-        if isinstance(r, str):
-            out["rechazado"].append(f"país {pais}: {r}")
-        elif not nombra(r[2], nombre):
-            out["rechazado"].append(f"país {pais}: la página citada no nombra a {nombre}")
-        elif not contiene(r[2], cita):
-            out["rechazado"].append(f"país {pais}: la frase citada no está en la página")
-        elif pais_en_texto(cita, nombre)[0] != pais and pais not in paises_en_cita(cita):
-            out["rechazado"].append(f"país {pais}: la frase citada no dice ese país")
+        url = str(item.get("pais_url") or "")
+        frase, motivo = comprobar(url, str(item.get("pais_cita") or ""),
+                                  lambda t: pais_en_texto(t, nombres[-1])[0] == pais or pais in paises_en_cita(t))
+        if not frase:
+            out["rechazado"].append(f"país {pais}: {motivo}")
         else:
-            ac = {"valor": pais, "url": url, "cita": cita[:300]}
+            ac = {"valor": pais, "url": url, "cita": frase}
             if item.get("ciudad"):
                 ac["ciudad"] = str(item["ciudad"])[:60]
             out["aceptado"]["pais"] = ac
     # estilos
     estilos = [str(e).strip().lower() for e in item.get("estilos") or [] if str(e).strip()][:6]
     if estilos:
-        url, cita = str(item.get("estilos_url") or ""), str(item.get("estilos_cita") or "")
-        r = lector.leer(url) if url else "sin página"
-        if isinstance(r, str):
-            out["rechazado"].append(f"estilos: {r}")
-        elif not nombra(r[2], nombre):
-            out["rechazado"].append(f"estilos: la página citada no nombra a {nombre}")
-        elif not contiene(r[2], cita):
-            out["rechazado"].append("estilos: la frase citada no está en la página")
+        url = str(item.get("estilos_url") or "")
+        usables = lambda t: [e for e in estilos if norm(e) and norm(e) in norm(t) and categorias_de(e)]  # noqa: E731
+        frase, motivo = comprobar(url, str(item.get("estilos_cita") or ""), lambda t: bool(usables(t)))
+        if not frase:
+            out["rechazado"].append(f"estilos: {motivo}")
         else:
-            nc = norm(cita)
-            dichos = [e for e in estilos if norm(e) and norm(e) in nc]
-            usables = [e for e in dichos if categorias_de(e)]
-            if not usables:
-                out["rechazado"].append("estilos: la frase citada no dice ninguno de los estilos aportados"
-                                        if not dichos else f"estilos: {', '.join(dichos)} no son estilos conocidos")
-            else:
-                d = dominio(url)
-                out["aceptado"]["estilos"] = {"valores": dichos, "url": url, "cita": cita[:300],
-                                              "web_musica": any(d == w or d.endswith("." + w) for w in WEBS_MUSICA)}
+            d = dominio(url)
+            out["aceptado"]["estilos"] = {"valores": usables(frase), "url": url, "cita": frase,
+                                          "web_musica": any(d == w or d.endswith("." + w) for w in WEBS_MUSICA)}
     # enlaces del artista (web oficial, Bandcamp, Discogs…): se guardan los que se pueden leer y lo nombran
     enl = []
     for u in [str(x) for x in item.get("enlaces") or []][:5]:
         r = lector.leer(u)
-        if not isinstance(r, str) and nombra(r[2], nombre):
+        if not isinstance(r, str) and any(nombra(r[2], n) for n in nombres):
             enl.append(u)
     if enl:
         out["aceptado"]["enlaces"] = enl

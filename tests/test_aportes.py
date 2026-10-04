@@ -55,11 +55,11 @@ def test_artista_aceptado_con_pais_y_estilos():
 
 
 @pytest.mark.parametrize("cambio,motivo", [
-    ({"pais_cita": "Los Chivatos son una banda gallega de punk rock"}, "la frase citada no está"),
+    ({"pais": "GB", "pais_cita": "Los Chivatos son una banda británica de punk rock"}, "la frase citada no está"),
     ({"pais_url": "https://blog.example/agenda", "pais_cita": "muchas bandas de punk rock madrileñas"}, "no nombra"),
     ({"pais_url": "https://www.instagram.com/loschivatos"}, "sin sesión"),
     ({"pais_url": "https://bloqueada.example/x"}, "robots.txt"),
-    ({"pais": "AR"}, "no dice ese país"),
+    ({"pais": "AR"}, "lo dicen junto al nombre"),
 ])
 def test_pais_rechazado(cambio, motivo):
     item = {"identidad": "seguro", "pais": "ES", "pais_url": "https://loschivatos.bandcamp.com/", "pais_cita": CITA}
@@ -73,7 +73,28 @@ def test_estilo_que_la_frase_no_dice_se_rechaza():
     item = {"identidad": "seguro", "estilos": ["heavy metal"], "estilos_url": "https://loschivatos.bandcamp.com/",
             "estilos_cita": CITA}
     r = ap.verificar_artista(item, PEDIDO, lector())
-    assert "estilos" not in r["aceptado"] and "no dice ninguno" in r["rechazado"][0]
+    assert "estilos" not in r["aceptado"] and "junto al nombre" in r["rechazado"][0]
+
+
+def test_sin_frase_literal_vale_lo_que_dice_la_pagina_junto_al_nombre():
+    # la frase del chat no es literal, pero la página dice "madrileña" y "punk rock" junto al nombre
+    item = {"identidad": "seguro", "pais": "ES", "pais_url": "https://loschivatos.bandcamp.com/",
+            "pais_cita": "grupo de Madrid de punk", "estilos": ["punk rock"],
+            "estilos_url": "https://loschivatos.bandcamp.com/", "estilos_cita": "hacen punk rock"}
+    r = ap.verificar_artista(item, PEDIDO, lector())
+    assert r["aceptado"]["pais"]["valor"] == "ES" and "madrilena" in r["aceptado"]["pais"]["cita"]
+    assert r["aceptado"]["estilos"]["valores"] == ["punk rock"]
+
+
+def test_nombre_real_dentro_del_titulo():
+    pag = "<html><body><p>Fabio Lione is an Italian singer of power metal.</p></body></html>"
+    lec = ap.Lector(F({"https://w.example/fl": pag}))
+    item = {"identidad": "seguro", "nombre_real": "Fabio Lione", "pais": "IT", "pais_url": "https://w.example/fl",
+            "pais_cita": "Fabio Lione is an Italian singer"}
+    r = ap.verificar_artista(item, {"nombre": "FABIO LIONE’S DAWN OF VICTORY"}, lec)
+    assert r["aceptado"]["pais"]["valor"] == "IT"
+    otro = dict(item, nombre_real="Otro Cantante")  # un nombre que no está en el título no vale
+    assert not ap.verificar_artista(otro, {"nombre": "FABIO LIONE’S DAWN OF VICTORY"}, lec)["aceptado"]
 
 
 def test_identidad_dudosa_no_acepta_nada():
