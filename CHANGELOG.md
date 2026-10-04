@@ -1,5 +1,15 @@
 # Versiones
 
+## 2.54.0 — 2026-10-04
+
+**Nueva fuente: JacksOnLive.**
+
+- **JacksOnLive** (jacksonlive.es, agenda independiente desde 2014): antes figuraba como "bloquea el acceso automático"; hoy su robots.txt deja leerla y responde. Se leen sus 17 páginas de estilo de Madrid, que traen cada concierto con fecha y hora, estilo, precio, sala con municipio y artistas (unas 20 páginas por lectura). Medido hoy: 344 conciertos dentro de las fechas de la agenda; 284 ya los teníamos y unos 60 son nuevos (los conciertos gratuitos de la Hispanidad en Sol, Plaza de España y Plaza Mayor, Film Symphony Orchestra, Ainhoa Arteta, Estrella Morente, Califato ¾, Tanxugueiras, Inverfest en el Price y Condeduque…). Es independiente de conciertos.club (en las horas en que no coinciden da otras), así que sí cuenta como confirmación. Sus páginas de concierto traen los enlaces de entradas y se leen como las demás.
+- **Salas con paréntesis**: "Sala Villanos (Antigua Caracol)", "Palacio de los deportes de Madrid (Movistar Arena)", "Recinto Festivales Madrid (Iberdrola Music)" se reconocen por el nombre sin paréntesis o por el de dentro. Alias nuevos: Teatro Circo Price, Condeduque, Auditorio Nacional de Música, Teatro Rialto, Music Station Príncipe Pío, Babylon Club y Espacio Alma.
+- El mismo artista el mismo día en dos salas se une (con el conflicto de sala a la vista) aunque una web ponga el ciclo delante ("Inverfest. Blanca Paloma").
+- Revisadas y no añadidas: Fever (sus conciertos de Madrid son 48 grandes que ya salen de 3 a 5 webs; ya se reconoce como venta de entradas), Stairway to Rock, This Is Rock y DeRuting como blogs de giras (probados con el lector de anuncios de giras: 0 conciertos nuevos, y DeRuting confundía la sala), Hellpress noticias y festivales (noticias y festivales de fuera; su agenda ya se lee).
+- Diagnóstico: modo `URL@claves` (forma de los datos incrustados) y la prueba de una fuente lista sus conciertos nuevos con lo que haya ese día en la misma sala.
+
 ## 2.53.0 — 2026-10-04
 
 **Nueva fuente: Total Stage.**
