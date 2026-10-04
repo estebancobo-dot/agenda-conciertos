@@ -2879,6 +2879,282 @@
    "creado": "2026-10-04",
    "pendientes": 685,
    "importado": "2026-10-04"
+  },
+  "A-2026-10-04-11": {
+   "tipo": "artistas",
+   "creado": "2026-10-04",
+   "items": {
+    "a1": {
+     "nombre": "ANT COLONY",
+     "clave": "ant colony",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Cadavra"
+     ]
+    },
+    "a2": {
+     "nombre": "PINK ARTICHOKES",
+     "clave": "pink artichokes",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Honky Tonk"
+     ]
+    },
+    "a3": {
+     "nombre": "SABROSA (BEASTIE BOYS INSTRUMENTAL MUSIC)",
+     "clave": "sabrosa beastie boys instrumental music",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Intruso Bar"
+     ]
+    },
+    "a4": {
+     "nombre": "HALLOWEEN PARTY LA LLORONA",
+     "clave": "halloween party la llorona",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Morocco"
+     ]
+    },
+    "a5": {
+     "nombre": "FLECHAZO",
+     "clave": "flechazo",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Café La Palma"
+     ]
+    },
+    "a6": {
+     "nombre": "MÉXICO MÁGICO",
+     "clave": "mexico magico",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Tempo Audiophile Club"
+     ]
+    },
+    "a7": {
+     "nombre": "LOS RESQUICIOS",
+     "clave": "los resquicios",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "El Perro Club"
+     ]
+    },
+    "a8": {
+     "nombre": "Julia Halcón",
+     "clave": "julia halcon",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Fulanita de Tal"
+     ]
+    },
+    "a9": {
+     "nombre": "Melody",
+     "clave": "melody",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Live Las Ventas"
+     ]
+    },
+    "a10": {
+     "nombre": "PatataOnStereo",
+     "clave": "patataonstereo",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Sala Siroco"
+     ]
+    },
+    "a11": {
+     "nombre": "EMPECINATED",
+     "clave": "empecinated",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Café Berlín"
+     ]
+    },
+    "a12": {
+     "nombre": "La Gloria",
+     "clave": "la gloria",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Cadavra"
+     ]
+    },
+    "a13": {
+     "nombre": "JAVI GRANDE",
+     "clave": "javi grande",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Tempo Audiophile Club"
+     ]
+    },
+    "a14": {
+     "nombre": "Julia Debis - La Memoria En Vivo",
+     "clave": "julia debis la memoria en vivo",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Café Berlín"
+     ]
+    },
+    "a15": {
+     "nombre": "MARCO COSTELLO",
+     "clave": "marco costello",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Sala Nazca"
+     ]
+    },
+    "a16": {
+     "nombre": "Tour Raphaelísimo Madrid 2026",
+     "clave": "tour raphaelisimo madrid 2026",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Movistar Arena"
+     ]
+    },
+    "a17": {
+     "nombre": "Laia Alcolea",
+     "clave": "laia alcolea",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Sala Villanos"
+     ]
+    },
+    "a18": {
+     "nombre": "Da Igual",
+     "clave": "da igual",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Teatro Rialto"
+     ]
+    },
+    "a19": {
+     "nombre": "The Other Side",
+     "clave": "the other side",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Music Station Príncipe Pío"
+     ]
+    },
+    "a20": {
+     "nombre": "CLAUDIA CRUZ",
+     "clave": "claudia cruz",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Tablao Flamenco 1911"
+     ]
+    },
+    "a21": {
+     "nombre": "TANGO - MILONGA · ORQUESTA TÍPICA LA ARGENTA",
+     "clave": "tango milonga orquesta tipica la argenta",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Café Berlín"
+     ]
+    },
+    "a22": {
+     "nombre": "PAULA MORENO, CARLOS RIVERO E ILLEANA GÓMEZ",
+     "clave": "paula moreno carlos rivero e illeana gomez",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Tablao Ópera Flamenca"
+     ]
+    },
+    "a23": {
+     "nombre": "Blues & Roots",
+     "clave": "blues and roots",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Intruso Bar"
+     ]
+    },
+    "a24": {
+     "nombre": "CLARA GUTIERREZ",
+     "clave": "clara gutierrez",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Cardamomo"
+     ]
+    },
+    "a25": {
+     "nombre": "NOEMÍ FERRER",
+     "clave": "noemi ferrer",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Tablao Flamenco 1911"
+     ]
+    }
+   },
+   "pendientes": 660
   }
  },
  "ocultos": {
