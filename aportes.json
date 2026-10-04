@@ -403,6 +403,213 @@
    "creado": "2026-10-04",
    "pendientes": 948,
    "importado": "2026-10-04"
+  },
+  "A-2026-10-04-02": {
+   "tipo": "artistas",
+   "creado": "2026-10-04",
+   "items": {
+    "a1": {
+     "nombre": "BARRACÜDA",
+     "clave": "barracuda",
+     "falta": [
+      "estilo",
+      "origen"
+     ]
+    },
+    "a2": {
+     "nombre": "Iboga Rave",
+     "clave": "iboga rave",
+     "falta": [
+      "estilo",
+      "origen"
+     ]
+    },
+    "a3": {
+     "nombre": "A&J classical",
+     "clave": "a and j classical",
+     "falta": [
+      "estilo",
+      "origen"
+     ]
+    },
+    "a4": {
+     "nombre": "XXIII MÚSICA ANTIGUA ARANJUEZ. SARA RUIZ & LA BELLEMONT",
+     "clave": "xxiii musica antigua aranjuez sara ruiz and la bellemont",
+     "falta": [
+      "estilo",
+      "origen"
+     ]
+    },
+    "a5": {
+     "nombre": "SacMJJ",
+     "clave": "sacmjj",
+     "falta": [
+      "estilo",
+      "origen"
+     ]
+    },
+    "a6": {
+     "nombre": "JESSVARAL Y FRAN.TV",
+     "clave": "jessvaral y fran tv",
+     "falta": [
+      "estilo",
+      "origen"
+     ]
+    },
+    "a7": {
+     "nombre": "Mom España pintoresca",
+     "clave": "mom espana pintoresca",
+     "falta": [
+      "estilo",
+      "origen"
+     ]
+    },
+    "a8": {
+     "nombre": "MÚSICA. Cuarteto Lyra, presenta 'Melodías bohemias'",
+     "clave": "musica cuarteto lyra presenta melodias bohemias",
+     "falta": [
+      "estilo",
+      "origen"
+     ]
+    },
+    "a9": {
+     "nombre": "ESPECIAL JALOGÜIN",
+     "clave": "especial jaloguin",
+     "falta": [
+      "estilo",
+      "origen"
+     ]
+    },
+    "a10": {
+     "nombre": "MR ZOOM",
+     "clave": "mr zoom",
+     "falta": [
+      "estilo",
+      "origen"
+     ]
+    },
+    "a11": {
+     "nombre": "Defi100T",
+     "clave": "defi100t",
+     "falta": [
+      "estilo",
+      "origen"
+     ]
+    },
+    "a12": {
+     "nombre": "ENCUENTRO CORAL INTERNACIONAL IBEROAMERICANO",
+     "clave": "encuentro coral internacional iberoamericano",
+     "falta": [
+      "estilo",
+      "origen"
+     ]
+    },
+    "a13": {
+     "nombre": "Gabriel Szternsztejn Cuarteto",
+     "clave": "gabriel szternsztejn cuarteto",
+     "falta": [
+      "estilo",
+      "origen"
+     ]
+    },
+    "a14": {
+     "nombre": "Pausaje con Paulina Torres",
+     "clave": "pausaje con paulina torres",
+     "falta": [
+      "estilo",
+      "origen"
+     ]
+    },
+    "a15": {
+     "nombre": "ENLACE FUNK ALL STARS DJs",
+     "clave": "enlace funk all stars djs",
+     "falta": [
+      "estilo",
+      "origen"
+     ]
+    },
+    "a16": {
+     "nombre": "Komodor",
+     "clave": "komodor",
+     "falta": [
+      "estilo",
+      "origen"
+     ]
+    },
+    "a17": {
+     "nombre": "Wanderlust",
+     "clave": "wanderlust",
+     "falta": [
+      "estilo",
+      "origen"
+     ]
+    },
+    "a18": {
+     "nombre": "FAHMI ALQHI",
+     "clave": "fahmi alqhi",
+     "falta": [
+      "estilo",
+      "origen"
+     ]
+    },
+    "a19": {
+     "nombre": "PUNK RAVE",
+     "clave": "punk rave",
+     "falta": [
+      "estilo",
+      "origen"
+     ]
+    },
+    "a20": {
+     "nombre": "CLUB DEBUT",
+     "clave": "club debut",
+     "falta": [
+      "estilo",
+      "origen"
+     ]
+    },
+    "a21": {
+     "nombre": "Concierto Fiesta Nacional",
+     "clave": "concierto fiesta nacional",
+     "falta": [
+      "estilo",
+      "origen"
+     ]
+    },
+    "a22": {
+     "nombre": "MÚSICA. Ernestina de Champourci. 'La poeta del misterio'",
+     "clave": "musica ernestina de champourci la poeta del misterio",
+     "falta": [
+      "estilo",
+      "origen"
+     ]
+    },
+    "a23": {
+     "nombre": "Delarocha",
+     "clave": "delarocha",
+     "falta": [
+      "estilo",
+      "origen"
+     ]
+    },
+    "a24": {
+     "nombre": "The New R&B Collective Plays George Benson",
+     "clave": "the new r and b collective plays george benson",
+     "falta": [
+      "estilo",
+      "origen"
+     ]
+    },
+    "a25": {
+     "nombre": "Swing For Kids",
+     "clave": "swing for kids",
+     "falta": [
+      "estilo",
+      "origen"
+     ]
+    }
+   },
+   "pendientes": 867
   }
  }
 }
