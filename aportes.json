@@ -851,5 +851,47 @@
    "pendientes": 842,
    "importado": "2026-10-04"
   }
+ },
+ "ocultos": {
+  "germinal sesion ii": {
+   "nombre": "Germinal - Sesión II",
+   "motivo": "proyección de cine en la Cineteca",
+   "fecha": "2026-10-04"
+  },
+  "there are no outdoor ice rinks in madrid luz y sombra work in progress": {
+   "nombre": "There are no outdoor ice rinks in Madrid + Luz y sombra (work in progress)",
+   "motivo": "proyección de cine en la Cineteca",
+   "fecha": "2026-10-04"
+  },
+  "kontinental and 039 25": {
+   "nombre": "KONTINENTAL &#039;25",
+   "motivo": "película de Radu Jude (ciclo de cine de derechos humanos)",
+   "fecha": "2026-10-04"
+  },
+  "kontinental 25": {
+   "nombre": "KONTINENTAL '25",
+   "motivo": "película de Radu Jude (ciclo de cine de derechos humanos)",
+   "fecha": "2026-10-04"
+  },
+  "la cuota comedy": {
+   "nombre": "La Cuota Comedy",
+   "motivo": "monólogos de comedia",
+   "fecha": "2026-10-04"
+  },
+  "aguilera y meni": {
+   "nombre": "AGUILERA Y MENI",
+   "motivo": "espectáculo de humor (monólogos y parodias)",
+   "fecha": "2026-10-04"
+  },
+  "iboga rave": {
+   "nombre": "Iboga Rave",
+   "motivo": "fiesta rave de música electrónica con DJs",
+   "fecha": "2026-10-04"
+  },
+  "enlace funk all stars djs": {
+   "nombre": "ENLACE FUNK ALL STARS DJs",
+   "motivo": "sesión de DJs",
+   "fecha": "2026-10-04"
+  }
  }
 }
