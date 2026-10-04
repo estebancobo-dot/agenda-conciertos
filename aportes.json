@@ -570,6 +570,98 @@
    },
    "lote": "A-2026-10-04-05",
    "fecha": "2026-10-04"
+  },
+  "personas ultra sensibles": {
+   "nombre": "Personas Ultra Sensibles",
+   "enlaces": [
+    "https://somoslospus.com/"
+   ],
+   "lote": "A-2026-10-04-06",
+   "fecha": "2026-10-04"
+  },
+  "impulso takuya kuroda quintet en madrid 1 pase": {
+   "nombre": "IMPULSO - TAKUYA KURODA Quintet en Madrid - 1 pase",
+   "pais": {
+    "valor": "JP",
+    "url": "https://www.dirtyrock.info/2023/10/conversamos-con-takuya-kuroda-festival-internacional-jazzmadrid-2023/",
+    "cita": "motivo del festival jazzmadrid y el 8 de noviembre la sala paral-lel 62 por el pinata music series. emotivo, tecnico . asi es el trompetista japones takuya kuroda . fusiona el jazz como nadie, con una amplia gama de influencias musicales, incluyendo el soul , el funk , el afrobeat y otros generos, l",
+    "ciudad": "Kobe"
+   },
+   "estilos": {
+    "valores": [
+     "jazz"
+    ],
+    "url": "https://www.dirtyrock.info/2023/11/takuya-kuroda-jazz-emocion-cronica-concierto-sala-villanos-madrid/",
+    "cita": "takuya kuroda y su talentosa banda entregaron ayer en la sala villanos una actuacion que quedara en la memoria de todos los presentes takuya kuroda: jazz, versatil",
+    "web_musica": false
+   },
+   "lote": "A-2026-10-04-06",
+   "fecha": "2026-10-04"
+  },
+  "ale ocana and los intrusos": {
+   "nombre": "ALE OCAÑA & LOS INTRUSOS",
+   "pais": {
+    "valor": "ES",
+    "url": "https://www.elsemanaldelamancha.com/articulo/alcazar-de-san-juan/ale-ocana-intrusos-llevaran-potente-directo-escenarios-verano-alcazar/20260820120746253884.html",
+    "cita": "ale ocana & los intrusos ponen ritmo rockero a los escenarios de verano ale ocana & los intrusos actuaran el 25 de agosto, a las 22:00 horas, en la plaza de espana con una pr"
+   },
+   "estilos": {
+    "valores": [
+     "rock"
+    ],
+    "url": "https://www.elsemanaldelamancha.com/articulo/alcazar-de-san-juan/ale-ocana-intrusos-llevaran-potente-directo-escenarios-verano-alcazar/20260820120746253884.html",
+    "cita": "ale ocana & los intrusos ponen ritmo rockero a los escenarios de verano ale ocana & los intrusos actuaran el 25 de agosto, a las 22:00 horas, en la plaza de espana con una pr",
+    "web_musica": false
+   },
+   "lote": "A-2026-10-04-06",
+   "fecha": "2026-10-04"
+  },
+  "sedientos de cumbia": {
+   "nombre": "Sedientos de Cumbia",
+   "pais": {
+    "valor": "ES",
+    "url": "https://www.ferminmusic.com/se-armo-el-quilombo-en-navarreria-el-grupo-navarro-sedientos-de-cumbia-lanza-el-videoclip-de-su-primera-cancion/",
+    "cita": "se armo el quilombo en navarreria: el grupo navarro sedientos de cumbia lanza el videoclip de su primera cancion visita la entrada para saber mas. se armo el quilombo en navarreria: el grupo navarro sedientos de cumbia la",
+    "ciudad": "Pamplona"
+   },
+   "lote": "A-2026-10-04-06",
+   "fecha": "2026-10-04"
+  },
+  "juan deive": {
+   "nombre": "JUAN DEIVE",
+   "estilos": {
+    "valores": [
+     "rock"
+    ],
+    "url": "https://musicasdeferrolterra.es/juan-deive/",
+    "cita": "ca saltar al contenido inicio sobre musicas de ferrolterra catalogo musical de ferrolterra contacto buscar: alternar la barra lateral y la navegacion juan deive por isidoro valerio en pop , rock en publicado el agosto 12, 2025 agosto 12, 2025 juan deive juan deive nacio el 7 de julio de 1975 en vene",
+    "web_musica": false
+   },
+   "enlaces": [
+    "https://juandeive.com/"
+   ],
+   "lote": "A-2026-10-04-06",
+   "fecha": "2026-10-04"
+  },
+  "patronato": {
+   "nombre": "patronato",
+   "pais": {
+    "valor": "ES",
+    "url": "https://conciertos.club/artistas/patronato",
+    "cita": "26 y 2027 conciertos y gira de patronato en 2026 y 2027 - artistas y grupos - conciertos.club biografia y fechas de los proximos conciertos y gira de patronato en 2026 y 2027 conciertos y gira de patronato en 2026 y 2027 - artistas y grupos - conciertos.club conciertos a coruna alava - vitoria-gaste",
+    "ciudad": "Madrid"
+   },
+   "estilos": {
+    "valores": [
+     "indie",
+     "pop"
+    ],
+    "url": "https://conciertos.club/artistas/patronato",
+    "cita": "runa ourense palencia pontevedra - vigo salamanca segovia sevilla soria tarragona tenerife teruel toledo valencia valladolid zamora zaragoza artistas patronato estilo: pop-rock/indie compartir: compartir en facebook compartir en twitter compartir en whatsapp patronato es una nueva banda madrilena fo",
+    "web_musica": false
+   },
+   "lote": "A-2026-10-04-06",
+   "fecha": "2026-10-04"
   }
  },
  "conciertos": [
@@ -1538,6 +1630,191 @@
    "rechazado": [
     "estilos: ni la frase citada ni la página lo dicen junto al nombre"
    ]
+  },
+  "a:lolita": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-06",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:the benatars": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-06",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:personas ultra sensibles": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-06",
+   "aceptado": [
+    "enlaces"
+   ],
+   "rechazado": [
+    "país ES: no se pudo abrir (HTTPError)",
+    "estilos: no se pudo abrir (HTTPError)"
+   ]
+  },
+  "a:impulso takuya kuroda quintet en madrid 1 pase": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-06",
+   "aceptado": [
+    "estilos",
+    "pais"
+   ],
+   "rechazado": []
+  },
+  "a:ale ocana and los intrusos": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-06",
+   "aceptado": [
+    "estilos",
+    "pais"
+   ],
+   "rechazado": []
+  },
+  "a:buscando a j": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-06",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:los 30 son los nuevos 20": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-06",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:antonio reyes presenta maestros 9o ffc": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-06",
+   "aceptado": [],
+   "rechazado": [
+    "país ES: no se pudo abrir (HTTPError)",
+    "estilos: no se pudo abrir (HTTPError)"
+   ]
+  },
+  "a:clickedus": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-06",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:tecnicas y procedimientos": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-06",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:sedientos de cumbia": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-06",
+   "aceptado": [
+    "pais"
+   ],
+   "rechazado": [
+    "estilos: no se pudo abrir (HTTPError)"
+   ]
+  },
+  "a:juan deive": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-06",
+   "aceptado": [
+    "enlaces",
+    "estilos"
+   ],
+   "rechazado": [
+    "país VE: no se pudo abrir (HTTPError)"
+   ]
+  },
+  "a:los 7 impostores": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-06",
+   "aceptado": [],
+   "rechazado": [
+    "país ES: no se pudo abrir (RobotsUnreachable)",
+    "estilos: no se pudo abrir (RobotsUnreachable)"
+   ]
+  },
+  "a:edimundo santos": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-06",
+   "aceptado": [],
+   "rechazado": [
+    "país BR: no se pudo abrir (HTTPError)",
+    "estilos: no se pudo abrir (HTTPError)"
+   ]
+  },
+  "a:la juventud": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-06",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:esto es jauja": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-06",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:patronato": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-06",
+   "aceptado": [
+    "estilos",
+    "pais"
+   ],
+   "rechazado": []
+  },
+  "a:primer trimestral escuela de musica cache": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-06",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:navidades flamenco capital 2026": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-06",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:mr black": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-06",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:radar joven": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-06",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:cuban brunch 3a temporada": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-06",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:back to the music": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-06",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:pa piratas nosotros": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-06",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:pape diouf et la generation consciente": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-06",
+   "aceptado": [],
+   "rechazado": [
+    "país SN: la página citada no nombra a Pape Diouf et La Génération Consciente",
+    "estilos: la página citada no nombra a Pape Diouf et La Génération Consciente"
+   ]
   }
  },
  "lotes": {
@@ -1580,294 +1857,8 @@
   "A-2026-10-04-06": {
    "tipo": "artistas",
    "creado": "2026-10-04",
-   "items": {
-    "a1": {
-     "nombre": "Lolità",
-     "clave": "lolita",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Café Berlín"
-     ]
-    },
-    "a2": {
-     "nombre": "The Benatars",
-     "clave": "the benatars",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Fun House"
-     ]
-    },
-    "a3": {
-     "nombre": "Personas Ultra Sensibles",
-     "clave": "personas ultra sensibles",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Fun House"
-     ]
-    },
-    "a4": {
-     "nombre": "IMPULSO - TAKUYA KURODA Quintet en Madrid - 1 pase",
-     "clave": "impulso takuya kuroda quintet en madrid 1 pase",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Café Berlín"
-     ]
-    },
-    "a5": {
-     "nombre": "ALE OCAÑA & LOS INTRUSOS",
-     "clave": "ale ocana and los intrusos",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Galileo Galilei"
-     ]
-    },
-    "a6": {
-     "nombre": "Buscando a J",
-     "clave": "buscando a j",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Maravillas Club"
-     ]
-    },
-    "a7": {
-     "nombre": "Los 30 son los nuevos 20",
-     "clave": "los 30 son los nuevos 20",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Cadillac Solitario"
-     ]
-    },
-    "a8": {
-     "nombre": "Antonio Reyes presenta “Maestros” - 9º FFC",
-     "clave": "antonio reyes presenta maestros 9o ffc",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Café Berlín"
-     ]
-    },
-    "a9": {
-     "nombre": "Clickedus",
-     "clave": "clickedus",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Fun House"
-     ]
-    },
-    "a10": {
-     "nombre": "Técnicas y Procedimientos",
-     "clave": "tecnicas y procedimientos",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Sala Siroco"
-     ]
-    },
-    "a11": {
-     "nombre": "Sedientos de Cumbia",
-     "clave": "sedientos de cumbia",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Maravillas Club"
-     ]
-    },
-    "a12": {
-     "nombre": "JUAN DEIVE",
-     "clave": "juan deive",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Café La Palma"
-     ]
-    },
-    "a13": {
-     "nombre": "Los 7 Impostores",
-     "clave": "los 7 impostores",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Teatro Eslava"
-     ]
-    },
-    "a14": {
-     "nombre": "Edimundo Santos",
-     "clave": "edimundo santos",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Babylon Club"
-     ]
-    },
-    "a15": {
-     "nombre": "La juventud",
-     "clave": "la juventud",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Sala El Sol"
-     ]
-    },
-    "a16": {
-     "nombre": "Esto es JAUJA",
-     "clave": "esto es jauja",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Café Berlín"
-     ]
-    },
-    "a17": {
-     "nombre": "patronato",
-     "clave": "patronato",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Sala Uni"
-     ]
-    },
-    "a18": {
-     "nombre": "PRIMER TRIMESTRAL – ESCUELA DE MÚSICA CACHE",
-     "clave": "primer trimestral escuela de musica cache",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Revi Space"
-     ]
-    },
-    "a19": {
-     "nombre": "NAVIDADES FLAMENCO CAPITAL 2026",
-     "clave": "navidades flamenco capital 2026",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Café La Palma"
-     ]
-    },
-    "a20": {
-     "nombre": "MR. BLACK",
-     "clave": "mr black",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Jazzville"
-     ]
-    },
-    "a21": {
-     "nombre": "Radar Joven",
-     "clave": "radar joven",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Cadavra",
-      "El Sótano",
-      "Independance Club",
-      "Independance Club / Sala Uni",
-      "Intruso Bar",
-      "Moe",
-      "Rincón del Arte Nuevo",
-      "Sala But",
-      "Sala El Sol",
-      "Shoko"
-     ]
-    },
-    "a22": {
-     "nombre": "Cuban Brunch: 3ª Temporada",
-     "clave": "cuban brunch 3a temporada",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Sala Clamores"
-     ]
-    },
-    "a23": {
-     "nombre": "BACK TO THE MUSIC",
-     "clave": "back to the music",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Cadillac Solitario",
-      "Moe"
-     ]
-    },
-    "a24": {
-     "nombre": "Pa’ Piratas Nosotros",
-     "clave": "pa piratas nosotros",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Hangar 48"
-     ]
-    },
-    "a25": {
-     "nombre": "Pape Diouf et La Génération Consciente",
-     "clave": "pape diouf et la generation consciente",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Sala Clamores"
-     ]
-    }
-   },
-   "pendientes": 785
+   "pendientes": 785,
+   "importado": "2026-10-04"
   }
  },
  "ocultos": {
