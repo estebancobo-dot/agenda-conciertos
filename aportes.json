@@ -4120,6 +4120,263 @@
    "creado": "2026-10-04",
    "pendientes": 560,
    "importado": "2026-10-04"
+  },
+  "A-2026-10-04-16": {
+   "tipo": "artistas",
+   "creado": "2026-10-04",
+   "items": {
+    "a1": {
+     "nombre": "Erik Urano",
+     "clave": "erik urano",
+     "falta": [
+      "estilo"
+     ],
+     "salas": [
+      "Sala Copérnico"
+     ]
+    },
+    "a2": {
+     "nombre": "PROM KINKS",
+     "clave": "prom kinks",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Silikona"
+     ]
+    },
+    "a3": {
+     "nombre": "Gonzalo Alhambra",
+     "clave": "gonzalo alhambra",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Sala Vesta"
+     ]
+    },
+    "a4": {
+     "nombre": "GUSA",
+     "clave": "gusa",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "El Perro Club"
+     ]
+    },
+    "a5": {
+     "nombre": "RECUERDOS LOCOS",
+     "clave": "recuerdos locos",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Sala Nazca"
+     ]
+    },
+    "a6": {
+     "nombre": "The Besters",
+     "clave": "the besters",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Cadillac Solitario"
+     ]
+    },
+    "a7": {
+     "nombre": "VIBRA MAHOU",
+     "clave": "vibra mahou",
+     "falta": [
+      "estilo"
+     ],
+     "salas": [
+      "Café La Palma"
+     ]
+    },
+    "a8": {
+     "nombre": "GROOVE SOCIETY",
+     "clave": "groove society",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Intruso Bar"
+     ]
+    },
+    "a9": {
+     "nombre": "No more bullshit",
+     "clave": "no more bullshit",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Honky Tonk"
+     ]
+    },
+    "a10": {
+     "nombre": "Desmelenao en MAZO",
+     "clave": "desmelenao en mazo",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Sala Clamores"
+     ]
+    },
+    "a11": {
+     "nombre": "DJALI KUNDA",
+     "clave": "djali kunda",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Tempo Audiophile Club"
+     ]
+    },
+    "a12": {
+     "nombre": "IMPULSO",
+     "clave": "impulso",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Café Berlín"
+     ]
+    },
+    "a13": {
+     "nombre": "EUROPE",
+     "clave": "europe",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Plaza de Toros La Nueva Cubierta"
+     ]
+    },
+    "a14": {
+     "nombre": "ROCK AND ROLL ANIMALS",
+     "clave": "rock and roll animals",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Honky Tonk"
+     ]
+    },
+    "a15": {
+     "nombre": "BLACK BIRDS",
+     "clave": "black birds",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Rockville"
+     ]
+    },
+    "a16": {
+     "nombre": "MARIANO DÍAZ UNPLUGGED",
+     "clave": "mariano diaz unplugged",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Café Central Ateneo"
+     ]
+    },
+    "a17": {
+     "nombre": "MUJERES DE CINE EN CONCIERTO",
+     "clave": "mujeres de cine en concierto",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Galileo Galilei"
+     ]
+    },
+    "a18": {
+     "nombre": "TONY HEIMMER & NIRANKAR KHALSA",
+     "clave": "tony heimmer and nirankar khalsa",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Café El Despertar"
+     ]
+    },
+    "a19": {
+     "nombre": "COLMILLO",
+     "clave": "colmillo",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Café La Palma"
+     ]
+    },
+    "a20": {
+     "nombre": "Javier Gijón \" Infinitesimal\"",
+     "clave": "javier gijon infinitesimal",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Jazzville"
+     ]
+    },
+    "a21": {
+     "nombre": "O.M.N.I",
+     "clave": "o m n i",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "El Perro Club"
+     ]
+    },
+    "a22": {
+     "nombre": "SOUL LATINO – LUIS ALFONSO & JEAN CARLOS CENTENO",
+     "clave": "soul latino luis alfonso and jean carlos centeno",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "La Nueva Cubierta"
+     ]
+    },
+    "a23": {
+     "nombre": "RONI DI CAPO & LADY BELLE:",
+     "clave": "roni di capo and lady belle",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Gruta 77"
+     ]
+    },
+    "a24": {
+     "nombre": "El Cebri",
+     "clave": "el cebri",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Tempo Audiophile Club"
+     ]
+    },
+    "a25": {
+     "nombre": "ALEJANDRO UDO",
+     "clave": "alejandro udo",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Candela"
+     ]
+    }
+   },
+   "pendientes": 535
   }
  },
  "ocultos": {
