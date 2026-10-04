@@ -889,6 +889,71 @@
    },
    "lote": "A-2026-10-04-10",
    "fecha": "2026-10-04"
+  },
+  "melody": {
+   "nombre": "Melody",
+   "pais": {
+    "valor": "ES",
+    "url": "https://es.wikipedia.org/wiki/Melody_(cantante_espa%C3%B1ola)",
+    "cita": "melody (cantante espanola) - wikipedia, la enciclopedia libre melody (cantante espanola) cantante, actriz y modelo espanola wikimedia foundation, inc. colab",
+    "ciudad": "Dos Hermanas"
+   },
+   "estilos": {
+    "valores": [
+     "pop"
+    ],
+    "url": "https://es.wikipedia.org/wiki/Melody_(cantante_espa%C3%B1ola)",
+    "cita": "sa diva ganadora 14de febrero de 2026 sirenita de oro benidorm fest 2025 esa diva ganadora 16 de febrero de 2026 premios iris la mejor por el publico melody nominada 19 de febrero de 2026 premios lo nuestro mejor eurosong pop/urbano esa diva nominada 24 de mayo de 2026 top 50 music awards artista de",
+    "web_musica": true
+   },
+   "lote": "A-2026-10-04-11",
+   "fecha": "2026-10-04"
+  },
+  "marco costello": {
+   "nombre": "MARCO COSTELLO",
+   "pais": {
+    "valor": "IT",
+    "url": "https://it.wikipedia.org/wiki/Marco_Castello",
+    "cita": "marco castello - wikipedia marco castello cantautore italiano (1993-) wikimedia foundation, inc. contributori ai progetti wikimedia marco castello - wikipedia vai a"
+   },
+   "estilos": {
+    "valores": [],
+    "url": "https://www.hoymadrid.app/planes/marco-castello-eu-tour-madrid-sala-nazca-club-madrid/",
+    "cita": "ala nazca club (madrid) en hoy madrid. marco castello - eu tour - madrid marco castello - eu tour - madrid en sala nazca club (madrid) en hoy madrid. marco castello - eu tour - madrid que hacer en madrid hoy madrid marco castello - eu tour - madrid marco castello - eu tour - madrid es un plan de tem",
+    "web_musica": false
+   },
+   "lote": "A-2026-10-04-11",
+   "fecha": "2026-10-04"
+  },
+  "tour raphaelisimo madrid 2026": {
+   "nombre": "Tour Raphaelísimo Madrid 2026",
+   "pais": {
+    "valor": "ES",
+    "url": "https://es.wikipedia.org/wiki/Raphael_(cantante)",
+    "cita": "raphael (cantante) - wikipedia, la enciclopedia libre raphael (cantante) cantante y actor espanol wikimedia foundation, inc. colaboradores de los proyectos w",
+    "ciudad": "Linares"
+   },
+   "estilos": {
+    "valores": [
+     "balada"
+    ],
+    "url": "https://es.wikipedia.org/wiki/Raphael_(cantante)",
+    "cita": "s figueroa, alejandra martos figueroa y manuel martos figueroa informacion profesional ocupacion cantante y actor anos activo 1959-presente seudonimo raphael de espana el nino [ 3 ] [ 4 ] el divo de linares genero balada instrumento voz tipo de voz baritono discografica hispavox cbs records epic rec",
+    "web_musica": true
+   },
+   "lote": "A-2026-10-04-11",
+   "fecha": "2026-10-04"
+  },
+  "laia alcolea": {
+   "nombre": "Laia Alcolea",
+   "pais": {
+    "valor": "ES",
+    "url": "https://www.cantabriaeconomica.com/patrocinado/informacion-al-dia/laia-alcolea-presenta-su-primer-single-no-me-fio-de-mi-remezclado-por-delaporte/",
+    "cita": "s por lo menos respetar lo que era la estructura de la cancion original, que es perfecta tal cual es, y jugar un poco mas con el baile y con los bpm. laia alcolea (madrid, 19 de enero de 2002) es cantante, compositora, productora y pianista. su formacion musical comienza a una edad temprana con estu",
+    "ciudad": "Madrid"
+   },
+   "lote": "A-2026-10-04-11",
+   "fecha": "2026-10-04"
   }
  },
  "conciertos": [
@@ -2799,6 +2864,172 @@
    "lote": "A-2026-10-04-10",
    "aceptado": [],
    "rechazado": []
+  },
+  "a:ant colony": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-11",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:pink artichokes": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-11",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:sabrosa beastie boys instrumental music": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-11",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:halloween party la llorona": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-11",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:flechazo": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-11",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:mexico magico": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-11",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:los resquicios": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-11",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:julia halcon": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-11",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:melody": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-11",
+   "aceptado": [
+    "estilos",
+    "pais"
+   ],
+   "rechazado": []
+  },
+  "a:patataonstereo": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-11",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:empecinated": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-11",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:la gloria": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-11",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:javi grande": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-11",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:julia debis la memoria en vivo": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-11",
+   "aceptado": [],
+   "rechazado": [
+    "país ES: su robots.txt no deja leerla, así que no se puede comprobar",
+    "estilos: ni la frase citada ni la página lo dicen junto al nombre"
+   ]
+  },
+  "a:marco costello": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-11",
+   "aceptado": [
+    "estilos",
+    "pais"
+   ],
+   "rechazado": []
+  },
+  "a:tour raphaelisimo madrid 2026": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-11",
+   "aceptado": [
+    "estilos",
+    "pais"
+   ],
+   "rechazado": []
+  },
+  "a:laia alcolea": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-11",
+   "aceptado": [
+    "pais"
+   ],
+   "rechazado": [
+    "estilos: ni la frase citada ni la página lo dicen junto al nombre"
+   ]
+  },
+  "a:da igual": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-11",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:the other side": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-11",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:claudia cruz": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-11",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:tango milonga orquesta tipica la argenta": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-11",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:paula moreno carlos rivero e illeana gomez": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-11",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:blues and roots": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-11",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:clara gutierrez": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-11",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:noemi ferrer": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-11",
+   "aceptado": [],
+   "rechazado": []
   }
  },
  "lotes": {
@@ -2883,278 +3114,8 @@
   "A-2026-10-04-11": {
    "tipo": "artistas",
    "creado": "2026-10-04",
-   "items": {
-    "a1": {
-     "nombre": "ANT COLONY",
-     "clave": "ant colony",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Cadavra"
-     ]
-    },
-    "a2": {
-     "nombre": "PINK ARTICHOKES",
-     "clave": "pink artichokes",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Honky Tonk"
-     ]
-    },
-    "a3": {
-     "nombre": "SABROSA (BEASTIE BOYS INSTRUMENTAL MUSIC)",
-     "clave": "sabrosa beastie boys instrumental music",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Intruso Bar"
-     ]
-    },
-    "a4": {
-     "nombre": "HALLOWEEN PARTY LA LLORONA",
-     "clave": "halloween party la llorona",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Morocco"
-     ]
-    },
-    "a5": {
-     "nombre": "FLECHAZO",
-     "clave": "flechazo",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Café La Palma"
-     ]
-    },
-    "a6": {
-     "nombre": "MÉXICO MÁGICO",
-     "clave": "mexico magico",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Tempo Audiophile Club"
-     ]
-    },
-    "a7": {
-     "nombre": "LOS RESQUICIOS",
-     "clave": "los resquicios",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "El Perro Club"
-     ]
-    },
-    "a8": {
-     "nombre": "Julia Halcón",
-     "clave": "julia halcon",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Fulanita de Tal"
-     ]
-    },
-    "a9": {
-     "nombre": "Melody",
-     "clave": "melody",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Live Las Ventas"
-     ]
-    },
-    "a10": {
-     "nombre": "PatataOnStereo",
-     "clave": "patataonstereo",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Sala Siroco"
-     ]
-    },
-    "a11": {
-     "nombre": "EMPECINATED",
-     "clave": "empecinated",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Café Berlín"
-     ]
-    },
-    "a12": {
-     "nombre": "La Gloria",
-     "clave": "la gloria",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Cadavra"
-     ]
-    },
-    "a13": {
-     "nombre": "JAVI GRANDE",
-     "clave": "javi grande",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Tempo Audiophile Club"
-     ]
-    },
-    "a14": {
-     "nombre": "Julia Debis - La Memoria En Vivo",
-     "clave": "julia debis la memoria en vivo",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Café Berlín"
-     ]
-    },
-    "a15": {
-     "nombre": "MARCO COSTELLO",
-     "clave": "marco costello",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Sala Nazca"
-     ]
-    },
-    "a16": {
-     "nombre": "Tour Raphaelísimo Madrid 2026",
-     "clave": "tour raphaelisimo madrid 2026",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Movistar Arena"
-     ]
-    },
-    "a17": {
-     "nombre": "Laia Alcolea",
-     "clave": "laia alcolea",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Sala Villanos"
-     ]
-    },
-    "a18": {
-     "nombre": "Da Igual",
-     "clave": "da igual",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Teatro Rialto"
-     ]
-    },
-    "a19": {
-     "nombre": "The Other Side",
-     "clave": "the other side",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Music Station Príncipe Pío"
-     ]
-    },
-    "a20": {
-     "nombre": "CLAUDIA CRUZ",
-     "clave": "claudia cruz",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Tablao Flamenco 1911"
-     ]
-    },
-    "a21": {
-     "nombre": "TANGO - MILONGA · ORQUESTA TÍPICA LA ARGENTA",
-     "clave": "tango milonga orquesta tipica la argenta",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Café Berlín"
-     ]
-    },
-    "a22": {
-     "nombre": "PAULA MORENO, CARLOS RIVERO E ILLEANA GÓMEZ",
-     "clave": "paula moreno carlos rivero e illeana gomez",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Tablao Ópera Flamenca"
-     ]
-    },
-    "a23": {
-     "nombre": "Blues & Roots",
-     "clave": "blues and roots",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Intruso Bar"
-     ]
-    },
-    "a24": {
-     "nombre": "CLARA GUTIERREZ",
-     "clave": "clara gutierrez",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Cardamomo"
-     ]
-    },
-    "a25": {
-     "nombre": "NOEMÍ FERRER",
-     "clave": "noemi ferrer",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Tablao Flamenco 1911"
-     ]
-    }
-   },
-   "pendientes": 660
+   "pendientes": 660,
+   "importado": "2026-10-04"
   }
  },
  "ocultos": {
@@ -3291,6 +3252,15 @@
     "Gruta 77"
    ],
    "lote": "A-2026-10-04-10",
+   "fecha": "2026-10-04"
+  },
+  "halloween party la llorona": {
+   "nombre": "HALLOWEEN PARTY LA LLORONA",
+   "motivo": "Halloween Party La Llorona: fiesta temática",
+   "salas": [
+    "Morocco"
+   ],
+   "lote": "A-2026-10-04-11",
    "fecha": "2026-10-04"
   }
  }
