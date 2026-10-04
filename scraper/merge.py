@@ -426,7 +426,9 @@ def hacer_id(rec: dict) -> str:
 
 
 def nombres_rec(r: dict) -> list[str]:
-    return [r["artista"], *r.get("invitados", [])]
+    # también el nombre sin ciclo ni aviso delante: "Inverfest. Blanca Paloma" → "Blanca Paloma"
+    from .nombres import _limpio
+    return list(dict.fromkeys([r["artista"], *_limpio(r["artista"]), *r.get("invitados", [])]))
 
 
 def fusionar_conflictos_sala(recs: list[dict]) -> list[dict]:
