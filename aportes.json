@@ -1,0 +1,215 @@
+{
+ "version": 1,
+ "artistas": {},
+ "conciertos": [],
+ "consultados": {},
+ "lotes": {
+  "A-2026-10-04-01": {
+   "tipo": "artistas",
+   "creado": "2026-10-04",
+   "items": {
+    "a1": {
+     "nombre": "Wah!",
+     "clave": "wah",
+     "falta": [
+      "estilo",
+      "origen"
+     ]
+    },
+    "a2": {
+     "nombre": "MECHANIC MOODS LIVE SESSION",
+     "clave": "mechanic moods live session",
+     "falta": [
+      "estilo",
+      "origen"
+     ]
+    },
+    "a3": {
+     "nombre": "Germinal - Sesión II",
+     "clave": "germinal sesion ii",
+     "falta": [
+      "estilo",
+      "origen"
+     ]
+    },
+    "a4": {
+     "nombre": "Charly",
+     "clave": "charly",
+     "falta": [
+      "estilo",
+      "origen"
+     ]
+    },
+    "a5": {
+     "nombre": "Nela",
+     "clave": "nela",
+     "falta": [
+      "estilo",
+      "origen"
+     ]
+    },
+    "a6": {
+     "nombre": "Swing Machine Orchestra",
+     "clave": "swing machine orchestra",
+     "falta": [
+      "estilo",
+      "origen"
+     ]
+    },
+    "a7": {
+     "nombre": "FABIO LIONE’S DAWN OF VICTORY",
+     "clave": "fabio liones dawn of victory",
+     "falta": [
+      "estilo",
+      "origen"
+     ]
+    },
+    "a8": {
+     "nombre": "THE SWINGIN’ POTT",
+     "clave": "the swingin pott",
+     "falta": [
+      "estilo",
+      "origen"
+     ]
+    },
+    "a9": {
+     "nombre": "Bewitched",
+     "clave": "bewitched",
+     "falta": [
+      "estilo",
+      "origen"
+     ]
+    },
+    "a10": {
+     "nombre": "Los Gizzard",
+     "clave": "los gizzard",
+     "falta": [
+      "estilo",
+      "origen"
+     ]
+    },
+    "a11": {
+     "nombre": "Mork",
+     "clave": "mork",
+     "falta": [
+      "estilo",
+      "origen"
+     ]
+    },
+    "a12": {
+     "nombre": "INTRUSO JAZZ SESSION",
+     "clave": "intruso jazz session",
+     "falta": [
+      "estilo",
+      "origen"
+     ]
+    },
+    "a13": {
+     "nombre": "KONTINENTAL &#039;25",
+     "clave": "kontinental and 039 25",
+     "falta": [
+      "estilo",
+      "origen"
+     ]
+    },
+    "a14": {
+     "nombre": "DANIELA GRAV",
+     "clave": "daniela grav",
+     "falta": [
+      "estilo",
+      "origen"
+     ]
+    },
+    "a15": {
+     "nombre": "There are no outdoor ice rinks in Madrid + Luz y sombra (work in progress)",
+     "clave": "there are no outdoor ice rinks in madrid luz y sombra work in progress",
+     "falta": [
+      "estilo",
+      "origen"
+     ]
+    },
+    "a16": {
+     "nombre": "Babylon- band",
+     "clave": "babylon band",
+     "falta": [
+      "estilo",
+      "origen"
+     ]
+    },
+    "a17": {
+     "nombre": "Carlota Mad",
+     "clave": "carlota mad",
+     "falta": [
+      "estilo",
+      "origen"
+     ]
+    },
+    "a18": {
+     "nombre": "Sonora Sewers Inc",
+     "clave": "sonora sewers inc",
+     "falta": [
+      "estilo",
+      "origen"
+     ]
+    },
+    "a19": {
+     "nombre": "Carmela y otras historias cantadas",
+     "clave": "carmela y otras historias cantadas",
+     "falta": [
+      "estilo",
+      "origen"
+     ]
+    },
+    "a20": {
+     "nombre": "Sangüesa Brothers",
+     "clave": "sanguesa brothers",
+     "falta": [
+      "estilo",
+      "origen"
+     ]
+    },
+    "a21": {
+     "nombre": "SHÉ",
+     "clave": "she",
+     "falta": [
+      "estilo",
+      "origen"
+     ]
+    },
+    "a22": {
+     "nombre": "Joma",
+     "clave": "joma",
+     "falta": [
+      "estilo",
+      "origen"
+     ]
+    },
+    "a23": {
+     "nombre": "Orly",
+     "clave": "orly",
+     "falta": [
+      "estilo",
+      "origen"
+     ]
+    },
+    "a24": {
+     "nombre": "La Cuota Comedy",
+     "clave": "la cuota comedy",
+     "falta": [
+      "estilo",
+      "origen"
+     ]
+    },
+    "a25": {
+     "nombre": "BOSSA PRA VOCÉ",
+     "clave": "bossa pra voce",
+     "falta": [
+      "estilo",
+      "origen"
+     ]
+    }
+   },
+   "pendientes": 892
+  }
+ }
+}
