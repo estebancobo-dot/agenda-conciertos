@@ -496,7 +496,7 @@ def buscar_en_agenda(f: Fetcher, nombre: str, urls: list[str]) -> dict:
     from .origen import estilos_en_texto, pais_en_texto
     import requests
     out: dict = {"v": VERSION_AGENDA, "estilos": []}
-    for u in urls[:4]:
+    for u in urls[:6]:
         try:
             html = f.get(u)
         except requests.HTTPError as e:
@@ -547,7 +547,7 @@ def _descripcion_incrustada(s) -> str:
     return "\n".join(textos)[:6000]
 
 
-VERSION_AGENDA = 4  # 2: también el estilo; 3: estilo entre paréntesis y frases sobre el artista; 4: hasta 4 páginas
+VERSION_AGENDA = 5  # 5: las páginas de todas las fechas del artista (hasta 6); 2: también el estilo; 3: estilo entre paréntesis y frases sobre el artista; 4: hasta 4 páginas
 # (la de la sala y la de entradas primero) y la descripción incrustada (Enterticket). Las anteriores se repiten
 
 
@@ -752,6 +752,13 @@ def enriquecer(recs: list[dict], cache: dict, hoy: date, presupuesto_seg: float 
     # cada concierto: el título tal cual y, si lleva ciclo, festival, gira o varios artistas, el nombre limpio y el
     # cabeza de cartel (scraper/nombres.py)
     candidatos = [(r, n) for r in sorted(recs, key=lambda r: (not r["en_foco"], r["fecha"])) for n in claves_ficha(r)]
+    # las páginas de todas las fechas del artista: la biografía puede estar en la de otra fecha u otra sala
+    paginas_de_artista: dict[str, list[str]] = {}
+    for r, n in candidatos:
+        lista = paginas_de_artista.setdefault(norm(n), [])
+        for u in paginas_del_concierto(r):
+            if u not in lista and len(lista) < 6:
+                lista.append(u)
     solo_agenda: list[tuple[str, str, list[str]]] = []  # tributos, espectáculos…: solo lo que dice la agenda
     # el artista al que homenajea cada tributo (Queen, Fleetwood Mac…): su ficha da el origen del homenajeado y
     # el estilo del tributo
@@ -780,7 +787,7 @@ def enriquecer(recs: list[dict], cache: dict, hoy: date, presupuesto_seg: float 
                 _solo_agenda(r, solo_agenda)
             continue
         vistos.add(k)
-        urls_de[k] = paginas_del_concierto(r)
+        urls_de[k] = paginas_de_artista.get(k) or paginas_del_concierto(r)
         if r.get("spotify") and norm(nombre) in {norm(x) for x in claves_ficha(r)[:3]}:
             spotify_de[k] = r["spotify"]
         ent = cache.get(k)

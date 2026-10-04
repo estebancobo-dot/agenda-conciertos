@@ -21,7 +21,7 @@ RAIZ = Path(__file__).resolve().parent.parent
 LIGEROS = ("id", "fecha", "hora", "artista", "invitados", "festival", "cartel_incompleto", "sala", "municipio", "ciclo",
            "nacionalidad",
            "estilos_discogs", "genero_discogs", "grupos", "grupos_cartel", "categoria", "grupos_generico", "estado", "origen_no_aplica",
-           "nacionalidad_estimada", "primera_vez_visto")
+           "nacionalidad_estimada", "primera_vez_visto", "hora_estimada")
 
 
 def genericas(recs: list[dict]) -> set[str]:

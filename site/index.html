@@ -735,7 +735,7 @@ function openSheet(){
      <h4 class="sech">Confirmación<span id="rescf">${esc((CONFS.find(([v])=>v===cf)||[,""])[1])}</span></h4>
      <div class="opts">${CONFS.map(([v,t])=>`<button data-cf="${v}" aria-pressed="${cf===v}">${esc(t)}</button>`).join("")}</div>
      <p class="hint">Confirmado: lo anuncia la web de la sala, o se vende en una ticketera y sale en otras agendas, o lo recogen varias agendas independientes. Probable: dos agendas, o una de mucha confianza. En la ficha de cada concierto se dice quién lo confirma.</p>
-     <p class="hint">"España" incluye los que probablemente son españoles por el nombre (bandera atenuada; aciertan en torno a 3 de cada 4: el resto suelen ser latinoamericanos). "Solo confirmados", los que dice una fuente.</p>
+     <p class="hint">"España" incluye los que probablemente son españoles, por el nombre o porque solo los anuncian agendas de salas madrileñas con grupos locales (bandera atenuada; aciertan en torno a 3 de cada 4). "Solo confirmados", los que dice una fuente.</p>
      <h4>Más opciones</h4>
      <label class="grp" style="display:flex;gap:10px;align-items:flex-start;padding:10px 12px"><input type="checkbox" id="fgenok" ${genOk?"checked":""} style="margin-top:3px"><span><b>Incluir los de etiqueta genérica</b><br><span class="hint">Artistas sin ficha que la agenda solo etiqueta como "Pop / Rock", "Músicas negras"…: salen en todos esos géneros porque no se sabe cuál es.</span></span></label>`}
      </div><div class="ft"><button id="sdef" title="Géneros habituales, sin estilos, sin búsqueda, origen todos">Por defecto</button><button class="go" id="sclose">Ver ${plural(total(),"concierto")}</button></div></div>`;
@@ -802,7 +802,8 @@ function openSheet(){
 function horaCard(r){
   if(r.hora) return r.hora;
   const c=(r.conflictos||[]).find(c=>c.campo==="hora"&&c.versiones&&c.versiones.length);
-  return c?[...c.versiones].sort((a,b)=>b.fuentes.length-a.fuentes.length)[0].valor+" ?":"";
+  if(c) return [...c.versiones].sort((a,b)=>b.fuentes.length-a.fuentes.length)[0].valor+" ?";
+  return r.hora_estimada?"≈ "+r.hora_estimada.hora:"";  // la hora habitual de la sala (estimada)
 }
 function horaTxt(r){ return r.hora||(r.conflictos||[]).filter(c=>c.campo==="hora").map(c=>c.versiones.map(v=>v.valor).join(" ó ")).join("")||""; }
 function etiquetaAgenda(r){
@@ -851,7 +852,7 @@ function card(r){
    <div class="cbody"><div class="art">${r.festival?`<span class="fest">Festival</span> `:""}${esc(r.artista)}</div>
    ${r.invitados&&r.invitados.length?`<div class="sub">${r.festival?`${esc(cartelCorto(r))}`:`+ ${r.invitados.map(esc).join(" + ")}`}</div>`:""}
    <div class="sub">${h?`<b>${esc(h)}</b> · `:""}${esc(r.sala||"sala sin indicar")}${r.municipio&&r.municipio!=="Madrid"?` · ${esc(r.municipio)}`:""}</div>
-   <div class="tags">${r.nacionalidad?`<span class="flag" title="${esc(pais(r.nacionalidad))}">${flag(r.nacionalidad)}</span>`:r.nacionalidad_estimada?`<span class="flag est" title="Probablemente ${esc(pais(r.nacionalidad_estimada))} (estimado por el nombre)">${flag(r.nacionalidad_estimada)}</span>`:""}${estiloTags(r,2)}${cartelTags(r)}${estadoMini(r)}${cambioMini(r)}${nivelDe(r)==="confirmado"&&!r.evento?`<span class="conf" title="Confirmado: lo anuncia la sala, una ticketera o varias agendas" aria-label="Confirmado">✓</span>`:""}%MARCAS%</div></div><span class="chev" aria-hidden="true">›</span></a>`;
+   <div class="tags">${r.nacionalidad?`<span class="flag" title="${esc(pais(r.nacionalidad))}">${flag(r.nacionalidad)}</span>`:r.nacionalidad_estimada?`<span class="flag est" title="Probablemente ${esc(pais(r.nacionalidad_estimada))} (estimado)">${flag(r.nacionalidad_estimada)}</span>`:""}${estiloTags(r,2)}${cartelTags(r)}${estadoMini(r)}${cambioMini(r)}${nivelDe(r)==="confirmado"&&!r.evento?`<span class="conf" title="Confirmado: lo anuncia la sala, una ticketera o varias agendas" aria-label="Confirmado">✓</span>`:""}%MARCAS%</div></div><span class="chev" aria-hidden="true">›</span></a>`;
   }
   // las primeras miniaturas de la vista se piden ya y con prioridad; el resto, al acercarse
   // las primeras de la vista se piden ya; el resto, por la cola (primero las que están en pantalla)
@@ -991,7 +992,7 @@ function viewConcierto(){
     ${estadoBox(r)}
     ${confianzaHTML(r)}
     <div class="rows">
-     <div class="row"><span class="ic">📅</span><div><div class="v">${esc(fmt(r.fecha,{weekday:"long",day:"numeric",month:"long"}))}</div><div class="s">${r.hora?`${esc(r.hora)} h${r.hora_pagina?` · según <a href="${esc(r.hora_pagina.url)}" target="_blank" rel="noopener">${esc(r.hora_pagina.nombre)}</a>`:""}`:h?"Hora por confirmar: las webs no coinciden":"Hora sin indicar"}</div>${siFalta(r,"hora")}</div></div>
+     <div class="row"><span class="ic">📅</span><div><div class="v">${esc(fmt(r.fecha,{weekday:"long",day:"numeric",month:"long"}))}</div><div class="s">${r.hora?`${esc(r.hora)} h${r.hora_pagina?` · según <a href="${esc(r.hora_pagina.url)}" target="_blank" rel="noopener">${esc(r.hora_pagina.nombre)}</a>`:""}`:h?"Hora por confirmar: las webs no coinciden":r.hora_estimada?`Hacia las ${esc(r.hora_estimada.hora)} h (estimada)`:"Hora sin indicar"}</div>${siFalta(r,"hora")}</div></div>
      <div class="row"><span class="ic">📍</span><div><div class="v">${r.sala?salasLinks(r):"Sala sin indicar"}</div><div class="s">${esc(r.municipio||"")} · <a href="${esc(mapa)}" target="_blank" rel="noopener">Cómo llegar</a>${sala&&sala.web?` · <a href="${esc(sala.web)}" target="_blank" rel="noopener">Web de la sala</a>`:""}</div></div></div>
      <div class="row"><span class="ic">🎸</span><div>${estiloHTML}${normLinea(r,"estilo")}</div></div>
      <div class="row"><span class="ic">${r.nacionalidad?flag(r.nacionalidad):r.nacionalidad_estimada?flag(r.nacionalidad_estimada):"🏳️"}</span><div>${r.nacionalidad&&origenDudoso(r)?`<div class="v">Probablemente ${esc(pais(r.nacionalidad))}</div><div class="s">según ${esc(r.nacionalidad_fuente||"la fuente")}</div>`:r.nacionalidad?`<div class="v">${esc(pais(r.nacionalidad))}</div><div class="s">según ${esc(r.nacionalidad_fuente||"la fuente")}</div>`:r.nacionalidad_estimada?`<div class="v">Probablemente ${esc(pais(r.nacionalidad_estimada))}</div><div class="s">Estimado: ${esc(r.nacionalidad_estimada_motivo||"nombre en español")}. Ninguna fuente lo confirma</div>`:(r.origen_no_aplica?`<div class="v muted">No aplica</div><div class="s">${esc(((r.normalizacion||{}).origen||{}).motivo||"Es un espectáculo (teatro, musical, danza…), no un artista")}</div>`:`<div class="v muted">Origen sin confirmar</div><div class="s">Ninguna fuente fiable lo indica</div>`)}${normLinea(r,"origen")}</div></div>

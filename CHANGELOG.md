@@ -1,5 +1,16 @@
 # Versiones
 
+## 2.52.0 — 2026-10-04
+
+**Fase C: rellenar huecos con lo que ya está permitido leer, y estimaciones medidas.**
+
+- **Más páginas de los conciertos con huecos**: las páginas de concierto y de entradas se leen primero en los conciertos a los que les falta la hora, el precio, el enlace de entradas o la confirmación, y en esos, hasta 3 webs distintas (antes, una por concierto y por orden de fecha). Había 2.018 páginas sin leer de conciertos con huecos. Mismas reglas: robots.txt y ritmo; Madrid en Vivo no se lee así (su API ya da esos datos).
+- **Todas las fechas de un artista**: la biografía ("banda madrileña de…") se busca en las páginas de todas sus fechas (hasta 6), no solo en las de la primera. 80 artistas sin origen tienen varias fechas (310 conciertos).
+- **Hora habitual de la sala** (estimada): en las salas que casi siempre empiezan a la misma hora (al menos 5 conciertos con hora y el 70 % a la misma), los conciertos sin hora muestran "≈ 21:00" y la ficha dice por qué ("la sala suele empezar a las 18:30: 16 de sus 16 conciertos con hora"). Con los datos de hoy, 72 conciertos.
+- **Origen estimado por las agendas**: "probablemente España" cuando solo lo anuncian Madrid en Vivo o conciertos.club (agendas de salas madrileñas con grupos locales), el nombre no tiene palabras en inglés y no es de jazz, blues, latina, urbana, soul o músicas del mundo (géneros en los que esas agendas traen muchos artistas de fuera). Medido con los conciertos de origen conocido: acierta 3 de cada 4 (78 de 105), como la estimación por el nombre. Se muestra como estimación.
+- No se hace: el estilo por la sala (medido: solo 5 salas programan casi siempre un estilo y cubriría 10 de 258 conciertos sin estilo; además, el estilo lo da una web de música).
+- Efecto inmediato con los datos de hoy: origen desconocido de 882 a 774; hora desconocida de 334 a 286. Lo demás se nota según avancen las pasadas.
+
 ## 2.51.0 — 2026-10-04
 
 **Fase B: Mis conciertos, Novedades y artistas similares.** Todo en el propio móvil, sin cuentas.

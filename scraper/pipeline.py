@@ -410,8 +410,32 @@ def tributo_y_estimacion(r: dict, cache: dict) -> None:
                  r"fiestas?|muestra|encuentro|gala|noche de|programa|foro|jornadas?|congreso|feria|expo)\b", norm(nombre)):
         return  # un festival o un ciclo no es un artista: no se estima nada
     pais, motivo = pais_estimado(nombre)
+    if not pais:
+        pais, motivo = pais_por_agendas_locales(r, nombre)
     if pais:
         r["nacionalidad_estimada"], r["nacionalidad_estimada_motivo"] = pais, motivo
+
+
+# agendas de las salas de Madrid que programan sobre todo grupos locales pequeños
+AGENDAS_LOCALES = {"madridenvivo", "cc_buscador", "cc_portada", "cc_estilos", "cclub_org"}
+# géneros en los que esas agendas traen muchos artistas de fuera (medido: en jazz, 9 de 20 eran de España)
+_GENEROS_DE_FUERA = {"jazz y swing", "blues", "latina", "urbana y hip hop", "soul, funk y r&b", "músicas del mundo"}
+
+
+def pais_por_agendas_locales(r: dict, nombre: str) -> tuple[str | None, str]:
+    """Fase C: "probablemente España" si solo lo anuncian Madrid en Vivo o conciertos.club (agendas de salas madrileñas
+    con grupos locales pequeños), su nombre no tiene palabras en inglés y no es de un género con muchos artistas de
+    fuera. Medido con los conciertos de origen conocido (oct. 2026): acierta 3 de cada 4 (78 de 105), como la
+    estimación por el nombre. Es una estimación, no un dato, y se dice."""
+    from .origen import _palabras
+    ids = {f.get("id") for f in r.get("fuentes") or []}
+    if not ids or not ids <= AGENDAS_LOCALES or set(r.get("grupos") or []) & _GENEROS_DE_FUERA:
+        return None, ""
+    _, _, en = _palabras()
+    if any(w in en for w in re.findall(r"[a-z]+", norm(nombre)) if len(w) >= 2):
+        return None, ""
+    return "ES", ("solo lo anuncian agendas de salas madrileñas que programan sobre todo grupos locales "
+                  "(Madrid en Vivo, conciertos.club)")
 
 
 def aplicar_cartel(r: dict, cache: dict) -> None:
@@ -1235,7 +1259,8 @@ def ejecutar(hoy: date | None = None, solo: list[str] | None = None, fetcher: Fe
     contraste_sala = ausencias_web_sala(recs, resultados, por_id, eventos, hoy.isoformat(),
                                         estado.get("historial_fuentes", {}))
     n_ausentes = sum(v["ausentes"] for v in contraste_sala.values())  # (las de listado incompleto no marcan)
-    from .normalizacion import normalizar, resumen as resumen_normalizacion
+    from .normalizacion import estimar_horas, normalizar, resumen as resumen_normalizacion
+    estimar_horas(recs)
     for r in recs:
         r["confianza"] = puntuar_confianza(r, por_id)
         normalizar(r, cache_art)
@@ -1354,7 +1379,8 @@ def ejecutar_fichas(hoy: date | None = None, presupuesto_seg: float = 3000) -> d
     stats["entradas"] = aplicar_entradas(recs, cache_pag)
     stats["cambios"] = registrar_cambios(recs, antes_cambios, hoy.isoformat())
     por_id = {s.id: s for s in FUENTES}
-    from .normalizacion import normalizar, resumen as resumen_normalizacion
+    from .normalizacion import estimar_horas, normalizar, resumen as resumen_normalizacion
+    estimar_horas(recs)
     for r in recs:  # las páginas de entradas pueden haber añadido dónde se vende
         r["confianza"] = puntuar_confianza(r, por_id)
         normalizar(r, cache_art)
@@ -1384,7 +1410,8 @@ def reaplicar_fichas() -> None:
         tributo_y_estimacion(r, cache)
         aplicar_cartel(r, cache)
     aplicar_entradas(recs, _read(CACHE_PAGINAS, {}))
-    from .normalizacion import normalizar
+    from .normalizacion import estimar_horas, normalizar
+    estimar_horas(recs)
     for r in recs:
         normalizar(r, cache)
     _write("concerts.json", datos)

@@ -294,6 +294,12 @@ def paginas_de(r: dict, usos: Counter) -> list[tuple[str, dict]]:
     return sorted(out, key=lambda ux: (ux[1].get("prioridad", 9) != 1, orden.get(ux[1].get("id"), 50)))
 
 
+def con_huecos(r: dict) -> bool:
+    """Le falta algo que una página del concierto puede dar: hora, precio, enlace de entradas o confirmación."""
+    return (not r.get("hora") or not r.get("precio") or not r.get("entradas")
+            or (r.get("confianza") or {}).get("nivel") == "sin confirmar")
+
+
 def _caducada(e: dict | None, fecha: str, hoy: date) -> bool:
     if not e:
         return True
@@ -326,7 +332,9 @@ def leer_entradas(recs: list[dict], cache: dict, fetcher, hoy: date, presupuesto
     from .fetch import RobotsBlocked
     fin = time.monotonic() + max(0.0, presupuesto_seg)
     hoy_s = hoy.isoformat()
-    futuros = sorted((r for r in recs if r["fecha"] >= hoy_s), key=lambda r: r["fecha"])
+    # primero los conciertos con huecos (sin hora, precio, enlace de entradas o confirmación): ahí es donde una página
+    # más aporta; después, los demás por fecha
+    futuros = sorted((r for r in recs if r["fecha"] >= hoy_s), key=lambda r: (not con_huecos(r), r["fecha"]))
     usos = Counter(sin_fragmento(x.get("url")) for r in recs for x in r.get("fuentes") or [] if x.get("url"))
     stats = Counter()
     fallos_dom: Counter = Counter()
@@ -349,8 +357,16 @@ def leer_entradas(recs: list[dict], cache: dict, fetcher, hoy: date, presupuesto
 
     def tarea(r: dict) -> None:
         pags = paginas_de(r, usos)
-        # la web de la sala (si la hay) y, si no, la mejor página de agenda
+        # la web de la sala (si la hay) y, si no, la mejor página de agenda; con huecos, hasta 3 webs distintas
         elegidas = [p for p in pags if p[1].get("prioridad") == 1][:1] or pags[:1]
+        if con_huecos(r):
+            webs = {dominio(u) for u, _ in elegidas}
+            for u, x in pags:
+                if len(elegidas) >= 3:
+                    break
+                if dominio(u) not in webs:
+                    elegidas.append((u, x))
+                    webs.add(dominio(u))
         for u, _ in elegidas:
             d = cache.get(u, {}).get("d") if not _caducada(cache.get(u), r["fecha"], hoy) else leer(u, r["fecha"])
             t = destino_compra(d or {})

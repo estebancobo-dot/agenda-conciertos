@@ -136,6 +136,44 @@ def _webs(r: dict) -> list[str]:
     return list(dict.fromkeys(f.get("nombre", "").split(" (")[0] for f in r.get("fuentes") or [] if f.get("nombre")))
 
 
+HABITUAL_MIN, HABITUAL_PROP = 5, 0.7  # conciertos con hora en la sala y parte que empieza a la misma hora
+
+
+def horas_habituales(recs: list[dict]) -> dict[str, tuple[str, int, int]]:
+    """Salas que casi siempre empiezan a la misma hora: {sala: (hora, cuántos a esa hora, cuántos con hora)}."""
+    from collections import Counter, defaultdict
+    por = defaultdict(Counter)
+    for r in recs:
+        if r.get("hora") and r.get("sala") and not r.get("hora_estimada"):
+            por[r["sala"]][r["hora"]] += 1
+    out = {}
+    for sala, c in por.items():
+        total = sum(c.values())
+        hora, n = c.most_common(1)[0]
+        if total >= HABITUAL_MIN and n / total >= HABITUAL_PROP:
+            out[sala] = (hora, n, total)
+    return out
+
+
+def estimar_horas(recs: list[dict]) -> int:
+    """Fase C: a los conciertos sin hora (y sin horas distintas en las webs) de una sala que casi siempre empieza a
+    la misma hora, esa hora como estimada ("la sala suele empezar a las 21:00: 18 de sus 22 conciertos"). No es un
+    dato: se muestra como "≈ 21:00" y la ficha dice por qué."""
+    for r in recs:
+        r.pop("hora_estimada", None)
+    hab = horas_habituales(recs)
+    n = 0
+    for r in recs:
+        if r.get("hora") or r.get("festival") or any(c.get("campo") == "hora" for c in r.get("conflictos") or []):
+            continue
+        h = hab.get(r.get("sala") or "")
+        if h:
+            r["hora_estimada"] = {"hora": h[0], "motivo": f"la sala suele empezar a las {h[0]} ({h[1]} de sus {h[2]} "
+                                                          f"conciertos con hora)"}
+            n += 1
+    return n
+
+
 def estado_hora(r: dict) -> dict:
     """N5: la hora de comienzo. Conocida (la dan las webs, o la página del concierto), estimada si las webs no
     coinciden (se enseñan las dos) o desconocida (ninguna de sus webs la da)."""
@@ -146,6 +184,8 @@ def estado_hora(r: dict) -> dict:
     if r.get("hora"):
         pag = r.get("hora_pagina") or {}
         return {"estado": "conocido", "fuente": pag.get("nombre") or ", ".join(_webs(r)[:3])}
+    if r.get("hora_estimada"):
+        return {"estado": "estimado", "valor": r["hora_estimada"]["hora"], "motivo": r["hora_estimada"]["motivo"]}
     return {"estado": "desconocido", "buscado": [f"{w}: no la da" for w in _webs(r)] or ["sin webs"]}
 
 
