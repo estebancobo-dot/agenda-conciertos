@@ -1350,6 +1350,93 @@
    ],
    "lote": "A-2026-10-04-16",
    "fecha": "2026-10-04"
+  },
+  "emma swift with luther russell": {
+   "nombre": "Emma Swift with Luther Russell",
+   "pais": {
+    "valor": "AU",
+    "url": "https://en.wikipedia.org/wiki/Emma_Swift",
+    "cita": "emma swift - wikipedia emma swift australian singer-songwriter wikimedia foundation, inc. contributors to wikimedia projects emma swift - wikipedia jump to cont",
+    "ciudad": "Sídney"
+   },
+   "estilos": {
+    "valores": [
+     "folk",
+     "indie"
+    ],
+    "url": "https://en.wikipedia.org/wiki/Emma_Swift",
+    "cita": "15 background information born ( 1981-12-15 ) 15 december 1981 (age 44) origin sydney , new south wales , australia genres indie, folk musical artist emma swift (born 15 december 1981) is an australian singer-songwriter. [ 1 ] before becoming a musician, she was a radio broadcaster, hosting american",
+    "web_musica": true
+   },
+   "lote": "A-2026-10-04-17",
+   "fecha": "2026-10-04"
+  },
+  "pilot on mars": {
+   "nombre": "Pilot On Mars",
+   "enlaces": [
+    "https://pilotonmars.bandcamp.com/"
+   ],
+   "lote": "A-2026-10-04-17",
+   "fecha": "2026-10-04"
+  },
+  "cadaver de cabra": {
+   "nombre": "cadaver de cabra",
+   "pais": {
+    "valor": "ES",
+    "url": "https://www.dirtyrock.info/2026/08/cadaver-de-cabra-sludge-y-doom-desde-los-desagues-de-madrid/",
+    "cita": "cadaver de cabra debuta con seis temas de sludge y stoner doom grabados de una sola toma. conoce su disco y sus proximas fechas en espana. cadaver de cabra - sludge y",
+    "ciudad": "Madrid"
+   },
+   "estilos": {
+    "valores": [
+     "sludge",
+     "stoner"
+    ],
+    "url": "https://www.dirtyrock.info/2026/08/cadaver-de-cabra-sludge-y-doom-desde-los-desagues-de-madrid/",
+    "cita": "cadaver de cabra debuta con seis temas de sludge y stoner doom grabados de una sola toma. conoce su disco y sus proximas fechas en espana. cadaver de cabra - sludge y",
+    "web_musica": false
+   },
+   "lote": "A-2026-10-04-17",
+   "fecha": "2026-10-04"
+  },
+  "nevo angel": {
+   "nombre": "Nevo Angel",
+   "pais": {
+    "valor": "ES",
+    "url": "https://musicazero.com/2020/08/05/mayo-a-e-la-nueva-baza-del-nuevo-rock-en-espanol/",
+    "cita": "musica zero es un medio de comunicacion musical especializado musical especializado en dar cabida a grupos emergentes de la provincia de alicante nevo angel, la nueva baza del new rock en espanol - musica zero musica zero es un medio de comunicacion musical especializado musical especializado en dar",
+    "ciudad": "Alicante"
+   },
+   "estilos": {
+    "valores": [
+     "rock alternativo"
+    ],
+    "url": "https://baila.fm/artistas/nevo-angel/",
+    "cita": "nevo angel es un artista espanol de musica urbana y alternativa que mezcla influencias de pop punk, trap, rock alternativo y musica electronica. se dio a... nev",
+    "web_musica": false
+   },
+   "lote": "A-2026-10-04-17",
+   "fecha": "2026-10-04"
+  },
+  "shabaka": {
+   "nombre": "Shabaka",
+   "pais": {
+    "valor": "GB",
+    "url": "https://en.wikipedia.org/wiki/Shabaka_Hutchings",
+    "cita": "shabaka hutchings - wikipedia shabaka hutchings english musical artist wikimedia foundation, inc. contributors to wikimedia projects shabaka hutchings - wiki",
+    "ciudad": "Londres"
+   },
+   "estilos": {
+    "valores": [
+     "jazz",
+     "spiritual jazz"
+    ],
+    "url": "https://en.wikipedia.org/wiki/Shabaka_Hutchings",
+    "cita": "nd removed. ( october 2020 ) ( learn how and when to remove this message ) shabaka hutchings hutchings performing in 2018 background information born shabaka akua lumumba kamau iyapo hutchings 1984 (age 41 – 42) london, england genres jazz jazz fusion avant-garde jazz afrobeat spiritual jazz world m",
+    "web_musica": true
+   },
+   "lote": "A-2026-10-04-17",
+   "fecha": "2026-10-04"
   }
  },
  "conciertos": [
@@ -4273,6 +4360,176 @@
    "lote": "A-2026-10-04-16",
    "aceptado": [],
    "rechazado": []
+  },
+  "a:banda musica de vallecas": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-17",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:entre cuerdas y raices": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-17",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:galdrii pereira": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-17",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:odojazz": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-17",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:caco senante y mariella kohn chavela el ultimo trago": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-17",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:hispanidad 2026 especial flamenco dia de la hispanidad": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-17",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:destinados ayudar": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-17",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:emma swift with luther russell": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-17",
+   "aceptado": [
+    "estilos",
+    "pais"
+   ],
+   "rechazado": []
+  },
+  "a:lila horovitz trio con ana maou y raul kiokio": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-17",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:pilot on mars": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-17",
+   "aceptado": [
+    "enlaces"
+   ],
+   "rechazado": [
+    "país CH: ni la frase citada ni la página lo dicen junto al nombre",
+    "estilos: ni la frase citada ni la página lo dicen junto al nombre"
+   ]
+  },
+  "a:enric montefusco": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-17",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:kike martin paraiso": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-17",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:la zorra zapata": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-17",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:alba y maria": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-17",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:james oliver band featuring norman watt roy": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-17",
+   "aceptado": [],
+   "rechazado": [
+    "país GB: ni la frase citada ni la página lo dicen junto al nombre",
+    "estilos: su robots.txt no deja leerla, así que no se puede comprobar"
+   ]
+  },
+  "a:cadaver de cabra": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-17",
+   "aceptado": [
+    "estilos",
+    "pais"
+   ],
+   "rechazado": []
+  },
+  "a:carlos yebenes band": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-17",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:jose insaciable": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-17",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:luigi escalante": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-17",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:nevo angel": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-17",
+   "aceptado": [
+    "estilos",
+    "pais"
+   ],
+   "rechazado": []
+  },
+  "a:shabaka": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-17",
+   "aceptado": [
+    "estilos",
+    "pais"
+   ],
+   "rechazado": []
+  },
+  "a:fran punk and gigi halo": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-17",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:the fade out blues band": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-17",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:the vee bees": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-17",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:circulo flamenco de madrid": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-17",
+   "aceptado": [],
+   "rechazado": []
   }
  },
  "lotes": {
@@ -4393,261 +4650,8 @@
   "A-2026-10-04-17": {
    "tipo": "artistas",
    "creado": "2026-10-04",
-   "items": {
-    "a1": {
-     "nombre": "Banda música de Vallecas",
-     "clave": "banda musica de vallecas",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Centro Cultural El Pozo del tío Raimundo (Puente de Vallecas)"
-     ]
-    },
-    "a2": {
-     "nombre": "Entre cuerdas y raíces",
-     "clave": "entre cuerdas y raices",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Centro Cultural Casa de Vacas (Retiro)"
-     ]
-    },
-    "a3": {
-     "nombre": "Galdrii Pereira",
-     "clave": "galdrii pereira",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Plaza de España de Madrid"
-     ]
-    },
-    "a4": {
-     "nombre": "ODOJAZZ",
-     "clave": "odojazz",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Café Central Ateneo"
-     ]
-    },
-    "a5": {
-     "nombre": "Caco Senante y Mariella Kohn: Chavela. El último trago",
-     "clave": "caco senante y mariella kohn chavela el ultimo trago",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Galileo Galilei"
-     ]
-    },
-    "a6": {
-     "nombre": "HISPANIDAD 2026: ESPECIAL FLAMENCO DÍA DE LA HISPANIDAD",
-     "clave": "hispanidad 2026 especial flamenco dia de la hispanidad",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Teatro Flamenco Madrid"
-     ]
-    },
-    "a7": {
-     "nombre": "Destinados Ayudar",
-     "clave": "destinados ayudar",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "La Riviera"
-     ]
-    },
-    "a8": {
-     "nombre": "Emma Swift with Luther Russell",
-     "clave": "emma swift with luther russell",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Wurlitzer Ballroom"
-     ]
-    },
-    "a9": {
-     "nombre": "Lila Horovitz Trío con Ana Maou y Raúl Kiokio",
-     "clave": "lila horovitz trio con ana maou y raul kiokio",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Café Berlín"
-     ]
-    },
-    "a10": {
-     "nombre": "Pilot On Mars",
-     "clave": "pilot on mars",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Fun House"
-     ]
-    },
-    "a11": {
-     "nombre": "ENRIC MONTEFUSCO",
-     "clave": "enric montefusco",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Café La Palma"
-     ]
-    },
-    "a12": {
-     "nombre": "KIKE MARTIN PARAISO",
-     "clave": "kike martin paraiso",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Cien por Cien"
-     ]
-    },
-    "a13": {
-     "nombre": "La Zorra Zapata",
-     "clave": "la zorra zapata",
-     "falta": [
-      "estilo"
-     ],
-     "salas": [
-      "Madrid, Espanya"
-     ]
-    },
-    "a14": {
-     "nombre": "ALBA Y MARÍA",
-     "clave": "alba y maria",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Rincón del Arte Nuevo"
-     ]
-    },
-    "a15": {
-     "nombre": "JAMES OLIVER BAND (featuring Norman Watt-Roy)",
-     "clave": "james oliver band featuring norman watt roy",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Fun House"
-     ]
-    },
-    "a16": {
-     "nombre": "cadaver de cabra",
-     "clave": "cadaver de cabra",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Wurlitzer Ballroom"
-     ]
-    },
-    "a17": {
-     "nombre": "Carlos Yébenes Band",
-     "clave": "carlos yebenes band",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Tempo Audiophile Club"
-     ]
-    },
-    "a18": {
-     "nombre": "JOSÉ INSACIABLE",
-     "clave": "jose insaciable",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Gruta 77"
-     ]
-    },
-    "a19": {
-     "nombre": "Luigi Escalante",
-     "clave": "luigi escalante",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Dime que me Quieres"
-     ]
-    },
-    "a20": {
-     "nombre": "Nevo Angel",
-     "clave": "nevo angel",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "La Sala del Movistar Arena / La Sala Madrid"
-     ]
-    },
-    "a21": {
-     "nombre": "Shabaka",
-     "clave": "shabaka",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Sala Changó"
-     ]
-    },
-    "a22": {
-     "nombre": "FRAN PUNK & GIGI HALO",
-     "clave": "fran punk and gigi halo",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Fulanita de Tal"
-     ]
-    },
-    "a23": {
-     "nombre": "THE FADE OUT BLUES BAND",
-     "clave": "the fade out blues band",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Moe"
-     ]
-    },
-    "a24": {
-     "nombre": "The Vee Bees",
-     "clave": "the vee bees",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "The Godfather Rock Club"
-     ]
-    },
-    "a25": {
-     "nombre": "CÍRCULO FLAMENCO DE MADRID",
-     "clave": "circulo flamenco de madrid",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Teatro Flamenco Madrid"
-     ]
-    }
-   },
-   "pendientes": 510
+   "pendientes": 510,
+   "importado": "2026-10-04"
   }
  },
  "ocultos": {
@@ -4811,6 +4815,15 @@
     "Fotomatón Bar"
    ],
    "lote": "A-2026-10-04-14",
+   "fecha": "2026-10-04"
+  },
+  "enric montefusco": {
+   "nombre": "ENRIC MONTEFUSCO",
+   "motivo": "Enric Montefusco: presentación de su novela gráfica, no concierto",
+   "salas": [
+    "Café La Palma"
+   ],
+   "lote": "A-2026-10-04-17",
    "fecha": "2026-10-04"
   }
  }
