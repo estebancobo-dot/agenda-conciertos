@@ -1576,6 +1576,298 @@
    "creado": "2026-10-04",
    "pendientes": 792,
    "importado": "2026-10-04"
+  },
+  "A-2026-10-04-06": {
+   "tipo": "artistas",
+   "creado": "2026-10-04",
+   "items": {
+    "a1": {
+     "nombre": "Lolità",
+     "clave": "lolita",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Café Berlín"
+     ]
+    },
+    "a2": {
+     "nombre": "The Benatars",
+     "clave": "the benatars",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Fun House"
+     ]
+    },
+    "a3": {
+     "nombre": "Personas Ultra Sensibles",
+     "clave": "personas ultra sensibles",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Fun House"
+     ]
+    },
+    "a4": {
+     "nombre": "IMPULSO - TAKUYA KURODA Quintet en Madrid - 1 pase",
+     "clave": "impulso takuya kuroda quintet en madrid 1 pase",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Café Berlín"
+     ]
+    },
+    "a5": {
+     "nombre": "ALE OCAÑA & LOS INTRUSOS",
+     "clave": "ale ocana and los intrusos",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Galileo Galilei"
+     ]
+    },
+    "a6": {
+     "nombre": "Buscando a J",
+     "clave": "buscando a j",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Maravillas Club"
+     ]
+    },
+    "a7": {
+     "nombre": "Los 30 son los nuevos 20",
+     "clave": "los 30 son los nuevos 20",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Cadillac Solitario"
+     ]
+    },
+    "a8": {
+     "nombre": "Antonio Reyes presenta “Maestros” - 9º FFC",
+     "clave": "antonio reyes presenta maestros 9o ffc",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Café Berlín"
+     ]
+    },
+    "a9": {
+     "nombre": "Clickedus",
+     "clave": "clickedus",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Fun House"
+     ]
+    },
+    "a10": {
+     "nombre": "Técnicas y Procedimientos",
+     "clave": "tecnicas y procedimientos",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Sala Siroco"
+     ]
+    },
+    "a11": {
+     "nombre": "Sedientos de Cumbia",
+     "clave": "sedientos de cumbia",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Maravillas Club"
+     ]
+    },
+    "a12": {
+     "nombre": "JUAN DEIVE",
+     "clave": "juan deive",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Café La Palma"
+     ]
+    },
+    "a13": {
+     "nombre": "Los 7 Impostores",
+     "clave": "los 7 impostores",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Teatro Eslava"
+     ]
+    },
+    "a14": {
+     "nombre": "Edimundo Santos",
+     "clave": "edimundo santos",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Babylon Club"
+     ]
+    },
+    "a15": {
+     "nombre": "La juventud",
+     "clave": "la juventud",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Sala El Sol"
+     ]
+    },
+    "a16": {
+     "nombre": "Esto es JAUJA",
+     "clave": "esto es jauja",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Café Berlín"
+     ]
+    },
+    "a17": {
+     "nombre": "patronato",
+     "clave": "patronato",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Sala Uni"
+     ]
+    },
+    "a18": {
+     "nombre": "PRIMER TRIMESTRAL – ESCUELA DE MÚSICA CACHE",
+     "clave": "primer trimestral escuela de musica cache",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Revi Space"
+     ]
+    },
+    "a19": {
+     "nombre": "NAVIDADES FLAMENCO CAPITAL 2026",
+     "clave": "navidades flamenco capital 2026",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Café La Palma"
+     ]
+    },
+    "a20": {
+     "nombre": "MR. BLACK",
+     "clave": "mr black",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Jazzville"
+     ]
+    },
+    "a21": {
+     "nombre": "Radar Joven",
+     "clave": "radar joven",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Cadavra",
+      "El Sótano",
+      "Independance Club",
+      "Independance Club / Sala Uni",
+      "Intruso Bar",
+      "Moe",
+      "Rincón del Arte Nuevo",
+      "Sala But",
+      "Sala El Sol",
+      "Shoko"
+     ]
+    },
+    "a22": {
+     "nombre": "Cuban Brunch: 3ª Temporada",
+     "clave": "cuban brunch 3a temporada",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Sala Clamores"
+     ]
+    },
+    "a23": {
+     "nombre": "BACK TO THE MUSIC",
+     "clave": "back to the music",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Cadillac Solitario",
+      "Moe"
+     ]
+    },
+    "a24": {
+     "nombre": "Pa’ Piratas Nosotros",
+     "clave": "pa piratas nosotros",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Hangar 48"
+     ]
+    },
+    "a25": {
+     "nombre": "Pape Diouf et La Génération Consciente",
+     "clave": "pape diouf et la generation consciente",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Sala Clamores"
+     ]
+    }
+   },
+   "pendientes": 785
   }
  },
  "ocultos": {
