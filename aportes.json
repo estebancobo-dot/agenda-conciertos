@@ -5853,6 +5853,264 @@
    "creado": "2026-10-04",
    "pendientes": 385,
    "importado": "2026-10-04"
+  },
+  "A-2026-10-04-23": {
+   "tipo": "artistas",
+   "creado": "2026-10-04",
+   "items": {
+    "a1": {
+     "nombre": "REGINA NOCTIS",
+     "clave": "regina noctis",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Hangar 48"
+     ]
+    },
+    "a2": {
+     "nombre": "XXXIII MÚSICA ANTIGUA ARANJUEZ. KAMBRASS QUINTETO DE VIENTO",
+     "clave": "xxxiii musica antigua aranjuez kambrass quinteto de viento",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": []
+    },
+    "a3": {
+     "nombre": "JEFF ESPINOZA",
+     "clave": "jeff espinoza",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Rockville"
+     ]
+    },
+    "a4": {
+     "nombre": "DUEL",
+     "clave": "duel",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Wurlitzer Ballroom"
+     ]
+    },
+    "a5": {
+     "nombre": "ANAKENA EN ÍNTIMO",
+     "clave": "anakena en intimo",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Café Berlín"
+     ]
+    },
+    "a6": {
+     "nombre": "Sheryl Youngblood Band",
+     "clave": "sheryl youngblood band",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Sala Clamores"
+     ]
+    },
+    "a7": {
+     "nombre": "Stormy",
+     "clave": "stormy",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Independance Club"
+     ]
+    },
+    "a8": {
+     "nombre": "Finojet",
+     "clave": "finojet",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Moby Dick Club"
+     ]
+    },
+    "a9": {
+     "nombre": "Opera 23",
+     "clave": "opera 23",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Tempo Audiophile Club"
+     ]
+    },
+    "a10": {
+     "nombre": "tickles",
+     "clave": "tickles",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Wurlitzer Ballroom"
+     ]
+    },
+    "a11": {
+     "nombre": "Juanma Elegante",
+     "clave": "juanma elegante",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Museo Lázaro Galdiano"
+     ]
+    },
+    "a12": {
+     "nombre": "Tea for two",
+     "clave": "tea for two",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Fundación Fran Daurel"
+     ]
+    },
+    "a13": {
+     "nombre": "Il Vaccilesco & Costa do Soul",
+     "clave": "il vaccilesco and costa do soul",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Sala Clamores"
+     ]
+    },
+    "a14": {
+     "nombre": "CHLOÉ SELLIER – CHANSONS EN FRANÇAIS",
+     "clave": "chloe sellier chansons en francais",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Rockville"
+     ]
+    },
+    "a15": {
+     "nombre": "JOAQUÍN FÉNIX",
+     "clave": "joaquin fenix",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Café La Palma"
+     ]
+    },
+    "a16": {
+     "nombre": "MOKSHA MUSIC ART",
+     "clave": "moksha music art",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "El Perro Club"
+     ]
+    },
+    "a17": {
+     "nombre": "Reina Sol",
+     "clave": "reina sol",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Hangar 48"
+     ]
+    },
+    "a18": {
+     "nombre": "SANTA ANA Y LA SANTABANDA",
+     "clave": "santa ana y la santabanda",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Sala Siroco"
+     ]
+    },
+    "a19": {
+     "nombre": "Santa Rita",
+     "clave": "santa rita",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Wurlitzer Ballroom"
+     ]
+    },
+    "a20": {
+     "nombre": "Natos y Waor",
+     "clave": "natos y waor",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Movistar Arena"
+     ]
+    },
+    "a21": {
+     "nombre": "Como si fuera la última vez",
+     "clave": "como si fuera la ultima vez",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Centro Cultural el Madroño (Vicálvaro)"
+     ]
+    },
+    "a22": {
+     "nombre": "Concierto Especial Halloween - Banda Ateneo Noroeste",
+     "clave": "concierto especial halloween banda ateneo noroeste",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": []
+    },
+    "a23": {
+     "nombre": "KATARSIS",
+     "clave": "katarsis",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Silikona"
+     ]
+    },
+    "a24": {
+     "nombre": "Loser0",
+     "clave": "loser0",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Dime que me Quieres"
+     ]
+    },
+    "a25": {
+     "nombre": "RAPLLOWEEN 2 - NFX • NASTY KILLAH • C TERRIBLE • LEITO SANHUEZA",
+     "clave": "raplloween 2 nfx nasty killah c terrible leito sanhueza",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Elefante Blanco"
+     ]
+    }
+   },
+   "pendientes": 360
   }
  },
  "ocultos": {
