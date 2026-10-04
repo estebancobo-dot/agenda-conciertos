@@ -66,10 +66,30 @@ _CIUDADES = {
 }
 
 
+# gentilicios en francés, italiano, portugués y alemán (páginas de Wikipedia o de prensa de esos países)
+_GENT_OTROS = {
+    "FR": "francais francaise francaises franzosisch franzosische francese", "ES": "espagnol espagnole espanhol "
+    "espanhola spanisch spanische spagnolo spagnola", "IT": "italien italienne italienisch italienische italiano "
+    "italiana", "DE": "allemand allemande deutsch deutsche deutscher tedesco tedesca alemao alema", "PT": "portugais "
+    "portugaise portugues portuguesa portoghese", "GB": "britannique anglais anglaise britisch britische britannico "
+    "inglese britanico", "US": "americain americaine amerikanisch amerikanische statunitense",
+    "AR": "argentin argentine argentinisch argentino argentina", "MX": "mexicain mexicaine mexikanisch messicano",
+    "BE": "belge belgisch belga", "CH": "suisse schweizer svizzero suico", "NL": "neerlandais niederlandisch "
+    "olandese holandes", "SE": "suedois suedoise schwedisch svedese sueco", "NO": "norvegien norvegienne norwegisch "
+    "norvegese noruegues", "DK": "danois danoise danisch danese dinamarques", "FI": "finlandais finnisch finlandese",
+    "IE": "irlandais irlandaise irisch irlandese", "CA": "canadien canadienne kanadisch canadese canadense",
+    "BR": "bresilien bresilienne brasilianisch brasiliano brasileiro brasileira", "CL": "chilien chilienne chilenisch",
+    "CO": "colombien colombienne kolumbianisch", "CU": "cubain cubaine kubanisch", "JP": "japonais japonaise "
+    "japanisch giapponese japones", "GR": "grec grecque griechisch greco", "PL": "polonais polonaise polnisch polacco",
+}
+
+
 def _gentilicios() -> dict[str, str]:
     from .origen import _GENT_EN, _GENT_ES
     out = {norm(k): v for k, v in _GENT_EN.items() if v}
     out.update({norm(k): v for k, v in _GENT_ES.items() if v})
+    for iso, palabras in _GENT_OTROS.items():
+        out.update({w: iso for w in palabras.split() if w not in out})
     return out
 
 
@@ -282,7 +302,11 @@ def verificar_artista(item: dict, pedido: dict, lector: Lector) -> dict:
     # el nombre real del artista ("Fabio Lione") si el pedido es el título del concierto ("FABIO LIONE’S DAWN OF
     # VICTORY"): solo si está dentro de ese título, para no cambiar de artista
     real = str(item.get("nombre_real") or "").strip()
-    nombres = [nombre] + ([real] if real and norm(real) and norm(real) in norm(nombre) and len(norm(real)) >= 3 else [])
+    from rapidfuzz import fuzz
+    parecido_real = bool(real) and len(norm(real)) >= 3 and (
+        norm(real) in norm(nombre) or fuzz.ratio(norm(real), norm(nombre)) >= 85        # "FAHMI ALQHI" → "Fahmi Alqhai"
+        or fuzz.partial_ratio(norm(real), norm(nombre)) >= 90 and len(norm(real)) >= 8)
+    nombres = [nombre] + ([real] if parecido_real else [])
 
     def comprobar(url: str, cita: str, dice) -> tuple[str | None, str]:
         """(frase aceptada, motivo del rechazo). Vale la frase citada si está en la página y dice el dato; si no,

@@ -74,6 +74,8 @@ def candidatos_artistas(recs: list[dict], apo: dict, hoy: str) -> list[dict]:
     from scraper.nombres import claves_ficha
     from scraper.normalize import es_generico
     from scraper.origen import sin_artista
+    from scraper.registry import FUENTES
+    institucional = {f.id: f.tipo == "institucional" for f in FUENTES}
     por: dict[str, dict] = {}
     for r in recs:
         if r.get("festival") or _estado(r, "origen") == "no_aplica" and _estado(r, "estilo") == "no_aplica":
@@ -98,7 +100,10 @@ def candidatos_artistas(recs: list[dict], apo: dict, hoy: str) -> list[dict]:
                                "webs": [], "sabemos": {}})
         x["conciertos"].append(r)
         x["falta"].update(c for c, v in falta.items() if v)
-        x["peso"] = max(x["peso"], 3 * (o == "desconocido") + 2 * solo_nombre + 2 * (e == "desconocido") + falta["estilo"])
+        # antes los de agendas y salas de música: las agendas municipales traen muchas actividades que no son conciertos
+        musica = any(institucional.get(f.get("id")) is False for f in r.get("fuentes") or [])
+        x["peso"] = max(x["peso"], 3 * (o == "desconocido") + 2 * solo_nombre + 2 * (e == "desconocido") + falta["estilo"]
+                        + 3 * musica)
         x["etiquetas"].update(str(ef.get("estilo")) for ef in r.get("estilo_fuente") or [] if ef.get("estilo"))
         x["webs"] += [f["url"] for f in r.get("fuentes") or [] if f.get("url", "").startswith("http")]
         if r.get("nacionalidad_estimada"):
@@ -149,8 +154,8 @@ Reglas (muy importantes, todo se comprueba automáticamente abriendo las página
 4. "identidad": "seguro" si los datos de la página encajan con el contexto (ciudad, estilo, sala); "dudoso" si hay
    varios artistas con ese nombre y no sabes cuál es; "no encontrado" si no hay nada; "no es musica" si lo que
    aparece no es un artista o grupo musical (un partido, cine, teatro, una exposición…), y explica qué es en "nota".
-5. "nombre_real": el nombre del artista o grupo si en la lista aparece con más cosas (por ejemplo "Fabio Lione" para
-   "FABIO LIONE’S DAWN OF VICTORY").
+5. "nombre_real": el nombre del artista o grupo si en la lista aparece con más cosas o mal escrito (por ejemplo
+   "Fabio Lione" para "FABIO LIONE’S DAWN OF VICTORY" o "Fahmi Alqhai" para "FAHMI ALQHI").
 6. "pais": código de dos letras (ES, AR, MX, US, GB, FR…). "estilos": de 1 a 4 estilos concretos en minúsculas
    tal como los dice la página (por ejemplo "punk rock", "indie pop", "flamenco fusión", "stoner rock").
 
