@@ -214,3 +214,16 @@ def test_telonero_aparte_no_impide_unir_salas():
     c2 = {"artista": "Tributo a Queen. Candlelight", "invitados": [], "fuentes": [
         {"id": "cc_buscador", "url": "https://conciertos.club/madrid/conciertos/2-tributo-a-queen-candlelight"}]}
     assert _misma_fuente_dos_eventos(c1, c2)
+
+
+def test_ocultos_no_salen_en_la_web(tmp_path):
+    from tools.web_datos import preparar
+    apo = {"ocultos": {"la cuota comedy": {"nombre": "La Cuota Comedy", "motivo": "monólogos de comedia"}}}
+    a = {"id": "x1", "fecha": "2026-10-10", "artista": "La Cuota Comedy", "sala": "Galileo Galilei", "fuentes": []}
+    b = {"id": "x2", "fecha": "2026-10-10", "artista": "Los Chivatos", "sala": "Sala Changó", "fuentes": []}
+    for r in (a, b):
+        ap.aplicar_artista(r, apo)
+    assert a["oculto"]["motivo"] == "monólogos de comedia" and "oculto" not in b
+    res = preparar({"conciertos": [a, b]}, tmp_path)
+    assert res["conciertos"] == 1 and res["ocultos"] == 1
+    assert json.loads((tmp_path / "ocultos.json").read_text())[0]["artista"] == "La Cuota Comedy"

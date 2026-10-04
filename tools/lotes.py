@@ -332,7 +332,10 @@ def importar(texto: str, fetcher=None, hoy: str | None = None) -> str:
                                                            "rechazado": res["rechazado"][:4]}
             partes = []
             if str(item.get("identidad") or "").lower().startswith("no es"):
-                partes.append(f"⚠️ según el chat no es un concierto: {str(item.get('nota') or '')[:120]} (revisar)")
+                apo.setdefault("ocultos", {})[k] = {"nombre": ped["nombre"], "motivo": str(item.get("nota") or "")[:160],
+                                                    "lote": d["lote"], "fecha": hoy}
+                partes.append(f"🙈 no es un concierto: {str(item.get('nota') or '')[:120]} (se oculta de la agenda; "
+                              f"lista revisable en aportes.json → ocultos)")
             if "pais" in res["aceptado"]:
                 partes.append(f"✅ país {res['aceptado']['pais']['valor']}")
             if "estilos" in res["aceptado"]:
@@ -379,6 +382,25 @@ def importar(texto: str, fetcher=None, hoy: str | None = None) -> str:
     return "\n".join(lineas)
 
 
+def ocultar(lista: list[dict], hoy: str | None = None) -> str:
+    """Añade a la lista de ocultos [{nombre, motivo}] (lo que no es un concierto: fiestas, DJ, humor, cine…)."""
+    apo = cargar(APORTES, ap.vacio())
+    for x in lista:
+        apo.setdefault("ocultos", {})[ap.clave_artista(x["nombre"])] = {
+            "nombre": x["nombre"], "motivo": str(x.get("motivo") or "")[:160], "fecha": hoy or date.today().isoformat()}
+    guardar(APORTES, apo)
+    return f"Ocultos: {len(apo['ocultos'])} (añadidos {len(lista)})."
+
+
+def mostrar(nombre: str) -> str:
+    """Quita un nombre de la lista de ocultos: vuelve a salir en la agenda en la siguiente lectura."""
+    apo = cargar(APORTES, ap.vacio())
+    k = ap.clave_artista(nombre)
+    quitado = (apo.get("ocultos") or {}).pop(k, None)
+    guardar(APORTES, apo)
+    return f"{'Vuelve a mostrarse' if quitado else 'No estaba oculto'}: {nombre}"
+
+
 def estado(hoy: str | None = None) -> str:
     hoy = hoy or date.today().isoformat()
     apo = cargar(APORTES, ap.vacio())
@@ -403,6 +425,10 @@ def main() -> None:
     i.add_argument("respuesta")
     i.add_argument("--informe")
     sub.add_parser("estado")
+    o = sub.add_parser("ocultar")
+    o.add_argument("lista", help='JSON: [{"nombre": ..., "motivo": ...}]')
+    m = sub.add_parser("mostrar")
+    m.add_argument("nombre")
     sub.add_parser("pendiente")
     sub.add_parser("saltar")
     a = p.parse_args()
@@ -421,6 +447,10 @@ def main() -> None:
         if a.informe:
             Path(a.informe).write_text(inf, encoding="utf-8")
         print(inf)
+    elif a.orden == "ocultar":
+        print(ocultar(json.loads(a.lista)))
+    elif a.orden == "mostrar":
+        print(mostrar(a.nombre))
     elif a.orden == "pendiente":
         print(pendiente() or "")
     elif a.orden == "saltar":

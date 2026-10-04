@@ -97,7 +97,12 @@ def preparar(concerts: dict, destino: Path) -> dict:
         RECIENTE = (date.fromisoformat(concerts["hoy"]) - timedelta(days=DIAS_RECIENTE)).isoformat()
     genericas_ = genericas(concerts.get("conciertos", []))
     recs = []
+    ocultos = []
     for r in concerts.get("conciertos", []):
+        if r.get("oculto"):  # no es un concierto (lista revisable en la rama aportes): no se enseña
+            ocultos.append({"fecha": r["fecha"], "artista": r.get("artista"), "sala": r.get("sala"),
+                            "motivo": r["oculto"].get("motivo")})
+            continue
         if (r.get("imagen") or {}).get("url") in genericas_:
             r = copy.copy(r)
             r["imagen"] = None
@@ -118,7 +123,8 @@ def preparar(concerts: dict, destino: Path) -> dict:
     for dia, d in por_dia.items():
         (destino / "detalles" / f"{dia}.json").write_text(json.dumps(d, ensure_ascii=False, separators=(",", ":")),
                                                           encoding="utf-8")
-    return {"conciertos": len(recs), "dias": len(por_dia)}
+    (destino / "ocultos.json").write_text(json.dumps(ocultos, ensure_ascii=False, indent=1), encoding="utf-8")
+    return {"conciertos": len(recs), "dias": len(por_dia), "ocultos": len(ocultos)}
 
 
 def main() -> int:

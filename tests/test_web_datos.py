@@ -18,7 +18,7 @@ REC = {"id": "a1", "fecha": "2026-10-09", "hora": None, "artista": "Devin Townse
 
 def test_agenda_ligera_y_detalle(tmp_path):
     r = preparar({"generado": "2026-09-30T05:00:00+00:00", "conciertos": [REC]}, tmp_path)
-    assert r == {"conciertos": 1, "dias": 1}
+    assert r == {"conciertos": 1, "dias": 1, "ocultos": 0}
     ag = json.loads((tmp_path / "agenda.json").read_text())
     assert ag["generado"] and ag["detalles"] == "detalles/{fecha}.json"
     x = ag["conciertos"][0]

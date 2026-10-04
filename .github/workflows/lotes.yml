@@ -14,7 +14,7 @@ on:
   workflow_dispatch:
     inputs:
       accion:
-        description: "generar, importar o estado"
+        description: "generar, importar, estado, ocultar (respuesta = JSON [{nombre, motivo}]) o mostrar (respuesta = nombre)"
         default: "generar"
       tipo:
         description: "Tipo del lote: auto, artistas o conciertos"
@@ -163,6 +163,10 @@ jobs:
               python tools/lotes.py importar respuesta.txt --informe informe.md ;;
             estado)
               python tools/lotes.py estado ;;
+            ocultar)
+              python tools/lotes.py ocultar "$RESPUESTA" ;;
+            mostrar)
+              python tools/lotes.py mostrar "$RESPUESTA" ;;
             *)
               python tools/lotes.py saltar >/dev/null   # un lote generado y no contestado se da por perdido
               python tools/lotes.py generar --tipo "$TIPO" ${N:+--n "$N"} --salida lote.md > /dev/null

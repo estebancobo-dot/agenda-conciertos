@@ -426,9 +426,16 @@ def _fuente(url: str) -> str:
 
 
 def aplicar_artista(r: dict, aportes: dict) -> None:
-    """País y estilos aportados, solo donde no hay dato de una web de música ni de la agenda."""
+    """País y estilos aportados, solo donde no hay dato de una web de música ni de la agenda. Y la marca de oculto
+    para lo que no es un concierto (lista revisable "ocultos": la web no lo enseña, los datos lo conservan)."""
     from .clasificar import categorias_de
     from .nombres import claves_ficha
+    r.pop("oculto", None)
+    ocultos = (aportes or {}).get("ocultos") or {}
+    o = next((ocultos[k] for k in (clave_artista(n) for n in [r.get("artista") or "", *claves_ficha(r)]) if k in ocultos),
+             None)
+    if o:
+        r["oculto"] = {"motivo": o.get("motivo") or "no es un concierto", "nombre": o.get("nombre")}
     arts = (aportes or {}).get("artistas") or {}
     if not arts:
         return
