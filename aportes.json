@@ -6308,6 +6308,263 @@
    "creado": "2026-10-04",
    "pendientes": 335,
    "importado": "2026-10-04"
+  },
+  "A-2026-10-04-25": {
+   "tipo": "artistas",
+   "creado": "2026-10-04",
+   "items": {
+    "a1": {
+     "nombre": "MARÍA ELVIRA ESCANDÓN",
+     "clave": "maria elvira escandon",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Jazzville"
+     ]
+    },
+    "a2": {
+     "nombre": "MININO BRAVO",
+     "clave": "minino bravo",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Moe"
+     ]
+    },
+    "a3": {
+     "nombre": "Oferta Especial",
+     "clave": "oferta especial",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Gruta 77"
+     ]
+    },
+    "a4": {
+     "nombre": "WELCOME BONUS",
+     "clave": "welcome bonus",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "El Perro Club"
+     ]
+    },
+    "a5": {
+     "nombre": "QUARTET TARANTINO",
+     "clave": "quartet tarantino",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Barracudas Rock Bar"
+     ]
+    },
+    "a6": {
+     "nombre": "UMMO",
+     "clave": "ummo",
+     "falta": [
+      "estilo"
+     ],
+     "salas": [
+      "Sala Clamores"
+     ]
+    },
+    "a7": {
+     "nombre": "Portosanto",
+     "clave": "portosanto",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Sala Clamores"
+     ]
+    },
+    "a8": {
+     "nombre": "IMBERMIND",
+     "clave": "imbermind",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Sala Villanos"
+     ]
+    },
+    "a9": {
+     "nombre": "Irenegarry",
+     "clave": "irenegarry",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Galileo Galilei"
+     ]
+    },
+    "a10": {
+     "nombre": "Maquina",
+     "clave": "maquina",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Sala Copérnico"
+     ]
+    },
+    "a11": {
+     "nombre": "4PAN",
+     "clave": "4pan",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "El Perro Club"
+     ]
+    },
+    "a12": {
+     "nombre": "Carla Delgado",
+     "clave": "carla delgado",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Café Berlín"
+     ]
+    },
+    "a13": {
+     "nombre": "Tom Ribeira",
+     "clave": "tom ribeira",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Sala Villanos"
+     ]
+    },
+    "a14": {
+     "nombre": "RUSEL",
+     "clave": "rusel",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Sala Vesta"
+     ]
+    },
+    "a15": {
+     "nombre": "Lido Pimienta",
+     "clave": "lido pimienta",
+     "falta": [
+      "estilo"
+     ],
+     "salas": [
+      "Sala Villanos"
+     ]
+    },
+    "a16": {
+     "nombre": "VERMÚ NUEVA ORLEANS",
+     "clave": "vermu nueva orleans",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Sala Clamores"
+     ]
+    },
+    "a17": {
+     "nombre": "JESSIE GORDON TRIO (Dirty Jazz Concert)",
+     "clave": "jessie gordon trio dirty jazz concert",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Big Mama Ballroom"
+     ]
+    },
+    "a18": {
+     "nombre": "60juno",
+     "clave": "60juno",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Cadavra"
+     ]
+    },
+    "a19": {
+     "nombre": "Andrés Obregón",
+     "clave": "andres obregon",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "La Sala del Movistar Arena"
+     ]
+    },
+    "a20": {
+     "nombre": "Gavarnie",
+     "clave": "gavarnie",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Sala Siroco"
+     ]
+    },
+    "a21": {
+     "nombre": "Sistema de Entretenimiento",
+     "clave": "sistema de entretenimiento",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Wurlitzer Ballroom"
+     ]
+    },
+    "a22": {
+     "nombre": "Kiliki",
+     "clave": "kiliki",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Sala B"
+     ]
+    },
+    "a23": {
+     "nombre": "Salma",
+     "clave": "salma",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Independance Club"
+     ]
+    },
+    "a24": {
+     "nombre": "Curses!",
+     "clave": "curses",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Nazca Events Club / Sala Nazca"
+     ]
+    },
+    "a25": {
+     "nombre": "Error 97",
+     "clave": "error 97",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Sala Copérnico"
+     ]
+    }
+   },
+   "pendientes": 310
   }
  },
  "ocultos": {
