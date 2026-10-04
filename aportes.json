@@ -1589,6 +1589,98 @@
    },
    "lote": "A-2026-10-04-19",
    "fecha": "2026-10-04"
+  },
+  "joe jackson": {
+   "nombre": "Joe Jackson",
+   "pais": {
+    "valor": "GB",
+    "url": "https://en.wikipedia.org/wiki/Joe_Jackson_(musician)",
+    "cita": "joe jackson (musician) - wikipedia joe jackson (musician) english musician (born 1954) wikimedia foundation, inc. contributors to wikimedia projects joe jackson",
+    "ciudad": "Burton upon Trent"
+   },
+   "estilos": {
+    "valores": [
+     "new wave"
+    ],
+    "url": "https://en.wikipedia.org/wiki/Joe_Jackson_(musician)",
+    "cita": "etrieved 4 december 2015 . ↑ \"now a reggae revival\" . harlow star . 25 september 1980 . retrieved 20 june 2025 . ↑ beckett, simon (22 may 2003). \"the joe jackson band: jackson thrives\" . the independent . retrieved 22 march 2023 . ↑ paulsen, mike (2009). \"the keys : the keys album\" . new wave outpos",
+    "web_musica": true
+   },
+   "lote": "A-2026-10-04-20",
+   "fecha": "2026-10-04"
+  },
+  "crocodiles en mazo": {
+   "nombre": "Crocodiles en MAZO",
+   "pais": {
+    "valor": "US",
+    "url": "https://en.wikipedia.org/wiki/Crocodiles_(band)",
+    "cita": "crocodiles (band) - wikipedia crocodiles (band) american pop band wikimedia foundation, inc. contributors to wikimedia projects crocodiles (band) - wikipedia ju",
+    "ciudad": "San Diego"
+   },
+   "estilos": {
+    "valores": [
+     "noise pop"
+    ],
+    "url": "https://en.wikipedia.org/wiki/Crocodiles_(band)",
+    "cita": "· newspapers · books · scholar · jstor ( february 2023 ) ( learn how and when to remove this message ) ( learn how and when to remove this message ) crocodiles origin san diego , california , united states genres noise pop , indie pop , post-punk revival , psychedelic rock , lo-fi years active 2008 ",
+    "web_musica": true
+   },
+   "lote": "A-2026-10-04-20",
+   "fecha": "2026-10-04"
+  },
+  "kim salmons smoked salmon": {
+   "nombre": "KIM SALMON’S SMOKED SALMON",
+   "pais": {
+    "valor": "AU",
+    "url": "https://en.wikipedia.org/wiki/Kim_Salmon",
+    "cita": "kim salmon - wikipedia kim salmon australian musician wikimedia foundation, inc. contributors to wikimedia projects kim salmon - wikipedia jump to content main",
+    "ciudad": "Perth"
+   },
+   "estilos": {
+    "valores": [
+     "punk rock"
+    ],
+    "url": "https://en.wikipedia.org/wiki/Kim_Salmon",
+    "cita": "control databases international viaf worldcat national united states artists musicbrainz retrieved from \" https://en.wikipedia.org/w/index.php?title=kim_salmon&oldid=1362281027 \" categories : 1957 births australian guitarists australian male singers australian new wave musicians australian punk rock",
+    "web_musica": true
+   },
+   "lote": "A-2026-10-04-20",
+   "fecha": "2026-10-04"
+  },
+  "deriva": {
+   "nombre": "Deriva",
+   "estilos": {
+    "valores": [
+     "post-metal"
+    ],
+    "url": "https://wearederiva.bandcamp.com/album/haiku-i",
+    "cita": "id frank rettenbach image_id cerezos sin flor license_name track_id despierta del letargo license_name track_id lluvia templada license_name track_id deriva instrumental post-metal band from madrid, spain. their music fuses raw emotion, delicate sensitivity, and sheer power — channeling influences t",
+    "web_musica": true
+   },
+   "enlaces": [
+    "https://wearederiva.bandcamp.com/"
+   ],
+   "lote": "A-2026-10-04-20",
+   "fecha": "2026-10-04"
+  },
+  "la rate timide": {
+   "nombre": "La Rate Timide",
+   "pais": {
+    "valor": "ES",
+    "url": "https://michambergodeentretiempo.com/2026/03/06/la-rate-timide-entrevista-ya-lo-han-hecho-antes/",
+    "cita": "la rate timide, banda femenina de punk que en \"ya lo han hecho antes\" lanzan bilis a senoros, la ciudad toledo y amigas que te dejan tirada. la rate timide, banda f",
+    "ciudad": "Madrid"
+   },
+   "estilos": {
+    "valores": [
+     "punk"
+    ],
+    "url": "https://www.somoslacre.com/artistas-lacre/la-rate-timide/",
+    "cita": "stilo musical como punk elegante, jugando con las tensiones que se producen en [...] somoslacre lacre lacre musica underground, eventos alternativos. la rate timide portada la rate timide - lacre la rate timide somoslacre la rate timide - lacre ir al contenido 0,00 € 0 cart · artista lacre · la rate",
+    "web_musica": false
+   },
+   "lote": "A-2026-10-04-20",
+   "fecha": "2026-10-04"
   }
  },
  "conciertos": [
@@ -5014,6 +5106,179 @@
     "pais"
    ],
    "rechazado": []
+  },
+  "a:vermu familiar": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-20",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:joe jackson": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-20",
+   "aceptado": [
+    "estilos",
+    "pais"
+   ],
+   "rechazado": []
+  },
+  "a:canciones para recordar": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-20",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:crocodiles en mazo": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-20",
+   "aceptado": [
+    "estilos",
+    "pais"
+   ],
+   "rechazado": []
+  },
+  "a:kim salmons smoked salmon": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-20",
+   "aceptado": [
+    "estilos",
+    "pais"
+   ],
+   "rechazado": []
+  },
+  "a:deriva": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-20",
+   "aceptado": [
+    "enlaces",
+    "estilos"
+   ],
+   "rechazado": [
+    "país ES: ni la frase citada ni la página lo dicen junto al nombre"
+   ]
+  },
+  "a:tramposo": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-20",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:trueno": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-20",
+   "aceptado": [],
+   "rechazado": [
+    "país AR: la página citada no nombra a Trueno",
+    "estilos: la página citada no nombra a Trueno"
+   ]
+  },
+  "a:la noche del ciervo": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-20",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:lu decker": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-20",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:jimena desde hoy": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-20",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:dd dunn and louisiana cats": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-20",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:basura": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-20",
+   "aceptado": [],
+   "rechazado": [
+    "país ES: ni la frase citada ni la página lo dicen junto al nombre",
+    "estilos: ni la frase citada ni la página lo dicen junto al nombre"
+   ]
+  },
+  "a:cotton pickers": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-20",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:equipo love": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-20",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:floracion dual": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-20",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:indus": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-20",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:la rate timide": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-20",
+   "aceptado": [
+    "estilos",
+    "pais"
+   ],
+   "rechazado": []
+  },
+  "a:la salsa punk orkestra": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-20",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:pemau and toniwhite": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-20",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:skull guru": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-20",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:very magenta": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-20",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:xico palma": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-20",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:cooling system": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-20",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:que te jodan pablo": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-20",
+   "aceptado": [],
+   "rechazado": []
   }
  },
  "lotes": {
@@ -5152,260 +5417,8 @@
   "A-2026-10-04-20": {
    "tipo": "artistas",
    "creado": "2026-10-04",
-   "items": {
-    "a1": {
-     "nombre": "VERMÚ FAMILIAR",
-     "clave": "vermu familiar",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Galileo Galilei"
-     ]
-    },
-    "a2": {
-     "nombre": "Joe Jackson",
-     "clave": "joe jackson",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Teatro La Latina"
-     ]
-    },
-    "a3": {
-     "nombre": "Canciones para recordar",
-     "clave": "canciones para recordar",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Centro Cultural Nicolás Salmerón (Chamartín)"
-     ]
-    },
-    "a4": {
-     "nombre": "Crocodiles en MAZO",
-     "clave": "crocodiles en mazo",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Sala Clamores"
-     ]
-    },
-    "a5": {
-     "nombre": "KIM SALMON’S SMOKED SALMON",
-     "clave": "kim salmons smoked salmon",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Fun House"
-     ]
-    },
-    "a6": {
-     "nombre": "Deriva",
-     "clave": "deriva",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Wurlitzer Ballroom"
-     ]
-    },
-    "a7": {
-     "nombre": "TRAMPOSO",
-     "clave": "tramposo",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Tempo Audiophile Club"
-     ]
-    },
-    "a8": {
-     "nombre": "Trueno",
-     "clave": "trueno",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Movistar Arena"
-     ]
-    },
-    "a9": {
-     "nombre": "LA NOCHE DEL CIERVO",
-     "clave": "la noche del ciervo",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Candela"
-     ]
-    },
-    "a10": {
-     "nombre": "Lu Decker",
-     "clave": "lu decker",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Moby Dick Club"
-     ]
-    },
-    "a11": {
-     "nombre": "JIMENA \"DESDE HOY\"",
-     "clave": "jimena desde hoy",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Galileo Galilei"
-     ]
-    },
-    "a12": {
-     "nombre": "DD DUNN & LOUISIANA CATS",
-     "clave": "dd dunn and louisiana cats",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Rockville"
-     ]
-    },
-    "a13": {
-     "nombre": "Basura",
-     "clave": "basura",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Maravillas Club"
-     ]
-    },
-    "a14": {
-     "nombre": "Cotton Pickers",
-     "clave": "cotton pickers",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Café Central Ateneo"
-     ]
-    },
-    "a15": {
-     "nombre": "EQUIPO LOVE",
-     "clave": "equipo love",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Moby Dick Club"
-     ]
-    },
-    "a16": {
-     "nombre": "FLORACIÓN DUAL",
-     "clave": "floracion dual",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Dime que me Quieres"
-     ]
-    },
-    "a17": {
-     "nombre": "Indus",
-     "clave": "indus",
-     "falta": [
-      "estilo"
-     ],
-     "salas": [
-      "El Sótano"
-     ]
-    },
-    "a18": {
-     "nombre": "La Rate Timide",
-     "clave": "la rate timide",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Sala Siroco"
-     ]
-    },
-    "a19": {
-     "nombre": "LA SALSA PUNK ORKESTRA",
-     "clave": "la salsa punk orkestra",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Gruta 77"
-     ]
-    },
-    "a20": {
-     "nombre": "Pemau & ToniWhite",
-     "clave": "pemau and toniwhite",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Dime que me Quieres"
-     ]
-    },
-    "a21": {
-     "nombre": "SKULL GURU",
-     "clave": "skull guru",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "El Perro Club"
-     ]
-    },
-    "a22": {
-     "nombre": "Very Magenta",
-     "clave": "very magenta",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Sala Vesta"
-     ]
-    },
-    "a23": {
-     "nombre": "XICO PALMA",
-     "clave": "xico palma",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Cadavra"
-     ]
-    },
-    "a24": {
-     "nombre": "COOLING SYSTEM",
-     "clave": "cooling system",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Moe"
-     ]
-    },
-    "a25": {
-     "nombre": "Que te jodan Pablo",
-     "clave": "que te jodan pablo",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Fotomatón Bar"
-     ]
-    }
-   },
-   "pendientes": 435
+   "pendientes": 435,
+   "importado": "2026-10-04"
   }
  },
  "ocultos": {
