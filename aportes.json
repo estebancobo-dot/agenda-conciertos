@@ -1893,6 +1893,63 @@
    },
    "lote": "A-2026-10-04-24",
    "fecha": "2026-10-04"
+  },
+  "lido pimienta": {
+   "nombre": "Lido Pimienta",
+   "pais": {
+    "valor": "CO",
+    "url": "https://en.wikipedia.org/wiki/Lido_Pimienta",
+    "cita": "lido pimienta - wikipedia lido pimienta colombian-canadian musician and singer-songwriter wikimedia foundation, inc. contributors to wikimedia projects lido pimien",
+    "ciudad": "Barranquilla"
+   },
+   "estilos": {
+    "valores": [
+     "cumbia",
+     "art pop"
+    ],
+    "url": "https://en.wikipedia.org/wiki/Lido_Pimienta",
+    "cita": "hpop latin pop art pop cumbia bullerengue occupations musician singer songwriter years active 2010 – present website lidopimienta .com musical artist lido pimienta (born 20 december 1986) [ 1 ] is a colombian canadian musician, singer, and songwriter. [ 2 ] she rose to prominence after her 2016 albu",
+    "web_musica": true
+   },
+   "lote": "A-2026-10-04-25",
+   "fecha": "2026-10-04"
+  },
+  "jessie gordon trio dirty jazz concert": {
+   "nombre": "JESSIE GORDON TRIO (Dirty Jazz Concert)",
+   "estilos": {
+    "valores": [
+     "jazz"
+    ],
+    "url": "https://www.seesawmag.com.au/2018/01/a-love-letter-to-music-jessie-gordon",
+    "cita": "plenty of opportunities to catch this award-winning, cheese-loving jazz singer at fringe in 2018 because she is performing six different shows! six! jessie gordon. photo: catty rogalski from catberry studios. and yet she found time for seesaw’s fringe q&a. seesaw: when did you first know that you wa",
+    "web_musica": false
+   },
+   "lote": "A-2026-10-04-25",
+   "fecha": "2026-10-04"
+  },
+  "andres obregon": {
+   "nombre": "Andrés Obregón",
+   "estilos": {
+    "valores": [
+     "pop"
+    ],
+    "url": "https://www.viberate.com/artist/andres-obregon/",
+    "cita": "andres obregon: listen to new and popular songs, find events, look into their stats and see who their fans are. andres obregon - songs, events and music stats | vib",
+    "web_musica": false
+   },
+   "lote": "A-2026-10-04-25",
+   "fecha": "2026-10-04"
+  },
+  "sistema de entretenimiento": {
+   "nombre": "Sistema de Entretenimiento",
+   "pais": {
+    "valor": "ES",
+    "url": "https://www.applausa.com/en/artists/sistema-de-entretenimiento/",
+    "cita": "artist sistema de entretenimiento - band - barcelona profile - arcade punk kings 👑👅 - applausa sistema de entretenimiento artist sistema de entretenimiento - band - barcelona profile",
+    "ciudad": "Mollet del Vallès"
+   },
+   "lote": "A-2026-10-04-25",
+   "fecha": "2026-10-04"
   }
  },
  "conciertos": [
@@ -6144,6 +6201,171 @@
    "rechazado": [
     "estilos: ni la frase citada ni la página lo dicen junto al nombre"
    ]
+  },
+  "a:maria elvira escandon": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-25",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:minino bravo": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-25",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:oferta especial": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-25",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:welcome bonus": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-25",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:quartet tarantino": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-25",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:ummo": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-25",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:portosanto": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-25",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:imbermind": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-25",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:irenegarry": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-25",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:maquina": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-25",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:4pan": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-25",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:carla delgado": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-25",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:tom ribeira": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-25",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:rusel": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-25",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:lido pimienta": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-25",
+   "aceptado": [
+    "estilos",
+    "pais"
+   ],
+   "rechazado": []
+  },
+  "a:vermu nueva orleans": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-25",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:jessie gordon trio dirty jazz concert": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-25",
+   "aceptado": [
+    "estilos"
+   ],
+   "rechazado": [
+    "país AU: ni la frase citada ni la página lo dicen junto al nombre"
+   ]
+  },
+  "a:60juno": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-25",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:andres obregon": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-25",
+   "aceptado": [
+    "estilos"
+   ],
+   "rechazado": [
+    "país MX: ni la frase citada ni la página lo dicen junto al nombre"
+   ]
+  },
+  "a:gavarnie": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-25",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:sistema de entretenimiento": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-25",
+   "aceptado": [
+    "pais"
+   ],
+   "rechazado": [
+    "estilos: no se pudo abrir (HTTPError)"
+   ]
+  },
+  "a:kiliki": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-25",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:salma": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-25",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:curses": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-25",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:error 97": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-25",
+   "aceptado": [],
+   "rechazado": []
   }
  },
  "lotes": {
@@ -6312,259 +6534,8 @@
   "A-2026-10-04-25": {
    "tipo": "artistas",
    "creado": "2026-10-04",
-   "items": {
-    "a1": {
-     "nombre": "MARÍA ELVIRA ESCANDÓN",
-     "clave": "maria elvira escandon",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Jazzville"
-     ]
-    },
-    "a2": {
-     "nombre": "MININO BRAVO",
-     "clave": "minino bravo",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Moe"
-     ]
-    },
-    "a3": {
-     "nombre": "Oferta Especial",
-     "clave": "oferta especial",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Gruta 77"
-     ]
-    },
-    "a4": {
-     "nombre": "WELCOME BONUS",
-     "clave": "welcome bonus",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "El Perro Club"
-     ]
-    },
-    "a5": {
-     "nombre": "QUARTET TARANTINO",
-     "clave": "quartet tarantino",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Barracudas Rock Bar"
-     ]
-    },
-    "a6": {
-     "nombre": "UMMO",
-     "clave": "ummo",
-     "falta": [
-      "estilo"
-     ],
-     "salas": [
-      "Sala Clamores"
-     ]
-    },
-    "a7": {
-     "nombre": "Portosanto",
-     "clave": "portosanto",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Sala Clamores"
-     ]
-    },
-    "a8": {
-     "nombre": "IMBERMIND",
-     "clave": "imbermind",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Sala Villanos"
-     ]
-    },
-    "a9": {
-     "nombre": "Irenegarry",
-     "clave": "irenegarry",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Galileo Galilei"
-     ]
-    },
-    "a10": {
-     "nombre": "Maquina",
-     "clave": "maquina",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Sala Copérnico"
-     ]
-    },
-    "a11": {
-     "nombre": "4PAN",
-     "clave": "4pan",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "El Perro Club"
-     ]
-    },
-    "a12": {
-     "nombre": "Carla Delgado",
-     "clave": "carla delgado",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Café Berlín"
-     ]
-    },
-    "a13": {
-     "nombre": "Tom Ribeira",
-     "clave": "tom ribeira",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Sala Villanos"
-     ]
-    },
-    "a14": {
-     "nombre": "RUSEL",
-     "clave": "rusel",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Sala Vesta"
-     ]
-    },
-    "a15": {
-     "nombre": "Lido Pimienta",
-     "clave": "lido pimienta",
-     "falta": [
-      "estilo"
-     ],
-     "salas": [
-      "Sala Villanos"
-     ]
-    },
-    "a16": {
-     "nombre": "VERMÚ NUEVA ORLEANS",
-     "clave": "vermu nueva orleans",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Sala Clamores"
-     ]
-    },
-    "a17": {
-     "nombre": "JESSIE GORDON TRIO (Dirty Jazz Concert)",
-     "clave": "jessie gordon trio dirty jazz concert",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Big Mama Ballroom"
-     ]
-    },
-    "a18": {
-     "nombre": "60juno",
-     "clave": "60juno",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Cadavra"
-     ]
-    },
-    "a19": {
-     "nombre": "Andrés Obregón",
-     "clave": "andres obregon",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "La Sala del Movistar Arena"
-     ]
-    },
-    "a20": {
-     "nombre": "Gavarnie",
-     "clave": "gavarnie",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Sala Siroco"
-     ]
-    },
-    "a21": {
-     "nombre": "Sistema de Entretenimiento",
-     "clave": "sistema de entretenimiento",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Wurlitzer Ballroom"
-     ]
-    },
-    "a22": {
-     "nombre": "Kiliki",
-     "clave": "kiliki",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Sala B"
-     ]
-    },
-    "a23": {
-     "nombre": "Salma",
-     "clave": "salma",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Independance Club"
-     ]
-    },
-    "a24": {
-     "nombre": "Curses!",
-     "clave": "curses",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Nazca Events Club / Sala Nazca"
-     ]
-    },
-    "a25": {
-     "nombre": "Error 97",
-     "clave": "error 97",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Sala Copérnico"
-     ]
-    }
-   },
-   "pendientes": 310
+   "pendientes": 310,
+   "importado": "2026-10-04"
   }
  },
  "ocultos": {
