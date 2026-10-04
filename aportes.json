@@ -2025,6 +2025,44 @@
    },
    "lote": "A-2026-10-04-26",
    "fecha": "2026-10-04"
+  },
+  "el farru presenta el baile al cante 9o ffc": {
+   "nombre": "El Farru presenta “El baile al cante” - 9º FFC",
+   "pais": {
+    "valor": "ES",
+    "url": "https://cardamomo.com/en/artist/el-farru/",
+    "cita": "«el farru» - cardamomo flamenco madrid biography antonio fernandez montoya, better known as “el farru”, was born in seville in 1988, son of the singer juan “el",
+    "ciudad": "Sevilla"
+   },
+   "lote": "A-2026-10-04-27",
+   "fecha": "2026-10-04"
+  },
+  "derobert and the half truths usa": {
+   "nombre": "DEROBERT & THE HALF-TRUTHS USA",
+   "estilos": {
+    "valores": [
+     "soul"
+    ],
+    "url": "https://derobertandthehalftruths.bandcamp.com/",
+    "cita": "derobert & the half-truths. nashville, tennessee. music city's got soul and derobert adams is the proof in the pudding. pairing powerful vocals with raw soul instrumentation by",
+    "web_musica": true
+   },
+   "enlaces": [
+    "https://derobertandthehalftruths.bandcamp.com/"
+   ],
+   "lote": "A-2026-10-04-27",
+   "fecha": "2026-10-04"
+  },
+  "jpfernandez": {
+   "nombre": "JPFernandez",
+   "pais": {
+    "valor": "ES",
+    "url": "https://polaragency.net/artistas/jp-fernandez/",
+    "cita": "desde cordoba y establecido en badalona, jpfernandez fusiona flamenco y musica urbana con una voz cargada de emocion. su estilo vocal transmite autenticidad, lo que lo ha destacado dentro de la escena u",
+    "ciudad": "Córdoba"
+   },
+   "lote": "A-2026-10-04-27",
+   "fecha": "2026-10-04"
   }
  },
  "conciertos": [
@@ -6603,6 +6641,172 @@
     "pais"
    ],
    "rechazado": []
+  },
+  "a:samantha palos": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-27",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:mad sax big band": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-27",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:gas 55": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-27",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:la septima farola": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-27",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:valkyria": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-27",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:oscar ballester": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-27",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:lavapies jazz reunion": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-27",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:aurora garcia jazz project": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-27",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:el farru presenta el baile al cante 9o ffc": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-27",
+   "aceptado": [
+    "pais"
+   ],
+   "rechazado": [
+    "estilos: ni la frase citada ni la página lo dicen junto al nombre"
+   ]
+  },
+  "a:portrait": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-27",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:derobert and the half truths usa": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-27",
+   "aceptado": [
+    "enlaces",
+    "estilos"
+   ],
+   "rechazado": [
+    "país US: ni la frase citada ni la página lo dicen junto al nombre"
+   ]
+  },
+  "a:caminero cuarteto": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-27",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:triada": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-27",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:lagos": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-27",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:blanco palamera": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-27",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:31 fam": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-27",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:hijos de king kong": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-27",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:marilia ella baila sola": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-27",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:raquel lamas trio": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-27",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:david y carlos de jacoba presentan lorqueando federico 9offc": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-27",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:sensory percussion trio": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-27",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:jpfernandez": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-27",
+   "aceptado": [
+    "pais"
+   ],
+   "rechazado": [
+    "estilos: la página citada no nombra a JPFernandez"
+   ]
+  },
+  "a:migue de antilopez": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-27",
+   "aceptado": [],
+   "rechazado": [
+    "país ES: su robots.txt no deja leerla, así que no se puede comprobar",
+    "estilos: su robots.txt no deja leerla, así que no se puede comprobar"
+   ]
+  },
+  "a:nadia trobisch": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-27",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:quique guinea cuarteto": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-27",
+   "aceptado": [],
+   "rechazado": []
   }
  },
  "lotes": {
@@ -6783,260 +6987,8 @@
   "A-2026-10-04-27": {
    "tipo": "artistas",
    "creado": "2026-10-04",
-   "items": {
-    "a1": {
-     "nombre": "Samantha Palos",
-     "clave": "samantha palos",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "La Sala del Movistar Arena"
-     ]
-    },
-    "a2": {
-     "nombre": "MAD SAX BIG BAND",
-     "clave": "mad sax big band",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Moe"
-     ]
-    },
-    "a3": {
-     "nombre": "GAS 55",
-     "clave": "gas 55",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Tempo Audiophile Club"
-     ]
-    },
-    "a4": {
-     "nombre": "La Séptima Farola",
-     "clave": "la septima farola",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Cadillac Solitario"
-     ]
-    },
-    "a5": {
-     "nombre": "Valkyria",
-     "clave": "valkyria",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Barracudas Rock Bar"
-     ]
-    },
-    "a6": {
-     "nombre": "ÓSCAR BALLESTER",
-     "clave": "oscar ballester",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "El Perro Club"
-     ]
-    },
-    "a7": {
-     "nombre": "LAVAPIÉS JAZZ REUNION",
-     "clave": "lavapies jazz reunion",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Moe"
-     ]
-    },
-    "a8": {
-     "nombre": "AURORA GARCÍA JAZZ PROJECT",
-     "clave": "aurora garcia jazz project",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Tempo Audiophile Club"
-     ]
-    },
-    "a9": {
-     "nombre": "El Farru presenta “El baile al cante” - 9º FFC",
-     "clave": "el farru presenta el baile al cante 9o ffc",
-     "falta": [
-      "estilo"
-     ],
-     "salas": [
-      "Café Berlín"
-     ]
-    },
-    "a10": {
-     "nombre": "Portrait",
-     "clave": "portrait",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Silikona"
-     ]
-    },
-    "a11": {
-     "nombre": "DEROBERT & THE HALF-TRUTHS USA",
-     "clave": "derobert and the half truths usa",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Tempo Audiophile Club"
-     ]
-    },
-    "a12": {
-     "nombre": "Caminero Cuarteto",
-     "clave": "caminero cuarteto",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "CentroCentro"
-     ]
-    },
-    "a13": {
-     "nombre": "TRIADA",
-     "clave": "triada",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Sala Villanos"
-     ]
-    },
-    "a14": {
-     "nombre": "Lagos",
-     "clave": "lagos",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "La Riviera"
-     ]
-    },
-    "a15": {
-     "nombre": "Blanco Palamera",
-     "clave": "blanco palamera",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Café Berlín"
-     ]
-    },
-    "a16": {
-     "nombre": "31 Fam",
-     "clave": "31 fam",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "La Sala del Movistar Arena"
-     ]
-    },
-    "a17": {
-     "nombre": "HIJOS DE KING KONG",
-     "clave": "hijos de king kong",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Gruta 77"
-     ]
-    },
-    "a18": {
-     "nombre": "Marilia (Ella baila sola)",
-     "clave": "marilia ella baila sola",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Galileo Galilei"
-     ]
-    },
-    "a19": {
-     "nombre": "RAQUEL LAMAS TRIO",
-     "clave": "raquel lamas trio",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Intruso Bar"
-     ]
-    },
-    "a20": {
-     "nombre": "David y Carlos de Jacoba presentan “Lorqueando Federico” - 9ºFFC",
-     "clave": "david y carlos de jacoba presentan lorqueando federico 9offc",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Café Berlín"
-     ]
-    },
-    "a21": {
-     "nombre": "SENSORY PERCUSSION TRIO",
-     "clave": "sensory percussion trio",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Café El Despertar"
-     ]
-    },
-    "a22": {
-     "nombre": "JPFernandez",
-     "clave": "jpfernandez",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "La Sala del Movistar Arena"
-     ]
-    },
-    "a23": {
-     "nombre": "Migue de Antílopez",
-     "clave": "migue de antilopez",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Galileo Galilei"
-     ]
-    },
-    "a24": {
-     "nombre": "NADIA TROBISCH",
-     "clave": "nadia trobisch",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Fulanita de Tal"
-     ]
-    },
-    "a25": {
-     "nombre": "QUIQUE GUINEA CUARTETO",
-     "clave": "quique guinea cuarteto",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Silikona"
-     ]
-    }
-   },
-   "pendientes": 260
+   "pendientes": 260,
+   "importado": "2026-10-04"
   }
  },
  "ocultos": {
