@@ -140,7 +140,28 @@
    "fecha": "2026-10-04"
   }
  },
- "conciertos": [],
+ "conciertos": [
+  {
+   "id": "48a41413",
+   "fecha": "2026-10-07",
+   "artistas": [
+    "Maxim Vengerov"
+   ],
+   "salas": [
+    "Auditorio Nacional de Música"
+   ],
+   "hora": {
+    "valor": "19:30",
+    "url": "https://atlantidachamberorchestra.com/conciertos/vengerov-concierto-de-sibelius-auditorio-nacional-madrid/"
+   },
+   "precio": {
+    "valor": "38 €",
+    "url": "https://atlantidachamberorchestra.com/conciertos/vengerov-concierto-de-sibelius-auditorio-nacional-madrid/"
+   },
+   "lote": "C-2026-10-04-01",
+   "comprobado": "2026-10-04"
+  }
+ ],
  "consultados": {
   "a:wah": {
    "fecha": "2026-10-04",
@@ -318,6 +339,56 @@
     "estilos"
    ],
    "rechazado": []
+  },
+  "c:de6108e6": {
+   "fecha": "2026-10-04",
+   "lote": "C-2026-10-04-01",
+   "aceptado": [],
+   "rechazado": [
+    "no se pudo abrir (HTTPError)"
+   ]
+  },
+  "c:17a4ff56": {
+   "fecha": "2026-10-04",
+   "lote": "C-2026-10-04-01",
+   "aceptado": [],
+   "rechazado": [
+    "no se pudo abrir (HTTPError)"
+   ]
+  },
+  "c:7375a765": {
+   "fecha": "2026-10-04",
+   "lote": "C-2026-10-04-01",
+   "aceptado": [],
+   "rechazado": [
+    "no se pudo abrir (RobotsUnreachable)"
+   ]
+  },
+  "c:48a41413": {
+   "fecha": "2026-10-04",
+   "lote": "C-2026-10-04-01",
+   "aceptado": [
+    "hora",
+    "precio"
+   ],
+   "rechazado": []
+  },
+  "c:6c308ebd": {
+   "fecha": "2026-10-04",
+   "lote": "C-2026-10-04-01",
+   "aceptado": [],
+   "rechazado": [
+    "la página citada no anuncia al artista el 2026-10-10"
+   ]
+  },
+  "c:b29dbaa1": {
+   "fecha": "2026-10-04",
+   "lote": "C-2026-10-04-01",
+   "aceptado": [],
+   "rechazado": [
+    "hora 21:00: no está en la página",
+    "precio 60 €: no está en la página"
+   ]
   }
  },
  "lotes": {
@@ -330,114 +401,8 @@
   "C-2026-10-04-01": {
    "tipo": "conciertos",
    "creado": "2026-10-04",
-   "items": {
-    "c1": {
-     "id": "de6108e6",
-     "fecha": "2026-10-04",
-     "artista": "CantaJuego",
-     "sala": "Teatro Pavón",
-     "web_sala": null
-    },
-    "c2": {
-     "id": "7375a765",
-     "fecha": "2026-10-04",
-     "artista": "Mork",
-     "sala": "Silikona",
-     "web_sala": "https://silikona.es/"
-    },
-    "c3": {
-     "id": "7cbcb455",
-     "fecha": "2026-10-04",
-     "artista": "Sebastian Chames",
-     "sala": "Recoletos Jazz",
-     "web_sala": null
-    },
-    "c4": {
-     "id": "fa5df7e1",
-     "fecha": "2026-10-07",
-     "artista": "Lady Pepa",
-     "sala": "Espacio Alma",
-     "web_sala": null
-    },
-    "c5": {
-     "id": "48a41413",
-     "fecha": "2026-10-07",
-     "artista": "Maxim Vengerov",
-     "sala": "Auditorio Nacional de Música",
-     "web_sala": null
-    },
-    "c6": {
-     "id": "12242e07",
-     "fecha": "2026-10-07",
-     "artista": "Wah!",
-     "sala": "Pabellón 2, IFEMA Madrid",
-     "web_sala": null
-    },
-    "c7": {
-     "id": "1bc0c77e",
-     "fecha": "2026-10-08",
-     "artista": "Carlota Mad",
-     "sala": "Rincón del Arte Nuevo",
-     "web_sala": "https://www.elrincondelartenuevo.com/"
-    },
-    "c8": {
-     "id": "c26ca5a5",
-     "fecha": "2026-10-08",
-     "artista": "Sofía Campos",
-     "sala": "Esquina Nua",
-     "web_sala": null
-    },
-    "c9": {
-     "id": "67118747",
-     "fecha": "2026-10-08",
-     "artista": "Wah!",
-     "sala": "Pabellón 2, IFEMA Madrid",
-     "web_sala": null
-    },
-    "c10": {
-     "id": "0d68f7b9",
-     "fecha": "2026-10-09",
-     "artista": "Joma",
-     "sala": "Leaves",
-     "web_sala": null
-    },
-    "c11": {
-     "id": "6c308ebd",
-     "fecha": "2026-10-10",
-     "artista": "BARRACÜDA",
-     "sala": "San Nicasio Rock",
-     "web_sala": null
-    },
-    "c12": {
-     "id": "b29dbaa1",
-     "fecha": "2026-10-10",
-     "artista": "EUROPE",
-     "sala": "Plaza de Toros La Nueva Cubierta",
-     "web_sala": null
-    },
-    "c13": {
-     "id": "a023a491",
-     "fecha": "2026-10-10",
-     "artista": "REBROTE",
-     "sala": "Sala B",
-     "web_sala": null
-    },
-    "c14": {
-     "id": "17a4ff56",
-     "fecha": "2026-10-11",
-     "artista": "CantaJuego",
-     "sala": "Teatro Pavón",
-     "web_sala": null
-    },
-    "c15": {
-     "id": "498a0336",
-     "fecha": "2026-10-11",
-     "artista": "Wah!",
-     "sala": "Pabellón 2, IFEMA Madrid",
-     "web_sala": null
-    }
-   },
-   "pendientes": 948
+   "pendientes": 948,
+   "importado": "2026-10-04"
   }
  }
 }
