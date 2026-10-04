@@ -4885,6 +4885,266 @@
    "creado": "2026-10-04",
    "pendientes": 485,
    "importado": "2026-10-04"
+  },
+  "A-2026-10-04-19": {
+   "tipo": "artistas",
+   "creado": "2026-10-04",
+   "items": {
+    "a1": {
+     "nombre": "Alex Ferrán presenta Demo Tour",
+     "clave": "alex ferran presenta demo tour",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Sala Clamores"
+     ]
+    },
+    "a2": {
+     "nombre": "España Pintoresca",
+     "clave": "espana pintoresca",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Centro Sociocultural San Fermín (Usera)"
+     ]
+    },
+    "a3": {
+     "nombre": "Inauguración de la Semana Cultural del C-C. Castellano Manchego de Latina",
+     "clave": "inauguracion de la semana cultural del c c castellano manchego de latina",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Centro Cultural Fernando de los Ríos (Latina)"
+     ]
+    },
+    "a4": {
+     "nombre": "Sabor y solera, con inolvidables",
+     "clave": "sabor y solera con inolvidables",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Centro Cultural San Francisco La Prensa (Carabanchel)"
+     ]
+    },
+    "a5": {
+     "nombre": "Berbikí",
+     "clave": "berbiki",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Sala La Trinchera"
+     ]
+    },
+    "a6": {
+     "nombre": "Shakira Martínez",
+     "clave": "shakira martinez",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Independance Club"
+     ]
+    },
+    "a7": {
+     "nombre": "CRVDO SESSIONS VOL 2",
+     "clave": "crvdo sessions vol 2",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Sala Vesta"
+     ]
+    },
+    "a8": {
+     "nombre": "ARAI con toque cubano",
+     "clave": "arai con toque cubano",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Babylon Club"
+     ]
+    },
+    "a9": {
+     "nombre": "BURNING ÑUS",
+     "clave": "burning nus",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Rockville"
+     ]
+    },
+    "a10": {
+     "nombre": "EL MAL DE FRUK",
+     "clave": "el mal de fruk",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Hangar 48"
+     ]
+    },
+    "a11": {
+     "nombre": "Guzmen",
+     "clave": "guzmen",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Sala Siroco"
+     ]
+    },
+    "a12": {
+     "nombre": "N!Neteen",
+     "clave": "n neteen",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Galileo Galilei"
+     ]
+    },
+    "a13": {
+     "nombre": "Somos Los Caras Cona",
+     "clave": "somos los caras cona",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Sala Clamores"
+     ]
+    },
+    "a14": {
+     "nombre": "THE BANG",
+     "clave": "the bang",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Thundercat"
+     ]
+    },
+    "a15": {
+     "nombre": "MANUEL CUESTA",
+     "clave": "manuel cuesta",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Jazzville"
+     ]
+    },
+    "a16": {
+     "nombre": "AP BIG BAND feat AT ONE",
+     "clave": "ap big band feat at one",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Babylon Club"
+     ]
+    },
+    "a17": {
+     "nombre": "Albert Marquès & Keith LaMar",
+     "clave": "albert marques and keith lamar",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Sala Villanos"
+     ]
+    },
+    "a18": {
+     "nombre": "FREEDOM FIRST",
+     "clave": "freedom first",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Sala Villanos"
+     ]
+    },
+    "a19": {
+     "nombre": "LÉSTER DOMÍNGUEZ",
+     "clave": "lester dominguez",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Jazzville"
+     ]
+    },
+    "a20": {
+     "nombre": "XIV concierto «Javi Martín» a beneficio del banco de alimentos",
+     "clave": "xiv concierto javi martin a beneficio del banco de alimentos",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Cadillac Solitario"
+     ]
+    },
+    "a21": {
+     "nombre": "XTASY",
+     "clave": "xtasy",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Rockville"
+     ]
+    },
+    "a22": {
+     "nombre": "MADRIZ ROOTS #1 LAUNCH PARTY",
+     "clave": "madriz roots 1 launch party",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Silikona"
+     ]
+    },
+    "a23": {
+     "nombre": "SHEILA PAZ",
+     "clave": "sheila paz",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Sala B"
+     ]
+    },
+    "a24": {
+     "nombre": "EL NEGRO QUE TOCA EL TROMBON",
+     "clave": "el negro que toca el trombon",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Babylon Club"
+     ]
+    },
+    "a25": {
+     "nombre": "THE SILENCERS",
+     "clave": "the silencers",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Sala Copérnico"
+     ]
+    }
+   },
+   "pendientes": 460
   }
  },
  "ocultos": {
