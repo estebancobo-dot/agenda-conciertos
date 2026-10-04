@@ -52,7 +52,7 @@ def guardar(p: Path, datos) -> None:
 def conciertos(hoy: str) -> list[dict]:
     d = cargar(DATA / "concerts.json", {})
     recs = d.get("conciertos", d) if isinstance(d, dict) else d
-    return [r for r in recs if r["fecha"] >= hoy]
+    return [r for r in recs if r["fecha"] >= hoy and not r.get("oculto") and not ap.no_es_concierto(r.get("artista") or "")]
 
 
 def _estado(r: dict, campo: str) -> str:
@@ -92,7 +92,8 @@ def candidatos_artistas(recs: list[dict], apo: dict, hoy: str) -> list[dict]:
         # el origen: si no se sabe, o si sale de un artista identificado solo por su nombre (podría ser un homónimo);
         # el estilo: si no se sabe o si la agenda solo da una etiqueta genérica ("Varios", "Música en directo")
         solo_nombre = "nombre" in str((r.get("normalizacion") or {}).get("origen", {}).get("motivo", ""))
-        falta = {"origen": o == "desconocido" or solo_nombre,
+        # "estimado" también: en la web cuenta como "Origen sin confirmar" (bandera atenuada)
+        falta = {"origen": o in ("desconocido", "estimado") or solo_nombre,
                  "estilo": e == "desconocido" or (e == "estimado" and bool(r.get("grupos_generico")))}
         if not any(falta.values()):
             continue
@@ -102,7 +103,7 @@ def candidatos_artistas(recs: list[dict], apo: dict, hoy: str) -> list[dict]:
         x["falta"].update(c for c, v in falta.items() if v)
         # antes los de agendas y salas de música: las agendas municipales traen muchas actividades que no son conciertos
         musica = any(institucional.get(f.get("id")) is False for f in r.get("fuentes") or [])
-        x["peso"] = max(x["peso"], 3 * (o == "desconocido") + 2 * solo_nombre + 2 * (e == "desconocido") + falta["estilo"]
+        x["peso"] = max(x["peso"], 3 * (o == "desconocido") + (o == "estimado") + 2 * solo_nombre + 2 * (e == "desconocido") + falta["estilo"]
                         + 3 * musica)
         x["etiquetas"].update(str(ef.get("estilo")) for ef in r.get("estilo_fuente") or [] if ef.get("estilo"))
         x["webs"] += [f["url"] for f in r.get("fuentes") or [] if f.get("url", "").startswith("http")]
@@ -400,6 +401,8 @@ def mostrar(nombre: str) -> str:
     apo = cargar(APORTES, ap.vacio())
     k = ap.clave_artista(nombre)
     quitado = (apo.get("ocultos") or {}).pop(k, None)
+    # también contra las reglas automáticas (scraper.aportes.no_es_concierto): queda apuntado como concierto
+    apo.setdefault("mostrar", {})[k] = {"nombre": nombre, "fecha": date.today().isoformat()}
     guardar(APORTES, apo)
     return f"{'Vuelve a mostrarse' if quitado else 'No estaba oculto'}: {nombre}"
 

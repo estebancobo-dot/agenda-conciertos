@@ -1,5 +1,13 @@
 # Versiones
 
+## 2.56.0 — 2026-10-04
+
+**Fuera lo que no es un concierto, y los lotes van a por lo que la web aún enseña como "sin confirmar".**
+
+- **Reglas automáticas** (`scraper/aportes.py`, `no_es_concierto`): se ocultan por el título los partidos ("Real Madrid vs", "Movistar Estudiantes vs", de la agenda del Movistar Arena), las sesiones de DJ, las exposiciones, foros y charlas, karaoke y podcasts, humor, presentaciones de libros, cine y ferias del disco. Un título que dice "concierto", "en directo" o "live" nunca se oculta así. Con los datos de hoy: 31 eventos (15 de DJ, 6 exposiciones, 3 partidos…). Todos quedan en la lista revisable `ocultos.json` con su motivo, y un error se deshace con `tools/lotes.py mostrar`.
+- **Ocultos solo en su sala**: lo que un lote marca como "no es un concierto" se oculta en las salas donde salió (la fiesta "TAYLOR SWIFT" de la Sala But), no si ese nombre da un concierto de verdad en otra.
+- **Lotes**: preguntan también el origen de los artistas con origen solo estimado (bandera atenuada, "Origen sin confirmar" en los filtros) y no preguntan por lo oculto.
+
 ## 2.55.0 — 2026-10-04
 
 **Fase D: lotes para completar con un chat lo que ninguna web leída dice, comprobado en la página que cita.**

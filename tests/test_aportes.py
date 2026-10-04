@@ -236,3 +236,20 @@ def test_oculto_solo_en_su_sala():
     ap.aplicar_artista(fiesta, apo)
     ap.aplicar_artista(concierto, apo)
     assert fiesta.get("oculto") and not concierto.get("oculto")
+
+
+def test_reglas_no_concierto():
+    for t in ("Real Madrid vs", "Movistar Estudiantes vs", "FURI DJ", "DJ TAZZMANIA", "Fast Expo Laura Blanco",
+              "KARAOKE CANALLA", "La Cuota Comedy", "Warren Sonbert. Sesión de cortometrajes I"):
+        assert ap.no_es_concierto(t), t
+    for t in ("Baloncesto", "Queen vs. ABBA. Candlelight", "Concierto y Exposición de Guitarras", "Niños Bravos",
+              "Dj Nano en directo", "Un pingüino en mi ascensor", "Jam Session Jazz"):
+        assert not ap.no_es_concierto(t), t
+
+
+def test_regla_se_puede_deshacer():
+    r = {"fecha": "2026-10-08", "artista": "FURI DJ", "sala": "Thundercat", "fuentes": []}
+    ap.aplicar_artista(r, {})
+    assert r["oculto"]["regla"]
+    ap.aplicar_artista(r, {"mostrar": {"furi dj": {"nombre": "FURI DJ"}}})
+    assert not r.get("oculto")

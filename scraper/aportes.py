@@ -16,6 +16,7 @@ from __future__ import annotations
 
 import hashlib
 import re
+import unicodedata
 from datetime import date
 from html import unescape
 
@@ -425,6 +426,35 @@ def _fuente(url: str) -> str:
     return f"página citada y comprobada ({dominio(url)})"
 
 
+# Lo que por el título no es un concierto (partidos, sesiones de DJ, exposiciones, foros, karaoke, humor, cine,
+# presentaciones de libros…). Se oculta con su motivo en la lista revisable (ocultos.json); un falso positivo se
+# vuelve a mostrar con tools/lotes.py mostrar, que lo apunta en aportes["mostrar"]. Un título que dice "concierto"
+# nunca se oculta por estas reglas.
+_NO_CONCIERTO = [
+    (re.compile(r"\bvs\.?(\s+kids)?\s*$|\b(partido|euroliga|euroleague|liga endesa|nba|harlem globetrotters)\b"),
+     "partido o evento deportivo"),
+    (re.compile(r"^dj\s+\S|\S\s+djs?$"), "sesión de DJ"),
+    (re.compile(r"\b(fast expo|exposicion)\b"), "exposición"),
+    (re.compile(r"\b(foro|congreso|conferencia|charla|coloquio)\b"), "foro, charla o conferencia"),
+    (re.compile(r"\b(karaoke|podcast|bingo|quiz)\b"), "karaoke, podcast o juego"),
+    (re.compile(r"\b(comedy|monologos?|stand.?up)\b"), "humor"),
+    (re.compile(r"\bpresentacion (del? )?(libro|la novela|novela)\b"), "presentación de un libro"),
+    (re.compile(r"\b(cortometrajes?|proyeccion|pelicula)\b"), "cine"),
+    (re.compile(r"\b(feria del disco|mercadillo)\b"), "feria o mercadillo"),
+]
+
+
+def no_es_concierto(titulo: str) -> str | None:
+    t = unicodedata.normalize("NFKD", titulo.lower()).encode("ascii", "ignore").decode()
+    t = re.sub(r"\s+", " ", t).strip()
+    if not t or re.search(r"\bconciertos?\b|\ben directo\b|\blive\b", t):
+        return None
+    for patron, motivo in _NO_CONCIERTO:
+        if patron.search(t):
+            return motivo
+    return None
+
+
 def aplicar_artista(r: dict, aportes: dict) -> None:
     """País y estilos aportados, solo donde no hay dato de una web de música ni de la agenda. Y la marca de oculto
     para lo que no es un concierto (lista revisable "ocultos": la web no lo enseña, los datos lo conservan)."""
@@ -440,6 +470,10 @@ def aplicar_artista(r: dict, aportes: dict) -> None:
             o = None  # oculto solo en las salas donde se vio que no era un concierto
     if o:
         r["oculto"] = {"motivo": o.get("motivo") or "no es un concierto", "nombre": o.get("nombre")}
+    elif clave_artista(r.get("artista") or "") not in ((aportes or {}).get("mostrar") or {}):
+        motivo = no_es_concierto(r.get("artista") or "")
+        if motivo:
+            r["oculto"] = {"motivo": motivo, "nombre": r.get("artista"), "regla": True}
     arts = (aportes or {}).get("artistas") or {}
     if not arts:
         return
