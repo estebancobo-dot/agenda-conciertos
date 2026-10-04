@@ -1739,6 +1739,47 @@
    },
    "lote": "A-2026-10-04-21",
    "fecha": "2026-10-04"
+  },
+  "twanguero": {
+   "nombre": "Twanguero",
+   "pais": {
+    "valor": "ES",
+    "url": "https://es.wikipedia.org/wiki/Diego_Garc%C3%ADa_(m%C3%BAsico)",
+    "cita": "iones de estilo de wikipedia. carece de fuentes o referencias que aparezcan en una fuente acreditada . este aviso fue puesto el 12 de agosto de 2021. twanguero diego en madrid con el musico candy caramelo informacion personal nombre de nacimiento diego garcia apodo el twanguero otros nombres el twan",
+    "ciudad": "Valencia"
+   },
+   "enlaces": [
+    "https://twanguero.com/about/"
+   ],
+   "lote": "A-2026-10-04-22",
+   "fecha": "2026-10-04"
+  },
+  "gran aparato electrico": {
+   "nombre": "GRAN APARATO ELÉCTRICO",
+   "pais": {
+    "valor": "ES",
+    "url": "https://www.premiosrockvillamadrid.es/grupo/gran-aparato-electrico/",
+    "cita": "gran aparato electrico - premios rock villa de madrid gran aparato electrico ha recorrido los rios, canales y desagues del directo madrileno durante los ultimos 25 anos. su",
+    "ciudad": "Madrid"
+   },
+   "enlaces": [
+    "https://granaparatoelectrico.bandcamp.com/"
+   ],
+   "lote": "A-2026-10-04-22",
+   "fecha": "2026-10-04"
+  },
+  "jonathan suazo quartet": {
+   "nombre": "JONATHAN SUAZO QUARTET",
+   "estilos": {
+    "valores": [
+     "jazz"
+    ],
+    "url": "https://www.wbur.org/news/2024/10/06/the-makers-jonathan-suazo",
+    "cita": "s late father, the puerto rican musician explores his dominican roots on an album the new york times selected as one of the best of 2023. saxophonist jonathan suazo breaks new ground in latin jazz inspired by his late father, the puerto rican musician explores his dominican roots on an album the new",
+    "web_musica": false
+   },
+   "lote": "A-2026-10-04-22",
+   "fecha": "2026-10-04"
   }
  },
  "conciertos": [
@@ -5496,6 +5537,170 @@
    "lote": "A-2026-10-04-21",
    "aceptado": [],
    "rechazado": []
+  },
+  "a:en punto": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-22",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:pablo moreno en concierto": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-22",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:palabras y cuerdas": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-22",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:sofy norcross": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-22",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:jj fuentes en concierto": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-22",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:ultima calada": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-22",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:aienruta artistas": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-22",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:desert gnomos": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-22",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:dura cala": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-22",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:mario kun": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-22",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:notes to my self": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-22",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:twanguero": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-22",
+   "aceptado": [
+    "enlaces",
+    "pais"
+   ],
+   "rechazado": [
+    "estilos: ni la frase citada ni la página lo dicen junto al nombre"
+   ]
+  },
+  "a:carmen lancho": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-22",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:los malditos mojarras": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-22",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:rebel punk con fiebre de las montanas rocosas": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-22",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:the big tigers": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-22",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:nika revolt": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-22",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:gran aparato electrico": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-22",
+   "aceptado": [
+    "enlaces",
+    "pais"
+   ],
+   "rechazado": [
+    "estilos: la frase no dice ninguno de esos estilos"
+   ]
+  },
+  "a:jason joshua": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-22",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:andromeda": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-22",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:callas en concierto en holograma": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-22",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:cloudmap": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-22",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:jonathan suazo quartet": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-22",
+   "aceptado": [
+    "estilos"
+   ],
+   "rechazado": [
+    "país PR: ni la frase citada ni la página lo dicen junto al nombre"
+   ]
+  },
+  "a:lev3l": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-22",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:ikigaia": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-22",
+   "aceptado": [],
+   "rechazado": []
   }
  },
  "lotes": {
@@ -5646,263 +5851,8 @@
   "A-2026-10-04-22": {
    "tipo": "artistas",
    "creado": "2026-10-04",
-   "items": {
-    "a1": {
-     "nombre": "En Punto",
-     "clave": "en punto",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Centro Cultural José Luis López Vázquez (San Blas - Canillejas)"
-     ]
-    },
-    "a2": {
-     "nombre": "Pablo Moreno, en concierto",
-     "clave": "pablo moreno en concierto",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Centro Sociocultural Oporto (Carabanchel)"
-     ]
-    },
-    "a3": {
-     "nombre": "Palabras y Cuerdas",
-     "clave": "palabras y cuerdas",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Centro Cultural Hortaleza"
-     ]
-    },
-    "a4": {
-     "nombre": "Sofy Norcross",
-     "clave": "sofy norcross",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Dime que me Quieres"
-     ]
-    },
-    "a5": {
-     "nombre": "JJ Fuentes en concierto",
-     "clave": "jj fuentes en concierto",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Centro Cultural Emilia Pardo Bazán (Salamanca)"
-     ]
-    },
-    "a6": {
-     "nombre": "ÚLTIMA CALADA",
-     "clave": "ultima calada",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Hangar 48"
-     ]
-    },
-    "a7": {
-     "nombre": "AIEnRuta Artistas",
-     "clave": "aienruta artistas",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Maravillas Club"
-     ]
-    },
-    "a8": {
-     "nombre": "DESERT GNOMOS",
-     "clave": "desert gnomos",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "El Perro Club"
-     ]
-    },
-    "a9": {
-     "nombre": "Dura Calá",
-     "clave": "dura cala",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Silikona"
-     ]
-    },
-    "a10": {
-     "nombre": "Mario Kun",
-     "clave": "mario kun",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Cadavra"
-     ]
-    },
-    "a11": {
-     "nombre": "Notes to my self",
-     "clave": "notes to my self",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Wurlitzer Ballroom"
-     ]
-    },
-    "a12": {
-     "nombre": "Twanguero",
-     "clave": "twanguero",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Sala Villanos"
-     ]
-    },
-    "a13": {
-     "nombre": "CARMEN LANCHO",
-     "clave": "carmen lancho",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Tempo Audiophile Club"
-     ]
-    },
-    "a14": {
-     "nombre": "LOS MALDITOS MOJARRAS",
-     "clave": "los malditos mojarras",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Moe"
-     ]
-    },
-    "a15": {
-     "nombre": "REBEL PUNK CON FIEBRE DE LAS MONTAÑAS ROCOSAS",
-     "clave": "rebel punk con fiebre de las montanas rocosas",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Sala Clamores"
-     ]
-    },
-    "a16": {
-     "nombre": "The Big Tigers",
-     "clave": "the big tigers",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Big Mama Ballroom"
-     ]
-    },
-    "a17": {
-     "nombre": "Nika Revolt",
-     "clave": "nika revolt",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Cadillac Solitario"
-     ]
-    },
-    "a18": {
-     "nombre": "GRAN APARATO ELÉCTRICO",
-     "clave": "gran aparato electrico",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Sala Siroco"
-     ]
-    },
-    "a19": {
-     "nombre": "Jason Joshua",
-     "clave": "jason joshua",
-     "falta": [
-      "estilo"
-     ],
-     "salas": [
-      "Sala Copérnico"
-     ]
-    },
-    "a20": {
-     "nombre": "ANDROMEDA",
-     "clave": "andromeda",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Rockville"
-     ]
-    },
-    "a21": {
-     "nombre": "Callas en concierto - En holograma",
-     "clave": "callas en concierto en holograma",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Gran Teatro Caixabank Príncipe Pío"
-     ]
-    },
-    "a22": {
-     "nombre": "Cloudmap",
-     "clave": "cloudmap",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Independance Club"
-     ]
-    },
-    "a23": {
-     "nombre": "JONATHAN SUAZO QUARTET",
-     "clave": "jonathan suazo quartet",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Café Central Ateneo"
-     ]
-    },
-    "a24": {
-     "nombre": "Lev3l",
-     "clave": "lev3l",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Sala Siroco"
-     ]
-    },
-    "a25": {
-     "nombre": "IKIGAIA",
-     "clave": "ikigaia",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Moby Dick Club"
-     ]
-    }
-   },
-   "pendientes": 385
+   "pendientes": 385,
+   "importado": "2026-10-04"
   }
  },
  "ocultos": {
