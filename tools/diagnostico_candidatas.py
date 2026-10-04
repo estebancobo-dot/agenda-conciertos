@@ -138,6 +138,32 @@ if len(sys.argv) > 2 and sys.argv[1] in ("--crudo", "--render"):
                         print(f"  {h} · {a.get_text(' ', strip=True)[:90]}")
                 print(f"  ({len(vistos)} enlaces)")
                 continue
+            if marca == "claves":
+                # "URL@claves": la forma de los datos que trae la página (claves, tamaño de las listas y un ejemplo)
+                # y el título; para ver dónde están los conciertos en un JSON demasiado largo para enseñarlo entero
+                sp = BeautifulSoup(t, "lxml")
+                print("  título:", sp.title.get_text(strip=True) if sp.title else None)
+
+                def forma(x, pre="", fondo=0):
+                    if fondo > 6:
+                        return
+                    if isinstance(x, dict):
+                        for k, v in list(x.items())[:40]:
+                            tam = f"[{len(v)}]" if isinstance(v, list) else ""
+                            ej = "" if isinstance(v, (dict, list)) else f" = {str(v)[:70]!r}"
+                            print(f"  {pre}{k}{tam}{ej}")
+                            forma(v, pre + "  ", fondo + 1)
+                    elif isinstance(x, list) and x:
+                        forma(x[0], pre + "  ", fondo + 1)
+                for sc in sp.select('script[type="application/json"], script#__NEXT_DATA__, [data-page]'):
+                    raw = sc.get("data-page") or sc.get_text()
+                    try:
+                        datos = json.loads(raw)
+                    except ValueError:
+                        continue
+                    print(f"  <{sc.name} {sc.get('id') or sc.get('type') or 'data-page'}> {len(raw)} letras")
+                    forma(datos)
+                continue
             if marca == "json":
                 # "URL@json": los datos que trae la página para montarse con JavaScript (Next.js, JSON-LD…)
                 for sc in BeautifulSoup(t, "lxml").select('script[type="application/json"], script[type="application/ld+json"], script#__NEXT_DATA__'):
