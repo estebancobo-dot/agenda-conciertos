@@ -8,13 +8,23 @@ name: Lotes para completar datos
 # Comentarios que entiende: la respuesta del chat (con su bloque JSON), "siguiente" (salta el lote pendiente),
 # "artistas" o "conciertos" (salta y pide uno de ese tipo) y "estado".
 on:
-  schedule:
-    - cron: "25 5 * * *"   # después de la lectura completa: a las 7:25 en Madrid (horario de verano) ya está
+  # sin publicación diaria: los lotes los investiga y contesta Claude desde su sesión (tools/lotes.py), con esta tarea
+  # a mano (accion generar → importar), y la comprobación es la misma. La incidencia sigue funcionando si se quiere
+  # contestar algún lote a mano.
   workflow_dispatch:
     inputs:
+      accion:
+        description: "generar, importar o estado"
+        default: "generar"
       tipo:
         description: "Tipo del lote: auto, artistas o conciertos"
         default: "auto"
+      n:
+        description: "Elementos por lote (vacío = 20 artistas o 15 conciertos)"
+        default: ""
+      respuesta:
+        description: "Para importar: la respuesta (bloque JSON con el campo lote)"
+        default: ""
   issue_comment:
     types: [created]
 
@@ -30,7 +40,7 @@ jobs:
   lotes:
     # solo comentarios del dueño en la incidencia de los lotes (nadie más puede meter datos)
     if: >-
-      github.event_name != 'issue_comment' || (
+      github.event_name == 'issue_comment' && (
         github.event.comment.author_association == 'OWNER' &&
         contains(github.event.issue.labels.*.name, 'lotes') &&
         github.event.comment.user.type != 'Bot')
@@ -122,16 +132,42 @@ jobs:
 
       - name: Guardar aportes (rama aportes)
         if: always() && hashFiles('data/aportes.json') != ''
+        run: bash tools/guardar_aportes.sh
+
+  sesion:
+    # lotes lanzados a mano (desde la sesión de Claude): generar uno, importar su respuesta o ver el estado
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      GH_TOKEN: ${{ github.token }}
+      RESPUESTA: ${{ github.event.inputs.respuesta }}
+      TIPO: ${{ github.event.inputs.tipo || 'auto' }}
+      N: ${{ github.event.inputs.n }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Traer datos y aportes
+        run: python tools/datos.py
+      - name: Lote
         run: |
-          D="$RUNNER_TEMP/aportes"
-          git init -q "$D" && cd "$D"
-          git remote add origin "https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}.git"
-          if git fetch -q --depth=1 origin aportes 2>/dev/null; then git checkout -q FETCH_HEAD; else git checkout -q --orphan aportes; fi
-          cp "$GITHUB_WORKSPACE/data/aportes.json" aportes.json
-          mkdir -p informes
-          [ -f "$GITHUB_WORKSPACE/informe.md" ] && cp "$GITHUB_WORKSPACE/informe.md" "informes/$(date -u +%Y%m%dT%H%M%S).md"
-          git add -A
-          if git diff --cached --quiet; then echo "Sin cambios"; exit 0; fi
-          git -c user.name="agenda-bot" -c user.email="agenda-bot@users.noreply.github.com" commit -qm "Aportes de los lotes $(date -u +%FT%RZ)"
-          for i in 1 2 3 4; do git push -q origin HEAD:aportes && exit 0; sleep $((2**i)); done
-          exit 1
+          case "${{ github.event.inputs.accion }}" in
+            importar)
+              printf '%s' "$RESPUESTA" > respuesta.txt
+              python tools/lotes.py importar respuesta.txt --informe informe.md ;;
+            estado)
+              python tools/lotes.py estado ;;
+            *)
+              python tools/lotes.py saltar >/dev/null   # un lote generado y no contestado se da por perdido
+              python tools/lotes.py generar --tipo "$TIPO" ${N:+--n "$N"} --salida lote.md > /dev/null
+              echo "=== LOTE ==="; cat lote.md; echo "=== FIN ===" ;;
+          esac
+      - name: Guardar aportes (rama aportes)
+        if: always() && hashFiles('data/aportes.json') != ''
+        run: bash tools/guardar_aportes.sh
