@@ -1,5 +1,15 @@
 # Versiones
 
+## 2.55.0 — 2026-10-04
+
+**Fase D: lotes para completar con un chat lo que ninguna web leída dice, comprobado en la página que cita.**
+
+- **Qué se pregunta**: de los artistas, el país (y la ciudad) y los estilos concretos, cuando no se saben o el origen sale de un artista identificado solo por su nombre (posible homónimo), y la identidad (web oficial, Bandcamp…). De los conciertos de los próximos 3 meses sin confirmar, sin hora o sin precio: la página de la sala o de la venta de entradas, la hora, el precio y si se ha cancelado. No se pregunta por tributos, Candlelight, jams ni sesiones fijas. Hoy: unos 860 artistas (≈43 lotes de 20) y 880 conciertos (≈59 lotes de 15), empezando por lo que más falta y lo más cercano. Lo ya preguntado no se repite en 30 días.
+- **Cómo se comprueba** (`scraper/aportes.py`): cada dato llega con una página y la frase literal que lo dice. Se abre la página con el mismo lector que las agendas (robots.txt, identificación, ritmo; Instagram, Facebook, X, TikTok, YouTube, Spotify y Linktree no valen porque no se pueden leer) y solo se acepta si la página nombra al artista, la frase está en la página y dice ese país (gentilicio, país o ciudad), esos estilos, o, para un concierto, si la fecha, la hora y el precio están junto al nombre del artista o en los datos del evento de ese día (no en otro concierto de la misma página). Un enlace de una ticketera da el enlace de compra; una página de la web oficial de la sala, la confirmación de la sala. Si el chat no está seguro de la identidad, no se acepta nada de ese artista.
+- **Cómo se aplica**: en cada lectura, solo donde falte el dato y sin pisar nunca a Discogs, MusicBrainz, Wikipedia, Wikidata, Last.fm ni a las agendas. El origen aportado es "conocido" con su página y su frase; el estilo es "conocido" si la página es de una web de música (Bandcamp, Discogs, MusicBrainz, Wikipedia, Last.fm, RateYourMusic) y "estimado" si no. Lo aportado vive en la rama `aportes` (`aportes.json` e informes de cada lote).
+- **Lo más automático posible** (`.github/workflows/lotes.yml`): todo pasa en una incidencia de GitHub con la etiqueta "lotes". Cada mañana a las 7:25 (Madrid) se publica el siguiente lote listo para copiar; al pegar como comentario la respuesta del chat se comprueba, se contesta con lo aceptado y lo rechazado (y por qué), se guarda y se publica el siguiente. Entiende también `siguiente`, `artistas`, `conciertos` y `estado`. Solo procesa comentarios del dueño del repositorio. Si el chat dice que algo no es un concierto (un partido, cine…), el informe lo marca para revisar.
+- Probado con páginas reales (diagnóstico `lotes`): 10 de 10 casos como se esperaba (datos correctos aceptados; país inventado, frase que no está, página de otro artista, hora y precio falsos y otra fecha rechazados).
+
 ## 2.54.0 — 2026-10-04
 
 **Nueva fuente: JacksOnLive.**
