@@ -1,215 +1,331 @@
 {
  "version": 1,
- "artistas": {},
+ "artistas": {
+  "swing machine orchestra": {
+   "nombre": "Swing Machine Orchestra",
+   "estilos": {
+    "valores": [
+     "swing"
+    ],
+    "url": "https://www.madrid24horas.com/articulo/madrid/swing-grandes-bandas-vuelve-madrid-swing-machine-orchestra-galileo-galilei/20260930142218107831.html",
+    "cita": "El swing de las grandes bandas vuelve a Madrid con la Swing Machine Orchestra",
+    "web_musica": false
+   },
+   "lote": "A-2026-10-04-01",
+   "fecha": "2026-10-04"
+  },
+  "fabio liones dawn of victory": {
+   "nombre": "FABIO LIONE’S DAWN OF VICTORY",
+   "pais": {
+    "valor": "IT",
+    "url": "https://en.wikipedia.org/wiki/Fabio_Lione",
+    "cita": "known professionally as Fabio Lione, is an Italian singer who has worked with many bands in the heavy metal genre"
+   },
+   "estilos": {
+    "valores": [
+     "heavy metal"
+    ],
+    "url": "https://en.wikipedia.org/wiki/Fabio_Lione",
+    "cita": "known professionally as Fabio Lione, is an Italian singer who has worked with many bands in the heavy metal genre",
+    "web_musica": true
+   },
+   "enlaces": [
+    "https://en.wikipedia.org/wiki/Fabio_Lione"
+   ],
+   "lote": "A-2026-10-04-01",
+   "fecha": "2026-10-04"
+  },
+  "the swingin pott": {
+   "nombre": "THE SWINGIN’ POTT",
+   "estilos": {
+    "valores": [
+     "swing",
+     "jazz"
+    ],
+    "url": "https://tempoclub.es/evento/the-swingin-pot-swing-jazz-vocal/",
+    "cita": "THE SWINGIN’ POTT (Swing & Jazz Vocal)",
+    "web_musica": false
+   },
+   "lote": "A-2026-10-04-01",
+   "fecha": "2026-10-04"
+  },
+  "bewitched": {
+   "nombre": "Bewitched",
+   "pais": {
+    "valor": "SE",
+    "url": "https://atanathos.com/concierto/bewitched-mork/",
+    "cita": "bewitched (suecia) black / thrash metal con motivo del 30o aniversario del clasico “diabolical desecration”. bewitched regresa a los escenarios con una , bewit"
+   },
+   "estilos": {
+    "valores": [
+     "thrash metal"
+    ],
+    "url": "https://atanathos.com/concierto/bewitched-mork/",
+    "cita": "bewitched (suecia) black / thrash metal con motivo del 30o aniversario del clasico “diabolical desecration”. bewitched regresa a los escenarios con una , bewit",
+    "web_musica": false
+   },
+   "lote": "A-2026-10-04-01",
+   "fecha": "2026-10-04"
+  },
+  "mork": {
+   "nombre": "Mork",
+   "pais": {
+    "valor": "NO",
+    "url": "https://peaceville.com/bands/mork/",
+    "cita": "one of the top Norwegian black metal acts of recent years"
+   },
+   "estilos": {
+    "valores": [
+     "black metal"
+    ],
+    "url": "https://peaceville.com/bands/mork/",
+    "cita": "one of the top Norwegian black metal acts of recent years",
+    "web_musica": false
+   },
+   "lote": "A-2026-10-04-01",
+   "fecha": "2026-10-04"
+  },
+  "carlota mad": {
+   "nombre": "Carlota Mad",
+   "pais": {
+    "valor": "ES",
+    "url": "https://elgeneracionalpost.com/cultura/musica/2022/1031/61281/carlota-mad-el-miedo-inicial-se-acabo-convirtiendo-en-un-impulso-para-seguir.html",
+    "cita": "nacida en madrid, carlota mad es una joven cantautora que ha logrado cautivar a multitud de personas con sus letras dulces y sinceras. carlota mad: «el miedo inicial se acabo conv",
+    "ciudad": "Madrid"
+   },
+   "lote": "A-2026-10-04-01",
+   "fecha": "2026-10-04"
+  },
+  "she": {
+   "nombre": "SHÉ",
+   "pais": {
+    "valor": "ES",
+    "url": "https://www.movistararena.es/programacion/evento/sh-la-serpiente-gira-20-aniversario",
+    "cita": "el artista alicantino she llegara a madrid el proximo 9 de octubre de 2026 con uno de los conciertos mas importantes de su... she - la serpiente gira 20 aniversario | movistar",
+    "ciudad": "Alicante"
+   },
+   "lote": "A-2026-10-04-01",
+   "fecha": "2026-10-04"
+  },
+  "orly": {
+   "nombre": "Orly",
+   "pais": {
+    "valor": "FR",
+    "url": "https://conciertospormadrid.com/noticias/molded-in-blackness-fest-2026-en-madrid/",
+    "cita": "acompanadas por una seleccion de artistas plasticos cuyas obras dialogaran con los sonidos que resonaran sobre el escenario. procedentes de francia, orly destacan por una propuesta que se mueve entre el post-metal, el sludge y los desarrollos atmosfericos. su musica combina contundencia y sensibilid"
+   },
+   "estilos": {
+    "valores": [
+     "sludge",
+     "post-metal"
+    ],
+    "url": "https://conciertospormadrid.com/noticias/molded-in-blackness-fest-2026-en-madrid/",
+    "cita": "acompanadas por una seleccion de artistas plasticos cuyas obras dialogaran con los sonidos que resonaran sobre el escenario. procedentes de francia, orly destacan por una propuesta que se mueve entre el post-metal, el sludge y los desarrollos atmosfericos. su musica combina contundencia y sensibilid",
+    "web_musica": false
+   },
+   "lote": "A-2026-10-04-01",
+   "fecha": "2026-10-04"
+  },
+  "bossa pra voce": {
+   "nombre": "BOSSA PRA VOCÉ",
+   "estilos": {
+    "valores": [
+     "bossa nova"
+    ],
+    "url": "https://ticketandroll.com/evento/bossa-pra-voce-en-el-rincon-del-arte-nuevo",
+    "cita": "“bossa pra voce” es un proyecto del duo formado por la cantante andrea lahora y el guitarrista sacri delfino.inspirados en las leyendas de la bossa nova como, joao g",
+    "web_musica": false
+   },
+   "lote": "A-2026-10-04-01",
+   "fecha": "2026-10-04"
+  }
+ },
  "conciertos": [],
- "consultados": {},
+ "consultados": {
+  "a:wah": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-01",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:mechanic moods live session": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-01",
+   "aceptado": [],
+   "rechazado": [
+    "estilos: la página citada no nombra a MECHANIC MOODS LIVE SESSION"
+   ]
+  },
+  "a:germinal sesion ii": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-01",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:charly": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-01",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:nela": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-01",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:swing machine orchestra": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-01",
+   "aceptado": [
+    "estilos"
+   ],
+   "rechazado": []
+  },
+  "a:fabio liones dawn of victory": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-01",
+   "aceptado": [
+    "enlaces",
+    "estilos",
+    "pais"
+   ],
+   "rechazado": []
+  },
+  "a:the swingin pott": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-01",
+   "aceptado": [
+    "estilos"
+   ],
+   "rechazado": []
+  },
+  "a:bewitched": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-01",
+   "aceptado": [
+    "estilos",
+    "pais"
+   ],
+   "rechazado": []
+  },
+  "a:los gizzard": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-01",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:mork": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-01",
+   "aceptado": [
+    "estilos",
+    "pais"
+   ],
+   "rechazado": []
+  },
+  "a:intruso jazz session": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-01",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:kontinental and 039 25": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-01",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:daniela grav": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-01",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:there are no outdoor ice rinks in madrid luz y sombra work in progress": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-01",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:babylon band": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-01",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:carlota mad": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-01",
+   "aceptado": [
+    "pais"
+   ],
+   "rechazado": [
+    "estilos: ni la frase citada ni la página lo dicen junto al nombre"
+   ]
+  },
+  "a:sonora sewers inc": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-01",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:carmela y otras historias cantadas": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-01",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:sanguesa brothers": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-01",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:she": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-01",
+   "aceptado": [
+    "pais"
+   ],
+   "rechazado": []
+  },
+  "a:joma": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-01",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:orly": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-01",
+   "aceptado": [
+    "estilos",
+    "pais"
+   ],
+   "rechazado": []
+  },
+  "a:la cuota comedy": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-01",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:bossa pra voce": {
+   "fecha": "2026-10-04",
+   "lote": "A-2026-10-04-01",
+   "aceptado": [
+    "estilos"
+   ],
+   "rechazado": []
+  }
+ },
  "lotes": {
   "A-2026-10-04-01": {
    "tipo": "artistas",
    "creado": "2026-10-04",
-   "items": {
-    "a1": {
-     "nombre": "Wah!",
-     "clave": "wah",
-     "falta": [
-      "estilo",
-      "origen"
-     ]
-    },
-    "a2": {
-     "nombre": "MECHANIC MOODS LIVE SESSION",
-     "clave": "mechanic moods live session",
-     "falta": [
-      "estilo",
-      "origen"
-     ]
-    },
-    "a3": {
-     "nombre": "Germinal - Sesión II",
-     "clave": "germinal sesion ii",
-     "falta": [
-      "estilo",
-      "origen"
-     ]
-    },
-    "a4": {
-     "nombre": "Charly",
-     "clave": "charly",
-     "falta": [
-      "estilo",
-      "origen"
-     ]
-    },
-    "a5": {
-     "nombre": "Nela",
-     "clave": "nela",
-     "falta": [
-      "estilo",
-      "origen"
-     ]
-    },
-    "a6": {
-     "nombre": "Swing Machine Orchestra",
-     "clave": "swing machine orchestra",
-     "falta": [
-      "estilo",
-      "origen"
-     ]
-    },
-    "a7": {
-     "nombre": "FABIO LIONE’S DAWN OF VICTORY",
-     "clave": "fabio liones dawn of victory",
-     "falta": [
-      "estilo",
-      "origen"
-     ]
-    },
-    "a8": {
-     "nombre": "THE SWINGIN’ POTT",
-     "clave": "the swingin pott",
-     "falta": [
-      "estilo",
-      "origen"
-     ]
-    },
-    "a9": {
-     "nombre": "Bewitched",
-     "clave": "bewitched",
-     "falta": [
-      "estilo",
-      "origen"
-     ]
-    },
-    "a10": {
-     "nombre": "Los Gizzard",
-     "clave": "los gizzard",
-     "falta": [
-      "estilo",
-      "origen"
-     ]
-    },
-    "a11": {
-     "nombre": "Mork",
-     "clave": "mork",
-     "falta": [
-      "estilo",
-      "origen"
-     ]
-    },
-    "a12": {
-     "nombre": "INTRUSO JAZZ SESSION",
-     "clave": "intruso jazz session",
-     "falta": [
-      "estilo",
-      "origen"
-     ]
-    },
-    "a13": {
-     "nombre": "KONTINENTAL &#039;25",
-     "clave": "kontinental and 039 25",
-     "falta": [
-      "estilo",
-      "origen"
-     ]
-    },
-    "a14": {
-     "nombre": "DANIELA GRAV",
-     "clave": "daniela grav",
-     "falta": [
-      "estilo",
-      "origen"
-     ]
-    },
-    "a15": {
-     "nombre": "There are no outdoor ice rinks in Madrid + Luz y sombra (work in progress)",
-     "clave": "there are no outdoor ice rinks in madrid luz y sombra work in progress",
-     "falta": [
-      "estilo",
-      "origen"
-     ]
-    },
-    "a16": {
-     "nombre": "Babylon- band",
-     "clave": "babylon band",
-     "falta": [
-      "estilo",
-      "origen"
-     ]
-    },
-    "a17": {
-     "nombre": "Carlota Mad",
-     "clave": "carlota mad",
-     "falta": [
-      "estilo",
-      "origen"
-     ]
-    },
-    "a18": {
-     "nombre": "Sonora Sewers Inc",
-     "clave": "sonora sewers inc",
-     "falta": [
-      "estilo",
-      "origen"
-     ]
-    },
-    "a19": {
-     "nombre": "Carmela y otras historias cantadas",
-     "clave": "carmela y otras historias cantadas",
-     "falta": [
-      "estilo",
-      "origen"
-     ]
-    },
-    "a20": {
-     "nombre": "Sangüesa Brothers",
-     "clave": "sanguesa brothers",
-     "falta": [
-      "estilo",
-      "origen"
-     ]
-    },
-    "a21": {
-     "nombre": "SHÉ",
-     "clave": "she",
-     "falta": [
-      "estilo",
-      "origen"
-     ]
-    },
-    "a22": {
-     "nombre": "Joma",
-     "clave": "joma",
-     "falta": [
-      "estilo",
-      "origen"
-     ]
-    },
-    "a23": {
-     "nombre": "Orly",
-     "clave": "orly",
-     "falta": [
-      "estilo",
-      "origen"
-     ]
-    },
-    "a24": {
-     "nombre": "La Cuota Comedy",
-     "clave": "la cuota comedy",
-     "falta": [
-      "estilo",
-      "origen"
-     ]
-    },
-    "a25": {
-     "nombre": "BOSSA PRA VOCÉ",
-     "clave": "bossa pra voce",
-     "falta": [
-      "estilo",
-      "origen"
-     ]
-    }
-   },
-   "pendientes": 892
+   "pendientes": 892,
+   "importado": "2026-10-04"
   }
  }
 }
