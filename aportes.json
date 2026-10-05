@@ -8902,6 +8902,257 @@
    "creado": "2026-10-05",
    "pendientes": 60,
    "importado": "2026-10-05"
+  },
+  "A-2026-10-05-09": {
+   "tipo": "artistas",
+   "creado": "2026-10-05",
+   "items": {
+    "a1": {
+     "nombre": "Concierto de música renacentista",
+     "clave": "concierto de musica renacentista",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Biblioteca Pública Municipal Miguel Delibes (Moratalaz)"
+     ]
+    },
+    "a2": {
+     "nombre": "Buster Keaton a ritmo de Jazz. Siete Ocasiones",
+     "clave": "buster keaton a ritmo de jazz siete ocasiones",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Centro Cultural Carril del Conde (Hortaleza)"
+     ]
+    },
+    "a3": {
+     "nombre": "Orfeón de Moratalaz",
+     "clave": "orfeon de moratalaz",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Centro Cultural Valdebernardo (Vicálvaro)"
+     ]
+    },
+    "a4": {
+     "nombre": "Banda de música de Policía municipal de Madrid",
+     "clave": "banda de musica de policia municipal de madrid",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Centro Cultural Zazuar (Villa de Vallecas)"
+     ]
+    },
+    "a5": {
+     "nombre": "Coro Imagine",
+     "clave": "coro imagine",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Centro Cultural San Francisco La Prensa (Carabanchel)"
+     ]
+    },
+    "a6": {
+     "nombre": "Luis López Trio",
+     "clave": "luis lopez trio",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Centro Cultural El Pozo del tío Raimundo (Puente de Vallecas)"
+     ]
+    },
+    "a7": {
+     "nombre": "Yudania Gómez Heredia",
+     "clave": "yudania gomez heredia",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Parroquia Santa María La Antigua"
+     ]
+    },
+    "a8": {
+     "nombre": "Concierto Coral Polifónica La Montaña",
+     "clave": "concierto coral polifonica la montana",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Centro Municipal de Mayores Nicanor Barroso"
+     ]
+    },
+    "a9": {
+     "nombre": "Sesión de jazz",
+     "clave": "sesion de jazz",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Centro Sociocultural Maestro Alonso (Salamanca)"
+     ]
+    },
+    "a10": {
+     "nombre": "Bolereando",
+     "clave": "bolereando",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Auditorio Joaquín Rosado (Moncloa-Aravaca)"
+     ]
+    },
+    "a11": {
+     "nombre": "Pausaje",
+     "clave": "pausaje",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Fundación Fran Daurel"
+     ]
+    },
+    "a12": {
+     "nombre": "Boleros con alma",
+     "clave": "boleros con alma",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Centro Sociocultural Rafael de León (Fuencarral - El Pardo)"
+     ]
+    },
+    "a13": {
+     "nombre": "Duo Liquid Jazz",
+     "clave": "duo liquid jazz",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Centro Cultural Benjamín Palencia (Villa de Vallecas)"
+     ]
+    },
+    "a14": {
+     "nombre": "Esta copla es para ti",
+     "clave": "esta copla es para ti",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Centro Sociocultural Almirante Churruca (Latina)"
+     ]
+    },
+    "a15": {
+     "nombre": "Mi tierra",
+     "clave": "mi tierra",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Centro Sociocultural Alberto Sánchez (Puente de Vallecas)"
+     ]
+    },
+    "a16": {
+     "nombre": "Modern Choir",
+     "clave": "modern choir",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Centro Cultural Fernando de los Ríos (Latina)"
+     ]
+    },
+    "a17": {
+     "nombre": "Concierto. Coral Fundación San Diego",
+     "clave": "concierto coral fundacion san diego",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Parroquia Santa Ana y La Esperanza"
+     ]
+    },
+    "a18": {
+     "nombre": "Coro de castañuelas de Madrid",
+     "clave": "coro de castanuelas de madrid",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Centro Cultural San Francisco La Prensa (Carabanchel)"
+     ]
+    },
+    "a19": {
+     "nombre": "Concierto. Coral Fundación Gredos San Diego",
+     "clave": "concierto coral fundacion gredos san diego",
+     "falta": [
+      "origen"
+     ],
+     "salas": []
+    },
+    "a20": {
+     "nombre": "Rock & Music",
+     "clave": "rock and music",
+     "falta": [
+      "origen"
+     ],
+     "salas": []
+    },
+    "a21": {
+     "nombre": "Coro amabile",
+     "clave": "coro amabile",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Centro Cultural Buenavista (Salamanca)"
+     ]
+    },
+    "a22": {
+     "nombre": "Omnia dúo violín y chelo",
+     "clave": "omnia duo violin y chelo",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Centro Cultural Quinta del Berro - Rafael Altamira (Salamanca)"
+     ]
+    },
+    "a23": {
+     "nombre": "Orquesta Maestro Bernardo Martínez",
+     "clave": "orquesta maestro bernardo martinez",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Centro Cultural Fernando Lázaro Carreter (Carabanchel)"
+     ]
+    },
+    "a24": {
+     "nombre": "MARIVÍ BLASCO",
+     "clave": "marivi blasco",
+     "falta": [
+      "origen"
+     ],
+     "salas": []
+    },
+    "a25": {
+     "nombre": "Ópera Bastián y Bastiana",
+     "clave": "opera bastian y bastiana",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Centro Cultural Eduardo Úrculo (Tetuán)"
+     ]
+    }
+   },
+   "pendientes": 35
   }
  },
  "ocultos": {
