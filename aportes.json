@@ -6989,6 +6989,260 @@
    "creado": "2026-10-04",
    "pendientes": 260,
    "importado": "2026-10-04"
+  },
+  "A-2026-10-05-01": {
+   "tipo": "artistas",
+   "creado": "2026-10-05",
+   "items": {
+    "a1": {
+     "nombre": "MINIVER",
+     "clave": "miniver",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "El Perro Club"
+     ]
+    },
+    "a2": {
+     "nombre": "DÚO MOONLIGHT - EL JAZZ SE VISTE DE CLÁSICO",
+     "clave": "duo moonlight el jazz se viste de clasico",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Big Mama Ballroom"
+     ]
+    },
+    "a3": {
+     "nombre": "BUHOS",
+     "clave": "buhos",
+     "falta": [
+      "estilo"
+     ],
+     "salas": [
+      "Sala But"
+     ]
+    },
+    "a4": {
+     "nombre": "COBARDES",
+     "clave": "cobardes",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Potemkim"
+     ]
+    },
+    "a5": {
+     "nombre": "Spike and The Gimme Gimmes",
+     "clave": "spike and the gimme gimmes",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Sala Copérnico"
+     ]
+    },
+    "a6": {
+     "nombre": "MANUEL JESÚS (Pop)",
+     "clave": "manuel jesus pop",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Tempo Audiophile Club"
+     ]
+    },
+    "a7": {
+     "nombre": "Plaza de Cascorro",
+     "clave": "plaza de cascorro",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": []
+    },
+    "a8": {
+     "nombre": "Joana Santos",
+     "clave": "joana santos",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Independance Club"
+     ]
+    },
+    "a9": {
+     "nombre": "DAN PRATT LINE",
+     "clave": "dan pratt line",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Café El Despertar"
+     ]
+    },
+    "a10": {
+     "nombre": "MILES & COLTRANE 100 AÑOS por PABLO TORTI QUINTET - JAZZ CON SABOR A CLUB 2026",
+     "clave": "miles and coltrane 100 anos por pablo torti quintet jazz con sabor a club 2026",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Café Berlín"
+     ]
+    },
+    "a11": {
+     "nombre": "JOCKEY CLUB",
+     "clave": "jockey club",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Café La Palma"
+     ]
+    },
+    "a12": {
+     "nombre": "TRONKAS!",
+     "clave": "tronkas",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Sala El Sol"
+     ]
+    },
+    "a13": {
+     "nombre": "ANDREEW Venezuela",
+     "clave": "andreew venezuela",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Tempo Audiophile Club"
+     ]
+    },
+    "a14": {
+     "nombre": "Luis “El Zambo” presenta “Conexión Santiago” - 9º FFC",
+     "clave": "luis el zambo presenta conexion santiago 9o ffc",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Café Berlín"
+     ]
+    },
+    "a15": {
+     "nombre": "Red Zone / King Crimson",
+     "clave": "red zone king crimson",
+     "falta": [
+      "origen"
+     ],
+     "salas": []
+    },
+    "a16": {
+     "nombre": "TORQUE",
+     "clave": "torque",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "The RockLab"
+     ]
+    },
+    "a17": {
+     "nombre": "Whitney Houston Hologram Tour",
+     "clave": "whitney houston hologram tour",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Gran Teatro Caixabank Príncipe Pío"
+     ]
+    },
+    "a18": {
+     "nombre": "Broke Carrey",
+     "clave": "broke carrey",
+     "falta": [
+      "estilo"
+     ],
+     "salas": [
+      "Sala El Sol"
+     ]
+    },
+    "a19": {
+     "nombre": "Santi Sax Music",
+     "clave": "santi sax music",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Sala Nazca"
+     ]
+    },
+    "a20": {
+     "nombre": "Alex Fernández",
+     "clave": "alex fernandez",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Gran Teatro Caixabank Príncipe Pío / Music Station Príncipe Pío"
+     ]
+    },
+    "a21": {
+     "nombre": "Wedge",
+     "clave": "wedge",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Wurlitzer Ballroom"
+     ]
+    },
+    "a22": {
+     "nombre": "PEPE RIVERO TRÍOFT. MARÍA BERASARTE",
+     "clave": "pepe rivero trioft maria berasarte",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Café Central Ateneo"
+     ]
+    },
+    "a23": {
+     "nombre": "Mojo Thunder",
+     "clave": "mojo thunder",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Fun House"
+     ]
+    },
+    "a24": {
+     "nombre": "LIDIA AGUILAR",
+     "clave": "lidia aguilar",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Tempo Audiophile Club"
+     ]
+    },
+    "a25": {
+     "nombre": "HOSS&SWET 1987",
+     "clave": "hoss and swet 1987",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Sala Villanos"
+     ]
+    }
+   },
+   "pendientes": 231
   }
  },
  "ocultos": {
