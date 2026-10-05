@@ -2308,6 +2308,121 @@
    },
    "lote": "A-2026-10-05-03",
    "fecha": "2026-10-05"
+  },
+  "andres suarez": {
+   "nombre": "Andrés Suárez",
+   "pais": {
+    "valor": "ES",
+    "url": "https://en.wikipedia.org/wiki/Andr%C3%A9s_Su%C3%A1rez",
+    "cita": "andres suarez - wikipedia andres suarez spanish singer wikimedia foundation, inc. contributors to wikimedia projects andres suarez - wikipedia jump to content main",
+    "ciudad": "Ferrol"
+   },
+   "estilos": {
+    "valores": [
+     "cantautor"
+    ],
+    "url": "https://en.wikipedia.org/wiki/Andr%C3%A9s_Su%C3%A1rez",
+    "cita": "suarez (2020) viaje de vida y vuelta (2023) extended plays [ edit ] piedras y charcos (2010) references [ edit ] ↑ serna, rebeca (19 november 2006). \"andres suarez won the xiii concurso de cantautores\" . diario de burgos. ↑ villa trovadora (5 june 2006). \"ganadores de la 1a edicion (5 de junio de 20",
+    "web_musica": true
+   },
+   "lote": "A-2026-10-05-04",
+   "fecha": "2026-10-05"
+  },
+  "meritxell neddermann": {
+   "nombre": "Meritxell Neddermann",
+   "pais": {
+    "valor": "ES",
+    "url": "https://ca.wikipedia.org/wiki/Meritxell_Neddermann",
+    "cita": "meritxell neddermann - viquipedia, l'enciclopedia lliure meritxell neddermann cantautora catalana wikimedia foundation, inc. contributors to wikimedia projects meritxell",
+    "ciudad": "Barcelona"
+   },
+   "estilos": {
+    "valores": [
+     "pop",
+     "electrónica"
+    ],
+    "url": "https://capgros.elnacional.cat/es/cultura/meritxell-neddermann-se-suelta-entre-pop-electronica_811165_102.html",
+    "cita": "meritxell neddermann: \"a 'suelta' me siento mucho mas exploradora, juguetona y atrevida que en el disco anterior\" meritxell neddermann se suelta entre pop y electronica m",
+    "web_musica": false
+   },
+   "lote": "A-2026-10-05-04",
+   "fecha": "2026-10-05"
+  },
+  "morgan": {
+   "nombre": "MORGAN",
+   "pais": {
+    "valor": "ES",
+    "url": "https://es.wikipedia.org/wiki/Morgan_(banda)",
+    "cita": "morgan (banda) - wikipedia, la enciclopedia libre morgan (banda) banda musical de espana wikimedia foundation, inc. colaboradores de los proyectos wikimedia",
+    "ciudad": "Madrid"
+   },
+   "estilos": {
+    "valores": [
+     "rock",
+     "pop rock",
+     "soul"
+    ],
+    "url": "https://es.wikipedia.org/wiki/Morgan_(banda)",
+    "cita": "omo pdf version para imprimir en otros proyectos elemento de wikidata apariencia mover a la barra lateral ocultar de wikipedia, la enciclopedia libre morgan datos generales origen madrid , espana informacion artistica genero(s) folk rock pop rock rock alternativo soul funk rock [ 1 ] [ 2 ] [ 3 ] per",
+    "web_musica": true
+   },
+   "lote": "A-2026-10-05-04",
+   "fecha": "2026-10-05"
+  },
+  "guille galvan": {
+   "nombre": "Guille Galván",
+   "pais": {
+    "valor": "ES",
+    "url": "https://www.telecinco.es/noticias/cultura/20260512/guille-galvan-vuelo-solitario-cantante-vetusta-morla-disco-intimo-personal_18_019144192.html",
+    "cita": "squeda personal hace 16 anos, vetusta morla era todavia una banda emergente que prometia abrirse camino en la musica espanola, entre sus integrantes, guille galvan permanecia en un discreto segundo plano, aunque detras de muchas de las letras que marcaron a toda una generacion estaba precisamente su"
+   },
+   "estilos": {
+    "valores": [
+     "pop"
+    ],
+    "url": "https://jenesaispop.com/2026/05/08/522656/guille-galvan-entrevista/",
+    "cita": "os clave del siglo xxi', actualmente descatalogado tras agotar su 2a edicion. jenesaispop jenesaispop.com noticias y actualidad musical independiente guille galvan: «me gustan los discos donde tienes que imaginar lo que falta» home guille galvan: \"me gustan los discos donde tienes que imaginar lo qu",
+    "web_musica": false
+   },
+   "lote": "A-2026-10-05-04",
+   "fecha": "2026-10-05"
+  },
+  "marwan": {
+   "nombre": "Marwan",
+   "pais": {
+    "valor": "ES",
+    "url": "https://es.wikipedia.org/wiki/Marw%C3%A1n_(cantante_y_poeta)",
+    "cita": "marwan (cantante y poeta) - wikipedia, la enciclopedia libre marwan (cantante y poeta) cantautor y poeta espanol wikimedia foundation, inc. colaboradores de",
+    "ciudad": "Madrid"
+   },
+   "estilos": {
+    "valores": [
+     "cantautor"
+    ],
+    "url": "https://es.wikipedia.org/wiki/Marw%C3%A1n_(cantante_y_poeta)",
+    "cita": "marwan (cantante y poeta) - wikipedia, la enciclopedia libre marwan (cantante y poeta) cantautor y poeta espanol wikimedia foundation, inc. colaboradores de",
+    "web_musica": true
+   },
+   "lote": "A-2026-10-05-04",
+   "fecha": "2026-10-05"
+  },
+  "inverfest guille galvan": {
+   "nombre": "Inverfest. Guille Galván",
+   "pais": {
+    "valor": "ES",
+    "url": "https://www.telecinco.es/noticias/cultura/20260512/guille-galvan-vuelo-solitario-cantante-vetusta-morla-disco-intimo-personal_18_019144192.html",
+    "cita": "squeda personal hace 16 anos, vetusta morla era todavia una banda emergente que prometia abrirse camino en la musica espanola, entre sus integrantes, guille galvan permanecia en un discreto segundo plano, aunque detras de muchas de las letras que marcaron a toda una generacion estaba precisamente su"
+   },
+   "estilos": {
+    "valores": [
+     "pop"
+    ],
+    "url": "https://jenesaispop.com/2026/05/08/522656/guille-galvan-entrevista/",
+    "cita": "os clave del siglo xxi', actualmente descatalogado tras agotar su 2a edicion. jenesaispop jenesaispop.com noticias y actualidad musical independiente guille galvan: «me gustan los discos donde tienes que imaginar lo que falta» home guille galvan: \"me gustan los discos donde tienes que imaginar lo qu",
+    "web_musica": false
+   },
+   "lote": "A-2026-10-05-04",
+   "fecha": "2026-10-05"
   }
  },
  "conciertos": [
@@ -7548,6 +7663,174 @@
    "lote": "A-2026-10-05-03",
    "aceptado": [],
    "rechazado": []
+  },
+  "a:great straits": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-04",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:propaganda machine": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-04",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:los chicos 25o aniversario en el sol": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-04",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:zahara rave": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-04",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:hija de la luna": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-04",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:doctor velvet revival": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-04",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:nofre morell": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-04",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:gala de navidad montserrat marti caballe and bianca tognocchi orquesta madrid sinfonica decimo arte": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-04",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:los chicos": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-04",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:andres suarez": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-04",
+   "aceptado": [
+    "estilos",
+    "pais"
+   ],
+   "rechazado": []
+  },
+  "a:lion family band": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-04",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:solo en casa en concierto": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-04",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:the ultimate stone roses": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-04",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:captains": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-04",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:los primos": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-04",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:inverfest sienna": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-04",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:meritxell neddermann": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-04",
+   "aceptado": [
+    "estilos",
+    "pais"
+   ],
+   "rechazado": []
+  },
+  "a:a base de bien": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-04",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:the noisys": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-04",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:morgan": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-04",
+   "aceptado": [
+    "estilos",
+    "pais"
+   ],
+   "rechazado": []
+  },
+  "a:guille galvan": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-04",
+   "aceptado": [
+    "estilos",
+    "pais"
+   ],
+   "rechazado": []
+  },
+  "a:marwan": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-04",
+   "aceptado": [
+    "estilos",
+    "pais"
+   ],
+   "rechazado": []
+  },
+  "a:spheres": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-04",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:los unmasked": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-04",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:inverfest guille galvan": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-04",
+   "aceptado": [
+    "estilos",
+    "pais"
+   ],
+   "rechazado": []
   }
  },
  "lotes": {
@@ -7752,258 +8035,8 @@
   "A-2026-10-05-04": {
    "tipo": "artistas",
    "creado": "2026-10-05",
-   "items": {
-    "a1": {
-     "nombre": "gREAT sTRAITS",
-     "clave": "great straits",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Palacio Vistalegre"
-     ]
-    },
-    "a2": {
-     "nombre": "PROPAGANDA MACHINE",
-     "clave": "propaganda machine",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "El Perro Club"
-     ]
-    },
-    "a3": {
-     "nombre": "LOS CHICOS 25º aniversario en El Sol",
-     "clave": "los chicos 25o aniversario en el sol",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Fun House"
-     ]
-    },
-    "a4": {
-     "nombre": "Zahara Rave",
-     "clave": "zahara rave",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Sala Villanos"
-     ]
-    },
-    "a5": {
-     "nombre": "Hija de la Luna",
-     "clave": "hija de la luna",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Palacio Vistalegre"
-     ]
-    },
-    "a6": {
-     "nombre": "DOCTOR VELVET REVIVAL",
-     "clave": "doctor velvet revival",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Sala Villanos"
-     ]
-    },
-    "a7": {
-     "nombre": "Nofre Morell",
-     "clave": "nofre morell",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Dime que me Quieres"
-     ]
-    },
-    "a8": {
-     "nombre": "Gala de Navidad. Montserrat Martí Caballé & Bianca Tognocchi - Orquesta Madrid Sinfónica Décimo Arte",
-     "clave": "gala de navidad montserrat marti caballe and bianca tognocchi orquesta madrid sinfonica decimo arte",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": []
-    },
-    "a9": {
-     "nombre": "Los Chicos",
-     "clave": "los chicos",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Fun House"
-     ]
-    },
-    "a10": {
-     "nombre": "Andrés Suárez",
-     "clave": "andres suarez",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Sala Kaya de Guadarrama"
-     ]
-    },
-    "a11": {
-     "nombre": "LION FAMILY BAND",
-     "clave": "lion family band",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Tempo Audiophile Club"
-     ]
-    },
-    "a12": {
-     "nombre": "SOLO EN CASA en concierto",
-     "clave": "solo en casa en concierto",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Palacio Vistalegre"
-     ]
-    },
-    "a13": {
-     "nombre": "THE ULTIMATE STONE ROSES",
-     "clave": "the ultimate stone roses",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Sala El Sol"
-     ]
-    },
-    "a14": {
-     "nombre": "Captains",
-     "clave": "captains",
-     "falta": [
-      "estilo"
-     ],
-     "salas": [
-      "Wurlitzer Ballroom"
-     ]
-    },
-    "a15": {
-     "nombre": "LOS PRIMOS",
-     "clave": "los primos",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "El Perro Club"
-     ]
-    },
-    "a16": {
-     "nombre": "Inverfest. Sienna",
-     "clave": "inverfest sienna",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "La Riviera"
-     ]
-    },
-    "a17": {
-     "nombre": "Meritxell Neddermann",
-     "clave": "meritxell neddermann",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Condeduque"
-     ]
-    },
-    "a18": {
-     "nombre": "A Base de Bien",
-     "clave": "a base de bien",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Cadillac Solitario"
-     ]
-    },
-    "a19": {
-     "nombre": "THE NOISYS",
-     "clave": "the noisys",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Tempo Audiophile Club"
-     ]
-    },
-    "a20": {
-     "nombre": "MORGAN",
-     "clave": "morgan",
-     "falta": [
-      "estilo"
-     ],
-     "salas": [
-      "La Riviera"
-     ]
-    },
-    "a21": {
-     "nombre": "Guille Galván",
-     "clave": "guille galvan",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Condeduque"
-     ]
-    },
-    "a22": {
-     "nombre": "Marwan",
-     "clave": "marwan",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Teatro Circo Price"
-     ]
-    },
-    "a23": {
-     "nombre": "Spheres",
-     "clave": "spheres",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Revi Space"
-     ]
-    },
-    "a24": {
-     "nombre": "LOS UNMASKED",
-     "clave": "los unmasked",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "El Perro Club"
-     ]
-    },
-    "a25": {
-     "nombre": "Inverfest. Guille Galván",
-     "clave": "inverfest guille galvan",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Condeduque"
-     ]
-    }
-   },
-   "pendientes": 156
+   "pendientes": 156,
+   "importado": "2026-10-05"
   }
  },
  "ocultos": {
@@ -8185,6 +8218,15 @@
     "Live Las Ventas"
    ],
    "lote": "A-2026-10-05-02",
+   "fecha": "2026-10-05"
+  },
+  "zahara rave": {
+   "nombre": "Zahara Rave",
+   "motivo": "Zahara Rave: fiesta/sesión de electrónica, no concierto",
+   "salas": [
+    "Sala Villanos"
+   ],
+   "lote": "A-2026-10-05-04",
    "fecha": "2026-10-05"
   }
  }
