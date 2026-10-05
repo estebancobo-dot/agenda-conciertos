@@ -2063,6 +2063,85 @@
    },
    "lote": "A-2026-10-04-27",
    "fecha": "2026-10-04"
+  },
+  "cobardes": {
+   "nombre": "COBARDES",
+   "pais": {
+    "valor": "ES",
+    "url": "https://www.hellpress.com/entrevistas/cobardes-entrevista-banda-rock-cordobes/",
+    "cita": "la banda navarra de rock cobardes regresa con el disco \"que empiece el baile\". javier janices 'cordobes' responde a nuestra entrevista 'cordobes' de cobardes: \"procuramos dignificar e",
+    "ciudad": "Navarra"
+   },
+   "estilos": {
+    "valores": [
+     "rock urbano",
+     "rock"
+    ],
+    "url": "https://www.rockfm.fm/entrevistas/noticias/nueva-apuesta-del-rock-urbano-llama-cobardes-20200302_634840",
+    "cita": "licar su primer lp y giraran por salas de todo el pais. alberto mazcunan se ha reunido con ellos en rockfm la nueva apuesta del rock urbano se llama \"cobardes\" acaban de publicar su primer lp y giraran por salas de todo el pais. alberto mazcunan se ha reunido con ellos en rockfm acaban de publicar s",
+    "web_musica": false
+   },
+   "lote": "A-2026-10-05-01",
+   "fecha": "2026-10-05"
+  },
+  "alex fernandez": {
+   "nombre": "Alex Fernández",
+   "pais": {
+    "valor": "MX",
+    "url": "https://es.wikipedia.org/wiki/%C3%81lex_Fern%C3%A1ndez_(cantante)",
+    "cita": "alex fernandez (cantante) - wikipedia, la enciclopedia libre alex fernandez (cantante) cantante mexicano wikimedia foundation, inc. colaboradores de los proyectos w",
+    "ciudad": "Ciudad de México"
+   },
+   "estilos": {
+    "valores": [
+     "ranchera"
+    ],
+    "url": "https://es.wikipedia.org/wiki/%C3%81lex_Fern%C3%A1ndez_(cantante)",
+    "cita": "es nieto de vicente fernandez . fernandez ha heredado especialmente de su padre y de su abuelo, las tradiciones de la cultura ranchera, durante anos. alex fernandez, siempre se ha destacado por su voz, [ 5 ] instrumento que con los anos ha ido madurando para seguir los pasos de la dinastia fernandez",
+    "web_musica": true
+   },
+   "lote": "A-2026-10-05-01",
+   "fecha": "2026-10-05"
+  },
+  "wedge": {
+   "nombre": "Wedge",
+   "pais": {
+    "valor": "DE",
+    "url": "https://goout.net/en/wedge/pzlgywf/",
+    "cita": "r 2026 on goout. wedge - goout what is wedge up to? check for news, concerts, tour details, latest info, complete overview for october 2026 on goout. wedge wedge is a fuzz 'n' roll band from berlin. they are part of the european underground rock scene. so far they have performed together with bands ",
+    "ciudad": "Berlín"
+   },
+   "estilos": {
+    "valores": [
+     "stoner rock"
+    ],
+    "url": "https://wedgeband.bandcamp.com/album/killing-tongue",
+    "cita": "ge rock heavy psych psychedelic rock stoner rock berlin carrito de compra subtotal los impuestos se calculan al finalizar la compra comprar acerca de wedge berlin, germany placeholder wedge is high energy rock'n'roll + 300μg of heavy psych. established in 2014 by singer, guitarist kiryk (ex-the magn",
+    "web_musica": true
+   },
+   "enlaces": [
+    "https://wedgeband.bandcamp.com/"
+   ],
+   "lote": "A-2026-10-05-01",
+   "fecha": "2026-10-05"
+  },
+  "pepe rivero trioft maria berasarte": {
+   "nombre": "PEPE RIVERO TRÍOFT. MARÍA BERASARTE",
+   "pais": {
+    "valor": "CU",
+    "url": "https://www.circulobellasartes.com/en/biografia/pepe-rivero/",
+    "cita": "cuban pepe rivero could be considered one of the best latin jazz pianists. the musician has worked with artists of the stature of celia cruz, pepe rivero - circulo de"
+   },
+   "estilos": {
+    "valores": [
+     "jazz"
+    ],
+    "url": "https://clazz.es/que-es-clazz/artistas/pepe-rivero",
+    "cita": "pepe rivero, pianista y compositor de la \"nueva generacion\" internacional de jazz. aqui encontraras su biografia, enlaces a sus redes sociales y su musica. artis",
+    "web_musica": false
+   },
+   "lote": "A-2026-10-05-01",
+   "fecha": "2026-10-05"
   }
  },
  "conciertos": [
@@ -6807,6 +6886,169 @@
    "lote": "A-2026-10-04-27",
    "aceptado": [],
    "rechazado": []
+  },
+  "a:miniver": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-01",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:duo moonlight el jazz se viste de clasico": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-01",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:buhos": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-01",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:cobardes": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-01",
+   "aceptado": [
+    "estilos",
+    "pais"
+   ],
+   "rechazado": []
+  },
+  "a:spike and the gimme gimmes": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-01",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:manuel jesus pop": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-01",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:plaza de cascorro": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-01",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:joana santos": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-01",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:dan pratt line": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-01",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:miles and coltrane 100 anos por pablo torti quintet jazz con sabor a club 2026": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-01",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:jockey club": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-01",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:tronkas": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-01",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:andreew venezuela": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-01",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:luis el zambo presenta conexion santiago 9o ffc": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-01",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:red zone king crimson": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-01",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:torque": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-01",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:whitney houston hologram tour": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-01",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:broke carrey": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-01",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:santi sax music": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-01",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:alex fernandez": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-01",
+   "aceptado": [
+    "estilos",
+    "pais"
+   ],
+   "rechazado": []
+  },
+  "a:wedge": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-01",
+   "aceptado": [
+    "enlaces",
+    "estilos",
+    "pais"
+   ],
+   "rechazado": []
+  },
+  "a:pepe rivero trioft maria berasarte": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-01",
+   "aceptado": [
+    "estilos",
+    "pais"
+   ],
+   "rechazado": []
+  },
+  "a:mojo thunder": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-01",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:lidia aguilar": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-01",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:hoss and swet 1987": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-01",
+   "aceptado": [],
+   "rechazado": []
   }
  },
  "lotes": {
@@ -6993,256 +7235,8 @@
   "A-2026-10-05-01": {
    "tipo": "artistas",
    "creado": "2026-10-05",
-   "items": {
-    "a1": {
-     "nombre": "MINIVER",
-     "clave": "miniver",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "El Perro Club"
-     ]
-    },
-    "a2": {
-     "nombre": "DÚO MOONLIGHT - EL JAZZ SE VISTE DE CLÁSICO",
-     "clave": "duo moonlight el jazz se viste de clasico",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Big Mama Ballroom"
-     ]
-    },
-    "a3": {
-     "nombre": "BUHOS",
-     "clave": "buhos",
-     "falta": [
-      "estilo"
-     ],
-     "salas": [
-      "Sala But"
-     ]
-    },
-    "a4": {
-     "nombre": "COBARDES",
-     "clave": "cobardes",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Potemkim"
-     ]
-    },
-    "a5": {
-     "nombre": "Spike and The Gimme Gimmes",
-     "clave": "spike and the gimme gimmes",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Sala Copérnico"
-     ]
-    },
-    "a6": {
-     "nombre": "MANUEL JESÚS (Pop)",
-     "clave": "manuel jesus pop",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Tempo Audiophile Club"
-     ]
-    },
-    "a7": {
-     "nombre": "Plaza de Cascorro",
-     "clave": "plaza de cascorro",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": []
-    },
-    "a8": {
-     "nombre": "Joana Santos",
-     "clave": "joana santos",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Independance Club"
-     ]
-    },
-    "a9": {
-     "nombre": "DAN PRATT LINE",
-     "clave": "dan pratt line",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Café El Despertar"
-     ]
-    },
-    "a10": {
-     "nombre": "MILES & COLTRANE 100 AÑOS por PABLO TORTI QUINTET - JAZZ CON SABOR A CLUB 2026",
-     "clave": "miles and coltrane 100 anos por pablo torti quintet jazz con sabor a club 2026",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Café Berlín"
-     ]
-    },
-    "a11": {
-     "nombre": "JOCKEY CLUB",
-     "clave": "jockey club",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Café La Palma"
-     ]
-    },
-    "a12": {
-     "nombre": "TRONKAS!",
-     "clave": "tronkas",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Sala El Sol"
-     ]
-    },
-    "a13": {
-     "nombre": "ANDREEW Venezuela",
-     "clave": "andreew venezuela",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Tempo Audiophile Club"
-     ]
-    },
-    "a14": {
-     "nombre": "Luis “El Zambo” presenta “Conexión Santiago” - 9º FFC",
-     "clave": "luis el zambo presenta conexion santiago 9o ffc",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Café Berlín"
-     ]
-    },
-    "a15": {
-     "nombre": "Red Zone / King Crimson",
-     "clave": "red zone king crimson",
-     "falta": [
-      "origen"
-     ],
-     "salas": []
-    },
-    "a16": {
-     "nombre": "TORQUE",
-     "clave": "torque",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "The RockLab"
-     ]
-    },
-    "a17": {
-     "nombre": "Whitney Houston Hologram Tour",
-     "clave": "whitney houston hologram tour",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Gran Teatro Caixabank Príncipe Pío"
-     ]
-    },
-    "a18": {
-     "nombre": "Broke Carrey",
-     "clave": "broke carrey",
-     "falta": [
-      "estilo"
-     ],
-     "salas": [
-      "Sala El Sol"
-     ]
-    },
-    "a19": {
-     "nombre": "Santi Sax Music",
-     "clave": "santi sax music",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Sala Nazca"
-     ]
-    },
-    "a20": {
-     "nombre": "Alex Fernández",
-     "clave": "alex fernandez",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Gran Teatro Caixabank Príncipe Pío / Music Station Príncipe Pío"
-     ]
-    },
-    "a21": {
-     "nombre": "Wedge",
-     "clave": "wedge",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Wurlitzer Ballroom"
-     ]
-    },
-    "a22": {
-     "nombre": "PEPE RIVERO TRÍOFT. MARÍA BERASARTE",
-     "clave": "pepe rivero trioft maria berasarte",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Café Central Ateneo"
-     ]
-    },
-    "a23": {
-     "nombre": "Mojo Thunder",
-     "clave": "mojo thunder",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Fun House"
-     ]
-    },
-    "a24": {
-     "nombre": "LIDIA AGUILAR",
-     "clave": "lidia aguilar",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Tempo Audiophile Club"
-     ]
-    },
-    "a25": {
-     "nombre": "HOSS&SWET 1987",
-     "clave": "hoss and swet 1987",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Sala Villanos"
-     ]
-    }
-   },
-   "pendientes": 231
+   "pendientes": 231,
+   "importado": "2026-10-05"
   }
  },
  "ocultos": {
