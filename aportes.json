@@ -2640,6 +2640,17 @@
    },
    "lote": "O-2026-10-05-01",
    "fecha": "2026-10-05"
+  },
+  "looping greis": {
+   "nombre": "LOOPING GREIS",
+   "pais": {
+    "valor": "ES",
+    "url": "https://www.confines.es/looping-greis-presenta-la-caverna-un-regueton-filosofico",
+    "cita": "egovia) 05 de septiembre, tukefest (miraflores, madrid) 15 de noviembre presentacion del disco en cafe la palma (madrid) mas conciertos por confirmar looping greis es gracia texidor, madrilena de los 80, con un abuelo de cada punta de la peninsula. artista multidisciplinar, pionera del livelooping e",
+    "ciudad": "Madrid"
+   },
+   "lote": "O-2026-10-05-02",
+   "fecha": "2026-10-05"
   }
  },
  "conciertos": [
@@ -3194,58 +3205,71 @@
    "rechazado": []
   },
   "a:tour supernova": {
-   "fecha": "2026-10-04",
-   "lote": "A-2026-10-04-03",
+   "fecha": "2026-10-05",
+   "lote": "O-2026-10-05-02",
    "aceptado": [],
-   "rechazado": []
+   "rechazado": [],
+   "segunda": true
   },
   "a:a night with the beatles the nowhere plan": {
-   "fecha": "2026-10-04",
-   "lote": "A-2026-10-04-03",
+   "fecha": "2026-10-05",
+   "lote": "O-2026-10-05-02",
    "aceptado": [],
-   "rechazado": []
+   "rechazado": [],
+   "segunda": true
   },
   "a:bsb bustos saguar band": {
-   "fecha": "2026-10-04",
-   "lote": "A-2026-10-04-03",
+   "fecha": "2026-10-05",
+   "lote": "O-2026-10-05-02",
    "aceptado": [],
-   "rechazado": []
+   "rechazado": [],
+   "segunda": true
   },
   "a:looping greis": {
-   "fecha": "2026-10-04",
-   "lote": "A-2026-10-04-03",
-   "aceptado": [],
-   "rechazado": []
+   "fecha": "2026-10-05",
+   "lote": "O-2026-10-05-02",
+   "aceptado": [
+    "pais"
+   ],
+   "rechazado": [],
+   "segunda": true
   },
   "a:kabeaushe presents": {
-   "fecha": "2026-10-04",
-   "lote": "A-2026-10-04-03",
+   "fecha": "2026-10-05",
+   "lote": "O-2026-10-05-02",
    "aceptado": [],
-   "rechazado": []
+   "rechazado": [],
+   "segunda": true
   },
   "a:middle name": {
-   "fecha": "2026-10-04",
-   "lote": "A-2026-10-04-03",
+   "fecha": "2026-10-05",
+   "lote": "O-2026-10-05-02",
    "aceptado": [],
-   "rechazado": []
+   "rechazado": [
+    "país ES: no se pudo abrir (HTTPError)"
+   ],
+   "segunda": true
   },
   "a:the sleeves": {
-   "fecha": "2026-10-04",
-   "lote": "A-2026-10-04-03",
+   "fecha": "2026-10-05",
+   "lote": "O-2026-10-05-02",
    "aceptado": [],
-   "rechazado": []
+   "rechazado": [],
+   "segunda": true
   },
   "a:las margaritas": {
-   "fecha": "2026-10-04",
-   "lote": "A-2026-10-04-03",
+   "fecha": "2026-10-05",
+   "lote": "O-2026-10-05-02",
    "aceptado": [],
-   "rechazado": []
+   "rechazado": [],
+   "segunda": true
   },
   "a:tinez": {
-   "fecha": "2026-10-04",
-   "lote": "A-2026-10-04-03",
+   "fecha": "2026-10-05",
+   "lote": "O-2026-10-05-02",
    "aceptado": [],
-   "rechazado": []
+   "rechazado": [],
+   "segunda": true
   },
   "a:taylor swift": {
    "fecha": "2026-10-04",
@@ -3254,13 +3278,11 @@
    "rechazado": []
   },
   "a:s d h": {
-   "fecha": "2026-10-04",
-   "lote": "A-2026-10-04-04",
+   "fecha": "2026-10-05",
+   "lote": "O-2026-10-05-02",
    "aceptado": [],
-   "rechazado": [
-    "país ES: la página citada no nombra a S.D.H",
-    "estilos: la página citada no nombra a S.D.H"
-   ]
+   "rechazado": [],
+   "segunda": true
   },
   "a:sdh semiotics department of heteronyms": {
    "fecha": "2026-10-04",
@@ -3351,52 +3373,60 @@
    "rechazado": []
   },
   "a:c15": {
-   "fecha": "2026-10-04",
-   "lote": "A-2026-10-04-04",
+   "fecha": "2026-10-05",
+   "lote": "O-2026-10-05-02",
    "aceptado": [],
-   "rechazado": []
+   "rechazado": [],
+   "segunda": true
   },
   "a:cavayo": {
-   "fecha": "2026-10-04",
-   "lote": "A-2026-10-04-04",
+   "fecha": "2026-10-05",
+   "lote": "O-2026-10-05-02",
    "aceptado": [],
-   "rechazado": []
+   "rechazado": [],
+   "segunda": true
   },
   "a:javi bau": {
-   "fecha": "2026-10-04",
-   "lote": "A-2026-10-04-04",
+   "fecha": "2026-10-05",
+   "lote": "O-2026-10-05-02",
    "aceptado": [],
-   "rechazado": []
+   "rechazado": [],
+   "segunda": true
   },
   "a:codigo 31 zoem pch okami": {
-   "fecha": "2026-10-04",
-   "lote": "A-2026-10-04-04",
+   "fecha": "2026-10-05",
+   "lote": "O-2026-10-05-02",
    "aceptado": [],
-   "rechazado": []
+   "rechazado": [],
+   "segunda": true
   },
   "a:cloudy": {
-   "fecha": "2026-10-04",
-   "lote": "A-2026-10-04-04",
+   "fecha": "2026-10-05",
+   "lote": "O-2026-10-05-02",
    "aceptado": [],
-   "rechazado": []
+   "rechazado": [],
+   "segunda": true
   },
   "a:concierto hide tyson": {
-   "fecha": "2026-10-04",
-   "lote": "A-2026-10-04-04",
+   "fecha": "2026-10-05",
+   "lote": "O-2026-10-05-02",
    "aceptado": [],
-   "rechazado": []
+   "rechazado": [],
+   "segunda": true
   },
   "a:twist club e iboga": {
-   "fecha": "2026-10-04",
-   "lote": "A-2026-10-04-04",
+   "fecha": "2026-10-05",
+   "lote": "O-2026-10-05-02",
    "aceptado": [],
-   "rechazado": []
+   "rechazado": [],
+   "segunda": true
   },
   "a:clearwater companion": {
-   "fecha": "2026-10-04",
-   "lote": "A-2026-10-04-04",
+   "fecha": "2026-10-05",
+   "lote": "O-2026-10-05-02",
    "aceptado": [],
-   "rechazado": []
+   "rechazado": [],
+   "segunda": true
   },
   "a:josue rarujo and obed hernandez x live las ventas madrid": {
    "fecha": "2026-10-04",
@@ -3696,10 +3726,11 @@
    ]
   },
   "a:clickedus": {
-   "fecha": "2026-10-04",
-   "lote": "A-2026-10-04-06",
+   "fecha": "2026-10-05",
+   "lote": "O-2026-10-05-02",
    "aceptado": [],
-   "rechazado": []
+   "rechazado": [],
+   "segunda": true
   },
   "a:tecnicas y procedimientos": {
    "fecha": "2026-10-04",
@@ -3780,10 +3811,11 @@
    "rechazado": []
   },
   "a:mr black": {
-   "fecha": "2026-10-04",
-   "lote": "A-2026-10-04-06",
+   "fecha": "2026-10-05",
+   "lote": "O-2026-10-05-02",
    "aceptado": [],
-   "rechazado": []
+   "rechazado": [],
+   "segunda": true
   },
   "a:radar joven": {
    "fecha": "2026-10-04",
@@ -4724,10 +4756,11 @@
    "rechazado": []
   },
   "a:blues and roots": {
-   "fecha": "2026-10-04",
-   "lote": "A-2026-10-04-11",
+   "fecha": "2026-10-05",
+   "lote": "O-2026-10-05-02",
    "aceptado": [],
-   "rechazado": []
+   "rechazado": [],
+   "segunda": true
   },
   "a:clara gutierrez": {
    "fecha": "2026-10-04",
@@ -4753,16 +4786,18 @@
    ]
   },
   "a:mad dogs": {
-   "fecha": "2026-10-04",
-   "lote": "A-2026-10-04-12",
+   "fecha": "2026-10-05",
+   "lote": "O-2026-10-05-02",
    "aceptado": [],
-   "rechazado": []
+   "rechazado": [],
+   "segunda": true
   },
   "a:carmen young": {
-   "fecha": "2026-10-04",
-   "lote": "A-2026-10-04-12",
+   "fecha": "2026-10-05",
+   "lote": "O-2026-10-05-02",
    "aceptado": [],
-   "rechazado": []
+   "rechazado": [],
+   "segunda": true
   },
   "a:lucia pedros": {
    "fecha": "2026-10-04",
@@ -4783,10 +4818,11 @@
    "rechazado": []
   },
   "a:tina": {
-   "fecha": "2026-10-04",
-   "lote": "A-2026-10-04-12",
+   "fecha": "2026-10-05",
+   "lote": "O-2026-10-05-02",
    "aceptado": [],
-   "rechazado": []
+   "rechazado": [],
+   "segunda": true
   },
   "a:carlos velazquez y noemi ferrer": {
    "fecha": "2026-10-04",
@@ -8952,6 +8988,13 @@
    "aceptado": [],
    "rechazado": [],
    "segunda": true
+  },
+  "a:medusa winter 2026 buses": {
+   "fecha": "2026-10-05",
+   "lote": "O-2026-10-05-02",
+   "aceptado": [],
+   "rechazado": [],
+   "segunda": true
   }
  },
  "lotes": {
@@ -9211,261 +9254,9 @@
   "O-2026-10-05-02": {
    "tipo": "artistas",
    "creado": "2026-10-05",
-   "items": {
-    "a1": {
-     "nombre": "Tour Supernova",
-     "clave": "tour supernova",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Cadillac Solitario"
-     ]
-    },
-    "a2": {
-     "nombre": "A Night With The Beatles | The Nowhere Plan",
-     "clave": "a night with the beatles the nowhere plan",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Moby Dick Club"
-     ]
-    },
-    "a3": {
-     "nombre": "Clickedus",
-     "clave": "clickedus",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Fun House"
-     ]
-    },
-    "a4": {
-     "nombre": "BSB (Bustos Saguar Band)",
-     "clave": "bsb bustos saguar band",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Revi Live"
-     ]
-    },
-    "a5": {
-     "nombre": "LOOPING GREIS",
-     "clave": "looping greis",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Café La Palma"
-     ]
-    },
-    "a6": {
-     "nombre": "KABEAUSHÉ PRESENTS",
-     "clave": "kabeaushe presents",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Café Berlín"
-     ]
-    },
-    "a7": {
-     "nombre": "MIDDLE NAME",
-     "clave": "middle name",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Café La Palma"
-     ]
-    },
-    "a8": {
-     "nombre": "The Sleeves",
-     "clave": "the sleeves",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "ContraClub"
-     ]
-    },
-    "a9": {
-     "nombre": "Las Margaritas",
-     "clave": "las margaritas",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Cadillac Solitario"
-     ]
-    },
-    "a10": {
-     "nombre": "Tinez",
-     "clave": "tinez",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Sala Clamores"
-     ]
-    },
-    "a11": {
-     "nombre": "C15",
-     "clave": "c15",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Cadillac Solitario"
-     ]
-    },
-    "a12": {
-     "nombre": "S.D.H",
-     "clave": "s d h",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Cadavra"
-     ]
-    },
-    "a13": {
-     "nombre": "Cavayo",
-     "clave": "cavayo",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Cadillac Solitario"
-     ]
-    },
-    "a14": {
-     "nombre": "Javi Bau",
-     "clave": "javi bau",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Cadillac Solitario"
-     ]
-    },
-    "a15": {
-     "nombre": "CODIGO 31 ZOEM PCH OKAMI",
-     "clave": "codigo 31 zoem pch okami",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Café La Palma"
-     ]
-    },
-    "a16": {
-     "nombre": "Cloudy",
-     "clave": "cloudy",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Fabrik"
-     ]
-    },
-    "a17": {
-     "nombre": "Concierto Hide Tyson",
-     "clave": "concierto hide tyson",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Cadavra"
-     ]
-    },
-    "a18": {
-     "nombre": "MEDUSA WINTER 2026 · BUSES",
-     "clave": "medusa winter 2026 buses",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "IFEMA Madrid"
-     ]
-    },
-    "a19": {
-     "nombre": "Twist Club e Iboga",
-     "clave": "twist club e iboga",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "La Riviera"
-     ]
-    },
-    "a20": {
-     "nombre": "CLEARWATER COMPANION",
-     "clave": "clearwater companion",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Fun House"
-     ]
-    },
-    "a21": {
-     "nombre": "Blues & Roots",
-     "clave": "blues and roots",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Intruso Bar"
-     ]
-    },
-    "a22": {
-     "nombre": "MAD DOGS",
-     "clave": "mad dogs",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "El Perro Club"
-     ]
-    },
-    "a23": {
-     "nombre": "MR. BLACK",
-     "clave": "mr black",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Jazzville",
-      "Jazzville / Sala B"
-     ]
-    },
-    "a24": {
-     "nombre": "CARMEN YOUNG",
-     "clave": "carmen young",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Tablao Flamenco 1911"
-     ]
-    },
-    "a25": {
-     "nombre": "Tiña",
-     "clave": "tina",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Cine & Teatro Capitol"
-     ]
-    }
-   },
    "pendientes": 296,
-   "segunda": true
+   "segunda": true,
+   "importado": "2026-10-05"
   }
  },
  "ocultos": {
@@ -9665,6 +9456,24 @@
     "Cineteca Madrid"
    ],
    "lote": "A-2026-10-05-08",
+   "fecha": "2026-10-05"
+  },
+  "medusa winter 2026 buses": {
+   "nombre": "MEDUSA WINTER 2026 · BUSES",
+   "motivo": "servicio de autobuses al festival Medusa Winter, no un concierto",
+   "salas": [
+    "IFEMA Madrid"
+   ],
+   "lote": "O-2026-10-05-02",
+   "fecha": "2026-10-05"
+  },
+  "twist club e iboga": {
+   "nombre": "Twist Club e Iboga",
+   "motivo": "fiesta de clubbing (Twist Club e Iboga, Hospitality: sesión de DJ de drum and bass)",
+   "salas": [
+    "La Riviera"
+   ],
+   "lote": "O-2026-10-05-02",
    "fecha": "2026-10-05"
   }
  }
