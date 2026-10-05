@@ -2509,6 +2509,60 @@
    },
    "lote": "A-2026-10-05-05",
    "fecha": "2026-10-05"
+  },
+  "grls": {
+   "nombre": "GRLS",
+   "pais": {
+    "valor": "MX",
+    "url": "https://indiehoy.com/descubrir/grls-el-duo-mexicano-abre-las-puertas-de-su-mundo-surrealista-y-caotico/",
+    "cita": "grls es un duo mexicano de pop psicodelico compuesto por dos multiinstrumentistas y productores: lucca necoechea y diego andlovin. la banda tuvo su origen"
+   },
+   "estilos": {
+    "valores": [
+     "pop psicodélico"
+    ],
+    "url": "https://indiehoy.com/descubrir/grls-el-duo-mexicano-abre-las-puertas-de-su-mundo-surrealista-y-caotico/",
+    "cita": "grls es un duo mexicano de pop psicodelico compuesto por dos multiinstrumentistas y productores: lucca necoechea y diego andlovin. la banda tuvo su origen",
+    "web_musica": false
+   },
+   "lote": "A-2026-10-05-07",
+   "fecha": "2026-10-05"
+  },
+  "fox gunn": {
+   "nombre": "FOX GUNN",
+   "pais": {
+    "valor": "GB",
+    "url": "https://nonchalantmagazine.com/meet-fox-gunn-the-london-based-artist-making-queer-pop-sexy/",
+    "cita": "fox gunn talks new single ‘shewasn’tlookingforme’, sapphic chaos, and why being a player doesn’t mean you can’t catch feelings. meet fox gunn: the london-base",
+    "ciudad": "Londres"
+   },
+   "estilos": {
+    "valores": [
+     "pop"
+    ],
+    "url": "https://www.viberate.com/artist/fox-gunn/",
+    "cita": "fox gunn: listen to new and popular songs, find events, look into their stats and see who their fans are. fox gunn - songs, events and music stats | viberate.",
+    "web_musica": false
+   },
+   "lote": "A-2026-10-05-07",
+   "fecha": "2026-10-05"
+  },
+  "claudia zuazo": {
+   "nombre": "CLAUDIA ZUAZO",
+   "estilos": {
+    "valores": [
+     "folk",
+     "pop"
+    ],
+    "url": "http://www.elhilomusical.com/2026/01/claudia-zuazo-estrena-en-solitario-la.html",
+    "cita": "claudia zuazo estrena \"la linea\". rescata el sonido de banda con tintes pop y folk claudia zuazo, teclista de nina polaca y cantante en vez era y muro maria, publi",
+    "web_musica": false
+   },
+   "enlaces": [
+    "https://czuazo.bandcamp.com/"
+   ],
+   "lote": "A-2026-10-05-07",
+   "fecha": "2026-10-05"
   }
  },
  "conciertos": [
@@ -8236,6 +8290,170 @@
    "lote": "A-2026-10-05-06",
    "aceptado": [],
    "rechazado": []
+  },
+  "a:ramudo": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-07",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:elena ollero": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-07",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:polaroids": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-07",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:aitor castells": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-07",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:shaka and elektra": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-07",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:soulbreath": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-07",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:grls": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-07",
+   "aceptado": [
+    "estilos",
+    "pais"
+   ],
+   "rechazado": []
+  },
+  "a:kiketas": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-07",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:flamenco jazz trio bandolero": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-07",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:jan uve": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-07",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:fox gunn": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-07",
+   "aceptado": [
+    "estilos",
+    "pais"
+   ],
+   "rechazado": []
+  },
+  "a:jesus lorenzo": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-07",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:southgate": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-07",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:luciano gonzalez trio": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-07",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:fantoches": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-07",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:elena rossi": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-07",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:kara boi": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-07",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:akoni astrobeat fr": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-07",
+   "aceptado": [],
+   "rechazado": [
+    "país FR: ni la frase citada ni la página lo dicen junto al nombre",
+    "estilos: ni la frase citada ni la página lo dicen junto al nombre"
+   ]
+  },
+  "a:claudia zuazo": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-07",
+   "aceptado": [
+    "enlaces",
+    "estilos"
+   ],
+   "rechazado": [
+    "país ES: ni la frase citada ni la página lo dicen junto al nombre"
+   ]
+  },
+  "a:mirko": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-07",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:los joaquines": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-07",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:makau": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-07",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:elartedealfa": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-07",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:tara lowe": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-07",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:puneh farhani": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-07",
+   "aceptado": [],
+   "rechazado": []
   }
  },
  "lotes": {
@@ -8458,260 +8676,8 @@
   "A-2026-10-05-07": {
    "tipo": "artistas",
    "creado": "2026-10-05",
-   "items": {
-    "a1": {
-     "nombre": "RAMUDO",
-     "clave": "ramudo",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Sala Clamores"
-     ]
-    },
-    "a2": {
-     "nombre": "ELENA OLLERO",
-     "clave": "elena ollero",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Tablao Ópera Flamenca"
-     ]
-    },
-    "a3": {
-     "nombre": "POLAROIDS",
-     "clave": "polaroids",
-     "falta": [
-      "estilo"
-     ],
-     "salas": [
-      "Thundercat"
-     ]
-    },
-    "a4": {
-     "nombre": "AITOR CASTELLS",
-     "clave": "aitor castells",
-     "falta": [
-      "estilo"
-     ],
-     "salas": [
-      "Cadavra"
-     ]
-    },
-    "a5": {
-     "nombre": "SHAKA & ELEKTRA",
-     "clave": "shaka and elektra",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Fotomatón Bar"
-     ]
-    },
-    "a6": {
-     "nombre": "SOULBREATH",
-     "clave": "soulbreath",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Barracudas Rock Bar"
-     ]
-    },
-    "a7": {
-     "nombre": "GRLS",
-     "clave": "grls",
-     "falta": [
-      "estilo"
-     ],
-     "salas": [
-      "Sala Siroco"
-     ]
-    },
-    "a8": {
-     "nombre": "KIKETAS",
-     "clave": "kiketas",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Cien por Cien"
-     ]
-    },
-    "a9": {
-     "nombre": "“FLAMENCO JAZZ TRIO” BANDOLERO",
-     "clave": "flamenco jazz trio bandolero",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Candela"
-     ]
-    },
-    "a10": {
-     "nombre": "Jan Uve",
-     "clave": "jan uve",
-     "falta": [
-      "estilo"
-     ],
-     "salas": [
-      "Café Berlín"
-     ]
-    },
-    "a11": {
-     "nombre": "FOX GUNN",
-     "clave": "fox gunn",
-     "falta": [
-      "estilo"
-     ],
-     "salas": [
-      "Café La Palma"
-     ]
-    },
-    "a12": {
-     "nombre": "Jesús Lorenzo",
-     "clave": "jesus lorenzo",
-     "falta": [
-      "estilo"
-     ],
-     "salas": [
-      "Rincón del Arte Nuevo"
-     ]
-    },
-    "a13": {
-     "nombre": "SOUTHGATE",
-     "clave": "southgate",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Barracudas Rock Bar"
-     ]
-    },
-    "a14": {
-     "nombre": "LUCIANO GONZÁLEZ TRÍO",
-     "clave": "luciano gonzalez trio",
-     "falta": [
-      "estilo"
-     ],
-     "salas": [
-      "Café El Despertar"
-     ]
-    },
-    "a15": {
-     "nombre": "FANTOCHES",
-     "clave": "fantoches",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Elefante Blanco"
-     ]
-    },
-    "a16": {
-     "nombre": "ELENA ROSSI",
-     "clave": "elena rossi",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Jazzville"
-     ]
-    },
-    "a17": {
-     "nombre": "KARA BOI",
-     "clave": "kara boi",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Hangar 48"
-     ]
-    },
-    "a18": {
-     "nombre": "AKONI ASTROBEAT (FR)",
-     "clave": "akoni astrobeat fr",
-     "falta": [
-      "estilo"
-     ],
-     "salas": [
-      "Intruso Bar"
-     ]
-    },
-    "a19": {
-     "nombre": "CLAUDIA ZUAZO",
-     "clave": "claudia zuazo",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Sala B"
-     ]
-    },
-    "a20": {
-     "nombre": "MIRKO",
-     "clave": "mirko",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Sala B"
-     ]
-    },
-    "a21": {
-     "nombre": "Los Joaquines",
-     "clave": "los joaquines",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Bakkanal"
-     ]
-    },
-    "a22": {
-     "nombre": "MAKAÚ",
-     "clave": "makau",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Sala B"
-     ]
-    },
-    "a23": {
-     "nombre": "ELARTEDEALFA",
-     "clave": "elartedealfa",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Candela"
-     ]
-    },
-    "a24": {
-     "nombre": "TARA LOWE",
-     "clave": "tara lowe",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Intruso Bar"
-     ]
-    },
-    "a25": {
-     "nombre": "PUNEH FARHANI",
-     "clave": "puneh farhani",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Candela"
-     ]
-    }
-   },
-   "pendientes": 81
+   "pendientes": 81,
+   "importado": "2026-10-05"
   }
  },
  "ocultos": {
