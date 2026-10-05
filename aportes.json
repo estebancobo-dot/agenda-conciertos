@@ -7237,6 +7237,263 @@
    "creado": "2026-10-05",
    "pendientes": 231,
    "importado": "2026-10-05"
+  },
+  "A-2026-10-05-02": {
+   "tipo": "artistas",
+   "creado": "2026-10-05",
+   "items": {
+    "a1": {
+     "nombre": "COBRAH",
+     "clave": "cobrah",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Sala But"
+     ]
+    },
+    "a2": {
+     "nombre": "James Smith",
+     "clave": "james smith",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Sala Nazca"
+     ]
+    },
+    "a3": {
+     "nombre": "ÁLVARO DEL VALLE",
+     "clave": "alvaro del valle",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Café El Despertar"
+     ]
+    },
+    "a4": {
+     "nombre": "Juntos",
+     "clave": "juntos",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Movistar Arena"
+     ]
+    },
+    "a5": {
+     "nombre": "Chico Chico",
+     "clave": "chico chico",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Sala Villanos"
+     ]
+    },
+    "a6": {
+     "nombre": "AMANDA GRIS",
+     "clave": "amanda gris",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "El Perro Club"
+     ]
+    },
+    "a7": {
+     "nombre": "WAIKIFLOW",
+     "clave": "waikiflow",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Intruso Bar"
+     ]
+    },
+    "a8": {
+     "nombre": "Blues After All en vivo!",
+     "clave": "blues after all en vivo",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Big Mama Ballroom"
+     ]
+    },
+    "a9": {
+     "nombre": "Samuel SLZR",
+     "clave": "samuel slzr",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Independance Club"
+     ]
+    },
+    "a10": {
+     "nombre": "VUOLANNE - LAMAS - MITTE",
+     "clave": "vuolanne lamas mitte",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Peor Para El Sol"
+     ]
+    },
+    "a11": {
+     "nombre": "Abhir",
+     "clave": "abhir",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Autocine Madrid / The Lenovo Garage, Autocine"
+     ]
+    },
+    "a12": {
+     "nombre": "La Gripe y Tú",
+     "clave": "la gripe y tu",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Sala Changó"
+     ]
+    },
+    "a13": {
+     "nombre": "VERNET",
+     "clave": "vernet",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "El Perro Club"
+     ]
+    },
+    "a14": {
+     "nombre": "ESTELA JULIA",
+     "clave": "estela julia",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Rincón del Arte Nuevo"
+     ]
+    },
+    "a15": {
+     "nombre": "THE FILTHY SIX UK",
+     "clave": "the filthy six uk",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Tempo Audiophile Club"
+     ]
+    },
+    "a16": {
+     "nombre": "LA JORNI",
+     "clave": "la jorni",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Sala Villanos"
+     ]
+    },
+    "a17": {
+     "nombre": "EUSKAL INVADERS",
+     "clave": "euskal invaders",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Independance Club"
+     ]
+    },
+    "a18": {
+     "nombre": "La Cosmic Note",
+     "clave": "la cosmic note",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Sala Vesta"
+     ]
+    },
+    "a19": {
+     "nombre": "SCHEPELS JAZZ",
+     "clave": "schepels jazz",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Moe"
+     ]
+    },
+    "a20": {
+     "nombre": "PARDO FULL BANDA NY",
+     "clave": "pardo full banda ny",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Tempo Audiophile Club"
+     ]
+    },
+    "a21": {
+     "nombre": "CHEO PARDO FULL BANDA",
+     "clave": "cheo pardo full banda",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Tempo Audiophile Club"
+     ]
+    },
+    "a22": {
+     "nombre": "Padre Guilherme",
+     "clave": "padre guilherme",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Live Las Ventas"
+     ]
+    },
+    "a23": {
+     "nombre": "COMBOS DE EL MOLINO",
+     "clave": "combos de el molino",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Maravillas Club"
+     ]
+    },
+    "a24": {
+     "nombre": "L'Haine",
+     "clave": "lhaine",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "La Riviera"
+     ]
+    },
+    "a25": {
+     "nombre": "75 ANIVERSARIO - POR CAMARÓN",
+     "clave": "75 aniversario por camaron",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Movistar Arena"
+     ]
+    }
+   },
+   "pendientes": 206
   }
  },
  "ocultos": {
