@@ -157,3 +157,21 @@ def test_misma_pagina_con_otro_titulo_no_queda_doble():
     nuevo = run((e2, s))
     out = conciliar(nuevo, prev, HOY, {"mev": {"funciono": True, "completa": True}}, {"mev": s})
     assert len(out) == 1
+
+
+def test_nueva_fecha_queda_como_conflicto_en_los_dos():
+    from scraper.pipeline import nueva_fecha_anunciada
+    a = rec(id="a", fecha="2027-01-21", artista="Guille Galván", sala="Condeduque",
+            fuentes=[{"id": "jl", "nombre": "JacksOnLive (agenda de Madrid)",
+                      "url": "https://www.jacksonlive.es/concierto/concierto-de-guille-galvan-en-madrid-nueva-fecha"}],
+            conflictos=[])
+    b = rec(id="b", fecha="2027-01-22", artista="Guille Galván", sala="Condeduque",
+            fuentes=[{"id": "cc", "nombre": "conciertos.club (buscador semanal)", "url": "https://conciertos.club/x"}],
+            conflictos=[])
+    otro = rec(id="c", fecha="2027-01-29", artista="Marwan", sala="Condeduque", conflictos=[])
+    assert nueva_fecha_anunciada([a, b, otro], "2026-10-05") == 1
+    for x in (a, b):
+        c = x["conflictos"][0]
+        assert x["estado"] == "conflicto" and c["campo"] == "fecha"
+        assert [v["valor"] for v in c["versiones"]] == ["2027-01-21", "2027-01-22"] and "JacksOnLive" in c["motivo"]
+    assert otro["estado"] == "1_fuente"

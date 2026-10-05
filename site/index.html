@@ -930,7 +930,7 @@ function estadoBox0(r){
       const vs=[...c.versiones].sort((a,b)=>b.fuentes.length-a.fuentes.length);
       const horas=c.campo==="hora"?vs.map(v=>v.valor).sort():[];
       return `<div><b>${esc(nom[c.campo]||c.campo)}</b></div><div class="vers">${vs.map(v=>`<div><b>${esc(val(c,v.valor))}</b><span class="muted">${plural(v.fuentes.length,"web")}: ${esc(v.fuentes.map(x=>x.split(" (")[0]).filter((x,i,a)=>a.indexOf(x)===i).join(", "))}</span></div>`).join("")}</div>
-        ${c.campo==="fecha"?`<div class="hint" style="margin-top:4px">La web oficial de la sala lo anuncia otro día. Confírmalo allí antes de ir.</div>`:""}
+        ${c.campo==="fecha"?`<div class="hint" style="margin-top:4px">${esc(c.motivo||"La web oficial de la sala lo anuncia otro día. Confírmalo allí antes de ir.")}</div>`:""}
         ${c.campo==="hora"&&horas.length>1?`<div class="hint" style="margin-top:4px">Si una hora es bastante anterior, suele ser la apertura de puertas. Confírmalo en la web de la sala o de las entradas.</div>`:""}`;
     }).join("");
     const man=(r.notas||[]).filter(n=>/Corrección manual/.test(n)).map(n=>`<div class="hint">${esc(n)}</div>`).join("");

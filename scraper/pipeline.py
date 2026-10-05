@@ -920,6 +920,40 @@ def ausencias_web_sala(recs: list[dict], resultados: dict, fuentes: dict[str, So
     return {k: v for k, v in marcados.items() if v["ausentes"] or v["otra_fecha"] or v.get("incompleta")}
 
 
+_NUEVA_FECHA = re.compile(r"(?i)nueva[-_ ]?fecha|cambio[-_ ]de[-_ ]fecha|aplazad")
+
+
+def nueva_fecha_anunciada(recs: list[dict], hoy: str) -> int:
+    """Una web anuncia "nueva fecha" (en la URL de su página) para un artista que otras webs siguen dando otro día en
+    la misma sala (Guille Galván en Condeduque: JacksOnLive, nueva fecha el 21-1; conciertos.club, el 22-1). No se
+    elige: los dos quedan con el conflicto de fecha a la vista. Solo si la pareja es única y está a 30 días o menos."""
+    n = 0
+    for r in recs:
+        if r["fecha"] < hoy or r.get("estado") == "posiblemente cancelado":
+            continue
+        nf = [f for f in r.get("fuentes") or [] if _NUEVA_FECHA.search(f.get("url") or "")]
+        if not nf:
+            continue
+        f0 = date.fromisoformat(r["fecha"])
+        otros = [q for q in recs if q is not r and q["fecha"] >= hoy and q["fecha"] != r["fecha"]
+                 and abs((date.fromisoformat(q["fecha"]) - f0).days) <= 30 and q.get("estado") != "posiblemente cancelado"
+                 and _misma_sala_rec(q, r) and artistas_coinciden([r["artista"]], [q["artista"]])
+                 and not any(_NUEVA_FECHA.search(f.get("url") or "") for f in q.get("fuentes") or [])]
+        if len(otros) != 1:
+            continue
+        q = otros[0]
+        quien = nf[0]["nombre"].split(" (")[0]
+        versiones = [{"valor": r["fecha"], "fuentes": [nf[0]["nombre"]]},
+                     {"valor": q["fecha"], "fuentes": list(dict.fromkeys(f["nombre"] for f in q.get("fuentes") or []))}]
+        motivo = f"{quien} anuncia una nueva fecha; otras webs siguen dando la anterior. Confírmalo antes de ir."
+        for x in (r, q):
+            x["conflictos"] = [c for c in x.get("conflictos") or [] if c.get("campo") != "fecha"]
+            x["conflictos"].append({"campo": "fecha", "versiones": versiones, "motivo": motivo})
+            x["estado"] = "conflicto"
+        n += 1
+    return n
+
+
 # ---------------------------------------------------------------- historial de cambios de cada concierto
 # Lo que cambia de un concierto entre una lectura y la siguiente (fase 7): fecha, hora, precio, cancelado o aplazado,
 # entradas agotadas, artistas que aparecen en el cartel, deja de anunciarse o vuelve. Cada cambio lleva el día en
@@ -1273,6 +1307,7 @@ def ejecutar(hoy: date | None = None, solo: list[str] | None = None, fetcher: Fe
     contraste_sala = ausencias_web_sala(recs, resultados, por_id, eventos, hoy.isoformat(),
                                         estado.get("historial_fuentes", {}))
     n_ausentes = sum(v["ausentes"] for v in contraste_sala.values())  # (las de listado incompleto no marcan)
+    nueva_fecha_anunciada(recs, hoy.isoformat())
     from .normalizacion import estimar_horas, normalizar, resumen as resumen_normalizacion
     estimar_horas(recs)
     for r in recs:

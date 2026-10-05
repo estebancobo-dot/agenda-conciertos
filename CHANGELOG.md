@@ -7,6 +7,7 @@
 - **Inverfest es un ciclo, no parte del artista** (`scraper/merge.py`, `separar_ciclo`): "Inverfest. Marwan", "INVERFEST 2026: NACHO SARRIA" e "Inverfest Fito & Fitipaldis" pasan a artista "Marwan", "NACHO SARRIA", "Fito & Fitipaldis" con el ciclo aparte. Así casan con las demás agendas y con las fichas del artista.
 - **Las claves de los lotes** (`scraper/aportes.py`, `clave_artista`, `normalizar_claves`): las guardadas con el ciclo delante ("inverfest marwan") se leen como la del artista ("marwan"), sin perder lo aportado ni volver a preguntar por ellas.
 - **El mismo concierto con otro título** (`scraper/pipeline.py`, `conciliar`): si la misma página (la misma URL) anuncia hoy ese día y en esa sala un único concierto con otro título, el registro anterior es ese mismo y no se arrastra como "posiblemente cancelado" (Cheo Pardo en Tempo el 28-11 salía dos veces: "CHEO PARDO FULL BANDA" y "PARDO FULL BANDA NY", ambos con p=793568). Si la URL la comparten varios conciertos (una agenda en una sola página), no se toca.
+- **"Nueva fecha" a la vista** (`scraper/pipeline.py`, `nueva_fecha_anunciada`): si una web anuncia "nueva fecha" (en la URL de su página) para un artista que otras webs siguen dando otro día en la misma sala, los dos quedan con el conflicto de fecha y las dos versiones, sin elegir (Guille Galván en Condeduque: JacksOnLive, 21-1; conciertos.club, 22-1). La ficha dice quién anuncia la nueva fecha.
 
 ## 2.57.0 — 2026-10-04
 

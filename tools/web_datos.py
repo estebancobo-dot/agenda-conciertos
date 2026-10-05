@@ -45,7 +45,8 @@ def ligero(r: dict) -> dict:
     out = {k: r[k] for k in LIGEROS if r.get(k) not in (None, [], "", False)}
     if r.get("conflictos"):  # la tarjeta dice qué dato no cuadra ("hora sin confirmar") y la hora más votada
         out["conflictos"] = [{"campo": c.get("campo"), "versiones": [{"valor": v["valor"], "fuentes": v.get("fuentes", [])}
-                                                                     for v in c.get("versiones") or []]}
+                                                                     for v in c.get("versiones") or []],
+                              **({"motivo": c["motivo"]} if c.get("motivo") else {})}
                              for c in r["conflictos"]]
     etiquetas = list(dict.fromkeys(e["estilo"] for e in r.get("estilo_fuente") or []))
     if etiquetas:
