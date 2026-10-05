@@ -476,11 +476,21 @@ const iniciales=n=>esc(String(n||"?").replace(/^(the|los|las|la|el)\s+/i,"").spl
 const grupos=r=>r._g||(r._g=(r.grupos&&r.grupos.length?r.grupos:[r.categoria]));
 // "Jazz y swing (general)": los conciertos de un género sin ningún estilo concreto de ese género (sus webs solo dicen
 // "Jazz"). Es un estilo de la web, no un dato: sirve para poder elegirlos al afinar por estilos. Clave "~" + género.
-const GENERAL="~", SIN_GENERAL=new Set(["sin clasificar","fuera de foco","tributos y versiones"]);
+// Los tributos tienen como subgénero el estilo al que suenan ("Rock y metal" dentro de Tributos y versiones): clave
+// "^" + género (de estilo_tributo, o del grupo de sus estilos).
+const GENERAL="~", TRIB="^", TRIBUTOS="tributos y versiones", SIN_GENERAL=new Set(["sin clasificar","fuera de foco"]);
 const esGeneral=x=>String(x).startsWith(GENERAL);
-const nomEstilo=x=>esGeneral(x)?((GRUPOS.find(g=>g.id===x.slice(1))||{nombre:x.slice(1)}).nombre+" (general)"):x;
+const nomGrupo=id=>(GRUPOS.find(g=>g.id===id)||{nombre:id}).nombre;
+const nomEstilo=x=>esGeneral(x)?nomGrupo(x.slice(1))+" (general)":String(x).startsWith(TRIB)?nomGrupo(x.slice(1)):x;
+const grupoDeClave=s=>esGeneral(s)?s.slice(1):String(s).startsWith(TRIB)?TRIBUTOS:grupoDeEstilo(s);
 const estilosDe=r=>{ if(r._e) return r._e; const e=new Set(r.estilos_discogs||[]);
-  if(MAP&&TAXO){ const gs=new Set([...e].map(grupoDeEstilo)); for(const g of gruposF(r)) if(!gs.has(g)&&!SIN_GENERAL.has(g)) e.add(GENERAL+g); r._e=e; }
+  if(MAP&&TAXO){ const gs=new Set([...e].map(grupoDeEstilo));
+    if(gruposF(r).includes(TRIBUTOS)){
+      const suena=new Set([...(r.estilo_tributo||[]), ...[...gs].filter(g=>g&&g!=="fuera de foco"&&g!==TRIBUTOS)]);
+      suena.forEach(g=>e.add(TRIB+g)); if(suena.size) gs.add(TRIBUTOS);
+    }
+    for(const g of gruposF(r)) if(!gs.has(g)&&!SIN_GENERAL.has(g)) e.add(GENERAL+g);
+    r._e=e; }
   return e; };
 // para filtrar: los grupos del concierto y los de los artistas de su cartel (un telonero punk hace que el concierto
 // salga también al filtrar por punk; la tarjeta lo dice)
@@ -694,7 +704,7 @@ function openSheet(){
   let fut=[], cnt={}, est={}, gen={};
   const contar=()=>{ fut=DATA.filter(r=>r.fecha>=HOY&&pasaTexto(r,q)&&pasaOri(r)); cnt={}; est={}; gen={};
     for(const r of fut){ for(const g of gruposF(r)){cnt[g]=(cnt[g]||0)+1; if(r.grupos_generico) gen[g]=(gen[g]||0)+1;}
-      for(const s of estilosDe(r)){const g=esGeneral(s)?s.slice(1):grupoDeEstilo(s); if(!g||!gruposF(r).includes(g)) continue; (est[g]=est[g]||{})[s]=(est[g][s]||0)+1;}} };
+      for(const s of estilosDe(r)){const g=grupoDeClave(s); if(!g||!gruposF(r).includes(g)) continue; (est[g]=est[g]||{})[s]=(est[g][s]||0)+1;}} };
   const pasa=r=>{ if(r.grupos_generico&&!genOk) return false; const gs=gruposF(r);
     for(const g of sel){ if(!gs.includes(g)) continue; const l=selEst[g]; if(!l||!l.length) return true; const e=estilosDe(r); if(l.some(x=>e.has(x))) return true; }
     return false; };
@@ -714,8 +724,8 @@ function openSheet(){
   const gchip=g=>`<button type="button" class="chip" data-g="${esc(g.id)}" aria-pressed="${sel.includes(g.id)}" title="${esc(g.desc)}"><i style="background:var(${g.v})"></i>${esc(g.nombre)}<small class="cc" data-ct="${esc(g.id)}">${cnt[g.id]||0}</small></button>`;
   const resumenTodos=()=>{const l=Object.entries(selEst).map(([g,x])=>`${(GRUPOS.find(y=>y.id===g)||{}).nombre||g}: ${x.map(nomEstilo).join(", ")}`); return l.length?l.join(" · "):"Todos los estilos de cada género";};
   // "(general)" el primero: siempre a la vista
-  const arbolDe=g=>{const e=est[g]||{}; return [...(e[GENERAL+g]?[GENERAL+g]:[]),
-    ...(ARBOL[g]||[]).filter(x=>e[x]).sort((a,b)=>e[b]-e[a]||a.localeCompare(b))];};
+  const arbolDe=g=>{const e=est[g]||{}, por=(a,b)=>e[b]-e[a]||a.localeCompare(b); return [...(e[GENERAL+g]?[GENERAL+g]:[]),
+    ...Object.keys(e).filter(x=>x.startsWith(TRIB)).sort(por), ...(ARBOL[g]||[]).filter(x=>e[x]).sort(por)];};
   const htmlGeneros=()=>{const m=modo();
     return `<h4 class="sech">Géneros<span id="resgen">${esc(resumenGen())}</span></h4>
      <div class="segp" role="group" aria-label="Elegir de golpe"><button type="button" data-rap="def" aria-pressed="${m==="def"}">Habituales</button><button type="button" data-rap="todos" aria-pressed="${m==="todos"}">Todos</button><button type="button" data-rap="ninguno" aria-pressed="${m==="ninguno"}">Ninguno</button></div>

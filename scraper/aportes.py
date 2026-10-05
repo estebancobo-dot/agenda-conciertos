@@ -460,6 +460,12 @@ def _fuente(url: str) -> str:
 _NO_CONCIERTO = [
     (re.compile(r"\bvs\.?(\s+kids)?\s*$|\b(partido|euroliga|euroleague|liga endesa|nba|harlem globetrotters)\b"),
      "partido o evento deportivo"),
+    # "Real Madrid vs. Partizan Mozzart Bet Belgrade", "Movistar Estudiantes vs. Inveready Askatuak Gipuzkoa": un "vs."
+    # con un equipo o una competición ("Queen vs. ABBA. Candlelight" o "The Beatles VS The Rolling Stones" no)
+    (re.compile(r"\bvs\.?\s.*\b(real madrid|estudiantes|basket|baloncesto|futbol|fc|cf|cd|bc|euroliga|euroleague|acb|"
+                r"partizan|olympiacos|panathinaikos|fenerbahce|maccabi|zalgiris|baskonia|unicaja|gipuzkoa|belgrade|"
+                r"mozzart|atletico|getafe|rayo vallecano|leganes)\b|\b(real madrid|estudiantes|basket|baloncesto|fc|cf|"
+                r"atletico|getafe|rayo vallecano|leganes)\b.*\bvs\.?\s"), "partido o evento deportivo"),
     (re.compile(r"^dj\s+\S|\S\s+djs?$"), "sesión de DJ"),
     (re.compile(r"\b(fast expo|exposicion)\b"), "exposición"),
     (re.compile(r"\b(foro|congreso|conferencia|charla|coloquio)\b"), "foro, charla o conferencia"),

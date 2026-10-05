@@ -1,5 +1,12 @@
 # Versiones
 
+## 2.64.0 — 2026-10-05
+
+**Tributos con su estilo como subgénero; partidos con "vs." en medio, ocultos.**
+
+- En "Tributos y versiones", cada tributo tiene como subgénero el estilo al que suena ("Rock y metal", "Clásica y lírica"… de `estilo_tributo` o del grupo de sus estilos); los que no se sabe, en "Tributos y versiones (general)". Ninguno se queda sin subgénero (validación nueva).
+- Partidos ocultos aunque el "vs." vaya en medio con un equipo o competición ("Movistar Estudiantes vs. Inveready Askatuak Gipuzkoa", "Real Madrid vs. Partizan…"); "Queen vs. ABBA. Candlelight" y "The Beatles VS The Rolling Stones" siguen siendo conciertos.
+
 ## 2.63.0 — 2026-10-05
 
 **Subgénero "(general)" en cada género.**

@@ -317,3 +317,10 @@ def test_halloween_y_jam_y_latina():
     r = {"artista": "Los Hermanos Rodríguez", "grupos": ["latina"], "fuentes": [{"id": "cc_buscador"}]}
     tributo_y_estimacion(r, {})
     assert r.get("nacionalidad_estimada") in ("LATAM", None)
+
+
+def test_partidos_con_vs_en_medio():
+    assert ap.no_es_concierto("Movistar Estudiantes vs. Inveready Askatuak Gipuzkoa") == "partido o evento deportivo"
+    assert ap.no_es_concierto("Real Madrid vs. Partizan Mozzart Bet Belgrade") == "partido o evento deportivo"
+    assert ap.no_es_concierto("Queen vs. ABBA. Candlelight") is None
+    assert ap.no_es_concierto("Homenaje 157: The Beatles VS The Rollings Stones") is None

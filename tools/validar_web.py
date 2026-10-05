@@ -701,6 +701,13 @@ def estilos(pg, lunes):
           f"{etiqueta.splitlines()[0]}: {r['n']}", ok=r["n"] > 0 and r["malos"] == 0 and "(general)" in etiqueta,
           detalle=str(r))
     pg.evaluate("()=>{setGrupos([...DEF_GRUPOS]); state.estilos={}; store.set('estilos',{}); renderBody(false);}")
+    # tributos: cada uno tiene como subgénero el estilo al que suena (o "(general)"); ninguno se queda sin ninguno
+    t = pg.evaluate("""()=>{const f=DATA.filter(r=>r.fecha>=HOY&&gruposF(r).includes('tributos y versiones'));
+        const sin=f.filter(r=>![...estilosDe(r)].some(s=>grupoDeClave(s)==='tributos y versiones'));
+        const rock=f.filter(r=>estilosDe(r).has('^rock y metal')).length;
+        return {n:f.length, sin:sin.length, rock, ej:sin.slice(0,3).map(r=>r.artista)}}""")
+    check("Funcional", "Tributos: su estilo como subgénero (todos tienen uno)", f"{t['n']} tributos, {t['rock']} de rock",
+          ok=t["n"] > 0 and t["sin"] == 0, detalle=str(t))
 
 
 def busqueda(pg, lunes):
