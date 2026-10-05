@@ -569,7 +569,20 @@
   "disco": "Disco",
   "trap": "Trap",
   "drill": "Drill",
-  "grime": "Grime"
+  "grime": "Grime",
+  "pop / rock": "Pop Rock",
+  "pop, rock": "Pop Rock",
+  "pop-rock": "Pop Rock",
+  "pop latino": "Latin Pop",
+  "musica latina pop": "Latin Pop",
+  "jazz contemporaneo": "Contemporary Jazz",
+  "jazz fusion": "Jazz-Rock",
+  "jazz-fusion": "Jazz-Rock",
+  "rock duro": "Hard Rock",
+  "flamenco capital": "Flamenco",
+  "ritmos cubanos": "Cubano",
+  "cubano": "Cubano",
+  "musica cubana": "Cubano"
  },
  "otros_generos": [
   "Non-Music",

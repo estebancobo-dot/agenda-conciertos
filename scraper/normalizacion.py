@@ -72,6 +72,10 @@ def estado_estilo(r: dict, cache: dict) -> dict:
         return {"estado": "no_aplica", "motivo": "espectáculo, no un concierto de un artista"}
     if grupos and origen in _WEBS_MUSICA:
         ent_lf = _lastfm_por_nombre(r, cache) if origen == "Last.fm" else False
+        # Last.fm por el nombre, pero otra web de música lo identifica y coincide (Shakira: también Wikipedia)
+        otras = [w for w in r.get("grupos_segun") or [] if w in _WEBS_MUSICA and w != "Last.fm"]
+        if ent_lf and otras:
+            return {"estado": "conocido", "fuente": ", ".join(["Last.fm"] + otras)}
         if ent_lf:
             return {"estado": "estimado", "fuente": "Last.fm",
                     "motivo": "etiquetas de Last.fm de un artista identificado solo por su nombre"}
@@ -92,6 +96,10 @@ def estado_estilo(r: dict, cache: dict) -> dict:
         return {"estado": "conocido", "fuente": "fichas de los artistas del cartel"}
     if grupos and segun.startswith("estilo de ") and "homenajeado" in segun:
         return {"estado": "estimado", "fuente": segun, "motivo": "un tributo suena como el artista homenajeado"}
+    if grupos and origen == "agenda" and not r.get("grupos_generico"):
+        # la agenda dice el estilo del concierto con una etiqueta concreta ("Post-Punk", "Jazz/Swing"): es un dato de
+        # una fuente, como la hora o el precio que da la agenda (las genéricas, "Pop / Rock", siguen siendo estimación)
+        return {"estado": "conocido", "fuente": "la agenda", "motivo": "etiqueta de la agenda"}
     if grupos:
         return {"estado": "estimado", "fuente": "la agenda",
                 "motivo": "etiqueta de la agenda" + (f" ({segun})" if segun else "")

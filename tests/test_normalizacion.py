@@ -18,8 +18,11 @@ CACHE = {"grupo x": {"discogs": {"encontrado": False, "motivo": "sin coincidenci
 def test_estilo():
     assert estado_estilo(rec(grupos=["rock y metal"], grupos_origen="Discogs"), CACHE) == \
         {"estado": "conocido", "fuente": "Discogs"}
+    # una etiqueta concreta de la agenda es un dato; una genérica ("Pop / Rock"), una estimación
     e = estado_estilo(rec(grupos=["blues"], grupos_segun=["conciertos.club"]), CACHE)
-    assert e["estado"] == "estimado" and "etiqueta de la agenda" in e["motivo"]
+    assert e["estado"] == "conocido" and e["fuente"] == "la agenda"
+    e = estado_estilo(rec(grupos=["rock y metal", "pop e indie"], grupos_generico=True), CACHE)
+    assert e["estado"] == "estimado" and "genérica" in e["motivo"]
     # Last.fm de un artista encontrado solo por su nombre: podría ser un homónimo
     e = estado_estilo(rec(artista="LANDA", grupos=["electrónica"], grupos_origen="Last.fm"), CACHE)
     assert e["estado"] == "estimado"

@@ -118,7 +118,9 @@ def discogs(estilos_fuente: list[str]) -> tuple[list[str], list[str]]:
     estilos, generos = [], []
     for e in estilos_fuente:
         ps = partes(e)
-        for p in (ps if len(ps) > 1 else [e]):
+        # la etiqueta entera primero ("Pop / Rock" → Pop Rock); si no, cada parte ("Metal/Rock duro" → Hard Rock)
+        entera = norm(e) in estilo_genero or (norm(e) in sin and norm(sin[norm(e)]) in estilo_genero)
+        for p in ([e] if entera or len(ps) <= 1 else ps):
             n = norm(p)
             nombre = None
             if n in estilo_genero:
@@ -225,8 +227,12 @@ def por_consenso(pesos: dict[str, float]) -> list[str]:
     if not pesos:
         return []
     total, maximo = sum(pesos.values()), max(pesos.values())
+    empate = sum(p == maximo for p in pesos.values())
+    # el principal siempre cuenta (con votos muy repartidos ninguno llegaba a la cuarta parte del total y el
+    # artista se quedaba sin grupo aunque Discogs lo conociera: Santiago Auserón), salvo un empate de más de dos;
+    # los demás, con los dos umbrales
     return [g for g, p in sorted(pesos.items(), key=lambda x: -x[1])
-            if p >= UMBRAL_PRINCIPAL * maximo and p >= UMBRAL_TOTAL * total]
+            if (p == maximo and empate <= 2) or (p >= UMBRAL_PRINCIPAL * maximo and p >= UMBRAL_TOTAL * total)]
 
 
 def sin_generos_cubiertos(evs: list[dict]) -> list[dict]:

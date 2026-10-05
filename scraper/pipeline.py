@@ -594,7 +594,12 @@ def aplicar_ficha(r: dict, f: dict | None) -> None:
     # sin ficha y sin estilo (o solo uno genérico) en la agenda: el que dice el título, con un subgénero fijo
     # ("Coro de castañuelas" → clásica y lírica · Choral). No en tributos: su estilo es el del homenajeado.
     from .clasificar import estilo_de_titulo
-    te = estilo_de_titulo(r["artista"]) if origen == "agenda" and "tributos y versiones" not in cats else None
+    te = estilo_de_titulo(r["artista"]) if "tributos y versiones" not in cats else None
+    if te and origen != "agenda":
+        # con ficha pero sin estilo concreto ("ESPECTÁCULO FLAMENCO: X", Discogs solo da el género): el del título
+        if te[1] and te[0] in cats and not estilos:
+            estilos = [te[1]]
+        te = None
     if te:
         if cats == ["sin clasificar"] or generico:
             cats, generico = [te[0]], False

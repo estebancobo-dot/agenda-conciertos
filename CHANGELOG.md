@@ -1,5 +1,14 @@
 # Versiones
 
+## 2.62.0 — 2026-10-05
+
+**Menos estilos "estimados" y más subgéneros.**
+
+- **La etiqueta concreta de la agenda es un dato** (`scraper/normalizacion.py`, `estado_estilo`): "Post-Punk", "Jazz/Swing", "Cantautores"… dicen el estilo del concierto, como la agenda dice su hora o su precio: el estilo pasa a "conocido, según la agenda". Las etiquetas genéricas ("Pop / Rock", "Músicas negras") siguen siendo estimación. Last.fm identificado solo por el nombre sigue siendo estimación, salvo que otra web de música lo identifique y coincida (Shakira: también Wikipedia).
+- **El consenso ya no deja sin grupo a un artista con votos repartidos** (`scraper/clasificar.py`, `por_consenso`): el principal siempre cuenta (salvo un empate de más de dos). Antes, con Discogs dando cuatro estilos distintos, ninguno llegaba a la cuarta parte del total y se usaba la agenda (Santiago Auserón, Pedro Pastor, Francisca Valenzuela).
+- **Subgéneros desde las etiquetas** (`data/taxonomia.json`, `discogs`): "Pop / Rock" → Pop Rock, "Pop Latino" → Latin Pop, "Jazz Contemporáneo" → Contemporary Jazz, "jazz fusion" → Jazz-Rock, "Metal/Rock duro" → Hard Rock, "Ritmos cubanos" → Cubano, "Flamenco Capital" → Flamenco; la etiqueta entera se mira antes que sus partes. Y el subgénero del título ("Espectáculo flamenco", "Coro…") también cuando hay ficha pero sin estilo concreto.
+- Con los datos de hoy: estilo estimado de 912 a 324 (conocido de 1420 a 2008); sin subgénero de 1250 a 1072.
+
 ## 2.61.0 — 2026-10-05
 
 **Más precios y horas: precio con gastos de Songkick, hora y precio escritos en las páginas, hora habitual por día de la semana.**
