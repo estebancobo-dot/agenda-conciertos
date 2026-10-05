@@ -403,6 +403,10 @@ def tributo_y_estimacion(r: dict, cache: dict) -> None:
     r.pop("nacionalidad_estimada_motivo", None)
     if r.get("nacionalidad") or r.get("origen_no_aplica"):
         return
+    pais, motivo = pais_por_tipo_local(r)
+    if pais:
+        r["nacionalidad_estimada"], r["nacionalidad_estimada_motivo"] = pais, motivo
+        return
     if {"latina", "urbana y hip hop"} & set(r.get("grupos") or []):
         return
     nombre = nombre_en_titulo(r["artista"]) if h else (claves_ficha(r)[1:2] or [r["artista"]])[0]
@@ -422,6 +426,36 @@ def tributo_y_estimacion(r: dict, cache: dict) -> None:
 AGENDAS_LOCALES = {"madridenvivo", "cc_buscador", "cc_portada", "cc_estilos", "cclub_org"}
 # géneros en los que esas agendas traen muchos artistas de fuera (medido: en jazz, 9 de 20 eran de España)
 _GENEROS_DE_FUERA = {"jazz y swing", "blues", "latina", "urbana y hip hop", "soul, funk y r&b", "músicas del mundo"}
+
+
+# webs de grandes recintos o de giras: ahí los tributos suelen venir de fuera (Brit Floyd, The Bootleg Beatles)
+_FUENTES_DE_GIRA = {"songkick", "bandsintown", "movistar", "vistalegre", "riviera", "nuevacubierta", "eslava"}
+# agrupaciones de aficionados o de escuela, de aquí por definición del tipo de grupo
+_AGRUPACION_LOCAL = re.compile(r"\b(coro|coros|coral|orfeon|polifonica|escolania|rondalla|tuna|banda de musica|"
+                               r"banda municipal|banda sinfonica municipal|orquesta (?:municipal|juvenil|de pulso)|"
+                               r"agrupacion musical|conservatorio|escuela (?:municipal )?de musica|aula de musica)\b")
+
+
+def pais_por_tipo_local(r: dict) -> tuple[str | None, str]:
+    """"Probablemente España" por el tipo de grupo, cuando ninguna fuente dice de dónde es (es una estimación, no un
+    dato, y se dice):
+    - coros, bandas de música, rondallas, orquestas municipales o de escuela: agrupaciones locales;
+    - lo que solo anuncia el programa cultural de un ayuntamiento (datos.madrid.es, webs municipales), si el título
+      no tiene palabras en inglés: suelen ser grupos y músicos de aquí;
+    - bandas tributo o de versiones en salas de Madrid (no en grandes recintos ni en webs de giras)."""
+    from .origen import _palabras
+    ids = {f.get("id") for f in r.get("fuentes") or []}
+    n = norm(r.get("artista") or "")
+    if _AGRUPACION_LOCAL.search(n):
+        return "ES", "agrupación local (coro, banda de música, rondalla, orquesta municipal o de escuela)"
+    _, _, en = _palabras()
+    ingles = any(w in en for w in re.findall(r"[a-z]+", n) if len(w) >= 2)
+    if ids and all(i == "datos_madrid" or str(i).startswith("muni_") for i in ids) and not ingles:
+        return "ES", "solo lo anuncia el programa cultural del ayuntamiento, que programa sobre todo grupos y músicos locales"
+    from .nombres import es_tributo
+    if ("tributos y versiones" in (r.get("grupos") or []) or es_tributo(r)) and ids and not ids & _FUENTES_DE_GIRA:
+        return "ES", "banda tributo o de versiones en salas de Madrid: casi siempre son grupos de aquí"
+    return None, ""
 
 
 def pais_por_agendas_locales(r: dict, nombre: str) -> tuple[str | None, str]:
@@ -546,11 +580,20 @@ def aplicar_ficha(r: dict, f: dict | None) -> None:
         cats.append("tributos y versiones")
     if grupo_de_titulo(r["artista"]):
         cats, generico = [grupo_de_titulo(r["artista"])], False
+    # sin ficha y sin estilo (o solo uno genérico) en la agenda: el que dice el título, con un subgénero fijo
+    # ("Coro de castañuelas" → clásica y lírica · Choral). No en tributos: su estilo es el del homenajeado.
+    from .clasificar import estilo_de_titulo
+    te = estilo_de_titulo(r["artista"]) if origen == "agenda" and "tributos y versiones" not in cats else None
+    if te:
+        if cats == ["sin clasificar"] or generico:
+            cats, generico, origen, segun = [te[0]], False, "título", ["el título"]
+        if te[1] and te[0] in cats and not estilos:
+            estilos = [te[1]]
     r["ficha"] = f
     r["grupos"], r["grupos_origen"], r["grupos_generico"], r["grupos_segun"] = cats, origen, generico, segun
     r["categoria"] = cats[0]
     r["en_foco"] = en_foco(cats)
-    if not estilos and origen.startswith("agenda"):
+    if not estilos and origen.startswith(("agenda", "título")):
         # sin ficha: los estilos de Discogs que nombran las propias etiquetas ("Jazz/Swing" → Swing, "rock
         # alternativo" → Alternative Rock), solo los de los grupos asignados
         from .clasificar import discogs, grupo_de
@@ -558,7 +601,7 @@ def aplicar_ficha(r: dict, f: dict | None) -> None:
     r["estilos_discogs"] = estilos[:5]
     from .clasificar import grupo_de
     r["genero_discogs"] = [g for g in ((f or {}).get("generos") or []) if grupo_de(g, "genero") in cats] \
-        if not origen.startswith("agenda") else []
+        if not origen.startswith(("agenda", "título")) else []
     if origen != "agenda":
         r.pop("estilo_descartado", None)
     # el origen leído en textos (página de la agenda, Last.fm) se vuelve a calcular siempre con la regla actual

@@ -967,7 +967,8 @@
    "Dungeon Synth"
   ],
   "flamenco y copla": [
-   "Flamenco"
+   "Flamenco",
+   "Copla"
   ],
   "músicas del mundo": [
    "African",
@@ -1009,6 +1010,9 @@
    "Music Hall",
    "Barbershop",
    "Break-In"
+  ],
+  "clásica y lírica": [
+   "Score"
   ]
  },
  "genero_a_categoria": {
@@ -1156,5 +1160,345 @@
   "infantil": "fuera de foco",
   "para ninos": "fuera de foco",
   "para familias": "fuera de foco"
+ },
+ "titulo_a_estilo": {
+  "_descripcion": "Palabras del título que dicen el género y un subgénero fijo cuando no hay ficha del artista y la agenda no da estilo o solo uno genérico ('Coro de castañuelas' → clásica y lírica · Choral; 'Boleros con alma' → latina · Bolero). Se aplican en orden: la primera que aparezca como palabra gana. El subgénero puede ser null (solo el género). No se usan palabras que también son nombres de grupos de pop ('Orquesta Mondragón'): la orquesta va con apellido (sinfónica, de cámara…).",
+  "reglas": [
+   [
+    "zarzuela",
+    "clásica y lírica",
+    "Zarzuela"
+   ],
+   [
+    "opera",
+    "clásica y lírica",
+    "Opera"
+   ],
+   [
+    "opereta",
+    "clásica y lírica",
+    "Opera"
+   ],
+   [
+    "lirica",
+    "clásica y lírica",
+    "Opera"
+   ],
+   [
+    "soprano",
+    "clásica y lírica",
+    "Opera"
+   ],
+   [
+    "tenor",
+    "clásica y lírica",
+    "Opera"
+   ],
+   [
+    "coro",
+    "clásica y lírica",
+    "Choral"
+   ],
+   [
+    "coros",
+    "clásica y lírica",
+    "Choral"
+   ],
+   [
+    "coral",
+    "clásica y lírica",
+    "Choral"
+   ],
+   [
+    "orfeon",
+    "clásica y lírica",
+    "Choral"
+   ],
+   [
+    "polifonica",
+    "clásica y lírica",
+    "Choral"
+   ],
+   [
+    "escolania",
+    "clásica y lírica",
+    "Choral"
+   ],
+   [
+    "musica coral",
+    "clásica y lírica",
+    "Choral"
+   ],
+   [
+    "voces blancas",
+    "clásica y lírica",
+    "Choral"
+   ],
+   [
+    "musica antigua",
+    "clásica y lírica",
+    "Renaissance"
+   ],
+   [
+    "renacentista",
+    "clásica y lírica",
+    "Renaissance"
+   ],
+   [
+    "renacimiento",
+    "clásica y lírica",
+    "Renaissance"
+   ],
+   [
+    "medieval",
+    "clásica y lírica",
+    "Medieval"
+   ],
+   [
+    "barroco",
+    "clásica y lírica",
+    "Baroque"
+   ],
+   [
+    "barroca",
+    "clásica y lírica",
+    "Baroque"
+   ],
+   [
+    "bandas sonoras",
+    "clásica y lírica",
+    "Score"
+   ],
+   [
+    "banda sonora",
+    "clásica y lírica",
+    "Score"
+   ],
+   [
+    "musica de cine",
+    "clásica y lírica",
+    "Score"
+   ],
+   [
+    "banda de musica",
+    "clásica y lírica",
+    "Classical"
+   ],
+   [
+    "banda musica",
+    "clásica y lírica",
+    "Classical"
+   ],
+   [
+    "banda municipal",
+    "clásica y lírica",
+    "Classical"
+   ],
+   [
+    "banda sinfonica",
+    "clásica y lírica",
+    "Classical"
+   ],
+   [
+    "orquesta sinfonica",
+    "clásica y lírica",
+    "Classical"
+   ],
+   [
+    "orquesta filarmonica",
+    "clásica y lírica",
+    "Classical"
+   ],
+   [
+    "orquesta de camara",
+    "clásica y lírica",
+    "Classical"
+   ],
+   [
+    "orquesta de pulso",
+    "clásica y lírica",
+    "Classical"
+   ],
+   [
+    "orquesta de cuerda",
+    "clásica y lírica",
+    "Classical"
+   ],
+   [
+    "cuarteto de cuerda",
+    "clásica y lírica",
+    "Classical"
+   ],
+   [
+    "quinteto de viento",
+    "clásica y lírica",
+    "Classical"
+   ],
+   [
+    "musica de camara",
+    "clásica y lírica",
+    "Classical"
+   ],
+   [
+    "musica clasica",
+    "clásica y lírica",
+    "Classical"
+   ],
+   [
+    "recital de piano",
+    "clásica y lírica",
+    "Classical"
+   ],
+   [
+    "de piano",
+    "clásica y lírica",
+    "Classical"
+   ],
+   [
+    "classical",
+    "clásica y lírica",
+    "Classical"
+   ],
+   [
+    "violin y chelo",
+    "clásica y lírica",
+    "Classical"
+   ],
+   [
+    "vals",
+    "clásica y lírica",
+    "Romantic"
+   ],
+   [
+    "valses",
+    "clásica y lírica",
+    "Romantic"
+   ],
+   [
+    "bolero",
+    "latina",
+    "Bolero"
+   ],
+   [
+    "boleros",
+    "latina",
+    "Bolero"
+   ],
+   [
+    "bolereando",
+    "latina",
+    "Bolero"
+   ],
+   [
+    "tango",
+    "latina",
+    "Tango"
+   ],
+   [
+    "tangos",
+    "latina",
+    "Tango"
+   ],
+   [
+    "salsa",
+    "latina",
+    "Salsa"
+   ],
+   [
+    "bossa nova",
+    "latina",
+    "Bossa Nova"
+   ],
+   [
+    "copla",
+    "flamenco y copla",
+    "Copla"
+   ],
+   [
+    "coplas",
+    "flamenco y copla",
+    "Copla"
+   ],
+   [
+    "flamenco",
+    "flamenco y copla",
+    "Flamenco"
+   ],
+   [
+    "flamenca",
+    "flamenco y copla",
+    "Flamenco"
+   ],
+   [
+    "fado",
+    "músicas del mundo",
+    "Fado"
+   ],
+   [
+    "gospel",
+    "soul, funk y r&b",
+    "Gospel"
+   ],
+   [
+    "big band",
+    "jazz y swing",
+    "Big Band"
+   ],
+   [
+    "swing",
+    "jazz y swing",
+    "Swing"
+   ],
+   [
+    "swingueando",
+    "jazz y swing",
+    "Swing"
+   ],
+   [
+    "jazz",
+    "jazz y swing",
+    null
+   ],
+   [
+    "blues",
+    "blues",
+    null
+   ],
+   [
+    "celta",
+    "americana/country/folk",
+    "Celtic"
+   ],
+   [
+    "cantautor",
+    "cantautor",
+    null
+   ],
+   [
+    "cantautora",
+    "cantautor",
+    null
+   ],
+   [
+    "cumbia",
+    "latina",
+    "Cumbia"
+   ],
+   [
+    "folclore",
+    "americana/country/folk",
+    "Folk"
+   ],
+   [
+    "folklore",
+    "americana/country/folk",
+    "Folk"
+   ],
+   [
+    "jota",
+    "americana/country/folk",
+    "Folk"
+   ]
+  ]
  }
 }

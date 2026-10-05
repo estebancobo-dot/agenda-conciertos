@@ -89,6 +89,18 @@ def grupo_de_titulo(titulo: str) -> str | None:
     return next((v for k, v in _titulo_cat() if f" {k} " in n), None)
 
 
+def _titulo_estilo():
+    reglas = load_json("estilos_map.json").get("titulo_a_estilo", {}).get("reglas", [])
+    return [(norm(k), g, e) for k, g, e in reglas]
+
+
+def estilo_de_titulo(titulo: str) -> tuple[str, str | None] | None:
+    """(grupo, subgénero) que dice el título cuando no hay otra cosa: "Coro de castañuelas" → ("clásica y lírica",
+    "Choral"); "Boleros con alma" → ("latina", "Bolero"). None si el título no lo dice."""
+    n = f" {norm(titulo)} "
+    return next(((g, e) for k, g, e in _titulo_estilo() if f" {k} " in n), None)
+
+
 def titulo_fuera_de_foco(titulo: str) -> bool:
     _, _, titulo_kw, _ = _mapa()
     n = f" {norm(titulo)} "

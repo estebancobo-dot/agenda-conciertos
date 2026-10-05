@@ -81,6 +81,9 @@ def estado_estilo(r: dict, cache: dict) -> dict:
             return {"estado": "conocido", "fuente": web, "cita": cita.get("cita"), "url": cita.get("url")}
         return {"estado": "estimado", "fuente": web, "cita": cita.get("cita"), "url": cita.get("url"),
                 "motivo": f"lo dice {web} (página comprobada), que no es una web de música"}
+    if grupos and origen == "título":
+        return {"estado": "conocido", "fuente": "el título",
+                "motivo": "lo dice el título (" + ", ".join((r.get("estilos_discogs") or grupos)[:2]) + ")"}
     if grupos and origen == "cartel del festival":
         return {"estado": "conocido", "fuente": "fichas de los artistas del cartel"}
     if grupos and segun.startswith("estilo de ") and "homenajeado" in segun:

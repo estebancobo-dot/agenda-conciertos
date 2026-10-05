@@ -1,5 +1,13 @@
 # Versiones
 
+## 2.59.0 — 2026-10-05
+
+**Género y subgénero por el título; origen "probablemente España" por el tipo de grupo.**
+
+- **El título dice el estilo** (`data/estilos_map.json` → `titulo_a_estilo`, `scraper/clasificar.py`, `estilo_de_titulo`): sin ficha del artista y sin estilo en la agenda (o solo uno genérico), el título da el género y un subgénero fijo. Ejemplos: "Coro…", "Coral…", "Orfeón…" → clásica y lírica · Choral; "barroco" → Baroque; "música antigua", "renacentista" → Renaissance; "bandas sonoras" → Score; "ópera", "zarzuela"; "boleros" → latina · Bolero; "tango", "cumbia"; "copla" → flamenco y copla · Copla; "big band", "swing"; "jam session blues" → blues; "folclore", "jota" → Folk. La orquesta solo con apellido (sinfónica, de cámara…): "Orquesta Mondragón" es un grupo de pop. No se aplica a los tributos. El estilo queda como "conocido", según "el título".
+- **Origen estimado por el tipo de grupo** (`scraper/pipeline.py`, `pais_por_tipo_local`): "probablemente España" (estimación, con su motivo en la ficha) para coros, bandas de música, rondallas, orquestas municipales o de escuela; para lo que solo anuncia el programa cultural de un ayuntamiento (si el título no está en inglés); y para las bandas tributo o de versiones en salas de Madrid (no en grandes recintos ni en webs de giras).
+- Con los datos de hoy: origen desconocido de 665 a 525; sin clasificar de 212 a 184; 86 conciertos ganan género o subgénero.
+
 ## 2.58.0 — 2026-10-05
 
 **Sin duplicados por el ciclo delante del nombre ni por un título que cambia.**
