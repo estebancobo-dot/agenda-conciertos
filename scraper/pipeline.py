@@ -16,7 +16,7 @@ from pathlib import Path
 from . import __version__
 from .clasificar import categoria_de
 from .nombres import agrupar_tributo
-from .aportes import aplicar_artista as aplicar_aporte_artista, aplicar_conciertos as aplicar_aportes_conciertos
+from .aportes import aplicar_artista as aplicar_aporte_artista, aplicar_conciertos as aplicar_aportes_conciertos, normalizar_claves
 from .correcciones import aplicar as aplicar_correcciones
 from .entradas import aplicar_entradas
 from .fetch import AntiBotBlocked, Fetcher, RobotsBlocked, RobotsUnreachable
@@ -707,6 +707,14 @@ def conciliar(recs: list[dict], anteriores: list[dict], hoy: date, resultados: d
                      artistas_coinciden([_titulo_actual(p)], nombres_rec(r))))
                for r in recs):
             continue
+        # la misma página del concierto (la misma URL) anuncia hoy, ese día y en esa sala, un único registro con otro
+        # título: es este con el nombre cambiado ("CHEO PARDO FULL BANDA" → "PARDO FULL BANDA NY", p=793568).
+        # Si la URL la comparten varios conciertos de ese día y sala (una agenda en una sola página), no se toca.
+        up = {f["url"] for f in p["fuentes"] if f.get("url")}
+        misma_url = [r for r in recs if r["fecha"] == p["fecha"] and _misma_sala_rec(r, p)
+                     and up & {f["url"] for f in r["fuentes"] if f.get("url")}]
+        if len(misma_url) == 1:
+            continue
         # el mismo día, el mismo artista y en las mismas webs, pero en otra sala que ya estaba en la agenda: es un
         # cambio de sala de una lectura anterior (ItineruM, de Revi Space a Revi Live), no una cancelación. (Si el
         # de la otra sala es nuevo hoy, lo empareja abajo el cambio de sala, que conserva el enlace y el historial.)
@@ -1244,7 +1252,7 @@ def ejecutar(hoy: date | None = None, solo: list[str] | None = None, fetcher: Fe
                                mb_cache=cache_mb)
         art_stats["durante_agendas"] = {k: previas.get(k, 0) for k in ("consultados", "completados")}
         guardar_fichas()
-    aportes = _read("aportes.json", {})  # datos de los lotes, comprobados en la página citada (rama aportes)
+    aportes = normalizar_claves(_read("aportes.json", {}))  # datos de los lotes, comprobados en la página citada (rama aportes)
     for r in recs:
         estilos_de_agenda(r, cache_art)
         aplicar_ficha(r, ficha_de(r, cache_art))
@@ -1376,7 +1384,7 @@ def ejecutar_fichas(hoy: date | None = None, presupuesto_seg: float = 3000) -> d
     _write("artistas.json", cache_art)
     previos = _grupos_previos(recs)
     antes_cambios = foto_cambios(recs)
-    aportes = _read("aportes.json", {})  # datos de los lotes, comprobados en la página citada (rama aportes)
+    aportes = normalizar_claves(_read("aportes.json", {}))  # datos de los lotes, comprobados en la página citada (rama aportes)
     for r in recs:
         estilos_de_agenda(r, cache_art)
         aplicar_ficha(r, ficha_de(r, cache_art))
@@ -1413,7 +1421,7 @@ def reaplicar_fichas() -> None:
     if not recs:
         return
     cache = _read("artistas.json", {})
-    aportes = _read("aportes.json", {})
+    aportes = normalizar_claves(_read("aportes.json", {}))
     for r in recs:
         estilos_de_agenda(r, cache)
         aplicar_ficha(r, ficha_de(r, cache))

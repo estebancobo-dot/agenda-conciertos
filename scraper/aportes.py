@@ -283,8 +283,35 @@ class Lector:
 
 
 # ------------------------------------------------------------------ artistas
+# el ciclo delante no es parte del artista: "Inverfest. Marwan" y "Marwan" son la misma clave
+_PREFIJO_CICLO = re.compile(r"^inverfest(?: \d{4})? (?=\S)")
+
+
 def clave_artista(nombre: str) -> str:
-    return norm(nombre)
+    return _PREFIJO_CICLO.sub("", norm(nombre))
+
+
+def normalizar_claves(apo: dict) -> dict:
+    """Rehace las claves guardadas con clave_artista (las antiguas podían llevar el ciclo delante). Si dos claves
+    quedan iguales se conserva la que ya estaba limpia."""
+    for campo in ("artistas", "ocultos", "mostrar"):
+        d = apo.get(campo)
+        if isinstance(d, dict):
+            nuevo: dict = {}
+            for k, v in d.items():
+                nk = clave_artista(k)
+                if nk not in nuevo or nk == k:
+                    nuevo[nk] = v
+            apo[campo] = nuevo
+    d = apo.get("consultados")
+    if isinstance(d, dict):
+        nuevo = {}
+        for k, v in d.items():
+            nk = "a:" + clave_artista(k[2:]) if k.startswith("a:") else k
+            if nk not in nuevo or nk == k:
+                nuevo[nk] = v
+        apo["consultados"] = nuevo
+    return apo
 
 
 def verificar_artista(item: dict, pedido: dict, lector: Lector) -> dict:

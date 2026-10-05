@@ -565,7 +565,7 @@ def recalcular_categorias(r: dict) -> None:
 
 
 _CICLO = re.compile(r"(?i)^\s*((?:radar joven|las noches de r[ií]o babel|villanos del jazz|momentazos|jazzmadrid|"
-                    r"jazz con sabor a club(?: \d+)?|"
+                    r"jazz con sabor a club(?: \d+)?|inverfest(?: \d{4})?|"
                     r"festival [^:.]{2,40}|ciclo [^:.]{2,40}|madrid en vivo[^:]*|club 77)[^:.]*?)\s*[:.\-–]\s+(.{2,})$")
 
 
@@ -581,8 +581,11 @@ def separar_ciclo(r: dict) -> None:
         r["ciclo"] = ciclo
         r["artista"] = resto
     else:
+        mi = re.match(r"(?i)^\s*(inverfest)(?:\s+\d{4})?\s+(\S.+)$", r["artista"])  # "Inverfest Fito & Fitipaldis"
         mt = re.search(r"(?i)\s*[-–(]\s*club 77\)?\s*$", r["artista"])
-        if mt:
+        if mi and not re.fullmatch(r"[\d\s.]+", mi.group(2)):
+            r["ciclo"], r["artista"] = "Inverfest", clean(mi.group(2))
+        elif mt:
             r["ciclo"], r["artista"] = "Club 77", r["artista"][: mt.start()].strip()
     # "MININO BRAVO (Festival JazzMadrid)": el artista toca dentro de un festival o ciclo, que va entre paréntesis
     mf = re.search(r"\s*\(((?:[^()]*\b(?:festival|fest|ciclo)\b[^()]*))\)\s*$", r["artista"], re.I)

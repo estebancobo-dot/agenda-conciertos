@@ -145,3 +145,15 @@ def test_festival_con_y_sin_la_palabra_festival():
     nuevo = run((ev("Cadena 100 Por Ellas 2026", "Movistar Arena", fecha=date(2026, 10, 24)), s))
     out = conciliar(nuevo, prev, HOY, {"laganzua": {"funciono": True, "completa": True}}, {"laganzua": s})
     assert not any(r["estado"] == "posiblemente cancelado" for r in out)
+
+
+def test_misma_pagina_con_otro_titulo_no_queda_doble():
+    s = src("mev")
+    e = ev("CHEO PARDO FULL BANDA", "Tempo Audiophile Club", fecha=date(2026, 11, 28))
+    prev = run((e, s))
+    prev[0]["id"] = "p1"
+    e2 = ev("PARDO FULL BANDA NY", "Tempo Audiophile Club", fecha=date(2026, 11, 28))
+    e2.url = e.url  # la misma página de Madrid en Vivo
+    nuevo = run((e2, s))
+    out = conciliar(nuevo, prev, HOY, {"mev": {"funciono": True, "completa": True}}, {"mev": s})
+    assert len(out) == 1

@@ -267,3 +267,23 @@ def test_tributos_solo_en_su_grupo():
     assert es_tributo({"artista": "Tributo a Queen. Candlelight"})
     assert not es_tributo({"artista": "Banda de música de Policía municipal de Madrid"})
     assert not es_tributo({"artista": "Leiva", "categorias": ["pop e indie"]})
+
+
+def test_ciclo_inverfest_fuera_del_artista():
+    from scraper.merge import separar_ciclo
+    for titulo, artista in [("Inverfest. Marwan", "Marwan"), ("INVERFEST 2026: NACHO SARRIA", "NACHO SARRIA"),
+                            ("Inverfest Fito & Fitipaldis", "Fito & Fitipaldis")]:
+        r = {"artista": titulo, "ciclo": None}
+        separar_ciclo(r)
+        assert r["artista"] == artista and r["ciclo"].lower().startswith("inverfest")
+    r = {"artista": "INVERFEST 2026", "ciclo": None}
+    separar_ciclo(r)
+    assert r["artista"] == "INVERFEST 2026"
+
+
+def test_claves_antiguas_con_ciclo():
+    assert ap.clave_artista("Inverfest. Marwan") == ap.clave_artista("Marwan")
+    apo = ap.normalizar_claves({"artistas": {"inverfest marwan": {"pais": 1}, "marwan": {"pais": 2}},
+                                "consultados": {"a:inverfest sienna": {}, "c:x": {}}})
+    assert apo["artistas"] == {"marwan": {"pais": 2}}
+    assert set(apo["consultados"]) == {"a:sienna", "c:x"}

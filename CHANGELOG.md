@@ -1,5 +1,13 @@
 # Versiones
 
+## 2.58.0 — 2026-10-05
+
+**Sin duplicados por el ciclo delante del nombre ni por un título que cambia.**
+
+- **Inverfest es un ciclo, no parte del artista** (`scraper/merge.py`, `separar_ciclo`): "Inverfest. Marwan", "INVERFEST 2026: NACHO SARRIA" e "Inverfest Fito & Fitipaldis" pasan a artista "Marwan", "NACHO SARRIA", "Fito & Fitipaldis" con el ciclo aparte. Así casan con las demás agendas y con las fichas del artista.
+- **Las claves de los lotes** (`scraper/aportes.py`, `clave_artista`, `normalizar_claves`): las guardadas con el ciclo delante ("inverfest marwan") se leen como la del artista ("marwan"), sin perder lo aportado ni volver a preguntar por ellas.
+- **El mismo concierto con otro título** (`scraper/pipeline.py`, `conciliar`): si la misma página (la misma URL) anuncia hoy ese día y en esa sala un único concierto con otro título, el registro anterior es ese mismo y no se arrastra como "posiblemente cancelado" (Cheo Pardo en Tempo el 28-11 salía dos veces: "CHEO PARDO FULL BANDA" y "PARDO FULL BANDA NY", ambos con p=793568). Si la URL la comparten varios conciertos (una agenda en una sola página), no se toca.
+
 ## 2.57.0 — 2026-10-04
 
 **Tributos aparte: solo en "Tributos y versiones", fuera de los géneros habituales.**

@@ -249,7 +249,7 @@ def lote_conciertos(cands: list[dict], n: int, lote: str) -> tuple[str, dict]:
 
 def pendiente() -> str | None:
     """El lote enviado que aún no tiene respuesta (como mucho hay uno)."""
-    apo = cargar(APORTES, ap.vacio())
+    apo = ap.normalizar_claves(cargar(APORTES, ap.vacio()))
     pend = sorted((k for k, l in apo.get("lotes", {}).items() if not l.get("importado") and not l.get("saltado")),
                   key=lambda k: apo["lotes"][k].get("creado", ""))
     return pend[-1] if pend else None
@@ -257,7 +257,7 @@ def pendiente() -> str | None:
 
 def saltar(hoy: str | None = None) -> str | None:
     """Da por perdido el lote pendiente (no se contestará): sus preguntas vuelven a estar disponibles."""
-    apo = cargar(APORTES, ap.vacio())
+    apo = ap.normalizar_claves(cargar(APORTES, ap.vacio()))
     k = pendiente()
     if k:
         apo["lotes"][k]["saltado"] = hoy or date.today().isoformat()
@@ -269,7 +269,7 @@ def saltar(hoy: str | None = None) -> str | None:
 def generar(tipo: str = "auto", n: int | None = None, hoy: str | None = None) -> tuple[str | None, str]:
     """Crea el siguiente lote. Devuelve (id del lote o None si no queda nada, texto)."""
     hoy = hoy or date.today().isoformat()
-    apo = cargar(APORTES, ap.vacio())
+    apo = ap.normalizar_claves(cargar(APORTES, ap.vacio()))
     recs = conciertos(hoy)
     if tipo == "auto":
         ultimo = max(apo.get("lotes", {}).values(), key=lambda l: l.get("creado", ""), default={}).get("tipo")
@@ -308,7 +308,7 @@ def importar(texto: str, fetcher=None, hoy: str | None = None) -> str:
     """Comprueba la respuesta del chat y guarda lo aceptado. Devuelve el informe en Markdown."""
     hoy = hoy or date.today().isoformat()
     d = extraer_json(texto)
-    apo = cargar(APORTES, ap.vacio())
+    apo = ap.normalizar_claves(cargar(APORTES, ap.vacio()))
     lote = apo.get("lotes", {}).get(d["lote"])
     if not lote:
         raise ValueError(f"el lote {d['lote']} no existe (¿es de otro día o ya se importó y se borró?)")
@@ -387,7 +387,7 @@ def importar(texto: str, fetcher=None, hoy: str | None = None) -> str:
 
 def ocultar(lista: list[dict], hoy: str | None = None) -> str:
     """Añade a la lista de ocultos [{nombre, motivo}] (lo que no es un concierto: fiestas, DJ, humor, cine…)."""
-    apo = cargar(APORTES, ap.vacio())
+    apo = ap.normalizar_claves(cargar(APORTES, ap.vacio()))
     for x in lista:
         apo.setdefault("ocultos", {})[ap.clave_artista(x["nombre"])] = {
             "nombre": x["nombre"], "motivo": str(x.get("motivo") or "")[:160], "salas": x.get("salas") or [],
@@ -398,7 +398,7 @@ def ocultar(lista: list[dict], hoy: str | None = None) -> str:
 
 def mostrar(nombre: str) -> str:
     """Quita un nombre de la lista de ocultos: vuelve a salir en la agenda en la siguiente lectura."""
-    apo = cargar(APORTES, ap.vacio())
+    apo = ap.normalizar_claves(cargar(APORTES, ap.vacio()))
     k = ap.clave_artista(nombre)
     quitado = (apo.get("ocultos") or {}).pop(k, None)
     # también contra las reglas automáticas (scraper.aportes.no_es_concierto): queda apuntado como concierto
@@ -409,7 +409,7 @@ def mostrar(nombre: str) -> str:
 
 def estado(hoy: str | None = None) -> str:
     hoy = hoy or date.today().isoformat()
-    apo = cargar(APORTES, ap.vacio())
+    apo = ap.normalizar_claves(cargar(APORTES, ap.vacio()))
     recs = conciertos(hoy)
     na, nc = len(candidatos_artistas(recs, apo, hoy)), len(candidatos_conciertos(recs, apo, hoy))
     arts = apo.get("artistas") or {}
