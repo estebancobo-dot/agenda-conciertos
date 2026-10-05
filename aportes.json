@@ -2219,6 +2219,95 @@
    },
    "lote": "A-2026-10-05-02",
    "fecha": "2026-10-05"
+  },
+  "mikky dee": {
+   "nombre": "Mikky Dee",
+   "pais": {
+    "valor": "SE",
+    "url": "https://en.wikipedia.org/wiki/Mikkey_Dee",
+    "cita": "mikkey dee - wikipedia mikkey dee swedish drummer wikimedia foundation, inc. contributors to wikimedia projects mikkey dee - wikipedia jump to content main menu",
+    "ciudad": "Gotemburgo"
+   },
+   "lote": "A-2026-10-05-03",
+   "fecha": "2026-10-05"
+  },
+  "funzo": {
+   "nombre": "Funzo",
+   "pais": {
+    "valor": "ES",
+    "url": "https://es.wikipedia.org/wiki/Funzo_%26_Baby_Loud",
+    "cita": "mover a la barra lateral ocultar inicio 1 nombre del grupo 2 estilo 3 lema 4 trayectoria 5 discografia 6 referencias cambiar a la tabla de contenidos funzo & baby loud anadir idiomas anadir enlaces articulo discusion espanol leer editar ver historial herramientas herramientas mover a la barra latera",
+    "ciudad": "Alicante"
+   },
+   "estilos": {
+    "valores": [
+     "urbana"
+    ],
+    "url": "https://es.wikipedia.org/wiki/Funzo_%26_Baby_Loud",
+    "cita": "nos mudamos juntos, pensabamos que era el fin” | musica» . los40 . consultado el 1 de noviembre de 2023 . 1 2 canoa, natalia (28 de junio de 2021). «funzo & baby loud: \"la musica urbana esta muriendo, haciendo pop-rock si llenas estadios \" » . rtve.es . consultado el 1 de noviembre de 2023 . ↑ «la m",
+    "web_musica": true
+   },
+   "lote": "A-2026-10-05-03",
+   "fecha": "2026-10-05"
+  },
+  "inverfest miguel rios": {
+   "nombre": "Inverfest. Miguel Ríos",
+   "pais": {
+    "valor": "ES",
+    "url": "https://es.wikipedia.org/wiki/Miguel_R%C3%ADos",
+    "cita": "miguel rios - wikipedia, la enciclopedia libre miguel rios cantante espanol wikimedia foundation, inc. colaboradores de los proyectos wikimedia miguel rios - wik",
+    "ciudad": "Granada"
+   },
+   "estilos": {
+    "valores": [
+     "rock"
+    ],
+    "url": "https://es.wikipedia.org/wiki/Miguel_R%C3%ADos",
+    "cita": "rock latino , rock progresivo y arena rock instrumento voz guitarra discograficas a&m records polydor records hispavox philips records sitio web www.miguel-rios.com/home distinciones medalla de oro al merito en las bellas artes (1992) premio grammy latino a la excelencia musical (2013) [ editar dato",
+    "web_musica": true
+   },
+   "lote": "A-2026-10-05-03",
+   "fecha": "2026-10-05"
+  },
+  "little barrie": {
+   "nombre": "LITTLE BARRIE",
+   "pais": {
+    "valor": "GB",
+    "url": "https://en.wikipedia.org/wiki/Little_Barrie",
+    "cita": "little barrie - wikipedia little barrie british band wikimedia foundation, inc. contributors to wikimedia projects little barrie - wikipedia jump to content main m",
+    "ciudad": "Nottingham"
+   },
+   "lote": "A-2026-10-05-03",
+   "fecha": "2026-10-05"
+  },
+  "maria parrado": {
+   "nombre": "María Parrado",
+   "pais": {
+    "valor": "ES",
+    "url": "https://en.wikipedia.org/wiki/Mar%C3%ADa_Parrado",
+    "cita": "maria parrado - wikipedia maria parrado spanish singer wikimedia foundation, inc. contributors to wikimedia projects maria parrado - wikipedia jump to content main"
+   },
+   "lote": "A-2026-10-05-03",
+   "fecha": "2026-10-05"
+  },
+  "tasha and tracie": {
+   "nombre": "Tasha & Tracie",
+   "pais": {
+    "valor": "BR",
+    "url": "https://en.wikipedia.org/wiki/Tasha_%26_Tracie",
+    "cita": "tasha & tracie - wikipedia tasha & tracie brazilian rap duo wikimedia foundation, inc. contributors to wikimedia projects tasha & tracie - wikipedia jump to content",
+    "ciudad": "São Paulo"
+   },
+   "estilos": {
+    "valores": [
+     "rap"
+    ],
+    "url": "https://en.wikipedia.org/wiki/Tasha_%26_Tracie",
+    "cita": "tasha & tracie - wikipedia tasha & tracie brazilian rap duo wikimedia foundation, inc. contributors to wikimedia projects tasha & tracie - wikipedia jump to content",
+    "web_musica": true
+   },
+   "lote": "A-2026-10-05-03",
+   "fecha": "2026-10-05"
   }
  },
  "conciertos": [
@@ -7288,6 +7377,177 @@
    "lote": "A-2026-10-05-02",
    "aceptado": [],
    "rechazado": []
+  },
+  "a:donnys black shoes": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-03",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:7 x medio": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-03",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:la banda sabinera": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-03",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:ramona flores": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-03",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:guilty pleasures": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-03",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:mikky dee": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-03",
+   "aceptado": [
+    "pais"
+   ],
+   "rechazado": [
+    "estilos: la frase no dice ninguno de esos estilos"
+   ]
+  },
+  "a:kheis": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-03",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:dogteeh": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-03",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:neil sugarman organ combo usa": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-03",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:funzo": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-03",
+   "aceptado": [
+    "estilos",
+    "pais"
+   ],
+   "rechazado": []
+  },
+  "a:roberto quintero and falcon spirit": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-03",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:voilaaa francia": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-03",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:inverfest miguel rios": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-03",
+   "aceptado": [
+    "estilos",
+    "pais"
+   ],
+   "rechazado": []
+  },
+  "a:diegote": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-03",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:mimoza cendey and friends": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-03",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:little barrie": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-03",
+   "aceptado": [
+    "pais"
+   ],
+   "rechazado": [
+    "estilos: la frase no dice ninguno de esos estilos"
+   ]
+  },
+  "a:pinone": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-03",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:zambombas y panderetas en sinfonico coro villa de las rozas 45o aniversario": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-03",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:maria parrado": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-03",
+   "aceptado": [
+    "pais"
+   ],
+   "rechazado": [
+    "estilos: la frase no dice ninguno de esos estilos"
+   ]
+  },
+  "a:serko 125km tour": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-03",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:x star": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-03",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:ay trick": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-03",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:asi canta jerez en navidad": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-03",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:tasha and tracie": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-03",
+   "aceptado": [
+    "estilos",
+    "pais"
+   ],
+   "rechazado": []
+  },
+  "a:cvba": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-03",
+   "aceptado": [],
+   "rechazado": []
   }
  },
  "lotes": {
@@ -7486,258 +7746,8 @@
   "A-2026-10-05-03": {
    "tipo": "artistas",
    "creado": "2026-10-05",
-   "items": {
-    "a1": {
-     "nombre": "Donny's Black Shoes",
-     "clave": "donnys black shoes",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Sala Villanos"
-     ]
-    },
-    "a2": {
-     "nombre": "7 x Medio",
-     "clave": "7 x medio",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Sala Villanos"
-     ]
-    },
-    "a3": {
-     "nombre": "La Banda Sabinera",
-     "clave": "la banda sabinera",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "La Riviera"
-     ]
-    },
-    "a4": {
-     "nombre": "Ramona Flores",
-     "clave": "ramona flores",
-     "falta": [
-      "estilo"
-     ],
-     "salas": [
-      "Cadavra"
-     ]
-    },
-    "a5": {
-     "nombre": "GUILTY PLEASURES",
-     "clave": "guilty pleasures",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "El Perro Club"
-     ]
-    },
-    "a6": {
-     "nombre": "Mikky Dee",
-     "clave": "mikky dee",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Revi Live"
-     ]
-    },
-    "a7": {
-     "nombre": "Kheis",
-     "clave": "kheis",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Sala Uni"
-     ]
-    },
-    "a8": {
-     "nombre": "DOGTEEH",
-     "clave": "dogteeh",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "El Perro Club"
-     ]
-    },
-    "a9": {
-     "nombre": "Neil Sugarman Organ Combo USA",
-     "clave": "neil sugarman organ combo usa",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Tempo Audiophile Club"
-     ]
-    },
-    "a10": {
-     "nombre": "Funzo",
-     "clave": "funzo",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Live Las Ventas"
-     ]
-    },
-    "a11": {
-     "nombre": "Roberto Quintero & Falcon Spirit",
-     "clave": "roberto quintero and falcon spirit",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Sala Villanos"
-     ]
-    },
-    "a12": {
-     "nombre": "VOILAAA Francia",
-     "clave": "voilaaa francia",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Tempo Audiophile Club"
-     ]
-    },
-    "a13": {
-     "nombre": "Inverfest. Miguel Ríos",
-     "clave": "inverfest miguel rios",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Movistar Arena"
-     ]
-    },
-    "a14": {
-     "nombre": "Diegote",
-     "clave": "diegote",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Sala Villanos"
-     ]
-    },
-    "a15": {
-     "nombre": "MIMOZA CENDEY & FRIENDS",
-     "clave": "mimoza cendey and friends",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Tempo Audiophile Club"
-     ]
-    },
-    "a16": {
-     "nombre": "LITTLE BARRIE",
-     "clave": "little barrie",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Canopy"
-     ]
-    },
-    "a17": {
-     "nombre": "PINONE",
-     "clave": "pinone",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "El Perro Club"
-     ]
-    },
-    "a18": {
-     "nombre": "Zambombas y panderetas en sinfónico - Coro Villa de las Rozas 45º Aniversario",
-     "clave": "zambombas y panderetas en sinfonico coro villa de las rozas 45o aniversario",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": []
-    },
-    "a19": {
-     "nombre": "María Parrado",
-     "clave": "maria parrado",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Galileo Galilei"
-     ]
-    },
-    "a20": {
-     "nombre": "Serko \"125KM\" Tour",
-     "clave": "serko 125km tour",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Palacio Vistalegre"
-     ]
-    },
-    "a21": {
-     "nombre": "X-STAR",
-     "clave": "x star",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "El Perro Club"
-     ]
-    },
-    "a22": {
-     "nombre": "Ay Trick",
-     "clave": "ay trick",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Tempo Audiophile Club"
-     ]
-    },
-    "a23": {
-     "nombre": "Así canta Jerez en Navidad",
-     "clave": "asi canta jerez en navidad",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Palacio Vistalegre"
-     ]
-    },
-    "a24": {
-     "nombre": "Tasha & Tracie",
-     "clave": "tasha and tracie",
-     "falta": [
-      "estilo"
-     ],
-     "salas": [
-      "Sala Mon Live"
-     ]
-    },
-    "a25": {
-     "nombre": "CVBA",
-     "clave": "cvba",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "El Perro Club"
-     ]
-    }
-   },
-   "pendientes": 181
+   "pendientes": 181,
+   "importado": "2026-10-05"
   }
  },
  "ocultos": {
