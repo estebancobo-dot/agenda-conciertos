@@ -9207,6 +9207,265 @@
    "pendientes": 321,
    "segunda": true,
    "importado": "2026-10-05"
+  },
+  "O-2026-10-05-02": {
+   "tipo": "artistas",
+   "creado": "2026-10-05",
+   "items": {
+    "a1": {
+     "nombre": "Tour Supernova",
+     "clave": "tour supernova",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Cadillac Solitario"
+     ]
+    },
+    "a2": {
+     "nombre": "A Night With The Beatles | The Nowhere Plan",
+     "clave": "a night with the beatles the nowhere plan",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Moby Dick Club"
+     ]
+    },
+    "a3": {
+     "nombre": "Clickedus",
+     "clave": "clickedus",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Fun House"
+     ]
+    },
+    "a4": {
+     "nombre": "BSB (Bustos Saguar Band)",
+     "clave": "bsb bustos saguar band",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Revi Live"
+     ]
+    },
+    "a5": {
+     "nombre": "LOOPING GREIS",
+     "clave": "looping greis",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Café La Palma"
+     ]
+    },
+    "a6": {
+     "nombre": "KABEAUSHÉ PRESENTS",
+     "clave": "kabeaushe presents",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Café Berlín"
+     ]
+    },
+    "a7": {
+     "nombre": "MIDDLE NAME",
+     "clave": "middle name",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Café La Palma"
+     ]
+    },
+    "a8": {
+     "nombre": "The Sleeves",
+     "clave": "the sleeves",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "ContraClub"
+     ]
+    },
+    "a9": {
+     "nombre": "Las Margaritas",
+     "clave": "las margaritas",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Cadillac Solitario"
+     ]
+    },
+    "a10": {
+     "nombre": "Tinez",
+     "clave": "tinez",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Sala Clamores"
+     ]
+    },
+    "a11": {
+     "nombre": "C15",
+     "clave": "c15",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Cadillac Solitario"
+     ]
+    },
+    "a12": {
+     "nombre": "S.D.H",
+     "clave": "s d h",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Cadavra"
+     ]
+    },
+    "a13": {
+     "nombre": "Cavayo",
+     "clave": "cavayo",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Cadillac Solitario"
+     ]
+    },
+    "a14": {
+     "nombre": "Javi Bau",
+     "clave": "javi bau",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Cadillac Solitario"
+     ]
+    },
+    "a15": {
+     "nombre": "CODIGO 31 ZOEM PCH OKAMI",
+     "clave": "codigo 31 zoem pch okami",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Café La Palma"
+     ]
+    },
+    "a16": {
+     "nombre": "Cloudy",
+     "clave": "cloudy",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Fabrik"
+     ]
+    },
+    "a17": {
+     "nombre": "Concierto Hide Tyson",
+     "clave": "concierto hide tyson",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Cadavra"
+     ]
+    },
+    "a18": {
+     "nombre": "MEDUSA WINTER 2026 · BUSES",
+     "clave": "medusa winter 2026 buses",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "IFEMA Madrid"
+     ]
+    },
+    "a19": {
+     "nombre": "Twist Club e Iboga",
+     "clave": "twist club e iboga",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "La Riviera"
+     ]
+    },
+    "a20": {
+     "nombre": "CLEARWATER COMPANION",
+     "clave": "clearwater companion",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Fun House"
+     ]
+    },
+    "a21": {
+     "nombre": "Blues & Roots",
+     "clave": "blues and roots",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Intruso Bar"
+     ]
+    },
+    "a22": {
+     "nombre": "MAD DOGS",
+     "clave": "mad dogs",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "El Perro Club"
+     ]
+    },
+    "a23": {
+     "nombre": "MR. BLACK",
+     "clave": "mr black",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Jazzville",
+      "Jazzville / Sala B"
+     ]
+    },
+    "a24": {
+     "nombre": "CARMEN YOUNG",
+     "clave": "carmen young",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Tablao Flamenco 1911"
+     ]
+    },
+    "a25": {
+     "nombre": "Tiña",
+     "clave": "tina",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Cine & Teatro Capitol"
+     ]
+    }
+   },
+   "pendientes": 296,
+   "segunda": true
   }
  },
  "ocultos": {
