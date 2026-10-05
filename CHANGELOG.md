@@ -1,5 +1,14 @@
 # Versiones
 
+## 2.66.0 — 2026-10-05
+
+**Fuentes que ya no se pueden leer, validación que espera a la web publicada y acciones de GitHub al día.**
+
+- **Fuente congelada** (`scraper/pipeline.py`, `fuentes_congeladas`, `marcar_congelado`): una fuente que no se lee bien desde hace más de 2 días (Sala Villanos, cuyo robots.txt no deja leerla desde el 1-10) está congelada. Lo que también anuncian otras webs vivas no cambia (70 de los 91 conciertos de Villanos salen también en conciertos.club, Madrid en Vivo…). Lo que **solo** anuncia ella: "sin reconfirmar" en la tarjeta, aviso en la ficha ("solo lo anuncia Sala Villanos, que no se puede leer desde el 1 de octubre: confírmalo antes de ir"), confirmación "sin confirmar", y a los 30 días sin poder reconfirmarse se oculta (sigue en los datos). La sala no se quita: sus conciertos siguen llegando por las agendas.
+- **La validación espera a la web publicada** (`tools/validar_web.py`, `esperar_publicacion`): si arranca antes de que termine de publicarse la versión de main, espera (hasta 15 minutos) en vez de dar fallos de algo que aún no está publicado.
+- **Validación nueva**: el conflicto de fecha en la tarjeta y la ficha, y el "sin reconfirmar" de las fuentes congeladas.
+- **Acciones de GitHub**: `actions/checkout@v5` y `actions/setup-python@v6` (Node 24; GitHub retira Node 20).
+
 ## 2.65.0 — 2026-10-05
 
 **Origen: lo que no es un artista deja de contar como "sin confirmar", y segunda búsqueda de los que quedan.**

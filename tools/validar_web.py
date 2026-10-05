@@ -483,6 +483,7 @@ def recorrido(b):
     vistas_finde_y_todos(pg)
     confirmacion_web(pg)
     normalizacion_web(pg)
+    conflicto_fecha_web(pg)
     fase_b_web(pg)
 
     # informe
@@ -1296,6 +1297,34 @@ def confirmacion_web(pg):
           detalle=str({**r, **solo}))
 
 
+def conflicto_fecha_web(pg):
+    """Dos webs dan fechas distintas (o una anuncia "nueva fecha"): la tarjeta dice "fecha sin confirmar" y la ficha
+    enseña las dos fechas con sus webs. Y lo que solo anuncia una web que ya no se puede leer: "sin reconfirmar"."""
+    cid = pg.evaluate("(DATA.find(r=>r.fecha>=HOY&&(r.conflictos||[]).some(c=>c.campo==='fecha'))||{}).id||null")
+    if not cid:
+        check("Funcional", "Conflicto de fecha en la tarjeta y la ficha", "hoy no hay ninguno", ok=True)
+    else:
+        pg.evaluate(f"location.hash='#concierto/{cid}'")
+        pg.wait_for_selector(".rows", timeout=15000)
+        pg.wait_for_timeout(1500)
+        caja = pg.locator(".box-bad").first.inner_text() if pg.locator(".box-bad").count() else ""
+        fechas = pg.evaluate(f"(BYID['{cid}'].conflictos||[]).filter(c=>c.campo==='fecha').flatMap(c=>c.versiones.map(v=>v.valor))")
+        tarjeta = pg.evaluate(f"estadoMini(BYID['{cid}'])")
+        ok = "Fecha" in caja and len(fechas) >= 2 and "fecha" in tarjeta
+        check("Funcional", "Conflicto de fecha en la tarjeta y la ficha", f"{len(fechas)} fechas", ok=ok,
+              detalle=caja[:200])
+    n = pg.evaluate("DATA.filter(r=>r.fecha>=HOY&&r.congelado).length")
+    if n:
+        cid = pg.evaluate("DATA.find(r=>r.fecha>=HOY&&r.congelado).id")
+        pg.evaluate(f"location.hash='#concierto/{cid}'")
+        pg.wait_for_selector(".rows", timeout=15000)
+        pg.wait_for_timeout(1500)
+        txt = pg.inner_text("main") if pg.locator("main").count() else pg.inner_text("body")
+        tarjeta = pg.evaluate(f"estadoMini(BYID['{cid}'])")
+        check("Funcional", "Fuente que ya no se puede leer: «sin reconfirmar» en la tarjeta y la ficha", f"{n} conciertos",
+              ok="sin reconfirmar" in tarjeta and "Sin reconfirmar" in txt)
+
+
 def normalizacion_web(pg):
     """N3/N4: la ficha de cada concierto dice el estado de su estilo y de su origen (conocido, estimado, no aplica o
     desconocido tras buscar, con dónde se ha buscado) y la página de Fuentes tiene el recuento."""
@@ -1798,8 +1827,30 @@ def informe() -> int:
     return 1 if tot["fallo"] else 0
 
 
+def esperar_publicacion(minutos: float = 15) -> None:
+    """Si la web publicada aún no es la de main (la validación arrancó antes de que terminara de publicarse), espera:
+    así no se dan por fallo las pruebas de algo que todavía no está publicado. Pasado el tiempo, se valida igual."""
+    import urllib.request
+    local = hashlib.sha256((RAIZ / "site" / "index.html").read_bytes()).hexdigest()
+    fin = time.monotonic() + minutos * 60
+    while True:
+        try:
+            with urllib.request.urlopen(URL + f"?v={random.randint(0, 1 << 30)}", timeout=20) as x:
+                if hashlib.sha256(x.read()).hexdigest() == local:
+                    return
+        except Exception:  # noqa: BLE001
+            pass
+        if time.monotonic() > fin:
+            print("La web publicada sigue sin ser la de main: se valida igual")
+            return
+        print("La web publicada aún no es la de main: espero 30 s")
+        time.sleep(30)
+
+
 def main() -> int:
     random.seed()  # fechas y conciertos distintos en cada validación: sin cachés calentadas por la anterior
+    if URL.startswith("https://"):
+        esperar_publicacion()
     with sync_playwright() as p:
         b = p.chromium.launch(executable_path=os.environ.get("CHROMIUM") or None)
         datos = publicacion(b) or []

@@ -849,6 +849,40 @@ def _misma_sala_rec(a: dict, b: dict) -> bool:
 CONFIANZA = (("confirmado", 4), ("probable", 2), ("sin confirmar", -99))
 
 
+# Una fuente que no se lee bien desde hace más de CONGELADA_DIAS días (robots.txt, web caída) está "congelada": lo que
+# solo ella anuncia sale de su última lectura y ya no se reconfirma. Se dice en la tarjeta y la ficha, baja a "sin
+# confirmar" y, pasado RETIRAR_DIAS, se oculta (sigue en los datos): un concierto que nadie reconfirma en un mes no
+# es fiable. Lo que también anuncian otras webs vivas no se toca.
+CONGELADA_DIAS, RETIRAR_DIAS = 2, 30
+
+
+def fuentes_congeladas(estado: dict, resultados: dict | None, hoy: date) -> dict[str, str]:
+    """{id de fuente: fecha de su último éxito} de las fuentes congeladas."""
+    out = {}
+    limite = (hoy - timedelta(days=CONGELADA_DIAS)).isoformat()
+    for sid, h in (estado.get("historial_fuentes") or {}).items():
+        if (resultados or {}).get(sid, {}).get("completa"):
+            continue
+        ok = h.get("ultima_ok")
+        if ok and ok < limite:
+            out[sid] = ok
+    return out
+
+
+def marcar_congelado(r: dict, congeladas: dict[str, str], fuentes: dict[str, Source], hoy: date) -> None:
+    r.pop("congelado", None)
+    if (r.get("oculto") or {}).get("congelado"):
+        r.pop("oculto")
+    ids = {f.get("id") for f in r.get("fuentes") or [] if f.get("id") in fuentes}
+    if not ids or not ids <= set(congeladas) or r["fecha"] < hoy.isoformat():
+        return
+    desde = max(congeladas[i] for i in ids)
+    r["congelado"] = {"desde": desde, "fuentes": sorted(fuentes[i].nombre.split(" (")[0] for i in ids)}
+    if desde < (hoy - timedelta(days=RETIRAR_DIAS)).isoformat() and not r.get("oculto"):
+        r["oculto"] = {"motivo": f"sin reconfirmar desde el {desde}: su única web ya no se puede leer",
+                       "nombre": r.get("artista"), "regla": True, "congelado": True}
+
+
 def puntuar_confianza(r: dict, fuentes: dict[str, Source]) -> dict:
     """Nivel de confirmación de un concierto según quién lo anuncia (ver CONFIANZA). Si todas las webs que lo anuncian
     han fallado hoy y se usa su última lectura buena, se dice y no pasa de "probable"."""
@@ -902,6 +936,10 @@ def puntuar_confianza(r: dict, fuentes: dict[str, Source]) -> dict:
                        + (f" (del {max(cache)[:10]})" if any(cache) else ""))
         if nivel == "confirmado":
             nivel = "probable"
+    if r.get("congelado"):
+        nivel = "sin confirmar"
+        motivos.append(f"Solo lo anuncia {', '.join(r['congelado']['fuentes'])}, que no se puede leer desde el "
+                       f"{r['congelado']['desde']}: no se ha podido reconfirmar")
     ev = (r.get("estado_evento") or {}).get("tipo")
     if ev or r.get("estado") == "posiblemente cancelado":
         nivel = "sin confirmar"
@@ -1374,7 +1412,9 @@ def ejecutar(hoy: date | None = None, solo: list[str] | None = None, fetcher: Fe
     nueva_fecha_anunciada(recs, hoy.isoformat())
     from .normalizacion import estimar_horas, normalizar, resumen as resumen_normalizacion
     estimar_horas(recs)
+    congeladas = fuentes_congeladas(estado, resultados, hoy)
     for r in recs:
+        marcar_congelado(r, congeladas, por_id, hoy)
         r["confianza"] = puntuar_confianza(r, por_id)
         normalizar(r, cache_art)
     recs.sort(key=lambda r: (r["fecha"], r["hora"] or "99", norm(r["artista"])))
@@ -1498,7 +1538,9 @@ def ejecutar_fichas(hoy: date | None = None, presupuesto_seg: float = 3000) -> d
     por_id = {s.id: s for s in FUENTES}
     from .normalizacion import estimar_horas, normalizar, resumen as resumen_normalizacion
     estimar_horas(recs)
+    congeladas = fuentes_congeladas(_read("estado.json", {}), None, hoy)
     for r in recs:  # las páginas de entradas pueden haber añadido dónde se vende
+        marcar_congelado(r, congeladas, por_id, hoy)
         r["confianza"] = puntuar_confianza(r, por_id)
         normalizar(r, cache_art)
     _write("concerts.json", datos)
@@ -1533,7 +1575,12 @@ def reaplicar_fichas() -> None:
     aplicar_aportes_conciertos(recs, aportes)
     from .normalizacion import estimar_horas, normalizar
     estimar_horas(recs)
+    por_id = {s.id: s for s in FUENTES}
+    hoy = datetime.now(timezone.utc).astimezone().date()
+    congeladas = fuentes_congeladas(_read("estado.json", {}), None, hoy)
     for r in recs:
+        marcar_congelado(r, congeladas, por_id, hoy)
+        r["confianza"] = puntuar_confianza(r, por_id)
         normalizar(r, cache)
     _write("concerts.json", datos)
     escribir_csv(recs, DATA / "concerts.csv")

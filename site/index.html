@@ -852,6 +852,7 @@ function estadoMini(r){
     return `<span class="st st-conf" title="Las webs no coinciden: abre el concierto para ver cada versión">⚠ ${campos.length?esc(campos.join(" y "))+" sin confirmar":"datos distintos"}</span>`;
   }
   if(r.estado==="posiblemente cancelado") return `<span class="st st-canc">¿cancelado?</span>`;
+  if(r.congelado) return `<span class="st st-canc" title="Su única web no se puede leer desde el ${esc(r.congelado.desde)}">sin reconfirmar</span>`;
   return "";
 }
 // festival en la tarjeta: los primeros artistas del cartel y cuántos más
@@ -959,6 +960,8 @@ function estadoBox0(r){
   }
   if(r.estado==="posiblemente cancelado")
     return `<div class="box box-warn"><b>¿Cancelado?</b> Ya no aparece en ninguna de las webs donde se anunciaba. Visto por última vez el ${esc(r.ultima_vez_visto||"—")}.</div>`;
+  if(r.congelado)
+    return `<div class="box box-warn"><b>Sin reconfirmar</b> Solo lo anuncia ${esc(r.congelado.fuentes.join(", "))}, que no se puede leer desde el ${esc(fmt(r.congelado.desde,{day:"numeric",month:"long"}))}: es el dato de su última lectura. Confírmalo antes de ir.</div>`;
   if(r.confianza) return "";  // quién lo confirma lo dice el bloque de confirmación (confianzaHTML)
   if(r.confirmado_sala)
     return `<div class="box box-ok">✓ Confirmado en la web oficial de la sala${r.fuentes.length>1?` y en ${plural(r.fuentes.length-1,"web")} más`:""}.</div>`;

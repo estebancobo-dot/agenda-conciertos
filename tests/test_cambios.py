@@ -175,3 +175,24 @@ def test_nueva_fecha_queda_como_conflicto_en_los_dos():
         assert x["estado"] == "conflicto" and c["campo"] == "fecha"
         assert [v["valor"] for v in c["versiones"]] == ["2027-01-21", "2027-01-22"] and "JacksOnLive" in c["motivo"]
     assert otro["estado"] == "1_fuente"
+
+
+def test_fuente_congelada():
+    from scraper.pipeline import fuentes_congeladas, marcar_congelado, puntuar_confianza
+    s = src("mev")
+    estado = {"historial_fuentes": {"mev": {"ultima_ok": "2026-09-20"}, "otra": {"ultima_ok": "2026-09-29"}}}
+    cong = fuentes_congeladas(estado, {}, HOY)
+    assert cong == {"mev": "2026-09-20"}
+    assert fuentes_congeladas(estado, {"mev": {"completa": True}}, HOY) == {}
+    r = rec(fecha="2026-10-20", fuentes=[{"id": "mev", "nombre": s.nombre}])
+    marcar_congelado(r, cong, {"mev": s}, HOY)
+    assert r["congelado"]["desde"] == "2026-09-20" and "oculto" not in r
+    assert puntuar_confianza(r, {"mev": s})["nivel"] == "sin confirmar"
+    # pasado un mes sin poder reconfirmarse, se oculta (sigue en los datos)
+    viejo = {"mev": "2026-08-15"}
+    marcar_congelado(r, viejo, {"mev": s}, HOY)
+    assert r["oculto"]["congelado"] is True
+    # si lo anuncia también otra web viva, no se toca
+    r2 = rec(fecha="2026-10-20", fuentes=[{"id": "mev", "nombre": s.nombre}, {"id": "x", "nombre": "X"}])
+    marcar_congelado(r2, cong, {"mev": s, "x": src("x")}, HOY)
+    assert "congelado" not in r2
