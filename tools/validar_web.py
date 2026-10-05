@@ -678,6 +678,29 @@ def estilos(pg, lunes):
           f"{dos}: {r['n']} de {r['esperados']}", ok=r["n"] == r["esperados"] and r["malos"] == 0 and r["n"] > 0,
           detalle=str(r))
     pg.evaluate("()=>{setGrupos([...DEF_GRUPOS]); state.estilos={}; store.set('estilos',{}); renderBody(false);}")
+    # "Rock y metal (general)": los del género sin ningún estilo concreto de ese género
+    pg.evaluate(f"location.hash='#semana/{lunes.isoformat()}'")
+    pg.wait_for_selector("#fgen")
+    pg.evaluate("scrollTo(0,0)")
+    pg.click("#fgen")
+    pg.wait_for_selector(".sheet")
+    pg.click("[data-rap='def']")
+    pg.click("#vestilos")
+    gen = pg.locator("[data-es='rock y metal|~rock y metal']")
+    if not gen.count():
+        check("Funcional", "Subgénero «(general)» de cada género", "no aparece en el panel de estilos", ok=False)
+        pg.click("#sx")
+        return
+    etiqueta = gen.first.inner_text()
+    gen.first.click()
+    pg.click("#sclose")
+    pg.wait_for_function("!document.querySelector('.sheet')")
+    r = pg.evaluate("""()=>{const f=DATA.filter(r=>r.fecha>=HOY&&visible(r));
+        return {n:f.length, malos:f.filter(r=>!gruposF(r).includes('rock y metal')||(r.estilos_discogs||[]).some(s=>grupoDeEstilo(s)==='rock y metal')).length}}""")
+    check("Funcional", "Subgénero «(general)»: salen los del género sin estilo concreto, y solo esos",
+          f"{etiqueta.splitlines()[0]}: {r['n']}", ok=r["n"] > 0 and r["malos"] == 0 and "(general)" in etiqueta,
+          detalle=str(r))
+    pg.evaluate("()=>{setGrupos([...DEF_GRUPOS]); state.estilos={}; store.set('estilos',{}); renderBody(false);}")
 
 
 def busqueda(pg, lunes):

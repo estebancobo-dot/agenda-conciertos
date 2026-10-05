@@ -1,5 +1,14 @@
 # Versiones
 
+## 2.63.0 — 2026-10-05
+
+**Subgénero "(general)" en cada género.**
+
+- En el panel de estilos, cada género tiene un subgénero "(general)" (el primero, siempre a la vista): "Rock y metal (general)", "Jazz y swing (general)"… Agrupa los conciertos de ese género sin ningún estilo concreto (sus webs solo dicen "Rock" o "Jazz", o Discogs no da estilo). Así, al afinar por estilos se pueden elegir también esos, en vez de quedar fuera. Es una agrupación de la web, no un dato: el concierto no gana ningún estilo y su ficha sigue diciendo lo que dicen sus fuentes (`site/index.html`, `estilosDe`, `nomEstilo`).
+- No hay "(general)" en "Sin clasificar", "Otros" ni "Tributos y versiones" (los tributos ya dicen en la ficha a qué suenan).
+- Rendimiento: el grupo de cada estilo se calcula una vez (`grupoDeEstilo` con memoria).
+- Validación nueva: marcar "Rock y metal (general)" deja justo los de rock sin estilo concreto.
+
 ## 2.62.0 — 2026-10-05
 
 **Menos estilos "estimados" y más subgéneros.**

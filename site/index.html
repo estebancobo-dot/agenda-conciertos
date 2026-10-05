@@ -474,7 +474,14 @@ const flag=c=>c==="LATAM"?"🌎":/^[A-Z]{2}$/.test(c||"")?String.fromCodePoint(.
 const pais=c=>{if(!c)return ""; if(c==="LATAM") return "Latinoamérica";try{return regionNames?regionNames.of(c):c}catch(e){return c}};
 const iniciales=n=>esc(String(n||"?").replace(/^(the|los|las|la|el)\s+/i,"").split(/\s+/).slice(0,2).map(w=>w[0]||"").join("").toUpperCase());
 const grupos=r=>r._g||(r._g=(r.grupos&&r.grupos.length?r.grupos:[r.categoria]));
-const estilosDe=r=>r._e||(r._e=new Set(r.estilos_discogs||[]));
+// "Jazz y swing (general)": los conciertos de un género sin ningún estilo concreto de ese género (sus webs solo dicen
+// "Jazz"). Es un estilo de la web, no un dato: sirve para poder elegirlos al afinar por estilos. Clave "~" + género.
+const GENERAL="~", SIN_GENERAL=new Set(["sin clasificar","fuera de foco","tributos y versiones"]);
+const esGeneral=x=>String(x).startsWith(GENERAL);
+const nomEstilo=x=>esGeneral(x)?((GRUPOS.find(g=>g.id===x.slice(1))||{nombre:x.slice(1)}).nombre+" (general)"):x;
+const estilosDe=r=>{ if(r._e) return r._e; const e=new Set(r.estilos_discogs||[]);
+  if(MAP&&TAXO){ const gs=new Set([...e].map(grupoDeEstilo)); for(const g of gruposF(r)) if(!gs.has(g)&&!SIN_GENERAL.has(g)) e.add(GENERAL+g); r._e=e; }
+  return e; };
 // para filtrar: los grupos del concierto y los de los artistas de su cartel (un telonero punk hace que el concierto
 // salga también al filtrar por punk; la tarjeta lo dice)
 const gruposF=r=>r._gf||(r._gf=[...grupos(r),...Object.keys(r.grupos_cartel||{}).filter(g=>!grupos(r).includes(g))]);
@@ -604,7 +611,7 @@ function resumenFiltros(){
   if(!esDefecto()){
     if(GRUPOS.every(g=>state.grupos.includes(g.id))) p.push("todos los géneros");
     else if(!state.grupos.length) p.push("ningún género");
-    else p.push(GRUPOS.filter(g=>state.grupos.includes(g.id)).map(g=>g.nombre+((state.estilos[g.id]||[]).length?` (${state.estilos[g.id].join(", ")})`:"")).join(", "));
+    else p.push(GRUPOS.filter(g=>state.grupos.includes(g.id)).map(g=>g.nombre+((state.estilos[g.id]||[]).length?` (${state.estilos[g.id].map(nomEstilo).join(", ")})`:"")).join(", "));
     if(!state.genericos) p.push("sin etiquetas genéricas");
   }
   if(state.origen!=="todos") p.push((ORIGENES.find(o=>o[0]===state.origen)||["",""])[1].replace(/^\S+ /,""));
@@ -659,8 +666,13 @@ function bindExtra(){
     if(modoGrupos(state.grupos)==="custom"){ setGrupos([...DEF_GRUPOS]); state.estilos={}; store.set("estilos",{}); renderBody(false); }
   });
 }
+const _grupoEst=new Map();  // se consulta miles de veces al contar estilos: una vez por estilo
 function grupoDeEstilo(s){
   if(!MAP||!TAXO) return null;
+  if(_grupoEst.has(s)) return _grupoEst.get(s);
+  const g=grupoDeEstilo0(s); _grupoEst.set(s,g); return g;
+}
+function grupoDeEstilo0(s){
   for(const [g,l] of Object.entries(MAP.discogs_a_categoria)) if(Array.isArray(l)&&l.includes(s)) return g;
   for(const [gen,l] of Object.entries(TAXO.generos)) if(l.includes(s)) return MAP.genero_a_categoria[gen]||"fuera de foco";
   return "fuera de foco";
@@ -682,12 +694,12 @@ function openSheet(){
   let fut=[], cnt={}, est={}, gen={};
   const contar=()=>{ fut=DATA.filter(r=>r.fecha>=HOY&&pasaTexto(r,q)&&pasaOri(r)); cnt={}; est={}; gen={};
     for(const r of fut){ for(const g of gruposF(r)){cnt[g]=(cnt[g]||0)+1; if(r.grupos_generico) gen[g]=(gen[g]||0)+1;}
-      for(const s of r.estilos_discogs||[]){const g=grupoDeEstilo(s); if(!g||!gruposF(r).includes(g)) continue; (est[g]=est[g]||{})[s]=(est[g][s]||0)+1;}} };
+      for(const s of estilosDe(r)){const g=esGeneral(s)?s.slice(1):grupoDeEstilo(s); if(!g||!gruposF(r).includes(g)) continue; (est[g]=est[g]||{})[s]=(est[g][s]||0)+1;}} };
   const pasa=r=>{ if(r.grupos_generico&&!genOk) return false; const gs=gruposF(r);
     for(const g of sel){ if(!gs.includes(g)) continue; const l=selEst[g]; if(!l||!l.length) return true; const e=estilosDe(r); if(l.some(x=>e.has(x))) return true; }
     return false; };
   const total=()=>fut.reduce((n,r)=>n+(pasa(r)?1:0),0);
-  const resumenEst=g=>{const l=selEst[g]||[]; return l.length?`Solo: ${l.join(", ")}`:"";};
+  const resumenEst=g=>{const l=selEst[g]||[]; return l.length?`Solo: ${l.map(nomEstilo).join(", ")}`:"";};
   // Géneros como chips que se ajustan en filas (antes, 22 tarjetas con descripción: ~3.500 px de scroll). Los estilos
   // de cada género, en su propio panel ("Afinar por estilos ›"), como hacen las apps de iOS y Android.
   let vista="gen", scGen=0; const abiertos=new Set();
@@ -700,8 +712,10 @@ function openSheet(){
   const resumenGen=()=>{const m=modo(); return m==="def"?"habituales":m==="todos"?"todos":m==="ninguno"?"ninguno":`${sel.length} de ${GRUPOS.length} · a tu medida`;};
   const resumenOri=()=>(ORIGENES.find(([v])=>v===ori)||[,""])[1].replace(/^\S+\s/,"");
   const gchip=g=>`<button type="button" class="chip" data-g="${esc(g.id)}" aria-pressed="${sel.includes(g.id)}" title="${esc(g.desc)}"><i style="background:var(${g.v})"></i>${esc(g.nombre)}<small class="cc" data-ct="${esc(g.id)}">${cnt[g.id]||0}</small></button>`;
-  const resumenTodos=()=>{const l=Object.entries(selEst).map(([g,x])=>`${(GRUPOS.find(y=>y.id===g)||{}).nombre||g}: ${x.join(", ")}`); return l.length?l.join(" · "):"Todos los estilos de cada género";};
-  const arbolDe=g=>{const e=est[g]||{}; return (ARBOL[g]||[]).filter(x=>e[x]).sort((a,b)=>e[b]-e[a]||a.localeCompare(b));};
+  const resumenTodos=()=>{const l=Object.entries(selEst).map(([g,x])=>`${(GRUPOS.find(y=>y.id===g)||{}).nombre||g}: ${x.map(nomEstilo).join(", ")}`); return l.length?l.join(" · "):"Todos los estilos de cada género";};
+  // "(general)" el primero: siempre a la vista
+  const arbolDe=g=>{const e=est[g]||{}; return [...(e[GENERAL+g]?[GENERAL+g]:[]),
+    ...(ARBOL[g]||[]).filter(x=>e[x]).sort((a,b)=>e[b]-e[a]||a.localeCompare(b))];};
   const htmlGeneros=()=>{const m=modo();
     return `<h4 class="sech">Géneros<span id="resgen">${esc(resumenGen())}</span></h4>
      <div class="segp" role="group" aria-label="Elegir de golpe"><button type="button" data-rap="def" aria-pressed="${m==="def"}">Habituales</button><button type="button" data-rap="todos" aria-pressed="${m==="todos"}">Todos</button><button type="button" data-rap="ninguno" aria-pressed="${m==="ninguno"}">Ninguno</button></div>
@@ -720,7 +734,7 @@ function openSheet(){
        const a=arbolDe(g.id), todos=abiertos.has(g.id)||(elegido&&a.length<=14);
        const def=x=>todos||(elegido&&a.indexOf(x)<12)||l.includes(x);
        const cab=!elegido&&(k===0||sel.includes(orden[k-1].id))?`<h4 class="otros">Otros géneros</h4>`:"";
-       return `${cab}<section class="estsec" data-sec="${esc(g.id)}"><h4><i style="background:var(${g.v})"></i>${esc(g.nombre)}${elegido?"":` <small class="cc">${a.length} estilos</small>`}</h4><div class="chips2">${a.map(x=>`<button type="button" class="chip" data-es="${esc(g.id)}|${esc(x)}" data-n="${esc(norm(x))}" data-def="${def(x)?1:0}" aria-pressed="${l.includes(x)}" ${def(x)?"":"hidden"}>${esc(x)}<small class="cc">${e[x]}</small></button>`).join("")}</div>${a.every(def)?"":`<button type="button" class="lnk" data-mas="${esc(g.id)}">${elegido?`Ver los ${a.length} estilos`:"Ver sus estilos"}</button>`}</section>`;}).join("")}
+       return `${cab}<section class="estsec" data-sec="${esc(g.id)}"><h4><i style="background:var(${g.v})"></i>${esc(g.nombre)}${elegido?"":` <small class="cc">${a.length} estilos</small>`}</h4><div class="chips2">${a.map(x=>`<button type="button" class="chip" data-es="${esc(g.id)}|${esc(x)}" data-n="${esc(norm(nomEstilo(x)))}" data-def="${def(x)?1:0}" aria-pressed="${l.includes(x)}" ${def(x)?"":"hidden"}>${esc(nomEstilo(x))}<small class="cc">${e[x]}</small></button>`).join("")}</div>${a.every(def)?"":`<button type="button" class="lnk" data-mas="${esc(g.id)}">${elegido?`Ver los ${a.length} estilos`:"Ver sus estilos"}</button>`}</section>`;}).join("")}
      <p class="empty" id="besnada" hidden>Ningún estilo con ese nombre tiene conciertos próximos.</p>`;};
   const pintar=()=>{
     const t0=performance.now();
