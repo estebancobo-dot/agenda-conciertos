@@ -9193,6 +9193,188 @@
    "creado": "2026-10-05",
    "pendientes": 10,
    "importado": "2026-10-05"
+  },
+  "C-2026-10-05-01": {
+   "tipo": "conciertos",
+   "creado": "2026-10-05",
+   "items": {
+    "c1": {
+     "id": "7ced7c51",
+     "fecha": "2026-10-18",
+     "artista": "PUNK RAVE",
+     "sala": "Revi Live",
+     "web_sala": "https://revi.live/"
+    },
+    "c2": {
+     "id": "36dee69b",
+     "fecha": "2026-10-18",
+     "artista": "THE SILENCERS",
+     "sala": "Sala Copérnico",
+     "web_sala": "https://salacopernico.es/"
+    },
+    "c3": {
+     "id": "b1b09d4d",
+     "fecha": "2026-10-23",
+     "artista": "FROZEN SOUL",
+     "sala": "Sala El Sol",
+     "web_sala": "https://salaelsol.com/"
+    },
+    "c4": {
+     "id": "bdab7a96",
+     "fecha": "2026-10-23",
+     "artista": "HORA ZULU PRESENTA NUEVA GIRA",
+     "sala": "Sala Copérnico",
+     "web_sala": "https://salacopernico.es/"
+    },
+    "c5": {
+     "id": "80e48bd5",
+     "fecha": "2026-10-23",
+     "artista": "Tiña",
+     "sala": "Cine & Teatro Capitol",
+     "web_sala": null
+    },
+    "c6": {
+     "id": "4620e401",
+     "fecha": "2026-10-24",
+     "artista": "BEGGARS BLADE - Homenaje a Javier Garza",
+     "sala": "San Nicasio Distrito Rock",
+     "web_sala": null
+    },
+    "c7": {
+     "id": "e734ad51",
+     "fecha": "2026-10-24",
+     "artista": "Charly",
+     "sala": "Leaves",
+     "web_sala": null
+    },
+    "c8": {
+     "id": "36271b46",
+     "fecha": "2026-10-24",
+     "artista": "Jason Joshua",
+     "sala": "Sala Copérnico",
+     "web_sala": "https://salacopernico.es/"
+    },
+    "c9": {
+     "id": "4ea7b03d",
+     "fecha": "2026-10-27",
+     "artista": "Nela",
+     "sala": "Espacio Gran Via",
+     "web_sala": null
+    },
+    "c10": {
+     "id": "3648c663",
+     "fecha": "2026-10-28",
+     "artista": "El niño de la hipoteca",
+     "sala": "Café Libertad 8",
+     "web_sala": null
+    },
+    "c11": {
+     "id": "e07ea068",
+     "fecha": "2026-10-30",
+     "artista": "Tiña",
+     "sala": "Cine & Teatro Capitol",
+     "web_sala": null
+    },
+    "c12": {
+     "id": "dbc12793",
+     "fecha": "2026-10-31",
+     "artista": "IN VERSE",
+     "sala": "Sala Venom",
+     "web_sala": null
+    },
+    "c13": {
+     "id": "bf87169f",
+     "fecha": "2026-11-01",
+     "artista": "ALI A.K.A MIND",
+     "sala": "Sala Uni",
+     "web_sala": null
+    },
+    "c14": {
+     "id": "a4faeb23",
+     "fecha": "2026-11-01",
+     "artista": "El niño de la hipoteca",
+     "sala": "Jazzville",
+     "web_sala": null
+    },
+    "c15": {
+     "id": "0adedc3b",
+     "fecha": "2026-11-02",
+     "artista": "Swing Machine Orchestra",
+     "sala": "Galileo Galilei",
+     "web_sala": null
+    },
+    "c16": {
+     "id": "0acbfc6f",
+     "fecha": "2026-11-07",
+     "artista": "NICKY JAM",
+     "sala": "Movistar Arena",
+     "web_sala": "https://www.movistararena.es/"
+    },
+    "c17": {
+     "id": "a886ec0b",
+     "fecha": "2026-11-07",
+     "artista": "RATA",
+     "sala": "Sala El Sol",
+     "web_sala": "https://salaelsol.com/"
+    },
+    "c18": {
+     "id": "ea0f36a7",
+     "fecha": "2026-11-08",
+     "artista": "RATA",
+     "sala": "Sala El Sol",
+     "web_sala": "https://salaelsol.com/"
+    },
+    "c19": {
+     "id": "bf0e3239",
+     "fecha": "2026-11-09",
+     "artista": "Steve Blanco",
+     "sala": "Hinves Pianos",
+     "web_sala": null
+    },
+    "c20": {
+     "id": "0c71510e",
+     "fecha": "2026-11-12",
+     "artista": "What So Not",
+     "sala": "Teatro Magno",
+     "web_sala": null
+    },
+    "c21": {
+     "id": "2f872874",
+     "fecha": "2026-11-13",
+     "artista": "LOST WINGMAN",
+     "sala": "New Restón",
+     "web_sala": null
+    },
+    "c22": {
+     "id": "37187603",
+     "fecha": "2026-11-13",
+     "artista": "Michel Camilo",
+     "sala": "Teatro Monumental",
+     "web_sala": null
+    },
+    "c23": {
+     "id": "3ac59d87",
+     "fecha": "2026-11-14",
+     "artista": "Fangs on Fur",
+     "sala": "Madrid, Espanya",
+     "web_sala": null
+    },
+    "c24": {
+     "id": "f168a22b",
+     "fecha": "2026-11-15",
+     "artista": "FM",
+     "sala": "Sala Mon Live",
+     "web_sala": "https://www.monmadrid.es/"
+    },
+    "c25": {
+     "id": "c445b971",
+     "fecha": "2026-11-15",
+     "artista": "Malevaje",
+     "sala": "Sala Clamores",
+     "web_sala": "https://www.salaclamores.es/"
+    }
+   },
+   "pendientes": 828
   }
  },
  "ocultos": {
