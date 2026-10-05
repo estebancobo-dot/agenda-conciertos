@@ -8678,6 +8678,264 @@
    "creado": "2026-10-05",
    "pendientes": 81,
    "importado": "2026-10-05"
+  },
+  "A-2026-10-05-08": {
+   "tipo": "artistas",
+   "creado": "2026-10-05",
+   "items": {
+    "a1": {
+     "nombre": "MAZO",
+     "clave": "mazo",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Maravillas Club"
+     ]
+    },
+    "a2": {
+     "nombre": "CHAVELA - EL ÚLTIMO TRAGO",
+     "clave": "chavela el ultimo trago",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Galileo Galilei"
+     ]
+    },
+    "a3": {
+     "nombre": "Radar Joven Interrogación Amor",
+     "clave": "radar joven interrogacion amor",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "El Sótano"
+     ]
+    },
+    "a4": {
+     "nombre": "FIEBRE SWING con THE SENTIMENTAL GENTLEMEN",
+     "clave": "fiebre swing con the sentimental gentlemen",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Big Mama Ballroom"
+     ]
+    },
+    "a5": {
+     "nombre": "Inverfest Fito & Fitipaldis",
+     "clave": "inverfest fito and fitipaldis",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Teatro Circo Price"
+     ]
+    },
+    "a6": {
+     "nombre": "LINA MORGAN FREEMAN",
+     "clave": "lina morgan freeman",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Barracudas Rock Bar"
+     ]
+    },
+    "a7": {
+     "nombre": "UMMOWEEN 2",
+     "clave": "ummoween 2",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Sala Clamores"
+     ]
+    },
+    "a8": {
+     "nombre": "MaiteQuiero",
+     "clave": "maitequiero",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Sala El Sol"
+     ]
+    },
+    "a9": {
+     "nombre": "SweetQ",
+     "clave": "sweetq",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Sala Vesta"
+     ]
+    },
+    "a10": {
+     "nombre": "Perrate presenta “Sistema Tango” - 9º FFC",
+     "clave": "perrate presenta sistema tango 9o ffc",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Café Berlín"
+     ]
+    },
+    "a11": {
+     "nombre": "DEGALA presenta “Antes de Empezar”",
+     "clave": "degala presenta antes de empezar",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Café Berlín"
+     ]
+    },
+    "a12": {
+     "nombre": "P0RN",
+     "clave": "p0rn",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Sala La Trinchera"
+     ]
+    },
+    "a13": {
+     "nombre": "Laraland",
+     "clave": "laraland",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Galileo Galilei"
+     ]
+    },
+    "a14": {
+     "nombre": "ASTOR Quintet – La música de Astor Piazzolla – Concierto para quinteto",
+     "clave": "astor quintet la musica de astor piazzolla concierto para quinteto",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Café Berlín"
+     ]
+    },
+    "a15": {
+     "nombre": "Concierto. Coral Polifónica Nuestra Señora de la Merced",
+     "clave": "concierto coral polifonica nuestra senora de la merced",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Parroquia Nuestra Señora de la Merced",
+      "Parroquia Santa Ana y La Esperanza"
+     ]
+    },
+    "a16": {
+     "nombre": "Mientras el cuerpo aguante",
+     "clave": "mientras el cuerpo aguante",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Cineteca Madrid"
+     ]
+    },
+    "a17": {
+     "nombre": "Opera café",
+     "clave": "opera cafe",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Centro Sociocultural Valle Inclán (Fuencarral - El Pardo)"
+     ]
+    },
+    "a18": {
+     "nombre": "Coro Brisas de Colores",
+     "clave": "coro brisas de colores",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Centro Cultural Fuente de San Pedro - Valderrivas (Vicálvaro)"
+     ]
+    },
+    "a19": {
+     "nombre": "Concierto barroco",
+     "clave": "concierto barroco",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Centro Cultural Zazuar (Villa de Vallecas)"
+     ]
+    },
+    "a20": {
+     "nombre": "El paso del tiempo con José Cobos",
+     "clave": "el paso del tiempo con jose cobos",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Centro Sociocultural García Lorca (Carabanchel)"
+     ]
+    },
+    "a21": {
+     "nombre": "Otoño Jazz Concert, con Carabanchel Jazz Club",
+     "clave": "otono jazz concert con carabanchel jazz club",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Centro Sociocultural Oporto (Carabanchel)"
+     ]
+    },
+    "a22": {
+     "nombre": "Tango & Chamamé",
+     "clave": "tango and chamame",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Centro Cultural Hortaleza"
+     ]
+    },
+    "a23": {
+     "nombre": "Concierto sinfónico de bandas sonoras",
+     "clave": "concierto sinfonico de bandas sonoras",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Auditorio al aire libre. Parque Enrique Tierno Galván"
+     ]
+    },
+    "a24": {
+     "nombre": "Orquesta de Cámara Santa Cecilia",
+     "clave": "orquesta de camara santa cecilia",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Parroquia Santa María La Antigua"
+     ]
+    },
+    "a25": {
+     "nombre": "Trilogía Andaluza",
+     "clave": "trilogia andaluza",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Centro Cultural Alfredo Kraus (Fuencarral - El Pardo)"
+     ]
+    }
+   },
+   "pendientes": 60
   }
  },
  "ocultos": {
