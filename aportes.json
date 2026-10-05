@@ -7748,6 +7748,262 @@
    "creado": "2026-10-05",
    "pendientes": 181,
    "importado": "2026-10-05"
+  },
+  "A-2026-10-05-04": {
+   "tipo": "artistas",
+   "creado": "2026-10-05",
+   "items": {
+    "a1": {
+     "nombre": "gREAT sTRAITS",
+     "clave": "great straits",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Palacio Vistalegre"
+     ]
+    },
+    "a2": {
+     "nombre": "PROPAGANDA MACHINE",
+     "clave": "propaganda machine",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "El Perro Club"
+     ]
+    },
+    "a3": {
+     "nombre": "LOS CHICOS 25º aniversario en El Sol",
+     "clave": "los chicos 25o aniversario en el sol",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Fun House"
+     ]
+    },
+    "a4": {
+     "nombre": "Zahara Rave",
+     "clave": "zahara rave",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Sala Villanos"
+     ]
+    },
+    "a5": {
+     "nombre": "Hija de la Luna",
+     "clave": "hija de la luna",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Palacio Vistalegre"
+     ]
+    },
+    "a6": {
+     "nombre": "DOCTOR VELVET REVIVAL",
+     "clave": "doctor velvet revival",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Sala Villanos"
+     ]
+    },
+    "a7": {
+     "nombre": "Nofre Morell",
+     "clave": "nofre morell",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Dime que me Quieres"
+     ]
+    },
+    "a8": {
+     "nombre": "Gala de Navidad. Montserrat Martí Caballé & Bianca Tognocchi - Orquesta Madrid Sinfónica Décimo Arte",
+     "clave": "gala de navidad montserrat marti caballe and bianca tognocchi orquesta madrid sinfonica decimo arte",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": []
+    },
+    "a9": {
+     "nombre": "Los Chicos",
+     "clave": "los chicos",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Fun House"
+     ]
+    },
+    "a10": {
+     "nombre": "Andrés Suárez",
+     "clave": "andres suarez",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Sala Kaya de Guadarrama"
+     ]
+    },
+    "a11": {
+     "nombre": "LION FAMILY BAND",
+     "clave": "lion family band",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Tempo Audiophile Club"
+     ]
+    },
+    "a12": {
+     "nombre": "SOLO EN CASA en concierto",
+     "clave": "solo en casa en concierto",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Palacio Vistalegre"
+     ]
+    },
+    "a13": {
+     "nombre": "THE ULTIMATE STONE ROSES",
+     "clave": "the ultimate stone roses",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Sala El Sol"
+     ]
+    },
+    "a14": {
+     "nombre": "Captains",
+     "clave": "captains",
+     "falta": [
+      "estilo"
+     ],
+     "salas": [
+      "Wurlitzer Ballroom"
+     ]
+    },
+    "a15": {
+     "nombre": "LOS PRIMOS",
+     "clave": "los primos",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "El Perro Club"
+     ]
+    },
+    "a16": {
+     "nombre": "Inverfest. Sienna",
+     "clave": "inverfest sienna",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "La Riviera"
+     ]
+    },
+    "a17": {
+     "nombre": "Meritxell Neddermann",
+     "clave": "meritxell neddermann",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Condeduque"
+     ]
+    },
+    "a18": {
+     "nombre": "A Base de Bien",
+     "clave": "a base de bien",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Cadillac Solitario"
+     ]
+    },
+    "a19": {
+     "nombre": "THE NOISYS",
+     "clave": "the noisys",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Tempo Audiophile Club"
+     ]
+    },
+    "a20": {
+     "nombre": "MORGAN",
+     "clave": "morgan",
+     "falta": [
+      "estilo"
+     ],
+     "salas": [
+      "La Riviera"
+     ]
+    },
+    "a21": {
+     "nombre": "Guille Galván",
+     "clave": "guille galvan",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Condeduque"
+     ]
+    },
+    "a22": {
+     "nombre": "Marwan",
+     "clave": "marwan",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Teatro Circo Price"
+     ]
+    },
+    "a23": {
+     "nombre": "Spheres",
+     "clave": "spheres",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Revi Space"
+     ]
+    },
+    "a24": {
+     "nombre": "LOS UNMASKED",
+     "clave": "los unmasked",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "El Perro Club"
+     ]
+    },
+    "a25": {
+     "nombre": "Inverfest. Guille Galván",
+     "clave": "inverfest guille galvan",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Condeduque"
+     ]
+    }
+   },
+   "pendientes": 156
   }
  },
  "ocultos": {
