@@ -2629,6 +2629,17 @@
    },
    "lote": "A-2026-10-05-10",
    "fecha": "2026-10-05"
+  },
+  "mechanic moods live session": {
+   "nombre": "MECHANIC MOODS LIVE SESSION",
+   "pais": {
+    "valor": "ES",
+    "url": "https://madridenvivo.com/evento/mechanic-moods-live-session/",
+    "cita": "concierto mechanic moods live session en madrid - madrid en vivo la mitica saturday night jam evoluciona y se transforma en mechanic moods live music. comandada por taki tekyurt (loops, g",
+    "ciudad": "Madrid"
+   },
+   "lote": "O-2026-10-05-01",
+   "fecha": "2026-10-05"
   }
  },
  "conciertos": [
@@ -2661,12 +2672,13 @@
    "rechazado": []
   },
   "a:mechanic moods live session": {
-   "fecha": "2026-10-04",
-   "lote": "A-2026-10-04-01",
-   "aceptado": [],
-   "rechazado": [
-    "estilos: la página citada no nombra a MECHANIC MOODS LIVE SESSION"
-   ]
+   "fecha": "2026-10-05",
+   "lote": "O-2026-10-05-01",
+   "aceptado": [
+    "pais"
+   ],
+   "rechazado": [],
+   "segunda": true
   },
   "a:germinal sesion ii": {
    "fecha": "2026-10-04",
@@ -2675,16 +2687,18 @@
    "rechazado": []
   },
   "a:charly": {
-   "fecha": "2026-10-04",
-   "lote": "A-2026-10-04-01",
+   "fecha": "2026-10-05",
+   "lote": "O-2026-10-05-01",
    "aceptado": [],
-   "rechazado": []
+   "rechazado": [],
+   "segunda": true
   },
   "a:nela": {
-   "fecha": "2026-10-04",
-   "lote": "A-2026-10-04-01",
+   "fecha": "2026-10-05",
+   "lote": "O-2026-10-05-01",
    "aceptado": [],
-   "rechazado": []
+   "rechazado": [],
+   "segunda": true
   },
   "a:swing machine orchestra": {
    "fecha": "2026-10-04",
@@ -2749,10 +2763,11 @@
    "rechazado": []
   },
   "a:daniela grav": {
-   "fecha": "2026-10-04",
-   "lote": "A-2026-10-04-01",
+   "fecha": "2026-10-05",
+   "lote": "O-2026-10-05-01",
    "aceptado": [],
-   "rechazado": []
+   "rechazado": [],
+   "segunda": true
   },
   "a:there are no outdoor ice rinks in madrid luz y sombra work in progress": {
    "fecha": "2026-10-04",
@@ -2761,10 +2776,11 @@
    "rechazado": []
   },
   "a:babylon band": {
-   "fecha": "2026-10-04",
-   "lote": "A-2026-10-04-01",
+   "fecha": "2026-10-05",
+   "lote": "O-2026-10-05-01",
    "aceptado": [],
-   "rechazado": []
+   "rechazado": [],
+   "segunda": true
   },
   "a:carlota mad": {
    "fecha": "2026-10-04",
@@ -2803,10 +2819,11 @@
    "rechazado": []
   },
   "a:joma": {
-   "fecha": "2026-10-04",
-   "lote": "A-2026-10-04-01",
+   "fecha": "2026-10-05",
+   "lote": "O-2026-10-05-01",
    "aceptado": [],
-   "rechazado": []
+   "rechazado": [],
+   "segunda": true
   },
   "a:orly": {
    "fecha": "2026-10-04",
@@ -2898,10 +2915,11 @@
    "rechazado": []
   },
   "a:especial jaloguin": {
-   "fecha": "2026-10-04",
-   "lote": "A-2026-10-04-02",
+   "fecha": "2026-10-05",
+   "lote": "O-2026-10-05-01",
    "aceptado": [],
-   "rechazado": []
+   "rechazado": [],
+   "segunda": true
   },
   "a:enlace funk all stars djs": {
    "fecha": "2026-10-04",
@@ -2910,16 +2928,18 @@
    "rechazado": []
   },
   "a:punk rave": {
-   "fecha": "2026-10-04",
-   "lote": "A-2026-10-04-02",
+   "fecha": "2026-10-05",
+   "lote": "O-2026-10-05-01",
    "aceptado": [],
-   "rechazado": []
+   "rechazado": [],
+   "segunda": true
   },
   "a:club debut": {
-   "fecha": "2026-10-04",
-   "lote": "A-2026-10-04-02",
+   "fecha": "2026-10-05",
+   "lote": "O-2026-10-05-01",
    "aceptado": [],
-   "rechazado": []
+   "rechazado": [],
+   "segunda": true
   },
   "a:concierto fiesta nacional": {
    "fecha": "2026-10-04",
@@ -2988,16 +3008,18 @@
    "rechazado": []
   },
   "a:sacmjj": {
-   "fecha": "2026-10-04",
-   "lote": "A-2026-10-04-02",
+   "fecha": "2026-10-05",
+   "lote": "O-2026-10-05-01",
    "aceptado": [],
-   "rechazado": []
+   "rechazado": [],
+   "segunda": true
   },
   "a:jessvaral y fran tv": {
-   "fecha": "2026-10-04",
-   "lote": "A-2026-10-04-02",
+   "fecha": "2026-10-05",
+   "lote": "O-2026-10-05-01",
    "aceptado": [],
-   "rechazado": []
+   "rechazado": [],
+   "segunda": true
   },
   "a:mom espana pintoresca": {
    "fecha": "2026-10-04",
@@ -3036,16 +3058,18 @@
    "rechazado": []
   },
   "a:delarocha": {
-   "fecha": "2026-10-04",
-   "lote": "A-2026-10-04-02",
+   "fecha": "2026-10-05",
+   "lote": "O-2026-10-05-01",
    "aceptado": [],
-   "rechazado": []
+   "rechazado": [],
+   "segunda": true
   },
   "a:the new r and b collective plays george benson": {
-   "fecha": "2026-10-04",
-   "lote": "A-2026-10-04-02",
+   "fecha": "2026-10-05",
+   "lote": "O-2026-10-05-01",
    "aceptado": [],
-   "rechazado": []
+   "rechazado": [],
+   "segunda": true
   },
   "a:going full monkey band": {
    "fecha": "2026-10-04",
@@ -3100,10 +3124,11 @@
    ]
   },
   "a:lqdms pop rock": {
-   "fecha": "2026-10-04",
-   "lote": "A-2026-10-04-03",
+   "fecha": "2026-10-05",
+   "lote": "O-2026-10-05-01",
    "aceptado": [],
-   "rechazado": []
+   "rechazado": [],
+   "segunda": true
   },
   "a:blokk sessions": {
    "fecha": "2026-10-04",
@@ -3112,46 +3137,55 @@
    "rechazado": []
   },
   "a:bellum zone vii": {
-   "fecha": "2026-10-04",
-   "lote": "A-2026-10-04-03",
+   "fecha": "2026-10-05",
+   "lote": "O-2026-10-05-01",
    "aceptado": [],
-   "rechazado": []
+   "rechazado": [],
+   "segunda": true
   },
   "a:hidden": {
-   "fecha": "2026-10-04",
-   "lote": "A-2026-10-04-03",
+   "fecha": "2026-10-05",
+   "lote": "O-2026-10-05-01",
    "aceptado": [],
-   "rechazado": []
+   "rechazado": [],
+   "segunda": true
   },
   "a:paradise": {
-   "fecha": "2026-10-04",
-   "lote": "A-2026-10-04-03",
+   "fecha": "2026-10-05",
+   "lote": "O-2026-10-05-01",
    "aceptado": [],
-   "rechazado": []
+   "rechazado": [],
+   "segunda": true
   },
   "a:elias j tv band": {
-   "fecha": "2026-10-04",
-   "lote": "A-2026-10-04-03",
+   "fecha": "2026-10-05",
+   "lote": "O-2026-10-05-01",
    "aceptado": [],
-   "rechazado": []
+   "rechazado": [],
+   "segunda": true
   },
   "a:rosci neuence": {
-   "fecha": "2026-10-04",
-   "lote": "A-2026-10-04-03",
+   "fecha": "2026-10-05",
+   "lote": "O-2026-10-05-01",
    "aceptado": [],
-   "rechazado": []
+   "rechazado": [
+    "país ES: ni la frase citada ni la página lo dicen junto al nombre"
+   ],
+   "segunda": true
   },
   "a:radiosfera": {
-   "fecha": "2026-10-04",
-   "lote": "A-2026-10-04-03",
+   "fecha": "2026-10-05",
+   "lote": "O-2026-10-05-01",
    "aceptado": [],
-   "rechazado": []
+   "rechazado": [],
+   "segunda": true
   },
   "a:jere": {
-   "fecha": "2026-10-04",
-   "lote": "A-2026-10-04-03",
+   "fecha": "2026-10-05",
+   "lote": "O-2026-10-05-01",
    "aceptado": [],
-   "rechazado": []
+   "rechazado": [],
+   "segunda": true
   },
   "a:experience": {
    "fecha": "2026-10-04",
@@ -3605,10 +3639,11 @@
    "rechazado": []
   },
   "a:the benatars": {
-   "fecha": "2026-10-04",
-   "lote": "A-2026-10-04-06",
+   "fecha": "2026-10-05",
+   "lote": "O-2026-10-05-01",
    "aceptado": [],
-   "rechazado": []
+   "rechazado": [],
+   "segunda": true
   },
   "a:personas ultra sensibles": {
    "fecha": "2026-10-04",
@@ -8896,6 +8931,27 @@
     "pais"
    ],
    "rechazado": []
+  },
+  "a:una noche de musicales": {
+   "fecha": "2026-10-05",
+   "lote": "O-2026-10-05-01",
+   "aceptado": [],
+   "rechazado": [],
+   "segunda": true
+  },
+  "a:blokk sessions punk and grunge finest": {
+   "fecha": "2026-10-05",
+   "lote": "O-2026-10-05-01",
+   "aceptado": [],
+   "rechazado": [],
+   "segunda": true
+  },
+  "a:013 estreno del album volar por necesidad": {
+   "fecha": "2026-10-05",
+   "lote": "O-2026-10-05-01",
+   "aceptado": [],
+   "rechazado": [],
+   "segunda": true
   }
  },
  "lotes": {
@@ -9148,260 +9204,9 @@
   "O-2026-10-05-01": {
    "tipo": "artistas",
    "creado": "2026-10-05",
-   "items": {
-    "a1": {
-     "nombre": "MECHANIC MOODS LIVE SESSION",
-     "clave": "mechanic moods live session",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Tempo Audiophile Club"
-     ]
-    },
-    "a2": {
-     "nombre": "Charly",
-     "clave": "charly",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Leaves"
-     ]
-    },
-    "a3": {
-     "nombre": "Nela",
-     "clave": "nela",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Espacio Gran Via"
-     ]
-    },
-    "a4": {
-     "nombre": "DANIELA GRAV",
-     "clave": "daniela grav",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Barracudas Rock Bar"
-     ]
-    },
-    "a5": {
-     "nombre": "Babylon- band",
-     "clave": "babylon band",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Babylon Club"
-     ]
-    },
-    "a6": {
-     "nombre": "Joma",
-     "clave": "joma",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Leaves"
-     ]
-    },
-    "a7": {
-     "nombre": "SacMJJ",
-     "clave": "sacmjj",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Teatro Calderón"
-     ]
-    },
-    "a8": {
-     "nombre": "JESSVARAL Y FRAN.TV",
-     "clave": "jessvaral y fran tv",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Jazzville"
-     ]
-    },
-    "a9": {
-     "nombre": "ESPECIAL JALOGÜIN",
-     "clave": "especial jaloguin",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Moby Dick Club"
-     ]
-    },
-    "a10": {
-     "nombre": "PUNK RAVE",
-     "clave": "punk rave",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Revi Live"
-     ]
-    },
-    "a11": {
-     "nombre": "UNA NOCHE DE MUSICALES",
-     "clave": "una noche de musicales",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Teatro La Latina"
-     ]
-    },
-    "a12": {
-     "nombre": "CLUB DEBUT",
-     "clave": "club debut",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Café La Palma"
-     ]
-    },
-    "a13": {
-     "nombre": "Delarocha",
-     "clave": "delarocha",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Sala Nazca"
-     ]
-    },
-    "a14": {
-     "nombre": "The New R&B Collective Plays George Benson",
-     "clave": "the new r and b collective plays george benson",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Tempo Audiophile Club"
-     ]
-    },
-    "a15": {
-     "nombre": "The Benatars",
-     "clave": "the benatars",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Fun House"
-     ]
-    },
-    "a16": {
-     "nombre": "LQDMS · Pop/Rock",
-     "clave": "lqdms pop rock",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "El Perro Club"
-     ]
-    },
-    "a17": {
-     "nombre": "BELLUM ZONE VII",
-     "clave": "bellum zone vii",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Revi Live"
-     ]
-    },
-    "a18": {
-     "nombre": "Blokk Sessions· Punk & grunge finest",
-     "clave": "blokk sessions punk and grunge finest",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Café Berlín"
-     ]
-    },
-    "a19": {
-     "nombre": "Hidden",
-     "clave": "hidden",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Sala Nazca"
-     ]
-    },
-    "a20": {
-     "nombre": "PARADISE",
-     "clave": "paradise",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Sala But"
-     ]
-    },
-    "a21": {
-     "nombre": "ELIAS J. TV.BAND",
-     "clave": "elias j tv band",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Independance Club"
-     ]
-    },
-    "a22": {
-     "nombre": "ROSCI NEUENCE",
-     "clave": "rosci neuence",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Moby Dick Club"
-     ]
-    },
-    "a23": {
-     "nombre": "Radiosfera",
-     "clave": "radiosfera",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Cadillac Solitario"
-     ]
-    },
-    "a24": {
-     "nombre": "Jere",
-     "clave": "jere",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Rockville"
-     ]
-    },
-    "a25": {
-     "nombre": "013 - Estreno del Álbum \"Volar por necesidad\"",
-     "clave": "013 estreno del album volar por necesidad",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Sala Epoka The Club"
-     ]
-    }
-   },
    "pendientes": 321,
-   "segunda": true
+   "segunda": true,
+   "importado": "2026-10-05"
   }
  },
  "ocultos": {
