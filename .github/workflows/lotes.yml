@@ -17,7 +17,7 @@ on:
         description: "generar, importar, estado, ocultar (respuesta = JSON [{nombre, motivo}]) o mostrar (respuesta = nombre)"
         default: "generar"
       tipo:
-        description: "Tipo del lote: auto, artistas o conciertos"
+        description: "Tipo del lote: auto, artistas, conciertos u origen (segunda búsqueda del origen desconocido)"
         default: "auto"
       n:
         description: "Elementos por lote (vacío = 20 artistas o 15 conciertos)"

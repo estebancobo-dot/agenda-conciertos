@@ -70,7 +70,9 @@ def _webs_sala() -> dict[str, str]:
 
 
 # ------------------------------------------------------------------ elegir
-def candidatos_artistas(recs: list[dict], apo: dict, hoy: str) -> list[dict]:
+def candidatos_artistas(recs: list[dict], apo: dict, hoy: str, solo_origen: bool = False) -> list[dict]:
+    """solo_origen: segunda búsqueda, solo del origen desconocido (artistas reales; las jams, Candlelight y festivales
+    ya son "no aplica"), aunque se preguntaran hace poco, una vez más ("segunda" en consultados)."""
     from scraper.nombres import claves_ficha
     from scraper.normalize import es_generico
     from scraper.origen import sin_artista
@@ -87,14 +89,20 @@ def candidatos_artistas(recs: list[dict], apo: dict, hoy: str) -> list[dict]:
         o, e = _estado(r, "origen"), _estado(r, "estilo")
         titulo = norm(r["artista"])
         if not k or o == "no_aplica" or es_generico(nombre) or sin_artista(nombre) or sin_artista(r["artista"]) \
-                or _NO_PREGUNTAR.search(titulo) or k in (apo.get("artistas") or {}) or _reciente(apo, "a:" + k, hoy):
+                or _NO_PREGUNTAR.search(titulo):
+            continue
+        ya = (apo.get("artistas") or {}).get(k) or {}
+        if solo_origen:
+            if o != "desconocido" or ya.get("pais") or (apo.get("consultados", {}).get("a:" + k) or {}).get("segunda"):
+                continue
+        elif ya or _reciente(apo, "a:" + k, hoy):
             continue
         # el origen: si no se sabe, o si sale de un artista identificado solo por su nombre (podría ser un homónimo);
         # el estilo: si no se sabe o si la agenda solo da una etiqueta genérica ("Varios", "Música en directo")
         solo_nombre = "nombre" in str((r.get("normalizacion") or {}).get("origen", {}).get("motivo", ""))
         # "estimado" también: en la web cuenta como "Origen sin confirmar" (bandera atenuada)
         falta = {"origen": o in ("desconocido", "estimado") or solo_nombre,
-                 "estilo": e == "desconocido" or (e == "estimado" and bool(r.get("grupos_generico")))}
+                 "estilo": not solo_origen and (e == "desconocido" or (e == "estimado" and bool(r.get("grupos_generico"))))}
         if not any(falta.values()):
             continue
         x = por.setdefault(k, {"nombre": nombre, "conciertos": [], "falta": set(), "peso": 0, "etiquetas": set(),
@@ -274,18 +282,20 @@ def generar(tipo: str = "auto", n: int | None = None, hoy: str | None = None) ->
     if tipo == "auto":
         ultimo = max(apo.get("lotes", {}).values(), key=lambda l: l.get("creado", ""), default={}).get("tipo")
         tipo = "conciertos" if ultimo == "artistas" else "artistas"
-    orden = [tipo, "conciertos" if tipo == "artistas" else "artistas"]
+    orden = [tipo] if tipo == "origen" else [tipo, "conciertos" if tipo == "artistas" else "artistas"]
     for t in orden:
-        cands = candidatos_artistas(recs, apo, hoy) if t == "artistas" else candidatos_conciertos(recs, apo, hoy)
+        cands = candidatos_artistas(recs, apo, hoy, solo_origen=t == "origen") if t in ("artistas", "origen") \
+            else candidatos_conciertos(recs, apo, hoy)
         if not cands:
             continue
         num = sum(1 for k in apo.get("lotes", {}) if k.startswith(f"{t[0].upper()}-{hoy}")) + 1
         lote = f"{t[0].upper()}-{hoy}-{num:02d}"
-        if t == "artistas":
+        if t in ("artistas", "origen"):
             texto, pedido = lote_artistas(cands, n or N_ARTISTAS, lote)
         else:
             texto, pedido = lote_conciertos(cands, n or N_CONCIERTOS, lote)
-        apo.setdefault("lotes", {})[lote] = {"tipo": t, "creado": hoy, "items": pedido, "pendientes": len(cands)}
+        apo.setdefault("lotes", {})[lote] = {"tipo": "artistas" if t == "origen" else t, "creado": hoy, "items": pedido,
+                                             "pendientes": len(cands), **({"segunda": True} if t == "origen" else {})}
         guardar(APORTES, apo)
         return lote, texto
     return None, "No queda nada que preguntar: todo lo que falta ya se ha preguntado en los últimos 30 días."
@@ -331,7 +341,8 @@ def importar(texto: str, fetcher=None, hoy: str | None = None) -> str:
                 a["lote"], a["fecha"] = d["lote"], hoy
             apo.setdefault("consultados", {})["a:" + k] = {"fecha": hoy, "lote": d["lote"],
                                                            "aceptado": sorted(res["aceptado"]),
-                                                           "rechazado": res["rechazado"][:4]}
+                                                           "rechazado": res["rechazado"][:4],
+                                                           **({"segunda": True} if lote.get("segunda") else {})}
             partes = []
             if str(item.get("identidad") or "").lower().startswith("no es"):
                 # solo en las salas donde salió ("TAYLOR SWIFT" en Sala But es una fiesta; un concierto suyo no se oculta)
@@ -424,7 +435,7 @@ def main() -> None:
     p = argparse.ArgumentParser()
     sub = p.add_subparsers(dest="orden", required=True)
     g = sub.add_parser("generar")
-    g.add_argument("--tipo", default="auto", choices=["auto", "artistas", "conciertos"])
+    g.add_argument("--tipo", default="auto", choices=["auto", "artistas", "conciertos", "origen"])
     g.add_argument("--n", type=int)
     g.add_argument("--salida")
     i = sub.add_parser("importar")

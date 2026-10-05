@@ -98,11 +98,17 @@ _SOLO_EVENTO = re.compile(
     r"^(band name|nombre (del grupo|de la banda|del artista)|artista|grupo|piano bar|musica ambiente)$")
 
 
+# tampoco hay un artista del que decir el origen: las jams ("Gumbo Jam", "THE FUCKING JAM"), los conciertos
+# Candlelight (un cuarteto o un pianista que no se nombra) y los festivales o certámenes (varios artistas)
+_VARIOS = re.compile(r"(?<!pearl )(?<!the )(?<!toe )\bjam$|\bcandlelight\b|\b(fest|festival|certamen)\b")
+
+
 def sin_artista(titulo: str) -> bool:
     """El título no es un artista: jam sessions, micro abierto, karaoke, "Concierto de blues", "Noches de Piano Jazz",
     "Concierto de versiones"…"""
     t = norm(titulo or "")
     return bool(_SIN_ARTISTA.match(t) or re.search(r"\b(jam session|open mic|micro abierto|karaoke)\b", t)
+                or _VARIOS.search(t)
                 or re.search(r"\bjam\s*!", (titulo or "").lower()) or _SOLO_EVENTO.match(t))
 
 

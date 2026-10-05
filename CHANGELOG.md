@@ -1,5 +1,12 @@
 # Versiones
 
+## 2.65.0 — 2026-10-05
+
+**Origen: lo que no es un artista deja de contar como "sin confirmar", y segunda búsqueda de los que quedan.**
+
+- **Sin artista del que decir el origen** (`scraper/origen.py`, `sin_artista`): las jams ("Gumbo Jam", "THE FUCKING JAM"; no "Pearl Jam" ni "The Jam"), los conciertos Candlelight (un cuarteto o un pianista que no se nombra) y los festivales o certámenes (varios artistas) pasan a origen "no aplica". Con los datos de hoy, el origen desconocido baja de 516 a 394.
+- **Lotes de origen** (`tools/lotes.py generar --tipo origen`, `lotes.yml` con `tipo=origen`): segunda búsqueda, solo del origen, de los artistas reales que siguen sin él aunque se preguntaran hace poco (una vez más: queda marcado "segunda"). Medido antes de decidir: entre los de nombre en inglés con origen conocido, en las salas pequeñas solo 1 de cada 3 es de España (Villanos 1 de 22, Wurlitzer 1 de 14), así que no se deduce nada por el nombre o la sala: se busca.
+
 ## 2.64.0 — 2026-10-05
 
 **Tributos con su estilo como subgénero; partidos con "vs." en medio, ocultos.**
