@@ -9088,6 +9088,113 @@
    "creado": "2026-10-05",
    "pendientes": 35,
    "importado": "2026-10-05"
+  },
+  "A-2026-10-05-10": {
+   "tipo": "artistas",
+   "creado": "2026-10-05",
+   "items": {
+    "a1": {
+     "nombre": "Terminal Young",
+     "clave": "terminal young",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Cineteca Madrid"
+     ]
+    },
+    "a2": {
+     "nombre": "Far Away Jazz Quartet",
+     "clave": "far away jazz quartet",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Centro Cultural Carril del Conde (Hortaleza)"
+     ]
+    },
+    "a3": {
+     "nombre": "Música coral para la memoria, el color y el tránsito",
+     "clave": "musica coral para la memoria el color y el transito",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Centro Sociocultural José de Espronceda (Tetuán)"
+     ]
+    },
+    "a4": {
+     "nombre": "Swingueando",
+     "clave": "swingueando",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Auditorio Joaquín Rosado (Moncloa-Aravaca)"
+     ]
+    },
+    "a5": {
+     "nombre": "Tea for two....jazz swim, blues",
+     "clave": "tea for two jazz swim blues",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Centro Cultural Buenavista (Salamanca)"
+     ]
+    },
+    "a6": {
+     "nombre": "II Ciclo de Música Clásica. Del Caribe a la Patagonia",
+     "clave": "ii ciclo de musica clasica del caribe a la patagonia",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Centro Cultural San Francisco La Prensa (Carabanchel)"
+     ]
+    },
+    "a7": {
+     "nombre": "Andrés Coll Cosmic Trio",
+     "clave": "andres coll cosmic trio",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "CentroCentro"
+     ]
+    },
+    "a8": {
+     "nombre": "De la opereta al vals",
+     "clave": "de la opereta al vals",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Centro Cultural Zazuar (Villa de Vallecas)"
+     ]
+    },
+    "a9": {
+     "nombre": "Bandas sonoras de cine",
+     "clave": "bandas sonoras de cine",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Centro Cultural Zazuar (Villa de Vallecas)"
+     ]
+    },
+    "a10": {
+     "nombre": "Antonio Serrano y Kaele Jiménez Quartet. Jazz Caló for Coltrane",
+     "clave": "antonio serrano y kaele jimenez quartet jazz calo for coltrane",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Condeduque"
+     ]
+    }
+   },
+   "pendientes": 10
   }
  },
  "ocultos": {
