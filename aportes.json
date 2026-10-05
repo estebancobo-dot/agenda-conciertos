@@ -2423,6 +2423,92 @@
    },
    "lote": "A-2026-10-05-04",
    "fecha": "2026-10-05"
+  },
+  "inverfest rufus t firefly": {
+   "nombre": "Inverfest. Rufus T. Firefly",
+   "pais": {
+    "valor": "ES",
+    "url": "https://es.wikipedia.org/wiki/Rufus_T._Firefly",
+    "cita": "rufus t. firefly - wikipedia, la enciclopedia libre rufus t. firefly grupo espanol de rock alternativo wikimedia foundation, inc. colaboradores de los proyectos wikim",
+    "ciudad": "Aranjuez"
+   },
+   "estilos": {
+    "valores": [
+     "rock alternativo"
+    ],
+    "url": "https://es.wikipedia.org/wiki/Rufus_T._Firefly",
+    "cita": "rufus t. firefly - wikipedia, la enciclopedia libre rufus t. firefly grupo espanol de rock alternativo wikimedia foundation, inc. colaboradores de los proyectos wikim",
+    "web_musica": true
+   },
+   "lote": "A-2026-10-05-05",
+   "fecha": "2026-10-05"
+  },
+  "inverfest carlos nunez": {
+   "nombre": "Inverfest. Carlos Núñez",
+   "pais": {
+    "valor": "ES",
+    "url": "https://en.wikipedia.org/wiki/Carlos_N%C3%BA%C3%B1ez",
+    "cita": "donate create account log in personal tools donate create account log in contents move to sidebar hide (top) 1 see also toggle the table of contents carlos nunez 3 languages deutsch espanol plattduutsch edit links article talk english read edit view history tools tools move to sidebar hide actions r",
+    "ciudad": "Vigo"
+   },
+   "lote": "A-2026-10-05-05",
+   "fecha": "2026-10-05"
+  },
+  "inverfest barry b": {
+   "nombre": "Inverfest. Barry B",
+   "pais": {
+    "valor": "ES",
+    "url": "https://soundsfromspain.com/artista/barry-b/?lang=en",
+    "cita": "barry b — sounds from spain sounds from spain sounds from spain la industria musical espanola a tu alcance barry b artistas portada barry b — sounds from spa",
+    "ciudad": "Aranda de Duero"
+   },
+   "estilos": {
+    "valores": [
+     "rock"
+    ],
+    "url": "https://blog.ticketmaster.es/post/barry-b-artista-del-momento-37160/",
+    "cita": "e duero, burgos. su carrera comenzo en 2019 y rapidamente empezo a ganar adeptos gracias a su estilo innovador y su enfoque hacia la musica. antes de barry b, gabriel formo parte del grupo de rock the girondines junto a sam gold, pero decidio adentrarse en nuevos horizontes como solista. sus primero",
+    "web_musica": false
+   },
+   "lote": "A-2026-10-05-05",
+   "fecha": "2026-10-05"
+  },
+  "inverfest marwan": {
+   "nombre": "Inverfest. Marwan",
+   "pais": {
+    "valor": "ES",
+    "url": "https://es.wikipedia.org/wiki/Marw%C3%A1n_(cantante_y_poeta)",
+    "cita": "marwan (cantante y poeta) - wikipedia, la enciclopedia libre marwan (cantante y poeta) cantautor y poeta espanol wikimedia foundation, inc. colaboradores de",
+    "ciudad": "Madrid"
+   },
+   "estilos": {
+    "valores": [
+     "cantautor"
+    ],
+    "url": "https://es.wikipedia.org/wiki/Marw%C3%A1n_(cantante_y_poeta)",
+    "cita": "marwan (cantante y poeta) - wikipedia, la enciclopedia libre marwan (cantante y poeta) cantautor y poeta espanol wikimedia foundation, inc. colaboradores de",
+    "web_musica": true
+   },
+   "lote": "A-2026-10-05-05",
+   "fecha": "2026-10-05"
+  },
+  "epica": {
+   "nombre": "EPICA",
+   "pais": {
+    "valor": "NL",
+    "url": "https://en.wikipedia.org/wiki/Epica_(band)",
+    "cita": "epica (band) - wikipedia epica (band) dutch symphonic metal band wikimedia foundation, inc. contributors to wikimedia projects epica (band) - wikipedia jum"
+   },
+   "estilos": {
+    "valores": [
+     "metal"
+    ],
+    "url": "https://en.wikipedia.org/wiki/Epica_(band)",
+    "cita": "epica (band) - wikipedia epica (band) dutch symphonic metal band wikimedia foundation, inc. contributors to wikimedia projects epica (band) - wikipedia jum",
+    "web_musica": true
+   },
+   "lote": "A-2026-10-05-05",
+   "fecha": "2026-10-05"
   }
  },
  "conciertos": [
@@ -7831,6 +7917,175 @@
     "pais"
    ],
    "rechazado": []
+  },
+  "a:inverfest rufus t firefly": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-05",
+   "aceptado": [
+    "estilos",
+    "pais"
+   ],
+   "rechazado": []
+  },
+  "a:gli incogniti": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-05",
+   "aceptado": [],
+   "rechazado": [
+    "país FR: no se pudo abrir (RobotsUnreachable)",
+    "estilos: no se pudo abrir (RobotsUnreachable)"
+   ]
+  },
+  "a:inverfest carlos nunez": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-05",
+   "aceptado": [
+    "pais"
+   ],
+   "rechazado": [
+    "estilos: ni la frase citada ni la página lo dicen junto al nombre"
+   ]
+  },
+  "a:inverfest barry b": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-05",
+   "aceptado": [
+    "estilos",
+    "pais"
+   ],
+   "rechazado": []
+  },
+  "a:sr bizarro": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-05",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:carey": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-05",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:inverfest marwan": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-05",
+   "aceptado": [
+    "estilos",
+    "pais"
+   ],
+   "rechazado": []
+  },
+  "a:javi chapela": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-05",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:romantica sekta": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-05",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:epica": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-05",
+   "aceptado": [
+    "estilos",
+    "pais"
+   ],
+   "rechazado": []
+  },
+  "a:beatcoins": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-05",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:graci rodriguez": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-05",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:amalia toboso": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-05",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:lemur": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-05",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:mau and alberrrt": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-05",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:concierto pepers zebras and artista invitado": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-05",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:taksuena": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-05",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:titano": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-05",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:azafraners and fom": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-05",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:madagascar": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-05",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:atonimo": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-05",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:diegales": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-05",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:stereokoko": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-05",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:alfredo temblekes": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-05",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:gustavi arduni": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-05",
+   "aceptado": [],
+   "rechazado": []
   }
  },
  "lotes": {
@@ -8041,274 +8296,8 @@
   "A-2026-10-05-05": {
    "tipo": "artistas",
    "creado": "2026-10-05",
-   "items": {
-    "a1": {
-     "nombre": "Inverfest. Rufus T. Firefly",
-     "clave": "inverfest rufus t firefly",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Teatro Circo Price"
-     ]
-    },
-    "a2": {
-     "nombre": "Gli Incogniti",
-     "clave": "gli incogniti",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Fundación Juan March"
-     ]
-    },
-    "a3": {
-     "nombre": "Inverfest. Carlos Núñez",
-     "clave": "inverfest carlos nunez",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Teatro Circo Price"
-     ]
-    },
-    "a4": {
-     "nombre": "Inverfest. Barry B",
-     "clave": "inverfest barry b",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Movistar Arena"
-     ]
-    },
-    "a5": {
-     "nombre": "Sr. Bizarro",
-     "clave": "sr bizarro",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "El Perro Club"
-     ]
-    },
-    "a6": {
-     "nombre": "CAREY",
-     "clave": "carey",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Sala Villanos"
-     ]
-    },
-    "a7": {
-     "nombre": "Inverfest. Marwan",
-     "clave": "inverfest marwan",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Teatro Circo Price"
-     ]
-    },
-    "a8": {
-     "nombre": "Javi Chapela",
-     "clave": "javi chapela",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Movistar Arena"
-     ]
-    },
-    "a9": {
-     "nombre": "ROMÁNTICA SEKTA",
-     "clave": "romantica sekta",
-     "falta": [
-      "estilo"
-     ],
-     "salas": [
-      "El Perro Club"
-     ]
-    },
-    "a10": {
-     "nombre": "EPICA",
-     "clave": "epica",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "La Riviera"
-     ]
-    },
-    "a11": {
-     "nombre": "BEATCOINS",
-     "clave": "beatcoins",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Thundercat"
-     ]
-    },
-    "a12": {
-     "nombre": "GRACI RODRIGUEZ",
-     "clave": "graci rodriguez",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Rincón del Arte Nuevo"
-     ]
-    },
-    "a13": {
-     "nombre": "AMALIA TOBOSO",
-     "clave": "amalia toboso",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Jazzville"
-     ]
-    },
-    "a14": {
-     "nombre": "LEMUR",
-     "clave": "lemur",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Sala Siroco"
-     ]
-    },
-    "a15": {
-     "nombre": "MAU & ALBERRRT",
-     "clave": "mau and alberrrt",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Sala Vesta"
-     ]
-    },
-    "a16": {
-     "nombre": "CONCIERTO PEPERS ZEBRAS & ARTISTA INVITADO",
-     "clave": "concierto pepers zebras and artista invitado",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Sala Olvido"
-     ]
-    },
-    "a17": {
-     "nombre": "TAKSUENA",
-     "clave": "taksuena",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Cadavra"
-     ]
-    },
-    "a18": {
-     "nombre": "TITANO",
-     "clave": "titano",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Barracudas Rock Bar"
-     ]
-    },
-    "a19": {
-     "nombre": "AZAFRANERS & FOM",
-     "clave": "azafraners and fom",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Sala Olvido"
-     ]
-    },
-    "a20": {
-     "nombre": "MADAGASCAR",
-     "clave": "madagascar",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Thundercat"
-     ]
-    },
-    "a21": {
-     "nombre": "ATONIMO",
-     "clave": "atonimo",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "El Sótano"
-     ]
-    },
-    "a22": {
-     "nombre": "DIEGALES",
-     "clave": "diegales",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Sala Siroco"
-     ]
-    },
-    "a23": {
-     "nombre": "STEREOKOKO",
-     "clave": "stereokoko",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Cien por Cien"
-     ]
-    },
-    "a24": {
-     "nombre": "ALFREDO TEMBLEKES",
-     "clave": "alfredo temblekes",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Silikona"
-     ]
-    },
-    "a25": {
-     "nombre": "GUSTAVI ARDUNI",
-     "clave": "gustavi arduni",
-     "falta": [
-      "estilo",
-      "origen"
-     ],
-     "salas": [
-      "Rincón del Arte Nuevo"
-     ]
-    }
-   },
-   "pendientes": 131
+   "pendientes": 131,
+   "importado": "2026-10-05"
   }
  },
  "ocultos": {
