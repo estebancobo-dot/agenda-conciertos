@@ -35,3 +35,31 @@ def test_jsonld_manda_sobre_el_texto():
             '"offers":{"price":"15"}}</script><main><p>Concierto 22:00 · Entradas 20 €</p></main>')
     d = leer_pagina(html, "https://sala.es/x", "2026-10-20")
     assert d["hora"] == "21:00" and d["precio"] == "15 €" and "hora_t" not in d and "precio_t" not in d
+
+
+def test_hora_habitual_por_dia_de_la_semana():
+    from scraper.normalizacion import estimar_horas
+    # domingos (2026-10-04, 11, 18, 25) a las 13:00; viernes a las 21:00
+    recs = [{"sala": "Jazzville", "fecha": f, "hora": "13:00"} for f in ("2026-10-04", "2026-10-11", "2026-10-18")]
+    recs += [{"sala": "Jazzville", "fecha": f, "hora": "21:00"} for f in ("2026-10-02", "2026-10-09", "2026-10-16")]
+    dom = {"sala": "Jazzville", "fecha": "2026-10-25", "hora": None}
+    vie = {"sala": "Jazzville", "fecha": "2026-10-23", "hora": None}
+    estimar_horas(recs + [dom, vie])
+    assert dom["hora_estimada"]["hora"] == "13:00" and "domingos" in dom["hora_estimada"]["motivo"]
+    assert vie["hora_estimada"]["hora"] == "21:00"
+
+
+def test_precio_con_gastos_de_una_web_que_siempre_los_suma():
+    from scraper.entradas import aplicar_entradas
+    cache, recs = {}, []
+    for i, (sabido, web) in enumerate([("20€", "22 €"), ("15€", "16,5 €"), ("10€", "11 €"), ("30€", "33 €")]):
+        u = f"https://www.songkick.com/concerts/{i}"
+        cache[u] = {"fecha": "2026-10-05", "d": {"precio": web}, "v": 2}
+        recs.append({"id": str(i), "artista": f"A{i}", "fecha": "2026-10-20", "precio": sabido, "conflictos": [],
+                     "fuentes": [{"id": "songkick", "url": u, "nombre": "Songkick"}]})
+    u = "https://www.songkick.com/concerts/99"
+    cache[u] = {"fecha": "2026-10-05", "d": {"precio": "19,8 €"}, "v": 2}
+    nuevo = {"id": "n", "artista": "B", "fecha": "2026-10-21", "precio": None, "conflictos": [],
+             "fuentes": [{"id": "songkick", "url": u, "nombre": "Songkick"}]}
+    aplicar_entradas(recs + [nuevo], cache)
+    assert nuevo["precio"] == "19,8 €" and nuevo["precio_fuente"]["gastos"] is True

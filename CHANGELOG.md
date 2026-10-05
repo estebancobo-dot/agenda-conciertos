@@ -1,5 +1,14 @@
 # Versiones
 
+## 2.61.0 — 2026-10-05
+
+**Más precios y horas: precio con gastos de Songkick, hora y precio escritos en las páginas, hora habitual por día de la semana.**
+
+- **Precio con gastos de gestión** (`scraper/entradas.py`, `confianza`, `aplicar_entradas`): Songkick da precio en sus páginas, pero con los gastos sumados (de media un 10 % más que el de la sala o la agenda), y por eso no pasaba el control de acierto. Ahora una web cuyo precio está siempre entre el de las demás y un 15 % por encima (82 % de 193 comparaciones en Songkick) vale para los conciertos sin precio, y la ficha dice "con gastos de gestión". Con los datos de hoy: 97 precios más.
+- **Hora y precio escritos en el texto de la página** (`hora_precio_texto`): las webs de sala sin datos estructurados escriben "Apertura de puertas 20:30 · Concierto 21:00" o "Anticipada 12 € / Taquilla 15 €". Se leen del cuerpo de la página (sin menús, pie ni barras laterales; una sola hora de concierto, precios junto a "entrada", "anticipada", "taquilla"…) y solo se usan de las webs en las que aciertan (≥80 % en ≥3 conciertos con el dato ya sabido). Medido: Honky Tonk 12 de 12 horas, Wurlitzer 5 de 5, Get Rock 6 de 6; las que fallan (Las Rozas, noticias de giras) quedan fuera solas. Las páginas ya leídas se releen poco a poco con el lector nuevo.
+- **Hora habitual por día de la semana** (`scraper/normalizacion.py`, `estimar_horas`): "los domingos la sala suele empezar a las 13:00" (Jazzville, vermut) además de la hora habitual de la sala. Medido dejando fuera cada concierto con hora: acierta 87 de cada 100. Se muestra como "≈" con su motivo.
+- Diagnóstico nuevo: `diagnostico.yml` con `webs=huecos` (acierto de la hora y el precio del texto por web).
+
 ## 2.60.0 — 2026-10-05
 
 **Origen deducido sin "probablemente"; Latinoamérica deducida en música latina; jams en pop/rock; fiestas de Halloween ocultas.**

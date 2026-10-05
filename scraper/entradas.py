@@ -478,10 +478,13 @@ def _paginas_leidas(r: dict, cache: dict) -> list[tuple[str, dict, str]]:
     return out
 
 
+GASTOS_MAX = 0.15  # gastos de gestión: hasta un 15 % sobre el precio de la entrada
+
+
 def confianza(recs: list[dict], cache: dict) -> dict[str, dict]:
     """Por web: ¿su hora y su precio coinciden con los que ya sabemos por otras fuentes? (≥80 % en ≥3 casos). Hay
     webs que ponen "20:00" a todo en sus datos estructurados: así se quedan fuera solas."""
-    cuenta = {k: defaultdict(lambda: [0, 0]) for k in ("hora", "precio", "hora_t", "precio_t")}
+    cuenta = {k: defaultdict(lambda: [0, 0]) for k in ("hora", "precio", "hora_t", "precio_t", "precio_gastos")}
     for r in recs:
         for u, d, _ in _paginas_leidas(r, cache):
             dom = dominio(u)
@@ -498,6 +501,9 @@ def confianza(recs: list[dict], cache: dict) -> dict[str, dict]:
                 if a is not None and b is not None and not (r.get("precio_fuente") or {}).get("pagina"):
                     cuenta[k][dom][0] += abs(a - b) <= 0.6
                     cuenta[k][dom][1] += 1
+                    if k == "precio":  # el mismo precio con los gastos de gestión sumados (Songkick: +10 %)
+                        cuenta["precio_gastos"][dom][0] += b - 0.6 <= a <= b * (1 + GASTOS_MAX) + 0.6
+                        cuenta["precio_gastos"][dom][1] += 1
     doms = set().union(*cuenta.values())
     ok = lambda c: c[1] >= 3 and c[0] / c[1] >= 0.8  # noqa: E731
     return {d: {**{k: ok(cuenta[k][d]) for k in cuenta}, **{f"n_{k}": cuenta[k][d][1] for k in cuenta}} for d in doms}
@@ -540,10 +546,15 @@ def aplicar_entradas(recs: list[dict], cache: dict) -> dict:
             if not r.get("hora") and not hora_conflicto and hora:
                 r["hora"], r["hora_pagina"] = hora, {"hora": hora, "nombre": nombre, "url": u}
                 c["hora" if hora == d.get("hora") else "hora_texto"] += 1
-            precio = d.get("precio") if cf.get("precio") else d.get("precio_t") if cf.get("precio_t") else None
+            # una web que da el precio con los gastos de gestión sumados (siempre algo por encima del de las demás):
+            # vale, diciendo que los incluye
+            gastos = not cf.get("precio") and cf.get("precio_gastos") and bool(d.get("precio"))
+            precio = d.get("precio") if cf.get("precio") or gastos else d.get("precio_t") if cf.get("precio_t") else None
             if not r.get("precio") and precio:
                 r["precio"], r["precio_fuente"] = precio, {"nombre": nombre, "url": u, "pagina": True}
-                c["precio" if precio == d.get("precio") else "precio_texto"] += 1
+                if gastos:
+                    r["precio_fuente"]["gastos"] = True
+                c["precio_con_gastos" if gastos else "precio" if precio == d.get("precio") else "precio_texto"] += 1
             if d.get("disponibilidad") == "agotado" and "agotado" not in r:
                 r["agotado"] = {"nombre": nombre, "url": u}
                 c["agotado"] += 1
