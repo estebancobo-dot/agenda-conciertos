@@ -7482,6 +7482,262 @@
    "creado": "2026-10-05",
    "pendientes": 206,
    "importado": "2026-10-05"
+  },
+  "A-2026-10-05-03": {
+   "tipo": "artistas",
+   "creado": "2026-10-05",
+   "items": {
+    "a1": {
+     "nombre": "Donny's Black Shoes",
+     "clave": "donnys black shoes",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Sala Villanos"
+     ]
+    },
+    "a2": {
+     "nombre": "7 x Medio",
+     "clave": "7 x medio",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Sala Villanos"
+     ]
+    },
+    "a3": {
+     "nombre": "La Banda Sabinera",
+     "clave": "la banda sabinera",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "La Riviera"
+     ]
+    },
+    "a4": {
+     "nombre": "Ramona Flores",
+     "clave": "ramona flores",
+     "falta": [
+      "estilo"
+     ],
+     "salas": [
+      "Cadavra"
+     ]
+    },
+    "a5": {
+     "nombre": "GUILTY PLEASURES",
+     "clave": "guilty pleasures",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "El Perro Club"
+     ]
+    },
+    "a6": {
+     "nombre": "Mikky Dee",
+     "clave": "mikky dee",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Revi Live"
+     ]
+    },
+    "a7": {
+     "nombre": "Kheis",
+     "clave": "kheis",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Sala Uni"
+     ]
+    },
+    "a8": {
+     "nombre": "DOGTEEH",
+     "clave": "dogteeh",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "El Perro Club"
+     ]
+    },
+    "a9": {
+     "nombre": "Neil Sugarman Organ Combo USA",
+     "clave": "neil sugarman organ combo usa",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Tempo Audiophile Club"
+     ]
+    },
+    "a10": {
+     "nombre": "Funzo",
+     "clave": "funzo",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Live Las Ventas"
+     ]
+    },
+    "a11": {
+     "nombre": "Roberto Quintero & Falcon Spirit",
+     "clave": "roberto quintero and falcon spirit",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Sala Villanos"
+     ]
+    },
+    "a12": {
+     "nombre": "VOILAAA Francia",
+     "clave": "voilaaa francia",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Tempo Audiophile Club"
+     ]
+    },
+    "a13": {
+     "nombre": "Inverfest. Miguel Ríos",
+     "clave": "inverfest miguel rios",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Movistar Arena"
+     ]
+    },
+    "a14": {
+     "nombre": "Diegote",
+     "clave": "diegote",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Sala Villanos"
+     ]
+    },
+    "a15": {
+     "nombre": "MIMOZA CENDEY & FRIENDS",
+     "clave": "mimoza cendey and friends",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Tempo Audiophile Club"
+     ]
+    },
+    "a16": {
+     "nombre": "LITTLE BARRIE",
+     "clave": "little barrie",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Canopy"
+     ]
+    },
+    "a17": {
+     "nombre": "PINONE",
+     "clave": "pinone",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "El Perro Club"
+     ]
+    },
+    "a18": {
+     "nombre": "Zambombas y panderetas en sinfónico - Coro Villa de las Rozas 45º Aniversario",
+     "clave": "zambombas y panderetas en sinfonico coro villa de las rozas 45o aniversario",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": []
+    },
+    "a19": {
+     "nombre": "María Parrado",
+     "clave": "maria parrado",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Galileo Galilei"
+     ]
+    },
+    "a20": {
+     "nombre": "Serko \"125KM\" Tour",
+     "clave": "serko 125km tour",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Palacio Vistalegre"
+     ]
+    },
+    "a21": {
+     "nombre": "X-STAR",
+     "clave": "x star",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "El Perro Club"
+     ]
+    },
+    "a22": {
+     "nombre": "Ay Trick",
+     "clave": "ay trick",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Tempo Audiophile Club"
+     ]
+    },
+    "a23": {
+     "nombre": "Así canta Jerez en Navidad",
+     "clave": "asi canta jerez en navidad",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Palacio Vistalegre"
+     ]
+    },
+    "a24": {
+     "nombre": "Tasha & Tracie",
+     "clave": "tasha and tracie",
+     "falta": [
+      "estilo"
+     ],
+     "salas": [
+      "Sala Mon Live"
+     ]
+    },
+    "a25": {
+     "nombre": "CVBA",
+     "clave": "cvba",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "El Perro Club"
+     ]
+    }
+   },
+   "pendientes": 181
   }
  },
  "ocultos": {
