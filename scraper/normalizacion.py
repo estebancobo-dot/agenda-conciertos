@@ -81,6 +81,8 @@ def estado_estilo(r: dict, cache: dict) -> dict:
             return {"estado": "conocido", "fuente": web, "cita": cita.get("cita"), "url": cita.get("url")}
         return {"estado": "estimado", "fuente": web, "cita": cita.get("cita"), "url": cita.get("url"),
                 "motivo": f"lo dice {web} (página comprobada), que no es una web de música"}
+    if grupos and origen == "título (jam)":
+        return {"estado": "estimado", "fuente": "el título", "motivo": "jam session sin estilo: pop/rock por defecto"}
     if grupos and origen == "título":
         return {"estado": "conocido", "fuente": "el título",
                 "motivo": "lo dice el título (" + ", ".join((r.get("estilos_discogs") or grupos)[:2]) + ")"}

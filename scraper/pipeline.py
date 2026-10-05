@@ -407,7 +407,8 @@ def tributo_y_estimacion(r: dict, cache: dict) -> None:
     if pais:
         r["nacionalidad_estimada"], r["nacionalidad_estimada_motivo"] = pais, motivo
         return
-    if {"latina", "urbana y hip hop"} & set(r.get("grupos") or []):
+    latina = "latina" in (r.get("grupos") or [])
+    if "urbana y hip hop" in (r.get("grupos") or []) and not latina:
         return
     nombre = nombre_en_titulo(r["artista"]) if h else (claves_ficha(r)[1:2] or [r["artista"]])[0]
     # "McEnroe presenta «La vida libre»", "DEPEDRO presentando su nuevo disco": solo el nombre, no el del disco
@@ -416,6 +417,13 @@ def tributo_y_estimacion(r: dict, cache: dict) -> None:
                  r"fiestas?|muestra|encuentro|gala|noche de|programa|foro|jornadas?|congreso|feria|expo)\b", norm(nombre)):
         return  # un festival o un ciclo no es un artista: no se estima nada
     pais, motivo = pais_estimado(nombre)
+    if latina and not re.search(r"\b(19|20)\d\d\b", nombre):  # "Cadena 100 Por Ellas 2026" es un festival
+        # en música latina un nombre en español no distingue España de Latinoamérica: lo más habitual es Latinoamérica
+        if pais:
+            r["nacionalidad_estimada"], r["nacionalidad_estimada_motivo"] = "LATAM", motivo + " en música latina"
+        return
+    if latina:
+        return
     if not pais:
         pais, motivo = pais_por_agendas_locales(r, nombre)
     if pais:
@@ -525,6 +533,9 @@ def aplicar_cartel(r: dict, cache: dict) -> None:
         r["grupos_cartel"] = extra
 
 
+_JAM = re.compile(r"\b(jam|jams|jam session|open mic|micro abierto)\b")
+
+
 def aplicar_ficha(r: dict, f: dict | None) -> None:
     """Grupos de filtro, estilos, nacionalidad y foto.
 
@@ -586,9 +597,14 @@ def aplicar_ficha(r: dict, f: dict | None) -> None:
     te = estilo_de_titulo(r["artista"]) if origen == "agenda" and "tributos y versiones" not in cats else None
     if te:
         if cats == ["sin clasificar"] or generico:
-            cats, generico, origen, segun = [te[0]], False, "título", ["el título"]
-        if te[1] and te[0] in cats and not estilos:
-            estilos = [te[1]]
+            cats, generico = [te[0]], False
+        if te[0] in cats:  # el título lo dice ("Coro…"): el género y el subgénero son del título
+            origen, segun = "título", ["el título"]
+            if te[1] and not estilos:
+                estilos = [te[1]]
+    elif origen == "agenda" and cats == ["sin clasificar"] and _JAM.search(norm(r["artista"])):
+        # jam session o micro abierto sin estilo en el título: pop/rock por defecto (se dice en la ficha)
+        cats, origen, segun = ["rock y metal", "pop e indie"], "título (jam)", ["jam session: pop/rock por defecto"]
     r["ficha"] = f
     r["grupos"], r["grupos_origen"], r["grupos_generico"], r["grupos_segun"] = cats, origen, generico, segun
     r["categoria"] = cats[0]

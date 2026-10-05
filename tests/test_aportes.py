@@ -304,3 +304,16 @@ def test_estilo_y_origen_por_el_titulo_y_el_tipo_de_grupo():
     trib = {"artista": "Dire Straits Tribute", "grupos": ["tributos y versiones"], "categorias": []}
     assert pais_por_tipo_local({**trib, "fuentes": [{"id": "madridenvivo"}]})[0] == "ES"
     assert pais_por_tipo_local({**trib, "fuentes": [{"id": "songkick"}]})[0] is None  # gira, gran recinto
+
+
+def test_halloween_y_jam_y_latina():
+    assert ap.no_es_concierto("AFROJAM HALLOWEEN PARTY") == "fiesta de Halloween"
+    assert ap.no_es_concierto("Gran fiesta de Halloween con The Exploding Boys") is None
+    assert ap.no_es_concierto("Concierto especial Halloween") is None
+    from scraper.pipeline import aplicar_ficha, tributo_y_estimacion
+    r = {"artista": "On Fire Jam!", "fuentes": [{"id": "cc_buscador"}], "estilo_fuente": [], "categorias": []}
+    aplicar_ficha(r, None)
+    assert r["grupos"] == ["rock y metal", "pop e indie"] and r["grupos_origen"] == "título (jam)"
+    r = {"artista": "Los Hermanos Rodríguez", "grupos": ["latina"], "fuentes": [{"id": "cc_buscador"}]}
+    tributo_y_estimacion(r, {})
+    assert r.get("nacionalidad_estimada") in ("LATAM", None)

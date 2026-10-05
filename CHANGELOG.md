@@ -1,5 +1,15 @@
 # Versiones
 
+## 2.60.0 — 2026-10-05
+
+**Origen deducido sin "probablemente"; Latinoamérica deducida en música latina; jams en pop/rock; fiestas de Halloween ocultas.**
+
+- **Origen deducido** (`site/index.html`): lo que antes salía como "Probablemente España" con la bandera atenuada sale como "España" (o "Latinoamérica"), con la bandera normal; en la ficha, una línea dice de dónde se deduce ("Deducido: nombre en español", "agrupación local…", "banda tributo…"). El filtro "España (solo confirmados)" desaparece: "España" incluye los deducidos y "Origen sin confirmar" son los que no se pueden deducir. Quien lo tenía elegido pasa a "España".
+- **Latinoamérica** (`scraper/pipeline.py`, `tributo_y_estimacion`): en música latina, un nombre en español se deduce como Latinoamérica (país sin concretar, 🌎) y cuenta en el filtro "Latinoamérica". En urbana no se deduce nada (hay mucho artista español y latino con nombre en español).
+- **Jam sessions y micros abiertos** sin estilo en el título ni en la agenda: pop/rock (rock y metal + pop e indie), con el estilo "estimado" y el motivo en la ficha ("jam session: pop/rock por defecto"). Una jam con estilo en el título sigue con el suyo ("Jam Session Blues" → blues).
+- **Fiestas de Halloween ocultas** (`scraper/aportes.py`, `no_es_concierto`): "… Halloween Party", "Halloween Takeover", "Fiesta de Halloween" (sin grupo anunciado); "fiesta de Halloween con X" y "Concierto especial Halloween" no. Lista revisable como el resto.
+- Género del título: si coincide con el de la agenda ("Coro…" y "Música clásica"), la ficha dice "según el título" y el estilo es conocido.
+
 ## 2.59.0 — 2026-10-05
 
 **Género y subgénero por el título; origen "probablemente España" por el tipo de grupo.**

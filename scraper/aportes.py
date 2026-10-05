@@ -469,6 +469,11 @@ _NO_CONCIERTO = [
     (re.compile(r"^presentacion\b"), "presentación (no concierto)"),
     (re.compile(r"\b(cortometrajes?|proyeccion|pelicula)\b"), "cine"),
     (re.compile(r"\b(feria del disco|mercadillo)\b"), "feria o mercadillo"),
+    # "AFROJAM HALLOWEEN PARTY", "Halloween Party con Gastón & Tony Karate" (DJ), "Halloween Takeover 2026"; una
+    # "fiesta de Halloween con X" no, que suele decir qué grupo toca
+    (re.compile(r"\b(halloween|jalog\w*)\b.*\b(party|takeover)\b|\b(party|takeover)\b.*\b(halloween|jalog\w*)\b|"
+                r"^(?!.*\scon\s).*(\b(halloween|jalog\w*)\b.*\bfiesta\b|\bfiesta\b.*\b(halloween|jalog\w*)\b)"),
+     "fiesta de Halloween"),
 ]
 
 

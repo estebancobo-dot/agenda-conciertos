@@ -255,7 +255,7 @@ def publicacion(b):
     estimados = sum(1 for r in futuros if not r.get("nacionalidad") and r.get("nacionalidad_estimada"))
     check("Publicación", "Conciertos próximos sin origen del artista (ni confirmado ni estimado)",
           round(100 * sin_origen / n, 1), aviso=30, fallo=50, unidad="%",
-          detalle=f"{sin_origen} de {len(futuros)}; además {estimados} estimados por el nombre")
+          detalle=f"{sin_origen} de {len(futuros)}; además {estimados} deducidos (nombre, grupo local, tributo…)")
     # catálogo: que casi todo tenga un género propio y un estilo
     otros = sum(1 for r in futuros if "fuera de foco" in (r.get("grupos") or []))
     check("Publicación", "Conciertos en 'Otros' (sin género propio)", round(100 * otros / n, 1), aviso=3, fallo=10,
@@ -465,12 +465,12 @@ def recorrido(b):
     # filtros de origen: España confirmados, Latinoamérica, resto del mundo, estimados, sin confirmar y "no aplica"
     # reparten todos los conciertos sin dejar ninguno fuera ni contar ninguno dos veces
     o = pg.evaluate("""()=>{const f=DATA.filter(r=>r.fecha>=HOY); const c=k=>f.filter(r=>origenDe(r,k)).length;
-        const est=f.filter(r=>!r.nacionalidad&&r.nacionalidad_estimada==='ES').length;
         const na=f.filter(r=>!r.nacionalidad&&!r.nacionalidad_estimada&&r.origen_no_aplica).length;
-        return {total:f.length, esc:c('esc'), es:c('es'), lat:c('lat'), ext:c('ext'), nc:c('nc'), est, na}}""")
-    suma = o["esc"] + o["lat"] + o["ext"] + o["est"] + o["nc"] + o["na"]
+        const otra=f.filter(r=>!r.nacionalidad&&r.nacionalidad_estimada&&!['ES','LATAM'].includes(r.nacionalidad_estimada)).length;
+        return {total:f.length, es:c('es'), lat:c('lat'), ext:c('ext'), nc:c('nc'), na, otra}}""")
+    suma = o["es"] + o["lat"] + o["ext"] + o["nc"] + o["na"] + o["otra"]
     check("Funcional", "Filtros de origen: España, Latinoamérica, resto del mundo y sin confirmar cuadran",
-          f"{suma} de {o['total']}", ok=suma == o["total"] and o["es"] == o["esc"] + o["est"], detalle=str(o))
+          f"{suma} de {o['total']}", ok=suma == o["total"] and not o["otra"], detalle=str(o))
     mes(pg)
     entradas_ficha(pg)
     cabeceras_fijas(pg, lunes)
@@ -1282,8 +1282,11 @@ def normalizacion_web(pg):
     pg.wait_for_selector(".rows", timeout=15000)
     pg.wait_for_timeout(1200)
     chips = pg.evaluate("[...document.querySelectorAll('.rows .nrm-chip')].map(c=>c.textContent)")
+    # el origen deducido no lleva chip: dice "Deducido: …" (nombre en español, grupo local…)
+    deducido = pg.evaluate("[...document.querySelectorAll('.rows .s')].some(s=>s.textContent.startsWith('Deducido:'))")
     check("Funcional", "Estado de estilo y origen en la ficha y recuento en Fuentes (N3/N4)",
-          f"ficha: {chips} · {res.splitlines()[1:3]}", ok=len(chips) >= 2, detalle=res[:300])
+          f"ficha: {chips}{' + origen deducido' if deducido else ''} · {res.splitlines()[1:3]}",
+          ok=len(chips) + deducido >= 2, detalle=res[:300])
 
 
 def fase_b_web(pg):
