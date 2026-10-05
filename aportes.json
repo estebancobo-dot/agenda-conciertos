@@ -2250,7 +2250,7 @@
    "lote": "A-2026-10-05-03",
    "fecha": "2026-10-05"
   },
-  "inverfest miguel rios": {
+  "miguel rios": {
    "nombre": "Inverfest. Miguel Ríos",
    "pais": {
     "valor": "ES",
@@ -2406,25 +2406,7 @@
    "lote": "A-2026-10-05-04",
    "fecha": "2026-10-05"
   },
-  "inverfest guille galvan": {
-   "nombre": "Inverfest. Guille Galván",
-   "pais": {
-    "valor": "ES",
-    "url": "https://www.telecinco.es/noticias/cultura/20260512/guille-galvan-vuelo-solitario-cantante-vetusta-morla-disco-intimo-personal_18_019144192.html",
-    "cita": "squeda personal hace 16 anos, vetusta morla era todavia una banda emergente que prometia abrirse camino en la musica espanola, entre sus integrantes, guille galvan permanecia en un discreto segundo plano, aunque detras de muchas de las letras que marcaron a toda una generacion estaba precisamente su"
-   },
-   "estilos": {
-    "valores": [
-     "pop"
-    ],
-    "url": "https://jenesaispop.com/2026/05/08/522656/guille-galvan-entrevista/",
-    "cita": "os clave del siglo xxi', actualmente descatalogado tras agotar su 2a edicion. jenesaispop jenesaispop.com noticias y actualidad musical independiente guille galvan: «me gustan los discos donde tienes que imaginar lo que falta» home guille galvan: \"me gustan los discos donde tienes que imaginar lo qu",
-    "web_musica": false
-   },
-   "lote": "A-2026-10-05-04",
-   "fecha": "2026-10-05"
-  },
-  "inverfest rufus t firefly": {
+  "rufus t firefly": {
    "nombre": "Inverfest. Rufus T. Firefly",
    "pais": {
     "valor": "ES",
@@ -2443,7 +2425,7 @@
    "lote": "A-2026-10-05-05",
    "fecha": "2026-10-05"
   },
-  "inverfest carlos nunez": {
+  "carlos nunez": {
    "nombre": "Inverfest. Carlos Núñez",
    "pais": {
     "valor": "ES",
@@ -2454,7 +2436,7 @@
    "lote": "A-2026-10-05-05",
    "fecha": "2026-10-05"
   },
-  "inverfest barry b": {
+  "barry b": {
    "nombre": "Inverfest. Barry B",
    "pais": {
     "valor": "ES",
@@ -2469,25 +2451,6 @@
     "url": "https://blog.ticketmaster.es/post/barry-b-artista-del-momento-37160/",
     "cita": "e duero, burgos. su carrera comenzo en 2019 y rapidamente empezo a ganar adeptos gracias a su estilo innovador y su enfoque hacia la musica. antes de barry b, gabriel formo parte del grupo de rock the girondines junto a sam gold, pero decidio adentrarse en nuevos horizontes como solista. sus primero",
     "web_musica": false
-   },
-   "lote": "A-2026-10-05-05",
-   "fecha": "2026-10-05"
-  },
-  "inverfest marwan": {
-   "nombre": "Inverfest. Marwan",
-   "pais": {
-    "valor": "ES",
-    "url": "https://es.wikipedia.org/wiki/Marw%C3%A1n_(cantante_y_poeta)",
-    "cita": "marwan (cantante y poeta) - wikipedia, la enciclopedia libre marwan (cantante y poeta) cantautor y poeta espanol wikimedia foundation, inc. colaboradores de",
-    "ciudad": "Madrid"
-   },
-   "estilos": {
-    "valores": [
-     "cantautor"
-    ],
-    "url": "https://es.wikipedia.org/wiki/Marw%C3%A1n_(cantante_y_poeta)",
-    "cita": "marwan (cantante y poeta) - wikipedia, la enciclopedia libre marwan (cantante y poeta) cantautor y poeta espanol wikimedia foundation, inc. colaboradores de",
-    "web_musica": true
    },
    "lote": "A-2026-10-05-05",
    "fecha": "2026-10-05"
@@ -2564,7 +2527,7 @@
    "lote": "A-2026-10-05-07",
    "fecha": "2026-10-05"
   },
-  "inverfest fito and fitipaldis": {
+  "fito and fitipaldis": {
    "nombre": "Inverfest Fito & Fitipaldis",
    "pais": {
     "valor": "ES",
@@ -7815,7 +7778,7 @@
    "aceptado": [],
    "rechazado": []
   },
-  "a:inverfest miguel rios": {
+  "a:miguel rios": {
    "fecha": "2026-10-05",
    "lote": "A-2026-10-05-03",
    "aceptado": [
@@ -8000,7 +7963,7 @@
    "aceptado": [],
    "rechazado": []
   },
-  "a:inverfest sienna": {
+  "a:sienna": {
    "fecha": "2026-10-05",
    "lote": "A-2026-10-05-04",
    "aceptado": [],
@@ -8066,16 +8029,7 @@
    "aceptado": [],
    "rechazado": []
   },
-  "a:inverfest guille galvan": {
-   "fecha": "2026-10-05",
-   "lote": "A-2026-10-05-04",
-   "aceptado": [
-    "estilos",
-    "pais"
-   ],
-   "rechazado": []
-  },
-  "a:inverfest rufus t firefly": {
+  "a:rufus t firefly": {
    "fecha": "2026-10-05",
    "lote": "A-2026-10-05-05",
    "aceptado": [
@@ -8093,7 +8047,7 @@
     "estilos: no se pudo abrir (RobotsUnreachable)"
    ]
   },
-  "a:inverfest carlos nunez": {
+  "a:carlos nunez": {
    "fecha": "2026-10-05",
    "lote": "A-2026-10-05-05",
    "aceptado": [
@@ -8103,7 +8057,7 @@
     "estilos: ni la frase citada ni la página lo dicen junto al nombre"
    ]
   },
-  "a:inverfest barry b": {
+  "a:barry b": {
    "fecha": "2026-10-05",
    "lote": "A-2026-10-05-05",
    "aceptado": [
@@ -8122,15 +8076,6 @@
    "fecha": "2026-10-05",
    "lote": "A-2026-10-05-05",
    "aceptado": [],
-   "rechazado": []
-  },
-  "a:inverfest marwan": {
-   "fecha": "2026-10-05",
-   "lote": "A-2026-10-05-05",
-   "aceptado": [
-    "estilos",
-    "pais"
-   ],
    "rechazado": []
   },
   "a:javi chapela": {
@@ -8585,7 +8530,7 @@
     "estilos: su robots.txt no deja leerla, así que no se puede comprobar"
    ]
   },
-  "a:inverfest fito and fitipaldis": {
+  "a:fito and fitipaldis": {
    "fecha": "2026-10-05",
    "lote": "A-2026-10-05-08",
    "aceptado": [
@@ -9197,184 +9142,266 @@
   "C-2026-10-05-01": {
    "tipo": "conciertos",
    "creado": "2026-10-05",
+   "pendientes": 828,
+   "saltado": "2026-10-05"
+  },
+  "O-2026-10-05-01": {
+   "tipo": "artistas",
+   "creado": "2026-10-05",
    "items": {
-    "c1": {
-     "id": "7ced7c51",
-     "fecha": "2026-10-18",
-     "artista": "PUNK RAVE",
-     "sala": "Revi Live",
-     "web_sala": "https://revi.live/"
+    "a1": {
+     "nombre": "MECHANIC MOODS LIVE SESSION",
+     "clave": "mechanic moods live session",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Tempo Audiophile Club"
+     ]
     },
-    "c2": {
-     "id": "36dee69b",
-     "fecha": "2026-10-18",
-     "artista": "THE SILENCERS",
-     "sala": "Sala Copérnico",
-     "web_sala": "https://salacopernico.es/"
+    "a2": {
+     "nombre": "Charly",
+     "clave": "charly",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Leaves"
+     ]
     },
-    "c3": {
-     "id": "b1b09d4d",
-     "fecha": "2026-10-23",
-     "artista": "FROZEN SOUL",
-     "sala": "Sala El Sol",
-     "web_sala": "https://salaelsol.com/"
+    "a3": {
+     "nombre": "Nela",
+     "clave": "nela",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Espacio Gran Via"
+     ]
     },
-    "c4": {
-     "id": "bdab7a96",
-     "fecha": "2026-10-23",
-     "artista": "HORA ZULU PRESENTA NUEVA GIRA",
-     "sala": "Sala Copérnico",
-     "web_sala": "https://salacopernico.es/"
+    "a4": {
+     "nombre": "DANIELA GRAV",
+     "clave": "daniela grav",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Barracudas Rock Bar"
+     ]
     },
-    "c5": {
-     "id": "80e48bd5",
-     "fecha": "2026-10-23",
-     "artista": "Tiña",
-     "sala": "Cine & Teatro Capitol",
-     "web_sala": null
+    "a5": {
+     "nombre": "Babylon- band",
+     "clave": "babylon band",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Babylon Club"
+     ]
     },
-    "c6": {
-     "id": "4620e401",
-     "fecha": "2026-10-24",
-     "artista": "BEGGARS BLADE - Homenaje a Javier Garza",
-     "sala": "San Nicasio Distrito Rock",
-     "web_sala": null
+    "a6": {
+     "nombre": "Joma",
+     "clave": "joma",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Leaves"
+     ]
     },
-    "c7": {
-     "id": "e734ad51",
-     "fecha": "2026-10-24",
-     "artista": "Charly",
-     "sala": "Leaves",
-     "web_sala": null
+    "a7": {
+     "nombre": "SacMJJ",
+     "clave": "sacmjj",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Teatro Calderón"
+     ]
     },
-    "c8": {
-     "id": "36271b46",
-     "fecha": "2026-10-24",
-     "artista": "Jason Joshua",
-     "sala": "Sala Copérnico",
-     "web_sala": "https://salacopernico.es/"
+    "a8": {
+     "nombre": "JESSVARAL Y FRAN.TV",
+     "clave": "jessvaral y fran tv",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Jazzville"
+     ]
     },
-    "c9": {
-     "id": "4ea7b03d",
-     "fecha": "2026-10-27",
-     "artista": "Nela",
-     "sala": "Espacio Gran Via",
-     "web_sala": null
+    "a9": {
+     "nombre": "ESPECIAL JALOGÜIN",
+     "clave": "especial jaloguin",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Moby Dick Club"
+     ]
     },
-    "c10": {
-     "id": "3648c663",
-     "fecha": "2026-10-28",
-     "artista": "El niño de la hipoteca",
-     "sala": "Café Libertad 8",
-     "web_sala": null
+    "a10": {
+     "nombre": "PUNK RAVE",
+     "clave": "punk rave",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Revi Live"
+     ]
     },
-    "c11": {
-     "id": "e07ea068",
-     "fecha": "2026-10-30",
-     "artista": "Tiña",
-     "sala": "Cine & Teatro Capitol",
-     "web_sala": null
+    "a11": {
+     "nombre": "UNA NOCHE DE MUSICALES",
+     "clave": "una noche de musicales",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Teatro La Latina"
+     ]
     },
-    "c12": {
-     "id": "dbc12793",
-     "fecha": "2026-10-31",
-     "artista": "IN VERSE",
-     "sala": "Sala Venom",
-     "web_sala": null
+    "a12": {
+     "nombre": "CLUB DEBUT",
+     "clave": "club debut",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Café La Palma"
+     ]
     },
-    "c13": {
-     "id": "bf87169f",
-     "fecha": "2026-11-01",
-     "artista": "ALI A.K.A MIND",
-     "sala": "Sala Uni",
-     "web_sala": null
+    "a13": {
+     "nombre": "Delarocha",
+     "clave": "delarocha",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Sala Nazca"
+     ]
     },
-    "c14": {
-     "id": "a4faeb23",
-     "fecha": "2026-11-01",
-     "artista": "El niño de la hipoteca",
-     "sala": "Jazzville",
-     "web_sala": null
+    "a14": {
+     "nombre": "The New R&B Collective Plays George Benson",
+     "clave": "the new r and b collective plays george benson",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Tempo Audiophile Club"
+     ]
     },
-    "c15": {
-     "id": "0adedc3b",
-     "fecha": "2026-11-02",
-     "artista": "Swing Machine Orchestra",
-     "sala": "Galileo Galilei",
-     "web_sala": null
+    "a15": {
+     "nombre": "The Benatars",
+     "clave": "the benatars",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Fun House"
+     ]
     },
-    "c16": {
-     "id": "0acbfc6f",
-     "fecha": "2026-11-07",
-     "artista": "NICKY JAM",
-     "sala": "Movistar Arena",
-     "web_sala": "https://www.movistararena.es/"
+    "a16": {
+     "nombre": "LQDMS · Pop/Rock",
+     "clave": "lqdms pop rock",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "El Perro Club"
+     ]
     },
-    "c17": {
-     "id": "a886ec0b",
-     "fecha": "2026-11-07",
-     "artista": "RATA",
-     "sala": "Sala El Sol",
-     "web_sala": "https://salaelsol.com/"
+    "a17": {
+     "nombre": "BELLUM ZONE VII",
+     "clave": "bellum zone vii",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Revi Live"
+     ]
     },
-    "c18": {
-     "id": "ea0f36a7",
-     "fecha": "2026-11-08",
-     "artista": "RATA",
-     "sala": "Sala El Sol",
-     "web_sala": "https://salaelsol.com/"
+    "a18": {
+     "nombre": "Blokk Sessions· Punk & grunge finest",
+     "clave": "blokk sessions punk and grunge finest",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Café Berlín"
+     ]
     },
-    "c19": {
-     "id": "bf0e3239",
-     "fecha": "2026-11-09",
-     "artista": "Steve Blanco",
-     "sala": "Hinves Pianos",
-     "web_sala": null
+    "a19": {
+     "nombre": "Hidden",
+     "clave": "hidden",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Sala Nazca"
+     ]
     },
-    "c20": {
-     "id": "0c71510e",
-     "fecha": "2026-11-12",
-     "artista": "What So Not",
-     "sala": "Teatro Magno",
-     "web_sala": null
+    "a20": {
+     "nombre": "PARADISE",
+     "clave": "paradise",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Sala But"
+     ]
     },
-    "c21": {
-     "id": "2f872874",
-     "fecha": "2026-11-13",
-     "artista": "LOST WINGMAN",
-     "sala": "New Restón",
-     "web_sala": null
+    "a21": {
+     "nombre": "ELIAS J. TV.BAND",
+     "clave": "elias j tv band",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Independance Club"
+     ]
     },
-    "c22": {
-     "id": "37187603",
-     "fecha": "2026-11-13",
-     "artista": "Michel Camilo",
-     "sala": "Teatro Monumental",
-     "web_sala": null
+    "a22": {
+     "nombre": "ROSCI NEUENCE",
+     "clave": "rosci neuence",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Moby Dick Club"
+     ]
     },
-    "c23": {
-     "id": "3ac59d87",
-     "fecha": "2026-11-14",
-     "artista": "Fangs on Fur",
-     "sala": "Madrid, Espanya",
-     "web_sala": null
+    "a23": {
+     "nombre": "Radiosfera",
+     "clave": "radiosfera",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Cadillac Solitario"
+     ]
     },
-    "c24": {
-     "id": "f168a22b",
-     "fecha": "2026-11-15",
-     "artista": "FM",
-     "sala": "Sala Mon Live",
-     "web_sala": "https://www.monmadrid.es/"
+    "a24": {
+     "nombre": "Jere",
+     "clave": "jere",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Rockville"
+     ]
     },
-    "c25": {
-     "id": "c445b971",
-     "fecha": "2026-11-15",
-     "artista": "Malevaje",
-     "sala": "Sala Clamores",
-     "web_sala": "https://www.salaclamores.es/"
+    "a25": {
+     "nombre": "013 - Estreno del Álbum \"Volar por necesidad\"",
+     "clave": "013 estreno del album volar por necesidad",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Sala Epoka The Club"
+     ]
     }
    },
-   "pendientes": 828
+   "pendientes": 321,
+   "segunda": true
   }
  },
  "ocultos": {
