@@ -8454,6 +8454,264 @@
    "creado": "2026-10-05",
    "pendientes": 106,
    "importado": "2026-10-05"
+  },
+  "A-2026-10-05-07": {
+   "tipo": "artistas",
+   "creado": "2026-10-05",
+   "items": {
+    "a1": {
+     "nombre": "RAMUDO",
+     "clave": "ramudo",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Sala Clamores"
+     ]
+    },
+    "a2": {
+     "nombre": "ELENA OLLERO",
+     "clave": "elena ollero",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Tablao Ópera Flamenca"
+     ]
+    },
+    "a3": {
+     "nombre": "POLAROIDS",
+     "clave": "polaroids",
+     "falta": [
+      "estilo"
+     ],
+     "salas": [
+      "Thundercat"
+     ]
+    },
+    "a4": {
+     "nombre": "AITOR CASTELLS",
+     "clave": "aitor castells",
+     "falta": [
+      "estilo"
+     ],
+     "salas": [
+      "Cadavra"
+     ]
+    },
+    "a5": {
+     "nombre": "SHAKA & ELEKTRA",
+     "clave": "shaka and elektra",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Fotomatón Bar"
+     ]
+    },
+    "a6": {
+     "nombre": "SOULBREATH",
+     "clave": "soulbreath",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Barracudas Rock Bar"
+     ]
+    },
+    "a7": {
+     "nombre": "GRLS",
+     "clave": "grls",
+     "falta": [
+      "estilo"
+     ],
+     "salas": [
+      "Sala Siroco"
+     ]
+    },
+    "a8": {
+     "nombre": "KIKETAS",
+     "clave": "kiketas",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Cien por Cien"
+     ]
+    },
+    "a9": {
+     "nombre": "“FLAMENCO JAZZ TRIO” BANDOLERO",
+     "clave": "flamenco jazz trio bandolero",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Candela"
+     ]
+    },
+    "a10": {
+     "nombre": "Jan Uve",
+     "clave": "jan uve",
+     "falta": [
+      "estilo"
+     ],
+     "salas": [
+      "Café Berlín"
+     ]
+    },
+    "a11": {
+     "nombre": "FOX GUNN",
+     "clave": "fox gunn",
+     "falta": [
+      "estilo"
+     ],
+     "salas": [
+      "Café La Palma"
+     ]
+    },
+    "a12": {
+     "nombre": "Jesús Lorenzo",
+     "clave": "jesus lorenzo",
+     "falta": [
+      "estilo"
+     ],
+     "salas": [
+      "Rincón del Arte Nuevo"
+     ]
+    },
+    "a13": {
+     "nombre": "SOUTHGATE",
+     "clave": "southgate",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Barracudas Rock Bar"
+     ]
+    },
+    "a14": {
+     "nombre": "LUCIANO GONZÁLEZ TRÍO",
+     "clave": "luciano gonzalez trio",
+     "falta": [
+      "estilo"
+     ],
+     "salas": [
+      "Café El Despertar"
+     ]
+    },
+    "a15": {
+     "nombre": "FANTOCHES",
+     "clave": "fantoches",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Elefante Blanco"
+     ]
+    },
+    "a16": {
+     "nombre": "ELENA ROSSI",
+     "clave": "elena rossi",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Jazzville"
+     ]
+    },
+    "a17": {
+     "nombre": "KARA BOI",
+     "clave": "kara boi",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Hangar 48"
+     ]
+    },
+    "a18": {
+     "nombre": "AKONI ASTROBEAT (FR)",
+     "clave": "akoni astrobeat fr",
+     "falta": [
+      "estilo"
+     ],
+     "salas": [
+      "Intruso Bar"
+     ]
+    },
+    "a19": {
+     "nombre": "CLAUDIA ZUAZO",
+     "clave": "claudia zuazo",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Sala B"
+     ]
+    },
+    "a20": {
+     "nombre": "MIRKO",
+     "clave": "mirko",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Sala B"
+     ]
+    },
+    "a21": {
+     "nombre": "Los Joaquines",
+     "clave": "los joaquines",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Bakkanal"
+     ]
+    },
+    "a22": {
+     "nombre": "MAKAÚ",
+     "clave": "makau",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Sala B"
+     ]
+    },
+    "a23": {
+     "nombre": "ELARTEDEALFA",
+     "clave": "elartedealfa",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Candela"
+     ]
+    },
+    "a24": {
+     "nombre": "TARA LOWE",
+     "clave": "tara lowe",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Intruso Bar"
+     ]
+    },
+    "a25": {
+     "nombre": "PUNEH FARHANI",
+     "clave": "puneh farhani",
+     "falta": [
+      "origen"
+     ],
+     "salas": [
+      "Candela"
+     ]
+    }
+   },
+   "pendientes": 81
   }
  },
  "ocultos": {
