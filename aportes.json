@@ -2142,6 +2142,83 @@
    },
    "lote": "A-2026-10-05-01",
    "fecha": "2026-10-05"
+  },
+  "cobrah": {
+   "nombre": "COBRAH",
+   "pais": {
+    "valor": "SE",
+    "url": "https://en.wikipedia.org/wiki/Cobrah",
+    "cita": "cobrah - wikipedia cobrah swedish singer, songwriter and record producer wikimedia foundation, inc. contributors to wikimedia projects cobrah - wikipedia ju",
+    "ciudad": "Gotemburgo"
+   },
+   "estilos": {
+    "valores": [
+     "pop"
+    ],
+    "url": "https://en.wikipedia.org/wiki/Cobrah",
+    "cita": "e version in other projects wikidata item appearance move to sidebar hide from wikipedia, the free encyclopedia swedish rapper and singer (born 1996) cobrah born clara christensen [ 1 ] ( 1996-10-15 ) 15 october 1996 (age 29) gothenburg , sweden origin stockholm , sweden genres electropop deconstruc",
+    "web_musica": true
+   },
+   "lote": "A-2026-10-05-02",
+   "fecha": "2026-10-05"
+  },
+  "chico chico": {
+   "nombre": "Chico Chico",
+   "pais": {
+    "valor": "BR",
+    "url": "https://pt.wikipedia.org/wiki/Chico_Chico",
+    "cita": "chico chico – wikipedia, a enciclopedia livre chico chico cantor e compositor brasileiro wikimedia foundation, inc. contribuidores dos projetos da wikimedia chic",
+    "ciudad": "Río de Janeiro"
+   },
+   "estilos": {
+    "valores": [
+     "rock"
+    ],
+    "url": "https://pt.wikipedia.org/wiki/Chico_Chico",
+    "cita": "sidade federal fluminense , em niteroi , [ 40 ] mas decidiu trancar a faculdade para se dedicar a musica. [ 41 ] em 2015, ele adotou o nome artistico chico chico. [ 4 ] no mesmo ano, ele ajudou a escolher o repertorio e alguns dos artistas que se apresentaram no rock in rio vi para um tributo a cass",
+    "web_musica": true
+   },
+   "lote": "A-2026-10-05-02",
+   "fecha": "2026-10-05"
+  },
+  "the filthy six uk": {
+   "nombre": "THE FILTHY SIX UK",
+   "pais": {
+    "valor": "GB",
+    "url": "https://en.wikipedia.org/wiki/The_Filthy_Six",
+    "cita": "the filthy six - wikipedia the filthy six british jazz group wikimedia foundation, inc. contributors to wikimedia projects the filthy six - wikipedia jump to conten"
+   },
+   "estilos": {
+    "valores": [
+     "soul jazz",
+     "funk",
+     "acid jazz"
+    ],
+    "url": "https://en.wikipedia.org/wiki/The_Filthy_Six",
+    "cita": "print/export download as pdf printable version in other projects wikidata item appearance move to sidebar hide from wikipedia, the free encyclopedia the filthy six are a british jazz group encompassing funk, acid jazz, and soul jazz, involving the use of hammond organ . background [ edit ] the group",
+    "web_musica": true
+   },
+   "lote": "A-2026-10-05-02",
+   "fecha": "2026-10-05"
+  },
+  "lhaine": {
+   "nombre": "L'Haine",
+   "pais": {
+    "valor": "ES",
+    "url": "https://www.diariouniversitas.es/articulo/cultura/odio-siempre-gana-disco-que-define-lhaine/20260613164807003086.html",
+    "cita": "unicacion audiovisual universitas el odio siempre gana, el disco que define a l'haine cultura universitas el odio siempre gana, el disco que define a l'haine 05 oct 2026 x instagram rss iniciar sesion crear cuenta perfil cerrar sesion cultura portada quienes somos internacional nacional malaga cultu",
+    "ciudad": "Logroño"
+   },
+   "estilos": {
+    "valores": [
+     "rap"
+    ],
+    "url": "https://22minutoscon.com/2026/06/12/lhaine-disco-el-odio-siempre-gana/",
+    "cita": "el artista madrileno publico su disco homonimo el pasado viernes 29 de mayo y ya es candidato a mejor disco de rap de este 2026. l'haine presenta su ultimo proyecto: \"el odio siempre gana\" el artista madrileno publico su disco homonimo el pasado viernes 29 de mayo y ya es candidato a m",
+    "web_musica": false
+   },
+   "lote": "A-2026-10-05-02",
+   "fecha": "2026-10-05"
   }
  },
  "conciertos": [
@@ -7049,6 +7126,168 @@
    "lote": "A-2026-10-05-01",
    "aceptado": [],
    "rechazado": []
+  },
+  "a:cobrah": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-02",
+   "aceptado": [
+    "estilos",
+    "pais"
+   ],
+   "rechazado": []
+  },
+  "a:james smith": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-02",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:alvaro del valle": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-02",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:juntos": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-02",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:chico chico": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-02",
+   "aceptado": [
+    "estilos",
+    "pais"
+   ],
+   "rechazado": []
+  },
+  "a:amanda gris": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-02",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:waikiflow": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-02",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:blues after all en vivo": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-02",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:samuel slzr": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-02",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:vuolanne lamas mitte": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-02",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:abhir": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-02",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:la gripe y tu": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-02",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:vernet": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-02",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:estela julia": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-02",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:the filthy six uk": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-02",
+   "aceptado": [
+    "estilos",
+    "pais"
+   ],
+   "rechazado": []
+  },
+  "a:la jorni": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-02",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:euskal invaders": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-02",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:la cosmic note": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-02",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:schepels jazz": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-02",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:pardo full banda ny": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-02",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:cheo pardo full banda": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-02",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:padre guilherme": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-02",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:combos de el molino": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-02",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:lhaine": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-02",
+   "aceptado": [
+    "estilos",
+    "pais"
+   ],
+   "rechazado": []
+  },
+  "a:75 aniversario por camaron": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-02",
+   "aceptado": [],
+   "rechazado": []
   }
  },
  "lotes": {
@@ -7241,259 +7480,8 @@
   "A-2026-10-05-02": {
    "tipo": "artistas",
    "creado": "2026-10-05",
-   "items": {
-    "a1": {
-     "nombre": "COBRAH",
-     "clave": "cobrah",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Sala But"
-     ]
-    },
-    "a2": {
-     "nombre": "James Smith",
-     "clave": "james smith",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Sala Nazca"
-     ]
-    },
-    "a3": {
-     "nombre": "ÁLVARO DEL VALLE",
-     "clave": "alvaro del valle",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Café El Despertar"
-     ]
-    },
-    "a4": {
-     "nombre": "Juntos",
-     "clave": "juntos",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Movistar Arena"
-     ]
-    },
-    "a5": {
-     "nombre": "Chico Chico",
-     "clave": "chico chico",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Sala Villanos"
-     ]
-    },
-    "a6": {
-     "nombre": "AMANDA GRIS",
-     "clave": "amanda gris",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "El Perro Club"
-     ]
-    },
-    "a7": {
-     "nombre": "WAIKIFLOW",
-     "clave": "waikiflow",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Intruso Bar"
-     ]
-    },
-    "a8": {
-     "nombre": "Blues After All en vivo!",
-     "clave": "blues after all en vivo",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Big Mama Ballroom"
-     ]
-    },
-    "a9": {
-     "nombre": "Samuel SLZR",
-     "clave": "samuel slzr",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Independance Club"
-     ]
-    },
-    "a10": {
-     "nombre": "VUOLANNE - LAMAS - MITTE",
-     "clave": "vuolanne lamas mitte",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Peor Para El Sol"
-     ]
-    },
-    "a11": {
-     "nombre": "Abhir",
-     "clave": "abhir",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Autocine Madrid / The Lenovo Garage, Autocine"
-     ]
-    },
-    "a12": {
-     "nombre": "La Gripe y Tú",
-     "clave": "la gripe y tu",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Sala Changó"
-     ]
-    },
-    "a13": {
-     "nombre": "VERNET",
-     "clave": "vernet",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "El Perro Club"
-     ]
-    },
-    "a14": {
-     "nombre": "ESTELA JULIA",
-     "clave": "estela julia",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Rincón del Arte Nuevo"
-     ]
-    },
-    "a15": {
-     "nombre": "THE FILTHY SIX UK",
-     "clave": "the filthy six uk",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Tempo Audiophile Club"
-     ]
-    },
-    "a16": {
-     "nombre": "LA JORNI",
-     "clave": "la jorni",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Sala Villanos"
-     ]
-    },
-    "a17": {
-     "nombre": "EUSKAL INVADERS",
-     "clave": "euskal invaders",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Independance Club"
-     ]
-    },
-    "a18": {
-     "nombre": "La Cosmic Note",
-     "clave": "la cosmic note",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Sala Vesta"
-     ]
-    },
-    "a19": {
-     "nombre": "SCHEPELS JAZZ",
-     "clave": "schepels jazz",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Moe"
-     ]
-    },
-    "a20": {
-     "nombre": "PARDO FULL BANDA NY",
-     "clave": "pardo full banda ny",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Tempo Audiophile Club"
-     ]
-    },
-    "a21": {
-     "nombre": "CHEO PARDO FULL BANDA",
-     "clave": "cheo pardo full banda",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Tempo Audiophile Club"
-     ]
-    },
-    "a22": {
-     "nombre": "Padre Guilherme",
-     "clave": "padre guilherme",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Live Las Ventas"
-     ]
-    },
-    "a23": {
-     "nombre": "COMBOS DE EL MOLINO",
-     "clave": "combos de el molino",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Maravillas Club"
-     ]
-    },
-    "a24": {
-     "nombre": "L'Haine",
-     "clave": "lhaine",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "La Riviera"
-     ]
-    },
-    "a25": {
-     "nombre": "75 ANIVERSARIO - POR CAMARÓN",
-     "clave": "75 aniversario por camaron",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Movistar Arena"
-     ]
-    }
-   },
-   "pendientes": 206
+   "pendientes": 206,
+   "importado": "2026-10-05"
   }
  },
  "ocultos": {
@@ -7667,6 +7655,15 @@
    ],
    "lote": "A-2026-10-04-17",
    "fecha": "2026-10-04"
+  },
+  "padre guilherme": {
+   "nombre": "Padre Guilherme",
+   "motivo": "Padre Guilherme: sesión de DJ (electrónica), no concierto",
+   "salas": [
+    "Live Las Ventas"
+   ],
+   "lote": "A-2026-10-05-02",
+   "fecha": "2026-10-05"
   }
  }
 }
