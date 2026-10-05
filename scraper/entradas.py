@@ -220,6 +220,68 @@ def _artistas(perf) -> list[str]:
     return out
 
 
+# ------------------------------------------------------------------ hora y precio escritos en el texto de la página
+# Muchas webs de sala no publican datos estructurados, pero escriben "Apertura de puertas 20:30 · Concierto 21:00" o
+# "Anticipada 12 € / Taquilla 15 €". Se leen del cuerpo de la página (sin menús, cabecera, pie ni barras laterales)
+# y solo se usan de las webs en las que, comparado con lo que ya se sabe por otras fuentes, aciertan (confianza()).
+_QUITAR = ("script", "style", "noscript", "nav", "header", "footer", "aside", "form", "iframe", "svg")
+_H = r"(?<![\d.,/:])([01]?\d|2[0-3])\s?(?::|h)\s?([0-5]\d)(?![\d/]|\.\d)\s*(?:h\b|hrs?\b|horas\b)?"
+_HORA_SHOW = re.compile(r"(?i)(concierto|comienzo|inicio|empieza|show|actuaci[oó]n|hora|horario|start|pase)[^\d\n]{0,25}" + _H)
+_HORA_PUERTAS = re.compile(r"(?i)(apertura|puertas|doors|abre)[^\d\n]{0,25}" + _H)
+_HORA_SUELTA = re.compile(_H)
+_EUR = r"(\d{1,3}(?:[.,]\d{1,2})?)\s?(?:€|eur(?:os)?\b)|€\s?(\d{1,3}(?:[.,]\d{1,2})?)"
+_PRECIO_CLAVE = re.compile(r"(?i)(precio|entradas?|anticipada|taquilla|venta|tickets?|desde|general|price)[^\d€\n]{0,30}(?:" + _EUR + ")")
+_LIBRE = re.compile(r"(?i)\b(entrada (?:libre|gratuita|gratis)|acceso (?:libre|gratuito)|gratis hasta completar|free entry)\b")
+
+
+def _cuerpo(soup: BeautifulSoup) -> str:
+    raiz = soup.find("main") or soup.find("article") or soup.body or soup
+    raiz = BeautifulSoup(str(raiz), "html.parser")
+    for t in raiz(_QUITAR):
+        t.decompose()
+    for t in raiz.select("[class*=menu],[class*=sidebar],[class*=related],[class*=relacionad],[class*=cookie],"
+                         "[id*=menu],[id*=sidebar],[class*=proximos],[class*=footer],[class*=widget]"):
+        t.decompose()
+    return re.sub(r"[ \t\r\f\v]+", " ", raiz.get_text("\n"))
+
+
+def _fmt_eur(n: float) -> str:
+    return (f"{n:.2f}".rstrip("0").rstrip(".")).replace(".", ",") + " €"
+
+
+def hora_precio_texto(soup: BeautifulSoup) -> dict:
+    """{"hora_t", "precio_t"} escritos en el texto de la página, si los dice de forma inequívoca (una sola hora de
+    concierto; precios junto a "entrada", "anticipada", "taquilla"…). Nada si hay dudas."""
+    texto = _cuerpo(soup)
+    out = {}
+    show = {f"{int(m.group(2)):02d}:{m.group(3)}" for m in _HORA_SHOW.finditer(texto)
+            if not re.match(r"(?i)apertura|puertas|doors", m.group(1))}
+    show = {h for h in show if h >= "12:00" or h <= "03:00"}
+    if len(show) == 1:
+        out["hora_t"] = show.pop()
+    elif not show:
+        sueltas = {f"{int(m.group(1)):02d}:{m.group(2)}" for m in _HORA_SUELTA.finditer(texto)}
+        puertas = {f"{int(m.group(2)):02d}:{m.group(3)}" for m in _HORA_PUERTAS.finditer(texto)}
+        sueltas = {h for h in sueltas - puertas if h >= "17:00" or h <= "02:00"}
+        if len(sueltas) == 1 and not puertas:
+            out["hora_t"] = sueltas.pop()
+    nums = []
+    for m in _PRECIO_CLAVE.finditer(texto):
+        v = m.group(2) or m.group(3)
+        try:
+            n = float(v.replace(",", "."))
+        except (TypeError, ValueError):
+            continue
+        if 0 < n <= 300:
+            nums.append(n)
+    if nums and len(set(nums)) <= 4:
+        lo, hi = min(nums), max(nums)
+        out["precio_t"] = _fmt_eur(lo) if lo == hi else f"{_fmt_eur(lo)} – {_fmt_eur(hi)}"
+    elif not nums and _LIBRE.search(texto):
+        out["precio_t"] = "Entrada libre"
+    return out
+
+
 def leer_pagina(html: str, url: str, fecha: str | None = None) -> dict:
     """Lo que dice una página de concierto. `fecha` (AAAA-MM-DD): solo vale el JSON-LD de ese día."""
     soup = BeautifulSoup(html, "html.parser")
@@ -248,6 +310,13 @@ def leer_pagina(html: str, url: str, fecha: str | None = None) -> dict:
     if og and og.get("content"):
         out["og_imagen"] = urljoin(url, og["content"].strip())
     out["enlaces"] = enlaces_entradas(soup, url)
+    # lo escrito en el texto, solo si los datos estructurados no lo dan (y la página es de un solo concierto)
+    if not out.get("hora") or not out.get("precio"):
+        tx = hora_precio_texto(soup) if len(evs) <= 1 else {}
+        if not out.get("hora") and tx.get("hora_t"):
+            out["hora_t"] = tx["hora_t"]
+        if not out.get("precio") and tx.get("precio_t"):
+            out["precio_t"] = tx["precio_t"]
     return {k: v for k, v in out.items() if v not in (None, [], "")} | {"url": url}
 
 
@@ -300,8 +369,11 @@ def con_huecos(r: dict) -> bool:
             or (r.get("confianza") or {}).get("nivel") == "sin confirmar")
 
 
+VERSION_LECTOR = 2  # 2: hora y precio del texto de la página (las leídas con el lector anterior se releen)
+
+
 def _caducada(e: dict | None, fecha: str, hoy: date) -> bool:
-    if not e:
+    if not e or ("d" in e and e.get("v", 1) < VERSION_LECTOR):
         return True
     dias = CADUCA_CERCA if (date.fromisoformat(fecha) - hoy).days <= CERCA_DIAS else CADUCA_LEJOS
     return e.get("fecha", "") < (hoy - timedelta(days=dias)).isoformat()
@@ -310,8 +382,8 @@ def _caducada(e: dict | None, fecha: str, hoy: date) -> bool:
 def _resumen(d: dict) -> dict:
     """Lo que se guarda de una página (la caché va a la rama de datos: sin texto ni listas largas)."""
     enl = d.get("enlaces") or []
-    out = {k: d[k] for k in ("hora", "precio", "disponibilidad", "estado", "imagen", "og_imagen", "entradas_jsonld")
-           if d.get(k)}
+    out = {k: d[k] for k in ("hora", "precio", "hora_t", "precio_t", "disponibilidad", "estado", "imagen", "og_imagen",
+                             "entradas_jsonld") if d.get(k)}
     if enl and len(enl) <= MAX_ENLACES:
         out["enlaces"] = [{k: e[k] for k in ("url", "nombre", "compra")} for e in enl[:3]]
     return out
@@ -344,7 +416,7 @@ def leer_entradas(recs: list[dict], cache: dict, fetcher, hoy: date, presupuesto
             return None
         try:
             d = _resumen(leer_pagina(fetcher.get(url), url, fecha))
-            cache[url] = {"fecha": hoy_s, "d": d}
+            cache[url] = {"fecha": hoy_s, "d": d, "v": VERSION_LECTOR}
             stats["leidas"] += 1
             return d
         except RobotsBlocked:
@@ -409,20 +481,26 @@ def _paginas_leidas(r: dict, cache: dict) -> list[tuple[str, dict, str]]:
 def confianza(recs: list[dict], cache: dict) -> dict[str, dict]:
     """Por web: ¿su hora y su precio coinciden con los que ya sabemos por otras fuentes? (≥80 % en ≥3 casos). Hay
     webs que ponen "20:00" a todo en sus datos estructurados: así se quedan fuera solas."""
-    h, p = defaultdict(lambda: [0, 0]), defaultdict(lambda: [0, 0])
+    cuenta = {k: defaultdict(lambda: [0, 0]) for k in ("hora", "precio", "hora_t", "precio_t")}
     for r in recs:
         for u, d, _ in _paginas_leidas(r, cache):
             dom = dominio(u)
-            if d.get("hora") and r.get("hora") and not r.get("hora_pagina"):
-                h[dom][0] += d["hora"] == r["hora"]
-                h[dom][1] += 1
-            a, b = _num_precio(d.get("precio")), _num_precio(r.get("precio"))
-            if a is not None and b is not None and not (r.get("precio_fuente") or {}).get("pagina"):
-                p[dom][0] += abs(a - b) <= 0.6
-                p[dom][1] += 1
-    doms = set(h) | set(p)
+            for k in ("hora", "hora_t"):
+                if d.get(k) and r.get("hora") and not r.get("hora_pagina"):
+                    cuenta[k][dom][0] += d[k] == r["hora"]
+                    cuenta[k][dom][1] += 1
+            for k in ("precio", "precio_t"):
+                a, b = _num_precio(d.get(k)), _num_precio(r.get("precio"))
+                if a is None and d.get(k) == "Entrada libre":
+                    a = 0.0
+                if b is None and re.search(r"(?i)libre|gratu|gratis", str(r.get("precio") or "")):
+                    b = 0.0
+                if a is not None and b is not None and not (r.get("precio_fuente") or {}).get("pagina"):
+                    cuenta[k][dom][0] += abs(a - b) <= 0.6
+                    cuenta[k][dom][1] += 1
+    doms = set().union(*cuenta.values())
     ok = lambda c: c[1] >= 3 and c[0] / c[1] >= 0.8  # noqa: E731
-    return {d: {"hora": ok(h[d]), "precio": ok(p[d]), "n_hora": h[d][1], "n_precio": p[d][1]} for d in doms}
+    return {d: {**{k: ok(cuenta[k][d]) for k in cuenta}, **{f"n_{k}": cuenta[k][d][1] for k in cuenta}} for d in doms}
 
 
 def aplicar_entradas(recs: list[dict], cache: dict) -> dict:
@@ -458,12 +536,14 @@ def aplicar_entradas(recs: list[dict], cache: dict) -> dict:
         hora_conflicto = any(x.get("campo") == "hora" for x in r.get("conflictos") or [])
         for u, d, nombre in pags:
             cf = conf.get(dominio(u), {})
-            if not r.get("hora") and not hora_conflicto and d.get("hora") and cf.get("hora"):
-                r["hora"], r["hora_pagina"] = d["hora"], {"hora": d["hora"], "nombre": nombre, "url": u}
-                c["hora"] += 1
-            if not r.get("precio") and d.get("precio") and cf.get("precio"):
-                r["precio"], r["precio_fuente"] = d["precio"], {"nombre": nombre, "url": u, "pagina": True}
-                c["precio"] += 1
+            hora = d.get("hora") if cf.get("hora") else d.get("hora_t") if cf.get("hora_t") else None
+            if not r.get("hora") and not hora_conflicto and hora:
+                r["hora"], r["hora_pagina"] = hora, {"hora": hora, "nombre": nombre, "url": u}
+                c["hora" if hora == d.get("hora") else "hora_texto"] += 1
+            precio = d.get("precio") if cf.get("precio") else d.get("precio_t") if cf.get("precio_t") else None
+            if not r.get("precio") and precio:
+                r["precio"], r["precio_fuente"] = precio, {"nombre": nombre, "url": u, "pagina": True}
+                c["precio" if precio == d.get("precio") else "precio_texto"] += 1
             if d.get("disponibilidad") == "agotado" and "agotado" not in r:
                 r["agotado"] = {"nombre": nombre, "url": u}
                 c["agotado"] += 1
