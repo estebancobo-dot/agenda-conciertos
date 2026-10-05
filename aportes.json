@@ -2634,6 +2634,38 @@
    },
    "lote": "A-2026-10-05-09",
    "fecha": "2026-10-05"
+  },
+  "andres coll cosmic trio": {
+   "nombre": "Andrés Coll Cosmic Trio",
+   "estilos": {
+    "valores": [
+     "jazz"
+    ],
+    "url": "https://andrescoll.es/andres-coll-cosmic-trio/",
+    "cita": "ed. we’ve been performing ever since, and now, after recording our upcoming album: ‘’ride to heaven’’, we cannot wait to bring this music everywhere! andres coll cosmic trio 4 videos andres coll cosmic trio - debussy dances | live 2025 5:40 andres coll cosmic trio @ el molino, barcelona (jazz i am 2",
+    "web_musica": false
+   },
+   "lote": "A-2026-10-05-10",
+   "fecha": "2026-10-05"
+  },
+  "antonio serrano y kaele jimenez quartet jazz calo for coltrane": {
+   "nombre": "Antonio Serrano y Kaele Jiménez Quartet. Jazz Caló for Coltrane",
+   "pais": {
+    "valor": "ES",
+    "url": "https://es.wikipedia.org/wiki/Antonio_Serrano_(m%C3%BAsico)",
+    "cita": "antonio serrano (musico) - wikipedia, la enciclopedia libre antonio serrano (musico) musico espanol wikimedia foundation, inc. colaboradores de los proyectos wikimed",
+    "ciudad": "Madrid"
+   },
+   "estilos": {
+    "valores": [
+     "jazz"
+    ],
+    "url": "https://distritojazz.com/discos-jazz/antonio-serrano-kaele-jimenez-jazz-calo",
+    "cita": "el armonicista madrileno antonio serrano (1974) es una de las figuras mas destacadas de la desangelada escena del jazz espanol. a lo largo antonio serrano, kaele jimenez: jazz calo el armoni",
+    "web_musica": false
+   },
+   "lote": "A-2026-10-05-10",
+   "fecha": "2026-10-05"
   }
  },
  "conciertos": [
@@ -8852,6 +8884,73 @@
    "lote": "A-2026-10-05-09",
    "aceptado": [],
    "rechazado": []
+  },
+  "a:terminal young": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-10",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:far away jazz quartet": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-10",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:musica coral para la memoria el color y el transito": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-10",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:swingueando": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-10",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:tea for two jazz swim blues": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-10",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:ii ciclo de musica clasica del caribe a la patagonia": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-10",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:andres coll cosmic trio": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-10",
+   "aceptado": [
+    "estilos"
+   ],
+   "rechazado": [
+    "país ES: ni la frase citada ni la página lo dicen junto al nombre"
+   ]
+  },
+  "a:de la opereta al vals": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-10",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:bandas sonoras de cine": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-10",
+   "aceptado": [],
+   "rechazado": []
+  },
+  "a:antonio serrano y kaele jimenez quartet jazz calo for coltrane": {
+   "fecha": "2026-10-05",
+   "lote": "A-2026-10-05-10",
+   "aceptado": [
+    "estilos",
+    "pais"
+   ],
+   "rechazado": []
   }
  },
  "lotes": {
@@ -9092,109 +9191,8 @@
   "A-2026-10-05-10": {
    "tipo": "artistas",
    "creado": "2026-10-05",
-   "items": {
-    "a1": {
-     "nombre": "Terminal Young",
-     "clave": "terminal young",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Cineteca Madrid"
-     ]
-    },
-    "a2": {
-     "nombre": "Far Away Jazz Quartet",
-     "clave": "far away jazz quartet",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Centro Cultural Carril del Conde (Hortaleza)"
-     ]
-    },
-    "a3": {
-     "nombre": "Música coral para la memoria, el color y el tránsito",
-     "clave": "musica coral para la memoria el color y el transito",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Centro Sociocultural José de Espronceda (Tetuán)"
-     ]
-    },
-    "a4": {
-     "nombre": "Swingueando",
-     "clave": "swingueando",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Auditorio Joaquín Rosado (Moncloa-Aravaca)"
-     ]
-    },
-    "a5": {
-     "nombre": "Tea for two....jazz swim, blues",
-     "clave": "tea for two jazz swim blues",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Centro Cultural Buenavista (Salamanca)"
-     ]
-    },
-    "a6": {
-     "nombre": "II Ciclo de Música Clásica. Del Caribe a la Patagonia",
-     "clave": "ii ciclo de musica clasica del caribe a la patagonia",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Centro Cultural San Francisco La Prensa (Carabanchel)"
-     ]
-    },
-    "a7": {
-     "nombre": "Andrés Coll Cosmic Trio",
-     "clave": "andres coll cosmic trio",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "CentroCentro"
-     ]
-    },
-    "a8": {
-     "nombre": "De la opereta al vals",
-     "clave": "de la opereta al vals",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Centro Cultural Zazuar (Villa de Vallecas)"
-     ]
-    },
-    "a9": {
-     "nombre": "Bandas sonoras de cine",
-     "clave": "bandas sonoras de cine",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Centro Cultural Zazuar (Villa de Vallecas)"
-     ]
-    },
-    "a10": {
-     "nombre": "Antonio Serrano y Kaele Jiménez Quartet. Jazz Caló for Coltrane",
-     "clave": "antonio serrano y kaele jimenez quartet jazz calo for coltrane",
-     "falta": [
-      "origen"
-     ],
-     "salas": [
-      "Condeduque"
-     ]
-    }
-   },
-   "pendientes": 10
+   "pendientes": 10,
+   "importado": "2026-10-05"
   }
  },
  "ocultos": {
