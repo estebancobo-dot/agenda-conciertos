@@ -8298,6 +8298,288 @@
    "creado": "2026-10-05",
    "pendientes": 131,
    "importado": "2026-10-05"
+  },
+  "A-2026-10-05-06": {
+   "tipo": "artistas",
+   "creado": "2026-10-05",
+   "items": {
+    "a1": {
+     "nombre": "ROBBY RUBIO",
+     "clave": "robby rubio",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Jazzville"
+     ]
+    },
+    "a2": {
+     "nombre": "VACILOS & DWARVES AND FREAKS",
+     "clave": "vacilos and dwarves and freaks",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Sala Olvido"
+     ]
+    },
+    "a3": {
+     "nombre": "BEA PLADE",
+     "clave": "bea plade",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Galileo Galilei"
+     ]
+    },
+    "a4": {
+     "nombre": "DANIEL ROVALHER",
+     "clave": "daniel rovalher",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Rincón del Arte Nuevo"
+     ]
+    },
+    "a5": {
+     "nombre": "DAVID MIGUILLON",
+     "clave": "david miguillon",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Rincón del Arte Nuevo"
+     ]
+    },
+    "a6": {
+     "nombre": "ANCESTRA",
+     "clave": "ancestra",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Cien por Cien"
+     ]
+    },
+    "a7": {
+     "nombre": "LADY SOULWINE",
+     "clave": "lady soulwine",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Jazzville"
+     ]
+    },
+    "a8": {
+     "nombre": "4J´S",
+     "clave": "4j s",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Cadillac Solitario"
+     ]
+    },
+    "a9": {
+     "nombre": "AIENRUTA",
+     "clave": "aienruta",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Maravillas Club"
+     ]
+    },
+    "a10": {
+     "nombre": "DR SURF & THE HOLYS",
+     "clave": "dr surf and the holys",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Moby Dick Club"
+     ]
+    },
+    "a11": {
+     "nombre": "DESAULMADOS",
+     "clave": "desaulmados",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Rincón del Arte Nuevo"
+     ]
+    },
+    "a12": {
+     "nombre": "ELENRYU Y MARIANO PICÓN",
+     "clave": "elenryu y mariano picon",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Jazzville"
+     ]
+    },
+    "a13": {
+     "nombre": "KETAPASANDO",
+     "clave": "ketapasando",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Café La Palma"
+     ]
+    },
+    "a14": {
+     "nombre": "POLSKIE KLASYKI",
+     "clave": "polskie klasyki",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Rincón del Arte Nuevo"
+     ]
+    },
+    "a15": {
+     "nombre": "LQDMS (Lo Que Diga Mi Señora)",
+     "clave": "lqdms lo que diga mi senora",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "El Perro Club"
+     ]
+    },
+    "a16": {
+     "nombre": "MARINI BROWN",
+     "clave": "marini brown",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Jazzville"
+     ]
+    },
+    "a17": {
+     "nombre": "PARACETAPOP",
+     "clave": "paracetapop",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Cien por Cien"
+     ]
+    },
+    "a18": {
+     "nombre": "DIMITRI PAPANIKAS. CICLO \"REBELDES\"",
+     "clave": "dimitri papanikas ciclo rebeldes",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Café Berlín"
+     ]
+    },
+    "a19": {
+     "nombre": "MELOTOCONES",
+     "clave": "melotocones",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Cadavra"
+     ]
+    },
+    "a20": {
+     "nombre": "MARZIANS",
+     "clave": "marzians",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Cien por Cien"
+     ]
+    },
+    "a21": {
+     "nombre": "MAQETA",
+     "clave": "maqeta",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Maravillas Club"
+     ]
+    },
+    "a22": {
+     "nombre": "MAGUILLA",
+     "clave": "maguilla",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Galileo Galilei"
+     ]
+    },
+    "a23": {
+     "nombre": "RYTHM SHAKERS",
+     "clave": "rythm shakers",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Thundercat"
+     ]
+    },
+    "a24": {
+     "nombre": "MANDRILES & ARTISTAS INVITADO",
+     "clave": "mandriles and artistas invitado",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Sala Olvido"
+     ]
+    },
+    "a25": {
+     "nombre": "BRASILIDADES",
+     "clave": "brasilidades",
+     "falta": [
+      "estilo",
+      "origen"
+     ],
+     "salas": [
+      "Rincón del Arte Nuevo"
+     ]
+    }
+   },
+   "pendientes": 106
   }
  },
  "ocultos": {
