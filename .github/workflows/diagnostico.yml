@@ -9,7 +9,7 @@ on:
         description: "Páginas por web"
         default: "16"
       webs:
-        description: "Solo estas webs (separadas por comas; vacío = todas), 'fuentes', 'entradas', 'cartel', 'huecos', 'candidatas', 'probar:ID[,ID]' (lector completo de esas fuentes), 'crudo:URL' (lo que devuelve tal cual; URL@texto, URL@enlaces:patrón, URL@json), 'render:URL' (igual, con un navegador real), o la URL de una página"
+        description: "Solo estas webs (separadas por comas; vacío = todas), 'fuentes', 'entradas', 'cartel', 'huecos', 'mev' (enlace de compra de Madrid en Vivo), 'candidatas', 'probar:ID[,ID]' (lector completo de esas fuentes), 'crudo:URL' (lo que devuelve tal cual; URL@texto, URL@enlaces:patrón, URL@json), 'render:URL' (igual, con un navegador real), o la URL de una página"
         default: ""
 
 permissions:
@@ -29,7 +29,7 @@ jobs:
           cache: pip
       - run: pip install -r requirements.txt
       - run: python tools/datos.py
-      - if: github.event.inputs.webs != 'fuentes' && github.event.inputs.webs != 'entradas' && github.event.inputs.webs != 'cartel' && github.event.inputs.webs != 'huecos' && !startsWith(github.event.inputs.webs, 'candidatas') && !startsWith(github.event.inputs.webs, 'probar:') && !startsWith(github.event.inputs.webs, 'crudo:') && !startsWith(github.event.inputs.webs, 'render:') && !startsWith(github.event.inputs.webs, 'http') && github.event.inputs.webs != 'lotes'
+      - if: github.event.inputs.webs != 'fuentes' && github.event.inputs.webs != 'entradas' && github.event.inputs.webs != 'cartel' && github.event.inputs.webs != 'huecos' && github.event.inputs.webs != 'mev' && !startsWith(github.event.inputs.webs, 'candidatas') && !startsWith(github.event.inputs.webs, 'probar:') && !startsWith(github.event.inputs.webs, 'crudo:') && !startsWith(github.event.inputs.webs, 'render:') && !startsWith(github.event.inputs.webs, 'http') && github.event.inputs.webs != 'lotes'
         run: python tools/diagnostico_agenda.py ${{ github.event.inputs.n || '16' }} "${{ github.event.inputs.webs }}"
       - if: github.event.inputs.webs == 'fuentes'
         run: python tools/diagnostico_fuentes.py ${{ github.event.inputs.n || '30' }}
@@ -39,6 +39,8 @@ jobs:
         run: python tools/diagnostico_entradas.py ${{ github.event.inputs.n || '8' }} 15
       - if: github.event.inputs.webs == 'huecos'
         run: python tools/diagnostico_huecos.py ${{ github.event.inputs.n || '12' }} 16
+      - if: github.event.inputs.webs == 'mev'
+        run: python tools/diagnostico_mev_entradas.py ${{ github.event.inputs.n || '12' }}
       - if: github.event.inputs.webs == 'cartel'
         run: python tools/diagnostico_cartel.py ${{ github.event.inputs.n || '10' }} 13
       - if: startsWith(github.event.inputs.webs, 'candidatas')
