@@ -1135,11 +1135,6 @@ def ficha(ent: dict | None) -> dict | None:
         if g and g not in generos:
             generos.append(g)
     pais, fuente_pais = None, None
-    # identificado solo por el nombre (MusicBrainz, Last.fm): su país cuenta si otra web de música encuentra al
-    # artista; si no, suele ser un homónimo (medido: 7 de 9 bien sin otra web, "Grumpys" de Madrid salía alemán)
-    otra_web = any((ent.get(k) or {}).get("encontrado") for k in ("discogs", "wikipedia", "wikidata"))
-    mb = ent.get("musicbrainz") or {}
-    mb_por_nombre = "nombre" in str(mb.get("identificado_por") or "")
     if wd.get("encontrado") and wd.get("pais"):
         pais, fuente_pais = wd["pais"], "Wikidata"
     elif wp.get("encontrado") and (wp.get("pais") or pais_de_texto(wp.get("origen"))):
@@ -1147,14 +1142,16 @@ def ficha(ent: dict | None) -> dict | None:
         pais, fuente_pais = wp.get("pais") or pais_de_texto(wp.get("origen")), "Wikipedia"
     elif dc.get("encontrado") and (dc.get("pais") or discogs_pais(dc.get("perfil"))):
         pais, fuente_pais = dc.get("pais") or discogs_pais(dc.get("perfil")), "Discogs"
-    elif lf_pais(ent) and (otra_web or (ent.get("lastfm") or {}).get("identificado_por") != "coincidencia por nombre"):
+    elif lf_pais(ent):
         lf0 = ent.get("lastfm") or {}
         pais, fuente_pais = lf_pais(ent), ("Last.fm (etiqueta de país de los oyentes, artista identificado por "
                                            f"{'su nombre' if lf0.get('identificado_por') == 'coincidencia por nombre' else 'MusicBrainz'})")
-    elif mb.get("encontrado") and mb.get("pais") and (otra_web or not mb_por_nombre):
+    elif (ent.get("musicbrainz") or {}).get("encontrado") and ent["musicbrainz"].get("pais"):
         # país del artista en MusicBrainz (identificado por Wikidata o por ser el único con ese nombre exacto)
         pais, fuente_pais = ent["musicbrainz"]["pais"], "MusicBrainz"
-    # (el país de edición de todos sus discos en Discogs ya no cuenta: medido, 96 de 108; no es la nacionalidad)
+    elif dc.get("encontrado") and dc.get("pais_discos"):
+        # sin país en el perfil: el de todos sus discos (un grupo pequeño edita en su país)
+        pais, fuente_pais = dc["pais_discos"], "Discogs (país de edición de todos sus discos)"
     elif agenda_valida(ent.get("agenda"), ent.get("nombre")):
         ag = ent["agenda"]
         pais, fuente_pais = ag["pais"], f"la agenda ({ag['url'].split('/')[2]}): «{ag.get('frase', '')[:160]}»"
@@ -1164,7 +1161,7 @@ def ficha(ent: dict | None) -> dict | None:
         wt = ent["wikipedia_texto"]
         pais, fuente_pais = wt["pais"], f"Wikipedia (artículo «{wt.get('articulo', '')}»): «{wt.get('frase', '')[:160]}»"
     elif (ent.get("lastfm_bio") or {}).get("pais") and (
-            ent["lastfm_bio"].get("identificado_por") != "coincidencia por nombre" or otra_web):
+            ent["lastfm_bio"].get("identificado_por") != "coincidencia por nombre" or ent["lastfm_bio"]["pais"] == "ES"):
         pais, fuente_pais = ent["lastfm_bio"]["pais"], f"Last.fm (biografía): «{ent['lastfm_bio'].get('frase', '')[:160]}»"
     imagen = None
     if wp.get("encontrado") and wp.get("imagen"):

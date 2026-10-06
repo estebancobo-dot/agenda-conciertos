@@ -70,6 +70,15 @@ def test_origen_por_agenda():
     assert r["nacionalidad"] == "ES" and "x.es" in r["nacionalidad_fuente"]
 
 
+def test_estimacion_por_nombre():
+    from scraper.origen import pais_estimado
+    assert pais_estimado("FELIPE ARCE CUARTETO")[0] == "ES"
+    assert pais_estimado("Los Amados")[0] == "ES"
+    assert pais_estimado("LUCÍA FERNÁNDEZ")[0] == "ES"
+    for n in ("80 REDNECKS", "Eternal", "Max Cooper", "Noel McKay", "THE BANG", "Noches de Piano Jazz"):
+        assert pais_estimado(n)[0] is None, n
+
+
 def test_homenajeado():
     from scraper.nombres import homenajeado
     assert homenajeado("THE RUMORS: TRIBUTO FLEETWOOD MAC") == "FLEETWOOD MAC"

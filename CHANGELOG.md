@@ -1,25 +1,5 @@
 # Versiones
 
-## 2.70.0 — 2026-10-06
-
-**Origen sin falsos positivos: solo lo que se puede saber bien.**
-
-- Medida la precisión de cada regla de origen deducido con los conciertos cuyo origen sí dice una fuente (`tools/medir_estimaciones.py`):
-
-  | Regla | Acierto |
-  |---|---|
-  | Nombre en español | 74 % |
-  | Solo lo anuncian agendas de salas madrileñas | 76 % |
-  | Solo lo anuncia el programa municipal | 47 % |
-  | Banda tributo en sala de Madrid | 36 % |
-
-  Ninguna combinación pasa del 80 %: un nombre en español no distingue España de Argentina, México o Brasil. Se quitan todas. Solo queda la de coros, bandas municipales y escuelas de música (de aquí por definición), sin encuentros internacionales ni títulos genéricos.
-- País del artista identificado solo por su nombre: cuenta únicamente si otra web de música (Discogs, Wikipedia, Wikidata) encuentra al mismo artista. Sin otra web, la única coincidencia del nombre en MusicBrainz o Last.fm suele ser un homónimo (con los grupos que dicen las agendas: 7 de 9 bien; "Grumpys" de Madrid salía alemán). Igual para los oyentes del nivel.
-- Fuera el país de edición de todos los discos en Discogs: no es la nacionalidad (96 de 108 coincidían).
-- Las pasadas que recalculan sin leer las agendas ya no conservan un país de una regla antigua: se vuelve a calcular siempre ("Fede Comín", argentino, salía de España).
-- Con los datos de hoy: origen sin confirmar de 477 a unos 1.240 conciertos; conocido de 1.287 a unos 1.090; deducido de 599 a 13. Menos datos, pero los que hay son de una fuente fiable.
-- Pruebas nuevas: recorrido completo con datos fijos y sin red (agendas, unión, fichas, origen, nivel, enlace de compra, datos de la web y recalcular sin cambios) y la web en un navegador real con esos datos (filtros de origen, tarjeta, ficha con nivel y botón de compra), que corre en cada validación de la web.
-
 ## 2.69.0 — 2026-10-06
 
 - Enlace de compra de Madrid en Vivo: la ficha de cada evento en su API (la que ya se lee para la hora, el precio y los estilos, sin peticiones nuevas) trae el enlace de venta que puso la sala (`venta_de_entradas_url`, 191 de 200 eventos). Se usa cuando es de una ticketera y de ese concierto: 62 de 200 en el diagnóstico (Fever, Geeticket…). Los demás no son de compra (Linktree, portada o programación de la sala) y no se ponen. Un mismo enlace para más de dos artistas es la taquilla general, no la de ese concierto, y tampoco se pone.

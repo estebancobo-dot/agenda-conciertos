@@ -291,11 +291,19 @@ def test_claves_antiguas_con_ciclo():
 
 def test_estilo_y_origen_por_el_titulo_y_el_tipo_de_grupo():
     from scraper.clasificar import estilo_de_titulo
+    from scraper.pipeline import pais_por_tipo_local
     assert estilo_de_titulo("Coro de castañuelas de Madrid") == ("clásica y lírica", "Choral")
     assert estilo_de_titulo("Concierto: Boleros con alma") == ("latina", "Bolero")
     assert estilo_de_titulo("Concierto sinfónico de bandas sonoras") == ("clásica y lírica", "Score")
     assert estilo_de_titulo("Orquesta Mondragón") is None  # un grupo de pop, no una orquesta
     assert estilo_de_titulo("Los Planetas") is None
+    muni = [{"id": "datos_madrid"}]
+    assert pais_por_tipo_local({"artista": "Orfeón de Moratalaz", "fuentes": [{"id": "songkick"}]})[0] == "ES"
+    assert pais_por_tipo_local({"artista": "Concierto barroco", "fuentes": muni})[0] == "ES"
+    assert pais_por_tipo_local({"artista": "Over the rainbow", "fuentes": muni})[0] is None  # en inglés
+    trib = {"artista": "Dire Straits Tribute", "grupos": ["tributos y versiones"], "categorias": []}
+    assert pais_por_tipo_local({**trib, "fuentes": [{"id": "madridenvivo"}]})[0] == "ES"
+    assert pais_por_tipo_local({**trib, "fuentes": [{"id": "songkick"}]})[0] is None  # gira, gran recinto
 
 
 def test_halloween_y_jam_y_latina():

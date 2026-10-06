@@ -1,6 +1,6 @@
-"""Fase C: hora habitual de la sala (estimada) y origen deducido solo cuando no puede fallar."""
+"""Fase C: hora habitual de la sala (estimada) y origen estimado por las agendas locales."""
 from scraper.normalizacion import estado_hora, estimar_horas
-from scraper.pipeline import tributo_y_estimacion
+from scraper.pipeline import pais_por_agendas_locales
 
 
 def rec(hora=None, sala="Sala El Sol", **kw):
@@ -23,20 +23,9 @@ def test_hora_habitual_de_la_sala():
     assert e["estado"] == "estimado" and e["valor"] == "21:00"
 
 
-def test_origen_deducido_sin_falsos_positivos():
-    """Nombre en español, solo agendas de salas madrileñas, programa municipal o tributo en sala no dicen de dónde es
-    un grupo (medido: aciertan del 36 al 76 %). Solo coros, bandas municipales y escuelas de música."""
+def test_origen_por_agendas_locales():
     loc = [{"id": "madridenvivo"}, {"id": "cc_buscador"}]
-    casos = [rec(artista="Los Rayos", fuentes=loc, grupos=["pop e indie"]),
-             rec(artista="LUCÍA FERNÁNDEZ", fuentes=loc),
-             rec(artista="Concierto barroco", fuentes=[{"id": "datos_madrid"}]),
-             rec(artista="Dire Straits Tribute", fuentes=loc, grupos=["tributos y versiones"]),
-             rec(artista="ENCUENTRO CORAL INTERNACIONAL IBEROAMERICANO", fuentes=loc),
-             rec(artista="Música coral para la memoria", fuentes=loc)]
-    for r in casos:
-        tributo_y_estimacion(r, {})
-        assert "nacionalidad_estimada" not in r, r["artista"]
-    for nombre in ("Orfeón de Moratalaz", "Banda de música de Policía municipal de Madrid", "Coro amabile"):
-        r = rec(artista=nombre, fuentes=loc)
-        tributo_y_estimacion(r, {})
-        assert r["nacionalidad_estimada"] == "ES" and "agrupación local" in r["nacionalidad_estimada_motivo"]
+    assert pais_por_agendas_locales(rec(fuentes=loc, grupos=["pop e indie"]), "Los Rayos")[0] == "ES"
+    assert pais_por_agendas_locales(rec(fuentes=loc, grupos=["pop e indie"]), "The Midnight Riders")[0] is None
+    assert pais_por_agendas_locales(rec(fuentes=loc, grupos=["jazz y swing"]), "Cuarteto Vega")[0] is None
+    assert pais_por_agendas_locales(rec(fuentes=loc + [{"id": "songkick"}], grupos=["pop e indie"]), "Los Rayos")[0] is None

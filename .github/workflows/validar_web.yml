@@ -50,9 +50,6 @@ jobs:
       - name: Validar
         id: validar
         run: python tools/validar_web.py "$URL" pruebas
-      - name: La web con datos fijos (filtros, tarjeta y ficha, sin depender de los conciertos del día)
-        if: always()
-        run: pip install -r requirements.txt && python -m pytest -q tests/test_web_navegador.py
       - name: Volver a publicar si la web no es el código de main
         if: always() && github.event.workflow_run.name != 'Publicar la web (sin leer agendas)'
         run: |

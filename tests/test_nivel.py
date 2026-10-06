@@ -38,9 +38,6 @@ def test_solo_cuentan_oyentes_con_identidad_segura():
     assert audiencia_segura(aud(5_000_000, "coincidencia por nombre")) is None  # puede ser un homónimo
     assert audiencia_segura({"audiencia": {"encontrado": False}}) is None
     assert audiencia_segura({}) is None and audiencia_segura(None) is None
-    unico = aud(5_000_000, "identificador de MusicBrainz (único artista con ese nombre)")
-    assert audiencia_segura(unico) is None  # sin otra web que lo encuentre, puede ser un homónimo
-    assert audiencia_segura({**unico, "discogs": {"encontrado": True}})["oyentes"] == 5_000_000
 
 
 def test_niveles():

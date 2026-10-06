@@ -377,11 +377,13 @@ def tributo_y_estimacion(r: dict, cache: dict) -> None:
     - Tributos: a quién homenajean y de dónde es ("THE RUMORS: TRIBUTO FLEETWOOD MAC" → Fleetwood Mac, Reino
       Unido). El origen del concierto sigue siendo el de la banda tributo; el del homenajeado se muestra aparte.
       Si el tributo no tiene estilo, se usa el del homenajeado (un tributo a Queen es hard rock).
-    - Origen deducido: solo para coros, bandas de música, rondallas y orquestas municipales o de escuela, que son
-      de aquí por definición. Nada más: las demás reglas medidas fallaban en 1 de cada 4 o más."""
+    - Origen estimado: si ninguna fuente dice de dónde es el artista y su nombre está en español, "probablemente
+      España" (se muestra como estimación, no como dato). No se estima en latina ni urbana, donde es habitual
+      que sean de Latinoamérica."""
     from .artistas import ficha, nombre_en_titulo
     from .clasificar import grupos_de_evidencias
     from .nombres import claves_ficha, homenajeado
+    from .origen import pais_estimado
     h = homenajeado(r["artista"])
     r.pop("homenaje", None)
     if h:
@@ -401,28 +403,83 @@ def tributo_y_estimacion(r: dict, cache: dict) -> None:
     r.pop("nacionalidad_estimada_motivo", None)
     if r.get("nacionalidad") or r.get("origen_no_aplica"):
         return
-    # Origen deducido: solo con reglas que aciertan casi siempre (PRECISION_MINIMA, medido con los conciertos de
-    # origen conocido: tools/medir_estimaciones.py). Las de nombre en español (74 %), solo agendas de salas
-    # madrileñas (76 %), programa municipal (47 %) y tributos en salas (36 %) se quitaron en oct. 2026: un nombre en
-    # español no distingue España de Argentina o Brasil. Sin fuente fiable, "origen sin confirmar".
-    n = norm(r.get("artista") or "")
-    if _AGRUPACION_LOCAL.search(n) and not _NO_LOCAL.search(n):
-        r["nacionalidad_estimada"] = "ES"
-        r["nacionalidad_estimada_motivo"] = "agrupación local (coro, banda de música, rondalla, orquesta municipal o de escuela)"
+    pais, motivo = pais_por_tipo_local(r)
+    if pais:
+        r["nacionalidad_estimada"], r["nacionalidad_estimada_motivo"] = pais, motivo
+        return
+    latina = "latina" in (r.get("grupos") or [])
+    if "urbana y hip hop" in (r.get("grupos") or []) and not latina:
+        return
+    nombre = nombre_en_titulo(r["artista"]) if h else (claves_ficha(r)[1:2] or [r["artista"]])[0]
+    # "McEnroe presenta «La vida libre»", "DEPEDRO presentando su nuevo disco": solo el nombre, no el del disco
+    nombre = re.split(r"\s+(?:presenta\w*|en concierto|nuevo disco|su disco|gira|tour)\b|[«\"“]", nombre, flags=re.I)[0]
+    if re.search(r"\b(festival|fest|certamen|ciclo|concierto de|conciertos|versiones|jam|vermu|tardeo|apertura|clausura|"
+                 r"fiestas?|muestra|encuentro|gala|noche de|programa|foro|jornadas?|congreso|feria|expo)\b", norm(nombre)):
+        return  # un festival o un ciclo no es un artista: no se estima nada
+    pais, motivo = pais_estimado(nombre)
+    if latina and not re.search(r"\b(19|20)\d\d\b", nombre):  # "Cadena 100 Por Ellas 2026" es un festival
+        # en música latina un nombre en español no distingue España de Latinoamérica: lo más habitual es Latinoamérica
+        if pais:
+            r["nacionalidad_estimada"], r["nacionalidad_estimada_motivo"] = "LATAM", motivo + " en música latina"
+        return
+    if latina:
+        return
+    if not pais:
+        pais, motivo = pais_por_agendas_locales(r, nombre)
+    if pais:
+        r["nacionalidad_estimada"], r["nacionalidad_estimada_motivo"] = pais, motivo
 
 
-PRECISION_MINIMA = 0.95  # una regla de origen deducido que acierte menos no se usa
+# agendas de las salas de Madrid que programan sobre todo grupos locales pequeños
+AGENDAS_LOCALES = {"madridenvivo", "cc_buscador", "cc_portada", "cc_estilos", "cclub_org"}
+# géneros en los que esas agendas traen muchos artistas de fuera (medido: en jazz, 9 de 20 eran de España)
+_GENEROS_DE_FUERA = {"jazz y swing", "blues", "latina", "urbana y hip hop", "soul, funk y r&b", "músicas del mundo"}
 
 
+# webs de grandes recintos o de giras: ahí los tributos suelen venir de fuera (Brit Floyd, The Bootleg Beatles)
+_FUENTES_DE_GIRA = {"songkick", "bandsintown", "movistar", "vistalegre", "riviera", "nuevacubierta", "eslava"}
 # agrupaciones de aficionados o de escuela, de aquí por definición del tipo de grupo
 _AGRUPACION_LOCAL = re.compile(r"\b(coro|coros|coral|orfeon|polifonica|escolania|rondalla|tuna|banda de musica|"
                                r"banda municipal|banda sinfonica municipal|orquesta (?:municipal|juvenil|de pulso)|"
                                r"agrupacion musical|conservatorio|escuela (?:municipal )?de musica|aula de musica)\b")
 
 
-# encuentros y festivales de coros (vienen de fuera) y títulos que no son un grupo ("Música coral para…")
-_NO_LOCAL = re.compile(r"\b(internacional|iberoamerican[oa]|europe[oa]|mundial|encuentro|festival|certamen|"
-                       r"musica coral|gira|tour)\b")
+def pais_por_tipo_local(r: dict) -> tuple[str | None, str]:
+    """"Probablemente España" por el tipo de grupo, cuando ninguna fuente dice de dónde es (es una estimación, no un
+    dato, y se dice):
+    - coros, bandas de música, rondallas, orquestas municipales o de escuela: agrupaciones locales;
+    - lo que solo anuncia el programa cultural de un ayuntamiento (datos.madrid.es, webs municipales), si el título
+      no tiene palabras en inglés: suelen ser grupos y músicos de aquí;
+    - bandas tributo o de versiones en salas de Madrid (no en grandes recintos ni en webs de giras)."""
+    from .origen import _palabras
+    ids = {f.get("id") for f in r.get("fuentes") or []}
+    n = norm(r.get("artista") or "")
+    if _AGRUPACION_LOCAL.search(n):
+        return "ES", "agrupación local (coro, banda de música, rondalla, orquesta municipal o de escuela)"
+    _, _, en = _palabras()
+    ingles = any(w in en for w in re.findall(r"[a-z]+", n) if len(w) >= 2)
+    if ids and all(i == "datos_madrid" or str(i).startswith("muni_") for i in ids) and not ingles:
+        return "ES", "solo lo anuncia el programa cultural del ayuntamiento, que programa sobre todo grupos y músicos locales"
+    from .nombres import es_tributo
+    if ("tributos y versiones" in (r.get("grupos") or []) or es_tributo(r)) and ids and not ids & _FUENTES_DE_GIRA:
+        return "ES", "banda tributo o de versiones en salas de Madrid: casi siempre son grupos de aquí"
+    return None, ""
+
+
+def pais_por_agendas_locales(r: dict, nombre: str) -> tuple[str | None, str]:
+    """Fase C: "probablemente España" si solo lo anuncian Madrid en Vivo o conciertos.club (agendas de salas madrileñas
+    con grupos locales pequeños), su nombre no tiene palabras en inglés y no es de un género con muchos artistas de
+    fuera. Medido con los conciertos de origen conocido (oct. 2026): acierta 3 de cada 4 (78 de 105), como la
+    estimación por el nombre. Es una estimación, no un dato, y se dice."""
+    from .origen import _palabras
+    ids = {f.get("id") for f in r.get("fuentes") or []}
+    if not ids or not ids <= AGENDAS_LOCALES or set(r.get("grupos") or []) & _GENEROS_DE_FUERA:
+        return None, ""
+    _, _, en = _palabras()
+    if any(w in en for w in re.findall(r"[a-z]+", norm(nombre)) if len(w) >= 2):
+        return None, ""
+    return "ES", ("solo lo anuncian agendas de salas madrileñas que programan sobre todo grupos locales "
+                  "(Madrid en Vivo, conciertos.club)")
 
 
 def aplicar_cartel(r: dict, cache: dict) -> None:
@@ -570,11 +627,11 @@ def aplicar_ficha(r: dict, f: dict | None) -> None:
         r.pop("estilo_descartado", None)
     # el origen leído en textos (página de la agenda, Last.fm) se vuelve a calcular siempre con la regla actual
     fuente_nac = str(r.get("nacionalidad_fuente") or "")
-    # y también el de las webs de música: así una regla que se endurece se aplica a lo ya publicado
-    if fuente_nac.startswith(("Last.fm", "la agenda (", "Wikipedia", "Wikidata", "Discogs", "MusicBrainz")) and \
+    if fuente_nac.startswith(("Last.fm", "la agenda (", "Wikipedia (artículo")) and \
             not fuente_nac.startswith("la agenda (en el título)"):
         r["nacionalidad"], r["nacionalidad_fuente"] = None, None
-    if f and f.get("pais") and not r.get("nacionalidad"):
+    if f and f.get("pais") and (not r.get("nacionalidad") or
+                                str(r.get("nacionalidad_fuente", "")).startswith("MusicBrainz")):
         r["nacionalidad"], r["nacionalidad_fuente"] = f["pais"], f["fuente_pais"]
     r["imagen"] = (f or {}).get("imagen") or r.get("imagen_evento")
     # la agenda a veces pone el país en el título: "THE SILENCERS (UK)"
