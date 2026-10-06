@@ -5,6 +5,7 @@ que la lectura (scraper/render.py: robots.txt también de cada petición de la p
 Solo escribe en la salida.
 
 Uso: python tools/diagnostico_render.py URL [URL…]
+     URL@muestra:patrón → además, el HTML de la tarjeta del primer enlace cuya dirección cumple el patrón
 """
 import re
 import sys
@@ -25,6 +26,7 @@ FECHA = re.compile(rf"(?i)\b(\d{{1,2}}\s*(de\s+)?({MESES})\b|\d{{1,2}}[/.-]\d{{1
 f = Fetcher()
 nav = Navegador(f)
 for url in sys.argv[1:]:
+    url, _, marca = url.partition("@")
     print(f"\n## {url}\n  robots: {f.robots_status(url)} · permitido: {f.robots_allows(url)}")
     for modo in ("sin navegador", "con navegador"):
         try:
@@ -49,6 +51,15 @@ for url in sys.argv[1:]:
                 enlaces[ruta] += 1
                 if len(muestras) < 4:
                     muestras.append(f"{h} · {a.get_text(' ', strip=True)[:60]}")
+        if marca.startswith("muestra:"):
+            a = next((x for x in BeautifulSoup(html, "lxml").select("a[href]")
+                      if re.search(marca.partition(":")[2], x["href"])), None)
+            el = a
+            for _ in range(4):
+                if el is not None and el.parent is not None and len(str(el.parent)) < 4000:
+                    el = el.parent
+            muestra = re.sub(r"\s+", " ", str(el))[:3000] if el is not None else None
+            print(f"  [{modo}] tarjeta: {muestra}")
         print(f"  [{modo}] {len(html)} letras · JSON-LD con fecha: {len(evs)} · líneas con fecha: {len(con_fecha)}"
               f" · enlaces de eventos por sección: {dict(enlaces.most_common(4))}")
         for e in evs[:3]:
