@@ -56,6 +56,14 @@ for ev in eventos:
         con_ticketera += 1
         if len(ejemplos) < 8:
             ejemplos.append(f"{ev.get('link')} → {tk[:2]}")
+from scraper.entradas import dominio  # noqa: E402
+otros = Counter(dominio(str((ev.get("acf") or {}).get("venta_de_entradas_url") or "")) for ev in eventos
+                if (ev.get("acf") or {}).get("venta_de_entradas_url")
+                and not ticketera(str(ev["acf"]["venta_de_entradas_url"])))
+print("enlaces de venta que no son de una ticketera conocida, por dominio:", otros.most_common(25))
+for d, _ in otros.most_common(8):
+    print("  ejemplo", d, next(ev["acf"]["venta_de_entradas_url"] for ev in eventos
+                              if dominio(str((ev.get("acf") or {}).get("venta_de_entradas_url") or "")) == d)[:160])
 print("campos de la ficha (con valor / total):")
 for k, n in campos.most_common():
     print(f"  {k}: {con_valor[k]}/{n}")
@@ -69,7 +77,7 @@ for k in campos:  # campos que parecen de entradas: un ejemplo de valor
 
 print(f"\n## Páginas de evento ({N_PAGINAS})")
 con = 0
-for ev in eventos[:N_PAGINAS]:
+for ev in eventos[:N_PAGINAS] if N_PAGINAS else []:
     u = ev.get("link")
     try:
         sp = BeautifulSoup(f.get(u), "lxml")
