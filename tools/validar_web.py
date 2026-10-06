@@ -462,14 +462,14 @@ def recorrido(b):
     filtros(pg, lunes)
     estilos(pg, lunes)
     busqueda(pg, lunes)
-    # filtros de origen: España confirmados, Latinoamérica, resto del mundo, estimados, sin confirmar y "no aplica"
+    # filtros de origen: España confirmados, Latinoamérica, internacional, estimados, sin confirmar y "no aplica"
     # reparten todos los conciertos sin dejar ninguno fuera ni contar ninguno dos veces
     o = pg.evaluate("""()=>{const f=DATA.filter(r=>r.fecha>=HOY); const c=k=>f.filter(r=>origenDe(r,k)).length;
         const na=f.filter(r=>!r.nacionalidad&&!r.nacionalidad_estimada&&r.origen_no_aplica).length;
         const otra=f.filter(r=>!r.nacionalidad&&r.nacionalidad_estimada&&!['ES','LATAM'].includes(r.nacionalidad_estimada)).length;
         return {total:f.length, es:c('es'), lat:c('lat'), ext:c('ext'), nc:c('nc'), na, otra}}""")
     suma = o["es"] + o["lat"] + o["ext"] + o["nc"] + o["na"] + o["otra"]
-    check("Funcional", "Filtros de origen: España, Latinoamérica, resto del mundo y sin confirmar cuadran",
+    check("Funcional", "Filtros de origen: España, Latinoamérica, internacional y sin confirmar cuadran",
           f"{suma} de {o['total']}", ok=suma == o["total"] and not o["otra"], detalle=str(o))
     mes(pg)
     entradas_ficha(pg)

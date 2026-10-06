@@ -432,7 +432,7 @@ const CONFS = [["todos","Todos"],["probable","Probable o confirmado"],["confirma
 const NIVEL = {c:"confirmado",p:"probable",s:"sin confirmar"};
 const nivelDe=r=>(r.confianza&&r.confianza.nivel)||NIVEL[r.conf]||"sin confirmar";
 const pasaNivel=(r,c)=>c==="todos"||(c==="confirmado"?nivelDe(r)==="confirmado":nivelDe(r)!=="sin confirmar");
-const ORIGENES = [["todos","Todos"],["es","🇪🇸 España"],["lat","🌎 Latinoamérica"],["ext","🌍 Resto del mundo"],["nc","Origen sin confirmar"]];
+const ORIGENES = [["todos","Todos"],["es","🇪🇸 España"],["lat","🌎 Latinoamérica"],["ext","🌍 Internacional"],["nc","Origen sin confirmar"]];
 // Latinoamérica tiene grupo propio: un nombre en español no distingue España de Latinoamérica, y así se ve aparte
 const LATAM = new Set(["AR","BO","BR","CL","CO","CR","CU","DO","EC","SV","GT","HN","MX","NI","PA","PY","PE","PR","UY","VE"]);
 // un mismo criterio para la agenda y para la hoja de filtros

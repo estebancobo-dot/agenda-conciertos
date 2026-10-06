@@ -1,5 +1,11 @@
 # Versiones
 
+## 2.67.0 — 2026-10-06
+
+- Filtro de origen: "Resto del mundo" pasa a llamarse "Internacional".
+- Comprobado antes de tocar nada: el origen y el estilo que dicen las páginas del concierto (web de la sala, página de entradas y agendas; hasta 4 por concierto y 6 por artista) ya se buscan en la pasada de fichas desde la fase N3/N4. De los 393 conciertos sin origen, en 338 esas páginas se leyeron y no lo dicen: no hay más que sacar de ahí.
+- Diagnóstico nuevo (`diagnostico.yml` con `webs=salasweb`, `scraper/salas_web.py`): qué webs de sala publican sus conciertos con datos estructurados, para leerlas con un lector genérico.
+
 ## 2.66.0 — 2026-10-05
 
 **Fuentes que ya no se pueden leer, validación que espera a la web publicada y acciones de GitHub al día.**
