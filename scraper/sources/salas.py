@@ -918,3 +918,46 @@ PARSERS = {
     "cadillac": _tribe("https://cadillacsolitario.com/", "Cadillac Solitario"),
     "dimequemequieres": _tribe("https://conciertos.dimequemequieresbardecopas.com/", "Dime que me Quieres"),
 }
+
+
+# Café Berlín: su programa (berlincafe.es/programas/) en HTML normal. Cada concierto es un <article> con el día ("07"),
+# el mes ("Oct", sin año), el nombre, la hora y el precio ("20:00 · Entradas desde: 14€") y el enlace de compra (su
+# ticketera o DICE). Las sesiones de "Berlín Club" (DJ de madrugada) no se toman.
+BERLIN = "https://berlincafe.es/programas/"
+
+
+def berlin_parse(html: str, page_url: str, today: date) -> list:
+    out = []
+    for art in soup_of(html).select("article.programas-lista-programa"):
+        cont = art.find_parent(class_="isotope-item")
+        clases = set(cont.get("class") or []) if cont else set()
+        if "berlin-club" in clases and "cafe-berlin" not in clases:
+            continue
+        dia = text(art.select_one(".evento-fecha-dia"))
+        mes = MESES.get(text(art.select_one(".evento-fecha-mes")).lower().strip(". "))
+        nombre = clean(text(art.select_one("h2")))
+        if not (dia.isdigit() and mes and nombre):
+            continue
+        try:
+            f = date(today.year, mes, int(dia))
+            if f < today - timedelta(days=60):  # sin año: diciembre → enero es del año siguiente
+                f = date(today.year + 1, mes, int(dia))
+        except ValueError:
+            continue
+        if f < today:
+            continue
+        info = art.select_one("h5")
+        info_t = info.get_text(" ", strip=True) if info else ""
+        precio = re.search(r"(\d+(?:[.,]\d+)?)\s*€", info_t)
+        enlace = art.select_one("a[href*='/programa/']")
+        compra = art.select_one("a.btn-entradas[href]")
+        e = make(f, nombre, urljoin(page_url, enlace["href"]) if enlace else page_url, sala="Café Berlín", ciudad="Madrid",
+                 hora=parse_hora(info_t), precio=f"{precio.group(1)} €" if precio else None, split=False)
+        if compra and compra["href"].startswith("http"):
+            e.entradas = compra["href"]
+        out.append(e)
+    return out
+
+
+def berlin(ctx: Ctx):
+    yield from berlin_parse(ctx.get(BERLIN), BERLIN, ctx.today)
