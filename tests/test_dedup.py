@@ -289,3 +289,12 @@ def test_codificacion_equivocada():
     recs = run((ev("Motörhits. Tributo a Motörhead", "Revi Live", "21:00"), src("mutick")),
                (ev("M├Č╢torHits", "Revi Live"), src("revi", prioridad=1)))
     assert [r["artista"] for r in recs] == ["Motörhits. Tributo a Motörhead"]
+
+
+def test_mismo_acto_con_posesivo_o_estilo_pegado():
+    from scraper.merge import mismo_acto_en_sala
+    assert mismo_acto_en_sala("Munir Hossn", "Munir Hossn’s MysticSamba", "Sala Villanos")
+    assert mismo_acto_en_sala("Fabio Lione", "Fabio Lione's Dawn of Victory", "Revi Live")
+    assert mismo_acto_en_sala("LQDMS (Lo Que Diga Mi Señora)", "LQDMS · Pop/Rock", "El Perro Club")
+    assert not mismo_acto_en_sala("Albert Marquès & Keith LaMar", "EL NAÁN TRIO", "Sala Villanos")
+    assert not mismo_acto_en_sala("ADRIÁN COSTA BLUES BAND", "NICK HEMPTON QUARTET", "Café Central")

@@ -935,6 +935,9 @@ def puntuar_confianza(r: dict, fuentes: dict[str, Source]) -> dict:
         resto = [c for c in campos if c != "fecha"]
         if resto:
             motivos.append("Las webs no coinciden en " + " y ".join(resto))
+    if r.get("sala_publica_hasta") and not oficial and not r.get("confirmado_sala"):
+        motivos.append(f"La web de la sala ({r['sala_publica_hasta']['web']}) aún no ha publicado esta fecha: "
+                       f"anuncia hasta el {r['sala_publica_hasta']['hasta']}")
     if r.get("ausente_web_sala"):
         puntos -= 2
         motivos.append(f"La web de la sala ({r['ausente_web_sala']}) no anuncia nada ese día")
@@ -972,6 +975,7 @@ def ausencias_web_sala(recs: list[dict], resultados: dict, fuentes: dict[str, So
     marcados: dict[str, dict] = {}
     for r in recs:
         r.pop("ausente_web_sala", None)
+        r.pop("sala_publica_hasta", None)
         r["conflictos"] = [c for c in r.get("conflictos") or [] if c.get("campo") != "fecha"]
     for sid, evs in eventos.items():
         sr = fuentes.get(sid)
@@ -999,7 +1003,12 @@ def ausencias_web_sala(recs: list[dict], resultados: dict, fuentes: dict[str, So
             if r.get("estado") == "posiblemente cancelado":
                 continue
             suyas = [sa for x in (r.get("sala") or "").split(" / ") if x for sa in salas if _ms(x, sa)]
-            if not suyas or r["fecha"] > max(hasta_sala.get(sa, "") for sa in suyas):
+            if not suyas:
+                continue
+            hasta = max(hasta_sala.get(sa, "") for sa in suyas)
+            if r["fecha"] > hasta:
+                # la web de la sala aún no ha publicado esa fecha: no es que no lo anuncie (se dice en la ficha)
+                r["sala_publica_hasta"] = {"web": sr.nombre.split(" (")[0], "hasta": hasta}
                 continue
             f0 = date.fromisoformat(r["fecha"])
             otra = sorted((e for e in evs if abs((e.fecha - f0).days) <= 45

@@ -167,3 +167,13 @@ def test_jams_con_otro_nombre_y_rellenos():
     assert mismo_acto_en_sala("Jam Session Blues", "MOE BLUES JAM SESSION", "Moe")
     assert not mismo_acto_en_sala("Jam Session Jazz", "MOE BLUES JAM SESSION", "Moe")
     assert sin_artista("BAND NAME") and sin_artista("PIANO BAR") and not sin_artista("The Band")
+
+
+def test_la_sala_aun_no_ha_publicado_esa_fecha():
+    s = fuente("elsol", "sala", 1, "alta")
+    evs = [RawEvent(date(2026, 10, d), f"Grupo {d}", "u", sala="Sala El Sol") for d in (10, 11, 12, 13, 20)]
+    lejano = rec("cc", fecha="2026-11-30", artista="Lejano")
+    ausencias_web_sala([lejano], {"elsol": {"completa": True}}, {"elsol": s, **F}, {"elsol": evs}, "2026-10-03")
+    assert lejano["sala_publica_hasta"] == {"web": "Fuente elsol", "hasta": "2026-10-20"}
+    c = puntuar_confianza(lejano, {"elsol": s, **F})
+    assert any("aún no ha publicado esta fecha" in m for m in c["motivos"]) and "ausente_web_sala" not in lejano

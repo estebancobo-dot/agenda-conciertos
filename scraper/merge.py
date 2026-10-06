@@ -162,12 +162,23 @@ def _palabras(nombre: str) -> list[str]:
     return [w for w in norm(nombre).split() if len(w) >= 3 and w not in _COMUNES and not w.isdigit()]
 
 
+# "LQDMS · Pop/Rock": la etiqueta de estilo que algunas agendas pegan al nombre
+_ESTILO_PEGADO = re.compile(r"(?i)\s*·\s*(pop|rock|pop\s*/\s*rock|jazz|blues|indie|punk|metal|folk|soul|funk|flamenco|"
+                            r"electr[oó]nica|rap|hip[\s-]?hop|latin[ao]?|cl[aá]sica|world|reggae|cantautor)(\s*/\s*\w+)*\s*$")
+
+
+def _sin_adornos(nombre: str) -> str:
+    """Sin el posesivo inglés ("Munir Hossn’s MysticSamba" → "Munir Hossn MysticSamba") ni la etiqueta de estilo pegada."""
+    return re.sub(r"(\w)[’']s\b", r"\1", _ESTILO_PEGADO.sub("", nombre or ""))
+
+
 def mismo_acto_en_sala(a: str, b: str, sala: str = "") -> bool:
     """Dos anuncios del mismo día y la misma sala que son el mismo concierto con otro nombre: "THE DOORS ARE OPEN (Trib
     The Doors)" = "EL GRAN TRIBUTO A THE DOORS", "EMMA SWIFT (AUST-USA)" = "Emma Swift with Luther Russell", "CARO CAXI"
     = "CARO TAXI". No: "Tributo a Queen" / "Tributo a Mecano", "BLACK BIRDS" / "THE BLACK CROWES", ni dos sesiones que
     solo comparten el nombre de la sala ("INTRUSO JAZZ SESSION" / "INTRUSO ACID JAM!")."""
     de_sala = set(_palabras(sala))
+    a, b = _sin_adornos(a), _sin_adornos(b)
     pa = [w for w in _palabras(a) if w not in de_sala]
     pb = [w for w in _palabras(b) if w not in de_sala]
     if not pa or not pb:

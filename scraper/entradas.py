@@ -351,13 +351,20 @@ def _especifica(u: str | None) -> bool:
     return bool(p.netloc) and p.path.strip("/") != ""
 
 
+def usos_de_url(recs: list[dict]) -> Counter:
+    """En cuántos conciertos sale cada URL (una URL de varios conciertos es un listado, no la página de uno). Cada
+    concierto cuenta una vez: conciertos.club lo da igual desde su buscador, su portada y sus estilos."""
+    return Counter(u for r in recs for u in {sin_fragmento(x.get("url")) for x in r.get("fuentes") or [] if x.get("url")})
+
+
 def paginas_de(r: dict, usos: Counter) -> list[tuple[str, dict]]:
     """Páginas propias de este concierto (no listados) en orden de preferencia: web de la sala, luego agregadores."""
-    out = []
+    out, vistas = [], set()
     for x in r.get("fuentes") or []:
         u = sin_fragmento(x.get("url"))
-        if not u.startswith("http") or usos[u] != 1 or x.get("id") in NO_LEER:
+        if not u.startswith("http") or usos[u] != 1 or x.get("id") in NO_LEER or u in vistas:
             continue
+        vistas.add(u)
         out.append((u, x))
     orden = {k: i for i, k in enumerate(ORDEN)}
     return sorted(out, key=lambda ux: (ux[1].get("prioridad", 9) != 1, orden.get(ux[1].get("id"), 50)))
@@ -407,7 +414,7 @@ def leer_entradas(recs: list[dict], cache: dict, fetcher, hoy: date, presupuesto
     # primero los conciertos con huecos (sin hora, precio, enlace de entradas o confirmación): ahí es donde una página
     # más aporta; después, los demás por fecha
     futuros = sorted((r for r in recs if r["fecha"] >= hoy_s), key=lambda r: (not con_huecos(r), r["fecha"]))
-    usos = Counter(sin_fragmento(x.get("url")) for r in recs for x in r.get("fuentes") or [] if x.get("url"))
+    usos = usos_de_url(recs)
     stats = Counter()
     fallos_dom: Counter = Counter()
 
@@ -515,7 +522,7 @@ def aplicar_entradas(recs: list[dict], cache: dict) -> dict:
     from .normalize import norm
     conf = confianza(recs, cache)
     genericas = imagenes_genericas(recs)
-    usos = Counter(sin_fragmento(x.get("url")) for r in recs for x in r.get("fuentes") or [] if x.get("url"))
+    usos = usos_de_url(recs)
     # un enlace de compra que la fuente pone a más de dos artistas es una página general (la taquilla entera)
     compra_de: dict[str, set] = defaultdict(set)
     for r in recs:

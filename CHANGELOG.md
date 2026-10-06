@@ -1,5 +1,13 @@
 # Versiones
 
+## 2.71.0 — 2026-10-06
+
+**Triple check (agenda + web de la sala + página de compra): menos huecos por fallos propios.**
+
+- Páginas de conciertos.club sin leer: un concierto que conciertos.club da desde su buscador, su portada y sus estilos tenía la misma dirección tres veces y se tomaba por un listado. Ahora cada concierto cuenta una vez: 452 conciertos recuperan su página (hora, precio y enlace de compra).
+- Duplicados en la misma sala y día que no se unían: el posesivo inglés ("Munir Hossn" / "Munir Hossn’s MysticSamba", "Fabio Lione" / "Fabio Lione’s Dawn of Victory") y el estilo pegado al nombre ("LQDMS · Pop/Rock"). Revisados todos los pares del mismo día y sala: solo se unen esos 3.
+- La web de la sala aún no ha publicado esa fecha: 434 conciertos en salas cuya web se lee son posteriores a la última fecha que esa web anuncia. No es que la sala no lo anuncie: la ficha lo dice ("anuncia hasta el …"), sin bajar la confirmación.
+
 ## 2.70.2 — 2026-10-06
 
 - Nivel: los oyentes son los del artista de la ficha del concierto (la misma que da estilo y origen), no los de un trozo del título. "Blue Big Band" ya no lleva los 716 mil oyentes de "Blue", ni "MR. BLACK" los de "Black". Tampoco los espectáculos sobre otro artista ("A Night With The Beatles"). Con los datos de hoy, 215 conciertos con artista de 100.000 oyentes o más; revisados los que tienen un nombre distinto del título: son el cabeza de cartel (Gondwana, Accept, Temples…).

@@ -173,3 +173,15 @@ def test_enlace_de_compra_de_varios_artistas_no_se_usa():
     assert "entradas" not in recs[0] and "entradas" not in recs[1]
     assert recs[2]["entradas"]["url"].endswith("/cumbia")  # el mismo espectáculo en dos fechas sí
     assert stats.get("entradas_genericas") == 2
+
+
+def test_misma_url_desde_varias_secciones_es_la_pagina_del_concierto():
+    """conciertos.club da el mismo concierto desde su buscador, su portada y sus estilos: es su página, no un listado."""
+    from scraper.entradas import paginas_de, usos_de_url
+    u = "https://conciertos.club/madrid/conciertos/118852-isabel-van-gelder"
+    r = {"fuentes": [{"id": i, "url": u, "prioridad": 3} for i in ("cc_buscador", "cc_portada", "cc_estilos")]}
+    otro = {"fuentes": [{"id": "cc_buscador", "url": "https://conciertos.club/madrid/agenda", "prioridad": 3}]}
+    otro2 = {"fuentes": [{"id": "cc_portada", "url": "https://conciertos.club/madrid/agenda", "prioridad": 3}]}
+    usos = usos_de_url([r, otro, otro2])
+    assert [p for p, _ in paginas_de(r, usos)] == [u]          # una vez
+    assert paginas_de(otro, usos) == []                         # la agenda de dos conciertos sí es un listado
