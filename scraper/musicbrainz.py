@@ -1,6 +1,7 @@
 """Nacionalidad desde la API pública de MusicBrainz (máx. 1 petición/segundo, User-Agent propio).
 
 Solo se acepta si hay UNA única coincidencia exacta del nombre del artista; si no, queda null ('sin confirmar').
+Y aun así su país solo cuenta en la ficha si otra web de música encuentra al mismo artista (artistas.ficha).
 Se usa la API /ws/2 documentada para uso programático (https://musicbrainz.org/doc/MusicBrainz_API); el
 robots.txt de musicbrainz.org se refiere al rastreo de sus páginas web, no a la API."""
 from __future__ import annotations
@@ -64,12 +65,9 @@ def completar(recs: list[dict], cache: dict, hoy: date, fetcher: Fetcher | None,
             cache[k] = ent
         else:
             stats["desde_cache"] += 1
-        if ent.get("pais"):
-            r["nacionalidad"] = ent["pais"]
-            r["nacionalidad_fuente"] = "MusicBrainz (coincidencia por nombre)"
-            stats["asignadas"] += 1
-        else:
-            stats["sin_confirmar"] += 1
+        # la búsqueda se guarda para la ficha del artista (scraper/artistas.py), pero su país no se pone aquí:
+        # sin otra web que encuentre al artista, la única coincidencia del nombre suele ser un homónimo
+        stats["solo_nombre" if ent.get("pais") else "sin_confirmar"] += 1
     return stats
 
 

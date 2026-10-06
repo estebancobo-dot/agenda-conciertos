@@ -64,7 +64,11 @@ def audiencia_segura(ent: dict | None) -> dict | None:
     de Wikidata o el del único artista con ese nombre en MusicBrainz). Por el nombre solo no cuenta: un homónimo
     famoso daría a un grupo local millones de oyentes que no son suyos."""
     aud = (ent or {}).get("audiencia") or {}
-    if not aud.get("encontrado") or not aud.get("oyentes") or aud.get("identificado_por") in (None, "", "coincidencia por nombre"):
+    via = aud.get("identificado_por")
+    if not aud.get("encontrado") or not aud.get("oyentes") or via in (None, "", "coincidencia por nombre"):
+        return None
+    # el identificador del único artista con ese nombre en MusicBrainz vale si otra web de música lo encuentra
+    if "nombre" in via and not any((ent.get(k) or {}).get("encontrado") for k in ("discogs", "wikipedia", "wikidata")):
         return None
     return aud
 

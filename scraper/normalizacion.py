@@ -5,7 +5,7 @@ Nada queda "sin procesar": cada dato termina en uno de cuatro estados, con su po
 - conocido: lo dice una web de música (Discogs, MusicBrainz, Wikipedia, Wikidata, Last.fm por su identificador) o,
   para el origen, la propia agenda o la sala con una frase que lo dice. Con la fuente.
 - estimado: no hay dato directo; se deduce de algo que se dice (la etiqueta de la agenda, el homenajeado de un
-  tributo, un artista identificado solo por su nombre, un nombre en español). Con el motivo. Se muestra como tal.
+  tributo, un artista identificado solo por su nombre, un coro o banda municipal). Con el motivo. Se muestra como tal.
 - no_aplica: no hay un artista del que decirlo (musicales, jam sessions, micro abierto, festivales con varios).
 - desconocido: se ha buscado y no se ha encontrado. Con dónde se ha buscado y qué respondió cada sitio.
 
