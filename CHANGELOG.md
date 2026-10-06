@@ -1,5 +1,11 @@
 # Versiones
 
+## 2.72.0 — 2026-10-06
+
+- Fuente nueva: **Festify Indie** (agenda de conciertos indie y pop). Su página se monta con JavaScript y antes se había descartado; con el navegador real que ya se usa para Intruso y Moe (y su robots.txt lo permite) se leen todos sus conciertos de Madrid: los primeros, de sus datos estructurados; los demás, de cada tarjeta ("Artista" + "Sala · 8 oct 2026"). Probado contra la web: 81 conciertos, 66 se unen a los que ya había y 15 son nuevos (Late Capital, Eyelet y Órdago Chica en El Sol, Valira y Carmen 113 en Copérnico, Rei Ortolá en Peor para el Sol, Lady Banana y Tiburona en Sala Uni…). No da enlaces de compra.
+- Sala: "Plaza Mahou Bernabéu" es la misma que "Plaza Mahou".
+- Diagnósticos nuevos (`diagnostico.yml`): `js:URL` (si una web se puede leer con navegador) y `festify`. Probadas también esMadrid (una selección de unos 25 conciertos en frases, sin datos ordenados: no aporta) y Thundercat (vacía también con navegador; sus conciertos llegan por Madrid en Vivo).
+
 ## 2.71.1 — 2026-10-06
 
 - Enlace de compra: las páginas de conciertos.club que ahora se leen llevan un enlace de promoción a otro evento ("The Vee Bees") o al primero de la sala, y quitaban el bueno de otra web (Muse, Carolina Durante, Cala Vento…). Ahora se salta un enlace que la web pone en las páginas de tres o más artistas, o cuya dirección describe otro concierto ("bal-bliss-en-vivo" para The Big Tigers), y se usa el de la siguiente página. Con los datos de hoy: 740 conciertos con enlace (antes 717); 34 lo ganan y 11 lo pierden, casi todos enlaces que eran de otro concierto o una noticia.
