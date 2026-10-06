@@ -22,6 +22,7 @@ from scraper.entradas import _eventos_jsonld, _offer_url, _precio, ticketera  # 
 from scraper.fetch import Fetcher  # noqa: E402
 from scraper.merge import artistas_coinciden, mismo_acto_en_sala  # noqa: E402
 from scraper.normalize import canon_sala  # noqa: E402
+from scraper.pipeline import HORIZONTE_DIAS  # noqa: E402
 from scraper.registry import FUENTES  # noqa: E402
 from scraper.render import Navegador  # noqa: E402
 
@@ -29,7 +30,7 @@ RAIZ = Path(__file__).resolve().parent.parent
 INICIO = "https://festifyindie.com/conciertos/madrid"
 MAX_SUB = int(sys.argv[1]) if len(sys.argv) > 1 else 15
 hoy = date.today()
-horizonte = hoy + timedelta(days=120)
+horizonte = hoy + timedelta(days=HORIZONTE_DIAS)
 f = Fetcher()
 nav = Navegador(f)
 

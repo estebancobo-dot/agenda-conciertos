@@ -1,6 +1,6 @@
 # Agenda de conciertos · Comunidad de Madrid
 
-Agenda automática y gratuita de los conciertos de los próximos 120 días en Madrid y los 179 municipios de la Comunidad, centrada en rock, metal, hard rock/AOR, prog, blues, americana/country/folk, punk/garage, pop/indie, cantautores y tributos.
+Agenda automática y gratuita de los conciertos de los próximos 180 días en Madrid y los 179 municipios de la Comunidad, centrada en rock, metal, hard rock/AOR, prog, blues, americana/country/folk, punk/garage, pop/indie, cantautores y tributos.
 
 **Web:** https://estebancobo-dot.github.io/agenda-conciertos/
 

@@ -14,12 +14,12 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from scraper.fetch import Fetcher  # noqa: E402
 from scraper.merge import Item  # noqa: E402
-from scraper.pipeline import preparar  # noqa: E402
+from scraper.pipeline import HORIZONTE_DIAS, preparar  # noqa: E402
 from scraper.registry import por_id  # noqa: E402
 from scraper.sources.base import Ctx  # noqa: E402
 
 hoy = date.today()
-horizonte = hoy + timedelta(days=120)
+horizonte = hoy + timedelta(days=HORIZONTE_DIAS)
 S = por_id()
 for sid in sys.argv[1:]:
     src = S[sid]

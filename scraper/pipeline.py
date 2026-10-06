@@ -30,7 +30,7 @@ from .registry import FUENTES, NO_USAR, SIN_AGENDA_LEGIBLE
 from .sources.base import Ctx, TiempoAgotado
 
 log = logging.getLogger("agenda")
-HORIZONTE_DIAS = 120
+HORIZONTE_DIAS = 180  # medido (oct. 2026): +10 % de conciertos, casi todos de agendas y ticketeras; la lectura tarda lo mismo
 HISTORIA_DIAS = 31
 
 

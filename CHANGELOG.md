@@ -1,5 +1,9 @@
 # Versiones
 
+## 2.74.0 — 2026-10-06
+
+- Horizonte de 120 a **180 días**. Medido antes (diagnóstico `horizonte`): unos 300 conciertos más (+10 %), casi todos de agendas y ticketeras con grandes conciertos y giras (Mariskal, Songkick, conciertos.club, Jackson Live…); las salas pequeñas casi no publican más allá de 4 meses. La lectura tarda lo mismo (Madrid en Vivo marca el tiempo) y la agenda que descarga la web crece un 10 %. Las fichas de los artistas nuevos se completan en las pasadas de cada 2 horas.
+
 ## 2.73.0 — 2026-10-06
 
 - Fuente nueva: **Café Berlín (web oficial)**, berlincafe.es/programas/. Su programa trae día y mes, hora, precio y enlace de compra (su ticketera o DICE); las sesiones de Berlín Club (DJ de madrugada) no se toman, y dos pases del mismo concierto se unen ("Varios pases: 19:00, 21:30"). Probado contra la web: 70 conciertos, 55 se unen a los que ya había (ganan la confirmación de la sala) y 15 son nuevos (ciclo IMPULSO con Roberto Fonseca, Isaiah Sharkey o Michael Mayo, Micromambo, Gitano de Palo…). Era la sala con más conciertos sin web leída después de La Coquette y El Despertar.
