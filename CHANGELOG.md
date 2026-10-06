@@ -1,5 +1,9 @@
 # Versiones
 
+## 2.71.1 — 2026-10-06
+
+- Enlace de compra: las páginas de conciertos.club que ahora se leen llevan un enlace de promoción a otro evento ("The Vee Bees") o al primero de la sala, y quitaban el bueno de otra web (Muse, Carolina Durante, Cala Vento…). Ahora se salta un enlace que la web pone en las páginas de tres o más artistas, o cuya dirección describe otro concierto ("bal-bliss-en-vivo" para The Big Tigers), y se usa el de la siguiente página. Con los datos de hoy: 740 conciertos con enlace (antes 717); 34 lo ganan y 11 lo pierden, casi todos enlaces que eran de otro concierto o una noticia.
+
 ## 2.71.0 — 2026-10-06
 
 **Triple check (agenda + web de la sala + página de compra): menos huecos por fallos propios.**

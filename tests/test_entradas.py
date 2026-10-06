@@ -172,7 +172,8 @@ def test_enlace_de_compra_de_varios_artistas_no_se_usa():
     stats = aplicar_entradas(recs, cache)
     assert "entradas" not in recs[0] and "entradas" not in recs[1]
     assert recs[2]["entradas"]["url"].endswith("/cumbia")  # el mismo espectáculo en dos fechas sí
-    assert stats.get("entradas_genericas") == 2
+    # ya no llegan a ponerse: la dirección ("gumbo-jam-1") es de otro concierto
+    assert not stats.get("entradas_genericas")
 
 
 def test_misma_url_desde_varias_secciones_es_la_pagina_del_concierto():
@@ -185,3 +186,25 @@ def test_misma_url_desde_varias_secciones_es_la_pagina_del_concierto():
     usos = usos_de_url([r, otro, otro2])
     assert [p for p, _ in paginas_de(r, usos)] == [u]          # una vez
     assert paginas_de(otro, usos) == []                         # la agenda de dos conciertos sí es un listado
+
+
+def test_enlace_de_promocion_o_de_otro_concierto_no_se_usa():
+    """conciertos.club pone en cada página un enlace a otro evento ("the-vee-bees") o al primero de la sala: se salta
+    y se usa el de la siguiente página."""
+    from scraper.entradas import aplicar_entradas, de_otro_concierto, menciona_artista
+    assert de_otro_concierto("https://entradas.conciertos.club/es/events/bal-bliss-en-vivo", {"artista": "The Big Tigers"})
+    assert not de_otro_concierto("https://feverup.com/m/601742", {"artista": "Tay Oskee"})  # opaca: no dice nada
+    assert menciona_artista("https://x.com/events/reeler-chavalas-y-mexin-madrid", {"artista": "reeler"})
+    promo = "https://entradas.conciertos.club/es/events/the-vee-bees"
+    cc = lambda a: {"enlaces": [{"url": promo, "nombre": "conciertos.club", "compra": True}]}  # noqa: E731
+    cache, recs = {}, []
+    for a in ("Carolina Durante", "Muse", "Cala Vento"):
+        cache[f"https://conciertos.club/{a}"] = {"fecha": "2026-10-01", "d": cc(a)}
+        cache[f"https://cpm.com/{a}"] = {"fecha": "2026-10-01", "d": {"enlaces": [
+            {"url": f"https://feverup.com/m/{len(a)}", "nombre": "Fever", "compra": True}]}}
+        recs.append({"artista": a, "fecha": "2026-10-10", "fuentes": [
+            {"id": "cc_buscador", "nombre": "conciertos.club", "url": f"https://conciertos.club/{a}"},
+            {"id": "cpm", "nombre": "Conciertos por Madrid", "url": f"https://cpm.com/{a}"}]})
+    aplicar_entradas(recs, cache)
+    assert [r["entradas"]["url"] for r in recs] == ["https://feverup.com/m/16", "https://feverup.com/m/4",
+                                                     "https://feverup.com/m/10"]

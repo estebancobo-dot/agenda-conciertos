@@ -396,12 +396,44 @@ def _resumen(d: dict) -> dict:
     return out
 
 
-def destino_compra(d: dict) -> str | None:
-    """La página de entradas de este concierto que dice una página: la del JSON-LD o el enlace de compra."""
+def _palabras_url(url: str) -> list[str]:
+    from .normalize import norm
+    tramo = [x for x in urlsplit(url).path.split("/") if x][-1:] or [""]
+    return [w for w in re.split(r"[^a-z0-9]+", norm(tramo[0])) if w.isalpha() and len(w) >= 3]
+
+
+def _palabras_artista(r: dict) -> set[str]:
+    from .normalize import norm
+    return {w for n in [r.get("artista") or ""] + list(r.get("invitados") or [])
+            for w in re.findall(r"[a-z0-9]+", norm(n)) if len(w) >= 3}
+
+
+def menciona_artista(url: str, r: dict) -> bool:
+    """La dirección nombra al artista ("reeler-chavalas-y-mexin-madrid" para Reeler)."""
+    propias = _palabras_artista(r)
+    return any(w in propias or any(w in p or p in w for p in propias if len(p) >= 4) for w in _palabras_url(url))
+
+
+def de_otro_concierto(url: str, r: dict) -> bool:
+    """La dirección describe otro concierto: su último tramo tiene dos o más palabras ("bal-bliss-en-vivo") y ninguna
+    es del artista ni de sus invitados ("The Big Tigers"). Las direcciones opacas (feverup.com/m/601742) no dicen nada."""
+    return len(_palabras_url(url)) >= 2 and not menciona_artista(url, r)
+
+
+def destinos_compra(d: dict) -> list[str]:
+    """Las páginas de entradas que dice una página, de la más fiable a la menos: la del JSON-LD y los enlaces de
+    compra."""
+    out = []
     for u in [d.get("entradas_jsonld")] + [e["url"] for e in sorted(d.get("enlaces") or [], key=lambda e: not e["compra"])]:
-        if u and _especifica(u):
-            return u
-    return None
+        if u and _especifica(u) and u not in out:
+            out.append(u)
+    return out
+
+
+def destino_compra(d: dict, saltar: set | None = None) -> str | None:
+    """La página de entradas de este concierto que dice una página (sin las de `saltar`: enlaces de promoción que la
+    web pone en las páginas de varios artistas, como el "próximo evento" de conciertos.club)."""
+    return next((u for u in destinos_compra(d) if u not in (saltar or ())), None)
 
 
 def leer_entradas(recs: list[dict], cache: dict, fetcher, hoy: date, presupuesto_seg: float,
@@ -529,6 +561,13 @@ def aplicar_entradas(recs: list[dict], cache: dict) -> dict:
         for x in r.get("fuentes") or []:
             if x.get("entradas"):
                 compra_de[limpiar(x["entradas"])].add(norm(r.get("artista") or ""))
+    # enlaces de compra que una web pone en las páginas de artistas distintos: son de promoción, no de ese concierto
+    por_destino: dict[str, set] = defaultdict(set)
+    for r in recs:
+        for _, d, _n in _paginas_leidas(r, cache):
+            for t in destinos_compra(d):
+                por_destino[t].add(norm(r.get("artista") or ""))
+    promos = {t for t, a in por_destino.items() if len(a) > 2}  # dos pueden ser cabeza y telonero
     c = Counter()
     for r in recs:
         # deshacer lo de pasadas anteriores
@@ -551,7 +590,9 @@ def aplicar_entradas(recs: list[dict], cache: dict) -> dict:
                         and len(compra_de[limpiar(x["entradas"])]) <= 2), None)
         if not ent:
             for u, d, nombre in pags:
-                t = destino_compra(d) if not ticketera(u) else None
+                saltar = {x for x in destinos_compra(d) if de_otro_concierto(x, r)
+                          or (x in promos and not menciona_artista(x, r))}
+                t = destino_compra(d, saltar) if not ticketera(u) else None
                 if t and not _NO.search(t):
                     ent = {"url": t, "nombre": ticketera(t), "via": nombre}
                     break
