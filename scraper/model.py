@@ -20,6 +20,7 @@ class RawEvent:
     nota: str | None = None        # aviso propio de la fuente (p. ej. año deducido)
     imagen: str | None = None      # imagen del evento que publica la fuente (cartel o foto)
     tipo: str | None = None        # "festival" si la fuente lo dice (Songkick: /festivals/)
+    entradas: str | None = None    # enlace de compra que la fuente da para este concierto (Madrid en Vivo)
     spotify: str | None = None     # identificador de Spotify del artista principal, si la fuente lo da (Enterticket)
     fuente: str = ""               # id de la fuente (lo rellena el orquestador)
 

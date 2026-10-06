@@ -135,8 +135,9 @@ MEV_API_PAGINAS = 12  # 100 eventos por página, los publicados más recientemen
 
 
 def mev_datos_ficha(e, acf: dict) -> None:
-    """Hora y precio que la sala puso en la ficha del evento (campos de la API: hora_del_pase, precio_del_evento,
-    entrada_libre). El listado del buscador no los trae. Solo si la ficha es del mismo día que el evento."""
+    """Hora, precio y enlace de compra que la sala puso en la ficha del evento (campos de la API: hora_del_pase,
+    precio_del_evento, entrada_libre, venta_de_entradas_url). El listado del buscador no los trae. Solo si la ficha
+    es del mismo día que el evento."""
     f = str(acf.get("fecha_del_evento") or "")
     if len(f) == 8 and f != e.fecha.strftime("%Y%m%d"):
         return  # evento con varias fechas: la ficha puede ser de otra
@@ -146,6 +147,9 @@ def mev_datos_ficha(e, acf: dict) -> None:
         e.hora = pases[0].zfill(5)
         if len(pases) > 1:
             e.nota = clean(f"{e.nota or ''} Varios pases: {', '.join(pases)}.")
+    venta = str(acf.get("venta_de_entradas_url") or "").strip()
+    if re.match(r"https?://", venta) and not e.entradas:
+        e.entradas = venta[:500]
     if not e.precio:
         if acf.get("entrada_libre"):
             e.precio = "Entrada libre"

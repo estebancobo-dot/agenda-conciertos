@@ -512,9 +512,16 @@ def confianza(recs: list[dict], cache: dict) -> dict[str, dict]:
 def aplicar_entradas(recs: list[dict], cache: dict) -> dict:
     """Entradas, hora/precio que falten, agotado/cancelado y cartel de la gira, a partir de las páginas leídas.
     Idempotente: lo que se puso en una pasada anterior se quita y se vuelve a calcular con la regla actual."""
+    from .normalize import norm
     conf = confianza(recs, cache)
     genericas = imagenes_genericas(recs)
     usos = Counter(sin_fragmento(x.get("url")) for r in recs for x in r.get("fuentes") or [] if x.get("url"))
+    # un enlace de compra que la fuente pone a más de dos artistas es una página general (la taquilla entera)
+    compra_de: dict[str, set] = defaultdict(set)
+    for r in recs:
+        for x in r.get("fuentes") or []:
+            if x.get("entradas"):
+                compra_de[limpiar(x["entradas"])].add(norm(r.get("artista") or ""))
     c = Counter()
     for r in recs:
         # deshacer lo de pasadas anteriores
@@ -530,6 +537,11 @@ def aplicar_entradas(recs: list[dict], cache: dict) -> dict:
         ent = next(({"url": limpiar(x["url"]), "nombre": ticketera(x["url"]), "via": x.get("nombre", "").split(" (")[0]}
                     for x in r.get("fuentes") or [] if ticketera(x.get("url")) and _especifica(x.get("url"))
                     and usos[sin_fragmento(x["url"])] == 1 and not _NO.search(x["url"])), None)
+        if not ent:  # el enlace de compra que da la fuente (Madrid en Vivo: el que puso la sala en su ficha)
+            ent = next(({"url": limpiar(x["entradas"]), "nombre": ticketera(x["entradas"]), "via": x.get("nombre", "").split(" (")[0]}
+                        for x in r.get("fuentes") or [] if x.get("entradas") and ticketera(x["entradas"])
+                        and _especifica(x["entradas"]) and not _NO.search(x["entradas"])
+                        and len(compra_de[limpiar(x["entradas"])]) <= 2), None)
         if not ent:
             for u, d, nombre in pags:
                 t = destino_compra(d) if not ticketera(u) else None

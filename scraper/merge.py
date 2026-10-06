@@ -251,6 +251,8 @@ def _fuentes(items: list[Item]) -> list[dict]:
         m = _DE_CACHE.search(it.ev.nota or "")
         if m:  # hoy no se pudo leer esa web: el dato es de su última lectura completa
             f["cache"] = m.group(1)
+        if it.ev.entradas:  # el enlace de compra que esa web da para este concierto
+            f["entradas"] = it.ev.entradas
         out.append(f)
     return out
 

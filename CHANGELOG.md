@@ -1,5 +1,10 @@
 # Versiones
 
+## 2.69.0 — 2026-10-06
+
+- Enlace de compra de Madrid en Vivo: la ficha de cada evento en su API (la que ya se lee para la hora, el precio y los estilos, sin peticiones nuevas) trae el enlace de venta que puso la sala (`venta_de_entradas_url`, 191 de 200 eventos). Se usa cuando es de una ticketera y de ese concierto: 62 de 200 en el diagnóstico (Fever, Geeticket…). Los demás no son de compra (Linktree, portada o programación de la sala) y no se ponen. Un mismo enlace para más de dos artistas es la taquilla general, no la de ese concierto, y tampoco se pone.
+- Diagnóstico nuevo `diagnostico.yml` con `webs=mev`: campos de la ficha de Madrid en Vivo y dominios de sus enlaces de venta.
+
 ## 2.68.1 — 2026-10-06
 
 - Fuera el lector genérico de webs de sala y su diagnóstico: medido, no aportaba nada (las 8 webs con datos estructurados ya eran fuentes).
