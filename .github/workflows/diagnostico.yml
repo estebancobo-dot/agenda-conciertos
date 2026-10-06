@@ -9,7 +9,7 @@ on:
         description: "Páginas por web"
         default: "16"
       webs:
-        description: "Solo estas webs (separadas por comas; vacío = todas), 'fuentes', 'entradas', 'cartel', 'huecos', 'mev' (enlace de compra de Madrid en Vivo), 'horizonte' (conciertos con más de 120 días), 'candidatas', 'probar:ID[,ID]' (lector completo de esas fuentes), 'crudo:URL' (lo que devuelve tal cual; URL@texto, URL@enlaces:patrón, URL@json), 'render:URL' (igual, con un navegador real), o la URL de una página"
+        description: "Solo estas webs (separadas por comas; vacío = todas), 'fuentes', 'entradas', 'cartel', 'huecos', 'mev' (enlace de compra de Madrid en Vivo), 'horizonte' (conciertos con más de 120 días), 'candidatas', 'probar:ID[,ID]' (lector completo de esas fuentes), 'crudo:URL' (lo que devuelve tal cual; URL@texto, URL@enlaces:patrón, URL@json), 'render:URL' (igual, con un navegador real), 'js:URL[,URL]' (¿se puede leer con navegador? eventos y fechas, con y sin él), o la URL de una página"
         default: ""
 
 permissions:
@@ -29,7 +29,7 @@ jobs:
           cache: pip
       - run: pip install -r requirements.txt
       - run: python tools/datos.py
-      - if: github.event.inputs.webs != 'fuentes' && github.event.inputs.webs != 'entradas' && github.event.inputs.webs != 'cartel' && github.event.inputs.webs != 'huecos' && github.event.inputs.webs != 'mev' && github.event.inputs.webs != 'horizonte' && !startsWith(github.event.inputs.webs, 'candidatas') && !startsWith(github.event.inputs.webs, 'probar:') && !startsWith(github.event.inputs.webs, 'crudo:') && !startsWith(github.event.inputs.webs, 'render:') && !startsWith(github.event.inputs.webs, 'http') && github.event.inputs.webs != 'lotes'
+      - if: github.event.inputs.webs != 'fuentes' && github.event.inputs.webs != 'entradas' && github.event.inputs.webs != 'cartel' && github.event.inputs.webs != 'huecos' && github.event.inputs.webs != 'mev' && github.event.inputs.webs != 'horizonte' && !startsWith(github.event.inputs.webs, 'candidatas') && !startsWith(github.event.inputs.webs, 'probar:') && !startsWith(github.event.inputs.webs, 'crudo:') && !startsWith(github.event.inputs.webs, 'render:') && !startsWith(github.event.inputs.webs, 'js:') && !startsWith(github.event.inputs.webs, 'http') && github.event.inputs.webs != 'lotes'
         run: python tools/diagnostico_agenda.py ${{ github.event.inputs.n || '16' }} "${{ github.event.inputs.webs }}"
       - if: github.event.inputs.webs == 'fuentes'
         run: python tools/diagnostico_fuentes.py ${{ github.event.inputs.n || '30' }}
@@ -49,7 +49,7 @@ jobs:
         env:
           WEBS: ${{ github.event.inputs.webs }}
         run: python tools/diagnostico_candidatas.py $(echo "${WEBS#candidatas}" | tr -d ":")
-      - if: startsWith(github.event.inputs.webs, 'render:') || startsWith(github.event.inputs.webs, 'probar:')
+      - if: startsWith(github.event.inputs.webs, 'render:') || startsWith(github.event.inputs.webs, 'probar:') || startsWith(github.event.inputs.webs, 'js:')
         run: pip install playwright && python -m playwright install --with-deps chromium
       - if: startsWith(github.event.inputs.webs, 'probar:')
         env:
@@ -65,3 +65,7 @@ jobs:
         env:
           WEBS: ${{ github.event.inputs.webs }}
         run: python tools/diagnostico_candidatas.py --render $(echo "${WEBS#render:}" | tr ',' ' ')
+      - if: startsWith(github.event.inputs.webs, 'js:')
+        env:
+          WEBS: ${{ github.event.inputs.webs }}
+        run: python tools/diagnostico_render.py $(echo "${WEBS#js:}" | tr ',' ' ')
