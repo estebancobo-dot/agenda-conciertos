@@ -24,6 +24,7 @@ LIGEROS = ("id", "fecha", "hora", "artista", "invitados", "festival", "cartel_in
            "nacionalidad_estimada", "primera_vez_visto", "hora_estimada", "estilo_tributo", "congelado")
 
 
+
 def genericas(recs: list[dict]) -> set[str]:
     """Imágenes que la agenda pone a muchos artistas distintos: el fondo genérico de Madrid en Vivo (392
     conciertos), el logo de una sala… No son del artista: mejor las iniciales que una foto que confunde."""
@@ -53,6 +54,8 @@ def ligero(r: dict) -> dict:
         out["estilo_fuente"] = [{"estilo": e} for e in etiquetas]
     if r.get("agotado"):
         out["agotado"] = True
+    if (r.get("nivel") or {}).get("nivel") == "gran formato":  # la tarjeta solo marca el gran formato
+        out["gf"] = True
     nivel = (r.get("confianza") or {}).get("nivel")
     if nivel:  # c confirmado, p probable, s sin confirmar (filtro y marca de la tarjeta)
         out["conf"] = {"confirmado": "c", "probable": "p"}.get(nivel, "s")

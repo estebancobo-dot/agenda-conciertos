@@ -869,6 +869,16 @@ def fuentes_congeladas(estado: dict, resultados: dict | None, hoy: date) -> dict
     return out
 
 
+def aplicar_nivel(r: dict, cache: dict) -> None:
+    """Nivel del concierto (gran formato, formato medio, formato íntimo) con su porqué; solo información."""
+    from .nivel import nivel
+    n = nivel(r, cache)
+    if n:
+        r["nivel"] = n
+    else:
+        r.pop("nivel", None)
+
+
 def marcar_congelado(r: dict, congeladas: dict[str, str], fuentes: dict[str, Source], hoy: date) -> None:
     r.pop("congelado", None)
     if (r.get("oculto") or {}).get("congelado"):
@@ -1417,6 +1427,7 @@ def ejecutar(hoy: date | None = None, solo: list[str] | None = None, fetcher: Fe
         marcar_congelado(r, congeladas, por_id, hoy)
         r["confianza"] = puntuar_confianza(r, por_id)
         normalizar(r, cache_art)
+        aplicar_nivel(r, cache_art)
     recs.sort(key=lambda r: (r["fecha"], r["hora"] or "99", norm(r["artista"])))
     # estilos que no se han podido traducir a categoría
     sin_mapear = sorted({e["estilo"] + " (" + e["fuente"] + ")" for r in recs for e in r["estilo_fuente"]
@@ -1543,6 +1554,7 @@ def ejecutar_fichas(hoy: date | None = None, presupuesto_seg: float = 3000) -> d
         marcar_congelado(r, congeladas, por_id, hoy)
         r["confianza"] = puntuar_confianza(r, por_id)
         normalizar(r, cache_art)
+        aplicar_nivel(r, cache_art)
     _write("concerts.json", datos)
     escribir_csv(recs, DATA / "concerts.csv")
     informe = _read("informe.json", {})
@@ -1582,5 +1594,6 @@ def reaplicar_fichas() -> None:
         marcar_congelado(r, congeladas, por_id, hoy)
         r["confianza"] = puntuar_confianza(r, por_id)
         normalizar(r, cache)
+        aplicar_nivel(r, cache)
     _write("concerts.json", datos)
     escribir_csv(recs, DATA / "concerts.csv")

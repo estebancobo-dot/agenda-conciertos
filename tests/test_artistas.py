@@ -146,12 +146,14 @@ def test_enriquecer_solo_completa_lo_que_falta():
     recs = [{"artista": "Grupo Pequeño", "en_foco": True, "fecha": "2026-10-17"}]
     st = A.enriquecer(recs, cache, date(2026, 9, 29), fetcher_dc=FakeFetcher({}), fetcher_wp=FakeFetcher({}),
                       fetcher_lf=lf, clave_lastfm="CLAVE", fetcher_mb=MB_VACIO, mb_cache={})
-    assert st["completados"] == 1 and st["lastfm"] == 1 and len(lf.urls) == 1
+    # etiquetas y, como Last.fm lo encuentra, también sus oyentes (para el nivel del concierto)
+    assert st["completados"] == 1 and st["lastfm"] == 1 and len(lf.urls) == 2 and "getinfo" in lf.urls[1]
     assert cache["grupo pequeno"]["lastfm"]["estilos"] == ["Stoner Rock", "Hard Rock"]
+    assert "audiencia" in cache["grupo pequeno"]
     # la segunda vez ya no consulta nada
     st = A.enriquecer(recs, cache, date(2026, 9, 29), fetcher_dc=FakeFetcher({}), fetcher_wp=FakeFetcher({}),
                       fetcher_lf=lf, clave_lastfm="CLAVE", fetcher_mb=MB_VACIO, mb_cache={})
-    assert st["desde_cache"] == 1 and len(lf.urls) == 1
+    assert st["desde_cache"] == 1 and len(lf.urls) == 2
 
 
 def test_discogs_id_de_wikidata_borrado_busca_por_nombre():

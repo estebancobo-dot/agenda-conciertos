@@ -473,6 +473,35 @@ def buscar_lastfm(f: Fetcher, nombre: str, mbid: str | None, key: str,
     return r
 
 
+def buscar_audiencia(f: Fetcher, nombre: str, mbid: str | None, key: str, via: str = "") -> dict:
+    """Oyentes del artista en Last.fm (artist.getInfo): la medida de cuánto se le escucha que sirve para el nivel
+    del concierto. Por identificador de MusicBrainz si lo hay; si no, por el nombre exacto (sin autocorrección), y
+    se guarda pero el nivel no lo usa (puede ser un homónimo: ver nivel.audiencia_segura)."""
+    import requests
+    q = f"mbid={mbid}" if mbid else f"artist={quote(nombre)}&autocorrect=0"
+    try:
+        data = json.loads(f.get(f"{LASTFM}?method=artist.getinfo&{q}&api_key={key}&format=json"))
+    except requests.HTTPError as e:
+        if e.response is None or e.response.status_code not in (400, 404):
+            raise
+        try:
+            data = e.response.json()
+        except ValueError:
+            raise e from None
+    if "error" in data:
+        return {"encontrado": False, "motivo": data.get("message", "no encontrado")}
+    art = data.get("artist") or {}
+    if not mbid and (art.get("name") or "").casefold() != nombre.casefold():
+        return {"encontrado": False, "motivo": f"Last.fm devuelve otro nombre ({art.get('name')})"}
+    st = art.get("stats") or {}
+    try:
+        oyentes = int(st.get("listeners") or 0)
+    except (TypeError, ValueError):
+        oyentes = 0
+    return {"encontrado": bool(oyentes), "oyentes": oyentes, "nombre": art.get("name"),
+            "url": art.get("url"), "identificado_por": via if mbid else "coincidencia por nombre"}
+
+
 def buscar_lastfm_bio(f: Fetcher, nombre: str, mbid: str | None, key: str) -> dict:
     """País dicho en la biografía de Last.fm ("X is a Spanish band from Madrid")."""
     from .origen import pais_en_texto
@@ -628,7 +657,7 @@ def _tiene_estilo(ent: dict) -> bool:
 
 def _pasos_con_error(ent: dict) -> list[str]:
     return [k for k in ("wikipedia", "wikidata", "discogs", "lastfm", "musicbrainz", "lastfm_bio", "agenda",
-                        "wikipedia_texto")
+                        "wikipedia_texto", "audiencia")
             if str((ent.get(k) or {}).get("motivo", "")).startswith("error")]
 
 
@@ -798,7 +827,8 @@ def enriquecer(recs: list[dict], cache: dict, hoy: date, presupuesto_seg: float 
         falta_wd = ent.get("wikipedia", {}).get("wikidata") and "wikidata" not in ent
         falta_lf = clave_lastfm and ("lastfm" not in ent or _lastfm_mejorable(ent)) and not _tiene_estilo(ent)
         falta_mb = "musicbrainz" not in ent or _mb_sin_area(ent) or _dc_sin_discos(ent) or _falta_spotify(ent, spotify_de.get(k))
-        if falta_wd or falta_lf or falta_mb or _falta_origen(ent, clave_lastfm) or _pasos_con_error(ent):
+        falta_aud = clave_lastfm and _encontrado(ent) and "audiencia" not in ent
+        if falta_wd or falta_lf or falta_mb or falta_aud or _falta_origen(ent, clave_lastfm) or _pasos_con_error(ent):
             pendientes.append((k, nombre, ent))
         else:
             stats["desde_cache"] += 1
@@ -866,6 +896,10 @@ def enriquecer(recs: list[dict], cache: dict, hoy: date, presupuesto_seg: float 
             lf = ent["lastfm"]
             mb = (ent.get("musicbrainz") or {}).get("mbid") if lf.get("identificado_por") != "coincidencia por nombre" else None
             paso("lastfm_bio", buscar_lastfm_bio, fetcher_lf, nombre, mb, clave_lastfm)
+        # oyentes en Last.fm (nivel del concierto), solo de artistas que alguna web de música conoce
+        if clave_lastfm and "audiencia" not in ent and _encontrado(ent):
+            mbid, via = _mbid(ent)
+            paso("audiencia", buscar_audiencia, fetcher_lf, nombre, mbid, clave_lastfm, via)
         if _falta_agenda(ent) and urls_de.get(k):
             paso("agenda", buscar_en_agenda, fetcher_ag, nombre, urls_de[k])
         if not (ficha(ent) or {}).get("pais") and "wikipedia_texto" not in ent and len(norm(nombre)) >= 4:

@@ -1,5 +1,15 @@
 # Versiones
 
+## 2.68.0 — 2026-10-06
+
+**Nivel del concierto (solo información, sin filtros).**
+
+- Cada concierto tiene un nivel: "gran formato", "formato medio" o "formato íntimo", con su porqué en la ficha (por ejemplo "Movistar Arena: gran recinto · Muse: 7,1 M de oyentes en Last.fm"). La tarjeta solo marca el gran formato.
+- Dos señales medibles. La primera es el tipo de recinto (`data/salas_tipo.json`, solo tipos y sin aforos: gran recinto, teatro o auditorio, sala grande, sala, club o bar, tablao, hotel, centro cultural; los centros culturales, teatros, auditorios e iglesias que no están en la lista se reconocen por el nombre). La segunda son los oyentes del artista en Last.fm (paso nuevo "audiencia" en las fichas).
+- Los oyentes solo cuentan si Last.fm identificó al artista por su identificador de MusicBrainz: por el nombre solo, un homónimo famoso daría a un grupo local millones de oyentes que no son suyos. Tampoco cuentan en tributos, festivales, jams ni Candlelight.
+- Sin ninguna de las dos señales no hay nivel: no se adivina. Con los datos de hoy (3151 conciertos), solo por el recinto: 143 de gran formato, 646 de formato medio, 2148 de formato íntimo y 214 sin nivel (plazas, aire libre y salas sin tipo). Los oyentes se irán sumando en las próximas pasadas de fichas.
+- El lector genérico de webs de sala no se usa: el diagnóstico encontró solo 8 webs con datos estructurados, y todas eran ya fuentes.
+
 ## 2.67.0 — 2026-10-06
 
 - Filtro de origen: "Resto del mundo" pasa a llamarse "Internacional".

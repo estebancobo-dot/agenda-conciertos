@@ -484,6 +484,7 @@ def recorrido(b):
     confirmacion_web(pg)
     normalizacion_web(pg)
     conflicto_fecha_web(pg)
+    nivel_web(pg)
     fase_b_web(pg)
 
     # informe
@@ -1323,6 +1324,24 @@ def conflicto_fecha_web(pg):
         tarjeta = pg.evaluate(f"estadoMini(BYID['{cid}'])")
         check("Funcional", "Fuente que ya no se puede leer: «sin reconfirmar» en la tarjeta y la ficha", f"{n} conciertos",
               ok="sin reconfirmar" in tarjeta and "Sin reconfirmar" in txt)
+
+
+def nivel_web(pg):
+    """Nivel del concierto (solo información): la tarjeta marca el gran formato y la ficha dice el nivel y su porqué
+    (tipo de recinto y oyentes con identidad segura). No hay filtro de nivel."""
+    cid = pg.evaluate("(DATA.find(r=>r.fecha>=HOY&&r.gf)||{}).id||null")
+    if not cid:
+        check("Funcional", "Nivel del concierto en la tarjeta y la ficha", "los datos aún no lo traen", ok=False, grave=False)
+        return
+    n = pg.evaluate("DATA.filter(r=>r.fecha>=HOY&&r.gf).length")
+    pg.evaluate(f"location.hash='#concierto/{cid}'")
+    pg.wait_for_selector(".rows", timeout=15000)
+    pg.wait_for_selector("#nivel", timeout=15000)
+    fila = pg.inner_text("#nivel")
+    tarjeta = pg.evaluate(f"card(BYID['{cid}'])")
+    check("Funcional", "Nivel del concierto: «gran formato» en la tarjeta y nivel con su porqué en la ficha",
+          f"{n} de gran formato · {fila.splitlines()[-1][:70]!r}",
+          ok="gran formato" in tarjeta and "Gran formato" in fila and ("recinto" in fila or "oyentes" in fila))
 
 
 def normalizacion_web(pg):
