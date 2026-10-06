@@ -1,5 +1,10 @@
 # Versiones
 
+## 2.70.1 — 2026-10-06
+
+- Revertida la 2.70.0: las reglas de origen vuelven a ser las de antes (se cambiaron sin aprobarlo).
+- Pruebas nuevas, sin tocar el origen: recorrido completo con datos fijos y sin red (agendas, unión de conciertos, fichas, origen, nivel, enlace de compra, datos de la web y recalcular sin cambios) y la web en un navegador real con esos datos (filtros de origen, tarjeta, ficha con nivel y botón de compra), que corre en cada validación de la web.
+
 ## 2.69.0 — 2026-10-06
 
 - Enlace de compra de Madrid en Vivo: la ficha de cada evento en su API (la que ya se lee para la hora, el precio y los estilos, sin peticiones nuevas) trae el enlace de venta que puso la sala (`venta_de_entradas_url`, 191 de 200 eventos). Se usa cuando es de una ticketera y de ese concierto: 62 de 200 en el diagnóstico (Fever, Geeticket…). Los demás no son de compra (Linktree, portada o programación de la sala) y no se ponen. Un mismo enlace para más de dos artistas es la taquilla general, no la de ese concierto, y tampoco se pone.
