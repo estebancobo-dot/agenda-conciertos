@@ -1,5 +1,9 @@
 # Versiones
 
+## 2.70.2 — 2026-10-06
+
+- Nivel: los oyentes son los del artista de la ficha del concierto (la misma que da estilo y origen), no los de un trozo del título. "Blue Big Band" ya no lleva los 716 mil oyentes de "Blue", ni "MR. BLACK" los de "Black". Tampoco los espectáculos sobre otro artista ("A Night With The Beatles"). Con los datos de hoy, 215 conciertos con artista de 100.000 oyentes o más; revisados los que tienen un nombre distinto del título: son el cabeza de cartel (Gondwana, Accept, Temples…).
+
 ## 2.70.1 — 2026-10-06
 
 - Revertida la 2.70.0: las reglas de origen vuelven a ser las de antes (se cambiaron sin aprobarlo).

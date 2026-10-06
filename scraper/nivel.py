@@ -26,6 +26,8 @@ FORMATO_RECINTO = {"gran recinto": 3, "teatro o auditorio": 2, "sala grande": 2,
 POR_NOMBRE = [(re.compile(r"^(centro (socio)?cultural|biblioteca)\b", re.I), "centro cultural"),
               (re.compile(r"^(teatro|auditorio|cine ?& ?teatro)\b", re.I), "teatro o auditorio"),
               (re.compile(r"^(bas[ií]lica|parroquia|iglesia|catedral|convento|monasterio|ermita)\b", re.I), "iglesia")]
+_SOBRE_OTRO = re.compile(r"\b(a night with|a night of|noche de|una noche con|the music of|la musica de|homenaje|"
+                         r"tribute|tributo|legacy|experience|celebrating|plays|canta a|interpreta a)\b")
 NIVELES = {3: "gran formato", 2: "formato medio", 1: "formato íntimo"}
 MUY_ESCUCHADO, CONOCIDO, MINORITARIO = 1_000_000, 100_000, 10_000
 
@@ -77,13 +79,21 @@ def nivel(r: dict, cache: dict) -> dict | None:
     p_recinto = FORMATO_RECINTO.get(recinto or "", 0)
     aud, quien = None, None
     con_artista = not (r.get("festival") or r.get("origen_no_aplica") or sin_artista(r.get("artista") or "")
-                       or "tributos y versiones" in (r.get("grupos") or []))
+                       or "tributos y versiones" in (r.get("grupos") or [])
+                       # "A Night With The Beatles": un espectáculo sobre otro artista, no el artista
+                       or _SOBRE_OTRO.search(norm(r.get("artista") or "")))
     if con_artista:
-        for k in claves_ficha(r) or [r.get("artista") or ""]:
-            aud = audiencia_segura(cache.get(norm(k)))
-            if aud:
-                quien = aud.get("nombre") or k
-                break
+        # la misma ficha que da el estilo y el origen (el primer nombre con ficha), no la de un trozo del título:
+        # "Blue Big Band" no es "Blue" ni "MR. BLACK" es "Black"
+        from .artistas import ficha
+        from .nombres import _FORMACION
+        claves = claves_ficha(r)
+        # sin la formación ("Blue Big Band" → "Blue") es otro artista: sus oyentes no son los de esta banda
+        derivadas = {norm(_FORMACION.sub("", x).strip()) for x in claves if _FORMACION.search(x)}
+        k = next((k for k in claves if ficha(cache.get(norm(k))) and norm(k) not in derivadas), None)
+        aud = audiencia_segura(cache.get(norm(k))) if k else None
+        if aud:
+            quien = aud.get("nombre") or k
     n = (aud or {}).get("oyentes") or 0
     # los oyentes solo suben el nivel, nunca lo bajan: Last.fm se usa poco en España y se queda corto con artistas
     # españoles y latinos (flamenco, copla, pop latino), así que pocos oyentes no prueban un concierto pequeño

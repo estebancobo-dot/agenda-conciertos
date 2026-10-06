@@ -9,7 +9,8 @@ MBID = "identificador de MusicBrainz en Wikidata"
 
 
 def aud(n, via=MBID):
-    return {"audiencia": {"encontrado": True, "oyentes": n, "nombre": "Muse", "identificado_por": via}}
+    return {"audiencia": {"encontrado": True, "oyentes": n, "nombre": "Muse", "identificado_por": via},
+            "discogs": {"encontrado": True, "nombre": "Muse", "url": "/artist/1"}}  # con ficha
 
 
 def test_tipo_de_recinto_por_lista_y_por_nombre():
@@ -63,6 +64,15 @@ def test_tributos_y_festivales_no_usan_oyentes():
     assert nivel({"artista": "Muse", "sala": "Plaza Mayor", "festival": True}, cache) is None
     t = nivel({"artista": "Muse", "sala": "Intruso Bar", "grupos": ["tributos y versiones"]}, cache)
     assert t["nivel"] == "formato íntimo" and "oyentes" not in t
+
+
+def test_oyentes_del_mismo_artista_no_de_un_trozo_del_titulo():
+    blue = {"blue": {**aud(716_000), "discogs": {"encontrado": True, "nombre": "Blue", "url": "/a/1"}},
+            "the beatles": {**aud(6_700_000), "discogs": {"encontrado": True, "nombre": "The Beatles", "url": "/a/2"}}}
+    # "Blue Big Band" sin ficha propia: no se toman los oyentes de "Blue"
+    assert "oyentes" not in (nivel({"artista": "Blue Big Band", "sala": "Intruso Bar"}, blue) or {})
+    # un espectáculo sobre otro artista no lleva sus oyentes
+    assert "oyentes" not in (nivel({"artista": "A Night With The Beatles", "sala": "Moby Dick Club"}, blue) or {})
 
 
 def test_texto_de_oyentes():
