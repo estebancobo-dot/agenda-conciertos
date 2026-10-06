@@ -540,3 +540,37 @@ def jacksonlive(ctx: Ctx):
             yield from nuevos
             if len(evs) < 100 or not nuevos:
                 break
+
+
+# ------------------------------------------------------------------ Festify Indie
+# Agenda de conciertos indie y pop. La página se monta con JavaScript (el HTML llega vacío): se lee con un navegador
+# real (su robots.txt lo permite). Los primeros conciertos traen datos estructurados (JSON-LD); el resto, solo la
+# tarjeta: un enlace a /evento/… con el artista y "Sala · 8 oct 2026".
+FESTIFY = "https://festifyindie.com/conciertos/madrid"
+_FESTIFY_LINEA = re.compile(r"^(?P<sala>.+?)\s*·\s*(?P<fecha>\d{1,2}\s+[a-zé]+\.?\s+20\d\d)$", re.I)
+
+
+def festify_parse(html: str, page_url: str, today: date) -> list:
+    sp = soup_of(html)
+    out: dict[str, object] = {}
+    for ev in jsonld_events(sp):
+        e = ld_to_raw(ev, today, page_url)
+        if e and e.fecha >= today:
+            out[e.url] = e
+    for a in sp.select('a[href*="/evento/"]'):
+        url = urljoin(page_url, a["href"]).split("?")[0].split("#")[0]
+        if url in out:
+            continue
+        lineas = [clean(x) for x in a.get_text("\n").split("\n") if clean(x)]
+        i = next((k for k, x in enumerate(lineas) if _FESTIFY_LINEA.match(x)), None)
+        if not i:  # sin la línea "Sala · fecha" o sin el artista delante: no se adivina
+            continue
+        m = _FESTIFY_LINEA.match(lineas[i])
+        f = parse_fecha_texto(m.group("fecha"), today)
+        if f and f >= today:
+            out[url] = make(f, lineas[i - 1], url, sala=m.group("sala"), ciudad="Madrid")
+    return list(out.values())
+
+
+def festify(ctx: Ctx):
+    yield from festify_parse(ctx.render(FESTIFY), FESTIFY, ctx.today)
