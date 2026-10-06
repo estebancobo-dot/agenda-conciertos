@@ -1,5 +1,9 @@
 # Versiones
 
+## 2.68.1 — 2026-10-06
+
+- Nivel: los oyentes de Last.fm solo suben el nivel, nunca lo bajan ni lo crean solos por debajo de 100.000. Last.fm es mundial pero se usa poco en España y se queda corto con artistas españoles y latinos: pocos oyentes allí no prueban que un concierto sea pequeño.
+
 ## 2.68.0 — 2026-10-06
 
 **Nivel del concierto (solo información, sin filtros).**

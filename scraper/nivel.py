@@ -8,8 +8,9 @@
 
 Niveles: "gran formato" (gran recinto, o artista con 1 millón de oyentes o más), "formato medio" (teatro,
 auditorio o sala grande, o artista con 100.000 o más), "formato íntimo" (sala, club, tablao, hotel o centro
-cultural o iglesia, con un artista con menos de 100.000 oyentes o sin datos). Sin ninguna de las dos señales no hay nivel:
-no se adivina. No se calcula para tributos, festivales ni lo que no tiene un artista (jams, Candlelight): ahí los
+cultural o iglesia, con un artista con menos de 100.000 oyentes o sin datos). Los oyentes solo suben el nivel:
+pocos oyentes en Last.fm no prueban nada (se usa poco en España). Sin sala con tipo ni artista con 100.000 oyentes
+o más no hay nivel: no se adivina. No se calcula para tributos, festivales ni lo que no tiene un artista (jams, Candlelight): ahí los
 oyentes no serían los del concierto; solo cuenta el recinto.
 """
 from __future__ import annotations
@@ -84,15 +85,18 @@ def nivel(r: dict, cache: dict) -> dict | None:
                 quien = aud.get("nombre") or k
                 break
     n = (aud or {}).get("oyentes") or 0
-    p_art = 3 if n >= MUY_ESCUCHADO else 2 if n >= CONOCIDO else 1 if aud else 0
+    # los oyentes solo suben el nivel, nunca lo bajan: Last.fm se usa poco en España y se queda corto con artistas
+    # españoles y latinos (flamenco, copla, pop latino), así que pocos oyentes no prueban un concierto pequeño
+    p_art = 3 if n >= MUY_ESCUCHADO else 2 if n >= CONOCIDO else 0
     p = max(p_recinto, p_art)
     if not p:
         return None
     partes = []
     if recinto:
         partes.append(f"{r.get('sala')}: {recinto}")
-    if aud:
-        partes.append(f"{quien}: {oyentes_txt(n)} en Last.fm ({etiqueta_oyentes(n)})")
+    if aud and (p_art or recinto):
+        # por debajo de 100.000 solo la cifra: "poco escuchado" sería injusto con quien no está en Last.fm
+        partes.append(f"{quien}: {oyentes_txt(n)} en Last.fm" + (f" ({etiqueta_oyentes(n)})" if p_art else ""))
     out = {"nivel": NIVELES[p], "motivo": " · ".join(partes)}
     if recinto:
         out["recinto"] = recinto

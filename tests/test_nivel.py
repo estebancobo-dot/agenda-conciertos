@@ -52,6 +52,9 @@ def test_niveles():
     assert nivel({"artista": "Homonimo", "sala": "Intruso Bar"}, cache)["nivel"] == "formato íntimo"
     assert nivel({"artista": "Homonimo", "sala": "Plaza Mayor"}, cache) is None
     assert nivel({"artista": "Desconocido", "sala": "Plaza Mayor"}, cache) is None
+    # pocos oyentes no bajan el nivel ni lo crean: en Last.fm faltan muchos artistas españoles
+    assert nivel({"artista": "Local", "sala": "Plaza Mayor"}, cache) is None
+    assert nivel({"artista": "Local", "sala": "Movistar Arena"}, cache)["nivel"] == "gran formato"
 
 
 def test_tributos_y_festivales_no_usan_oyentes():
