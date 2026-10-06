@@ -956,7 +956,19 @@ def berlin_parse(html: str, page_url: str, today: date) -> list:
         if compra and compra["href"].startswith("http"):
             e.entradas = compra["href"]
         out.append(e)
-    return out
+    # el mismo concierto en dos pases ("19:00" y "21:30"): uno, con la primera hora y los pases en la nota
+    por_dia: dict[tuple, list] = {}
+    for e in out:
+        por_dia.setdefault((e.fecha, e.artista.lower()), []).append(e)
+    unidos = []
+    for evs in por_dia.values():
+        e = evs[0]
+        horas = sorted({x.hora for x in evs if x.hora})
+        if len(horas) > 1:
+            e.hora = horas[0]
+            e.nota = f"Varios pases: {', '.join(horas)}."
+        unidos.append(e)
+    return unidos
 
 
 def berlin(ctx: Ctx):

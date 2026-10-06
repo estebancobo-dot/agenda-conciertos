@@ -20,12 +20,15 @@ HTML = "".join([
     tarjeta("cafe-berlin", "09", "Ene", "Concierto de enero", "22:30 <br/> Entradas desde: 16,58€",
             "https://dice.fm/event/abc"),
     tarjeta("cafe-berlin", "01", "Sep", "Ya pasó", "20:00", "https://dice.fm/event/old"),
+    tarjeta("cafe-berlin", "25", "Oct", "Blokk Sessions", "21:30", "https://dice.fm/event/b2"),
+    tarjeta("cafe-berlin", "25", "Oct", "Blokk Sessions", "19:00", "https://dice.fm/event/b1"),
 ])
 
 
 def test_berlin():
     evs = {e.artista: e for e in berlin_parse(HTML, "https://berlincafe.es/programas/", date(2026, 10, 6))}
-    assert set(evs) == {"Kike M. Fin de Gira", "Concierto de enero"}  # sin Berlín Club ni lo ya pasado
+    assert set(evs) == {"Kike M. Fin de Gira", "Concierto de enero", "Blokk Sessions"}  # sin Berlín Club ni lo pasado
+    assert (evs["Blokk Sessions"].hora, evs["Blokk Sessions"].nota) == ("19:00", "Varios pases: 19:00, 21:30.")
     k = evs["Kike M. Fin de Gira"]
     assert (k.fecha, k.hora, k.precio, k.sala) == (date(2026, 10, 7), "20:00", "14 €", "Café Berlín")
     assert k.entradas == "https://cafeberlinentradas.com/events/kike-m"

@@ -1,5 +1,10 @@
 # Versiones
 
+## 2.73.0 — 2026-10-06
+
+- Fuente nueva: **Café Berlín (web oficial)**, berlincafe.es/programas/. Su programa trae día y mes, hora, precio y enlace de compra (su ticketera o DICE); las sesiones de Berlín Club (DJ de madrugada) no se toman, y dos pases del mismo concierto se unen ("Varios pases: 19:00, 21:30"). Probado contra la web: 70 conciertos, 55 se unen a los que ya había (ganan la confirmación de la sala) y 15 son nuevos (ciclo IMPULSO con Roberto Fonseca, Isaiah Sharkey o Michael Mayo, Micromambo, Gitano de Palo…). Era la sala con más conciertos sin web leída después de La Coquette y El Despertar.
+- Revisadas las agendas municipales que daban 0 conciertos: Alcorcón y Boadilla se leen bien pero ahora solo anuncian teatro, ópera y exposiciones (la zarzuela, los musicales y la ópera escenificada no cuentan como concierto, como hasta ahora); Leganés cambió su web y su agenda es la general del ayuntamiento (plenos, actos); Valdemoro solo enlaza la programación teatral de años anteriores; Móstoles no trae fechas en la página. Jazzville no tiene web accesible; la web del Rincón del Arte Nuevo no publica fechas (sus conciertos llegan por TicketAndRoll).
+
 ## 2.72.0 — 2026-10-06
 
 - Fuente nueva: **Festify Indie** (agenda de conciertos indie y pop). Su página se monta con JavaScript y antes se había descartado; con el navegador real que ya se usa para Intruso y Moe (y su robots.txt lo permite) se leen todos sus conciertos de Madrid: los primeros, de sus datos estructurados; los demás, de cada tarjeta ("Artista" + "Sala · 8 oct 2026"). Probado contra la web: 81 conciertos, 66 se unen a los que ya había y 15 son nuevos (Late Capital, Eyelet y Órdago Chica en El Sol, Valira y Carmen 113 en Copérnico, Rei Ortolá en Peor para el Sol, Lady Banana y Tiburona en Sala Uni…). No da enlaces de compra.
