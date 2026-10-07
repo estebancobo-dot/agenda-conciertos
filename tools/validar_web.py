@@ -615,7 +615,7 @@ def filtros(pg, lunes):
     pg.wait_for_timeout(30)
     rest = ms(t0)
     pre = pg.evaluate("[...document.querySelectorAll('.segp [aria-pressed=true]')].map(b=>b.dataset.rap)")
-    check("UX", "Filtros: 'Habituales' queda marcado al elegirlo", pre, ok=pre == ["def"])
+    check("UX", "Filtros: el preajuste por defecto ('Rock, pop y afines') queda marcado al elegirlo", pre, ok=pre == ["def"])
     alto = pg.evaluate("document.querySelector('.sheet .sc').scrollHeight")
     check("UX", "Filtros: la hoja es corta (géneros en chips; estilos en su propio panel)", alto, aviso=2000,
           fallo=3000, unidad="px")
@@ -644,8 +644,8 @@ def filtros(pg, lunes):
         pg.wait_for_timeout(30)
     check("UX", "Con filtros, la fila de chips tiene '✕ Quitar filtros' y deja la agenda sin filtros",
           ok=bool(hay) and pg.evaluate("nFiltros()===0") and not pg.locator("#fquitar").count())
-    check("UX", "Chips de género: sin filtro solo 'Habituales' está marcado; al tocar uno se filtra por él y solo él "
-          "sale relleno; al quitarlo se vuelve a 'Habituales'", f"{sin_filtro} → {con_filtro} → {vuelta}",
+    check("UX", "Chips de género: sin filtro solo el preajuste está marcado; al tocar uno se filtra por él y solo él "
+          "sale relleno; al quitarlo se vuelve al preajuste", f"{sin_filtro} → {con_filtro} → {vuelta}",
           ok=sin_filtro == ["pre"] and con_filtro == [cid] and otros == 0 and vuelta == ["pre"])
     for nombre, v in (("abrir la hoja", abrir), ("'Ninguno'", marcar), ("aplicar", aplicar), ("borrar filtros", quitar),
                       ("'Los de siempre'", rest), ("chip de grupo", t_chip)):
@@ -721,6 +721,18 @@ def busqueda(pg, lunes):
         pg.wait_for_timeout(600)
         encontrado = pg.locator(f'#main .card[data-id="{obj["id"]}"]').count() > 0
         check("Funcional", "Buscar un artista lo encuentra", obj["a"], ok=encontrado)
+    # la búsqueda mira en todos los géneros: un concierto de un género que el preajuste por defecto oculta (jazz…)
+    fuera = pg.evaluate("""()=>{const r=DATA.find(r=>r.fecha>=HOY&&!pasaGrupo(r)&&pasaOrigen(r)&&pasaNivel(r,state.conf)&&r.artista.length>4); return r&&{id:r.id,a:r.artista}}""")
+    if fuera:
+        pg.fill("#q", fuera["a"])
+        pg.wait_for_timeout(600)
+        check("Funcional", "Buscar encuentra también conciertos de géneros ocultos por el filtro", fuera["a"],
+              ok=pg.locator(f'#main .card[data-id="{fuera["id"]}"]').count() > 0)
+        pg.fill("#q", "")
+        pg.wait_for_timeout(400)
+        aviso = pg.inner_text(".fuera") if pg.locator(".fuera").count() else ""
+        check("UX", "Por defecto se dice cuántos conciertos de otros géneros quedan ocultos, con un botón para verlos",
+              aviso[:70], ok="otros géneros" in aviso and pg.locator("#fvertodos").count() == 1)
     pg.fill("#q", "zzqxw sin resultados")
     pg.wait_for_timeout(600)
     check("UX", "Búsqueda sin resultados lo dice", ok=pg.locator("#main .card").count() == 0
@@ -1360,11 +1372,13 @@ def normalizacion_web(pg):
     pg.wait_for_selector(".rows", timeout=15000)
     pg.wait_for_timeout(1200)
     chips = pg.evaluate("[...document.querySelectorAll('.rows .nrm-chip')].map(c=>c.textContent)")
-    # el origen deducido no lleva chip: dice "Deducido: …" (nombre en español, grupo local…)
-    deducido = pg.evaluate("[...document.querySelectorAll('.rows .s')].some(s=>s.textContent.startsWith('Deducido:'))")
-    check("Funcional", "Estado de estilo y origen en la ficha y recuento en Fuentes (N3/N4)",
-          f"ficha: {chips}{' + origen deducido' if deducido else ''} · {res.splitlines()[1:3]}",
-          ok=len(chips) + deducido >= 2, detalle=res[:300])
+    # el dato conocido no lleva etiqueta (la fila dice de qué web sale); el origen deducido dice "Deducido: …"; el
+    # resto (estimado, no aplica, no encontrado) lleva la suya
+    esperadas = pg.evaluate(f"""(()=>{{const n=BYID['{cid}'].normalizacion||{{}};
+        return ['estilo','origen'].filter(c=>n[c]&&n[c].estado!=='conocido'&&!(c==='origen'&&n[c].estado==='estimado')).length}})()""")
+    check("Funcional", "Estado de estilo y origen en la ficha (sin etiqueta si es un dato conocido) y recuento en Fuentes (N3/N4)",
+          f"ficha: {chips or 'datos conocidos'} · {res.splitlines()[1:3]}",
+          ok=len(chips) == esperadas, detalle=res[:300])
 
 
 def fase_b_web(pg):

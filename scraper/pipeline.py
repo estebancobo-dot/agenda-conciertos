@@ -1446,7 +1446,8 @@ def ejecutar(hoy: date | None = None, solo: list[str] | None = None, fetcher: Fe
     for f in inf_fuentes:  # auditoría: qué contradice la web de cada sala
         if f["id"] in contraste_sala:
             f["contraste_sala"] = contraste_sala[f["id"]]
-    futuros = [r for r in recs if r["fecha"] >= hoy.isoformat()]
+    # lo que la web enseña: sin lo que no es un concierto (ocultos, que los datos conservan): las mismas cifras en todas partes
+    futuros = [r for r in recs if r["fecha"] >= hoy.isoformat() and not r.get("oculto")]
     ahora = datetime.now(timezone.utc).isoformat(timespec="seconds")
     informe = {
         "version": __version__,
@@ -1458,6 +1459,7 @@ def ejecutar(hoy: date | None = None, solo: list[str] | None = None, fetcher: Fe
         "duracion_seg": round(time.monotonic() - t0),
         "totales": {
             "conciertos": len(futuros),
+            "ocultos": sum(1 for r in recs if r["fecha"] >= hoy.isoformat() and r.get("oculto")),
             "en_foco": sum(r["en_foco"] for r in futuros),
             "contrastados": sum(r["estado"] == "contrastado" for r in futuros),
             "una_fuente": sum(r["estado"] == "1_fuente" for r in futuros),

@@ -98,6 +98,8 @@ input[type=search]::-webkit-search-cancel-button{display:none}
 .chip[aria-pressed="true"] i{box-shadow:0 0 0 2px var(--bg)}
 .chip.quitar{border-color:var(--ink);font-weight:700}
 .active{font-size:.8rem;color:var(--muted);margin:6px 0 0}
+.fuera{font-size:.8rem;color:var(--muted);margin:6px 0 0}
+.fuera button{border:0;background:none;color:var(--info);padding:6px 0;font-size:.8rem;text-decoration:underline}
 .active button{border:0;background:none;color:var(--info);padding:0;font-size:.8rem;text-decoration:underline}
 /* navegación de fechas */
 .nav{display:flex;align-items:center;gap:8px;margin:12px 0 8px}
@@ -183,6 +185,8 @@ input[type=search]::-webkit-search-cancel-button{display:none}
 .conf{color:var(--ok);font-weight:800;font-size:.85rem;padding:0 2px}
 .confb{border-radius:12px;padding:8px 12px;margin:8px 0;border:1px solid var(--line);background:var(--panel);font-size:.9rem}
 .confb ul{margin:4px 0 0;padding-left:18px;color:var(--muted)}
+details.confb summary{cursor:pointer;padding:4px 0;list-style-position:inside}
+.rows2{margin-top:4px}
 .confb.conf-ok b{color:var(--ok)} .confb.conf-mid b{color:var(--ink)} .confb.conf-low b{color:var(--warn)}
 ol.hist{list-style:none;margin:6px 0 4px;padding:0 0 0 14px;border-left:2px solid var(--line)}
 ol.hist li{position:relative;display:flex;gap:10px;padding:5px 0;font-size:.9rem}
@@ -215,6 +219,7 @@ ol.hist s{color:var(--muted)}
 .hero{position:relative;border-radius:16px;overflow:hidden;background:var(--panel2);aspect-ratio:4/3;max-height:420px;width:100%}
 .hero img{position:absolute;inset:0;z-index:1;width:100%;height:100%;object-fit:contain;display:block;background:var(--panel2);opacity:0;transition:opacity .15s}
 .hero img.ok,.hero img.ya{opacity:1;transition:none}
+.hero.sinfoto{display:none}
 .hero .ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:3.4rem;font-weight:800;color:#fff;background:linear-gradient(135deg,var(--gc,var(--c-sin)),color-mix(in srgb,var(--gc,var(--c-sin)) 45%,#000))}
 .credit{font-size:.72rem;color:var(--muted);margin-top:4px}
 .dt h2{font-size:1.55rem;margin:12px 0 2px;line-height:1.15}
@@ -424,6 +429,9 @@ const GV = Object.fromEntries(GRUPOS.map(g=>[g.id,g.v]));
 const GN = Object.fromEntries(GRUPOS.map(g=>[g.id,g.nombre]));
 // por defecto, los géneros de siempre; el resto ("Más géneros") se añade desde los filtros
 const DEF_GRUPOS = GRUPOS.filter(g=>!g.mas).map(g=>g.id);
+// "Habituales" no decía qué dejaba fuera: el nombre dice lo que incluye (y el título, la lista entera)
+const DEF_NOMBRE = "Rock, pop y afines";
+const DEF_TITULO = "Por defecto: "+GRUPOS.filter(g=>!g.mas).map(g=>g.nombre).join(", ")+". Jazz, flamenco, soul, clásica y el resto se añaden desde los filtros.";
 const VISTAS = ["Mes","Semana","Finde","Día","Todos"];
 const INFO = ["Salas","Calendarios","Estilos","Fuentes","Informe","Versiones"];
 const PROPIAS = ["Mis conciertos","Novedades"];  // fase B: lo de quien usa la web (guardado en su móvil)
@@ -643,10 +651,13 @@ function extraHTML(){
   // Como en Google Maps o Airbnb: sin filtro de género ("Habituales" o "Todos") ningún género sale marcado; al tocar
   // uno se filtra por él, y los marcados (rellenos, con ✓) son justo los que se están viendo
   const modo=modoGrupos(state.grupos);
-  const chips=(n?`<button class="chip quitar" id="fquitar" aria-label="Quitar todos los filtros">✕ Quitar filtros</button>`:"")+`<button class="chip" data-pre="${modo==="todos"?"todos":"def"}" aria-pressed="${modo!=="custom"}">${modo==="todos"?"Todos los géneros":"Habituales"}</button>`+
+  const chips=(n?`<button class="chip quitar" id="fquitar" aria-label="Quitar todos los filtros">✕ Quitar filtros</button>`:"")+`<button class="chip" data-pre="${modo==="todos"?"todos":"def"}" aria-pressed="${modo!=="custom"}"${modo==="todos"?"":` title="${esc(DEF_TITULO)}"`}>${modo==="todos"?"Todos los géneros":DEF_NOMBRE}</button>`+
     // los elegidos, delante (si no, al tocar uno que está a la derecha la fila vuelve al principio y no se ve)
     [...GRUPOS].sort((x,y)=>(modo==="custom")*((state.grupos.includes(y.id))-(state.grupos.includes(x.id)))).map(g=>`<button class="chip" data-chip="${esc(g.id)}" aria-pressed="${modo==="custom"&&state.grupos.includes(g.id)}"><i style="background:var(${g.v})"></i>${esc(g.nombre)}<small class="cc">${cn[g.id]||0}</small></button>`).join("");
+  // por defecto se ocultan los demás géneros: se dice cuántos y se ofrecen con un toque
+  const fuera=modo==="def"&&!state.q.trim()?DATA.reduce((k,r)=>k+(r.fecha>=HOY&&pasaOrigen(r)&&pasaNivel(r,state.conf)&&!pasaGrupo(r)?1:0),0):0;
   return `<div class="chips" role="group" aria-label="Géneros">${chips}</div>
+   ${fuera?`<div class="fuera">${plural(fuera,"concierto más","conciertos más")} de otros géneros (jazz, flamenco, soul, clásica…) · <button id="fvertodos">Ver todos los géneros</button></div>`:""}
    ${n?`<div class="active">Filtrando: ${esc(resumenFiltros())} · <button id="freset">Quitar filtros</button></div>`:""}`;
 }
 function setGrupos(g){ state.grupos=g; store.set("grupos5",g); }
@@ -665,6 +676,7 @@ function bindFilters(){
 function bindExtra(){
   const fr=document.getElementById("freset"); if(fr) fr.onclick=borrarFiltros;
   const fq=document.getElementById("fquitar"); if(fq) fq.onclick=borrarFiltros;
+  const fv=document.getElementById("fvertodos"); if(fv) fv.onclick=()=>{setGrupos(GRUPOS.map(g=>g.id)); renderBody(false);};
   document.querySelectorAll("[data-chip]").forEach(c=>c.onclick=()=>{
     const id=c.dataset.chip;
     let g;
@@ -720,7 +732,7 @@ function openSheet(){
   const generosConEst=()=>Object.keys(selEst).filter(g=>(selEst[g]||[]).length);
   // preajuste activo: "def" (habituales), "todos", "ninguno" o "custom" (a tu medida: ningún botón marcado)
   const modo=()=>Object.keys(selEst).length?"custom":!sel.length?"ninguno":modoGrupos(sel);
-  const resumenGen=()=>{const m=modo(); return m==="def"?"habituales":m==="todos"?"todos":m==="ninguno"?"ninguno":`${sel.length} de ${GRUPOS.length} · a tu medida`;};
+  const resumenGen=()=>{const m=modo(); return m==="def"?DEF_NOMBRE.toLowerCase():m==="todos"?"todos":m==="ninguno"?"ninguno":`${sel.length} de ${GRUPOS.length} · a tu medida`;};
   const resumenOri=()=>(ORIGENES.find(([v])=>v===ori)||[,""])[1].replace(/^\S+\s/,"");
   const gchip=g=>`<button type="button" class="chip" data-g="${esc(g.id)}" aria-pressed="${sel.includes(g.id)}" title="${esc(g.desc)}"><i style="background:var(${g.v})"></i>${esc(g.nombre)}<small class="cc" data-ct="${esc(g.id)}">${cnt[g.id]||0}</small></button>`;
   const resumenTodos=()=>{const l=Object.entries(selEst).map(([g,x])=>`${(GRUPOS.find(y=>y.id===g)||{}).nombre||g}: ${x.map(nomEstilo).join(", ")}`); return l.length?l.join(" · "):"Todos los estilos de cada género";};
@@ -729,7 +741,7 @@ function openSheet(){
     ...Object.keys(e).filter(x=>x.startsWith(TRIB)).sort(por), ...(ARBOL[g]||[]).filter(x=>e[x]).sort(por)];};
   const htmlGeneros=()=>{const m=modo();
     return `<h4 class="sech">Géneros<span id="resgen">${esc(resumenGen())}</span></h4>
-     <div class="segp" role="group" aria-label="Elegir de golpe"><button type="button" data-rap="def" aria-pressed="${m==="def"}">Habituales</button><button type="button" data-rap="todos" aria-pressed="${m==="todos"}">Todos</button><button type="button" data-rap="ninguno" aria-pressed="${m==="ninguno"}">Ninguno</button></div>
+     <div class="segp" role="group" aria-label="Elegir de golpe"><button type="button" data-rap="def" aria-pressed="${m==="def"}" title="${esc(DEF_TITULO)}">${DEF_NOMBRE}</button><button type="button" data-rap="todos" aria-pressed="${m==="todos"}">Todos</button><button type="button" data-rap="ninguno" aria-pressed="${m==="ninguno"}">Ninguno</button></div>
      <p class="hint" style="margin:-4px 0 8px">Toca los géneros para añadirlos o quitarlos. "Ninguno" sirve para empezar de cero y elegir solo los que quieras.</p>
      <div class="gchips">${GRUPOS.filter(g=>!g.mas).map(gchip).join("")}<div class="sub">Más géneros</div>${GRUPOS.filter(g=>g.mas).map(gchip).join("")}</div>
      <button type="button" class="navrow" id="vestilos"><b>Afinar por estilos</b><span id="resest">${esc(resumenTodos())}</span></button>`;};
@@ -763,7 +775,7 @@ function openSheet(){
      <p class="hint">Si ninguna web dice de dónde es el artista, se deduce: nombre en español, grupo local de las salas de Madrid, coro o banda del programa municipal, banda tributo de sala (España); nombre en español en música latina (Latinoamérica). En la ficha se dice de dónde sale.</p>
      <h4>Más opciones</h4>
      <label class="grp" style="display:flex;gap:10px;align-items:flex-start;padding:10px 12px"><input type="checkbox" id="fgenok" ${genOk?"checked":""} style="margin-top:3px"><span><b>Incluir los de etiqueta genérica</b><br><span class="hint">Artistas sin ficha que la agenda solo etiqueta como "Pop / Rock", "Músicas negras"…: salen en todos esos géneros porque no se sabe cuál es.</span></span></label>`}
-     </div><div class="ft"><button id="sdef" title="Géneros habituales, sin estilos, sin búsqueda, origen todos">Por defecto</button><button class="go" id="sclose">Ver ${plural(total(),"concierto")}</button></div></div>`;
+     </div><div class="ft"><button id="sdef" title="${esc(DEF_NOMBRE)}, sin estilos, sin búsqueda, origen todos">Por defecto</button><button class="go" id="sclose">Ver ${plural(total(),"concierto")}</button></div></div>`;
     enlazar(); document.getElementById("sdef").disabled=sinNada(); medir("hoja-abrir",t0);
   };
   // "Por defecto" se apaga cuando ya está todo por defecto (géneros habituales, sin estilos, origen todos…)
@@ -931,16 +943,19 @@ function avisoEvento(r){
 }
 function estadoBox(r){ return avisoEvento(r)+estadoBox0(r); }
 // N3/N4: estado de cada dato (conocido, estimado, no aplica, desconocido tras buscar) y su porqué
-const NORM_TXT={conocido:"Dato conocido",estimado:"Estimado",no_aplica:"No aplica",desconocido:"Desconocido tras buscar"};
+const NORM_TXT={conocido:"Dato conocido",estimado:"Estimado",no_aplica:"No aplica",desconocido:"No encontrado"};
 function normLinea(r,campo){
   const n=(r.normalizacion||{})[campo];
   if(!n||!NORM_TXT[n.estado]) return "";
+  const alt=n.contradice&&n.contradice.length?`<div class="s nrm-alt">Otras webs dicen otra cosa: ${n.contradice.map(c=>`${flag(c.valor)} ${esc(pais(c.valor))} (${esc(c.fuentes.join(", "))})`).join(" · ")}</div>`:"";
+  if(n.estado==="conocido") return alt;  // la fila ya dice de qué web sale
   let det="";
   if(n.estado==="estimado"&&n.motivo) det=n.motivo;
   else if(n.estado==="no_aplica"&&n.motivo&&campo==="estilo") det=n.motivo;
-  let extra="";
-  if(n.contradice&&n.contradice.length) extra+=`<div class="s nrm-alt">Otras webs dicen otra cosa: ${n.contradice.map(c=>`${flag(c.valor)} ${esc(pais(c.valor))} (${esc(c.fuentes.join(", "))})`).join(" · ")}</div>`;
+  let extra=alt;
   if(n.estado==="desconocido"&&(n.buscado||[]).length) extra+=`<details class="nrm-det"><summary>Dónde se ha buscado</summary><ul>${n.buscado.map(b=>`<li>${esc(b)}</li>`).join("")}</ul></details>`;
+  // el porqué de una estimación, plegado: a quien solo quiere ir al concierto le basta con saber que es estimado
+  if(det&&n.estado==="estimado") return `<details class="s nrm nrm-det"><summary><span class="nrm-chip nrm-${n.estado}">${NORM_TXT[n.estado]}</span> por qué</summary>${esc(det)}</details>${extra}`;
   return `<div class="s nrm"><span class="nrm-chip nrm-${n.estado}">${NORM_TXT[n.estado]}</span>${det?` ${esc(det)}`:""}</div>${extra}`;
 }
 function estadoBox0(r){
@@ -1015,26 +1030,28 @@ function viewConcierto(){
   const volver=state.from||`#dia/${r.fecha}`;
   return `<a class="back" href="${esc(volver)}">‹ Volver</a>
    <div class="dt">
-    ${gira&&im?`<div class="carr" id="carr" aria-label="Fotos: desliza para ver el cartel de la gira">`:""}<div class="hero" style="--gc:var(${color(r)})"><div class="ph">${iniciales(r.artista)}</div>${im?`<img class="foto${fotoLista(r)?" ya":""}" src="${esc(fotoDetalle(r,im))}" data-o="${esc(im.url)}" alt="Foto de ${esc(r.artista)}" fetchpriority="high" decoding="async" referrerpolicy="no-referrer" onload="this.classList.add('ok');fotoGrande(this)" onerror="if(this.dataset.o&&this.src!==this.dataset.o){this.src=this.dataset.o;this.dataset.o=''}else{this.remove()}">`:""}</div>
+    ${gira&&im?`<div class="carr" id="carr" aria-label="Fotos: desliza para ver el cartel de la gira">`:""}${im?`<div class="hero" style="--gc:var(${color(r)})"><div class="ph">${iniciales(r.artista)}</div><img class="foto${fotoLista(r)?" ya":""}" src="${esc(fotoDetalle(r,im))}" data-o="${esc(im.url)}" alt="Foto de ${esc(r.artista)}" fetchpriority="high" decoding="async" referrerpolicy="no-referrer" onload="this.classList.add('ok');fotoGrande(this)" onerror="if(this.dataset.o&&this.src!==this.dataset.o){this.src=this.dataset.o;this.dataset.o=''}else{const h=this.closest('.hero');this.remove();if(h&&!h.closest('.carr'))h.classList.add('sinfoto')}"></div>`:""}
     ${gira&&im?`${giraHTML}</div><div class="dots" role="group" aria-label="Fotos"><button data-slide="0" aria-current="true" aria-label="Foto del artista"></button><button data-slide="1" aria-current="false" aria-label="Cartel de la gira"></button></div>`:gira?giraHTML.replace('class="hero gira"','class="hero gira" style="margin-top:8px"'):""}
     ${im||gira?`<div class="credit">${im?`Foto: <a href="${esc(im.enlace||im.url)}" target="_blank" rel="noopener">${esc(im.credito)}</a>${f&&f.imagen?"":" (imagen del anuncio)"}`:""}${im&&gira?" · ":""}${gira?`Cartel de la gira: <a href="${esc(gira.enlace||gira.imagen)}" target="_blank" rel="noopener">${esc(gira.credito)}</a>`:""}</div>`:""}
     <h2>${r.festival?`<span class="fest">Festival</span> `:""}${esc(r.artista)}</h2>
     ${r.ciclo?`<div class="ciclo">${esc(r.ciclo)}</div>`:""}
     ${estadoBox(r)}
-    ${confianzaHTML(r)}
     <div class="rows">
      <div class="row"><span class="ic">📅</span><div><div class="v">${esc(fmt(r.fecha,{weekday:"long",day:"numeric",month:"long"}))}</div><div class="s">${r.hora?`${esc(r.hora)} h${r.hora_pagina?` · según <a href="${esc(r.hora_pagina.url)}" target="_blank" rel="noopener">${esc(r.hora_pagina.nombre)}</a>`:""}`:h?"Hora por confirmar: las webs no coinciden":r.hora_estimada?`Hacia las ${esc(r.hora_estimada.hora)} h (estimada)`:"Hora sin indicar"}</div>${siFalta(r,"hora")}</div></div>
      <div class="row"><span class="ic">📍</span><div><div class="v">${r.sala?salasLinks(r):"Sala sin indicar"}</div><div class="s">${esc(r.municipio||"")} · <a href="${esc(mapa)}" target="_blank" rel="noopener">Cómo llegar</a>${sala&&sala.web?` · <a href="${esc(sala.web)}" target="_blank" rel="noopener">Web de la sala</a>`:""}</div></div></div>
-     ${r.nivel?`<div class="row" id="nivel"><span class="ic">${{"gran formato":"🏟️","formato medio":"🎭","formato íntimo":"🕯️"}[r.nivel.nivel]||"🎵"}</span><div><div class="v">${esc(mayus(r.nivel.nivel))}</div><div class="s">${esc(r.nivel.motivo)}</div></div></div>`:""}
-     <div class="row"><span class="ic">🎸</span><div>${estiloHTML}${normLinea(r,"estilo")}</div></div>
-     <div class="row"><span class="ic">${r.nacionalidad?flag(r.nacionalidad):r.nacionalidad_estimada?flag(r.nacionalidad_estimada):"🏳️"}</span><div>${r.nacionalidad?`<div class="v">${esc(pais(r.nacionalidad))}</div><div class="s">según ${esc(r.nacionalidad_fuente||"la fuente")}</div>`:r.nacionalidad_estimada?`<div class="v">${esc(pais(r.nacionalidad_estimada))}</div><div class="s">Deducido: ${esc(r.nacionalidad_estimada_motivo||"nombre en español")}</div>`:(r.origen_no_aplica?`<div class="v muted">No aplica</div><div class="s">${esc(((r.normalizacion||{}).origen||{}).motivo||"Es un espectáculo (teatro, musical, danza…), no un artista")}</div>`:`<div class="v muted">Origen sin confirmar</div><div class="s">Ninguna fuente fiable lo indica</div>`)}${((r.normalizacion||{}).origen||{}).estado==="estimado"?"":normLinea(r,"origen")}</div></div>
-     ${r.homenaje?`<div class="row"><span class="ic">🎤</span><div><div class="v">Tributo a ${esc(r.homenaje.artista)}${r.homenaje.pais?` · ${flag(r.homenaje.pais)} ${esc(pais(r.homenaje.pais))}`:""}</div><div class="s">${r.homenaje.pais?"Origen del artista homenajeado; arriba, el de la banda tributo":"Artista homenajeado (origen sin confirmar)"}</div></div></div>`:""}
      <div class="row"><span class="ic">🎟️</span><div>${r.precio?`<div class="v">${esc(precioTxt(r.precio))}</div><div class="s">según ${r.precio_fuente?`<a href="${esc(r.precio_fuente.url)}" target="_blank" rel="noopener">${esc(r.precio_fuente.nombre.split(" (")[0])}</a>`:"la web"} · ${r.precio_fuente&&r.precio_fuente.gastos?"con gastos de gestión":"puede no incluir gastos"}</div>`:(r._full?`<div class="v muted">Precio sin indicar</div>`:`<div class="v muted carg">Cargando…</div>`)}${siFalta(r,"precio")}</div></div>
     </div>
     <div class="actions">
      ${comprar?`<a class="lbtn primary" id="comprar" href="${esc(comprar.url)}" target="_blank" rel="noopener">${agotado?"Agotado · ver en":"Comprar entradas en"} ${esc(comprar.nombre)} ↗</a>`:""}
      ${entradas&&(!comprar||entradas!==comprar.url)?`<a class="lbtn${comprar?"":" primary"}" href="${esc(entradas)}" target="_blank" rel="noopener">${r.confirmado_sala?"Ver en la web de la sala":comprar?"Ver el anuncio":"Ver anuncio y entradas"} ↗</a>`:""}
      <button class="lbtn favbtn" id="fav" aria-pressed="${esFav(r.id)}">${esFav(r.id)?"★ En Mis conciertos":"☆ Guardar"}</button><button class="lbtn" id="ics">📅 Al calendario</button><button class="lbtn" id="share">↗ Compartir</button>
+    </div>
+    ${confianzaHTML(r)}
+    <div class="rows rows2">
+     ${r.nivel?`<div class="row" id="nivel"><span class="ic">${{"gran formato":"🏟️","formato medio":"🎭","formato íntimo":"🕯️"}[r.nivel.nivel]||"🎵"}</span><div><div class="v">${esc(mayus(r.nivel.nivel))}</div><div class="s">${esc(r.nivel.motivo)}</div></div></div>`:""}
+     <div class="row"><span class="ic">🎸</span><div>${estiloHTML}${normLinea(r,"estilo")}</div></div>
+     <div class="row"><span class="ic">${r.nacionalidad?flag(r.nacionalidad):r.nacionalidad_estimada?flag(r.nacionalidad_estimada):"🏳️"}</span><div>${r.nacionalidad?`<div class="v">${esc(pais(r.nacionalidad))}</div><div class="s">según ${esc(r.nacionalidad_fuente||"la fuente")}</div>`:r.nacionalidad_estimada?`<div class="v">${esc(pais(r.nacionalidad_estimada))}</div><div class="s">Deducido: ${esc(r.nacionalidad_estimada_motivo||"nombre en español")}</div>`:(r.origen_no_aplica?`<div class="v muted">No aplica</div><div class="s">${esc(((r.normalizacion||{}).origen||{}).motivo||"Es un espectáculo (teatro, musical, danza…), no un artista")}</div>`:`<div class="v muted">Origen sin confirmar</div><div class="s">Ninguna fuente fiable lo indica</div>`)}${((r.normalizacion||{}).origen||{}).estado==="estimado"?"":normLinea(r,"origen")}</div></div>
+     ${r.homenaje?`<div class="row"><span class="ic">🎤</span><div><div class="v">Tributo a ${esc(r.homenaje.artista)}${r.homenaje.pais?` · ${flag(r.homenaje.pais)} ${esc(pais(r.homenaje.pais))}`:""}</div><div class="s">${r.homenaje.pais?"Origen del artista homenajeado; arriba, el de la banda tributo":"Artista homenajeado (origen sin confirmar)"}</div></div></div>`:""}
     </div>
     ${cartelHTML(r)}
     ${historialHTML(r)}
@@ -1057,7 +1074,8 @@ function viewConcierto(){
 function confianzaHTML(r){
   const c=r.confianza; if(!c) return "";
   const t={confirmado:["ok","✓ Confirmado"],probable:["mid","Probable"],"sin confirmar":["low","Sin confirmar"]}[c.nivel]||["low",c.nivel];
-  return `<div class="confb conf-${t[0]}"><b>${esc(t[1])}</b>${(c.motivos||[]).length?`<ul>${c.motivos.map(m=>`<li>${esc(m)}</li>`).join("")}</ul>`:""}</div>`;
+  if(!(c.motivos||[]).length) return `<div class="confb conf-${t[0]}"><b>${esc(t[1])}</b></div>`;
+  return `<details class="confb conf-${t[0]}"><summary><b>${esc(t[1])}</b> <span class="muted">· quién lo anuncia</span></summary><ul>${c.motivos.map(m=>`<li>${esc(m)}</li>`).join("")}</ul></details>`;
 }
 // el cartel en la ficha: cada artista con su país y su género (según su ficha en las webs de música)
 function cartelHTML(r){
@@ -1255,7 +1273,7 @@ function viewTodos(){
   const p=posiciones[location.hash], hasta=pintarTodo&&p&&p.id&&BYID[p.id]?BYID[p.id].fecha:null;
   const chips=Object.entries(meses).map(([m,x])=>`<button data-jump="${x.f}" data-mes="${m}">${esc(mayus(fmt(m+"-01",{month:"short"})).replace(".",""))}${m.slice(0,4)!==HOY.slice(0,4)?" "+m.slice(2,4):""}<small>${x.n}</small></button>`).join("");
   const ocultos=DATA.filter(r=>r.fecha>=HOY&&pasaTexto(r)).length-total;
-  return `<div class="todos-h"><b>${plural(total,"concierto")} desde hoy</b>${ocultos>0?`<span class="hint">${ocultos} ocultos por los filtros</span>`:""}</div>`+
+  return `<div class="todos-h"><b>${ocultos>0?`${total} de ${plural(total+ocultos,"concierto")}`:plural(total,"concierto")} desde hoy</b>${ocultos>0&&modoGrupos(state.grupos)!=="def"?`<span class="hint">el resto, ocultos por los filtros</span>`:""}</div>`+
     (dias.length>1?`<div class="stickystrip"><div class="meses" role="group" aria-label="Ir a un mes">${chips}</div></div>`:"")+
     `<div id="lista">${listaDias(dias,bd,hasta)||vacioHTML(ocultos,"desde hoy")}</div>`;
 }
@@ -1265,11 +1283,14 @@ function viewDia(){
     `<div class="stickystrip">${stripHTML(mon,bd,"sel")}</div>`+
     `<div id="swipe">${dayList(state.date,bd[state.date]||[])}</div>`;
 }
+// la búsqueda mira en todos los géneros (quien busca «jazz» o un artista concreto quiere encontrarlo); el origen y la
+// confirmación elegidos sí se respetan
+const visibleBusqueda=r=>pasaTexto(r)&&pasaOrigen(r)&&pasaNivel(r,state.conf);
 function viewBusqueda(){
-  const res=DATA.filter(r=>r.fecha>=HOY&&visible(r));
+  const res=DATA.filter(r=>r.fecha>=HOY&&visibleBusqueda(r));
   const m={}; res.forEach(r=>(m[r.fecha]=m[r.fecha]||[]).push(r));
-  const ocultos=DATA.filter(r=>r.fecha>=HOY&&pasaTexto(r)&&!visible(r)).length;
-  return salasBuscadas()+`<p class="hint" style="margin-top:12px">${plural(res.length,"resultado")} para «${esc(state.q.trim())}» en todas las fechas${ocultos?` · <button class="sclear" style="position:static;width:auto;height:auto;color:var(--info);font-size:.82rem;text-decoration:underline" id="vertodo">ver ${ocultos} más ocultos por los filtros</button>`:""}</p>`+
+  const ocultos=DATA.filter(r=>r.fecha>=HOY&&pasaTexto(r)&&!visibleBusqueda(r)).length;
+  return salasBuscadas()+`<p class="hint" style="margin-top:12px">${plural(res.length,"resultado")} para «${esc(state.q.trim())}» en todas las fechas y géneros${ocultos?` · <button class="sclear" style="position:static;width:auto;height:auto;color:var(--info);font-size:.82rem;text-decoration:underline" id="vertodo">ver ${ocultos} más ocultos por los filtros</button>`:""}</p>`+
     (listaDias(Object.keys(m).sort(),m,pintarTodo?"9999":null)||`<p class="empty">Nada encontrado.</p>`);
 }
 function viewEstilos(){
@@ -1348,8 +1369,8 @@ function viewFuentes(){
   return `<div class="kpis">
      <div class="kpi"><b>${fs.length}</b><span>webs leídas</span></div>
      <div class="kpi"><b class="${ok===fs.length?"s-ok":"s-warn"}">${ok}</b><span>funcionan en la última lectura</span></div>
-     <div class="kpi"><b>${INFORME.totales.conciertos}</b><span>conciertos próximos</span></div>
-     <div class="kpi"><b>${(INFORME.totales.confianza||{}).confirmado??INFORME.totales.contrastados}</b><span>${(INFORME.totales.confianza||{}).confirmado!=null?"confirmados (sala, ticketera o varias agendas)":"confirmados por 2 o más webs"}</span></div></div>
+     <div class="kpi"><b>${DATA.filter(r=>r.fecha>=HOY).length}</b><span>conciertos próximos</span></div>
+     <div class="kpi"><b>${(INFORME.totales.confianza||{}).confirmado!=null?DATA.filter(r=>r.fecha>=HOY&&nivelDe(r)==="confirmado").length:INFORME.totales.contrastados}</b><span>${(INFORME.totales.confianza||{}).confirmado!=null?"confirmados (sala, ticketera o varias agendas)":"confirmados por 2 o más webs"}</span></div></div>
    ${normResumen(INFORME.totales.normalizacion)}
    <p class="muted">${n("salas")} salas · ${n("promo")} promotoras y ticketeras · ${n("agreg")} agregadores · ${n("blog")} blogs y prensa · ${n("inst")} institucionales. Última lectura: ${esc(new Date(INFORME.generado).toLocaleString("es-ES",{dateStyle:"medium",timeStyle:"short"}))}.</p>
    <details class="more fuex"><summary>Cómo se usan y qué significa cada dato</summary>

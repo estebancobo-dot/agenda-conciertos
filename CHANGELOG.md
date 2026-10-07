@@ -1,5 +1,12 @@
 # Versiones
 
+## 2.75.0 — 2026-10-07
+
+- Web: **las mismas cifras en todas partes**. La cabecera, «Todos» y la página de Fuentes cuentan lo mismo: los conciertos próximos que enseña la web (el informe ya no cuenta lo que no es un concierto, que los datos conservan aparte como ocultos). «Todos» dice «1.517 de 3.025 conciertos desde hoy».
+- Web: el preajuste de géneros por defecto se llama **«Rock, pop y afines»** (antes «Habituales», que no decía qué dejaba fuera) y, al pasar por encima, dice qué géneros incluye. Debajo de los géneros se avisa de cuántos conciertos de otros géneros quedan ocultos (jazz, flamenco, soul, clásica…), con un botón para verlos. **La búsqueda mira en todos los géneros**: buscar «jazz» o un artista concreto lo encuentra aunque su género no esté elegido (el origen y la confirmación elegidos sí se respetan).
+- Ficha del concierto: **primero lo necesario para ir**: nombre, fecha y hora, sala, precio y el botón de entradas. Sin foto ya no hay un recuadro de iniciales a media pantalla (y si la foto falla al cargar, se quita). La confirmación va debajo, en una línea («✓ Confirmado · quién lo anuncia») que se despliega con sus motivos; después, nivel, estilo y origen.
+- Ficha: **menos jerga**. El dato conocido ya no lleva la etiqueta «Dato conocido» (la fila ya dice de qué web sale); «Desconocido tras buscar» pasa a «No encontrado» (con «Dónde se ha buscado» plegado), y el porqué de un dato estimado se despliega al tocar «Estimado · por qué».
+
 ## 2.74.0 — 2026-10-06
 
 - Horizonte de 120 a **180 días**. Medido antes (diagnóstico `horizonte`): unos 300 conciertos más (+10 %), casi todos de agendas y ticketeras con grandes conciertos y giras (Mariskal, Songkick, conciertos.club, Jackson Live…); las salas pequeñas casi no publican más allá de 4 meses. La lectura tarda lo mismo (Madrid en Vivo marca el tiempo) y la agenda que descarga la web crece un 10 %. Las fichas de los artistas nuevos se completan en las pasadas de cada 2 horas.
