@@ -1,5 +1,12 @@
 # Versiones
 
+## 2.76.0 — 2026-10-07
+
+- Web en el móvil: **zonas táctiles de 44 px** como mínimo («‹ Volver», las pestañas de vista, la sala, «Cómo llegar», «Web de la sala» y las webs de «De dónde salen los datos»), sin cambiar cómo se ven.
+- Menú: a la vista lo que sirve para ir a conciertos (Mis conciertos, Novedades, Salas, Calendarios, modo claro/oscuro); Fuentes, Informe, Estilos, Versiones y el CSV, plegados en **«Sobre los datos»**.
+- Al final de las listas, **«Cómo leer las tarjetas»**: qué es el ✓, el estilo de una web de música frente a la etiqueta de la agenda (recuadro discontinuo), «gran formato», la hora estimada (≈) o sin confirmar (?), los avisos de novedad, la bandera y la barra de color.
+- Tarjetas sin hora: dicen «sin hora» en el sitio de la hora, para que la columna de horas se lea igual en toda la lista.
+
 ## 2.75.0 — 2026-10-07
 
 - Web: **las mismas cifras en todas partes**. La cabecera, «Todos» y la página de Fuentes cuentan lo mismo: los conciertos próximos que enseña la web (el informe ya no cuenta lo que no es un concierto, que los datos conservan aparte como ocultos). «Todos» dice «1.517 de 3.025 conciertos desde hoy».

@@ -61,9 +61,24 @@ def test_filtros_tarjeta_y_ficha(web):
         pg.wait_for_selector("#comprar", timeout=15000)
         assert "Ticketmaster" in pg.inner_text("#comprar")
         assert pg.get_attribute("#comprar", "href") == "https://www.ticketmaster.es/event/muse-123"
+        # lo necesario para ir antes que la confirmación: fecha, sala y comprar arriba
+        orden = pg.evaluate("(()=>{const y=s=>{const e=document.querySelector(s);return e?e.getBoundingClientRect().top:1e9};"
+                            "return [y('.rows'),y('#comprar'),y('.confb')]})()")
+        assert orden == sorted(orden), orden
+        # zonas táctiles de al menos 44 px en el móvil
+        bajos = pg.evaluate("[...document.querySelectorAll('.back,.row a,.seg button')]"
+                            ".filter(a=>a.getBoundingClientRect().height<44).map(a=>a.textContent)")
+        assert not bajos, bajos
         gid = pg.evaluate("DATA.find(r=>r.artista.toLowerCase()==='kmmn').id")
         pg.evaluate(f"location.hash='#concierto/{gid}'")
         pg.wait_for_function("document.querySelector('.rows') && document.body.innerText.includes('Origen sin confirmar')",
                              timeout=15000)
+        # menú: lo de los datos, plegado en "Sobre los datos"; clave de las tarjetas al final de las listas
+        pg.evaluate("location.hash='#todos'")
+        pg.wait_for_selector(".claves", timeout=15000)
+        pg.click("#menubtn")
+        assert pg.is_visible("#menu [data-go='Salas']") and not pg.is_visible("#menu [data-go='Fuentes']")
+        pg.click(".mdatos summary")
+        assert pg.is_visible("#menu [data-go='Fuentes']")
         assert not errores, errores
         b.close()
