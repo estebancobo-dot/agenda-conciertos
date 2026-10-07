@@ -80,5 +80,22 @@ def test_filtros_tarjeta_y_ficha(web):
         assert pg.is_visible("#menu [data-go='Salas']") and not pg.is_visible("#menu [data-go='Fuentes']")
         pg.click(".mdatos summary")
         assert pg.is_visible("#menu [data-go='Fuentes']")
+        assert not pg.is_visible("#menu [data-go='Estilos']")  # la página de estilos ya no está en el menú
+        pg.evaluate("document.getElementById('menu').innerHTML=''")
+        # modos de vista: cada uno pinta su tarjeta y se guarda
+        for m, cls in (("compacta", "fila"), ("cuadricula", "tile"), ("lista", "card")):
+            pg.click(f"[data-modo='{m}']")
+            pg.wait_for_timeout(200)
+            assert pg.evaluate(f"[...document.querySelectorAll('#main .card')].every(c=>c.classList.contains('{cls}'))")
+            assert pg.evaluate("state.modo") == m and pg.evaluate("localStorage.getItem('agenda:modo')") == f'"{m}"'
         assert not errores, errores
+        # ordenador: la ficha se abre al lado y la dirección no cambia
+        pg = b.new_page(viewport={"width": 1440, "height": 900})
+        pg.goto(web + "#todos")
+        pg.wait_for_selector("#main .card", timeout=15000)
+        pg.locator("#main .card").first.click()
+        pg.wait_for_selector("#panel .rows", timeout=15000)
+        assert pg.evaluate("location.hash").startswith("#todos")
+        pg.click("#pcerrar")
+        assert not pg.is_visible("#panel")
         b.close()

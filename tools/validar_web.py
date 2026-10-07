@@ -1375,7 +1375,7 @@ def normalizacion_web(pg):
     # el dato conocido no lleva etiqueta (la fila dice de qué web sale); el origen deducido dice "Deducido: …"; el
     # resto (estimado, no aplica, no encontrado) lleva la suya
     esperadas = pg.evaluate(f"""(()=>{{const n=BYID['{cid}'].normalizacion||{{}};
-        return ['estilo','origen'].filter(c=>n[c]&&n[c].estado!=='conocido'&&!(c==='origen'&&n[c].estado==='estimado')).length}})()""")
+        return ['estilo','origen','hora','precio'].filter(c=>n[c]&&n[c].estado!=='conocido'&&!(c==='origen'&&n[c].estado==='estimado')).length}})()""")
     check("Funcional", "Estado de estilo y origen en la ficha (sin etiqueta si es un dato conocido) y recuento en Fuentes (N3/N4)",
           f"ficha: {chips or 'datos conocidos'} · {res.splitlines()[1:3]}",
           ok=len(chips) == esperadas, detalle=res[:300])
@@ -1777,6 +1777,58 @@ def pantallas(b):
         ctx.close()
 
 
+@escenario("UX", "Modos de vista y ficha al lado en el ordenador")
+def modos_vista(b):
+    """Lista, compacta y cuadrícula: cada modo pinta su tarjeta, la compacta mete más conciertos en pantalla, la
+    elección se guarda al recargar y no hay scroll lateral. En el ordenador, tocar un concierto abre su ficha al lado
+    sin perder la lista, y Escape la cierra."""
+    lunes = lunes_de(date.today()).isoformat()
+    ctx = contexto(b)
+    pg = pagina(ctx, lenta=False)
+    pg.goto(URL + f"#semana/{lunes}", wait_until="commit")
+    pg.wait_for_selector(".card", timeout=30000)
+    vistos, lateral = {}, 0
+    for m, cls in (("lista", ""), ("compacta", "fila"), ("cuadricula", "tile")):
+        pg.click(f"[data-modo='{m}']")
+        pg.wait_for_timeout(500)
+        pg.evaluate("scrollTo(0,0)")
+        vistos[m] = pg.evaluate(f"""(()=>{{const cs=[...document.querySelectorAll('#main .card')];
+            return {{bien:cs.length>0&&cs.every(c=>'{cls}'?c.classList.contains('{cls}'):!c.classList.contains('fila')&&!c.classList.contains('tile')),
+                    enPantalla:cs.filter(c=>{{const b=c.getBoundingClientRect();return b.top>=0&&b.bottom<=innerHeight}}).length}}}})()""")
+        lateral = max(lateral, pg.evaluate("document.documentElement.scrollWidth-innerWidth"))
+        pg.screenshot(path=str(OUT / f"9_modo_{m}.png"))
+    pg.reload(wait_until="commit")
+    pg.wait_for_selector(".card", timeout=30000)
+    guardado = pg.evaluate("state.modo")
+    pg.click("[data-modo='lista']")
+    check("UX", "Modos de vista: lista, compacta y cuadrícula; la compacta enseña más conciertos; se recuerda al volver",
+          " · ".join(f"{m}: {v['enPantalla']}" for m, v in vistos.items()) + f" en pantalla · guardado: {guardado}",
+          ok=all(v["bien"] for v in vistos.values()) and vistos["compacta"]["enPantalla"] > vistos["lista"]["enPantalla"]
+          and guardado == "cuadricula" and lateral <= 1, detalle=str(vistos))
+    ctx.close()
+    ctx = contexto(b, movil=False, ancho=1440, alto=900)
+    pg = pagina(ctx, lenta=False)
+    pg.goto(URL + f"#semana/{lunes}", wait_until="commit")
+    pg.wait_for_selector(".card", timeout=30000)
+    pg.wait_for_timeout(800)
+    antes = pg.evaluate("location.hash")
+    cid = pg.locator("#main .card").nth(1).get_attribute("data-id")
+    pg.locator("#main .card").nth(1).click()
+    pg.wait_for_selector("#panel .rows", timeout=15000)
+    r = pg.evaluate(f"""(()=>{{const p=document.getElementById('panel').getBoundingClientRect(),
+        m=document.getElementById('main').getBoundingClientRect();
+        return {{hash:location.hash, lado:p.left>=m.right-1, marcado:!!document.querySelector('#main .card[data-id="{cid}"][aria-current]'),
+                lateral:document.documentElement.scrollWidth-innerWidth}}}})()""")
+    pg.screenshot(path=str(OUT / "9_panel_ordenador.png"))
+    pg.keyboard.press("Escape")
+    pg.wait_for_timeout(300)
+    cerrado = not pg.is_visible("#panel")
+    check("UX", "Ordenador: la ficha se abre al lado de la lista (la lista sigue a la vista) y Escape la cierra",
+          f"{'al lado' if r['lado'] else 'no al lado'} · {'cerrada' if cerrado else 'sigue abierta'}",
+          ok=r["hash"] == antes and r["lado"] and r["marcado"] and cerrado and r["lateral"] <= 1, detalle=str(r))
+    ctx.close()
+
+
 def accesibilidad(pg, modo):
     """axe-core en semana, mes, ficha e informe: problemas graves y contraste (el contraste ya está corregido:
     si vuelve a fallar es fallo, no aviso)."""
@@ -1897,6 +1949,7 @@ def main() -> int:
             peor_caso(b, datos)
         sin_conexion(b)
         pantallas(b)
+        modos_vista(b)
         b.close()
     return informe()
 

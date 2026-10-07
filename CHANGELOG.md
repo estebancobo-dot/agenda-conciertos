@@ -1,5 +1,16 @@
 # Versiones
 
+## 2.77.0 — 2026-10-07
+
+- Web: **tres modos de vista** para las listas de la agenda y la búsqueda, con un selector junto a los géneros que se recuerda en cada móvil u ordenador:
+  - **Lista**: la tarjeta de siempre, con miniatura; en pantallas anchas, en dos columnas.
+  - **Compacta**: una fila por concierto (hora · artista · sala · género, con bandera, ✓ y avisos), sin foto; en el ordenador, en columnas alineadas. Cabe bastante más por pantalla.
+  - **Cuadrícula**: la foto grande (o las iniciales sobre el color del género) con lo esencial debajo; 2 columnas en el móvil y 4–6 en el ordenador.
+  - Al cambiar de modo se mantiene a la vista el concierto por el que ibas. Mis conciertos, Novedades y los similares de la ficha siguen en lista.
+- Ordenador (1.100 px o más): **la ficha se abre al lado de la lista**, que se queda a la vista con el concierto marcado; los similares de la ficha se abren en el mismo panel; ✕ o Escape la cierran y «Abrir en página completa» lleva a la ficha de siempre.
+- Menú: quitada la página **Estilos** (una lista de estilos que enlazaba a búsquedas fuera de la web y no filtraba la agenda). Elegir estilos sigue en los filtros («Afinar por estilos»), sin cambios.
+- Validación en la web publicada: escenario nuevo con los tres modos (cada uno pinta su tarjeta, la compacta enseña más, se recuerda al recargar, sin scroll lateral) y la ficha al lado en el ordenador.
+
 ## 2.76.0 — 2026-10-07
 
 - Web en el móvil: **zonas táctiles de 44 px** como mínimo («‹ Volver», las pestañas de vista, la sala, «Cómo llegar», «Web de la sala» y las webs de «De dónde salen los datos»), sin cambiar cómo se ven.

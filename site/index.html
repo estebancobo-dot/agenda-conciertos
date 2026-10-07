@@ -101,7 +101,7 @@ input[type=search]::-webkit-search-cancel-button{display:none}
 .chip.quitar{border-color:var(--ink);font-weight:700}
 .active{font-size:.8rem;color:var(--muted);margin:6px 0 0}
 .fuera{font-size:.8rem;color:var(--muted);margin:6px 0 0}
-.fuera button{border:0;background:none;color:var(--info);padding:6px 0;font-size:.8rem;text-decoration:underline}
+.fuera button{border:0;background:none;color:var(--info);display:inline-block;padding:13px 2px;margin:-13px -2px;font-size:.8rem;text-decoration:underline}
 .active button{border:0;background:none;color:var(--info);padding:0;font-size:.8rem;text-decoration:underline}
 /* navegación de fechas */
 .nav{display:flex;align-items:center;gap:8px;margin:12px 0 8px}
@@ -164,6 +164,44 @@ input[type=search]::-webkit-search-cancel-button{display:none}
 /* tarjeta */
 .card{content-visibility:auto;contain-intrinsic-size:auto 82px;display:flex;gap:12px;align-items:center;background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:10px;margin:8px 0;box-shadow:var(--shadow);text-decoration:none;color:inherit;position:relative;overflow:hidden}
 .sinh{color:var(--muted);font-style:italic}
+/* selector de vista */
+.vrow{display:flex;align-items:flex-start;gap:8px;margin-top:4px}.vinfo{flex:1;min-width:0}
+.vmodo{display:flex;gap:2px;background:var(--panel2);border-radius:10px;padding:2px;margin-left:auto;flex:none}
+.vmodo button{width:44px;height:40px;border:0;background:none;border-radius:8px;color:var(--muted);display:flex;align-items:center;justify-content:center}
+.vmodo button[aria-pressed="true"]{background:var(--panel);color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.15)}
+.vmodo svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round}
+.vmodo svg rect{fill:currentColor;stroke:none}
+#fbody{container-type:inline-size}
+/* lista: en pantallas anchas, dos columnas */
+@container (min-width:760px){.cards{display:grid;grid-template-columns:1fr 1fr;gap:0 12px}}
+/* compacta: una fila por concierto */
+.card.fila{display:grid;grid-template-columns:54px minmax(0,1fr) auto;grid-template-areas:"h a a" "h s t";gap:0 10px;align-items:center;padding:7px 10px 7px 14px;margin:4px 0;contain-intrinsic-size:auto 54px}
+.fila .fh{grid-area:h;font-variant-numeric:tabular-nums;font-size:.95rem}.fila .fh .sinh{font-size:.78rem;font-weight:400}
+.fila .fa{grid-area:a;font-weight:750;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.fila .fa small{color:var(--muted);font-weight:500}
+.fila .fs{grid-area:s;color:var(--muted);font-size:.84rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.fila .ft{grid-area:t;display:flex;gap:4px;align-items:center;justify-content:flex-end;white-space:nowrap}
+@container (min-width:760px){.cards:has(.fila){display:block}
+  .card.fila{grid-template-columns:62px minmax(0,1.5fr) minmax(0,1fr) minmax(0,240px);grid-template-areas:"h a s t";padding:9px 12px 9px 16px}
+  .fila .fs{text-align:left}.fila .ft{overflow:hidden}}
+/* cuadrícula: fotos grandes */
+.cards:has(.tile){display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px;margin-top:8px}
+.card.tile{flex-direction:column;align-items:stretch;gap:0;padding:0;margin:0;contain-intrinsic-size:auto 280px}
+.tile .tfoto{width:100%;height:auto;aspect-ratio:1;flex:none;border-radius:0;font-size:2rem;color:#fff;background:linear-gradient(135deg,var(--gc,var(--c-sin)),color-mix(in srgb,var(--gc,var(--c-sin)) 45%,#000))}
+.tile img.tfoto{background:var(--panel2)}
+.tile .cbody{padding:8px 10px 10px}.tile .art{font-size:.96rem}
+.card.tile::before{right:0;bottom:auto;width:auto;height:4px;z-index:1}
+.card[aria-current="true"]{outline:2px solid var(--ink);outline-offset:-1px}
+/* escritorio: la ficha al lado de la lista */
+#panel{display:none}
+@media (min-width:1100px){
+  body.conpanel main{max-width:none;margin-left:max(16px,calc((100vw - 1360px)/2));margin-right:calc(520px + max(16px,calc((100vw - 1360px)/2)))}
+  body.conpanel .top,body.conpanel .seg{max-width:1360px}
+  #panel .actions{grid-template-columns:1fr 1fr}#panel .actions .primary{grid-column:1/-1}
+  body.conpanel #panel{display:block;position:fixed;top:var(--hh,96px);bottom:0;right:max(16px,calc((100vw - 1360px)/2));width:496px;overflow-y:auto;overscroll-behavior:contain;padding:10px 4px 32px 20px;border-left:1px solid var(--line);background:var(--bg);z-index:5}
+}
+.phd{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:6px}
+.phd a{min-height:44px;display:inline-flex;align-items:center}
+.phd button{width:44px;height:44px;border:1px solid var(--line);border-radius:10px;background:var(--panel);color:var(--ink);font-size:1.1rem}
 .card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--gc,var(--c-sin))}
 .thumb{flex:0 0 60px;width:60px;height:60px;border-radius:10px;object-fit:cover;background:var(--panel2);display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--muted);font-size:1.1rem;overflow:hidden}
 .cbody{flex:1;min-width:0}
@@ -368,11 +406,6 @@ th{color:var(--muted);font-weight:600}
 .fsin em{font-style:normal;font-weight:700;color:var(--muted)}
 .kpi span{color:var(--muted);font-size:.8rem}
 .s-ok{color:var(--ok);font-weight:700} .s-err{color:var(--bad);font-weight:700} .s-warn{color:var(--warn);font-weight:700}
-.genre{margin:14px 0}
-.genre h3{margin:0 0 6px}
-.styles{display:flex;flex-wrap:wrap;gap:6px}
-.style{font-size:.84rem;border:1px solid var(--line);border-radius:8px;padding:3px 8px;text-decoration:none;color:var(--muted);background:var(--panel)}
-.style.has{border-color:var(--ok);color:var(--ok);font-weight:700;background:color-mix(in srgb,var(--ok) 10%,var(--panel))}
 .md h1,.md h2{font-size:1.1rem;margin:18px 0 6px} .md h3{font-size:1rem;margin:14px 0 4px}
 .md ul{padding-left:20px} .md code{background:var(--panel2);padding:1px 4px;border-radius:4px}
 .muted{color:var(--muted)}
@@ -409,6 +442,7 @@ th{color:var(--muted);font-weight:600}
 </header>
 <div id="menu"></div>
 <main id="main" aria-busy="true"><div class="skel skel-bar"></div><div class="skel skel-card"></div><div class="skel skel-card"></div><div class="skel skel-card"></div><div class="skel skel-card"></div><span class="sr">Cargando datos…</span></main>
+<aside id="panel" aria-label="Concierto"></aside>
 <div id="sheet"></div>
 <script>
 "use strict";
@@ -443,10 +477,10 @@ const DEF_GRUPOS = GRUPOS.filter(g=>!g.mas).map(g=>g.id);
 const DEF_NOMBRE = "Rock, pop y afines";
 const DEF_TITULO = "Por defecto: "+GRUPOS.filter(g=>!g.mas).map(g=>g.nombre).join(", ")+". Jazz, flamenco, soul, clásica y el resto se añaden desde los filtros.";
 const VISTAS = ["Mes","Semana","Finde","Día","Todos"];
-const INFO = ["Salas","Calendarios","Estilos","Fuentes","Informe","Versiones"];
+const INFO = ["Salas","Calendarios","Fuentes","Informe","Versiones"];
 // en el menú, a la vista lo que sirve para ir a conciertos; lo que explica de dónde salen los datos, plegado
-const MENU_PUBLICO = ["Salas","Calendarios"], MENU_DATOS = ["Fuentes","Informe","Estilos","Versiones"];
-const ICONO_MENU = {Salas:"📍",Calendarios:"📅",Estilos:"🎼",Fuentes:"🔗",Informe:"📊",Versiones:"🕘"};
+const MENU_PUBLICO = ["Salas","Calendarios"], MENU_DATOS = ["Fuentes","Informe","Versiones"];
+const ICONO_MENU = {Salas:"📍",Calendarios:"📅",Fuentes:"🔗",Informe:"📊",Versiones:"🕘"};
 const PROPIAS = ["Mis conciertos","Novedades"];  // fase B: lo de quien usa la web (guardado en su móvil)
 const TABS = [...VISTAS,...INFO,...PROPIAS];
 // confirmación de cada concierto (scraper: puntuar_confianza): c confirmado, p probable, s sin confirmar
@@ -480,7 +514,10 @@ const gruposGuardados=()=>{const g5=store.get("grupos5",null); if(g5) return g5;
   const g4=store.get("grupos4",null); if(g4) return g4.filter(g=>g!=="tributos y versiones");
   const g3=store.get("grupos3",null); if(g3) return g3.includes("fuera de foco")?[...new Set([...g3,...NUEVOS_22])]:g3;
   const g2=store.get("grupos2",null); return g2?[...g2,...DEF_GRUPOS.filter(g=>!["rock y metal","punk y garage","pop e indie","americana/country/folk","blues","cantautor","tributos y versiones","sin clasificar"].includes(g))]:DEF_GRUPOS;};
-let state = {tab:"Mes", date:null, id:null, q:"", grupos:gruposGuardados(), origen:(o=>o==="esc"?"es":o)(store.get("origen","todos")), conf:store.get("conf","todos"), from:null,
+// cómo se ven las listas: "lista" (tarjeta con miniatura), "compacta" (una fila por concierto) o "cuadricula" (fotos
+// grandes); lo elige cada persona y se guarda en su móvil
+const MODOS = [["lista","Lista"],["compacta","Compacta"],["cuadricula","Cuadrícula"]];
+let state = {modo:(m=>MODOS.some(x=>x[0]===m)?m:"lista")(store.get("modo","lista")), tab:"Mes", date:null, id:null, q:"", grupos:gruposGuardados(), origen:(o=>o==="esc"?"es":o)(store.get("origen","todos")), conf:store.get("conf","todos"), from:null,
   estilos:store.get("estilos",{}), genericos:store.get("genericos",true)};
 let regionNames=null; try{regionNames=new Intl.DisplayNames(["es"],{type:"region"})}catch(e){}
 
@@ -533,7 +570,7 @@ function fotoUrl(u,w,cuadrada){
   if(/^https:\/\/([a-z]+\.)?(conciertos\.club|discogs\.com)\//.test(u)) return u;
   return `https://wsrv.nl/?url=${encodeURIComponent(u)}&w=${w}${cuadrada?`&h=${w}&fit=cover&a=attention`:""}&output=webp&q=${cuadrada?70:78}&we`;
 }
-function fotoError(el){ const o=el.dataset.o; if(o&&el.src!==o){ el.src=o; el.dataset.o=""; return; } el.outerHTML=`<span class="thumb">${el.dataset.i||""}</span>`; }
+function fotoError(el){ const o=el.dataset.o; if(o&&el.src!==o){ el.src=o; el.dataset.o=""; return; } el.outerHTML=`<span class="${esc(el.className)}">${el.dataset.i||""}</span>`; }
 let nImg=0; // miniaturas pintadas en esta vista: las primeras se piden ya, el resto al acercarse
 const precioTxt=p=>String(p||"").replace(/(\d+)[.,]0+(?!\d)/g,"$1").replace(/\s*EUR\b/gi," €").replace(/\s+€/g," €").trim();
 const plural=(n,s,p)=>`${n} ${n===1?s:(p||s+"s")}`;
@@ -672,8 +709,17 @@ function extraHTML(){
   // por defecto se ocultan los demás géneros: se dice cuántos y se ofrecen con un toque
   const fuera=modo==="def"&&!state.q.trim()?DATA.reduce((k,r)=>k+(r.fecha>=HOY&&pasaOrigen(r)&&pasaNivel(r,state.conf)&&!pasaGrupo(r)?1:0),0):0;
   return `<div class="chips" role="group" aria-label="Géneros">${chips}</div>
+   <div class="vrow"><div class="vinfo">
    ${fuera?`<div class="fuera">${plural(fuera,"concierto más","conciertos más")} de otros géneros (jazz, flamenco, soul, clásica…) · <button id="fvertodos">Ver todos los géneros</button></div>`:""}
-   ${n?`<div class="active">Filtrando: ${esc(resumenFiltros())} · <button id="freset">Quitar filtros</button></div>`:""}`;
+   ${n?`<div class="active">Filtrando: ${esc(resumenFiltros())} · <button id="freset">Quitar filtros</button></div>`:""}</div>
+   ${selectorModo()}</div>`;
+}
+const ICONO_MODO={
+  lista:'<svg viewBox="0 0 20 20" aria-hidden="true"><rect x="2" y="3" width="5" height="5" rx="1"/><rect x="2" y="12" width="5" height="5" rx="1"/><path d="M9 4.5h9M9 7h6M9 13.5h9M9 16h6"/></svg>',
+  compacta:'<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M2 3.5h16M2 7.8h16M2 12.1h16M2 16.4h16"/></svg>',
+  cuadricula:'<svg viewBox="0 0 20 20" aria-hidden="true"><rect x="2" y="2" width="7" height="7" rx="1.5"/><rect x="11" y="2" width="7" height="7" rx="1.5"/><rect x="2" y="11" width="7" height="7" rx="1.5"/><rect x="11" y="11" width="7" height="7" rx="1.5"/></svg>'};
+function selectorModo(){
+  return `<div class="vmodo" role="group" aria-label="Cómo ver la lista">${MODOS.map(([m,t])=>`<button type="button" data-modo="${m}" aria-pressed="${state.modo===m}" aria-label="Vista ${t.toLowerCase()}" title="${t}">${ICONO_MODO[m]}</button>`).join("")}</div>`;
 }
 function setGrupos(g){ state.grupos=g; store.set("grupos5",g); }
 // preajuste de géneros: los habituales, todos, o una selección propia
@@ -692,6 +738,11 @@ function bindExtra(){
   const fr=document.getElementById("freset"); if(fr) fr.onclick=borrarFiltros;
   const fq=document.getElementById("fquitar"); if(fq) fq.onclick=borrarFiltros;
   const fv=document.getElementById("fvertodos"); if(fv) fv.onclick=()=>{setGrupos(GRUPOS.map(g=>g.id)); renderBody(false);};
+  document.querySelectorAll("[data-modo]").forEach(b=>b.onclick=()=>{ if(state.modo===b.dataset.modo) return;
+    // se mantiene a la vista el concierto por el que ibas
+    const ref=[...document.querySelectorAll("#main .card")].find(c=>c.getBoundingClientRect().top>=(document.getElementById("hdr").offsetHeight||0));
+    state.modo=b.dataset.modo; store.set("modo",state.modo); renderBody(false);
+    const el=ref&&document.querySelector(`#main .card[data-id="${CSS.escape(ref.dataset.id)}"]`); if(el) el.scrollIntoView({block:"center"}); });
   document.querySelectorAll("[data-chip]").forEach(c=>c.onclick=()=>{
     const id=c.dataset.chip;
     let g;
@@ -894,7 +945,35 @@ function cartelTags(r){
   return Object.keys(gc).filter(g=>GN[g]&&!grupos(r).includes(g)).slice(0,1).map(g=>
     `<span class="tag tcart" title="${esc(gc[g].join(", "))} (${r.festival?"en el cartel":"telonero o invitado"})">+ ${esc(GN[g])}</span>`).join("");
 }
-function card(r){
+const banderaDe=r=>r.nacionalidad?`<span class="flag" title="${esc(pais(r.nacionalidad))}">${flag(r.nacionalidad)}</span>`:r.nacionalidad_estimada?`<span class="flag" title="${esc(pais(r.nacionalidad_estimada))}">${flag(r.nacionalidad_estimada)}</span>`:"";
+const confMini=r=>nivelDe(r)==="confirmado"&&!r.evento?`<span class="conf" title="Confirmado: lo anuncia la sala, una ticketera o varias agendas" aria-label="Confirmado">✓</span>`:"";
+const salaMini=r=>esc(r.sala||"sala sin indicar")+(r.municipio&&r.municipio!=="Madrid"?` · ${esc(r.municipio)}`:"");
+// compacta: una fila por concierto (hora · artista · sala · género), sin foto
+function cardCompacta(r){
+  if(!r._cardC){ const h=horaCard(r);
+    r._cardC=`<a class="card fila" href="#concierto/${esc(r.id)}" data-id="${esc(r.id)}" style="--gc:var(${color(r)})">
+   <b class="fh">${h?esc(h):`<span class="sinh">sin hora</span>`}</b><span class="fa">${r.festival?`<span class="fest">Festival</span> `:""}${esc(r.artista)}${r.invitados&&r.invitados.length?` <small>+ ${r.invitados.length}</small>`:""}</span>
+   <span class="fs">${salaMini(r)}</span><span class="ft">${banderaDe(r)}${estiloTags(r,1)}${r.gf?`<span class="tag tgf">gran formato</span>`:""}${estadoMini(r)}${cambioMini(r)}${confMini(r)}%MARCAS%</span></a>`; }
+  return r._cardC.replace("%MARCAS%",marcas(r));
+}
+// cuadrícula: la foto grande arriba (o las iniciales sobre el color del género) y debajo lo esencial
+function cardCuadricula(r){
+  if(!r._cardG){ const im=img(r), h=horaCard(r);
+    r._conImg=!!im;
+    r._cardG=`<a class="card tile" href="#concierto/${esc(r.id)}" data-id="${esc(r.id)}" style="--gc:var(${color(r)})">
+   ${im?`<img class="thumb tfoto" %SRC%="${esc(fotoUrl(im.url,360,true))}" data-o="${esc(im.url)}" data-i="${iniciales(r.artista)}" alt="" width="180" height="180" decoding="async" referrerpolicy="no-referrer" onerror="fotoError(this)">`:`<span class="thumb tfoto">${iniciales(r.artista)}</span>`}
+   <div class="cbody"><div class="art">${r.festival?`<span class="fest">Festival</span> `:""}${esc(r.artista)}</div>
+   <div class="sub">${h?`<b>${esc(h)}</b>`:`<span class="sinh">sin hora</span>`} · ${salaMini(r)}</div>
+   <div class="tags">${banderaDe(r)}${estiloTags(r,1)}${r.gf?`<span class="tag tgf">gran formato</span>`:""}${estadoMini(r)}${cambioMini(r)}${confMini(r)}%MARCAS%</div></div></a>`; }
+  const c=r._cardG.replace("%MARCAS%",marcas(r));
+  return r._conImg?c.replace("%SRC%",nImg++<6?'fetchpriority="high" src':`src="${PIXEL}" data-src`):c;
+}
+// el modo elegido vale para las listas de la agenda (y la búsqueda); Mis conciertos, Novedades o los similares de la
+// ficha, siempre en lista
+const modoLista=()=>VISTAS.includes(state.tab)?state.modo:"lista";
+function card(r,modo){
+  if(modo==="compacta") return cardCompacta(r);
+  if(modo==="cuadricula") return cardCuadricula(r);
   // el HTML de cada tarjeta se genera una vez y se reutiliza (cambiar filtros o de semana no lo recalcula)
   if(!r._card){
     const im=img(r), h=horaCard(r);
@@ -935,7 +1014,7 @@ function dayHead(fecha,n,cls){ const rel=fecha===HOY?"Hoy, ":fecha===addDays(HOY
   return `<div class="dayhead${cls||""}">${esc(rel?rel+t:mayus(t))}<small>${plural(n,"concierto")}</small></div>`; }
 function dayList(fecha,list,opts={}){
   return `<section class="dia" id="d-${fecha}" data-f="${fecha}">`+(opts.cab===false?"":dayHead(fecha,list.length))+
-    (list.length?list.map(card).join(""):(opts.vacio===false?"":vacioHTML(DATA.filter(r=>r.fecha===fecha&&pasaTexto(r)).length,"este día")))+`</section>`;
+    (list.length?`<div class="cards">${list.map(r=>card(r,modoLista())).join("")}</div>`:(opts.vacio===false?"":vacioHTML(DATA.filter(r=>r.fecha===fecha&&pasaTexto(r)).length,"este día")))+`</section>`;
 }
 
 // ---------------------------------------------------------------- ficha detallada
@@ -1276,10 +1355,12 @@ function viewSemana(){
 // lista de días con pintado progresivo: los primeros ~30 conciertos ya; el resto de días, huecos con su alto
 // aproximado que se pintan al acercarse (completarDiferidos). `hasta`: pintar ya todos hasta ese día (al volver de
 // una ficha, para recolocar la lista en la tarjeta que estabas)
+// alto aproximado de un día aún sin pintar (para que la barra de desplazamiento no salte)
+const altoDia=n=>40+(state.modo==="compacta"?n*58:state.modo==="cuadricula"?Math.ceil(n/Math.max(2,Math.floor((document.getElementById("main")||{clientWidth:390}).clientWidth/180)))*290:n*90);
 function listaDias(dias,bd,hasta){
   let out="", ya=0; DIFERIDOS={bd,dias:[]};
   for(const f of dias){ const l=bd[f]||[]; if(!l.length) continue;
-    if(ya<30||(hasta&&f<=hasta)){ out+=dayList(f,l); ya+=l.length; } else { out+=`<div class="dif" id="d-${f}" data-dif="${f}" style="min-height:${l.length*90+40}px"></div>`; DIFERIDOS.dias.push(f); }}
+    if(ya<30||(hasta&&f<=hasta)){ out+=dayList(f,l); ya+=l.length; } else { out+=`<div class="dif" id="d-${f}" data-dif="${f}" style="min-height:${altoDia(l.length)}px"></div>`; DIFERIDOS.dias.push(f); }}
   return out;
 }
 // Fin de semana: viernes, sábado y domingo de la semana elegida (aunque cambie el mes o el año)
@@ -1319,14 +1400,6 @@ function viewBusqueda(){
   const ocultos=DATA.filter(r=>r.fecha>=HOY&&pasaTexto(r)&&!visibleBusqueda(r)).length;
   return salasBuscadas()+`<p class="hint" style="margin-top:12px">${plural(res.length,"resultado")} para «${esc(state.q.trim())}» en todas las fechas y géneros${ocultos?` · <button class="sclear" style="position:static;width:auto;height:auto;color:var(--info);font-size:.82rem;text-decoration:underline" id="vertodo">ver ${ocultos} más ocultos por los filtros</button>`:""}</p>`+
     (listaDias(Object.keys(m).sort(),m,pintarTodo?"9999":null)||`<p class="empty">Nada encontrado.</p>`);
-}
-function viewEstilos(){
-  if(!TAXO) return `<p class="empty">No se pudo cargar la taxonomía.</p>`;
-  const cnt={}; DATA.filter(r=>r.fecha>=HOY).forEach(r=>(r.estilos_discogs||[]).forEach(s=>cnt[s]=(cnt[s]||0)+1));
-  const g=Object.entries(TAXO.generos).map(([gen,st])=>`<section class="genre"><h3>${esc(gen)}</h3><div class="styles">${st.map(s=>{
-      const q=encodeURIComponent(`conciertos ${s} Madrid`);
-      return `<a class="style${cnt[s]?" has":""}" href="https://duckduckgo.com/?q=${q}" target="_blank" rel="noopener">${esc(s)}${cnt[s]?` · ${cnt[s]}`:""}</a>`}).join("")}</div></section>`).join("");
-  return `<p class="muted">Jerarquía de Discogs (género → estilos). En verde, los estilos de los artistas con conciertos próximos, según su ficha en Discogs o Wikipedia. AllMusic no permite el acceso automático, por eso la referencia es Discogs.</p>`+g;
 }
 function extraFuente(f){
   return (f.reintento?`<div class="muted">${esc(f.reintento)}</div>`:"")+
@@ -1647,7 +1720,7 @@ async function renderBody(keepFocus){
     if(["Salas","Calendarios"].includes(state.tab)) await cargarSalas();
     if(state.tab==="Mis conciertos") body=back+viewFavoritos(); else if(state.tab==="Novedades") body=back+viewNovedades();
     else if(state.tab==="Salas") body=back+viewSalas(); else if(state.tab==="Calendarios") body=back+viewCalendarios();
-    else if(state.tab==="Estilos") body=back+viewEstilos(); else if(state.tab==="Fuentes") body=back+viewFuentes();
+    else if(state.tab==="Fuentes") body=back+viewFuentes();
     else if(state.tab==="Informe") body=back+viewInforme(); else body=back+await viewVersiones();
   }
   if(withFilters&&keepFocus&&document.getElementById("fbody")){
@@ -1658,6 +1731,7 @@ async function renderBody(keepFocus){
   else { main.innerHTML=withFilters?filtersHTML()+`<div id="fbody">${body}</div>`+clavesHTML():body; if(withFilters) bindFilters(); }
   bindBody(); fijas();
   setHash();
+  if(PANEL) marcarPanel();
   if(state.tab!=="Concierto"){ completarDiferidos(); observarImagenes(document.getElementById("main")); precargar(); fotosEnPantalla(); rum("lista",performance.now()-t0); }
   else { const g=document.querySelector(".hero img"); if(g&&!g.complete) g._t0=performance.now(); else if(g) g.classList.add("ok"); }
   medir(state.tab,t0);
@@ -1839,6 +1913,17 @@ document.getElementById("hnav").addEventListener("click",e=>{
   const b=e.target.closest("[data-hn]"); if(!b) return;
   if(b.dataset.hn==="hoy") irHoy(); else navegar(Number(b.dataset.hn));
 });
+function bindFicha(r){
+    const i=document.getElementById("ics"); if(i) i.onclick=()=>descargarIcs(r);
+    const fv=document.getElementById("fav"); if(fv) fv.onclick=()=>{const on=toggleFav(r.id); fv.setAttribute("aria-pressed",on);
+      fv.textContent=on?"★ En Mis conciertos":"☆ Guardar"; toast(on?"Guardado en Mis conciertos":"Quitado de Mis conciertos"); marcarMenu();};
+    const s=document.getElementById("share"); if(s) s.onclick=()=>compartir(r);
+    const ca=document.getElementById("carr");
+    if(ca){ const dots=[...document.querySelectorAll(".dots [data-slide]")];
+      const marcar=()=>{const k=Math.round(ca.scrollLeft/ca.clientWidth); dots.forEach((d,i)=>d.setAttribute("aria-current",i===k));};
+      ca.addEventListener("scroll",()=>requestAnimationFrame(marcar),{passive:true});
+      dots.forEach(d=>d.onclick=()=>ca.scrollTo({left:Number(d.dataset.slide)*ca.clientWidth,behavior:"smooth"})); }
+}
 function bindBody(){
   if(state.tab==="Fuentes") bindFuentes();
   if(["Sala","Salas","Calendarios"].includes(state.tab)) bindSalas();
@@ -1860,15 +1945,7 @@ function bindBody(){
   if(state.tab==="Concierto"&&r){
     // "Volver" es volver atrás en el historial (a la lista, en el mismo sitio), no abrirla de nuevo
     const bk=document.querySelector("#main .back"); if(bk&&state.from) bk.onclick=e=>{e.preventDefault(); history.back();};
-    const i=document.getElementById("ics"); if(i) i.onclick=()=>descargarIcs(r);
-    const fv=document.getElementById("fav"); if(fv) fv.onclick=()=>{const on=toggleFav(r.id); fv.setAttribute("aria-pressed",on);
-      fv.textContent=on?"★ En Mis conciertos":"☆ Guardar"; toast(on?"Guardado en Mis conciertos":"Quitado de Mis conciertos"); marcarMenu();};
-    const s=document.getElementById("share"); if(s) s.onclick=()=>compartir(r);
-    const ca=document.getElementById("carr");
-    if(ca){ const dots=[...document.querySelectorAll(".dots [data-slide]")];
-      const marcar=()=>{const k=Math.round(ca.scrollLeft/ca.clientWidth); dots.forEach((d,i)=>d.setAttribute("aria-current",i===k));};
-      ca.addEventListener("scroll",()=>requestAnimationFrame(marcar),{passive:true});
-      dots.forEach(d=>d.onclick=()=>ca.scrollTo({left:Number(d.dataset.slide)*ca.clientWidth,behavior:"smooth"})); }
+    bindFicha(r);
   }
   // deslizar de lado: día siguiente/anterior (día), semana (lista de la semana) o mes (cuadrícula del mes)
   const sw=state.tab==="Mes"?document.querySelector("#main .cal"):document.getElementById("swipe");
@@ -1878,7 +1955,35 @@ function bindBody(){
       if(Math.abs(dx)>70&&Math.abs(dx)>2*Math.abs(dy)) navegar(dx<0?paso:-paso); };
   }
 }
-function render(){ document.getElementById("hdr").classList.remove("buscando"); document.getElementById("sheet").innerHTML=""; document.getElementById("menu").innerHTML=""; renderTabs(); renderBody(false); }
+// ---------------------------------------------------------------- escritorio: la ficha al lado de la lista
+// En pantallas anchas, tocar un concierto de la agenda abre su ficha a la derecha y la lista se queda a la vista (como
+// el correo). La dirección no cambia; "Abrir en página completa" lleva a la ficha de siempre (#concierto/…).
+let PANEL=null;
+const anchoPanel=()=>matchMedia("(min-width:1100px)").matches;
+function marcarPanel(){ document.querySelectorAll("#main .card[aria-current]").forEach(c=>c.removeAttribute("aria-current"));
+  if(PANEL) document.querySelectorAll(`#main .card[data-id="${CSS.escape(PANEL)}"]`).forEach(c=>c.setAttribute("aria-current","true")); }
+function pintarPanel(){
+  const p=document.getElementById("panel"), r=BYID[PANEL]; if(!r){ cerrarPanel(); return; }
+  const antes=state.id; state.id=PANEL; let h=viewConcierto(); state.id=antes;
+  h=h.replace(/^<a class="back"[^>]*>[^<]*<\/a>/,`<div class="phd"><a href="#concierto/${esc(r.id)}">Abrir en página completa ↗</a><button type="button" id="pcerrar" aria-label="Cerrar la ficha">✕</button></div>`);
+  p.innerHTML=h; document.getElementById("pcerrar").onclick=cerrarPanel; bindFicha(r);
+  const g=p.querySelector(".hero img"); if(g&&g.complete) g.classList.add("ok");
+}
+async function abrirPanel(id){
+  PANEL=id; document.body.classList.add("conpanel"); pintarPanel(); document.getElementById("panel").scrollTop=0; marcarPanel();
+  if(BYID[id]&&!BYID[id]._full&&DETALLES){ const ok=await asegurarDetalle(id); if(PANEL===id&&ok){ const y=document.getElementById("panel").scrollTop; pintarPanel(); document.getElementById("panel").scrollTop=y; } }
+}
+function cerrarPanel(){ if(!PANEL&&!document.body.classList.contains("conpanel")) return; PANEL=null; document.body.classList.remove("conpanel"); document.getElementById("panel").innerHTML=""; marcarPanel(); }
+document.getElementById("main").addEventListener("click",e=>{
+  const c=e.target.closest&&e.target.closest("a.card"); if(!c||!anchoPanel()||!VISTAS.includes(state.tab)||e.metaKey||e.ctrlKey||e.shiftKey) return;
+  e.preventDefault(); abrirPanel(c.dataset.id);
+});
+document.getElementById("panel").addEventListener("click",e=>{  // los similares de la ficha, en el mismo panel
+  const c=e.target.closest&&e.target.closest("a.card"); if(!c||e.metaKey||e.ctrlKey) return; e.preventDefault(); abrirPanel(c.dataset.id);
+});
+document.addEventListener("keydown",e=>{ if(e.key==="Escape"&&PANEL&&!document.getElementById("sheet").innerHTML) cerrarPanel(); });
+addEventListener("resize",()=>{ if(PANEL&&!anchoPanel()) cerrarPanel(); });
+function render(){ if(!VISTAS.includes(state.tab)) cerrarPanel(); document.getElementById("hdr").classList.remove("buscando"); document.getElementById("sheet").innerHTML=""; document.getElementById("menu").innerHTML=""; renderTabs(); renderBody(false); }
 
 async function load(){
   const j=async u=>{const r=await fetch(u,{cache:"no-cache"}); if(!r.ok) throw new Error(u); return r.json();};
