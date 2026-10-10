@@ -220,6 +220,8 @@ details.plegada{margin:2px 0 8px}details.plegada summary{cursor:pointer;color:va
 .sub b{color:var(--ink);font-variant-numeric:tabular-nums}
 .tags{display:flex;flex-wrap:wrap;gap:4px 6px;margin-top:5px;align-items:center}
 .tag{font-size:.74rem;border-radius:6px;padding:1px 6px;background:var(--panel2);color:var(--ink)}
+.cuenta{display:inline-block;margin-left:8px;vertical-align:1px;font-size:.74rem;font-weight:700;border-radius:999px;padding:2px 9px;background:var(--accent);color:#fff}
+.cuenta.ya{background:var(--ok)}
 .tag.tcart{background:none;border:1px dashed var(--line);color:var(--muted)}
 .fest{display:inline-block;font-size:.66rem;font-weight:800;letter-spacing:.04em;text-transform:uppercase;vertical-align:2px;
   border-radius:5px;padding:1px 5px;background:var(--ink);color:var(--bg)}
@@ -949,6 +951,29 @@ function horaCard(r){
   if(c) return [...c.versiones].sort((a,b)=>b.fuentes.length-a.fuentes.length)[0].valor+" ?";
   return r.hora_estimada?"≈ "+r.hora_estimada.hora:"";  // la hora habitual de la sala (estimada)
 }
+// Cuenta atrás de la ficha, con la hora de Madrid (la del concierto) aunque el móvil esté en otra zona
+function ahoraMadrid(){
+  const p=new Intl.DateTimeFormat("en-CA",{timeZone:"Europe/Madrid",year:"numeric",month:"2-digit",day:"2-digit",hour:"2-digit",minute:"2-digit",hourCycle:"h23"}).formatToParts(new Date());
+  const g=t=>(p.find(x=>x.type===t)||{}).value;
+  return {fecha:`${g("year")}-${g("month")}-${g("day")}`, min:+g("hour")*60+ +g("minute")};
+}
+function cuentaAtras(r,ahora){
+  ahora=ahora||ahoraMadrid();
+  const dias=Math.round((Date.parse(r.fecha+"T12:00:00Z")-Date.parse(ahora.fecha+"T12:00:00Z"))/864e5);
+  let h=/^\d\d:\d\d$/.test(r.hora||"")?+r.hora.slice(0,2)*60+ +r.hora.slice(3):null;
+  if(h!=null&&h<6*60) h+=1440;  // a la 1:00 de la madrugada: la noche de ese día
+  if(dias===0){
+    if(h==null) return {t:"Hoy"};
+    const m=h-ahora.min;
+    if(m>0) return {t:m<60?`Empieza en ${m} min`:`Empieza en ${Math.floor(m/60)} h${m%60?` ${m%60} min`:""}`};
+    return m>-180?{t:"Ya ha empezado",ya:true}:null;
+  }
+  if(dias===1) return {t:"Mañana"};
+  if(dias>1&&dias<=99) return {t:`Faltan ${dias} días`};
+  return null;
+}
+function cuentaHTML(r){ const c=cuentaAtras(r); return c?`<span class="cuenta${c.ya?" ya":""}" data-cuenta="${esc(r.id)}">${esc(c.t)}</span>`:""; }
+setInterval(()=>{ for(const el of document.querySelectorAll("[data-cuenta]")){ const r=BYID[el.dataset.cuenta]; const c=r&&cuentaAtras(r); if(!c){el.remove(); continue;} el.textContent=c.t; el.classList.toggle("ya",!!c.ya); } },60000);
 function horaTxt(r){ return r.hora||(r.conflictos||[]).filter(c=>c.campo==="hora").map(c=>c.versiones.map(v=>v.valor).join(" ó ")).join("")||""; }
 function etiquetaAgenda(r){
   // la etiqueta de la agenda a veces es el nombre de un ciclo o de la sala ("Villanos del Jazz"): no es un estilo
@@ -1184,7 +1209,7 @@ function viewConcierto(){
     ${r.ciclo?`<div class="ciclo">${esc(r.ciclo)}</div>`:""}
     ${estadoBox(r)}
     <div class="rows">
-     <div class="row"><span class="ic">📅</span><div><div class="v">${esc(fmt(r.fecha,{weekday:"long",day:"numeric",month:"long"}))}</div><div class="s">${r.hora?`${esc(r.hora)} h${r.hora_pagina?` · según <a href="${hr(r.hora_pagina.url)}" target="_blank" rel="noopener">${esc(r.hora_pagina.nombre)}</a>`:""}`:h?"Hora por confirmar: las webs no coinciden":r.hora_estimada?`Hacia las ${esc(r.hora_estimada.hora)} h (estimada)`:"Hora sin indicar"}</div>${(r.hora_descartada||[]).map(d=>`<div class="s nrm-alt">${esc(d.fuentes.map(x=>x.split(" (")[0]).join(", "))} dice ${esc(d.valor)}: ${esc(d.motivo)}</div>`).join("")}${siFalta(r,"hora")}</div></div>
+     <div class="row"><span class="ic">📅</span><div><div class="v">${esc(fmt(r.fecha,{weekday:"long",day:"numeric",month:"long"}))}${cuentaHTML(r)}</div><div class="s">${r.hora?`${esc(r.hora)} h${r.hora_pagina?` · según <a href="${hr(r.hora_pagina.url)}" target="_blank" rel="noopener">${esc(r.hora_pagina.nombre)}</a>`:""}`:h?"Hora por confirmar: las webs no coinciden":r.hora_estimada?`Hacia las ${esc(r.hora_estimada.hora)} h (estimada)`:"Hora sin indicar"}</div>${(r.hora_descartada||[]).map(d=>`<div class="s nrm-alt">${esc(d.fuentes.map(x=>x.split(" (")[0]).join(", "))} dice ${esc(d.valor)}: ${esc(d.motivo)}</div>`).join("")}${siFalta(r,"hora")}</div></div>
      <div class="row"><span class="ic">📍</span><div><div class="v">${r.sala?salasLinks(r):"Sala sin indicar"}</div><div class="s">${esc(r.municipio||"")} · <a href="${hr(mapa)}" target="_blank" rel="noopener">Cómo llegar</a>${sala&&sala.web?` · <a href="${hr(sala.web)}" target="_blank" rel="noopener">Web de la sala</a>`:""}</div></div></div>
      <div class="row"><span class="ic">🎟️</span><div>${r.precio?`<div class="v">${esc(precioTxt(r.precio))}</div><div class="s">según ${r.precio_fuente?`<a href="${hr(r.precio_fuente.url)}" target="_blank" rel="noopener">${esc(r.precio_fuente.nombre.split(" (")[0])}</a>`:"la web"} · ${r.precio_fuente&&r.precio_fuente.gastos?"con gastos de gestión":"puede no incluir gastos"}</div>`:(r._full?`<div class="v muted">Precio sin indicar</div>`:`<div class="v muted carg">Cargando…</div>`)}${siFalta(r,"precio")}</div></div>
     </div>

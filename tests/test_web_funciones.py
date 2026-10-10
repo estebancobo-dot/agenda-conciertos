@@ -155,3 +155,20 @@ def test_politica_de_contenido():
     assert reglas["default-src"] == ["'self'"] and reglas["connect-src"] == ["'self'"]
     assert reglas["script-src"] == ["'self'", "'unsafe-inline'"]
     assert reglas["object-src"] == ["'none'"] and reglas["base-uri"] == ["'none'"]
+
+
+def test_cuenta_atras(js):
+    """La ficha dice cuánto falta, con la hora de Madrid: hoy (en horas y minutos), ya empezado, mañana, días."""
+    c = lambda fecha, hora, ahora, m: js(  # noqa: E731
+        "([f,h,a,m])=>{const x=cuentaAtras({fecha:f,hora:h},{fecha:a,min:m}); return x&&x.t}", [fecha, hora, ahora, m])
+    assert c("2026-10-10", "21:30", "2026-10-10", 19 * 60) == "Empieza en 2 h 30 min"
+    assert c("2026-10-10", "21:00", "2026-10-10", 20 * 60 + 15) == "Empieza en 45 min"
+    assert c("2026-10-10", "21:00", "2026-10-10", 22 * 60) == "Ya ha empezado"
+    assert c("2026-10-10", "20:30", "2026-10-10", 23 * 60 + 59) is None  # más de 3 h después: ya habrá terminado
+    assert c("2026-10-10", "01:00", "2026-10-10", 23 * 60) == "Empieza en 2 h"  # la 1:00 es esa noche
+    assert c("2026-10-10", None, "2026-10-10", 600) == "Hoy"
+    assert c("2026-10-11", "21:00", "2026-10-10", 600) == "Mañana"
+    assert c("2026-10-20", "21:00", "2026-10-10", 600) == "Faltan 10 días"
+    assert c("2026-10-09", "21:00", "2026-10-10", 600) is None
+    assert c("2027-03-01", "21:00", "2026-10-10", 600) is None  # muy lejos: sin cuenta
+    assert js("(()=>{const a=ahoraMadrid(); return /^\\d{4}-\\d\\d-\\d\\d$/.test(a.fecha)&&a.min>=0&&a.min<1440})()")

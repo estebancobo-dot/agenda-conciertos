@@ -4,6 +4,7 @@
 
 - **Duplicados**: un concierto anunciado con el nombre corto y con el largo el mismo día y en la misma sala se une («OBK» y «CONCIERTO OBK», «SIM» y «Silence iz Mine (SIM)»). «Canopy» es el hotel Canopy by Hilton Madrid Castellana.
 - **Precio**: un cargo aparte ya no se toma por el precio («Ticketmaster aplica un cargo de 2 € por transacción»: la entrada costaba 29,50 €). Las páginas leídas antes se releen poco a poco.
+- **Cuenta atrás en la ficha**, con la hora de Madrid: «Empieza en 2 h 30 min», «Ya ha empezado», «Hoy», «Mañana», «Faltan 10 días» (hasta 99 días). Se actualiza sola cada minuto.
 - `tools/revision.py`: lista para revisar a mano los artistas cuyo origen contradicen otras webs y los posibles conciertos repetidos que no se han unido (`REVISION.md`).
 - El diagnóstico con navegador dice también qué hora y precio lee el lector de páginas.
 
