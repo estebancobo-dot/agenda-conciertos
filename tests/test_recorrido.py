@@ -7,6 +7,7 @@ import pytest
 
 from scraper import pipeline
 from scraper.model import RawEvent, Source
+from tests.fakefetch import FakeFetcher
 
 HOY = date.today()  # la web de la prueba en el navegador enseña desde hoy
 DIA = HOY + timedelta(days=5)
@@ -55,7 +56,7 @@ def test_recorrido_completo(entorno, tmp_path):
     sys.path.insert(0, str(pipeline.Path(__file__).parent.parent / "tools"))
     import web_datos
 
-    pipeline.ejecutar(hoy=HOY, musicbrainz=False, pausa_reintento=0)
+    pipeline.ejecutar(hoy=HOY, musicbrainz=False, pausa_reintento=0, fetcher=FakeFetcher({}))
     recs = {r["artista"].lower(): r for r in json.loads((entorno / "concerts.json").read_text())["conciertos"]}
     muse = recs["muse"]
     # las dos webs son el mismo concierto

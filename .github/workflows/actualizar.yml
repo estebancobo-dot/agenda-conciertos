@@ -51,12 +51,14 @@ jobs:
       - name: Traer datos (rama datos)
         # los datos generados viven en la rama `datos`; si no se pueden traer, no se rastrea (ver tools/datos.py)
         run: python tools/datos.py
-      - name: Tests
-        run: python -m pytest -q
-      - name: Navegador para las webs con la agenda en JavaScript (Intruso, Moe)
+      - name: Navegador para las webs con la agenda en JavaScript (Intruso, Moe) y las pruebas de la web
         continue-on-error: true  # si no se instala, esas salas salen de su última lectura y de otras agendas
         timeout-minutes: 5
         run: pip install playwright && python -m playwright install --with-deps chromium
+      - name: Tests
+        # sin red (tests/conftest.py); con el navegador instalado, también la lectura con navegador (robots.txt de
+        # cada petición). La web se prueba aparte, antes de publicarla: un fallo de la web no frena los datos
+        run: python -m pytest -q -rs --ignore=tests/test_web_navegador.py
       - name: Rastrear fuentes
         # deja margen dentro de las 2 horas del trabajo para guardar lo hecho aunque se corte
         timeout-minutes: 100
@@ -130,7 +132,7 @@ jobs:
       - name: Preparar web
         run: |
           # la web con el código más reciente de main (esta ejecución pudo empezar antes de un cambio de la web)
-          git fetch -q --depth=1 origin main && git checkout FETCH_HEAD -- site CHANGELOG.md tools/web_datos.py tools/calendarios.py
+          git fetch -q --depth=1 origin main && git checkout FETCH_HEAD -- site CHANGELOG.md tools/web_datos.py tools/calendarios.py tests scraper
           mkdir -p _site/data
           cp site/index.html site/sw.js _site/
           cp CHANGELOG.md _site/
@@ -138,6 +140,9 @@ jobs:
           # agenda ligera + detalle por días (lo que descarga la web; concerts.json sigue publicándose)
           python tools/web_datos.py _site
           touch _site/.nojekyll
+      - name: Probar la web antes de publicarla (navegador real con datos fijos)
+        # si la web nueva no funciona no se publica: sigue la anterior, y los datos ya están en la rama `datos`
+        run: python -m pytest -q -rs tests/test_web_navegador.py
       - uses: actions/configure-pages@v5
         with:
           enablement: true

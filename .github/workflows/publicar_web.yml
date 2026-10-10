@@ -53,6 +53,11 @@ jobs:
           cp data/concerts.json data/informe.json data/taxonomia.json data/estilos_map.json data/salas_alias.json data/concerts.csv _site/data/
           python tools/web_datos.py _site
           touch _site/.nojekyll
+      - name: Probar la web antes de publicarla (navegador real con datos fijos)
+        # si la web nueva no funciona no se publica: sigue la anterior
+        run: |
+          pip install playwright && python -m playwright install --with-deps chromium
+          python -m pytest -q -rs tests/test_web_navegador.py
       - uses: actions/configure-pages@v5
         with:
           enablement: true

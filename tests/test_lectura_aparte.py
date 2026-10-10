@@ -7,6 +7,7 @@ import pytest
 
 from scraper import pipeline
 from scraper.model import RawEvent, Source
+from tests.fakefetch import FakeFetcher
 
 HOY = date(2026, 10, 1)
 
@@ -40,14 +41,14 @@ def _artistas(tmp):
 
 def test_sin_madridenvivo_usa_su_cache_y_cuenta_como_completa(entorno):
     tmp, leidas = entorno
-    inf = pipeline.ejecutar(hoy=HOY, musicbrainz=False, pausa_reintento=0)  # primera: todas
+    inf = pipeline.ejecutar(hoy=HOY, musicbrainz=False, pausa_reintento=0, fetcher=FakeFetcher({}))  # primera: todas
     assert _artistas(tmp) == ["Banda A", "Banda B"] and inf["modo"] == "completa"
-    inf = pipeline.ejecutar(hoy=HOY, musicbrainz=False, pausa_reintento=0, sin=["madridenvivo"])
+    inf = pipeline.ejecutar(hoy=HOY, musicbrainz=False, pausa_reintento=0, fetcher=FakeFetcher({}), sin=["madridenvivo"])
     assert leidas == {"sala1": 2, "madridenvivo": 1}  # Madrid en Vivo no se ha vuelto a leer
     assert _artistas(tmp) == ["Banda A", "Banda B"]  # pero sus conciertos siguen (de su última lectura)
     assert inf["modo"].startswith("completa") and inf["ultima_completa"]["generado"] == inf["generado"]
     # solo Madrid en Vivo: no es la lectura completa del día (se conserva la anterior)
     previa = inf["ultima_completa"]
-    inf = pipeline.ejecutar(hoy=HOY, musicbrainz=False, pausa_reintento=0, solo=["madridenvivo"])
+    inf = pipeline.ejecutar(hoy=HOY, musicbrainz=False, pausa_reintento=0, fetcher=FakeFetcher({}), solo=["madridenvivo"])
     assert leidas["madridenvivo"] == 2 and inf["modo"] == "solo madridenvivo"
     assert inf["ultima_completa"] == previa and _artistas(tmp) == ["Banda A", "Banda B"]

@@ -1,5 +1,14 @@
 # Versiones
 
+## 2.78.0 — 2026-10-10
+
+- Pruebas **sin red**: cualquier intento de una prueba de conectar o de resolver un nombre fuera de esta máquina falla en el acto (tests/conftest.py). Dos pruebas salían a internet sin querer (la del recorrido completo y la de Madrid en Vivo leída aparte) y pasaban porque la red fallaba; ahora usan un lector falso. Las pruebas tardan un tercio.
+- Pruebas de la **lectura con navegador** (scraper/render.py) contra una web servida en la propia máquina: monta lo que pinta JavaScript, no hace las peticiones que robots.txt no permite (ni abre una página prohibida), se identifica con el User-Agent de siempre en todas las peticiones y no descarga imágenes.
+- Pruebas del **guardado en la rama `datos`** con repositorios git de verdad: primera vez sin rama, la rama sin historial y solo con los datos generados, dos ejecuciones que se solapan (fichas unidas, gana la consulta más reciente; conciertos de quien leyó las agendas; la pasada de fichas no los toca), otra ejecución que se adelanta al subir (se repite sin perder nada), sin cambios y sin datos de partida.
+- **La web se prueba antes de publicarla**: en cada lectura y en «Publicar la web», un navegador real con datos fijos; si falla, no se publica (sigue la anterior y los datos ya están guardados). Un fallo de la web no frena la lectura de agendas.
+- **Safari y Firefox**: la validación diaria y tras cada publicación prueba también la web en WebKit (como un iPhone 13) y en Firefox.
+- La prueba de la web con datos fijos crece de 1 a 7 escenarios: origen, ficha, nivel y compra; conflicto de hora en la tarjeta y en la ficha; géneros ocultos por defecto, búsqueda en todos los géneros y hoja de filtros; Mis conciertos (guardado al recargar) y Novedades; página de sala con su calendario .ics; menú, clave y modos de vista; ficha al lado en el ordenador.
+
 ## 2.77.0 — 2026-10-07
 
 - Web: **tres modos de vista** para las listas de la agenda y la búsqueda, con un selector junto a los géneros que se recuerda en cada móvil u ordenador:

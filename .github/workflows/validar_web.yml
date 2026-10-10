@@ -52,7 +52,22 @@ jobs:
         run: python tools/validar_web.py "$URL" pruebas
       - name: La web con datos fijos (filtros, tarjeta y ficha, sin depender de los conciertos del día)
         if: always()
-        run: pip install -r requirements.txt && python -m pytest -q tests/test_web_navegador.py
+        run: pip install -r requirements.txt && python -m pytest -q -rs tests/test_web_navegador.py
+      - name: Navegadores Safari (WebKit) y Firefox
+        id: otros_navegadores
+        if: always()
+        timeout-minutes: 6
+        run: python -m playwright install --with-deps webkit firefox
+      - name: La web con datos fijos en Safari (WebKit, como un iPhone 13)
+        if: always() && steps.otros_navegadores.outcome == 'success'
+        env:
+          NAVEGADOR_PRUEBA: webkit
+        run: python -m pytest -q -rs tests/test_web_navegador.py
+      - name: La web con datos fijos en Firefox
+        if: always() && steps.otros_navegadores.outcome == 'success'
+        env:
+          NAVEGADOR_PRUEBA: firefox
+        run: python -m pytest -q -rs tests/test_web_navegador.py
       - name: Volver a publicar si la web no es el código de main
         if: always() && github.event.workflow_run.name != 'Publicar la web (sin leer agendas)'
         run: |
