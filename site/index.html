@@ -329,7 +329,7 @@ details.more ul{padding-left:20px;margin:8px 0}
 .sx{border:0;background:none;font-size:1.3rem;min-width:44px;min-height:44px;color:var(--muted)}
 .rapidos{display:flex;gap:6px;margin:0 0 4px}
 /* hoja de filtros: géneros como chips que se ajustan en filas; preajuste como control segmentado */
-.segp{display:grid;grid-template-columns:repeat(3,1fr);background:var(--panel2);border-radius:12px;padding:3px;gap:3px;margin:0 0 10px}
+.segp{display:grid;grid-template-columns:repeat(2,1fr);background:var(--panel2);border-radius:12px;padding:3px;gap:3px;margin:0 0 10px}
 .segp button{border:0;background:none;border-radius:9px;min-height:36px;font-size:.86rem;font-weight:600;color:var(--muted)}
 .segp button[aria-pressed="true"]{background:var(--panel);color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.15)}
 .segp button:disabled{opacity:1;cursor:default}
@@ -475,6 +475,10 @@ const GN = Object.fromEntries(GRUPOS.map(g=>[g.id,g.nombre]));
 const DEF_GRUPOS = GRUPOS.filter(g=>!g.mas).map(g=>g.id);
 // "Habituales" no decía qué dejaba fuera: el nombre dice lo que incluye (y el título, la lista entera)
 const DEF_NOMBRE = "Rock, pop y afines";
+// "Más géneros": los géneros musicales que no son rock (jazz, soul, flamenco, latina, electrónica, clásica…). Sin
+// tributos (casi siempre de rock), ni musicales y espectáculos ni "Otros" (no son géneros de música)
+const MAS_GRUPOS = GRUPOS.filter(g=>g.mas&&!["tributos y versiones","musicales y espectáculos","fuera de foco"].includes(g.id)).map(g=>g.id);
+const MAS_TITULO = "Solo los géneros que no son rock: "+GRUPOS.filter(g=>MAS_GRUPOS.includes(g.id)).map(g=>g.nombre).join(", ")+".";
 const DEF_TITULO = "Por defecto: "+GRUPOS.filter(g=>!g.mas).map(g=>g.nombre).join(", ")+". Jazz, flamenco, soul, clásica y el resto se añaden desde los filtros.";
 const VISTAS = ["Mes","Semana","Finde","Día","Todos"];
 const INFO = ["Salas","Calendarios","Fuentes","Informe","Versiones"];
@@ -686,6 +690,7 @@ function resumenFiltros(){
   const p=[];
   if(!esDefecto()){
     if(GRUPOS.every(g=>state.grupos.includes(g.id))) p.push("todos los géneros");
+    else if(modoGrupos(state.grupos)==="mas"&&!nEstilos()) p.push("más géneros (sin rock)");
     else if(!state.grupos.length) p.push("ningún género");
     else p.push(GRUPOS.filter(g=>state.grupos.includes(g.id)).map(g=>g.nombre+((state.estilos[g.id]||[]).length?` (${state.estilos[g.id].map(nomEstilo).join(", ")})`:"")).join(", "));
     if(!state.genericos) p.push("sin etiquetas genéricas");
@@ -708,9 +713,10 @@ function extraHTML(){
   // Como en Google Maps o Airbnb: sin filtro de género ("Habituales" o "Todos") ningún género sale marcado; al tocar
   // uno se filtra por él, y los marcados (rellenos, con ✓) son justo los que se están viendo
   const modo=modoGrupos(state.grupos);
-  const chips=(n?`<button class="chip quitar" id="fquitar" aria-label="Quitar todos los filtros">✕ Quitar filtros</button>`:"")+`<button class="chip" data-pre="${modo==="todos"?"todos":"def"}" aria-pressed="${modo!=="custom"}"${modo==="todos"?"":` title="${esc(DEF_TITULO)}"`}>${modo==="todos"?"Todos los géneros":DEF_NOMBRE}</button>`+
+  const chips=(n?`<button class="chip quitar" id="fquitar" aria-label="Quitar todos los filtros">✕ Quitar filtros</button>`:"")+`<button class="chip" data-pre="${modo==="todos"?"todos":"def"}" aria-pressed="${modo==="def"||modo==="todos"}"${modo==="todos"?"":` title="${esc(DEF_TITULO)}"`}>${modo==="todos"?"Todos los géneros":DEF_NOMBRE}</button>`+
+    `<button class="chip" data-pre="mas" aria-pressed="${modo==="mas"}" title="${esc(MAS_TITULO)}">Más géneros</button>`+
     // los elegidos, delante (si no, al tocar uno que está a la derecha la fila vuelve al principio y no se ve)
-    [...GRUPOS].sort((x,y)=>(modo==="custom")*((state.grupos.includes(y.id))-(state.grupos.includes(x.id)))).map(g=>`<button class="chip" data-chip="${esc(g.id)}" aria-pressed="${modo==="custom"&&state.grupos.includes(g.id)}"><i style="background:var(${g.v})"></i>${esc(g.nombre)}<small class="cc">${cn[g.id]||0}</small></button>`).join("");
+    [...GRUPOS].sort((x,y)=>(modo==="custom"||modo==="mas")*((state.grupos.includes(y.id))-(state.grupos.includes(x.id)))).map(g=>`<button class="chip" data-chip="${esc(g.id)}" aria-pressed="${(modo==="custom"||modo==="mas")&&state.grupos.includes(g.id)}"><i style="background:var(${g.v})"></i>${esc(g.nombre)}<small class="cc">${cn[g.id]||0}</small></button>`).join("");
   // por defecto se ocultan los demás géneros: se dice cuántos y se ofrecen con un toque
   const fuera=modo==="def"&&!state.q.trim()?DATA.reduce((k,r)=>k+(r.fecha>=HOY&&pasaOrigen(r)&&pasaNivel(r,state.conf)&&!pasaGrupo(r)?1:0),0):0;
   return `<div class="chips" role="group" aria-label="Géneros">${chips}</div>
@@ -730,7 +736,7 @@ function setGrupos(g){ state.grupos=g; store.set("grupos5",g); }
 // preajuste de géneros: los habituales, todos, o una selección propia
 function modoGrupos(sel){
   const mismo=(a,b)=>a.length===b.length&&b.every(x=>a.includes(x));
-  return mismo(sel,DEF_GRUPOS)?"def":mismo(sel,GRUPOS.map(g=>g.id))?"todos":"custom";
+  return mismo(sel,DEF_GRUPOS)?"def":mismo(sel,MAS_GRUPOS)?"mas":mismo(sel,GRUPOS.map(g=>g.id))?"todos":"custom";
 }
 function bindFilters(){
   const q=document.getElementById("q");
@@ -751,13 +757,16 @@ function bindExtra(){
   document.querySelectorAll("[data-chip]").forEach(c=>c.onclick=()=>{
     const id=c.dataset.chip;
     let g;
-    if(modoGrupos(state.grupos)!=="custom") g=[id];               // sin filtro: solo ese género
+    if(!["custom","mas"].includes(modoGrupos(state.grupos))) g=[id];   // sin filtro: solo ese género
     else if(state.grupos.includes(id)){ g=state.grupos.filter(x=>x!==id); if(state.estilos[id]){ delete state.estilos[id]; store.set("estilos",state.estilos);} }
     else g=[...state.grupos,id];
     setGrupos(g.length?g:[...DEF_GRUPOS]); renderBody(false);
   });
   document.querySelectorAll("[data-pre]").forEach(c=>c.onclick=()=>{
-    if(modoGrupos(state.grupos)==="custom"){ setGrupos([...DEF_GRUPOS]); state.estilos={}; store.set("estilos",{}); renderBody(false); }
+    const m=modoGrupos(state.grupos);
+    // "Más géneros" va y vuelve; el primero vuelve a lo de por defecto desde una selección propia o "Más géneros"
+    const g=c.dataset.pre==="mas"?(m==="mas"?DEF_GRUPOS:MAS_GRUPOS):(m==="custom"||m==="mas"?DEF_GRUPOS:null);
+    if(g){ setGrupos([...g]); state.estilos={}; store.set("estilos",{}); renderBody(false); }
   });
 }
 const _grupoEst=new Map();  // se consulta miles de veces al contar estilos: una vez por estilo
@@ -803,7 +812,7 @@ function openSheet(){
   const generosConEst=()=>Object.keys(selEst).filter(g=>(selEst[g]||[]).length);
   // preajuste activo: "def" (habituales), "todos", "ninguno" o "custom" (a tu medida: ningún botón marcado)
   const modo=()=>Object.keys(selEst).length?"custom":!sel.length?"ninguno":modoGrupos(sel);
-  const resumenGen=()=>{const m=modo(); return m==="def"?DEF_NOMBRE.toLowerCase():m==="todos"?"todos":m==="ninguno"?"ninguno":`${sel.length} de ${GRUPOS.length} · a tu medida`;};
+  const resumenGen=()=>{const m=modo(); return m==="def"?DEF_NOMBRE.toLowerCase():m==="mas"?"más géneros (sin rock)":m==="todos"?"todos":m==="ninguno"?"ninguno":`${sel.length} de ${GRUPOS.length} · a tu medida`;};
   const resumenOri=()=>(ORIGENES.find(([v])=>v===ori)||[,""])[1].replace(/^\S+\s/,"");
   const gchip=g=>`<button type="button" class="chip" data-g="${esc(g.id)}" aria-pressed="${sel.includes(g.id)}" title="${esc(g.desc)}"><i style="background:var(${g.v})"></i>${esc(g.nombre)}<small class="cc" data-ct="${esc(g.id)}">${cnt[g.id]||0}</small></button>`;
   const resumenTodos=()=>{const l=Object.entries(selEst).map(([g,x])=>`${(GRUPOS.find(y=>y.id===g)||{}).nombre||g}: ${x.map(nomEstilo).join(", ")}`); return l.length?l.join(" · "):"Todos los estilos de cada género";};
@@ -812,7 +821,7 @@ function openSheet(){
     ...Object.keys(e).filter(x=>x.startsWith(TRIB)).sort(por), ...(ARBOL[g]||[]).filter(x=>e[x]).sort(por)];};
   const htmlGeneros=()=>{const m=modo();
     return `<h4 class="sech">Géneros<span id="resgen">${esc(resumenGen())}</span></h4>
-     <div class="segp" role="group" aria-label="Elegir de golpe"><button type="button" data-rap="def" aria-pressed="${m==="def"}" title="${esc(DEF_TITULO)}">${DEF_NOMBRE}</button><button type="button" data-rap="todos" aria-pressed="${m==="todos"}">Todos</button><button type="button" data-rap="ninguno" aria-pressed="${m==="ninguno"}">Ninguno</button></div>
+     <div class="segp" role="group" aria-label="Elegir de golpe"><button type="button" data-rap="def" aria-pressed="${m==="def"}" title="${esc(DEF_TITULO)}">${DEF_NOMBRE}</button><button type="button" data-rap="mas" aria-pressed="${m==="mas"}" title="${esc(MAS_TITULO)}">Más géneros</button><button type="button" data-rap="todos" aria-pressed="${m==="todos"}">Todos</button><button type="button" data-rap="ninguno" aria-pressed="${m==="ninguno"}">Ninguno</button></div>
      <p class="hint" style="margin:-4px 0 8px">Toca los géneros para añadirlos o quitarlos. "Ninguno" sirve para empezar de cero y elegir solo los que quieras.</p>
      <div class="gchips">${GRUPOS.filter(g=>!g.mas).map(gchip).join("")}<div class="sub">Más géneros</div>${GRUPOS.filter(g=>g.mas).map(gchip).join("")}</div>
      <button type="button" class="navrow" id="vestilos"><b>Afinar por estilos</b><span id="resest">${esc(resumenTodos())}</span></button>`;};
@@ -878,7 +887,7 @@ function openSheet(){
     document.getElementById("sclose").onclick=()=>{state.q=q; setGrupos(sel); state.origen=ori; store.set("origen",ori); state.conf=cf; store.set("conf",cf); state.estilos=selEst; store.set("estilos",selEst); state.genericos=genOk; store.set("genericos",genOk); cerrar(); renderBody(false);};
     const gk=document.getElementById("fgenok"); if(gk) gk.onchange=e=>{genOk=e.target.checked; refrescar();};
     el.querySelectorAll("[data-rap]").forEach(b=>b.onclick=()=>{const k=b.dataset.rap;
-      sel=k==="def"?[...DEF_GRUPOS]:k==="todos"?GRUPOS.map(g=>g.id):[]; selEst={}; baseSel=null; soloEst=false; refrescar();});
+      sel=k==="def"?[...DEF_GRUPOS]:k==="mas"?[...MAS_GRUPOS]:k==="todos"?GRUPOS.map(g=>g.id):[]; selEst={}; baseSel=null; soloEst=false; refrescar();});
     el.querySelectorAll("[data-g]").forEach(c=>c.onclick=()=>{const g=c.dataset.g; const on=sel.includes(g);
       sel=on?sel.filter(x=>x!==g):[...sel,g]; if(on) delete selEst[g]; refrescar();});
     const ve=document.getElementById("vestilos"); if(ve) ve.onclick=()=>{scGen=el.querySelector(".sc").scrollTop; vista="est"; pintar();};

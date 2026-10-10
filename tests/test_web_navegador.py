@@ -259,3 +259,21 @@ def test_con_el_teclado(web, nav):
                                "/:focus/.test(r.selectorText)&&/none|^0/.test(r.style.outline||'')).map(r=>r.selectorText)")
     assert not sin_contorno, sin_contorno
     assert not pg.errores, pg.errores
+
+
+def test_mas_generos_deja_solo_lo_que_no_es_rock(web, nav):
+    pg = abrir(nav, web + f"#semana/{DIA.isoformat()}")
+    artistas = lambda: sorted(pg.evaluate("[...document.querySelectorAll('#main .card')].map(c=>BYID[c.dataset.id].artista)"))  # noqa: E731
+    pg.click("[data-pre='mas']")
+    pg.wait_for_timeout(200)
+    assert artistas() == ["Cuarteto Swing de Lavapiés", "Orfeón de Moratalaz"]  # jazz y clásica; ni rock ni sin clasificar
+    assert pg.get_attribute("[data-pre='mas']", "aria-pressed") == "true"
+    assert "más géneros" in pg.inner_text(".active")
+    pg.click("[data-pre='mas']")  # vuelve a lo de por defecto
+    pg.wait_for_timeout(200)
+    assert "Muse" in artistas() and pg.evaluate("nFiltros()") == 0
+    pg.click("#fgen")  # también en la hoja de filtros
+    pg.wait_for_selector(".sheet")
+    pg.click("[data-rap='mas']")
+    assert pg.inner_text("#sclose") == "Ver 2 conciertos"
+    assert not pg.errores, pg.errores

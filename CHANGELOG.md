@@ -1,5 +1,9 @@
 # Versiones
 
+## 2.81.0 — 2026-10-10
+
+- Filtros: botón **«Más géneros»**, junto a «Rock, pop y afines» (en la fila de géneros y en la hoja de filtros): deja solo los géneros que no son rock — jazz y swing, soul, funk y R&B, flamenco y copla, urbana y hip hop, latina, electrónica, clásica y lírica, reggae, músicas del mundo y pop comercial. No incluye los tributos (casi siempre de rock) ni musicales, espectáculos u «Otros» (no son géneros de música). Tocarlo otra vez vuelve a lo de por defecto.
+
 ## 2.80.0 — 2026-10-10
 
 - Web con **teclado**: el menú ☰ se abre con el foco en la primera opción y **Escape lo cierra** (y devuelve el foco al botón); el carrusel de fotos de la ficha (artista ↔ cartel de la gira) se alcanza con el tabulador y se mueve con las flechas (era el aviso de accesibilidad «zona con desplazamiento que no se puede recorrer con el teclado»). Prueba nueva: modos de vista, menú, hoja de filtros y tarjeta con el teclado, y que ninguna regla quite el contorno del foco.
