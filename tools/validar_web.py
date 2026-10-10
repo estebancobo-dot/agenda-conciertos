@@ -1043,8 +1043,11 @@ POSICION = """()=>{const hh=document.getElementById('hdr').offsetHeight, ss=docu
   const sb=ss?ss.getBoundingClientRect().bottom:hh, nav=document.querySelector('#main .nav'), cal=document.querySelector('#main .cal');
   const sec=document.querySelector(`#main .dia[data-f="${state.date}"]`)||document.querySelector('#main .dia,#main [data-dif]');
   const hoy=[...document.querySelectorAll('#hoy,#hnav [data-hn=hoy]')];
+  // el principio de la lista: su primer elemento ("‹ Semana anterior" si lo hay, si no el primer día)
+  const ini=document.querySelector('#main #swipe > :first-child')||sec;
   return {fecha:state.date, y:Math.round(scrollY), arriba:Math.round(nav.getBoundingClientRect().bottom+scrollY-hh+1),
     sec:sec?Math.round(sec.getBoundingClientRect().top-sb):null, secF:sec&&(sec.dataset.f||sec.dataset.dif),
+    ini:ini?Math.round(ini.getBoundingClientRect().top-sb):null,
     cal:cal?Math.round(cal.getBoundingClientRect().top-hh):null, hoyVisible:hoy.some(b=>!b.classList.contains('off'))}}"""
 
 
@@ -1095,8 +1098,8 @@ def cambiar_fecha_bajado(pg, lunes):
             mal.append(f"fecha {r['fecha']}")
         if not bajado:
             donde = None
-        if donde == "lista" and not (r["sec"] is not None and -3 <= r["sec"] <= 24 and r["y"] <= r["arriba"] + 2):
-            mal.append(f"lista a {r['sec']} px de la tira (scroll {r['y']}, principio {r['arriba']})")
+        if donde == "lista" and not (r["ini"] is not None and -3 <= r["ini"] <= 24 and r["y"] <= r["arriba"] + 2):
+            mal.append(f"lista a {r['ini']} px de la tira (scroll {r['y']}, principio {r['arriba']})")
         if donde == "hoy" and not (r["sec"] is not None and -3 <= r["sec"] <= 24 and r["secF"] >= hoy.isoformat()):
             mal.append(f"día {r['secF']} a {r['sec']} px")
         if donde == "mes" and not (r["cal"] is not None and -3 <= r["cal"] <= 24):
