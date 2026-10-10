@@ -24,7 +24,7 @@ DE_LA_LISTA = ("card", "cardCompacta", "cardCuadricula", "horaCard", "estiloTags
                "banderaDe", "confMini", "salaMini", "origenDe", "textoDe", "pasaGrupo", "gruposF", "grupos", "nivelDe",
                "cartelTags", "marcas", "color", "img", "etiquetaAgenda", "cartelCorto", "estilosDe")
 # los que añade web_datos.ligero (resumen de un dato del detalle) y los que la web calcula y guarda en el concierto
-DEL_RESUMEN = {"conflictos", "estilo_fuente", "agotado", "gf", "conf", "cambio", "evento", "img", "mini", "foto"}
+DEL_RESUMEN = {"conflictos", "estilo_fuente", "agotado", "gf", "conf", "cambio", "evento", "img", "mini", "foto", "pmin"}
 CALCULADOS = {"_card", "_cardC", "_cardG", "_conImg", "_e", "_g", "_gf", "_t", "_full"}
 # del detalle, pero la tarjeta usa su resumen mientras no llega: confianza → conf, estado_evento → evento, imagen → img
 CON_RESUMEN = {"confianza", "estado_evento", "imagen"}

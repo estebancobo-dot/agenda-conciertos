@@ -11,6 +11,7 @@ concerts.json se sigue publicando igual (para quien use los datos) y la web lo u
 from __future__ import annotations
 
 import json
+import re
 import sys
 from collections import defaultdict
 from pathlib import Path
@@ -42,8 +43,30 @@ MINIATURAS: dict[str, str] = {}  # url original → ruta de la miniatura propia 
 GRANDES: dict[str, str] = {}  # url original → ruta de la foto reducida para la ficha
 
 
+_NUM = r"(\d+(?:[.,]\d{1,2})?)"
+_EUROS = re.compile(rf"{_NUM}\s*(?:€|eur\b|euros?\b)", re.I)
+_RANGO = re.compile(rf"{_NUM}\s*[-–/]\s*{_NUM}\s*(?:€|eur\b|euros?\b)", re.I)
+_GRATIS = re.compile(r"(?i)\bgratis\b|gratuit|entrada libre")
+
+
+def precio_min(texto) -> float | None:
+    """El precio más barato que dice el texto del precio (anticipada, "desde"…), para el filtro por precio de la web:
+    el número más bajo con € (o en un rango que acaba en €); 0 si no hay ninguno y dice gratis o entrada libre;
+    None si no se sabe ("10 + G.G" sin moneda, texto sin precio)."""
+    t = str(texto or "")
+    nums = [float(x.replace(",", ".")) for m in _RANGO.finditer(t) for x in m.groups()]
+    nums += [float(m.group(1).replace(",", ".")) for m in _EUROS.finditer(t)]
+    nums = [n for n in nums if n <= 1000]
+    if nums:
+        return min(nums)
+    return 0.0 if _GRATIS.search(t) else None
+
+
 def ligero(r: dict) -> dict:
     out = {k: r[k] for k in LIGEROS if r.get(k) not in (None, [], "", False)}
+    pm = precio_min(r.get("precio"))
+    if pm is not None:  # precio más barato en número (0: gratis), para el filtro por precio
+        out["pmin"] = int(pm) if pm == int(pm) else pm
     if r.get("conflictos"):  # la tarjeta dice qué dato no cuadra ("hora sin confirmar") y la hora más votada
         out["conflictos"] = [{"campo": c.get("campo"), "versiones": [{"valor": v["valor"], "fuentes": v.get("fuentes", [])}
                                                                      for v in c.get("versiones") or []],

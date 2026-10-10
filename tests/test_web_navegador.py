@@ -39,7 +39,7 @@ def web(entorno, tmp_path, monkeypatch):  # noqa: F811
     ganzua = [RawEvent(fecha=D2, artista="Los Conflictos", url="https://laganzua.es/c", sala="Sala El Sol",
                        ciudad="Madrid", hora="20:00"),
               RawEvent(fecha=D2, artista="Cuarteto Swing de Lavapiés", url="https://laganzua.es/s", sala="Café Central",
-                       ciudad="Madrid", hora="21:00", estilo="Jazz")]
+                       ciudad="Madrid", hora="21:00", estilo="Jazz", precio="Entrada libre")]
     rock = [RawEvent(fecha=D2, artista="Los Conflictos", url="https://rock.es/c", sala="Sala El Sol", ciudad="Madrid",
                      hora="21:00")]
     monkeypatch.setattr(pipeline, "FUENTES", [*pipeline.FUENTES, _fuente("laganzua", "La Ganzúa", "agregador", 2, ganzua),
@@ -320,3 +320,20 @@ def test_los_filtros_van_en_la_direccion(web, nav):
     assert tercera.evaluate("[...document.querySelectorAll('#main .card')].map(c=>BYID[c.dataset.id].artista)") == \
         ["Cuarteto Swing de Lavapiés"]
     assert not pg.errores and not otra.errores and not tercera.errores
+
+
+def test_filtro_por_precio(web, nav):
+    pg = abrir(nav, web + f"#semana/{DIA.isoformat()}?g=todos")
+    artistas = lambda: sorted(pg.evaluate("[...document.querySelectorAll('#main .card')].map(c=>BYID[c.dataset.id].artista)"))  # noqa: E731
+    assert "Muse" in artistas()  # 65 €
+    pg.click("#fgen")
+    pg.wait_for_selector(".sheet")
+    assert "Solo filtra los conciertos cuyo precio se conoce" in pg.inner_text(".sheet")
+    pg.click("[data-pr='gratis']")
+    assert pg.inner_text("#sclose") == "Ver 1 concierto"
+    pg.click("[data-pr='30']")  # hasta 30 €: el gratis sí, Muse (65 €) no, los de precio desconocido tampoco
+    pg.click("#sclose")
+    pg.wait_for_function("!document.querySelector('.sheet')")
+    assert artistas() == ["Cuarteto Swing de Lavapiés"]
+    assert "hasta 30 €" in pg.inner_text(".active") and "p=30" in pg.evaluate("location.hash")
+    assert not pg.errores, pg.errores

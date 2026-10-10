@@ -22,7 +22,7 @@ def test_agenda_ligera_y_detalle(tmp_path):
     ag = json.loads((tmp_path / "agenda.json").read_text())
     assert ag["generado"] and ag["detalles"] == "detalles/{fecha}.json"
     x = ag["conciertos"][0]
-    assert set(x) <= set(LIGEROS) | {"conflictos", "estilo_fuente", "img"}
+    assert set(x) <= set(LIGEROS) | {"conflictos", "estilo_fuente", "img", "pmin"} and x["pmin"] == 30
     assert "fuentes" not in x and "ficha" not in x and "precio" not in x and "hora" not in x  # vacíos fuera
     assert x["img"] == "https://x/y.jpg"
     assert [c["campo"] for c in x["conflictos"]] == ["hora", "sala"]
@@ -66,3 +66,15 @@ def test_miniaturas_propias(tmp_path):
     web_datos.cargar_miniaturas(recs, tmp_path)
     assert web_datos.ligero({"id": "1", "fecha": "2026-10-01", "imagen": {"url": u}})["mini"] == f"miniaturas/{nombre(u)}"
     web_datos.MINIATURAS.clear()
+
+
+def test_precio_mas_barato_para_el_filtro():
+    from web_datos import ligero, precio_min
+    casos = {"15€": 15, "desde 12 €": 12, "10-15 €": 10, "De 8€ a 12€": 8, "22,50 €": 22.5, "12 EUR": 12,
+             "Anticipada: 10€ Taquilla: 12€ (ENTRADA LIBRE A PARTIR DE LAS 01:00)": 10,  # hay precio: no es gratis
+             "Gratis": 0, "Entrada libre": 0, "¡Entrada Gratuita!": 0, "Desde gratis": 0,
+             "10 + G.G": None, None: None}  # sin moneda o sin precio: no se sabe
+    for texto, esperado in casos.items():
+        assert precio_min(texto) == esperado, texto
+    assert ligero({"id": "a", "fecha": "2026-10-12", "artista": "X", "precio": "Gratis"})["pmin"] == 0
+    assert "pmin" not in ligero({"id": "a", "fecha": "2026-10-12", "artista": "X", "precio": None})

@@ -1,5 +1,9 @@
 # Versiones
 
+## 2.88.0 — 2026-10-10
+
+- **Filtro por precio** en la hoja de filtros: Cualquier precio · Gratis · Hasta 10 € · Hasta 20 € · Hasta 30 €. Cuenta el precio más barato que se anuncia (anticipada, «desde»; «Anticipada 10 € · Taquilla 12 € · entrada libre a partir de la 1:00» es 10 €, no gratis) y solo filtra los conciertos cuyo precio se conoce (la hoja dice cuántos). Va también en la dirección de la página («p=gratis») y en «Filtrando: …».
+
 ## 2.87.0 — 2026-10-10
 
 - **Los filtros van en la dirección de la página** («#semana/2026-10-12?g=mas&o=es»): géneros (o «Más géneros», «Todos»…), estilos, origen, confirmación, etiquetas genéricas y búsqueda; solo lo que no está por defecto (sin filtros, la dirección sigue limpia). Un enlace o un marcador abre la agenda con esos filtros; quien lo abre no pierde los suyos guardados. Junto a «Filtrando: …», un botón **«Compartir»** (o copia el enlace donde no se puede compartir).

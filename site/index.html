@@ -499,6 +499,9 @@ const CONFS = [["todos","Todos"],["probable","Probable o confirmado"],["confirma
 const NIVEL = {c:"confirmado",p:"probable",s:"sin confirmar"};
 const nivelDe=r=>(r.confianza&&r.confianza.nivel)||NIVEL[r.conf]||"sin confirmar";
 const pasaNivel=(r,c)=>c==="todos"||(c==="confirmado"?nivelDe(r)==="confirmado":nivelDe(r)!=="sin confirmar");
+// precio: "pmin" es el más barato que dice el concierto (anticipada, "desde"…; 0 si es gratis), de tools/web_datos.py
+const PRECIOS = [["todos","Cualquier precio"],["gratis","Gratis"],["10","Hasta 10 €"],["20","Hasta 20 €"],["30","Hasta 30 €"]];
+const pasaPrecio=(r,p)=>p==="todos"||(p==="gratis"?r.pmin===0:typeof r.pmin==="number"&&r.pmin<=Number(p));
 const ORIGENES = [["todos","Todos"],["es","🇪🇸 España"],["lat","🌎 Latinoamérica"],["ext","🌍 Internacional"],["nc","Origen sin confirmar"]];
 // Latinoamérica tiene grupo propio: un nombre en español no distingue España de Latinoamérica, y así se ve aparte
 const LATAM = new Set(["AR","BO","BR","CL","CO","CR","CU","DO","EC","SV","GT","HN","MX","NI","PA","PY","PE","PR","UY","VE"]);
@@ -528,7 +531,7 @@ const gruposGuardados=()=>{const g5=store.get("grupos5",null); if(g5) return g5;
 // cómo se ven las listas: "lista" (tarjeta con miniatura), "compacta" (una fila por concierto) o "cuadricula" (fotos
 // grandes); lo elige cada persona y se guarda en su móvil
 const MODOS = [["lista","Lista"],["compacta","Compacta"],["cuadricula","Cuadrícula"]];
-let state = {modo:(m=>MODOS.some(x=>x[0]===m)?m:"lista")(store.get("modo","lista")), tab:"Mes", date:null, id:null, q:"", grupos:gruposGuardados(), origen:(o=>o==="esc"?"es":o)(store.get("origen","todos")), conf:store.get("conf","todos"), from:null,
+let state = {modo:(m=>MODOS.some(x=>x[0]===m)?m:"lista")(store.get("modo","lista")), tab:"Mes", date:null, id:null, q:"", grupos:gruposGuardados(), origen:(o=>o==="esc"?"es":o)(store.get("origen","todos")), conf:store.get("conf","todos"), precio:(p=>PRECIOS.some(x=>x[0]===p)?p:"todos")(store.get("precio","todos")), from:null,
   estilos:store.get("estilos",{}), genericos:store.get("genericos",true)};
 let regionNames=null; try{regionNames=new Intl.DisplayNames(["es"],{type:"region"})}catch(e){}
 
@@ -674,7 +677,7 @@ function pasaTexto(r,q=state.q){
 // "Borrar filtros" deja todo como al entrar: géneros de siempre, cualquier origen, sin estilos y sin búsqueda
 function borrarFiltros(){
   setGrupos([...DEF_GRUPOS]); state.origen="todos"; store.set("origen","todos"); state.estilos={}; store.set("estilos",{});
-  state.conf="todos"; store.set("conf","todos"); state.genericos=true; store.set("genericos",true); state.q=""; renderBody(false);
+  state.conf="todos"; store.set("conf","todos"); state.precio="todos"; store.set("precio","todos"); state.genericos=true; store.set("genericos",true); state.q=""; renderBody(false);
 }
 function pasaOrigen(r){
   if(state.origen!=="todos") return origenDe(r,state.origen);
@@ -688,11 +691,11 @@ function pasaGrupo(r){
   const gs=gruposF(r);
   return state.grupos.some(g=>gs.includes(g)&&(!(state.estilos[g]||[]).length||state.estilos[g].some(s=>estilosDe(r).has(s))));
 }
-function visible(r){ return pasaGrupo(r) && pasaTexto(r) && pasaOrigen(r) && pasaNivel(r,state.conf); }
+function visible(r){ return pasaGrupo(r) && pasaTexto(r) && pasaOrigen(r) && pasaNivel(r,state.conf) && pasaPrecio(r,state.precio); }
 function byDate(){const m={}; for(const r of DATA){ if(!visible(r)) continue; (m[r.fecha]=m[r.fecha]||[]).push(r);} return m;}
 const nEstilos=()=>Object.values(state.estilos).reduce((n,l)=>n+(l||[]).length,0);
 const esDefecto=()=>DEF_GRUPOS.every(g=>state.grupos.includes(g))&&!NUEVOS_22.some(g=>state.grupos.includes(g))&&!nEstilos()&&state.genericos;
-function nFiltros(){ return (esDefecto()?0:1)+(state.origen!=="todos"?1:0)+(state.conf!=="todos"?1:0)+(state.q.trim()?1:0); }
+function nFiltros(){ return (esDefecto()?0:1)+(state.origen!=="todos"?1:0)+(state.conf!=="todos"?1:0)+(state.precio!=="todos"?1:0)+(state.q.trim()?1:0); }
 function resumenFiltros(){
   const p=[];
   if(!esDefecto()){
@@ -704,6 +707,7 @@ function resumenFiltros(){
   }
   if(state.origen!=="todos") p.push((ORIGENES.find(o=>o[0]===state.origen)||["",""])[1].replace(/^\S+ /,""));
   if(state.conf!=="todos") p.push((CONFS.find(o=>o[0]===state.conf)||["",""])[1].toLowerCase());
+  if(state.precio!=="todos") p.push((PRECIOS.find(o=>o[0]===state.precio)||["",""])[1].toLowerCase());
   if(state.q.trim()) p.unshift(`búsqueda «${state.q.trim()}»`);
   return p.join(" · ");
 }
@@ -716,7 +720,7 @@ function filtersHTML(){
 // pastillas de género y resumen de filtros: se rehacen en cada tecla de la búsqueda (sin tocar el cuadro de texto)
 function extraHTML(){
   const n=nFiltros();
-  const cn={}; for(const r of DATA){ if(r.fecha<HOY||!pasaTexto(r)||!pasaOrigen(r)||!pasaNivel(r,state.conf)) continue; for(const g of grupos(r)) cn[g]=(cn[g]||0)+1; }
+  const cn={}; for(const r of DATA){ if(r.fecha<HOY||!pasaTexto(r)||!pasaOrigen(r)||!pasaNivel(r,state.conf)||!pasaPrecio(r,state.precio)) continue; for(const g of grupos(r)) cn[g]=(cn[g]||0)+1; }
   // Como en Google Maps o Airbnb: sin filtro de género ("Habituales" o "Todos") ningún género sale marcado; al tocar
   // uno se filtra por él, y los marcados (rellenos, con ✓) son justo los que se están viendo
   const modo=modoGrupos(state.grupos);
@@ -725,7 +729,7 @@ function extraHTML(){
     // los elegidos, delante (si no, al tocar uno que está a la derecha la fila vuelve al principio y no se ve)
     [...GRUPOS].sort((x,y)=>(modo==="custom"||modo==="mas")*((state.grupos.includes(y.id))-(state.grupos.includes(x.id)))).map(g=>`<button class="chip" data-chip="${esc(g.id)}" aria-pressed="${(modo==="custom"||modo==="mas")&&state.grupos.includes(g.id)}"><i style="background:var(${g.v})"></i>${esc(g.nombre)}<small class="cc">${cn[g.id]||0}</small></button>`).join("");
   // por defecto se ocultan los demás géneros: se dice cuántos y se ofrecen con un toque
-  const fuera=modo==="def"&&!state.q.trim()?DATA.reduce((k,r)=>k+(r.fecha>=HOY&&pasaOrigen(r)&&pasaNivel(r,state.conf)&&!pasaGrupo(r)?1:0),0):0;
+  const fuera=modo==="def"&&!state.q.trim()?DATA.reduce((k,r)=>k+(r.fecha>=HOY&&pasaOrigen(r)&&pasaNivel(r,state.conf)&&pasaPrecio(r,state.precio)&&!pasaGrupo(r)?1:0),0):0;
   return `<div class="chips" role="group" aria-label="Géneros">${chips}</div>
    <div class="vrow"><div class="vinfo">
    ${fuera?`<div class="fuera">${plural(fuera,"concierto más","conciertos más")} de otros géneros (jazz, flamenco, soul, clásica…) · <button id="fvertodos">Ver todos los géneros</button></div>`:""}
@@ -801,9 +805,9 @@ function openSheet(){
   // Hoja de filtros. Se pinta una vez; cada toque solo cambia lo que toca (casilla, estilo, contador), sin volver a
   // construir la hoja entera. Los grupos y estilos de cada concierto están precalculados (r._g, r._e).
   const ARBOL={}; todosLosEstilos().forEach(s=>{const g=grupoDeEstilo(s); (ARBOL[g]=ARBOL[g]||[]).push(s);});
-  let sel=[...state.grupos], ori=state.origen, cf=state.conf, selEst=JSON.parse(JSON.stringify(state.estilos||{})), genOk=state.genericos, q=state.q;
+  let sel=[...state.grupos], ori=state.origen, cf=state.conf, pr=state.precio, selEst=JSON.parse(JSON.stringify(state.estilos||{})), genOk=state.genericos, q=state.q;
   const el=document.getElementById("sheet");
-  const pasaOri=r=>(ori==="todos"||origenDe(r,ori))&&pasaNivel(r,cf);
+  const pasaOri=r=>(ori==="todos"||origenDe(r,ori))&&pasaNivel(r,cf)&&pasaPrecio(r,pr);
   let fut=[], cnt={}, est={}, gen={};
   const contar=()=>{ fut=DATA.filter(r=>r.fecha>=HOY&&pasaTexto(r,q)&&pasaOri(r)); cnt={}; est={}; gen={};
     for(const r of fut){ for(const g of gruposF(r)){cnt[g]=(cnt[g]||0)+1; if(r.grupos_generico) gen[g]=(gen[g]||0)+1;}
@@ -861,6 +865,9 @@ function openSheet(){
      <div class="opts">${ORIGENES.map(([v,t])=>`<button data-o="${v}" aria-pressed="${ori===v}">${esc(t)}</button>`).join("")}</div>
      <h4 class="sech">Confirmación<span id="rescf">${esc((CONFS.find(([v])=>v===cf)||[,""])[1])}</span></h4>
      <div class="opts">${CONFS.map(([v,t])=>`<button data-cf="${v}" aria-pressed="${cf===v}">${esc(t)}</button>`).join("")}</div>
+     <h4 class="sech">Precio<span>${esc((PRECIOS.find(([v])=>v===pr)||[,""])[1])}</span></h4>
+     <div class="opts">${PRECIOS.map(([v,t])=>`<button data-pr="${v}" aria-pressed="${pr===v}">${esc(t)}</button>`).join("")}</div>
+     <p class="hint">Cuenta el precio más barato que se anuncia (anticipada, «desde»). Solo filtra los conciertos cuyo precio se conoce: ${DATA.filter(r=>r.fecha>=HOY&&typeof r.pmin==="number").length} de ${DATA.filter(r=>r.fecha>=HOY).length}.</p>
      <p class="hint">Confirmado: lo anuncia la web de la sala, o se vende en una ticketera y sale en otras agendas, o lo recogen varias agendas independientes. Probable: dos agendas, o una de mucha confianza. En la ficha de cada concierto se dice quién lo confirma.</p>
      <p class="hint">Si ninguna web dice de dónde es el artista, se deduce: nombre en español, grupo local de las salas de Madrid, coro o banda del programa municipal, banda tributo de sala (España); nombre en español en música latina (Latinoamérica). En la ficha se dice de dónde sale.</p>
      <h4>Más opciones</h4>
@@ -869,7 +876,7 @@ function openSheet(){
     enlazar(); document.getElementById("sdef").disabled=sinNada(); medir("hoja-abrir",t0);
   };
   // "Por defecto" se apaga cuando ya está todo por defecto (géneros habituales, sin estilos, origen todos…)
-  const sinNada=()=>modoGrupos(sel)==="def"&&!Object.keys(selEst).length&&ori==="todos"&&cf==="todos"&&genOk&&!q.trim();
+  const sinNada=()=>modoGrupos(sel)==="def"&&!Object.keys(selEst).length&&ori==="todos"&&cf==="todos"&&pr==="todos"&&genOk&&!q.trim();
   const refrescar=()=>{ const t0=performance.now(); document.getElementById("sclose").textContent=`Ver ${plural(total(),"concierto")}`;
     document.getElementById("sdef").disabled=sinNada();
     el.querySelectorAll("[data-g]").forEach(c=>c.setAttribute("aria-pressed",sel.includes(c.dataset.g)));
@@ -892,9 +899,9 @@ function openSheet(){
   const enlazar=()=>{
     document.getElementById("sbg").onclick=cerrar; document.getElementById("sx").onclick=cerrar;
     document.removeEventListener("keydown",esc_); document.addEventListener("keydown",esc_);
-    document.getElementById("sdef").onclick=()=>{sel=[...DEF_GRUPOS]; selEst={}; genOk=true; baseSel=null; soloEst=false; const cambia=ori!=="todos"||cf!=="todos"||q||vista!=="gen"; ori="todos"; cf="todos"; q=""; vista="gen"; if(cambia) pintar(); else refrescar();};
+    document.getElementById("sdef").onclick=()=>{sel=[...DEF_GRUPOS]; selEst={}; genOk=true; baseSel=null; soloEst=false; const cambia=ori!=="todos"||cf!=="todos"||pr!=="todos"||q||vista!=="gen"; ori="todos"; cf="todos"; pr="todos"; q=""; vista="gen"; if(cambia) pintar(); else refrescar();};
     const sq=document.getElementById("sq"); if(sq) sq.onclick=()=>{q=""; const sc=el.querySelector(".sc").scrollTop; pintar(); el.querySelector(".sc").scrollTop=sc;};
-    document.getElementById("sclose").onclick=()=>{state.q=q; setGrupos(sel); state.origen=ori; store.set("origen",ori); state.conf=cf; store.set("conf",cf); state.estilos=selEst; store.set("estilos",selEst); state.genericos=genOk; store.set("genericos",genOk); cerrar(); renderBody(false);};
+    document.getElementById("sclose").onclick=()=>{state.q=q; setGrupos(sel); state.origen=ori; store.set("origen",ori); state.conf=cf; store.set("conf",cf); state.precio=pr; store.set("precio",pr); state.estilos=selEst; store.set("estilos",selEst); state.genericos=genOk; store.set("genericos",genOk); cerrar(); renderBody(false);};
     const gk=document.getElementById("fgenok"); if(gk) gk.onchange=e=>{genOk=e.target.checked; refrescar();};
     el.querySelectorAll("[data-rap]").forEach(b=>b.onclick=()=>{const k=b.dataset.rap;
       sel=k==="def"?[...DEF_GRUPOS]:k==="mas"?[...MAS_GRUPOS]:k==="todos"?GRUPOS.map(g=>g.id):[]; selEst={}; baseSel=null; soloEst=false; refrescar();});
@@ -921,6 +928,7 @@ function openSheet(){
     // el origen cambia los números de cada género: se vuelve a pintar, en el mismo sitio de la hoja
     el.querySelectorAll("[data-o]").forEach(b=>b.onclick=()=>{ori=b.dataset.o; const sc=el.querySelector(".sc").scrollTop; pintar(); el.querySelector(".sc").scrollTop=sc;});
     el.querySelectorAll("[data-cf]").forEach(b=>b.onclick=()=>{cf=b.dataset.cf; const sc=el.querySelector(".sc").scrollTop; pintar(); el.querySelector(".sc").scrollTop=sc;});
+    el.querySelectorAll("[data-pr]").forEach(b=>b.onclick=()=>{pr=b.dataset.pr; const sc=el.querySelector(".sc").scrollTop; pintar(); el.querySelector(".sc").scrollTop=sc;});
   };
   pintar();
 }
@@ -1365,7 +1373,7 @@ function elegirDiaMes(f){
   const h=ml.querySelector(".mhead"); h.classList.remove("flash"); void h.offsetWidth; h.classList.add("flash");
   const sec=ml.querySelector(".dia"); if(sec.getBoundingClientRect().top>innerHeight*0.55) sec.scrollIntoView({behavior:"smooth",block:"start"});
   medir("mes-dia",t0); rum("lista",performance.now()-t0);
-  document.querySelectorAll("#mlista [data-quitar]").forEach(b=>b.onclick=()=>{setGrupos(GRUPOS.map(g=>g.id)); state.origen="todos"; store.set("origen","todos"); state.conf="todos"; store.set("conf","todos"); state.estilos={}; store.set("estilos",{}); state.genericos=true; store.set("genericos",true); renderBody(false);});
+  document.querySelectorAll("#mlista [data-quitar]").forEach(b=>b.onclick=()=>{setGrupos(GRUPOS.map(g=>g.id)); state.origen="todos"; store.set("origen","todos"); state.conf="todos"; store.set("conf","todos"); state.precio="todos"; store.set("precio","todos"); state.estilos={}; store.set("estilos",{}); state.genericos=true; store.set("genericos",true); renderBody(false);});
 }
 // Las semanas tienen hasta 200+ conciertos: se pintan ya los ~30 primeros y el resto de días justo después, para
 // que la lista aparezca al instante. Al volver de un concierto se pinta todo de golpe (hay que recolocar la lista).
@@ -1433,7 +1441,7 @@ function viewDia(){
 }
 // la búsqueda mira en todos los géneros (quien busca «jazz» o un artista concreto quiere encontrarlo); el origen y la
 // confirmación elegidos sí se respetan
-const visibleBusqueda=r=>pasaTexto(r)&&pasaOrigen(r)&&pasaNivel(r,state.conf);
+const visibleBusqueda=r=>pasaTexto(r)&&pasaOrigen(r)&&pasaNivel(r,state.conf)&&pasaPrecio(r,state.precio);
 function viewBusqueda(){
   const res=DATA.filter(r=>r.fecha>=HOY&&visibleBusqueda(r));
   const m={}; res.forEach(r=>(m[r.fecha]=m[r.fecha]||[]).push(r));
@@ -1695,6 +1703,7 @@ function filtrosQuery(){
   if(est.length) p.push("e="+est.map(([g,l])=>encodeURIComponent(g)+":"+l.map(encodeURIComponent).join("|")).join(";"));
   if(state.origen!=="todos") p.push("o="+state.origen);
   if(state.conf!=="todos") p.push("c="+state.conf);
+  if(state.precio!=="todos") p.push("p="+state.precio);
   if(!state.genericos) p.push("s=0");
   if(state.q.trim()) p.push("q="+encodeURIComponent(state.q.trim()));
   return p.length?"?"+p.join("&"):"";
@@ -1706,6 +1715,7 @@ function aplicarQuery(qs){
   for(const parte of (p.get("e")||"").split(";").filter(Boolean)){ const [gr,l]=parte.split(":"); if(ids.includes(gr)&&l) state.estilos[gr]=l.split("|").filter(Boolean); }
   state.origen=ORIGENES.some(o=>o[0]===p.get("o"))?p.get("o"):"todos";
   state.conf=CONFS.some(c=>c[0]===p.get("c"))?p.get("c"):"todos";
+  state.precio=PRECIOS.some(x=>x[0]===p.get("p"))?p.get("p"):"todos";
   state.genericos=p.get("s")!=="0";
   state.q=p.get("q")||"";
 }
@@ -2013,10 +2023,10 @@ function bindBody(){
   document.querySelectorAll("#main [data-nav]").forEach(b=>b.onclick=()=>navegar(Number(b.dataset.nav)));
   enlazarPasos();
   const hoy=document.getElementById("hoy"); if(hoy) hoy.onclick=irHoy;
-  document.querySelectorAll("[data-quitar]").forEach(b=>b.onclick=()=>{setGrupos(GRUPOS.map(g=>g.id)); state.origen="todos"; store.set("origen","todos"); state.conf="todos"; store.set("conf","todos"); state.estilos={}; store.set("estilos",{}); state.genericos=true; store.set("genericos",true); renderBody(false);});
+  document.querySelectorAll("[data-quitar]").forEach(b=>b.onclick=()=>{setGrupos(GRUPOS.map(g=>g.id)); state.origen="todos"; store.set("origen","todos"); state.conf="todos"; store.set("conf","todos"); state.precio="todos"; store.set("precio","todos"); state.estilos={}; store.set("estilos",{}); state.genericos=true; store.set("genericos",true); renderBody(false);});
   const cr=document.getElementById("copiarRum"); if(cr) cr.onclick=async()=>{try{await navigator.clipboard.writeText(cr.dataset.t); toast("Copiado");}catch(e){prompt("Copia estos datos:",cr.dataset.t);}};
   const br=document.getElementById("borrarRum"); if(br) br.onclick=()=>{for(const k in RUM) delete RUM[k]; try{localStorage.removeItem("agenda:rum");}catch(e){} renderBody(false);};
-  const vt=document.getElementById("vertodo"); if(vt) vt.onclick=()=>{setGrupos(GRUPOS.map(g=>g.id)); state.origen="todos"; store.set("origen","todos"); state.conf="todos"; store.set("conf","todos"); renderBody(false);};
+  const vt=document.getElementById("vertodo"); if(vt) vt.onclick=()=>{setGrupos(GRUPOS.map(g=>g.id)); state.origen="todos"; store.set("origen","todos"); state.conf="todos"; store.set("conf","todos"); state.precio="todos"; store.set("precio","todos"); renderBody(false);};
   bindPropias();
   const r=BYID[state.id];
   if(state.tab==="Concierto"&&r){
