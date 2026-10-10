@@ -16,7 +16,6 @@ from scraper.merge import artistas_coinciden  # noqa: E402
 from scraper.normalize import canon_sala  # noqa: E402
 from scraper.registry import FUENTES  # noqa: E402
 
-MINIMO = int(sys.argv[1]) if len(sys.argv) > 1 else 10
 RAIZ = Path(__file__).resolve().parent.parent
 
 
@@ -57,12 +56,13 @@ def comparar(cache: dict, fuentes) -> dict:
 
 
 def main() -> int:
+    minimo = int(sys.argv[1]) if len(sys.argv) > 1 else 10
     cache = json.loads((RAIZ / "data" / "fuentes_cache.json").read_text())
     nombres = {s.id: s.nombre for s in FUENTES}
     filas = []
     for sid, c in comparar(cache, FUENTES).items():
         n = sum(c.values())
-        if n < MINIMO:
+        if n < minimo:
             continue
         igual = c[0]
         antes = sum(v for d, v in c.items() if d < 0)
