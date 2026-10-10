@@ -1164,7 +1164,7 @@ function viewConcierto(){
     ${r.ciclo?`<div class="ciclo">${esc(r.ciclo)}</div>`:""}
     ${estadoBox(r)}
     <div class="rows">
-     <div class="row"><span class="ic">📅</span><div><div class="v">${esc(fmt(r.fecha,{weekday:"long",day:"numeric",month:"long"}))}</div><div class="s">${r.hora?`${esc(r.hora)} h${r.hora_pagina?` · según <a href="${esc(r.hora_pagina.url)}" target="_blank" rel="noopener">${esc(r.hora_pagina.nombre)}</a>`:""}`:h?"Hora por confirmar: las webs no coinciden":r.hora_estimada?`Hacia las ${esc(r.hora_estimada.hora)} h (estimada)`:"Hora sin indicar"}</div>${siFalta(r,"hora")}</div></div>
+     <div class="row"><span class="ic">📅</span><div><div class="v">${esc(fmt(r.fecha,{weekday:"long",day:"numeric",month:"long"}))}</div><div class="s">${r.hora?`${esc(r.hora)} h${r.hora_pagina?` · según <a href="${esc(r.hora_pagina.url)}" target="_blank" rel="noopener">${esc(r.hora_pagina.nombre)}</a>`:""}`:h?"Hora por confirmar: las webs no coinciden":r.hora_estimada?`Hacia las ${esc(r.hora_estimada.hora)} h (estimada)`:"Hora sin indicar"}</div>${(r.hora_descartada||[]).map(d=>`<div class="s nrm-alt">${esc(d.fuentes.map(x=>x.split(" (")[0]).join(", "))} dice ${esc(d.valor)}: ${esc(d.motivo)}</div>`).join("")}${siFalta(r,"hora")}</div></div>
      <div class="row"><span class="ic">📍</span><div><div class="v">${r.sala?salasLinks(r):"Sala sin indicar"}</div><div class="s">${esc(r.municipio||"")} · <a href="${esc(mapa)}" target="_blank" rel="noopener">Cómo llegar</a>${sala&&sala.web?` · <a href="${esc(sala.web)}" target="_blank" rel="noopener">Web de la sala</a>`:""}</div></div></div>
      <div class="row"><span class="ic">🎟️</span><div>${r.precio?`<div class="v">${esc(precioTxt(r.precio))}</div><div class="s">según ${r.precio_fuente?`<a href="${esc(r.precio_fuente.url)}" target="_blank" rel="noopener">${esc(r.precio_fuente.nombre.split(" (")[0])}</a>`:"la web"} · ${r.precio_fuente&&r.precio_fuente.gastos?"con gastos de gestión":"puede no incluir gastos"}</div>`:(r._full?`<div class="v muted">Precio sin indicar</div>`:`<div class="v muted carg">Cargando…</div>`)}${siFalta(r,"precio")}</div></div>
     </div>
@@ -1484,7 +1484,8 @@ function fuCard(f){
     ${fuMetrica(m.otra_web,"confirma otra web","De sus conciertos, cuántos anuncia también al menos otra web independiente")}
     ${fuMetrica(m.coincide,"coincide",`De los ${m.comparte||0} que comparte con otras webs, en cuántos no lleva la contraria (hora, sala o cartel)`)}
     ${fuMetrica(m.precio,"da el precio","De sus conciertos, en cuántos el precio publicado sale de esta web")}
-    ${fuMetrica(m.estilo,"da el estilo","De sus conciertos, en cuántos esta web pone etiqueta de estilo")}</div>
+    ${fuMetrica(m.estilo,"da el estilo","De sus conciertos, en cuántos esta web pone etiqueta de estilo")}
+    ${f.acierto_hora&&f.acierto_hora.n?fuMetrica(Math.round(100*f.acierto_hora.coinciden/f.acierto_hora.n),"hora como la sala",`De ${f.acierto_hora.n} conciertos que también anuncia la web oficial de la sala, en cuántos da la misma hora (${f.acierto_hora.antes} con una hora anterior, ${f.acierto_hora.despues} posterior). Se usa para decidir la hora cuando las agendas no coinciden`):""}</div>
    ${det||f.notas||f.reintento?`<details class="fud"><summary>${esc(det?det.slice(0,90)+(det.length>90?"…":""):"Notas")}</summary>${det&&det.length>90?`<p>${esc(det)}</p>`:""}${f.notas?`<p class="muted">${esc(f.notas)}</p>`:""}${extraFuente(f)}${(f.errores||[]).length>1?`<ul class="muted">${f.errores.slice(1,6).map(e=>`<li>${esc(e)}</li>`).join("")}</ul>`:""}</details>`:""}
   </article>`;
 }

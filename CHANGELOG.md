@@ -1,5 +1,11 @@
 # Versiones
 
+## 2.84.0 — 2026-10-10
+
+- **Hora de los conciertos: acierto medido de cada agenda.** En cada lectura se mide cuántas veces da cada agenda la misma hora que la web oficial de la sala en los mismos conciertos (scraper/horas.py; tools/desfase_horas.py para verlo a mano). Medido hoy: Madrid en Vivo, La Ganzúa, Total Stage y conciertos.club coinciden en el 69-79 %; JacksOnLive en el 52 % y Songkick en el 40 % (en el 53 % da una hora anterior: suele ser la apertura de puertas). Ninguna tiene un desfase fijo, así que no se corrige ninguna hora.
+- **Conflictos de hora resueltos por acierto**: si una versión la da una agenda que acierta mucho (65 % o más, con al menos 20 conciertos comparables) y todas las demás solo agendas que aciertan poco (55 % o menos), la hora es la de la que acierta. La otra versión sigue a la vista en la ficha, con su porqué («Songkick dice 21:00: coincide con la web de la sala en el 40 % de los conciertos y en el 53 % da una hora anterior…»), como «resuelto por prioridad». Con los datos de hoy, 107 de los 205 conflictos de hora; los demás (agendas fiables que no coinciden entre sí, o sin medida suficiente) siguen como conflicto.
+- Fuentes: cada web muestra «hora como la sala» (su porcentaje de acierto, con cuántos conciertos se ha medido). El acierto se mide en cada lectura (si un día hay pocos conciertos con que comparar, vale la última medida buena), así que la regla se ajusta sola.
+
 ## 2.83.0 — 2026-10-10
 
 - **Copias de seguridad de los datos** (rama `datos-copias`, tools/copias.py). La rama `datos` es un único commit sin historial: si una lectura defectuosa estropeaba los datos, en GitHub no había versión anterior. Ahora, tras el primer guardado bueno de cada día (hora de Madrid), se guarda una copia comprimida de todos los datos generados; se conservan las de los 7 últimos días y una por semana del último mes. Si la copia falla, se avisa y el guardado sigue.

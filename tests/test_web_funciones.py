@@ -122,3 +122,11 @@ def test_el_carrusel_de_fotos_se_alcanza_con_el_teclado(js):
               "gira:{imagen:'https://x/b.jpg',credito:'x'},_full:true,estado:'1_fuente',"
               "fuentes:[{id:'riviera',nombre:'La Riviera (web oficial)',url:'https://x/'}]};state.id='k1';return viewConcierto()})()")
     assert 'id="carr" role="region" tabindex="0"' in html
+
+
+def test_la_hora_descartada_sigue_a_la_vista_en_la_ficha(js):
+    html = js("(()=>{BYID['h1']={id:'h1',artista:'Lera Lynn',fecha:'2026-10-12',sala:'Café Berlín',hora:'20:00',_full:true,"
+              "estado:'contrastado',fuentes:[{id:'cc',nombre:'conciertos.club',url:'https://x/'}],"
+              "hora_descartada:[{valor:'21:00',fuentes:['Songkick Madrid'],motivo:'Songkick Madrid coincide con la web de "
+              "la sala en el 40 % de los conciertos'}]};state.id='h1';return viewConcierto()})()")
+    assert "Songkick Madrid dice 21:00: Songkick Madrid coincide con la web de la sala en el 40 % de los conciertos" in html

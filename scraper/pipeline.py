@@ -1387,6 +1387,12 @@ def ejecutar(hoy: date | None = None, solo: list[str] | None = None, fetcher: Fe
     items = [Item(e, por_id[sid]) for sid, evs in eventos.items() if sid in por_id for e in evs]
     items, fuera = preparar(items, hoy, horizonte)
     recs = unificar(items)
+    # acierto de la hora de cada agenda frente a las webs de las salas (scraper/horas.py): conflictos de hora entre una
+    # agenda que acierta mucho y solo agendas que aciertan poco, resueltos con la otra versión a la vista
+    from .horas import medir as medir_horas, resolver as resolver_horas
+    acierto_hora = medir_horas(eventos, {s.id: s.tipo for s in FUENTES}, estado.get("acierto_hora"), hoy.isoformat())
+    estado["acierto_hora"] = acierto_hora
+    log.info("Horas resueltas por acierto medido: %d", resolver_horas(recs, acierto_hora, {s.nombre: s.id for s in FUENTES}))
     antes_cambios = foto_cambios(anteriores)  # antes de conciliar, que actualiza los anteriores
     recs = conciliar(recs, anteriores, hoy, resultados, {s.id: s for s in FUENTES})
     correcciones = load_json("correcciones.json")["correcciones"]
@@ -1446,6 +1452,8 @@ def ejecutar(hoy: date | None = None, solo: list[str] | None = None, fetcher: Fe
     for f in inf_fuentes:  # auditoría: qué contradice la web de cada sala
         if f["id"] in contraste_sala:
             f["contraste_sala"] = contraste_sala[f["id"]]
+        if f["id"] in acierto_hora:  # cuántas veces da la misma hora que la web de la sala
+            f["acierto_hora"] = acierto_hora[f["id"]]
     # lo que la web enseña: sin lo que no es un concierto (ocultos, que los datos conservan): las mismas cifras en todas partes
     futuros = [r for r in recs if r["fecha"] >= hoy.isoformat() and not r.get("oculto")]
     ahora = datetime.now(timezone.utc).isoformat(timespec="seconds")
@@ -1464,6 +1472,7 @@ def ejecutar(hoy: date | None = None, solo: list[str] | None = None, fetcher: Fe
             "contrastados": sum(r["estado"] == "contrastado" for r in futuros),
             "una_fuente": sum(r["estado"] == "1_fuente" for r in futuros),
             "conflictos": sum(r["estado"] == "conflicto" for r in futuros),
+            "horas_por_acierto": sum(bool(r.get("hora_descartada")) for r in futuros),
             "posiblemente_cancelados": sum(r["estado"] == "posiblemente cancelado" for r in futuros),
             "nuevos_hoy": sum(r["id"] not in anteriores_ids for r in futuros),
             "cambios_hoy": n_cambios,

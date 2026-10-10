@@ -7,52 +7,19 @@ Uso: python tools/desfase_horas.py [mínimo de conciertos comparables, 10 por de
 """
 import json
 import sys
-from collections import Counter, defaultdict
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from scraper.merge import artistas_coinciden  # noqa: E402
-from scraper.normalize import canon_sala  # noqa: E402
+from scraper.horas import diferencias  # noqa: E402
 from scraper.registry import FUENTES  # noqa: E402
 
 RAIZ = Path(__file__).resolve().parent.parent
 
 
-def minutos(h):
-    try:
-        a, b = str(h).split(":")
-        return int(a) * 60 + int(b)
-    except (ValueError, TypeError):
-        return None
-
-
 def comparar(cache: dict, fuentes) -> dict:
-    """{agenda: Counter(diferencia en minutos, agenda − sala)}"""
-    tipo = {s.id: s.tipo for s in fuentes}
-    oficiales = defaultdict(list)  # (fecha, sala) → [(artista, minutos)]
-    for sid, c in cache.items():
-        if tipo.get(sid) != "sala":
-            continue
-        for e in c.get("eventos") or []:
-            m = minutos(e.get("hora"))
-            if m is not None and e.get("sala"):
-                oficiales[(e["fecha"], canon_sala(e["sala"]))].append((e["artista"], m))
-    out = defaultdict(Counter)
-    for sid, c in cache.items():
-        if tipo.get(sid) in (None, "sala"):
-            continue
-        vistos = set()
-        for e in c.get("eventos") or []:
-            m = minutos(e.get("hora"))
-            if m is None or not e.get("sala"):
-                continue
-            k = (e["fecha"], canon_sala(e["sala"]))
-            par = next((mo for a, mo in oficiales.get(k, []) if artistas_coinciden([a], [e["artista"]])), None)
-            if par is not None and (k, e["artista"].lower()) not in vistos:
-                vistos.add((k, e["artista"].lower()))
-                out[sid][m - par] += 1
-    return out
+    """{agenda: Counter(diferencia en minutos, agenda − sala)} (scraper/horas.py, lo mismo que mide cada lectura)."""
+    return diferencias({sid: c.get("eventos") or [] for sid, c in cache.items()}, {s.id: s.tipo for s in fuentes})
 
 
 def main() -> int:
