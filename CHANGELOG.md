@@ -1,5 +1,9 @@
 # Versiones
 
+## 2.85.0 — 2026-10-10
+
+- **Precio y hora desde las páginas de los conciertos: se usaba solo una de las dos maneras de leerlos.** De cada web se mide si su precio (y su hora) coinciden con los que dan las demás, por separado para los datos estructurados de la página y para lo escrito en el texto. Si una web era de fiar para los datos estructurados pero en una página no los traía, no se miraba el texto aunque también fuera de fiar para él. Con conciertos.club pasaba justo eso: 107 conciertos de La Coquette y de las jams de Moe sin precio, cuando su página dice «Entrada libre» (donde se conoce el precio por otra fuente, coincide siempre). Ahora se usa el del texto cuando falta el otro; con la hora, igual.
+
 ## 2.84.1 — 2026-10-10
 
 - Copias de seguridad: el commit de la copia lleva su propio autor. En GitHub no hay ninguno configurado y tres pruebas fallaron allí (aquí pasaban porque esta máquina sí tiene uno): la pasada de las 07:40 UTC no leyó agendas (la copia del día sí se guardó). Las pruebas se ejecutan ahora siempre sin la configuración de git de la máquina, como en GitHub.

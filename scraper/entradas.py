@@ -602,14 +602,18 @@ def aplicar_entradas(recs: list[dict], cache: dict) -> dict:
         hora_conflicto = any(x.get("campo") == "hora" for x in r.get("conflictos") or [])
         for u, d, nombre in pags:
             cf = conf.get(dominio(u), {})
-            hora = d.get("hora") if cf.get("hora") else d.get("hora_t") if cf.get("hora_t") else None
+            # la de los datos estructurados si la web es de fiar para ella; si no la trae (o no es de fiar), la escrita en
+            # el texto si para eso sí lo es (antes, una web de fiar para la primera nunca usaba la segunda)
+            hora = (d.get("hora") if cf.get("hora") else None) or (d.get("hora_t") if cf.get("hora_t") else None)
             if not r.get("hora") and not hora_conflicto and hora:
                 r["hora"], r["hora_pagina"] = hora, {"hora": hora, "nombre": nombre, "url": u}
                 c["hora" if hora == d.get("hora") else "hora_texto"] += 1
             # una web que da el precio con los gastos de gestión sumados (siempre algo por encima del de las demás):
             # vale, diciendo que los incluye
             gastos = not cf.get("precio") and cf.get("precio_gastos") and bool(d.get("precio"))
-            precio = d.get("precio") if cf.get("precio") or gastos else d.get("precio_t") if cf.get("precio_t") else None
+            precio = (d.get("precio") if cf.get("precio") or gastos else None) or \
+                (d.get("precio_t") if cf.get("precio_t") else None)
+            gastos = gastos and precio == d.get("precio")
             if not r.get("precio") and precio:
                 r["precio"], r["precio_fuente"] = precio, {"nombre": nombre, "url": u, "pagina": True}
                 if gastos:

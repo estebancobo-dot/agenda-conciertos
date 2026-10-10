@@ -208,3 +208,23 @@ def test_enlace_de_promocion_o_de_otro_concierto_no_se_usa():
     aplicar_entradas(recs, cache)
     assert [r["entradas"]["url"] for r in recs] == ["https://feverup.com/m/16", "https://feverup.com/m/4",
                                                      "https://feverup.com/m/10"]
+
+
+def test_web_de_fiar_para_los_dos_precios_usa_el_del_texto_si_falta_el_otro():
+    # web.es acierta el precio de sus datos (3 de 3) y el escrito en el texto (3 de 3, "Entrada libre"); en una
+    # página sin precio en los datos pero con "Entrada libre" en el texto, vale el del texto (antes se perdía:
+    # 107 conciertos de La Coquette y Moe sin precio el 10/10/2026)
+    from scraper.entradas import aplicar_entradas
+    cache, recs = {}, []
+    for i in range(3):
+        cache[f"https://web.es/p{i}"] = {"fecha": "2026-10-01", "d": _ld("21:00", precio="15")}
+        recs.append(_rec(i, "21:00", [{"id": "w", "nombre": "Web", "url": f"https://web.es/p{i}", "prioridad": 3}],
+                         precio="15 €"))
+        cache[f"https://web.es/l{i}"] = {"fecha": "2026-10-01", "d": {"hora": "22:00", "precio_t": "Entrada libre"}}
+        recs.append(_rec(10 + i, "22:00", [{"id": "w", "nombre": "Web", "url": f"https://web.es/l{i}", "prioridad": 3}],
+                         precio="Entrada libre"))
+    cache["https://web.es/nuevo"] = {"fecha": "2026-10-01", "d": {"hora": "22:00", "precio_t": "Entrada libre"}}
+    nuevo = _rec(20, "22:00", [{"id": "w", "nombre": "Web", "url": "https://web.es/nuevo", "prioridad": 3}])
+    aplicar_entradas(recs + [nuevo], cache)
+    assert nuevo["precio"] == "Entrada libre" and nuevo["precio_fuente"]["nombre"] == "Web"
+    assert "gastos" not in nuevo["precio_fuente"]
