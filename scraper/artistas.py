@@ -604,9 +604,15 @@ MB_POR_URL = "https://musicbrainz.org/ws/2/url?resource={url}&inc=artist-rels&fm
 def mbid_por_spotify(f: Fetcher, spotify_id: str) -> str | None:
     """El artista de MusicBrainz que tiene enlazada esa página de Spotify (identidad exacta, sin homónimos). None si
     MusicBrainz no la tiene o la enlazan varios artistas."""
+    return mbid_por_url(f, f"https://open.spotify.com/artist/{spotify_id}")
+
+
+def mbid_por_url(f: Fetcher, pagina: str) -> str | None:
+    """El artista de MusicBrainz que tiene enlazada esa página (Spotify, Bandcamp, Instagram…). None si MusicBrainz
+    no la tiene o la enlazan varios artistas."""
     import requests
     from urllib.parse import quote
-    url = quote(f"https://open.spotify.com/artist/{spotify_id}", safe="")
+    url = quote(pagina, safe="")
     try:
         data = json.loads(f.get(MB_POR_URL.format(url=url), check_robots=False, headers={"Accept": "application/json"}))
     except requests.HTTPError as e:
@@ -729,6 +735,36 @@ def _falta_spotify(ent: dict, sp: str | None) -> bool:
     return hecho.get("id") != sp or bool(hecho.get("error"))
 
 
+def _falta_enlaces(ent: dict, urls: list[str] | None) -> bool:
+    """Hay perfiles del artista enlazados desde la página del concierto sin mirar (o con error) y ninguna web de
+    música lo identifica todavía."""
+    if not urls or (ent.get("musicbrainz") or {}).get("encontrado") or (ent.get("wikidata") or {}).get("ids", {}).get("musicbrainz") \
+            or (ent.get("spotify") or {}).get("mbid"):
+        return False
+    hecho = ent.get("enlaces") or {}
+    return hecho.get("urls") != urls[:3] or bool(hecho.get("error"))
+
+
+def enlaces_de_artistas(recs: list[dict], paginas: dict | None) -> dict[str, list[str]]:
+    """{artista: perfiles suyos enlazados desde las páginas de sus conciertos}. Solo conciertos de un artista (en
+    un cartel no se sabe de quién es cada enlace), y sin los enlaces que salen en conciertos de más de dos artistas
+    distintos: son las redes de la agenda o de la sala, no del artista."""
+    from .nombres import claves_ficha
+    if not paginas:
+        return {}
+    por_url: dict[str, set[str]] = {}
+    de: dict[str, list[str]] = {}
+    for r in recs:
+        urls = [u for f in r.get("fuentes") or [] for u in ((paginas.get(f.get("url")) or {}).get("d") or {}).get("enlaces_artista") or []]
+        for u in urls:
+            por_url.setdefault(u, set()).add(norm(r.get("artista") or ""))
+        if urls and not r.get("invitados") and not r.get("festival"):
+            k = norm((claves_ficha(r) or [r.get("artista") or ""])[0])
+            lista = de.setdefault(k, [])
+            lista += [u for u in urls if u not in lista]
+    return {k: [u for u in v if len(por_url[u]) <= 2] for k, v in de.items() if any(len(por_url[u]) <= 2 for u in v)}
+
+
 def _falta_agenda(ent: dict) -> bool:
     """Falta leer la página del concierto: sin país o sin estilo en las webs de música, y sin lectura (o con una
     lectura de una versión anterior, que no buscaba el estilo)."""
@@ -755,7 +791,8 @@ def _encontrado(ent: dict) -> bool:
 def enriquecer(recs: list[dict], cache: dict, hoy: date, presupuesto_seg: float = 1200,
                fetcher_dc: Fetcher | None = None, fetcher_wp: Fetcher | None = None,
                fetcher_lf: Fetcher | None = None, clave_lastfm: str | None = None, parar=None,
-               guardar=None, fetcher_mb: Fetcher | None = None, mb_cache: dict | None = None) -> dict:
+               guardar=None, fetcher_mb: Fetcher | None = None, mb_cache: dict | None = None,
+               paginas: dict | None = None) -> dict:
     """Completa cache[norm(artista)] para los artistas principales, priorizando los conciertos en foco y próximos.
 
     Cada artista se consulta una vez; la ficha se renueva a los 180 días (30 si no se encontró). Si una ficha
@@ -774,6 +811,7 @@ def enriquecer(recs: list[dict], cache: dict, hoy: date, presupuesto_seg: float 
     vistos, pendientes = set(), []
     urls_de: dict[str, list[str]] = {}
     spotify_de: dict[str, str] = {}  # artista → su identificador de Spotify (Enterticket)
+    enlaces_de = enlaces_de_artistas(recs, paginas)  # artista → sus perfiles enlazados desde la página del concierto
     fetcher_ag = Fetcher()
     from .clasificar import es_espectaculo
     from .nombres import claves_ficha
@@ -826,7 +864,8 @@ def enriquecer(recs: list[dict], cache: dict, hoy: date, presupuesto_seg: float 
             continue
         falta_wd = ent.get("wikipedia", {}).get("wikidata") and "wikidata" not in ent
         falta_lf = clave_lastfm and ("lastfm" not in ent or _lastfm_mejorable(ent)) and not _tiene_estilo(ent)
-        falta_mb = "musicbrainz" not in ent or _mb_sin_area(ent) or _dc_sin_discos(ent) or _falta_spotify(ent, spotify_de.get(k))
+        falta_mb = "musicbrainz" not in ent or _mb_sin_area(ent) or _dc_sin_discos(ent) or _falta_spotify(ent, spotify_de.get(k)) \
+            or _falta_enlaces(ent, enlaces_de.get(k))
         falta_aud = clave_lastfm and _encontrado(ent) and "audiencia" not in ent
         if falta_wd or falta_lf or falta_mb or falta_aud or _falta_origen(ent, clave_lastfm) or _pasos_con_error(ent):
             pendientes.append((k, nombre, ent))
@@ -876,6 +915,22 @@ def enriquecer(recs: list[dict], cache: dict, hoy: date, presupuesto_seg: float 
                 ent["spotify"]["error"] = type(e).__name__
             if ent["spotify"].get("mbid") and not (ent.get("musicbrainz") or {}).get("encontrado"):
                 ent.pop("musicbrainz", None)
+        enl = enlaces_de.get(k)
+        if _falta_enlaces(ent, enl):
+            # sus perfiles (Bandcamp, Instagram, Spotify…) enlazados desde la página del concierto: MusicBrainz dice
+            # qué artista los tiene (identidad exacta); se comprueba además que el nombre sea el mismo
+            ent["enlaces"] = {"urls": enl[:3]}
+            for u in enl[:3]:
+                try:
+                    m = mbid_por_url(fetcher_mb, u)
+                except Exception as e:  # noqa: BLE001
+                    ent["enlaces"]["error"] = type(e).__name__
+                    break
+                if m:
+                    ent["enlaces"].update(mbid=m, url=u)
+                    break
+            if ent["enlaces"].get("mbid") and not (ent.get("musicbrainz") or {}).get("encontrado"):
+                ent.pop("musicbrainz", None)
         if "musicbrainz" not in ent:
             mbid = (ent.get("wikidata") or {}).get("ids", {}).get("musicbrainz")
             if mbid:
@@ -883,6 +938,14 @@ def enriquecer(recs: list[dict], cache: dict, hoy: date, presupuesto_seg: float 
             elif (ent.get("spotify") or {}).get("mbid"):
                 paso("musicbrainz", buscar_musicbrainz, fetcher_mb, nombre, ent["spotify"]["mbid"], mb_cache, hoy,
                      "su página de Spotify (dada por Enterticket), enlazada en MusicBrainz")
+            elif (ent.get("enlaces") or {}).get("mbid"):
+                paso("musicbrainz", buscar_musicbrainz, fetcher_mb, nombre, ent["enlaces"]["mbid"], mb_cache, hoy,
+                     f"su página ({ent['enlaces']['url']}), enlazada desde la del concierto y en MusicBrainz")
+                mb = ent.get("musicbrainz") or {}
+                if mb.get("encontrado") and not _mismo_nombre(mb.get("nombre") or "", nombre):
+                    # la página del concierto enlazaba a otro artista (un telonero, el sello…): no se usa
+                    ent["musicbrainz"] = {"encontrado": False,
+                                          "motivo": f"la página enlazada es de otro artista ({mb.get('nombre')})"}
             else:
                 paso("musicbrainz", buscar_musicbrainz, fetcher_mb, nombre, None, mb_cache, hoy)
         if clave_lastfm and _lastfm_mejorable(ent):

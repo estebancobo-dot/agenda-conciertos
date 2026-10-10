@@ -282,6 +282,43 @@ def hora_precio_texto(soup: BeautifulSoup) -> dict:
     return out
 
 
+# páginas propias de un artista (Spotify, Bandcamp, Instagram, SoundCloud, YouTube, Facebook): MusicBrainz dice qué
+# artista las tiene enlazadas, y así se identifica sin depender del nombre (scraper/artistas.py, mbid_por_url)
+_ENLACE_ARTISTA = re.compile(r"^https://(open\.spotify\.com/artist/[0-9A-Za-z]{22}|[a-z0-9-]+\.bandcamp\.com|"
+                             r"instagram\.com/[A-Za-z0-9_.]+|soundcloud\.com/[A-Za-z0-9_-]+|"
+                             r"youtube\.com/(@[^/]+|channel/[^/]+)|facebook\.com/[A-Za-z0-9.]+)$")
+_NO_PERFIL = {"p", "explore", "sharer", "share", "tr", "login", "intent", "home", "events", "watch", "reel",
+              "stories", "accounts", "pages", "groups", "profile.php", "dialog", "plugins", "discover", "search"}
+
+
+def enlaces_artista(soup: BeautifulSoup, url: str) -> list[str]:
+    """Enlaces de la página a perfiles de artista, normalizados (https, sin www, sin parámetros ni barra final)."""
+    out = []
+    for a in soup.select("a[href]"):
+        h = urljoin(url, a["href"]).split("#")[0].split("?")[0].rstrip("/")
+        h = re.sub(r"^https?://(www\.|m\.)?", "https://", h)
+        h = re.sub(r"^https://open\.spotify\.com/intl-[a-z]+/", "https://open.spotify.com/", h)
+        if not _ENLACE_ARTISTA.match(h) or dominio(h) == dominio(url):
+            continue
+        partes = h.split("/")
+        if len(partes) > 3 and partes[3].lower() in _NO_PERFIL:
+            continue
+        if h not in out:
+            out.append(h)
+    return out[:12]
+
+
+def precio_dice(texto: str | None) -> str | None:
+    """El precio que pone Dice en su página ("Desde 15,00 €", "18,50 €", "Desde gratis")."""
+    t = " ".join(str(texto or "").split())
+    m = re.fullmatch(r"(?i)(desde\s+)?(\d+(?:[.,]\d{1,2})?)\s*€", t)
+    if m:
+        return ("desde " if m.group(1) else "") + _fmt_eur(float(m.group(2).replace(",", ".")))
+    if re.fullmatch(r"(?i)(desde\s+)?gratis", t):
+        return t[0].upper() + t[1:].lower()
+    return None
+
+
 def leer_pagina(html: str, url: str, fecha: str | None = None) -> dict:
     """Lo que dice una página de concierto. `fecha` (AAAA-MM-DD): solo vale el JSON-LD de ese día."""
     soup = BeautifulSoup(html, "html.parser")
@@ -310,6 +347,10 @@ def leer_pagina(html: str, url: str, fecha: str | None = None) -> dict:
     if og and og.get("content"):
         out["og_imagen"] = urljoin(url, og["content"].strip())
     out["enlaces"] = enlaces_entradas(soup, url)
+    out["enlaces_artista"] = enlaces_artista(soup, url)
+    if not out.get("precio") and dominio(url).endswith("dice.fm"):  # Dice no lo pone en los datos estructurados
+        el = soup.select_one('[data-testid="event-details-cta-price"] span')
+        out["precio"] = precio_dice(el.get_text(" ", strip=True)) if el else None
     # lo escrito en el texto, solo si los datos estructurados no lo dan (y la página es de un solo concierto)
     if not out.get("hora") or not out.get("precio"):
         tx = hora_precio_texto(soup) if len(evs) <= 1 else {}
@@ -376,7 +417,7 @@ def con_huecos(r: dict) -> bool:
             or (r.get("confianza") or {}).get("nivel") == "sin confirmar")
 
 
-VERSION_LECTOR = 2  # 2: hora y precio del texto de la página (las leídas con el lector anterior se releen)
+VERSION_LECTOR = 3  # 2: hora y precio del texto; 3: enlaces del artista y precio de Dice (las anteriores se releen)
 
 
 def _caducada(e: dict | None, fecha: str, hoy: date) -> bool:
@@ -393,6 +434,8 @@ def _resumen(d: dict) -> dict:
                              "entradas_jsonld") if d.get(k)}
     if enl and len(enl) <= MAX_ENLACES:
         out["enlaces"] = [{k: e[k] for k in ("url", "nombre", "compra")} for e in enl[:3]]
+    if d.get("enlaces_artista"):  # perfiles del artista (para identificarlo en MusicBrainz)
+        out["enlaces_artista"] = d["enlaces_artista"][:6]
     return out
 
 

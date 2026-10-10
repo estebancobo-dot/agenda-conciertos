@@ -1,5 +1,11 @@
 # Versiones
 
+## 2.86.0 — 2026-10-10
+
+- **Artistas identificados por sus perfiles enlazados.** El lector de páginas de concierto guarda ahora los enlaces a perfiles del artista (Spotify, Bandcamp, Instagram, SoundCloud, YouTube, Facebook), sin los que salen en conciertos de más de dos artistas distintos (son las redes de la agenda o de la sala) y solo en conciertos de un artista (en un cartel no se sabe de quién es cada enlace). Para los artistas que ninguna web de música identifica, se pregunta a MusicBrainz qué artista tiene enlazado ese perfil: identidad exacta, sin depender del nombre, como ya se hacía con el Spotify que da Enterticket; y además tiene que coincidir el nombre (si la página enlazaba a un telonero o al sello, no se usa). Con él llegan país, zona y géneros de MusicBrainz.
+- **Precio de Dice**: Dice no lo pone en los datos estructurados de su página; ahora se lee del recuadro de compra («Desde 15,00 €», «Desde gratis»).
+- Las páginas ya leídas se vuelven a leer con el lector nuevo, poco a poco, en las pasadas de cada 2 horas (con su tope de tiempo y el ritmo de siempre por web).
+
 ## 2.85.0 — 2026-10-10
 
 - **Precio y hora desde las páginas de los conciertos: se usaba solo una de las dos maneras de leerlos.** De cada web se mide si su precio (y su hora) coinciden con los que dan las demás, por separado para los datos estructurados de la página y para lo escrito en el texto. Si una web era de fiar para los datos estructurados pero en una página no los traía, no se miraba el texto aunque también fuera de fiar para él. Con conciertos.club pasaba justo eso: 107 conciertos de La Coquette y de las jams de Moe sin precio, cuando su página dice «Entrada libre» (donde se conoce el precio por otra fuente, coincide siempre). Ahora se usa el del texto cuando falta el otro; con la hora, igual.

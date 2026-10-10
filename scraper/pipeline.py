@@ -1369,7 +1369,7 @@ def ejecutar(hoy: date | None = None, solo: list[str] | None = None, fetcher: Fe
         hilo = threading.Thread(target=lambda: previas.update(
             enriquecer([p for p in anteriores if p["fecha"] >= hoy.isoformat()], cache_art, hoy,
                        presupuesto_seg=tope_fichas, parar=parar, guardar=guardar_fichas,
-                       mb_cache=cache_mb)), daemon=True)
+                       mb_cache=cache_mb, paginas=_read(CACHE_PAGINAS, {}))), daemon=True)
         hilo.start()
     eventos, resultados = rastrear(fuentes, fetcher, hoy, horizonte, estado.setdefault("fuentes", {}),
                                    pausa_reintento=pausa_reintento)
@@ -1410,7 +1410,7 @@ def ejecutar(hoy: date | None = None, solo: list[str] | None = None, fetcher: Fe
             hilo.join()
         resto = max(tope_fichas - (time.monotonic() - t0), min(300, tope_fichas))
         art_stats = enriquecer(recs, cache_art, hoy, presupuesto_seg=resto, guardar=guardar_fichas,
-                               mb_cache=cache_mb)
+                               mb_cache=cache_mb, paginas=_read(CACHE_PAGINAS, {}))
         art_stats["durante_agendas"] = {k: previas.get(k, 0) for k in ("consultados", "completados")}
         guardar_fichas()
     aportes = normalizar_claves(_read("aportes.json", {}))  # datos de los lotes, comprobados en la página citada (rama aportes)
@@ -1537,7 +1537,7 @@ def ejecutar_fichas(hoy: date | None = None, presupuesto_seg: float = 3000) -> d
 
     t0 = time.monotonic()
     stats = enriquecer(recs, cache_art, hoy, presupuesto_seg=presupuesto_seg, guardar=guardar_fichas,
-                       mb_cache=cache_mb)
+                       mb_cache=cache_mb, paginas=_read(CACHE_PAGINAS, {}))
     # con el tiempo que sobra: páginas de concierto y de entradas (hora, precio, agotado, enlace, cartel)
     from .entradas import leer_entradas
     cache_pag = _read(CACHE_PAGINAS, {})
