@@ -10,6 +10,7 @@ from pathlib import Path
 import pytest
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "tools"))
+import copias  # noqa: E402
 import datos  # noqa: E402
 import guardar_datos as gd  # noqa: E402
 
@@ -42,7 +43,7 @@ def repo(tmp_path, monkeypatch):
     git(trabajo, "add", "data")
     git(trabajo, "commit", "-qm", "inicio")
     git(trabajo, "push", "-q", "origin", "HEAD:main")
-    for m in (datos, gd):
+    for m in (datos, gd, copias):
         monkeypatch.setattr(m, "RAIZ", trabajo)
         monkeypatch.setattr(m, "DATA", data)
     monkeypatch.setattr(datos, "TRAIDOS", data / ".traidos.json")

@@ -26,5 +26,7 @@ def sin_red(monkeypatch):
             raise RedEnPruebas(f"las pruebas no salen a internet: {host}")
         return resolver(host, *a, **k)
 
+    # git va en otro proceso (el bloqueo de arriba no lo alcanza): en las pruebas solo puede usar repositorios locales
+    monkeypatch.setenv("GIT_ALLOW_PROTOCOL", "file")
     monkeypatch.setattr(socket.socket, "connect", connect)
     monkeypatch.setattr(socket, "getaddrinfo", getaddrinfo)

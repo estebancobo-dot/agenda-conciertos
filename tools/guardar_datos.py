@@ -130,6 +130,12 @@ def main() -> int:
     else:
         print("No se pudieron guardar los datos tras 4 intentos", file=sys.stderr)
         return 1
+    # copia de seguridad del día (rama datos-copias): si falla, se avisa pero no frena nada
+    try:
+        import copias
+        print(copias.guardar())
+    except Exception as e:  # noqa: BLE001
+        print(f"Aviso: no se pudo hacer la copia de seguridad del día: {e}", file=sys.stderr)
     salida = os.environ.get("GITHUB_OUTPUT")
     if salida:
         with open(salida, "a") as f:

@@ -1,5 +1,11 @@
 # Versiones
 
+## 2.83.0 — 2026-10-10
+
+- **Copias de seguridad de los datos** (rama `datos-copias`, tools/copias.py). La rama `datos` es un único commit sin historial: si una lectura defectuosa estropeaba los datos, en GitHub no había versión anterior. Ahora, tras el primer guardado bueno de cada día (hora de Madrid), se guarda una copia comprimida de todos los datos generados; se conservan las de los 7 últimos días y una por semana del último mes. Si la copia falla, se avisa y el guardado sigue.
+- Tarea nueva **«Restaurar una copia de los datos»** (a mano): con una fecha, vuelve a poner esa copia en la rama `datos` y publica la web; sin fecha, lista las copias. Comparte cola con la lectura, así que nunca se pisan. En local: `python tools/copias.py listar | restaurar AAAA-MM-DD`.
+- Pruebas: cuáles se conservan, una al día, rama sin historial, restaurar en data/ y en la rama `datos`; y las pruebas tampoco pueden usar git por red (solo repositorios locales).
+
 ## 2.82.0 — 2026-10-10
 
 - Web: **pasar al periodo siguiente o anterior desde la lista**. Al final de la semana, el fin de semana o el día, un botón grande «Semana siguiente · 19–25 oct · 189 conciertos ›» (con los filtros de ahora); al principio, «‹ Semana anterior», solo si no es pasado. En el mes, «Día siguiente» bajo la lista del día (y al acabar el mes, el primer día del siguiente). Más allá de lo anunciado no se ofrece: no lleva a listas vacías.

@@ -1,0 +1,43 @@
+name: Restaurar una copia de los datos
+
+# Vuelve a poner en la rama `datos` la copia de seguridad de un día (rama `datos-copias`, ver tools/copias.py) y
+# publica la web con ella. Solo a mano, cuando una lectura ha estropeado los datos. Las lecturas que vengan después
+# parten de esa copia. Sin fecha, solo lista las copias que hay.
+on:
+  workflow_dispatch:
+    inputs:
+      fecha:
+        description: "Día de la copia (AAAA-MM-DD). Vacío: solo listar las copias"
+        default: ""
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: actualizar-agenda   # la misma cola que la lectura: nunca a la vez que una lectura que guarda datos
+  cancel-in-progress: false
+
+jobs:
+  restaurar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: main
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Copias que hay
+        run: python tools/copias.py listar
+      - name: Restaurar y subir a la rama datos
+        if: github.event.inputs.fecha != ''
+        run: python tools/copias.py restaurar "${{ github.event.inputs.fecha }}" --subir
+      - name: Publicar la web con los datos restaurados
+        if: github.event.inputs.fecha != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run publicar_web.yml --ref main -R "${{ github.repository }}"
