@@ -230,7 +230,10 @@ _HORA_SHOW = re.compile(r"(?i)(concierto|comienzo|inicio|empieza|show|actuaci[o�
 _HORA_PUERTAS = re.compile(r"(?i)(apertura|puertas|doors|abre)[^\d\n]{0,25}" + _H)
 _HORA_SUELTA = re.compile(_H)
 _EUR = r"(\d{1,3}(?:[.,]\d{1,2})?)\s?(?:€|eur(?:os)?\b)|€\s?(\d{1,3}(?:[.,]\d{1,2})?)"
-_PRECIO_CLAVE = re.compile(r"(?i)(precio|entradas?|anticipada|taquilla|venta|tickets?|desde|general|price)[^\d€\n]{0,30}(?:" + _EUR + ")")
+_PRECIO_CLAVE = re.compile(r"(?i)\b(precio|entradas?|anticipada|taquilla|venta|tickets?|desde|general|price)\b"
+                          r"([^\d€\n]{0,30})(?:" + _EUR + ")")
+# un cargo aparte, no el precio: "Ticketmaster aplica un cargo de 2€ por transacción", "+ 1,5 € de gastos de gestión"
+_CARGO = re.compile(r"(?i)cargo|gastos|comisi[oó]n|transacci[oó]n|gesti[oó]n|suplemento|fee")
 _LIBRE = re.compile(r"(?i)\b(entrada (?:libre|gratuita|gratis)|acceso (?:libre|gratuito)|gratis hasta completar|free entry)\b")
 
 
@@ -267,7 +270,9 @@ def hora_precio_texto(soup: BeautifulSoup) -> dict:
             out["hora_t"] = sueltas.pop()
     nums = []
     for m in _PRECIO_CLAVE.finditer(texto):
-        v = m.group(2) or m.group(3)
+        if _CARGO.search(m.group(2)):
+            continue
+        v = m.group(3) or m.group(4)
         try:
             n = float(v.replace(",", "."))
         except (TypeError, ValueError):
@@ -417,7 +422,7 @@ def con_huecos(r: dict) -> bool:
             or (r.get("confianza") or {}).get("nivel") == "sin confirmar")
 
 
-VERSION_LECTOR = 3  # 2: hora y precio del texto; 3: enlaces del artista y precio de Dice (las anteriores se releen)
+VERSION_LECTOR = 4  # 2: hora y precio del texto; 3: enlaces del artista y precio de Dice; 4: sin cargos de gestión como precio (las anteriores se releen)
 
 
 def _caducada(e: dict | None, fecha: str, hoy: date) -> bool:

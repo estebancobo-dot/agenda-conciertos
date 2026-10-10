@@ -228,3 +228,14 @@ def test_web_de_fiar_para_los_dos_precios_usa_el_del_texto_si_falta_el_otro():
     aplicar_entradas(recs + [nuevo], cache)
     assert nuevo["precio"] == "Entrada libre" and nuevo["precio_fuente"]["nombre"] == "Web"
     assert "gastos" not in nuevo["precio_fuente"]
+
+
+def test_cargo_de_gestion_no_es_el_precio():
+    """Live Nation: "Ticketmaster aplica un cargo de 2€ por transacción" no es el precio (era 29,50 €)."""
+    from bs4 import BeautifulSoup
+    from scraper.entradas import hora_precio_texto
+    html = ("<main><p>Entradas: 29,50€</p><p>** Ticketmaster aplica un cargo de 2€ por transacción / compra (no "
+            "incluido en el precio de las entradas).</p></main>")
+    assert hora_precio_texto(BeautifulSoup(html, "html.parser"))["precio_t"] == "29,5 €"
+    assert hora_precio_texto(BeautifulSoup("<main>Anticipada general: 25€ + 2€ de gastos de gestión</main>",
+                                           "html.parser"))["precio_t"] == "25 €"

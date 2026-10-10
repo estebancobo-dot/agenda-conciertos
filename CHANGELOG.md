@@ -1,5 +1,12 @@
 # Versiones
 
+## 2.90.0 — 2026-10-10
+
+- **Duplicados**: un concierto anunciado con el nombre corto y con el largo el mismo día y en la misma sala se une («OBK» y «CONCIERTO OBK», «SIM» y «Silence iz Mine (SIM)»). «Canopy» es el hotel Canopy by Hilton Madrid Castellana.
+- **Precio**: un cargo aparte ya no se toma por el precio («Ticketmaster aplica un cargo de 2 € por transacción»: la entrada costaba 29,50 €). Las páginas leídas antes se releen poco a poco.
+- `tools/revision.py`: lista para revisar a mano los artistas cuyo origen contradicen otras webs y los posibles conciertos repetidos que no se han unido (`REVISION.md`).
+- El diagnóstico con navegador dice también qué hora y precio lee el lector de páginas.
+
 ## 2.89.0 — 2026-10-10
 
 - **Seguridad**: los enlaces que vienen de las webs leídas (entradas, salas, fuentes, fotos…) solo se abren si son http(s), webcal, mailto o de la propia agenda; uno con «javascript:» u otro esquema raro se queda en «#» y no hace nada. La web declara una política de seguridad del contenido: solo ejecuta su propio código, solo pide datos a sí misma y no admite formularios ni plugins; las fotos pueden seguir viniendo de cualquier web.
