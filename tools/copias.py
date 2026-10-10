@@ -27,6 +27,8 @@ RAIZ = Path(__file__).resolve().parent.parent
 DATA = RAIZ / "data"
 RAMA = "datos-copias"
 DIARIAS, SEMANAS = 7, 5
+# el autor del commit de la copia (en GitHub no hay ninguno configurado si la copia no va tras tools/guardar_datos.py)
+AUTOR = ("-c", "user.name=github-actions[bot]", "-c", "user.email=41898282+github-actions[bot]@users.noreply.github.com")
 
 
 def git(*args: str, check: bool = True, entrada: str | bytes | None = None) -> subprocess.CompletedProcess:
@@ -100,7 +102,7 @@ def guardar(hoy: date | None = None) -> str:
         filas = "".join(f"100644 blob {copias[f]}\t{f.isoformat()}.tar.gz\n" for f in quedarse(list(copias), hoy))
         sub = git("mktree", entrada=filas).stdout.strip()
         raiz = git("mktree", entrada=f"040000 tree {sub}\tcopias\n").stdout.strip()
-        commit = git("commit-tree", raiz, "-m", f"Copia de los datos del {hoy}").stdout.strip()
+        commit = git(*AUTOR, "commit-tree", raiz, "-m", f"Copia de los datos del {hoy}").stdout.strip()
         r = git("push", f"--force-with-lease=refs/heads/{RAMA}:{sha or ''}", "origin", f"{commit}:refs/heads/{RAMA}",
                 check=False)
         if r.returncode == 0:

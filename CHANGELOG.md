@@ -1,5 +1,9 @@
 # Versiones
 
+## 2.84.1 — 2026-10-10
+
+- Copias de seguridad: el commit de la copia lleva su propio autor. En GitHub no hay ninguno configurado y tres pruebas fallaron allí (aquí pasaban porque esta máquina sí tiene uno): la pasada de las 07:40 UTC no leyó agendas (la copia del día sí se guardó). Las pruebas se ejecutan ahora siempre sin la configuración de git de la máquina, como en GitHub.
+
 ## 2.84.0 — 2026-10-10
 
 - **Hora de los conciertos: acierto medido de cada agenda.** En cada lectura se mide cuántas veces da cada agenda la misma hora que la web oficial de la sala en los mismos conciertos (scraper/horas.py; tools/desfase_horas.py para verlo a mano). Medido hoy: Madrid en Vivo, La Ganzúa, Total Stage y conciertos.club coinciden en el 69-79 %; JacksOnLive en el 52 % y Songkick en el 40 % (en el 53 % da una hora anterior: suele ser la apertura de puertas). Ninguna tiene un desfase fijo, así que no se corrige ninguna hora.
