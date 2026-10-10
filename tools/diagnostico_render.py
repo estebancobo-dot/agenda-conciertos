@@ -18,6 +18,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from bs4 import BeautifulSoup  # noqa: E402
 
 from scraper.entradas import _eventos_jsonld  # noqa: E402
+from scraper.entradas import leer_pagina  # noqa: E402
 from scraper.fetch import Fetcher  # noqa: E402
 from scraper.render import Navegador  # noqa: E402
 
@@ -68,6 +69,11 @@ for url in sys.argv[1:]:
             print(f"     texto: {x[:150]}")
         for m in muestras:
             print(f"     enlace: {m}")
+        lp = leer_pagina(html, url)
+        print(f"     lector de páginas: " + " · ".join(f"{k}={lp[k]}" for k in ("hora", "precio", "hora_t", "precio_t")
+                                                     if lp.get(k)) or "     lector de páginas: nada")
+        for x in [x for x in lineas if "€" in x and len(x) < 120][:4]:
+            print(f"     con €: {x}")
     if nav.cortadas:
         print(f"  peticiones de la página que robots.txt no permite (no se hicieron): {len(nav.cortadas)}")
         nav.cortadas.clear()

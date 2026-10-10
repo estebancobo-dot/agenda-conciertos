@@ -46,6 +46,7 @@ def test_lo_que_resta():
 def test_mismo_acto_con_otro_nombre():
     assert mismo_acto_en_sala("THE DOORS ARE OPEN (Trib The Doors)", "EL GRAN TRIBUTO A THE DOORS")
     assert mismo_acto_en_sala("EMMA SWIFT (AUST-USA)", "Emma Swift with Luther Russell")
+    assert mismo_acto_en_sala("CONCIERTO OBK", "OBK") and mismo_acto_en_sala("SIM", "Silence iz Mine (SIM)")
     assert mismo_acto_en_sala("CARO CAXI", "CARO TAXI")
     assert not mismo_acto_en_sala("Tributo a Queen", "Tributo a Mecano")
     assert not mismo_acto_en_sala("BLACK BIRDS", "THE BLACK CROWES")

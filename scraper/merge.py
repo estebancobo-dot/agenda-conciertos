@@ -175,7 +175,7 @@ def _sin_adornos(nombre: str) -> str:
 def mismo_acto_en_sala(a: str, b: str, sala: str = "") -> bool:
     """Dos anuncios del mismo día y la misma sala que son el mismo concierto con otro nombre: "THE DOORS ARE OPEN (Trib
     The Doors)" = "EL GRAN TRIBUTO A THE DOORS", "EMMA SWIFT (AUST-USA)" = "Emma Swift with Luther Russell", "CARO CAXI"
-    = "CARO TAXI". No: "Tributo a Queen" / "Tributo a Mecano", "BLACK BIRDS" / "THE BLACK CROWES", ni dos sesiones que
+    = "CARO TAXI", "OBK" = "CONCIERTO OBK". No: "Tributo a Queen" / "Tributo a Mecano", "BLACK BIRDS" / "THE BLACK CROWES", ni dos sesiones que
     solo comparten el nombre de la sala ("INTRUSO JAZZ SESSION" / "INTRUSO ACID JAM!")."""
     de_sala = set(_palabras(sala))
     a, b = _sin_adornos(a), _sin_adornos(b)
@@ -189,7 +189,8 @@ def mismo_acto_en_sala(a: str, b: str, sala: str = "") -> bool:
         return bool(ta) and ta == tb and len(ta) >= 2
     corto, largo = sorted((pa, pb), key=len)
     comunes = set(pa) & set(pb)
-    if set(corto) <= set(largo) and any(len(w) >= 4 for w in corto):
+    # un nombre corto entero dentro del otro: "OBK" = "CONCIERTO OBK", "SIM" = "Silence iz Mine (SIM)"
+    if set(corto) <= set(largo) and (any(len(w) >= 4 for w in corto) or len(corto) == 1):
         return True
     if len(comunes) >= 2:
         return True
