@@ -1,0 +1,8722 @@
+{
+ "version": "2.55.0",
+ "generado": "2026-10-10T16:07:50+00:00",
+ "modo": "completa (madridenvivo de su lectura aparte)",
+ "hoy": "2026-10-10",
+ "horizonte": "2027-04-08",
+ "duracion_seg": 980,
+ "totales": {
+  "conciertos": 2973,
+  "ocultos": 66,
+  "en_foco": 1514,
+  "contrastados": 943,
+  "una_fuente": 1826,
+  "conflictos": 160,
+  "horas_por_acierto": 103,
+  "posiblemente_cancelados": 44,
+  "nuevos_hoy": 32,
+  "cambios_hoy": 4,
+  "ausentes_web_sala": 19,
+  "otra_fecha_web_sala": 5,
+  "confianza": {
+   "confirmado": 1205,
+   "sin confirmar": 442,
+   "probable": 1326
+  },
+  "normalizacion": {
+   "estilo": {
+    "conocido": 2231,
+    "estimado": 302,
+    "no_aplica": 262,
+    "desconocido": 244
+   },
+   "origen": {
+    "conocido": 1272,
+    "estimado": 552,
+    "no_aplica": 735,
+    "desconocido": 480
+   },
+   "hora": {
+    "conocido": 2638,
+    "estimado": 162,
+    "no_aplica": 0,
+    "desconocido": 239
+   },
+   "precio": {
+    "conocido": 2387,
+    "estimado": 0,
+    "no_aplica": 0,
+    "desconocido": 652
+   },
+   "sala": {
+    "conocido": 3020,
+    "estimado": 0,
+    "no_aplica": 0,
+    "desconocido": 19
+   },
+   "contradicciones_origen": 45
+  },
+  "fuentes_ok": 81,
+  "fuentes_total": 83,
+  "peticiones_http": 344,
+  "fuera_de_ventana": 897,
+  "fuera_de_ambito": 1241,
+  "ejemplos_fuera_de_ambito": [
+   "2026-10-17 SIN PROPINA @ ? (Murcia) [Rockgle]",
+   "2026-10-24 SIN PROPINA @ Sala Republicca (Valencia) [Rockgle]",
+   "2026-10-17 GUADAÑA @ Transylvania Metal Pub (Vigo (Pontevedra)) [Rockgle]",
+   "2026-10-24 GUADAÑA @ Urban Rock Concept (Vitoria-Gasteiz (Álava)) [Rockgle]",
+   "2026-11-07 GUADAÑA @ Sala Utopía (Zaragoza) [Rockgle]",
+   "2026-11-14 GUADAÑA @ Rock and Rolla (Granada) [Rockgle]",
+   "2026-10-17 REINCIDENTES @ ? (Valencia) [Rockgle]",
+   "2026-11-07 REINCIDENTES @ Estayike (Piedrabuena (Ciudad Real)) [Rockgle]",
+   "2026-11-14 REINCIDENTES @ ? (Pinseque (Zaragoza)) [Rockgle]",
+   "2026-12-05 REINCIDENTES @ Rock D’Aki! (L’Hospitalet de Llobregat (Barcelona)) [Rockgle]",
+   "2026-10-30 EL DROGAS @ Reus (Tarragona) (Pintor Rock) [Rockgle]",
+   "2026-11-14 EL DROGAS @ Mislata (Valencia) (Repvblicca) [Rockgle]",
+   "2026-11-20 EL DROGAS @ Bilbao (Bizkaia) (Santana 27) [Rockgle]",
+   "2026-11-21 EL DROGAS @ Bilbao (Bizkaia) (Santana 27) [Rockgle]",
+   "2026-10-10 SARATOGA @ Sala Zero (Tarragona) [Rockgle]",
+   "2026-10-16 SARATOGA @ Tijuana (México) [Rockgle]",
+   "2026-10-24 SARATOGA @ Todos Somos Ángeles Rock Fest, Puebla (México) [Rockgle]",
+   "2026-10-25 SARATOGA @ Todos Somos Ángeles Rock Fest, Guadalajara (México) [Rockgle]",
+   "2026-11-18 SARATOGA @ Sala El Teatrino, Salta (Argentina) [Rockgle]",
+   "2026-11-20 SARATOGA @ Sala El Teatrito, Buenos Aires (Argentina) [Rockgle]",
+   "2026-11-21 SARATOGA @ Sala Metrónomo (Santiago de Chile) [Rockgle]",
+   "2026-11-22 SARATOGA @ La Bodeguita de Nicanor, Concepción (Chile) [Rockgle]",
+   "2026-11-25 SARATOGA @ Sala Live Era, Montevideo (Uruguay) [Rockgle]",
+   "2026-11-28 SARATOGA @ Centro de Convenciones Leguía, Lima (Perú) [Rockgle]",
+   "2026-12-02 SARATOGA @ Santa Catalina Experience, Santa Cruz (Bolivia) [Rockgle]"
+  ],
+  "mal_codificados": 0
+ },
+ "fuentes": [
+  {
+   "id": "cc_buscador",
+   "nombre": "conciertos.club (buscador semanal)",
+   "url": "https://conciertos.club/search.php",
+   "tipo": "agregador",
+   "prioridad": 3,
+   "fiabilidad": "alta",
+   "grupo": "conciertos.club",
+   "reconfirma": true,
+   "notas": "",
+   "funciono": true,
+   "estado": "ok",
+   "metricas": {
+    "otra_web": 45,
+    "coincide": 98,
+    "comparte": 661,
+    "precio": 67,
+    "estilo": 93,
+    "hora": 95
+   },
+   "salud": [
+    {
+     "fecha": "2026-10-03",
+     "ok": 4,
+     "n": 4,
+     "c": 1448,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-04",
+     "ok": 2,
+     "n": 2,
+     "c": 1429,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-05",
+     "ok": 9,
+     "n": 9,
+     "c": 1407,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-06",
+     "ok": 5,
+     "n": 5,
+     "c": 1527,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-07",
+     "ok": 5,
+     "n": 5,
+     "c": 1523,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-08",
+     "ok": 4,
+     "n": 4,
+     "c": 1514,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-09",
+     "ok": 4,
+     "n": 4,
+     "c": 1495,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-10",
+     "ok": 3,
+     "n": 3,
+     "c": 1477,
+     "e": "ok"
+    }
+   ],
+   "conciertos": 1477,
+   "nuevos": 0,
+   "solo_en_esta": 816,
+   "eventos_brutos": 1491,
+   "paginas": 26,
+   "errores": [],
+   "robots": "ok",
+   "robots_bloquea": false,
+   "aviso": null,
+   "segundos": 73.9,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false,
+   "acierto_hora": {
+    "n": 169,
+    "coinciden": 117,
+    "antes": 9,
+    "despues": 43,
+    "fecha": "2026-10-10"
+   }
+  },
+  {
+   "id": "cc_portada",
+   "nombre": "conciertos.club (portada Madrid)",
+   "url": "https://conciertos.club/madrid",
+   "tipo": "agregador",
+   "prioridad": 3,
+   "fiabilidad": "alta",
+   "grupo": "conciertos.club",
+   "reconfirma": true,
+   "notas": "",
+   "funciono": true,
+   "estado": "ok",
+   "metricas": {
+    "otra_web": 61,
+    "coincide": 99,
+    "comparte": 344,
+    "precio": 0,
+    "estilo": 89,
+    "hora": 90
+   },
+   "salud": [
+    {
+     "fecha": "2026-10-03",
+     "ok": 4,
+     "n": 4,
+     "c": 561,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-04",
+     "ok": 2,
+     "n": 2,
+     "c": 563,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-05",
+     "ok": 9,
+     "n": 9,
+     "c": 549,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-06",
+     "ok": 5,
+     "n": 5,
+     "c": 554,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-07",
+     "ok": 5,
+     "n": 5,
+     "c": 553,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-08",
+     "ok": 4,
+     "n": 4,
+     "c": 560,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-09",
+     "ok": 4,
+     "n": 4,
+     "c": 560,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-10",
+     "ok": 3,
+     "n": 3,
+     "c": 563,
+     "e": "ok"
+    }
+   ],
+   "conciertos": 563,
+   "nuevos": 0,
+   "solo_en_esta": 219,
+   "eventos_brutos": 564,
+   "paginas": 1,
+   "errores": [],
+   "robots": "ok",
+   "robots_bloquea": false,
+   "aviso": null,
+   "segundos": 10.5,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false,
+   "acierto_hora": {
+    "n": 104,
+    "coinciden": 77,
+    "antes": 5,
+    "despues": 22,
+    "fecha": "2026-10-10"
+   }
+  },
+  {
+   "id": "cc_estilos",
+   "nombre": "conciertos.club (por estilo)",
+   "url": "https://conciertos.club/madrid/conciertos/estilos/",
+   "tipo": "agregador",
+   "prioridad": 3,
+   "fiabilidad": "alta",
+   "grupo": "conciertos.club",
+   "reconfirma": true,
+   "notas": "",
+   "funciono": true,
+   "estado": "ok",
+   "metricas": {
+    "otra_web": 56,
+    "coincide": 99,
+    "comparte": 392,
+    "precio": 0,
+    "estilo": 100,
+    "hora": 94
+   },
+   "salud": [
+    {
+     "fecha": "2026-10-03",
+     "ok": 4,
+     "n": 4,
+     "c": 661,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-04",
+     "ok": 2,
+     "n": 2,
+     "c": 647,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-05",
+     "ok": 9,
+     "n": 9,
+     "c": 641,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-06",
+     "ok": 5,
+     "n": 5,
+     "c": 717,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-07",
+     "ok": 5,
+     "n": 5,
+     "c": 716,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-08",
+     "ok": 4,
+     "n": 4,
+     "c": 714,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-09",
+     "ok": 4,
+     "n": 4,
+     "c": 707,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-10",
+     "ok": 3,
+     "n": 3,
+     "c": 699,
+     "e": "ok"
+    }
+   ],
+   "conciertos": 699,
+   "nuevos": 0,
+   "solo_en_esta": 307,
+   "eventos_brutos": 725,
+   "paginas": 14,
+   "errores": [],
+   "robots": "ok",
+   "robots_bloquea": false,
+   "aviso": null,
+   "segundos": 56.5,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false,
+   "acierto_hora": {
+    "n": 86,
+    "coinciden": 67,
+    "antes": 3,
+    "despues": 16,
+    "fecha": "2026-10-10"
+   }
+  },
+  {
+   "id": "laganzua",
+   "nombre": "La Ganzúa",
+   "url": "https://www.laganzua.net/conciertos/madrid/",
+   "tipo": "agregador",
+   "prioridad": 3,
+   "fiabilidad": "alta",
+   "grupo": "laganzua",
+   "reconfirma": true,
+   "notas": "",
+   "funciono": true,
+   "estado": "ok",
+   "metricas": {
+    "otra_web": 93,
+    "coincide": 86,
+    "comparte": 187,
+    "precio": 39,
+    "estilo": 100,
+    "hora": 81
+   },
+   "salud": [
+    {
+     "fecha": "2026-10-03",
+     "ok": 4,
+     "n": 4,
+     "c": 202,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-04",
+     "ok": 2,
+     "n": 2,
+     "c": 201,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-05",
+     "ok": 9,
+     "n": 9,
+     "c": 201,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-06",
+     "ok": 5,
+     "n": 5,
+     "c": 205,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-07",
+     "ok": 5,
+     "n": 5,
+     "c": 208,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-08",
+     "ok": 4,
+     "n": 4,
+     "c": 208,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-09",
+     "ok": 4,
+     "n": 5,
+     "c": 206,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-10",
+     "ok": 3,
+     "n": 3,
+     "c": 202,
+     "e": "ok"
+    }
+   ],
+   "conciertos": 202,
+   "nuevos": 0,
+   "solo_en_esta": 15,
+   "eventos_brutos": 207,
+   "paginas": 18,
+   "errores": [],
+   "robots": "ok",
+   "robots_bloquea": false,
+   "aviso": null,
+   "segundos": 30.9,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false,
+   "acierto_hora": {
+    "n": 38,
+    "coinciden": 31,
+    "antes": 3,
+    "despues": 4,
+    "fecha": "2026-10-10"
+   }
+  },
+  {
+   "id": "cpm",
+   "nombre": "Conciertos por Madrid",
+   "url": "https://conciertospormadrid.com/",
+   "tipo": "agregador",
+   "prioridad": 3,
+   "fiabilidad": "media",
+   "grupo": "conciertospormadrid",
+   "reconfirma": true,
+   "notas": "",
+   "funciono": true,
+   "estado": "ok",
+   "metricas": {
+    "otra_web": 99,
+    "coincide": 99,
+    "comparte": 155,
+    "precio": 0,
+    "estilo": 0,
+    "hora": 87
+   },
+   "salud": [
+    {
+     "fecha": "2026-10-03",
+     "ok": 4,
+     "n": 4,
+     "c": 131,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-04",
+     "ok": 2,
+     "n": 2,
+     "c": 130,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-05",
+     "ok": 9,
+     "n": 9,
+     "c": 129,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-06",
+     "ok": 5,
+     "n": 5,
+     "c": 151,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-07",
+     "ok": 5,
+     "n": 5,
+     "c": 155,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-08",
+     "ok": 4,
+     "n": 4,
+     "c": 155,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-09",
+     "ok": 4,
+     "n": 5,
+     "c": 155,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-10",
+     "ok": 3,
+     "n": 3,
+     "c": 157,
+     "e": "ok"
+    }
+   ],
+   "conciertos": 157,
+   "nuevos": 0,
+   "solo_en_esta": 2,
+   "eventos_brutos": 372,
+   "paginas": 7,
+   "errores": [],
+   "robots": "ok",
+   "robots_bloquea": false,
+   "aviso": null,
+   "segundos": 19.8,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
+  },
+  {
+   "id": "madridenvivo",
+   "nombre": "Madrid en Vivo (asociación de salas)",
+   "url": "https://madridenvivo.com/buscador-avanzado/",
+   "tipo": "agregador",
+   "prioridad": 3,
+   "fiabilidad": "alta",
+   "grupo": "madridenvivo",
+   "reconfirma": true,
+   "notas": "",
+   "funciono": true,
+   "estado": "ok",
+   "metricas": {
+    "otra_web": 54,
+    "coincide": 91,
+    "comparte": 393,
+    "precio": 43,
+    "estilo": 100,
+    "hora": 83
+   },
+   "salud": [
+    {
+     "fecha": "2026-10-03",
+     "ok": 4,
+     "n": 4,
+     "c": 902,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-04",
+     "ok": 1,
+     "n": 1,
+     "c": 851,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-05",
+     "ok": 8,
+     "n": 8,
+     "c": 822,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-06",
+     "ok": 3,
+     "n": 3,
+     "c": 820,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-07",
+     "ok": 1,
+     "n": 1,
+     "c": 818,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-08",
+     "ok": 1,
+     "n": 2,
+     "c": 801,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-09",
+     "ok": 1,
+     "n": 1,
+     "c": 769,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-10",
+     "ok": 1,
+     "n": 1,
+     "c": 722,
+     "e": "ok"
+    }
+   ],
+   "conciertos": 723,
+   "nuevos": 1,
+   "solo_en_esta": 330,
+   "eventos_brutos": 756,
+   "paginas": 94,
+   "errores": [],
+   "robots": "ok",
+   "robots_bloquea": false,
+   "aviso": null,
+   "segundos": 1821.2,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": true,
+   "acierto_hora": {
+    "n": 189,
+    "coinciden": 150,
+    "antes": 32,
+    "despues": 7,
+    "fecha": "2026-10-10"
+   }
+  },
+  {
+   "id": "songkick",
+   "nombre": "Songkick Madrid",
+   "url": "https://www.songkick.com/metro-areas/28755-spain-madrid",
+   "tipo": "agregador",
+   "prioridad": 3,
+   "fiabilidad": "media",
+   "grupo": "songkick",
+   "reconfirma": true,
+   "notas": "",
+   "funciono": true,
+   "estado": "ok",
+   "metricas": {
+    "otra_web": 71,
+    "coincide": 95,
+    "comparte": 464,
+    "precio": 23,
+    "estilo": 28,
+    "hora": 77
+   },
+   "salud": [
+    {
+     "fecha": "2026-10-03",
+     "ok": 4,
+     "n": 4,
+     "c": 568,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-04",
+     "ok": 2,
+     "n": 2,
+     "c": 564,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-05",
+     "ok": 9,
+     "n": 9,
+     "c": 556,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-06",
+     "ok": 5,
+     "n": 5,
+     "c": 659,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-07",
+     "ok": 5,
+     "n": 5,
+     "c": 664,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-08",
+     "ok": 4,
+     "n": 4,
+     "c": 664,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-09",
+     "ok": 4,
+     "n": 4,
+     "c": 655,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-10",
+     "ok": 3,
+     "n": 3,
+     "c": 651,
+     "e": "ok"
+    }
+   ],
+   "conciertos": 651,
+   "nuevos": 2,
+   "solo_en_esta": 187,
+   "eventos_brutos": 700,
+   "paginas": 14,
+   "errores": [],
+   "robots": "ok",
+   "robots_bloquea": false,
+   "aviso": null,
+   "segundos": 17.9,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false,
+   "acierto_hora": {
+    "n": 77,
+    "coinciden": 32,
+    "antes": 39,
+    "despues": 6,
+    "fecha": "2026-10-10"
+   }
+  },
+  {
+   "id": "jacksonlive",
+   "nombre": "JacksOnLive (agenda de Madrid)",
+   "url": "https://www.jacksonlive.es/madrid",
+   "tipo": "agregador",
+   "prioridad": 3,
+   "fiabilidad": "media",
+   "grupo": "jacksonlive",
+   "reconfirma": true,
+   "notas": "Agenda independiente desde 2014. Lee sus páginas de estilo de Madrid: fecha y hora, estilo, precio, sala y artistas.",
+   "funciono": true,
+   "estado": "ok",
+   "metricas": {
+    "otra_web": 79,
+    "coincide": 92,
+    "comparte": 351,
+    "precio": 31,
+    "estilo": 100,
+    "hora": 90
+   },
+   "salud": [
+    {
+     "fecha": "2026-10-04",
+     "ok": 2,
+     "n": 2,
+     "c": 353,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-05",
+     "ok": 9,
+     "n": 9,
+     "c": 352,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-06",
+     "ok": 5,
+     "n": 5,
+     "c": 461,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-07",
+     "ok": 5,
+     "n": 5,
+     "c": 461,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-08",
+     "ok": 4,
+     "n": 4,
+     "c": 461,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-09",
+     "ok": 4,
+     "n": 5,
+     "c": 459,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-10",
+     "ok": 3,
+     "n": 3,
+     "c": 447,
+     "e": "ok"
+    }
+   ],
+   "conciertos": 447,
+   "nuevos": 0,
+   "solo_en_esta": 96,
+   "eventos_brutos": 493,
+   "paginas": 19,
+   "errores": [],
+   "robots": "ok",
+   "robots_bloquea": false,
+   "aviso": null,
+   "segundos": 38.9,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false,
+   "acierto_hora": {
+    "n": 50,
+    "coinciden": 26,
+    "antes": 20,
+    "despues": 4,
+    "fecha": "2026-10-10"
+   }
+  },
+  {
+   "id": "totalstage",
+   "nombre": "Total Stage (agenda de la comunidad)",
+   "url": "https://totalstage.vercel.app/eventos/madrid",
+   "tipo": "agregador",
+   "prioridad": 3,
+   "fiabilidad": "media",
+   "grupo": "conciertos.club",
+   "reconfirma": true,
+   "notas": "Agenda que completan sus usuarios: una sola página con todos los próximos de Madrid. Va en el grupo de conciertos.club porque copia sus datos (medido: en 14 de 14 horas distintas entre webs da la de conciertos.club), así que no cuenta como confirmación independiente.",
+   "funciono": true,
+   "estado": "ok",
+   "metricas": {
+    "otra_web": 86,
+    "coincide": 99,
+    "comparte": 277,
+    "precio": 0,
+    "estilo": 67,
+    "hora": 83
+   },
+   "salud": [
+    {
+     "fecha": "2026-10-04",
+     "ok": 2,
+     "n": 2,
+     "c": 378,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-05",
+     "ok": 9,
+     "n": 9,
+     "c": 345,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-06",
+     "ok": 5,
+     "n": 5,
+     "c": 354,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-07",
+     "ok": 5,
+     "n": 5,
+     "c": 348,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-08",
+     "ok": 4,
+     "n": 4,
+     "c": 343,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-09",
+     "ok": 4,
+     "n": 4,
+     "c": 333,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-10",
+     "ok": 3,
+     "n": 3,
+     "c": 321,
+     "e": "ok"
+    }
+   ],
+   "conciertos": 321,
+   "nuevos": 0,
+   "solo_en_esta": 44,
+   "eventos_brutos": 409,
+   "paginas": 1,
+   "errores": [],
+   "robots": "ok",
+   "robots_bloquea": false,
+   "aviso": null,
+   "segundos": 3.2,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false,
+   "acierto_hora": {
+    "n": 76,
+    "coinciden": 59,
+    "antes": 4,
+    "despues": 13,
+    "fecha": "2026-10-10"
+   }
+  },
+  {
+   "id": "rockandblog",
+   "nombre": "Rock and Blog",
+   "url": "https://rockandblog.net/conciertos-rock-madrid/",
+   "tipo": "blog",
+   "prioridad": 4,
+   "fiabilidad": "media",
+   "grupo": "rockandblog",
+   "reconfirma": true,
+   "notas": "",
+   "funciono": true,
+   "estado": "ok",
+   "metricas": {
+    "otra_web": 98,
+    "coincide": 100,
+    "comparte": 93,
+    "precio": 0,
+    "estilo": 0,
+    "hora": 81
+   },
+   "salud": [
+    {
+     "fecha": "2026-10-03",
+     "ok": 4,
+     "n": 4,
+     "c": 77,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-04",
+     "ok": 2,
+     "n": 2,
+     "c": 77,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-05",
+     "ok": 9,
+     "n": 9,
+     "c": 77,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-06",
+     "ok": 5,
+     "n": 5,
+     "c": 97,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-07",
+     "ok": 5,
+     "n": 5,
+     "c": 97,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-08",
+     "ok": 4,
+     "n": 4,
+     "c": 96,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-09",
+     "ok": 4,
+     "n": 5,
+     "c": 95,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-10",
+     "ok": 3,
+     "n": 3,
+     "c": 95,
+     "e": "ok"
+    }
+   ],
+   "conciertos": 95,
+   "nuevos": 0,
+   "solo_en_esta": 2,
+   "eventos_brutos": 108,
+   "paginas": 1,
+   "errores": [],
+   "robots": "ok",
+   "robots_bloquea": false,
+   "aviso": null,
+   "segundos": 2.5,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
+  },
+  {
+   "id": "tm_blog",
+   "nombre": "Blog de Ticketmaster (agenda rock)",
+   "url": "https://blog.ticketmaster.es/post/agenda-rock-2026-38621/",
+   "tipo": "agregador",
+   "prioridad": 3,
+   "fiabilidad": "media",
+   "grupo": "ticketmaster",
+   "reconfirma": true,
+   "notas": "",
+   "funciono": true,
+   "estado": "ok",
+   "metricas": {
+    "otra_web": 100,
+    "coincide": 100,
+    "comparte": 14,
+    "precio": 0,
+    "estilo": 0,
+    "hora": 86
+   },
+   "salud": [
+    {
+     "fecha": "2026-10-03",
+     "ok": 4,
+     "n": 4,
+     "c": 14,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-04",
+     "ok": 2,
+     "n": 2,
+     "c": 14,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-05",
+     "ok": 9,
+     "n": 9,
+     "c": 14,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-06",
+     "ok": 5,
+     "n": 5,
+     "c": 14,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-07",
+     "ok": 5,
+     "n": 5,
+     "c": 14,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-08",
+     "ok": 4,
+     "n": 4,
+     "c": 14,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-09",
+     "ok": 4,
+     "n": 4,
+     "c": 14,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-10",
+     "ok": 3,
+     "n": 3,
+     "c": 14,
+     "e": "ok"
+    }
+   ],
+   "conciertos": 14,
+   "nuevos": 0,
+   "solo_en_esta": 0,
+   "eventos_brutos": 28,
+   "paginas": 1,
+   "errores": [],
+   "robots": "ok",
+   "robots_bloquea": false,
+   "aviso": null,
+   "segundos": 1.6,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
+  },
+  {
+   "id": "radar_cpm",
+   "nombre": "Radar Joven (programación en Conciertos por Madrid)",
+   "url": "https://conciertospormadrid.com/festivales/radar-joven-2026-ciclo-conciertos-madrid/",
+   "tipo": "agregador",
+   "prioridad": 3,
+   "fiabilidad": "media",
+   "grupo": "conciertospormadrid",
+   "reconfirma": true,
+   "notas": "",
+   "funciono": true,
+   "estado": "ok",
+   "metricas": {
+    "otra_web": 100,
+    "coincide": 100,
+    "comparte": 43,
+    "precio": 0,
+    "estilo": 0,
+    "hora": 51
+   },
+   "salud": [
+    {
+     "fecha": "2026-10-03",
+     "ok": 4,
+     "n": 4,
+     "c": 43,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-04",
+     "ok": 2,
+     "n": 2,
+     "c": 43,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-05",
+     "ok": 9,
+     "n": 9,
+     "c": 42,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-06",
+     "ok": 5,
+     "n": 5,
+     "c": 43,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-07",
+     "ok": 5,
+     "n": 5,
+     "c": 43,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-08",
+     "ok": 4,
+     "n": 4,
+     "c": 43,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-09",
+     "ok": 4,
+     "n": 5,
+     "c": 43,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-10",
+     "ok": 3,
+     "n": 3,
+     "c": 43,
+     "e": "ok"
+    }
+   ],
+   "conciertos": 43,
+   "nuevos": 1,
+   "solo_en_esta": 0,
+   "eventos_brutos": 43,
+   "paginas": 1,
+   "errores": [],
+   "robots": "ok",
+   "robots_bloquea": false,
+   "aviso": null,
+   "segundos": 5.7,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
+  },
+  {
+   "id": "thm",
+   "nombre": "TodoHeavyMetal",
+   "url": "https://www.todoheavymetal.com/index.php/agenda/amp",
+   "tipo": "agregador",
+   "prioridad": 3,
+   "fiabilidad": "media",
+   "grupo": "thm",
+   "reconfirma": true,
+   "notas": "",
+   "funciono": true,
+   "estado": "ok",
+   "metricas": {
+    "otra_web": 93,
+    "coincide": 100,
+    "comparte": 14,
+    "precio": 0,
+    "estilo": 0,
+    "hora": 73
+   },
+   "salud": [
+    {
+     "fecha": "2026-10-03",
+     "ok": 4,
+     "n": 4,
+     "c": 13,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-04",
+     "ok": 2,
+     "n": 2,
+     "c": 13,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-05",
+     "ok": 9,
+     "n": 9,
+     "c": 13,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-06",
+     "ok": 5,
+     "n": 5,
+     "c": 15,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-07",
+     "ok": 5,
+     "n": 5,
+     "c": 15,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-08",
+     "ok": 4,
+     "n": 4,
+     "c": 15,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-09",
+     "ok": 4,
+     "n": 5,
+     "c": 15,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-10",
+     "ok": 3,
+     "n": 3,
+     "c": 15,
+     "e": "ok"
+    }
+   ],
+   "conciertos": 15,
+   "nuevos": 0,
+   "solo_en_esta": 1,
+   "eventos_brutos": 145,
+   "paginas": 1,
+   "errores": [],
+   "robots": "ok",
+   "robots_bloquea": false,
+   "aviso": null,
+   "segundos": 5.2,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
+  },
+  {
+   "id": "metallegion",
+   "nombre": "Metal Legion",
+   "url": "https://metallegion.es/conciertos/",
+   "tipo": "agregador",
+   "prioridad": 3,
+   "fiabilidad": "media",
+   "grupo": "metallegion",
+   "reconfirma": true,
+   "notas": "",
+   "funciono": true,
+   "estado": "ok",
+   "metricas": {
+    "otra_web": 98,
+    "coincide": 100,
+    "comparte": 43,
+    "precio": 0,
+    "estilo": 0,
+    "hora": 73
+   },
+   "salud": [
+    {
+     "fecha": "2026-10-03",
+     "ok": 4,
+     "n": 4,
+     "c": 38,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-04",
+     "ok": 2,
+     "n": 2,
+     "c": 38,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-05",
+     "ok": 9,
+     "n": 9,
+     "c": 38,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-06",
+     "ok": 5,
+     "n": 5,
+     "c": 44,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-07",
+     "ok": 5,
+     "n": 5,
+     "c": 44,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-08",
+     "ok": 4,
+     "n": 4,
+     "c": 46,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-09",
+     "ok": 4,
+     "n": 6,
+     "c": 45,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-10",
+     "ok": 3,
+     "n": 3,
+     "c": 44,
+     "e": "ok"
+    }
+   ],
+   "conciertos": 44,
+   "nuevos": 0,
+   "solo_en_esta": 1,
+   "eventos_brutos": 196,
+   "paginas": 1,
+   "errores": [],
+   "robots": "ok",
+   "robots_bloquea": false,
+   "aviso": null,
+   "segundos": 4.8,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
+  },
+  {
+   "id": "metalcry",
+   "nombre": "Metalcry",
+   "url": "https://metalcry.com/conciertos/",
+   "tipo": "agregador",
+   "prioridad": 3,
+   "fiabilidad": "media",
+   "grupo": "metalcry",
+   "reconfirma": true,
+   "notas": "Su hora es 20:00 por defecto: se ignora.",
+   "funciono": true,
+   "estado": "ok",
+   "metricas": {
+    "otra_web": 96,
+    "coincide": 96,
+    "comparte": 27,
+    "precio": 0,
+    "estilo": 0,
+    "hora": 71
+   },
+   "salud": [
+    {
+     "fecha": "2026-10-03",
+     "ok": 4,
+     "n": 4,
+     "c": 23,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-04",
+     "ok": 2,
+     "n": 2,
+     "c": 24,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-05",
+     "ok": 9,
+     "n": 9,
+     "c": 23,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-06",
+     "ok": 5,
+     "n": 5,
+     "c": 29,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-07",
+     "ok": 5,
+     "n": 5,
+     "c": 28,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-08",
+     "ok": 4,
+     "n": 4,
+     "c": 29,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-09",
+     "ok": 4,
+     "n": 5,
+     "c": 28,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-10",
+     "ok": 3,
+     "n": 3,
+     "c": 28,
+     "e": "ok"
+    }
+   ],
+   "conciertos": 28,
+   "nuevos": 0,
+   "solo_en_esta": 1,
+   "eventos_brutos": 142,
+   "paginas": 1,
+   "errores": [],
+   "robots": "ok",
+   "robots_bloquea": false,
+   "aviso": null,
+   "segundos": 8.2,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
+  },
+  {
+   "id": "hellpress",
+   "nombre": "Hellpress (agenda)",
+   "url": "https://www.hellpress.com/agenda-conciertos/",
+   "tipo": "agregador",
+   "prioridad": 3,
+   "fiabilidad": "media",
+   "grupo": "hellpress",
+   "reconfirma": true,
+   "notas": "",
+   "funciono": true,
+   "estado": "ok",
+   "metricas": {
+    "otra_web": 100,
+    "coincide": 100,
+    "comparte": 51,
+    "precio": 0,
+    "estilo": 0,
+    "hora": 69
+   },
+   "salud": [
+    {
+     "fecha": "2026-10-03",
+     "ok": 4,
+     "n": 4,
+     "c": 39,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-04",
+     "ok": 2,
+     "n": 2,
+     "c": 41,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-05",
+     "ok": 9,
+     "n": 9,
+     "c": 41,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-06",
+     "ok": 5,
+     "n": 5,
+     "c": 53,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-07",
+     "ok": 5,
+     "n": 5,
+     "c": 53,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-08",
+     "ok": 4,
+     "n": 4,
+     "c": 53,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-09",
+     "ok": 4,
+     "n": 5,
+     "c": 52,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-10",
+     "ok": 3,
+     "n": 3,
+     "c": 51,
+     "e": "ok"
+    }
+   ],
+   "conciertos": 51,
+   "nuevos": 0,
+   "solo_en_esta": 0,
+   "eventos_brutos": 207,
+   "paginas": 1,
+   "errores": [],
+   "robots": "ok",
+   "robots_bloquea": false,
+   "aviso": null,
+   "segundos": 2.3,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
+  },
+  {
+   "id": "hellpress_melodico",
+   "nombre": "Hellpress (rock melódico)",
+   "url": "https://www.hellpress.com/tag/rock-melodico/",
+   "tipo": "blog",
+   "prioridad": 4,
+   "fiabilidad": "media",
+   "grupo": "hellpress",
+   "reconfirma": false,
+   "notas": "",
+   "funciono": true,
+   "estado": "ok",
+   "metricas": {
+    "otra_web": 100,
+    "coincide": 100,
+    "comparte": 6,
+    "precio": 0,
+    "estilo": 0,
+    "hora": 67
+   },
+   "salud": [
+    {
+     "fecha": "2026-10-03",
+     "ok": 4,
+     "n": 4,
+     "c": 0,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-04",
+     "ok": 2,
+     "n": 2,
+     "c": 1,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-05",
+     "ok": 9,
+     "n": 9,
+     "c": 1,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-06",
+     "ok": 5,
+     "n": 5,
+     "c": 4,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-07",
+     "ok": 5,
+     "n": 5,
+     "c": 4,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-08",
+     "ok": 4,
+     "n": 4,
+     "c": 5,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-09",
+     "ok": 4,
+     "n": 5,
+     "c": 6,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-10",
+     "ok": 3,
+     "n": 3,
+     "c": 6,
+     "e": "ok"
+    }
+   ],
+   "conciertos": 6,
+   "nuevos": 0,
+   "solo_en_esta": 0,
+   "eventos_brutos": 10,
+   "paginas": 1,
+   "errores": [],
+   "robots": "ok",
+   "robots_bloquea": false,
+   "aviso": null,
+   "segundos": 4.3,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
+  },
+  {
+   "id": "metalsymphony",
+   "nombre": "Metal Symphony (agenda de temporada)",
+   "url": "https://www.metalsymphony.com/agenda/",
+   "tipo": "agregador",
+   "prioridad": 3,
+   "fiabilidad": "media",
+   "grupo": "metalsymphony",
+   "reconfirma": true,
+   "notas": "",
+   "funciono": true,
+   "estado": "ok",
+   "metricas": {
+    "otra_web": 100,
+    "coincide": 100,
+    "comparte": 23,
+    "precio": 0,
+    "estilo": 0,
+    "hora": 78
+   },
+   "salud": [
+    {
+     "fecha": "2026-10-03",
+     "ok": 4,
+     "n": 4,
+     "c": 22,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-04",
+     "ok": 2,
+     "n": 2,
+     "c": 22,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-05",
+     "ok": 9,
+     "n": 9,
+     "c": 22,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-06",
+     "ok": 5,
+     "n": 5,
+     "c": 24,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-07",
+     "ok": 5,
+     "n": 5,
+     "c": 24,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-08",
+     "ok": 1,
+     "n": 4,
+     "c": 24,
+     "e": "ok_sin_resultados"
+    },
+    {
+     "fecha": "2026-10-09",
+     "ok": 0,
+     "n": 5,
+     "c": 23,
+     "e": "ok_sin_resultados"
+    },
+    {
+     "fecha": "2026-10-10",
+     "ok": 2,
+     "n": 3,
+     "c": 23,
+     "e": "ok"
+    }
+   ],
+   "conciertos": 23,
+   "nuevos": 0,
+   "solo_en_esta": 0,
+   "eventos_brutos": 84,
+   "paginas": 3,
+   "errores": [],
+   "robots": "ok",
+   "robots_bloquea": false,
+   "aviso": null,
+   "segundos": 5.0,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
+  },
+  {
+   "id": "rockforeveryone",
+   "nombre": "Rock for Everyone (agenda mensual Madrid)",
+   "url": "https://rockforeveryone.es/",
+   "tipo": "agregador",
+   "prioridad": 3,
+   "fiabilidad": "media",
+   "grupo": "rockforeveryone",
+   "reconfirma": true,
+   "notas": "",
+   "funciono": true,
+   "estado": "ok",
+   "metricas": {
+    "otra_web": 92,
+    "coincide": 75,
+    "comparte": 12,
+    "precio": 31,
+    "estilo": 0,
+    "hora": 92
+   },
+   "salud": [
+    {
+     "fecha": "2026-10-03",
+     "ok": 4,
+     "n": 4,
+     "c": 16,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-04",
+     "ok": 2,
+     "n": 2,
+     "c": 15,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-05",
+     "ok": 9,
+     "n": 9,
+     "c": 15,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-06",
+     "ok": 5,
+     "n": 5,
+     "c": 15,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-07",
+     "ok": 5,
+     "n": 5,
+     "c": 15,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-08",
+     "ok": 4,
+     "n": 4,
+     "c": 14,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-09",
+     "ok": 4,
+     "n": 5,
+     "c": 13,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-10",
+     "ok": 3,
+     "n": 3,
+     "c": 13,
+     "e": "ok"
+    }
+   ],
+   "conciertos": 13,
+   "nuevos": 0,
+   "solo_en_esta": 1,
+   "eventos_brutos": 21,
+   "paginas": 7,
+   "errores": [],
+   "robots": "ok",
+   "robots_bloquea": false,
+   "aviso": null,
+   "segundos": 19.5,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
+  },
+  {
+   "id": "mariskal",
+   "nombre": "MariskalRock (guía)",
+   "url": "https://mariskalrock.com/guia-de-conciertos/",
+   "tipo": "agregador",
+   "prioridad": 4,
+   "fiabilidad": "baja",
+   "grupo": "mariskalrock",
+   "reconfirma": true,
+   "notas": "Fiabilidad baja: mantiene fechas antiguas y no indica el año.",
+   "funciono": true,
+   "estado": "ok",
+   "metricas": {
+    "otra_web": 92,
+    "coincide": 100,
+    "comparte": 168,
+    "precio": 0,
+    "estilo": 0,
+    "hora": 75
+   },
+   "salud": [
+    {
+     "fecha": "2026-10-03",
+     "ok": 4,
+     "n": 4,
+     "c": 155,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-04",
+     "ok": 2,
+     "n": 3,
+     "c": 154,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-05",
+     "ok": 9,
+     "n": 9,
+     "c": 153,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-06",
+     "ok": 5,
+     "n": 5,
+     "c": 187,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-07",
+     "ok": 5,
+     "n": 5,
+     "c": 187,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-08",
+     "ok": 4,
+     "n": 4,
+     "c": 186,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-09",
+     "ok": 4,
+     "n": 4,
+     "c": 185,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-10",
+     "ok": 3,
+     "n": 3,
+     "c": 183,
+     "e": "ok"
+    }
+   ],
+   "conciertos": 183,
+   "nuevos": 0,
+   "solo_en_esta": 15,
+   "eventos_brutos": 1015,
+   "paginas": 1,
+   "errores": [],
+   "robots": "ok",
+   "robots_bloquea": false,
+   "aviso": null,
+   "segundos": 3.7,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
+  },
+  {
+   "id": "rockgle",
+   "nombre": "Rockgle",
+   "url": "https://www.rockgle.es/p/agenda-de-conciertos_07.html",
+   "tipo": "agregador",
+   "prioridad": 4,
+   "fiabilidad": "baja",
+   "grupo": "rockgle",
+   "reconfirma": true,
+   "notas": "Fiabilidad baja.",
+   "funciono": true,
+   "estado": "ok",
+   "metricas": {
+    "otra_web": 88,
+    "coincide": 100,
+    "comparte": 22,
+    "precio": 0,
+    "estilo": 0,
+    "hora": 72
+   },
+   "salud": [
+    {
+     "fecha": "2026-10-03",
+     "ok": 4,
+     "n": 4,
+     "c": 25,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-04",
+     "ok": 2,
+     "n": 2,
+     "c": 24,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-05",
+     "ok": 8,
+     "n": 9,
+     "c": 24,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-06",
+     "ok": 3,
+     "n": 5,
+     "c": 26,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-07",
+     "ok": 5,
+     "n": 5,
+     "c": 26,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-08",
+     "ok": 2,
+     "n": 5,
+     "c": 26,
+     "e": "error"
+    },
+    {
+     "fecha": "2026-10-09",
+     "ok": 5,
+     "n": 5,
+     "c": 25,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-10",
+     "ok": 3,
+     "n": 4,
+     "c": 25,
+     "e": "ok"
+    }
+   ],
+   "conciertos": 25,
+   "nuevos": 0,
+   "solo_en_esta": 3,
+   "eventos_brutos": 159,
+   "paginas": 1,
+   "errores": [],
+   "robots": "ok",
+   "robots_bloquea": false,
+   "aviso": null,
+   "segundos": 1.8,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
+  },
+  {
+   "id": "madness",
+   "nombre": "Madness Live (promotora)",
+   "url": "https://www.madnesslive.es/es/14-conciertos-en-madrid",
+   "tipo": "promotora",
+   "prioridad": 2,
+   "fiabilidad": "alta",
+   "grupo": "madnesslive",
+   "reconfirma": true,
+   "notas": "",
+   "funciono": true,
+   "estado": "ok",
+   "metricas": {
+    "otra_web": 95,
+    "coincide": 100,
+    "comparte": 20,
+    "precio": 86,
+    "estilo": 0,
+    "hora": 71
+   },
+   "salud": [
+    {
+     "fecha": "2026-10-03",
+     "ok": 4,
+     "n": 4,
+     "c": 15,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-04",
+     "ok": 2,
+     "n": 2,
+     "c": 15,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-05",
+     "ok": 9,
+     "n": 9,
+     "c": 15,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-06",
+     "ok": 5,
+     "n": 5,
+     "c": 21,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-07",
+     "ok": 5,
+     "n": 5,
+     "c": 21,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-08",
+     "ok": 4,
+     "n": 4,
+     "c": 22,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-09",
+     "ok": 4,
+     "n": 4,
+     "c": 22,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-10",
+     "ok": 3,
+     "n": 3,
+     "c": 21,
+     "e": "ok"
+    }
+   ],
+   "conciertos": 21,
+   "nuevos": 0,
+   "solo_en_esta": 1,
+   "eventos_brutos": 225,
+   "paginas": 9,
+   "errores": [],
+   "robots": "ok",
+   "robots_bloquea": false,
+   "aviso": null,
+   "segundos": 34.7,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
+  },
+  {
+   "id": "getrock",
+   "nombre": "Get Rock (promotora)",
+   "url": "https://www.getrock.es/",
+   "tipo": "promotora",
+   "prioridad": 2,
+   "fiabilidad": "alta",
+   "grupo": "getrock",
+   "reconfirma": true,
+   "notas": "",
+   "funciono": true,
+   "estado": "ok",
+   "metricas": {
+    "otra_web": 100,
+    "coincide": 100,
+    "comparte": 5,
+    "precio": 0,
+    "estilo": 0,
+    "hora": 100
+   },
+   "salud": [
+    {
+     "fecha": "2026-10-03",
+     "ok": 4,
+     "n": 4,
+     "c": 6,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-04",
+     "ok": 2,
+     "n": 2,
+     "c": 6,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-05",
+     "ok": 9,
+     "n": 9,
+     "c": 6,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-06",
+     "ok": 5,
+     "n": 5,
+     "c": 6,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-07",
+     "ok": 5,
+     "n": 5,
+     "c": 6,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-08",
+     "ok": 4,
+     "n": 4,
+     "c": 6,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-09",
+     "ok": 4,
+     "n": 4,
+     "c": 5,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-10",
+     "ok": 3,
+     "n": 3,
+     "c": 5,
+     "e": "ok"
+    }
+   ],
+   "conciertos": 5,
+   "nuevos": 0,
+   "solo_en_esta": 0,
+   "eventos_brutos": 19,
+   "paginas": 2,
+   "errores": [],
+   "robots": "ok",
+   "robots_bloquea": false,
+   "aviso": null,
+   "segundos": 7.4,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
+  },
+  {
+   "id": "neverland",
+   "nombre": "Neverland Concerts (calendario en Metal Symphony)",
+   "url": "https://www.metalsymphony.com/neverland-concerts-agenda-rock-progresivo-2026-2027/",
+   "tipo": "agregador",
+   "prioridad": 3,
+   "fiabilidad": "media",
+   "grupo": "metalsymphony",
+   "reconfirma": true,
+   "notas": "",
+   "funciono": true,
+   "estado": "ok",
+   "metricas": {
+    "otra_web": 100,
+    "coincide": 100,
+    "comparte": 2,
+    "precio": 0,
+    "estilo": 0,
+    "hora": 100
+   },
+   "salud": [
+    {
+     "fecha": "2026-10-03",
+     "ok": 4,
+     "n": 4,
+     "c": 2,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-04",
+     "ok": 2,
+     "n": 2,
+     "c": 2,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-05",
+     "ok": 9,
+     "n": 9,
+     "c": 2,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-06",
+     "ok": 5,
+     "n": 5,
+     "c": 3,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-07",
+     "ok": 5,
+     "n": 5,
+     "c": 2,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-08",
+     "ok": 4,
+     "n": 4,
+     "c": 2,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-09",
+     "ok": 4,
+     "n": 5,
+     "c": 2,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-10",
+     "ok": 3,
+     "n": 3,
+     "c": 2,
+     "e": "ok"
+    }
+   ],
+   "conciertos": 2,
+   "nuevos": 0,
+   "solo_en_esta": 0,
+   "eventos_brutos": 21,
+   "paginas": 1,
+   "errores": [],
+   "robots": "ok",
+   "robots_bloquea": false,
+   "aviso": null,
+   "segundos": 3.0,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
+  },
+  {
+   "id": "rockprog_agenda",
+   "nombre": "Rock-Progresivo.com (agenda)",
+   "url": "https://www.rock-progresivo.com/agenda-de-conciertos-de-rock-progresivo/",
+   "tipo": "agregador",
+   "prioridad": 3,
+   "fiabilidad": "media",
+   "grupo": "rockprog",
+   "reconfirma": true,
+   "notas": "",
+   "funciono": true,
+   "estado": "ok",
+   "metricas": {
+    "otra_web": 80,
+    "coincide": 100,
+    "comparte": 4,
+    "precio": 0,
+    "estilo": 0,
+    "hora": 60
+   },
+   "salud": [
+    {
+     "fecha": "2026-10-03",
+     "ok": 4,
+     "n": 4,
+     "c": 4,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-04",
+     "ok": 2,
+     "n": 2,
+     "c": 4,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-05",
+     "ok": 9,
+     "n": 9,
+     "c": 4,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-06",
+     "ok": 5,
+     "n": 5,
+     "c": 5,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-07",
+     "ok": 5,
+     "n": 5,
+     "c": 5,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-08",
+     "ok": 4,
+     "n": 4,
+     "c": 5,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-09",
+     "ok": 4,
+     "n": 5,
+     "c": 5,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-10",
+     "ok": 3,
+     "n": 3,
+     "c": 5,
+     "e": "ok"
+    }
+   ],
+   "conciertos": 5,
+   "nuevos": 0,
+   "solo_en_esta": 1,
+   "eventos_brutos": 12,
+   "paginas": 7,
+   "errores": [],
+   "robots": "ok",
+   "robots_bloquea": false,
+   "aviso": null,
+   "segundos": 30.0,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
+  },
+  {
+   "id": "rockprog",
+   "nombre": "Rock-Progresivo.com (previas)",
+   "url": "https://www.rock-progresivo.com/seccion/cronicas-conciertos/previas-de-conciertos/",
+   "tipo": "blog",
+   "prioridad": 4,
+   "fiabilidad": "media",
+   "grupo": "rockprog",
+   "reconfirma": false,
+   "notas": "",
+   "funciono": true,
+   "estado": "ok",
+   "metricas": {
+    "otra_web": 100,
+    "coincide": 100,
+    "comparte": 1,
+    "precio": 0,
+    "estilo": 0,
+    "hora": 0
+   },
+   "salud": [
+    {
+     "fecha": "2026-10-03",
+     "ok": 4,
+     "n": 4,
+     "c": 1,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-04",
+     "ok": 2,
+     "n": 2,
+     "c": 1,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-05",
+     "ok": 9,
+     "n": 9,
+     "c": 1,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-06",
+     "ok": 5,
+     "n": 5,
+     "c": 2,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-07",
+     "ok": 5,
+     "n": 5,
+     "c": 1,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-08",
+     "ok": 4,
+     "n": 4,
+     "c": 1,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-09",
+     "ok": 4,
+     "n": 5,
+     "c": 1,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-10",
+     "ok": 3,
+     "n": 3,
+     "c": 1,
+     "e": "ok"
+    }
+   ],
+   "conciertos": 1,
+   "nuevos": 0,
+   "solo_en_esta": 0,
+   "eventos_brutos": 1,
+   "paginas": 1,
+   "errores": [],
+   "robots": "ok",
+   "robots_bloquea": false,
+   "aviso": null,
+   "segundos": 6.6,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
+  },
+  {
+   "id": "dirtyrock",
+   "nombre": "Dirty Rock Magazine (giras)",
+   "url": "https://www.dirtyrock.info/category/giras/",
+   "tipo": "blog",
+   "prioridad": 4,
+   "fiabilidad": "media",
+   "grupo": "dirtyrock",
+   "reconfirma": false,
+   "notas": "",
+   "funciono": true,
+   "estado": "ok",
+   "metricas": {
+    "otra_web": 50,
+    "coincide": 100,
+    "comparte": 2,
+    "precio": 0,
+    "estilo": 0,
+    "hora": 25
+   },
+   "salud": [
+    {
+     "fecha": "2026-10-03",
+     "ok": 4,
+     "n": 4,
+     "c": 1,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-04",
+     "ok": 2,
+     "n": 2,
+     "c": 1,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-05",
+     "ok": 9,
+     "n": 9,
+     "c": 1,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-06",
+     "ok": 5,
+     "n": 5,
+     "c": 2,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-07",
+     "ok": 5,
+     "n": 5,
+     "c": 4,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-08",
+     "ok": 4,
+     "n": 4,
+     "c": 4,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-09",
+     "ok": 4,
+     "n": 4,
+     "c": 4,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-10",
+     "ok": 3,
+     "n": 3,
+     "c": 4,
+     "e": "ok"
+    }
+   ],
+   "conciertos": 4,
+   "nuevos": 0,
+   "solo_en_esta": 2,
+   "eventos_brutos": 4,
+   "paginas": 1,
+   "errores": [],
+   "robots": "ok",
+   "robots_bloquea": false,
+   "aviso": null,
+   "segundos": 3.1,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
+  },
+  {
+   "id": "viriaor",
+   "nombre": "viriAOR (agenda)",
+   "url": "https://viriaor.wordpress.com/category/agenda-de-conciertos/",
+   "tipo": "blog",
+   "prioridad": 4,
+   "fiabilidad": "media",
+   "grupo": "viriaor",
+   "reconfirma": false,
+   "notas": "",
+   "funciono": true,
+   "estado": "ok",
+   "metricas": {
+    "otra_web": 100,
+    "coincide": 100,
+    "comparte": 1,
+    "precio": 0,
+    "estilo": 0,
+    "hora": 100
+   },
+   "salud": [
+    {
+     "fecha": "2026-10-03",
+     "ok": 4,
+     "n": 4,
+     "c": 1,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-04",
+     "ok": 2,
+     "n": 2,
+     "c": 1,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-05",
+     "ok": 9,
+     "n": 9,
+     "c": 1,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-06",
+     "ok": 5,
+     "n": 5,
+     "c": 1,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-07",
+     "ok": 5,
+     "n": 5,
+     "c": 1,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-08",
+     "ok": 4,
+     "n": 4,
+     "c": 1,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-09",
+     "ok": 4,
+     "n": 4,
+     "c": 1,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-10",
+     "ok": 3,
+     "n": 3,
+     "c": 1,
+     "e": "ok"
+    }
+   ],
+   "conciertos": 1,
+   "nuevos": 0,
+   "solo_en_esta": 0,
+   "eventos_brutos": 1,
+   "paginas": 1,
+   "errores": [],
+   "robots": "ok",
+   "robots_bloquea": false,
+   "aviso": null,
+   "segundos": 1.5,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
+  },
+  {
+   "id": "diariorockero",
+   "nombre": "Diario de un Rockero",
+   "url": "https://www.diariodeunrockero.es/",
+   "tipo": "blog",
+   "prioridad": 4,
+   "fiabilidad": "media",
+   "grupo": "diariorockero",
+   "reconfirma": false,
+   "notas": "",
+   "funciono": true,
+   "estado": "ok",
+   "metricas": {
+    "otra_web": 86,
+    "coincide": 100,
+    "comparte": 6,
+    "precio": 0,
+    "estilo": 0,
+    "hora": 71
+   },
+   "salud": [
+    {
+     "fecha": "2026-10-03",
+     "ok": 4,
+     "n": 4,
+     "c": 3,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-04",
+     "ok": 2,
+     "n": 2,
+     "c": 4,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-05",
+     "ok": 9,
+     "n": 9,
+     "c": 4,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-06",
+     "ok": 5,
+     "n": 5,
+     "c": 8,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-07",
+     "ok": 5,
+     "n": 5,
+     "c": 7,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-08",
+     "ok": 4,
+     "n": 4,
+     "c": 7,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-09",
+     "ok": 4,
+     "n": 4,
+     "c": 7,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-10",
+     "ok": 3,
+     "n": 3,
+     "c": 7,
+     "e": "ok"
+    }
+   ],
+   "conciertos": 7,
+   "nuevos": 0,
+   "solo_en_esta": 1,
+   "eventos_brutos": 9,
+   "paginas": 1,
+   "errores": [],
+   "robots": "ok",
+   "robots_bloquea": false,
+   "aviso": null,
+   "segundos": 9.1,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
+  },
+  {
+   "id": "mutick",
+   "nombre": "Mutick / The Flying Pig (MomentaZos)",
+   "url": "https://mutick.com",
+   "tipo": "ticketera",
+   "prioridad": 2,
+   "fiabilidad": "alta",
+   "grupo": "mutick",
+   "reconfirma": true,
+   "notas": "",
+   "funciono": true,
+   "estado": "ok",
+   "metricas": {
+    "otra_web": 94,
+    "coincide": 100,
+    "comparte": 34,
+    "precio": 81,
+    "estilo": 0,
+    "hora": 100
+   },
+   "salud": [
+    {
+     "fecha": "2026-10-03",
+     "ok": 4,
+     "n": 4,
+     "c": 33,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-04",
+     "ok": 2,
+     "n": 2,
+     "c": 37,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-05",
+     "ok": 9,
+     "n": 9,
+     "c": 35,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-06",
+     "ok": 5,
+     "n": 5,
+     "c": 35,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-07",
+     "ok": 5,
+     "n": 5,
+     "c": 37,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-08",
+     "ok": 4,
+     "n": 4,
+     "c": 34,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-09",
+     "ok": 4,
+     "n": 4,
+     "c": 36,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-10",
+     "ok": 3,
+     "n": 3,
+     "c": 36,
+     "e": "ok"
+    }
+   ],
+   "conciertos": 36,
+   "nuevos": 0,
+   "solo_en_esta": 2,
+   "eventos_brutos": 36,
+   "paginas": 38,
+   "errores": [],
+   "robots": "ok",
+   "robots_bloquea": false,
+   "aviso": null,
+   "segundos": 57.6,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
+  },
+  {
+   "id": "qconciertos",
+   "nombre": "Qconciertos (country, folk y provincia de Madrid)",
+   "url": "https://qconciertos.es/estilo/country/",
+   "tipo": "agregador",
+   "prioridad": 3,
+   "fiabilidad": "media",
+   "grupo": "qconciertos",
+   "reconfirma": true,
+   "notas": "",
+   "funciono": true,
+   "estado": "ok",
+   "metricas": {
+    "otra_web": 40,
+    "coincide": 100,
+    "comparte": 2,
+    "precio": 0,
+    "estilo": 0,
+    "hora": 40
+   },
+   "salud": [
+    {
+     "fecha": "2026-10-03",
+     "ok": 4,
+     "n": 4,
+     "c": 4,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-04",
+     "ok": 2,
+     "n": 2,
+     "c": 6,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-05",
+     "ok": 9,
+     "n": 9,
+     "c": 6,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-06",
+     "ok": 5,
+     "n": 5,
+     "c": 6,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-07",
+     "ok": 5,
+     "n": 5,
+     "c": 6,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-08",
+     "ok": 4,
+     "n": 4,
+     "c": 6,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-09",
+     "ok": 4,
+     "n": 4,
+     "c": 3,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-10",
+     "ok": 3,
+     "n": 3,
+     "c": 5,
+     "e": "ok"
+    }
+   ],
+   "conciertos": 5,
+   "nuevos": 0,
+   "solo_en_esta": 3,
+   "eventos_brutos": 8,
+   "paginas": 3,
+   "errores": [],
+   "robots": "ok",
+   "robots_bloquea": false,
+   "aviso": null,
+   "segundos": 6.6,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
+  },
+  {
+   "id": "sbm",
+   "nombre": "Sociedad de Blues de Madrid",
+   "url": "https://www.sociedaddebluesdemadrid.com/",
+   "tipo": "promotora",
+   "prioridad": 2,
+   "fiabilidad": "alta",
+   "grupo": "sbm",
+   "reconfirma": true,
+   "notas": "",
+   "funciono": true,
+   "estado": "ok",
+   "metricas": {
+    "otra_web": null,
+    "coincide": null,
+    "comparte": 0,
+    "precio": null,
+    "estilo": null,
+    "hora": null
+   },
+   "salud": [
+    {
+     "fecha": "2026-10-03",
+     "ok": 4,
+     "n": 4,
+     "c": 1,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-04",
+     "ok": 2,
+     "n": 2,
+     "c": 0,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-05",
+     "ok": 9,
+     "n": 9,
+     "c": 0,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-06",
+     "ok": 5,
+     "n": 5,
+     "c": 0,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-07",
+     "ok": 5,
+     "n": 5,
+     "c": 0,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-08",
+     "ok": 4,
+     "n": 4,
+     "c": 0,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-09",
+     "ok": 4,
+     "n": 4,
+     "c": 0,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-10",
+     "ok": 3,
+     "n": 3,
+     "c": 0,
+     "e": "ok"
+    }
+   ],
+   "conciertos": 0,
+   "nuevos": 0,
+   "solo_en_esta": 0,
+   "eventos_brutos": 3,
+   "paginas": 1,
+   "errores": [],
+   "robots": "ok",
+   "robots_bloquea": false,
+   "aviso": null,
+   "segundos": 2.3,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
+  },
+  {
+   "id": "bigmama",
+   "nombre": "Big Mama Ballroom (blues)",
+   "url": "https://bigmamaballroom.com/conciertos-blues/",
+   "tipo": "sala",
+   "prioridad": 1,
+   "fiabilidad": "alta",
+   "grupo": "bigmama",
+   "reconfirma": true,
+   "notas": "",
+   "funciono": true,
+   "estado": "ok",
+   "metricas": {
+    "otra_web": 100,
+    "coincide": 100,
+    "comparte": 2,
+    "precio": 0,
+    "estilo": 100,
+    "hora": 100
+   },
+   "salud": [
+    {
+     "fecha": "2026-10-03",
+     "ok": 4,
+     "n": 4,
+     "c": 3,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-04",
+     "ok": 2,
+     "n": 2,
+     "c": 2,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-05",
+     "ok": 9,
+     "n": 9,
+     "c": 2,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-06",
+     "ok": 5,
+     "n": 5,
+     "c": 2,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-07",
+     "ok": 5,
+     "n": 5,
+     "c": 2,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-08",
+     "ok": 4,
+     "n": 4,
+     "c": 2,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-09",
+     "ok": 4,
+     "n": 5,
+     "c": 2,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-10",
+     "ok": 3,
+     "n": 3,
+     "c": 2,
+     "e": "ok"
+    }
+   ],
+   "conciertos": 2,
+   "nuevos": 0,
+   "solo_en_esta": 0,
+   "eventos_brutos": 2,
+   "paginas": 1,
+   "errores": [],
+   "robots": "ok",
+   "robots_bloquea": false,
+   "aviso": null,
+   "segundos": 3.8,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
+  },
+  {
+   "id": "gruta77",
+   "nombre": "Gruta 77 (web oficial)",
+   "url": "https://gruta77.com/events/",
+   "tipo": "sala",
+   "prioridad": 1,
+   "fiabilidad": "alta",
+   "grupo": "gruta77",
+   "reconfirma": true,
+   "notas": "",
+   "funciono": true,
+   "estado": "ok",
+   "metricas": {
+    "otra_web": 88,
+    "coincide": 96,
+    "comparte": 23,
+    "precio": 100,
+    "estilo": 81,
+    "hora": 100
+   },
+   "salud": [
+    {
+     "fecha": "2026-10-03",
+     "ok": 4,
+     "n": 4,
+     "c": 29,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-04",
+     "ok": 2,
+     "n": 2,
+     "c": 28,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-05",
+     "ok": 9,
+     "n": 9,
+     "c": 28,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-06",
+     "ok": 5,
+     "n": 5,
+     "c": 29,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-07",
+     "ok": 5,
+     "n": 5,
+     "c": 29,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-08",
+     "ok": 4,
+     "n": 4,
+     "c": 28,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-09",
+     "ok": 4,
+     "n": 6,
+     "c": 28,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-10",
+     "ok": 3,
+     "n": 3,
+     "c": 26,
+     "e": "ok"
+    }
+   ],
+   "conciertos": 26,
+   "nuevos": 0,
+   "solo_en_esta": 3,
+   "eventos_brutos": 26,
+   "paginas": 1,
+   "errores": [],
+   "robots": "ok",
+   "robots_bloquea": false,
+   "aviso": null,
+   "segundos": 4.4,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
+  },
+  {
+   "id": "movistar",
+   "nombre": "Movistar Arena (web oficial)",
+   "url": "https://www.movistararena.es/",
+   "tipo": "sala",
+   "prioridad": 1,
+   "fiabilidad": "alta",
+   "grupo": "movistararena",
+   "reconfirma": true,
+   "notas": "",
+   "funciono": true,
+   "estado": "ok",
+   "metricas": {
+    "otra_web": 67,
+    "coincide": 100,
+    "comparte": 6,
+    "precio": 0,
+    "estilo": 0,
+    "hora": 100
+   },
+   "salud": [
+    {
+     "fecha": "2026-10-03",
+     "ok": 4,
+     "n": 4,
+     "c": 9,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-04",
+     "ok": 2,
+     "n": 2,
+     "c": 10,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-05",
+     "ok": 9,
+     "n": 9,
+     "c": 10,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-06",
+     "ok": 5,
+     "n": 5,
+     "c": 11,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-07",
+     "ok": 5,
+     "n": 5,
+     "c": 10,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-08",
+     "ok": 4,
+     "n": 4,
+     "c": 10,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-09",
+     "ok": 4,
+     "n": 5,
+     "c": 10,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-10",
+     "ok": 3,
+     "n": 3,
+     "c": 9,
+     "e": "ok"
+    }
+   ],
+   "conciertos": 9,
+   "nuevos": 0,
+   "solo_en_esta": 3,
+   "eventos_brutos": 9,
+   "paginas": 1,
+   "errores": [],
+   "robots": "ok",
+   "robots_bloquea": false,
+   "aviso": null,
+   "segundos": 3.6,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
+  },
+  {
+   "id": "riviera",
+   "nombre": "La Riviera (web oficial)",
+   "url": "https://salariviera.com/conciertos/",
+   "tipo": "sala",
+   "prioridad": 1,
+   "fiabilidad": "alta",
+   "grupo": "riviera",
+   "reconfirma": true,
+   "notas": "",
+   "funciono": true,
+   "estado": "ok",
+   "metricas": {
+    "otra_web": 100,
+    "coincide": 100,
+    "comparte": 50,
+    "precio": 0,
+    "estilo": 0,
+    "hora": 100
+   },
+   "salud": [
+    {
+     "fecha": "2026-10-03",
+     "ok": 4,
+     "n": 4,
+     "c": 50,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-04",
+     "ok": 2,
+     "n": 2,
+     "c": 50,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-05",
+     "ok": 9,
+     "n": 9,
+     "c": 50,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-06",
+     "ok": 5,
+     "n": 5,
+     "c": 50,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-07",
+     "ok": 5,
+     "n": 5,
+     "c": 50,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-08",
+     "ok": 4,
+     "n": 4,
+     "c": 50,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-09",
+     "ok": 4,
+     "n": 5,
+     "c": 50,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-10",
+     "ok": 3,
+     "n": 3,
+     "c": 50,
+     "e": "ok"
+    }
+   ],
+   "conciertos": 50,
+   "nuevos": 0,
+   "solo_en_esta": 0,
+   "eventos_brutos": 50,
+   "paginas": 1,
+   "errores": [],
+   "robots": "ok",
+   "robots_bloquea": false,
+   "aviso": null,
+   "segundos": 3.4,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false,
+   "contraste_sala": {
+    "ausentes": 0,
+    "otra_fecha": 0,
+    "incompleta": "no anuncia Villano Antillano (2026-10-10), que dan 3 o más webs"
+   }
+  },
+  {
+   "id": "nazca",
+   "nombre": "Sala Nazca (web oficial)",
+   "url": "https://www.salanazcaconciertos.com/conciertos",
+   "tipo": "sala",
+   "prioridad": 1,
+   "fiabilidad": "alta",
+   "grupo": "nazca",
+   "reconfirma": true,
+   "notas": "",
+   "funciono": true,
+   "estado": "ok",
+   "metricas": {
+    "otra_web": 100,
+    "coincide": 100,
+    "comparte": 7,
+    "precio": 0,
+    "estilo": 0,
+    "hora": 86
+   },
+   "salud": [
+    {
+     "fecha": "2026-10-03",
+     "ok": 4,
+     "n": 4,
+     "c": 6,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-04",
+     "ok": 2,
+     "n": 2,
+     "c": 8,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-05",
+     "ok": 9,
+     "n": 9,
+     "c": 8,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-06",
+     "ok": 5,
+     "n": 5,
+     "c": 8,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-07",
+     "ok": 5,
+     "n": 5,
+     "c": 8,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-08",
+     "ok": 4,
+     "n": 4,
+     "c": 8,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-09",
+     "ok": 4,
+     "n": 4,
+     "c": 7,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-10",
+     "ok": 3,
+     "n": 3,
+     "c": 7,
+     "e": "ok"
+    }
+   ],
+   "conciertos": 7,
+   "nuevos": 0,
+   "solo_en_esta": 0,
+   "eventos_brutos": 8,
+   "paginas": 1,
+   "errores": [],
+   "robots": "ok",
+   "robots_bloquea": false,
+   "aviso": null,
+   "segundos": 3.0,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false,
+   "contraste_sala": {
+    "ausentes": 0,
+    "otra_fecha": 0,
+    "incompleta": "no anuncia The Browning (2026-11-03), que dan 3 o más webs"
+   }
+  },
+  {
+   "id": "wagon",
+   "nombre": "Sala Wagon (web oficial)",
+   "url": "https://www.wagon.live/",
+   "tipo": "sala",
+   "prioridad": 1,
+   "fiabilidad": "alta",
+   "grupo": "wagon",
+   "reconfirma": true,
+   "notas": "",
+   "funciono": true,
+   "estado": "ok",
+   "metricas": {
+    "otra_web": 72,
+    "coincide": 100,
+    "comparte": 18,
+    "precio": 0,
+    "estilo": 0,
+    "hora": 60
+   },
+   "salud": [
+    {
+     "fecha": "2026-10-03",
+     "ok": 4,
+     "n": 4,
+     "c": 19,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-04",
+     "ok": 2,
+     "n": 2,
+     "c": 19,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-05",
+     "ok": 9,
+     "n": 9,
+     "c": 20,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-06",
+     "ok": 5,
+     "n": 5,
+     "c": 27,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-07",
+     "ok": 5,
+     "n": 5,
+     "c": 27,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-08",
+     "ok": 4,
+     "n": 4,
+     "c": 27,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-09",
+     "ok": 4,
+     "n": 4,
+     "c": 26,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-10",
+     "ok": 3,
+     "n": 3,
+     "c": 25,
+     "e": "ok"
+    }
+   ],
+   "conciertos": 25,
+   "nuevos": 0,
+   "solo_en_esta": 7,
+   "eventos_brutos": 30,
+   "paginas": 1,
+   "errores": [],
+   "robots": "ok",
+   "robots_bloquea": false,
+   "aviso": null,
+   "segundos": 2.1,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false,
+   "contraste_sala": {
+    "ausentes": 0,
+    "otra_fecha": 0,
+    "incompleta": "no anuncia Romanthica (2026-11-20), que dan 3 o más webs"
+   }
+  },
+  {
+   "id": "revi",
+   "nombre": "Revi Live / Revi Space (web oficial)",
+   "url": "https://revi.live/eventos/",
+   "tipo": "sala",
+   "prioridad": 1,
+   "fiabilidad": "alta",
+   "grupo": "revi",
+   "reconfirma": true,
+   "notas": "",
+   "funciono": true,
+   "estado": "ok",
+   "metricas": {
+    "otra_web": 72,
+    "coincide": 100,
+    "comparte": 33,
+    "precio": 0,
+    "estilo": 0,
+    "hora": 63
+   },
+   "salud": [
+    {
+     "fecha": "2026-10-03",
+     "ok": 4,
+     "n": 4,
+     "c": 42,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-04",
+     "ok": 2,
+     "n": 2,
+     "c": 40,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-05",
+     "ok": 9,
+     "n": 9,
+     "c": 40,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-06",
+     "ok": 5,
+     "n": 5,
+     "c": 45,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-07",
+     "ok": 5,
+     "n": 5,
+     "c": 45,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-08",
+     "ok": 4,
+     "n": 4,
+     "c": 45,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-09",
+     "ok": 4,
+     "n": 4,
+     "c": 47,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-10",
+     "ok": 3,
+     "n": 3,
+     "c": 46,
+     "e": "ok"
+    }
+   ],
+   "conciertos": 46,
+   "nuevos": 0,
+   "solo_en_esta": 13,
+   "eventos_brutos": 49,
+   "paginas": 1,
+   "errores": [],
+   "robots": "ok",
+   "robots_bloquea": false,
+   "aviso": null,
+   "segundos": 5.2,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false,
+   "contraste_sala": {
+    "ausentes": 0,
+    "otra_fecha": 1,
+    "incompleta": "no anuncia Melrose Avenue (2027-03-05), que dan 3 o más webs"
+   }
+  },
+  {
+   "id": "chango",
+   "nombre": "Sala Changó (web oficial)",
+   "url": "https://www.salachango.es/",
+   "tipo": "sala",
+   "prioridad": 1,
+   "fiabilidad": "alta",
+   "grupo": "chango",
+   "reconfirma": true,
+   "notas": "",
+   "funciono": true,
+   "estado": "ok",
+   "metricas": {
+    "otra_web": 25,
+    "coincide": 100,
+    "comparte": 2,
+    "precio": 0,
+    "estilo": 0,
+    "hora": 62
+   },
+   "salud": [
+    {
+     "fecha": "2026-10-03",
+     "ok": 4,
+     "n": 4,
+     "c": 6,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-04",
+     "ok": 2,
+     "n": 2,
+     "c": 7,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-05",
+     "ok": 9,
+     "n": 9,
+     "c": 8,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-06",
+     "ok": 5,
+     "n": 5,
+     "c": 8,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-07",
+     "ok": 5,
+     "n": 5,
+     "c": 8,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-08",
+     "ok": 4,
+     "n": 4,
+     "c": 7,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-09",
+     "ok": 4,
+     "n": 4,
+     "c": 8,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-10",
+     "ok": 3,
+     "n": 3,
+     "c": 8,
+     "e": "ok"
+    }
+   ],
+   "conciertos": 8,
+   "nuevos": 0,
+   "solo_en_esta": 6,
+   "eventos_brutos": 7,
+   "paginas": 1,
+   "errores": [],
+   "robots": "ok",
+   "robots_bloquea": false,
+   "aviso": null,
+   "segundos": 2.0,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false,
+   "contraste_sala": {
+    "ausentes": 0,
+    "otra_fecha": 0,
+    "incompleta": "no anuncia The Bausa (2026-10-18), que dan 3 o más webs"
+   }
+  },
+  {
+   "id": "salabut",
+   "nombre": "Sala But (web oficial)",
+   "url": "https://www.salabut.es/agenda-conciertos/",
+   "tipo": "sala",
+   "prioridad": 1,
+   "fiabilidad": "alta",
+   "grupo": "salabut",
+   "reconfirma": true,
+   "notas": "",
+   "funciono": true,
+   "estado": "ok",
+   "metricas": {
+    "otra_web": 67,
+    "coincide": 100,
+    "comparte": 18,
+    "precio": 0,
+    "estilo": 0,
+    "hora": 56
+   },
+   "salud": [
+    {
+     "fecha": "2026-10-03",
+     "ok": 4,
+     "n": 4,
+     "c": 27,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-04",
+     "ok": 2,
+     "n": 2,
+     "c": 27,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-05",
+     "ok": 9,
+     "n": 9,
+     "c": 27,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-06",
+     "ok": 5,
+     "n": 5,
+     "c": 27,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-07",
+     "ok": 5,
+     "n": 5,
+     "c": 27,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-08",
+     "ok": 4,
+     "n": 4,
+     "c": 27,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-09",
+     "ok": 4,
+     "n": 4,
+     "c": 27,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-10",
+     "ok": 3,
+     "n": 3,
+     "c": 27,
+     "e": "ok"
+    }
+   ],
+   "conciertos": 27,
+   "nuevos": 0,
+   "solo_en_esta": 9,
+   "eventos_brutos": 33,
+   "paginas": 1,
+   "errores": [],
+   "robots": "ok",
+   "robots_bloquea": false,
+   "aviso": null,
+   "segundos": 1.8,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false,
+   "contraste_sala": {
+    "ausentes": 0,
+    "otra_fecha": 1,
+    "incompleta": "no anuncia Mala Gestión (2026-11-04), que dan 3 o más webs"
+   }
+  },
+  {
+   "id": "elsol",
+   "nombre": "Sala El Sol (web oficial)",
+   "url": "https://salaelsol.com/agenda/",
+   "tipo": "sala",
+   "prioridad": 1,
+   "fiabilidad": "alta",
+   "grupo": "elsol",
+   "reconfirma": true,
+   "notas": "",
+   "funciono": true,
+   "estado": "ok",
+   "metricas": {
+    "otra_web": 2,
+    "coincide": 100,
+    "comparte": 1,
+    "precio": 0,
+    "estilo": 0,
+    "hora": 100
+   },
+   "salud": [
+    {
+     "fecha": "2026-10-03",
+     "ok": 4,
+     "n": 4,
+     "c": 3,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-04",
+     "ok": 2,
+     "n": 2,
+     "c": 5,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-05",
+     "ok": 9,
+     "n": 9,
+     "c": 4,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-06",
+     "ok": 5,
+     "n": 5,
+     "c": 31,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-07",
+     "ok": 5,
+     "n": 5,
+     "c": 35,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-08",
+     "ok": 4,
+     "n": 4,
+     "c": 35,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-09",
+     "ok": 4,
+     "n": 4,
+     "c": 39,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-10",
+     "ok": 3,
+     "n": 3,
+     "c": 57,
+     "e": "ok"
+    }
+   ],
+   "conciertos": 57,
+   "nuevos": 23,
+   "solo_en_esta": 56,
+   "eventos_brutos": 24,
+   "paginas": 1,
+   "errores": [],
+   "robots": "ok",
+   "robots_bloquea": false,
+   "aviso": null,
+   "segundos": 4.1,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false,
+   "contraste_sala": {
+    "ausentes": 0,
+    "otra_fecha": 0,
+    "incompleta": "no anuncia Las Novias (2026-10-10), que dan 3 o más webs"
+   }
+  },
+  {
+   "id": "villanos",
+   "nombre": "Sala Villanos (web oficial)",
+   "url": "https://salavillanos.es/agenda/",
+   "tipo": "sala",
+   "prioridad": 1,
+   "fiabilidad": "alta",
+   "grupo": "villanos",
+   "reconfirma": true,
+   "notas": "",
+   "funciono": false,
+   "estado": "bloqueado_robots",
+   "metricas": {
+    "otra_web": 75,
+    "coincide": 97,
+    "comparte": 72,
+    "precio": 0,
+    "estilo": 93,
+    "hora": 99
+   },
+   "salud": [
+    {
+     "fecha": "2026-10-03",
+     "ok": 0,
+     "n": 4,
+     "c": 98,
+     "e": "bloqueado_robots"
+    },
+    {
+     "fecha": "2026-10-04",
+     "ok": 0,
+     "n": 2,
+     "c": 96,
+     "e": "bloqueado_robots"
+    },
+    {
+     "fecha": "2026-10-05",
+     "ok": 0,
+     "n": 9,
+     "c": 95,
+     "e": "bloqueado_robots"
+    },
+    {
+     "fecha": "2026-10-06",
+     "ok": 0,
+     "n": 5,
+     "c": 100,
+     "e": "bloqueado_robots"
+    },
+    {
+     "fecha": "2026-10-07",
+     "ok": 0,
+     "n": 5,
+     "c": 99,
+     "e": "bloqueado_robots"
+    },
+    {
+     "fecha": "2026-10-08",
+     "ok": 0,
+     "n": 4,
+     "c": 99,
+     "e": "bloqueado_robots"
+    },
+    {
+     "fecha": "2026-10-09",
+     "ok": 0,
+     "n": 5,
+     "c": 98,
+     "e": "bloqueado_robots"
+    },
+    {
+     "fecha": "2026-10-10",
+     "ok": 0,
+     "n": 3,
+     "c": 96,
+     "e": "bloqueado_robots"
+    }
+   ],
+   "conciertos": 96,
+   "nuevos": 0,
+   "solo_en_esta": 24,
+   "eventos_brutos": 0,
+   "paginas": 1,
+   "errores": [
+    "robots.txt prohíbe https://salavillanos.es/agenda/"
+   ],
+   "robots": "ok",
+   "robots_bloquea": true,
+   "aviso": "su robots.txt ya no permite leerla (último éxito 2026-10-01, daba 99): se respeta; sus conciertos salen de su última lectura y de otras agendas, y de su venta de entradas en Enterticket (fuente Enterticket)",
+   "segundos": 0.6,
+   "reintento": null,
+   "desde_cache": 97,
+   "cache_fecha": "2026-10-01",
+   "no_leida": false
+  },
+  {
+   "id": "rockville",
+   "nombre": "RockVille (web oficial)",
+   "url": "https://rockville.es/programacion/",
+   "tipo": "sala",
+   "prioridad": 1,
+   "fiabilidad": "alta",
+   "grupo": "rockville",
+   "reconfirma": true,
+   "notas": "",
+   "funciono": true,
+   "estado": "ok",
+   "metricas": {
+    "otra_web": 94,
+    "coincide": 100,
+    "comparte": 15,
+    "precio": 100,
+    "estilo": 100,
+    "hora": 100
+   },
+   "salud": [
+    {
+     "fecha": "2026-10-03",
+     "ok": 4,
+     "n": 4,
+     "c": 22,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-04",
+     "ok": 2,
+     "n": 2,
+     "c": 21,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-05",
+     "ok": 9,
+     "n": 9,
+     "c": 20,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-06",
+     "ok": 5,
+     "n": 5,
+     "c": 19,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-07",
+     "ok": 5,
+     "n": 5,
+     "c": 19,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-08",
+     "ok": 4,
+     "n": 4,
+     "c": 18,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-09",
+     "ok": 4,
+     "n": 5,
+     "c": 17,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-10",
+     "ok": 3,
+     "n": 3,
+     "c": 16,
+     "e": "ok"
+    }
+   ],
+   "conciertos": 16,
+   "nuevos": 0,
+   "solo_en_esta": 1,
+   "eventos_brutos": 24,
+   "paginas": 1,
+   "errores": [],
+   "robots": "ok",
+   "robots_bloquea": false,
+   "aviso": null,
+   "segundos": 2.4,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false,
+   "contraste_sala": {
+    "ausentes": 1,
+    "otra_fecha": 0
+   }
+  },
+  {
+   "id": "funhouse",
+   "nombre": "Fun House (web oficial)",
+   "url": "https://www.funhousemusicbar.com/conciertos/",
+   "tipo": "sala",
+   "prioridad": 1,
+   "fiabilidad": "alta",
+   "grupo": "funhouse",
+   "reconfirma": true,
+   "notas": "",
+   "funciono": true,
+   "estado": "ok",
+   "metricas": {
+    "otra_web": 64,
+    "coincide": 100,
+    "comparte": 25,
+    "precio": 0,
+    "estilo": 0,
+    "hora": 100
+   },
+   "salud": [
+    {
+     "fecha": "2026-10-03",
+     "ok": 4,
+     "n": 4,
+     "c": 36,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-04",
+     "ok": 2,
+     "n": 2,
+     "c": 38,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-05",
+     "ok": 9,
+     "n": 9,
+     "c": 37,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-06",
+     "ok": 5,
+     "n": 5,
+     "c": 39,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-07",
+     "ok": 5,
+     "n": 5,
+     "c": 41,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-08",
+     "ok": 4,
+     "n": 4,
+     "c": 40,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-09",
+     "ok": 4,
+     "n": 5,
+     "c": 38,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-10",
+     "ok": 3,
+     "n": 3,
+     "c": 39,
+     "e": "ok"
+    }
+   ],
+   "conciertos": 39,
+   "nuevos": 1,
+   "solo_en_esta": 14,
+   "eventos_brutos": 38,
+   "paginas": 1,
+   "errores": [],
+   "robots": "ok",
+   "robots_bloquea": false,
+   "aviso": null,
+   "segundos": 2.2,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false,
+   "contraste_sala": {
+    "ausentes": 1,
+    "otra_fecha": 1
+   }
+  },
+  {
+   "id": "wurlitzer",
+   "nombre": "Wurlitzer Ballroom (web oficial)",
+   "url": "https://wurlitzerballroom.com/agenda",
+   "tipo": "sala",
+   "prioridad": 1,
+   "fiabilidad": "alta",
+   "grupo": "wurlitzer",
+   "reconfirma": true,
+   "notas": "",
+   "funciono": true,
+   "estado": "ok",
+   "metricas": {
+    "otra_web": 59,
+    "coincide": 100,
+    "comparte": 17,
+    "precio": 0,
+    "estilo": 90,
+    "hora": 100
+   },
+   "salud": [
+    {
+     "fecha": "2026-10-03",
+     "ok": 4,
+     "n": 4,
+     "c": 30,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-04",
+     "ok": 2,
+     "n": 2,
+     "c": 29,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-05",
+     "ok": 9,
+     "n": 9,
+     "c": 31,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-06",
+     "ok": 5,
+     "n": 5,
+     "c": 31,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-07",
+     "ok": 5,
+     "n": 5,
+     "c": 30,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-08",
+     "ok": 4,
+     "n": 4,
+     "c": 31,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-09",
+     "ok": 4,
+     "n": 4,
+     "c": 30,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-10",
+     "ok": 3,
+     "n": 3,
+     "c": 29,
+     "e": "ok"
+    }
+   ],
+   "conciertos": 29,
+   "nuevos": 0,
+   "solo_en_esta": 12,
+   "eventos_brutos": 29,
+   "paginas": 1,
+   "errores": [],
+   "robots": "ok",
+   "robots_bloquea": false,
+   "aviso": null,
+   "segundos": 5.3,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false,
+   "contraste_sala": {
+    "ausentes": 8,
+    "otra_fecha": 0
+   }
+  },
+  {
+   "id": "honky",
+   "nombre": "Honky Tonk (web oficial)",
+   "url": "https://clubhonky.com/programacion/",
+   "tipo": "sala",
+   "prioridad": 1,
+   "fiabilidad": "alta",
+   "grupo": "honky",
+   "reconfirma": true,
+   "notas": "",
+   "funciono": true,
+   "estado": "ok",
+   "metricas": {
+    "otra_web": 78,
+    "coincide": 100,
+    "comparte": 18,
+    "precio": 0,
+    "estilo": 0,
+    "hora": 100
+   },
+   "salud": [
+    {
+     "fecha": "2026-10-03",
+     "ok": 4,
+     "n": 4,
+     "c": 30,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-04",
+     "ok": 2,
+     "n": 2,
+     "c": 28,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-05",
+     "ok": 9,
+     "n": 9,
+     "c": 28,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-06",
+     "ok": 5,
+     "n": 5,
+     "c": 28,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-07",
+     "ok": 5,
+     "n": 5,
+     "c": 27,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-08",
+     "ok": 4,
+     "n": 4,
+     "c": 26,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-09",
+     "ok": 4,
+     "n": 4,
+     "c": 25,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-10",
+     "ok": 3,
+     "n": 3,
+     "c": 23,
+     "e": "ok"
+    }
+   ],
+   "conciertos": 23,
+   "nuevos": 0,
+   "solo_en_esta": 5,
+   "eventos_brutos": 33,
+   "paginas": 1,
+   "errores": [],
+   "robots": "ok",
+   "robots_bloquea": false,
+   "aviso": null,
+   "segundos": 4.4,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
+  },
+  {
+   "id": "silikona",
+   "nombre": "Silikona (web oficial)",
+   "url": "https://silikona.es/",
+   "tipo": "sala",
+   "prioridad": 1,
+   "fiabilidad": "alta",
+   "grupo": "silikona",
+   "reconfirma": true,
+   "notas": "",
+   "funciono": true,
+   "estado": "ok",
+   "metricas": {
+    "otra_web": 100,
+    "coincide": 100,
+    "comparte": 4,
+    "precio": 0,
+    "estilo": 0,
+    "hora": 100
+   },
+   "salud": [
+    {
+     "fecha": "2026-10-03",
+     "ok": 4,
+     "n": 4,
+     "c": 4,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-04",
+     "ok": 2,
+     "n": 2,
+     "c": 3,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-05",
+     "ok": 9,
+     "n": 9,
+     "c": 4,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-06",
+     "ok": 5,
+     "n": 5,
+     "c": 4,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-07",
+     "ok": 5,
+     "n": 5,
+     "c": 4,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-08",
+     "ok": 4,
+     "n": 4,
+     "c": 4,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-09",
+     "ok": 4,
+     "n": 6,
+     "c": 4,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-10",
+     "ok": 3,
+     "n": 3,
+     "c": 4,
+     "e": "ok"
+    }
+   ],
+   "conciertos": 4,
+   "nuevos": 0,
+   "solo_en_esta": 0,
+   "eventos_brutos": 4,
+   "paginas": 1,
+   "errores": [],
+   "robots": "ok",
+   "robots_bloquea": false,
+   "aviso": null,
+   "segundos": 7.7,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
+  },
+  {
+   "id": "clamores",
+   "nombre": "Sala Clamores (web oficial)",
+   "url": "https://www.salaclamores.es/calendario",
+   "tipo": "sala",
+   "prioridad": 1,
+   "fiabilidad": "alta",
+   "grupo": "clamores",
+   "reconfirma": true,
+   "notas": "",
+   "funciono": true,
+   "estado": "ok",
+   "metricas": {
+    "otra_web": 91,
+    "coincide": 100,
+    "comparte": 20,
+    "precio": 100,
+    "estilo": 82,
+    "hora": 100
+   },
+   "salud": [
+    {
+     "fecha": "2026-10-03",
+     "ok": 2,
+     "n": 4,
+     "c": 21,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-04",
+     "ok": 2,
+     "n": 2,
+     "c": 21,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-05",
+     "ok": 9,
+     "n": 9,
+     "c": 21,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-06",
+     "ok": 5,
+     "n": 5,
+     "c": 21,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-07",
+     "ok": 5,
+     "n": 5,
+     "c": 21,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-08",
+     "ok": 4,
+     "n": 4,
+     "c": 21,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-09",
+     "ok": 4,
+     "n": 4,
+     "c": 21,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-10",
+     "ok": 3,
+     "n": 3,
+     "c": 22,
+     "e": "ok"
+    }
+   ],
+   "conciertos": 22,
+   "nuevos": 0,
+   "solo_en_esta": 2,
+   "eventos_brutos": 22,
+   "paginas": 1,
+   "errores": [],
+   "robots": "ok",
+   "robots_bloquea": false,
+   "aviso": null,
+   "segundos": 1.3,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
+  },
+  {
+   "id": "galileo",
+   "nombre": "Galileo Galilei (web oficial)",
+   "url": "https://salagalileo.es/",
+   "tipo": "sala",
+   "prioridad": 1,
+   "fiabilidad": "alta",
+   "grupo": "galileo",
+   "reconfirma": true,
+   "notas": "Su hosting a veces responde con un captcha anti-bots; sus conciertos llegan también por Madrid en Vivo y conciertos.club.",
+   "funciono": true,
+   "estado": "ok",
+   "metricas": {
+    "otra_web": 62,
+    "coincide": 100,
+    "comparte": 5,
+    "precio": 0,
+    "estilo": 0,
+    "hora": 100
+   },
+   "salud": [
+    {
+     "fecha": "2026-10-03",
+     "ok": 4,
+     "n": 5,
+     "c": 8,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-04",
+     "ok": 2,
+     "n": 4,
+     "c": 8,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-05",
+     "ok": 5,
+     "n": 9,
+     "c": 8,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-06",
+     "ok": 4,
+     "n": 7,
+     "c": 8,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-07",
+     "ok": 4,
+     "n": 6,
+     "c": 8,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-08",
+     "ok": 3,
+     "n": 6,
+     "c": 8,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-09",
+     "ok": 2,
+     "n": 5,
+     "c": 8,
+     "e": "bloqueado_antibots"
+    },
+    {
+     "fecha": "2026-10-10",
+     "ok": 3,
+     "n": 4,
+     "c": 8,
+     "e": "ok"
+    }
+   ],
+   "conciertos": 8,
+   "nuevos": 0,
+   "solo_en_esta": 3,
+   "eventos_brutos": 8,
+   "paginas": 1,
+   "errores": [],
+   "robots": "ok",
+   "robots_bloquea": false,
+   "aviso": null,
+   "segundos": 2.1,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
+  },
+  {
+   "id": "siroco",
+   "nombre": "Sala Siroco (web oficial)",
+   "url": "https://siroco.es/",
+   "tipo": "sala",
+   "prioridad": 1,
+   "fiabilidad": "alta",
+   "grupo": "siroco",
+   "reconfirma": true,
+   "notas": "",
+   "funciono": true,
+   "estado": "ok",
+   "metricas": {
+    "otra_web": 67,
+    "coincide": 100,
+    "comparte": 2,
+    "precio": 0,
+    "estilo": 0,
+    "hora": 100
+   },
+   "salud": [
+    {
+     "fecha": "2026-10-03",
+     "ok": 4,
+     "n": 4,
+     "c": 3,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-04",
+     "ok": 2,
+     "n": 2,
+     "c": 3,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-05",
+     "ok": 9,
+     "n": 9,
+     "c": 3,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-06",
+     "ok": 5,
+     "n": 5,
+     "c": 3,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-07",
+     "ok": 5,
+     "n": 5,
+     "c": 3,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-08",
+     "ok": 4,
+     "n": 4,
+     "c": 3,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-09",
+     "ok": 4,
+     "n": 4,
+     "c": 4,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-10",
+     "ok": 3,
+     "n": 3,
+     "c": 3,
+     "e": "ok"
+    }
+   ],
+   "conciertos": 3,
+   "nuevos": 0,
+   "solo_en_esta": 1,
+   "eventos_brutos": 3,
+   "paginas": 1,
+   "errores": [],
+   "robots": "ok",
+   "robots_bloquea": false,
+   "aviso": null,
+   "segundos": 3.6,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
+  },
+  {
+   "id": "mobydick",
+   "nombre": "Moby Dick Club (web oficial)",
+   "url": "https://www.mobydickclub.com/",
+   "tipo": "sala",
+   "prioridad": 1,
+   "fiabilidad": "alta",
+   "grupo": "mobydick",
+   "reconfirma": true,
+   "notas": "",
+   "funciono": true,
+   "estado": "ok",
+   "metricas": {
+    "otra_web": 67,
+    "coincide": 100,
+    "comparte": 4,
+    "precio": 0,
+    "estilo": 0,
+    "hora": 83
+   },
+   "salud": [
+    {
+     "fecha": "2026-10-03",
+     "ok": 4,
+     "n": 4,
+     "c": 4,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-04",
+     "ok": 2,
+     "n": 2,
+     "c": 3,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-05",
+     "ok": 9,
+     "n": 9,
+     "c": 6,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-06",
+     "ok": 5,
+     "n": 5,
+     "c": 6,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-07",
+     "ok": 5,
+     "n": 5,
+     "c": 5,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-08",
+     "ok": 4,
+     "n": 4,
+     "c": 7,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-09",
+     "ok": 4,
+     "n": 5,
+     "c": 7,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-10",
+     "ok": 3,
+     "n": 3,
+     "c": 6,
+     "e": "ok"
+    }
+   ],
+   "conciertos": 6,
+   "nuevos": 0,
+   "solo_en_esta": 2,
+   "eventos_brutos": 7,
+   "paginas": 1,
+   "errores": [],
+   "robots": "ok",
+   "robots_bloquea": false,
+   "aviso": null,
+   "segundos": 1.9,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
+  },
+  {
+   "id": "independance",
+   "nombre": "Independance Club (web oficial)",
+   "url": "https://independanceclub.com/collections/conciertos",
+   "tipo": "sala",
+   "prioridad": 1,
+   "fiabilidad": "alta",
+   "grupo": "independance",
+   "reconfirma": true,
+   "notas": "",
+   "funciono": true,
+   "estado": "ok",
+   "metricas": {
+    "otra_web": 91,
+    "coincide": 100,
+    "comparte": 10,
+    "precio": 0,
+    "estilo": 0,
+    "hora": 100
+   },
+   "salud": [
+    {
+     "fecha": "2026-10-03",
+     "ok": 4,
+     "n": 4,
+     "c": 11,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-04",
+     "ok": 2,
+     "n": 2,
+     "c": 11,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-05",
+     "ok": 9,
+     "n": 9,
+     "c": 11,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-06",
+     "ok": 5,
+     "n": 5,
+     "c": 11,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-07",
+     "ok": 5,
+     "n": 5,
+     "c": 11,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-08",
+     "ok": 4,
+     "n": 4,
+     "c": 11,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-09",
+     "ok": 4,
+     "n": 4,
+     "c": 11,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-10",
+     "ok": 3,
+     "n": 3,
+     "c": 11,
+     "e": "ok"
+    }
+   ],
+   "conciertos": 11,
+   "nuevos": 0,
+   "solo_en_esta": 1,
+   "eventos_brutos": 11,
+   "paginas": 1,
+   "errores": [],
+   "robots": "ok",
+   "robots_bloquea": false,
+   "aviso": null,
+   "segundos": 1.9,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false,
+   "contraste_sala": {
+    "ausentes": 0,
+    "otra_fecha": 0,
+    "incompleta": "no anuncia Jordana B (2026-10-23), que dan 3 o más webs"
+   }
+  },
+  {
+   "id": "salab",
+   "nombre": "Sala B (web oficial)",
+   "url": "https://www.salabmadrid.com/",
+   "tipo": "sala",
+   "prioridad": 1,
+   "fiabilidad": "alta",
+   "grupo": "salab",
+   "reconfirma": true,
+   "notas": "",
+   "funciono": true,
+   "estado": "ok",
+   "metricas": {
+    "otra_web": 100,
+    "coincide": 100,
+    "comparte": 2,
+    "precio": 0,
+    "estilo": 0,
+    "hora": 100
+   },
+   "salud": [
+    {
+     "fecha": "2026-10-03",
+     "ok": 4,
+     "n": 4,
+     "c": 2,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-04",
+     "ok": 2,
+     "n": 2,
+     "c": 2,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-05",
+     "ok": 9,
+     "n": 9,
+     "c": 2,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-06",
+     "ok": 5,
+     "n": 5,
+     "c": 3,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-07",
+     "ok": 5,
+     "n": 5,
+     "c": 3,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-08",
+     "ok": 4,
+     "n": 4,
+     "c": 3,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-09",
+     "ok": 4,
+     "n": 4,
+     "c": 3,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-10",
+     "ok": 3,
+     "n": 3,
+     "c": 2,
+     "e": "ok"
+    }
+   ],
+   "conciertos": 2,
+   "nuevos": 0,
+   "solo_en_esta": 0,
+   "eventos_brutos": 3,
+   "paginas": 1,
+   "errores": [],
+   "robots": "ok",
+   "robots_bloquea": false,
+   "aviso": null,
+   "segundos": 7.5,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
+  },
+  {
+   "id": "nuevacubierta",
+   "nombre": "La Nueva Cubierta, Leganés (web oficial)",
+   "url": "https://lanuevacubierta.com/eventos/",
+   "tipo": "sala",
+   "prioridad": 1,
+   "fiabilidad": "alta",
+   "grupo": "nuevacubierta",
+   "reconfirma": true,
+   "notas": "",
+   "funciono": true,
+   "estado": "ok",
+   "metricas": {
+    "otra_web": 75,
+    "coincide": 100,
+    "comparte": 6,
+    "precio": 0,
+    "estilo": 0,
+    "hora": 75
+   },
+   "salud": [
+    {
+     "fecha": "2026-10-03",
+     "ok": 4,
+     "n": 4,
+     "c": 7,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-04",
+     "ok": 2,
+     "n": 2,
+     "c": 7,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-05",
+     "ok": 9,
+     "n": 9,
+     "c": 7,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-06",
+     "ok": 5,
+     "n": 5,
+     "c": 9,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-07",
+     "ok": 5,
+     "n": 5,
+     "c": 9,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-08",
+     "ok": 4,
+     "n": 4,
+     "c": 9,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-09",
+     "ok": 4,
+     "n": 4,
+     "c": 9,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-10",
+     "ok": 3,
+     "n": 3,
+     "c": 8,
+     "e": "ok"
+    }
+   ],
+   "conciertos": 8,
+   "nuevos": 0,
+   "solo_en_esta": 2,
+   "eventos_brutos": 8,
+   "paginas": 1,
+   "errores": [],
+   "robots": "ok",
+   "robots_bloquea": false,
+   "aviso": null,
+   "segundos": 5.4,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
+  },
+  {
+   "id": "cafecentral",
+   "nombre": "Café Central (web oficial)",
+   "url": "https://cafecentralmadrid.com/programacion/",
+   "tipo": "sala",
+   "prioridad": 1,
+   "fiabilidad": "alta",
+   "grupo": "cafecentral",
+   "reconfirma": true,
+   "notas": "Café Central Ateneo y el auditorio de La Cátedra; las residencias de varias noches, una por noche.",
+   "funciono": true,
+   "estado": "ok",
+   "metricas": {
+    "otra_web": 97,
+    "coincide": 100,
+    "comparte": 31,
+    "precio": 0,
+    "estilo": 100,
+    "hora": 100
+   },
+   "salud": [
+    {
+     "fecha": "2026-10-03",
+     "ok": 4,
+     "n": 4,
+     "c": 41,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-04",
+     "ok": 2,
+     "n": 2,
+     "c": 40,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-05",
+     "ok": 9,
+     "n": 9,
+     "c": 39,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-06",
+     "ok": 5,
+     "n": 5,
+     "c": 38,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-07",
+     "ok": 5,
+     "n": 5,
+     "c": 37,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-08",
+     "ok": 4,
+     "n": 4,
+     "c": 36,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-09",
+     "ok": 4,
+     "n": 4,
+     "c": 35,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-10",
+     "ok": 3,
+     "n": 3,
+     "c": 32,
+     "e": "ok"
+    }
+   ],
+   "conciertos": 32,
+   "nuevos": 0,
+   "solo_en_esta": 1,
+   "eventos_brutos": 32,
+   "paginas": 1,
+   "errores": [],
+   "robots": "ok",
+   "robots_bloquea": false,
+   "aviso": null,
+   "segundos": 1.7,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false,
+   "contraste_sala": {
+    "ausentes": 0,
+    "otra_fecha": 2
+   }
+  },
+  {
+   "id": "vistalegre",
+   "nombre": "Palacio Vistalegre (web oficial)",
+   "url": "https://www.palaciovistalegre.com/",
+   "tipo": "sala",
+   "prioridad": 1,
+   "fiabilidad": "alta",
+   "grupo": "vistalegre",
+   "reconfirma": true,
+   "notas": "",
+   "funciono": true,
+   "estado": "ok",
+   "metricas": {
+    "otra_web": 100,
+    "coincide": 100,
+    "comparte": 21,
+    "precio": 0,
+    "estilo": 0,
+    "hora": 86
+   },
+   "salud": [
+    {
+     "fecha": "2026-10-03",
+     "ok": 2,
+     "n": 2,
+     "c": 17,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-04",
+     "ok": 2,
+     "n": 2,
+     "c": 17,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-05",
+     "ok": 9,
+     "n": 9,
+     "c": 18,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-06",
+     "ok": 5,
+     "n": 5,
+     "c": 21,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-07",
+     "ok": 5,
+     "n": 5,
+     "c": 21,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-08",
+     "ok": 4,
+     "n": 4,
+     "c": 21,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-09",
+     "ok": 4,
+     "n": 4,
+     "c": 21,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-10",
+     "ok": 3,
+     "n": 3,
+     "c": 21,
+     "e": "ok"
+    }
+   ],
+   "conciertos": 21,
+   "nuevos": 0,
+   "solo_en_esta": 0,
+   "eventos_brutos": 22,
+   "paginas": 1,
+   "errores": [],
+   "robots": "ok",
+   "robots_bloquea": false,
+   "aviso": null,
+   "segundos": 2.7,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false,
+   "contraste_sala": {
+    "ausentes": 0,
+    "otra_fecha": 0,
+    "incompleta": "no anuncia Papa Roach (2026-12-04), que dan 3 o más webs"
+   }
+  },
+  {
+   "id": "eslava",
+   "nombre": "Teatro Eslava (web oficial)",
+   "url": "https://teatroeslava.com/conciertos/",
+   "tipo": "sala",
+   "prioridad": 1,
+   "fiabilidad": "alta",
+   "grupo": "eslava",
+   "reconfirma": true,
+   "notas": "",
+   "funciono": true,
+   "estado": "ok",
+   "metricas": {
+    "otra_web": 93,
+    "coincide": 100,
+    "comparte": 13,
+    "precio": 0,
+    "estilo": 0,
+    "hora": 71
+   },
+   "salud": [
+    {
+     "fecha": "2026-10-03",
+     "ok": 2,
+     "n": 2,
+     "c": 10,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-04",
+     "ok": 2,
+     "n": 2,
+     "c": 10,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-05",
+     "ok": 9,
+     "n": 9,
+     "c": 10,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-06",
+     "ok": 5,
+     "n": 5,
+     "c": 13,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-07",
+     "ok": 5,
+     "n": 5,
+     "c": 13,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-08",
+     "ok": 4,
+     "n": 4,
+     "c": 14,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-09",
+     "ok": 4,
+     "n": 4,
+     "c": 14,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-10",
+     "ok": 3,
+     "n": 3,
+     "c": 14,
+     "e": "ok"
+    }
+   ],
+   "conciertos": 14,
+   "nuevos": 0,
+   "solo_en_esta": 1,
+   "eventos_brutos": 14,
+   "paginas": 1,
+   "errores": [],
+   "robots": "ok",
+   "robots_bloquea": false,
+   "aviso": null,
+   "segundos": 4.0,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
+  },
+  {
+   "id": "elperroclub",
+   "nombre": "El Perro Club (web oficial)",
+   "url": "https://elperroclub.es/conciertos/",
+   "tipo": "sala",
+   "prioridad": 1,
+   "fiabilidad": "alta",
+   "grupo": "elperroclub",
+   "reconfirma": true,
+   "notas": "Sus conciertos; las sesiones de DJ, no.",
+   "funciono": true,
+   "estado": "ok",
+   "metricas": {
+    "otra_web": 35,
+    "coincide": 100,
+    "comparte": 17,
+    "precio": 96,
+    "estilo": 94,
+    "hora": 100
+   },
+   "salud": [
+    {
+     "fecha": "2026-10-03",
+     "ok": 2,
+     "n": 2,
+     "c": 50,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-04",
+     "ok": 2,
+     "n": 2,
+     "c": 49,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-05",
+     "ok": 9,
+     "n": 9,
+     "c": 48,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-06",
+     "ok": 5,
+     "n": 5,
+     "c": 51,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-07",
+     "ok": 5,
+     "n": 5,
+     "c": 52,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-08",
+     "ok": 4,
+     "n": 4,
+     "c": 52,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-09",
+     "ok": 4,
+     "n": 5,
+     "c": 50,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-10",
+     "ok": 3,
+     "n": 3,
+     "c": 49,
+     "e": "ok"
+    }
+   ],
+   "conciertos": 49,
+   "nuevos": 0,
+   "solo_en_esta": 32,
+   "eventos_brutos": 50,
+   "paginas": 2,
+   "errores": [],
+   "robots": "ok",
+   "robots_bloquea": false,
+   "aviso": null,
+   "segundos": 6.8,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
+  },
+  {
+   "id": "tempo",
+   "nombre": "Tempo Audiophile Club (web oficial)",
+   "url": "https://tempoclub.es/",
+   "tipo": "sala",
+   "prioridad": 1,
+   "fiabilidad": "alta",
+   "grupo": "tempo",
+   "reconfirma": true,
+   "notas": "Sus conciertos; las sesiones de DJ, no.",
+   "funciono": true,
+   "estado": "ok",
+   "metricas": {
+    "otra_web": 70,
+    "coincide": 100,
+    "comparte": 35,
+    "precio": 94,
+    "estilo": 80,
+    "hora": 98
+   },
+   "salud": [
+    {
+     "fecha": "2026-10-03",
+     "ok": 2,
+     "n": 2,
+     "c": 53,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-04",
+     "ok": 2,
+     "n": 2,
+     "c": 50,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-05",
+     "ok": 9,
+     "n": 9,
+     "c": 49,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-06",
+     "ok": 5,
+     "n": 5,
+     "c": 52,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-07",
+     "ok": 5,
+     "n": 5,
+     "c": 52,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-08",
+     "ok": 4,
+     "n": 4,
+     "c": 51,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-09",
+     "ok": 4,
+     "n": 5,
+     "c": 50,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-10",
+     "ok": 3,
+     "n": 3,
+     "c": 50,
+     "e": "ok"
+    }
+   ],
+   "conciertos": 50,
+   "nuevos": 2,
+   "solo_en_esta": 15,
+   "eventos_brutos": 51,
+   "paginas": 2,
+   "errores": [],
+   "robots": "ok",
+   "robots_bloquea": false,
+   "aviso": null,
+   "segundos": 10.6,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false,
+   "contraste_sala": {
+    "ausentes": 2,
+    "otra_fecha": 0
+   }
+  },
+  {
+   "id": "ticketandroll",
+   "nombre": "TicketAndRoll (Hangar 48, Rincón del Arte Nuevo, Jazzville)",
+   "url": "https://ticketandroll.com/",
+   "tipo": "ticketera",
+   "prioridad": 2,
+   "fiabilidad": "alta",
+   "grupo": "ticketandroll",
+   "reconfirma": true,
+   "notas": "Páginas de cada sala en la ticketera: salas sin web propia legible.",
+   "funciono": true,
+   "estado": "ok",
+   "metricas": {
+    "otra_web": 71,
+    "coincide": 100,
+    "comparte": 15,
+    "precio": 100,
+    "estilo": 0,
+    "hora": 100
+   },
+   "salud": [
+    {
+     "fecha": "2026-10-03",
+     "ok": 2,
+     "n": 2,
+     "c": 21,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-04",
+     "ok": 2,
+     "n": 2,
+     "c": 20,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-05",
+     "ok": 9,
+     "n": 9,
+     "c": 20,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-06",
+     "ok": 5,
+     "n": 5,
+     "c": 20,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-07",
+     "ok": 5,
+     "n": 5,
+     "c": 20,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-08",
+     "ok": 4,
+     "n": 4,
+     "c": 21,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-09",
+     "ok": 4,
+     "n": 4,
+     "c": 21,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-10",
+     "ok": 3,
+     "n": 3,
+     "c": 21,
+     "e": "ok"
+    }
+   ],
+   "conciertos": 21,
+   "nuevos": 0,
+   "solo_en_esta": 6,
+   "eventos_brutos": 21,
+   "paginas": 4,
+   "errores": [],
+   "robots": "ok",
+   "robots_bloquea": false,
+   "aviso": null,
+   "segundos": 8.5,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
+  },
+  {
+   "id": "enterticket",
+   "nombre": "Enterticket (Villanos y otras salas)",
+   "url": "https://www.enterticket.es/",
+   "tipo": "ticketera",
+   "prioridad": 2,
+   "fiabilidad": "alta",
+   "grupo": "enterticket",
+   "reconfirma": true,
+   "notas": "Sus páginas de evento (las permite su robots.txt), a partir de su sitemap: solo conciertos en la Comunidad de Madrid. Cada día se abren las nuevas; lo ya visto se recuerda.",
+   "funciono": true,
+   "estado": "ok",
+   "metricas": {
+    "otra_web": 66,
+    "coincide": 100,
+    "comparte": 42,
+    "precio": 95,
+    "estilo": 0,
+    "hora": 81
+   },
+   "salud": [
+    {
+     "fecha": "2026-10-03",
+     "ok": 1,
+     "n": 1,
+     "c": 45,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-04",
+     "ok": 2,
+     "n": 2,
+     "c": 47,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-05",
+     "ok": 9,
+     "n": 9,
+     "c": 56,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-06",
+     "ok": 5,
+     "n": 5,
+     "c": 65,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-07",
+     "ok": 5,
+     "n": 5,
+     "c": 66,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-08",
+     "ok": 4,
+     "n": 4,
+     "c": 63,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-09",
+     "ok": 4,
+     "n": 4,
+     "c": 62,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-10",
+     "ok": 3,
+     "n": 3,
+     "c": 64,
+     "e": "ok"
+    }
+   ],
+   "conciertos": 64,
+   "nuevos": 0,
+   "solo_en_esta": 22,
+   "eventos_brutos": 63,
+   "paginas": 99,
+   "errores": [],
+   "robots": "ok",
+   "robots_bloquea": false,
+   "aviso": null,
+   "segundos": 122.7,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
+  },
+  {
+   "id": "cclub_org",
+   "nombre": "entradas.conciertos.club (páginas de cada sala)",
+   "url": "https://entradas.conciertos.club/",
+   "tipo": "ticketera",
+   "prioridad": 2,
+   "fiabilidad": "alta",
+   "grupo": "conciertos.club",
+   "reconfirma": true,
+   "notas": "Lo que publica cada sala en su página de la ticketera ('Organizado por …'): Café Berlín.",
+   "funciono": true,
+   "estado": "ok",
+   "metricas": {
+    "otra_web": 100,
+    "coincide": 100,
+    "comparte": 34,
+    "precio": 0,
+    "estilo": 0,
+    "hora": 97
+   },
+   "salud": [
+    {
+     "fecha": "2026-10-03",
+     "ok": 1,
+     "n": 1,
+     "c": 36,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-04",
+     "ok": 2,
+     "n": 2,
+     "c": 32,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-05",
+     "ok": 9,
+     "n": 9,
+     "c": 33,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-06",
+     "ok": 5,
+     "n": 5,
+     "c": 35,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-07",
+     "ok": 5,
+     "n": 5,
+     "c": 36,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-08",
+     "ok": 4,
+     "n": 4,
+     "c": 36,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-09",
+     "ok": 4,
+     "n": 4,
+     "c": 34,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-10",
+     "ok": 3,
+     "n": 3,
+     "c": 34,
+     "e": "ok"
+    }
+   ],
+   "conciertos": 34,
+   "nuevos": 0,
+   "solo_en_esta": 0,
+   "eventos_brutos": 35,
+   "paginas": 4,
+   "errores": [],
+   "robots": "ok",
+   "robots_bloquea": false,
+   "aviso": null,
+   "segundos": 44.5,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
+  },
+  {
+   "id": "berlin",
+   "nombre": "Café Berlín (web oficial)",
+   "url": "https://berlincafe.es/programas/",
+   "tipo": "sala",
+   "prioridad": 1,
+   "fiabilidad": "alta",
+   "grupo": "berlin",
+   "reconfirma": true,
+   "notas": "Su programa, con hora, precio y enlace de compra. Las sesiones de Berlín Club (DJ), no.",
+   "funciono": true,
+   "estado": "ok",
+   "metricas": {
+    "otra_web": 77,
+    "coincide": 100,
+    "comparte": 53,
+    "precio": 99,
+    "estilo": 0,
+    "hora": 99
+   },
+   "salud": [
+    {
+     "fecha": "2026-10-06",
+     "ok": 3,
+     "n": 3,
+     "c": 70,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-07",
+     "ok": 5,
+     "n": 5,
+     "c": 74,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-08",
+     "ok": 4,
+     "n": 4,
+     "c": 72,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-09",
+     "ok": 4,
+     "n": 4,
+     "c": 70,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-10",
+     "ok": 3,
+     "n": 3,
+     "c": 69,
+     "e": "ok"
+    }
+   ],
+   "conciertos": 69,
+   "nuevos": 1,
+   "solo_en_esta": 16,
+   "eventos_brutos": 70,
+   "paginas": 1,
+   "errores": [],
+   "robots": "ok",
+   "robots_bloquea": false,
+   "aviso": null,
+   "segundos": 3.8,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false,
+   "contraste_sala": {
+    "ausentes": 5,
+    "otra_fecha": 0
+   }
+  },
+  {
+   "id": "festify",
+   "nombre": "Festify Indie (agenda de conciertos)",
+   "url": "https://festifyindie.com/conciertos/madrid",
+   "tipo": "agregador",
+   "prioridad": 3,
+   "fiabilidad": "media",
+   "grupo": "festify",
+   "reconfirma": true,
+   "notas": "Su página se monta con JavaScript: se lee con un navegador real (su robots.txt lo permite).",
+   "funciono": true,
+   "estado": "ok",
+   "metricas": {
+    "otra_web": 87,
+    "coincide": 99,
+    "comparte": 85,
+    "precio": 0,
+    "estilo": 0,
+    "hora": 80
+   },
+   "salud": [
+    {
+     "fecha": "2026-10-06",
+     "ok": 3,
+     "n": 3,
+     "c": 103,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-07",
+     "ok": 4,
+     "n": 6,
+     "c": 103,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-08",
+     "ok": 4,
+     "n": 4,
+     "c": 103,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-09",
+     "ok": 3,
+     "n": 4,
+     "c": 100,
+     "e": "error"
+    },
+    {
+     "fecha": "2026-10-10",
+     "ok": 4,
+     "n": 4,
+     "c": 98,
+     "e": "ok"
+    }
+   ],
+   "conciertos": 98,
+   "nuevos": 2,
+   "solo_en_esta": 13,
+   "eventos_brutos": 102,
+   "paginas": 1,
+   "errores": [],
+   "robots": "ok",
+   "robots_bloquea": false,
+   "aviso": null,
+   "segundos": 3.4,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
+  },
+  {
+   "id": "salas_js",
+   "nombre": "Intruso y Moe (webs oficiales)",
+   "url": "https://intrusobar.com/",
+   "tipo": "sala",
+   "prioridad": 1,
+   "fiabilidad": "alta",
+   "grupo": "salas_js",
+   "reconfirma": true,
+   "notas": "Sus webs pintan la agenda con JavaScript: se leen con un navegador real (no tienen robots.txt). Sin noches de poesía, monólogos ni DJ.",
+   "funciono": true,
+   "estado": "ok",
+   "metricas": {
+    "otra_web": 94,
+    "coincide": 100,
+    "comparte": 29,
+    "precio": 0,
+    "estilo": 0,
+    "hora": 97
+   },
+   "salud": [
+    {
+     "fecha": "2026-10-03",
+     "ok": 1,
+     "n": 1,
+     "c": 33,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-04",
+     "ok": 2,
+     "n": 2,
+     "c": 33,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-05",
+     "ok": 9,
+     "n": 9,
+     "c": 32,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-06",
+     "ok": 3,
+     "n": 5,
+     "c": 33,
+     "e": "ok_sin_resultados"
+    },
+    {
+     "fecha": "2026-10-07",
+     "ok": 2,
+     "n": 5,
+     "c": 32,
+     "e": "ok_sin_resultados"
+    },
+    {
+     "fecha": "2026-10-08",
+     "ok": 0,
+     "n": 4,
+     "c": 30,
+     "e": "ok_sin_resultados"
+    },
+    {
+     "fecha": "2026-10-09",
+     "ok": 1,
+     "n": 4,
+     "c": 31,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-10",
+     "ok": 2,
+     "n": 3,
+     "c": 31,
+     "e": "ok"
+    }
+   ],
+   "conciertos": 31,
+   "nuevos": 0,
+   "solo_en_esta": 2,
+   "eventos_brutos": 31,
+   "paginas": 3,
+   "errores": [],
+   "robots": "sin_robots (404)",
+   "robots_bloquea": false,
+   "aviso": null,
+   "segundos": 16.5,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
+  },
+  {
+   "id": "cafelapalma",
+   "nombre": "Café La Palma (web oficial)",
+   "url": "https://cafelapalma.com/es/agenda-de-conciertos/",
+   "tipo": "sala",
+   "prioridad": 1,
+   "fiabilidad": "alta",
+   "grupo": "cafelapalma",
+   "reconfirma": true,
+   "notas": "Se toman sus conciertos; las sesiones de club (categoría Clubbing) no.",
+   "funciono": true,
+   "estado": "ok",
+   "metricas": {
+    "otra_web": 47,
+    "coincide": 100,
+    "comparte": 17,
+    "precio": 100,
+    "estilo": 0,
+    "hora": 100
+   },
+   "salud": [
+    {
+     "fecha": "2026-10-03",
+     "ok": 4,
+     "n": 4,
+     "c": 34,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-04",
+     "ok": 2,
+     "n": 2,
+     "c": 33,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-05",
+     "ok": 9,
+     "n": 9,
+     "c": 34,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-06",
+     "ok": 4,
+     "n": 5,
+     "c": 37,
+     "e": "error"
+    },
+    {
+     "fecha": "2026-10-07",
+     "ok": 3,
+     "n": 6,
+     "c": 37,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-08",
+     "ok": 4,
+     "n": 4,
+     "c": 37,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-09",
+     "ok": 4,
+     "n": 5,
+     "c": 37,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-10",
+     "ok": 3,
+     "n": 3,
+     "c": 36,
+     "e": "ok"
+    }
+   ],
+   "conciertos": 36,
+   "nuevos": 0,
+   "solo_en_esta": 19,
+   "eventos_brutos": 36,
+   "paginas": 2,
+   "errores": [],
+   "robots": "ok",
+   "robots_bloquea": false,
+   "aviso": null,
+   "segundos": 6.3,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false,
+   "contraste_sala": {
+    "ausentes": 2,
+    "otra_fecha": 0
+   }
+  },
+  {
+   "id": "cadillac",
+   "nombre": "Cadillac Solitario (web oficial)",
+   "url": "https://cadillacsolitario.com/eventos/",
+   "tipo": "sala",
+   "prioridad": 1,
+   "fiabilidad": "alta",
+   "grupo": "cadillac",
+   "reconfirma": true,
+   "notas": "",
+   "funciono": true,
+   "estado": "ok",
+   "metricas": {
+    "otra_web": 40,
+    "coincide": 100,
+    "comparte": 10,
+    "precio": 100,
+    "estilo": 40,
+    "hora": 100
+   },
+   "salud": [
+    {
+     "fecha": "2026-10-03",
+     "ok": 4,
+     "n": 4,
+     "c": 26,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-04",
+     "ok": 2,
+     "n": 2,
+     "c": 26,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-05",
+     "ok": 9,
+     "n": 9,
+     "c": 26,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-06",
+     "ok": 5,
+     "n": 5,
+     "c": 27,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-07",
+     "ok": 5,
+     "n": 5,
+     "c": 27,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-08",
+     "ok": 4,
+     "n": 4,
+     "c": 27,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-09",
+     "ok": 4,
+     "n": 4,
+     "c": 27,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-10",
+     "ok": 3,
+     "n": 3,
+     "c": 25,
+     "e": "ok"
+    }
+   ],
+   "conciertos": 25,
+   "nuevos": 0,
+   "solo_en_esta": 15,
+   "eventos_brutos": 25,
+   "paginas": 1,
+   "errores": [],
+   "robots": "ok",
+   "robots_bloquea": false,
+   "aviso": null,
+   "segundos": 8.4,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
+  },
+  {
+   "id": "dimequemequieres",
+   "nombre": "Dime que me Quieres (web oficial)",
+   "url": "https://conciertos.dimequemequieresbardecopas.com/",
+   "tipo": "sala",
+   "prioridad": 1,
+   "fiabilidad": "alta",
+   "grupo": "dimequemequieres",
+   "reconfirma": true,
+   "notas": "",
+   "funciono": true,
+   "estado": "ok",
+   "metricas": {
+    "otra_web": 86,
+    "coincide": 100,
+    "comparte": 12,
+    "precio": 100,
+    "estilo": 100,
+    "hora": 100
+   },
+   "salud": [
+    {
+     "fecha": "2026-10-03",
+     "ok": 4,
+     "n": 4,
+     "c": 18,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-04",
+     "ok": 2,
+     "n": 2,
+     "c": 17,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-05",
+     "ok": 9,
+     "n": 9,
+     "c": 17,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-06",
+     "ok": 5,
+     "n": 5,
+     "c": 17,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-07",
+     "ok": 5,
+     "n": 5,
+     "c": 17,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-08",
+     "ok": 4,
+     "n": 4,
+     "c": 17,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-09",
+     "ok": 4,
+     "n": 4,
+     "c": 16,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-10",
+     "ok": 3,
+     "n": 3,
+     "c": 14,
+     "e": "ok"
+    }
+   ],
+   "conciertos": 14,
+   "nuevos": 0,
+   "solo_en_esta": 2,
+   "eventos_brutos": 14,
+   "paginas": 1,
+   "errores": [],
+   "robots": "ok",
+   "robots_bloquea": false,
+   "aviso": null,
+   "segundos": 11.2,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
+  },
+  {
+   "id": "datos_madrid",
+   "nombre": "Agenda cultural del Ayuntamiento de Madrid (datos abiertos)",
+   "url": "https://datos.madrid.es/egob/catalogo/206974-0-agenda-eventos-culturales-100.json",
+   "tipo": "institucional",
+   "prioridad": 1,
+   "fiabilidad": "alta",
+   "grupo": "datos_madrid",
+   "reconfirma": true,
+   "notas": "Conjunto 206974 de datos.madrid.es: actividades de tipo Música y conciertos de la programación destacada.",
+   "funciono": true,
+   "estado": "ok",
+   "metricas": {
+    "otra_web": 0,
+    "coincide": null,
+    "comparte": 0,
+    "precio": 92,
+    "estilo": 47,
+    "hora": 91
+   },
+   "salud": [
+    {
+     "fecha": "2026-10-03",
+     "ok": 4,
+     "n": 4,
+     "c": 139,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-04",
+     "ok": 2,
+     "n": 2,
+     "c": 124,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-05",
+     "ok": 9,
+     "n": 9,
+     "c": 120,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-06",
+     "ok": 5,
+     "n": 5,
+     "c": 127,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-07",
+     "ok": 5,
+     "n": 5,
+     "c": 132,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-08",
+     "ok": 4,
+     "n": 4,
+     "c": 134,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-09",
+     "ok": 4,
+     "n": 4,
+     "c": 132,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-10",
+     "ok": 3,
+     "n": 3,
+     "c": 120,
+     "e": "ok"
+    }
+   ],
+   "conciertos": 120,
+   "nuevos": 0,
+   "solo_en_esta": 120,
+   "eventos_brutos": 120,
+   "paginas": 1,
+   "errores": [],
+   "robots": "ok",
+   "robots_bloquea": false,
+   "aviso": null,
+   "segundos": 11.6,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
+  },
+  {
+   "id": "gotifiestas",
+   "nombre": "GotiFiestas (escena gótica y dark wave)",
+   "url": "https://www.gotifiestas.com/eventos/",
+   "tipo": "agregador",
+   "prioridad": 3,
+   "fiabilidad": "media",
+   "grupo": "gotifiestas",
+   "reconfirma": true,
+   "notas": "Su API pública de WordPress: conciertos y festivales (no fiestas ni sesiones de DJ), con sus géneros.",
+   "funciono": true,
+   "estado": "ok",
+   "metricas": {
+    "otra_web": 68,
+    "coincide": 92,
+    "comparte": 13,
+    "precio": 21,
+    "estilo": 95,
+    "hora": 74
+   },
+   "salud": [
+    {
+     "fecha": "2026-10-03",
+     "ok": 4,
+     "n": 4,
+     "c": 15,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-04",
+     "ok": 2,
+     "n": 2,
+     "c": 14,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-05",
+     "ok": 9,
+     "n": 9,
+     "c": 14,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-06",
+     "ok": 5,
+     "n": 5,
+     "c": 20,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-07",
+     "ok": 5,
+     "n": 5,
+     "c": 20,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-08",
+     "ok": 4,
+     "n": 4,
+     "c": 20,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-09",
+     "ok": 4,
+     "n": 5,
+     "c": 20,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-10",
+     "ok": 3,
+     "n": 3,
+     "c": 19,
+     "e": "ok"
+    }
+   ],
+   "conciertos": 19,
+   "nuevos": 0,
+   "solo_en_esta": 6,
+   "eventos_brutos": 19,
+   "paginas": 1,
+   "errores": [],
+   "robots": "ok",
+   "robots_bloquea": false,
+   "aviso": null,
+   "segundos": 4.6,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
+  },
+  {
+   "id": "salirmadrid",
+   "nombre": "SalirMadrid (country y folk)",
+   "url": "https://salirmadrid.es/live-music-country-madrid",
+   "tipo": "agregador",
+   "prioridad": 3,
+   "fiabilidad": "media",
+   "grupo": "salirmadrid",
+   "reconfirma": true,
+   "notas": "Páginas de country y folk (JSON-LD). El estilo solo si el título lo dice: su etiqueta de género es amplia.",
+   "funciono": true,
+   "estado": "ok",
+   "metricas": {
+    "otra_web": 81,
+    "coincide": 91,
+    "comparte": 22,
+    "precio": 0,
+    "estilo": 15,
+    "hora": 85
+   },
+   "salud": [
+    {
+     "fecha": "2026-10-03",
+     "ok": 4,
+     "n": 4,
+     "c": 26,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-04",
+     "ok": 2,
+     "n": 2,
+     "c": 26,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-05",
+     "ok": 9,
+     "n": 9,
+     "c": 26,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-06",
+     "ok": 5,
+     "n": 5,
+     "c": 27,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-07",
+     "ok": 5,
+     "n": 5,
+     "c": 27,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-08",
+     "ok": 4,
+     "n": 4,
+     "c": 27,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-09",
+     "ok": 4,
+     "n": 4,
+     "c": 27,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-10",
+     "ok": 3,
+     "n": 3,
+     "c": 27,
+     "e": "ok"
+    }
+   ],
+   "conciertos": 27,
+   "nuevos": 0,
+   "solo_en_esta": 5,
+   "eventos_brutos": 28,
+   "paginas": 2,
+   "errores": [],
+   "robots": "ok",
+   "robots_bloquea": false,
+   "aviso": null,
+   "segundos": 4.8,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
+  },
+  {
+   "id": "muni_alcala_de_henares",
+   "nombre": "Agenda municipal de Alcalá de Henares",
+   "url": "https://culturalcala.es/agenda/",
+   "tipo": "institucional",
+   "prioridad": 2,
+   "fiabilidad": "media",
+   "grupo": "muni_alcala de henares",
+   "reconfirma": true,
+   "notas": "",
+   "funciono": true,
+   "estado": "ok",
+   "metricas": {
+    "otra_web": 0,
+    "coincide": null,
+    "comparte": 0,
+    "precio": 0,
+    "estilo": 0,
+    "hora": 100
+   },
+   "salud": [
+    {
+     "fecha": "2026-10-03",
+     "ok": 4,
+     "n": 4,
+     "c": 2,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-04",
+     "ok": 2,
+     "n": 2,
+     "c": 2,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-05",
+     "ok": 9,
+     "n": 9,
+     "c": 1,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-06",
+     "ok": 5,
+     "n": 5,
+     "c": 1,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-07",
+     "ok": 5,
+     "n": 5,
+     "c": 6,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-08",
+     "ok": 4,
+     "n": 4,
+     "c": 5,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-09",
+     "ok": 4,
+     "n": 4,
+     "c": 5,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-10",
+     "ok": 3,
+     "n": 3,
+     "c": 5,
+     "e": "ok"
+    }
+   ],
+   "conciertos": 5,
+   "nuevos": 0,
+   "solo_en_esta": 5,
+   "eventos_brutos": 5,
+   "paginas": 1,
+   "errores": [],
+   "robots": "ok",
+   "robots_bloquea": false,
+   "aviso": null,
+   "segundos": 3.3,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
+  },
+  {
+   "id": "muni_aranjuez",
+   "nombre": "Agenda municipal de Aranjuez",
+   "url": "https://www.aranjuez.es/agenda",
+   "tipo": "institucional",
+   "prioridad": 2,
+   "fiabilidad": "media",
+   "grupo": "muni_aranjuez",
+   "reconfirma": true,
+   "notas": "",
+   "funciono": true,
+   "estado": "ok",
+   "metricas": {
+    "otra_web": 0,
+    "coincide": null,
+    "comparte": 0,
+    "precio": 0,
+    "estilo": 0,
+    "hora": 0
+   },
+   "salud": [
+    {
+     "fecha": "2026-10-03",
+     "ok": 4,
+     "n": 4,
+     "c": 8,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-04",
+     "ok": 2,
+     "n": 2,
+     "c": 7,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-05",
+     "ok": 9,
+     "n": 9,
+     "c": 6,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-06",
+     "ok": 5,
+     "n": 5,
+     "c": 6,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-07",
+     "ok": 5,
+     "n": 5,
+     "c": 6,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-08",
+     "ok": 4,
+     "n": 4,
+     "c": 6,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-09",
+     "ok": 4,
+     "n": 4,
+     "c": 6,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-10",
+     "ok": 3,
+     "n": 3,
+     "c": 6,
+     "e": "ok"
+    }
+   ],
+   "conciertos": 6,
+   "nuevos": 0,
+   "solo_en_esta": 6,
+   "eventos_brutos": 10,
+   "paginas": 1,
+   "errores": [],
+   "robots": "ok",
+   "robots_bloquea": false,
+   "aviso": null,
+   "segundos": 4.2,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
+  },
+  {
+   "id": "muni_collado_villalba",
+   "nombre": "Agenda municipal de Collado Villalba",
+   "url": "https://www.colladovillalba.es/agenda",
+   "tipo": "institucional",
+   "prioridad": 2,
+   "fiabilidad": "media",
+   "grupo": "muni_collado villalba",
+   "reconfirma": true,
+   "notas": "",
+   "funciono": true,
+   "estado": "ok",
+   "metricas": {
+    "otra_web": 0,
+    "coincide": null,
+    "comparte": 0,
+    "precio": 0,
+    "estilo": 0,
+    "hora": 100
+   },
+   "salud": [
+    {
+     "fecha": "2026-10-03",
+     "ok": 4,
+     "n": 4,
+     "c": 1,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-04",
+     "ok": 2,
+     "n": 2,
+     "c": 1,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-05",
+     "ok": 9,
+     "n": 9,
+     "c": 1,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-06",
+     "ok": 5,
+     "n": 5,
+     "c": 1,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-07",
+     "ok": 5,
+     "n": 5,
+     "c": 1,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-08",
+     "ok": 4,
+     "n": 4,
+     "c": 1,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-09",
+     "ok": 4,
+     "n": 4,
+     "c": 1,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-10",
+     "ok": 3,
+     "n": 3,
+     "c": 1,
+     "e": "ok"
+    }
+   ],
+   "conciertos": 1,
+   "nuevos": 0,
+   "solo_en_esta": 1,
+   "eventos_brutos": 1,
+   "paginas": 1,
+   "errores": [],
+   "robots": "ok",
+   "robots_bloquea": false,
+   "aviso": null,
+   "segundos": 3.7,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
+  },
+  {
+   "id": "muni_las_rozas_de_madrid",
+   "nombre": "Agenda municipal de Las Rozas de Madrid",
+   "url": "https://www.lasrozas.es/calendario-de-eventos",
+   "tipo": "institucional",
+   "prioridad": 2,
+   "fiabilidad": "media",
+   "grupo": "muni_las rozas de madrid",
+   "reconfirma": true,
+   "notas": "",
+   "funciono": true,
+   "estado": "ok",
+   "metricas": {
+    "otra_web": 0,
+    "coincide": null,
+    "comparte": 0,
+    "precio": 0,
+    "estilo": 0,
+    "hora": 100
+   },
+   "salud": [
+    {
+     "fecha": "2026-10-03",
+     "ok": 4,
+     "n": 4,
+     "c": 8,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-04",
+     "ok": 2,
+     "n": 2,
+     "c": 8,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-05",
+     "ok": 9,
+     "n": 9,
+     "c": 8,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-06",
+     "ok": 5,
+     "n": 5,
+     "c": 8,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-07",
+     "ok": 5,
+     "n": 5,
+     "c": 8,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-08",
+     "ok": 4,
+     "n": 4,
+     "c": 8,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-09",
+     "ok": 4,
+     "n": 5,
+     "c": 8,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-10",
+     "ok": 3,
+     "n": 3,
+     "c": 8,
+     "e": "ok"
+    }
+   ],
+   "conciertos": 8,
+   "nuevos": 0,
+   "solo_en_esta": 8,
+   "eventos_brutos": 225,
+   "paginas": 1,
+   "errores": [],
+   "robots": "ok",
+   "robots_bloquea": false,
+   "aviso": null,
+   "segundos": 27.2,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
+  },
+  {
+   "id": "muni_leganes",
+   "nombre": "Agenda municipal de Leganés",
+   "url": "https://www.leganes.org/agenda/",
+   "tipo": "institucional",
+   "prioridad": 2,
+   "fiabilidad": "media",
+   "grupo": "muni_leganes",
+   "reconfirma": true,
+   "notas": "",
+   "funciono": true,
+   "estado": "ok_sin_resultados",
+   "metricas": {
+    "otra_web": null,
+    "coincide": null,
+    "comparte": 0,
+    "precio": null,
+    "estilo": null,
+    "hora": null
+   },
+   "salud": [
+    {
+     "fecha": "2026-10-03",
+     "ok": 0,
+     "n": 4,
+     "c": 0,
+     "e": "ok_sin_resultados"
+    },
+    {
+     "fecha": "2026-10-04",
+     "ok": 0,
+     "n": 2,
+     "c": 0,
+     "e": "ok_sin_resultados"
+    },
+    {
+     "fecha": "2026-10-05",
+     "ok": 0,
+     "n": 9,
+     "c": 0,
+     "e": "ok_sin_resultados"
+    },
+    {
+     "fecha": "2026-10-06",
+     "ok": 0,
+     "n": 5,
+     "c": 0,
+     "e": "ok_sin_resultados"
+    },
+    {
+     "fecha": "2026-10-07",
+     "ok": 0,
+     "n": 5,
+     "c": 0,
+     "e": "error"
+    },
+    {
+     "fecha": "2026-10-08",
+     "ok": 0,
+     "n": 6,
+     "c": 0,
+     "e": "ok_sin_resultados"
+    },
+    {
+     "fecha": "2026-10-09",
+     "ok": 0,
+     "n": 4,
+     "c": 0,
+     "e": "ok_sin_resultados"
+    },
+    {
+     "fecha": "2026-10-10",
+     "ok": 0,
+     "n": 3,
+     "c": 0,
+     "e": "ok_sin_resultados"
+    }
+   ],
+   "conciertos": 0,
+   "nuevos": 0,
+   "solo_en_esta": 0,
+   "eventos_brutos": 0,
+   "paginas": 1,
+   "errores": [],
+   "robots": "ok",
+   "robots_bloquea": false,
+   "aviso": null,
+   "segundos": 3.2,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
+  },
+  {
+   "id": "muni_alcorcon",
+   "nombre": "Agenda municipal de Alcorcón",
+   "url": "https://www.ayto-alcorcon.es/es/sections/agenda-cultural",
+   "tipo": "institucional",
+   "prioridad": 2,
+   "fiabilidad": "media",
+   "grupo": "muni_alcorcon",
+   "reconfirma": true,
+   "notas": "",
+   "funciono": true,
+   "estado": "ok_sin_resultados",
+   "metricas": {
+    "otra_web": null,
+    "coincide": null,
+    "comparte": 0,
+    "precio": null,
+    "estilo": null,
+    "hora": null
+   },
+   "salud": [
+    {
+     "fecha": "2026-10-03",
+     "ok": 0,
+     "n": 4,
+     "c": 0,
+     "e": "ok_sin_resultados"
+    },
+    {
+     "fecha": "2026-10-04",
+     "ok": 0,
+     "n": 2,
+     "c": 0,
+     "e": "ok_sin_resultados"
+    },
+    {
+     "fecha": "2026-10-05",
+     "ok": 0,
+     "n": 9,
+     "c": 0,
+     "e": "ok_sin_resultados"
+    },
+    {
+     "fecha": "2026-10-06",
+     "ok": 0,
+     "n": 5,
+     "c": 0,
+     "e": "ok_sin_resultados"
+    },
+    {
+     "fecha": "2026-10-07",
+     "ok": 0,
+     "n": 6,
+     "c": 0,
+     "e": "ok_sin_resultados"
+    },
+    {
+     "fecha": "2026-10-08",
+     "ok": 0,
+     "n": 4,
+     "c": 0,
+     "e": "ok_sin_resultados"
+    },
+    {
+     "fecha": "2026-10-09",
+     "ok": 0,
+     "n": 4,
+     "c": 0,
+     "e": "ok_sin_resultados"
+    },
+    {
+     "fecha": "2026-10-10",
+     "ok": 0,
+     "n": 3,
+     "c": 0,
+     "e": "ok_sin_resultados"
+    }
+   ],
+   "conciertos": 0,
+   "nuevos": 0,
+   "solo_en_esta": 0,
+   "eventos_brutos": 0,
+   "paginas": 1,
+   "errores": [],
+   "robots": "ok",
+   "robots_bloquea": false,
+   "aviso": null,
+   "segundos": 2.7,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
+  },
+  {
+   "id": "muni_boadilla_del_monte",
+   "nombre": "Agenda municipal de Boadilla del Monte",
+   "url": "https://ayuntamientoboadilladelmonte.org/boadilla-actualidad/agenda",
+   "tipo": "institucional",
+   "prioridad": 2,
+   "fiabilidad": "media",
+   "grupo": "muni_boadilla del monte",
+   "reconfirma": true,
+   "notas": "",
+   "funciono": true,
+   "estado": "ok_sin_resultados",
+   "metricas": {
+    "otra_web": null,
+    "coincide": null,
+    "comparte": 0,
+    "precio": null,
+    "estilo": null,
+    "hora": null
+   },
+   "salud": [
+    {
+     "fecha": "2026-10-03",
+     "ok": 0,
+     "n": 4,
+     "c": 0,
+     "e": "ok_sin_resultados"
+    },
+    {
+     "fecha": "2026-10-04",
+     "ok": 0,
+     "n": 2,
+     "c": 0,
+     "e": "ok_sin_resultados"
+    },
+    {
+     "fecha": "2026-10-05",
+     "ok": 0,
+     "n": 9,
+     "c": 0,
+     "e": "ok_sin_resultados"
+    },
+    {
+     "fecha": "2026-10-06",
+     "ok": 0,
+     "n": 5,
+     "c": 0,
+     "e": "ok_sin_resultados"
+    },
+    {
+     "fecha": "2026-10-07",
+     "ok": 0,
+     "n": 5,
+     "c": 0,
+     "e": "ok_sin_resultados"
+    },
+    {
+     "fecha": "2026-10-08",
+     "ok": 0,
+     "n": 4,
+     "c": 0,
+     "e": "ok_sin_resultados"
+    },
+    {
+     "fecha": "2026-10-09",
+     "ok": 0,
+     "n": 4,
+     "c": 0,
+     "e": "ok_sin_resultados"
+    },
+    {
+     "fecha": "2026-10-10",
+     "ok": 0,
+     "n": 3,
+     "c": 0,
+     "e": "ok_sin_resultados"
+    }
+   ],
+   "conciertos": 0,
+   "nuevos": 0,
+   "solo_en_esta": 0,
+   "eventos_brutos": 0,
+   "paginas": 1,
+   "errores": [],
+   "robots": "ok",
+   "robots_bloquea": false,
+   "aviso": null,
+   "segundos": 12.6,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
+  },
+  {
+   "id": "muni_torrejon_de_ardoz",
+   "nombre": "Agenda municipal de Torrejón de Ardoz",
+   "url": "https://teatro.ayto-torrejon.es/eventos_teatro",
+   "tipo": "institucional",
+   "prioridad": 2,
+   "fiabilidad": "media",
+   "grupo": "muni_torrejon de ardoz",
+   "reconfirma": true,
+   "notas": "",
+   "funciono": true,
+   "estado": "ok_sin_resultados",
+   "metricas": {
+    "otra_web": null,
+    "coincide": null,
+    "comparte": 0,
+    "precio": null,
+    "estilo": null,
+    "hora": null
+   },
+   "salud": [
+    {
+     "fecha": "2026-10-03",
+     "ok": 4,
+     "n": 4,
+     "c": 1,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-04",
+     "ok": 2,
+     "n": 2,
+     "c": 1,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-05",
+     "ok": 9,
+     "n": 9,
+     "c": 1,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-06",
+     "ok": 5,
+     "n": 5,
+     "c": 1,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-07",
+     "ok": 5,
+     "n": 5,
+     "c": 1,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-08",
+     "ok": 4,
+     "n": 4,
+     "c": 1,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-09",
+     "ok": 4,
+     "n": 4,
+     "c": 1,
+     "e": "ok"
+    },
+    {
+     "fecha": "2026-10-10",
+     "ok": 1,
+     "n": 3,
+     "c": 0,
+     "e": "ok_sin_resultados"
+    }
+   ],
+   "conciertos": 0,
+   "nuevos": 0,
+   "solo_en_esta": 0,
+   "eventos_brutos": 0,
+   "paginas": 1,
+   "errores": [],
+   "robots": "ok",
+   "robots_bloquea": false,
+   "aviso": null,
+   "segundos": 2.5,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
+  },
+  {
+   "id": "muni_valdemoro",
+   "nombre": "Agenda municipal de Valdemoro",
+   "url": "https://www.valdemoro.es/teatro",
+   "tipo": "institucional",
+   "prioridad": 2,
+   "fiabilidad": "media",
+   "grupo": "muni_valdemoro",
+   "reconfirma": true,
+   "notas": "",
+   "funciono": true,
+   "estado": "ok_sin_resultados",
+   "metricas": {
+    "otra_web": null,
+    "coincide": null,
+    "comparte": 0,
+    "precio": null,
+    "estilo": null,
+    "hora": null
+   },
+   "salud": [
+    {
+     "fecha": "2026-10-03",
+     "ok": 0,
+     "n": 4,
+     "c": 0,
+     "e": "ok_sin_resultados"
+    },
+    {
+     "fecha": "2026-10-04",
+     "ok": 0,
+     "n": 2,
+     "c": 0,
+     "e": "ok_sin_resultados"
+    },
+    {
+     "fecha": "2026-10-05",
+     "ok": 0,
+     "n": 9,
+     "c": 0,
+     "e": "ok_sin_resultados"
+    },
+    {
+     "fecha": "2026-10-06",
+     "ok": 0,
+     "n": 5,
+     "c": 0,
+     "e": "ok_sin_resultados"
+    },
+    {
+     "fecha": "2026-10-07",
+     "ok": 0,
+     "n": 5,
+     "c": 0,
+     "e": "ok_sin_resultados"
+    },
+    {
+     "fecha": "2026-10-08",
+     "ok": 0,
+     "n": 4,
+     "c": 0,
+     "e": "ok_sin_resultados"
+    },
+    {
+     "fecha": "2026-10-09",
+     "ok": 0,
+     "n": 4,
+     "c": 0,
+     "e": "ok_sin_resultados"
+    },
+    {
+     "fecha": "2026-10-10",
+     "ok": 0,
+     "n": 3,
+     "c": 0,
+     "e": "ok_sin_resultados"
+    }
+   ],
+   "conciertos": 0,
+   "nuevos": 0,
+   "solo_en_esta": 0,
+   "eventos_brutos": 0,
+   "paginas": 1,
+   "errores": [],
+   "robots": "ok",
+   "robots_bloquea": false,
+   "aviso": null,
+   "segundos": 2.2,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
+  },
+  {
+   "id": "muni_pinto",
+   "nombre": "Agenda municipal de Pinto",
+   "url": "https://www.ayto-pinto.es/agenda-de-actividades",
+   "tipo": "institucional",
+   "prioridad": 2,
+   "fiabilidad": "media",
+   "grupo": "muni_pinto",
+   "reconfirma": true,
+   "notas": "",
+   "funciono": false,
+   "estado": "error",
+   "metricas": {
+    "otra_web": null,
+    "coincide": null,
+    "comparte": 0,
+    "precio": null,
+    "estilo": null,
+    "hora": null
+   },
+   "salud": [
+    {
+     "fecha": "2026-10-03",
+     "ok": 0,
+     "n": 5,
+     "c": 0,
+     "e": "error"
+    },
+    {
+     "fecha": "2026-10-04",
+     "ok": 0,
+     "n": 4,
+     "c": 0,
+     "e": "error"
+    },
+    {
+     "fecha": "2026-10-05",
+     "ok": 0,
+     "n": 9,
+     "c": 0,
+     "e": "error"
+    },
+    {
+     "fecha": "2026-10-06",
+     "ok": 0,
+     "n": 7,
+     "c": 0,
+     "e": "error"
+    },
+    {
+     "fecha": "2026-10-07",
+     "ok": 0,
+     "n": 7,
+     "c": 0,
+     "e": "error"
+    },
+    {
+     "fecha": "2026-10-08",
+     "ok": 0,
+     "n": 8,
+     "c": 0,
+     "e": "error"
+    },
+    {
+     "fecha": "2026-10-09",
+     "ok": 0,
+     "n": 7,
+     "c": 0,
+     "e": "error"
+    },
+    {
+     "fecha": "2026-10-10",
+     "ok": 0,
+     "n": 5,
+     "c": 0,
+     "e": "error"
+    }
+   ],
+   "conciertos": 0,
+   "nuevos": 0,
+   "solo_en_esta": 0,
+   "eventos_brutos": 0,
+   "paginas": 1,
+   "errores": [
+    "web inaccesible al leer robots.txt: inaccesible (ConnectTimeout)"
+   ],
+   "robots": "inaccesible (ConnectTimeout)",
+   "robots_bloquea": false,
+   "aviso": null,
+   "segundos": 30.3,
+   "reintento": "falló también en el 2.º intento",
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
+  },
+  {
+   "id": "muni_mostoles",
+   "nombre": "Agenda municipal de Móstoles",
+   "url": "https://www.mostoles.es/culturaenmostoles/es/agenda-actividades",
+   "tipo": "institucional",
+   "prioridad": 2,
+   "fiabilidad": "media",
+   "grupo": "muni_mostoles",
+   "reconfirma": true,
+   "notas": "",
+   "funciono": true,
+   "estado": "ok_sin_resultados",
+   "metricas": {
+    "otra_web": null,
+    "coincide": null,
+    "comparte": 0,
+    "precio": null,
+    "estilo": null,
+    "hora": null
+   },
+   "salud": [
+    {
+     "fecha": "2026-10-03",
+     "ok": 0,
+     "n": 4,
+     "c": 0,
+     "e": "ok_sin_resultados"
+    },
+    {
+     "fecha": "2026-10-04",
+     "ok": 0,
+     "n": 2,
+     "c": 0,
+     "e": "ok_sin_resultados"
+    },
+    {
+     "fecha": "2026-10-05",
+     "ok": 0,
+     "n": 9,
+     "c": 0,
+     "e": "ok_sin_resultados"
+    },
+    {
+     "fecha": "2026-10-06",
+     "ok": 0,
+     "n": 5,
+     "c": 0,
+     "e": "ok_sin_resultados"
+    },
+    {
+     "fecha": "2026-10-07",
+     "ok": 0,
+     "n": 5,
+     "c": 0,
+     "e": "ok_sin_resultados"
+    },
+    {
+     "fecha": "2026-10-08",
+     "ok": 0,
+     "n": 4,
+     "c": 0,
+     "e": "ok_sin_resultados"
+    },
+    {
+     "fecha": "2026-10-09",
+     "ok": 0,
+     "n": 4,
+     "c": 0,
+     "e": "ok_sin_resultados"
+    },
+    {
+     "fecha": "2026-10-10",
+     "ok": 0,
+     "n": 3,
+     "c": 0,
+     "e": "ok_sin_resultados"
+    }
+   ],
+   "conciertos": 0,
+   "nuevos": 0,
+   "solo_en_esta": 0,
+   "eventos_brutos": 0,
+   "paginas": 1,
+   "errores": [],
+   "robots": "ok",
+   "robots_bloquea": false,
+   "aviso": null,
+   "segundos": 3.9,
+   "reintento": null,
+   "desde_cache": 0,
+   "cache_fecha": null,
+   "no_leida": false
+  }
+ ],
+ "sin_agenda_legible": {
+  "Sala Mon Live (monmadrid.es)": "La web no publica agenda de conciertos (solo información general).",
+  "Sala Copérnico (salacopernico.es)": "La web muestra una 'cartelera orientativa' de ejemplo con fechas ficticias; no se usa.",
+  "The RockLab, Coslada (therocklab.es)": "Web hecha con Wix sin fechas legibles en el HTML.",
+  "Maravillas Club": "El dominio maravillasclub.es es una página de parking.",
+  "Cadavra": "No se encontró una web oficial accesible (dominios probados sin respuesta).",
+  "Sala La Trinchera": "No se encontró una web oficial accesible.",
+  "Sala The Godfather": "No se encontró una web oficial accesible.",
+  "Lula Club": "La web lulaclub.es no responde (tiempo de espera agotado).",
+  "Sala Venom, Coslada": "No se encontró web propia (solo redes sociales).",
+  "Sala Groove, Pinto": "La web no responde (conexión rechazada).",
+  "Café El Despertar (cafeeldespertar.com)": "Su robots.txt no permite leerla: se respeta.",
+  "Thundercat (thundercatclub.com)": "La página de programación no trae fechas en el HTML y su calendario está vacío.",
+  "Sala Vesta (salavesta.com)": "La web solo enlaza a sus publicaciones de Instagram (sin fechas).",
+  "El Café de la Ópera (elcafedelaopera.com)": "Programación fija (cena cantada, jazz con piano) sin agenda con fechas.",
+  "La Coquette": "Sin web propia: publica su programación solo en Instagram y Facebook.",
+  "Barracudas Rock Bar": "Sin web propia encontrada (solo redes y ticketeras).",
+  "New Restón, Valdemoro": "La web no responde (error SSL).",
+  "Auditorio Miguel Ríos, Rivas": "Sin página de agenda propia; su programación aparece en la agenda municipal de Rivas.",
+  "Agenda municipal de Fuenlabrada": "No hay página de agenda: la programación se publica en noticias semanales.",
+  "Agenda municipal de Majadahonda": "La agenda cultural (cultura.majadahonda.org) responde 404 y la general no incluye actos.",
+  "Agenda municipal de Parla": "La web solo carga con JavaScript: el HTML no contiene la agenda.",
+  "Agenda municipal de Pozuelo de Alarcón": "La programación del MIRA Teatro solo carga con JavaScript.",
+  "Agenda municipal de Rivas-Vaciamadrid": "Sin agenda de actos en la web municipal; los conciertos del Auditorio Miguel Ríos llegan por los agregadores.",
+  "Agenda municipal de Getafe (anterior)": "getafe.es/agenda ya no existe; se usa cultura.getafe.es."
+ },
+ "salas_sin_fuente": [
+  {
+   "sala": "La Coquette",
+   "conciertos": 70,
+   "municipio": "Madrid",
+   "web": null,
+   "motivo": "Sin web propia: publica su programación solo en Instagram y Facebook."
+  },
+  {
+   "sala": "Café El Despertar",
+   "conciertos": 61,
+   "municipio": "Madrid",
+   "web": "https://cafeeldespertar.com/",
+   "motivo": "Su robots.txt no permite leerla: se respeta."
+  },
+  {
+   "sala": "El Café de la Ópera",
+   "conciertos": 49,
+   "municipio": "Madrid",
+   "web": "https://www.elcafedelaopera.com/",
+   "motivo": "Programación fija (cena cantada, jazz con piano) sin agenda con fechas."
+  },
+  {
+   "sala": "Rincón del Arte Nuevo",
+   "conciertos": 48,
+   "municipio": "Madrid",
+   "web": "https://www.elrincondelartenuevo.com/",
+   "motivo": null
+  },
+  {
+   "sala": "Sala Copérnico",
+   "conciertos": 43,
+   "municipio": "Madrid",
+   "web": "https://salacopernico.es/",
+   "motivo": "La web muestra una 'cartelera orientativa' de ejemplo con fechas ficticias; no se usa."
+  },
+  {
+   "sala": "Four Seasons Hotel Madrid",
+   "conciertos": 39,
+   "municipio": "Madrid",
+   "web": null,
+   "motivo": null
+  },
+  {
+   "sala": "Ateneo de Madrid",
+   "conciertos": 36,
+   "municipio": "Madrid",
+   "web": null,
+   "motivo": null
+  },
+  {
+   "sala": "Círculo de Bellas Artes",
+   "conciertos": 32,
+   "municipio": "Madrid",
+   "web": null,
+   "motivo": null
+  },
+  {
+   "sala": "Jazzville",
+   "conciertos": 27,
+   "municipio": "Madrid",
+   "web": null,
+   "motivo": null
+  },
+  {
+   "sala": "Sala Uni",
+   "conciertos": 27,
+   "municipio": "Madrid",
+   "web": null,
+   "motivo": null
+  },
+  {
+   "sala": "Cadavra",
+   "conciertos": 25,
+   "municipio": "Madrid",
+   "web": null,
+   "motivo": "No se encontró una web oficial accesible (dominios probados sin respuesta)."
+  },
+  {
+   "sala": "Maravillas Club",
+   "conciertos": 25,
+   "municipio": "Madrid",
+   "web": null,
+   "motivo": "El dominio maravillasclub.es es una página de parking."
+  },
+  {
+   "sala": "Thundercat",
+   "conciertos": 22,
+   "municipio": "Madrid",
+   "web": "https://thundercatclub.com/",
+   "motivo": "La página de programación no trae fechas en el HTML y su calendario está vacío."
+  },
+  {
+   "sala": "Tablao Flamenco 1911",
+   "conciertos": 22,
+   "municipio": "Madrid",
+   "web": null,
+   "motivo": null
+  },
+  {
+   "sala": "Tablao Ópera Flamenca",
+   "conciertos": 22,
+   "municipio": "Madrid",
+   "web": null,
+   "motivo": null
+  },
+  {
+   "sala": "Cardamomo",
+   "conciertos": 21,
+   "municipio": "Madrid",
+   "web": null,
+   "motivo": null
+  },
+  {
+   "sala": "Tablao de la Villa",
+   "conciertos": 21,
+   "municipio": "Madrid",
+   "web": null,
+   "motivo": null
+  },
+  {
+   "sala": "Live Las Ventas",
+   "conciertos": 21,
+   "municipio": "Madrid",
+   "web": null,
+   "motivo": null
+  },
+  {
+   "sala": "Nuevo Teatro Alcalá",
+   "conciertos": 21,
+   "municipio": "Madrid",
+   "web": null,
+   "motivo": null
+  },
+  {
+   "sala": "Barracudas Rock Bar",
+   "conciertos": 17,
+   "municipio": "Madrid",
+   "web": null,
+   "motivo": "Sin web propia encontrada (solo redes y ticketeras)."
+  },
+  {
+   "sala": "Sala Vesta",
+   "conciertos": 16,
+   "municipio": "Madrid",
+   "web": "https://salavesta.com/",
+   "motivo": "La web solo enlaza a sus publicaciones de Instagram (sin fechas)."
+  },
+  {
+   "sala": "Hangar 48",
+   "conciertos": 16,
+   "municipio": "Madrid",
+   "web": "https://www.hangar48.es/",
+   "motivo": null
+  },
+  {
+   "sala": "Teatro Circo Price",
+   "conciertos": 16,
+   "municipio": "Madrid",
+   "web": null,
+   "motivo": null
+  },
+  {
+   "sala": "Pabellón 2, IFEMA Madrid",
+   "conciertos": 14,
+   "municipio": "Madrid",
+   "web": null,
+   "motivo": null
+  },
+  {
+   "sala": "Auditorio Nacional de Música",
+   "conciertos": 13,
+   "municipio": "Madrid",
+   "web": null,
+   "motivo": null
+  },
+  {
+   "sala": "Stairway",
+   "conciertos": 12,
+   "municipio": "Madrid",
+   "web": null,
+   "motivo": null
+  },
+  {
+   "sala": "UMusic Hotel Teatro Albéniz Madrid",
+   "conciertos": 12,
+   "municipio": "Madrid",
+   "web": null,
+   "motivo": null
+  },
+  {
+   "sala": "Fulanita de Tal",
+   "conciertos": 10,
+   "municipio": "Madrid",
+   "web": null,
+   "motivo": null
+  },
+  {
+   "sala": "Exe Victoria Palace",
+   "conciertos": 10,
+   "municipio": "San Lorenzo de El Escorial",
+   "web": null,
+   "motivo": null
+  },
+  {
+   "sala": "Babylon Club",
+   "conciertos": 10,
+   "municipio": "Madrid",
+   "web": null,
+   "motivo": null
+  },
+  {
+   "sala": "Teatro Monumental",
+   "conciertos": 10,
+   "municipio": "Madrid",
+   "web": null,
+   "motivo": null
+  },
+  {
+   "sala": "Wellington Hotel",
+   "conciertos": 10,
+   "municipio": "Madrid",
+   "web": null,
+   "motivo": null
+  },
+  {
+   "sala": "Teatro Rialto",
+   "conciertos": 10,
+   "municipio": "Madrid",
+   "web": null,
+   "motivo": null
+  },
+  {
+   "sala": "Cien por Cien",
+   "conciertos": 9,
+   "municipio": "Madrid",
+   "web": null,
+   "motivo": null
+  },
+  {
+   "sala": "Condeduque",
+   "conciertos": 9,
+   "municipio": "Madrid",
+   "web": null,
+   "motivo": null
+  },
+  {
+   "sala": "Fabrik",
+   "conciertos": 8,
+   "municipio": "Madrid",
+   "web": null,
+   "motivo": null
+  },
+  {
+   "sala": "Cineteca Madrid",
+   "conciertos": 8,
+   "municipio": "Madrid",
+   "web": null,
+   "motivo": null
+  },
+  {
+   "sala": "Cine & Teatro Capitol",
+   "conciertos": 8,
+   "municipio": "Madrid",
+   "web": null,
+   "motivo": null
+  },
+  {
+   "sala": "Canopy by Hilton Madrid Castellana",
+   "conciertos": 8,
+   "municipio": "Madrid",
+   "web": null,
+   "motivo": null
+  },
+  {
+   "sala": "La Vega del Henares",
+   "conciertos": 8,
+   "municipio": "Alcalá de Henares",
+   "web": null,
+   "motivo": null
+  },
+  {
+   "sala": "Fotomatón Bar",
+   "conciertos": 7,
+   "municipio": "Madrid",
+   "web": null,
+   "motivo": null
+  },
+  {
+   "sala": "Espacio Alma",
+   "conciertos": 7,
+   "municipio": "Madrid",
+   "web": null,
+   "motivo": null
+  },
+  {
+   "sala": "El Sótano",
+   "conciertos": 7,
+   "municipio": "Madrid",
+   "web": null,
+   "motivo": null
+  },
+  {
+   "sala": "CentroCentro",
+   "conciertos": 7,
+   "municipio": "Madrid",
+   "web": null,
+   "motivo": null
+  },
+  {
+   "sala": "Music Station Príncipe Pío",
+   "conciertos": 7,
+   "municipio": "Madrid",
+   "web": null,
+   "motivo": null
+  },
+  {
+   "sala": "Basílica Pontificia de San Miguel",
+   "conciertos": 7,
+   "municipio": "Madrid",
+   "web": null,
+   "motivo": null
+  },
+  {
+   "sala": "Puerta del Sol de Madrid",
+   "conciertos": 6,
+   "municipio": "Madrid",
+   "web": null,
+   "motivo": null
+  },
+  {
+   "sala": "Centro Cultural Zazuar (Villa de Vallecas)",
+   "conciertos": 6,
+   "municipio": "Madrid",
+   "web": null,
+   "motivo": null
+  },
+  {
+   "sala": "Sala Olvido",
+   "conciertos": 6,
+   "municipio": "Madrid",
+   "web": null,
+   "motivo": null
+  },
+  {
+   "sala": "Shoko",
+   "conciertos": 6,
+   "municipio": "Madrid",
+   "web": null,
+   "motivo": null
+  },
+  {
+   "sala": "Lula Club",
+   "conciertos": 6,
+   "municipio": "Madrid",
+   "web": null,
+   "motivo": "La web lulaclub.es no responde (tiempo de espera agotado)."
+  },
+  {
+   "sala": "Centro Cultural Hortaleza",
+   "conciertos": 5,
+   "municipio": "Madrid",
+   "web": null,
+   "motivo": null
+  },
+  {
+   "sala": "Candela",
+   "conciertos": 5,
+   "municipio": "Madrid",
+   "web": null,
+   "motivo": null
+  },
+  {
+   "sala": "Sala La Trinchera",
+   "conciertos": 5,
+   "municipio": "Madrid",
+   "web": null,
+   "motivo": "No se encontró una web oficial accesible."
+  },
+  {
+   "sala": "Teatro Albéniz Umusic",
+   "conciertos": 5,
+   "municipio": "Madrid",
+   "web": null,
+   "motivo": null
+  },
+  {
+   "sala": "Convento de San Bernardo",
+   "conciertos": 5,
+   "municipio": "Alcalá de Henares",
+   "web": null,
+   "motivo": null
+  },
+  {
+   "sala": "Centro Cultural Antonio Machado (San Blas - Canillejas)",
+   "conciertos": 4,
+   "municipio": "Madrid",
+   "web": null,
+   "motivo": null
+  },
+  {
+   "sala": "ContraClub",
+   "conciertos": 4,
+   "municipio": "Madrid",
+   "web": null,
+   "motivo": null
+  },
+  {
+   "sala": "Iberdrola Music",
+   "conciertos": 4,
+   "municipio": "Madrid",
+   "web": null,
+   "motivo": null
+  },
+  {
+   "sala": "Teatro Salón Cervantes",
+   "conciertos": 4,
+   "municipio": "Alcalá de Henares",
+   "web": null,
+   "motivo": null
+  },
+  {
+   "sala": "Centro Cultural Casa de Vacas (Retiro)",
+   "conciertos": 4,
+   "municipio": "Madrid",
+   "web": null,
+   "motivo": null
+  },
+  {
+   "sala": "Teatro Lope de Vega",
+   "conciertos": 4,
+   "municipio": "Madrid",
+   "web": null,
+   "motivo": null
+  },
+  {
+   "sala": "Centro Cultural San Francisco La Prensa (Carabanchel)",
+   "conciertos": 4,
+   "municipio": "Madrid",
+   "web": null,
+   "motivo": null
+  },
+  {
+   "sala": "Paraninfo de la Universidad Complutense",
+   "conciertos": 4,
+   "municipio": "Madrid",
+   "web": null,
+   "motivo": null
+  },
+  {
+   "sala": "Sala Epoka The Club",
+   "conciertos": 4,
+   "municipio": "Madrid",
+   "web": null,
+   "motivo": null
+  }
+ ],
+ "salas_alias_propuestas": [
+  {
+   "salas": [
+    "Teatro EDP Gran Vía",
+    "Teatro Gran Vía"
+   ],
+   "conciertos": [
+    2,
+    26
+   ],
+   "motivo": "nombres casi iguales"
+  },
+  {
+   "salas": [
+    "La Sala del Movistar Arena",
+    "Movistar Arena"
+   ],
+   "conciertos": [
+    38,
+    104
+   ],
+   "motivo": "IQ el 2027-03-20 en las dos"
+  }
+ ],
+ "no_usar": {
+  "Ticketle": "Responde 403 (acceso prohibido) a todas las peticiones desde GitHub.",
+  "Bandsintown": "Responde 403 (acceso prohibido) a todas las peticiones desde GitHub.",
+  "Radar Joven (comunidad.madrid)": "Responde 404 a todas las peticiones desde GitHub; su programación se lee de Conciertos por Madrid.",
+  "FORCE Magazine": "No responde o no publica conciertos legibles en ninguna de las ejecuciones.",
+  "Agendas municipales de Getafe, Alcobendas, Arganda del Rey, San Sebastián de los Reyes y Coslada": "Bloqueo (403 o verificación antirobots), error de certificado o sin respuesta en todas las ejecuciones.",
+  "IndyRock": "Bloquea el acceso automático.",
+  "La Hora del Blues": "Bloquea el acceso automático.",
+  "Foro Azkena, Zona-Zero": "Foros: solo consulta manual (ver README).",
+  "DotheReggae (agenda de reggae)": "Responde 403 (acceso prohibido) desde GitHub; el reggae llega por conciertos.club (reggae-ska).",
+  "Café Libertad 8 (cantautores)": "Su página de conciertos devuelve una imagen en vez de la agenda; sus conciertos llegan por conciertos.club.",
+  "esMadrid (agenda de música)": "La página no trae las fechas en el HTML (se cargan después con JavaScript).",
+  "Comunidad de Madrid (agenda de actividades)": "La dirección de la agenda responde 404.",
+  "Houston Party (promotora)": "Publica fechas sin año ni sala; sus artistas llegan por otras fuentes.",
+  "NocheMAD": "Los mismos conciertos que SalirMadrid (ya se lee).",
+  "El Corte Inglés (entradas)": "Responde 403 (acceso prohibido) desde GitHub.",
+  "Folklore Plaza Castilla": "La web no responde."
+ },
+ "correcciones": {
+  "aplicadas": [
+   {
+    "correccion": "descarte 2026-10-17 Threats, It Came From The Void, Kenpark",
+    "registros": 1
+   },
+   {
+    "correccion": "descarte 2026-10-17 Mägo de Oz",
+    "registros": 1
+   },
+   {
+    "correccion": "conflicto 2026-10-17 Gruta 77",
+    "registros": 3
+   },
+   {
+    "correccion": "conflicto 2026-10-17 Hällas",
+    "registros": 1
+   },
+   {
+    "correccion": "conflicto 2026-10-17 Amann & the Wayward Sons",
+    "registros": 1
+   },
+   {
+    "correccion": "conflicto 2026-10-18 Gloryhammer",
+    "registros": 1
+   },
+   {
+    "correccion": "conflicto 2026-10-29 Tankard",
+    "registros": 1
+   },
+   {
+    "correccion": "nota 2026-10-20 Laura Cox",
+    "registros": 1
+   }
+  ],
+  "sin_coincidencia": [
+   {
+    "correccion": "descarte 2026-10-17 Loquillo",
+    "nota": "Toca en el Palacio de los Deportes de Granada, no en Madrid."
+   }
+  ],
+  "descartados": [
+   {
+    "id": "9b2f10294c7d",
+    "fecha": "2026-10-17",
+    "artista": "THREATS",
+    "sala": "Silikona",
+    "motivo": "Fue el 17/01/2026, no en octubre."
+   },
+   {
+    "id": "7c514cbf5985",
+    "fecha": "2026-10-17",
+    "artista": "MÄGO DE OZ",
+    "sala": "",
+    "motivo": "No confirmado; su gira de octubre es Las Palmas, Nerja, Leganés el 10/10 y Londres."
+   }
+  ]
+ },
+ "musicbrainz": {
+  "consultas": 2,
+  "desde_cache": 1610,
+  "asignadas": 33,
+  "sin_confirmar": 1579,
+  "pendientes": 0
+ },
+ "artistas": {
+  "consultados": 0,
+  "completados": 31,
+  "desde_cache": 3445,
+  "discogs": 1515,
+  "wikipedia": 522,
+  "wikidata": 502,
+  "lastfm": 1373,
+  "musicbrainz": 1522,
+  "sin_ficha": 975,
+  "pendientes": 0,
+  "errores": [
+   "Edén (agenda): RobotsUnreachable: web inaccesible al leer robots.txt: inaccesible (SSLError)",
+   "Fyahbwoy (agenda): RobotsUnreachable: web inaccesible al leer robots.txt: inaccesible (ReadTimeout)",
+   "Carmen Avilés \"Carmela\" (agenda): RobotsUnreachable: web inaccesible al leer robots.txt: inaccesible (ReadTimeout)",
+   "Melón Diesel: La gira de Mr.Bond (agenda): RobotsUnreachable: web inaccesible al leer robots.txt: inaccesible (ReadTimeout)",
+   "Gondwana Y Quique Neira (agenda): RobotsUnreachable: web inaccesible al leer robots.txt: inaccesible (ReadTimeout)",
+   "Lagos (agenda): RobotsUnreachable: web inaccesible al leer robots.txt: inaccesible (ReadTimeout)",
+   "Salmo (agenda): RobotsUnreachable: web inaccesible al leer robots.txt: inaccesible (ReadTimeout)",
+   "La Banda Sabinera (agenda): RobotsUnreachable: web inaccesible al leer robots.txt: inaccesible (ReadTimeout)"
+  ],
+  "discogs_con_token": true,
+  "lastfm_activo": true,
+  "duracion_seg": 32,
+  "paginas": {
+   "en_cache": 4642
+  },
+  "entradas": {
+   "gira": 1247,
+   "entradas": 887,
+   "precio_con_gastos": 167,
+   "precio": 73,
+   "agotado": 2,
+   "aplazado": 1,
+   "precio_texto": 114,
+   "hora": 32,
+   "cancelado": 3,
+   "entradas_genericas": 26,
+   "webs_fiables_hora": 21,
+   "aportes": 1
+  },
+  "cambios": 0,
+  "ultima_carga_fichas": "2026-10-10T19:52:54+00:00"
+ },
+ "entradas": {
+  "entradas": 875,
+  "gira": 1395,
+  "hora": 32,
+  "precio": 69,
+  "precio_texto": 114,
+  "cancelado": 3,
+  "precio_con_gastos": 166,
+  "agotado": 2,
+  "aplazado": 1,
+  "entradas_genericas": 26,
+  "webs_fiables_hora": 21,
+  "aportes": 1
+ },
+ "estilos_sin_mapear": [
+  "BY GRUPO SALVAJE): ESPECIAL HALLOWEEN (Karaoke (RockVille (web oficial))",
+  "Boogie Boogie (Gruta 77 (web oficial))",
+  "Bullerengue (Tempo Audiophile Club (web oficial))",
+  "Dark Electro (GotiFiestas (escena gótica y dark wave))",
+  "Feat: Chipper Cooke (Tempo Audiophile Club (web oficial))",
+  "Mbalax / Afropop Senegalés (Sala Clamores (web oficial))",
+  "Melodic Deathcore (El Perro Club (web oficial))",
+  "Momentos Alhambra (Sala Villanos (web oficial))",
+  "Música Cubana, Nueva Trova Cubana, Música de Autor (La Ganzúa)",
+  "Música de Autor (La Ganzúa)",
+  "Música experimental (Total Stage (agenda de la comunidad))",
+  "Música experimental (conciertos.club (buscador semanal))",
+  "Música experimental (conciertos.club (portada Madrid))",
+  "Otros (JacksOnLive (agenda de Madrid))",
+  "Otros (Total Stage (agenda de la comunidad))",
+  "Otros (conciertos.club (buscador semanal))",
+  "Otros (conciertos.club (portada Madrid))",
+  "PostPunk (Sala Clamores (web oficial))",
+  "Postharcore (El Perro Club (web oficial))",
+  "Reguetón (JacksOnLive (agenda de Madrid))",
+  "Ritmos Cubanos (Sala Clamores (web oficial))"
+ ],
+ "grupos": {
+  "tributos y versiones": {
+   "total": 192,
+   "entran": 0,
+   "salen": 0,
+   "ejemplos_entran": [],
+   "ejemplos_salen": []
+  },
+  "pop e indie": {
+   "total": 546,
+   "entran": 0,
+   "salen": 0,
+   "ejemplos_entran": [],
+   "ejemplos_salen": []
+  },
+  "rock y metal": {
+   "total": 595,
+   "entran": 0,
+   "salen": 0,
+   "ejemplos_entran": [],
+   "ejemplos_salen": []
+  },
+  "electrónica": {
+   "total": 98,
+   "entran": 0,
+   "salen": 0,
+   "ejemplos_entran": [],
+   "ejemplos_salen": []
+  },
+  "blues": {
+   "total": 160,
+   "entran": 0,
+   "salen": 0,
+   "ejemplos_entran": [],
+   "ejemplos_salen": []
+  },
+  "soul, funk y r&b": {
+   "total": 134,
+   "entran": 0,
+   "salen": 0,
+   "ejemplos_entran": [],
+   "ejemplos_salen": []
+  },
+  "americana/country/folk": {
+   "total": 117,
+   "entran": 0,
+   "salen": 0,
+   "ejemplos_entran": [],
+   "ejemplos_salen": []
+  },
+  "musicales y espectáculos": {
+   "total": 271,
+   "entran": 0,
+   "salen": 0,
+   "ejemplos_entran": [],
+   "ejemplos_salen": []
+  },
+  "jazz y swing": {
+   "total": 320,
+   "entran": 0,
+   "salen": 0,
+   "ejemplos_entran": [],
+   "ejemplos_salen": []
+  },
+  "pop comercial": {
+   "total": 150,
+   "entran": 0,
+   "salen": 0,
+   "ejemplos_entran": [],
+   "ejemplos_salen": []
+  },
+  "fuera de foco": {
+   "total": 10,
+   "entran": 0,
+   "salen": 0,
+   "ejemplos_entran": [],
+   "ejemplos_salen": []
+  },
+  "flamenco y copla": {
+   "total": 156,
+   "entran": 0,
+   "salen": 0,
+   "ejemplos_entran": [],
+   "ejemplos_salen": []
+  },
+  "sin clasificar": {
+   "total": 251,
+   "entran": 0,
+   "salen": 0,
+   "ejemplos_entran": [],
+   "ejemplos_salen": []
+  },
+  "clásica y lírica": {
+   "total": 153,
+   "entran": 0,
+   "salen": 0,
+   "ejemplos_entran": [],
+   "ejemplos_salen": []
+  },
+  "cantautor": {
+   "total": 28,
+   "entran": 0,
+   "salen": 0,
+   "ejemplos_entran": [],
+   "ejemplos_salen": []
+  },
+  "latina": {
+   "total": 123,
+   "entran": 0,
+   "salen": 0,
+   "ejemplos_entran": [],
+   "ejemplos_salen": []
+  },
+  "punk y garage": {
+   "total": 184,
+   "entran": 0,
+   "salen": 0,
+   "ejemplos_entran": [],
+   "ejemplos_salen": []
+  },
+  "urbana y hip hop": {
+   "total": 117,
+   "entran": 0,
+   "salen": 0,
+   "ejemplos_entran": [],
+   "ejemplos_salen": []
+  },
+  "músicas del mundo": {
+   "total": 37,
+   "entran": 0,
+   "salen": 0,
+   "ejemplos_entran": [],
+   "ejemplos_salen": []
+  },
+  "synth y dark wave": {
+   "total": 37,
+   "entran": 0,
+   "salen": 0,
+   "ejemplos_entran": [],
+   "ejemplos_salen": []
+  },
+  "reggae": {
+   "total": 12,
+   "entran": 0,
+   "salen": 0,
+   "ejemplos_entran": [],
+   "ejemplos_salen": []
+  }
+ },
+ "alertas": [
+  "Sala Villanos (web oficial): su robots.txt ya no permite leerla (último éxito 2026-10-01, daba 99): se respeta; sus conciertos salen de su última lectura y de otras agendas, y de su venta de entradas en Enterticket (fuente Enterticket)"
+ ],
+ "ultima_completa": {
+  "generado": "2026-10-10T16:07:50+00:00",
+  "duracion_seg": 980,
+  "fuentes_ok": 81,
+  "fuentes_total": 83,
+  "peticiones_http": 344
+ },
+ "version_fichas": "2.55.0"
+}
