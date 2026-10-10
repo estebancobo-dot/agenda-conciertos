@@ -68,6 +68,19 @@ jobs:
         env:
           NAVEGADOR_PRUEBA: firefox
         run: python -m pytest -q -rs tests/test_web_navegador.py
+      - name: Aspecto de la web con datos fijos, comparado con la validación anterior (aviso, no fallo)
+        if: always()
+        continue-on-error: true
+        env:
+          FECHA_PRUEBAS: "2026-10-12"   # un lunes: mismos datos y mismo reloj del navegador en cada validación
+          CAPTURAS: pruebas/capturas_fijas
+        run: |
+          python -m pytest -q -rs tests/test_web_capturas.py
+          mkdir -p "$RUNNER_TEMP/antes"
+          if git fetch -q --depth=1 origin pruebas-web; then
+            git archive FETCH_HEAD capturas_fijas 2>/dev/null | tar -x -C "$RUNNER_TEMP/antes" || true
+          fi
+          python tools/comparar_capturas.py "$RUNNER_TEMP/antes/capturas_fijas" pruebas/capturas_fijas
       - name: Volver a publicar si la web no es el código de main
         if: always() && github.event.workflow_run.name != 'Publicar la web (sin leer agendas)'
         run: |

@@ -29,6 +29,9 @@ class FakeFetcher:
                 return Path(v).read_text(encoding="utf-8")
         raise HTTP404(f"404 Client Error: Not Found for url: {url}")
 
+    def olvidar(self, url):
+        """Como Fetcher.olvidar (antes de reintentar una web): aquí no hay nada guardado que olvidar."""
+
     def robots_status(self, url):
         return "ok"
 

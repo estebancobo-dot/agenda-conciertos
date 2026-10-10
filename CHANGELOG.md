@@ -1,5 +1,13 @@
 # Versiones
 
+## 2.80.0 — 2026-10-10
+
+- Web con **teclado**: el menú ☰ se abre con el foco en la primera opción y **Escape lo cierra** (y devuelve el foco al botón); el carrusel de fotos de la ficha (artista ↔ cartel de la gira) se alcanza con el tabulador y se mueve con las flechas (era el aviso de accesibilidad «zona con desplazamiento que no se puede recorrer con el teclado»). Prueba nueva: modos de vista, menú, hoja de filtros y tarjeta con el teclado, y que ninguna regla quite el contorno del foco.
+- Prueba de **varias lecturas seguidas**, días distintos y con el estado guardado entre una y otra: una agenda que cae y vuelve (lo que solo ella anuncia sigue, de su última lectura, y se dice), el reintento de cada 2 horas (si nadie responde no cambia nada; si vuelve, solo lee esa y el cambio de hora queda en el historial), la fuente congelada a los 2 días, la caché que deja de valer a los 14 y lo que nadie reconfirma en un mes, oculto pero en los datos.
+- Prueba de que **los datos y la web hablan el mismo idioma**: la agenda ligera y el detalle de cada día traen cada concierto entero, la tarjeta solo lee lo que trae la agenda ligera, y los campos de la agenda ligera existen en la lectura.
+- **Aspecto de la web**: la validación hace capturas de las vistas principales con datos y día fijos (también el reloj del navegador) y las compara con las de la validación anterior; lo que cambia sale como aviso con una imagen de lo distinto en rojo.
+- Validación: «Enlace a un concierto que ya no existe» esperaba un tiempo fijo de medio segundo y falló una vez con el móvil lento simulado; ahora espera a que la web lo diga (hasta 10 s).
+
 ## 2.79.0 — 2026-10-10
 
 - **Intruso y Moe** dejaban de leerse en algunas lecturas desde el 8/10 («Cannot switch to a different thread»): el navegador real lo abría el hilo de otra fuente (Festify) y Playwright solo deja usarlo desde ese hilo. Ahora todo lo del navegador va por un hilo propio, venga de donde venga la petición. Prueba nueva: tres páginas pedidas a la vez desde hilos distintos (con el código anterior fallaba igual que en la lectura).

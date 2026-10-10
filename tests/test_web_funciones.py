@@ -114,3 +114,11 @@ def test_nada_de_las_webs_se_cuela_como_html(js):
     html = js(f"card({{id:'x1',artista:{malo!r},sala:{malo!r},municipio:'Getafe',fecha:'2026-10-12',"
               f"invitados:[{malo!r}],estilos_discogs:[{malo!r}]}})")
     assert "<img src=x" not in html and html.count("&lt;img src=x") >= 3
+
+
+def test_el_carrusel_de_fotos_se_alcanza_con_el_teclado(js):
+    # con foto y cartel de la gira, la ficha se desliza de lado: tiene que poder enfocarse (axe: scrollable-region)
+    html = js("(()=>{BYID['k1']={id:'k1',artista:'Muse',fecha:'2026-10-12',sala:'La Riviera',img:'https://x/a.jpg',"
+              "gira:{imagen:'https://x/b.jpg',credito:'x'},_full:true,estado:'1_fuente',"
+              "fuentes:[{id:'riviera',nombre:'La Riviera (web oficial)',url:'https://x/'}]};state.id='k1';return viewConcierto()})()")
+    assert 'id="carr" role="region" tabindex="0"' in html

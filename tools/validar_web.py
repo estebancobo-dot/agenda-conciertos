@@ -1632,7 +1632,13 @@ def enlaces_directos(b, datos):
         check("Rendimiento", "Enlace directo a una ficha (visita nueva)", ms(t0), aviso=5000, fallo=9000)
     pg.goto(URL + "#concierto/no-existe-123", wait_until="commit")
     esperar_datos(pg)
-    pg.wait_for_timeout(500)
+    # hasta que se pinte (con la CPU lenta, la ficha anterior puede tener ocupada la página más de medio segundo:
+    # falló así el 10/10/2026); si en 10 s no lo dice, es fallo
+    try:
+        pg.wait_for_function("document.getElementById('main').innerText.includes('No se encontró el concierto')",
+                             timeout=10000)
+    except Exception:  # noqa: BLE001 - lo cuenta la comprobación
+        pass
     check("Fallos", "Enlace a un concierto que ya no existe: lo dice y deja volver",
           ok="No se encontró el concierto" in pg.inner_text("#main") and pg.locator("a.back").count() > 0)
     pg.goto(URL + "#semana/2031-01-06", wait_until="commit")

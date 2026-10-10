@@ -597,7 +597,12 @@ function openMenu(){
     <details class="mdatos"><summary>ℹ️ Sobre los datos</summary>
      ${MENU_DATOS.map(t=>`<button role="menuitem" data-go="${t}">${ICONO_MENU[t]} ${t}</button>`).join("")}
      <a role="menuitem" href="data/concerts.csv" download>⬇ Descargar CSV (Excel)</a></details></div>`;
-  const close=()=>m.innerHTML="";
+  // con el teclado: se abre con el foco en la primera opción y Escape lo cierra y devuelve el foco al botón ☰
+  const close=()=>{m.innerHTML=""; document.removeEventListener("keydown",tecla);};
+  const tecla=e=>{ if(!m.innerHTML){ document.removeEventListener("keydown",tecla); return; }  // ya cerrado por otro lado
+    if(e.key==="Escape"){ close(); document.getElementById("menubtn").focus(); } };
+  document.addEventListener("keydown",tecla);
+  const primera=m.querySelector("[role=menuitem]"); if(primera) primera.focus({preventScroll:true});
   document.getElementById("mbg").onclick=close;
   document.getElementById("mtheme").onclick=()=>{toggleTheme();close();};
   m.querySelectorAll("[data-go]").forEach(b=>b.onclick=()=>{close(); state.tab=b.dataset.go; render(); scrollTo(0,0);});
@@ -1136,7 +1141,7 @@ function viewConcierto(){
   const volver=state.from||`#dia/${r.fecha}`;
   return `<a class="back" href="${esc(volver)}">‹ Volver</a>
    <div class="dt">
-    ${gira&&im?`<div class="carr" id="carr" aria-label="Fotos: desliza para ver el cartel de la gira">`:""}${im?`<div class="hero" style="--gc:var(${color(r)})"><div class="ph">${iniciales(r.artista)}</div><img class="foto${fotoLista(r)?" ya":""}" src="${esc(fotoDetalle(r,im))}" data-o="${esc(im.url)}" alt="Foto de ${esc(r.artista)}" fetchpriority="high" decoding="async" referrerpolicy="no-referrer" onload="this.classList.add('ok');fotoGrande(this)" onerror="if(this.dataset.o&&this.src!==this.dataset.o){this.src=this.dataset.o;this.dataset.o=''}else{const h=this.closest('.hero');this.remove();if(h&&!h.closest('.carr'))h.classList.add('sinfoto')}"></div>`:""}
+    ${gira&&im?`<div class="carr" id="carr" role="region" tabindex="0" aria-label="Fotos: desliza (o usa las flechas) para ver el cartel de la gira">`:""}${im?`<div class="hero" style="--gc:var(${color(r)})"><div class="ph">${iniciales(r.artista)}</div><img class="foto${fotoLista(r)?" ya":""}" src="${esc(fotoDetalle(r,im))}" data-o="${esc(im.url)}" alt="Foto de ${esc(r.artista)}" fetchpriority="high" decoding="async" referrerpolicy="no-referrer" onload="this.classList.add('ok');fotoGrande(this)" onerror="if(this.dataset.o&&this.src!==this.dataset.o){this.src=this.dataset.o;this.dataset.o=''}else{const h=this.closest('.hero');this.remove();if(h&&!h.closest('.carr'))h.classList.add('sinfoto')}"></div>`:""}
     ${gira&&im?`${giraHTML}</div><div class="dots" role="group" aria-label="Fotos"><button data-slide="0" aria-current="true" aria-label="Foto del artista"></button><button data-slide="1" aria-current="false" aria-label="Cartel de la gira"></button></div>`:gira?giraHTML.replace('class="hero gira"','class="hero gira" style="margin-top:8px"'):""}
     ${im||gira?`<div class="credit">${im?`Foto: <a href="${esc(im.enlace||im.url)}" target="_blank" rel="noopener">${esc(im.credito)}</a>${f&&f.imagen?"":" (imagen del anuncio)"}`:""}${im&&gira?" · ":""}${gira?`Cartel de la gira: <a href="${esc(gira.enlace||gira.imagen)}" target="_blank" rel="noopener">${esc(gira.credito)}</a>`:""}</div>`:""}
     <h2>${r.festival?`<span class="fest">Festival</span> `:""}${esc(r.artista)}</h2>

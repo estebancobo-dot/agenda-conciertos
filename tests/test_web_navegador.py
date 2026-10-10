@@ -52,6 +52,8 @@ def web(entorno, tmp_path, monkeypatch):  # noqa: F811
         shutil.copy(RAIZ / "data" / n, sitio / "data")
     (sitio / "data" / "informe.json").write_text("{}")
     concerts = json.loads((entorno / "concerts.json").read_text())
+    if os.environ.get("FECHA_PRUEBAS"):  # día fijo (capturas): también la hora de «actualizado» de la cabecera
+        concerts["generado"] = f"{HOY.isoformat()}T09:00:00+00:00"
     web_datos.preparar(concerts, sitio / "data")
     calendarios.generar(concerts, sitio, {}, json.loads((RAIZ / "data" / "salas_alias.json").read_text())["salas"])
     class Silencioso(http.server.SimpleHTTPRequestHandler):
@@ -224,4 +226,36 @@ def test_ordenador_ficha_al_lado(web, nav):
     assert pg.locator(f"#main .card[data-id='{id_de(pg, 'Muse')}'][aria-current]").count() == 1
     pg.keyboard.press("Escape")
     assert not pg.is_visible("#panel")
+    assert not pg.errores, pg.errores
+
+
+def test_con_el_teclado(web, nav):
+    pg = abrir(nav, web + "#todos")
+    # modos de vista: botones de verdad (Tab + Enter o espacio)
+    pg.focus("[data-modo='compacta']")
+    pg.keyboard.press("Enter")
+    assert pg.evaluate("state.modo") == "compacta"
+    pg.focus("[data-modo='lista']")
+    pg.keyboard.press(" ")
+    assert pg.evaluate("state.modo") == "lista"
+    # menú: se abre con Enter con el foco en la primera opción; Escape lo cierra y devuelve el foco al botón
+    pg.focus("#menubtn")
+    pg.keyboard.press("Enter")
+    assert pg.evaluate("document.activeElement.getAttribute('role')") == "menuitem"
+    pg.keyboard.press("Escape")
+    assert not pg.inner_html("#menu") and pg.evaluate("document.activeElement.id") == "menubtn"
+    # hoja de filtros: Escape la cierra sin aplicar
+    pg.focus("#fgen")
+    pg.keyboard.press("Enter")
+    pg.wait_for_selector(".sheet")
+    pg.keyboard.press("Escape")
+    pg.wait_for_function("!document.querySelector('.sheet')")
+    # una tarjeta se abre con Enter
+    pg.focus("#main .card")
+    pg.keyboard.press("Enter")
+    pg.wait_for_selector("#main .rows", timeout=15000)
+    # nada quita el contorno del foco
+    sin_contorno = pg.evaluate("[...document.styleSheets].flatMap(s=>[...s.cssRules]).filter(r=>r.selectorText&&"
+                               "/:focus/.test(r.selectorText)&&/none|^0/.test(r.style.outline||'')).map(r=>r.selectorText)")
+    assert not sin_contorno, sin_contorno
     assert not pg.errores, pg.errores

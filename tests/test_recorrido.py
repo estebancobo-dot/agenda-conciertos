@@ -1,6 +1,7 @@
 """Recorrido completo con datos fijos y sin red: agendas → unión de conciertos → fichas de artista guardadas →
 origen, nivel y enlace de compra → datos de la web. Comprueba que las piezas encajan (cada una tiene sus pruebas)."""
 import json
+import os
 from datetime import date, timedelta
 
 import pytest
@@ -9,7 +10,9 @@ from scraper import pipeline
 from scraper.model import RawEvent, Source
 from tests.fakefetch import FakeFetcher
 
-HOY = date.today()  # la web de la prueba en el navegador enseña desde hoy
+# la web de la prueba en el navegador enseña desde hoy; FECHA_PRUEBAS fija el día (capturas que se comparan entre
+# validaciones: mismo día en los datos y en el reloj del navegador)
+HOY = date.fromisoformat(os.environ["FECHA_PRUEBAS"]) if os.environ.get("FECHA_PRUEBAS") else date.today()
 DIA = HOY + timedelta(days=5)
 MBID = "identificador de MusicBrainz en Wikidata"
 
