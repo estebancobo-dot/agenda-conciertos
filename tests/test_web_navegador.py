@@ -78,7 +78,8 @@ def nav():
 
 
 def abrir(nav, url, *, ordenador=False):
-    """Una página como un móvil (en WebKit, un iPhone 13) o como un ordenador; recoge los errores de JavaScript."""
+    """Una página como un móvil (en WebKit, un iPhone 13) o como un ordenador; recoge los errores de JavaScript y lo que
+    bloquee la política de seguridad."""
     p, b = nav
     if ordenador:
         opciones = {"viewport": {"width": 1440, "height": 900}}
@@ -89,6 +90,8 @@ def abrir(nav, url, *, ordenador=False):
     pg = b.new_context(**opciones).new_page()
     pg.errores = []
     pg.on("pageerror", lambda e: pg.errores.append(str(e)))
+    # la política de seguridad del contenido no puede bloquear nada de la propia web (fotos, datos, estilos)
+    pg.on("console", lambda m: "Content Security Policy" in m.text and pg.errores.append(m.text))
     pg.goto(url)
     pg.wait_for_function("DATA.length>0", timeout=15000)
     pg.wait_for_selector("#main .card, #main .rows", timeout=15000)

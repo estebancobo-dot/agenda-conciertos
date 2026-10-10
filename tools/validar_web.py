@@ -44,7 +44,7 @@ OUT = Path(sys.argv[2] if len(sys.argv) > 2 else "pruebas")
 OUT.mkdir(parents=True, exist_ok=True)
 R: dict = {"url": URL, "fecha": time.strftime("%Y-%m-%d %H:%M UTC", time.gmtime()), "comprobaciones": [],
            "medidas": {}, "errores_js": [], "consola": []}
-CATEGORIAS = ["Publicación", "Funcional", "UX", "Rendimiento", "Fallos", "Otros"]
+CATEGORIAS = ["Publicación", "Funcional", "UX", "Rendimiento", "Fallos", "Seguridad", "Otros"]
 
 # 4G lenta (la de Lighthouse para móvil) y CPU 6 veces más lenta: un móvil de gama media-baja
 RED = {"offline": False, "latency": 150, "downloadThroughput": 1.6 * 1024 * 1024 / 8,
@@ -110,8 +110,10 @@ def mediana(v):
 
 
 # ---------------------------------------------------------------------------------------------- navegador
-def contexto(b, *, movil=True, ancho=390, alto=844, sw="allow", oscuro=False):
-    ctx = b.new_context(viewport={"width": ancho, "height": alto}, device_scale_factor=3 if movil else 1,
+def contexto(b, *, movil=True, ancho=390, alto=844, sw="allow", oscuro=False, csp=False):
+    # Playwright evalúa sus esperas como texto, y la política de seguridad de la web (sin eval) se lo prohíbe: se
+    # salta en los escenarios y se comprueba aparte, sin saltarla, en "politica_contenido"
+    ctx = b.new_context(bypass_csp=not csp, viewport={"width": ancho, "height": alto}, device_scale_factor=3 if movil else 1,
                         is_mobile=movil, has_touch=movil, locale="es-ES", timezone_id="Europe/Madrid",
                         color_scheme="dark" if oscuro else "light", service_workers=sw,
                         user_agent=("Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 "
@@ -1652,6 +1654,28 @@ def enlaces_directos(b, datos):
     ctx.close()
 
 
+@escenario("Seguridad", "Política de seguridad del contenido")
+def politica_contenido(b, datos):
+    """Con la política de verdad (sin saltarla): la web carga, pinta la agenda, abre una ficha y la política no
+    bloquea nada suyo (scripts, estilos, fotos, datos)."""
+    ctx = contexto(b, csp=True)
+    pg = ctx.new_page()
+    bloqueos = []
+    pg.on("console", lambda m: "Content Security Policy" in m.text and bloqueos.append(m.text[:200]))
+    pg.goto(URL, wait_until="load")
+    pg.wait_for_selector("#main .card", timeout=60000)
+    r = next((x for x in datos if x.get("fecha", "") >= date.today().isoformat()), None)
+    if r:
+        pg.goto(URL + f"#concierto/{r['id']}", wait_until="load")
+        pg.wait_for_selector(".dt h2", timeout=30000)
+    pg.wait_for_timeout(3000)  # fotos y datos que llegan después
+    hay = pg.locator('meta[http-equiv="Content-Security-Policy"]').count() > 0
+    check("Seguridad", "La web declara su política de seguridad del contenido", ok=hay)
+    check("Seguridad", "La política no bloquea nada de la propia web", len(bloqueos), ok=hay and not bloqueos,
+          detalle="; ".join(bloqueos[:3]))
+    ctx.close()
+
+
 # ---------------------------------------------------------------------------------------------- 4. fallos
 @escenario("Fallos", "Sin conexión")
 def sin_conexion(b):
@@ -1953,6 +1977,7 @@ def main() -> int:
         navegacion_fechas(b)
         if datos:
             enlaces_directos(b, datos)
+            politica_contenido(b, datos)
             averias(b, datos)
             proxy_imagenes(b, datos)
             en_frio(b, datos)

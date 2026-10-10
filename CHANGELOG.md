@@ -4,6 +4,7 @@
 
 - **Seguridad**: los enlaces que vienen de las webs leídas (entradas, salas, fuentes, fotos…) solo se abren si son http(s), webcal, mailto o de la propia agenda; uno con «javascript:» u otro esquema raro se queda en «#» y no hace nada. La web declara una política de seguridad del contenido: solo ejecuta su propio código, solo pide datos a sí misma y no admite formularios ni plugins; las fotos pueden seguir viniendo de cualquier web.
 - Quitada la clave de Ticketmaster del trabajo de actualización y del README: no se usa.
+- La validación diaria comprueba la política con la web real (carga, agenda y ficha sin nada bloqueado) y las pruebas con datos fijos fallan si bloquea algo de la web. El resto de escenarios la saltan: la herramienta de pruebas evalúa sus esperas como texto, y la política lo prohíbe (la web no lo hace nunca).
 
 ## 2.88.1 — 2026-10-10
 
