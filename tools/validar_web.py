@@ -1081,7 +1081,8 @@ def cambiar_fecha_bajado(pg, lunes):
         nonlocal n
         n += 1
         pg.evaluate(f"location.hash='#{inicio}'")
-        pg.wait_for_function(f"location.hash==='#{inicio}'&&!!document.querySelector('#main .nav')", timeout=15000)
+        pg.wait_for_function(f"location.hash.split('?')[0]==='#{inicio}'&&!!document.querySelector('#main .nav')",
+                             timeout=15000)
         pg.wait_for_timeout(400)
         bajado = True
         if bajar:

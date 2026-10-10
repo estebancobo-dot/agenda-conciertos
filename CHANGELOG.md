@@ -1,5 +1,9 @@
 # Versiones
 
+## 2.87.0 — 2026-10-10
+
+- **Los filtros van en la dirección de la página** («#semana/2026-10-12?g=mas&o=es»): géneros (o «Más géneros», «Todos»…), estilos, origen, confirmación, etiquetas genéricas y búsqueda; solo lo que no está por defecto (sin filtros, la dirección sigue limpia). Un enlace o un marcador abre la agenda con esos filtros; quien lo abre no pierde los suyos guardados. Junto a «Filtrando: …», un botón **«Compartir»** (o copia el enlace donde no se puede compartir).
+
 ## 2.86.0 — 2026-10-10
 
 - **Artistas identificados por sus perfiles enlazados.** El lector de páginas de concierto guarda ahora los enlaces a perfiles del artista (Spotify, Bandcamp, Instagram, SoundCloud, YouTube, Facebook), sin los que salen en conciertos de más de dos artistas distintos (son las redes de la agenda o de la sala) y solo en conciertos de un artista (en un cartel no se sabe de quién es cada enlace). Para los artistas que ninguna web de música identifica, se pregunta a MusicBrainz qué artista tiene enlazado ese perfil: identidad exacta, sin depender del nombre, como ya se hacía con el Spotify que da Enterticket; y además tiene que coincidir el nombre (si la página enlazaba a un telonero o al sello, no se usa). Con él llegan país, zona y géneros de MusicBrainz.

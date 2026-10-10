@@ -729,7 +729,7 @@ function extraHTML(){
   return `<div class="chips" role="group" aria-label="Géneros">${chips}</div>
    <div class="vrow"><div class="vinfo">
    ${fuera?`<div class="fuera">${plural(fuera,"concierto más","conciertos más")} de otros géneros (jazz, flamenco, soul, clásica…) · <button id="fvertodos">Ver todos los géneros</button></div>`:""}
-   ${n?`<div class="active">Filtrando: ${esc(resumenFiltros())} · <button id="freset">Quitar filtros</button></div>`:""}</div>
+   ${n?`<div class="active">Filtrando: ${esc(resumenFiltros())} · <button id="freset">Quitar filtros</button> · <button id="fcompartir">Compartir</button></div>`:""}</div>
    ${selectorModo()}</div>`;
 }
 const ICONO_MODO={
@@ -755,6 +755,9 @@ function bindFilters(){
 function bindExtra(){
   const fr=document.getElementById("freset"); if(fr) fr.onclick=borrarFiltros;
   const fq=document.getElementById("fquitar"); if(fq) fq.onclick=borrarFiltros;
+  const fc=document.getElementById("fcompartir"); if(fc) fc.onclick=async()=>{ setHash(); const url=location.href;
+    try{ if(navigator.share){ await navigator.share({title:"Conciertos Madrid",text:resumenFiltros(),url}); return; } }catch(e){ return; }
+    try{ await navigator.clipboard.writeText(url); toast("Enlace con estos filtros copiado"); }catch(e){ prompt("Copia este enlace:",url); } };
   const fv=document.getElementById("fvertodos"); if(fv) fv.onclick=()=>{setGrupos(GRUPOS.map(g=>g.id)); renderBody(false);};
   document.querySelectorAll("[data-modo]").forEach(b=>b.onclick=()=>{ if(state.modo===b.dataset.modo) return;
     // se mantiene a la vista el concierto por el que ibas
@@ -1682,13 +1685,38 @@ function similaresHTML(r){
 }
 // ---------------------------------------------------------------- navegación
 let lastHash="";
+// Los filtros van en la dirección de la página ("#semana/2026-10-12?g=mas&o=es"): un enlace o un marcador abre la
+// agenda con esos filtros. Solo lo que no está por defecto. Al abrir un enlace con filtros se aplican sin guardarlos
+// (los que tenga guardados quien lo abre no se pierden).
+function filtrosQuery(){
+  const p=[], m=modoGrupos(state.grupos);
+  if(m!=="def"||nEstilos()) p.push("g="+(m==="custom"||nEstilos()?state.grupos.map(encodeURIComponent).join(","):(!state.grupos.length?"ninguno":m)));
+  const est=Object.entries(state.estilos||{}).filter(([,l])=>(l||[]).length);
+  if(est.length) p.push("e="+est.map(([g,l])=>encodeURIComponent(g)+":"+l.map(encodeURIComponent).join("|")).join(";"));
+  if(state.origen!=="todos") p.push("o="+state.origen);
+  if(state.conf!=="todos") p.push("c="+state.conf);
+  if(!state.genericos) p.push("s=0");
+  if(state.q.trim()) p.push("q="+encodeURIComponent(state.q.trim()));
+  return p.length?"?"+p.join("&"):"";
+}
+function aplicarQuery(qs){
+  const p=new URLSearchParams(qs), g=p.get("g"), ids=GRUPOS.map(x=>x.id);
+  state.grupos=!g?[...DEF_GRUPOS]:g==="mas"?[...MAS_GRUPOS]:g==="todos"?[...ids]:g==="ninguno"?[]:g.split(",").filter(x=>ids.includes(x));
+  state.estilos={};
+  for(const parte of (p.get("e")||"").split(";").filter(Boolean)){ const [gr,l]=parte.split(":"); if(ids.includes(gr)&&l) state.estilos[gr]=l.split("|").filter(Boolean); }
+  state.origen=ORIGENES.some(o=>o[0]===p.get("o"))?p.get("o"):"todos";
+  state.conf=CONFS.some(c=>c[0]===p.get("c"))?p.get("c"):"todos";
+  state.genericos=p.get("s")!=="0";
+  state.q=p.get("q")||"";
+}
 function setHash(){
-  const h=state.tab==="Concierto"?`#concierto/${state.id}`:state.tab==="Sala"?hrefSala(state.sala):`#${norm(state.tab)}${VISTAS.includes(state.tab)?"/"+state.date:""}`;
+  const h=state.tab==="Concierto"?`#concierto/${state.id}`:state.tab==="Sala"?hrefSala(state.sala):`#${norm(state.tab)}${VISTAS.includes(state.tab)?"/"+state.date+filtrosQuery():""}`;
   if(location.hash!==h) history.replaceState(null,"",h);
   lastHash=h;
 }
 function readHash(){
-  const m=location.hash.slice(1).split("/");
+  const [base,qs]=location.hash.slice(1).split("?");
+  const m=base.split("/");
   if(m[0]==="concierto"&&m[1]){
     if(!lastHash.startsWith("#concierto")) state.from=lastHash||null;
     state.tab="Concierto"; state.id=decodeURIComponent(m[1]); const r=BYID[state.id]; if(r) state.date=r.fecha; return;
@@ -1699,6 +1727,7 @@ function readHash(){
   }
   const t=TABS.find(x=>norm(x)===decodeURIComponent(m[0]||"")); if(t) state.tab=t;
   if(m[1]&&/^\d{4}-\d{2}-\d{2}$/.test(m[1])) state.date=m[1];
+  if(qs!==undefined&&VISTAS.includes(state.tab)) aplicarQuery(qs);
 }
 function renderTabs(){
   const act=VISTAS.includes(state.tab)?state.tab:null;

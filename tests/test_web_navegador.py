@@ -293,3 +293,30 @@ def test_periodo_siguiente_y_anterior_desde_la_lista(web, nav):
     pg.keyboard.press("ArrowRight")  # escribiendo en el buscador, las flechas son del buscador
     assert pg.evaluate("location.hash") == f"#dia/{DIA.isoformat()}"
     assert not pg.errores, pg.errores
+
+
+def test_los_filtros_van_en_la_direccion(web, nav):
+    pg = abrir(nav, web + f"#semana/{DIA.isoformat()}")
+    assert "?" not in pg.evaluate("location.hash")  # por defecto, la dirección limpia
+    pg.click("[data-pre='mas']")
+    pg.wait_for_function("location.hash.includes('?g=mas')")
+    pg.click("#fgen")
+    pg.wait_for_selector(".sheet")
+    pg.click("[data-o='es']")
+    pg.click("#sclose")
+    pg.wait_for_function("location.hash.includes('o=es')")
+    enlace = pg.evaluate("location.href")
+    assert pg.locator("#fcompartir").count() == 1
+    # el enlace, abierto en otro navegador (sin nada guardado), enseña lo mismo
+    otra = abrir(nav, enlace)
+    assert otra.evaluate("modoGrupos(state.grupos)") == "mas" and otra.evaluate("state.origen") == "es"
+    vistos = sorted(otra.evaluate("[...document.querySelectorAll('#main .card')].map(c=>BYID[c.dataset.id].artista)"))
+    assert vistos == ["Orfeón de Moratalaz"]  # clásica y de España (el jazz de la prueba no tiene origen)
+    # y no se guardan: quien abre un enlace conserva sus filtros para la próxima vez
+    assert otra.evaluate("localStorage.getItem('agenda:grupos5')") is None
+    # una búsqueda también viaja en el enlace
+    tercera = abrir(nav, web + f"#semana/{DIA.isoformat()}?g=todos&q=swing")
+    assert tercera.evaluate("state.q") == "swing"
+    assert tercera.evaluate("[...document.querySelectorAll('#main .card')].map(c=>BYID[c.dataset.id].artista)") == \
+        ["Cuarteto Swing de Lavapiés"]
+    assert not pg.errores and not otra.errores and not tercera.errores
