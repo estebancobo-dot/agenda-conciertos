@@ -100,6 +100,7 @@ input[type=search]::-webkit-search-cancel-button{display:none}
 .chip[aria-pressed="true"] i{box-shadow:0 0 0 2px var(--bg)}
 .chip.quitar{border-color:var(--ink);font-weight:700}
 .active{font-size:.8rem;color:var(--muted);margin:6px 0 0}
+details.plegada{margin:2px 0 8px}details.plegada summary{cursor:pointer;color:var(--info);padding:8px 0;list-style-position:inside}
 .fuera{font-size:.8rem;color:var(--muted);margin:6px 0 0}
 .fuera button{border:0;background:none;color:var(--info);display:inline-block;padding:13px 2px;margin:-13px -2px;font-size:.8rem;text-decoration:underline}
 .active button{border:0;background:none;color:var(--info);padding:0;font-size:.8rem;text-decoration:underline}
@@ -695,6 +696,9 @@ function visible(r){ return pasaGrupo(r) && pasaTexto(r) && pasaOrigen(r) && pas
 function byDate(){const m={}; for(const r of DATA){ if(!visible(r)) continue; (m[r.fecha]=m[r.fecha]||[]).push(r);} return m;}
 const nEstilos=()=>Object.values(state.estilos).reduce((n,l)=>n+(l||[]).length,0);
 const esDefecto=()=>DEF_GRUPOS.every(g=>state.grupos.includes(g))&&!NUEVOS_22.some(g=>state.grupos.includes(g))&&!nEstilos()&&state.genericos;
+// "1.850 de 2.944": conciertos desde hoy con precio conocido (se calcula una vez por carga de datos)
+let _conPrecio=null;
+const conPrecio=()=>_conPrecio||(_conPrecio=(()=>{let n=0,t=0; for(const r of DATA){ if(r.fecha<HOY) continue; t++; if(typeof r.pmin==="number") n++; } return `${n} de ${t}`;})());
 function nFiltros(){ return (esDefecto()?0:1)+(state.origen!=="todos"?1:0)+(state.conf!=="todos"?1:0)+(state.precio!=="todos"?1:0)+(state.q.trim()?1:0); }
 function resumenFiltros(){
   const p=[];
@@ -836,7 +840,7 @@ function openSheet(){
   const htmlGeneros=()=>{const m=modo();
     return `<h4 class="sech">Géneros<span id="resgen">${esc(resumenGen())}</span></h4>
      <div class="segp" role="group" aria-label="Elegir de golpe"><button type="button" data-rap="def" aria-pressed="${m==="def"}" title="${esc(DEF_TITULO)}">${DEF_NOMBRE}</button><button type="button" data-rap="mas" aria-pressed="${m==="mas"}" title="${esc(MAS_TITULO)}">Más géneros</button><button type="button" data-rap="todos" aria-pressed="${m==="todos"}">Todos</button><button type="button" data-rap="ninguno" aria-pressed="${m==="ninguno"}">Ninguno</button></div>
-     <p class="hint" style="margin:-4px 0 8px">Toca los géneros para añadirlos o quitarlos. "Ninguno" sirve para empezar de cero y elegir solo los que quieras.</p>
+     <p class="hint" style="margin:-4px 0 8px">Toca un género para añadirlo o quitarlo («Ninguno»: empezar de cero).</p>
      <div class="gchips">${GRUPOS.filter(g=>!g.mas).map(gchip).join("")}<div class="sub">Más géneros</div>${GRUPOS.filter(g=>g.mas).map(gchip).join("")}</div>
      <button type="button" class="navrow" id="vestilos"><b>Afinar por estilos</b><span id="resest">${esc(resumenTodos())}</span></button>`;};
   // Panel de estilos: buscador ("blue", "post"…) sobre los estilos de TODOS los géneros; primero los géneros elegidos
@@ -867,9 +871,9 @@ function openSheet(){
      <div class="opts">${CONFS.map(([v,t])=>`<button data-cf="${v}" aria-pressed="${cf===v}">${esc(t)}</button>`).join("")}</div>
      <h4 class="sech">Precio<span>${esc((PRECIOS.find(([v])=>v===pr)||[,""])[1])}</span></h4>
      <div class="opts">${PRECIOS.map(([v,t])=>`<button data-pr="${v}" aria-pressed="${pr===v}">${esc(t)}</button>`).join("")}</div>
-     <p class="hint">Cuenta el precio más barato que se anuncia (anticipada, «desde»). Solo filtra los conciertos cuyo precio se conoce: ${DATA.filter(r=>r.fecha>=HOY&&typeof r.pmin==="number").length} de ${DATA.filter(r=>r.fecha>=HOY).length}.</p>
-     <p class="hint">Confirmado: lo anuncia la web de la sala, o se vende en una ticketera y sale en otras agendas, o lo recogen varias agendas independientes. Probable: dos agendas, o una de mucha confianza. En la ficha de cada concierto se dice quién lo confirma.</p>
-     <p class="hint">Si ninguna web dice de dónde es el artista, se deduce: nombre en español, grupo local de las salas de Madrid, coro o banda del programa municipal, banda tributo de sala (España); nombre en español en música latina (Latinoamérica). En la ficha se dice de dónde sale.</p>
+     <p class="hint">Cuenta el precio más barato que se anuncia (anticipada, «desde»). Solo filtra los conciertos cuyo precio se conoce: ${conPrecio()}.</p>
+     <details class="hint plegada"><summary>¿Qué significa?</summary>Confirmado: lo anuncia la web de la sala, o se vende en una ticketera y sale en otras agendas, o lo recogen varias agendas independientes. Probable: dos agendas, o una de mucha confianza. En la ficha de cada concierto se dice quién lo confirma.</details>
+     <details class="hint plegada"><summary>¿De dónde sale el origen?</summary>Si ninguna web dice de dónde es el artista, se deduce: nombre en español, grupo local de las salas de Madrid, coro o banda del programa municipal, banda tributo de sala (España); nombre en español en música latina (Latinoamérica). En la ficha se dice de dónde sale.</details>
      <h4>Más opciones</h4>
      <label class="grp" style="display:flex;gap:10px;align-items:flex-start;padding:10px 12px"><input type="checkbox" id="fgenok" ${genOk?"checked":""} style="margin-top:3px"><span><b>Incluir los de etiqueta genérica</b><br><span class="hint">Artistas sin ficha que la agenda solo etiqueta como "Pop / Rock", "Músicas negras"…: salen en todos esos géneros porque no se sabe cuál es.</span></span></label>`}
      </div><div class="ft"><button id="sdef" title="${esc(DEF_NOMBRE)}, sin estilos, sin búsqueda, origen todos">Por defecto</button><button class="go" id="sclose">Ver ${plural(total(),"concierto")}</button></div></div>`;

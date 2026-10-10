@@ -1,5 +1,9 @@
 # Versiones
 
+## 2.88.1 — 2026-10-10
+
+- Hoja de filtros más corta tras añadir el precio (2.142 → 1.978 px en el móvil; la validación avisa por encima de 2.000): las explicaciones de la confirmación y del origen, plegadas («¿Qué significa?»); la ayuda de los géneros, en una línea; y el recuento de precios conocidos se calcula una sola vez.
+
 ## 2.88.0 — 2026-10-10
 
 - **Filtro por precio** en la hoja de filtros: Cualquier precio · Gratis · Hasta 10 € · Hasta 20 € · Hasta 30 €. Cuenta el precio más barato que se anuncia (anticipada, «desde»; «Anticipada 10 € · Taquilla 12 € · entrada libre a partir de la 1:00» es 10 €, no gratis) y solo filtra los conciertos cuyo precio se conoce (la hoja dice cuántos). Va también en la dirección de la página («p=gratis») y en «Filtrando: …».
