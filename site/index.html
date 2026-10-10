@@ -2,6 +2,8 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' https: http: data: blob:; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <link rel="preconnect" href="https://wsrv.nl" crossorigin>
 <link rel="preconnect" href="https://thumb.wikimedia.org">
@@ -543,6 +545,9 @@ const addDays=(s,n)=>{const d=parse(s);d.setDate(d.getDate()+n);return iso(d)};
 const fmt=(s,o)=>parse(s).toLocaleDateString("es-ES",o);
 const mondayOf=s=>{const d=parse(s);const w=(d.getDay()+6)%7;d.setDate(d.getDate()-w);return iso(d)};
 const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+// Los enlaces vienen de webs ajenas: solo se dejan pasar http(s), webcal, mailto y rutas propias.
+const urlSegura=u=>{const t=String(u??"").replace(/[\u0000-\u0020\u007f]/g,""); const m=t.match(/^([a-z][a-z0-9+.\-]*):/i); return !m||/^(https?|webcal|mailto)$/i.test(m[1])?String(u??"").trim():"#";};
+const hr=u=>esc(urlSegura(u));
 const norm=s=>String(s||"").normalize("NFD").replace(/[̀-ͯ]/g,"").toLowerCase();
 const flag=c=>c==="LATAM"?"🌎":/^[A-Z]{2}$/.test(c||"")?String.fromCodePoint(...[...c].map(x=>127397+x.charCodeAt(0))):"";
 const pais=c=>{if(!c)return ""; if(c==="LATAM") return "Latinoamérica";try{return regionNames?regionNames.of(c):c}catch(e){return c}};
@@ -1078,7 +1083,7 @@ async function compartir(r){
 // cancelado / aplazado / agotado, según la página del concierto o de las entradas (se dice cuál)
 function avisoEvento(r){
   const ev=r.estado_evento||(r.evento?{tipo:r.evento}:null), ag=typeof r.agotado==="object"?r.agotado:(r.agotado?{}:null);
-  const de=x=>x&&x.url?` según <a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.nombre)}</a>`:"";
+  const de=x=>x&&x.url?` según <a href="${hr(x.url)}" target="_blank" rel="noopener">${esc(x.nombre)}</a>`:"";
   if(ev) return `<div class="box ${ev.tipo==="cancelado"?"box-bad":"box-warn"}"><b>${ev.tipo==="cancelado"?"Cancelado":"Aplazado"}</b>${de(ev)}. Confírmalo antes de ir.</div>`;
   if(ag) return `<div class="box box-warn"><b>Entradas agotadas</b>${de(ag)}.</div>`;
   return "";
@@ -1170,22 +1175,22 @@ function viewConcierto(){
   const avisos=(r.notas||[]).filter(n=>!/Corrección manual|Conflicto de|fiabilidad baja|Resuelto por prioridad/.test(n));
   const resueltos=(r.notas||[]).filter(n=>/Resuelto por prioridad/.test(n));
   const volver=state.from||`#dia/${r.fecha}`;
-  return `<a class="back" href="${esc(volver)}">‹ Volver</a>
+  return `<a class="back" href="${hr(volver)}">‹ Volver</a>
    <div class="dt">
     ${gira&&im?`<div class="carr" id="carr" role="region" tabindex="0" aria-label="Fotos: desliza (o usa las flechas) para ver el cartel de la gira">`:""}${im?`<div class="hero" style="--gc:var(${color(r)})"><div class="ph">${iniciales(r.artista)}</div><img class="foto${fotoLista(r)?" ya":""}" src="${esc(fotoDetalle(r,im))}" data-o="${esc(im.url)}" alt="Foto de ${esc(r.artista)}" fetchpriority="high" decoding="async" referrerpolicy="no-referrer" onload="this.classList.add('ok');fotoGrande(this)" onerror="if(this.dataset.o&&this.src!==this.dataset.o){this.src=this.dataset.o;this.dataset.o=''}else{const h=this.closest('.hero');this.remove();if(h&&!h.closest('.carr'))h.classList.add('sinfoto')}"></div>`:""}
     ${gira&&im?`${giraHTML}</div><div class="dots" role="group" aria-label="Fotos"><button data-slide="0" aria-current="true" aria-label="Foto del artista"></button><button data-slide="1" aria-current="false" aria-label="Cartel de la gira"></button></div>`:gira?giraHTML.replace('class="hero gira"','class="hero gira" style="margin-top:8px"'):""}
-    ${im||gira?`<div class="credit">${im?`Foto: <a href="${esc(im.enlace||im.url)}" target="_blank" rel="noopener">${esc(im.credito)}</a>${f&&f.imagen?"":" (imagen del anuncio)"}`:""}${im&&gira?" · ":""}${gira?`Cartel de la gira: <a href="${esc(gira.enlace||gira.imagen)}" target="_blank" rel="noopener">${esc(gira.credito)}</a>`:""}</div>`:""}
+    ${im||gira?`<div class="credit">${im?`Foto: <a href="${hr(im.enlace||im.url)}" target="_blank" rel="noopener">${esc(im.credito)}</a>${f&&f.imagen?"":" (imagen del anuncio)"}`:""}${im&&gira?" · ":""}${gira?`Cartel de la gira: <a href="${hr(gira.enlace||gira.imagen)}" target="_blank" rel="noopener">${esc(gira.credito)}</a>`:""}</div>`:""}
     <h2>${r.festival?`<span class="fest">Festival</span> `:""}${esc(r.artista)}</h2>
     ${r.ciclo?`<div class="ciclo">${esc(r.ciclo)}</div>`:""}
     ${estadoBox(r)}
     <div class="rows">
-     <div class="row"><span class="ic">📅</span><div><div class="v">${esc(fmt(r.fecha,{weekday:"long",day:"numeric",month:"long"}))}</div><div class="s">${r.hora?`${esc(r.hora)} h${r.hora_pagina?` · según <a href="${esc(r.hora_pagina.url)}" target="_blank" rel="noopener">${esc(r.hora_pagina.nombre)}</a>`:""}`:h?"Hora por confirmar: las webs no coinciden":r.hora_estimada?`Hacia las ${esc(r.hora_estimada.hora)} h (estimada)`:"Hora sin indicar"}</div>${(r.hora_descartada||[]).map(d=>`<div class="s nrm-alt">${esc(d.fuentes.map(x=>x.split(" (")[0]).join(", "))} dice ${esc(d.valor)}: ${esc(d.motivo)}</div>`).join("")}${siFalta(r,"hora")}</div></div>
-     <div class="row"><span class="ic">📍</span><div><div class="v">${r.sala?salasLinks(r):"Sala sin indicar"}</div><div class="s">${esc(r.municipio||"")} · <a href="${esc(mapa)}" target="_blank" rel="noopener">Cómo llegar</a>${sala&&sala.web?` · <a href="${esc(sala.web)}" target="_blank" rel="noopener">Web de la sala</a>`:""}</div></div></div>
-     <div class="row"><span class="ic">🎟️</span><div>${r.precio?`<div class="v">${esc(precioTxt(r.precio))}</div><div class="s">según ${r.precio_fuente?`<a href="${esc(r.precio_fuente.url)}" target="_blank" rel="noopener">${esc(r.precio_fuente.nombre.split(" (")[0])}</a>`:"la web"} · ${r.precio_fuente&&r.precio_fuente.gastos?"con gastos de gestión":"puede no incluir gastos"}</div>`:(r._full?`<div class="v muted">Precio sin indicar</div>`:`<div class="v muted carg">Cargando…</div>`)}${siFalta(r,"precio")}</div></div>
+     <div class="row"><span class="ic">📅</span><div><div class="v">${esc(fmt(r.fecha,{weekday:"long",day:"numeric",month:"long"}))}</div><div class="s">${r.hora?`${esc(r.hora)} h${r.hora_pagina?` · según <a href="${hr(r.hora_pagina.url)}" target="_blank" rel="noopener">${esc(r.hora_pagina.nombre)}</a>`:""}`:h?"Hora por confirmar: las webs no coinciden":r.hora_estimada?`Hacia las ${esc(r.hora_estimada.hora)} h (estimada)`:"Hora sin indicar"}</div>${(r.hora_descartada||[]).map(d=>`<div class="s nrm-alt">${esc(d.fuentes.map(x=>x.split(" (")[0]).join(", "))} dice ${esc(d.valor)}: ${esc(d.motivo)}</div>`).join("")}${siFalta(r,"hora")}</div></div>
+     <div class="row"><span class="ic">📍</span><div><div class="v">${r.sala?salasLinks(r):"Sala sin indicar"}</div><div class="s">${esc(r.municipio||"")} · <a href="${hr(mapa)}" target="_blank" rel="noopener">Cómo llegar</a>${sala&&sala.web?` · <a href="${hr(sala.web)}" target="_blank" rel="noopener">Web de la sala</a>`:""}</div></div></div>
+     <div class="row"><span class="ic">🎟️</span><div>${r.precio?`<div class="v">${esc(precioTxt(r.precio))}</div><div class="s">según ${r.precio_fuente?`<a href="${hr(r.precio_fuente.url)}" target="_blank" rel="noopener">${esc(r.precio_fuente.nombre.split(" (")[0])}</a>`:"la web"} · ${r.precio_fuente&&r.precio_fuente.gastos?"con gastos de gestión":"puede no incluir gastos"}</div>`:(r._full?`<div class="v muted">Precio sin indicar</div>`:`<div class="v muted carg">Cargando…</div>`)}${siFalta(r,"precio")}</div></div>
     </div>
     <div class="actions">
-     ${comprar?`<a class="lbtn primary" id="comprar" href="${esc(comprar.url)}" target="_blank" rel="noopener">${agotado?"Agotado · ver en":"Comprar entradas en"} ${esc(comprar.nombre)} ↗</a>`:""}
-     ${entradas&&(!comprar||entradas!==comprar.url)?`<a class="lbtn${comprar?"":" primary"}" href="${esc(entradas)}" target="_blank" rel="noopener">${r.confirmado_sala?"Ver en la web de la sala":comprar?"Ver el anuncio":"Ver anuncio y entradas"} ↗</a>`:""}
+     ${comprar?`<a class="lbtn primary" id="comprar" href="${hr(comprar.url)}" target="_blank" rel="noopener">${agotado?"Agotado · ver en":"Comprar entradas en"} ${esc(comprar.nombre)} ↗</a>`:""}
+     ${entradas&&(!comprar||entradas!==comprar.url)?`<a class="lbtn${comprar?"":" primary"}" href="${hr(entradas)}" target="_blank" rel="noopener">${r.confirmado_sala?"Ver en la web de la sala":comprar?"Ver el anuncio":"Ver anuncio y entradas"} ↗</a>`:""}
      <button class="lbtn favbtn" id="fav" aria-pressed="${esFav(r.id)}">${esFav(r.id)?"★ En Mis conciertos":"☆ Guardar"}</button><button class="lbtn" id="ics">📅 Al calendario</button><button class="lbtn" id="share">↗ Compartir</button>
     </div>
     ${confianzaHTML(r)}
@@ -1199,10 +1204,10 @@ function viewConcierto(){
     ${historialHTML(r)}
     ${similaresHTML(r)}
     <h3 class="sec">Escuchar y saber más</h3>
-    <div class="links">${enlaces.map(e=>`<a class="lbtn" href="${esc(e.url)}" target="_blank" rel="noopener">${esc(e.nombre)}</a>`).join("")}</div>
+    <div class="links">${enlaces.map(e=>`<a class="lbtn" href="${hr(e.url)}" target="_blank" rel="noopener">${esc(e.nombre)}</a>`).join("")}</div>
     ${f&&f.perfil?`<p class="muted">${esc(f.perfil)} <span class="hint">(Discogs)</span></p>`:""}
     <details class="more"${r.estado==="conflicto"?" open":""}><summary>De dónde salen los datos (${plural(fuentes.length,"web")})</summary>
-      <ul>${fuentes.map(x=>`<li><a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.nombre)}</a></li>`).join("")}</ul>
+      <ul>${fuentes.map(x=>`<li><a href="${hr(x.url)}" target="_blank" rel="noopener">${esc(x.nombre)}</a></li>`).join("")}</ul>
       ${f&&f.identidad?`<div class="hint">Artista identificado por: ${esc(f.identidad)}</div>`:""}
       ${resueltos.length?`<div class="hint">${resueltos.map(esc).join("<br>")}</div>`:""}
       ${avisos.length?`<div class="hint">${avisos.map(esc).join("<br>")}</div>`:""}
@@ -1234,7 +1239,7 @@ const CAMBIO_TXT={hora:"Hora cambiada",fecha:"Fecha cambiada",sala:"Sala cambiad
 function cambioMini(r){ const t=!r.evento&&!r.estado_evento&&CAMBIO_TXT[r.cambio]; return t?`<span class="st st-camb">${esc(t.toLowerCase())}</span>`:""; }
 const diaCorto=f=>fmt(f,{day:"numeric",month:"short"});
 function lineaCambio(c){
-  const de=c.url?` según <a href="${esc(c.url)}" target="_blank" rel="noopener">${esc(c.fuente||"la web")}</a>`:c.fuente?` según ${esc(c.fuente)}`:"";
+  const de=c.url?` según <a href="${hr(c.url)}" target="_blank" rel="noopener">${esc(c.fuente||"la web")}</a>`:c.fuente?` según ${esc(c.fuente)}`:"";
   const ab=(a,b)=>`<s>${esc(a)}</s> → <b>${esc(b)}</b>`;
   switch(c.campo){
     case "hora": return `Hora: ${ab(c.antes,c.despues)}`;
@@ -1262,7 +1267,7 @@ let salasPend=null;
 function cargarSalas(){ return salasPend=salasPend||fetch("data/salas.json",{cache:"no-cache"}).then(x=>{if(!x.ok) throw new Error(x.status); return x.json();}).then(d=>SALASJ=d).catch(()=>{salasPend=null; return null;}); }
 const partesSala=s=>String(s||"").split(" / ").map(x=>x.trim()).filter(Boolean);
 const hrefSala=n=>`#sala/${encodeURIComponent(n)}`;
-function salasLinks(r){ return partesSala(r.sala).map(n=>`<a href="${esc(hrefSala(n))}">${esc(n)}</a>`).join(" / "); }
+function salasLinks(r){ return partesSala(r.sala).map(n=>`<a href="${hr(hrefSala(n))}">${esc(n)}</a>`).join(" / "); }
 function infoSala(n){ return SALASJ&&SALASJ.salas.find(s=>s.nombre===n)||null; }
 const conciertosSala=n=>DATA.filter(r=>r.fecha>=HOY&&partesSala(r.sala).includes(n));
 // suscribirse: el enlace webcal:// abre la app de calendario del móvil o del ordenador (Apple, Outlook…); Google
@@ -1274,7 +1279,7 @@ function abrirSuscribir(nombre,ruta){
     <h3 id="sust">Suscribirse: ${esc(nombre)}</h3>
     <p class="muted" style="margin:4px 0 12px">Los conciertos aparecen en tu calendario y se actualizan solos (cada pocas horas): los nuevos se añaden, los cambios de hora o de fecha se corrigen y los cancelados se marcan.</p>
     <div class="susc">
-     <a class="lbtn" href="${esc(webcal)}">Apple Calendar · iPhone · Mac</a>
+     <a class="lbtn" href="${hr(webcal)}">Apple Calendar · iPhone · Mac</a>
      <a class="lbtn" href="https://calendar.google.com/calendar/render?cid=${encodeURIComponent(webcal)}" target="_blank" rel="noopener">Google Calendar ↗</a>
      <a class="lbtn" href="https://outlook.live.com/calendar/0/addfromweb?url=${encodeURIComponent(https)}&name=${encodeURIComponent(nombre)}" target="_blank" rel="noopener">Outlook ↗</a>
      <button class="lbtn" id="suscopia">Copiar el enlace</button>
@@ -1295,12 +1300,12 @@ function viewSala(){
   const m={}; l.forEach(r=>(m[r.fecha]=m[r.fecha]||[]).push(r));
   const origen=i?(i.oficial?`Leemos su web oficial (${esc(i.oficial.replace(/\s*\(web oficial\)/,""))}); sus conciertos se cruzan además con ${plural(Math.max(0,i.fuentes.length-1),"agenda")}.`
       :`No leemos la web de esta sala: sus conciertos salen de ${i.fuentes.length>1?"agendas generales":"una agenda general"} (${esc(i.fuentes.slice(0,4).map(f=>f.nombre).join(", "))}).`):"";
-  return `<a class="back" href="${esc(volver)}">‹ Volver</a>
+  return `<a class="back" href="${hr(volver)}">‹ Volver</a>
    <div class="sala-h"><h2>${esc(n)}</h2><div class="muted">${esc(muni)}${muni?" · ":""}${plural(l.length,"concierto próximo","conciertos próximos")}</div></div>
    <div class="actions">
     ${i&&i.ics?`<button class="lbtn primary" data-sus="${esc(i.ics)}" data-susn="${esc(n)}">📅 Suscribirse a su calendario</button>`:""}
-    <a class="lbtn" href="${esc(mapa)}" target="_blank" rel="noopener">Cómo llegar ↗</a>
-    ${web?`<a class="lbtn" href="${esc(web)}" target="_blank" rel="noopener">Web de la sala ↗</a>`:""}
+    <a class="lbtn" href="${hr(mapa)}" target="_blank" rel="noopener">Cómo llegar ↗</a>
+    ${web?`<a class="lbtn" href="${hr(web)}" target="_blank" rel="noopener">Web de la sala ↗</a>`:""}
    </div>
    ${origen?`<p class="hint">${origen}</p>`:""}
    ${Object.keys(m).sort().map(f=>`<section class="dia">${dayHead(f,m[f].length)}${m[f].map(card).join("")}</section>`).join("")||`<p class="empty">No tiene conciertos anunciados.</p>`}`;
@@ -1308,7 +1313,7 @@ function viewSala(){
 let salQ="";
 function filasSalas(){
   const q=norm(salQ.trim()), l=(SALASJ?SALASJ.salas:[]).filter(s=>!q||norm(s.nombre+" "+(s.municipio||"")).includes(q)).sort((a,b)=>b.conciertos-a.conciertos||a.nombre.localeCompare(b.nombre,"es"));
-  return l.map(s=>`<a class="srow" href="${esc(hrefSala(s.nombre))}"><div><b>${esc(s.nombre)}</b><small>${esc(s.municipio||"")}${s.municipio?" · ":""}${plural(s.conciertos,"concierto")}${s.oficial?" · web oficial leída":""}</small></div><span class="chev" aria-hidden="true">›</span></a>`).join("")||`<p class="empty">Ninguna sala con «${esc(salQ)}».</p>`;
+  return l.map(s=>`<a class="srow" href="${hr(hrefSala(s.nombre))}"><div><b>${esc(s.nombre)}</b><small>${esc(s.municipio||"")}${s.municipio?" · ":""}${plural(s.conciertos,"concierto")}${s.oficial?" · web oficial leída":""}</small></div><span class="chev" aria-hidden="true">›</span></a>`).join("")||`<p class="empty">Ninguna sala con «${esc(salQ)}».</p>`;
 }
 function viewSalas(){
   if(!SALASJ) return `<p class="empty">No se pudo cargar la lista de salas. Comprueba la conexión.</p>`;
@@ -1334,7 +1339,7 @@ function salasBuscadas(){
   const q=norm(state.q.trim()); if(q.length<3) return "";
   const c={}; DATA.forEach(r=>{ if(r.fecha>=HOY) partesSala(r.sala).forEach(n=>{ if(norm(n).includes(q)) c[n]=(c[n]||0)+1; }); });
   const l=Object.entries(c).sort((a,b)=>b[1]-a[1]).slice(0,6);
-  return l.length?`<div class="salasb">${l.map(([n,k])=>`<a class="lbtn" href="${esc(hrefSala(n))}">📍 ${esc(n)} <small>${k}</small></a>`).join("")}</div>`:"";
+  return l.length?`<div class="salasb">${l.map(([n,k])=>`<a class="lbtn" href="${hr(hrefSala(n))}">📍 ${esc(n)} <small>${k}</small></a>`).join("")}</div>`:"";
 }
 // ---------------------------------------------------------------- vistas de calendario
 function navHTML(prev,next,title,lblPrev,lblNext,esHoy){
@@ -1492,7 +1497,7 @@ function fuMetrica(v,lbl,tip){ return v===null||v===undefined?"":`<div class="fm
 function fuCard(f){
   const [cls,txt,det]=fuEstado(f), cat=FU_CAT[f.tipo]||["agreg",f.tipo], m=f.metricas||{};
   return `<article class="fu" data-cat="${cat[0]}">
-   <div class="fuh"><a class="fun" href="${esc(f.url)}" target="_blank" rel="noopener">${esc(f.nombre)}</a><span class="pill p-${cls}">${esc(txt)}</span></div>
+   <div class="fuh"><a class="fun" href="${hr(f.url)}" target="_blank" rel="noopener">${esc(f.nombre)}</a><span class="pill p-${cls}">${esc(txt)}</span></div>
    <div class="fus">${esc(cat[1])} · prioridad ${f.prioridad}${f.segundos?` · leída en ${Math.round(f.segundos)} s`:""}</div>
    ${fuSalud(f)}
    <div class="fmets"><div class="fm"><b>${f.conciertos}</b><span>conciertos</span></div><div class="fm" title="Conciertos que solo anuncia esta web"><b>${f.solo_en_esta}</b><span>solo aquí</span></div>
@@ -1542,7 +1547,7 @@ function viewFuentes(){
    <details class="more"><summary>Webs probadas y descartadas (${Object.keys(INFORME.no_usar||{}).length})</summary><ul>${no}</ul></details>`;
 }
 function fuSalaSin(x){
-  return `<li><span><b>${esc(x.sala)}</b>${x.municipio&&x.municipio!=="Madrid"?` · ${esc(x.municipio)}`:""}${x.motivo?`<small>${esc(x.motivo)}</small>`:x.web?`<small><a href="${esc(x.web)}" target="_blank" rel="noopener">${esc(x.web.replace(/^https?:\/\//,"").replace(/\/$/,""))}</a></small>`:""}</span><em>${x.conciertos}</em></li>`;
+  return `<li><span><b>${esc(x.sala)}</b>${x.municipio&&x.municipio!=="Madrid"?` · ${esc(x.municipio)}`:""}${x.motivo?`<small>${esc(x.motivo)}</small>`:x.web?`<small><a href="${hr(x.web)}" target="_blank" rel="noopener">${esc(x.web.replace(/^https?:\/\//,"").replace(/\/$/,""))}</a></small>`:""}</span><em>${x.conciertos}</em></li>`;
 }
 function fuChips(){
   return FU_FILTROS.map(([k,l])=>`<button class="chip" data-fu="${k}" aria-pressed="${fuF===k}">${esc(l)}${k==="mal"?` <span class="cnt">${INFORME.fuentes.filter(fuMal).length}</span>`:""}</button>`).join("");

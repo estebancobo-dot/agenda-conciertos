@@ -116,11 +116,6 @@ Todo funciona sin claves. Con ellas, algunas webs dejan hacer más consultas o d
 3. Copia la **API key**. No hace falta el *Shared secret*.
 4. Guárdala en GitHub con el nombre `LASTFM_KEY`.
 
-**3. `TICKETMASTER_KEY` (baja prioridad).** Solo en torno al 4 % de los conciertos que publican las agendas enlazan a Ticketmaster. Casi todos son en salas grandes (La Riviera, Movistar Arena, But, Wagon), que ya se leen desde sus webs oficiales. Serviría para confirmar horas y precios en esas salas.
-1. Crea una cuenta en https://developer-acct.ticketmaster.com/user/register.
-2. En **My Apps** abre la app que se crea automáticamente y copia la **Consumer Key**.
-3. Guárdala en GitHub con el nombre `TICKETMASTER_KEY`.
-
 ## Fuentes
 
 La lista completa, con su tipo, fiabilidad y cómo fue la última ejecución, está en la pestaña **Fuentes** de la web y en `data/informe.json`. Notas:

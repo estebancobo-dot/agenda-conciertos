@@ -130,3 +130,28 @@ def test_la_hora_descartada_sigue_a_la_vista_en_la_ficha(js):
               "hora_descartada:[{valor:'21:00',fuentes:['Songkick Madrid'],motivo:'Songkick Madrid coincide con la web de "
               "la sala en el 40 % de los conciertos'}]};state.id='h1';return viewConcierto()})()")
     assert "Songkick Madrid dice 21:00: Songkick Madrid coincide con la web de la sala en el 40 % de los conciertos" in html
+
+
+def test_enlaces_seguros(js):
+    """Un enlace leído de una web ajena nunca puede ejecutar código al pulsarlo: solo pasan http(s), webcal,
+    mailto y las rutas de la propia web."""
+    for malo in ("javascript:alert(1)", " JavaScript:alert(1)", "java\tscript:alert(1)", "\u0001javascript:x",
+                 "data:text/html,<script>alert(1)</script>", "vbscript:x", "file:///etc/passwd"):
+        assert js("u=>urlSegura(u)", malo) == "#", malo
+    for bueno in ("https://sala.es/e?a=1&b=2", "http://x.es", "webcal://x/y.ics", "mailto:a@b.es", "#concierto/7",
+                  "data/salas.json", "/agenda"):
+        assert js("u=>urlSegura(u)", bueno) == bueno, bueno
+    assert js("hr('javascript:alert(\"x\")')") == "#"
+    assert js("hr('https://x.es/?a=1&b=\"2\"')") == "https://x.es/?a=1&amp;b=&quot;2&quot;"
+
+
+def test_politica_de_contenido():
+    """La política de seguridad del contenido está y no deja cargar scripts ni conectarse fuera de la web."""
+    html = Path(WEB.removeprefix("file://")).read_text(encoding="utf-8")
+    import re
+    m = re.search(r'http-equiv="Content-Security-Policy" content="([^"]+)"', html)
+    assert m
+    reglas = dict((p.split()[0], p.split()[1:]) for p in m.group(1).split(";") if p.strip())
+    assert reglas["default-src"] == ["'self'"] and reglas["connect-src"] == ["'self'"]
+    assert reglas["script-src"] == ["'self'", "'unsafe-inline'"]
+    assert reglas["object-src"] == ["'none'"] and reglas["base-uri"] == ["'none'"]

@@ -1,5 +1,10 @@
 # Versiones
 
+## 2.89.0 — 2026-10-10
+
+- **Seguridad**: los enlaces que vienen de las webs leídas (entradas, salas, fuentes, fotos…) solo se abren si son http(s), webcal, mailto o de la propia agenda; uno con «javascript:» u otro esquema raro se queda en «#» y no hace nada. La web declara una política de seguridad del contenido: solo ejecuta su propio código, solo pide datos a sí misma y no admite formularios ni plugins; las fotos pueden seguir viniendo de cualquier web.
+- Quitada la clave de Ticketmaster del trabajo de actualización y del README: no se usa.
+
 ## 2.88.1 — 2026-10-10
 
 - Hoja de filtros más corta tras añadir el precio (2.142 → 1.978 px en el móvil; la validación avisa por encima de 2.000): las explicaciones de la confirmación y del origen, plegadas («¿Qué significa?»); la ayuda de los géneros, en una línea; y el recuento de precios conocidos se calcula una sola vez.

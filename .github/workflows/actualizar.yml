@@ -67,7 +67,6 @@ jobs:
           # Claves gratuitas opcionales (Settings → Secrets and variables → Actions). Sin ellas funciona igual.
           DISCOGS_TOKEN: ${{ secrets.DISCOGS_TOKEN }}
           LASTFM_KEY: ${{ secrets.LASTFM_KEY }}
-          TICKETMASTER_KEY: ${{ secrets.TICKETMASTER_KEY }}
         run: |
           if [ "${{ github.event.schedule }}" = "20 1 * * *" ]; then
             # solo Madrid en Vivo (las demás entran con su última lectura) y fichas de sus artistas nuevos
