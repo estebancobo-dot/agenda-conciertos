@@ -96,3 +96,13 @@ def test_sin_navegador_avisa(monkeypatch):
     with pytest.raises(RenderNoDisponible):
         n._arrancar()
     assert n._browser is None
+
+
+def test_paginas_pedidas_desde_hilos_distintos(sitio, nav):
+    """Como en la lectura: cada fuente en su hilo (Festify abre el navegador en el suyo; Intruso y Moe lo usan desde
+    otro). Antes fallaba con "Cannot switch to a different thread" (8-10/10/2026)."""
+    from concurrent.futures import ThreadPoolExecutor
+    base, _ = sitio
+    with ThreadPoolExecutor(max_workers=3) as ex:
+        htmls = list(ex.map(lambda _: nav.html(base + "/agenda", esperar="#s"), range(3)))
+    assert all("Muse 12/10" in h for h in htmls)

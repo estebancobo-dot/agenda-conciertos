@@ -154,12 +154,15 @@ def articulo_agenda_parse(html: str, page_url: str, today: date) -> list:
 
 
 def metalsymphony(ctx: Ctx):
-    """El artículo de agenda de temporada más reciente."""
-    s = ctx.soup("https://www.metalsymphony.com/agenda/")
+    """El artículo de agenda de temporada más reciente. Se busca en las primeras páginas de su agenda: las noticias
+    nuevas lo van empujando (el 8/10/2026 salió de la primera y la fuente dejó de dar conciertos)."""
     art = None
-    for a in s.find_all("a", href=True):
-        if re.search(r"metalsymphony\.com/conciertos-de-rock-y-metal-en-espana-[a-z0-9-]+/?$", a["href"]):
-            art = a["href"]
+    for n in range(1, 5):
+        s = ctx.soup("https://www.metalsymphony.com/agenda/" + (f"page/{n}/" if n > 1 else ""))
+        art = next((a["href"] for a in s.find_all("a", href=True)
+                    if re.search(r"metalsymphony\.com/conciertos-de-rock-y-metal-en-espana-[a-z0-9-]+/?$", a["href"])),
+                   None)
+        if art:
             break
     if not art:
         ctx.errors.append("no se encontró el artículo de agenda de temporada")

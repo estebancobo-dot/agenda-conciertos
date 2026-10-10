@@ -156,6 +156,19 @@ def test_todoheavymetal():
     assert (e.sala, e.ciudad) == ("Sala Silikona", "Madrid") and e.invitados == ["TRIUMPHER", "CRIMSON COVEN"]
 
 
+def test_metalsymphony_busca_el_articulo_en_las_primeras_paginas():
+    from scraper.sources.base import Ctx
+    from tests.fakefetch import FakeFetcher
+    art = "https://www.metalsymphony.com/conciertos-de-rock-y-metal-en-espana-otono-2026/"
+    portada = '<a href="https://www.metalsymphony.com/striker-espana-2027-udo/">Striker</a>'
+    ff = FakeFetcher({"https://www.metalsymphony.com/agenda/": lambda u, k: portada,
+                      "https://www.metalsymphony.com/agenda/page/2/": lambda u, k: f'<a href="{art}">Agenda otoño</a>',
+                      art: lambda u, k: html("metalsymphony_art")})
+    evs = list(otras.metalsymphony(Ctx(ff, HOY, date(2027, 3, 1))))
+    assert uno(evs, "2026-10-17", "Hällas").sala == "Sala Nazca"
+    assert "https://www.metalsymphony.com/agenda/page/3/" not in ff.urls  # en cuanto lo encuentra, no sigue
+
+
 def test_metalsymphony_articulo():
     evs = otras.articulo_agenda_parse(html("metalsymphony_art"), "u", HOY)
     assert uno(evs, "2026-10-17", "Hällas").sala == "Sala Nazca"

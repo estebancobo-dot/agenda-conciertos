@@ -1,5 +1,11 @@
 # Versiones
 
+## 2.79.0 — 2026-10-10
+
+- **Intruso y Moe** dejaban de leerse en algunas lecturas desde el 8/10 («Cannot switch to a different thread»): el navegador real lo abría el hilo de otra fuente (Festify) y Playwright solo deja usarlo desde ese hilo. Ahora todo lo del navegador va por un hilo propio, venga de donde venga la petición. Prueba nueva: tres páginas pedidas a la vez desde hilos distintos (con el código anterior fallaba igual que en la lectura).
+- **Metal Symphony** dejó de dar conciertos el 8/10: su artículo de agenda de temporada (otoño 2026) sigue publicado, pero las noticias nuevas lo sacaron de la primera página de su agenda. Ahora se busca en las cuatro primeras páginas (en cuanto aparece, no se sigue).
+- Pruebas de las **funciones de la web** una a una, en un navegador sin pantalla y sin datos: origen (lo deducido nunca cuenta como internacional), hora de la tarjeta, búsqueda sin tildes, precio, iniciales, fechas con cambio de hora, año y bisiesto, fotos, preajuste y filtro de géneros (con teloneros y etiquetas genéricas), etiquetas de estilo, y que nada de lo que viene de las webs se cuele como HTML en la tarjeta.
+
 ## 2.78.0 — 2026-10-10
 
 - Pruebas **sin red**: cualquier intento de una prueba de conectar o de resolver un nombre fuera de esta máquina falla en el acto (tests/conftest.py). Dos pruebas salían a internet sin querer (la del recorrido completo y la de Madrid en Vivo leída aparte) y pasaban porque la red fallaba; ahora usan un lector falso. Las pruebas tardan un tercio.
