@@ -1,5 +1,12 @@
 # Versiones
 
+## 2.82.0 — 2026-10-10
+
+- Web: **pasar al periodo siguiente o anterior desde la lista**. Al final de la semana, el fin de semana o el día, un botón grande «Semana siguiente · 19–25 oct · 189 conciertos ›» (con los filtros de ahora); al principio, «‹ Semana anterior», solo si no es pasado. En el mes, «Día siguiente» bajo la lista del día (y al acabar el mes, el primer día del siguiente). Más allá de lo anunciado no se ofrece: no lleva a listas vacías.
+- Ordenador: las flechas **← →** del teclado cambian de día, semana, fin de semana o mes (no mientras se escribe, ni con la hoja de filtros o el menú abiertos).
+- Móvil: la primera vez, un aviso «Desliza ← → para cambiar de semana» (deslizar ya funcionaba, pero no se veía en ningún sitio).
+- La lista del día en la vista Mes usa ahora el modo de vista elegido (compacta o cuadrícula); se quedaba siempre en lista.
+
 ## 2.81.0 — 2026-10-10
 
 - Filtros: botón **«Más géneros»**, junto a «Rock, pop y afines» (en la fila de géneros y en la hoja de filtros): deja solo los géneros que no son rock — jazz y swing, soul, funk y R&B, flamenco y copla, urbana y hip hop, latina, electrónica, clásica y lírica, reggae, músicas del mundo y pop comercial. No incluye los tributos (casi siempre de rock) ni musicales, espectáculos u «Otros» (no son géneros de música). Tocarlo otra vez vuelve a lo de por defecto.

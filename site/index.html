@@ -202,6 +202,13 @@ input[type=search]::-webkit-search-cancel-button{display:none}
 .phd{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:6px}
 .phd a{min-height:44px;display:inline-flex;align-items:center}
 .phd button{width:44px;height:44px;border:1px solid var(--line);border-radius:10px;background:var(--panel);color:var(--ink);font-size:1.1rem}
+/* periodo siguiente al final de la lista (grande, donde acaba el pulgar) y anterior al principio (discreto) */
+.paso{display:flex;flex-wrap:wrap;align-items:center;gap:2px 8px;width:100%;text-align:left;border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:var(--radius);font:inherit;cursor:pointer}
+.paso.sig{margin:16px 0 4px;padding:14px 16px;box-shadow:var(--shadow);position:relative;padding-right:40px}
+.paso.sig b{font-size:1.02rem}.paso span{color:var(--muted);font-size:.86rem}
+.paso.sig i{position:absolute;right:14px;top:50%;transform:translateY(-50%);font-style:normal;font-size:1.5rem;color:var(--muted)}
+.paso.ant{margin:8px 0 0;padding:10px 12px;min-height:44px;background:none;border-style:dashed;font-size:.9rem}
+.paso.ant b{font-weight:600}
 .card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--gc,var(--c-sin))}
 .thumb{flex:0 0 60px;width:60px;height:60px;border-radius:10px;object-fit:cover;background:var(--panel2);display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--muted);font-size:1.1rem;overflow:hidden}
 .cbody{flex:1;min-width:0}
@@ -1343,7 +1350,7 @@ function viewMes(){
 function listaMes(bd){
   const f=state.date, l=bd[f]||[];
   return `<section class="dia" data-f="${f}">${dayHead(f,l.length," mhead")}`+
-    (l.length?l.map(card).join(""):vacioHTML(DATA.filter(r=>r.fecha===f&&pasaTexto(r)).length,"este día"))+`</section>`;
+    (l.length?`<div class="cards">${l.map(r=>card(r,modoLista())).join("")}</div>`:vacioHTML(DATA.filter(r=>r.fecha===f&&pasaTexto(r)).length,"este día"))+`</section>`+pasoHTML(1);
 }
 function elegirDiaMes(f){
   if(parse(f).getMonth()!==parse(state.date).getMonth()) return;
@@ -1351,7 +1358,7 @@ function elegirDiaMes(f){
   state.date=f; nImg=0;
   document.querySelectorAll("[data-mdia]").forEach(b=>{const on=b.dataset.mdia===f; b.classList.toggle("sel",on); b.setAttribute("aria-pressed",on);});
   const ml=document.getElementById("mlista"); ml.innerHTML=listaMes(byDate());
-  observarImagenes(ml); setHash(); precargar();
+  observarImagenes(ml); setHash(); precargar(); enlazarPasos(ml);
   const h=ml.querySelector(".mhead"); h.classList.remove("flash"); void h.offsetWidth; h.classList.add("flash");
   const sec=ml.querySelector(".dia"); if(sec.getBoundingClientRect().top>innerHeight*0.55) sec.scrollIntoView({behavior:"smooth",block:"start"});
   medir("mes-dia",t0); rum("lista",performance.now()-t0);
@@ -1360,11 +1367,27 @@ function elegirDiaMes(f){
 // Las semanas tienen hasta 200+ conciertos: se pintan ya los ~30 primeros y el resto de días justo después, para
 // que la lista aparezca al instante. Al volver de un concierto se pinta todo de golpe (hay que recolocar la lista).
 let DIFERIDOS=null, pintarTodo=false;
+// Al final de la lista, el periodo siguiente (con cuántos conciertos tiene con los filtros de ahora); al principio,
+// el anterior si no es pasado. Es lo mismo que las flechas ‹ › y deslizar, pero donde acaba el pulgar.
+const rango=(a,b)=>parse(a).getMonth()===parse(b).getMonth()?`${parse(a).getDate()}–${fmt(b,{day:"numeric",month:"short"})}`
+  :`${fmt(a,{day:"numeric",month:"short"})} – ${fmt(b,{day:"numeric",month:"short"})}`;
+const ULTIMO=()=>DATA.reduce((m,r)=>r.fecha>m?r.fecha:m,"");
+function pasoHTML(sentido){
+  const bd=byDate(), n=state.tab==="Semana"||state.tab==="Finde"?7:1;
+  let ini, fin, nombre;
+  if(state.tab==="Semana"){ ini=addDays(mondayOf(state.date),sentido*7); fin=addDays(ini,6); nombre=sentido>0?"Semana siguiente":"Semana anterior"; }
+  else if(state.tab==="Finde"){ ini=addDays(viernesDe(state.date),sentido*7); fin=addDays(ini,2); nombre=sentido>0?"Fin de semana siguiente":"Fin de semana anterior"; }
+  else { ini=fin=addDays(state.date,sentido); nombre=sentido>0?"Día siguiente":"Día anterior"; }
+  if(fin<HOY||ini>ULTIMO()) return "";  // ni pasado ni más allá de lo anunciado
+  let c=0; for(let f=ini;f<=fin;f=addDays(f,1)) c+=(bd[f]||[]).length;
+  const cuando=ini===fin?mayus(fmt(ini,{weekday:"long",day:"numeric",month:"long"})):rango(ini,fin);
+  return `<button type="button" class="paso ${sentido>0?"sig":"ant"}" data-paso="${sentido*n}">${sentido>0?"":"‹ "}<b>${nombre}</b><span>${esc(cuando)} · ${plural(c,"concierto")}</span>${sentido>0?"<i aria-hidden=\"true\">›</i>":""}</button>`;
+}
 function viewSemana(){
   const mon=mondayOf(state.date); const bd=byDate(); const dias=[0,1,2,3,4,5,6].map(i=>addDays(mon,i));
   const total=dias.reduce((n,f)=>n+(bd[f]||[]).length,0), out=listaDias(dias,bd,pintarTodo?addDays(mon,6):null);
   return navHTML(-7,7,`${esc(fmt(mon,{day:"numeric",month:"short"}))} – ${esc(fmt(addDays(mon,6),{day:"numeric",month:"short"}))}<div class="hint" style="font-weight:500">${plural(total,"concierto")}</div>`,"Semana anterior","Semana siguiente",false)+
-    `<div class="stickystrip">${stripHTML(mon,bd,"jump")}</div><div id="swipe">`+(out||vacioHTML(DATA.filter(r=>r.fecha>=mon&&r.fecha<=addDays(mon,6)&&pasaTexto(r)).length,"esta semana"))+`</div>`;
+    `<div class="stickystrip">${stripHTML(mon,bd,"jump")}</div><div id="swipe">`+pasoHTML(-1)+(out||vacioHTML(DATA.filter(r=>r.fecha>=mon&&r.fecha<=addDays(mon,6)&&pasaTexto(r)).length,"esta semana"))+pasoHTML(1)+`</div>`;
 }
 // lista de días con pintado progresivo: los primeros ~30 conciertos ya; el resto de días, huecos con su alto
 // aproximado que se pintan al acercarse (completarDiferidos). `hasta`: pintar ya todos hasta ese día (al volver de
@@ -1385,7 +1408,7 @@ function viewFinde(){
   const op=vie.slice(0,4)!==dom.slice(0,4)||dom.slice(0,4)!==HOY.slice(0,4)?{day:"numeric",month:"short",year:"numeric"}:{day:"numeric",month:"short"};
   const out=listaDias([0,1,2].map(i=>addDays(vie,i)),bd,pintarTodo?dom:null);
   return navHTML(-7,7,`Fin de semana<div class="hint" style="font-weight:500">${esc(fmt(vie,{weekday:"short",...op}))} – ${esc(fmt(dom,{weekday:"short",...op}))} · ${plural(total,"concierto")}</div>`,"Fin de semana anterior","Fin de semana siguiente",false)+
-    `<div class="stickystrip">${stripHTML(vie,bd,"jump",3)}</div><div id="swipe">`+(out||vacioHTML(DATA.filter(r=>r.fecha>=vie&&r.fecha<=dom&&pasaTexto(r)).length,"este fin de semana"))+`</div>`;
+    `<div class="stickystrip">${stripHTML(vie,bd,"jump",3)}</div><div id="swipe">`+pasoHTML(-1)+(out||vacioHTML(DATA.filter(r=>r.fecha>=vie&&r.fecha<=dom&&pasaTexto(r)).length,"este fin de semana"))+pasoHTML(1)+`</div>`;
 }
 // Todos: todos los conciertos desde hoy en una sola lista (con los filtros y la búsqueda), con saltos por meses
 function viewTodos(){
@@ -1403,7 +1426,7 @@ function viewDia(){
   const bd=byDate(), mon=mondayOf(state.date);
   return navHTML(-1,1,`${esc(fmt(state.date,{month:"long",year:"numeric"}))}`,"Día anterior","Día siguiente",state.date===HOY)+
     `<div class="stickystrip">${stripHTML(mon,bd,"sel")}</div>`+
-    `<div id="swipe">${dayList(state.date,bd[state.date]||[])}</div>`;
+    `<div id="swipe">${pasoHTML(-1)}${dayList(state.date,bd[state.date]||[])}${pasoHTML(1)}</div>`;
 }
 // la búsqueda mira en todos los géneros (quien busca «jazz» o un artista concreto quiere encontrarlo); el origen y la
 // confirmación elegidos sí se respetan
@@ -1938,6 +1961,15 @@ function bindFicha(r){
       ca.addEventListener("scroll",()=>requestAnimationFrame(marcar),{passive:true});
       dots.forEach(d=>d.onclick=()=>ca.scrollTo({left:Number(d.dataset.slide)*ca.clientWidth,behavior:"smooth"})); }
 }
+function enlazarPasos(raiz){
+  (raiz||document).querySelectorAll("#main [data-paso]").forEach(b=>b.onclick=()=>{
+    const n=Number(b.dataset.paso);
+    if(state.tab==="Mes"){ const f=addDays(state.date,n);
+      if(parse(f).getMonth()===parse(state.date).getMonth()){ elegirDiaMes(f); return; }
+      state.date=f; irAFecha(f,n); return; }
+    navegar(n);
+  });
+}
 function bindBody(){
   if(state.tab==="Fuentes") bindFuentes();
   if(["Sala","Salas","Calendarios"].includes(state.tab)) bindSalas();
@@ -1949,6 +1981,7 @@ function bindBody(){
     if(el&&el._pintar){ el._pintar(); el=document.getElementById("d-"+b.dataset.jump); }
     if(el) irA(el); else toast("Ese día no hay conciertos con estos filtros");});
   document.querySelectorAll("#main [data-nav]").forEach(b=>b.onclick=()=>navegar(Number(b.dataset.nav)));
+  enlazarPasos();
   const hoy=document.getElementById("hoy"); if(hoy) hoy.onclick=irHoy;
   document.querySelectorAll("[data-quitar]").forEach(b=>b.onclick=()=>{setGrupos(GRUPOS.map(g=>g.id)); state.origen="todos"; store.set("origen","todos"); state.conf="todos"; store.set("conf","todos"); state.estilos={}; store.set("estilos",{}); state.genericos=true; store.set("genericos",true); renderBody(false);});
   const cr=document.getElementById("copiarRum"); if(cr) cr.onclick=async()=>{try{await navigator.clipboard.writeText(cr.dataset.t); toast("Copiado");}catch(e){prompt("Copia estos datos:",cr.dataset.t);}};
@@ -1996,8 +2029,26 @@ document.getElementById("panel").addEventListener("click",e=>{  // los similares
   const c=e.target.closest&&e.target.closest("a.card"); if(!c||e.metaKey||e.ctrlKey) return; e.preventDefault(); abrirPanel(c.dataset.id);
 });
 document.addEventListener("keydown",e=>{ if(e.key==="Escape"&&PANEL&&!document.getElementById("sheet").innerHTML) cerrarPanel(); });
+// ← → cambian de día, semana, fin de semana o mes, como las flechas ‹ › (no mientras se escribe, ni con la hoja de
+// filtros o el menú abiertos, ni con teclas modificadoras; en el carrusel de fotos las flechas lo mueven a él)
+document.addEventListener("keydown",e=>{
+  if(!["ArrowLeft","ArrowRight"].includes(e.key)||e.altKey||e.ctrlKey||e.metaKey||e.shiftKey) return;
+  if(!VISTAS.includes(state.tab)||state.tab==="Todos"||state.q.trim()) return;
+  const a=document.activeElement; if(a&&(/^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName)||a.isContentEditable||a.closest(".carr,.chips"))) return;
+  if(document.getElementById("sheet").innerHTML||document.getElementById("menu").innerHTML) return;
+  e.preventDefault();
+  const paso=state.tab==="Semana"||state.tab==="Finde"?7:1, s=e.key==="ArrowRight"?1:-1;
+  navegar(s*paso);
+});
 addEventListener("resize",()=>{ if(PANEL&&!anchoPanel()) cerrarPanel(); });
-function render(){ if(!VISTAS.includes(state.tab)) cerrarPanel(); document.getElementById("hdr").classList.remove("buscando"); document.getElementById("sheet").innerHTML=""; document.getElementById("menu").innerHTML=""; renderTabs(); renderBody(false); }
+// la primera vez en un móvil, en una vista que se puede deslizar: se dice (deslizar no se ve en ningún sitio)
+function pistaDeslizar(){
+  if(!["Semana","Finde","Día","Mes"].includes(state.tab)||!matchMedia("(pointer:coarse)").matches||store.get("pistaDeslizar",false)) return;
+  store.set("pistaDeslizar",true);
+  const que={Semana:"de semana",Finde:"de fin de semana","Día":"de día",Mes:"de mes"}[state.tab];
+  setTimeout(()=>toast(`Desliza ← → para cambiar ${que}`),900);
+}
+function render(){ if(!VISTAS.includes(state.tab)) cerrarPanel(); document.getElementById("hdr").classList.remove("buscando"); document.getElementById("sheet").innerHTML=""; document.getElementById("menu").innerHTML=""; renderTabs(); renderBody(false); pistaDeslizar(); }
 
 async function load(){
   const j=async u=>{const r=await fetch(u,{cache:"no-cache"}); if(!r.ok) throw new Error(u); return r.json();};

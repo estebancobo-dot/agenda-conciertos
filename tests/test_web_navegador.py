@@ -277,3 +277,19 @@ def test_mas_generos_deja_solo_lo_que_no_es_rock(web, nav):
     pg.click("[data-rap='mas']")
     assert pg.inner_text("#sclose") == "Ver 2 conciertos"
     assert not pg.errores, pg.errores
+
+
+def test_periodo_siguiente_y_anterior_desde_la_lista(web, nav):
+    pg = abrir(nav, web + f"#dia/{DIA.isoformat()}")
+    pasos = lambda: pg.evaluate("[...document.querySelectorAll('#main [data-paso]')].map(b=>b.className.split(' ')[1])")  # noqa: E731
+    assert pasos() == ["ant", "sig"]  # el día anterior aún no ha pasado; el siguiente tiene conciertos
+    assert "1 concierto" in pg.inner_text(".paso.sig") or "conciertos" in pg.inner_text(".paso.sig")
+    pg.click(".paso.sig")
+    pg.wait_for_function(f"location.hash==='#dia/{D2.isoformat()}'")
+    assert pasos() == ["ant"]  # más allá de lo anunciado no hay botón (no lleva a una lista vacía)
+    pg.keyboard.press("ArrowLeft")  # en el ordenador, ← → como ‹ ›
+    pg.wait_for_function(f"location.hash==='#dia/{DIA.isoformat()}'")
+    pg.focus("#q")
+    pg.keyboard.press("ArrowRight")  # escribiendo en el buscador, las flechas son del buscador
+    assert pg.evaluate("location.hash") == f"#dia/{DIA.isoformat()}"
+    assert not pg.errores, pg.errores
