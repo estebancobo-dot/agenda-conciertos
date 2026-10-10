@@ -79,7 +79,8 @@ def nav():
 
 def abrir(nav, url, *, ordenador=False):
     """Una página como un móvil (en WebKit, un iPhone 13) o como un ordenador; recoge los errores de JavaScript y lo que
-    bloquee la política de seguridad."""
+    salta la política de seguridad del contenido (Playwright evalúa sus esperas como texto y la política lo prohíbe;
+    se prueba aparte, sin saltarla, en test_politica_de_contenido)."""
     p, b = nav
     if ordenador:
         opciones = {"viewport": {"width": 1440, "height": 900}}
@@ -87,11 +88,9 @@ def abrir(nav, url, *, ordenador=False):
         opciones = {k: v for k, v in p.devices["iPhone 13"].items() if k != "default_browser_type"}
     else:
         opciones = {"viewport": {"width": 390, "height": 844}}
-    pg = b.new_context(**opciones).new_page()
+    pg = b.new_context(bypass_csp=True, **opciones).new_page()
     pg.errores = []
     pg.on("pageerror", lambda e: pg.errores.append(str(e)))
-    # la política de seguridad del contenido no puede bloquear nada de la propia web (fotos, datos, estilos)
-    pg.on("console", lambda m: "Content Security Policy" in m.text and pg.errores.append(m.text))
     pg.goto(url)
     pg.wait_for_function("DATA.length>0", timeout=15000)
     pg.wait_for_selector("#main .card, #main .rows", timeout=15000)
@@ -340,3 +339,19 @@ def test_filtro_por_precio(web, nav):
     assert artistas() == ["Cuarteto Swing de Lavapiés"]
     assert "hasta 30 €" in pg.inner_text(".active") and "p=30" in pg.evaluate("location.hash")
     assert not pg.errores, pg.errores
+
+
+def test_politica_de_contenido(web, nav):
+    """Con la política de seguridad de verdad: la web pinta la agenda, abre una ficha y la política no bloquea nada
+    suyo (scripts, estilos, fotos, datos). Solo esperas por selector: las de texto las bloquearía la política."""
+    p, b = nav
+    pg = b.new_context(viewport={"width": 390, "height": 844}).new_page()
+    errores = []
+    pg.on("pageerror", lambda e: errores.append(str(e)))
+    pg.on("console", lambda m: ("Content Security Policy" in m.text or "CSP" in m.text) and errores.append(m.text))
+    pg.goto(web + "#todos")
+    pg.wait_for_selector("#main .card", timeout=15000)
+    pg.locator("#main .card").first.click()
+    pg.wait_for_selector("#main .rows", timeout=15000)
+    pg.wait_for_timeout(500)
+    assert not errores, errores
