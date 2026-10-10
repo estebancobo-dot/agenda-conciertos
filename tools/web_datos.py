@@ -97,9 +97,39 @@ def ligero(r: dict) -> dict:
     return out
 
 
+CARPETA: Path | None = None  # copias propias de las fotos (tools/miniaturas.py)
+PARECIDO = 20  # bits distintos (de 64) hasta los que dos fotos son la misma imagen: dos distintas dan ~32 ± 4; el
+# mismo cartel en otro formato (cuadrado en la ticketera, vertical en la web de la sala) da 5-20
+
+
+def huella(ruta: Path) -> int | None:
+    """Huella de la imagen (dHash de 64 bits): igual o casi igual aunque cambie el tamaño, el recorte suave o la
+    compresión."""
+    try:
+        from PIL import Image
+        im = Image.open(ruta).convert("L").resize((9, 8), Image.LANCZOS)
+    except Exception:  # noqa: BLE001
+        return None
+    px = list(im.tobytes())
+    return sum(1 << i for i, (a, b) in enumerate((px[y * 9 + x], px[y * 9 + x + 1]) for y in range(8) for x in range(8))
+               if a > b)
+
+
+def misma_foto(u1: str | None, u2: str | None) -> bool | None:
+    """¿Son la misma imagen? None si no se puede saber (falta alguna copia propia)."""
+    if not (CARPETA and u1 in GRANDES and u2 in GRANDES):
+        return None
+    h1, h2 = (huella(CARPETA / GRANDES[u].split("/")[1]) for u in (u1, u2))
+    if h1 is None or h2 is None:
+        return None
+    return bin(h1 ^ h2).count("1") <= PARECIDO
+
+
 def cargar_miniaturas(recs: list[dict], carpeta: Path) -> None:
     """Anota qué imágenes tienen miniatura propia hecha (tools/miniaturas.py)."""
     from miniaturas import nombre
+    global CARPETA
+    CARPETA = carpeta
     hechas = {p.name for p in carpeta.glob("*.webp")} if carpeta.exists() else set()
     for r in recs:
         u = (r.get("imagen") or {}).get("url")
@@ -134,6 +164,12 @@ def preparar(concerts: dict, destino: Path) -> dict:
             r = copy.copy(r)
             r["imagen"] = None
         g = r.get("gira") or {}
+        igual = misma_foto((r.get("imagen") or {}).get("url"), g.get("imagen")) if g else None
+        if igual or (g.get("general") and igual is None):
+            # nunca la misma imagen dos veces; el de una agenda general, solo si se ha comprobado que es otra
+            r = copy.copy(r)
+            r["gira"] = None
+            g = {}
         if g.get("imagen") in GRANDES:  # el cartel, servido desde la propia web (copia reducida)
             r = copy.copy(r)
             r["gira"] = {**g, "foto": GRANDES[g["imagen"]]}

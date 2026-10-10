@@ -5,6 +5,7 @@
 - **Duplicados**: un concierto anunciado con el nombre corto y con el largo el mismo día y en la misma sala se une («OBK» y «CONCIERTO OBK», «SIM» y «Silence iz Mine (SIM)»). «Canopy» es el hotel Canopy by Hilton Madrid Castellana.
 - **Precio**: un cargo aparte ya no se toma por el precio («Ticketmaster aplica un cargo de 2 € por transacción»: la entrada costaba 29,50 €). Las páginas leídas antes se releen poco a poco.
 - **Cuenta atrás en la ficha**, con la hora de Madrid: «Empieza en 2 h 30 min», «Ya ha empezado», «Hoy», «Mañana», «Faltan 10 días» (hasta 99 días). Se actualiza sola cada minuto.
+- **Cartel en la ficha también de las agendas generales** (conciertos.club, Songkick, Madrid en Vivo, La Ganzúa…), junto a la foto del artista, pero solo si al comparar las dos imágenes no son la misma foto. Y ningún cartel se enseña si es la misma imagen que la foto del artista con otra dirección (pasaba en 94 fichas). Los carteles nuevos van apareciendo según se hacen sus copias reducidas.
 - `tools/revision.py`: lista para revisar a mano los artistas cuyo origen contradicen otras webs y los posibles conciertos repetidos que no se han unido (`REVISION.md`).
 - El diagnóstico con navegador dice también qué hora y precio lee el lector de páginas.
 

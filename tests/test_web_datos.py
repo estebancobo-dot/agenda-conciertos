@@ -78,3 +78,35 @@ def test_precio_mas_barato_para_el_filtro():
         assert precio_min(texto) == esperado, texto
     assert ligero({"id": "a", "fecha": "2026-10-12", "artista": "X", "precio": "Gratis"})["pmin"] == 0
     assert "pmin" not in ligero({"id": "a", "fecha": "2026-10-12", "artista": "X", "precio": None})
+
+
+def test_cartel_general_solo_si_no_es_la_misma_foto(tmp_path):
+    """Un cartel de agenda general se enseña solo si, comparando las copias propias, no es la foto del artista."""
+    import pytest
+    Image = pytest.importorskip("PIL.Image")
+    import web_datos
+    from miniaturas import nombre
+    foto, igual, otro = "https://wiki/foto.jpg", "https://sk.com/perfil.jpg", "https://sk.com/cartel.jpg"
+    import random
+    rnd = random.Random(7)
+    base = Image.new("RGB", (8, 8))
+    base.putdata([(rnd.randrange(256),) * 3 for _ in range(64)])
+    base = base.resize((600, 600), Image.NEAREST)
+    base.save(tmp_path / nombre(foto, True), "WEBP")
+    base.resize((500, 500)).save(tmp_path / nombre(igual, True), "WEBP", quality=40)  # la misma, otro tamaño
+    base.transpose(Image.ROTATE_90).save(tmp_path / nombre(otro, True), "WEBP")
+    rec = lambda i, g: {"id": str(i), "fecha": "2026-10-01", "artista": "X", "imagen": {"url": foto},  # noqa: E731
+                        "gira": {"imagen": g, "credito": "Songkick Madrid", "general": True}}
+    recs = [rec(1, igual), rec(2, otro), rec(3, "https://sk.com/sin-copia.jpg"), rec(4, igual)]
+    recs[3]["gira"].pop("general")  # de la web de la sala, pero la misma imagen: tampoco se repite
+    web_datos.GRANDES.clear()
+    web_datos.cargar_miniaturas(recs, tmp_path)
+    assert web_datos.misma_foto(foto, igual) is True and web_datos.misma_foto(foto, otro) is False
+    web_datos.preparar({"conciertos": recs}, tmp_path / "data")
+    import json
+    det = json.loads((tmp_path / "data" / "detalles" / "2026-10-01.json").read_text())
+    det = det.get("conciertos", det)
+    giras = {k: (v.get("gira") or {}).get("imagen") for k, v in det.items()}
+    assert giras == {"1": None, "2": otro, "3": None, "4": None}  # la repetida y la que no se pudo comparar, fuera
+    web_datos.GRANDES.clear()
+    web_datos.MINIATURAS.clear()

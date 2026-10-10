@@ -680,11 +680,16 @@ def aplicar_entradas(recs: list[dict], cache: dict) -> dict:
         cands = [(d.get("imagen") or d.get("og_imagen"), nombre, u) for u, d, nombre in pags
                  if ticketera(u) or u in oficiales]
         ie = r.get("imagen_evento") or {}
+        cands = [(*x, False) for x in cands]
         if sin_fragmento(ie.get("enlace")) in oficiales:
-            cands.append((ie.get("url"), (ie.get("credito") or "").split(" (")[0], ie.get("enlace")))
-        for img, nombre, u in cands:
+            cands.append((ie.get("url"), (ie.get("credito") or "").split(" (")[0], ie.get("enlace"), False))
+        elif ie.get("url"):
+            # el cartel de una agenda general, el último: a menudo es la foto de perfil del artista, así que la web
+            # solo lo enseña si al compararlas no es la misma imagen que la foto (tools/web_datos.py)
+            cands.append((ie.get("url"), (ie.get("credito") or "").split(" (")[0], ie.get("enlace"), True))
+        for img, nombre, u, general in cands:
             if img and img not in genericas and img != ya and img.startswith("http") and not _NO_CARTEL.search(img):
-                r["gira"] = {"imagen": img, "credito": nombre, "enlace": u}
+                r["gira"] = {"imagen": img, "credito": nombre, "enlace": u, **({"general": True} if general else {})}
                 c["gira"] += 1
                 break
     # un enlace de compra que les sale a varios artistas distintos no es de ningún concierto concreto (la página de

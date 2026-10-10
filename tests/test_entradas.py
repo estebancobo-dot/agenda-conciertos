@@ -239,3 +239,18 @@ def test_cargo_de_gestion_no_es_el_precio():
     assert hora_precio_texto(BeautifulSoup(html, "html.parser"))["precio_t"] == "29,5 €"
     assert hora_precio_texto(BeautifulSoup("<main>Anticipada general: 25€ + 2€ de gastos de gestión</main>",
                                            "html.parser"))["precio_t"] == "25 €"
+
+
+def test_cartel_de_agenda_general():
+    """El cartel de una agenda general entra el último y marcado como "general" (la web comprueba que no sea la misma
+    foto que la del artista)."""
+    from scraper.entradas import aplicar_entradas
+    ev = {"url": "https://songkick.com/c/1.jpg", "credito": "Songkick Madrid", "enlace": "https://songkick.com/c/1"}
+    r = _rec(1, "21:00", [{"id": "songkick", "nombre": "Songkick Madrid", "url": ev["enlace"], "prioridad": 3}],
+             imagen={"url": "https://wiki/foto.jpg"})
+    r["imagen_evento"] = ev
+    aplicar_entradas([r], {})
+    assert r["gira"] == {"imagen": ev["url"], "credito": "Songkick Madrid", "enlace": ev["enlace"], "general": True}
+    r["imagen"] = {"url": ev["url"]}  # sin foto de artista, el cartel ya es la foto: no se repite
+    aplicar_entradas([r], {})
+    assert "gira" not in r
