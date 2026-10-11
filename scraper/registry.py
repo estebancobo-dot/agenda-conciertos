@@ -101,8 +101,6 @@ FUENTES: list[Source] = [
       salas.PARSERS["salabut"]),
     S("elsol", "Sala El Sol (web oficial)", "https://salaelsol.com/agenda/", "sala", 1, "alta", "elsol",
       salas.PARSERS["elsol"]),
-    S("villanos", "Sala Villanos (web oficial)", "https://salavillanos.es/agenda/", "sala", 1, "alta", "villanos",
-      salas.PARSERS["villanos"]),
     S("rockville", "RockVille (web oficial)", "https://rockville.es/programacion/", "sala", 1, "alta", "rockville",
       salas.PARSERS["rockville"]),
     S("funhouse", "Fun House (web oficial)", "https://www.funhousemusicbar.com/conciertos/", "sala", 1, "alta",
@@ -204,6 +202,9 @@ SIN_AGENDA_LEGIBLE = {
 SIN_AGENDA_LEGIBLE.pop("Sala Changó")
 
 NO_USAR = {
+    "Sala Villanos (web oficial)": "Quitada el 11-10-2026: desde el 1-10-2026 su robots.txt no permite leerla. Sus "
+                                   "conciertos siguen llegando de otras agendas (conciertos.club, Songkick, Madrid en "
+                                   "Vivo, Total Stage…) y de su venta de entradas en Enterticket.",
     # Quitadas el 30-09-2026: fallaron en todas las ejecuciones desde que existen (nunca dieron conciertos)
     "Ticketle": "Responde 403 (acceso prohibido) a todas las peticiones desde GitHub.",
     "Bandsintown": "Responde 403 (acceso prohibido) a todas las peticiones desde GitHub.",

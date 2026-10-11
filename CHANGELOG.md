@@ -1,5 +1,10 @@
 # Versiones
 
+## 2.90.1 — 2026-10-11
+
+- Quitada la fuente **Sala Villanos (web oficial)**: desde el 1 de octubre su robots.txt no permite leerla. De sus 98 conciertos próximos, 79 siguen llegando de otras agendas (conciertos.club, Songkick, Madrid en Vivo, Total Stage…) y de su venta de entradas en Enterticket; los 19 que solo daba su web (sobre todo sesiones de DJ) salen de la agenda. Figura en «Webs probadas y descartadas», con el motivo.
+- Pruebas con datos fijos: la página sin la política de seguridad para todas menos la que la comprueba (Safari a veces no deja saltarla y la prueba fallaba sin motivo).
+
 ## 2.90.0 — 2026-10-10
 
 - **Duplicados**: un concierto anunciado con el nombre corto y con el largo el mismo día y en la misma sala se une («OBK» y «CONCIERTO OBK», «SIM» y «Silence iz Mine (SIM)»). «Canopy» es el hotel Canopy by Hilton Madrid Castellana.
