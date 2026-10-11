@@ -9,6 +9,7 @@ import functools
 import http.server
 import json
 import os
+import re
 import shutil
 import sys
 import threading
@@ -47,7 +48,12 @@ def web(entorno, tmp_path, monkeypatch):  # noqa: F811
     pipeline.ejecutar(hoy=HOY, musicbrainz=False, pausa_reintento=0, fetcher=FakeFetcher({}))
     sitio = tmp_path / "sitio"
     (sitio / "data").mkdir(parents=True)
-    shutil.copy(RAIZ / "site" / "index.html", sitio)
+    # la página tal cual (con su política de seguridad) para test_politica_de_contenido; para el resto, sin ella:
+    # Playwright evalúa sus esperas como texto, la política lo prohíbe y WebKit no siempre deja saltarla
+    html = (RAIZ / "site" / "index.html").read_text(encoding="utf-8")
+    (sitio / "con_politica.html").write_text(html, encoding="utf-8")
+    (sitio / "index.html").write_text(re.sub(r'<meta http-equiv="Content-Security-Policy"[^>]*>\n?', "", html),
+                                      encoding="utf-8")
     for n in ("taxonomia.json", "estilos_map.json", "salas_alias.json"):
         shutil.copy(RAIZ / "data" / n, sitio / "data")
     (sitio / "data" / "informe.json").write_text("{}")
@@ -349,7 +355,8 @@ def test_politica_de_contenido(web, nav):
     errores = []
     pg.on("pageerror", lambda e: errores.append(str(e)))
     pg.on("console", lambda m: ("Content Security Policy" in m.text or "CSP" in m.text) and errores.append(m.text))
-    pg.goto(web + "#todos")
+    pg.goto(web + "con_politica.html#todos")
+    assert pg.locator('meta[http-equiv="Content-Security-Policy"]').count() == 1
     pg.wait_for_selector("#main .card", timeout=15000)
     pg.locator("#main .card").first.click()
     pg.wait_for_selector("#main .rows", timeout=15000)
