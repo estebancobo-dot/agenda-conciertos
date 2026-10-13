@@ -28,6 +28,9 @@ def sin_red(monkeypatch):
         return resolver(host, *a, **k)
 
     # git va en otro proceso (el bloqueo de arriba no lo alcanza): en las pruebas solo puede usar repositorios locales
+    # sin proxy: un proxy en esta máquina (127.0.0.1) dejaría salir a internet a través de él
+    for v in ("HTTP_PROXY", "HTTPS_PROXY", "ALL_PROXY", "http_proxy", "https_proxy", "all_proxy"):
+        monkeypatch.delenv(v, raising=False)
     monkeypatch.setenv("GIT_ALLOW_PROTOCOL", "file")
     # y sin la configuración de git de esta máquina (nombre de autor…): como en GitHub, donde no hay ninguna
     monkeypatch.setenv("GIT_CONFIG_GLOBAL", os.devnull)

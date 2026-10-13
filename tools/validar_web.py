@@ -583,8 +583,11 @@ def filtros(pg, lunes):
     pg.click("[data-rap='ninguno']")
     pg.wait_for_timeout(30)
     marcar = ms(t0)
-    if grupo:
-        pg.click(f"[data-g='{grupo}']")
+    # el domingo apenas quedan días en la semana: si no hay un segundo grupo con conciertos, uno cualquiera de la hoja
+    # (falló así el 11/10/2026 a las 23:58)
+    marca = grupo or pg.evaluate("(document.querySelector('.sheet [data-g]')||{dataset:{}}).dataset.g||null")
+    if marca:
+        pg.click(f"[data-g='{marca}']")
     pre = pg.evaluate("[...document.querySelectorAll('.segp [aria-pressed=true]')].map(b=>b.dataset.rap)")
     res = pg.evaluate("(document.getElementById('resgen')||{}).textContent||''")
     check("UX", "Filtros: al elegir géneros a mano no queda marcado ningún preajuste y el título dice 'a tu medida'",

@@ -14,6 +14,8 @@ from tests.fakefetch import FakeFetcher
 # validaciones: mismo día en los datos y en el reloj del navegador)
 HOY = date.fromisoformat(os.environ["FECHA_PRUEBAS"]) if os.environ.get("FECHA_PRUEBAS") else date.today()
 DIA = HOY + timedelta(days=5)
+if DIA.weekday() == 6:  # domingo: el día siguiente (D2) caería en otra semana y las pruebas de la vista semana fallarían
+    DIA -= timedelta(days=1)
 MBID = "identificador de MusicBrainz en Wikidata"
 
 

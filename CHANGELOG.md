@@ -3,6 +3,7 @@
 ## 2.90.1 — 2026-10-11
 
 - Quitada la fuente **Sala Villanos (web oficial)**: desde el 1 de octubre su robots.txt no permite leerla. De sus 98 conciertos próximos, 79 siguen llegando de otras agendas (conciertos.club, Songkick, Madrid en Vivo, Total Stage…) y de su venta de entradas en Enterticket; los 19 que solo daba su web (sobre todo sesiones de DJ) salen de la agenda. Figura en «Webs probadas y descartadas», con el motivo.
+- **Las pruebas ya no dependen del día de la semana**: los martes, el concierto de prueba caía en domingo y el siguiente en lunes, en otra semana, y las pruebas de la vista semana fallaban (y frenaban la publicación). La validación del domingo por la noche, sin días por delante, tampoco encontraba un género que marcar. Y las pruebas no salen a internet ni a través de un proxy de la máquina.
 - Pruebas con datos fijos: la página sin la política de seguridad para todas menos la que la comprueba (Safari a veces no deja saltarla y la prueba fallaba sin motivo).
 
 ## 2.90.0 — 2026-10-10
