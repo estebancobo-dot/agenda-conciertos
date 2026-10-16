@@ -2,6 +2,7 @@
 
 ## 2.90.2 — 2026-10-16
 
+- Pruebas en Safari: una petición de datos cortada por una recarga ya no cuenta como error de la web (la web la recoge y la repite); fallaba de vez en cuando y mandaba aviso.
 - **Menos avisos sin motivo**: una fuente solo avisa si falla dos pasadas seguidas (un bloqueo de un rato, como el de Google con Rockgle, o una noche lenta de Madrid en Vivo ya no avisan; si lleva 3 días sin leerse, sí). Una agenda de 1-2 conciertos que se queda en 0 porque ya pasaron no avisa. Y si la validación pilla la web a mitad de una publicación (agenda y fichas de versiones distintas), espera a que termine y lo vuelve a comprobar antes de dar fallo.
 
 ## 2.90.1 — 2026-10-11

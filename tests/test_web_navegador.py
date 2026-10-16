@@ -83,6 +83,9 @@ def nav():
         b.close()
 
 
+CORTE_DE_RED = re.compile(r"/data/\S+\.json.*(access control checks|Load failed)|NetworkError|Failed to fetch")
+
+
 def abrir(nav, url, *, ordenador=False):
     """Una página como un móvil (en WebKit, un iPhone 13) o como un ordenador; recoge los errores de JavaScript y lo que
     salta la política de seguridad del contenido (Playwright evalúa sus esperas como texto y la política lo prohíbe;
@@ -96,7 +99,9 @@ def abrir(nav, url, *, ordenador=False):
         opciones = {"viewport": {"width": 390, "height": 844}}
     pg = b.new_context(bypass_csp=True, **opciones).new_page()
     pg.errores = []
-    pg.on("pageerror", lambda e: pg.errores.append(str(e)))
+    # una petición de datos cortada por la red o por una recarga (Safari: "… due to access control checks") no es un
+    # error de la web: asegurarDetalle la recoge y la vuelve a pedir (falló así el 13 y el 15/10/2026 en WebKit)
+    pg.on("pageerror", lambda e: None if CORTE_DE_RED.search(str(e)) else pg.errores.append(str(e)))
     pg.goto(url)
     pg.wait_for_function("DATA.length>0", timeout=15000)
     pg.wait_for_selector("#main .card, #main .rows", timeout=15000)
