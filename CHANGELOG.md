@@ -1,5 +1,9 @@
 # Versiones
 
+## 2.90.2 — 2026-10-16
+
+- **Menos avisos sin motivo**: una fuente solo avisa si falla dos pasadas seguidas (un bloqueo de un rato, como el de Google con Rockgle, o una noche lenta de Madrid en Vivo ya no avisan; si lleva 3 días sin leerse, sí). Una agenda de 1-2 conciertos que se queda en 0 porque ya pasaron no avisa. Y si la validación pilla la web a mitad de una publicación (agenda y fichas de versiones distintas), espera a que termine y lo vuelve a comprobar antes de dar fallo.
+
 ## 2.90.1 — 2026-10-11
 
 - Quitada la fuente **Sala Villanos (web oficial)**: desde el 1 de octubre su robots.txt no permite leerla. De sus 98 conciertos próximos, 79 siguen llegando de otras agendas (conciertos.club, Songkick, Madrid en Vivo, Total Stage…) y de su venta de entradas en Enterticket; los 19 que solo daba su web (sobre todo sesiones de DJ) salen de la agenda. Figura en «Webs probadas y descartadas», con el motivo.

@@ -1202,6 +1202,7 @@ def escribir_csv(recs: list[dict], path: Path) -> None:
 def informe_fuentes(fuentes: list[Source], resultados: dict, recs: list[dict], anteriores_ids: set,
                     historial: dict, hoy: date) -> list[dict]:
     grupo = {s.id: s.grupo for s in fuentes}
+    fallos = historial.setdefault("_fallos", {})
     out = []
     for s in fuentes:
         res = resultados.get(s.id, {})
@@ -1209,15 +1210,19 @@ def informe_fuentes(fuentes: list[Source], resultados: dict, recs: list[dict], a
         solo = [r for r in mios if {grupo.get(f["id"], f["id"]) for f in r["fuentes"]} == {s.grupo}]
         nuevos = [r for r in mios if r["id"] not in anteriores_ids]
         h = historial.get(s.id, {})
-        aviso = None
+        aviso, problema = None, False
         if res.get("estado") == "bloqueado_robots" and h.get("ultimo_conteo", 0) > 0:
             # no es un cambio de diseño: la sala ha cambiado su robots.txt (se respeta). Hay que decidir si se quita
             alt = ALTERNATIVAS.get(s.id)
             aviso = (f"su robots.txt ya no permite leerla (último éxito {h.get('ultima_ok')}, daba {h['ultimo_conteo']}): "
                      f"se respeta; sus conciertos salen de su última lectura y de otras agendas"
                      + (f", y de {alt}" if alt else ""))
-        elif res and (not res.get("funciono") or res.get("brutos", 0) == 0) and h.get("ultimo_conteo", 0) > 0:
-            aviso = f"posible cambio en la web: antes daba {h['ultimo_conteo']} conciertos (último éxito {h.get('ultima_ok')})"
+        elif (res and (not res.get("funciono") or res.get("brutos", 0) == 0) and h.get("ultimo_conteo", 0) > 0
+              and not (res.get("funciono") and h["ultimo_conteo"] < MIN_AVISO_VACIA)):
+            # (una agenda de 1-2 conciertos que se queda en 0 suele ser que ya han pasado: no se avisa)
+            problema = True
+            if fallos.get(s.id, 0) + 1 >= FALLOS_AVISO:
+                aviso = f"posible cambio en la web: antes daba {h['ultimo_conteo']} conciertos (último éxito {h.get('ultima_ok')})"
             if h.get("ultima_ok"):
                 dias = (hoy - date.fromisoformat(h["ultima_ok"])).days
                 if dias >= DIAS_ALERTA:
@@ -1227,7 +1232,15 @@ def informe_fuentes(fuentes: list[Source], resultados: dict, recs: list[dict], a
         elif (res.get("funciono") and not res.get("no_leida") and h.get("ultimo_conteo", 0) >= 10
               and len(mios) < 0.3 * h["ultimo_conteo"]):
             # lee algo, pero muchos menos de lo habitual: suele ser un cambio de diseño que el lector no entiende
-            aviso = f"da muchos menos conciertos de lo habitual ({len(mios)} frente a {h['ultimo_conteo']}): posible cambio en la web"
+            problema = True
+            if fallos.get(s.id, 0) + 1 >= FALLOS_AVISO:
+                aviso = f"da muchos menos conciertos de lo habitual ({len(mios)} frente a {h['ultimo_conteo']}): posible cambio en la web"
+        # pasadas seguidas con problema: un bloqueo de un rato (Google con Rockgle) o una web lenta una noche (Madrid
+        # en Vivo) no avisan; dos seguidas, sí
+        if problema:
+            fallos[s.id] = fallos.get(s.id, 0) + 1
+        elif res and not res.get("no_leida"):
+            fallos.pop(s.id, None)
         metricas = metricas_fuente(s, mios, grupo)
         salud = salud_fuente(historial.setdefault("_dias", {}).setdefault(s.id, {}), res, len(mios), hoy)
         out.append({**s.meta(), "funciono": res.get("funciono", False), "estado": res.get("estado", "no ejecutada"),
@@ -1239,7 +1252,8 @@ def informe_fuentes(fuentes: list[Source], resultados: dict, recs: list[dict], a
                     "segundos": res.get("segundos"), "reintento": res.get("reintento"),
                     "desde_cache": res.get("desde_cache", 0), "cache_fecha": res.get("cache_fecha"),
                     "no_leida": res.get("no_leida", False)})
-        if res.get("funciono") and res.get("brutos", 0) > 0 and not res.get("no_leida"):
+        # una pasada con problema no cambia lo habitual (si no, la segunda ya no vería la bajada)
+        if res.get("funciono") and res.get("brutos", 0) > 0 and not res.get("no_leida") and not problema:
             historial[s.id] = {"ultima_ok": hoy.isoformat(), "ultimo_conteo": len(mios), "campos": res.get("campos")}
     return out
 
@@ -1321,6 +1335,8 @@ def salas_sin_fuente(recs: list[dict], hoy: date, minimo: int = 4) -> list[dict]
 
 
 DIAS_ALERTA = 3  # días seguidos sin leer bien una fuente para avisar
+FALLOS_AVISO = 2  # pasadas seguidas con problema para avisar de una fuente
+MIN_AVISO_VACIA = 3  # una agenda que daba menos conciertos y se queda en 0 no avisa (ya han pasado)
 PRESUPUESTO_FICHAS = 2400  # tope de la ejecución diaria para fichas (los pendientes siguen cada 2 horas)
 
 

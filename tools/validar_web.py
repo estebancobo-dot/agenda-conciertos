@@ -237,6 +237,28 @@ def publicacion(b):
                 distintos.append(r["id"])
             else:
                 fuentes += [e.get("url") for e in d.get("fuentes") or [] if e.get("url")]
+    if faltan or distintos or sin_fichero:
+        # puede haber pillado la web a mitad de una publicación (la agenda de una y el detalle de otra): se espera a
+        # que termine y se vuelve a comprobar, con la agenda y los detalles de nuevo (falló así el 14/10/2026)
+        time.sleep(120)
+        ag2 = rq.get(URL + f"data/agenda.json?v={random.randint(0, 1 << 30)}").json()
+        por_id = {r["id"]: r for r in ag2.get("conciertos") or []}
+        dias2 = sorted({f.split(" ")[0] for f in sin_fichero} |
+                       {por_id[i]["fecha"] for i in faltan + distintos if i in por_id})
+        faltan, distintos, sin_fichero = [], [], []
+        for f in dias2:
+            x = rq.get(URL + "data/" + ag2.get("detalles", "detalles/{fecha}.json").replace("{fecha}", f)
+                       + f"?v={random.randint(0, 1 << 30)}")
+            if not x.ok:
+                sin_fichero.append(f"{f} (HTTP {x.status})")
+                continue
+            det = x.json()
+            for r in (r for r in por_id.values() if r["fecha"] == f):
+                d = det.get(r["id"])
+                if not d:
+                    faltan.append(r["id"])
+                elif d.get("artista") != r.get("artista"):
+                    distintos.append(r["id"])
     check("Publicación", "Fichero de detalle de cada día", len(sin_fichero), ok=not sin_fichero,
           detalle=", ".join(sin_fichero))
     check("Publicación", "El detalle trae todos los conciertos del día", len(faltan), ok=not faltan,

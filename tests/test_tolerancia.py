@@ -86,9 +86,26 @@ def test_avisos_de_fuentes():
     s = fuente("mev", None)
     recs = [{"id": str(i), "fecha": "2026-10-01", "fuentes": [{"id": "mev"}]} for i in range(5)]
     hist = {"mev": {"ultima_ok": "2026-09-25", "ultimo_conteo": 40}}
-    # lee, pero muchos menos de lo habitual
-    f = informe_fuentes([s], {"mev": {"funciono": True, "brutos": 5}}, recs, set(), dict(hist), d(2026, 9, 30))[0]
+    # lee, pero muchos menos de lo habitual: la primera pasada no avisa (puede ser un rato), la segunda seguida sí
+    h2 = dict(hist)
+    f = informe_fuentes([s], {"mev": {"funciono": True, "brutos": 5}}, recs, set(), h2, d(2026, 9, 30))[0]
+    assert f["aviso"] is None
+    f = informe_fuentes([s], {"mev": {"funciono": True, "brutos": 5}}, recs, set(), h2, d(2026, 9, 30))[0]
     assert "muchos menos" in f["aviso"]
+    # un fallo de un rato, ayer leída bien: sin aviso; si vuelve a fallar en la siguiente pasada, aviso
+    h3 = {"mev": {"ultima_ok": "2026-09-30", "ultimo_conteo": 40}}
+    assert informe_fuentes([s], {"mev": {"funciono": False}}, [], set(), h3, d(2026, 9, 30))[0]["aviso"] is None
+    assert "posible cambio" in informe_fuentes([s], {"mev": {"funciono": False}}, [], set(), h3, d(2026, 9, 30))[0]["aviso"]
+    # si se lee bien entre medias, la cuenta vuelve a empezar
+    h4 = {"mev": {"ultima_ok": "2026-09-30", "ultimo_conteo": 40}}
+    informe_fuentes([s], {"mev": {"funciono": False}}, [], set(), h4, d(2026, 9, 30))
+    informe_fuentes([s], {"mev": {"funciono": True, "brutos": 40}}, recs * 8, set(), h4, d(2026, 9, 30))
+    assert informe_fuentes([s], {"mev": {"funciono": False}}, [], set(), h4, d(2026, 9, 30))[0]["aviso"] is None
+    # una agenda de un solo concierto que se queda en 0 (ya pasó): sin aviso
+    h5 = {"mev": {"ultima_ok": "2026-09-29", "ultimo_conteo": 1}}
+    for _ in range(3):
+        f = informe_fuentes([s], {"mev": {"funciono": True, "brutos": 0}}, [], set(), h5, d(2026, 9, 30))[0]
+    assert f["aviso"] is None
     # varios días sin leerse
     f = informe_fuentes([s], {"mev": {"funciono": False}}, [], set(), dict(hist), d(2026, 9, 30))[0]
     assert "5 días" in f["aviso"]
