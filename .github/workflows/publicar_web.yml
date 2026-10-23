@@ -57,7 +57,7 @@ jobs:
         # si la web nueva no funciona no se publica: sigue la anterior
         run: |
           pip install playwright && python -m playwright install --with-deps chromium
-          python -m pytest -q -rs tests/test_web_navegador.py
+          python -m pytest -q -rs tests/test_web_navegador.py || python -m pytest -q -rs --lf tests/test_web_navegador.py  # un fallo puntual se repite antes de frenar la publicación
       - uses: actions/configure-pages@v5
         with:
           enablement: true

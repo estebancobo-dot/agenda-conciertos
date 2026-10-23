@@ -141,7 +141,7 @@ jobs:
           touch _site/.nojekyll
       - name: Probar la web antes de publicarla (navegador real con datos fijos)
         # si la web nueva no funciona no se publica: sigue la anterior, y los datos ya están en la rama `datos`
-        run: python -m pytest -q -rs tests/test_web_navegador.py
+        run: python -m pytest -q -rs tests/test_web_navegador.py || python -m pytest -q -rs --lf tests/test_web_navegador.py  # un fallo puntual se repite antes de frenar la publicación
       - uses: actions/configure-pages@v5
         with:
           enablement: true

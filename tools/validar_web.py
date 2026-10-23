@@ -63,17 +63,24 @@ FOTO_LISTA = "(()=>{const i=document.querySelector('.hero img');return !i||(i.co
 
 
 # ---------------------------------------------------------------------------------------------- comprobaciones
+GRAVES = {"Publicación", "Funcional", "Fallos"}
+
+
 def check(cat: str, nombre: str, valor=None, *, ok: bool | None = None, aviso=None, fallo=None, grave=True,
           detalle: str = "", unidad: str = "ms"):
     """Anota una comprobación. Con `ok` es sí/no (si no se cumple: fallo, o aviso si grave=False). Con umbrales
     numéricos: por encima de `fallo` es fallo, por encima de `aviso` es aviso."""
+    # solo es fallo (y avisa por correo) lo que rompe la web de verdad: que no cargue, que no tenga datos o que no se
+    # actualicen, o que algo deje de funcionar. Diseño, velocidad y seguridad quedan como aviso en el informe
+    grave = grave and cat in GRAVES
     if ok is not None:
         estado = "ok" if ok else ("fallo" if grave else "aviso")
         umbral = ""
     elif valor is None or isinstance(valor, str):
         estado, umbral = ("fallo" if grave else "aviso"), ""
     else:
-        estado = "fallo" if fallo is not None and valor > fallo else "aviso" if aviso is not None and valor > aviso else "ok"
+        estado = ("fallo" if grave else "aviso") if fallo is not None and valor > fallo else \
+            "aviso" if aviso is not None and valor > aviso else "ok"
         umbral = " / ".join(x for x in (f"aviso > {aviso} {unidad}" if aviso is not None else "",
                                          f"fallo > {fallo} {unidad}" if fallo is not None else "") if x)
     R["comprobaciones"].append({"categoria": cat, "nombre": nombre, "estado": estado, "valor": valor,
@@ -454,7 +461,8 @@ def recorrido(b):
         pg.wait_for_selector(".dt h2", timeout=30000)
         ya.append(pg.evaluate("(()=>{const i=document.querySelector('.hero img');return !!i&&i.complete&&i.naturalWidth>0})()"))
         fotos.append(ficha_con_foto(pg, t0))
-        n_img = pg.evaluate("document.querySelectorAll('.hero img').length")
+        # la foto del artista (el cartel de la gira, si lo hay, es otra imagen a propósito)
+        n_img = pg.evaluate("document.querySelectorAll('.hero:not(.gira) img').length")
         if len(fotos) == 1:
             pg.screenshot(path=str(OUT / "3_ficha.png"))
             check("UX", "Ficha con una sola foto (sin miniatura provisional encima)", n_img, ok=n_img <= 1)

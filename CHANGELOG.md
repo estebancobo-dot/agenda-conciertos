@@ -1,5 +1,10 @@
 # Versiones
 
+## 2.90.3 — 2026-10-23
+
+- **La validación solo avisa por correo si la web se rompe de verdad**: que no cargue, que no tenga datos o no se actualicen, o que algo deje de funcionar. Lo de diseño, velocidad y seguridad queda como aviso en el informe, sin correo. Las pruebas con datos fijos de Safari y Firefox solo informan, y la prueba de antes de publicar repite una vez lo que falle antes de frenar la publicación.
+- La comprobación «ficha con una sola foto» cuenta solo la foto del artista: desde que hay carteles de las agendas generales, la ficha tiene a propósito dos imágenes y fallaba en todas las validaciones desde el 19/10.
+
 ## 2.90.2 — 2026-10-16
 
 - Pruebas en Safari: una petición de datos cortada por una recarga ya no cuenta como error de la web (la web la recoge y la repite); fallaba de vez en cuando y mandaba aviso.
