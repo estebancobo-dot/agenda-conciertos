@@ -63,7 +63,19 @@ FOTO_LISTA = "(()=>{const i=document.querySelector('.hero img');return !i||(i.co
 
 
 # ---------------------------------------------------------------------------------------------- comprobaciones
-GRAVES = {"Publicación", "Funcional", "Fallos"}
+# Solo estas comprobaciones dan fallo (y avisan por correo): las que dicen que la web está rota de verdad (no
+# carga, sin datos o sin actualizar, datos mal formados, la ficha o la búsqueda no funcionan, errores de JavaScript).
+# Las demás, que miran detalles o dependen de los conciertos de cada día, quedan como aviso en el informe: si una
+# falla, lo más probable es que la propia comprobación se haya quedado atrás (pasó así entre el 11 y el 24/10/2026).
+CRITICAS = (
+    "index.html publicado = el de main", "sw.js publicado = el de main", "Datos de la agenda recientes",
+    "Conciertos próximos publicados", "Ids únicos", "Cada concierto con id, fecha y artista",
+    "Fichero de detalle de cada día", "El detalle trae todos los conciertos del día", "informe.json legible",
+    "La cabecera dice cuántos conciertos hay", "Semana: salen justo los conciertos de los datos",
+    "Ficha: artista y sala de los datos", "Enlace directo a una ficha la abre", "Buscar un artista lo encuentra",
+    "Errores de JavaScript en todo el recorrido", "Agenda que no llega: mensaje claro para recargar",
+    "Publicación y datos: el escenario terminó", "Recorrido en móvil: el escenario terminó",
+)
 
 
 def check(cat: str, nombre: str, valor=None, *, ok: bool | None = None, aviso=None, fallo=None, grave=True,
@@ -72,7 +84,7 @@ def check(cat: str, nombre: str, valor=None, *, ok: bool | None = None, aviso=No
     numéricos: por encima de `fallo` es fallo, por encima de `aviso` es aviso."""
     # solo es fallo (y avisa por correo) lo que rompe la web de verdad: que no cargue, que no tenga datos o que no se
     # actualicen, o que algo deje de funcionar. Diseño, velocidad y seguridad quedan como aviso en el informe
-    grave = grave and cat in GRAVES
+    grave = grave and nombre.startswith(CRITICAS)
     if ok is not None:
         estado = "ok" if ok else ("fallo" if grave else "aviso")
         umbral = ""
