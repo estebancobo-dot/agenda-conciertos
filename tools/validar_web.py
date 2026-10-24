@@ -629,8 +629,10 @@ def filtros(pg, lunes):
     aplicar = ms(t0)
     bajar_hasta_el_final(pg)
     if grupo:
+        # con la misma regla que la web (gruposF): sus grupos (o su categoría si no trae grupos) y los de su cartel
+        # (falló el 24/10/2026 con conciertos sin grupos y categoría «rock y metal»)
         r = pg.evaluate("""(g)=>{const ids=[...document.querySelectorAll('#main .card')].map(c=>c.dataset.id);
-           return {n:ids.length, otros:ids.filter(i=>{const r=BYID[i]||{}; return !(r.grupos||[]).includes(g)&&!(g in (r.grupos_cartel||{}));}).length}}""", grupo)
+           return {n:ids.length, otros:ids.filter(i=>{const r=BYID[i]; return !r||!gruposF(r).includes(g);}).length}}""", grupo)
         n_boton = int(re.search(r"\d+", boton).group()) if re.search(r"\d+", boton) else None
         check("Funcional", f"Filtro de un solo grupo ({grupo}): solo salen de ese grupo", f"{r['n']} tarjetas",
               ok=r["n"] > 0 and r["otros"] == 0, detalle=f"{r['otros']} de otros grupos")
