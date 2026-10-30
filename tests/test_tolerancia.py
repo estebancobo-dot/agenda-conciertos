@@ -101,6 +101,12 @@ def test_avisos_de_fuentes():
     informe_fuentes([s], {"mev": {"funciono": False}}, [], set(), h4, d(2026, 9, 30))
     informe_fuentes([s], {"mev": {"funciono": True, "brutos": 40}}, recs * 8, set(), h4, d(2026, 9, 30))
     assert informe_fuentes([s], {"mev": {"funciono": False}}, [], set(), h4, d(2026, 9, 30))[0]["aviso"] is None
+    # las pasadas que no la leen (arrastran el resultado de la última) no cuentan como más fallos
+    h6 = {"mev": {"ultima_ok": "2026-09-30", "ultimo_conteo": 40}}
+    informe_fuentes([s], {"mev": {"funciono": False}}, [], set(), h6, d(2026, 9, 30))
+    for _ in range(3):
+        f = informe_fuentes([s], {"mev": {"funciono": False, "no_leida": True}}, [], set(), h6, d(2026, 9, 30))[0]
+    assert f["aviso"] is None
     # una agenda de un solo concierto que se queda en 0 (ya pasó): sin aviso
     h5 = {"mev": {"ultima_ok": "2026-09-29", "ultimo_conteo": 1}}
     for _ in range(3):

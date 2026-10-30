@@ -641,9 +641,9 @@ def _tribe_precio(e: dict) -> str | None:
     return f"{f(a)} €" if a == b else f"{f(a)}-{f(b)} €"
 
 
-def tribe_parse(datos: dict, sala: str, ciudad: str, hoy: date, horizonte: date, solo: str | None = None) -> list:
+def tribe_parse(datos: dict, sala, ciudad: str, hoy: date, horizonte: date, solo: str | None = None) -> list:
     """`solo`: categoría que deben tener (Café La Palma marca así los conciertos; el resto son fiestas, alquiler
-    del local…)."""
+    del local…). `sala`: el nombre, o una función que lo saca de cada evento (Revi: Revi Live o Revi Space)."""
     out = []
     for e in (datos or {}).get("events") or []:
         m = re.match(r"(\d{4})-(\d{2})-(\d{2})(?: (\d{2}):(\d{2}))?", str(e.get("start_date") or ""))
@@ -677,12 +677,19 @@ def tribe_parse(datos: dict, sala: str, ciudad: str, hoy: date, horizonte: date,
             titulo, estilos = titulo[: mc.start()], [mc.group(1)] + estilos
         hora = f"{m.group(4)}:{m.group(5)}" if m.group(4) and not e.get("all_day") else None
         img = (e.get("image") or {}).get("url") if isinstance(e.get("image"), dict) else None
-        out.append(make(f, titulo, str(e.get("url") or ""), sala=sala, ciudad=ciudad, hora=hora,
+        out.append(make(f, titulo, str(e.get("url") or ""), sala=sala(e) if callable(sala) else sala, ciudad=ciudad,
+                        hora=hora,
                         precio=_tribe_precio(e), estilo=", ".join(dict.fromkeys(estilos)) or None, imagen=img))
     return out
 
 
-def _tribe(base: str, sala: str, ciudad: str = "Madrid", solo: str | None = None):
+def _sala_revi(e: dict) -> str:
+    v = e.get("venue") or {}
+    nombre = v.get("venue", "") if isinstance(v, dict) else ""
+    return "Revi Space" if "space" in nombre.lower() else "Revi Live"
+
+
+def _tribe(base: str, sala, ciudad: str = "Madrid", solo: str | None = None):
     def run(ctx: Ctx):
         pagina = 1
         while pagina <= 10:
@@ -892,7 +899,8 @@ PARSERS = {
     "riviera": _one("https://salariviera.com/conciertos/", riviera_parse),
     "nazca": _sec("https://www.salanazcaconciertos.com/conciertos", "Sala Nazca"),
     "wagon": _sec("https://www.wagon.live/", "Sala Wagon"),
-    "revi": _one("https://revi.live/eventos/", revi_parse),
+    # desde el 24/10/2026 su agenda es The Events Calendar en conciertos.revi.live (la página antigua da 0)
+    "revi": _tribe("https://conciertos.revi.live/", _sala_revi),
     "chango": _sec("https://www.salachango.es/", "Sala Changó", orden="antes"),
     "salabut": _sec("https://www.salabut.es/agenda-conciertos/", "Sala But"),
     "elsol": _one("https://salaelsol.com/agenda/", elsol_parse),

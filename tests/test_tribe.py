@@ -135,3 +135,19 @@ def test_vistalegre():
     assert [(r.fecha.isoformat(), r.artista) for r in out] == [("2026-10-31", "John Pollón"), ("2026-10-27", "Simple Plan"),
                                                               ("2026-10-15", "Los Kjarkas")]
     assert out[0].imagen == "https://www.palaciovistalegre.com/p.jpg"
+
+
+def test_revi_sala_de_cada_evento():
+    """Revi (The Events Calendar desde el 24/10/2026): cada evento dice si es en Revi Live o en Revi Space."""
+    from scraper.sources.salas import _sala_revi
+    d = {"events": [
+        {"start_date": f"{HOY.isoformat()} 20:00:00", "title": "Coz", "url": "https://conciertos.revi.live/evento/coz/",
+         "venue": {"venue": "Revi Live"}},
+        {"start_date": f"{HOY.isoformat()} 19:00:00", "title": "Hallow Burning Night",
+         "url": "https://conciertos.revi.live/evento/hallow/", "venue": {"venue": "Revi Space"}},
+        {"start_date": f"{HOY.isoformat()} 21:00:00", "title": "Sin sala", "url": "https://conciertos.revi.live/x/",
+         "venue": []}]}
+    out = tribe_parse(d, _sala_revi, "Madrid", HOY, HOR)
+    assert [(e.artista, e.sala, e.hora) for e in out] == [("Coz", "Revi Live", "20:00"),
+                                                          ("Hallow Burning Night", "Revi Space", "19:00"),
+                                                          ("Sin sala", "Revi Live", "21:00")]

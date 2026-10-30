@@ -93,7 +93,7 @@ FUENTES: list[Source] = [
     S("nazca", "Sala Nazca (web oficial)", "https://www.salanazcaconciertos.com/conciertos", "sala", 1, "alta", "nazca",
       salas.PARSERS["nazca"]),
     S("wagon", "Sala Wagon (web oficial)", "https://www.wagon.live/", "sala", 1, "alta", "wagon", salas.PARSERS["wagon"]),
-    S("revi", "Revi Live / Revi Space (web oficial)", "https://revi.live/eventos/", "sala", 1, "alta", "revi",
+    S("revi", "Revi Live / Revi Space (web oficial)", "https://conciertos.revi.live/eventos/", "sala", 1, "alta", "revi",
       salas.PARSERS["revi"]),
     S("chango", "Sala Changó (web oficial)", "https://www.salachango.es/", "sala", 1, "alta", "chango",
       salas.PARSERS["chango"]),

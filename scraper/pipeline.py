@@ -1220,8 +1220,10 @@ def informe_fuentes(fuentes: list[Source], resultados: dict, recs: list[dict], a
         elif (res and (not res.get("funciono") or res.get("brutos", 0) == 0) and h.get("ultimo_conteo", 0) > 0
               and not (res.get("funciono") and h["ultimo_conteo"] < MIN_AVISO_VACIA)):
             # (una agenda de 1-2 conciertos que se queda en 0 suele ser que ya han pasado: no se avisa)
-            problema = True
-            if fallos.get(s.id, 0) + 1 >= FALLOS_AVISO:
+            # una pasada que no lee esta fuente (Madrid en Vivo solo se lee de noche) arrastra su último resultado: no
+            # cuenta como otro fallo
+            problema = not res.get("no_leida")
+            if fallos.get(s.id, 0) + (1 if problema else 0) >= FALLOS_AVISO:
                 aviso = f"posible cambio en la web: antes daba {h['ultimo_conteo']} conciertos (último éxito {h.get('ultima_ok')})"
             if h.get("ultima_ok"):
                 dias = (hoy - date.fromisoformat(h["ultima_ok"])).days
