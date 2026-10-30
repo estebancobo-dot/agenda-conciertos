@@ -1,5 +1,10 @@
 # Versiones
 
+## 2.90.4 — 2026-10-30
+
+- **Revi Live / Revi Space**: el 24/10 estrenó una web nueva (The Events Calendar en conciertos.revi.live) y la antigua dejó de dar conciertos. Se lee la nueva, con la sala de cada evento (Revi Live o Revi Space).
+- Avisos de fuentes: las pasadas que no leen una fuente (Madrid en Vivo solo se lee de noche) ya no cuentan como otro fallo; avisaba tras un solo fallo real.
+
 ## 2.90.3 — 2026-10-23
 
 - **La validación solo avisa por correo si la web se rompe de verdad**: que no cargue, que no tenga datos o no se actualicen, o que algo deje de funcionar. Lo de diseño, velocidad y seguridad queda como aviso en el informe, sin correo. Las pruebas con datos fijos de Safari y Firefox solo informan, y la prueba de antes de publicar repite una vez lo que falle antes de frenar la publicación.
