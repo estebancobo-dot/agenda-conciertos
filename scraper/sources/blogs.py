@@ -94,7 +94,8 @@ def parse_articulo(html: str, url: str, today: date) -> list[RawEvent]:
     return evs
 
 
-def blog_incremental(ctx: Ctx, list_url: str, art_pattern: str, max_pages: int = 3, page_fmt: str = "{base}page/{n}/"):
+def blog_incremental(ctx: Ctx, list_url: str, art_pattern: str, max_pages: int = 3, page_fmt: str = "{base}page/{n}/",
+                     parser=None):
     """Lee el listado del blog, procesa solo entradas no vistas y reemite los conciertos guardados."""
     st = ctx.estado
     vistos = st.setdefault("vistos", [])
@@ -114,7 +115,7 @@ def blog_incremental(ctx: Ctx, list_url: str, art_pattern: str, max_pages: int =
             break
     for h in nuevos_urls:
         try:
-            for e in parse_articulo(ctx.get(h), h, ctx.today):
+            for e in (parser or parse_articulo)(ctx.get(h), h, ctx.today):
                 d = e.to_dict()
                 guardados.append(d)
         except Exception as ex:  # noqa: BLE001
@@ -153,3 +154,44 @@ def force(ctx: Ctx):
     yield from blog_incremental(ctx, "https://forcemagazine.es/agenda-force/",
                                 r"forcemagazine\.es/(?!agenda|calendario|tienda|revista|mi-cuenta|carrito|category)"
                                 r"[a-z0-9-]{15,}/?$", max_pages=2)
+
+
+# Science of Noise: cada previa trae un bloque fijo «Datos del concierto» (Bandas, Fecha, Lugar «Sala (Ciudad)»,
+# precios, venta de entradas y horarios). Se lee ese bloque, no el texto del artículo. Publica previas de toda
+# España: los de fuera de la Comunidad los descarta el orquestador por la ciudad.
+_SON_CAMPO = re.compile(r"^\s*(Bandas|Fecha|Lugar|Precio anticipada|Precio taquilla|Venta de entradas|Horarios)\s*:\s*(.*)$",
+                        re.I)
+
+
+def scienceofnoise_articulo(html: str, url: str, today: date) -> list[RawEvent]:
+    s = soup_of(html)
+    body = s.select_one(".entry-content") or s.find("article") or s.body
+    campos: dict[str, str] = {}
+    for linea in body.get_text("\n", strip=True).split("\n"):
+        m = _SON_CAMPO.match(linea)
+        if m and m.group(1).lower() not in campos:
+            campos[m.group(1).lower()] = clean(m.group(2))
+    bandas, fecha_txt, lugar = campos.get("bandas"), campos.get("fecha"), campos.get("lugar", "")
+    if not bandas or not fecha_txt:
+        return []
+    f = parse_fecha_texto(fecha_txt, today)
+    if not f or f < today:
+        return []
+    m = re.match(r"^(.*?)\s*\(([^()]+)\)\s*$", lugar)
+    sala, ciudad = (clean(m.group(1)), clean(m.group(2))) if m else (lugar, None)
+    precios = [p for p in (campos.get("precio anticipada"), campos.get("precio taquilla")) if p and re.search(r"\d", p)]
+    # «20:00 - Apertura de puertas»: es la apertura, no el comienzo; solo vale una hora de concierto o de comienzo
+    hora = None
+    mh = re.search(r"([01]?\d|2[0-3])[:.h]([0-5]\d)\s*-?\s*(concierto|comienzo|inicio|show)", campos.get("horarios", ""), re.I)
+    if mh:
+        hora = f"{int(mh.group(1)):02d}:{mh.group(2)}"
+    ent = campos.get("venta de entradas", "")
+    art, inv = split_lista(bandas)
+    return [make(f, art, url, invitados=inv or None, sala=sala, ciudad=ciudad, hora=hora,
+                 precio=" · ".join(precios) or None, entradas=ent if ent.startswith("http") else None)]
+
+
+def scienceofnoise(ctx: Ctx):
+    yield from blog_incremental(ctx, "https://www.scienceofnoise.net/category/previas/",
+                                r"scienceofnoise\.net/la-previa-de-science-of-noise-[a-z0-9-]+/?$",
+                                parser=scienceofnoise_articulo)

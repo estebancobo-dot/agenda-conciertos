@@ -70,6 +70,10 @@ FUENTES: list[Source] = [
       "rockprog", blogs.rockprog, reconfirma=False),
     S("dirtyrock", "Dirty Rock Magazine (giras)", "https://www.dirtyrock.info/category/giras/", "blog", 4, "media",
       "dirtyrock", blogs.dirtyrock, reconfirma=False),
+    S("scienceofnoise", "Science of Noise (previas)", "https://www.scienceofnoise.net/category/previas/", "blog", 4,
+      "media", "scienceofnoise", blogs.scienceofnoise, reconfirma=False,
+      notas="Una previa por concierto, con un bloque fijo de datos (bandas, fecha, sala y ciudad, precio, entradas). "
+            "Solo los de la Comunidad de Madrid."),
     S("viriaor", "viriAOR (agenda)", "https://viriaor.wordpress.com/category/agenda-de-conciertos/", "blog", 4, "media",
       "viriaor", blogs.viriaor, reconfirma=False),
     S("diariorockero", "Diario de un Rockero", "https://www.diariodeunrockero.es/", "blog", 4, "media",
@@ -225,6 +229,12 @@ NO_USAR = {
     "NocheMAD": "Los mismos conciertos que SalirMadrid (ya se lee).",
     "El Corte Inglés (entradas)": "Responde 403 (acceso prohibido) desde GitHub.",
     "Folklore Plaza Castilla": "La web no responde.",
+    # probadas el 2-11-2026
+    "Ruta 66": "Revista (artículos y radio): no publica una agenda con fechas.",
+    "Rock Palace": "Su web da error de seguridad (SSL) al leer el robots.txt: no se puede leer.",
+    "Costello Club": "Su página de programación no trae los conciertos (ni con navegador).",
+    "El Junco": "La portada no trae fechas legibles y no tiene página de agenda propia.",
+    "Fulanita de Tal": "Sus eventos no están en la web legible; sus conciertos llegan por conciertos.club, Madrid en Vivo y Total Stage.",
 }
 
 
