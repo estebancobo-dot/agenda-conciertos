@@ -167,10 +167,13 @@ def scienceofnoise_articulo(html: str, url: str, today: date) -> list[RawEvent]:
     s = soup_of(html)
     body = s.select_one(".entry-content") or s.find("article") or s.body
     campos: dict[str, str] = {}
-    for linea in body.get_text("\n", strip=True).split("\n"):
+    lineas = body.get_text("\n", strip=True).split("\n")
+    for i, linea in enumerate(lineas):
         m = _SON_CAMPO.match(linea)
         if m and m.group(1).lower() not in campos:
-            campos[m.group(1).lower()] = clean(m.group(2))
+            # «<strong>Bandas:</strong> Käärijä»: el nombre del campo y su valor salen en líneas distintas
+            valor = m.group(2) or (lineas[i + 1] if i + 1 < len(lineas) and not _SON_CAMPO.match(lineas[i + 1]) else "")
+            campos[m.group(1).lower()] = clean(valor)
     bandas, fecha_txt, lugar = campos.get("bandas"), campos.get("fecha"), campos.get("lugar", "")
     if not bandas or not fecha_txt:
         return []

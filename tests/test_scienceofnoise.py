@@ -33,3 +33,11 @@ def test_varias_bandas_puertas_y_otra_ciudad():
 def test_sin_bloque_o_pasada():
     assert scienceofnoise_articulo("<html><body><p>Crónica del concierto</p></body></html>", "https://x/", HOY) == []
     assert scienceofnoise_articulo(previa("X", "1 de octubre de 2026", "Sala (Madrid)"), "https://x/", HOY) == []
+
+
+def test_campos_en_negrita():
+    html = ("<div class='entry-content'><p><strong>Bandas:</strong> Käärijä<br><strong>Fecha:</strong> 12 de noviembre "
+            "de 2026<br><strong>Lugar:</strong> Mon Live (Madrid)<br><strong>Precio anticipada:</strong> 27,50 €<br>"
+            "<strong>Precio taquilla:</strong> €</p></div>")
+    r = scienceofnoise_articulo(html, "https://x/", HOY)[0]
+    assert (r.artista, r.sala, r.ciudad, r.precio) == ("Käärijä", "Mon Live", "Madrid", "27,50 €")
