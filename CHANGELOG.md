@@ -1,5 +1,10 @@
 # Versiones
 
+## 2.91.0 — 2026-11-02
+
+- **Nueva fuente: Science of Noise (previas)**. Cada previa trae un bloque fijo con bandas, fecha, sala y ciudad, precio y entradas; se lee ese bloque, no el texto. Publica de toda España: se quedan los de la Comunidad de Madrid (en la primera lectura, 1 de 9, y nuevo en la agenda).
+- Probadas y descartadas, con el motivo en «Webs probadas y descartadas»: Ruta 66 (revista, sin agenda), Rock Palace (error de seguridad al leer su robots.txt), Costello Club (su programación no trae los conciertos), El Junco (sin fechas legibles) y Fulanita de Tal (sus conciertos ya llegan por otras agendas). Dirty Rock y Café Central ya se leían.
+
 ## 2.90.4 — 2026-10-30
 
 - **Revi Live / Revi Space**: el 24/10 estrenó una web nueva (The Events Calendar en conciertos.revi.live) y la antigua dejó de dar conciertos. Se lee la nueva, con la sala de cada evento (Revi Live o Revi Space).
