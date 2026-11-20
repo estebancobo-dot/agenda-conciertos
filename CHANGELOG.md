@@ -1,5 +1,10 @@
 # Versiones
 
+## 2.91.1 — 2026-11-20
+
+- **La agenda llevaba desde el 13/11 sin datos nuevos**: una prueba de las copias de seguridad dependía de la fecha real (desde el 14/11 la copia de prueba del 10/10 quedaba fuera de las que se conservan) y su fallo frenaba cada pasada antes de leer las agendas. Arreglada, y comprobado que ninguna otra prueba falla con fechas futuras (de aquí a un año).
+- Las pruebas de antes de leer las agendas ya no frenan la lectura: solo informan. Lo que protege la web de un código roto sigue siendo la prueba con navegador de antes de publicar.
+
 ## 2.91.0 — 2026-11-02
 
 - **Nueva fuente: Science of Noise (previas)**. Cada previa trae un bloque fijo con bandas, fecha, sala y ciudad, precio y entradas; se lee ese bloque, no el texto. Publica de toda España: se quedan los de la Comunidad de Madrid (en la primera lectura, 1 de 9, y nuevo en la agenda).

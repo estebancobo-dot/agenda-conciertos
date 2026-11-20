@@ -58,6 +58,10 @@ jobs:
       - name: Tests
         # sin red (tests/conftest.py); con el navegador instalado, también la lectura con navegador (robots.txt de
         # cada petición). La web se prueba aparte, antes de publicarla: un fallo de la web no frena los datos
+        # solo informa: una prueba que falla no frena la lectura de las agendas (entre el 13 y el 20/11/2026 una prueba
+        # que dependía de la fecha dejó la web una semana sin datos nuevos). Lo que frena una web rota es la prueba
+        # con navegador de antes de publicar
+        continue-on-error: true
         run: python -m pytest -q -rs --ignore=tests/test_web_navegador.py
       - name: Rastrear fuentes
         # deja margen dentro de las 2 horas del trabajo para guardar lo hecho aunque se corte

@@ -45,7 +45,11 @@ def test_restaurar_una_copia(repo, monkeypatch):  # noqa: F811
     # y subida a la rama de datos (lo que hace la tarea «Restaurar una copia»)
     datos.traer()
     escribir(data, "concerts.json", {"conciertos": []})
-    gd.main()  # la rama datos queda estropeada (y de paso hace la copia de hoy, que ya estaba)
+    # la rama datos queda estropeada (y de paso hace la copia de hoy, que ya estaba). Con el mismo «hoy» que la prueba:
+    # con la fecha real, la copia del 10/10 quedaba fuera de las que se conservan desde el 14/11 y la prueba fallaba
+    guardar = copias.guardar
+    monkeypatch.setattr(copias, "guardar", lambda hoy=None: guardar(hoy or HOY))
+    gd.main()
     assert leer_rama(origen, "concerts.json")["conciertos"] == []
     monkeypatch.setattr(sys, "argv", ["copias.py", "restaurar", HOY.isoformat(), "--subir"])
     assert copias.main() == 0
