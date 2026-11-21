@@ -10,7 +10,11 @@
 - **Agendas municipales de Valdemoro y Leganés**, que también habían cambiado:
   - **Valdemoro**: su página de teatro daba 404 desde noviembre; se lee la tienda de entradas del teatro (teatrodevaldemoro.sacatuentrada.es). Hoy solo trae una comedia y un musical, que no son conciertos.
   - **Leganés**: su agenda cambió de formato y se leía vacía. Vuelve a leerse (hoy, un certamen de villancicos en el Teatro José Monleón; el resto es teatro y deporte).
-- Revisadas sin cambios: Pinto no responde (tampoco desde fuera de GitHub), Alcorcón bloquea el acceso automático (no se fuerza) y Móstoles no tiene actos publicados este mes.
+- **Nuevas: The RockLab (Coslada) y las agendas municipales de Majadahonda y Pozuelo**, que estaban descartadas:
+  - **The RockLab**: su web de Wix no trae las fechas en el texto, pero sí en los datos de su widget de eventos (título, fecha, hora y cartel). 5 conciertos.
+  - **Majadahonda**: su agenda cultural vuelve a responder (antes daba 404). Hoy, un concierto y un encuentro coral.
+  - **Pozuelo de Alarcón (Teatro MIRA)**: su programación ya viene en la página (antes solo con JavaScript). Como las tarjetas no dicen el género, se mira la ficha de cada acto: entra si es un concierto y no ópera escenificada, danza ni musical. 6 conciertos (entre ellos Paquito D'Rivera Trío y Ara Malikian), con su hora.
+- Revisadas y sin cambio: Pinto, Parla, Lula Club, Sala Groove, New Restón, Rock Palace y Folklore Plaza Castilla siguen sin responder; Alcorcón bloquea el acceso automático (no se fuerza); Móstoles no tiene actos publicados este mes; Thundercat solo publica la semana en curso, con día y sin mes (sus conciertos ya llegan por otras agendas).
 
 ## 2.91.1 — 2026-11-20
 

@@ -120,6 +120,8 @@ FUENTES: list[Source] = [
     S("galileo", "Galileo Galilei (web oficial)", "https://salagalileo.es/", "sala", 1, "alta", "galileo",
       otras.galileo, notas="Su hosting a veces responde con un captcha anti-bots; sus conciertos llegan también por "
                            "Madrid en Vivo y conciertos.club."),
+    S("rocklab", "The RockLab, Coslada (web oficial)", "https://www.therocklab.es/eventosrocklab", "sala", 1, "alta",
+      "rocklab", salas.PARSERS["rocklab"]),
     S("siroco", "Sala Siroco (web oficial)", "https://siroco.es/agenda/", "sala", 1, "alta", "siroco", salas.PARSERS["siroco"]),
     S("mobydick", "Moby Dick Club (web oficial)", "https://www.mobydickclub.com/", "sala", 1, "alta", "mobydick",
       salas.PARSERS["mobydick"]),
@@ -184,7 +186,6 @@ FUENTES: list[Source] = [
 SIN_AGENDA_LEGIBLE = {
     "Sala Mon Live (monmadrid.es)": "La web no publica agenda de conciertos (solo información general).",
     "Sala Copérnico (salacopernico.es)": "La web muestra una 'cartelera orientativa' de ejemplo con fechas ficticias; no se usa.",
-    "The RockLab, Coslada (therocklab.es)": "Web hecha con Wix sin fechas legibles en el HTML.",
     "Maravillas Club": "El dominio maravillasclub.es es una página de parking.",
     "Cadavra": "No se encontró una web oficial accesible (dominios probados sin respuesta).",
     "Sala La Trinchera": "No se encontró una web oficial accesible.",

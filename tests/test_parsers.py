@@ -403,3 +403,50 @@ def test_municipal_formatos_noviembre_2026():
     assert [(str(e.fecha), e.hora, e.artista, e.sala) for e in v] == [
         ("2026-11-22", "18:00", "GOOL!", "Teatro Municipal Juan Prado")]
     assert v[0].url == "https://teatrodevaldemoro.sacatuentrada.es/es/entradas/gool-"
+
+
+def test_municipal_majadahonda_tarjetas():
+    from scraper.sources.municipios import majadahonda
+    e = majadahonda(html("majadahonda_2026_11"), "u", date(2026, 11, 21), "Majadahonda")
+    # de exposición, teatro infantil, libro, cuento, concierto y coral: solo los dos de música
+    assert [(str(x.fecha), x.hora, x.artista) for x in e] == [
+        ("2026-11-21", "20:00", 'Concierto "Melodías inolvidables"'),
+        ("2026-11-26", "20:00", "XVII Encuentro Coral Majadahonda Canta")]
+
+
+def test_wix_eventos_rocklab():
+    # Wix: los conciertos van en los datos del widget de eventos; la hora, en la zona del evento (no en UTC)
+    e = salas.wix_eventos_parse(html("rocklab_eventos_2026_11"), "https://www.therocklab.es/eventosrocklab",
+                                date(2026, 11, 21), sala="The RockLab", ciudad="Coslada")
+    assert [(str(x.fecha), x.hora, x.artista) for x in e][:2] == [("2026-11-21", "22:30", "BAI BANG"),
+                                                                  ("2026-11-27", "22:30", "FLAMMA SORA")]
+    assert len(e) == 5 and e[-1].hora == "22:00" and e[0].invitados == ["TORQUË"]
+    assert e[0].sala == "The RockLab" and e[0].ciudad == "Coslada"
+    assert e[0].url == "https://www.therocklab.es/event-details/bai-bang-torque"
+
+
+def test_municipal_pozuelo_fichas():
+    # la tarjeta no dice el género: la ficha decide. Paquito D'Rivera es un concierto; la ópera escenificada y el
+    # teatro, no. "El imitador (Cancelado)" no entra
+    from scraper.sources import municipios as mu
+    lista = mu.pozuelo_lista(html("pozuelo_mira_2026_11"), "https://cultura.pozuelodealarcon.org/teatro-mira/x",
+                             date(2026, 11, 21))
+    titulos = [t for _, t, _, _ in lista]
+    assert "Paquito D´Rivera Trío" in titulos and not any("imitador" in t for t in titulos)
+    fichas = {"paquito-drivera-trio": "pozuelo_ficha_paquito",
+              "la-opera-de-los-tres-centavos-con-coque-malla": "pozuelo_ficha_opera",
+              "campeones-2-en-el-teatro-si-lorca-levantara-la-cabeza": "pozuelo_ficha_campeones"}
+
+    class C:
+        today = date(2026, 11, 21)
+
+        def get(self, url):
+            if "/agenda/" in url:
+                slug = url.rsplit("/", 1)[1]
+                return html(fichas[slug]) if slug in fichas else "<main>Visita guiada</main>"
+            return html("pozuelo_mira_2026_11")
+    e = {x.artista: x for x in mu.pozuelo(C(), "https://cultura.pozuelodealarcon.org/teatro-mira/x", "Pozuelo")}
+    assert (str(e["Paquito D´Rivera Trío"].fecha), e["Paquito D´Rivera Trío"].hora) == ("2026-11-28", "19:30")
+    assert e["Paquito D´Rivera Trío"].sala == "Teatro MIRA"
+    assert "Concierto de Santa Cecilia: Sonidos de gala" in e
+    assert not any("ópera" in a.lower() or "Campeones" in a for a in e)

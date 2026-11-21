@@ -356,6 +356,44 @@ def revi_parse(html: str, page_url: str, today: date) -> list:
     return out
 
 
+# ------------------------------------------------------------------ Wix Events (The RockLab)
+def wix_eventos_parse(html: str, page_url: str, today: date, sala: str = "", ciudad: str = "Madrid") -> list:
+    """Webs de Wix con su widget de eventos: la página trae los datos del widget ("events":{"events":[…]}) con
+    título, fecha y hora (UTC y la zona horaria del evento), lugar y cartel."""
+    from datetime import datetime
+    from zoneinfo import ZoneInfo
+    out, vistos = [], set()
+    dec = json.JSONDecoder()
+    for m in re.finditer(r'"events":\{"events":\[', html):
+        try:
+            lista, _ = dec.raw_decode(html, m.end() - 1)
+        except ValueError:
+            continue
+        for e in lista if isinstance(lista, list) else []:
+            if not isinstance(e, dict) or e.get("id") in vistos:
+                continue
+            vistos.add(e.get("id"))
+            cfg = ((e.get("scheduling") or {}).get("config") or {})
+            if cfg.get("scheduleTbd") or not cfg.get("startDate"):
+                continue
+            try:
+                ini = datetime.fromisoformat(str(cfg["startDate"]).replace("Z", "+00:00"))
+                ini = ini.astimezone(ZoneInfo(cfg.get("timeZoneId") or "Europe/Madrid"))
+            except (ValueError, KeyError):
+                continue
+            titulo = clean(html_lib.unescape(str(e.get("title") or "")))
+            if not titulo:
+                continue
+            lugar = e.get("location") or {}
+            slug = e.get("slug")
+            img = (e.get("mainImage") or {}).get("url")
+            out.append(make(ini.date(), titulo, urljoin(page_url, f"/event-details/{slug}") if slug else page_url,
+                            sala=sala or clean(lugar.get("name")) or None,
+                            ciudad=clean((lugar.get("fullAddress") or {}).get("city")) or ciudad,
+                            hora=ini.strftime("%H:%M"), imagen=img))
+    return out
+
+
 # ------------------------------------------------------------------ Movistar Arena
 def movistar_parse(html: str, page_url: str, today: date) -> list:
     s = soup_of(html)
@@ -970,6 +1008,9 @@ PARSERS = {
     "silikona": _one("https://silikona.es/", silikona_parse),
     "clamores": _one("https://www.salaclamores.es/calendario", clamores_parse),
     "siroco": _siroco,
+    # Wix: la agenda va en los datos del widget de eventos (estaba descartada por "sin fechas legibles en el HTML")
+    "rocklab": _one("https://www.therocklab.es/eventosrocklab",
+                    lambda h, u, d: wix_eventos_parse(h, u, d, sala="The RockLab", ciudad="Coslada")),
     "mobydick": _one("https://www.mobydickclub.com/", mobydick_parse),
     "independance": _sec("https://independanceclub.com/collections/conciertos", "Independance Club"),
     "salab": _sec("https://www.salabmadrid.com/", "Sala B"),

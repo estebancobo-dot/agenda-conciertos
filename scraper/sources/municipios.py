@@ -38,14 +38,16 @@ AGENDAS = {
     "Valdemoro": ("https://teatrodevaldemoro.sacatuentrada.es/", "valdemoro"),  # /teatro da 404 desde 11/2026
     "Pinto": ("https://www.ayto-pinto.es/agenda-de-actividades", "pinto"),
     "Móstoles": ("https://www.mostoles.es/culturaenmostoles/es/agenda-actividades", "generico"),
+    # volvió a responder en noviembre de 2026 (antes daba 404)
+    "Majadahonda": ("https://cultura.majadahonda.org/informacion-cultural", "majadahonda"),
+    # la programación del Teatro MIRA ya viene en el HTML (antes solo cargaba con JavaScript)
+    "Pozuelo de Alarcón": ("https://cultura.pozuelodealarcon.org/teatro-mira/programacion-teatro-mira", "pozuelo"),
 }
 
 # Municipios cuya web no tiene una agenda legible (se listan en el informe)
 SIN_AGENDA = {
     "Agenda municipal de Fuenlabrada": "No hay página de agenda: la programación se publica en noticias semanales.",
-    "Agenda municipal de Majadahonda": "La agenda cultural (cultura.majadahonda.org) responde 404 y la general no incluye actos.",
     "Agenda municipal de Parla": "La web solo carga con JavaScript: el HTML no contiene la agenda.",
-    "Agenda municipal de Pozuelo de Alarcón": "La programación del MIRA Teatro solo carga con JavaScript.",
     "Agenda municipal de Rivas-Vaciamadrid": "Sin agenda de actos en la web municipal; los conciertos del Auditorio Miguel Ríos llegan por los agregadores.",
     "Agenda municipal de Getafe (anterior)": "getafe.es/agenda ya no existe; se usa cultura.getafe.es.",
 }
@@ -341,8 +343,79 @@ def pinto(html: str, url: str, today: date, municipio: str) -> list:
     return out
 
 
-LECTORES = {"generico": generico, "leganes": leganes, "alcorcon": alcorcon, "boadilla": boadilla,
+def majadahonda(html: str, url: str, today: date, municipio: str) -> list:
+    """Liferay (Calendar Suite) en tarjetas: .calendar-booking con el título, 'sábado, 21 noviembre 2026' y la hora."""
+    s = soup_of(html)
+    out = []
+    for c in s.select(".calendar-booking"):
+        a = c.select_one("a.lfr-card-title-text, a.title")
+        f = c.select_one(".start-date")
+        if not (a and f) or not es_musica(text(a)):
+            continue
+        h = c.select_one(".start-time")
+        ev = _evento(parse_fecha_texto(text(f).replace("Calendario", " "), today), text(a), a.get("href") or url,
+                     municipio, hora=parse_hora(text(h).replace("Tiempo", " ")) if h else None)
+        if ev:
+            out.append(ev)
+    return out
+
+
+LECTORES = {"generico": generico, "majadahonda": majadahonda, "leganes": leganes, "alcorcon": alcorcon, "boadilla": boadilla,
             "torrejon": torrejon, "valdemoro": valdemoro, "pinto": pinto}
+
+
+# ficha de Pozuelo: un concierto lo dice ("concierto") y no es ópera, danza ni teatro musical
+_POZ_SI = re.compile(r"(?i)\bconciertos?\b")
+_POZ_NO = re.compile(r"(?i)\b(ópera|opera|danza|baile|bailaora|zarzuela|el musical|un musical|comedia musical|"
+                     r"teatro musical)\b")
+
+
+def pozuelo_lista(html: str, url: str, today: date) -> list[tuple]:
+    """Programación del Teatro MIRA (Drupal): (fecha, título, enlace, lugar) de cada tarjeta."""
+    s = soup_of(html)
+    out = []
+    for it in s.select(".views-view-responsive-grid__item-inner"):
+        a = it.select_one(".views-field-title a[href]")
+        f = parse_fecha_texto(text(it.select_one(".views-field-nothing")), today)
+        if not a or not f or re.search(r"(?i)\bcancelad[oa]\b", text(a)):
+            continue
+        out.append((f, clean(text(a)), urljoin(url, a["href"]),
+                    clean(text(it.select_one(".views-field-field-ubicacion"))).rstrip(".")))
+    return out
+
+
+def pozuelo_ficha(html: str) -> tuple[str, str | None]:
+    """Texto de la ficha (para saber si es un concierto) y la hora ('Sáb, 28 Nov 2026 - 19:30')."""
+    s = soup_of(html)
+    f = s.select_one(".field--name-field-fecha-de-inicio")
+    m = re.search(r"-\s*(\d{1,2}:\d\d)", text(f)) if f else None
+    for x in s(["script", "style", "nav", "header", "footer"]):
+        x.decompose()
+    return text(s.find("main") or s), m.group(1) if m else None
+
+
+def pozuelo(ctx: Ctx, url: str, municipio: str) -> list:
+    """Cada tarjeta de la programación y, de las próximas, su ficha: la hora y, si el título no lo dice, si es un
+    concierto. Ópera escenificada, danza y musicales no son conciertos."""
+    out = []
+    for n in range(4):
+        html = ctx.get(url if n == 0 else f"{url}?page={n}")
+        lista = pozuelo_lista(html, url, ctx.today)
+        for fecha, titulo, enlace, lugar in lista:
+            if fecha < ctx.today or NO_MUSICA.search(titulo) or _POZ_NO.search(titulo):
+                continue
+            texto, hora = pozuelo_ficha(ctx.get(enlace))
+            if not (MUSICA.search(titulo) or (_POZ_SI.search(texto) and not _POZ_NO.search(texto))):
+                continue
+            ev = _evento(fecha, titulo, enlace, municipio, hora=hora, sala=lugar)
+            if ev:
+                out.append(ev)
+        if f"page={n + 1}" not in html:
+            break
+    return out
+
+
+LECTORES_CTX = {"pozuelo": pozuelo}   # los que necesitan leer más páginas (fichas, paginación)
 
 
 def municipal_parse(html: str, url: str, today, municipio: str, lector: str = "generico") -> list:
@@ -357,5 +430,12 @@ def municipal_parse(html: str, url: str, today, municipio: str, lector: str = "g
 
 def hacer(municipio: str, url: str, lector: str = "generico"):
     def run(ctx: Ctx):
+        if lector in LECTORES_CTX:
+            vistos = set()
+            for e in LECTORES_CTX[lector](ctx, url, municipio):
+                if (e.fecha, e.artista.casefold()) not in vistos:
+                    vistos.add((e.fecha, e.artista.casefold()))
+                    yield e
+            return
         yield from municipal_parse(ctx.get(url), url, ctx.today, municipio, lector)
     return run
