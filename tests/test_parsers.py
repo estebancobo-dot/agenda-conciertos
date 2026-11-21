@@ -362,3 +362,27 @@ def test_blogs_enlaces_de_entradas():
     assert len({a["href"] for a in s.find_all("a", href=True) if re.search(pat_rp, a["href"])}) >= 15
     s = BeautifulSoup(html("diariorockero_conc"), "lxml")
     assert len({a["href"] for a in s.find_all("a", href=True) if re.search(pat_dr, a["href"])}) >= 10
+
+
+def test_revi_portada_noviembre_2026():
+    # 'Sala :' con espacio y el valor en la línea siguiente; sin sala es Revi Live (no la del evento siguiente)
+    evs = salas.revi_parse(html("revi_portada_2026_11"), "https://conciertos.revi.live/", date(2026, 11, 21))
+    por = {(str(e.fecha), e.artista): e for e in evs}
+    assert por[("2026-12-04", "Litost")].sala == "Revi Space"
+    assert por[("2027-01-22", "Spheres")].sala == "Revi Space"
+    assert por[("2027-01-19", "Rhapsody of Fire")].sala == "Revi Live"
+    assert por[("2027-02-06", "Obscura")].sala == "Revi Live"
+    assert por[("2026-11-25", "Flotsam & Jetsam")].url.startswith("https://tickets.itp-promotions.com/")
+    # "11 y 12 diciembre 2026": los dos días
+    assert {str(e.fecha) for e in evs if e.artista == "FESTIVAL NAVIDAD"} == {"2026-12-11", "2026-12-12"}
+
+
+def test_siroco_agenda_noviembre_2026():
+    # tarjetas sa-card: solo los conciertos (no las sesiones de club ni la exposición)
+    evs = salas.siroco_parse(html("siroco_agenda_2026_11"), "https://siroco.es/agenda/", date(2026, 11, 21))
+    assert len(evs) == 7
+    m = next(e for e in evs if e.artista == "Mothercrow")
+    assert (str(m.fecha), m.hora, m.sala, m.url) == ("2026-11-21", "21:00", "Sala Siroco",
+                                                      "https://siroco.es/eventos/mothercrow-electric-fence/")
+    assert m.invitados == ["Electric Fence"]
+    assert not any("Fast Expo" in e.artista or "Fernando Pineda" in e.artista for e in evs)

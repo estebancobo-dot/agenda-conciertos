@@ -446,29 +446,43 @@ TOTALSTAGE = "https://totalstage.vercel.app/eventos/madrid"
 
 
 def totalstage_parse(html: str, page_url: str, today: date) -> list:
-    """Una sola página con todos los próximos de Madrid: enlace /concierto/<artista>/<AAAA-MM-DD>, nombre, línea
-    'fecha · hora · sala · Madrid' (la hora puede faltar) y etiquetas de estilo."""
+    """Una sola página con todos los próximos de Madrid: enlace /concierto/<artista>/<AAAA-MM-DD>, nombre, hora, sala,
+    ciudad y etiquetas de estilo. Dos diseños: el de hasta noviembre de 2026 (<p> con 'fecha · hora · sala · Madrid')
+    y el de después (hora en su propio <span>, 'sala · Madrid [· hora por confirmar]' y el estilo junto al enlace)."""
     s = soup_of(html)
     out = []
     for a in s.select('a[href^="/concierto/"]'):
         m = re.search(r"/(\d{4})-(\d\d)-(\d\d)$", a["href"])
         nombre = a.find("p", class_=re.compile("font-semibold"))
+        nuevo = nombre is None
+        if nuevo:
+            nombre = a.find("span", class_=re.compile(r"font-\[6\d\d\]|font-semibold|font-bold"))
         if not m or not nombre:
             continue
         try:
             f = date(int(m.group(1)), int(m.group(2)), int(m.group(3)))
         except ValueError:
             continue
-        linea = next((p for p in a.find_all("p") if p is not nombre), None)
-        partes = [clean(x) for x in text(linea).split("·")] if linea else []
-        hora = next((p for p in partes if re.fullmatch(r"\d{1,2}:\d\d", p or "")), None)
-        resto = [p for p in partes[1:] if p and p != hora]
+        if nuevo:
+            linea = next((x for x in a.find_all("span", class_=re.compile("muted-foreground"))
+                          if "tabular-nums" not in (x.get("class") or [])), None)
+            partes = [clean(x) for x in text(linea).split("·")] if linea else []
+            hora = clean(text(a.find("span", class_=re.compile("tabular-nums"))))
+            resto = [p for p in partes if p and "por confirmar" not in p.lower()]
+            estilos = [text(x) for x in a.parent.find_all("span", class_=re.compile("rounded-full"), recursive=False)]
+            tipo = ""
+        else:
+            linea = next((p for p in a.find_all("p") if p is not nombre), None)
+            partes = [clean(x) for x in text(linea).split("·")] if linea else []
+            hora = next((p for p in partes if re.fullmatch(r"\d{1,2}:\d\d", p or "")), None)
+            resto = [p for p in partes[1:] if p and p != hora]
+            estilos = [text(x) for x in a.select("span.rounded-full")]
+            tipo = text(a.find("span")) or ""
+        hora = hora if re.fullmatch(r"\d{1,2}:\d\d", hora or "") else None
         sala = resto[0] if len(resto) >= 2 else None
         ciudad = resto[-1] if resto else "Madrid"
-        estilos = [text(x) for x in a.select("span.rounded-full")]
-        tipo = text(a.find("span")) or ""
         out.append(make(f, text(nombre), urljoin(page_url, a["href"]), split=False, sala=sala, ciudad=ciudad,
-                        hora=parse_hora(hora) if hora else None, estilo=", ".join(estilos) or None,
+                        hora=parse_hora(hora) if hora else None, estilo=", ".join(e for e in estilos if e) or None,
                         tipo="festival" if "festival" in tipo.lower() else None))
     return out
 

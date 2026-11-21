@@ -120,7 +120,7 @@ FUENTES: list[Source] = [
     S("galileo", "Galileo Galilei (web oficial)", "https://salagalileo.es/", "sala", 1, "alta", "galileo",
       otras.galileo, notas="Su hosting a veces responde con un captcha anti-bots; sus conciertos llegan también por "
                            "Madrid en Vivo y conciertos.club."),
-    S("siroco", "Sala Siroco (web oficial)", "https://siroco.es/", "sala", 1, "alta", "siroco", salas.PARSERS["siroco"]),
+    S("siroco", "Sala Siroco (web oficial)", "https://siroco.es/agenda/", "sala", 1, "alta", "siroco", salas.PARSERS["siroco"]),
     S("mobydick", "Moby Dick Club (web oficial)", "https://www.mobydickclub.com/", "sala", 1, "alta", "mobydick",
       salas.PARSERS["mobydick"]),
     S("independance", "Independance Club (web oficial)", "https://independanceclub.com/collections/conciertos", "sala", 1,

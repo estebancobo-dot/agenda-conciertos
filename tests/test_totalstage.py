@@ -26,3 +26,15 @@ def test_hora_sala_y_estilo():
 def test_sin_hora_no_se_inventa():
     b = next(x for x in evs() if x.artista == "Bewitched")
     assert b.hora is None and b.sala == "Sala Silikona" and b.estilo is None
+
+
+def test_diseno_de_noviembre_2026():
+    # hora en su propio <span>, línea 'sala · Madrid [· hora por confirmar]' y el estilo fuera del enlace
+    e = totalstage_parse((FIX / "totalstage_2026_11.html").read_text(encoding="utf-8"), TOTALSTAGE,
+                         date(2026, 11, 21))
+    por = {x.artista: x for x in e}
+    assert set(por) == {"Aga", "Manuel Jesús", "L.A. Guns"}
+    assert (por["Aga"].fecha, por["Aga"].hora, por["Aga"].sala, por["Aga"].ciudad) == (
+        date(2026, 11, 21), "12:30", "Fun House", "Madrid")
+    assert por["Manuel Jesús"].estilo == "Pop" and por["Manuel Jesús"].sala == "Tempo Audiophile Club"
+    assert por["L.A. Guns"].hora is None and por["L.A. Guns"].sala == "Nazca"

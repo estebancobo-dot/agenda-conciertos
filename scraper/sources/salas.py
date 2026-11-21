@@ -311,33 +311,48 @@ def silikona_parse(html: str, page_url: str, today: date) -> list:
 
 
 # ------------------------------------------------------------------ Revi Live / Revi Space
+_REVI_CAMPO = r"(?:Evento|Bandas|Fecha|Sala|Entradas|Organiza)\s*:"
+
+
 def revi_parse(html: str, page_url: str, today: date) -> list:
+    """Portada de conciertos.revi.live: un párrafo por evento con 'Evento: / Bandas: / Fecha: / Entradas:' y, si es
+    en la sala pequeña, 'Sala: Revi Space' (a veces 'Sala :' y el valor en la línea siguiente) en el mismo párrafo
+    o en uno aparte justo después. Sin 'Sala', es Revi Live."""
     s = soup_of(html)
     out = []
     for p in s.find_all("p"):
         t = p.get_text("\n", strip=True)
-        if "Fecha:" not in t or "Evento:" not in t:
+        if "Fecha" not in t or "Evento" not in t:
             continue
-        campos = dict(re.findall(r"(Evento|Bandas|Fecha|Sala):\s*(.*)", t))
+        campos = {}
+        for m in re.finditer(r"(?im)^(Evento|Bandas|Fecha|Sala|Organiza)\s*:[ \t]*([^\n]*)(?:\n(?!" + _REVI_CAMPO
+                             + r")([^\n]+))?", t):
+            campos.setdefault(m.group(1).capitalize(), clean(m.group(2) or m.group(3) or ""))
         f = find_fecha(campos.get("Fecha", ""), today)
         if not f:
             continue
-        sala = "Revi Live"
-        nxt = p.find_next("p")
-        sala_txt = clean(campos.get("Sala", ""))
-        if not sala_txt and nxt is not None and text(nxt).startswith("Sala:"):
-            sala_txt = clean(text(nxt)[5:])
+        sala_txt = campos.get("Sala", "")
         if not sala_txt:
-            # la sala aparece a veces en un bloque aparte tras el evento
-            sib = p.find_next(string=re.compile(r"^\s*Sala:\s*$"))
-            if sib is not None and sib.find_parent("p") is not None and sib.find_parent("p").find_previous("p") is p:
-                sala_txt = clean(text(sib.find_parent("p"))[5:])
-        if sala_txt and "space" in sala_txt.lower():
-            sala = "Revi Space"
+            # la sala aparece a veces en un párrafo aparte tras el evento (nunca en el del evento siguiente)
+            nxt = p.find_next("p")
+            tn = nxt.get_text("\n", strip=True) if nxt is not None else ""
+            mn = re.match(r"Sala\s*:\s*(.*)", tn, re.S)
+            if mn and "Evento" not in tn:
+                sala_txt = clean(mn.group(1))
+        sala = "Revi Space" if "space" in sala_txt.lower() else "Revi Live"
         bandas = campos.get("Bandas") or campos.get("Evento")
         a = p.find("a", href=True)
-        out.append(make(f[0], bandas, a["href"] if a else page_url, sala=sala, ciudad="Madrid",
-                        nota=f"Evento: {clean(campos.get('Evento', ''))}" if campos.get("Evento") else None))
+        fechas = [f[0]]
+        # "11 y 12 diciembre 2026": los dos días
+        md = re.match(r"(\d{1,2})\s+y\s+(\d{1,2})\s+([a-záéíóú]+)\s+(\d{4})", campos.get("Fecha", "").lower())
+        if md and MESES.get(md.group(3)):
+            try:
+                fechas = [date(int(md.group(4)), MESES[md.group(3)], int(d)) for d in md.group(1, 2)]
+            except ValueError:
+                pass
+        for fecha in fechas:
+            out.append(make(fecha, bandas, a["href"] if a else page_url, sala=sala, ciudad="Madrid",
+                            nota=f"Evento: {campos['Evento']}" if campos.get("Evento") else None))
     return out
 
 
@@ -368,8 +383,25 @@ def movistar_parse(html: str, page_url: str, today: date) -> list:
 
 # ------------------------------------------------------------------ Siroco
 def siroco_parse(html: str, page_url: str, today: date) -> list:
+    """Dos diseños: tarjetas article.sa-card (desde noviembre de 2026: <time datetime>, título, 'Club | Concierto')
+    y el antiguo .eventos-agenda. Solo los conciertos: no las sesiones de club ni las exposiciones."""
     s = soup_of(html)
     out = []
+    for ev in s.select("article.sa-card"):
+        tit = ev.select_one(".sa-card__title")
+        tm = ev.find("time", attrs={"datetime": True})
+        meta = [clean(x) for x in (ev.select_one(".sa-card__meta") or ev).get_text("|", strip=True).split("|")]
+        if not tit or not tm or "concierto" not in [m.lower() for m in meta if m]:
+            continue
+        m = re.match(r"(\d{4})-(\d\d)-(\d\d)(?:T(\d\d):(\d\d))?", tm["datetime"])
+        if not m:
+            continue
+        f = date(int(m.group(1)), int(m.group(2)), int(m.group(3)))
+        a = tit.find("a", href=True)
+        out.append(make(f, text(tit), a["href"] if a else page_url, sala="Sala Siroco", ciudad="Madrid",
+                        hora=f"{m.group(4)}:{m.group(5)}" if m.group(4) else None))
+    if out:
+        return out
     for ev in s.select(".eventos-agenda"):
         segs = [clean(x) for x in ev.get_text("\n", strip=True).split("\n") if clean(x)]
         if len(segs) < 5:
@@ -689,6 +721,31 @@ def _sala_revi(e: dict) -> str:
     return "Revi Space" if "space" in nombre.lower() else "Revi Live"
 
 
+def _siroco(ctx: Ctx):
+    """Su agenda (desde noviembre de 2026 en /agenda/, por páginas: ?pagina=2…)."""
+    url = "https://siroco.es/agenda/"
+    for n in range(1, 9):
+        html = ctx.get(url if n == 1 else f"{url}?pagina={n}")
+        evs = siroco_parse(html, url, ctx.today)
+        yield from evs
+        if f"pagina={n + 1}" not in html:
+            break
+
+
+def _revi(ctx: Ctx):
+    url = "https://conciertos.revi.live/"
+    vistos = set()
+    for e in revi_parse(ctx.get(url), url, ctx.today):
+        vistos.add(e.fecha)
+        yield e
+    try:
+        for e in _tribe(url, _sala_revi)(ctx):
+            if e.fecha not in vistos:   # el mismo día ya viene de la portada
+                yield e
+    except Exception as ex:  # noqa: BLE001 - el calendario es lo de menos: la portada ya se ha leído
+        ctx.errors.append(f"calendario de Revi: {type(ex).__name__}: {str(ex)[:120]}")
+
+
 def _tribe(base: str, sala, ciudad: str = "Madrid", solo: str | None = None):
     def run(ctx: Ctx):
         pagina = 1
@@ -899,8 +956,9 @@ PARSERS = {
     "riviera": _one("https://salariviera.com/conciertos/", riviera_parse),
     "nazca": _sec("https://www.salanazcaconciertos.com/conciertos", "Sala Nazca"),
     "wagon": _sec("https://www.wagon.live/", "Sala Wagon"),
-    # desde el 24/10/2026 su agenda es The Events Calendar en conciertos.revi.live (la página antigua da 0)
-    "revi": _tribe("https://conciertos.revi.live/", _sala_revi),
+    # entre el 24 y el 31/10/2026 su agenda estuvo en The Events Calendar; desde noviembre vuelve a estar solo en la
+    # portada (el calendario se quedó en el 31/10). Se leen las dos: lo del calendario, si vuelve a tenerlo, suma
+    "revi": _revi,
     "chango": _sec("https://www.salachango.es/", "Sala Changó", orden="antes"),
     "salabut": _sec("https://www.salabut.es/agenda-conciertos/", "Sala But"),
     "elsol": _one("https://salaelsol.com/agenda/", elsol_parse),
@@ -911,7 +969,7 @@ PARSERS = {
     "honky": _one("https://clubhonky.com/programacion/", honky_parse),
     "silikona": _one("https://silikona.es/", silikona_parse),
     "clamores": _one("https://www.salaclamores.es/calendario", clamores_parse),
-    "siroco": _one("https://siroco.es/", siroco_parse),
+    "siroco": _siroco,
     "mobydick": _one("https://www.mobydickclub.com/", mobydick_parse),
     "independance": _sec("https://independanceclub.com/collections/conciertos", "Independance Club"),
     "salab": _sec("https://www.salabmadrid.com/", "Sala B"),

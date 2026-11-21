@@ -1,5 +1,13 @@
 # Versiones
 
+## 2.91.2 — 2026-11-21
+
+- **Cuatro fuentes que habían cambiado su web vuelven a leerse** (comprobado en vivo):
+  - **Total Stage**: nuevo diseño de su página (hora, sala y estilo en otras etiquetas). Vuelve a dar sus 356 conciertos.
+  - **Revi Live / Revi Space**: su calendario nuevo se quedó en el 31/10 y la programación ha vuelto a la portada. Se lee la portada (38 conciertos), con la sala bien puesta también cuando escriben «Sala :» con espacio, y sin dar a un evento sin sala la del siguiente. Si el calendario vuelve a tener eventos, también se leen. Dos fechas de la portada traen un año que ya ha pasado («9 enero 2026», «8 abril 2026») y no se adivinan: no salen.
+  - **Sala Siroco**: web nueva con la agenda en /agenda/, por páginas. Solo los conciertos, no las sesiones de club ni las exposiciones (31).
+  - **Agenda municipal de Alcalá de Henares**: la agenda general ya solo trae los destacados; se lee la de música y danza (11).
+
 ## 2.91.1 — 2026-11-20
 
 - **La agenda llevaba desde el 13/11 sin datos nuevos**: una prueba de las copias de seguridad dependía de la fecha real (desde el 14/11 la copia de prueba del 10/10 quedaba fuera de las que se conservan) y su fallo frenaba cada pasada antes de leer las agendas. Arreglada, y comprobado que ninguna otra prueba falla con fechas futuras (de aquí a un año).

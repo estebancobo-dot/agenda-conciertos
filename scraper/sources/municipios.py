@@ -25,7 +25,8 @@ NO_MUSICA = re.compile(r"(?i)\b(taller|inscripci[oó]n|inscripciones|curso|expos
 
 # Agenda de cada municipio: (URL, lector). Lectores: "generico" (JSON-LD, microdatos, FullCalendar) o uno propio.
 AGENDAS = {
-    "Alcalá de Henares": ("https://culturalcala.es/agenda/", "generico"),
+    # desde noviembre de 2026 la agenda general solo trae los destacados; la de música y danza, todos los conciertos
+    "Alcalá de Henares": ("https://culturalcala.es/musica-y-danza/", "generico"),
     "Aranjuez": ("https://www.aranjuez.es/agenda", "generico"),
     "Collado Villalba": ("https://www.colladovillalba.es/agenda", "generico"),
     "Las Rozas de Madrid": ("https://www.lasrozas.es/calendario-de-eventos", "generico"),
