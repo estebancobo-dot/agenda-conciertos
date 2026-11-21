@@ -1230,10 +1230,12 @@ function viewConcierto(){
     ${similaresHTML(r)}
     <h3 class="sec">Escuchar y saber más</h3>
     <div class="links">${enlaces.map(e=>`<a class="lbtn" href="${hr(e.url)}" target="_blank" rel="noopener">${esc(e.nombre)}</a>`).join("")}</div>
+    ${f&&f.ultimo_disco?`<p class="muted" id="ultimo-disco">Último ${f.ultimo_disco.tipo==="single"?"single":"disco"}: ${f.ultimo_disco.url?`<a href="${hr(f.ultimo_disco.url)}" target="_blank" rel="noopener">${esc(f.ultimo_disco.titulo)}</a>`:esc(f.ultimo_disco.titulo)} (${esc(String(f.ultimo_disco.fecha||"").slice(0,4))}${f.ultimo_disco.sello?` · ${esc(f.ultimo_disco.sello)}`:""}) <span class="hint">(catálogo de Spotify, vía ReccoBeats)</span></p>`:""}
     ${f&&f.perfil?`<p class="muted">${esc(f.perfil)} <span class="hint">(Discogs)</span></p>`:""}
     <details class="more"${r.estado==="conflicto"?" open":""}><summary>De dónde salen los datos (${plural(fuentes.length,"web")})</summary>
       <ul>${fuentes.map(x=>`<li><a href="${hr(x.url)}" target="_blank" rel="noopener">${esc(x.nombre)}</a></li>`).join("")}</ul>
       ${f&&f.identidad?`<div class="hint">Artista identificado por: ${esc(f.identidad)}</div>`:""}
+      ${f&&f.ultimo_disco&&f.ultimo_disco.identificado_por?`<div class="hint">Spotify y último disco (ReccoBeats): artista identificado por ${esc(f.ultimo_disco.identificado_por)}</div>`:""}
       ${resueltos.length?`<div class="hint">${resueltos.map(esc).join("<br>")}</div>`:""}
       ${avisos.length?`<div class="hint">${avisos.map(esc).join("<br>")}</div>`:""}
       ${r._full&&(r.estilo_fuente||[]).length?`<div class="hint">Etiquetas de las agendas: ${esc(r.estilo_fuente.map(e=>`${e.estilo} (${String(e.fuente||"").split(" (")[0]})`).filter((x,i,a)=>a.indexOf(x)===i).join(" · "))}</div>`:""}

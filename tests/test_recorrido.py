@@ -47,7 +47,11 @@ def entorno(tmp_path, monkeypatch):
                  "musicbrainz": {"encontrado": True, "pais": "GB", "mbid": "9c9f", "identificado_por": MBID},
                  "discogs": {"encontrado": True, "nombre": "Muse", "url": "/artist/1003", "estilos": ["Alternative Rock"],
                              "generos": ["Rock"], "identificado_por": "identificador de Discogs en Wikidata"},
-                 "audiencia": {"encontrado": True, "oyentes": 7_100_000, "nombre": "Muse", "identificado_por": MBID}},
+                 "audiencia": {"encontrado": True, "oyentes": 7_100_000, "nombre": "Muse", "identificado_por": MBID},
+                 "reccobeats": {"encontrado": True, "v": 1, "spotify": "12Chz98pHFMPJEknJQMWvI",
+                                "identificado_por": "9 discos en común con MusicBrainz",
+                                "ultimo": {"titulo": "Will of the People", "fecha": "2022-08-26", "tipo": "album",
+                                           "sello": "Warner Records", "url": "https://open.spotify.com/album/x"}}},
         # un grupo sin ficha en ninguna web de música
         "kmmn": {"nombre": "Kmmn", "fecha": "2026-09-30", "discogs": {"encontrado": False},
                  "wikipedia": {"encontrado": False}, "musicbrainz": {"encontrado": False}},

@@ -588,3 +588,43 @@ def festify_parse(html: str, page_url: str, today: date) -> list:
 
 def festify(ctx: Ctx):
     yield from festify_parse(ctx.render(FESTIFY), FESTIFY, ctx.today)
+
+
+# ------------------------------------------------------------------ Hoja pública de conciertos (Google Sheets)
+# Lista hecha a mano (indie, rock, pop y escena pequeña de Madrid): Fecha, Bandas, Sala, Precio, Canal Venta y
+# Observación. Se descarga como CSV público (robots.txt de docs.google.com: Allow /spreadsheet).
+HOJA_ID = "1PRDTuGc2LV0eExmoMzNTcKBryUK77uORvN4rLCHAXmM"
+HOJA = f"https://docs.google.com/spreadsheets/d/{HOJA_ID}/edit"
+HOJA_CSV = f"https://docs.google.com/spreadsheets/d/{HOJA_ID}/export?format=csv"
+
+
+def hoja_parse(texto: str, page_url: str, today: date) -> list:
+    import csv
+    import io
+    out = []
+    for r in csv.DictReader(io.StringIO(texto)):
+        m = re.fullmatch(r"\s*(\d{1,2})/(\d{1,2})/(\d{4})\s*", r.get("Fecha") or "")
+        bandas, sala = clean(r.get("Bandas")), clean(r.get("Sala"))
+        if not m or not bandas:
+            continue
+        try:
+            f = date(int(m.group(3)), int(m.group(2)), int(m.group(1)))
+        except ValueError:
+            continue
+        precio = clean(r.get("Precio") or "")
+        obs = clean(r.get("Observación") or r.get("Observacion") or "")
+        if re.fullmatch(r"0+(?:,0+)?", precio):
+            # 0: gratis, salvo que la nota diga otra cosa ("el precio es un limón", "taquilla inversa")
+            precio = None if re.search(r"(?i)precio|taquilla inversa|voluntad", obs) else "Gratis"
+        else:
+            precio = f"{precio} €" if re.fullmatch(r"\d+(?:,\d+)?", precio) else None   # "????" o "-": sin precio
+        mh = re.search(r"(?i)\ba las (\d{1,2}[:.]\d\d)\b", obs)
+        # la sala viene en mayúsculas ("WURLITZER"): el alias de salas la reconoce igual
+        out.append(make(f, bandas, page_url, sala=sala.title() if sala.isupper() else sala, ciudad="Madrid",
+                        hora=parse_hora(mh.group(1).replace(".", ":")) if mh else None, precio=precio,
+                        nota=f"Nota de la hoja: {obs}" if obs else None))
+    return out
+
+
+def hoja(ctx: Ctx):
+    yield from hoja_parse(ctx.get(HOJA_CSV), HOJA, ctx.today)

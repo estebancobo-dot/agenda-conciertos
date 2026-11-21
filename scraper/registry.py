@@ -31,6 +31,10 @@ FUENTES: list[Source] = [
       notas="Agenda que completan sus usuarios: una sola página con todos los próximos de Madrid. Va en el grupo de "
             "conciertos.club porque copia sus datos (medido: en 14 de 14 horas distintas entre webs da la de "
             "conciertos.club), así que no cuenta como confirmación independiente."),
+    S("hoja_conciertos", "Hoja pública de conciertos (Google Sheets)", ag.HOJA, "agregador", 3, "media",
+      "hoja_conciertos", ag.hoja,
+      notas="Lista hecha a mano, sobre todo indie, rock y salas pequeñas. Sin hora (salvo si la nota la dice); el "
+            "precio es el que apunta la hoja."),
     S("rockandblog", "Rock and Blog", "https://rockandblog.net/conciertos-rock-madrid/", "blog", 4, "media",
       "rockandblog", ag.rockandblog),
     S("tm_blog", "Blog de Ticketmaster (agenda rock)", "https://blog.ticketmaster.es/post/agenda-rock-2026-38621/",
@@ -236,6 +240,9 @@ NO_USAR = {
     "Costello Club": "Su página de programación no trae los conciertos (ni con navegador).",
     "El Junco": "La portada no trae fechas legibles y no tiene página de agenda propia.",
     "Fulanita de Tal": "Sus eventos no están en la web legible; sus conciertos llegan por conciertos.club, Madrid en Vivo y Total Stage.",
+    "miscalendarios.com (conciertos en Madrid)": "Copia sobre todo Madrid en Vivo (ya se lee) y Ticketmaster; lo que no "
+                                                 "está en la agenda son espectáculos de tablao, DJs y jam sessions.",
+    "SpotAPI (Spotify sin clave)": "Usa la API interna del reproductor web de Spotify, que su robots.txt prohíbe.",
 }
 
 

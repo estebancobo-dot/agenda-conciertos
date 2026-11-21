@@ -1,5 +1,11 @@
 # Versiones
 
+## 2.92.0 — 2026-11-21
+
+- **Ficha del artista: Spotify y su último disco** (título, año y sello, con enlace), del catálogo de Spotify a través de ReccoBeats, gratuita y sin clave. Solo para artistas que ya identifica otra web de música, y nunca por el nombre (ReccoBeats tiene artistas repetidos: dos «Vetusta Morla»): vale el Spotify que da Wikidata o el único candidato que comparte al menos dos discos con MusicBrainz o Discogs. En una prueba con 15 artistas identificó a 13; los otros 2 se quedan sin nada. Se irá completando en las próximas pasadas.
+- **Nueva fuente: una hoja pública de conciertos** (Google Sheets, hecha a mano, sobre todo indie, rock y salas pequeñas). De sus 210 conciertos próximos, 53 no estaban en la agenda. Trae sala y precio; la hora solo si la nota lo dice, y las dudas de la propia hoja («a saber cuándo es») se muestran en la ficha.
+- Probadas y no añadidas: miscalendarios.com (copia sobre todo Madrid en Vivo, ya leída, y Ticketmaster; lo que no tenemos son espectáculos de tablao, DJs y jam sessions, que no se publican) y SpotAPI (usa la API interna del reproductor de Spotify, que su robots.txt prohíbe).
+
 ## 2.91.2 — 2026-11-21
 
 - **Cuatro fuentes que habían cambiado su web vuelven a leerse** (comprobado en vivo):

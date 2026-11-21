@@ -784,6 +784,18 @@ def _falta_origen(ent: dict, clave_lastfm) -> bool:
                                             and "lastfm_bio" not in ent)
 
 
+def _falta_reccobeats(ent: dict, hoy: date) -> bool:
+    """Artista identificado por alguna web de música y sin mirar en ReccoBeats (o con una versión anterior de la
+    búsqueda). Si dio error (servicio gratuito sin garantías), se reintenta al día siguiente, no en cada pasada."""
+    from .reccobeats import VERSION
+    rb = ent.get("reccobeats") or {}
+    if not _encontrado(ent):
+        return False
+    if str(rb.get("motivo", "")).startswith("error"):
+        return rb.get("fecha", "") < hoy.isoformat()
+    return rb.get("v") != VERSION
+
+
 def _encontrado(ent: dict) -> bool:
     return any((ent.get(k) or {}).get("encontrado") for k in ("discogs", "wikipedia", "lastfm", "musicbrainz"))
 
@@ -792,7 +804,7 @@ def enriquecer(recs: list[dict], cache: dict, hoy: date, presupuesto_seg: float 
                fetcher_dc: Fetcher | None = None, fetcher_wp: Fetcher | None = None,
                fetcher_lf: Fetcher | None = None, clave_lastfm: str | None = None, parar=None,
                guardar=None, fetcher_mb: Fetcher | None = None, mb_cache: dict | None = None,
-               paginas: dict | None = None) -> dict:
+               paginas: dict | None = None, fetcher_rb: Fetcher | None = None) -> dict:
     """Completa cache[norm(artista)] para los artistas principales, priorizando los conciertos en foco y próximos.
 
     Cada artista se consulta una vez; la ficha se renueva a los 180 días (30 si no se encontró). Si una ficha
@@ -813,6 +825,9 @@ def enriquecer(recs: list[dict], cache: dict, hoy: date, presupuesto_seg: float 
     spotify_de: dict[str, str] = {}  # artista → su identificador de Spotify (Enterticket)
     enlaces_de = enlaces_de_artistas(recs, paginas)  # artista → sus perfiles enlazados desde la página del concierto
     fetcher_ag = Fetcher()
+    if fetcher_rb is None:
+        from .reccobeats import fetcher_reccobeats
+        fetcher_rb = fetcher_reccobeats()
     from .clasificar import es_espectaculo
     from .nombres import claves_ficha
     from .origen import sin_artista
@@ -867,7 +882,8 @@ def enriquecer(recs: list[dict], cache: dict, hoy: date, presupuesto_seg: float 
         falta_mb = "musicbrainz" not in ent or _mb_sin_area(ent) or _dc_sin_discos(ent) or _falta_spotify(ent, spotify_de.get(k)) \
             or _falta_enlaces(ent, enlaces_de.get(k))
         falta_aud = clave_lastfm and _encontrado(ent) and "audiencia" not in ent
-        if falta_wd or falta_lf or falta_mb or falta_aud or _falta_origen(ent, clave_lastfm) or _pasos_con_error(ent):
+        falta_rb = _falta_reccobeats(ent, hoy)
+        if falta_wd or falta_lf or falta_mb or falta_aud or falta_rb or _falta_origen(ent, clave_lastfm) or _pasos_con_error(ent):
             pendientes.append((k, nombre, ent))
         else:
             stats["desde_cache"] += 1
@@ -965,6 +981,12 @@ def enriquecer(recs: list[dict], cache: dict, hoy: date, presupuesto_seg: float 
             paso("audiencia", buscar_audiencia, fetcher_lf, nombre, mbid, clave_lastfm, via)
         if _falta_agenda(ent) and urls_de.get(k):
             paso("agenda", buscar_en_agenda, fetcher_ag, nombre, urls_de[k])
+        if _falta_reccobeats(ent, hoy):
+            # Spotify y último disco (ReccoBeats), solo de artistas ya identificados (scraper/reccobeats.py)
+            from . import reccobeats as rb
+            ent.pop("reccobeats", None)
+            paso("reccobeats", rb.buscar, fetcher_rb, fetcher_mb, fetcher_dc, nombre, ent)
+            ent["reccobeats"]["fecha"] = hoy.isoformat()
         if not (ficha(ent) or {}).get("pais") and "wikipedia_texto" not in ent and len(norm(nombre)) >= 4:
             paso("wikipedia_texto", buscar_en_wikipedia, fetcher_wp, nombre)
         return k, ent
@@ -1241,8 +1263,10 @@ def ficha(ent: dict | None) -> dict | None:
     ids = wd.get("ids", {}) if wd.get("encontrado") else {}
     if ids.get("allmusic"):
         enlaces.append({"nombre": "AllMusic", "url": f"https://www.allmusic.com/artist/{ids['allmusic']}"})
-    if ids.get("spotify"):
-        enlaces.append({"nombre": "Spotify", "url": f"https://open.spotify.com/artist/{ids['spotify']}"})
+    rb = ent.get("reccobeats") or {}
+    rb = rb if rb.get("encontrado") else {}
+    if ids.get("spotify") or rb.get("spotify"):
+        enlaces.append({"nombre": "Spotify", "url": f"https://open.spotify.com/artist/{ids.get('spotify') or rb['spotify']}"})
     if ids.get("musicbrainz") or mbz.get("mbid"):
         enlaces.append({"nombre": "MusicBrainz",
                         "url": f"https://musicbrainz.org/artist/{ids.get('musicbrainz') or mbz['mbid']}"})
@@ -1267,4 +1291,6 @@ def ficha(ent: dict | None) -> dict | None:
             "fuente_estilo": fuente_estilo,
             "generos_wikipedia": wp.get("generos") or [], "pais": pais, "fuente_pais": fuente_pais,
             "imagen": imagen, "enlaces": enlaces, "perfil": dc.get("perfil") if dc.get("encontrado") else None,
-            "tiene_allmusic": bool(ids.get("allmusic"))}
+            "tiene_allmusic": bool(ids.get("allmusic")),
+            # su último disco según el catálogo de Spotify (ReccoBeats), con cómo se identificó al artista
+            "ultimo_disco": dict(rb["ultimo"], identificado_por=rb.get("identificado_por")) if rb.get("ultimo") else None}

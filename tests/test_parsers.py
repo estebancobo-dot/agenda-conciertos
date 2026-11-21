@@ -450,3 +450,17 @@ def test_municipal_pozuelo_fichas():
     assert e["Paquito D´Rivera Trío"].sala == "Teatro MIRA"
     assert "Concierto de Santa Cecilia: Sonidos de gala" in e
     assert not any("ópera" in a.lower() or "Campeones" in a for a in e)
+
+
+def test_hoja_publica_de_conciertos():
+    from scraper.sources.agregadores import HOJA, hoja_parse
+    e = {x.artista: x for x in hoja_parse((FIX / "hoja_conciertos.csv").read_text(encoding="utf-8"), HOJA,
+                                          date(2026, 11, 21))}
+    b = e["Beth Orton"]
+    assert (str(b.fecha), b.sala, b.precio, b.hora, b.ciudad) == ("2026-11-16", "Villanos", "31,30 €", None, "Madrid")
+    p = e["Las Pichonas"]
+    assert p.invitados == ["4 Patas", "Superchock"] and p.hora == "13:00" and p.precio is None   # "????"
+    assert e["Miss Blanche"].precio == "Gratis"
+    assert e["Los Pintores"].precio is None and e["Los Pintores"].hora == "19:30"   # "el precio es un limón"
+    # la duda de la hoja sobre la fecha queda a la vista
+    assert "a saber cuándo es" in e["Destroyer"].nota

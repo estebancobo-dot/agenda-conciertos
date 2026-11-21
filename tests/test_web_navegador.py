@@ -128,6 +128,9 @@ def test_origen_ficha_nivel_y_compra(web, nav):
     ficha(pg, "Muse")
     assert "Gran formato" in pg.inner_text("#nivel") and "oyentes" in pg.inner_text("#nivel")
     assert "Ticketmaster" in pg.inner_text("#comprar")
+    # Spotify y último disco (ReccoBeats), con su año y sello
+    assert "Último disco: Will of the People (2022 · Warner Records)" in pg.inner_text("#ultimo-disco")
+    assert pg.locator("a.lbtn", has_text="Spotify").get_attribute("href") == "https://open.spotify.com/artist/12Chz98pHFMPJEknJQMWvI"
     assert pg.get_attribute("#comprar", "href") == "https://www.ticketmaster.es/event/muse-123"
     # lo necesario para ir antes que la confirmación: fecha, sala y comprar arriba
     orden = pg.evaluate("(()=>{const y=s=>{const e=document.querySelector(s);return e?e.getBoundingClientRect().top:1e9};"
