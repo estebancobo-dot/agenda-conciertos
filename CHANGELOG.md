@@ -1,5 +1,9 @@
 # Versiones
 
+## 2.92.1 — 2026-11-21
+
+- **Madrid en Vivo: eventos con varias fechas** («Todos los VIERNES del 06/11/2026 al 27/11/2026»). Su buscador y su API solo dan la primera fecha, y en cuanto pasaba, el resto desaparecía de la agenda (Mr. Black en Jazzville, Thunder Blues en Thundercat, La Banda del Cien…). Ahora se mira la página de esos eventos (una vez por semana) y salen sus próximas fechas, hasta 8, con la hora del pase si la dice.
+
 ## 2.92.0 — 2026-11-21
 
 - **Ficha del artista: Spotify y su último disco** (título, año y sello, con enlace), del catálogo de Spotify a través de ReccoBeats, gratuita y sin clave. Solo para artistas que ya identifica otra web de música, y nunca por el nombre (ReccoBeats tiene artistas repetidos: dos «Vetusta Morla»): vale el Spotify que da Wikidata o el único candidato que comparte al menos dos discos con MusicBrainz o Discogs. En una prueba con 15 artistas identificó a 13; los otros 2 se quedan sin nada. Se irá completando en las próximas pasadas.

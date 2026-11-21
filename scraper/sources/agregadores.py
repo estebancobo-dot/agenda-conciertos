@@ -130,6 +130,90 @@ def mev_parse(html: str, page_url: str, today: date, estilo: str | None) -> list
     return out
 
 
+# Eventos con varias fechas ("Todos los VIERNES del 06/11/2026 al 27/11/2026"): el buscador y la API solo dan la
+# primera; en cuanto pasa, el resto desaparecía de la agenda. Su página lo dice: se lee una vez por semana.
+MEV_RECURRENTES_SEG = 600
+MEV_RECURRENTES_MAX = 8      # fechas por evento (las próximas): una residencia semanal no llena la agenda
+MEV_RECURRENTES_DIAS = 7     # cada cuántos días se vuelve a mirar la página del evento
+_DIAS_SEMANA = {"lunes": 0, "martes": 1, "miercoles": 2, "jueves": 3, "viernes": 4, "sabado": 5, "sabados": 5,
+                "domingo": 6, "domingos": 6}
+
+
+def mev_dias(texto: str, hoy: date, hasta_max: date) -> list[date] | None:
+    """Las próximas fechas de "Todos los VIERNES del 06/11/2026 al 27/11/2026" ("Todos los JUEVES y VIERNES…",
+    "Todos los días…"). None si el texto no tiene esa forma."""
+    import unicodedata
+    from datetime import timedelta
+    t = "".join(c for c in unicodedata.normalize("NFD", texto.lower()) if unicodedata.category(c) != "Mn")
+    m = re.search(r"todos los (.+?) del (\d{1,2})/(\d{1,2})/(\d{4}) al (\d{1,2})/(\d{1,2})/(\d{4})", t)
+    if not m:
+        return None
+    try:
+        ini = date(int(m.group(4)), int(m.group(3)), int(m.group(2)))
+        fin = date(int(m.group(7)), int(m.group(6)), int(m.group(5)))
+    except ValueError:
+        return None
+    nombres = re.findall(r"[a-z]+", m.group(1))
+    dias = set(range(7)) if "dias" in nombres else {_DIAS_SEMANA[n] for n in nombres if n in _DIAS_SEMANA}
+    if not dias:
+        return None
+    out, d = [], max(ini, hoy)
+    while d <= min(fin, hasta_max) and len(out) < MEV_RECURRENTES_MAX:
+        if d.weekday() in dias:
+            out.append(d)
+        d += timedelta(days=1)
+    return out
+
+
+def mev_ficha_fechas(html: str) -> dict:
+    """De la página del evento: el texto de sus fechas (p.dias-evento) y la hora del pase ("Pase: 20:30h")."""
+    s = soup_of(html)
+    dias = text(s.select_one("p.dias-evento"))
+    m = re.search(r"Pase:\s*(\d{1,2}:\d\d)", s.get_text(" ", strip=True))
+    hora = m.group(1).zfill(5) if m and m.group(1) not in ("00:00", "0:00") else None
+    return {"dias": dias, "hora": hora}
+
+
+def mev_recurrentes(ctx: Ctx, leidos: list) -> list:
+    """Los eventos que el buscador da con una fecha ya pasada son los de varias fechas que ya empezaron: se cambian
+    por sus próximas fechas según su página. Si no se puede saber, se quedan como estaban (con la fecha pasada no
+    salen en la agenda)."""
+    import dataclasses
+    import time
+    from datetime import timedelta
+    cache: dict = ctx.estado.setdefault("recurrentes", {})
+    revisar = (ctx.today - timedelta(days=MEV_RECURRENTES_DIAS)).isoformat()
+    t0, out, vistos = time.monotonic(), [], set()
+    for e in leidos:
+        if e.fecha >= ctx.today:
+            out.append(e)
+            continue
+        vistos.add(e.url)
+        c = cache.get(e.url)
+        if not c or c.get("visto", "") < revisar:
+            if time.monotonic() - t0 > MEV_RECURRENTES_SEG:
+                out.append(e)
+                continue
+            try:
+                c = dict(mev_ficha_fechas(ctx.get(e.url)), visto=ctx.today.isoformat())
+            except Exception as ex:  # noqa: BLE001 - una página que falla no para las demás
+                ctx.errors.append(f"{e.url}: {type(ex).__name__}")
+                out.append(e)
+                continue
+            cache[e.url] = c
+        fechas = mev_dias(c.get("dias") or "", ctx.today, ctx.horizon)
+        if not fechas:
+            out.append(e)
+            continue
+        for f in fechas:
+            out.append(dataclasses.replace(
+                e, fecha=f, hora=e.hora or c.get("hora"), invitados=list(e.invitados),
+                nota=clean(f"{e.nota or ''} Evento con varias fechas en Madrid en Vivo: «{c['dias']}».")))
+    for u in [u for u in cache if u not in vistos]:
+        cache.pop(u)   # ya no sale en el buscador: terminó
+    return out
+
+
 MEV_API = "https://madridenvivo.com/wp-json/wp/v2"
 MEV_API_PAGINAS = 12  # 100 eventos por página, los publicados más recientemente primero
 
@@ -222,6 +306,10 @@ def madridenvivo(ctx: Ctx):
     t0 = time.monotonic()
     seen: dict[str, object] = {}
     leidos = list(_madridenvivo_buscador(ctx, t0, seen))
+    try:
+        leidos = mev_recurrentes(ctx, leidos)
+    except Exception as ex:  # noqa: BLE001 - nunca impide dar los demás eventos
+        ctx.errors.append(f"eventos con varias fechas: {type(ex).__name__}: {str(ex)[:120]}")
     try:
         mev_estilos_api(ctx, leidos)
     except Exception as ex:  # noqa: BLE001 - nunca impide dar los eventos con su categoría
