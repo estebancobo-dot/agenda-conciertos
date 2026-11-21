@@ -386,3 +386,20 @@ def test_siroco_agenda_noviembre_2026():
                                                       "https://siroco.es/eventos/mothercrow-electric-fence/")
     assert m.invitados == ["Electric Fence"]
     assert not any("Fast Expo" in e.artista or "Fernando Pineda" in e.artista for e in evs)
+
+
+def test_municipal_formatos_noviembre_2026():
+    from scraper.sources.municipios import leganes, valdemoro
+    hoy = date(2026, 11, 21)
+    # Leganés: [data-event-key]; de teatro, deportes y villancicos, solo el certamen de villancicos es música
+    lg = leganes(html("leganes_agenda_2026_11"), "https://www.leganes.org/agenda/", hoy, "Leganés")
+    assert [(str(e.fecha), e.artista, e.sala) for e in lg] == [
+        ("2026-12-13", "CERTAMEN DE VILLANCICOS", "Teatro José Monleón")]
+    # Valdemoro: la tienda del teatro; una comedia y un musical no son conciertos
+    vh = html("valdemoro_teatro_2026_11")
+    assert valdemoro(vh, "u", hoy, "Valdemoro") == []
+    # la misma función, si fuera un concierto: fecha de data-fecha, hora de la descripción y la sala de 'Lugar'
+    v = valdemoro(vh.replace("18.00 horas. Comedia.", "18.00 horas. Concierto."), "u", hoy, "Valdemoro")
+    assert [(str(e.fecha), e.hora, e.artista, e.sala) for e in v] == [
+        ("2026-11-22", "18:00", "GOOL!", "Teatro Municipal Juan Prado")]
+    assert v[0].url == "https://teatrodevaldemoro.sacatuentrada.es/es/entradas/gool-"

@@ -7,6 +7,10 @@
   - **Revi Live / Revi Space**: su calendario nuevo se quedó en el 31/10 y la programación ha vuelto a la portada. Se lee la portada (38 conciertos), con la sala bien puesta también cuando escriben «Sala :» con espacio, y sin dar a un evento sin sala la del siguiente. Si el calendario vuelve a tener eventos, también se leen. Dos fechas de la portada traen un año que ya ha pasado («9 enero 2026», «8 abril 2026») y no se adivinan: no salen.
   - **Sala Siroco**: web nueva con la agenda en /agenda/, por páginas. Solo los conciertos, no las sesiones de club ni las exposiciones (31).
   - **Agenda municipal de Alcalá de Henares**: la agenda general ya solo trae los destacados; se lee la de música y danza (11).
+- **Agendas municipales de Valdemoro y Leganés**, que también habían cambiado:
+  - **Valdemoro**: su página de teatro daba 404 desde noviembre; se lee la tienda de entradas del teatro (teatrodevaldemoro.sacatuentrada.es). Hoy solo trae una comedia y un musical, que no son conciertos.
+  - **Leganés**: su agenda cambió de formato y se leía vacía. Vuelve a leerse (hoy, un certamen de villancicos en el Teatro José Monleón; el resto es teatro y deporte).
+- Revisadas sin cambios: Pinto no responde (tampoco desde fuera de GitHub), Alcorcón bloquea el acceso automático (no se fuerza) y Móstoles no tiene actos publicados este mes.
 
 ## 2.91.1 — 2026-11-20
 

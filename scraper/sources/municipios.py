@@ -11,6 +11,7 @@ import html as html_lib
 import json
 import re
 from datetime import date
+from urllib.parse import urljoin
 
 from ..normalize import clean, parse_fecha_texto, parse_hora
 from .base import Ctx, jsonld_events, ld_to_raw, make, soup_of, text
@@ -34,7 +35,7 @@ AGENDAS = {
     "Alcorcón": ("https://www.ayto-alcorcon.es/es/sections/agenda-cultural", "alcorcon"),
     "Boadilla del Monte": ("https://ayuntamientoboadilladelmonte.org/boadilla-actualidad/agenda", "boadilla"),
     "Torrejón de Ardoz": ("https://teatro.ayto-torrejon.es/eventos_teatro", "torrejon"),
-    "Valdemoro": ("https://www.valdemoro.es/teatro", "valdemoro"),
+    "Valdemoro": ("https://teatrodevaldemoro.sacatuentrada.es/", "valdemoro"),  # /teatro da 404 desde 11/2026
     "Pinto": ("https://www.ayto-pinto.es/agenda-de-actividades", "pinto"),
     "Móstoles": ("https://www.mostoles.es/culturaenmostoles/es/agenda-actividades", "generico"),
 }
@@ -182,8 +183,28 @@ def generico(html: str, url: str, today: date, municipio: str) -> list:
 
 # ---------------------------------------------------------------- lectores propios
 def leganes(html: str, url: str, today: date, municipio: str) -> list:
-    """Liferay: cada acto deja en un <script> su fecha (diaIni/mesIni/anioIni) y su enlace."""
+    """Liferay. Desde noviembre de 2026, cada acto es un [data-event-key] con data-evento-inicio, el título en el
+    enlace y un texto de búsqueda con las etiquetas ("a escena jose-monleon musica Teatro José Monleón …"). Antes,
+    cada acto dejaba en un <script> su fecha (diaIni/mesIni/anioIni) y su enlace."""
     out = []
+    s = soup_of(html)
+    items = s.select("[data-event-key][data-evento-inicio]")
+    for it in items:
+        m = re.match(r"(\d{4})-(\d\d)-(\d\d)$", it.get("data-evento-inicio", ""))
+        a = it.select_one("a[href][title]")
+        if not m or not a:
+            continue
+        titulo, busca = clean(a["title"]), clean(it.get("data-event-search", ""))
+        if not es_musica(f"{titulo} · {busca}"):
+            continue
+        sala = re.search(r"\b(?:Teatro|Auditorio|Centro Cultural|Sala) (?:[A-ZÁÉÍÓÚÑ][\wáéíóúñ]+ ?){1,3}", busca)
+        ev = _evento(date(int(m.group(1)), int(m.group(2)), int(m.group(3))), titulo, urljoin(url, a["href"]),
+                     municipio, sala=re.sub(r"(?: (?:El|La|Los|Las|Un|Una|En|Del?))+$", "", sala.group(0).strip())
+                     if sala else "")
+        if ev:
+            out.append(ev)
+    if items:
+        return out
     patron = re.compile(r'data-analytics-asset-title="([^"]+)"[^>]*>\s*<script>\s*var diaIni = (\d+);\s*'
                         r'var mesIni = (\d+);\s*var anioIni = (\d+);.*?link\s*:\s*\'([^\']+)\'', re.S)
     for m in patron.finditer(html):
@@ -264,8 +285,29 @@ def torrejon(html: str, url: str, today: date, municipio: str) -> list:
 
 
 def valdemoro(html: str, url: str, today: date, municipio: str) -> list:
+    """Desde noviembre de 2026, la tienda de entradas del teatro (teatrodevaldemoro.sacatuentrada.es): cada función
+    con data-fecha, título y la misma descripción de siempre ("22 de noviembre, 18.00 horas. Comedia. …"). Antes,
+    la página /teatro del ayuntamiento (.tmpl-noticia-listado)."""
     s = soup_of(html)
     out = []
+    for b in s.select("div[data-fecha]"):
+        tit = b.select_one(".titulo")
+        resumen = text(b.select_one(".descripcion"))
+        a = b.select_one("a[href]")
+        m = re.match(r"(\d{4})-(\d\d)-(\d\d)$", b.get("data-fecha", ""))
+        if not tit or not resumen or not m:
+            continue
+        categoria = (resumen.split(". ") + [""])[1]
+        if es_musica(f"{text(tit)} · {categoria}"):
+            hora = re.match(r"[^.]*?(\d{1,2})[.:](\d\d)\s*horas", resumen)
+            lugar = clean(text(b.select_one(".lugar .font-bold"))).title() or "Teatro Municipal Juan Prado"
+            ev = _evento(date(int(m.group(1)), int(m.group(2)), int(m.group(3))), text(tit),
+                         a["href"].strip() if a else url, municipio,
+                         hora=f"{int(hora.group(1)):02d}:{hora.group(2)}" if hora else None, sala=lugar)
+            if ev:
+                out.append(ev)
+    if s.select("div[data-fecha]"):
+        return out
     for b in s.select(".tmpl-noticia-listado"):
         a = b.select_one(".title a")
         resumen = text(b.select_one(".summary"))
